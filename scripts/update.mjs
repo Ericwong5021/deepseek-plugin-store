@@ -165,9 +165,24 @@ Add the \`dsh-plugin\` topic to your repo and declare a \`dsh.bundle\` manifest 
 [CC0-1.0](LICENSE) · 数据来自 GitHub 公开 API，每 6 小时自动刷新。
 `
 
+const readmeZh = readme.replace('# DeepSeek Plugin Store', '# DeepSeek Plugin Store（DeepSeek 插件商店）')
+const generatedAt = new Date().toISOString()
+
 await import('node:fs/promises').then(async (fs) => {
   await fs.mkdir('data', { recursive: true })
   await fs.writeFile('README.md', readme)
-  await fs.writeFile('data/plugins.json', JSON.stringify({ updatedAt: new Date().toISOString(), plugins, related }, null, 2))
+  await fs.writeFile('README.zh.md', readmeZh)
+  await fs.writeFile('data/plugins.json', JSON.stringify({
+    schemaVersion: 1,
+    updatedAt: generatedAt,
+    source: {
+      provider: 'github',
+      repository: 'Ericwong5021/deepseek-plugin-store',
+      query: 'topic:dsh-plugin',
+      verification: 'package.json:dsh.bundle',
+    },
+    plugins,
+    related,
+  }, null, 2))
 })
-console.log('README.md + data/plugins.json written')
+console.log('README.md + README.zh.md + data/plugins.json written')

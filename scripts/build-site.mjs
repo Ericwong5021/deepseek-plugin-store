@@ -15,7 +15,17 @@ import LOCALES from '../site/locales.mjs'
 
 const ORIGIN = 'https://ericwong5021.github.io/deepseek-plugin-store'
 const DATES_FILE = 'data/added-dates.json'
-const CAT_IDS = ['ui', 'session', 'tools', 'workflow', 'notify', 'dev', 'fun']
+const CAT_DEFS = [
+  ['ui-enhancements', 'ui'],
+  ['workflow-automation', 'workflow'],
+  ['tools', 'tools'],
+  ['notifications', 'notifications'],
+  ['dev-helpers', 'dev-helpers'],
+  ['learning', 'learning'],
+  ['misc', 'misc'],
+]
+const CAT_IDS = CAT_DEFS.map(([id]) => id)
+const CAT_SLUGS = Object.fromEntries(CAT_DEFS)
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
@@ -29,8 +39,8 @@ function parseReadme(loc) {
       cat = CAT_IDS.find((id) => h[1].includes(loc.categories[id])) ?? null
       continue
     }
-    const m = line.match(/^- \[(.+?)\]\((https:\/\/github\.com\/[^)]+)\) [—-] (.+)$/)
-    if (m && cat) out.set(m[2], { name: m[1], url: m[2], desc: m[3], cat })
+    const m = line.match(/^- \[(.+?)\]\((https:\/\/github\.com\/[^)]+)\)(?:\s+★\d+)?(?:\s+·\s+`[^`]+`)?(?:\s+[—-]\s+(.+))?$/)
+    if (m && cat) out.set(m[2], { name: m[1], url: m[2], desc: m[3] ?? '', cat })
   }
   return out
 }
@@ -80,7 +90,7 @@ function buildRows(loc, only) {
   return CAT_IDS.filter((id) => !only || id === only).map((id) => {
     const group = ordered.filter((e) => e.cat === id)
     if (!group.length) return ''
-    const sec = `    <li class="sec" data-sec="${id}"><h2 id="${id}"><a href="${loc.urlPath}${id}/">${loc.categories[id]}</a> <small>${group.length}</small></h2></li>`
+    const sec = `    <li class="sec" data-sec="${id}"><h2 id="${id}"><a href="${loc.urlPath}${CAT_SLUGS[id]}/">${loc.categories[id]}</a> <small>${group.length}</small></h2></li>`
     const items = group.map((e) => {
       idx++
       const delay = Math.min(idx * 0.02, 0.4).toFixed(2)
@@ -114,7 +124,7 @@ function buildChipLinks(loc, activeId) {
     `      <a class="chip${activeId ? '' : ' active'}" href="${loc.urlPath}">${loc.strings.ALL} <small>${N}</small></a>`,
     ...CAT_IDS.map((id) => {
       const n = ordered.filter((e) => e.cat === id).length
-      return `      <a class="chip${id === activeId ? ' active' : ''}" href="${loc.urlPath}${id}/">${loc.categories[id]} <small>${n}</small></a>`
+      return `      <a class="chip${id === activeId ? ' active' : ''}" href="${loc.urlPath}${CAT_SLUGS[id]}/">${loc.categories[id]} <small>${n}</small></a>`
     }),
   ].join('\n')
 }
@@ -133,6 +143,10 @@ function langRedirect(current) {
 }
 
 const master = fs.readFileSync('site/template.html', 'utf8')
+
+for (const loc of LOCALES) {
+  for (const slug of ['dev', 'fun', 'notify', 'session']) fs.rmSync(`${loc.out.replace(/index\.html$/, '')}${slug}`, { recursive: true, force: true })
+}
 
 for (const loc of LOCALES) {
   let page = master
@@ -168,10 +182,10 @@ for (const loc of LOCALES) {
   for (const id of CAT_IDS) {
     const n = ordered.filter((e) => e.cat === id).length
     if (!n) continue
-    const url = `${ORIGIN}${loc.urlPath}${id}/`
+    const url = `${ORIGIN}${loc.urlPath}${CAT_SLUGS[id]}/`
     const catHreflangs = [
-      ...LOCALES.map((l) => `<link rel="alternate" hreflang="${l.code}" href="${ORIGIN}${l.urlPath}${id}/">`),
-      `<link rel="alternate" hreflang="x-default" href="${ORIGIN}${LOCALES[0].urlPath}${id}/">`,
+      ...LOCALES.map((l) => `<link rel="alternate" hreflang="${l.code}" href="${ORIGIN}${l.urlPath}${CAT_SLUGS[id]}/">`),
+      `<link rel="alternate" hreflang="x-default" href="${ORIGIN}${LOCALES[0].urlPath}${CAT_SLUGS[id]}/">`,
     ].join('\n')
     let page = master
     page = page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${catJsonld(url, id)}</script>`)
@@ -184,12 +198,12 @@ for (const loc of LOCALES) {
       .replaceAll('__URL__', url)
       .replaceAll('__HREFLANGS__', catHreflangs)
       .replaceAll('__OG_IMAGE__', ORIGIN + loc.og)
-      .replaceAll('__LOCALE_LINKS__', LOCALES.filter((l) => l.code !== loc.code).map((l) => `<a class="lang-btn" href="${l.urlPath}${id}/" hreflang="${l.code}" rel="alternate">${l.label}</a>`).join('\n        '))
+      .replaceAll('__LOCALE_LINKS__', LOCALES.filter((l) => l.code !== loc.code).map((l) => `<a class="lang-btn" href="${l.urlPath}${CAT_SLUGS[id]}/" hreflang="${l.code}" rel="alternate">${l.label}</a>`).join('\n        '))
       .replaceAll('__SEARCH_PH__', loc.SEARCH_PH)
       .replaceAll('__LANG_REDIRECT__', '')
       .replaceAll('__FEED__', loc.feed)
     for (const [k, v] of Object.entries(loc.strings)) page = page.replaceAll(`__T_${k}__`, v)
-    const outDir = loc.out.replace(/index\.html$/, '') + id
+    const outDir = loc.out.replace(/index\.html$/, '') + CAT_SLUGS[id]
     fs.mkdirSync(outDir, { recursive: true })
     fs.writeFileSync(`${outDir}/index.html`, page)
   }
@@ -231,10 +245,10 @@ ${LOCALES.map((l) => `  <url>
 ${alternates}
   </url>`).join('\n')}
 ${LOCALES.flatMap((l) => CAT_IDS.map((id) => `  <url>
-    <loc>${ORIGIN}${l.urlPath}${id}/</loc>
+    <loc>${ORIGIN}${l.urlPath}${CAT_SLUGS[id]}/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>daily</changefreq>
-${[...LOCALES.map((l2) => `      <xhtml:link rel="alternate" hreflang="${l2.code}" href="${ORIGIN}${l2.urlPath}${id}/"/>`), `      <xhtml:link rel="alternate" hreflang="x-default" href="${ORIGIN}${LOCALES[0].urlPath}${id}/"/>`].join('\n')}
+${[...LOCALES.map((l2) => `      <xhtml:link rel="alternate" hreflang="${l2.code}" href="${ORIGIN}${l2.urlPath}${CAT_SLUGS[id]}/"/>`), `      <xhtml:link rel="alternate" hreflang="x-default" href="${ORIGIN}${LOCALES[0].urlPath}${CAT_SLUGS[id]}/"/>`].join('\n')}
   </url>`)).join('\n')}
 </urlset>
 `)

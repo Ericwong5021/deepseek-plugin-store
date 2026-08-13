@@ -1,9 +1,13 @@
 name: Build site from README
 
+concurrency:
+  group: deepseek-plugin-store-main-write
+  cancel-in-progress: false
+
 on:
   push:
     branches: [main]
-    paths: ['README.md', 'README.zh.md', 'scripts/build-site.mjs']
+    paths: ['scripts/build-site.mjs', 'site/**']
   workflow_dispatch:
 
 permissions:
