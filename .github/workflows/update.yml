@@ -6,7 +6,7 @@ concurrency:
 
 on:
   schedule:
-    - cron: '23 */6 * * *' # every 6 hours
+    - cron: '23 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,13 +24,29 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/update.mjs
+      - name: Record upstream snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/monitor-upstream.mjs
+      - name: Validate catalog
+        run: node scripts/validate.mjs
       - name: Rebuild site artifacts
         run: node scripts/build-site.mjs
       - name: Commit if changed
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md README.zh.md data docs
-          git diff --cached --quiet && echo "no changes" && exit 0
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           git commit -m "chore: auto-update plugin list"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Trigger website deployment
+        if: ${{ steps.commit.outputs.changed == 'true' && secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK != '' }}
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        run: curl --fail --silent --show-error --request POST "$DEPLOY_HOOK"

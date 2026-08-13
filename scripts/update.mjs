@@ -30,6 +30,22 @@ async function searchRepos() {
   return items.filter((r) => !seen.has(r.full_name) && seen.add(r.full_name))
 }
 
+async function fetchUpstreamRepos() {
+  const res = await fetch('https://api.github.com/repos/awesome-dsh-plugin/awesome-dsh-plugin/contents/README.md', { headers: HEADERS })
+  if (!res.ok) throw new Error(`upstream readme: ${res.status}`)
+  const json = await res.json()
+  const text = Buffer.from(json.content, 'base64').toString('utf8')
+  const names = [...text.matchAll(/https:\/\/github\.com\/([\w.-]+\/[\w.-]+)/g)].map((match) => match[1].replace(/\/$/, ''))
+  const unique = [...new Set(names)].filter((name) => name !== 'awesome-dsh-plugin/awesome-dsh-plugin')
+  return mapLimit(unique, 8, async (name) => {
+    const response = await fetch(`https://api.github.com/repos/${name}`, { headers: HEADERS })
+    if (!response.ok) return null
+    const repo = await response.json()
+    repo.discoverySource = 'awesome-dsh-plugin'
+    return repo
+  }).then((items) => items.filter(Boolean))
+}
+
 async function fetchPackageJson(fullName) {
   try {
     const res = await fetch(
@@ -79,8 +95,15 @@ function entryLine(p) {
   return `- [${p.fullName}](${p.url}) ★${p.stars}${npm}${desc ? ` — ${desc}` : ''}`
 }
 
-const repos = await searchRepos()
-console.log(`search: ${repos.length} repos`)
+const [topicRepos, upstreamRepos] = await Promise.all([searchRepos(), fetchUpstreamRepos()])
+const repoMap = new Map()
+for (const repo of [...topicRepos, ...upstreamRepos]) {
+  const existing = repoMap.get(repo.full_name)
+  if (!existing) repoMap.set(repo.full_name, { ...repo, discoverySources: [repo.discoverySource || 'github-topic'] })
+  else existing.discoverySources = [...new Set([...existing.discoverySources, repo.discoverySource || 'github-topic'])]
+}
+const repos = [...repoMap.values()]
+console.log(`search: ${topicRepos.length} topic repos + ${upstreamRepos.length} upstream entries = ${repos.length} unique repos`)
 
 const enriched = await mapLimit(repos, 10, async (repo) => {
   const pkg = await fetchPackageJson(repo.full_name)
@@ -95,11 +118,27 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
     isPlugin,
     npmName: isPlugin ? pkg.name ?? null : null,
     category: categorize(repo, pkg),
+    discoverySources: repo.discoverySources,
   }
 })
 
-const plugins = enriched.filter((p) => p.isPlugin).sort((a, b) => b.stars - a.stars)
+const candidatePlugins = enriched.filter((p) => p.isPlugin).sort((a, b) => b.stars - a.stars)
+const installIdentifiers = new Set()
+const plugins = candidatePlugins.filter((plugin) => {
+  const installIdentifier = plugin.npmName || `github:${plugin.fullName}`
+  if (installIdentifiers.has(installIdentifier)) return false
+  installIdentifiers.add(installIdentifier)
+  return true
+})
 const related = enriched.filter((p) => !p.isPlugin).sort((a, b) => b.stars - a.stars)
+const fs = await import('node:fs/promises')
+let addedDates = {}
+try { addedDates = JSON.parse(await fs.readFile('data/added-dates.json', 'utf8')) } catch {}
+const today = new Date().toISOString().slice(0, 10)
+for (const plugin of plugins) {
+  addedDates[plugin.url] ||= today
+  plugin.addedAt = addedDates[plugin.url]
+}
 console.log(`verified plugins: ${plugins.length}, related: ${related.length}`)
 
 const byCategory = new Map()
@@ -123,7 +162,7 @@ const readme = `# DeepSeek Plugin Store
 
 > [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（\`dsh\`）插件数据源 · 自动验证、定时更新
 >
-> An open source, **auto-verified** data source for the DeepSeek Plugin Store. Updated every 6 hours.
+> An open source, **auto-verified** data source for the DeepSeek Plugin Store. Updated every hour.
 
 本列表由爬虫自动生成：抓取 GitHub 上所有 \`dsh-plugin\` topic 仓库，**逐个验证其 \`package.json\` 是否声明了 \`dsh.bundle\` manifest**（这是一个仓库能被 \`dsh plugin add\` 安装的硬性标志）。通过验证的才会进入插件列表，未通过的归入相关项目。
 
@@ -162,27 +201,26 @@ Add the \`dsh-plugin\` topic to your repo and declare a \`dsh.bundle\` manifest 
 
 ## License
 
-[CC0-1.0](LICENSE) · 数据来自 GitHub 公开 API，每 6 小时自动刷新。
+[CC0-1.0](LICENSE) · 数据来自 GitHub 公开 API，每小时自动刷新。
 `
 
 const readmeZh = readme.replace('# DeepSeek Plugin Store', '# DeepSeek Plugin Store（DeepSeek 插件商店）')
 const generatedAt = new Date().toISOString()
 
-await import('node:fs/promises').then(async (fs) => {
-  await fs.mkdir('data', { recursive: true })
-  await fs.writeFile('README.md', readme)
-  await fs.writeFile('README.zh.md', readmeZh)
-  await fs.writeFile('data/plugins.json', JSON.stringify({
-    schemaVersion: 1,
-    updatedAt: generatedAt,
-    source: {
-      provider: 'github',
-      repository: 'Ericwong5021/deepseek-plugin-store',
-      query: 'topic:dsh-plugin',
-      verification: 'package.json:dsh.bundle',
-    },
-    plugins,
-    related,
-  }, null, 2))
-})
+await fs.mkdir('data', { recursive: true })
+await fs.writeFile('README.md', readme)
+await fs.writeFile('README.zh.md', readmeZh)
+await fs.writeFile('data/added-dates.json', JSON.stringify(Object.fromEntries(Object.entries(addedDates).sort()), null, 2) + '\n')
+await fs.writeFile('data/plugins.json', JSON.stringify({
+  schemaVersion: 1,
+  updatedAt: generatedAt,
+  source: {
+    provider: 'github',
+    repository: 'Ericwong5021/deepseek-plugin-store',
+    sources: ['topic:dsh-plugin', 'awesome-dsh-plugin/awesome-dsh-plugin'],
+    verification: 'package.json:dsh.bundle',
+  },
+  plugins,
+  related,
+}, null, 2))
 console.log('README.md + README.zh.md + data/plugins.json written')
