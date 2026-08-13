@@ -1,0 +1,78 @@
+name: Submit a plugin
+description: Suggest a public DeepSeek Harness plugin for directory review.
+title: "[Plugin] "
+labels:
+  - plugin-submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping expand the independent community directory. Submissions are reviewed before they enter the catalog.
+  - type: input
+    id: name
+    attributes:
+      label: Plugin name
+      description: Use the repository owner/name when possible.
+      placeholder: owner/plugin-name
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/owner/plugin-name
+    validations:
+      required: true
+  - type: input
+    id: install_spec
+    attributes:
+      label: Install identifier
+      description: The npm package name or GitHub install spec users should provide.
+      placeholder: npm-package-name or github:owner/repository
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - UI Enhancements
+        - Workflow Automation
+        - Tools
+        - Notifications & Monitoring
+        - Developer Helpers
+        - Learning
+        - Miscellaneous
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: English summary
+      description: Explain what the plugin does for DeepSeek Harness users.
+    validations:
+      required: true
+  - type: input
+    id: manifest_path
+    attributes:
+      label: Manifest path
+      description: Add the dsh.bundle manifest path if it is known; otherwise write Not confirmed.
+      placeholder: package.json
+    validations:
+      required: true
+  - type: input
+    id: maintainer
+    attributes:
+      label: Maintainer identity
+      placeholder: GitHub handle or organization
+    validations:
+      required: true
+  - type: checkboxes
+    id: declaration
+    attributes:
+      label: Submission declaration
+      options:
+        - label: I maintain this plugin or have permission to submit it.
+          required: true
+        - label: The repository is public and the information above is accurate to the best of my knowledge.
+          required: true
