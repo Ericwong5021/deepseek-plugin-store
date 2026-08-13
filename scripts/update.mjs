@@ -2,7 +2,7 @@
 /**
  * Crawl GitHub for repos tagged `dsh-plugin`, verify each one's package.json
  * for a `dsh.bundle` manifest (what makes it an installable DSH plugin),
- * then regenerate README.md and data/plugins.json.
+ * then regenerate README.md and the catalog data.
  *
  * Usage: GITHUB_TOKEN=xxx node scripts/update.mjs
  */
@@ -31,19 +31,26 @@ async function searchRepos() {
 }
 
 async function fetchUpstreamRepos() {
-  const res = await fetch('https://api.github.com/repos/awesome-dsh-plugin/awesome-dsh-plugin/contents/README.md', { headers: HEADERS })
+  const [res, commitResponse] = await Promise.all([
+    fetch('https://api.github.com/repos/awesome-dsh-plugin/awesome-dsh-plugin/contents/README.md', { headers: HEADERS }),
+    fetch('https://api.github.com/repos/awesome-dsh-plugin/awesome-dsh-plugin/commits/main', { headers: HEADERS })
+  ])
   if (!res.ok) throw new Error(`upstream readme: ${res.status}`)
+  if (!commitResponse.ok) throw new Error(`upstream commit: ${commitResponse.status}`)
   const json = await res.json()
+  const commit = await commitResponse.json()
   const text = Buffer.from(json.content, 'base64').toString('utf8')
   const names = [...text.matchAll(/https:\/\/github\.com\/([\w.-]+\/[\w.-]+)/g)].map((match) => match[1].replace(/\/$/, ''))
   const unique = [...new Set(names)].filter((name) => name !== 'awesome-dsh-plugin/awesome-dsh-plugin')
-  return mapLimit(unique, 8, async (name) => {
+  const repos = await mapLimit(unique, 8, async (name) => {
     const response = await fetch(`https://api.github.com/repos/${name}`, { headers: HEADERS })
     if (!response.ok) return null
     const repo = await response.json()
     repo.discoverySource = 'awesome-dsh-plugin'
+    repo.upstreamCommit = commit.sha
     return repo
   }).then((items) => items.filter(Boolean))
+  return { repos, commit: commit.sha }
 }
 
 async function fetchPackageJson(fullName) {
@@ -89,12 +96,21 @@ function categorize(repo, pkg) {
   return { id: 'misc', title: '其他 / Miscellaneous' }
 }
 
-const [topicRepos, upstreamRepos] = await Promise.all([searchRepos(), fetchUpstreamRepos()])
+const [topicRepos, upstreamSnapshot] = await Promise.all([searchRepos(), fetchUpstreamRepos()])
+const upstreamRepos = upstreamSnapshot.repos
 const repoMap = new Map()
 for (const repo of [...topicRepos, ...upstreamRepos]) {
+  const source = repo.discoverySource || 'github-topic'
   const existing = repoMap.get(repo.full_name)
-  if (!existing) repoMap.set(repo.full_name, { ...repo, discoverySources: [repo.discoverySource || 'github-topic'] })
-  else existing.discoverySources = [...new Set([...existing.discoverySources, repo.discoverySource || 'github-topic'])]
+  if (!existing) repoMap.set(repo.full_name, {
+    ...repo,
+    discoverySources: [source],
+    upstreamCommits: repo.upstreamCommit ? [repo.upstreamCommit] : []
+  })
+  else {
+    existing.discoverySources = [...new Set([...existing.discoverySources, source])]
+    existing.upstreamCommits = [...new Set([...existing.upstreamCommits, ...(repo.upstreamCommit ? [repo.upstreamCommit] : [])])]
+  }
 }
 const repos = [...repoMap.values()]
 console.log(`search: ${topicRepos.length} topic repos + ${upstreamRepos.length} upstream entries = ${repos.length} unique repos`)
@@ -109,10 +125,12 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
     stars: repo.stargazers_count,
     pushedAt: repo.pushed_at,
     license: repo.license?.spdx_id ?? null,
+    archived: Boolean(repo.archived),
     isPlugin,
     npmName: isPlugin ? pkg.name ?? null : null,
     category: categorize(repo, pkg),
     discoverySources: repo.discoverySources,
+    upstreamCommits: repo.upstreamCommits,
   }
 })
 
@@ -137,6 +155,37 @@ console.log(`verified plugins: ${plugins.length}, related: ${related.length}`)
 
 const generatedAt = new Date().toISOString()
 
+const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+for (const plugin of plugins) {
+  plugin.slug = slugify(plugin.fullName)
+  plugin.name = plugin.fullName
+  plugin.summary = plugin.description
+  plugin.tags = [plugin.category.id]
+  plugin.repositoryUrl = plugin.url
+  plugin.installSpec = plugin.npmName || `github:${plugin.fullName}`
+  plugin.author = plugin.fullName.split('/')[0]
+  plugin.featured = false
+  plugin.status = plugin.archived ? 'archived' : 'active'
+  plugin.source = {
+    type: plugin.discoverySources.includes('awesome-dsh-plugin') ? 'upstream-import' : 'github-topic',
+    origins: plugin.discoverySources,
+    upstreamRepository: plugin.discoverySources.includes('awesome-dsh-plugin') ? 'awesome-dsh-plugin/awesome-dsh-plugin' : null,
+    upstreamCommits: plugin.upstreamCommits
+  }
+  plugin.github = {
+    stars: plugin.stars,
+    license: plugin.license,
+    lastPushAt: plugin.pushedAt,
+    archived: plugin.archived,
+    capturedAt: generatedAt
+  }
+  plugin.compatibility = {
+    manifestFound: true,
+    manifestPath: 'package.json:dsh.bundle',
+    checkedAt: generatedAt
+  }
+}
+
 const { renderReadmes } = await import('./render-readme.mjs')
 const { readme, readmeZh } = renderReadmes({ plugins, related, updatedAt: generatedAt })
 
@@ -144,9 +193,10 @@ await fs.mkdir('data', { recursive: true })
 await fs.writeFile('README.md', readme)
 await fs.writeFile('README.zh.md', readmeZh)
 await fs.writeFile('data/added-dates.json', JSON.stringify(Object.fromEntries(Object.entries(addedDates).sort()), null, 2) + '\n')
-await fs.writeFile('data/plugins.json', JSON.stringify({
+const catalog = {
   schemaVersion: 1,
   updatedAt: generatedAt,
+  sourceCommit: upstreamSnapshot.commit,
   source: {
     provider: 'github',
     repository: 'Ericwong5021/deepseek-plugin-store',
@@ -155,5 +205,8 @@ await fs.writeFile('data/plugins.json', JSON.stringify({
   },
   plugins,
   related,
-}, null, 2))
-console.log('README.md + README.zh.md + data/plugins.json written')
+}
+const catalogJson = JSON.stringify(catalog, null, 2) + '\n'
+await fs.writeFile('data/catalog.json', catalogJson)
+await fs.writeFile('data/plugins.json', catalogJson)
+console.log('README.md + README.zh.md + data/catalog.json written')

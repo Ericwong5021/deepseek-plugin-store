@@ -19,7 +19,7 @@ const [repository, commit, pulls, catalog] = await Promise.all([
   github('/repos/awesome-dsh-plugin/awesome-dsh-plugin'),
   github('/repos/awesome-dsh-plugin/awesome-dsh-plugin/commits/main'),
   github('/repos/awesome-dsh-plugin/awesome-dsh-plugin/pulls?state=open&per_page=100'),
-  fs.readFile('data/plugins.json', 'utf8').then(JSON.parse)
+  fs.readFile('data/catalog.json', 'utf8').then(JSON.parse)
 ])
 
 let previous = null

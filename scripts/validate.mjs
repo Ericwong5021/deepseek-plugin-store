@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises'
 
-const catalog = JSON.parse(await fs.readFile('data/plugins.json', 'utf8'))
+const catalog = JSON.parse(await fs.readFile('data/catalog.json', 'utf8'))
 if (catalog.schemaVersion !== 1) throw new Error('schemaVersion must be 1')
-if (!catalog.updatedAt || !Array.isArray(catalog.plugins) || !Array.isArray(catalog.related)) throw new Error('catalog top-level fields are invalid')
+if (!catalog.updatedAt || !catalog.sourceCommit || !Array.isArray(catalog.plugins) || !Array.isArray(catalog.related)) throw new Error('catalog top-level fields are invalid')
 
 const unique = (label, values) => {
   const seen = new Set()
@@ -15,6 +15,8 @@ const unique = (label, values) => {
 
 unique('repository', catalog.plugins.map((plugin) => plugin.url))
 unique('plugin name', catalog.plugins.map((plugin) => plugin.fullName.toLowerCase()))
+unique('slug', catalog.plugins.map((plugin) => plugin.slug))
+unique('install identifier', catalog.plugins.map((plugin) => plugin.installSpec))
 const duplicateInstallIdentifiers = new Map()
 for (const plugin of catalog.plugins) {
   const value = plugin.npmName || `github:${plugin.fullName}`
@@ -27,7 +29,9 @@ for (const [value, repositories] of duplicateInstallIdentifiers) {
 for (const plugin of catalog.plugins) {
   if (plugin.isPlugin !== true) throw new Error(`${plugin.fullName} is not verified as a plugin`)
   if (!/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/.test(plugin.url)) throw new Error(`invalid repository URL: ${plugin.url}`)
-  if (!plugin.category?.id || !plugin.pushedAt) throw new Error(`incomplete plugin: ${plugin.fullName}`)
+  if (!plugin.category?.id || !plugin.pushedAt || typeof plugin.summary !== 'string' || !plugin.author || !plugin.status) throw new Error(`incomplete plugin: ${plugin.fullName}`)
+  if (plugin.compatibility?.manifestFound !== true || plugin.compatibility?.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest evidence: ${plugin.fullName}`)
+  if (plugin.source?.type === 'upstream-import' && !plugin.source.upstreamCommits?.length) throw new Error(`missing upstream commit: ${plugin.fullName}`)
 }
 
 console.log(`validated ${catalog.plugins.length} plugins and ${catalog.related.length} related projects`)
