@@ -89,12 +89,6 @@ function categorize(repo, pkg) {
   return { id: 'misc', title: '其他 / Miscellaneous' }
 }
 
-function entryLine(p) {
-  const desc = (p.description ?? '').replace(/\r?\n/g, ' ').trim()
-  const npm = p.npmName ? ` · \`${p.npmName}\`` : ''
-  return `- [${p.fullName}](${p.url}) ★${p.stars}${npm}${desc ? ` — ${desc}` : ''}`
-}
-
 const [topicRepos, upstreamRepos] = await Promise.all([searchRepos(), fetchUpstreamRepos()])
 const repoMap = new Map()
 for (const repo of [...topicRepos, ...upstreamRepos]) {
@@ -141,71 +135,10 @@ for (const plugin of plugins) {
 }
 console.log(`verified plugins: ${plugins.length}, related: ${related.length}`)
 
-const byCategory = new Map()
-for (const p of plugins) {
-  if (!byCategory.has(p.category.id)) byCategory.set(p.category.id, { title: p.category.title, items: [] })
-  byCategory.get(p.category.id).items.push(p)
-}
-
-const order = [...CATEGORIES.map(([id]) => id), 'misc']
-const sections = order
-  .filter((id) => byCategory.has(id))
-  .map((id) => {
-    const { title, items } = byCategory.get(id)
-    return `### ${title}\n\n${items.map(entryLine).join('\n')}\n`
-  })
-  .join('\n')
-
-const now = new Date().toISOString().slice(0, 16).replace('T', ' ')
-
-const readme = `# DeepSeek Plugin Store
-
-> [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（\`dsh\`）插件数据源 · 自动验证、定时更新
->
-> An open source, **auto-verified** data source for the DeepSeek Plugin Store. Updated every hour.
-
-本列表由爬虫自动生成：抓取 GitHub 上所有 \`dsh-plugin\` topic 仓库，**逐个验证其 \`package.json\` 是否声明了 \`dsh.bundle\` manifest**（这是一个仓库能被 \`dsh plugin add\` 安装的硬性标志）。通过验证的才会进入插件列表，未通过的归入相关项目。
-
-Every entry in the plugin sections is verified to carry a \`dsh.bundle\` manifest — the marker that makes a package actually installable via \`dsh plugin add\`.
-
-📊 **${plugins.length}** verified plugins / **${related.length}** related projects · 🕐 Last updated: ${now} UTC
-
-## 安装插件 / Installing plugins
-
-\`\`\`sh
-# 从 npm 安装（推荐，预构建产物，一次成功）
-dsh plugin --profile <name> add <npm-package>
-
-# 从 GitHub 安装（拉源码，首次会因构建授权而失败，按提示配置 allowBuilds 后重试）
-dsh plugin --profile <name> add github:<owner>/<repo>
-\`\`\`
-
-> ⚠️ 安装 GitHub 来源的插件时，构建脚本会在你的机器上执行。请只安装你信任的插件，并尽量锁定 commit（\`github:owner/repo#<sha>\`）。
-
-## 插件 / Plugins
-
-${sections}
-## 相关项目与资源 / Related Projects
-
-> 打了 \`dsh-plugin\` topic 但不是可安装组合包的仓库：启动器、文档、技能集、开发资源等。
-
-${related.map(entryLine).join('\n')}
-
-## 贡献 / Contributing
-
-为你的插件仓库添加 [\`dsh-plugin\`](https://github.com/topics/dsh-plugin) topic，并在 \`package.json\` 中声明 \`dsh.bundle\` manifest，下一次自动更新就会收录。无需提交 PR。
-
-Add the \`dsh-plugin\` topic to your repo and declare a \`dsh.bundle\` manifest in \`package.json\` — the scheduled crawl will pick it up automatically. No PR needed.
-
-分类有误或希望补充描述？欢迎提 [Issue](../../issues)。
-
-## License
-
-[CC0-1.0](LICENSE) · 数据来自 GitHub 公开 API，每小时自动刷新。
-`
-
-const readmeZh = readme.replace('# DeepSeek Plugin Store', '# DeepSeek Plugin Store（DeepSeek 插件商店）')
 const generatedAt = new Date().toISOString()
+
+const { renderReadmes } = await import('./render-readme.mjs')
+const { readme, readmeZh } = renderReadmes({ plugins, related, updatedAt: generatedAt })
 
 await fs.mkdir('data', { recursive: true })
 await fs.writeFile('README.md', readme)

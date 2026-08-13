@@ -1,30 +1,84 @@
-# DeepSeek Plugin Store（DeepSeek 插件商店）
+<div align="center">
 
-> [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）插件数据源 · 自动验证、定时更新
->
-> An open source, **auto-verified** data source for the DeepSeek Plugin Store. Updated every hour.
+[<img src="docs/banner-zh.png" alt="DeepSeek Plugin Store" width="100%">](https://awesome-dsh-plugin.com)
 
-本列表由爬虫自动生成：抓取 GitHub 上所有 `dsh-plugin` topic 仓库，**逐个验证其 `package.json` 是否声明了 `dsh.bundle` manifest**（这是一个仓库能被 `dsh plugin add` 安装的硬性标志）。通过验证的才会进入插件列表，未通过的归入相关项目。
+# DeepSeek Plugin Store
 
-Every entry in the plugin sections is verified to carry a `dsh.bundle` manifest — the marker that makes a package actually installable via `dsh plugin add`.
+**发现、安装 DeepSeek Harness 生态中经过验证的插件、工具与扩展。**
 
-📊 **325** verified plugins / **263** related projects · 🕐 Last updated: 2026-08-13 19:14 UTC
+[![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+[![Catalog Update](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/update.yml/badge.svg)](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/update.yml)
+[![Verified Plugins](https://img.shields.io/badge/verified_plugins-325-c9362b?style=flat-square)](#all-verified-plugins)
+[![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-292522?style=flat-square)](LICENSE)
 
-## 安装插件 / Installing plugins
+[**Browse the Store →**](https://awesome-dsh-plugin.com) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+
+[English](README.md) · **中文**
+
+</div>
+
+---
+
+本目录会自动抓取带有 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 的仓库，并检查 `package.json` 中是否声明 `dsh.bundle`。只有通过这项安装性验证的项目才会进入插件目录。
+
+> **325 个已验证插件** · **263 个相关项目** · 每小时更新 · 上次同步：2026-08-13 19:14 UTC
+
+## 目录
+
+- [按分类浏览](#browse-by-category)
+- [热门插件](#popular-plugins)
+- [安装插件](#installing-plugins)
+- [全部已验证插件](#all-verified-plugins)
+- [相关项目](#related-projects)
+- [收录你的插件](#get-listed)
+
+<a id="browse-by-category"></a>
+## 按分类浏览
+
+| | 分类 | 插件数 |
+|:--:|:--|--:|
+| 🎨 | [UI 增强](#ui-enhancements) | 90 |
+| 🔁 | [工作流与自动化](#workflow-automation) | 36 |
+| 🛠️ | [工具集](#tools) | 65 |
+| 🔔 | [通知与监控](#notifications) | 8 |
+| 🧑‍💻 | [开发辅助](#dev-helpers) | 9 |
+| 🎓 | [学习与教育](#learning) | 1 |
+| 🧩 | [其他](#misc) | 116 |
+
+<a id="popular-plugins"></a>
+## 热门插件
+
+| # | Plugin | 分类 | Stars |
+|--:|:--|:--|--:|
+| 1 | [liustack/modlens](https://github.com/liustack/modlens) | 其他 | ★691 |
+| 2 | [ccch1mneyyy/dsh-cc-tui](https://github.com/ccch1mneyyy/dsh-cc-tui) | 工具集 | ★190 |
+| 3 | [Anionex/dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | UI 增强 | ★143 |
+| 4 | [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | UI 增强 | ★122 |
+| 5 | [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | UI 增强 | ★100 |
+
+<sub>按当前 GitHub Stars 排序，热度不代表本项目背书。</sub>
+
+<a id="installing-plugins"></a>
+## 安装插件
 
 ```sh
-# 从 npm 安装（推荐，预构建产物，一次成功）
+# npm package, prebuilt and recommended
 dsh plugin --profile <name> add <npm-package>
 
-# 从 GitHub 安装（拉源码，首次会因构建授权而失败，按提示配置 allowBuilds 后重试）
+# GitHub source, follow the allowBuilds prompt on first install and retry
 dsh plugin --profile <name> add github:<owner>/<repo>
 ```
 
-> ⚠️ 安装 GitHub 来源的插件时，构建脚本会在你的机器上执行。请只安装你信任的插件，并尽量锁定 commit（`github:owner/repo#<sha>`）。
+> ⚠️ GitHub-sourced plugins run build scripts on your machine at install time. Only install sources you trust, and pin a commit when possible: `github:owner/repo#<sha>`.
 
-## 插件 / Plugins
+<a id="all-verified-plugins"></a>
+## 全部已验证插件
 
-### UI 增强 / UI Enhancements
+<a id="ui-enhancements"></a>
+<details>
+<summary><strong>🎨 UI 增强</strong> <sup>90 个插件</sup></summary>
+
+### UI 增强
 
 - [Anionex/dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) ★143 · `@dsh-external/dsh-vision-toolkit` — 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q&A, long-screenshot OCR, UI restoration, grounding, pixel diff, Artifacts, and Web UI.
 - [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★122 · `dsh-better-sidebar` — 一个侧边栏的完整工作台，支持三方拓展注册新Tab页面，内置文件渲染编辑/终端/Git/子代理
@@ -117,7 +171,13 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [dyuan311/dsh-openai-codex-oauth](https://github.com/dyuan311/dsh-openai-codex-oauth) ★0 · `dsh-openai-codex-oauth` — ChatGPT subscription OAuth for the openai-codex provider in DeepSeek Harness
 - [Yan-Zero/dsh-codex](https://github.com/Yan-Zero/dsh-codex) ★0 · `@dsh-external/dsh-openai-codex` — Use your ChatGPT subscription in DeepSeek Harness through OpenAI's Codex sign-in flow
 
-### 工作流与自动化 / Workflow & Automation
+</details>
+
+<a id="workflow-automation"></a>
+<details>
+<summary><strong>🔁 工作流与自动化</strong> <sup>36 个插件</sup></summary>
+
+### 工作流与自动化
 
 - [icetomoyo/dsh_workflow](https://github.com/icetomoyo/dsh_workflow) ★35 · `@dsh-external/workflow` — 把Claude Code的UltraCode模式带给DSH，把 DSH 的一次性多 Agent 调度，升级为可生成、可保存、可治理、可观察、可恢复的 Workflow 层
 - [omdsh-dev/dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) ★18 · `@omdsh-dev/dsh-annotation` — DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动
@@ -156,7 +216,13 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [dongsheng123132/dsh-switch](https://github.com/dongsheng123132/dsh-switch) ★0 · `dsh-switch` — Evidence-first model control plane for DeepSeek Harness
 - [fly3366/DeepJIT](https://github.com/fly3366/DeepJIT) ★0 · `deepjit` — JIT compiler plugin for deepseek-harness: compiles recurring agent workflows into hot skills and flow templates
 
-### 工具集 / Tools
+</details>
+
+<a id="tools"></a>
+<details>
+<summary><strong>🛠️ 工具集</strong> <sup>65 个插件</sup></summary>
+
+### 工具集
 
 - [ccch1mneyyy/dsh-cc-tui](https://github.com/ccch1mneyyy/dsh-cc-tui) ★190 · `dsh-cc-tui` — DSH 官方尚无终端 TUI 的补位之作：Claude Code 风格全屏交互终端插件——像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条 + TPS 仪表。npm 一键安装。
 - [omdsh-dev/dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) ★25 · `dsh-at-file` — Codex-style @file mentions for DeepSeek Harness: search workspace files in the composer and attach their contents to prompts.
@@ -224,7 +290,13 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [Jesse-njx/dsh-voice](https://github.com/Jesse-njx/dsh-voice) ★0 · `@dsh-voice/bundle` — Voice notes in, spoken answers out — dictate audio that becomes user messages (transcribe), have the agent read replies aloud (speak), and leave walk-away narration on long headless runs. Local-first: plain audio files under ~/.dsh/voice/.
 - [lxj808624/dsh-tool-git](https://github.com/lxj808624/dsh-tool-git) ★0 · `dsh-tool-git` — Structured safe Git tools for DeepSeek Harness (dsh): git_status/diff/log/branch/stage/commit/stash/show + destructive-command guard
 
-### 通知与监控 / Notifications & Monitoring
+</details>
+
+<a id="notifications"></a>
+<details>
+<summary><strong>🔔 通知与监控</strong> <sup>8 个插件</sup></summary>
+
+### 通知与监控
 
 - [NanmiCoder/dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) ★67 · `dsh-agent-teams` — AgentTeams plugin for DeepSeek Harness
 - [congchuanling-dot/DSH-Telegram-Relay](https://github.com/congchuanling-dot/DSH-Telegram-Relay) ★3 · `dsh-telegram-relay` — DSH Relay 让你可以通过 Telegram 远程与 DeepSeek Harness 对话，并接收通知。DSH Relay turns Telegram into a remote conversation and notification channel for DeepSeek Harness.
@@ -235,7 +307,13 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [kiim-wong/dsh-push](https://github.com/kiim-wong/dsh-push) ★0 · `dsh-push` — Push DeepSeek Harness agent lifecycle notifications to configurable channels
 - [jelly-000/dsh-balance-monitor](https://github.com/jelly-000/dsh-balance-monitor) ★0 · `dsh-balance-monitor` — DeepSeek account balance, remaining-ratio bar, and today's spend in the dsh sidebar footer.
 
-### 开发辅助 / Development Helpers
+</details>
+
+<a id="dev-helpers"></a>
+<details>
+<summary><strong>🧑‍💻 开发辅助</strong> <sup>9 个插件</sup></summary>
+
+### 开发辅助
 
 - [jiesou/dsh-stream-rules](https://github.com/jiesou/dsh-stream-rules) ★3 · `dsh-stream-rules` — Inject rules when needed, without wasting context. Similar to oh-my-pi's "Time-traveling stream rules", but with a very simple and compact code implementation.
 - [erduotong/dsh-plugin-graph](https://github.com/erduotong/dsh-plugin-graph) ★2 · `dsh-plugin-graph` — 一个Deepseek Harness的插件关系图谱可视化插件
@@ -247,11 +325,23 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [cking000bigdemon/dsh-toolbelt](https://github.com/cking000bigdemon/dsh-toolbelt) ★1 · `dsh-toolbelt` — Eight DeepSeek Harness plugins: persona, language guard, per-request vision fallback, python/windows write guards, cross-agent memory, image generation, and skill shell injection.
 - [a179-sanae/dsh-code-check](https://github.com/a179-sanae/dsh-code-check) ★1 · `@a179-sanae/dsh-code-check` — Auto type-check and lint diagnostics for DeepSeek Harness: after the model edits code, tsc runs in the background and a code_check tool reports what broke
 
-### 学习与教育 / Learning & Education
+</details>
+
+<a id="learning"></a>
+<details>
+<summary><strong>🎓 学习与教育</strong> <sup>1 个插件</sup></summary>
+
+### 学习与教育
 
 - [cendaifeng/dsh-learn-everything](https://github.com/cendaifeng/dsh-learn-everything) ★2 · `dsh-learn-everything` — Feynman learning-mode plugin for DeepSeek Harness: /learn on|off, structured lesson cards, rich HTML teaching.
 
-### 其他 / Miscellaneous
+</details>
+
+<a id="misc"></a>
+<details>
+<summary><strong>🧩 其他</strong> <sup>116 个插件</sup></summary>
+
+### 其他
 
 - [liustack/modlens](https://github.com/liustack/modlens) ★691 · `@liustack/modlens` — The first vision plugin for DeepSeek Harness, and the vision bridge for every text-only coding agent. Paste an image, get structured JSON evidence (OCR, layout, semantics).
 - [omdsh-dev/dsh-open-in-vscode](https://github.com/omdsh-dev/dsh-open-in-vscode) ★33 · `dsh-open-in-vscode` — Open DeepSeek Harness workspace directories in VS Code directly from the web GUI.
@@ -370,9 +460,15 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [dongsheng123132/dsh-cost](https://github.com/dongsheng123132/dsh-cost) ★0 · `dsh-cost` — Evidence-first token cost ledger and budget checks for DeepSeek Harness
 - [121103qwq/dsh-vision-sidecar](https://github.com/121103qwq/dsh-vision-sidecar) ★0 · `dsh-vision-sidecar` — Hosted free vision sidecar for DeepSeek Harness with durable session evidence
 
-## 相关项目与资源 / Related Projects
+</details>
 
-> 打了 `dsh-plugin` topic 但不是可安装组合包的仓库：启动器、文档、技能集、开发资源等。
+<a id="related-projects"></a>
+## 相关项目
+
+以下仓库使用了 `dsh-plugin` topic，但尚未提供可安装的 `dsh.bundle`。它们可能是启动器、文档、技能集或开发资源。
+
+<details>
+<summary><strong>展开 263 个相关项目</strong></summary>
 
 - [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) ★37076 — DeepSeek Harness: Everything is a Plugin.
 - [titanwings/colleague-skill](https://github.com/titanwings/colleague-skill) ★21042 — 将冰冷的离别化为温暖的 Skill，欢迎加入数字生命1.0！Transforming cold farewells into warm skills? It's giving rebirth era. Welcome to Digital Life 1.0. 🫶
@@ -638,14 +734,17 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [NEXTINDIE/DeepSeek-Harness-for-VS-Code](https://github.com/NEXTINDIE/DeepSeek-Harness-for-VS-Code) ★0 — Use DeepSeek Harness in VS Code like ChatGPT/Copilot: @dsh in native chat, standalone views, cross-project sessions, shared via DSH API. Auto-starts server.
 - [egnmosk/dsh-browser-bridge](https://github.com/egnmosk/dsh-browser-bridge) ★0 — DeepSeek Harness plugin + browser extension bridge: browser_* agent tools (navigate, click, type, screenshot, eval) over a localhost WebSocket — like Kimi WebBridge / Claude's browser extension.
 
-## 贡献 / Contributing
+</details>
 
-为你的插件仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic，并在 `package.json` 中声明 `dsh.bundle` manifest，下一次自动更新就会收录。无需提交 PR。
+<a id="get-listed"></a>
+## 收录你的插件
 
-Add the `dsh-plugin` topic to your repo and declare a `dsh.bundle` manifest in `package.json` — the scheduled crawl will pick it up automatically. No PR needed.
+给你的插件仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic，并在 `package.json` 中声明 `dsh.bundle` manifest。每小时执行的抓取会自动收录，无需提交 PR。
 
-分类有误或希望补充描述？欢迎提 [Issue](../../issues)。
+[提交插件 →](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml)
 
 ## License
 
-[CC0-1.0](LICENSE) · 数据来自 GitHub 公开 API，每小时自动刷新。
+[CC0-1.0](LICENSE) · 目录数据来自 GitHub 公开 API，每小时自动刷新。
+
+<sub>社区项目，与 DeepSeek 无隶属关系，也未获得 DeepSeek 背书。</sub>
