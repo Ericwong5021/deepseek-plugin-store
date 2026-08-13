@@ -1,0 +1,109 @@
+/**
+ * Locale registry — the single source of truth for internationalization.
+ *
+ * Adding a language:
+ *   1. Add an entry here (copy an existing one, translate every string).
+ *   2. Create README.<code>.md with the same category headings you declare
+ *      in `categories` and one `- [name](url) - description` line per plugin.
+ *   3. Add banner-<code>.png and og-<code>.png to docs/ (render from the
+ *      shared card template; see scripts notes).
+ * Everything else — page, hreflang set, sitemap, JSON-LD — is generated.
+ *
+ * The first entry is the default locale (x-default, served at /).
+ */
+export default [
+  {
+    code: 'en',
+    htmlLang: 'en',
+    label: 'EN',
+    urlPath: '/',
+    out: 'docs/index.html',
+    readme: 'README.md',
+    og: '/og-en.png',
+    feed: '/feed.xml',
+    feedOut: 'docs/feed.xml',
+    TITLE: 'DeepSeek Plugin Store — Curated DeepSeek Harness (dsh) Plugin List',
+    DESC: 'An open source data source for {N} DeepSeek Harness (dsh) plugins: UI enhancements, sessions, tools, workflow, notifications, development, and fun. Updated every 6 hours.',
+    SEARCH_PH: 'Search plugins…',
+    CAT_TITLE: '{CAT} — DeepSeek Plugin Store',
+    CAT_DESC: '{N} curated {CAT} plugins for DeepSeek Harness (dsh). Install commands, descriptions, and links — updated every 6 hours.',
+    COPY_LABEL: 'Copy install command',
+    COPY_TEXT: 'copy install',
+    categories: {
+      ui: 'UI Enhancements',
+      session: 'Sessions & Messages',
+      tools: 'Tools & Capabilities',
+      workflow: 'Workflow & Automation',
+      notify: 'Notifications & Integrations',
+      dev: 'Development & Runtime',
+      fun: 'Just for Fun',
+    },
+    strings: {
+      SKIP: 'Skip to plugin list',
+      TAGLINE: 'A curated list of <b>DeepSeek Harness</b> (<code translate="no">dsh</code>) plugins.',
+      LISTING_PRE: 'Listing',
+      LISTING_POST: 'plugins',
+      FULLLIST: 'Full list on GitHub ↗',
+      WHATIS: 'What is DeepSeek Harness? ↗',
+      NORESULT: 'No plugins match.',
+      CLEAR: 'Clear filters',
+      INSTALL: 'Installing',
+      NPM_C: 'from npm (prebuilt)',
+      GH_C: 'from GitHub (first run asks for allowBuilds approval — follow the hint, retry)',
+      INSTALL_NOTE: 'GitHub-sourced plugins run build scripts on your machine at install time. Only install sources you trust, and pin a commit (<code translate="no">github:owner/repo#sha</code>).',
+      CONTRIB: 'Get your plugin listed',
+      CONTRIB_BODY: 'Add the <a href="https://github.com/topics/dsh-plugin" rel="noopener"><code translate="no">dsh-plugin</code></a> topic and a <code translate="no">dsh.bundle</code> manifest to your plugin repository; the scheduled crawl will sync it automatically.',
+      MOTTO: 'Into the Unknown',
+      NOTAFF: 'Not affiliated with DeepSeek',
+      DISCLAIMER: 'Plugins are developed by their respective authors; listing is not an endorsement. Installing runs third-party code — review the source and proceed at your own risk.',
+      ALL: 'All',
+    },
+  },
+  {
+    code: 'zh',
+    htmlLang: 'zh-CN',
+    label: '中文',
+    urlPath: '/zh/',
+    out: 'docs/zh/index.html',
+    readme: 'README.zh.md',
+    og: '/og-zh.png',
+    feed: '/zh/feed.xml',
+    feedOut: 'docs/zh/feed.xml',
+    TITLE: 'DeepSeek Plugin Store — DeepSeek Harness（dsh）插件数据源',
+    DESC: 'DeepSeek Harness（dsh）插件开源数据源，收录 {N} 个：UI 增强、会话与消息、工具、工作流与自动化、通知与集成、开发与娱乐，每 6 小时更新。',
+    SEARCH_PH: '搜索插件…',
+    CAT_TITLE: '{CAT} — DeepSeek Plugin Store · DeepSeek Harness 插件数据源',
+    CAT_DESC: 'DeepSeek Harness（dsh）{CAT}插件数据，共 {N} 个：含安装命令、功能描述与仓库链接，每 6 小时更新。',
+    COPY_LABEL: '复制安装命令',
+    COPY_TEXT: '复制安装命令',
+    categories: {
+      ui: 'UI 增强',
+      session: '会话与消息',
+      tools: '工具与能力',
+      workflow: '工作流与自动化',
+      notify: '通知与集成',
+      dev: '开发与运行时',
+      fun: '娱乐',
+    },
+    strings: {
+      SKIP: '跳到插件列表',
+      TAGLINE: '<b>DeepSeek Harness</b>（<code translate="no">dsh</code>）插件精选列表。',
+      LISTING_PRE: '收录',
+      LISTING_POST: '个插件',
+      FULLLIST: '完整列表（GitHub）↗',
+      WHATIS: '什么是 DeepSeek Harness？↗',
+      NORESULT: '没有匹配的插件。',
+      CLEAR: '清除筛选',
+      INSTALL: '安装',
+      NPM_C: 'npm 包（预构建）',
+      GH_C: 'GitHub 源码（首次需按提示配置 allowBuilds 构建授权后重试）',
+      INSTALL_NOTE: 'GitHub 来源的插件在安装时会在你的机器上执行构建脚本。请只安装可信来源，并尽量锁定 commit（<code translate="no">github:owner/repo#sha</code>）。',
+      CONTRIB: '收录你的插件',
+      CONTRIB_BODY: '给你的插件仓库添加 <a href="https://github.com/topics/dsh-plugin" rel="noopener"><code translate="no">dsh-plugin</code></a> topic，并在 <code translate="no">package.json</code> 中声明 <code translate="no">dsh.bundle</code> manifest，定时抓取会自动同步。',
+      MOTTO: '探索未至之境',
+      NOTAFF: '与 DeepSeek 无隶属关系',
+      DISCLAIMER: '插件由各自作者开发维护，收录不构成背书；安装即运行第三方代码，请自行审阅源码、风险自担。',
+      ALL: '全部',
+    },
+  },
+]
