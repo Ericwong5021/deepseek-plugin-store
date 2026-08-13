@@ -46,7 +46,12 @@ jobs:
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Trigger website deployment
-        if: ${{ steps.commit.outputs.changed == 'true' && secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK != '' }}
+        if: ${{ steps.commit.outputs.changed == 'true' }}
         env:
           DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
-        run: curl --fail --silent --show-error --request POST "$DEPLOY_HOOK"
+        run: |
+          if [ -n "$DEPLOY_HOOK" ]; then
+            curl --fail --silent --show-error --request POST "$DEPLOY_HOOK"
+          else
+            echo "deploy hook not configured"
+          fi
