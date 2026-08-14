@@ -187,10 +187,11 @@ for (const plugin of plugins) {
 }
 
 const { renderReadmes } = await import('./render-readme.mjs')
-const { readme, readmeZh } = renderReadmes({ plugins, related, updatedAt: generatedAt })
+const { readme, readmeEn, readmeZh } = renderReadmes({ plugins, related, updatedAt: generatedAt })
 
 await fs.mkdir('data', { recursive: true })
 await fs.writeFile('README.md', readme)
+await fs.writeFile('README.en.md', readmeEn)
 await fs.writeFile('README.zh.md', readmeZh)
 await fs.writeFile('data/added-dates.json', JSON.stringify(Object.fromEntries(Object.entries(addedDates).sort()), null, 2) + '\n')
 const catalog = {
@@ -209,4 +210,4 @@ const catalog = {
 const catalogJson = JSON.stringify(catalog, null, 2) + '\n'
 await fs.writeFile('data/catalog.json', catalogJson)
 await fs.writeFile('data/plugins.json', catalogJson)
-console.log('README.md + README.zh.md + data/catalog.json written')
+console.log('README.md + README.en.md + README.zh.md + data/catalog.json written')

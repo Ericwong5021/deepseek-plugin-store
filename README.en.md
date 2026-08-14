@@ -4,81 +4,81 @@
 
 # DeepSeek Plugin Store
 
-**发现、安装 DeepSeek Harness 生态中经过验证的插件、工具与扩展。**
+**Discover verified plugins, tools, and extensions for the DeepSeek Harness ecosystem.**
 
 [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
 [![Catalog Update](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/update.yml/badge.svg)](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/update.yml)
 [![Verified Plugins](https://img.shields.io/badge/verified_plugins-498-c9362b?style=flat-square)](#all-verified-plugins)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-292522?style=flat-square)](LICENSE)
 
-[**浏览插件商店 →**](https://deepseekplugin.store) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+[**Browse the Store →**](https://deepseekplugin.store) · [Submit a plugin](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 
-**中文** · [English](README.en.md)
+[中文](README.md) · **English**
 
 </div>
 
 ---
 
-本目录会自动抓取带有 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 的仓库，并检查 `package.json` 中是否声明 `dsh.bundle`。只有通过这项安装性验证的项目才会进入插件目录。
+This directory is generated from repositories carrying the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic. Every plugin listed here declares a `dsh.bundle` manifest in `package.json`, the installable bundle marker used by `dsh plugin add`.
 
-> **498 个已验证插件** · **365 个相关项目** · 每小时更新 · 上次同步：2026-08-14 03:03 UTC
+> **498 verified plugins** · **365 related projects** · Updated hourly · Last sync: 2026-08-14 03:03 UTC
 
-## 目录
+## Contents
 
-- [按分类浏览](#browse-by-category)
-- [热门插件](#popular-plugins)
-- [安装插件](#installing-plugins)
-- [全部已验证插件](#all-verified-plugins)
-- [相关项目](#related-projects)
-- [收录你的插件](#get-listed)
+- [Browse by category](#browse-by-category)
+- [Popular plugins](#popular-plugins)
+- [Installing plugins](#installing-plugins)
+- [All verified plugins](#all-verified-plugins)
+- [Related projects](#related-projects)
+- [Get your plugin listed](#get-listed)
 
 <a id="browse-by-category"></a>
-## 按分类浏览
+## Browse by category
 
-| | 分类 | 插件数 |
+| | Category | Plugins |
 |:--:|:--|--:|
-| 🎨 | [UI 增强](#ui-enhancements) | 140 |
-| 🔁 | [工作流与自动化](#workflow-automation) | 58 |
-| 🛠️ | [工具集](#tools) | 86 |
-| 🔔 | [通知与监控](#notifications) | 12 |
-| 🧑‍💻 | [开发辅助](#dev-helpers) | 15 |
-| 🎓 | [学习与教育](#learning) | 1 |
-| 🧩 | [其他](#misc) | 186 |
+| 🎨 | [UI Enhancements](#ui-enhancements) | 140 |
+| 🔁 | [Workflow & Automation](#workflow-automation) | 58 |
+| 🛠️ | [Tools](#tools) | 86 |
+| 🔔 | [Notifications & Monitoring](#notifications) | 12 |
+| 🧑‍💻 | [Development Helpers](#dev-helpers) | 15 |
+| 🎓 | [Learning & Education](#learning) | 1 |
+| 🧩 | [Miscellaneous](#misc) | 186 |
 
 <a id="popular-plugins"></a>
-## 热门插件
+## Popular plugins
 
-| # | 插件 | 分类 | Stars |
+| # | Plugin | Category | Stars |
 |--:|:--|:--|--:|
-| 1 | [liustack/modlens](https://github.com/liustack/modlens) | 其他 | ★810 |
-| 2 | [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 工具集 | ★412 |
-| 3 | [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | UI 增强 | ★308 |
-| 4 | [Anionex/dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | UI 增强 | ★212 |
-| 5 | [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | UI 增强 | ★166 |
+| 1 | [liustack/modlens](https://github.com/liustack/modlens) | Miscellaneous | ★810 |
+| 2 | [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | Tools | ★412 |
+| 3 | [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | UI Enhancements | ★308 |
+| 4 | [Anionex/dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | UI Enhancements | ★212 |
+| 5 | [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | UI Enhancements | ★166 |
 
-<sub>按当前 GitHub Stars 排序，热度不代表本项目背书。</sub>
+<sub>Ranked by current GitHub Stars. Popularity is not an endorsement.</sub>
 
 <a id="installing-plugins"></a>
-## 安装插件
+## Installing plugins
 
 ```sh
-# npm 包，预构建，推荐使用
+# npm package, prebuilt and recommended
 dsh plugin --profile <name> add <npm-package>
 
-# GitHub 源码，首次安装时按提示允许构建，然后重试
+# GitHub source, follow the allowBuilds prompt on first install and retry
 dsh plugin --profile <name> add github:<owner>/<repo>
 ```
 
-> ⚠️ 从 GitHub 源码安装的插件会在你的设备上执行构建脚本。请只安装你信任的来源，并尽可能固定到具体提交： `github:owner/repo#<sha>`.
+> ⚠️ GitHub-sourced plugins run build scripts on your machine at install time. Only install sources you trust, and pin a commit when possible: `github:owner/repo#<sha>`.
 
 <a id="all-verified-plugins"></a>
-## 全部已验证插件
+## All verified plugins
 
 <a id="ui-enhancements"></a>
 <details>
-<summary><strong>🎨 UI 增强</strong> <sup>140 个插件</sup></summary>
+<summary><strong>🎨 UI Enhancements</strong> <sup>140 plugins</sup></summary>
 
-### UI 增强
+### UI Enhancements
 
 - [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★308 · `dsh-better-sidebar` — 一个侧边栏的完整工作台，支持三方拓展注册新Tab页面，内置文件渲染编辑/终端/Git/子代理
 - [Anionex/dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) ★212 · `@dsh-external/dsh-vision-toolkit` — 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q&A, long-screenshot OCR, UI restoration, grounding, pixel diff, Artifacts, and Web UI.
@@ -225,9 +225,9 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="workflow-automation"></a>
 <details>
-<summary><strong>🔁 工作流与自动化</strong> <sup>58 个插件</sup></summary>
+<summary><strong>🔁 Workflow & Automation</strong> <sup>58 plugins</sup></summary>
 
-### 工作流与自动化
+### Workflow & Automation
 
 - [icetomoyo/dsh_workflow](https://github.com/icetomoyo/dsh_workflow) ★40 · `@dsh-external/workflow` — 把Claude Code的UltraCode模式带给DSH，把 DSH 的一次性多 Agent 调度，升级为可生成、可保存、可治理、可观察、可恢复的 Workflow 层
 - [omdsh-dev/dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) ★21 · `@omdsh-dev/dsh-annotation` — DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动
@@ -292,9 +292,9 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="tools"></a>
 <details>
-<summary><strong>🛠️ 工具集</strong> <sup>86 个插件</sup></summary>
+<summary><strong>🛠️ Tools</strong> <sup>86 plugins</sup></summary>
 
-### 工具集
+### Tools
 
 - [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) ★412 · `dsh-cc-tui` — 解决DSH 官方尚无终端 TUI 痛点的补位之作，献给偏爱cli的各位极客：Claude Code 风格全屏交互终端插件——像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条 + TPS 仪表。npm 一键安装。
 - [liustack/modsearch](https://github.com/liustack/modsearch) ★66 · `@liustack/modsearch` — The web plugin for DeepSeek Harness, and the search bridge for every text-only coding agent. Ask the web or X, get structured JSON evidence (search, fetch, citations).
@@ -387,9 +387,9 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="notifications"></a>
 <details>
-<summary><strong>🔔 通知与监控</strong> <sup>12 个插件</sup></summary>
+<summary><strong>🔔 Notifications & Monitoring</strong> <sup>12 plugins</sup></summary>
 
-### 通知与监控
+### Notifications & Monitoring
 
 - [NanmiCoder/dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) ★124 · `dsh-agent-teams` — AgentTeams plugin for DeepSeek Harness
 - [MuziIsabel/dsh-win-notify](https://github.com/MuziIsabel/dsh-win-notify) ★4 · `dsh-win-notify` — DSH plugin: Windows toast notification with sound when an agent task completes
@@ -408,9 +408,9 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="dev-helpers"></a>
 <details>
-<summary><strong>🧑‍💻 开发辅助</strong> <sup>15 个插件</sup></summary>
+<summary><strong>🧑‍💻 Development Helpers</strong> <sup>15 plugins</sup></summary>
 
-### 开发辅助
+### Development Helpers
 
 - [shuguang1994/project-blueprint](https://github.com/shuguang1994/project-blueprint) ★2 · `project-blueprint` — Make any project AI-agent-ready in one command. Adaptive tech stack detection (7 languages × 14 frameworks × 61 components), auto-generates AGENTS.md, docs skeleton, CI/CD, and testing infrastructure. 一句话让任何项目具备 AI 开发能力。
 - [erduotong/dsh-plugin-graph](https://github.com/erduotong/dsh-plugin-graph) ★2 · `dsh-plugin-graph` — 一个Deepseek Harness的插件关系图谱可视化插件
@@ -432,9 +432,9 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="learning"></a>
 <details>
-<summary><strong>🎓 学习与教育</strong> <sup>1 个插件</sup></summary>
+<summary><strong>🎓 Learning & Education</strong> <sup>1 plugin</sup></summary>
 
-### 学习与教育
+### Learning & Education
 
 - [cendaifeng/dsh-learn-everything](https://github.com/cendaifeng/dsh-learn-everything) ★2 · `dsh-learn-everything` — Feynman learning-mode plugin for DeepSeek Harness: /learn on|off, structured lesson cards, rich HTML teaching.
 
@@ -442,9 +442,9 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="misc"></a>
 <details>
-<summary><strong>🧩 其他</strong> <sup>186 个插件</sup></summary>
+<summary><strong>🧩 Miscellaneous</strong> <sup>186 plugins</sup></summary>
 
-### 其他
+### Miscellaneous
 
 - [liustack/modlens](https://github.com/liustack/modlens) ★810 · `@liustack/modlens` — The first vision plugin for DeepSeek Harness, and the vision bridge for every text-only coding agent. Paste an image, get structured JSON evidence (OCR, layout, semantics).
 - [vlln/whale-girl](https://github.com/vlln/whale-girl) ★47 · `whale-girl` — DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽/投喂/玩耍的积累型伙伴。官方 repository-plugin（.dsh-plugin 格式），config.yaml 安装：github:dsh-external/whale-girl#<ref>&path:/.dsh-plugin
@@ -636,12 +636,12 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 </details>
 
 <a id="related-projects"></a>
-## 相关项目
+## Related projects
 
-以下仓库使用了 `dsh-plugin` topic，但尚未提供可安装的 `dsh.bundle`。它们可能是启动器、文档、技能集或开发资源。
+These repositories use the `dsh-plugin` topic but do not currently expose an installable `dsh.bundle`. They may still be useful as launchers, documentation, skill collections, or development resources.
 
 <details>
-<summary><strong>展开 365 个相关项目</strong></summary>
+<summary><strong>Browse 365 related projects</strong></summary>
 
 - [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) ★61910 — DeepSeek Harness: Everything is a Plugin.
 - [titanwings/colleague-skill](https://github.com/titanwings/colleague-skill) ★21376 — 将冰冷的离别化为温暖的 Skill，欢迎加入数字生命1.0！Transforming cold farewells into warm skills? It's giving rebirth era. Welcome to Digital Life 1.0. 🫶
@@ -1012,14 +1012,14 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 </details>
 
 <a id="get-listed"></a>
-## 收录你的插件
+## Get your plugin listed
 
-给你的插件仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic，并在 `package.json` 中声明 `dsh.bundle` manifest。每小时执行的抓取会自动收录，无需提交 PR。
+Add the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic to your repository and declare a `dsh.bundle` manifest in `package.json`. The hourly crawl will pick it up automatically, so no PR is needed.
 
-[提交插件 →](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml)
+[Submit a plugin →](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml)
 
-## 许可协议
+## License
 
-[CC0-1.0](LICENSE) · 目录数据来自 GitHub 公开 API，每小时自动刷新。
+[CC0-1.0](LICENSE) · Catalog data comes from the public GitHub API and refreshes hourly.
 
-<sub>社区项目，与 DeepSeek 无隶属关系，也未获得 DeepSeek 背书。</sub>
+<sub>Community project. Not affiliated with or endorsed by DeepSeek.</sub>

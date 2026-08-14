@@ -11,9 +11,9 @@
 [![Verified Plugins](https://img.shields.io/badge/verified_plugins-498-c9362b?style=flat-square)](#all-verified-plugins)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-292522?style=flat-square)](LICENSE)
 
-[**Browse the Store →**](https://deepseekplugin.store) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+[**浏览插件商店 →**](https://deepseekplugin.store) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 
-[English](README.md) · **中文**
+**中文** · [English](README.en.md)
 
 </div>
 
@@ -48,7 +48,7 @@
 <a id="popular-plugins"></a>
 ## 热门插件
 
-| # | Plugin | 分类 | Stars |
+| # | 插件 | 分类 | Stars |
 |--:|:--|:--|--:|
 | 1 | [liustack/modlens](https://github.com/liustack/modlens) | 其他 | ★810 |
 | 2 | [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 工具集 | ★412 |
@@ -62,14 +62,14 @@
 ## 安装插件
 
 ```sh
-# npm package, prebuilt and recommended
+# npm 包，预构建，推荐使用
 dsh plugin --profile <name> add <npm-package>
 
-# GitHub source, follow the allowBuilds prompt on first install and retry
+# GitHub 源码，首次安装时按提示允许构建，然后重试
 dsh plugin --profile <name> add github:<owner>/<repo>
 ```
 
-> ⚠️ GitHub-sourced plugins run build scripts on your machine at install time. Only install sources you trust, and pin a commit when possible: `github:owner/repo#<sha>`.
+> ⚠️ 从 GitHub 源码安装的插件会在你的设备上执行构建脚本。请只安装你信任的来源，并尽可能固定到具体提交： `github:owner/repo#<sha>`.
 
 <a id="all-verified-plugins"></a>
 ## 全部已验证插件
@@ -1018,7 +1018,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 [提交插件 →](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml)
 
-## License
+## 许可协议
 
 [CC0-1.0](LICENSE) · 目录数据来自 GitHub 公开 API，每小时自动刷新。
 

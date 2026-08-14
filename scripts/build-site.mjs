@@ -254,8 +254,10 @@ ${[...LOCALES.map((l2) => `      <xhtml:link rel="alternate" hreflang="${l2.code
 `)
 
 // keep the hand-written counts in every README in sync
-const enReadme = fs.readFileSync('README.md', 'utf8').replace(/\*\*\d+\*\* plugins/, `**${N}** plugins`)
-fs.writeFileSync('README.md', enReadme)
+const readme = fs.readFileSync('README.md', 'utf8').replace(/\*\*\d+\*\* 个插件/, `**${N}** 个插件`)
+fs.writeFileSync('README.md', readme)
+const enReadme = fs.readFileSync('README.en.md', 'utf8').replace(/\*\*\d+\*\* plugins/, `**${N}** plugins`)
+fs.writeFileSync('README.en.md', enReadme)
 const zhReadme = fs.readFileSync('README.zh.md', 'utf8').replace(/\*\*\d+\*\* 个插件/, `**${N}** 个插件`)
 fs.writeFileSync('README.zh.md', zhReadme)
 
