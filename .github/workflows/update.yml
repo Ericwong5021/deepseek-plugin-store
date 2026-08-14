@@ -20,9 +20,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Regenerate README and data
+      - name: Regenerate catalog data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DATA_ONLY: '1'
         run: node scripts/update.mjs
       - name: Analyze plugin quality with AI
         continue-on-error: true
@@ -39,14 +40,21 @@ jobs:
         run: node scripts/monitor-upstream.mjs
       - name: Validate catalog
         run: node scripts/validate.mjs
-      - name: Rebuild site artifacts
-        run: node scripts/build-site.mjs
+      - name: Check generated file scope
+        run: |
+          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev '^data/(added-dates|catalog|plugins|plugin-quality|upstream-sync)\.json$' || true)
+          if [ -n "$unexpected" ]; then
+            echo "unexpected generated files:"
+            echo "$unexpected"
+            exit 1
+          fi
       - name: Commit if changed
         id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md README.en.md README.zh.md data docs
+          git add data/catalog.json data/plugins.json data/added-dates.json data/upstream-sync.json
+          if [ -f data/plugin-quality.json ]; then git add data/plugin-quality.json; fi
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0

@@ -204,9 +204,11 @@ const { renderReadmes } = await import('./render-readme.mjs')
 const { readme, readmeEn, readmeZh } = renderReadmes({ plugins, related, updatedAt: generatedAt })
 
 await fs.mkdir('data', { recursive: true })
-await fs.writeFile('README.md', readme)
-await fs.writeFile('README.en.md', readmeEn)
-await fs.writeFile('README.zh.md', readmeZh)
+if (process.env.DATA_ONLY !== '1') {
+  await fs.writeFile('README.md', readme)
+  await fs.writeFile('README.en.md', readmeEn)
+  await fs.writeFile('README.zh.md', readmeZh)
+}
 await fs.writeFile('data/added-dates.json', JSON.stringify(Object.fromEntries(Object.entries(addedDates).sort()), null, 2) + '\n')
 const catalog = {
   schemaVersion: 1,
