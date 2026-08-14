@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="docs/banner-en.png" alt="DeepSeek Plugin Store" width="100%">](https://awesome-dsh-plugin.com)
+[<img src="docs/banner.png" alt="DeepSeek Plugin Store" width="100%">](https://awesome-dsh-plugin.com)
 
 # DeepSeek Plugin Store
 

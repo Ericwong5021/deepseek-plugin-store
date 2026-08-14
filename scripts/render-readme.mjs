@@ -50,7 +50,7 @@ function entryLine(plugin) {
 
 function localeCopy(zh) {
   return zh ? {
-    banner: 'docs/banner-zh.png',
+    banner: 'docs/banner.png',
     tagline: '发现、安装 DeepSeek Harness 生态中经过验证的插件、工具与扩展。',
     language: '[English](README.md) · **中文**',
     intro: '本目录会自动抓取带有 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 的仓库，并检查 `package.json` 中是否声明 `dsh.bundle`。只有通过这项安装性验证的项目才会进入插件目录。',
@@ -73,7 +73,7 @@ function localeCopy(zh) {
     license: '目录数据来自 GitHub 公开 API，每小时自动刷新。',
     disclaimer: '社区项目，与 DeepSeek 无隶属关系，也未获得 DeepSeek 背书。',
   } : {
-    banner: 'docs/banner-en.png',
+    banner: 'docs/banner.png',
     tagline: 'Discover verified plugins, tools, and extensions for the DeepSeek Harness ecosystem.',
     language: '**English** · [中文](README.zh.md)',
     intro: 'This directory is generated from repositories carrying the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic. Every plugin listed here declares a `dsh.bundle` manifest in `package.json`, the installable bundle marker used by `dsh plugin add`.',
