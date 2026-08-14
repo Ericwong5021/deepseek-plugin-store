@@ -1,11 +1,5 @@
 #!/usr/bin/env node
-/**
- * Crawl GitHub for repos tagged `dsh-plugin`, verify each one's package.json
- * for a `dsh.bundle` manifest (what makes it an installable DSH plugin),
- * then regenerate README.md and the catalog data.
- *
- * Usage: GITHUB_TOKEN=xxx node scripts/update.mjs
- */
+import crypto from 'node:crypto'
 
 const TOKEN = process.env.GITHUB_TOKEN ?? ''
 const HEADERS = {
@@ -14,43 +8,41 @@ const HEADERS = {
   ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
 }
 
-async function searchRepos() {
-  const items = []
-  for (let page = 1; page <= 10; page++) {
-    const res = await fetch(
-      `https://api.github.com/search/repositories?q=topic:dsh-plugin&per_page=100&page=${page}`,
-      { headers: HEADERS },
-    )
-    if (!res.ok) throw new Error(`search page ${page}: ${res.status}`)
-    const json = await res.json()
-    items.push(...json.items)
-    if (json.items.length < 100) break
-  }
-  const seen = new Set()
-  return items.filter((r) => !seen.has(r.full_name) && seen.add(r.full_name))
+async function searchPage(query, page) {
+  const res = await fetch(
+    `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=updated&order=desc&per_page=100&page=${page}`,
+    { headers: HEADERS },
+  )
+  if (!res.ok) throw new Error(`search page ${page}: ${res.status}`)
+  const json = await res.json()
+  if (json.incomplete_results) throw new Error(`incomplete GitHub search results for ${query}`)
+  return json
 }
 
-async function fetchUpstreamRepos() {
-  const [res, commitResponse] = await Promise.all([
-    fetch('https://api.github.com/repos/awesome-dsh-plugin/awesome-dsh-plugin/contents/README.md', { headers: HEADERS }),
-    fetch('https://api.github.com/repos/awesome-dsh-plugin/awesome-dsh-plugin/commits/main', { headers: HEADERS })
-  ])
-  if (!res.ok) throw new Error(`upstream readme: ${res.status}`)
-  if (!commitResponse.ok) throw new Error(`upstream commit: ${commitResponse.status}`)
-  const json = await res.json()
-  const commit = await commitResponse.json()
-  const text = Buffer.from(json.content, 'base64').toString('utf8')
-  const names = [...text.matchAll(/https:\/\/github\.com\/([\w.-]+\/[\w.-]+)/g)].map((match) => match[1].replace(/\/$/, ''))
-  const unique = [...new Set(names)].filter((name) => name !== 'awesome-dsh-plugin/awesome-dsh-plugin')
-  const repos = await mapLimit(unique, 8, async (name) => {
-    const response = await fetch(`https://api.github.com/repos/${name}`, { headers: HEADERS })
-    if (!response.ok) return null
-    const repo = await response.json()
-    repo.discoverySource = 'awesome-dsh-plugin'
-    repo.upstreamCommit = commit.sha
-    return repo
-  }).then((items) => items.filter(Boolean))
-  return { repos, commit: commit.sha }
+const dateAfter = (date) => new Date(Date.parse(`${date}T00:00:00Z`) + 86400000).toISOString().slice(0, 10)
+
+async function searchRange(from, to) {
+  const query = `topic:dsh-plugin created:${from}..${to}`
+  const first = await searchPage(query, 1)
+  if (first.total_count > 1000) {
+    if (from === to) throw new Error(`more than 1000 topic repositories were created on ${from}`)
+    const midpoint = new Date((Date.parse(`${from}T00:00:00Z`) + Date.parse(`${to}T00:00:00Z`)) / 2).toISOString().slice(0, 10)
+    const left = await searchRange(from, midpoint)
+    const right = await searchRange(dateAfter(midpoint), to)
+    return [...left, ...right]
+  }
+  const items = [...first.items]
+  for (let page = 2; page <= Math.ceil(first.total_count / 100); page++) {
+    const json = await searchPage(query, page)
+    items.push(...json.items)
+  }
+  return items
+}
+
+async function searchRepos() {
+  const items = await searchRange('2007-01-01', new Date().toISOString().slice(0, 10))
+  const seen = new Set()
+  return items.filter((r) => !seen.has(r.full_name) && seen.add(r.full_name))
 }
 
 async function fetchPackageJson(fullName) {
@@ -96,28 +88,15 @@ function categorize(repo, pkg) {
   return { id: 'misc', title: '其他 / Miscellaneous' }
 }
 
-const [topicRepos, upstreamSnapshot] = await Promise.all([searchRepos(), fetchUpstreamRepos()])
-const upstreamRepos = upstreamSnapshot.repos
-const repoMap = new Map()
-for (const repo of [...topicRepos, ...upstreamRepos]) {
-  const source = repo.discoverySource || 'github-topic'
-  const existing = repoMap.get(repo.full_name)
-  if (!existing) repoMap.set(repo.full_name, {
-    ...repo,
-    discoverySources: [source],
-    upstreamCommits: repo.upstreamCommit ? [repo.upstreamCommit] : []
-  })
-  else {
-    existing.discoverySources = [...new Set([...existing.discoverySources, source])]
-    existing.upstreamCommits = [...new Set([...existing.upstreamCommits, ...(repo.upstreamCommit ? [repo.upstreamCommit] : [])])]
-  }
-}
-const repos = [...repoMap.values()]
-console.log(`search: ${topicRepos.length} topic repos + ${upstreamRepos.length} upstream entries = ${repos.length} unique repos`)
+const repos = await searchRepos()
+const sourceFingerprint = crypto.createHash('sha256').update(JSON.stringify(repos
+  .map((repo) => [repo.full_name, repo.pushed_at, repo.updated_at])
+  .sort(([a], [b]) => a.localeCompare(b)))).digest('hex')
+console.log(`search: ${repos.length} topic repos`)
 
 const enriched = await mapLimit(repos, 10, async (repo) => {
   const pkg = await fetchPackageJson(repo.full_name)
-  const isPlugin = Boolean(pkg?.dsh?.bundle)
+  const manifestFound = Boolean(pkg?.dsh?.bundle)
   return {
     fullName: repo.full_name,
     url: repo.html_url,
@@ -126,23 +105,15 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
     pushedAt: repo.pushed_at,
     license: repo.license?.spdx_id ?? null,
     archived: Boolean(repo.archived),
-    isPlugin,
-    npmName: isPlugin ? pkg.name ?? null : null,
+    isPlugin: true,
+    npmName: pkg?.name ?? null,
     category: categorize(repo, pkg),
-    discoverySources: repo.discoverySources,
-    upstreamCommits: repo.upstreamCommits,
+    manifestFound,
   }
 })
 
-const candidatePlugins = enriched.filter((p) => p.isPlugin).sort((a, b) => b.stars - a.stars)
-const installIdentifiers = new Set()
-const plugins = candidatePlugins.filter((plugin) => {
-  const installIdentifier = plugin.npmName || `github:${plugin.fullName}`
-  if (installIdentifiers.has(installIdentifier)) return false
-  installIdentifiers.add(installIdentifier)
-  return true
-})
-const related = enriched.filter((p) => !p.isPlugin).sort((a, b) => b.stars - a.stars)
+const plugins = enriched.sort((a, b) => b.stars - a.stars)
+const related = []
 const fs = await import('node:fs/promises')
 let addedDates = {}
 try { addedDates = JSON.parse(await fs.readFile('data/added-dates.json', 'utf8')) } catch {}
@@ -151,7 +122,7 @@ for (const plugin of plugins) {
   addedDates[plugin.url] ||= today
   plugin.addedAt = addedDates[plugin.url]
 }
-console.log(`verified plugins: ${plugins.length}, related: ${related.length}`)
+console.log(`selected topic repositories: ${plugins.length}`)
 
 const generatedAt = new Date().toISOString()
 
@@ -167,10 +138,9 @@ for (const plugin of plugins) {
   plugin.featured = false
   plugin.status = plugin.archived ? 'archived' : 'active'
   plugin.source = {
-    type: plugin.discoverySources.includes('awesome-dsh-plugin') ? 'upstream-import' : 'github-topic',
-    origins: plugin.discoverySources,
-    upstreamRepository: plugin.discoverySources.includes('awesome-dsh-plugin') ? 'awesome-dsh-plugin/awesome-dsh-plugin' : null,
-    upstreamCommits: plugin.upstreamCommits
+    type: 'github-topic',
+    origins: ['github-topic'],
+    topic: 'dsh-plugin'
   }
   plugin.github = {
     stars: plugin.stars,
@@ -180,10 +150,11 @@ for (const plugin of plugins) {
     capturedAt: generatedAt
   }
   plugin.compatibility = {
-    manifestFound: true,
-    manifestPath: 'package.json:dsh.bundle',
+    manifestFound: plugin.manifestFound,
+    manifestPath: plugin.manifestFound ? 'package.json:dsh.bundle' : null,
     checkedAt: generatedAt
   }
+  delete plugin.manifestFound
 }
 
 const { renderReadmes } = await import('./render-readme.mjs')
@@ -197,12 +168,12 @@ await fs.writeFile('data/added-dates.json', JSON.stringify(Object.fromEntries(Ob
 const catalog = {
   schemaVersion: 1,
   updatedAt: generatedAt,
-  sourceCommit: upstreamSnapshot.commit,
+  sourceCommit: sourceFingerprint,
   source: {
     provider: 'github',
     repository: 'Ericwong5021/deepseek-plugin-store',
-    sources: ['topic:dsh-plugin', 'awesome-dsh-plugin/awesome-dsh-plugin'],
-    verification: 'package.json:dsh.bundle',
+    sources: ['topic:dsh-plugin'],
+    verification: 'topic:dsh-plugin',
   },
   plugins,
   related,

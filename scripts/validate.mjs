@@ -16,22 +16,20 @@ const unique = (label, values) => {
 unique('repository', catalog.plugins.map((plugin) => plugin.url))
 unique('plugin name', catalog.plugins.map((plugin) => plugin.fullName.toLowerCase()))
 unique('slug', catalog.plugins.map((plugin) => plugin.slug))
-unique('install identifier', catalog.plugins.map((plugin) => plugin.installSpec))
-const duplicateInstallIdentifiers = new Map()
-for (const plugin of catalog.plugins) {
-  const value = plugin.npmName || `github:${plugin.fullName}`
-  duplicateInstallIdentifiers.set(value, [...(duplicateInstallIdentifiers.get(value) || []), plugin.fullName])
-}
-for (const [value, repositories] of duplicateInstallIdentifiers) {
-  if (repositories.length > 1) console.warn(`legacy duplicate install identifier ${value}: ${repositories.join(', ')}`)
-}
 
 for (const plugin of catalog.plugins) {
-  if (plugin.isPlugin !== true) throw new Error(`${plugin.fullName} is not verified as a plugin`)
+  if (plugin.isPlugin !== true) throw new Error(`${plugin.fullName} is not selected as a plugin`)
   if (!/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/.test(plugin.url)) throw new Error(`invalid repository URL: ${plugin.url}`)
   if (!plugin.category?.id || !plugin.pushedAt || typeof plugin.summary !== 'string' || !plugin.author || !plugin.status) throw new Error(`incomplete plugin: ${plugin.fullName}`)
-  if (plugin.compatibility?.manifestFound !== true || plugin.compatibility?.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest evidence: ${plugin.fullName}`)
-  if (plugin.source?.type === 'upstream-import' && !plugin.source.upstreamCommits?.length) throw new Error(`missing upstream commit: ${plugin.fullName}`)
+  if (plugin.source?.type !== 'github-topic' || plugin.source?.topic !== 'dsh-plugin') throw new Error(`invalid discovery source: ${plugin.fullName}`)
+  if (typeof plugin.compatibility?.manifestFound !== 'boolean') throw new Error(`invalid manifest evidence: ${plugin.fullName}`)
+  if (plugin.compatibility.manifestFound && plugin.compatibility.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest path: ${plugin.fullName}`)
+  if (!plugin.compatibility.manifestFound && plugin.compatibility.manifestPath !== null) throw new Error(`unexpected manifest path: ${plugin.fullName}`)
+  if (plugin.quality) {
+    if (!Number.isInteger(plugin.quality.score) || plugin.quality.score < 0 || plugin.quality.score > 100) throw new Error(`invalid quality score: ${plugin.fullName}`)
+    if (!['A', 'B', 'C', 'D'].includes(plugin.quality.grade)) throw new Error(`invalid quality grade: ${plugin.fullName}`)
+    if (!plugin.quality.assessedAt || !plugin.quality.sourceLastPushAt || !plugin.quality.analyzer?.model) throw new Error(`incomplete quality assessment: ${plugin.fullName}`)
+  }
 }
 
-console.log(`validated ${catalog.plugins.length} plugins and ${catalog.related.length} related projects`)
+console.log(`validated ${catalog.plugins.length} topic repositories`)
