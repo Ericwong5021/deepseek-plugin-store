@@ -96,6 +96,99 @@ function categorize(repo, pkg) {
   return { id: 'misc', title: '其他 / Miscellaneous' }
 }
 
+if (process.env.MERGE_UPSTREAM_ONLY === '1') {
+  const fs = await import('node:fs/promises')
+  const existing = JSON.parse(await fs.readFile('data/catalog.json', 'utf8'))
+  const snapshot = JSON.parse(await fs.readFile('data/upstream-sync.json', 'utf8'))
+  const upstreamCommit = snapshot.upstream.latestCommit.sha
+  const readme = await (await fetch('https://raw.githubusercontent.com/awesome-dsh-plugin/awesome-dsh-plugin/main/README.md')).text()
+  const pluginSection = readme.split(/^## /m).find((section) => /^(?:Plugins|插件 \/ Plugins|插件)\n/m.test(section)) ?? ''
+  const categoryByTitle = new Map([
+    ['UI Enhancements', 'ui-enhancements'],
+    ['Sessions & Messages', 'misc'],
+    ['Tools & Capabilities', 'tools'],
+    ['Workflow & Automation', 'workflow-automation'],
+    ['Notifications & Integrations', 'notifications'],
+    ['Development & Runtime', 'dev-helpers'],
+    ['Just for Fun', 'misc'],
+  ])
+  let currentCategory = null
+  const entries = []
+  for (const line of pluginSection.split('\n')) {
+    const heading = line.match(/^### (.+)$/)
+    if (heading) currentCategory = heading[1].trim()
+    const entry = line.match(/^- \[([^\]]+)\]\((https:\/\/github\.com\/[^)]+)\)(?:\s+-\s+(.+))?$/)
+    if (entry) entries.push({ name: entry[1], url: entry[2].replace(/\/$/, ''), description: entry[3] ?? '', category: categoryByTitle.get(currentCategory) ?? 'misc' })
+  }
+  const existingUrls = new Set(existing.plugins.map((plugin) => plugin.url.replace(/\/$/, '')))
+  const generatedAt = new Date().toISOString()
+  let addedDates = {}
+  try { addedDates = JSON.parse(await fs.readFile('data/added-dates.json', 'utf8')) } catch {}
+  const additions = await mapLimit(entries.filter((entry) => !existingUrls.has(entry.url)), 8, async (entry) => {
+    const fullName = entry.url.replace('https://github.com/', '')
+    const pkg = await fetchPackageJson(fullName)
+    if (!pkg?.dsh?.bundle) return null
+    const repoPage = await fetch(entry.url, { headers: { 'User-Agent': 'deepseek-plugin-store' } })
+    const repoText = await repoPage.text()
+    const stars = Number(repoText.match(/"stargazerCount":(\d+)/)?.[1] ?? 0)
+    const license = repoText.match(/"license":\{"spdxId":"([^"]*)"/)?.[1] ?? null
+    const commitFeed = await fetch(`${entry.url}/commits/HEAD.atom`, { headers: { 'User-Agent': 'deepseek-plugin-store' } })
+    const commitText = await commitFeed.text()
+    const pushedAt = commitText.match(/<updated>([^<]+)<\/updated>/)?.[1] ?? generatedAt
+    const category = categoryByTitle.has(entry.category) ? { id: entry.category, title: CATEGORIES.find(([id]) => id === entry.category)?.[1] ?? '其他 / Miscellaneous' } : categorize({ name: fullName, description: `${entry.description} ${pkg.description ?? ''}` }, pkg)
+    const plugin = {
+      fullName,
+      url: entry.url,
+      description: pkg.description ?? entry.description,
+      stars,
+      pushedAt,
+      license,
+      archived: false,
+      isPlugin: true,
+      npmName: pkg.name ?? null,
+      category,
+      discoverySources: ['awesome-dsh-plugin'],
+      upstreamCommits: [upstreamCommit],
+    }
+    plugin.addedAt = addedDates[plugin.url] ||= generatedAt.slice(0, 10)
+    plugin.slug = plugin.fullName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    plugin.name = plugin.fullName
+    plugin.summary = plugin.description
+    plugin.tags = [plugin.category.id]
+    plugin.repositoryUrl = plugin.url
+    plugin.installSpec = plugin.npmName || `github:${plugin.fullName}`
+    plugin.author = plugin.fullName.split('/')[0]
+    plugin.featured = false
+    plugin.status = 'active'
+    plugin.source = { type: 'upstream-import', origins: ['awesome-dsh-plugin'], upstreamRepository: 'awesome-dsh-plugin/awesome-dsh-plugin', upstreamCommits: [upstreamCommit] }
+    plugin.github = { stars: plugin.stars, license: plugin.license, lastPushAt: plugin.pushedAt, archived: false, capturedAt: generatedAt }
+    plugin.compatibility = { manifestFound: true, manifestPath: 'package.json:dsh.bundle', checkedAt: generatedAt }
+    return plugin
+  }).then((items) => items.filter(Boolean))
+  const additionUrls = new Set(additions.map((plugin) => plugin.url))
+  const additionInstallIdentifiers = new Set(additions.map((plugin) => plugin.npmName || `github:${plugin.fullName}`))
+  const catalog = {
+    ...existing,
+    updatedAt: generatedAt,
+    sourceCommit: upstreamCommit,
+    plugins: [...existing.plugins.filter((plugin) => !additionInstallIdentifiers.has(plugin.npmName || `github:${plugin.fullName}`)), ...additions],
+    related: existing.related.filter((project) => !additionUrls.has(project.url)),
+  }
+  const { renderReadmes } = await import('./render-readme.mjs')
+  const { readme: renderedReadme, readmeEn, readmeZh } = renderReadmes(catalog)
+  const catalogJson = JSON.stringify(catalog, null, 2) + '\n'
+  await Promise.all([
+    fs.writeFile('README.md', renderedReadme),
+    fs.writeFile('README.en.md', readmeEn),
+    fs.writeFile('README.zh.md', readmeZh),
+    fs.writeFile('data/added-dates.json', JSON.stringify(Object.fromEntries(Object.entries(addedDates).sort()), null, 2) + '\n'),
+    fs.writeFile('data/catalog.json', catalogJson),
+    fs.writeFile('data/plugins.json', catalogJson),
+  ])
+  console.log(JSON.stringify({ additions: additions.map((plugin) => plugin.fullName), verifiedPlugins: catalog.plugins.length, related: catalog.related.length, sourceCommit: upstreamCommit }, null, 2))
+  process.exit(0)
+}
+
 const [topicRepos, upstreamSnapshot] = await Promise.all([searchRepos(), fetchUpstreamRepos()])
 const upstreamRepos = upstreamSnapshot.repos
 const repoMap = new Map()
@@ -187,10 +280,11 @@ for (const plugin of plugins) {
 }
 
 const { renderReadmes } = await import('./render-readme.mjs')
-const { readme, readmeZh } = renderReadmes({ plugins, related, updatedAt: generatedAt })
+const { readme, readmeEn, readmeZh } = renderReadmes({ plugins, related, updatedAt: generatedAt })
 
 await fs.mkdir('data', { recursive: true })
 await fs.writeFile('README.md', readme)
+await fs.writeFile('README.en.md', readmeEn)
 await fs.writeFile('README.zh.md', readmeZh)
 await fs.writeFile('data/added-dates.json', JSON.stringify(Object.fromEntries(Object.entries(addedDates).sort()), null, 2) + '\n')
 const catalog = {
@@ -209,4 +303,4 @@ const catalog = {
 const catalogJson = JSON.stringify(catalog, null, 2) + '\n'
 await fs.writeFile('data/catalog.json', catalogJson)
 await fs.writeFile('data/plugins.json', catalogJson)
-console.log('README.md + README.zh.md + data/catalog.json written')
+console.log('README.md + README.en.md + README.zh.md + data/catalog.json written')
