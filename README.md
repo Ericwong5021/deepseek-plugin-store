@@ -60,6 +60,24 @@
 <a id="installing-plugins"></a>
 ## 安装插件
 
+### 将插件商店安装到 DSH Web UI
+
+从 GitHub 安装最新版本：
+
+```sh
+npx @deepseek-ai/dsh plugin --profile web add github:Ericwong5021/deepseek-plugin-store
+npx @deepseek-ai/dsh web
+```
+
+启动 Web UI 后，侧边栏会出现“插件商店”。在商店购物车中点击“直接安装到 DSH”，即可把选中的插件写入 `web` profile；安装新的 DSH 插件后请重启 Web UI 使其加载。
+
+本地开发或验收时：
+
+```sh
+cd /path/to/deepseek-plugin-store
+npx @deepseek-ai/dsh plugin --profile web add .
+```
+
 ```sh
 # npm 包，预构建，推荐使用
 dsh plugin --profile <name> add <npm-package>
