@@ -6,7 +6,7 @@ const githubToken = process.env.GITHUB_TOKEN ?? ''
 const baseUrl = (process.env.AI_BASE_URL || 'https://api.deepseek.com').replace(/\/$/, '')
 const model = process.env.AI_MODEL || 'deepseek-v4-flash'
 const analyzerVersion = '1'
-const limit = Math.min(50, Math.max(1, Number.parseInt(process.env.AI_QUALITY_LIMIT || '20', 10) || 20))
+const limit = Math.min(20, Math.max(1, Number.parseInt(process.env.AI_QUALITY_LIMIT || '5', 10) || 5))
 const catalogPath = 'data/catalog.json'
 const pluginsPath = 'data/plugins.json'
 const cachePath = 'data/plugin-quality.json'
@@ -29,8 +29,23 @@ const request = async (url, options = {}, attempts = 3) => {
   let lastError
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
-      const response = await fetch(url, options)
-      const text = await response.text()
+      const response = await fetch(url, { ...options, signal: AbortSignal.timeout(30000) })
+      const length = Number(response.headers.get('content-length') || 0)
+      if (length > 1048576) throw new Error('response exceeds 1 MiB')
+      const reader = response.body.getReader()
+      const chunks = []
+      let size = 0
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        size += value.byteLength
+        if (size > 1048576) {
+          await reader.cancel()
+          throw new Error('response exceeds 1 MiB')
+        }
+        chunks.push(value)
+      }
+      const text = new TextDecoder().decode(Buffer.concat(chunks))
       if (!response.ok) throw new Error(`${response.status} ${text.slice(0, 240)}`)
       return { response, text }
     } catch (error) {
@@ -116,6 +131,8 @@ const analyze = async (plugin) => {
       if (!content) throw new Error('AI response did not contain message content')
       result = JSON.parse(content)
       if (!String(result.summary || '').trim()) throw new Error('AI response did not contain a summary')
+      if (!Number.isInteger(result.score) || result.score < 0 || result.score > 100) throw new Error('AI response contained an invalid score')
+      if (!result.dimensions || !['documentation', 'maintainability', 'transparency', 'usability'].every((key) => Number.isInteger(result.dimensions[key]) && result.dimensions[key] >= 0 && result.dimensions[key] <= 100)) throw new Error('AI response contained invalid dimensions')
       break
     } catch (error) {
       lastError = error
@@ -193,11 +210,11 @@ for (const fullName of Object.keys(cache.assessments)) {
 
 for (const plugin of catalog.plugins) {
   const assessment = cache.assessments[plugin.fullName]
-  if (assessment) plugin.quality = assessment
+  if (isFresh(plugin, assessment)) plugin.quality = assessment
   else delete plugin.quality
 }
 
-const assessments = Object.values(cache.assessments)
+const assessments = catalog.plugins.map((plugin) => plugin.quality).filter(Boolean)
 const latestAssessmentAt = assessments.map((item) => item.assessedAt).filter(Boolean).sort().at(-1) ?? null
 catalog.quality = {
   method: 'ai-repository-analysis',

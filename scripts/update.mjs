@@ -11,7 +11,7 @@ const HEADERS = {
 async function searchPage(query, page) {
   const res = await fetch(
     `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=updated&order=desc&per_page=100&page=${page}`,
-    { headers: HEADERS },
+    { headers: HEADERS, signal: AbortSignal.timeout(30000) },
   )
   if (!res.ok) throw new Error(`search page ${page}: ${res.status}`)
   const json = await res.json()
@@ -22,11 +22,13 @@ async function searchPage(query, page) {
 const dateAfter = (date) => new Date(Date.parse(`${date}T00:00:00Z`) + 86400000).toISOString().slice(0, 10)
 
 async function searchRange(from, to) {
-  const query = `topic:dsh-plugin created:${from}..${to}`
+  const query = `topic:dsh-plugin fork:true created:${from}..${to}`
   const first = await searchPage(query, 1)
   if (first.total_count > 1000) {
     if (from === to) throw new Error(`more than 1000 topic repositories were created on ${from}`)
-    const midpoint = new Date((Date.parse(`${from}T00:00:00Z`) + Date.parse(`${to}T00:00:00Z`)) / 2).toISOString().slice(0, 10)
+    const start = Date.parse(`${from}T00:00:00Z`)
+    const end = Date.parse(`${to}T00:00:00Z`)
+    const midpoint = new Date(start + (end - start) * 0.9).toISOString().slice(0, 10)
     const left = await searchRange(from, midpoint)
     const right = await searchRange(dateAfter(midpoint), to)
     return [...left, ...right]
@@ -49,10 +51,14 @@ async function fetchPackageJson(fullName) {
   try {
     const res = await fetch(
       `https://raw.githubusercontent.com/${fullName}/HEAD/package.json`,
-      { headers: { 'User-Agent': 'deepseek-plugin-store' } },
+      { headers: { 'User-Agent': 'deepseek-plugin-store' }, signal: AbortSignal.timeout(30000) },
     )
     if (!res.ok) return null
-    return await res.json()
+    const length = Number(res.headers.get('content-length') || 0)
+    if (length > 262144) return null
+    const text = await res.text()
+    if (Buffer.byteLength(text) > 262144) return null
+    return JSON.parse(text)
   } catch {
     return null
   }
@@ -88,6 +94,11 @@ function categorize(repo, pkg) {
   return { id: 'misc', title: '其他 / Miscellaneous' }
 }
 
+function npmPackageName(value) {
+  if (typeof value !== 'string') return null
+  return /^(?:@[a-z0-9][a-z0-9._~-]*\/[a-z0-9][a-z0-9._~-]*|[a-z0-9][a-z0-9._~-]*)$/.test(value) ? value : null
+}
+
 const repos = await searchRepos()
 const sourceFingerprint = crypto.createHash('sha256').update(JSON.stringify(repos
   .map((repo) => [repo.full_name, repo.pushed_at, repo.updated_at])
@@ -106,7 +117,7 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
     license: repo.license?.spdx_id ?? null,
     archived: Boolean(repo.archived),
     isPlugin: true,
-    npmName: pkg?.name ?? null,
+    npmName: npmPackageName(pkg?.name),
     category: categorize(repo, pkg),
     manifestFound,
   }
@@ -133,7 +144,7 @@ for (const plugin of plugins) {
   plugin.summary = plugin.description
   plugin.tags = [plugin.category.id]
   plugin.repositoryUrl = plugin.url
-  plugin.installSpec = plugin.npmName || `github:${plugin.fullName}`
+  plugin.installSpec = `github:${plugin.fullName}`
   plugin.author = plugin.fullName.split('/')[0]
   plugin.featured = false
   plugin.status = plugin.archived ? 'archived' : 'active'

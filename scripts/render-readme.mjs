@@ -43,7 +43,7 @@ const CATEGORY_TITLES = {
 }
 
 function entryLine(plugin) {
-  const description = (plugin.description ?? '').replace(/\r?\n/g, ' ').trim()
+  const description = (plugin.description ?? '').replace(/\r?\n/g, ' ').replace(/[\\`*_[\]<>]/g, '\\$&').trim()
   const npm = plugin.npmName ? ` · \`${plugin.npmName}\`` : ''
   return `- [${plugin.fullName}](${plugin.url}) ★${plugin.stars}${npm}${description ? ` — ${description}` : ''}`
 }

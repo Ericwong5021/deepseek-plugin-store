@@ -18,7 +18,7 @@ export default [
     label: 'EN',
     urlPath: '/',
     out: 'docs/index.html',
-    readme: 'README.md',
+    readme: 'README.en.md',
     og: '/og-en.png',
     feed: '/feed.xml',
     feedOut: 'docs/feed.xml',
