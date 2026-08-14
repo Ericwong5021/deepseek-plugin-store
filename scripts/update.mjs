@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import crypto from 'node:crypto'
+import fs from 'node:fs/promises'
 
 const TOKEN = process.env.GITHUB_TOKEN ?? ''
 const HEADERS = {
@@ -45,6 +46,12 @@ async function searchRepos() {
   const items = await searchRange('2007-01-01', new Date().toISOString().slice(0, 10))
   const seen = new Set()
   return items.filter((r) => !seen.has(r.full_name) && seen.add(r.full_name))
+}
+
+async function fetchRepository(fullName) {
+  const response = await fetch(`https://api.github.com/repos/${fullName}`, { headers: HEADERS })
+  if (!response.ok) throw new Error(`editor pick ${fullName}: ${response.status}`)
+  return response.json()
 }
 
 async function fetchPackageJson(fullName) {
@@ -99,11 +106,24 @@ function npmPackageName(value) {
   return /^(?:@[a-z0-9][a-z0-9._~-]*\/[a-z0-9][a-z0-9._~-]*|[a-z0-9][a-z0-9._~-]*)$/.test(value) ? value : null
 }
 
-const repos = await searchRepos()
+const editorPicks = JSON.parse(await fs.readFile('data/editor-picks.json', 'utf8'))
+const [topicRepos, editorPickRepos] = await Promise.all([
+  searchRepos(),
+  mapLimit(editorPicks, 8, async (entry) => ({
+    ...await fetchRepository(entry.repository),
+    editorPick: entry,
+  })),
+])
+const repoMap = new Map(topicRepos.map((repo) => [repo.full_name.toLowerCase(), { ...repo, fromTopic: true }]))
+for (const repo of editorPickRepos) {
+  const key = repo.full_name.toLowerCase()
+  repoMap.set(key, { ...(repoMap.get(key) || {}), ...repo, fromTopic: repoMap.has(key) })
+}
+const repos = [...repoMap.values()]
 const sourceFingerprint = crypto.createHash('sha256').update(JSON.stringify(repos
-  .map((repo) => [repo.full_name, repo.pushed_at, repo.updated_at])
+  .map((repo) => [repo.full_name, repo.pushed_at, repo.updated_at, Boolean(repo.editorPick)])
   .sort(([a], [b]) => a.localeCompare(b)))).digest('hex')
-console.log(`search: ${repos.length} topic repos`)
+console.log(`search: ${topicRepos.length} topic repos + ${editorPickRepos.length} editor picks = ${repos.length} unique repos`)
 
 const enriched = await mapLimit(repos, 10, async (repo) => {
   const pkg = await fetchPackageJson(repo.full_name)
@@ -111,21 +131,24 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
   return {
     fullName: repo.full_name,
     url: repo.html_url,
-    description: repo.description ?? pkg?.description ?? '',
+    description: repo.editorPick?.summary ?? repo.description ?? pkg?.description ?? '',
     stars: repo.stargazers_count,
     pushedAt: repo.pushed_at,
     license: repo.license?.spdx_id ?? null,
     archived: Boolean(repo.archived),
     isPlugin: true,
     npmName: npmPackageName(pkg?.name),
-    category: categorize(repo, pkg),
+    category: repo.editorPick
+      ? { id: 'editor-picks', title: '编辑精选 / Editor Picks' }
+      : categorize(repo, pkg),
     manifestFound,
+    editorPick: Boolean(repo.editorPick),
+    fromTopic: Boolean(repo.fromTopic),
   }
 })
 
 const plugins = enriched.sort((a, b) => b.stars - a.stars)
 const related = []
-const fs = await import('node:fs/promises')
 let addedDates = {}
 try { addedDates = JSON.parse(await fs.readFile('data/added-dates.json', 'utf8')) } catch {}
 const today = new Date().toISOString().slice(0, 10)
@@ -133,7 +156,7 @@ for (const plugin of plugins) {
   addedDates[plugin.url] ||= today
   plugin.addedAt = addedDates[plugin.url]
 }
-console.log(`selected topic repositories: ${plugins.length}`)
+console.log(`selected catalog repositories: ${plugins.length}`)
 
 const generatedAt = new Date().toISOString()
 
@@ -146,13 +169,20 @@ for (const plugin of plugins) {
   plugin.repositoryUrl = plugin.url
   plugin.installSpec = `github:${plugin.fullName}`
   plugin.author = plugin.fullName.split('/')[0]
-  plugin.featured = false
+  plugin.featured = plugin.editorPick
   plugin.status = plugin.archived ? 'archived' : 'active'
-  plugin.source = {
-    type: 'github-topic',
-    origins: ['github-topic'],
-    topic: 'dsh-plugin'
-  }
+  plugin.source = plugin.editorPick
+    ? {
+        type: 'editor-pick',
+        origins: plugin.fromTopic ? ['editor-pick', 'github-topic'] : ['editor-pick'],
+        file: 'data/editor-picks.json',
+        ...(plugin.fromTopic ? { topic: 'dsh-plugin' } : {}),
+      }
+    : {
+        type: 'github-topic',
+        origins: ['github-topic'],
+        topic: 'dsh-plugin',
+      }
   plugin.github = {
     stars: plugin.stars,
     license: plugin.license,
@@ -166,6 +196,8 @@ for (const plugin of plugins) {
     checkedAt: generatedAt
   }
   delete plugin.manifestFound
+  delete plugin.editorPick
+  delete plugin.fromTopic
 }
 
 const { renderReadmes } = await import('./render-readme.mjs')
@@ -183,8 +215,8 @@ const catalog = {
   source: {
     provider: 'github',
     repository: 'Ericwong5021/deepseek-plugin-store',
-    sources: ['topic:dsh-plugin'],
-    verification: 'topic:dsh-plugin',
+    sources: ['topic:dsh-plugin', 'data/editor-picks.json'],
+    verification: 'topic:dsh-plugin or manual editor selection',
   },
   plugins,
   related,

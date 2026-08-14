@@ -2,6 +2,7 @@ import fs from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 
 const CATEGORY_ICONS = {
+  'editor-picks': '✨',
   'ui-enhancements': '🎨',
   'workflow-automation': '🔁',
   tools: '🛠️',
@@ -12,6 +13,7 @@ const CATEGORY_ICONS = {
 }
 
 const CATEGORY_ORDER = [
+  'editor-picks',
   'ui-enhancements',
   'workflow-automation',
   'tools',
@@ -23,6 +25,7 @@ const CATEGORY_ORDER = [
 
 const CATEGORY_TITLES = {
   en: {
+    'editor-picks': 'Editor Picks',
     'ui-enhancements': 'UI Enhancements',
     'workflow-automation': 'Workflow & Automation',
     tools: 'Tools',
@@ -32,6 +35,7 @@ const CATEGORY_TITLES = {
     misc: 'Miscellaneous',
   },
   zh: {
+    'editor-picks': '编辑精选',
     'ui-enhancements': 'UI 增强',
     'workflow-automation': '工作流与自动化',
     tools: '工具集',
@@ -53,7 +57,7 @@ function localeCopy(zh) {
     banner: 'docs/banner.png',
     tagline: '发现、安装 DeepSeek Harness 生态中的社区插件、工具与扩展。',
     language: '**中文** · [English](README.en.md)',
-    intro: '本目录自动收录所有带有 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 的 GitHub 仓库，不要求在 `package.json` 中声明 `dsh.bundle`。',
+    intro: '本目录自动收录带有 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 的 GitHub 仓库，并通过编辑精选补充人工收录的插件。',
     stats: (plugins, updatedAt) => `**${plugins} 个插件仓库** · 每小时更新 · 上次同步：${updatedAt} UTC`,
     contents: '目录',
     category: '按分类浏览',
@@ -65,7 +69,7 @@ function localeCopy(zh) {
     pluginHeader: '插件数',
     popularNote: '按当前 GitHub Stars 排序，热度不代表本项目背书。',
     groupCount: (count) => `${count} 个插件`,
-    listedBody: '给你的仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic。每小时执行的抓取会自动收录，无需提交 PR。',
+    listedBody: '给你的仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 可自动收录；申请进入编辑精选，请按[合作说明](COLLABORATION.md)提交 PR。',
     browseStore: '浏览插件商店',
     submit: '提交插件',
     pluginColumn: '插件',
@@ -81,7 +85,7 @@ function localeCopy(zh) {
     banner: 'docs/banner.png',
     tagline: 'Discover community plugins, tools, and extensions for the DeepSeek Harness ecosystem.',
     language: '[中文](README.md) · **English**',
-    intro: 'This directory automatically includes every GitHub repository carrying the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic. A `dsh.bundle` declaration in `package.json` is not required.',
+    intro: 'This directory automatically includes GitHub repositories carrying the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic and supplements them with manually selected Editor Picks.',
     stats: (plugins, updatedAt) => `**${plugins} plugin repositories** · Updated hourly · Last sync: ${updatedAt} UTC`,
     contents: 'Contents',
     category: 'Browse by category',
@@ -93,7 +97,7 @@ function localeCopy(zh) {
     pluginHeader: 'Plugins',
     popularNote: 'Ranked by current GitHub Stars. Popularity is not an endorsement.',
     groupCount: (count) => `${count} ${count === 1 ? 'plugin' : 'plugins'}`,
-    listedBody: 'Add the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic to your repository. The hourly crawl will pick it up automatically, so no PR is needed.',
+    listedBody: 'Add the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic for automatic listing. To request an Editor Pick, open a PR following the [collaboration guide](COLLABORATION.md).',
     browseStore: 'Browse the Store',
     submit: 'Submit a plugin',
     pluginColumn: 'Plugin',
@@ -149,7 +153,7 @@ export function renderReadmes(catalog) {
 
 [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
 [![Catalog Update](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/update.yml/badge.svg)](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/update.yml)
-[![Topic Plugins](https://img.shields.io/badge/topic_plugins-${plugins.length}-c9362b?style=flat-square)](#all-topic-plugins)
+[![Catalog Plugins](https://img.shields.io/badge/catalog_plugins-${plugins.length}-c9362b?style=flat-square)](#all-catalog-plugins)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-292522?style=flat-square)](LICENSE)
 
 [**${copy.browseStore} →**](https://deepseekplugin.store) · [${copy.submit}](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
@@ -169,7 +173,7 @@ ${copy.intro}
 - [${copy.category}](#browse-by-category)
 - [${copy.popular}](#popular-plugins)
 - [${copy.installing}](#installing-plugins)
-- [${copy.all}](#all-topic-plugins)
+- [${copy.all}](#all-catalog-plugins)
 - [${copy.listed}](#get-listed)
 
 <a id="browse-by-category"></a>
@@ -201,7 +205,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 > ⚠️ ${copy.sourceWarning} \`github:owner/repo#<sha>\`.
 
-<a id="all-topic-plugins"></a>
+<a id="all-catalog-plugins"></a>
 ## ${copy.all}
 
 ${sections}
