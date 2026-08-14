@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="docs/banner.png" alt="DeepSeek Plugin Store" width="100%">](https://awesome-dsh-plugin.com)
+[<img src="docs/banner.png" alt="DeepSeek Plugin Store" width="100%">](https://deepseekplugin.store)
 
 # DeepSeek Plugin Store
 
@@ -11,7 +11,7 @@
 [![Verified Plugins](https://img.shields.io/badge/verified_plugins-498-c9362b?style=flat-square)](#all-verified-plugins)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-292522?style=flat-square)](LICENSE)
 
-[**Browse the Store →**](https://awesome-dsh-plugin.com) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+[**Browse the Store →**](https://deepseekplugin.store) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 
 [English](README.md) · **中文**
 
