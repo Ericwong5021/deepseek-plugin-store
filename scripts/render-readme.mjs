@@ -71,7 +71,7 @@ function localeCopy(zh) {
     groupCount: (count) => `${count} 个插件`,
     listedBody: '给你的仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 可自动收录；申请进入编辑精选，请按[合作说明](COLLABORATION.md)提交 PR。',
     browseStore: '浏览插件商店',
-    submit: '提交插件',
+    submit: '申请精选',
     pluginColumn: '插件',
     starsColumn: 'Stars',
     npmInstallNote: 'npm 包，预构建，推荐使用',

@@ -11,7 +11,7 @@
 [![Topic Plugins](https://img.shields.io/badge/topic_plugins-1493-c9362b?style=flat-square)](#all-topic-plugins)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-292522?style=flat-square)](LICENSE)
 
-[**浏览插件商店 →**](https://deepseekplugin.store) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+[**浏览插件商店 →**](https://deepseekplugin.store) · [申请精选](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 
 **中文** · [English](README.en.md)
 
@@ -1634,7 +1634,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 给你的仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic。每小时执行的抓取会自动收录，无需提交 PR。
 
-[提交插件 →](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml)
+[申请精选 →](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml)
 
 ## 许可协议
 
