@@ -19,7 +19,7 @@
 
 ---
 
-This directory automatically includes every GitHub repository carrying the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic. A `dsh.bundle` declaration in `package.json` is not required.
+This directory automatically includes every GitHub repository carrying the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic.
 
 > **1493 plugin repositories** · Updated hourly · Last sync: 2026-08-14 08:51 UTC
 

@@ -19,7 +19,7 @@
 
 ---
 
-本目录自动收录所有带有 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 的 GitHub 仓库，不要求在 `package.json` 中声明 `dsh.bundle`。
+本目录自动收录所有带有 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic 的 GitHub 仓库。
 
 > **1493 个插件仓库** · 每小时更新 · 上次同步：2026-08-14 08:51 UTC
 
