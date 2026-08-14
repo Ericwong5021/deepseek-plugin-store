@@ -136,8 +136,8 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
     pushedAt: repo.pushed_at,
     license: repo.license?.spdx_id ?? null,
     archived: Boolean(repo.archived),
-    isPlugin: true,
-    npmName: npmPackageName(pkg?.name),
+    isPlugin: manifestFound,
+    npmName: manifestFound ? npmPackageName(pkg?.name) : null,
     category: repo.editorPick
       ? { id: 'editor-picks', title: '编辑精选 / Editor Picks' }
       : categorize(repo, pkg),
@@ -147,8 +147,8 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
   }
 })
 
-const plugins = enriched.sort((a, b) => b.stars - a.stars)
-const related = []
+const plugins = enriched.filter((plugin) => plugin.isPlugin).sort((a, b) => b.stars - a.stars)
+const related = enriched.filter((plugin) => !plugin.isPlugin).sort((a, b) => b.stars - a.stars)
 let addedDates = {}
 try { addedDates = JSON.parse(await fs.readFile('data/added-dates.json', 'utf8')) } catch {}
 const today = new Date().toISOString().slice(0, 10)
@@ -218,7 +218,7 @@ const catalog = {
     provider: 'github',
     repository: 'Ericwong5021/deepseek-plugin-store',
     sources: ['topic:dsh-plugin', 'data/editor-picks.json'],
-    verification: 'topic:dsh-plugin or manual editor selection',
+    verification: 'package.json:dsh.bundle',
   },
   plugins,
   related,

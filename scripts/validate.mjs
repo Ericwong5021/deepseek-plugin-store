@@ -40,9 +40,8 @@ for (const plugin of catalog.plugins) {
   } else {
     throw new Error(`invalid discovery source: ${plugin.fullName}`)
   }
-  if (typeof plugin.compatibility?.manifestFound !== 'boolean') throw new Error(`invalid manifest evidence: ${plugin.fullName}`)
-  if (plugin.compatibility.manifestFound && plugin.compatibility.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest path: ${plugin.fullName}`)
-  if (!plugin.compatibility.manifestFound && plugin.compatibility.manifestPath !== null) throw new Error(`unexpected manifest path: ${plugin.fullName}`)
+  if (plugin.compatibility?.manifestFound !== true) throw new Error(`missing package.json:dsh.bundle: ${plugin.fullName}`)
+  if (plugin.compatibility.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest path: ${plugin.fullName}`)
   if (plugin.quality) {
     if (!Number.isInteger(plugin.quality.score) || plugin.quality.score < 0 || plugin.quality.score > 100) throw new Error(`invalid quality score: ${plugin.fullName}`)
     if (!['A', 'B', 'C', 'D'].includes(plugin.quality.grade)) throw new Error(`invalid quality grade: ${plugin.fullName}`)
