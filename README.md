@@ -1167,3 +1167,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 [CC0-1.0](LICENSE) · 目录数据来自 GitHub 公开 API，每小时自动刷新。
 
 <sub>社区项目，与 DeepSeek 无隶属关系，也未获得 DeepSeek 背书。</sub>
+
+## 友情链接
+
+[LINUX DO](https://linux.do/)

@@ -1167,3 +1167,7 @@ Add the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic to your repos
 [CC0-1.0](LICENSE) · Catalog data comes from the public GitHub API and refreshes hourly.
 
 <sub>Community project. Not affiliated with or endorsed by DeepSeek.</sub>
+
+## Links
+
+[LINUX DO](https://linux.do/)

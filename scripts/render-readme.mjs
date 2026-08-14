@@ -79,6 +79,7 @@ function localeCopy(zh) {
     licenseTitle: '许可协议',
     license: '目录数据来自 GitHub 公开 API，每小时自动刷新。',
     disclaimer: '社区项目，与 DeepSeek 无隶属关系，也未获得 DeepSeek 背书。',
+    linksTitle: '友情链接',
   } : {
     banner: 'docs/banner.png',
     tagline: 'Discover verified plugins, tools, and extensions for the DeepSeek Harness ecosystem.',
@@ -109,6 +110,7 @@ function localeCopy(zh) {
     licenseTitle: 'License',
     license: 'Catalog data comes from the public GitHub API and refreshes hourly.',
     disclaimer: 'Community project. Not affiliated with or endorsed by DeepSeek.',
+    linksTitle: 'Links',
   }
 }
 
@@ -236,6 +238,10 @@ ${copy.listedBody}
 [CC0-1.0](LICENSE) · ${copy.license}
 
 <sub>${copy.disclaimer}</sub>
+
+## ${copy.linksTitle}
+
+[LINUX DO](https://linux.do/)
 `
   }
 
