@@ -60,6 +60,24 @@ This directory automatically includes every GitHub repository carrying the [`dsh
 <a id="installing-plugins"></a>
 ## Installing plugins
 
+### Install the Plugin Store into DSH Web UI
+
+Install the latest version from GitHub:
+
+```sh
+npx @deepseek-ai/dsh plugin --profile web add github:Ericwong5021/deepseek-plugin-store
+npx @deepseek-ai/dsh web
+```
+
+After the Web UI starts, the sidebar shows “Plugin Store”. In the store's install bag, click “Direct install to DSH” to write the selected plugins into the `web` profile. Restart the Web UI after installing a new DSH plugin so it can load.
+
+For local development or acceptance:
+
+```sh
+cd /path/to/deepseek-plugin-store
+npx @deepseek-ai/dsh plugin --profile web add .
+```
+
 ```sh
 # npm package, prebuilt and recommended
 dsh plugin --profile <name> add <npm-package>
