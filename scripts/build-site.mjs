@@ -24,6 +24,7 @@ const CAT_DEFS = [
   ['dev-helpers', 'dev-helpers'],
   ['learning', 'learning'],
   ['misc', 'misc'],
+  ['other-projects', 'other-projects'],
 ]
 const CAT_IDS = CAT_DEFS.map(([id]) => id)
 const CAT_SLUGS = Object.fromEntries(CAT_DEFS)
@@ -97,13 +98,16 @@ function buildRows(loc, only) {
       const delay = Math.min(idx * 0.02, 0.4).toFixed(2)
       const repo = e.url.replace('https://github.com/', '')
       const cmd = `dsh plugin --profile web add github:${repo}`
+      const action = e.cat === 'other-projects'
+        ? `<a class="repo-link" href="${e.url}" rel="noopener">${loc.GITHUB_LINK}</a>`
+        : `<button class="copy" type="button" data-cmd="${esc(cmd)}" aria-label="${loc.COPY_LABEL}">${loc.COPY_TEXT}</button>`
       return `    <li class="item" data-cat="${e.cat}" style="animation-delay:${delay}s">
       <span class="no" aria-hidden="true">№ ${String(idx).padStart(2, '0')}</span>
       <div>
         <h3><a href="${e.url}" rel="noopener" translate="no">${esc(e.name)}</a><span class="by" translate="no">${esc(e.owner)}</span></h3>
         <p>${esc(e.descs[loc.code])}</p>
       </div>
-      <button class="copy" type="button" data-cmd="${esc(cmd)}" aria-label="${loc.COPY_LABEL}">${loc.COPY_TEXT}</button>
+      ${action}
     </li>`
     }).join('\n\n')
     return sec + '\n\n' + items

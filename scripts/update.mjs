@@ -136,8 +136,8 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
     pushedAt: repo.pushed_at,
     license: repo.license?.spdx_id ?? null,
     archived: Boolean(repo.archived),
-    isPlugin: true,
-    npmName: npmPackageName(pkg?.name),
+    isPlugin: manifestFound,
+    npmName: manifestFound ? npmPackageName(pkg?.name) : null,
     category: repo.editorPick
       ? { id: 'editor-picks', title: '编辑精选 / Editor Picks' }
       : categorize(repo, pkg),
@@ -147,57 +147,67 @@ const enriched = await mapLimit(repos, 10, async (repo) => {
   }
 })
 
-const plugins = enriched.sort((a, b) => b.stars - a.stars)
-const related = []
+const plugins = enriched.filter((plugin) => plugin.isPlugin).sort((a, b) => b.stars - a.stars)
+const related = enriched
+  .filter((plugin) => !plugin.isPlugin)
+  .map((project) => ({ ...project, category: { id: 'other-projects', title: '其他项目 / Other Projects' } }))
+  .sort((a, b) => b.stars - a.stars)
 let addedDates = {}
 try { addedDates = JSON.parse(await fs.readFile('data/added-dates.json', 'utf8')) } catch {}
 const today = new Date().toISOString().slice(0, 10)
-for (const plugin of plugins) {
-  addedDates[plugin.url] ||= today
-  plugin.addedAt = addedDates[plugin.url]
+for (const entry of [...plugins, ...related]) {
+  addedDates[entry.url] ||= today
+  entry.addedAt = addedDates[entry.url]
 }
-console.log(`selected catalog repositories: ${plugins.length}`)
+console.log(`selected catalog repositories: ${plugins.length} plugins + ${related.length} other projects`)
 
 const generatedAt = new Date().toISOString()
 
 const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-for (const plugin of plugins) {
-  plugin.slug = slugify(plugin.fullName)
-  plugin.name = plugin.fullName
-  plugin.summary = plugin.description
-  plugin.tags = [plugin.category.id]
-  plugin.repositoryUrl = plugin.url
-  plugin.installSpec = `github:${plugin.fullName}`
-  plugin.author = plugin.fullName.split('/')[0]
-  plugin.featured = plugin.editorPick
-  plugin.status = plugin.archived ? 'archived' : 'active'
-  plugin.source = plugin.editorPick
+const finalizeEntry = (entry) => {
+  entry.slug = slugify(entry.fullName)
+  entry.name = entry.fullName
+  entry.summary = entry.description
+  entry.tags = [entry.category.id]
+  entry.repositoryUrl = entry.url
+  entry.author = entry.fullName.split('/')[0]
+  entry.featured = entry.editorPick
+  entry.status = entry.archived ? 'archived' : 'active'
+  entry.source = entry.editorPick
     ? {
         type: 'editor-pick',
-        origins: plugin.fromTopic ? ['editor-pick', 'github-topic'] : ['editor-pick'],
+        origins: entry.fromTopic ? ['editor-pick', 'github-topic'] : ['editor-pick'],
         file: 'data/editor-picks.json',
-        ...(plugin.fromTopic ? { topic: 'dsh-plugin' } : {}),
+        ...(entry.fromTopic ? { topic: 'dsh-plugin' } : {}),
       }
     : {
         type: 'github-topic',
         origins: ['github-topic'],
         topic: 'dsh-plugin',
       }
-  plugin.github = {
-    stars: plugin.stars,
-    license: plugin.license,
-    lastPushAt: plugin.pushedAt,
-    archived: plugin.archived,
+  entry.github = {
+    stars: entry.stars,
+    license: entry.license,
+    lastPushAt: entry.pushedAt,
+    archived: entry.archived,
     capturedAt: generatedAt
   }
-  plugin.compatibility = {
-    manifestFound: plugin.manifestFound,
-    manifestPath: plugin.manifestFound ? 'package.json:dsh.bundle' : null,
+  entry.compatibility = {
+    manifestFound: entry.manifestFound,
+    manifestPath: entry.manifestFound ? 'package.json:dsh.bundle' : null,
     checkedAt: generatedAt
   }
-  delete plugin.manifestFound
-  delete plugin.editorPick
-  delete plugin.fromTopic
+  delete entry.manifestFound
+  delete entry.editorPick
+  delete entry.fromTopic
+}
+
+for (const plugin of plugins) {
+  finalizeEntry(plugin)
+  plugin.installSpec = `github:${plugin.fullName}`
+}
+for (const project of related) {
+  finalizeEntry(project)
 }
 
 const { renderReadmes } = await import('./render-readme.mjs')
@@ -218,7 +228,7 @@ const catalog = {
     provider: 'github',
     repository: 'Ericwong5021/deepseek-plugin-store',
     sources: ['topic:dsh-plugin', 'data/editor-picks.json'],
-    verification: 'topic:dsh-plugin or manual editor selection',
+    verification: 'package.json:dsh.bundle',
   },
   plugins,
   related,

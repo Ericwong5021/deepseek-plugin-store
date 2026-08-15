@@ -17,9 +17,10 @@ const unique = (label, values) => {
   }
 }
 
-unique('repository', catalog.plugins.map((plugin) => plugin.url))
-unique('plugin name', catalog.plugins.map((plugin) => plugin.fullName.toLowerCase()))
-unique('slug', catalog.plugins.map((plugin) => plugin.slug))
+const entries = [...catalog.plugins, ...catalog.related]
+unique('repository', entries.map((entry) => entry.url))
+unique('plugin name', entries.map((entry) => entry.fullName.toLowerCase()))
+unique('slug', entries.map((entry) => entry.slug))
 unique('install spec', catalog.plugins.map((plugin) => plugin.installSpec))
 
 for (const entry of editorPicks) {
@@ -40,13 +41,27 @@ for (const plugin of catalog.plugins) {
   } else {
     throw new Error(`invalid discovery source: ${plugin.fullName}`)
   }
-  if (typeof plugin.compatibility?.manifestFound !== 'boolean') throw new Error(`invalid manifest evidence: ${plugin.fullName}`)
-  if (plugin.compatibility.manifestFound && plugin.compatibility.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest path: ${plugin.fullName}`)
-  if (!plugin.compatibility.manifestFound && plugin.compatibility.manifestPath !== null) throw new Error(`unexpected manifest path: ${plugin.fullName}`)
+  if (plugin.compatibility?.manifestFound !== true) throw new Error(`missing package.json:dsh.bundle: ${plugin.fullName}`)
+  if (plugin.compatibility.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest path: ${plugin.fullName}`)
   if (plugin.quality) {
     if (!Number.isInteger(plugin.quality.score) || plugin.quality.score < 0 || plugin.quality.score > 100) throw new Error(`invalid quality score: ${plugin.fullName}`)
     if (!['A', 'B', 'C', 'D'].includes(plugin.quality.grade)) throw new Error(`invalid quality grade: ${plugin.fullName}`)
     if (!plugin.quality.assessedAt || !plugin.quality.sourceLastPushAt || !plugin.quality.analyzer?.model) throw new Error(`incomplete quality assessment: ${plugin.fullName}`)
+  }
+}
+
+for (const project of catalog.related) {
+  if (project.isPlugin !== false) throw new Error(`${project.fullName} is not marked as an other project`)
+  if (!/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/.test(project.url)) throw new Error(`invalid repository URL: ${project.url}`)
+  if (project.category?.id !== 'other-projects' || !project.pushedAt || typeof project.summary !== 'string' || !project.author || !project.status) throw new Error(`incomplete other project: ${project.fullName}`)
+  if (project.installSpec !== undefined) throw new Error(`other project has an install spec: ${project.fullName}`)
+  if (project.compatibility?.manifestFound !== false || project.compatibility.manifestPath !== null) throw new Error(`other project has installable manifest evidence: ${project.fullName}`)
+  if (project.source?.type === 'github-topic') {
+    if (project.source.topic !== 'dsh-plugin') throw new Error(`invalid topic source: ${project.fullName}`)
+  } else if (project.source?.type === 'editor-pick') {
+    if (project.source.file !== 'data/editor-picks.json') throw new Error(`invalid editor pick source: ${project.fullName}`)
+  } else {
+    throw new Error(`invalid discovery source: ${project.fullName}`)
   }
 }
 
