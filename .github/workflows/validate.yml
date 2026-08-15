@@ -22,3 +22,11 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/validate.mjs
+      - name: Validate compiled plugin boundary
+        run: |
+          test ! -e src
+          test ! -e tsconfig.json
+          test ! -e tsdown.config.ts
+          test ! -e lib/client.js.map
+          test -f lib/client.js
+          node -e "const p=require('./package.json'); if (!p.dsh?.bundle || p.main !== 'lib/index.js' || p.exports?.['./client']?.default !== './lib/client.js') process.exit(1)"
