@@ -13,7 +13,7 @@
 import fs from 'node:fs'
 import LOCALES from '../site/locales.mjs'
 
-const ORIGIN = 'https://ericwong5021.github.io/deepseek-plugin-store'
+const ORIGIN = 'https://deepseekplugin.store'
 const DATES_FILE = 'data/added-dates.json'
 const CAT_DEFS = [
   ['editor-picks', 'editor-picks'],
