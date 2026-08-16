@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import crypto from 'node:crypto'
+import { generateCatalog } from './generate-catalog.mjs'
 
 const apiKey = process.env.DEEPSEEK_API_KEY ?? ''
 const githubToken = process.env.GITHUB_TOKEN ?? ''
@@ -8,7 +9,6 @@ const model = process.env.AI_MODEL || 'deepseek-v4-flash'
 const analyzerVersion = '1'
 const limit = Math.min(20, Math.max(1, Number.parseInt(process.env.AI_QUALITY_LIMIT || '5', 10) || 5))
 const catalogPath = 'data/catalog.json'
-const pluginsPath = 'data/plugins.json'
 const cachePath = 'data/plugin-quality.json'
 const githubHeaders = {
   Accept: 'application/vnd.github+json',
@@ -229,12 +229,8 @@ cache.updatedAt = latestAssessmentAt
 cache.analyzerVersion = analyzerVersion
 cache.model = model
 
-const catalogJson = JSON.stringify(catalog, null, 2) + '\n'
-await Promise.all([
-  fs.writeFile(catalogPath, catalogJson),
-  fs.writeFile(pluginsPath, catalogJson),
-  fs.writeFile(cachePath, JSON.stringify(cache, null, 2) + '\n'),
-])
+await fs.writeFile(cachePath, JSON.stringify(cache, null, 2) + '\n')
+await generateCatalog()
 
 const digest = crypto.createHash('sha256').update(JSON.stringify(cache.assessments)).digest('hex').slice(0, 12)
 console.log(JSON.stringify({ analyzed: assessments.length, total: catalog.plugins.length, attempted: apiKey ? candidates.length : 0, failures: failures.length, digest }, null, 2))

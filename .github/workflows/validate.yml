@@ -4,6 +4,16 @@ on:
   pull_request:
     paths:
       - data/**
+      - registry/**
+      - scripts/**
+      - package.json
+      - .github/workflows/**
+      - .github/ISSUE_TEMPLATE/**
+  push:
+    branches: [main]
+    paths:
+      - data/**
+      - registry/**
       - scripts/**
       - package.json
       - .github/workflows/**
@@ -16,12 +26,23 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/validate.mjs
+      - name: Validate registry source
+        run: node scripts/validate-registry.mjs
+      - name: Validate deterministic catalogs
+        run: node scripts/generate-catalog.mjs --check
+      - name: Validate public projections
+        run: node scripts/validate.mjs
+      - name: Validate registry scripts
+        run: |
+          for file in scripts/registry-lib.mjs scripts/import-legacy-catalog.mjs scripts/generate-catalog.mjs scripts/discover.mjs scripts/update.mjs scripts/validate-registry.mjs scripts/validate.mjs scripts/analyze-quality.mjs scripts/monitor-upstream.mjs; do
+            node --check "$file"
+          done
       - name: Validate compiled plugin boundary
         run: |
           test ! -e src

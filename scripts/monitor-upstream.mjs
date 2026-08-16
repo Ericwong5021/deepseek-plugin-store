@@ -114,7 +114,7 @@ website = {
     copyInstall: /copy|data-cmd|navigator\.clipboard/i.test(websiteResult.text),
     installEntry: /dsh plugin|install/i.test(websiteResult.text),
   },
-  pluginDetailPages: sitemapUrls.filter((url) => /\/plugins?\//.test(url)).length,
+  pluginDetailPages: new Set(sitemapUrls.filter((url) => /\/(?:p|plugins?)\//.test(url)).map((url) => url.replace(/\/zh\//, '/'))).size,
 }
 
 let git = { status: 'failed', commitCount: null, latestCommit: null, recentCommits: [], newCommits: [], changedFiles: [], historyRewritten: false }
@@ -164,6 +164,9 @@ try {
 }
 
 const catalog = await readJson('data/catalog.json', { plugins: [], related: [] })
+const catalogV2 = await readJson('data/catalog-v2.json', { plugins: [] })
+const catalogUrls = new Set(catalogV2.plugins.map((plugin) => plugin.repository?.url).filter(Boolean))
+const pendingUpstreamEntries = pluginEntries.filter((entry) => !catalogUrls.has(entry.url))
 const pluginPages = []
 const walk = async (directory) => {
   for (const entry of await fs.readdir(directory, { withFileTypes: true })) {
@@ -204,21 +207,23 @@ const indexedCapabilities = {
 const siteIndependentPluginPages = siteSource['src/pages/plugins/[slug].astro'] ? catalog.plugins.length : 0
 const siteIndexedPages = siteSourceAvailable ? catalog.plugins.length + 3 : docsHtml.length + pluginPages.filter((file) => file.endsWith('.xml')).length
 const storeSnapshot = {
-  verifiedPlugins: catalog.plugins.length,
+  verifiedPlugins: catalogV2.plugins.filter((plugin) => plugin.admission?.status === 'verified').length,
+  legacyPendingPlugins: catalogV2.plugins.filter((plugin) => plugin.admission?.status === 'legacy-pending').length,
+  listedPlugins: catalogV2.plugins.length,
   relatedProjects: catalog.related.length,
   indexedPages: siteIndexedPages,
   independentPluginPages: siteIndependentPluginPages,
-  categories: [...new Set(catalog.plugins.map((plugin) => plugin.category?.id).filter(Boolean))].sort(),
+  categories: [...new Set(catalogV2.plugins.map((plugin) => plugin.classification?.category).filter(Boolean))].sort(),
   coverage: indexedCapabilities,
   historicalSnapshotCount: previous?.history?.length ?? 0,
-  source: { catalog: 'data/catalog.json', checkedAt: now, updatedAt: catalog.updatedAt, sourceCommit: catalog.sourceCommit, siteRoot, siteSourceAvailable, siteCatalogPluginCount },
+  source: { catalog: 'data/catalog-v2.json', checkedAt: now, updatedAt: catalogV2.updatedAt, sourceCommit: catalogV2.sourceCommit, siteRoot, siteSourceAvailable, siteCatalogPluginCount },
 }
-const previousVerifiedPlugins = previous?.store?.verifiedPlugins ?? catalog.plugins.length
-const convertedPlugins = Math.max(0, catalog.plugins.length - previousVerifiedPlugins)
-const catalogSourceChanged = catalog.sourceCommit !== previous?.store?.source?.sourceCommit
-const sourceFilesChanged = convertedPlugins || catalogSourceChanged ? ['README.md', 'README.en.md', 'README.zh.md', 'data/added-dates.json', 'data/catalog.json', 'data/plugins.json'] : []
+const previousVerifiedPlugins = previous?.store?.verifiedPlugins ?? storeSnapshot.verifiedPlugins
+const convertedPlugins = Math.max(0, storeSnapshot.verifiedPlugins - previousVerifiedPlugins)
+const catalogSourceChanged = catalogV2.sourceCommit !== previous?.store?.source?.sourceCommit
+const sourceFilesChanged = convertedPlugins || catalogSourceChanged ? ['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/candidates.json', 'data/observations.json'] : []
 const slaGaps = []
-if (catalog.plugins.length < pluginEntries.length) slaGaps.push({ priority: 'P0', capability: 'coverage', detail: `verified plugins ${catalog.plugins.length} below competitor README entries ${pluginEntries.length}` })
+if (catalogV2.plugins.length < pluginEntries.length) slaGaps.push({ priority: 'P0', capability: 'coverage', detail: `listed plugins ${catalogV2.plugins.length} below competitor README entries ${pluginEntries.length}` })
 for (const [capability, detail] of [['trending', 'trending discovery surface'], ['rising', 'rising discovery surface'], ['ogImage', 'OG image metadata'], ['hreflang', 'hreflang metadata']]) {
   if (!indexedCapabilities[capability]) slaGaps.push({ priority: capability === 'ogImage' || capability === 'hreflang' ? 'P1' : 'P0', capability, detail })
 }
@@ -306,8 +311,10 @@ const snapshot = {
   slaGaps,
   change: { ...changed, previousCommit: previous?.upstream?.latestCommit?.sha ?? null, previousContentFingerprint: previousFingerprint, summary: changeSummary },
   processing: {
-    result: convertedPlugins || catalogSourceChanged ? `converted ${convertedPlugins} verified plugins from the measured upstream snapshot` : git.newCommits.length || changed.websiteChanged || changed.contentChanged ? 'measured; no safe catalog conversion required' : 'measured; no conversion required',
+    result: pendingUpstreamEntries.length ? `measured; ${pendingUpstreamEntries.length} upstream entries remain in hidden candidate review` : 'measured; no new upstream candidates',
     convertedPlugins,
+    pendingUpstreamEntries,
+    conversionBlocker: null,
     sourceFilesChanged,
     siteSourceStatus: !siteSourceAvailable
       ? 'site_source_missing'
@@ -322,4 +329,4 @@ const snapshot = {
 }
 
 await fs.writeFile('data/upstream-sync.json', JSON.stringify(snapshot, null, 2) + '\n')
-console.log(JSON.stringify({ status: snapshot.status, competitorPlugins: pluginEntries.length, websiteAdvertisedPlugins: website.home.advertisedPluginEntries, storePlugins: catalog.plugins.length, newCommits: git.newCommits.length, failures: failures.length }, null, 2))
+console.log(JSON.stringify({ status: snapshot.status, competitorPlugins: pluginEntries.length, websiteAdvertisedPlugins: website.home.advertisedPluginEntries, storePlugins: catalogV2.plugins.length, newCommits: git.newCommits.length, failures: failures.length }, null, 2))

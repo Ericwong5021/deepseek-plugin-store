@@ -1,13 +1,13 @@
-name: Submit a plugin
-description: Request a correction or report a missing dsh-plugin Topic repository.
-title: "[Plugin] "
+name: Add a plugin
+description: Submit one verified DeepSeek Harness plugin for registry review.
+title: "[Add Plugin] "
 labels:
   - plugin-submission
 body:
   - type: markdown
     attributes:
       value: |
-        Repositories carrying the dsh-plugin Topic are listed automatically. Use this form to report a missing repository or request a catalog correction.
+        Discovery does not publish a plugin automatically. Submit one public repository with root package.json:dsh.bundle evidence for registry review.
   - type: input
     id: name
     attributes:
@@ -27,8 +27,8 @@ body:
     id: install_spec
     attributes:
       label: Install identifier
-      description: The npm package name or GitHub install spec users should provide.
-      placeholder: npm-package-name or github:owner/repository
+      description: The unique install spec users should provide.
+      placeholder: github:owner/repository
     validations:
       required: true
   - type: dropdown
@@ -36,20 +36,43 @@ body:
     attributes:
       label: Category
       options:
-        - Editor Picks
-        - UI Enhancements
-        - Workflow Automation
-        - Tools
-        - Notifications & Monitoring
-        - Developer Helpers
-        - Learning
-        - Miscellaneous
+        - Build & Development / Plugin Development
+        - Build & Development / Code Generation
+        - Build & Development / Testing & Debugging
+        - Build & Development / Project Analysis
+        - Agents & Workflows / Orchestration
+        - Agents & Workflows / Automation
+        - Agents & Workflows / Planning & Execution
+        - Agents & Workflows / Memory & Context
+        - Research & Knowledge / Search & Browsing
+        - Research & Knowledge / Deep Research
+        - Research & Knowledge / Knowledge Management
+        - Research & Knowledge / Document Processing
+        - Interface & Experience / Themes & Layout
+        - Interface & Experience / Navigation & Panels
+        - Interface & Experience / Visualization
+        - Interface & Experience / Desktop & Mobile
+        - Tools & Data / Files & Terminal
+        - Tools & Data / Data Processing
+        - Tools & Data / Media Tools
+        - Tools & Data / General Utilities
+        - Integrations & Communication / External Services
+        - Integrations & Communication / Notifications & Monitoring
+        - Integrations & Communication / Collaboration
+        - Learning / Education & Explanation
+    validations:
+      required: true
+  - type: textarea
+    id: category_evidence
+    attributes:
+      label: Category evidence
+      description: Link to README, manifest, exports, or source paths that support the primary category.
     validations:
       required: true
   - type: textarea
     id: summary
     attributes:
-      label: English summary
+      label: Summary
       description: Explain what the plugin does for DeepSeek Harness users.
     validations:
       required: true
@@ -68,4 +91,8 @@ body:
         - label: I maintain this plugin or have permission to submit it.
           required: true
         - label: The repository is public and the information above is accurate to the best of my knowledge.
+          required: true
+        - label: The root package.json declares dsh.bundle and the README includes installation or usage guidance.
+          required: true
+        - label: This request contains exactly one plugin.
           required: true

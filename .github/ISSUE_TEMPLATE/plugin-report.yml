@@ -1,0 +1,41 @@
+name: Deprecate or report a plugin
+description: Report lifecycle, archive, installability, impersonation, or registry integrity problems for one plugin.
+title: "[Plugin Report] "
+labels:
+  - plugin-report
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Plugin repository
+      placeholder: https://github.com/owner/plugin-name
+    validations:
+      required: true
+  - type: dropdown
+    id: report_type
+    attributes:
+      label: Report type
+      options:
+        - Archived or deprecated
+        - No longer installable
+        - Missing dsh.bundle
+        - Repository transferred or renamed
+        - Impersonation or misleading identity
+        - Malicious or blocked
+        - Other registry integrity issue
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Provide public repository or release evidence and the observed date.
+    validations:
+      required: true
+  - type: checkboxes
+    id: declaration
+    attributes:
+      label: Declaration
+      options:
+        - label: This report concerns exactly one plugin and contains no private credentials or personal data.
+          required: true

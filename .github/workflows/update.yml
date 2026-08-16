@@ -15,15 +15,16 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Regenerate catalog data
+      - name: Discover candidates and regenerate catalogs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DATA_ONLY: '1'
+          DISCOVERY_VERIFY_LIMIT: '100'
         run: node scripts/update.mjs
       - name: Analyze plugin quality with AI
         continue-on-error: true
@@ -38,11 +39,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/monitor-upstream.mjs
-      - name: Validate catalog
+      - name: Validate registry source
+        run: node scripts/validate-registry.mjs
+      - name: Validate deterministic catalogs
+        run: node scripts/generate-catalog.mjs --check
+      - name: Validate public projections
         run: node scripts/validate.mjs
       - name: Check generated file scope
         run: |
-          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev '^data/(added-dates|catalog|plugins|plugin-quality|upstream-sync)\.json$' || true)
+          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev '^data/(catalog-v2|catalog|plugins|editor-picks|candidates|observations|plugin-quality|upstream-sync)\.json$' || true)
           if [ -n "$unexpected" ]; then
             echo "unexpected generated files:"
             echo "$unexpected"
@@ -53,7 +58,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/catalog.json data/plugins.json data/added-dates.json data/upstream-sync.json
+          git add data/catalog-v2.json data/catalog.json data/plugins.json data/editor-picks.json data/candidates.json data/observations.json data/upstream-sync.json
           if [ -f data/plugin-quality.json ]; then git add data/plugin-quality.json; fi
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
