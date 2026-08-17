@@ -8,7 +8,7 @@ const HEADERS = {
   'User-Agent': 'deepseek-plugin-store',
   ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
 }
-const LIMIT = Math.min(100, Math.max(1, Number.parseInt(process.env.DISCOVERY_VERIFY_LIMIT || '100', 10) || 100))
+const LIMIT = Math.min(500, Math.max(1, Number.parseInt(process.env.DISCOVERY_VERIFY_LIMIT || '250', 10) || 250))
 const MAX_BODY = 1048576
 
 const request = async (url, options = {}) => {
@@ -202,7 +202,21 @@ export const discover = async () => {
     const stale = candidate.failures?.length ? retryDue : candidate.checks?.checkedAt ? Date.parse(candidate.checks.checkedAt) < staleBefore : true
     if (changed || stale) queue.push({ type: 'candidate', candidate, priority: !candidate.checks?.checkedAt ? 0 : changed ? 1 : 2 })
   }
-  queue.sort((a, b) => a.priority - b.priority || (a.record?.id || a.candidate.id).localeCompare(b.record?.id || b.candidate.id))
+  queue.sort((a, b) => {
+    const priority = a.priority - b.priority
+    if (priority) return priority
+    if (a.candidate && b.candidate) {
+      const editorial = Number((b.candidate.sources || []).includes('editor-pick')) - Number((a.candidate.sources || []).includes('editor-pick'))
+      if (editorial) return editorial
+      const ready = Number(b.candidate.checks?.admissionReady === true) - Number(a.candidate.checks?.admissionReady === true)
+      if (ready) return ready
+      const stars = (b.candidate.github?.stars || 0) - (a.candidate.github?.stars || 0)
+      if (stars) return stars
+      const activity = (b.candidate.github?.lastPushAt || '').localeCompare(a.candidate.github?.lastPushAt || '')
+      if (activity) return activity
+    }
+    return (a.record?.id || a.candidate.id).localeCompare(b.record?.id || b.candidate.id)
+  })
   const selected = queue.slice(0, LIMIT)
   await mapLimit(selected, 8, async (item) => {
     const fullName = item.record?.repository.fullName || item.candidate.repository.fullName
@@ -225,7 +239,10 @@ export const discover = async () => {
         archived: Boolean(evidence.repository.archived),
       }
       checks.admissionReady = checks.publicRepository && checks.manifestFound && checks.installSpecValid && checks.readmeFound && checks.readmeGuidance && checks.relevant && !checks.archived
-      checks.reasons = Object.entries(checks).filter(([key, value]) => !['checkedAt', 'admissionReady', 'reasons', 'manifestPath', 'installSpec'].includes(key) && value === false).map(([key]) => key)
+      checks.reasons = [
+        ...['publicRepository', 'manifestFound', 'installSpecValid', 'readmeFound', 'readmeGuidance', 'relevant'].filter((key) => checks[key] === false),
+        ...(checks.archived ? ['archived'] : []),
+      ]
       const createdAt = Date.parse(evidence.repository.created_at)
       const lifecycleSuggestion = !evidence.release || createdAt > Date.parse(now) - 30 * 86400000 ? 'incubating' : 'active'
       const classificationSuggestion = classifyEvidence({
@@ -289,7 +306,7 @@ export const discover = async () => {
   if (JSON.stringify({ candidates: candidateData.candidates, failures: candidateData.failures }) !== originalCandidates) candidateData.updatedAt = now
   await writeJson('data/observations.json', observations)
   await writeJson('data/candidates.json', candidateData)
-  return { discovered: discovered.size, verified: selected.length, candidates: Object.keys(candidateData.candidates).length, sourceFailures: sourceFailures.length }
+  return { discovered: discovered.size, checked: selected.length, candidates: Object.keys(candidateData.candidates).length, sourceFailures: sourceFailures.length }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

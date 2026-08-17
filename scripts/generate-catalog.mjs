@@ -100,6 +100,8 @@ export const buildCatalogOutputs = async () => {
     plugins: pluginsV2,
     candidateSummary: {
       total: Object.keys(candidates.candidates || {}).length,
+      checked: Object.values(candidates.candidates || {}).filter((candidate) => Boolean(candidate.checks?.checkedAt)).length,
+      unchecked: Object.values(candidates.candidates || {}).filter((candidate) => !candidate.checks?.checkedAt).length,
       admissionReady: Object.values(candidates.candidates || {}).filter((candidate) => candidate.checks?.admissionReady === true).length,
       hidden: Object.values(candidates.candidates || {}).filter((candidate) => candidate.visibility === 'hidden').length,
     },
