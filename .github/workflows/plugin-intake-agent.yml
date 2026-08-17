@@ -1,0 +1,111 @@
+name: Plugin intake agent
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: plugin-intake-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  intake:
+    if: ${{ github.event.issue.user.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          token: ${{ github.token }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Inspect plugin submission
+        id: intake
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/plugin-intake-agent.mjs
+      - name: Find an existing intake pull request
+        if: ${{ steps.intake.outputs.outcome == 'accepted' }}
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          url=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --search "Closes #${ISSUE_NUMBER} in:body" --json url --jq '.[0].url // ""')
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Validate registry change
+        if: ${{ steps.intake.outputs.outcome == 'accepted' && steps.existing.outputs.url == '' }}
+        id: validation
+        continue-on-error: true
+        run: |
+          node scripts/validate-registry.mjs
+          node scripts/generate-catalog.mjs --check
+          node scripts/validate.mjs
+      - name: Check change scope
+        if: ${{ steps.intake.outputs.outcome == 'accepted' && steps.existing.outputs.url == '' && steps.validation.outcome == 'success' }}
+        id: scope
+        continue-on-error: true
+        env:
+          PLUGIN_ID: ${{ steps.intake.outputs.plugin_id }}
+        run: |
+          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev "^(registry/plugins/${PLUGIN_ID}\.json|data/(observations|candidates|catalog-v2|catalog|plugins|editor-picks)\.json)$" || true)
+          if [ -n "$unexpected" ]; then
+            echo "$unexpected"
+            exit 1
+          fi
+      - name: Create intake pull request
+        if: ${{ steps.intake.outputs.outcome == 'accepted' && steps.existing.outputs.url == '' && steps.validation.outcome == 'success' && steps.scope.outcome == 'success' }}
+        id: pull_request
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PLUGIN_ID: ${{ steps.intake.outputs.plugin_id }}
+          REPOSITORY_NAME: ${{ steps.intake.outputs.repository }}
+          PR_BODY_FILE: ${{ steps.intake.outputs.pr_body_file }}
+        run: |
+          branch="agent/plugin-intake-${ISSUE_NUMBER}-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add "registry/plugins/${PLUGIN_ID}.json" data/observations.json data/candidates.json data/catalog-v2.json data/catalog.json data/plugins.json data/editor-picks.json
+          git commit -m "feat: add ${REPOSITORY_NAME}"
+          git push --set-upstream origin "$branch"
+          url=$(gh pr create --repo "$GITHUB_REPOSITORY" --head "$branch" --base "${{ github.event.repository.default_branch }}" --title "feat: add ${REPOSITORY_NAME}" --body-file "$PR_BODY_FILE")
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Reply with existing pull request
+        if: ${{ steps.intake.outputs.outcome == 'accepted' && steps.existing.outputs.url != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ steps.existing.outputs.url }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --body "录入检查已通过，现有 PR 正在处理：${PR_URL}\n\nAdmission checks passed. The existing intake PR is in progress: ${PR_URL}"
+      - name: Reply with new pull request
+        if: ${{ steps.pull_request.outputs.url != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ steps.pull_request.outputs.url }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --body "录入检查已通过，Agent 已创建 PR：${PR_URL}\n\nAdmission checks passed. The agent created a PR: ${PR_URL}"
+      - name: Reply with review result
+        if: ${{ steps.intake.outputs.reply_file != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPLY_FILE: ${{ steps.intake.outputs.reply_file }}
+        run: gh issue comment "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --body-file "$REPLY_FILE"
+      - name: Reply with automation failure
+        if: ${{ steps.intake.outputs.outcome == 'accepted' && steps.existing.outputs.url == '' && (steps.validation.outcome == 'failure' || steps.scope.outcome == 'failure' || steps.pull_request.outcome == 'failure') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --body "插件本身的预检查已通过，但 Registry 校验或 PR 创建失败，请维护者查看本次工作流。\n\nThe plugin preflight checks passed, but registry validation or PR creation failed. A maintainer should inspect this workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+      - name: Fail incomplete review
+        if: ${{ steps.intake.outputs.outcome == 'error' || steps.validation.outcome == 'failure' || steps.scope.outcome == 'failure' || steps.pull_request.outcome == 'failure' }}
+        run: exit 1
