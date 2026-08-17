@@ -1,4 +1,4 @@
-name: Update plugin catalog and quality
+name: Update open-source catalog and rankings
 
 concurrency:
   group: deepseek-plugin-store-main-write
@@ -26,6 +26,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISCOVERY_VERIFY_LIMIT: '100'
         run: node scripts/update.mjs
+      - name: Verify ranking feeds
+        run: |
+          node -e "const c=require('./data/catalog-v2.json'); const r=c.collections?.rankings; if (!r?.generatedAt || !r?.eligibleCount || !['popular','new','active','rising'].every((key) => Array.isArray(r[key]?.items))) process.exit(1); console.log(JSON.stringify({ generatedAt: r.generatedAt, eligibleCount: r.eligibleCount, popular: r.popular.items.length, new: r.new.items.length, active: r.active.items.length, rising: r.rising.items.length, risingStatus: r.rising.status }))"
       - name: Analyze plugin quality with AI
         continue-on-error: true
         env:
@@ -67,6 +70,12 @@ jobs:
           git commit -m "chore: auto-update plugin list"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Upload ranking snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: open-source-ranking-snapshot
+          path: data/catalog-v2.json
+          retention-days: 7
       - name: Trigger website deployment
         if: ${{ steps.commit.outputs.changed == 'true' }}
         env:

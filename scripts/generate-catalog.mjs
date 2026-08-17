@@ -6,35 +6,47 @@ import { loadRegistryPlugins, readJson, sha256, titleForLegacyCategory } from '.
 const OUTPUTS = ['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/editor-picks.json']
 
 const buildRankings = (plugins, updatedAt, publicCategories) => {
-  const eligible = plugins.filter((plugin) => publicCategories.has(plugin.classification.category) && !plugin.classification.needsReview && ['active', 'incubating'].includes(plugin.lifecycle.status))
+  const eligible = plugins.filter((plugin) => plugin.admission.status === 'verified' && plugin.observations?.compatibility?.manifestFound === true && publicCategories.has(plugin.classification.category) && !plugin.classification.needsReview && ['active', 'incubating'].includes(plugin.lifecycle.status))
   const stars = (plugin) => plugin.observations?.github?.stars ?? 0
   const lastPush = (plugin) => plugin.observations?.github?.lastPushAt ?? ''
   const cutoffTime = Date.parse(updatedAt) - 30 * 86400000
   const cutoff = new Date(cutoffTime).toISOString().slice(0, 10)
   const risingCandidates = eligible.flatMap((plugin) => {
     const history = [...(plugin.observations?.github?.starHistory || [])].sort((a, b) => a.capturedAt.localeCompare(b.capturedAt))
-    const baseline = history.filter((point) => Date.parse(point.capturedAt) <= cutoffTime).at(-1)
     const latest = history.at(-1)
-    return baseline && latest ? [{ id: plugin.id, delta: latest.stars - baseline.stars }] : []
+    if (!latest) return []
+    const baseline = history.filter((point) => Date.parse(point.capturedAt) <= cutoffTime).at(-1) || history.find((point) => Date.parse(latest.capturedAt) - Date.parse(point.capturedAt) >= 86400000)
+    return baseline ? [{ id: plugin.id, delta: latest.stars - baseline.stars, from: baseline.capturedAt, to: latest.capturedAt }] : []
   }).sort((a, b) => b.delta - a.delta || a.id.localeCompare(b.id))
+  const rising = risingCandidates.filter((item) => item.delta > 0).slice(0, 100)
   return {
+    generatedAt: updatedAt,
+    eligibleCount: eligible.length,
     popular: {
       method: 'current-github-stars',
+      limit: 100,
       items: [...eligible].sort((a, b) => stars(b) - stars(a) || a.id.localeCompare(b.id)).slice(0, 100).map((plugin) => plugin.id),
     },
     new: {
       method: 'registry-added-within-30-days',
+      windowDays: 30,
+      limit: 100,
       items: eligible.filter((plugin) => plugin.addedAt >= cutoff).sort((a, b) => b.addedAt.localeCompare(a.addedAt) || stars(b) - stars(a)).slice(0, 100).map((plugin) => plugin.id),
     },
     active: {
       method: 'latest-github-push',
+      limit: 100,
       items: [...eligible].filter((plugin) => lastPush(plugin)).sort((a, b) => lastPush(b).localeCompare(lastPush(a)) || a.id.localeCompare(b.id)).slice(0, 100).map((plugin) => plugin.id),
     },
     rising: {
-      method: 'github-star-delta-30-days',
-      status: risingCandidates.length >= 10 ? 'ready' : 'insufficient-history',
-      items: risingCandidates.length >= 10 ? risingCandidates.slice(0, 100).map((item) => item.id) : [],
-      deltas: risingCandidates.length >= 10 ? Object.fromEntries(risingCandidates.slice(0, 100).map((item) => [item.id, item.delta])) : {},
+      method: 'github-star-growth-observed-up-to-30-days',
+      windowDays: 30,
+      minimumHistoryHours: 24,
+      limit: 100,
+      status: rising.length >= 10 ? 'ready' : 'insufficient-history',
+      items: rising.length >= 10 ? rising.map((item) => item.id) : [],
+      deltas: rising.length >= 10 ? Object.fromEntries(rising.map((item) => [item.id, item.delta])) : {},
+      windows: rising.length >= 10 ? Object.fromEntries(rising.map((item) => [item.id, { from: item.from, to: item.to }])) : {},
     },
   }
 }
