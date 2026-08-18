@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "image",
+    "video",
+    "file",
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件以“壁纸切换”为用户入口，结合 DSH 插件界面提供图片/视频壁纸的选择、预览、应用与随机/恢复功能，并可联动主题深浅色切换，故属于主题与布局类用户体验插件；风险点主要为本地资源发现与本地服务路由文件访问。",
+  "summaries": {
+    "zh": "该插件可在 DSH 中一键从本机 Wallpaper Engine 资源中选择图片或视频壁纸并应用到界面背景，支持根据亮度自动切换深浅色主题。",
+    "en": "This plugin lets users quickly pick local Wallpaper Engine image or video wallpapers in DSH and apply them to the interface background, with optional automatic light/dark theme switching based on brightness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "本地扫描 Steam/Wallpaper Engine 目录以发现可用壁纸项目",
+      "通过本地路由提供壁纸列表、状态、预览图和媒体文件访问",
+      "前端显示缩略图网格与选择面板并将所选壁纸应用到 DSH 背景",
+      "支持图片与视频作为背景，并可切换半透明毛玻璃界面效果",
+      "基于壁纸亮度执行 DSH 明暗主题联动切换",
+      "将用户设置持久化到本地存储或配置文件"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明该插件是“DSH Web GUI 的一键换背景插件”，核心功能是从本机 Wallpaper Engine 素材中选图/视频并应用到界面背景。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 列出主机路由包括 /we/list、/we/status、/we/file、/we/preview 与 /we/config，表明其提供本地 API 与媒体文件输出能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明素材来源包括 WE Web API 与目录扫描（steamapps/workshop/content 与 myprojects），涉及本地文件系统读取。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 指定 DSH 插件入口与客户端注入 theme/workspaces，表明该功能直接嵌入 DSH 前端并影响主题与界面表现。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "本地扫描 Steam/Wallpaper Engine 目录以发现可用壁纸项目",
+      "通过本地路由提供壁纸列表、状态、预览图和媒体文件访问",
+      "前端显示缩略图网格与选择面板并将所选壁纸应用到 DSH 背景",
+      "支持图片与视频作为背景，并可切换半透明毛玻璃界面效果",
+      "基于壁纸亮度执行 DSH 明暗主题联动切换",
+      "将用户设置持久化到本地存储或配置文件"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:08.924Z",
+  "repositoryCommitSha": "e05c7a922af0f039263077e31b3fea7ba1ca97d9",
+  "evidenceHash": "f917bfc0a4180d446e9bff630dd3a5e85c756ba25e2b965e956dd69140e292bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8d6cb0586250592b5f35b64f88a7b2457c90cae53061f1b70ff8c32a62c29ff1",
+  "shadowMode": false
+}

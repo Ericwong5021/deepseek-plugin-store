@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "ui",
+    "chat",
+    "agent",
+    "tool",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a conversation-queue automation utility for the DSH web interface: it lets users reorder pending messages in the queue and trigger queue-wide actions before agent execution. Evidence from the repository description, README, and package manifest consistently describes queue reordering features plus a companion host endpoint used to update queue state.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 网页插件，用于在代理处理前手动调整消息队列顺序，并支持消息的上下、置顶/置底与拖拽重排。",
+    "en": "This DeepSeek Harness web plugin lets users reorder queued messages before processing, including moving items up/down or to the top/bottom, with queue-level actions in the UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reorders pending conversation messages in the DSH queue before the agent processes them.",
+      "Adds client-side queue controls (up/down/top/bottom and drag-and-drop) in the conversation UI.",
+      "Provides bulk queue actions to send all queued items and clear the queue via plugin UI and host route."
+    ],
+    "reasons": [
+      {
+        "code": "README and repository description state the plugin is for reordering queued messages in DSH before agent processing with up/down/top/bottom and drag-to-reorder controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a host endpoint POST /queue-director/api/reorder that mutates agent.inbox order via splice and a client module that redraws the queue strip.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web bundle patch/client injection, confirming this is a web plugin with runtime UI/runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reorders pending conversation messages in the DSH queue before the agent processes them.",
+      "Adds client-side queue controls (up/down/top/bottom and drag-and-drop) in the conversation UI.",
+      "Provides bulk queue actions to send all queued items and clear the queue via plugin UI and host route."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:31.949Z",
+  "repositoryCommitSha": "690a72e7fc6c2502e7f59b443d69223cba796d90",
+  "evidenceHash": "a27b88c0a4a98131f0a99ed7e7e3d3e1b0cda1f25b51b35a24444b25080c941b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f7722812ee015479335dd55cd3d36864633691681c70fac0681f57c0ba4aae71",
+  "shadowMode": false
+}

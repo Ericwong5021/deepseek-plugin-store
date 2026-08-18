@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "api",
+    "agent",
+    "automation",
+    "integration",
+    "tool",
+    "file",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的核心用户价值是将 QQ 作为 DeepSeek Harness 的接入端：将 QQ 私聊、群聊或频道消息映射为持久化会话并返回 Agent 响应。证据显示它支持 OneBot11 与 QQ 官方两种通道、会话级上下文、以及通过 qq_send 进行主动消息发送，但也将聊天入口与文件/终端等能力绑定，属于高风险外部服务整合。",
+  "summaries": {
+    "zh": "这是一个将 QQ 聊天接入 DeepSeek Harness 的插件，支持 OneBot11 和 QQ 官方通道，实现按会话持续的 AI 交互与消息回复。",
+    "en": "This is a DeepSeek Harness plugin that connects QQ chats via OneBot11 or QQ Official channels for session-based AI interaction and responses."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects QQ messages to DSH agents via OneBot11 and QQ Official channels",
+      "Persists per-session agent context across restarts",
+      "Registers a QQ-specific proactive send tool (qq_send) for agent replies",
+      "Provides access to filesystem-oriented and terminal-oriented tool actions in QQ sessions",
+      "Makes network calls to QQ/OneBot services and external APIs"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a DeepSeek Harness QQ bot integration supporting OneBot 11 (WebSocket) and QQ Official AppID/AppSecret channels, including status/help/reset commands and reconnect behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a full toolchain exposure per QQ session including file read/write, Shell/PowerShell, and web search capabilities, with per-session workspaces.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the plugin as a DSH plugin (bundle entry lib/index.js) and targets qq/qqbot/onebot integration, confirming external service coupling.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects QQ messages to DSH agents via OneBot11 and QQ Official channels",
+      "Persists per-session agent context across restarts",
+      "Registers a QQ-specific proactive send tool (qq_send) for agent replies",
+      "Provides access to filesystem-oriented and terminal-oriented tool actions in QQ sessions",
+      "Makes network calls to QQ/OneBot services and external APIs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:50.536Z",
+  "repositoryCommitSha": "2a4b8c19762ad3b9cdc13e2074a9b86445bd60fb",
+  "evidenceHash": "ab6f578611cee0097ecff0fb277fd190ef600a22e51e6d60e6c055edbd3967cb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f866a2d3def6d5f3819ac5eb88d4077106972a51c6e1dc7a22e61b182d6938d1",
+  "shadowMode": false
+}

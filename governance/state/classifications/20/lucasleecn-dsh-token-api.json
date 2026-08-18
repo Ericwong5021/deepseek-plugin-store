@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "data",
+    "monitoring",
+    "integration",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a Web UI utility panel for DeepSeek Harness users, focused on surfacing session telemetry and usage/cost information in a floating interface plus a local control for reasoning-effort and pricing display, based on documented session projection reads and official pricing synchronization.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 客户端插件，在界面右下角以浮动面板展示会话的 Token 用量、上下文压力、推理等级切换与费用估算。",
+    "en": "This is a DeepSeek Harness web client plugin that shows a floating panel with session token usage, context pressure, reasoning-effort controls, and cost estimates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session projection data from official RPC payloads for display and local cost estimation",
+      "Calls model-selection APIs to apply user-chosen reasoning effort settings",
+      "Fetches official pricing data via host-side network access and serves it through a same-origin route",
+      "Stores optional manual price overrides in browser localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin injects a floating compact panel in the Web UI to show session token usage/context pressure/reasoning level and cost estimates from session.list and session.models projections.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin performs periodic host-side retrieval of official pricing page content and exposes it to client code via local plugin route.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is configured as a web client plugin (dsh.client) and installs via profile bundle/patch integration, indicating direct UI and web-side behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads session projection data from official RPC payloads for display and local cost estimation",
+      "Calls model-selection APIs to apply user-chosen reasoning effort settings",
+      "Fetches official pricing data via host-side network access and serves it through a same-origin route",
+      "Stores optional manual price overrides in browser localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:39.154Z",
+  "repositoryCommitSha": "07226d2cdf2870994c20a0fd715973f0658c0f93",
+  "evidenceHash": "d5f9a264180f7546d9fa9abd69879ce17606939601e29c79c41f78973233a35d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "30f9d444f8cd452f9a31e8f3df2417833599138156675b43876f2a433749d58a",
+  "shadowMode": false
+}

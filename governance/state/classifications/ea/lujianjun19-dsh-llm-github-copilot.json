@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "ui",
+    "tool",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is an external-service integration that enables DeepSeek Harness to use GitHub Copilot as an LLM provider by handling Copilot authentication, model discovery, and chat API routing, with related UI and command controls for login and status.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 GitHub Copilot 插件，用于在登录后连接并调用 Copilot 的模型进行聊天交互，支持在界面中管理账号状态、模型列表与支持图片的对话输入。",
+    "en": "This is a DeepSeek Harness plugin that connects chat workflows to GitHub Copilot, enabling authenticated model access for chat/completion calls with built-in UI and command-based session management."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Authenticates to GitHub Copilot via OAuth device flow and token exchange",
+      "Sends chat/response requests to external GitHub Copilot API endpoints",
+      "Supports optional vision-capable image input in chat history",
+      "Reads OAuth token from environment variable and persists authenticated session state",
+      "Provides in-chat commands for login/logout/status and settings-page management"
+    ],
+    "reasons": [
+      {
+        "code": "package.json description explicitly states \"GitHub Copilot adapter ... OAuth device-flow sign-in, Copilot token exchange, and OpenAI-compatible chat completions against api.githubcopilot.com\".",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes login flow with `/copilot-login`, model discovery from `https://api.githubcopilot.com/models`, and automatic model selection for chat completions/responses APIs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a dedicated GitHub Copilot settings section in the DSH web UI and environment variable `GITHUB_COPILOT_OAUTH_TOKEN` for token input.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists vision support where supported models accept PNG/JPEG/WebP/GIF attachments in the chat composer.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json `dsh.client.platform` is `web` and includes UI command/conversation/settings client runtime dependencies, indicating user-facing integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Authenticates to GitHub Copilot via OAuth device flow and token exchange",
+      "Sends chat/response requests to external GitHub Copilot API endpoints",
+      "Supports optional vision-capable image input in chat history",
+      "Reads OAuth token from environment variable and persists authenticated session state",
+      "Provides in-chat commands for login/logout/status and settings-page management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:43.334Z",
+  "repositoryCommitSha": "d8759a1776e854a8cfd9832c6f7f0afdb86b7da0",
+  "evidenceHash": "718f01d103976311fb7faaaa30ae26347d0f6f9c8a6f59a912780238d1a1794e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "70f1867f6321ec856facc004e8f54e81617cfb10352d4a74f90ec340365af676",
+  "shadowMode": false
+}

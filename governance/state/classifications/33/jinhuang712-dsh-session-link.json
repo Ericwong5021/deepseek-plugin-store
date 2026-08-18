@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "ui",
+    "tool",
+    "memory",
+    "skill",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Classified as a memory/context plugin because its core behavior is enabling users to carry context between DSH sessions: create and share session references, pick sessions from an @ mention UI, and read prior sessions as readable transcripts. Security risk is moderate since it provides access to session conversation data, though it is constrained to local read-only operations per the plugin description.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中跨会话共享上下文，可一键复制会话引用、通过 `@` 选择会话，并用 `session_read` 将会话内容以可读对话文本展示。",
+    "en": "This plugin enables cross-session context sharing in DeepSeek Harness by letting users copy session references, pick sessions via @ mentions, and read selected sessions as readable conversation text with `session_read`."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local session content via host APIs and returns a projected conversation transcript.",
+      "Resolves cross-session references (`@session-<uuid>`, `dsh-session:` URI, or `@title`) to load another session into the current context.",
+      "Copies session identifiers to clipboard and renders session mentions as UI chips in composer/chat views."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides a `session_read` tool returning `sessionId`, `title`, `cwd`, `logPath`, `seqRange`, `transcript`, and `truncated`, enabling retrieval of other session content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README declares reading is read-only and notes no writes to on-disk logs, but it does expose session log content to another session through projection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata show web UI integration (copy button, @mention source, skills declaration) and tool wiring in the DSH plugin manifest, confirming this cross-session context workflow in-app.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads local session content via host APIs and returns a projected conversation transcript.",
+      "Resolves cross-session references (`@session-<uuid>`, `dsh-session:` URI, or `@title`) to load another session into the current context.",
+      "Copies session identifiers to clipboard and renders session mentions as UI chips in composer/chat views."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:45.835Z",
+  "repositoryCommitSha": "2b00ec1b9217555211e32820105bbd55fb57d16d",
+  "evidenceHash": "0bdaf5836a9e9df717f1264099dea7a6c8b7c36cefeeb0139984b345e6fdf7ec",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1d4fe87a31874fb292cb34a61e220cf06aaca206045da49a03c447b6cbc4eb94",
+  "shadowMode": false
+}

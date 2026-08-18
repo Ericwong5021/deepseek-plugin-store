@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "workflow",
+    "context",
+    "browser",
+    "api",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is session navigation: the plugin extends DeepSeek Harness Web’s conversation UI to create child sessions from completed turns and show lineage through a family-tree popover. Evidence from the README and package metadata shows this is a UI/plugin feature set using harness session fork APIs, with stated scope limited to branching and lineage viewing rather than file or log rewrites.",
+  "summaries": {
+    "zh": "该插件面向 DeepSeek Harness Web 会话界面，提供从已完成回合发起分支会话并展示父子会话关系树的交互，用于查看和跳转会话分支来源。",
+    "en": "This plugin adds branching controls to DeepSeek Harness Web conversations so users can fork from completed turns and inspect parent-child session lineage through a family-tree interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Conversation branching from completed turns",
+      "Session lineage tree rendering in UI",
+      "Parent/child navigation for branched sessions",
+      "Web-client interaction with session fork APIs"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin adds a header action and historical turn controls to fork at completed turn/end sequences rather than rewinding files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It displays a family-tree popover plus parent session chip for browsing branch lineage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest and package metadata declare a DeepSeek Harness web client plugin with runtime UI dependencies and exported client bundle, indicating UI-level execution.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Conversation branching from completed turns",
+      "Session lineage tree rendering in UI",
+      "Parent/child navigation for branched sessions",
+      "Web-client interaction with session fork APIs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:55.664Z",
+  "repositoryCommitSha": "3961ef3855eacf1e94195ec718c8610b8f702a26",
+  "evidenceHash": "e207941fd5aeb67b6e5653f6e4e233f41bb48dfa68c8c0ae18c830508d0887f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b158aadb40af8a317182f00c16132129ec6676cef10b6e71e5dc63458afa8ed9",
+  "shadowMode": false
+}

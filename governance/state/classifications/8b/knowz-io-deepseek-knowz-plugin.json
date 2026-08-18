@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "mcp",
+    "api",
+    "knowledge",
+    "search",
+    "document",
+    "tool",
+    "skill",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a knowledge-management integration: it connects DeepSeek Harness to hosted Knowz vaults via MCP and exposes dedicated skills for asking, saving, searching, browsing, and amending vault content, which is a knowledge retrieval/storage workflow rather than code tooling or UI-focused functionality. Security/privacy risk is moderate due to required external-service communication and explicit API-key configuration, with no file-system or execution-centric behavior described.",
+  "summaries": {
+    "zh": "Knowz 插件为 DeepSeek Harness 提供与 Knowz 知识库的 MCP 连接，并通过 knowz-ask、knowz-save、knowz-search 等技能实现知识查询、保存与检索。",
+    "en": "The Knowz plugin connects DeepSeek Harness to hosted Knowz vaults via MCP and provides skills like knowz-ask, knowz-save, and knowz-search for knowledge querying, saving, and browsing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects DeepSeek Harness to a hosted Knowz MCP endpoint",
+      "Provides vault knowledge actions such as ask, save, search, browse, amend, and status",
+      "Supports configuring and using API credentials for access to the service",
+      "Allows multi-account MCP configuration within the plugin"
+    ],
+    "reasons": [
+      {
+        "code": "Hosted MCP integration for knowledge vault access is declared in plugin docs and skill list",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Environment/credential-based authorization using KNOWZ_API_KEY is explicitly required",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin metadata identifies it as a hosted Knowz vault plugin with MCP client details and public package entrypoints",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects DeepSeek Harness to a hosted Knowz MCP endpoint",
+      "Provides vault knowledge actions such as ask, save, search, browse, amend, and status",
+      "Supports configuring and using API credentials for access to the service",
+      "Allows multi-account MCP configuration within the plugin"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:22.825Z",
+  "repositoryCommitSha": "b7cc8011bd2f0f7623d0ffc68e54fd566f6e0388",
+  "evidenceHash": "6c3a44c3d9804e3b584f90fc07b7c8a9005c1cb1e05b99188eb52788d746539e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b41f573adc42c385540d9be76cdff20eb5ca0a95801fc155e711ab2d978279b3",
+  "shadowMode": false
+}

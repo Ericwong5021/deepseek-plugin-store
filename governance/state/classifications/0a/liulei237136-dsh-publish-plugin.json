@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "tool",
+    "terminal",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Repository evidence shows the plugin’s primary purpose is automating DeepSeek Harness plugin release operations by providing `/publish-dsh-plugin` and `publish_plugin` to validate and publish to npm and GitHub, with explicit confirmation and pre-execution checks, which fits an automation/workflow category rather than analysis or creation tooling.",
+  "summaries": {
+    "zh": "提供一个 DeepSeek Harness 插件，支持通过 `/publish-dsh-plugin` 命令或 `publish_plugin` 工具在 npm 与 GitHub 上执行插件发布流程。",
+    "en": "Provides a DeepSeek Harness command and tool for carrying out a plugin publish workflow to both npm and GitHub."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runs a command/tool workflow to publish a DSH plugin package to npm and GitHub",
+      "Performs local subprocess execution for publish/validation tasks (including npm and gh commands)",
+      "Performs repository/package checks before executing publish operations",
+      "Creates or updates repository artifacts such as tags/topics during publication",
+      "Requires explicit approval before performing publish actions"
+    ],
+    "reasons": [
+      {
+        "code": "DUAL_PLATFORM_PUBLISH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SUBPROCESS_BASED_EXECUTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CONFIRMATION_GATE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "COMMAND_TOOL_ENTRYPOINTS",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Runs a command/tool workflow to publish a DSH plugin package to npm and GitHub",
+      "Performs local subprocess execution for publish/validation tasks (including npm and gh commands)",
+      "Performs repository/package checks before executing publish operations",
+      "Creates or updates repository artifacts such as tags/topics during publication",
+      "Requires explicit approval before performing publish actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:22.276Z",
+  "repositoryCommitSha": "e9880ca75bfe3189d4a365fba3ff09aa0ffb1c21",
+  "evidenceHash": "28938d6ac84cd590d838d44e9b3496a3604b2ed97dd4bde583a96924c805ed4e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1ea537a1d012f12996e228183ba1722ccc6d68d738c1b75d23815fcc5655fb60",
+  "shadowMode": false
+}

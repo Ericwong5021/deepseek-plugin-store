@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "data",
+    "ui",
+    "chat",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户价值是会话成本可观测性：按会话读取模型上报的 `usage` 数据并按可配置价格表换算为人民币，同时提供命令/工具查询入口，并可在侧边栏每行显示累计费用。证据来源主要为 README 对工具、命令、UI 插槽与价格表替换配置的说明，未发现仓库中有外部网络调用或持久化高风险行为描述。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 通用实用插件，提供会话成本查询工具与命令，并在侧边栏按会话显示累计费用与可配置的人民币换算结果。",
+    "en": "This DeepSeek Harness utility plugin adds session cost query tooling via commands and a tool, and shows cumulative per-session costs in the sidebar using configurable RMB conversion rates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "calculates per-session token-based model usage cost estimates",
+      "exposes a `session_cost` tool and slash commands for cost queries",
+      "adds sidebar session-row cost display via a UI slot",
+      "supports configurable pricing table overrides via profile patch configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is for DeepSeek Harness session token accounting, converting usage to RMB via model pricing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `session_cost` tool usage plus `/session-cost` and `/session-cost-config` commands for querying current or specific sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains sidebar per-row amounts are shown through `sidebar.workspaces.sessionRow` registration in the client.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json shows a pure JS package with no listed dependencies and only plugin client/patch entry files.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "calculates per-session token-based model usage cost estimates",
+      "exposes a `session_cost` tool and slash commands for cost queries",
+      "adds sidebar session-row cost display via a UI slot",
+      "supports configurable pricing table overrides via profile patch configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:55.858Z",
+  "repositoryCommitSha": "32b66ed477108426e944258cb409a612744ef8cf",
+  "evidenceHash": "8610193369bd4c828da3e98239155c7ebf80c5278c1b62924809957b637a53f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cf6375d9eebf9b0b09f719da65a5c28c112a4532519c5f01e914a2ebad70848b",
+  "shadowMode": false
+}

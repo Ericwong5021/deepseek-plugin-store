@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "tool",
+    "cli",
+    "terminal",
+    "ui",
+    "project-analysis",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供可视化安全工具台，统一接入 VulnClaw 与 DeepSec 的代码审计与安全测试流程，并通过 web API/界面触发扫描、审计、安装与配置操作，故归类为安全工具自动化与外部安全引擎集成类插件。",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的安全工具台插件，用于在界面和接口中统一调用 VulnClaw 与 DeepSec 的代码审计、扫描与授权渗透工作流。",
+    "en": "This is a DeepSeek Harness security dashboard plugin that unifies VulnClaw and DeepSec workflows for code auditing, scanning, and authorized security testing through UI and API controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes security-related workflows through external CLI tools",
+      "Runs code-audit and recon/scan/exploit style pipelines",
+      "Offers web API and UI entrypoints to trigger tool execution",
+      "Performs local installation of third-party CLI dependencies",
+      "Supports LLM backend configuration and connectivity checks"
+    ],
+    "reasons": [
+      {
+        "code": "README 的工具清单列出 `vulnclaw_recon`、`vulnclaw_scan`、`vulnclaw_exploit`、`deepsec_spear_recon`、`deepsec_spear_run` 等执行型工具，与授权渗透与扫描流程直接相关。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 的 Web API 部分定义 `POST /vulnsec/api/run`、`/install`、`/scope`、`/audits` 等端点，可用于远程触发扫描、安装和审计操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述一键安装流程会创建独立 venv 并从 CDN 拉取源码后 pip 安装 `VulnClaw` 与 `DeepSec`，属于具备网络访问的外部组件获取能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`package.json` 中声明 dsh bundle/client 注入与 peer 依赖，结合 `tree` 中 `src/index.ts`、`scripts/install-cli.js` 与 `lib/` 构建产物，表明该仓库是 DeepSeek Harness 插件并提供宿主端与浏览器端能力。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Executes security-related workflows through external CLI tools",
+      "Runs code-audit and recon/scan/exploit style pipelines",
+      "Offers web API and UI entrypoints to trigger tool execution",
+      "Performs local installation of third-party CLI dependencies",
+      "Supports LLM backend configuration and connectivity checks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:08.402Z",
+  "repositoryCommitSha": "e6cf1173932641dd3a5edea31b6b4e0a3e6ab5cb",
+  "evidenceHash": "556fdcc2ec00cf3ba371309668243e63b2ff24622b568fb6c37c9615cc39a977",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3d51b86a046f019c2b0083b43e4b08386cfa5bb7e99a908757b171adea4bcdc9",
+  "shadowMode": false
+}

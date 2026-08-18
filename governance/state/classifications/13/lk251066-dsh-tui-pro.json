@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "ui",
+    "chat",
+    "file",
+    "tool",
+    "image",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Based on the repository description and package metadata, this plugin is primarily a terminal-oriented user interface extension for DeepSeek Harness, focused on interactive session-based TUI workflows, transcript handling, and workspace session control, not on analytics, search, or external service orchestration.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供交互式终端界面，支持按项目会话管理、对话记录浏览与分页、快捷命令切换，并可在支持模型时从系统剪贴板附加图片。",
+    "en": "This plugin adds an interactive terminal UI to DeepSeek Harness, letting users manage and switch project sessions, page through transcript history, run TUI commands, and attach clipboard images when using an image-capable model."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides an interactive terminal-style TUI layer for DeepSeek Harness",
+      "Manages multiple project sessions with session switching, listing, and closing",
+      "Supports transcript paging/history browsing and checkpoint restoration actions",
+      "Supports clipboard image attachment placeholders for vision-capable models"
+    ],
+    "reasons": [
+      {
+        "code": "README describes framed TUI session management with commands like /sessions, /switch, /quit, /exit and features like active-project sessions and transcript paging.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines a DeepSeek Harness bundle patch (`dsh.bundle.patch`) and build/test tooling, confirming plugin runtime integration behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes the referenced patch manifest path, but automated checks report `MANIFEST_REFERENCES_VALID` as false, indicating an admission blocker.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Provides an interactive terminal-style TUI layer for DeepSeek Harness",
+      "Manages multiple project sessions with session switching, listing, and closing",
+      "Supports transcript paging/history browsing and checkpoint restoration actions",
+      "Supports clipboard image attachment placeholders for vision-capable models"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:25.540Z",
+  "repositoryCommitSha": "09bec157463ce5158959e9f08ee5a5a939ff5e33",
+  "evidenceHash": "de9cd86343d2b4c80b9288bcf4010e1228901bc0c9a3b5dd30e9f95bf5306e37",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f30da81662ad1a4b6f41b2585d87f624f757e45ec825467c6fe170e33609f846",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "automation",
+    "tool",
+    "file",
+    "terminal",
+    "testing",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a DeepSeek Harness plugin-runtime utility: it enables add/remove/update operations to be applied to the running profile without restart by listening for bundle manifest changes and updating patch entries, which places it in plugin-development with automation characteristics rather than search, media, or data-processing domains. Risk is moderate because it performs live runtime patch updates and recovery logic that can affect process/plugin behavior during active sessions.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的热更新插件管理器，可监听 profile 插件清单变化，在无需重启的情况下即时处理插件安装、卸载和升级，并将补丁行同步到运行中的插件树。",
+    "en": "This is a DeepSeek Harness plugin manager that watches profile bundle changes and applies install, remove, and upgrade actions to the running plugin tree for immediate effect without restarting."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors profile bundle manifest changes and responds to plugin add/remove/update events in a running DeepSeek Harness instance",
+      "Parses bundle patch metadata and updates the live plugin tree by applying or removing patch entries",
+      "Performs guarded update recovery flow when reloading a plugin version fails",
+      "Maintains runtime logging for hot-install, hot-remove, and hot-reload actions"
+    ],
+    "reasons": [
+      {
+        "code": "README states that installed, removed, and upgraded plugins take effect live without restart through hot-apply/remove/reload behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks this as a DSH bundle via dsh.bundle.patch and exports a patch manifest file, indicating runtime patch-based integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes a test directory for diff/parse/dedup/remove/replay logic described for patch and lifecycle handling.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Monitors profile bundle manifest changes and responds to plugin add/remove/update events in a running DeepSeek Harness instance",
+      "Parses bundle patch metadata and updates the live plugin tree by applying or removing patch entries",
+      "Performs guarded update recovery flow when reloading a plugin version fails",
+      "Maintains runtime logging for hot-install, hot-remove, and hot-reload actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:38.182Z",
+  "repositoryCommitSha": "b9bd81cadfaf6f71a135718f5090c3e644ce6020",
+  "evidenceHash": "8deaa1540542a4470d610dfb65eac42da5b01c140fb5f6c76a1d514d203888c1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0a720251e49095e5c9ea0a92a8b0c432a18fb9abe9a22a3ddb2efc0fe0946c75",
+  "shadowMode": false
+}

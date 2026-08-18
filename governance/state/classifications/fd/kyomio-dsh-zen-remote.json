@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "ui",
+    "chat",
+    "notification",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a user-facing mobile client and remote-access enhancement for DeepSeek Harness, not a code-generation or analysis tool. Its core functions center on mobile-first UI restructuring, pairing-gated remote access, installable PWA behavior, and push notifications, so it is best classified as desktop-mobile with conservative security-relevant risks around local gateway exposure and file handling.",
+  "summaries": {
+    "zh": "该插件将 DeepSeek Harness 改造成可在手机访问的应用化界面，提供移动端聊天界面布局优化、配对码接入网关、可安装 PWA 及 Web Push 通知能力。",
+    "en": "This plugin turns DeepSeek Harness into a mobile-friendly web experience by optimizing the chat UI for phone use, adding a pairing-code remote gateway, supporting installable PWA usage, and enabling web push notifications."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Remote network access via a local gateway component",
+      "Mobile UI re-layout and navigation behavior changes",
+      "Local session attachment upload handling",
+      "Web Push notification delivery",
+      "Pairing-token based device session management"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a pairing-code gateway that listens locally and is exposed publicly only through a reverse proxy or tunnel path, with a 403 check on admin routes for remote traffic checks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states uploaded attachments are written to session workspace under `.dsh-uploads/`, and device state/config are stored in local gateway JSON files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exports `lan-gate.mjs` and `dsh-push.mjs` and includes `web-push`; README adds push events, VAPID config, and a `push_notify` tool.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Remote network access via a local gateway component",
+      "Mobile UI re-layout and navigation behavior changes",
+      "Local session attachment upload handling",
+      "Web Push notification delivery",
+      "Pairing-token based device session management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:41.778Z",
+  "repositoryCommitSha": "6b0b29cfcffc0e605287381e839fa974214a28dd",
+  "evidenceHash": "4c02c965755bea4c3c204c9eaf6a61ee7bf99c94191a818496bc0faeb3504a44",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6fd62393f8028efdfa4cf811e8bba4233aa4a1e613c68ee5f271e587ac6adb12",
+  "shadowMode": false
+}

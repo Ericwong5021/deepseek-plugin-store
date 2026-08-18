@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "tool",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This plugin is a DSH web GUI navigation/utility extension that lets users view archived sessions from a new sidebar panel and restore sessions to the workspace with one-click actions via host-side archive APIs, so its primary purpose is interface-based session recovery and management.",
+  "summaries": {
+    "zh": "DSH Web GUI 归档管理插件在侧边栏新增历史归档入口，列出已归档会话并支持一键将其恢复到工作区。",
+    "en": "A DSH web GUI archive-management plugin that adds a sidebar panel to list archived sessions and supports one-click restore back to the workspace."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a web UI sidebar panel for archived sessions",
+      "Lists archived sessions via plugin-hosted API endpoints",
+      "Performs one-click restore (unarchive) actions that update workspace state",
+      "Auto-refreshes/polls archived session data while panel is open"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a new sidebar \"history archive\" entry and panel in DSH Web GUI with per-item restore actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin registers /api/archive-manager/list and /api/archive-manager/unarchive on host, and client consumes them for archive management operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json includes dsh client injection/runtime patch config targeting web UI integration and lists main entry points for plugin runtime and client.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a web UI sidebar panel for archived sessions",
+      "Lists archived sessions via plugin-hosted API endpoints",
+      "Performs one-click restore (unarchive) actions that update workspace state",
+      "Auto-refreshes/polls archived session data while panel is open"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:59.435Z",
+  "repositoryCommitSha": "fde1632973f55615698424580505368da6a9dfde",
+  "evidenceHash": "8575eb8fdb891583b581fab7d7aee42c56c62d833f23474c77e4d3db294d537f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "06244dbb9ed72076934b3a7b2b8040091186385138e5b3ec46e738df5590c5b2",
+  "shadowMode": false
+}

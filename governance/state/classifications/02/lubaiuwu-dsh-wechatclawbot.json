@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "automation",
+    "integration",
+    "desktop",
+    "mobile",
+    "ui",
+    "agent",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is a WeChat integration bridge for DeepSeek Harness: it adds a floating-ball UI, starts or connects to a local WeChat gateway, and routes WeChat messages into a dedicated DSH chat context for agent handling, with restartable local state for session continuity. Evidence is based on the README and bundle manifest, which describe the plugin architecture, local ports, and data persistence behavior, so classification is kept conservative due account-linked messaging and local credential/session handling.",
+  "summaries": {
+    "zh": "该插件提供微信悬浮球入口，将微信消息通过二维码登录后接入 DSH 的独立会话，并可由 DSH 侧的对话逻辑进行处理与回传。",
+    "en": "This plugin adds a WeChat floating-ball entry to DSH that, after QR login, routes WeChat messages into a dedicated DSH conversation flow for agent processing and reply forwarding."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "local WeChat gateway messaging relay",
+      "QR-based login/session handling",
+      "persistent local session and whitelist storage",
+      "DSH conversation injection and model-configurable reply routing",
+      "runtime profile patching for host and client components"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a floating-ball QR login flow and WeChat message relay through a local gateway service to DSH.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists localhost ports (51234/51235/51236) used for gateway, bridge, and model endpoint communication.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states credentials, whitelist, and session mapping are stored under ~/.dsh-wechat with restart recovery behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json and repository tree show a DSH bundle packaging bot, UI, bridge, and gateway packages plus install/patch scripts.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "local WeChat gateway messaging relay",
+      "QR-based login/session handling",
+      "persistent local session and whitelist storage",
+      "DSH conversation injection and model-configurable reply routing",
+      "runtime profile patching for host and client components"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:39.863Z",
+  "repositoryCommitSha": "b817fc974677a4d53a6061a08d80ddfd6fb84ecb",
+  "evidenceHash": "f50dbbd3982f5f6d1539eaf0553f464743b836650b64d2e240d24b3037f66af6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bbf77646dfd1d7cfb84c5867d3b3a5769df58e17681b4b3ad11282dbc83fd633",
+  "shadowMode": false
+}

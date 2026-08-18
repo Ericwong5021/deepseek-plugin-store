@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "data",
+    "api",
+    "skill",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary purpose is to show per-conversation LLM billing information directly in the DSH web composer by pulling gateway pricing from a configured endpoint and converting model token usage into visible cost summaries.",
+  "summaries": {
+    "zh": "该插件在 DSH Web Composer 中展示逐对话计费信息，基于配置的网关价格接口获取定价并按模型调用与 input/output/cache token 实时计算费用。",
+    "en": "This plugin displays per-conversation billing information in DSH Web's composer, fetching pricing from a configured gateway endpoint and calculating model usage costs from input/output/cache tokens in real time."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches pricing data from a user-configured gateway endpoint",
+      "Calculates per-conversation costs from model usage and pricing rules",
+      "Displays billing and token summaries in the DSH web composer UI"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a configurable `pricingUrl` for New API/One API pricing table retrieval and periodic refresh, requiring external service access configured by the user.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states it iterates conversation model call nodes and converts input/output/cache token usage with pricing fields into per-conversation billing totals.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json indicates a web client plugin with injected DSH client modules, confirming UI/in-conversation integration via the composer interface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Fetches pricing data from a user-configured gateway endpoint",
+      "Calculates per-conversation costs from model usage and pricing rules",
+      "Displays billing and token summaries in the DSH web composer UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:52.773Z",
+  "repositoryCommitSha": "7d9c0ab22d9be1ecb24b99df017cd514241fb5bd",
+  "evidenceHash": "ef60c67c5f7214f522caf1d6e1f52f829e9f7d942a75c5abd6781ef19f55df54",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a29802e6c904ea36c95cd23615ef1e568106c60cf78d4d5cbc7fb69121580b60",
+  "shadowMode": false
+}

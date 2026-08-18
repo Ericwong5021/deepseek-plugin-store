@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "tool",
+    "automation",
+    "chat",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is a web UI utility that provides an Esc key shortcut to cancel a running turn in DeepSeek Harness, matching its stated UX goal in the README and manifest. Primary behavior is local interaction automation within the composer context, so it is classified as a general utility rather than data, automation orchestration, or external-service tooling.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web UI 的按键工具插件，在会话运行中按 Esc 可取消当前回合并与停止按钮走同一取消路径。",
+    "en": "This is a DeepSeek Harness Web UI keyboard utility plugin that lets users press Esc to cancel the currently running turn using the same cancel path as the Stop action."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers an Esc key listener in the web conversation composer context when a turn is running.",
+      "Invokes the platform session-cancel action for the active session.",
+      "Scoped to the DeepSeek Harness web client and does not declare external service integrations."
+    ],
+    "reasons": [
+      {
+        "code": "README: \"Press Esc while the agent is running to cancel the current turn\" and implementation note describes calling Session.cancel() from capture keydown handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest sets dsh.client.platform to \"web\", indicating browser-side plugin behavior only.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata focuses on UX and keybinding (topics include esc, keybinding, web-ui), with no API integrations or data-processing features described.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers an Esc key listener in the web conversation composer context when a turn is running.",
+      "Invokes the platform session-cancel action for the active session.",
+      "Scoped to the DeepSeek Harness web client and does not declare external service integrations."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:03.601Z",
+  "repositoryCommitSha": "f65eb66326b8f574f8a863760c6387eab14d3ec6",
+  "evidenceHash": "5b7bd2f001fcc481175199ef7ddae0dfeef2df5fc4ae6f57a7cb3441da90fddc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "32fb64572ff796113e7c542b800563578b3eee31d744f3743504cd40a3be29f4",
+  "shadowMode": false
+}

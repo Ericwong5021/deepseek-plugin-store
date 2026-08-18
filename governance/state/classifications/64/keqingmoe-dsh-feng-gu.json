@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "browser",
+    "tool",
+    "visualization",
+    "data",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a user-facing interface add-on for DeepSeek Harness Web: it appears as a bottom-right overlay indicator that reports whether pricing is in peak or off-peak period and shows the next switch countdown, with a detail card on click. Its manifest and README show it is a web client plugin integrated through DSH’s patch/bundle mechanism rather than a code-generation or data-processing utility. Conservatively, the main risk is informational accuracy tied to time-window logic rather than privilege or external execution.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在界面右下角显示当前是否处于高峰（梁文峰）或低谷（梁文谷）时段，并提供下一次切换倒计时与点击查看的说明。",
+    "en": "This is a DeepSeek Harness web plugin that displays current peak/off-peak status in a bottom-right badge, with a countdown to the next switch and expandable details when clicked."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Shows a live peak/valley indicator and countdown in a Web UI overlay.",
+      "Provides a clickable status badge/card with pricing-window details.",
+      "Loads as a browser-side DSH client plugin and can be installed/removed via DSH plugin commands."
+    ],
+    "reasons": [
+      {
+        "code": "README describes a right-bottom overlay badge that refreshes every second with peak/valley status and HH:MM:SS switch countdown, and that it can expand to show period and price details.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares dsh.bundle patch metadata and a web client entrypoint (platform web, ./client export), confirming browser-side UI injection.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository files include web client source and overlay integration paths (src/client/index.ts, cordis.patch.yml), matching the described UI panel behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Shows a live peak/valley indicator and countdown in a Web UI overlay.",
+      "Provides a clickable status badge/card with pricing-window details.",
+      "Loads as a browser-side DSH client plugin and can be installed/removed via DSH plugin commands."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:06.231Z",
+  "repositoryCommitSha": "e1bd13df4acc662f99fe18140f0f915adecdc50f",
+  "evidenceHash": "3815216e611914e8aaee908fa671e499dde3406e2b657f34db7ad9e15ad98af6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "685df3abbc80d195b07b3f6ea6593de7f32ba9a00213e6d3623fd09d4bd84cd4",
+  "shadowMode": false
+}

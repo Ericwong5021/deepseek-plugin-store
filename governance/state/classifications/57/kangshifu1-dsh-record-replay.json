@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "ui",
+    "workflow",
+    "automation",
+    "tool",
+    "file",
+    "video",
+    "image",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件主要用于 DSH Web GUI 的会话回放与复现：提供本地会话时间线查看、回放包导入导出与一键重跑，并扩展为录屏后生成可复用技能的流程，核心目标是将已执行的交互转为可复用的工作流资产。该判断基于 README 与包信息中的双面插件能力与功能清单。",
+  "summaries": {
+    "zh": "这是一个 DSH Web GUI 插件，可记录与回放会话、导入/导出回放包，并支持录屏后生成可复用技能。",
+    "en": "This is a DSH Web GUI plugin for replaying recorded sessions, importing/exporting replay packs, and recording screen actions to generate reusable skills."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and processes local DSH session records",
+      "Displays session history as timeline with messages, tool calls, and results",
+      "Exports/imports replay packs in local JSON format",
+      "Replays/re-executes recorded user message sequences in a new session",
+      "Records browser screen/video and sampled frames locally",
+      "Generates SKILL.md content from frame analysis and installs it into local skills"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin documentation states it records screen/window via browser getDisplayMedia to webm with sampled frames and stores recordings locally, which can include sensitive on-screen content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Feature list includes session timeline replay, replay-pack export/import, and one-click re-run of recorded user messages, indicating replay and automation-oriented behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It writes data under ~/.dsh directories and exposes plugin routes for local web UI operations, showing local file and service interaction at host level.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "binary.execute",
+      "network.access",
+      "Reads and processes local DSH session records",
+      "Displays session history as timeline with messages, tool calls, and results",
+      "Exports/imports replay packs in local JSON format",
+      "Replays/re-executes recorded user message sequences in a new session",
+      "Records browser screen/video and sampled frames locally",
+      "Generates SKILL.md content from frame analysis and installs it into local skills"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:58.697Z",
+  "repositoryCommitSha": "e1015e57a4f815dba5f4776f6ae9d969a3e25ddf",
+  "evidenceHash": "8c61c2af97673052ed4369184f69f20b196db7c02168971ff20953d04898630f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d84be88a7fff8cb9e12e96762bc4a782a685aea0739785fea27a661c0178e488",
+  "shadowMode": false
+}

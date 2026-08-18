@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "ui",
+    "visualization",
+    "tool",
+    "monitoring",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is classified as a data-processing utility because its primary user-facing purpose is to capture DSH Web model usage data, compute estimated token-based costs, and present those results in interactive views for sessions, models, and days. While it adds UI and persistence features, its core function is local cost tracking and cost-reporting rather than code generation, automation, or external service orchestration.",
+  "summaries": {
+    "zh": "该插件为 DSH Web 提供花费统计功能，自动记录模型调用用量并按会话、模型和日期展示估算花费。",
+    "en": "This plugin adds cost tracking to DSH Web by recording model call usage and displaying estimated spend by session, model, and date."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Tracks model call token usage and estimates cost",
+      "Displays cost summaries by session/model/day in a web panel",
+      "Persists usage and pricing data in local storage"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin automatically records each model call’s usage and supports viewing by session, model, and day.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details dashboard sections for overview, by model, by session, and recent calls, indicating processing and presentation of computed cost data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes local data storage at ~/.dsh/cost-tracker.json and that pricing updates trigger reprocessing of historical records.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web bundle/client entry and plugin-facing manifests, confirming this is a web-integrated utility extension.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes lib/index.js and lib/client.js, matching host-side tracking plus browser-side UI components.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Tracks model call token usage and estimates cost",
+      "Displays cost summaries by session/model/day in a web panel",
+      "Persists usage and pricing data in local storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:58.769Z",
+  "repositoryCommitSha": "7c069f636433ef6383ee57c1307d548b2d47b10d",
+  "evidenceHash": "92a939752fb31168dfd9c88dc4d8d73163df10c60839c33e5868b0d1d2fd7eb6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "93870ac861131cf078fb7b657ab158d27a2e49ad60ad29bc60a12297db870e9c",
+  "shadowMode": false
+}

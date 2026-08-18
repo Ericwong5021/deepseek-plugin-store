@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "layout",
+    "desktop",
+    "chat",
+    "image",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该仓库主要提供一个 DeepSeek Harness 的界面皮肤插件，核心目的是将聊天界面视觉样式改为微信风格（如会话列表、消息气泡、输入区与头像区域），并通过 DSH 客户端主题注入实现；未见其以测试、自动化、数据分析或远程集成服务为主要功能。兼顾代码与描述显示其存在本地设置持久化和可选图片资源处理，故判为低到中等风险并可接受。",
+  "summaries": {
+    "zh": "一个面向 DeepSeek Harness 的皮肤插件，可将聊天界面改为微信风格外观，并提供会话列表、消息气泡、输入框与头像、字体等界面样式与设置选项。",
+    "en": "A DeepSeek Harness skin plugin that applies a WeChat-style visual theme to the chat interface, including conversation list, message bubbles, composer, avatar, and font/style customization options."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "DeepSeek Harness 客户端界面样式与布局覆盖",
+      "主题外观与组件视觉样式自定义",
+      "用户头像上传与本地展示（含可选默认头像）",
+      "会话/设置相关偏好与界面状态的本地持久化",
+      "构建期可选从外部服务拉取头像素材"
+    ],
+    "reasons": [
+      {
+        "code": "README 与插件说明明确标注为“微信风格皮肤”，列出侧边栏、会话列表、消息气泡、输入框与字体等 UI 样式改造项，表明主要用途为界面主题替换。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明了 dsh.bundle 与 dsh.client 插件入口，并注入 ui-theme 与 ui-settings 相关客户端依赖，说明其为 DSH 客户端侧主题扩展。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 说明包含“上传我的头像”和头像池生成/下载脚本（randomuser.me）及副标题记录到 localStorage，涉及本地文件输入、资源持久化与可选网络获取。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "目录结构显示有 scripts/download-avatars.cjs 与 scripts/build.cjs，用于离线资源构建与注入，表明部分功能在构建流程中处理素材。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "DeepSeek Harness 客户端界面样式与布局覆盖",
+      "主题外观与组件视觉样式自定义",
+      "用户头像上传与本地展示（含可选默认头像）",
+      "会话/设置相关偏好与界面状态的本地持久化",
+      "构建期可选从外部服务拉取头像素材"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:06.079Z",
+  "repositoryCommitSha": "9528966105ab074631a9b3f7bdf8e2c0a13e3297",
+  "evidenceHash": "eeaa4be1b875ebf05582eaa10ed3ff3119084d0c17e1b48e3afe1f9009121594",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ab2bf3f4de6350f9ac710ae505ae4b9537f8a0070d2682b030e3a20829dc88da",
+  "shadowMode": false
+}

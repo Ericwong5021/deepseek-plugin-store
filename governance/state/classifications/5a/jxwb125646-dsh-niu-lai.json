@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "browser",
+    "chat",
+    "notification",
+    "ui",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This plugin is primarily an in-browser notification utility for DSH Web sessions, playing configured local meme audio on specific conversation/task events with user-facing controls for volume, enabling, and clip replacement, as documented in its README and package manifest.",
+  "summaries": {
+    "zh": "《牛来》音效插件是 DeepSeek Harness Web 的会话提示音工具，会在发送消息和任务完成时触发音效，并提供界面设置用于开关、音量和本地音频替换。",
+    "en": "This plugin adds session audio cues to DSH Web by playing sounds on user message send and task-complete events, with a browser settings interface for enabling, volume control, and local clip replacement."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Plays browser-based notification sounds on chat/task lifecycle events.",
+      "Allows user-configurable local audio clip replacement via the settings UI.",
+      "Observes session state to trigger one sound per send/completion event."
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DeepSeek Harness Web sound board that plays clips when a user sends a message and when a task completes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains settings for enable/disable, volume, preview, replacing local audio files, and reset behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states all audio is in-browser via Web Audio and includes embedded clips, with no external services required for normal operation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks the plugin as a DSH web client plugin with no external runtime service dependencies declared.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Plays browser-based notification sounds on chat/task lifecycle events.",
+      "Allows user-configurable local audio clip replacement via the settings UI.",
+      "Observes session state to trigger one sound per send/completion event."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:55.709Z",
+  "repositoryCommitSha": "c856997b74f9900e719ec63261d15f4db02035ca",
+  "evidenceHash": "0eeb13dce32ff02c6ecadc1a9480b9b55f2df8ddf1f6cc466c10cb9feaeefe59",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dee4d66097d1fa95e57d0fcbdfa3d58ae3973921fa183622262b02daee5e6502",
+  "shadowMode": false
+}

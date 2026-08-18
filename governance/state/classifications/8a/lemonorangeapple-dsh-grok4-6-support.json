@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "该插件主要用于在 DeepSeek Harness 的 xAI 提供商配置中补充/覆盖 Grok 4.x 模型选项（含 4.6）并保持现有模型协议选择逻辑，体现为外部模型服务集成能力；该结论基于 README 的功能说明与 package/树结构中 `dsh` bundle patch 的声明。",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的 profile bundle，用于在 xAI 模型目录中添加并配置 Grok 4.6。",
+    "en": "This is a DeepSeek Harness profile bundle that adds and configures Grok 4.6 in the xAI model catalog."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "model-catalog extension for xAI in DeepSeek Harness",
+      "runtime protocol selection mapping for Grok models",
+      "use of host-provided external API credentials through existing settings"
+    ],
+    "reasons": [
+      {
+        "code": "README states the package is a DeepSeek Harness profile bundle that adds Grok 4.6 to the xAI provider and updates model settings behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH bundle patch (`dsh.bundle.patch`) and exports an entry file, indicating host-side plugin patch behavior rather than a standalone app.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository contents include `cordis.patch.yml`, consistent with modifying host model-provider configuration used by the web profile.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "model-catalog extension for xAI in DeepSeek Harness",
+      "runtime protocol selection mapping for Grok models",
+      "use of host-provided external API credentials through existing settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:48.714Z",
+  "repositoryCommitSha": "c0462389db591e3581e2c343ff4a45294c2dd08a",
+  "evidenceHash": "a6eea87cf2eeb8670982c07f272d13a78e036941b1f3f0ba17552d89c8848e51",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e01a5b3a3570999440cf48e95d31ec67c034d18586fb536ddea56c9ab66287cb",
+  "shadowMode": false
+}

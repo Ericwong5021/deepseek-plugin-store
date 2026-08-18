@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "api",
+    "file",
+    "automation",
+    "workflow",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用户面向点是任务化会话体验：在 DSH 侧边栏加入独立“任务”分组与快速入口，并提供会话侧、命令侧（/task）管理临时任务目录的能力。其核心是以可配置任务根目录创建、登记和清理临时工作目录，同时包含用于保持 UI 改造效果的宿主补丁脚本。",
+  "summaries": {
+    "zh": "dsh-task-runner 为 DSH 提供“项目/任务”双模式，会话可在可配置任务根目录下按需创建独立临时工作目录，并在侧边栏面板和 /task 命令中进行任务查看与清理。",
+    "en": "dsh-task-runner adds Project/Task dual-mode sessions in DSH, creating workspace-free scratch directories under a configurable root and letting users list, open, and clean tasks from the sidebar panel or /task commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates and manages temporary per-task conversation directories via host session creation hooks",
+      "Injects a sidebar task workflow UI group and task creation controls",
+      "Runs a patch script that rewrites an official client UI module to keep task behavior visible after upgrades",
+      "Exposes /task command/API endpoints for task listing, creation, opening, and cleanup"
+    ],
+    "reasons": [
+      {
+        "code": "插件说明明确通过 `session.create({ cwd })` 创建无工作区会话，并在 host 侧通过任务钩子进行登记与回收。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "补丁脚本 `patch-sidebar-always-visible.mjs` 会修改 `@deepseek-ai/dsh-client-ui-workspace` 的动态模块，并支持幂等重放与备份。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库声明提供 `/task` 命令与任务清单/目录生命周期管理（新建、打开、清理），并在配置中允许自定义任务根目录。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`package.json` 指向主入口、客户端入口与补丁脚本，表明该包是可加载的 DSH 插件并含宿主/客户端双端能力。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates and manages temporary per-task conversation directories via host session creation hooks",
+      "Injects a sidebar task workflow UI group and task creation controls",
+      "Runs a patch script that rewrites an official client UI module to keep task behavior visible after upgrades",
+      "Exposes /task command/API endpoints for task listing, creation, opening, and cleanup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:39.454Z",
+  "repositoryCommitSha": "61bcfea2b82cc9726215b4855ab7a355b41b341b",
+  "evidenceHash": "dde893b432d567150a520b76c1cac70882bd7490d5b8e5b3e8cb8e5d06582e8f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f6b36d31f214f6f46dc77edb7afb9d2c961a8c517196ea43c8c7176a86083e5d",
+  "shadowMode": false
+}

@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "automation",
+    "terminal",
+    "integration",
+    "workflow",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This is primarily a Git utility plugin for the DeepSeek Harness web interface, focused on in-browser version control workflows: inspecting changes, staging/committing, reverting, and syncing with remotes. Evidence from the README and package metadata shows a dedicated sidebar-style Git panel plus host-side git services, so it is classified as a files/terminal-style productivity utility rather than research, media, or document processing tool.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的 Web UI 中提供一个 Git 图形化侧边栏，可查看仓库改动并在浏览器里进行暂存、提交和回退等版本控制操作。",
+    "en": "This plugin adds a Git graphical sidebar to DeepSeek Harness Web UI, letting you review repository changes and perform version-control actions like staging, committing, and reverting from the browser."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Display git status, file changes, and commit history in-browser",
+      "Execute workspace file operations through git actions (stage/unstage, commit, discard, revert)",
+      "Perform repository-level git commands via host runtime (including remote sync commands)",
+      "Show local file previews and color-coded change status in a file tree",
+      "Track agent/tool file-modification activity for session-based timeline",
+      "Poll session/cwd state and coordinate UI operations with running sessions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes it as a Git graphical interface plugin for DeepSeek Harness Web UI with core actions view, stage, commit, and revert.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Features list includes staged/modified/untracked views, one-click stage/unstage/discard/delete, commit log with revert, and pull/push/fetch + add remote.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata sets dsh.client.platform to web and injects web UI sidebar modules, showing browser-side panel integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Tree includes lib/runner.js and lib/parse.js, indicating a host-side git execution/parsing service plus browser client UI modules.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package description explicitly mentions stage/commit/branch/merge/log/pull/push/stash/revert from browser.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Display git status, file changes, and commit history in-browser",
+      "Execute workspace file operations through git actions (stage/unstage, commit, discard, revert)",
+      "Perform repository-level git commands via host runtime (including remote sync commands)",
+      "Show local file previews and color-coded change status in a file tree",
+      "Track agent/tool file-modification activity for session-based timeline",
+      "Poll session/cwd state and coordinate UI operations with running sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:36.331Z",
+  "repositoryCommitSha": "c6c36473e637d670b08f0c4fe1b280b47d0784e5",
+  "evidenceHash": "233262102e10ec5cfc75f47b8702368401d70c4c261dabb35d2d2fad5cfd57b4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5c6fc854eef3390d61a37d5bf4966ce8770dcb17ff17173684971c80c861a4a9",
+  "shadowMode": false
+}

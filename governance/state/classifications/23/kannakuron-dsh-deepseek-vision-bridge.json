@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "chat",
+    "image",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件主要用于将 DeepSeek 官网的视觉识别能力桥接到 DeepSeek Harness 中，让纯文本模型可通过图片转写和场景描述能力回答图像问题；证据中可见其核心入口为 `deepseek_vision` 工具与会话内图片发送流程，且涉及外部网络服务调用与用户凭据持久化，因此归为外部服务类并标记为中等风险。",
+  "summaries": {
+    "zh": "该插件将 chat.deepseek.com 的识图能力接入 DeepSeek Harness，让文本模型可在会话中结合 `deepseek_vision` 工具分析图片并返回文字化结果。",
+    "en": "This plugin connects DeepSeek web vision capabilities to DeepSeek Harness, enabling text-only models to analyze images and get text-based descriptions through the deepseek_vision tool in chat."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "调用外部网站接口（chat.deepseek.com）进行图片识别",
+      "接收图片路径/URL并生成结构化文字描述",
+      "在用户会话上下文中替换为识别结果并返回模型可读内容",
+      "通过设置页进行登录并持久化凭据供会话恢复"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件通过 chat.deepseek.com 的官网识图链路（含 PoW、上传、fork、SSE 补全、会话删除）为 DSH 提供视觉能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 明确给出 WeChat 扫码、邮箱手机号密码及 token 登录方式，并记录在官方 credentials 中以便重启恢复。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package.json 一致显示本插件提供 DSH 插件能力与 deepseek_vision 模型工具，并包含 host worker（lib/worker.mjs）用于协议执行。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "调用外部网站接口（chat.deepseek.com）进行图片识别",
+      "接收图片路径/URL并生成结构化文字描述",
+      "在用户会话上下文中替换为识别结果并返回模型可读内容",
+      "通过设置页进行登录并持久化凭据供会话恢复"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:00.109Z",
+  "repositoryCommitSha": "a6ea00958044e3289bbd53985e2f6fe5bd09a068",
+  "evidenceHash": "83b44d3174af4538912de4086b9ee4faa9aad7770290239b06994dd3a1b83d61",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8767e2bfcbf9a81621ab2a6c72e6ac7e5783808b790df8c63fd17fe58ad8ed4d",
+  "shadowMode": false
+}

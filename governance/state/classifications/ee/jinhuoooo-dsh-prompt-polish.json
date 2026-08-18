@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "ui",
+    "automation",
+    "api",
+    "tool",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "基于仓库说明和清单，插件的主要用户面向用途是为 DSH 聊天输入场景提供一键文本/提示词润色服务：点击按钮后对草稿进行改写并回填输入框。它通过可配置的外部模型服务与本地规则回退链实现功能，属于通用工具类的文本处理插件，非代码生成、研究、媒体处理或协作工具。",
+  "summaries": {
+    "zh": "该插件在 DSH 聊天输入框增加一键润色按钮，可快速改写用户的提示词草稿或文本，并支持在设置中切换模型服务与回退策略。",
+    "en": "This plugin adds a one-click polish button to the DSH chat input to rewrite drafted prompts or text, with configurable backend providers and fallback strategy options."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Rewrites user draft text in the DSH chat input via a single click",
+      "Calls external AI endpoints through configurable model providers",
+      "Supports fallback to shared proxy, local model endpoints, and local rule-based polishing",
+      "Provides plugin settings API endpoints for config read/save/test operations",
+      "Reads/writes plugin configuration including API credential fields"
+    ],
+    "reasons": [
+      {
+        "code": "README states a DSH input Sparkle button reads draft text and writes back rewritten content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents supported providers and a four-stage fallback chain for the optimize path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes DSH client injection and plugin bundle configuration indicating in-app UI route integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Tree includes lib/index.js, client/client.js, config files, tools, and worker, indicating host-side routing, UI injection, and proxy/model-access code paths.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Rewrites user draft text in the DSH chat input via a single click",
+      "Calls external AI endpoints through configurable model providers",
+      "Supports fallback to shared proxy, local model endpoints, and local rule-based polishing",
+      "Provides plugin settings API endpoints for config read/save/test operations",
+      "Reads/writes plugin configuration including API credential fields"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:44.148Z",
+  "repositoryCommitSha": "287e74e0ff06ff6e822e8428a9635b6dffd07ffd",
+  "evidenceHash": "4291f980b114e9de5246c20219e5c511202a2fbbd12d2b8507b5b49a571b2e6e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d9d64d101faca7b3584addd05058a3534dc2146d6aea66732e65080a8b56b4f9",
+  "shadowMode": false
+}

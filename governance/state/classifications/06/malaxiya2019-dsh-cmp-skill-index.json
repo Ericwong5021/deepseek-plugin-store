@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "agent",
+    "search",
+    "data",
+    "knowledge",
+    "tool",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要用途是向agent提供一个本地技能索引的列表与检索接口：通过 list_skills 获取全部条目，通过 search_skills 按关键词在名称/描述中匹配并返回结果，依据 readme 和包清单可确认其能力仅为索引读取与查询。",
+  "summaries": {
+    "zh": "这是一个DSH插件，提供对内置技能索引的按名/描述检索与列表能力，让agent可快速找到可复用技能定义。",
+    "en": "This DSH plugin provides listing and keyword search over a bundled skill index so an agent can quickly find reusable skill definitions."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Registers two DSH tools: list_skills and search_skills.",
+      "list_skills returns bundled skill name/description entries.",
+      "search_skills performs case-insensitive matching over skill name and description with optional result limiting."
+    ],
+    "reasons": [
+      {
+        "code": "README specifies plugin exposes only two read/query tools for the in-repo skill index",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package exports bundled static data files and uses a patch-based DSH bundle with no runtime build step",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata indicates public, active, immutable commit and passes admission checks",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers two DSH tools: list_skills and search_skills.",
+      "list_skills returns bundled skill name/description entries.",
+      "search_skills performs case-insensitive matching over skill name and description with optional result limiting."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:02.693Z",
+  "repositoryCommitSha": "62eeb7e7561eda3ca1b6a67673ccb579956654ba",
+  "evidenceHash": "7477d9b21d497a38549220d9e101feed3c01638c703b3a86bda9d29b1d6642f2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "82f70fe09a914ac2458d8465a3dc4eeb49efdc070e4a7a4427104c0b79e56a46",
+  "shadowMode": false
+}

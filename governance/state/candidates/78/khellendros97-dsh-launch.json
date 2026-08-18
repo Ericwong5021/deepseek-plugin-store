@@ -4,7 +4,7 @@
     "fullName": "Khellendros97/dsh-launch",
     "url": "https://github.com/Khellendros97/dsh-launch"
   },
-  "summary": "dsh服务管理插件，可以让服务自动跨会话部署，防止对话结束后服务中断。依赖于dsh-better-sidebar",
+  "summary": "dsh-launch is a DSH plugin for running and managing long-lived services in a detached broker process, with a sidebar and model tools for starting, stopping, restarting, listing, and viewing service logs.",
   "sources": [
     "github-topic"
   ],
@@ -44,34 +44,25 @@
   },
   "classificationSuggestion": {
     "group": "agents-workflows",
-    "category": "automation",
+    "category": "orchestration",
     "tags": [
-      "agent",
-      "api",
-      "browser",
-      "chat",
-      "data",
-      "file",
-      "image",
-      "layout",
-      "planning",
+      "automation",
+      "workflow",
       "terminal",
-      "testing",
       "tool",
-      "ui"
+      "ui",
+      "api",
+      "monitoring"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:插件",
-      "text:testing-debugging:日志",
-      "text:automation:watcher",
-      "text:planning-execution:任务",
-      "text:memory-context:会话",
-      "text:search-browsing:浏览器",
-      "text:navigation-panels:sidebar",
-      "text:files-terminal:git"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:d6597d37d3cf089cdc28696b954d252b4a7663ca2ffc12b3261d78a74fe7d133",
+      "commit:156626494d0afeace2f7c54e18f67704a22529a9"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:15:08.523Z",
+    "reason": "This plugin is primarily a service orchestration and management tool for DSH web sessions: it adds a Service tab and model tools to start/stop/restart/list/log long-running processes, while a detached broker supervises those processes across conversation/session boundaries with restart and readiness logic. The main risk is local process lifecycle control (arbitrary command execution and log/state file handling), which matches an automation/orchestration utility class."
   }
 }

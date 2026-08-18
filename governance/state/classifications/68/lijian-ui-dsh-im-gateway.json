@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "automation",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供即时通讯通道接入：将钉钉、QQ 与个人微信聚合到一个网关服务，实现消息转发、会话管理与流式回复。证据来源于 README 的功能说明与安装/配置流程，以及 package.json 中的 dsh 插件声明与 IM 依赖，故判定为外部服务集成类插件，风险主要集中在外部网络通信与凭据管理。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 IM 网关插件，在同一设置入口下接入钉钉、QQ 与个人微信通道，并支持扫码绑定与流式消息回复。",
+    "en": "This is a DeepSeek Harness IM gateway plugin that connects DingTalk, QQ, and personal WeChat channels through one configuration flow, with QR binding and streaming message replies."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Bridge messages between multiple IM channels and a DeepSeek Harness agent loop",
+      "Perform QR-based binding/credential capture for IM channel setup",
+      "Manage IM session-level commands and lifecycle states (e.g., help/model/status/new/reset/stop)",
+      "Stream incremental replies to supported IM channels when available",
+      "Store and reload gateway channel configuration from settings for runtime use"
+    ],
+    "reasons": [
+      {
+        "code": "README states a unified `ctx.imGateway` for DingTalk/QQ/WeChat(iLink) with multi-instance channels, QR binding, slash commands, and streaming replies, indicating core bot gateway behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata marks this as a dsh bundle plugin with web client injection and dependencies on dingtalk-stream and QQ SDKs plus websocket support, confirming external IM protocol/network integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository description and keywords explicitly position it as a multi-channel IM gateway plugin for DeepSeek Harness.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Bridge messages between multiple IM channels and a DeepSeek Harness agent loop",
+      "Perform QR-based binding/credential capture for IM channel setup",
+      "Manage IM session-level commands and lifecycle states (e.g., help/model/status/new/reset/stop)",
+      "Stream incremental replies to supported IM channels when available",
+      "Store and reload gateway channel configuration from settings for runtime use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:07.339Z",
+  "repositoryCommitSha": "00a9eeac1bd76369f112f63a4b904ec8129c2e73",
+  "evidenceHash": "8b8e8a01c61c33b80514334a694db064b274d5c5c2f724e723afb19a2e6c8bdd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ab71a46fed4fc82923faeccdce32c9630251404a72f468b6c7aa8c596bfcb9f8",
+  "shadowMode": false
+}

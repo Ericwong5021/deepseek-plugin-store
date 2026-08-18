@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "workflow",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是自动化：在 DSH 的对话流程中基于启发式规则与可选分类器判断，自动决定使用 flash 还是 pro 模型。证据来自 README 与入口配置（package.json）显示它是 DSH Cordis 插件，核心逻辑围绕模型路由与会话级决策持久化，不属于搜索、界面、知识库或协作通信类插件。",
+  "summaries": {
+    "zh": "该插件用于在 DSH 会话中根据问题复杂度自动在 DeepSeek-V4-Flash 与 DeepSeek-V4-Pro 之间切换模型，并按会合内规则执行自动路由。",
+    "en": "This plugin automatically routes each DSH turn between DeepSeek-V4-Flash and DeepSeek-V4-Pro based on inferred task complexity, applying turn-level rules for model selection."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "自动在会话内按规则在 DeepSeek-V4-Flash 与 DeepSeek-V4-Pro 之间进行模型路由",
+      "在本地 sidecar 记录每回合决策（sessionId/turn）以供重放",
+      "对边界消息可调用 flash 分类器并使用超时兜底",
+      "支持手动 `/model` 选择并按默认模型策略进行回落或锁定",
+      "提供可配置阈值与关键词规则以调整路由行为"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件“按任务复杂度自动路由”，并在 agent/pre-step 与 agent/request 两层 prepend 监听器中执行升级决策。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明决策会落盘到 ~/.dsh/plugins/auto-model-router/<sessionId>.jsonl，并用于会话内决策可重放，表明具有本地持久化行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 的“已知边界”指出分类器调用会产生真实计费并可能在成本与行为上影响会话。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "自动在会话内按规则在 DeepSeek-V4-Flash 与 DeepSeek-V4-Pro 之间进行模型路由",
+      "在本地 sidecar 记录每回合决策（sessionId/turn）以供重放",
+      "对边界消息可调用 flash 分类器并使用超时兜底",
+      "支持手动 `/model` 选择并按默认模型策略进行回落或锁定",
+      "提供可配置阈值与关键词规则以调整路由行为"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:31.328Z",
+  "repositoryCommitSha": "9d4653ce1cfcda284b503580bc7dc6579a006b8d",
+  "evidenceHash": "89101b0b7b52d189571729f346293e6d4e4f886cfa890292734068e3eb46849d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cfaac84b002b72cb8835b83c8cab55c2f7a353d2dd884ddddd589b3798987a7a",
+  "shadowMode": false
+}

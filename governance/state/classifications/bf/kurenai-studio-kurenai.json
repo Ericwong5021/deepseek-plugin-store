@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "chat",
+    "file",
+    "tool",
+    "api",
+    "context",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a DSH development extension that adds a live headless Cocos preview and inspector into the DSH UI, and links selected scene nodes back as agent context for project edits. Its documented tools (`kurenai_preview_*`, `kurenai_project_*`) and workspace-rooted operation show the main purpose is plugin-based development workflow support with local file and runtime orchestration rather than general content generation or knowledge tasks.",
+  "summaries": {
+    "zh": "Kurenai 是一款 DSH 插件，在会话旁提供 Headless Cocos 实时预览和运行时检查器，并可将场景节点选择转为上下文用于在当前 Cocos 工作区继续编辑项目文件。",
+    "en": "Kurenai is a DSH plugin that adds a live Headless Cocos preview and runtime inspector beside chat, turning selected scene nodes into context for editing the active Cocos workspace."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Edits and updates files in the active DSH workspace Cocos project",
+      "Starts, stops, checks status of, and coordinates a local Headless Cocos preview process",
+      "Provides a web client inspector overlay integrated into the DSH interface",
+      "Captures scene-node selection/context from runtime preview and maps it for agent use"
+    ],
+    "reasons": [
+      {
+        "code": "readme_direct_source_editing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_project_and_preview_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_runtime_postmessage_contract",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_dsh_client_web_injection",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Edits and updates files in the active DSH workspace Cocos project",
+      "Starts, stops, checks status of, and coordinates a local Headless Cocos preview process",
+      "Provides a web client inspector overlay integrated into the DSH interface",
+      "Captures scene-node selection/context from runtime preview and maps it for agent use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:38.019Z",
+  "repositoryCommitSha": "ab54e719c77ba1a651edcb8dd402a11a68e66fbf",
+  "evidenceHash": "98f2cd59c6dec89bd9283c49d4c754813fa4321d7db320310f97d481204e2f05",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7e8a66ae4055ef494edd2a14a566332216848278ea05f9777f50ef1233068898",
+  "shadowMode": false
+}

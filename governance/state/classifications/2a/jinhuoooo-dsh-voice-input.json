@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "tool",
+    "ui",
+    "chat",
+    "desktop",
+    "api",
+    "integration",
+    "workflow",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主导向是语音转文字输入工具：在 DSH 聊天界面提供麦克风录制并将识别结果回填到输入框。根据 README 与仓库结构可见其核心是本地语音采集与转写（含模型加载、回退策略）并可选接入外部 ASR API，因此归类为媒体工具类的本地优先型用户交互插件。",
+  "summaries": {
+    "zh": "该插件在 DSH 聊天中提供麦克风录音并自动转写为文字的输入方式，可直接回填到输入框并支持本地或云端识别模式。",
+    "en": "This plugin provides voice input in DSH by recording speech from the chat interface and inserting the transcription into the input field, with local-first processing or optional cloud transcription provider support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "capture microphone audio from the local device",
+      "convert speech to text via local Whisper service",
+      "download and load ASR models locally",
+      "insert recognized text into DSH chat input field",
+      "optional OpenAI-compatible cloud transcription provider fallback",
+      "read configuration including optional API keys",
+      "access network for model and optional API endpoints",
+      "auto-install runtime dependencies"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a one-click mic input flow that fills transcribed text into the DSH input box.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "File list and tree show Python recording and transcription components (record.py, server.py, transcribe.py) indicating local audio capture and speech-to-text processing behavior.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README documents optional remote providers (Groq/SiliconFlow) via API configuration, implying external credential and network use.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "capture microphone audio from the local device",
+      "convert speech to text via local Whisper service",
+      "download and load ASR models locally",
+      "insert recognized text into DSH chat input field",
+      "optional OpenAI-compatible cloud transcription provider fallback",
+      "read configuration including optional API keys",
+      "access network for model and optional API endpoints",
+      "auto-install runtime dependencies"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:39.927Z",
+  "repositoryCommitSha": "44451911ac30987d2d7c6851f4d2c7d816c30b59",
+  "evidenceHash": "2eaaf50ffccbad3554e62558eb9aa28fb78fd7b484978c68bc9fbdc005969a25",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37815ac03cd32b375c7c03e5ba399c44aa2c8100628b2ab2acb635b7d9a556f3",
+  "shadowMode": false
+}

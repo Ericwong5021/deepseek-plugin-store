@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "ui",
+    "tool",
+    "integration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件主要面向界面展示用途：为 DeepSeek Harness Web 会话标题栏提供账户余额视图，核心行为是由 host 侧新增余额接口并由浏览器端组件定时获取与显示，因此分类为外部服务类实用集成。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 会话标题栏右侧显示账户余额，并通过主机端接口每 60 秒自动刷新（支持手动刷新）以便用户快速查看。",
+    "en": "This plugin shows account balance in the DeepSeek Harness conversation header and refreshes it from a host-side endpoint at a 60-second interval, with manual refresh support for user-initiated updates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "api-call"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明插件在 host 端注册 GET /api/balance，并在前端会话标题栏渲染余额组件以展示充值+赠送余额。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明余额查询通过 host 侧解析 DEEPSEEK_API_KEY 并请求 DeepSeek 的 /user/balance 接口，前端仅展示数字。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 仅声明了与 DSH 主机/凭据/会话 UI 相关的 peer dependencies，表明其运行依赖外部服务与主机能力注入。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "repository 信息与 tree/commit 为公开且无归档/禁用状态，表明该插件按常规发布和加载方式打包为 DSH 插件。",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "api-call"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:28.110Z",
+  "repositoryCommitSha": "4a13d38335a402d4fe1d98e3f5a27a7ed04632a6",
+  "evidenceHash": "7ab349f8835cb69985555efb71cd3c2c71a6be0f675578f487ac3dc45b716bf8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "75af7ab5f29326fc0f3a6e0bd1c7c317f5b60a314df97bb9a361e8b0fb84d9e4",
+  "shadowMode": false
+}

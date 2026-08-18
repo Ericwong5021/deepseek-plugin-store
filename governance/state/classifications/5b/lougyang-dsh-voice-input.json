@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "desktop",
+    "tool",
+    "automation",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用户面向目的是提供系统级语音输入体验：在任意输入场景下通过热键录音并转写为文本粘贴到光标处。其附带功能包括可选纯录音、历史记录与托盘设置界面，结合本地 Whisper 推理与可配置模型/语言/设备，属于桌面端媒体/语音工具用途。",
+  "summaries": {
+    "zh": "这是一个 DSH 的系统级语音输入插件：按设定热键即可记录语音并转换为文本粘贴到当前光标位置，支持可选录音保存与设置。",
+    "en": "This is a DSH system-level voice input plugin that records speech with a hotkey and pastes transcribed text at the current cursor, with optional recording storage and configurable settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "麦克风语音录音与本地转写",
+      "通过全局热键触发输入动作并粘贴识别文本",
+      "可将录音保存为 WAV 文件到本地目录",
+      "在设置与历史记录中持久化识别/录音元数据",
+      "首次安装与首次使用可能进行网络下载（依赖与模型）"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明通过全局热键（F2/F3）实现录音、转写及在当前光标处粘贴文本。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package 描述均明确以 Whisper 语音转写为核心能力，支持 small/tiny/base/medium/large-v3 等模型与语言、设备配置。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明首次安装/首次使用会下载依赖与模型文件（约定量为 2.5GB 及 500MB），并可设置录音保存目录。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 显示插件在 DSH 生态中打包发布，名称与关键词匹配语音输入（speech-to-text、voice-input、whisper）。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "麦克风语音录音与本地转写",
+      "通过全局热键触发输入动作并粘贴识别文本",
+      "可将录音保存为 WAV 文件到本地目录",
+      "在设置与历史记录中持久化识别/录音元数据",
+      "首次安装与首次使用可能进行网络下载（依赖与模型）"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:32.675Z",
+  "repositoryCommitSha": "b59559113e5986d8a4e71150714cbb7712b055b6",
+  "evidenceHash": "141f3c0b9b4e81b2027bfaaedef4ce220eb8d36675c9df97ceeeb96837baef19",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7bbc8621cf6765879ae2bd1c235059cbc2e0ec436c070687384ce3e1fbd7c099",
+  "shadowMode": false
+}

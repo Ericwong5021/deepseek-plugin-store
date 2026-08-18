@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "browser",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a browser UI docking/layout extension for DeepSeek Harness Web, focused on panel management for plugin-driven workbenches: it registers docked panel regions, manages layout state and panel interactions, and exposes a client-side `ctx.dock` API rather than performing coding, testing, search, or external automation work.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 的插件界面布局插件，提供可停靠/浮动面板、拖拽与缩放、会话内布局记忆，并通过 `ctx.dock` 向其他插件暴露面板注册与控制能力。",
+    "en": "This is a DeepSeek Harness Web plugin that adds docked or floating panel layout functionality with draggable/resizable panes, session layout persistence, and a `ctx.dock` API for plugin panel registration and control."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides docked panel layout controls (left/right/bottom/floating, tabs, resize/drag behaviors).",
+      "Injects a web UI adapter that adjusts host page layout anchors and inline styles while active.",
+      "Persists session-scoped dock layout data in browser localStorage.",
+      "Exposes a `ctx.dock` service for panel registration and visibility/control actions for other plugins."
+    ],
+    "reasons": [
+      {
+        "code": "PANEL_LAYOUT_FEATURES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DOCK_PANEL_API",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "FRAME_ADAPTER_STYLE_MUTATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_CLIENT_INJECTION_MANIFEST",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Provides docked panel layout controls (left/right/bottom/floating, tabs, resize/drag behaviors).",
+      "Injects a web UI adapter that adjusts host page layout anchors and inline styles while active.",
+      "Persists session-scoped dock layout data in browser localStorage.",
+      "Exposes a `ctx.dock` service for panel registration and visibility/control actions for other plugins."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:09.358Z",
+  "repositoryCommitSha": "c5142456414046eaff40c234c2c06fc29c30df6b",
+  "evidenceHash": "0f71bc69baa6d503ec1cbab08c634d03e98f3130ff7ce07876c3c39ebfc0e758",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "908c50516f98643e0451e5e5f144ce0d4eb7af95f451acbde76579f920aeb393",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "theme",
+    "data",
+    "api",
+    "integration",
+    "visualization",
+    "browser",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户价值是为 DSH Web GUI 提供股票行情与交易视图扩展：通过可视化皮肤和底部面板集中展示实时行情、自选股、持仓盈亏及K线图，并支持多市场行情检索与轮询。基于仓库描述，核心属于界面导航与行情面板功能，不是代码生成或搜索研究类工具。",
+  "summaries": {
+    "zh": "这是一个为 DSH Web GUI 设计的股票终端扩展插件，提供可替换的行情皮肤、实时行情看板、自选股和持仓盈亏面板，以及个股K线图查看能力。",
+    "en": "This is a DSH Web GUI stock terminal plugin that adds a market-themed interface with a watchlist, real-time quote panel, holdings P&L view, and interactive stock chart viewing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "访问并聚合多个外部行情与汇率数据源",
+      "在 DSH Web GUI 中注入交易终端皮肤与行情/持仓面板",
+      "本地存储自选与持仓等用户数据（localStorage）",
+      "定时轮询与前后台状态联动的行情刷新逻辑"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述插件为“全局交易终端视觉 + 实时行情面板”，并列出自选、持仓、状态栏、K线弹窗等界面能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package.json 均表明该插件以 DSH web 形式发布（dsh.platform: web）并包含宿主端与客户端入口，说明其是可运行于宿主 UI 的功能插件。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "说明文档列出 `/plugins/dsh-stock/api/quotes`、`/suggest`、`/kline` 等聚合接口及缓存/降级策略，属于外部服务集成与网络访问。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "访问并聚合多个外部行情与汇率数据源",
+      "在 DSH Web GUI 中注入交易终端皮肤与行情/持仓面板",
+      "本地存储自选与持仓等用户数据（localStorage）",
+      "定时轮询与前后台状态联动的行情刷新逻辑"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:15.469Z",
+  "repositoryCommitSha": "75f13276bd3d95ed9ecf7e3d852c22bee4702cfa",
+  "evidenceHash": "94bd325fc650591104c72dcd39212179758bc68f07ac1b325c012847bd65faff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2a72be3cb1f0d7a3e23f525a340c55f062720639c3e1b925720f89e3f4acc46c",
+  "shadowMode": false
+}

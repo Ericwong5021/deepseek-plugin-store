@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "ui",
+    "file",
+    "api",
+    "chat",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.9,
+  "reason": "该插件的核心用途是面向 DeepSeek Harness Web GUI 的循环变更审阅：在每个 agent loop 结束时自动记录工作区变更，并以气泡与右侧面板展示可回看 diff，核心能力包括按轮次查看与回退（整轮或单文件）。",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness Web GUI 的 agent 循环变更审阅，在每轮结束后记录并展示文件级差异，并支持一键回退整轮或单文件修改。",
+    "en": "This plugin adds agent-loop change review in DeepSeek Harness Web GUI, recording workspace diffs at loop end and showing them for review, with one-click revert for the whole loop or selected files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures workspace snapshots at agent-loop boundaries and computes file diffs.",
+      "Displays per-loop, per-file diff review in chat-linked bubble and right-side panel.",
+      "Exposes local routes for loop metadata, unified diff retrieval, and revert operations.",
+      "Can restore files to pre-loop content (full loop or single-file revert)."
+    ],
+    "reasons": [
+      {
+        "code": "README 说明插件在 agent running→idle 周期后重新扫描并检测变更，生成并持久化 loop 记录（含行级 diff）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明客户端提供侧边栏“变更审阅”标签页与会话区域气泡入口，并支持逐文件内联 diff 与一键撤销。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 公开路由包括 /dsh-build-diff/loops、/loop/<id>、/loop/<id>/revert，对应查看与回滚能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 的限制说明对同一文件多轮改动时回滚旧 loop 可能覆盖后续改动，表明存在可逆但有覆盖语义的文件写入风险。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Captures workspace snapshots at agent-loop boundaries and computes file diffs.",
+      "Displays per-loop, per-file diff review in chat-linked bubble and right-side panel.",
+      "Exposes local routes for loop metadata, unified diff retrieval, and revert operations.",
+      "Can restore files to pre-loop content (full loop or single-file revert)."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.9,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:07.642Z",
+  "repositoryCommitSha": "1cfee8b9b48070f1f83d6af0fa889a76086457bb",
+  "evidenceHash": "8e28c98713dcd16d9331717602f963527426d41c2d88b58f4fa9978b7ce5d5b5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0e0d5c19f550fcabcdf385d8518f328c2f298b7a87116063701befa91f0d8898",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "ui",
+    "automation",
+    "file",
+    "chat",
+    "context",
+    "tool",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.87,
+  "reason": "This plugin is primarily an automation-oriented DSH Web bundle that packages and injects curated plugins to enhance the user interface and workflow (sidebars, status panels, task board, checkpoints, and handoff/snapshot capabilities). Evidence from the manifest and README shows it is intended for end-user productivity and UI workflow setup rather than core model coding, data transformation, or security tooling, with some moderate-risk operations involving file/sandbox state and external API access.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness Web 的插件捆绑包，提供可快速装配的界面与工作流增强能力，如文件树/会话导航、右侧面板、任务看板、会话快照和迁徙等功能。",
+    "en": "This is a DeepSeek Harness Web plugin bundle that configures a curated set of UI and workflow enhancements in one setup, including navigation panels, dashboard-style tools, snapshots, and conversation handoff features."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs and injects multiple DSH web plugins via bundle configuration",
+      "Reads and writes workspace-related files for features like checkpoints and global settings",
+      "Tracks and persists conversation/session metadata for handoff and review features",
+      "Performs external network calls to external service APIs for account/status reporting",
+      "Hooks into tool-execution flow to intercept destructive operations for confirmation"
+    ],
+    "reasons": [
+      {
+        "code": "package.json declares a DSH web bundle with a patch file and multiple plugin dependencies, indicating orchestration of third-party plugin loading",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes checkpoint snapshots, diff review, conversation handoff, and file-tree/session/outline UI features, implying workspace file and session-state manipulation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README mentions periodic balance queries via api.deepseek.com using host credentials and remote install/update commands, and a PowerShell one-liner installer flow",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Installs and injects multiple DSH web plugins via bundle configuration",
+      "Reads and writes workspace-related files for features like checkpoints and global settings",
+      "Tracks and persists conversation/session metadata for handoff and review features",
+      "Performs external network calls to external service APIs for account/status reporting",
+      "Hooks into tool-execution flow to intercept destructive operations for confirmation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.87,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:14.386Z",
+  "repositoryCommitSha": "b2f40adac50b6873ec889e986f7c82a5a0d2a6eb",
+  "evidenceHash": "ceb4d1e5086f948e68ff84315996a2615f979cf320d3f0accebb3f386de16a83",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "654de097ee538200464e899c52d83dd6a0e36c731d0192df9cef121d8c984d2f",
+  "shadowMode": false
+}

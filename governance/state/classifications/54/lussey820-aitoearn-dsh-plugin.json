@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "workflow",
+    "integration",
+    "tool",
+    "skill",
+    "mcp",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "The plugin’s primary purpose is to provide a content-creation workflow in DeepSeek Harness: briefing, script generation, image-text and video generation, then Douyin publishing. It is best classified as automation because it orchestrates multiple AI-assisted content-generation and external-publishing steps, with integration and MCP/API connectivity documented in the README.",
+  "summaries": {
+    "zh": "该插件将 AiToEarn 的内容创作流程移植为 DeepSeek Harness 插件，提供创意提纲、脚本、图文与视频生成并支持抖音发布的自动化创作链路。",
+    "en": "This plugin ports AiToEarn content creation into DeepSeek Harness as an automated workflow for creative briefing, script and media generation, and optional Douyin publishing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects to external AiToEarn services via MCP-compatible tools",
+      "Generates content outputs for scripts, image-text drafts, and video drafts",
+      "Automates end-to-end content workflow including briefing and publishing steps",
+      "Requires external authentication material via AITOEARN_API_KEY",
+      "Can invoke local tooling paths such as shell/file interactions through DeepSeek Harness utilities",
+      "Supports publishing flow that depends on external browser session state",
+      "Tracks generation status and credit/pricing via external API calls"
+    ],
+    "reasons": [
+      {
+        "code": "README describes four skills (creative director, script writer, image-text publisher, video publisher) exposed as DSH plugin capabilities.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states startup registers MCP tools `createImageTextDraft`, `createVideoDraft`, `getDraftTaskStatus`, `getMyCreditsBalance`, and `getDraftGenerationPricing` via `@deepseek-ai/dsh-mcp-client`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README requires `AITOEARN_API_KEY` configuration and uses `agent-browser` session workflow for Douyin publishing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares this as a DSH plugin bundle with patch manifest (`cordis.patch.yml`) and plugin entry fields.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to external AiToEarn services via MCP-compatible tools",
+      "Generates content outputs for scripts, image-text drafts, and video drafts",
+      "Automates end-to-end content workflow including briefing and publishing steps",
+      "Requires external authentication material via AITOEARN_API_KEY",
+      "Can invoke local tooling paths such as shell/file interactions through DeepSeek Harness utilities",
+      "Supports publishing flow that depends on external browser session state",
+      "Tracks generation status and credit/pricing via external API calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:46.467Z",
+  "repositoryCommitSha": "e5261fd5b365a1762129d0175d64d93e90c6bf9f",
+  "evidenceHash": "36af3d8a6cfe85f9363fe561412c0deb881b71ba3eeb5ac41ea0f773ce6bd886",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "966d25906f196d4e9b4968c7af053881e9d66623908e59f33a2e36beb4c5a3d6",
+  "shadowMode": false
+}

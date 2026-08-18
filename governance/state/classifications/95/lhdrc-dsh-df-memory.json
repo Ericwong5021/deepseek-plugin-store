@@ -1,0 +1,95 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "tool",
+    "agent",
+    "api",
+    "automation",
+    "skill",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用户面向是为 DSH agent 提供记忆与上下文能力，README 明确给出 `memory_query`、`memory_read`、`memory_remember`、`memory_capture`、`memory_sync`、`memory_skill` 等工具接口，并说明可在会话启动与 pre-step 自动注入经验/技能，表明其核心用途是记忆检索、记录与上下文注入；其风险主要在本地记忆仓读写与异步记忆任务、以及可触发宿主 LLM 相关流程，故按中等风险处理。",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的 Cordis 插件，用于把 df-memory 能力接入 agent 工具面，支持记忆查询、读取、记录、同步和会话级上下文注入。",
+    "en": "This is a Cordis plugin for DeepSeek Harness that exposes df-memory functions to agents, including memory querying, reading, writing, syncing, and session context injection."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Query memory nodes by tool call",
+      "Read memory node source content",
+      "Create or queue memory entries/notes",
+      "Archive/remove memory nodes from active state",
+      "Initialize/rebuild memory index and inspect repository tree",
+      "Synchronize memory changes into a git-backed ledger",
+      "Inject skills/experiences into agent sessions",
+      "Use host LLM bridge for compile behavior when enabled"
+    ],
+    "reasons": [
+      {
+        "code": "readme_documents_memory_tools_for_query_read_write_capture_forget_sync",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_documents_session_auto_injection_and_autoBuffer_behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_documents_lifecycle_management_with_brain_init_and_git_sync",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_documents_llm_bridge_fallback_when_core_provider_is_off",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_json_and_files_indicate_dsh_cordis_plugin_bundle",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Query memory nodes by tool call",
+      "Read memory node source content",
+      "Create or queue memory entries/notes",
+      "Archive/remove memory nodes from active state",
+      "Initialize/rebuild memory index and inspect repository tree",
+      "Synchronize memory changes into a git-backed ledger",
+      "Inject skills/experiences into agent sessions",
+      "Use host LLM bridge for compile behavior when enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:03.179Z",
+  "repositoryCommitSha": "00d2dcd5b8e0effe1187861cc75f762e08ea158c",
+  "evidenceHash": "8f244ae9460e5fb83c1233e08bc71900242e0c266059a1dd8cf9e8bd610796ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1e526f8184f7aadec3a71ae8c3b1873d607f4f3c7e166145a18c4c1521d05126",
+  "shadowMode": false
+}

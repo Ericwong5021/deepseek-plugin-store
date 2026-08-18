@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "tool",
+    "file",
+    "monitoring",
+    "agent",
+    "workflow",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily an automation utility for DeepSeek Harness operations: it automates safe install/boot flow control with snapshots, guarded startup validation, and rollback handling, while exposing local CLI and agent tools to manage incidents and recovery tasks. This is evidenced by explicit documentation of snapshot-before-install, boot-guard health checks, auto-retry rollback paths, and exposed rollback/report commands.",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness 用户的实用插件，提供安装前快照、守护启动检查和回退工具，帮助在插件或配置变更后快速恢复可用状态。",
+    "en": "A DeepSeek Harness utility plugin that provides pre-change snapshots, guarded startup checks, and rollback tooling to help users recover quickly from plugin or profile change issues."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures snapshots of DSH profile config and related metadata for reversible changes.",
+      "Runs guarded startup with health checks and performs rollback/retry flows when boot validation fails.",
+      "Provides CLI operations for snapshot management, rollback, status, health, and incident workflows.",
+      "Registers session tools for snapshot/rollback/incident resolution actions and writes local incident markers for follow-up."
+    ],
+    "reasons": [
+      {
+        "code": "README describes pre-install snapshot hooks, guarded boot startup with health checks, automatic rollback/retry, and incident marking behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details cross-platform dsh-guard CLI commands for snapshot/list/rollback/incident and profile-aware state operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares the dsh-guard binary and plugin bundle/client metadata used for integration with DSH web profiles.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Captures snapshots of DSH profile config and related metadata for reversible changes.",
+      "Runs guarded startup with health checks and performs rollback/retry flows when boot validation fails.",
+      "Provides CLI operations for snapshot management, rollback, status, health, and incident workflows.",
+      "Registers session tools for snapshot/rollback/incident resolution actions and writes local incident markers for follow-up."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:53.704Z",
+  "repositoryCommitSha": "c95036f33a2a10bb4c12d04a7f470747effe6532",
+  "evidenceHash": "726730e24c71bc4161f28606b1939f397b7cb1f8650bb2121d0345e20626e7a3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "13df0c414ff9cec8c9e1f0c8605cfa141165c9c4cb5b51d5361ac9ceb2881425",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "tool",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的用户对外用途是会话内导航增强：在 DeepSeek Harness Web 聊天界面添加问题索引面板，支持从“我的问题”列表快速定位并高亮对应消息，属于会话内导航/面板类交互功能而非代码生成或外部集成。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，在当前会话中列出“我的问题”列表，点击问题可快速定位并高亮对应的聊天内容。",
+    "en": "This is a DSH Web plugin that lists your questions in the current conversation and lets you jump to and highlight the selected chat message."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在会话页面显示一个入口按钮，并打开“我的问题”面板",
+      "列出当前会话中的用户/引导类消息（user/steering）供选择",
+      "点击条目后将聊天区滚动到对应消息并触发短暂高亮",
+      "在会话切换及消息流式/历史加载场景下更新列表"
+    ],
+    "reasons": [
+      {
+        "code": "README: 功能描述中说明会话页会出现“问”字浮层按钮，并可打开“我的问题”面板列出当前会话问题",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 点击任意问题时聊天区自动滚动到该消息并短暂高亮",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 会话切换时自动跟随当前会话，消息流式/历史加载时列表实时刷新",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 技术要点: host 侧为空、纯浏览器端 UI 功能；定位通过 data-chat-flow-kind=\"user|steering\" 匹配 DOM 行并手动滚动容器",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: 插件声明 web 平台 client 注入并使用 shell.overlay 等 UI 槽位运行",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "在会话页面显示一个入口按钮，并打开“我的问题”面板",
+      "列出当前会话中的用户/引导类消息（user/steering）供选择",
+      "点击条目后将聊天区滚动到对应消息并触发短暂高亮",
+      "在会话切换及消息流式/历史加载场景下更新列表"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:56.214Z",
+  "repositoryCommitSha": "971f2244ea79e51454eef0c49809cdcc5de03ce9",
+  "evidenceHash": "2e2e8bc0ef793fff542850d1f956817f591c01a72115f0d306d67486bf5e9662",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9dac745cf73254a8502ef195a77734c1cdd096250b2f28ba5390ecdcac239829",
+  "shadowMode": false
+}

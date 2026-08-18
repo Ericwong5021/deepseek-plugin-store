@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "tool",
+    "ui",
+    "agent",
+    "chat",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This is a DSH plugin focused on processing and surfacing session token-usage data by scanning local session logs, exposing results through both a web sidebar UI and a `token_usage` agent tool; the README and package metadata consistently describe this as its core functionality.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中聚合并展示会话 token 用量，并提供 `token_usage` 工具支持 all/today/current 的查询。",
+    "en": "This plugin aggregates and displays session token usage in DeepSeek Harness, with a web sidebar view plus a `token_usage` tool for all/today/current queries."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads local DSH session log files to aggregate token usage",
+      "exposes a `token_usage` tool with scoped queries",
+      "renders a web sidebar panel for token usage summaries and session detail"
+    ],
+    "reasons": [
+      {
+        "code": "README states token counts are derived from `$DSH_HOME/sessions/**/session.jsonl(.zstd)` and aggregated by session logs, including per turn/step handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents an Agent tool `token_usage` with parameters `scope` and `includeSessions` for all/today/current usage queries in headless and Web sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a Web sidebar `Tokens` button/panel showing cumulative, today, and per-session input/output/cache token metrics and session details.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "reads local DSH session log files to aggregate token usage",
+      "exposes a `token_usage` tool with scoped queries",
+      "renders a web sidebar panel for token usage summaries and session detail"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:48.316Z",
+  "repositoryCommitSha": "8d9ca667a04eec9ada657d61526b4d50a010e46d",
+  "evidenceHash": "d47cb6c5f535d328e12d0c735ccefc462a92087b1a52a20bcdc4104478c61079",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "911a85e9362b7043d00a01a76639462c96f82662770f0b0ed3467ed701cffb88",
+  "shadowMode": false
+}

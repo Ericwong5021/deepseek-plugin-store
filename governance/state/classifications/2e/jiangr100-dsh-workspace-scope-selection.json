@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Classified as a file/terminal utility plugin because it is centered on user-controlled write access boundaries for agent actions, not content creation or external integrations. Evidence from the README and manifest shows it adds a new permission mode and UI to choose writable directories, then enforces those choices in filesystem and shell sandboxes.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 会话中新增“选定工作区写入”权限选项，通过目录树选择器限制代理可写目录，用于控制工作区文件写入范围。",
+    "en": "This plugin adds a Selected Workspace Write permission mode in DeepSeek Harness sessions, allowing users to choose writable directories in a tree selector to control where the agent can write files and use terminal writes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Directory-tree selection for writable workspace paths",
+      "Per-session scoped write permissions",
+      "Enforcement for filesystem tools and shell/terminal write access",
+      "Escalation prompt for writes outside selected scope",
+      "Session persistence of permission scope"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a new `selected-workspace-write` permission mode that lets users check directories in a tree editor to define writable scope.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states enforcement applies in both filesystem tools and shell/terminal sandboxes, limiting writes to selected directories plus platform temp areas.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes the permission selection is stored in the session log and restored on resume.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a DSH plugin with a web client inject and bundle patch, confirming integration into the platform UI and runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Directory-tree selection for writable workspace paths",
+      "Per-session scoped write permissions",
+      "Enforcement for filesystem tools and shell/terminal write access",
+      "Escalation prompt for writes outside selected scope",
+      "Session persistence of permission scope"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:32.082Z",
+  "repositoryCommitSha": "8ddb30078e3a09f75445d4cf9a6cb0329fe10d54",
+  "evidenceHash": "2595c362b9baa0eafb83042b78faf5312f3bc704c615f7c326bcdb29d93bb216",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "64fe9780a00ea7bf03f487fc5cd34e41a3ef5503e6385e25f9ded7e42393b008",
+  "shadowMode": false
+}

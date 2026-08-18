@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "integration",
+    "api",
+    "cli",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要用途是将 DeepSeek Harness 的 agent 生命周期状态同步为 Herdr pane 的展示状态（如 working/blocked/idle/release-agent），以便在 Herdr 侧可见地反映 TUI 中的执行与审批状态；实现依据是其对 agent/session 事件的监听、状态映射、以及通过本地 Herdr 连接优先上报、失败则回退 CLI 的机制（文档中明确声明）。",
+  "summaries": {
+    "zh": "该插件在 DSH TUI 进程内监听代理状态事件，并按生命周期规则将其同步为 Herdr pane 的显示状态。",
+    "en": "This plugin listens to DSH agent lifecycle events in the TUI process and synchronizes those states to Herdr pane status indicators."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors DSH agent/session lifecycle events and derives pane status.",
+      "Reports state transitions to Herdr via local socket/pipe protocol.",
+      "Falls back to Herdr CLI when socket transport fails.",
+      "Uses pane/process context to avoid cross-process conflicts."
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_RUNTIME_INTEGRATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SOCKET_AND_CLI_FALLBACK_PATHS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_PLUGIN_INTEGRATION_DEPS",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Monitors DSH agent/session lifecycle events and derives pane status.",
+      "Reports state transitions to Herdr via local socket/pipe protocol.",
+      "Falls back to Herdr CLI when socket transport fails.",
+      "Uses pane/process context to avoid cross-process conflicts."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:45.614Z",
+  "repositoryCommitSha": "1ef872f52dce49c9cfbaeb2646354adae7eaef0d",
+  "evidenceHash": "ca36279bf4fda2a3a0a65b1166c3b73462141a76c4494ac2cfbc546977bdb32e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bad330dfd2d52450f73252dd3d402b80d12c6b33f80e00961362865d5f537701",
+  "shadowMode": false
+}

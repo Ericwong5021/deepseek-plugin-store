@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "agent",
+    "api",
+    "document",
+    "file",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Primary user-facing purpose is PDF document text extraction for AI workflows: the plugin exposes a model-facing `read_pdf` tool so agents can read and summarize PDF content. Evidence shows it is a DeepSeek Harness plugin using unpdf/PDF.js to extract plain text from PDF bytes and return structured page-based output with explicit size bounds and documented format/limitation constraints.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 `read_pdf` 工具，让 AI 模型在会话中读取并提取 PDF 文本内容，返回可用于摘要或分析的纯文本。",
+    "en": "This plugin adds a `read_pdf` tool to DeepSeek Harness so AI models can read PDF files in-session and receive extracted plain text for summarization or analysis."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads PDF files from workspace file systems",
+      "Extracts plain text from PDF content",
+      "Returns extracted text to an AI agent through a model-invoked tool",
+      "Applies file-size and output-length limits per call"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DeepSeek Harness add-on providing a `read_pdf` tool for PDF text extraction for AI agents/LLM tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies the flow uses `ctx.fs.readBytes` with workspace/sandbox policy and enforces `maxFileBytes` and `maxOutputChars` to bound resource usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a `dsh.bundle` entry and plugin metadata, indicating runtime integration as a harness profile plugin rather than a standalone UI service.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads PDF files from workspace file systems",
+      "Extracts plain text from PDF content",
+      "Returns extracted text to an AI agent through a model-invoked tool",
+      "Applies file-size and output-length limits per call"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:27.761Z",
+  "repositoryCommitSha": "6fe621eccace53321e9fc5ce4be51fa65aca5051",
+  "evidenceHash": "115a58e850ce0ae32ddd0a2428ef66431ddfa067d803216d431846f3dea1dcb2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "65a2b64b5161ba69e4be03573d09a3f8edb05f0f91ca1655c0bf28468e01a442",
+  "shadowMode": false
+}

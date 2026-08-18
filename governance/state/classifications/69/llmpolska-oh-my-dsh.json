@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "workflow",
+    "api",
+    "chat",
+    "tool",
+    "image",
+    "terminal",
+    "planning"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily an orchestration utility for DeepSeek Harness sessions: it routes work across think/build/vision model tiers, adds `/omd` controls and agent tools, and provides optional vision-to-text and image-generation flows, while applying guard and escalation rules for certain risky actions in build mode. Evidence from the repository description, README, and package manifest consistently identifies it as a workflow-routing and model-management plugin.",
+  "summaries": {
+    "zh": "oh-my-dsh 是 DeepSeek Harness 插件，提供思考/构建层级路由与 /omd 控制，支持图片场景自动转交 vision 描述和图片生成功能，以便在会话中按场景切换模型。",
+    "en": "oh-my-dsh is a DeepSeek Harness plugin that adds think/build model-tier routing with /omd controls, plus vision delegation and image-generation flows to switch model behavior per session workflow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Multi-model routing between configured tiers",
+      "Vision model delegation for image-to-text flow",
+      "Image generation tool integration",
+      "Session-aware slash commands and agent tools",
+      "Command-guard behavior during build-tier operation"
+    ],
+    "reasons": [
+      {
+        "code": "README states sessions can switch between think/build/vision behavior via /omd commands and omd_* tools, and supports per-session tier mode selection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes vision delegation where images are described in the background and later substituted in history for text-only models, plus image generation via configured chat models.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata and README indicate external model providers are configured in settings and used by the plugin, including API key handling for image providers.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Multi-model routing between configured tiers",
+      "Vision model delegation for image-to-text flow",
+      "Image generation tool integration",
+      "Session-aware slash commands and agent tools",
+      "Command-guard behavior during build-tier operation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:29.587Z",
+  "repositoryCommitSha": "38c826b30e1598dbd74a5f52a74ab3e7e9a7accd",
+  "evidenceHash": "0897374b18e27bfbee54a5977190fd0517b88ee438e96bd7ae85ad5c380b4bea",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7dc898fcd002485dfdf2e7d90bd591fab8ea1a1c7f296559b3a893af734b121d",
+  "shadowMode": false
+}

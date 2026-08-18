@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "automation",
+    "tool",
+    "file",
+    "integration",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "The repository is primarily a distributable plugin package (`june-agent`) for DSH/Claude workflows that bundles June-M and June-S agent definitions plus two skills, with documented install/remove paths and runtime behavior to materialize those presets/skills for local use in configured agent environments.",
+  "summaries": {
+    "zh": "JuneAgent 是一个可安装的 AI 助手扩展包，提供 June-M 与 June-S 双人格代理与配套技能，并将对应预置与技能部署到本地配置环境供会话调用。",
+    "en": "JuneAgent is an installable AI assistant plugin that provides June-M and June-S agent presets with companion skills, and deploys them into local configuration locations for use in Claude/DSH sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Writes preset and skill files into user/home configuration paths during plugin apply",
+      "Registers/unregisters DSH bundles and plugin installation state",
+      "Runs a Node entry module as part of DSH profile startup"
+    ],
+    "reasons": [
+      {
+        "code": "The package metadata declares a DSH bundle entry (`dsh.bundle.patch`) and points to `lib/index.js` as the plugin module, indicating execution within the host profile lifecycle.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Documentation states the plugin materializes `presets/` into `<dshHome>/.agent-presets/` and `skills/` into `<dshHome>/skills/`, with existing directories skipped when already present.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Install/remove flow is documented with `dsh plugin --profile web add/remove`, showing host profile/bundle mutations tied to local environment behavior.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Writes preset and skill files into user/home configuration paths during plugin apply",
+      "Registers/unregisters DSH bundles and plugin installation state",
+      "Runs a Node entry module as part of DSH profile startup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:53.877Z",
+  "repositoryCommitSha": "66b9d907f035a2972125c3e0b1d9917ca74d0776",
+  "evidenceHash": "e259c7b74aba3ffd4db87410cfc3085dd5fc12772e74f8f77685cf7bfb0fd1e1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1449cc983973f463a77ea476d3beab007ce951605cc7f6feaf7d25ceba0b047",
+  "shadowMode": false
+}

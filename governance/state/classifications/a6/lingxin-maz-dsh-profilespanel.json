@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "automation",
+    "tool",
+    "monitoring",
+    "desktop",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用户面向是深度展示与操作型 Profile 运维面板，核心用途是集中查看 profile/bundle 运行与健康状态，并提供安装、更新、重启、回滚、差异比对等维护流程。依据 README 与 package 清单，可归类为界面化运维管理插件，而非内容创作、知识管理或代码生成工具。",
+  "summaries": {
+    "zh": "dsh-profile-panel 是 DeepSeek Harness 的 profile 运维控制台，提供 profile 和插件状态查看、待重启监控，并支持安装、更新、重启、回滚与审核查询等管理操作的可视化入口。",
+    "en": "dsh-profile-panel is a DeepSeek Harness profile operations panel that provides a UI for viewing profile and plugin status, monitoring pending-restart state, and managing actions such as install, update, restart, undo, and audit queries."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Profile 状态与待重启事件监控",
+      "跨 profile 的插件安装、更新与对齐操作",
+      "一键重启与热加载入口",
+      "启动报告、健康检查、差异对比与审计时间线查询"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确将插件定位为“profile 运维控制台/插件状态面板”，包含当前 profile、bundle 清单、待重启检测与 SSE 推送。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 的功能与 HTTP 接口清单包含 /api/profile-panel/install、/restart、/undo、/updates、/align 等变更类接口，说明具备主动改写本地 profile 与插件配置的能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package 信息声明为 DSH 插件（dsh.bundle 补丁与 web 客户端入口），表明其作为宿主扩展注入 UI 与后端能力执行运维操作。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Profile 状态与待重启事件监控",
+      "跨 profile 的插件安装、更新与对齐操作",
+      "一键重启与热加载入口",
+      "启动报告、健康检查、差异对比与审计时间线查询"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:14.088Z",
+  "repositoryCommitSha": "ca4cf4d876851c2e71f71ed907610db0a74d7efe",
+  "evidenceHash": "4ecb44ec119633c488e2ab03088a07ae0c7243710e75fa6e8eed5c685f99a465",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "931734e217f65e8b505ea8fb664760fca6a093db3bab742354f6f59ec7cc4e9c",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "api",
+    "search",
+    "integration",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The plugin is primarily a web search integration for DeepSeek Harness, registering a Tavily-backed provider (`tavily`) and exposing configuration in the settings UI to enable/disable it and supply credentials. This evidence places the primary purpose in search/browsing capability rather than code generation or automation, with limited scope concentrated on provider wiring and configuration.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，提供基于 Tavily 的网络搜索提供者，并在设置界面提供 API Key 填写与开关控制。",
+    "en": "This plugin adds a Tavily-backed web search provider to DeepSeek Harness and provides a settings UI card with API key input and an enable/disable switch."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "web search provider integration via Tavily API",
+      "GUI-based toggle and API key configuration for the provider",
+      "network requests to an external service for query execution",
+      "reading credentials from harness credential/config sources"
+    ],
+    "reasons": [
+      {
+        "code": "registers_web_search_provider_tavily",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ships_gui_settings_card_with_enabled_switch_and_api_key_field",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "depends_on_dsh_bundle_and_client_injection_for_plugin_integration",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "explicit_api_key_resolution_network_env_credentials_order",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "web search provider integration via Tavily API",
+      "GUI-based toggle and API key configuration for the provider",
+      "network requests to an external service for query execution",
+      "reading credentials from harness credential/config sources"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:01.991Z",
+  "repositoryCommitSha": "0092ee452c20fd3e74467bca9a7336836d20969c",
+  "evidenceHash": "176c803e9e947ad88d7ec822fe451055d91689eeeadbbea71f83a6622aedc9e9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7600f890299efb65e8c0b0faf43d121659a288770284d0d5606d246c7dde9ae9",
+  "shadowMode": false
+}

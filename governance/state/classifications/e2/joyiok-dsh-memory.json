@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "agent",
+    "tool",
+    "ui",
+    "context",
+    "data",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件主要面向会话上下文增强，提供跨会话共享的持久记忆服务，并通过固定的 memory_* 工具供 Agent 调用，在检索与记录信息上实现会话间记忆延续。README 与仓库结构还说明了配套的 Web Memory 面板用于人机管理，但其核心功能仍集中于记忆读写与检索，不是搜索、构建或测试类工具。",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness 的共享持久记忆插件，提供 memory_add、memory_search、memory_list、memory_remove 工具，并附带 Web 侧边栏供用户查看、搜索、添加和删除记忆条目。",
+    "en": "A DeepSeek Harness plugin for shared persistent memory that provides memory_add, memory_search, memory_list, and memory_remove tools, plus a web sidebar for viewing, searching, adding, and deleting memory entries."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persistent local memory storage with shared access across DSH sessions",
+      "Agent tools for adding, searching, listing, and removing memory entries",
+      "Web sidebar UI for manual memory management"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a shared persistent memory store in a single JSON file used by web/headless/any workspace sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists Agent tool APIs memory_add, memory_search, memory_list, and memory_remove with their input parameters.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Tree shows dedicated store and client modules (src/store.js, lib/client.js) plus Cordis patch integration for DSH.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Persistent local memory storage with shared access across DSH sessions",
+      "Agent tools for adding, searching, listing, and removing memory entries",
+      "Web sidebar UI for manual memory management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:44.325Z",
+  "repositoryCommitSha": "070cf441cd385efdb2d7e072c31eaf06aa2b1c8f",
+  "evidenceHash": "c7649049bc65cb59e650465af1b6ab6e2335a42d4d8f9b88756d9f9d3c3c5ae7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b0987aa29e720b4250f4596ef7fad04e8072b71e47fffada12615c4880caae02",
+  "shadowMode": false
+}

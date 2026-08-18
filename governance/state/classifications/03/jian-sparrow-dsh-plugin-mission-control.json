@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "ui",
+    "monitoring",
+    "agent",
+    "tool",
+    "data",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a DeepSeek Harness Web observability UI: it adds a session-side panel and optional full-screen dashboard to monitor current-session agent/tool activity, token usage, and derived cost estimates using live Harness projection data. Its core user-facing purpose is monitoring and visualization within the DSH interface rather than generating code, automating actions, or managing external data sources.",
+  "summaries": {
+    "zh": "Mission Control 是一个 DeepSeek Harness Web 插件，用于在当前会话中实时展示代理/工具活动、子代理结构和令牌使用，并提供可选的全屏仪表盘。",
+    "en": "Mission Control is a DeepSeek Harness Web plugin that shows live agent and tool activity for the current session, including token usage and an optional full-screen monitoring dashboard."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Consumes and displays live session telemetry for agents, tools, and subagents",
+      "Subscribes to same-origin event streaming while Mission Control panel is visible",
+      "Shows token meter metrics and token-velocity information in dashboard/panel views",
+      "Displays optional cost estimates derived from observed token/model usage",
+      "Offers configurable tool payload preview modes from names-only to full"
+    ],
+    "reasons": [
+      {
+        "code": "Readme describes a live mission-control panel and full-screen dashboard that shows agent tree, tool stream, token buckets, token velocity, and session facts in real time.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme states the plugin opens one same-origin SSE subscription to `/plugins/mission-control/events` while visible, and freezes last snapshot on reconnect.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme explains previewMode includes a full option that renders complete tool arguments/results, with redaction only as a best-effort privacy control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a web plugin client entry with DSH session-projection/token-meter/service injections, indicating it observes existing runtime telemetry rather than altering model behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Consumes and displays live session telemetry for agents, tools, and subagents",
+      "Subscribes to same-origin event streaming while Mission Control panel is visible",
+      "Shows token meter metrics and token-velocity information in dashboard/panel views",
+      "Displays optional cost estimates derived from observed token/model usage",
+      "Offers configurable tool payload preview modes from names-only to full"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:30.595Z",
+  "repositoryCommitSha": "77107022ea32174118c66a75c42ce02c728967d2",
+  "evidenceHash": "67749422e38c885c154d35fc0700cb9a47063214fe72f30ade275c2bf6d45a18",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "05a6283cb4ff4ee6520bc6d089148a6015e0da1811c1cbd50b7c07f7406125aa",
+  "shadowMode": false
+}

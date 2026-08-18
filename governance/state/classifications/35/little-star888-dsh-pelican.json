@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "ui",
+    "notification",
+    "workflow",
+    "api",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件主要面向用户显示任务执行状态的前端交互增强，后端负责监听会话/代理事件并维护状态，前端在右下角可视化当前状态并在完成时提醒，属状态提示与通知类功能插件。",
+  "summaries": {
+    "zh": "该插件为 DSH Web 提供右下角骑行动画与任务状态提示，可显示思考/完成状态，并在完成时给出提示音与可选系统通知。",
+    "en": "This plugin adds a persistent bottom-right pelican animation and task-status cues in DSH Web, showing conversation state and optionally playing a sound or system notification when tasks complete."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Listens to DSH global events and maintains an internal task state machine (`idle`, `thinking`, `done`).",
+      "Exposes a host-side `GET /api/pelican/status` endpoint for browser-side polling.",
+      "Injects a persistent right-bottom web overlay for animated SVG status presentation.",
+      "Shows status bubbles and can trigger completion sound and optional system notifications.",
+      "Provides a `pelican_debug` debug tool exposing internal state fields such as sequence and pending agent ID."
+    ],
+    "reasons": [
+      {
+        "code": "README documents global event monitoring and status transitions for user-facing state updates.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents client overlay animation, bubble messages, sound alerts, and optional notification behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web client injection slot and immediate rendering behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Listens to DSH global events and maintains an internal task state machine (`idle`, `thinking`, `done`).",
+      "Exposes a host-side `GET /api/pelican/status` endpoint for browser-side polling.",
+      "Injects a persistent right-bottom web overlay for animated SVG status presentation.",
+      "Shows status bubbles and can trigger completion sound and optional system notifications.",
+      "Provides a `pelican_debug` debug tool exposing internal state fields such as sequence and pending agent ID."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:21.018Z",
+  "repositoryCommitSha": "01cd67a9d1a6d492c69dc228011972c9f6ccb647",
+  "evidenceHash": "a4873e8f8799541b2265763ce0693d78098d67b47c78749e1277dd732ec7bc0e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fbae98b0ce584e7fd0e37b7e28b6d666a193a834b436e7c607d7906a234d0c36",
+  "shadowMode": false
+}

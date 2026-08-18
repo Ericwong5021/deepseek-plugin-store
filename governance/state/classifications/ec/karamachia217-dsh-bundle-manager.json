@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "automation",
+    "ui",
+    "tool",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary user-facing purpose is runtime management of optional third-party DSH plugin bundles, implemented as a settings-based control surface with a management API that applies bundle diffs and manages named presets, which best matches plugin-development-oriented utility behavior.",
+  "summaries": {
+    "zh": "dsh-bundle-manager 是一款 DeepSeek Harness 的插件包运行时管理插件，在设置界面内提供可选第三方插件的挂载与卸载操作，并支持按名称保存和切换预设组合。",
+    "en": "dsh-bundle-manager is a DeepSeek Harness web plugin that manages optional third-party bundles at runtime, letting users toggle bundle loading in the settings interface and save or switch named preset configurations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runtime mount/unmount control for optional third-party plugin bundles through the host Loader API",
+      "Settings-driven apply flow for reconciling active bundle changes",
+      "Preset management for saving, switching, and deleting bundle activation states"
+    ],
+    "reasons": [
+      {
+        "code": "Runtime in-process bundle mount/unmount behavior is the plugin's core feature",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Draft-based toggle and one-shot apply workflow is described for activating/deactivating bundles",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Management API paths are documented for listing, applying, and managing presets",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest declares this as a DSH web bundle with client runtime/UI-slot injection",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runtime mount/unmount control for optional third-party plugin bundles through the host Loader API",
+      "Settings-driven apply flow for reconciling active bundle changes",
+      "Preset management for saving, switching, and deleting bundle activation states"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:00.582Z",
+  "repositoryCommitSha": "aac7cab68b95d760228224419647178343cf6fa4",
+  "evidenceHash": "3004964db88028a99ceda5755ca43b54d7eb54d743921c89613da35632dce6fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "727fd0fe0ccfe07a0b5702f5533ddfee3f2001f24e2033c7230fce98e2a06ae1",
+  "shadowMode": false
+}

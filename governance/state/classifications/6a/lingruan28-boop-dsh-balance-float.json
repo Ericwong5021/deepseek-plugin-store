@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "data",
+    "visualization",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件主要面向用户在 DeepSeek Harness 页面内提供一个可拖拽缩放的悬浮余额面板，窗口放大后追加展示官方风格的用量图表与明细；从仓库与 README 可见其为前后端分离的 DSH 插件，核心行为是读取本地凭据并请求 DeepSeek 服务获取余额/用量数据并在 UI 中展示。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，在页面中显示可拖拽缩放的余额悬浮窗，放大后可查看今日与本月用量图表、逐日明细和模型分布。",
+    "en": "This is a DeepSeek Harness plugin that shows a draggable, resizable floating balance window and reveals daily/monthly usage charts, daily details, and model distribution when enlarged."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access"
+    ],
+    "reasons": [
+      {
+        "code": "插件说明文档要求从本地凭据文件读取 DEEPSEEK_API_KEY，并可读取可选的 DEEPSEEK_PLATFORM_TOKEN 以获取官方用量数据。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件通过 DeepSeek 接口获取余额与用量数据，并在浮层内展示。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "架构描述显示 Host 提供 /ds-balance 路由并供客户端浮层读取数据，界面按尺寸切换展示并支持自动刷新。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:13.136Z",
+  "repositoryCommitSha": "d0b1fdf599b2d406b48fc9e4b0f2cb6a404342a4",
+  "evidenceHash": "0f7f5899c4d33c1ad47898c855fac733e2e59101d81cd0cbe550ca57e4f60c28",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8b28e8d3cef1fe9eec2c7a15368a5ec410e59f8b9d08b1677e8c0c71cdfa9ec8",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "tool",
+    "file",
+    "ui",
+    "terminal",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是将本地 MLX 大模型服务接入 DSH 的自定义 Provider 工作流：通过设置页面管理模型目录、启动/停止服务，并以 OpenAI 兼容接口供会话调用，因此归类为外部服务集成。其能力局限于本地模型与服务生命周期管理与模型下载，伴随有进程管理和网络下载相关中等风险。",
+  "summaries": {
+    "zh": "在 Apple Silicon 的 macOS 上通过 DSH 管理 MLX 本地模型目录、启动与停止服务，并通过 OpenAI 兼容接口接入到自定义 Provider。",
+    "en": "On Apple Silicon macOS, this plugin lets DSH manage local MLX model folders, start and stop the local service, and connect it through an OpenAI-compatible interface for a custom provider."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local model service lifecycle control (start/stop/restart)",
+      "local model directory management and listing",
+      "Python virtual environment bootstrap and dependency installation",
+      "Hugging Face model download and local cache usage",
+      "exposure via OpenAI-compatible local API endpoint for DSH custom provider"
+    ],
+    "reasons": [
+      {
+        "code": "README states plugin manages mlx_lm.server startup, shutdown, and crash cleanup.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states automatic Python detection, venv creation, and mlx-lm installation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states local model paths are stored/managed and models may be pre-downloaded from HF.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local model service lifecycle control (start/stop/restart)",
+      "local model directory management and listing",
+      "Python virtual environment bootstrap and dependency installation",
+      "Hugging Face model download and local cache usage",
+      "exposure via OpenAI-compatible local API endpoint for DSH custom provider"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:48.684Z",
+  "repositoryCommitSha": "059faa1e8573f69cc56b21240a8e3fd144782f4d",
+  "evidenceHash": "7266d2b67f7398b25649c740d6692bc8740af2e07f83e91ad7e35081c5c1a138",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f70b75ff23fbf1a2acf57bf231f58d908297f4a7b1d2e61c5e417b6de09d7700",
+  "shadowMode": false
+}

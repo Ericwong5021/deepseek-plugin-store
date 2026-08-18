@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "chat",
+    "agent",
+    "tool",
+    "api",
+    "automation",
+    "notification"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.89,
+  "reason": "The plugin is primarily an external service integration that connects WeChat (Tencent ClawBot/iLink) with DeepSeek Harness, acting as a two-way communication bridge for agent-assisted message handling. Evidence shows core behavior is chat messaging transport plus WeChat-triggered session controls and agent notification/approval interactions, with local persistence of session and credential state.",
+  "summaries": {
+    "zh": "这是一个微信 ClawBot 与 DSH 连接的消息桥插件，可将微信私聊内容同步到 DSH 会话并将 agent 回复回发到微信，支持会话切换和审批/通知类指令。",
+    "en": "This is a WeChat ClawBot to DSH bridge plugin that routes private WeChat messages into DSH sessions and sends agent replies back to WeChat, with basic session controls and approval/notification commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Bridges WeChat ClawBot messages to DeepSeek Harness and returns DSH replies to WeChat",
+      "Supports user/session commands for status and chat session switching",
+      "Provides allowlist/admin gating for who can interact with the bot",
+      "Persists session, credentials, cursor, and media metadata in plugin-local directories",
+      "Enables media handling for images, voice, files, and video attachments",
+      "Exposes outbound notification tools for agent-initiated pushes to WeChat",
+      "Includes an approval flow where agents can request user confirmation via WeChat commands"
+    ],
+    "reasons": [
+      {
+        "code": "README states explicit WeChat ClawBot ↔ DSH bidirectional bridge and command set",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration references credentials, allowUsers/adminUsers, notifier, approval settings, and local persistence paths",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package declares a DSH bundle plugin with Cordis integration metadata and iLink-focused dependencies",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Bridges WeChat ClawBot messages to DeepSeek Harness and returns DSH replies to WeChat",
+      "Supports user/session commands for status and chat session switching",
+      "Provides allowlist/admin gating for who can interact with the bot",
+      "Persists session, credentials, cursor, and media metadata in plugin-local directories",
+      "Enables media handling for images, voice, files, and video attachments",
+      "Exposes outbound notification tools for agent-initiated pushes to WeChat",
+      "Includes an approval flow where agents can request user confirmation via WeChat commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.89,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:05.419Z",
+  "repositoryCommitSha": "ac71b53831fe582429420af0e309c13b3549d9b8",
+  "evidenceHash": "34391e2b5c109128b0d2f8e100b50e85b49fa9084ef5043bf69fc6673fd74adc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7aefcea4024f80813aa8ab8ecdae5b83a2426914a9684d110af8474dfd99861a",
+  "shadowMode": false
+}

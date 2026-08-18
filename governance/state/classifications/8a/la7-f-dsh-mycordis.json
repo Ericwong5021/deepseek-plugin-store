@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "automation",
+    "file",
+    "tool",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a dsh developer/operations tool for managing Cordis plugins, centered on one-click packaging, local import/export, installation, and lifecycle control, with a built-in web page and `/packer2` API routes to perform these tasks; evidence points to packaging/installation workflow rather than external integrations, browsing/search, or media processing.",
+  "summaries": {
+    "zh": "MyCordis 是一个面向 dsh 用户的插件管理工具，提供会话级 Cordis 插件的一键打包、安装、导入、恢复与卸载操作界面。",
+    "en": "MyCordis is a dsh utility that provides an interface to one-click package, install, import, restore, and uninstall session-level Cordis plugins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Exposes local HTTP endpoints for listing, packing, exporting, importing, installing, uninstalling, and restoring plugins.",
+      "Writes and reads plugin artifacts and snapshots in workspace/output directories for `.tgz`, `.dshplugin.json`, and related metadata.",
+      "Registers and manages session-level Cordis plugins, including favorites/restore state and profile-level plugin install/uninstall operations.",
+      "Can import and execute portable plugin definitions after user-initiated registration/restoration workflows."
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_PLUGIN_API_SURFACE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLUGIN_ARTIFACT_FILE_IO",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PROFILE_PLUGIN_INSTALL_UNINSTALL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PORTABLE_PLUGIN_IMPORT_AND_RESTORE",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Exposes local HTTP endpoints for listing, packing, exporting, importing, installing, uninstalling, and restoring plugins.",
+      "Writes and reads plugin artifacts and snapshots in workspace/output directories for `.tgz`, `.dshplugin.json`, and related metadata.",
+      "Registers and manages session-level Cordis plugins, including favorites/restore state and profile-level plugin install/uninstall operations.",
+      "Can import and execute portable plugin definitions after user-initiated registration/restoration workflows."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:40.349Z",
+  "repositoryCommitSha": "c18c01f1ecbaa7a15f7636fc47fa3b2d0b10a23e",
+  "evidenceHash": "bb255cb10540b6e5c0d24102520d88c7a241bb9c6496bf48ea3309706d753fdc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "665a62400116e8acb8fdabbd15a12b5a7237a2e7a5a7f8a42613d3b3702e233c",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "automation",
+    "tool",
+    "file",
+    "cli",
+    "terminal",
+    "project-analysis"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件基于 DSH/Cordis 插件与脚本机制，核心作用是自动检查 DSH profile 里的插件重复问题，并在 `preinstall` 阶段阻断重复导致的安装流程，属于面向依赖管理的自动化插件开发工具。其实现主要围绕 `package.json` 与 `node_modules` 扫描，不涉及 UI、通信或外部服务集成。",
+  "summaries": {
+    "zh": "该插件用于在 DSH profile 中检测重复插件声明与重复安装，在启动或 `pnpm install` 前扫描依赖并在检测到冲突时阻止安装。",
+    "en": "This plugin detects duplicate plugin declarations and installs in a DSH profile, scanning dependencies during startup or `pnpm install` preinstall and preventing installation when conflicts are found."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "检测 package.json 中同名插件的多源声明",
+      "扫描 node_modules 中同名包的重复安装",
+      "作为 pnpm preinstall 钩子阻断可疑安装流程",
+      "独立脚本执行重复检测并返回非零码"
+    ],
+    "reasons": [
+      {
+        "code": "start-scan-plugin-entry",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "preinstall-blocking-behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "duplicate-source-and-version-detection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposed-bin-and-check-script",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "检测 package.json 中同名插件的多源声明",
+      "扫描 node_modules 中同名包的重复安装",
+      "作为 pnpm preinstall 钩子阻断可疑安装流程",
+      "独立脚本执行重复检测并返回非零码"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:33.476Z",
+  "repositoryCommitSha": "558cbdfb3d787cf5ded06f49ae5de6dbd3474445",
+  "evidenceHash": "e113d9fd8f339f71f2be933dd9c5a1993ce78caac81216e530ac7d97c87b906b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0c584a5335abccd93fa29e9b3cdeace2886fd74802c69dff4be1300483c449b8",
+  "shadowMode": false
+}

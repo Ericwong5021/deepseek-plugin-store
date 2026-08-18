@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "document",
+    "file",
+    "tool",
+    "integration",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily a DeepSeek Harness integration with the external KolmoPDF service, offering PDF parsing/translation, document conversion, and cloud-task/cost utilities as first-class `kolmopdf_*` tools, so its user-facing purpose is external document-processing service access rather than automation orchestration or code generation.",
+  "summaries": {
+    "zh": "一个 DeepSeek Harness 插件，提供 Kolmopdf 的 PDF 解析与翻译、Markdown 转换等工具，并支持任务状态与余额/用量相关查询及 API Key 配置。",
+    "en": "A DeepSeek Harness plugin that provides Kolmopdf tools for PDF parsing and translation, markdown conversion, and task/balance utilities with GUI or CLI API key configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "PDF parsing/translation and markdown conversion via KolmoPDF service endpoints",
+      "Conversion of markdown/zip content to DOCX, HTML, PDF, and LaTeX formats",
+      "Local file upload/download orchestration with configurable output directory handling",
+      "Credential/configuration management through GUI settings and CLI commands"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin exposes KolmoPDF tools (`kolmopdf_parse_pdf`, `kolmopdf_translate_pdf`, `kolmopdf_convert_markdown`, etc.), showing explicit dependence on an external API workflow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It accepts and processes local PDF/Markdown/ZIP inputs, writes converted outputs, and performs upload/download/poll operations, indicating file I/O plus network transfer behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration supports API-key sources (settings, CLI, environment) and references credential handling and env precedence, confirming remote service authentication handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`dsh.bundle` declarations and DSH client/runtime dependencies indicate integration into the Harness plugin ecosystem rather than a standalone autonomous service.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "PDF parsing/translation and markdown conversion via KolmoPDF service endpoints",
+      "Conversion of markdown/zip content to DOCX, HTML, PDF, and LaTeX formats",
+      "Local file upload/download orchestration with configurable output directory handling",
+      "Credential/configuration management through GUI settings and CLI commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:29.377Z",
+  "repositoryCommitSha": "9b8d1b7d029a5786b2d30ad3c72013dbebb15a93",
+  "evidenceHash": "b6d086cec9ef15499db4e74cc5c4312c2ba4b44a4dcdc9966045a140fb7d397c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "17f50b02a5aa5e582cb38b2174ebb80b24e83711c5ac4ea770388d5c1ed115a0",
+  "shadowMode": false
+}

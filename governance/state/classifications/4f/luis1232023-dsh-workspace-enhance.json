@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "search",
+    "tool",
+    "project-analysis"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该仓库主打功能为增强 DSH 左侧工作区导航，按仓库目录展示会话、文件与 Git 子视图，并在右侧提供文件预览，属于导航面板/界面增强插件；同时其说明文档显示它包含本地文件和 Git 查询能力，并提供会话删除能力，因此分类为 navigation-panels，风险为中等。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，可将默认左侧工作区浏览器替换为支持会话、文件和 Git 子视图的工作区导航面板，并在侧边预览打开的文件内容。",
+    "en": "This is a DSH web plugin that replaces the default workspace browser with task, file, and Git workspace views, and previews selected files in a side panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "List and read files in configured workspace folders",
+      "Browse git repository status, log, show, and branches in read-only mode",
+      "Delete host-side session directories via RPC action",
+      "Render custom sidebar and shell overlay UI panels in the DSH web client",
+      "Search workspace/session content and metadata within the plugin UI"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了节点侧注册的 fs 和 git 只读接口（fs/root、fs/list、fs/read、git/log、git/show、git/status、git/branches），用于读取本地工作区与仓库信息。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明存在 session/delete 端点，并提及由主机直接删除会话目录（不可恢复），表明存在可造成数据移除的写入行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出插件注册 `sidebar.workspaces` 与 `shell.overlay` 插槽并渲染自定义工作区、文件与预览面板，体现其主界面导航扩展能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 的 `dsh.bundle.patch` 与插件导出配置表明该项目作为 DSH 插件打包安装并注入运行时。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "List and read files in configured workspace folders",
+      "Browse git repository status, log, show, and branches in read-only mode",
+      "Delete host-side session directories via RPC action",
+      "Render custom sidebar and shell overlay UI panels in the DSH web client",
+      "Search workspace/session content and metadata within the plugin UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:43.065Z",
+  "repositoryCommitSha": "e8ee40a2278ed156a4078a83187e8988ca95f608",
+  "evidenceHash": "cb12fd674d4de90fff2e2e5b6d6d3fa862c01bb19dca0a4879b4097da0b0bf6e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ba0fd1ce2d9f78b62e87262d693a357bb9b5ce1869d4419b237e172075e99930",
+  "shadowMode": false
+}

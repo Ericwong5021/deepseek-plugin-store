@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "file",
+    "ui",
+    "tool",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily an external-service integration and file-management utility that brings the SkillHub marketplace into DSH’s web UI. Its user-facing features focus on discovering skills, viewing metadata, downloading/installing bundles, toggling availability for AI requests, checking updates, and removing local skills. Because it communicates with a remote API and writes/reads local skill files and metadata, it presents moderate risk tied to network and filesystem operations, but no explicit sensitive-action expansion is indicated in the evidence.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 网页端插件，可在设置中接入 SkillHub 技能市场，支持浏览、下载、启用/停用、更新和删除本地技能。",
+    "en": "This is a DeepSeek Harness web plugin that integrates the SkillHub marketplace into settings so users can browse, install, enable/disable, update, and remove skills from the interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches SkillHub marketplace data (search, categories, details, versions) over network.",
+      "Downloads and stores skill package files in a local shared skills directory.",
+      "Manages local skill lifecycle state such as enable/disable, update checks, and deletion records."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin browses SkillHub listings, searches/filtering, and opens skill details from remote marketplace data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states skills are saved under the local `.dsh/skillhub/skills` path and includes uninstall/update/enable-disable file operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents configurable API endpoint (`apiBaseUrl`) and request timeout/cache settings used for remote SkillHub access.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetches SkillHub marketplace data (search, categories, details, versions) over network.",
+      "Downloads and stores skill package files in a local shared skills directory.",
+      "Manages local skill lifecycle state such as enable/disable, update checks, and deletion records."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:02.948Z",
+  "repositoryCommitSha": "0fb0dc5b60ae5c65d905d94eae79bf9a4ef0fab8",
+  "evidenceHash": "4af68cedee7943ed77e01e182312f278d9c582b87f962ab5cb32d270ae2430cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b7051b9325cd92ffe97cbbb10981418f66bc7062e15d3c47128d815bfd1eaf0a",
+  "shadowMode": false
+}

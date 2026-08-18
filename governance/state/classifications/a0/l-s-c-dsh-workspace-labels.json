@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "api",
+    "data",
+    "file",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a UI/workspace navigation utility for DeepSeek Harness, adding inline color-and-label controls to sidebar three-dot menus for workspaces and sessions, with local metadata persistence and optional host fallback, and no declared third-party service integration.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的侧边栏工作区/会话菜单中直接提供颜色与标签管理，并支持打开工作区与复制路径。",
+    "en": "This plugin provides inline color and label management in DeepSeek Harness sidebar workspace and session menus, and includes open-workspace and copy-path actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects and extends sidebar workspace/session menu actions in the DSH web interface",
+      "Stores workspace/session label metadata locally via host file path and localStorage fallback",
+      "Invokes DSH host-side and browser APIs for workspace operations such as opening and path copy"
+    ],
+    "reasons": [
+      {
+        "code": "README documents menu-level actions for workspace/session color and label management in the sidebar.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states local persistence at ~/.dsh/workspace-labels.json with localStorage fallback when host routing is unavailable.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package configuration declares a web client plugin bundle with injected DSH client runtime/connection modules.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Injects and extends sidebar workspace/session menu actions in the DSH web interface",
+      "Stores workspace/session label metadata locally via host file path and localStorage fallback",
+      "Invokes DSH host-side and browser APIs for workspace operations such as opening and path copy"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:37.965Z",
+  "repositoryCommitSha": "f66758e03d168d871332ce8f254235109a7379bd",
+  "evidenceHash": "ef0a13c948d221010dbb7087b57fcd917dd30d8b6b5927c8bd05d15d81ce0f2f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f84ec61e99f2dfcec50c1222d17a0a5337bd68bd2e8c9cf9fdf7618d8bfed0d8",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "code-generation",
+    "project-analysis",
+    "tool",
+    "workflow",
+    "search"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily an agent-facing pre-write helper that automates repository-level reuse checks: before new code is added, it runs deterministic retrieval to suggest existing implementations and provide evidence for reuse decisions. Its purpose is workflow automation and code reuse guidance rather than code editing or execution itself.",
+  "summaries": {
+    "zh": "这是一个在编写代码前可调用的 DeepSeek Harness 插件，通过 `reuse_check` 检索仓库中已存在的实现并给出候选与证据分值，帮助开发者在写新代码时优先复用现有逻辑。",
+    "en": "This is a DeepSeek Harness plugin that lets an agent run `reuse_check` before coding to retrieve existing repository implementations and return ranked candidates with evidence for reuse-aware development."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans local repository code to surface potentially reusable implementations before writing new code",
+      "Runs an external local Python-based retrieval process via configured interpreter paths",
+      "Returns ranked file-path and scoring evidence, including hash-lock manifest markers"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a pre-write `reuse_check` step that returns top candidates with paths, scores, and per-channel evidence before new helpers/services are written.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states retrieval is backed by Auto_code_audit through a callable capability path and requires `auditRoot` and `pythonPath`, indicating local process integration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes hash-locked file handling from frozen provenance manifests and warns that those files should be imported rather than copied.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata marks this as a DeepSeek Harness plugin package with dedicated client/host entry points, confirming runtime integration rather than standalone autonomous behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Scans local repository code to surface potentially reusable implementations before writing new code",
+      "Runs an external local Python-based retrieval process via configured interpreter paths",
+      "Returns ranked file-path and scoring evidence, including hash-lock manifest markers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:07.565Z",
+  "repositoryCommitSha": "71e391e20f0fee294a76750eba22ee723096289c",
+  "evidenceHash": "26e2929a1f5ed7cd98695553aec1cd323c8e1467c52f4818748a32024ae9b5c6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5d0b329fb3d6a70e06adfdb4180060e4626ae96167fea0befb11393304567cbe",
+  "shadowMode": false
+}

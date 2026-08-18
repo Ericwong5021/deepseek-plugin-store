@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "cli",
+    "automation",
+    "tool",
+    "workflow",
+    "terminal",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README defines this as a DeepSeek Harness plugin that wraps the GitHub CLI and exposes GitHub operations (repository, issue, pull request, search, Actions, releases, and raw API access) as callable tools, with support UI in a GitHub settings/session tab. Combined with package metadata indicating a DSH web plugin and dependencies for DSH tool/runtime integration, the primary purpose is interacting with an external GitHub service, not local file editing, media processing, or standalone document workflows.",
+  "summaries": {
+    "zh": "该插件将 GitHub CLI 封装为 DeepSeek Harness 可调用工具，在会话中提供仓库、Issue、PR、搜索、Actions 与 Release 等 GitHub 操作。",
+    "en": "This plugin exposes GitHub CLI features as DeepSeek Harness tools, letting users run GitHub repository, issue, pull request, search, Actions, and release operations from DSH sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Invokes GitHub CLI (`gh`) to perform GitHub operations via model-callable tools",
+      "Can create/list/edit/delete repository entities and manage issues or pull requests",
+      "Can run GitHub searches, action/release workflows, and direct `gh api` calls",
+      "Provides UI settings/session panels for auth and tool execution",
+      "Requires authenticated GitHub CLI and networked API access"
+    ],
+    "reasons": [
+      {
+        "code": "readme_wraps_github_cli_as_model_callable_tools_for_repos_issues_prs_search_actions_and_releases",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_includes_raw_gh_api_tool_and_requires_dangerous_operations_confirmation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_json_marks_project_as_dsh_plugin_with_client_injection_and_bundle_metadata",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "repository_topics_include_github_and_github_cli",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Invokes GitHub CLI (`gh`) to perform GitHub operations via model-callable tools",
+      "Can create/list/edit/delete repository entities and manage issues or pull requests",
+      "Can run GitHub searches, action/release workflows, and direct `gh api` calls",
+      "Provides UI settings/session panels for auth and tool execution",
+      "Requires authenticated GitHub CLI and networked API access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:13.644Z",
+  "repositoryCommitSha": "3bd56186ddbcd2d1fb0a5672584022b27d85fd0f",
+  "evidenceHash": "ef0213b9bf58aeeabb4c05b4ecb6e4f7caca06fe95b11f420e1fb9e1e6e10cca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35f082d41acea8d0caaed290d1800a51e9550f9fc77f0f5ac3284e1aeeef8350",
+  "shadowMode": false
+}

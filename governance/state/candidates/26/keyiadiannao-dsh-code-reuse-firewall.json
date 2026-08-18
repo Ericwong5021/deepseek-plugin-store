@@ -4,7 +4,7 @@
     "fullName": "keyiadiannao/dsh-code-reuse-firewall",
     "url": "https://github.com/keyiadiannao/dsh-code-reuse-firewall"
   },
-  "summary": "Pre-write reuse firewall for DeepSeek Harness: before the agent writes a new helper/service, surface the existing implementations that already cover that intent. Deterministic retrieval (no LLM) via the Auto_code_audit capability channel.",
+  "summary": "This is a DeepSeek Harness plugin that lets an agent run `reuse_check` before coding to retrieve existing repository implementations and return ranked candidates with evidence for reuse-aware development.",
   "sources": [
     "github-topic"
   ],
@@ -47,27 +47,21 @@
     "category": "automation",
     "tags": [
       "agent",
-      "api",
-      "automation",
-      "file",
-      "knowledge",
-      "planning",
+      "code-generation",
       "project-analysis",
-      "testing",
-      "tool"
+      "tool",
+      "workflow",
+      "search"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:eval",
-      "text:project-analysis:dependency",
-      "text:automation:automat",
-      "text:planning-execution:plan",
-      "text:memory-context:token",
-      "text:knowledge-management:rag",
-      "text:files-terminal:file"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:26e2929a1f5ed7cd98695553aec1cd323c8e1467c52f4818748a32024ae9b5c6",
+      "commit:71e391e20f0fee294a76750eba22ee723096289c"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:15:07.565Z",
+    "reason": "The plugin is primarily an agent-facing pre-write helper that automates repository-level reuse checks: before new code is added, it runs deterministic retrieval to suggest existing implementations and provide evidence for reuse decisions. Its purpose is workflow automation and code reuse guidance rather than code editing or execution itself."
   }
 }

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "skill",
+    "integration",
+    "file",
+    "api",
+    "automation",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心面向用户价值是为 DSH 的右侧技能侧边栏提供可直接使用的“技能”选项卡：汇总可读取的技能并展示简短功能短语，支持快速复制调用与自动刷新。证据来自 README 的注册侧边栏逻辑、会话/API 与本机扫描合并、缓存策略、文件监控与定时重扫设计，以及 package.json 的客户端注入与平台声明。",
+  "summaries": {
+    "zh": "这是一个面向 DSH 的右侧边栏技能面板插件，用于集中展示本机与会话可见技能并提供简洁描述、快捷复制与自动更新能力。",
+    "en": "This is a DSH web plugin that adds a side panel tab to list available skills, show concise descriptors, support quick copy-to-call actions, and keep the list refreshed automatically."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and merges skill metadata from local skill directories and session-provided skill listings",
+      "Injects a tab into the DSH better sidebar UI for quick skill browsing",
+      "Caches skill lists on server and in browser storage for fast rendering",
+      "Watches local filesystem changes and periodically refreshes skill data",
+      "Exposes plugin routes to return and force-refresh skill lists"
+    ],
+    "reasons": [
+      {
+        "code": "README: the plugin registers a \"Skills\" tab in dsh-better-sidebar (right panel) and renders skills with compact, two-line entries.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: skill list is built from real-time session API (`connection.api.skills.list`) and server scan of local skill roots (`~/.agents/skills`, `SKILL.md` parsing).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: backend caches scan results, runs `/skillpanel/skills` and `/skillpanel/skills/refresh`, and refreshes on a timer plus change detection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README/package.json: defines web plugin client injection and integration points for `@deepseek-ai/dsh-client-runtime` and `dsh-better-sidebar`.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads and merges skill metadata from local skill directories and session-provided skill listings",
+      "Injects a tab into the DSH better sidebar UI for quick skill browsing",
+      "Caches skill lists on server and in browser storage for fast rendering",
+      "Watches local filesystem changes and periodically refreshes skill data",
+      "Exposes plugin routes to return and force-refresh skill lists"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:31.060Z",
+  "repositoryCommitSha": "25a3a28627f51a3d3adff024bd3206631b35f601",
+  "evidenceHash": "05f446e75275a00410059a3313cf416c4d02780d64ca93ccf4c83a95cd564cc1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d5b54e6a13da2f5777fffb3a35c4019a4a4b3f5557e425db1de63287e7a3dc6",
+  "shadowMode": false
+}
