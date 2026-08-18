@@ -20,22 +20,28 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/create-github-app-token@v2
+        if: ${{ vars.GOVERNANCE_APP_ID != '' }}
+        id: app-token
+        with:
+          app-id: ${{ vars.GOVERNANCE_APP_ID }}
+          private-key: ${{ secrets.GOVERNANCE_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.repository.default_branch }}
-          token: ${{ github.token }}
+          token: ${{ steps.app-token.outputs.token || github.token }}
       - uses: actions/setup-node@v6
         with:
           node-version: 22
       - name: Inspect plugin submission
         id: intake
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
         run: node scripts/plugin-intake-agent.mjs
       - name: Ensure governance labels
         if: ${{ steps.intake.outputs.outcome != 'ignored' }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
           INTENT: ${{ steps.intake.outputs.intent }}
           OUTCOME: ${{ steps.intake.outputs.outcome }}
         run: |
@@ -60,7 +66,7 @@ jobs:
         if: ${{ steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction' }}
         id: existing
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           url=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --search "Closes #${ISSUE_NUMBER} in:body" --json url --jq '.[0].url // ""')
@@ -89,7 +95,7 @@ jobs:
         id: pull_request
         continue-on-error: true
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           PLUGIN_ID: ${{ steps.intake.outputs.plugin_id }}
           REPOSITORY_NAME: ${{ steps.intake.outputs.repository }}
@@ -112,7 +118,7 @@ jobs:
       - name: Mark pull request state
         if: ${{ steps.existing.outputs.url != '' || steps.pull_request.outputs.url != '' }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
           NEW_PR_URL: ${{ steps.pull_request.outputs.url }}
           EXISTING_PR_URL: ${{ steps.existing.outputs.url }}
         run: |
@@ -131,7 +137,7 @@ jobs:
       - name: Update governance comment
         if: ${{ always() && steps.intake.outputs.outcome != 'ignored' }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           if [ ! -f "$RUNNER_TEMP/status.md" ]; then exit 0; fi

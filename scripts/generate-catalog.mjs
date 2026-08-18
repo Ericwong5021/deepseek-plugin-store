@@ -6,7 +6,7 @@ import { loadRegistryPlugins, readJson, sha256, titleForLegacyCategory } from '.
 const OUTPUTS = ['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/editor-picks.json']
 const humanClassificationSources = new Set(['reviewed-override', 'accepted-maintainer', 'editorial-review'])
 
-const withLlmClassification = (record, entry) => entry?.status === 'classified' && !humanClassificationSources.has(record.classification.source) ? {
+const withLlmClassification = (record, entry) => entry?.status === 'classified' && entry.shadowMode !== true && !humanClassificationSources.has(record.classification.source) ? {
   ...record,
   classification: {
     group: entry.group,
