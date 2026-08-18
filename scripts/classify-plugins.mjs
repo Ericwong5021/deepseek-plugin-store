@@ -153,7 +153,7 @@ if (!shadowMode) {
       source: 'llm-classification',
       confidence: entry.confidence,
       evidence: [`llm:${entry.model}`, `sha256:${entry.evidenceHash}`, `commit:${entry.repositoryCommitSha}`],
-      needsReview: entry.governance.finalDecision !== 'approved',
+      needsReview: entry.governance?.finalDecision !== 'approved',
       classifiedAt: entry.classifiedAt,
       reason: entry.reason,
     }

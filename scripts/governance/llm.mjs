@@ -93,6 +93,10 @@ export class LLMAdapter {
     schema.properties.risk.properties.reasons.items.properties.evidenceRef.enum = input.evidence.evidenceRefs
     const system = await fs.readFile(`governance/prompts/${kind}.md`, 'utf8')
     const decision = await this.call({ name: `governance_${kind.replace(/-/g, '_')}`, system, input, schema })
+    if (kind === 'classify-v2' && Array.isArray(decision.classification?.tags)) {
+      const tags = new Set(taxonomy.tags)
+      decision.classification.tags = [...new Set(decision.classification.tags)].filter((tag) => tags.has(tag)).slice(0, 8)
+    }
     return validateAiDecision({ decision, taxonomy, evidenceRefs: input.evidence.evidenceRefs })
   }
 
