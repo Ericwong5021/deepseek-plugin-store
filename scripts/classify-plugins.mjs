@@ -4,6 +4,7 @@ import { LLMAdapter } from './governance/llm.mjs'
 import { applyPolicy, loadPolicy } from './governance/policy.mjs'
 import { runDeterministicChecks } from './governance/rules.mjs'
 import { readStateCollection, syncStateCollection } from './governance/state.mjs'
+import { createFailureRecord, shouldClassify } from './governance/stability.mjs'
 import { loadRegistryPlugins, readJson, sha256 } from './registry-lib.mjs'
 
 const apiKey = process.env.LLM_CLASSIFIER_API_KEY ?? ''
@@ -59,7 +60,7 @@ const eligible = items.filter((item) => !humanSources.has(item.classification?.s
 const matched = target ? eligible.filter((item) => item.id.toLowerCase() === target || item.fullName.toLowerCase() === target) : eligible
 if (target && !matched.length) throw new Error(`plugin not found or protected by human classification: ${target}`)
 const queue = matched
-  .filter((item) => force || cache.classifications[item.id]?.status !== 'classified' || !cache.classifications[item.id]?.cacheKey || item.repositoryCommitSha && cache.classifications[item.id]?.repositoryCommitSha !== item.repositoryCommitSha)
+  .filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, force))
   .sort((a, b) => Number(Boolean(b.classification?.needsReview)) - Number(Boolean(a.classification?.needsReview)) || Number(b.type === 'candidate') - Number(a.type === 'candidate') || a.id.localeCompare(b.id))
   .slice(0, limit)
 
@@ -117,17 +118,18 @@ for (const item of queue) {
     changed = true
     console.log(`classified ${item.fullName}: ${category.id} ${governance.riskLevel}`)
   } catch (error) {
-    cache.classifications[item.id] = {
-      status: 'failed',
+    const now = new Date().toISOString()
+    cache.classifications[item.id] = createFailureRecord({
+      previous: cache.classifications[item.id],
+      error,
+      now,
       model,
       promptVersion: policy.prompts.classification,
       policyVersion: policy.version,
       repositoryCommitSha: evidence?.repositoryCommitSha || null,
       cacheKey: cacheKey || null,
-      lastAttemptAt: new Date().toISOString(),
-      error: String(error.message || error).slice(0, 500),
       shadowMode,
-    }
+    })
     failed++
     changed = true
     console.log(`::warning::classification failed for ${item.fullName}: ${error.message}`)

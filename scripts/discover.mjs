@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { pathToFileURL } from 'node:url'
 import { readStateCollection, syncStateCollection } from './governance/state.mjs'
+import { mergeCandidateDiscovery, selectEvidenceSummary, shouldReplaceCandidateClassification } from './governance/stability.mjs'
 import { classifyEvidence, loadRegistryPlugins, pluginId, readJson, repositoryFromUrl, validInstallSpec, writeJson } from './registry-lib.mjs'
 
 const TOKEN = process.env.GITHUB_TOKEN ?? ''
@@ -181,39 +182,14 @@ export const discover = async () => {
     }
     const id = pluginId(source.fullName)
     const existing = candidateData.candidates[id]
-    const sources = [...new Set([...(existing?.sources || []), ...source.origins])]
-    const sourcesChanged = !existing || sources.length !== existing.sources.length
     const metadataChanged = source.metadata && (
       source.metadata.pushed_at !== existing?.github?.lastPushAt
       || source.metadata.stargazers_count !== existing?.github?.stars
       || Boolean(source.metadata.archived) !== Boolean(existing?.github?.archived)
       || (source.metadata.license?.spdx_id ?? null) !== (existing?.github?.license ?? null)
     )
-    const summary = source.summary || existing?.summary || ''
-    const summaryChanged = !existing || summary !== existing.summary
     if (metadataChanged) changedCandidateIds.add(id)
-    candidateData.candidates[id] = {
-      id,
-      repository: { fullName: source.fullName, url: source.url },
-      summary,
-      sources,
-      admission: { status: 'candidate' },
-      lifecycle: existing?.lifecycle || { suggestion: 'incubating' },
-      visibility: 'hidden',
-      discoveredAt: existing?.discoveredAt || now,
-      lastSeenAt: !existing || sourcesChanged || metadataChanged || summaryChanged ? now : existing.lastSeenAt,
-      checks: existing?.checks || { admissionReady: false, reasons: ['not-reviewed'] },
-      failures: existing?.failures || [],
-      ...(metadataChanged || !existing && source.metadata ? { github: {
-        stars: source.metadata.stargazers_count,
-        license: source.metadata.license?.spdx_id ?? null,
-        archived: Boolean(source.metadata.archived),
-        private: Boolean(source.metadata.private),
-        createdAt: source.metadata.created_at,
-        lastPushAt: source.metadata.pushed_at,
-        capturedAt: now,
-      } } : existing?.github ? { github: existing.github } : {}),
-    }
+    candidateData.candidates[id] = mergeCandidateDiscovery({ existing, source: { ...source, id }, now })
   }
   const queue = []
   for (const record of registry.values()) {
@@ -305,7 +281,14 @@ export const discover = async () => {
         readme: evidence.readme,
       }, taxonomy)
       if (item.type === 'candidate') {
-        item.candidate.summary = evidence.repository.description || evidence.pkg?.description || item.candidate.summary
+        const previousCommitSha = item.candidate.checks?.repositoryCommitSha || null
+        item.candidate.summary = selectEvidenceSummary({
+          existingSummary: item.candidate.summary,
+          evidenceSummary: evidence.repository.description || evidence.pkg?.description || '',
+          fullName,
+          previousCommitSha,
+          repositoryCommitSha: evidence.repositoryCommitSha,
+        })
         item.candidate.github = {
           stars: evidence.repository.stargazers_count,
           license: evidence.repository.license?.spdx_id ?? null,
@@ -318,7 +301,7 @@ export const discover = async () => {
         }
         item.candidate.checks = checks
         item.candidate.lifecycle = { suggestion: lifecycleSuggestion }
-        item.candidate.classificationSuggestion = classificationSuggestion
+        if (shouldReplaceCandidateClassification({ existingSuggestion: item.candidate.classificationSuggestion, previousCommitSha, repositoryCommitSha: evidence.repositoryCommitSha })) item.candidate.classificationSuggestion = classificationSuggestion
         item.candidate.failures = []
         item.candidate.lastSeenAt = now
       } else {
