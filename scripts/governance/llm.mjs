@@ -78,6 +78,7 @@ export class LLMAdapter {
     const schema = JSON.parse(await fs.readFile(this.schemaPath, 'utf8'))
     schema.properties.classification.properties.primaryCategory.enum = taxonomy.categories.map((category) => category.id)
     schema.properties.classification.properties.tags.items.enum = taxonomy.tags
+    schema.properties.risk.properties.reasons.items.properties.evidenceRef.enum = input.evidence.evidenceRefs
     const system = await fs.readFile(`governance/prompts/${kind}.md`, 'utf8')
     const decision = await this.call({ name: `governance_${kind.replace(/-/g, '_')}`, system, input, schema })
     return validateAiDecision({ decision, taxonomy, evidenceRefs: input.evidence.evidenceRefs })

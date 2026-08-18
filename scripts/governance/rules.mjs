@@ -63,7 +63,8 @@ export const validateAiDecision = ({ decision, taxonomy, evidenceRefs }) => {
   if (!Array.isArray(decision.classification.tags) || decision.classification.tags.some((tag) => !tags.has(tag)) || decision.classification.tags.length > 8) throw new Error('AI classification tags are invalid')
   if (!['R0', 'R1', 'R2'].includes(decision.risk?.level) || !Array.isArray(decision.risk.capabilities) || !Array.isArray(decision.risk.reasons)) throw new Error('AI risk result is invalid')
   const refs = new Set(evidenceRefs)
-  if (decision.risk.reasons.some((reason) => !reason.code || !refs.has(reason.evidenceRef))) throw new Error('AI risk reason references unknown evidence')
+  const invalidReason = decision.risk.reasons.find((reason) => !reason.code || !refs.has(reason.evidenceRef))
+  if (invalidReason) throw new Error(`AI risk reason references unknown evidence: ${String(invalidReason.evidenceRef)}`)
   if (typeof decision.confidence !== 'number' || decision.confidence < 0 || decision.confidence > 1) throw new Error('AI confidence is invalid')
   if (!Array.isArray(decision.requestedChanges) || typeof decision.summary !== 'string' || !decision.summary.trim()) throw new Error('AI decision metadata is invalid')
   return decision
