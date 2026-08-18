@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-18T17:18:44.525Z",
+  "updatedAt": "2026-08-18T17:52:26.597Z",
   "classifications": {
     "01virex-dsh-status-rotator": {
       "status": "classified",
@@ -91,14 +91,78 @@
       "tags": [
         "image",
         "integration",
-        "api"
+        "tool",
+        "api",
+        "chat",
+        "file"
       ],
       "confidence": "high",
-      "reason": "The plugin’s primary purpose is to let DeepSeek process and understand screenshots/local images via MindSee (image-to-text description for chat questions), which is fundamentally an image/media capability with an external service integration.",
+      "confidenceScore": 0.96,
+      "reason": "The plugin is primarily an image-to-text utility for DeepSeek Harness, enabling users to paste screenshots or provide local JPEG/PNG/WEBP files so the chat model can answer questions about image content; evidence in the README and package manifest consistently identifies MindSee as the external backend and web-client plugin integration.",
+      "summaries": {
+        "zh": "MindSee 是一款 DeepSeek Harness 插件，可将粘贴截图或本地图片转换为文字描述，让 DeepSeek 在对话中基于图片内容作答。",
+        "en": "MindSee is a DeepSeek Harness plugin that converts pasted screenshots or local images into text so DeepSeek can respond to questions about image content."
+      },
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Describe pasted or local images via MindSee for use in DeepSeek conversations",
+          "Support for JPEG, PNG, and WebP image input in web chat flow",
+          "Read configured plugin credential/token for external service access",
+          "Operate as a DeepSeek Harness web plugin extension"
+        ],
+        "reasons": [
+          {
+            "code": "Plugin purpose and flow describe screenshots/local images being converted into descriptions for model use",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Uses MindSee as the backend service for image description, indicating external service integration",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Requires user to create and configure a MindSee access token in plugin settings",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Manifest indicates web platform client injection and plugin packaging for DeepSeek Harness",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "Describe pasted or local images via MindSee for use in DeepSeek conversations",
+          "Support for JPEG, PNG, and WebP image input in web chat flow",
+          "Read configured plugin credential/token for external service access",
+          "Operate as a DeepSeek Harness web plugin extension"
+        ],
+        "autoMerge": false,
+        "shadowMode": false,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.96,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
-      "promptVersion": "1",
-      "classifiedAt": "2026-08-18T10:01:54.133Z",
-      "evidenceHash": "5da8c9e8131ed94d37fe10fa52d6c8e86b3f0bef2154b921e3248a62f347ca73"
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:52:20.196Z",
+      "repositoryCommitSha": "5887b1d3675d7d478d25f60b4dc03ca1b40d583b",
+      "evidenceHash": "4a8dcef783176b81136edccc51d887711322c90459dcf2c1d944b6d1e93e16fd",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "31d34e22fefdcc965a1f5e73d9804f06c6eb00972f56a4b83665301ef17d44dc",
+      "shadowMode": false
     },
     "1274623767-dsh-workspace-open": {
       "status": "classified",
@@ -107,32 +171,83 @@
       "tags": [
         "ui",
         "file",
+        "tool",
         "desktop"
       ],
       "confidence": "high",
-      "reason": "The plugin augments the left workspace sidebar by adding a folder button per workspace row and opens the corresponding path in the system file manager, so it is primarily a navigation/panel UI enhancement for workspace management.",
+      "confidenceScore": 0.97,
+      "reason": "The plugin is primarily a workspace navigation UI enhancement for DeepSeek Harness, adding an Open Folder control to each real workspace row in the left list and delegating to host file-manager opening. Its functionality is limited to local path launch behavior and UI placement, with no repository-exposed external service integration.",
+      "summaries": {
+        "zh": "该插件用于在 DeepSeek Harness 左侧工作区列表的真实工作区行中新增“打开文件夹”入口，点击后由主机按系统默认行为打开对应工作区目录。",
+        "en": "This plugin adds an Open Folder action to each real workspace row in the DeepSeek Harness left workspace list, and opens that workspace folder in the host system’s default file manager when clicked."
+      },
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Adds an Open Folder button to workspace rows in the sidebar UI.",
+          "Invokes host API ctx.workspaces.openPath(path) to open a workspace directory in the local file manager."
+        ],
+        "reasons": [
+          {
+            "code": "README documents a sidebar workspace-list button that opens a workspace folder path via ctx.workspaces.openPath.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README explicitly lists OS behavior mappings to Explorer, Finder, and xdg-open for opening workspace folders.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "package.json marks this as a DSH web client plugin with workspace UI dependencies, confirming the user-facing workspace panel integration.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "Adds an Open Folder button to workspace rows in the sidebar UI.",
+          "Invokes host API ctx.workspaces.openPath(path) to open a workspace directory in the local file manager."
+        ],
+        "autoMerge": false,
+        "shadowMode": false,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.97,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
-      "promptVersion": "1",
-      "classifiedAt": "2026-08-18T10:02:00.393Z",
-      "evidenceHash": "ac09425c51e5370f4e1ed61a703fff79cb62228967ff7db1419bb89be209a375"
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:52:20.343Z",
+      "repositoryCommitSha": "1da0d2ce1c0d2f9786e173aaaae2a294eaa6b797",
+      "evidenceHash": "3d952182917c36a6095a31ec27349c5ac61ab7cee469a9c35c1f37dfa0a192be",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "87eca1fe97d69c0589fcac293134eac34582ab3dc55d0b9fd9bc671e26c1b822",
+      "shadowMode": false
     },
     "1321928757-dsh-prompt-polish": {
-      "status": "classified",
-      "group": "tools-data",
-      "category": "general-utilities",
-      "tags": [
-        "chat",
-        "ui",
-        "tool",
-        "automation",
-        "context"
-      ],
-      "confidence": "high",
-      "reason": "It is mainly a composer utility that provides a one-click **Optimize** action to rewrite and improve user prompt drafts (with optional session context), i.e., a general prompt-engineering assistant in the chat input flow.",
+      "status": "failed",
       "model": "gpt-5.3-codex-spark",
-      "promptVersion": "1",
-      "classifiedAt": "2026-08-18T10:02:08.586Z",
-      "evidenceHash": "8fca4cc04daaf7d7834650fe4d45e8256bc1c0c96f0a325bef79d447187c4949"
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "repositoryCommitSha": "02e705dd4b18dcb86bbcb2b6cac861916eef8bb5",
+      "cacheKey": "855317a662a780ad11e8c9500de313b0f55a3acdddb7b18b978322bb431edebe",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T17:52:21.195Z",
+      "lastAttemptAt": "2026-08-18T17:52:21.195Z",
+      "nextRetryAt": "2026-08-18T23:52:21.195Z",
+      "retryable": true,
+      "error": "Unexpected non-whitespace character after JSON at position 2078 (line 1 column 2079)",
+      "shadowMode": false
     },
     "13323232dong-dsh-tunnel-qr-plugin": {
       "status": "classified",
@@ -140,32 +255,155 @@
       "category": "external-services",
       "tags": [
         "integration",
-        "ui",
-        "tool"
+        "automation",
+        "tool",
+        "ui"
       ],
       "confidence": "high",
-      "reason": "The plugin’s primary purpose is to expose DeepSeek Harness via a Cloudflare public tunnel and provide a QR-code entry point for easy one-time remote login, including tunnel process management and connection token handling, which is fundamentally an external service integration with a UI overlay.",
+      "confidenceScore": 0.96,
+      "reason": "该插件的主要面向用户用途是为 DeepSeek Harness Web 提供可直接访问的公网入口：安装后自动下载并校验 cloudflared、启动 Cloudflare Quick Tunnel，并在界面提供二维码用于扫码登录，因此其核心功能属于外部服务接入与入口能力整合。它还包含二维码定时刷新和跨平台运行特征，属于具备自动化能力的集成工具。",
+      "summaries": {
+        "zh": "该插件在 DSH Web 中自动配置 Cloudflare Quick Tunnel，并在右下角提供二维码入口，用于用一次性密钥扫码登录访问本地服务。",
+        "en": "This plugin automates Cloudflare Quick Tunnel setup in DSH Web and provides a QR-code entry for one-time-key scan login to access the local service."
+      },
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "network.access",
+          "qr-code-generation",
+          "credential-token-handling"
+        ],
+        "reasons": [
+          {
+            "code": "AUTO_DOWNLOAD_AND_STARTS_CLOUDFLARED_QUICK_TUNNEL",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "GENERATES_AND_REFRESHES_ONE_TIME_QR_LOGIN_KEYS",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "USES_QRCODE_LIBRARY_AND_EXPLICIT_QR_WORKFLOW",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "qr-code-generation",
+          "credential-token-handling"
+        ],
+        "autoMerge": false,
+        "shadowMode": false,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.96,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
-      "promptVersion": "1",
-      "classifiedAt": "2026-08-18T10:02:15.833Z",
-      "evidenceHash": "91ce6de0b14f3e266b16c6b6917377e9e175fa668a66e174b1f8ececc5ff2632"
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:52:22.029Z",
+      "repositoryCommitSha": "bd0952fd95b0561c0e1d7f711f3079151c4033b9",
+      "evidenceHash": "58a29037a46c02259be70b4c476ad7f4c98e2ee351eb89c588a073f350c3c0af",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "c5bb23833157588ec64149e53e6c02e2ffa6887f0343dd325a758c6df4b58668",
+      "shadowMode": false
     },
     "1710782766-dsh-llm-vision": {
       "status": "classified",
       "group": "tools-data",
       "category": "media-tools",
       "tags": [
-        "image",
-        "tool",
+        "api",
+        "chat",
+        "data",
         "document",
-        "api"
+        "image",
+        "integration",
+        "tool"
       ],
       "confidence": "high",
-      "reason": "The plugin’s primary user-facing purpose is image/media understanding: it provides describe_image and extract_text tools (including OCR) for screenshots and documents in DeepSeek Harness, with options for image input handling, preprocessing, retries, and cached results via vision endpoints.",
+      "confidenceScore": 0.96,
+      "reason": "The repository’s primary user-facing purpose is to add media understanding to a text-only chat/agent workflow: it provides tools for describing images and extracting text by forwarding requests to configurable OpenAI-compatible vision/OCR endpoints. Evidence in README and package metadata shows this is a DSH web plugin that additionally adds attachment handling UX (paste/send flow and previews) and reliability settings such as preprocessing, retries, and caching.",
+      "summaries": {
+        "zh": "该插件为 DeepSeek Harness 文本模型提供图片理解与 OCR 能力，支持通过 describe_image 和 extract_text 工具对截图/文档进行识别并返回文本化结果。",
+        "en": "This plugin adds image-understanding and OCR capability to DeepSeek Harness text-only models by exposing tools such as describe_image and extract_text for generating descriptions and extracting text from images or documents."
+      },
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Calls configured external OpenAI-compatible vision/OCR endpoints",
+          "Accepts image input via local paths, HTTP(S) URLs, or attachment references",
+          "Performs vision description via normal/critical modes and OCR extraction",
+          "Supports preprocessing (rescale/re-encode), retries, and response caching",
+          "Stores extracted text responses in a local persistent cache"
+        ],
+        "reasons": [
+          {
+            "code": "README documents `describe_image` and `extract_text` tools plus `llm_vision_check`, with provider/model/baseURL configuration for external vision endpoints.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README states image sources are local paths, http(s) URLs (redirects rejected), or attachment references, and that attachments are validated before persistence.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README details a local content-addressed cache storing text answers (with a note that sensitive OCR output is stored in plain text).",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "package.json marks this as a DeepSeek Harness web plugin and exposes a web client bundle/patch, confirming intended integration in the DSH interface.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "Calls configured external OpenAI-compatible vision/OCR endpoints",
+          "Accepts image input via local paths, HTTP(S) URLs, or attachment references",
+          "Performs vision description via normal/critical modes and OCR extraction",
+          "Supports preprocessing (rescale/re-encode), retries, and response caching",
+          "Stores extracted text responses in a local persistent cache"
+        ],
+        "autoMerge": false,
+        "shadowMode": false,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.96,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
-      "promptVersion": "1",
-      "classifiedAt": "2026-08-18T10:02:21.282Z",
-      "evidenceHash": "9a7106057c1b5b12e758135ab66621bdc2f5e12c462389562caca0ab32899bf3"
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:52:26.596Z",
+      "repositoryCommitSha": "b5137da9a640798c8d27bd925400ded5f9ab968e",
+      "evidenceHash": "c1c221cab28b1ff0a23eb125e68d584610a7cf55ac4b448a0fa0d755fdbc3d4b",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "619ad24d39da5f67dbd0cd45aa2f4af0066f15b84538a20032d76b53a2479d29",
+      "shadowMode": false
     },
     "189-sketch-dsh-custom-logo": {
       "status": "classified",
