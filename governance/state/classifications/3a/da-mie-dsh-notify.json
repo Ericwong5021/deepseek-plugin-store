@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "chat",
+    "ui",
+    "browser",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Classified as a notifications-focused DSH plugin: its primary user-facing function is alerting users about relevant background session completion events and surfacing a pending-notification count in UI badges, which maps directly to notifications/monitoring rather than coding, research, or file/terminal automation.",
+  "summaries": {
+    "zh": "这是一个 DSH Web UI 插件，用于在后台会话需要关注时弹出系统通知或发出提示音，并同步在应用图标/标题中显示待处理提醒数量。",
+    "en": "This is a DSH Web UI plugin that alerts users when background sessions need attention with notifications or chime sound, and shows a pending reminder count as an app badge on icon/title with fallbacks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays user-facing alerts when non-active DSH sessions finish turns requiring attention.",
+      "Provides system notifications with an audio chime fallback when notification APIs are unavailable.",
+      "Shows a pending reminder count as an app/taskbar/tab/fav icon badge.",
+      "Supports clicking a notification to return focus to the related conversation."
+    ],
+    "reasons": [
+      {
+        "code": "README states it is a DSH Web UI plugin for notifying when background sessions complete (question asked, plan finished, turn/session completed, or error).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains alerts are emitted via Web Notifications API with a fallback synthesized Web Audio chime.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes badge updates via App Badging API with tab title and favicon fallback, and badge clearing on focus.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a web plugin bundle for DSH runtime with no external service dependency list beyond client/runtime peer packages.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository layout includes DSH plugin files and README indicating prebuilt lib shipped directly, consistent with browser-side behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays user-facing alerts when non-active DSH sessions finish turns requiring attention.",
+      "Provides system notifications with an audio chime fallback when notification APIs are unavailable.",
+      "Shows a pending reminder count as an app/taskbar/tab/fav icon badge.",
+      "Supports clicking a notification to return focus to the related conversation."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:59.027Z",
+  "repositoryCommitSha": "822807062eb9b39361d4cf36260ab51fb4ad18a9",
+  "evidenceHash": "64ee370dbaa3225035cbae0fbf409fa486e14f3a0e329ba9c7377d04125da046",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63276fa870f1a59cce2eca4489fa8e6e61b29d9ca5ae6c8cdd781408f2e43095",
+  "shadowMode": false
+}

@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "automation",
+    "chat",
+    "collaboration",
+    "desktop",
+    "ui",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a task-notification and collaboration utility for the DeepSeek Harness web UI: it watches AgentTeams team task status via state polling and surfaces changes as a WeChat-like call interface with ringtone, voice playback, and optional voice reply, while providing outbound member calls and call history within the same browser-based assistant panel.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 网页界面中基于任务状态触发微信式来电提醒，并提供语音播报与可回复的通话交互入口。",
+    "en": "This plugin adds WeChat-style call-like task notifications to the DeepSeek Harness web UI, including voice announcement and reply interactions tied to AgentTeams status updates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors local AgentTeams task state and triggers incoming-call style notifications when status changes to completed or failed.",
+      "Shows an in-browser call-style call card with ringtone, accept/reject controls, and a desk-style assistant widget.",
+      "Uses text-to-speech playback and optional fallback engines, with speech-to-text input via browser microphone support and text fallback.",
+      "Provides outbound calling to team contacts and maintains recent call history in the browser.",
+      "Runs in the web client context as a DSH plugin module with bundled assets and model-related dependencies for TTS processing."
+    ],
+    "reasons": [
+      {
+        "code": "TASK_STATE_MONITORING_FROM_TEAM_JSON",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WECHAT_STYLE_INCOMING_CALL_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "TTS_PLAYBACK_WITH_FALLBACKS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SPEECH_INPUT_WITH_MIC_PERMISSION_AND_TEXT_FALLBACK",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CLIENT_HISTORY_PERSISTENCE_LOCALSTORAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_WEB_PLUGIN_MANIFEST_AND_ENTRYPOINTS",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Monitors local AgentTeams task state and triggers incoming-call style notifications when status changes to completed or failed.",
+      "Shows an in-browser call-style call card with ringtone, accept/reject controls, and a desk-style assistant widget.",
+      "Uses text-to-speech playback and optional fallback engines, with speech-to-text input via browser microphone support and text fallback.",
+      "Provides outbound calling to team contacts and maintains recent call history in the browser.",
+      "Runs in the web client context as a DSH plugin module with bundled assets and model-related dependencies for TTS processing."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:07.696Z",
+  "repositoryCommitSha": "900bb97942dfdd5632f71908881381879d07b8d6",
+  "evidenceHash": "d9b88945b98791c1c83c232f9d9b40c565069aaea8ce4a26c474bb44f5e59d5e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3c392932615da0ca715cfeac523ecb0a9852a4dd672be50e7eb4b723f0ab74ed",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "cli",
+    "planning",
+    "integration",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The repository is primarily an integration-orchestration plugin for dsh: it installs a bundle manifest that registers a `clawo` ACP subagent provider and routes requests to Claw Orchestrator. Its user-visible modes and documented workflow (single/council/ultraplan/ultrareview) indicate its purpose is coordinating multi-agent execution rather than providing core IDE, UI, or standalone generation logic.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件包，用于在 dsh 中注册 Claw Orchestrator 为 ACP 子代理提供者，并支持按需将任务交给单引擎或多引擎协作流程。",
+    "en": "This is a DeepSeek Harness plugin bundle that registers Claw Orchestrator as an ACP subagent provider in dsh, enabling delegation to single-engine or multi-engine collaboration modes for tasks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers a DeepSeek Harness subagent provider through a dsh bundle manifest",
+      "Delegates prompts to Claw Orchestrator via ACP for single-engine or council execution modes",
+      "Supports multi-engine council and review/planning modes that act on repository worktrees",
+      "Requires host-installed coding CLIs (for example, claude/codex) to run"
+    ],
+    "reasons": [
+      {
+        "code": "README states the package is a DeepSeek Harness bundle that registers Claw Orchestrator as an ACP subagent provider for dsh.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes provider modes including single, council, ultraplan, and ultrareview, with slash-command selection (for example, /council).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest (`dsh.bundle.patch`) and package.json indicate the plugin is a small bundle with manifest wiring only, not application logic.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README explicitly requires Node and authenticated host CLIs such as claude/codex, and notes execution occurs on the user's machine.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers a DeepSeek Harness subagent provider through a dsh bundle manifest",
+      "Delegates prompts to Claw Orchestrator via ACP for single-engine or council execution modes",
+      "Supports multi-engine council and review/planning modes that act on repository worktrees",
+      "Requires host-installed coding CLIs (for example, claude/codex) to run"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:48.086Z",
+  "repositoryCommitSha": "da61823389145f5c28cfd923344d194bfc62ebb9",
+  "evidenceHash": "43d818d295e6f60d201ee30f3a3cd85c68607bca8c48a10f22b0935e69df6bbb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f84c09319aa883b0df49e221f44afb63a6eb7da07456e5cd3c46772c8c20f7b2",
+  "shadowMode": false
+}

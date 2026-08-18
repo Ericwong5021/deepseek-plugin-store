@@ -1,0 +1,92 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "api",
+    "ui",
+    "data",
+    "integration",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The repository describes a DeepSeek Harness companion focused on account monitoring and reminders: it tracks balance and per-conversation token/cost usage, shows a compact panel for quick wallet/session actions, and issues completion/low-balance alerts with fallback behavior. It also supports multi-account switching and optional host-gated session controls, which confirms a user-facing role of notification-driven monitoring and session management rather than development automation or content generation.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中监控账户余额与会话用量，并在需要时提供低余额及会话完成提醒，同时提供可视化钱包与会话控制入口。",
+    "en": "This plugin provides a DeepSeek Harness wallet companion that monitors account balance and per-session token/cost usage, with optional completion and low-balance reminders plus quick session/account controls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Query external official balance and pricing-related endpoints",
+      "Track per-session token and cost usage from runtime events",
+      "Store and read plugin preferences/settings in browser-compatible local storage",
+      "Display floating/portable wallet UI with session panel controls",
+      "Show completion and low-balance reminders with notification fallback",
+      "Read and switch active DeepSeek API key for billing context",
+      "Open official recharge page in external browser context",
+      "Invoke host-provided session actions when host advertises capability"
+    ],
+    "reasons": [
+      {
+        "code": "BALANCE_AND_SESSION_TRACKING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ACCOUNT_SWITCHING_WRITES_CREDENTIAL_SEAM",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "HOST_ADAPTER_NOTIFICATION_AND_STORAGE_SUPPORT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_PLUGIN_WEB_PACKAGE_WITH_EXTERNAL_API_USAGE",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Query external official balance and pricing-related endpoints",
+      "Track per-session token and cost usage from runtime events",
+      "Store and read plugin preferences/settings in browser-compatible local storage",
+      "Display floating/portable wallet UI with session panel controls",
+      "Show completion and low-balance reminders with notification fallback",
+      "Read and switch active DeepSeek API key for billing context",
+      "Open official recharge page in external browser context",
+      "Invoke host-provided session actions when host advertises capability"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:01:02.721Z",
+  "repositoryCommitSha": "da3dbd138f48f20ad7af74fee9863318816ab097",
+  "evidenceHash": "5c083e32ab97b401b45f47d2a183cde6a3ac68cd7a660a52e9bb9cae4f34029b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e3d4126c18e63200bd3d6e9b0a2f8a47013e40712494b54bc40be327cd389846",
+  "shadowMode": false
+}

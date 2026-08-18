@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "api",
+    "data",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是为 DSH Web 会话界面提供可视化导航：按对话轮次绘制会话小地图条形区，并支持悬停预览与点击跳转。依据仓库 README 与 package 配置，它通过主机会话大纲与快照数据生成导航视图，并在需要时分页加载历史消息后跳转，因此属于界面导航面板类。",
+  "summaries": {
+    "zh": "该插件在 DSH Web 会话界面显示会话小地图，按轮次生成垂直条并支持悬停查看预览和点击跳转到对应消息位置。",
+    "en": "This plugin adds a session minimap to DSH Web, showing one bar per turn with hover preview and click-to-jump navigation to the corresponding message."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "conversation navigation overlay in DSH Web",
+      "jumping to turns using host message anchors",
+      "fetching session outline from host-provided endpoint",
+      "loading older turns through pagination when navigating",
+      "rendering plain-text turn previews for hovered bars"
+    ],
+    "reasons": [
+      {
+        "code": "README states a vertical rail is rendered for the full conversation with one bar per turn, hover preview, and click-to-jump behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents fetching `/dsh-conversation-rail/api/outline?sessionId=` and aligning live snapshot data by `user/message` sequence for navigation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes that clicking an unloaded turn triggers repeated `session.loadOlder()` calls up to a page limit, which can involve network/page-fetch activity.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web client injection and exports plugin entrypoints for host/runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "conversation navigation overlay in DSH Web",
+      "jumping to turns using host message anchors",
+      "fetching session outline from host-provided endpoint",
+      "loading older turns through pagination when navigating",
+      "rendering plain-text turn previews for hovered bars"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:22.505Z",
+  "repositoryCommitSha": "c63fa1e9a1635358a64cc75fa3c387e4d82791a4",
+  "evidenceHash": "901ee2dbe66c85f2af824442c499c4ba24a472d01b73db0ee7f5803e1588c702",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f59ab701ce65951927062b9b344143bad28075a407616a64e605ab337f3bdcfe",
+  "shadowMode": false
+}

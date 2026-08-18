@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "integration",
+    "tool",
+    "terminal",
+    "automation",
+    "cli",
+    "agent",
+    "workflow",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "Based on the README and package manifest, the plugin is primarily a DeepSeek Harness Cordis runtime plugin bundle for Windows that replaces default subprocess handling with a platform-specific engine and ships managed agent presets; this is evidenced by its described `subprocess-win32` runtime, `dsh` bundle patch configuration, and setup/rollback/uninstall lifecycle controls.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的 Windows 插件，提供原生 subprocess 运行时并内置 Minimal 与 Anchored Standard 两套 Windows 预设，便于在 Windows 环境下快速配置与管理代理会话。",
+    "en": "This plugin provides a Windows-native subprocess runtime for DeepSeek Harness and includes built-in Minimal and Anchored Standard Windows presets for quick configuration of agent sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Windows-native subprocess runtime adapter for DeepSeek Harness Cordis sessions",
+      "Managed install/update/rollback/uninstall flow via included lifecycle script",
+      "Plugin patching integration for runtime preset registration on Windows",
+      "Bundled user presets for agent composition",
+      "Test suite for Windows subprocess and preset behavior"
+    ],
+    "reasons": [
+      {
+        "code": "WIN_SUBPROCESS_RUNTIME",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LIFECYCLE_MANAGEMENT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CORDIS_RUNTIME_PATCH",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "BUNDLED_PRESETS",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Windows-native subprocess runtime adapter for DeepSeek Harness Cordis sessions",
+      "Managed install/update/rollback/uninstall flow via included lifecycle script",
+      "Plugin patching integration for runtime preset registration on Windows",
+      "Bundled user presets for agent composition",
+      "Test suite for Windows subprocess and preset behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:16.985Z",
+  "repositoryCommitSha": "ec348fd70b4348b9c9d7dee72f454527b5df6ee7",
+  "evidenceHash": "3d41eafd88e221561766b9a93120753f9cc3866b0a283c66c89bf391d3c118f1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1571d34cf693d00874b3fdaad3c206af73b58d6707131e1892d24b9948abf02b",
+  "shadowMode": false
+}

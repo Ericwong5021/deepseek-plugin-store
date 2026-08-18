@@ -5,12 +5,77 @@
   "tags": [
     "theme",
     "ui",
-    "layout"
+    "image",
+    "video",
+    "file",
+    "api",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s core function is to provide a Synthwave visual theme for the DSH web interface, including glowing tokens, translucent panels, configurable backgrounds (image/video), blur, and font scaling, which are all interface appearance/layout changes.",
+  "confidenceScore": 0.97,
+  "reason": "The plugin’s primary user-facing purpose is visual theming for the DeepSeek Harness web UI, centered on neon-style styling and configurable panel/media-backed backgrounds, while also exposing local config-management actions and media handling through host routes.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web UI 的主题插件，用于提供合成波风格的界面视觉效果，并支持字体缩放与可配置的图片/视频背景。",
+    "en": "This is a DeepSeek Harness Web UI plugin that applies a synthwave-style theme, including visual effects and configurable image or video background support with font scaling."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Applies a user-facing visual theme to the DSH web interface (glow effects, translucent panels, font scaling, adaptive tokens)",
+      "Provides host endpoints to read config, open config location, remove media entries, and serve configured media bytes",
+      "Reads and updates a profile-scoped JSONC configuration file via plugin UI actions",
+      "Loads and serves local image/video media assets as background sources"
+    ],
+    "reasons": [
+      {
+        "code": "DSH plugin exposes local service routes for config retrieval and media operations, which introduces write/read side effects beyond pure styling behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin creates and parses a profile-local config file and updates it for remove/save operations, which affects persistent user configuration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository explicitly defines a host/client split and DSH plugin integration, confirming this is an installable DSH extension for web UI customization.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package metadata declares DSH web client platform and bundle entry points, supporting the described runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Applies a user-facing visual theme to the DSH web interface (glow effects, translucent panels, font scaling, adaptive tokens)",
+      "Provides host endpoints to read config, open config location, remove media entries, and serve configured media bytes",
+      "Reads and updates a profile-scoped JSONC configuration file via plugin UI actions",
+      "Loads and serves local image/video media assets as background sources"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:02:38.957Z",
-  "evidenceHash": "d1b03ef87f2acd0f930664cc30de3606939f25c261b763c8ce627d08f4e2cd26"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:20.784Z",
+  "repositoryCommitSha": "f418fcb15674638defd4a4793e5f530346a8c25e",
+  "evidenceHash": "13a844a2828f87dbf41dc3e55378da856eee26f8ac1c7c780ad9caf7acab55b3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "966f4c791a1f260a8ac367e91eaac8c68cf8c82f0bed5148f82c431434339f73",
+  "shadowMode": false
 }

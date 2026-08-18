@@ -5,12 +5,74 @@
   "tags": [
     "ui",
     "tool",
+    "automation",
+    "browser",
+    "chat",
     "workflow"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary purpose is to provide user-configurable keyboard shortcut functionality (including setup in settings and keybinding execution for history navigation, approval, and plan actions), which is a general productivity utility in the UI rather than theming, file/terminal work, or research.",
+  "confidenceScore": 0.93,
+  "reason": "该插件主要面向用户体验增强与效率提升：为 DeepSeek Harness 网页端提供可配置的键盘快捷键，用于输入历史回溯和审批/计划相关操作触发，并在设置页集中管理，能力依据来自仓库 README 与 manifest 配置。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 网页端实用插件，提供可配置的键盘快捷键管理，用于快速调用输入历史回填以及审批/计划相关操作。",
+    "en": "This is a DeepSeek Harness web plugin that provides configurable keyboard shortcut management for quickly navigating input history and triggering approval or plan-related actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Configurable keyboard shortcut binding and persistence for user events",
+      "Input history navigation through saved chat-session messages",
+      "Approval/plan action triggering via global keydown handling",
+      "Settings UI integration for shortcut management",
+      "Browser-side localStorage configuration storage"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件在设置页提供可配置快捷键，并通过 localStorage 持久化绑定关系。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明在 browser 插件中监听 document 捕获阶段 keydown，并按绑定执行输入回填、审批与计划按钮点击。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 配置 dsh client 平台为 web，表明该能力发生在浏览器环境，且需要与页面输入交互。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Configurable keyboard shortcut binding and persistence for user events",
+      "Input history navigation through saved chat-session messages",
+      "Approval/plan action triggering via global keydown handling",
+      "Settings UI integration for shortcut management",
+      "Browser-side localStorage configuration storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:00:26.942Z",
-  "evidenceHash": "d8c771ba2ab6e95b4aa20e06bba2d2f53cdeeec28646959a8f58f46b89e88968"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:29.465Z",
+  "repositoryCommitSha": "f55e9a1fa8f09bf12546d63599d9f0965a08881b",
+  "evidenceHash": "ec3be0d285fb476e9aa6164d3c4485052672e5e45a605da01274b042f5960f50",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "56b08fa8402b4e87d76ee2bb34d9c375ee72d5511ae11423bc108cf4fd3cdbb2",
+  "shadowMode": false
 }

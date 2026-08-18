@@ -1,16 +1,84 @@
 {
   "status": "classified",
-  "group": "interface-experience",
-  "category": "navigation-panels",
+  "group": "agents-workflows",
+  "category": "automation",
   "tags": [
+    "automation",
+    "api",
+    "cli",
+    "file",
+    "integration",
     "ui",
     "tool",
     "workflow"
   ],
   "confidence": "high",
-  "reason": "This plugin’s user-facing purpose is a Web settings panel for plugin management: browsing a verified community catalog, viewing installed/profile plugin state, and performing install/update/remove actions.",
+  "confidenceScore": 0.93,
+  "reason": "该仓库主要用于 DeepSeek Harness 的插件生命周期管理：在 Web 的 Settings 页面提供插件市场与已安装列表，并提供可确认的安装、更新与移除操作。证据显示其核心逻辑集中于读取/缓存目录元数据、展示清单、生成执行计划并调用 CLI 更新 profile，属于自动化运维管理类插件，而非通用内容编辑或分析工具。",
+  "summaries": {
+    "zh": "DSH 插件控制台是 DeepSeek Harness 的 Web 设置页管理工具，用于浏览社区插件目录、查看当前 profile 插件清单，并提交安装、更新或移除等变更。",
+    "en": "DSH Plugin Console is a DeepSeek Harness Web settings utility that lets users browse a plugin catalog, view the current profile plugin manifest, and submit install, update, or remove operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads a remote community catalog and local cache metadata for plugin discovery",
+      "Displays catalog items and installed profile plugin manifests in a web settings interface",
+      "Executes plugin install/update/remove workflows via Host-controlled operations",
+      "Writes or updates profile/plugin manager state through plan-based execution and validation",
+      "Persists operation configuration and manifests (including patch and profile data)"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明了插件商店同步、搜索、分页和安装/更新/删除等核心功能，并支持快速更新与回滚恢复。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "src/operations.ts 与 /api/plugin-console 入口在目录结构中对应变更计划、序列化执行与恢复流程说明。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "package.json 配置了 DSH bundle 补丁与 Web client 平台入口，表明其作为 host+client 插件运行在受控环境并与 profile 管理耦合。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 记录其配置项与持久化到 DSH profile/缓存路径（如 DSH_HOME）及环境变量，表明会访问本地配置与文件路径。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads a remote community catalog and local cache metadata for plugin discovery",
+      "Displays catalog items and installed profile plugin manifests in a web settings interface",
+      "Executes plugin install/update/remove workflows via Host-controlled operations",
+      "Writes or updates profile/plugin manager state through plan-based execution and validation",
+      "Persists operation configuration and manifests (including patch and profile data)"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:57:53.244Z",
-  "evidenceHash": "f1e69caba8dacaa5c24e9a9839a96d8960db2a97f63ab1e4fb143e80c3e346be"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:41.574Z",
+  "repositoryCommitSha": "ce7cbed46772826e71c912c6b6a1ac7c166b462c",
+  "evidenceHash": "3b0c92873c445518e8903619ac50a41c37835da3e142a1ccfc3f3f566cc4e8e8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d924763d0991eefbb203bf1d2e552ca4e0687b46847ca6c68bc865a7fc27fbdd",
+  "shadowMode": false
 }

@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "workflow",
+    "integration",
+    "planning"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily an automation utility for DeepSeek Harness that automatically adjusts GPT-family tool-call arguments before execution, specifically stripping redundant sandbox permission fields to satisfy DSH strict escalation rules while keeping true escalations intact. The user-facing purpose is to reduce failed sandbox checks and simplify permission handling during tool invocation, with model matching and behavior controlled by plugin configuration.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在 GPT 系列模型的工具调用前自动清理不必要的 sandbox_permissions/justification 字段，并保留真正更高权限的升级请求以减少调用失败。",
+    "en": "This is a DeepSeek Harness plugin that automatically removes redundant sandbox_permissions and justification fields from GPT-family tool calls before execution while preserving true permission escalations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "tool-call argument preprocessing",
+      "model-scoped behavior filtering",
+      "sandbox permission field handling",
+      "configurable runtime behavior"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin wraps tool execution to clone and rewrite arguments, removing sandbox_permissions/justification for GPT-family models when not strictly wider than current session.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Behavior matrix shows real permission escalations (for example workspace-write to danger-full-access) are preserved while equal-or-narrower modes are stripped, so incorrect matching could suppress intended fields.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest indicates peer dependency on DeepSeek Cordis only, with no declared external service/runtime dependency declarations.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "tool-call argument preprocessing",
+      "model-scoped behavior filtering",
+      "sandbox permission field handling",
+      "configurable runtime behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:01:02.650Z",
+  "repositoryCommitSha": "e70b9f264a3b857b66fb378636f6e5aef5bb1a5c",
+  "evidenceHash": "866d627ea79e35b71f7effc184928f4d1a23af841a1200c79032c82f14776647",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "36304970784da571bb32d4dcc8a36e34a71ead431778e44c1382191189124e96",
+  "shadowMode": false
+}

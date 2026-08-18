@@ -6,32 +6,35 @@
     "notification",
     "integration",
     "api",
-    "automation",
-    "workflow"
+    "workflow",
+    "automation"
   ],
   "confidence": "high",
-  "confidenceScore": 0.95,
-  "reason": "Primary purpose is user-facing notification integration: sending DeepSeek Harness interaction/turn events to a user-configured Feishu bot for approval and workflow awareness. Capabilities appear limited to event-triggered webhook messaging and settings persistence, with moderate risk from external webhook endpoints and stored configuration.",
+  "confidenceScore": 0.98,
+  "reason": "该插件主要用途是将 DeepSeek Harness 中关键交互事件（如用户审批、提问、计划确认和会话结束）转换为飞书机器人消息推送，属于外部服务事件通知型能力，而非通用开发或内容处理功能。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 运行过程中推送用户审批、提问和会话结束等事件提醒到用户配置的飞书机器人。",
+    "en": "This plugin sends notifications from DeepSeek Harness events such as approvals, user questions, and turn completion to a user-configured Feishu bot."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Sends interaction and turn-completion events to a Feishu webhook",
-      "Provides a web settings UI for integration configuration",
-      "Persists webhook configuration in host settings",
-      "Supports test message sending to verify connectivity"
+      "sends outbound webhook notifications to an external service",
+      "monitors DeepSeek Harness interaction lifecycle events",
+      "stores user-provided webhook configuration in host settings"
     ],
     "reasons": [
       {
-        "code": "Plugin description and README state it notifies a Feishu bot for user approval, user-question, plan-confirm, and turn-end events.",
+        "code": "README states the plugin sends text notifications to a Feishu bot when user-approval, ask-user-question, plan-confirmation, and turn-end events occur.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Webhook configuration is managed in plugin settings and persisted via DSH host settings (settings.yaml), which implies handling integration endpoint credentials.",
+        "code": "README explains users configure a Feishu custom robot Webhook in settings, and that the value is persisted via host API into the DSH settings file.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Manifest and repository metadata indicate outbound network usage is a core requirement.",
-        "evidenceRef": "repository"
+        "code": "package.json includes DSH bundle/client configuration and runtime entries, confirming it is an integration plugin intended for the DeepSeek Harness web profile.",
+        "evidenceRef": "package.json"
       }
     ]
   },
@@ -42,30 +45,29 @@
     "riskLevel": "R1",
     "capabilities": [
       "network.access",
-      "Sends interaction and turn-completion events to a Feishu webhook",
-      "Provides a web settings UI for integration configuration",
-      "Persists webhook configuration in host settings",
-      "Supports test message sending to verify connectivity"
+      "sends outbound webhook notifications to an external service",
+      "monitors DeepSeek Harness interaction lifecycle events",
+      "stores user-provided webhook configuration in host settings"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.95,
+      "aiConfidence": 0.98,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:04:13.493Z",
+  "classifiedAt": "2026-08-18T17:59:08.973Z",
   "repositoryCommitSha": "0383e40b90aa14a9cd7c67e39124b43392c9134a",
-  "evidenceHash": "aa158298cfa86b5b685ce9bdea2d6e9f50b1788a306f2ef9278d57e905ca1704",
+  "evidenceHash": "57242886be5501971932aabd2704c30878b1dd9aeaae579e4428a7955cf08895",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "d2109b0311ce0c1bdb298bb6d973399a1bf62c8d1830831cb3aeb58c03419f2a",
-  "shadowMode": true
+  "shadowMode": false
 }

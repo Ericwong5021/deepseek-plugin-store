@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "api",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是通过 DeepSeek Harness Web 设置页面提供用户全局指令文件的本地读写入口，README 与目录结构表明其在主机端提供 GET/PUT 接口并在客户端新增“全局指令”编辑区，同时同步到同一份 AGENTS.md 文件，实现配置可视化编辑与持久化。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的 Web 设置界面新增“全局指令”面板，允许用户在界面中读取并编辑本地的 $DSH_HOME/AGENTS.md 文件。",
+    "en": "This plugin adds a “Global Instructions” section in DeepSeek Harness web settings so users can read and edit their local $DSH_HOME/AGENTS.md file from the UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads from and writes to the local user-global instruction file ($DSH_HOME/AGENTS.md) via plugin APIs",
+      "Provides a local web settings UI section for editing that file",
+      "Exposes GET/PUT routes for prompt file operations"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_CONFIG_FILE_IO",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SETTINGS_UI_INJECTION",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "LOCALHOST_ONLY_ACCESS",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads from and writes to the local user-global instruction file ($DSH_HOME/AGENTS.md) via plugin APIs",
+      "Provides a local web settings UI section for editing that file",
+      "Exposes GET/PUT routes for prompt file operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:50.799Z",
+  "repositoryCommitSha": "d0631386efe6761a8a6fd78f0decf063b888e6df",
+  "evidenceHash": "7c951e789e7987c34869fe15c86f5ec6fa8009f7f1e067d2b9bf81827ffaa5c1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b8d0d4233ae7a2ec5c57e37fb918c057034d98e3c0618d8bbf55348e2edf9012",
+  "shadowMode": false
+}

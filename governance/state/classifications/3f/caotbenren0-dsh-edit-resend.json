@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "chat",
+    "ui",
+    "api",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Evidence shows this is a user-facing chat workflow plugin: it lets users edit a previously sent message, generate a new forked reply branch, and manage the resulting archived source session from settings, implemented through DSH host/client remote extension points rather than external tooling.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek 对话提供“编辑并重发”操作，可对已发送消息进行修改后重生成回复，并在设置中列出/恢复归档会话。",
+    "en": "This plugin adds an edit-and-resend workflow for DeepSeek conversations, allowing a sent user message to be revised and regenerated via a new branch, with archived source sessions available for restore from Settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a button on completed chat turns to edit and resend messages",
+      "Reads turn text from host event logs to seed regenerated responses",
+      "Creates forked child sessions for resend workflow",
+      "Archives original sessions and restores them via settings UI",
+      "Exposes multiple host remote operations for edit/getText/archive/unarchive/listArchived"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as creating a new conversation branch by locating the target turn in a full event log and invoking a fork-and-followup flow (`edit`, `agents.create`), then updating session state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It injects UI into `conversation.chat.turnTail` and `settings.section` via client slots and calls host remote methods to perform edit/resend/archiving actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It intentionally archives source sessions after resend and provides an unarchive/restore list in settings, which changes visible session state without deleting data.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a button on completed chat turns to edit and resend messages",
+      "Reads turn text from host event logs to seed regenerated responses",
+      "Creates forked child sessions for resend workflow",
+      "Archives original sessions and restores them via settings UI",
+      "Exposes multiple host remote operations for edit/getText/archive/unarchive/listArchived"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:17.801Z",
+  "repositoryCommitSha": "7c823990c059b1963b44460b305234e5f342a9cb",
+  "evidenceHash": "6a7b54e1c6c280a0aa2520012cda01e093374935317553538961f0d8a1be7319",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2914ece110443e5db5e10c520fced0947aec092eb304e41821b80cbf4fd5793e",
+  "shadowMode": false
+}

@@ -3,43 +3,51 @@
   "group": "agents-workflows",
   "category": "orchestration",
   "tags": [
-    "agent",
     "automation",
     "planning",
-    "tool",
     "workflow",
+    "tool",
     "memory",
-    "monitoring",
-    "integration"
+    "data",
+    "api"
   ],
   "confidence": "medium",
-  "confidenceScore": 0.78,
-  "reason": "This is primarily an AI orchestration plugin for the DSH ecosystem: a proactive scheduler/agent layer that observes signals, plans execution, runs multi-model task chains, and evolves strategy over time. Conservatively, user-facing capabilities center on workflow automation and host-aware agent scheduling (including safety governance). Moderately higher-risk due to credential handling and host-tool governance capabilities; no immediate blockers evident from provided evidence.",
+  "confidenceScore": 0.89,
+  "reason": "该插件从功能描述和结构看，核心面向用户的是在 DSH/Cordis 生态内进行任务调度与执行的自动化编排：它提供自主感知、模型调度、任务执行、反思优化与 18 个可调用工具，并支持主机级工具治理与可观测能力，因此应归类为编排/执行向插件，次要涉及自动化、工作流、记忆与数据处理能力。",
+  "summaries": {
+    "zh": "dsh-proactive 是一款基于 DSH/Cordis 的主动调度插件，提供任务感知、决策、执行、反思与 18 个运行/记忆相关工具，支持自动化的多模型调度与运行治理。",
+    "en": "dsh-proactive is a DSH/Cordis proactive scheduling plugin that provides task sensing, decision, execution, and reflection workflows with 18 runtime and memory-oriented tools for automated multi-model orchestration and governance."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Autonomous scheduling/dispatch of tasks and model execution within DSH host runtime.",
-      "Host-level tool observation and governance hooks (including optional kill-switch style interruption) in shared tool pipeline.",
-      "Persistent memory and experience retrieval/feedback used for planning and execution decisions.",
-      "API key ingestion from host/env/config with key-rotation and fallback behavior.",
-      "Distributed operational features (consensus/sync/hot-reload) exposed as plugin services."
+      "任务执行与调度自动化",
+      "宿主工具调用治理",
+      "外部模型服务调用与密钥管理",
+      "持久化记忆与策略数据",
+      "离线验证与行为回放",
+      "跨会话经验检索与回调"
     ],
     "reasons": [
       {
-        "code": "Core purpose is an autonomous scheduler/orchestrator that can issue and govern actions without direct user prompts.",
+        "code": "README 描述了插件核心为主动调度闭环（感知/决策/执行/反思）以及 11 步自主循环与任务执行路径。",
         "evidenceRef": "readme"
       },
       {
-        "code": "Plugin exports host-integration tools and declares DSH plugin bundle/patch wiring, indicating it runs inside and influences host workflow.",
+        "code": "README 声明插件可接入宿主工具链进行观测与治理，并在配置启用后对宿主工具调用执行预检与 Kill Switch 冻结控制。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提供了 18 个工具接口（含 execute/run_benchmark/query_memory/manage_autonomy 等），表明其会对任务与运行时进行直接工具化控制。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 中说明了多模型接入、自动读取/切换模型密钥与按状态重试路由（含 401/403/429 的退避策略）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package.json 均指向 DSH Cordis 插件打包/运行约定（如 dsh.bundle.patch 与 dist 入口），表示其可在宿主环境持续运行并与系统集成。",
         "evidenceRef": "package.json"
-      },
-      {
-        "code": "Feature set includes host tool pre-execute/observability, autonomy loop, safety governor, and multi-key credential handling.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "Repository structure includes autonomy loop, safety governor, memory, consensus, sync, and policy/sandbox/hot-reload components, confirming operational scope.",
-        "evidenceRef": "tree"
       }
     ]
   },
@@ -51,31 +59,32 @@
     "capabilities": [
       "credential.read",
       "network.access",
-      "Autonomous scheduling/dispatch of tasks and model execution within DSH host runtime.",
-      "Host-level tool observation and governance hooks (including optional kill-switch style interruption) in shared tool pipeline.",
-      "Persistent memory and experience retrieval/feedback used for planning and execution decisions.",
-      "API key ingestion from host/env/config with key-rotation and fallback behavior.",
-      "Distributed operational features (consensus/sync/hot-reload) exposed as plugin services."
+      "任务执行与调度自动化",
+      "宿主工具调用治理",
+      "外部模型服务调用与密钥管理",
+      "持久化记忆与策略数据",
+      "离线验证与行为回放",
+      "跨会话经验检索与回调"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "HIGH_RISK_CAPABILITY"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.78,
+      "aiConfidence": 0.89,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:03:23.038Z",
+  "classifiedAt": "2026-08-18T17:59:08.398Z",
   "repositoryCommitSha": "960be5270c251280a59b06d7caca0d91c34ad462",
-  "evidenceHash": "714d415026ae80405b3a34f5b0d963ef4140bc37accc443ba70cd3c2017b4e4d",
+  "evidenceHash": "7180d30cc5f549bc25991f48dd829c455790cf581a66220a28a8635165823641",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "5668d7c5cad8c6c8814c4a54d6c46fcf592ec21a558e0f37a23c3e1ba610972d",
-  "shadowMode": true
+  "shadowMode": false
 }

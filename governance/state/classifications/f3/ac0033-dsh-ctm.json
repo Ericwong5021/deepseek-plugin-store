@@ -3,15 +3,86 @@
   "group": "agents-workflows",
   "category": "memory-context",
   "tags": [
-    "context",
-    "memory",
     "chat",
-    "ui"
+    "context",
+    "ui",
+    "tool",
+    "memory",
+    "api",
+    "workflow",
+    "automation"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing purpose is to surface and let users directly inspect, edit, and manage model context (system prompt, turns/segments, and related effectiveness and token-usage state) through a dedicated conversation context view and operations like replace/delete/rollback.",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a user-facing memory/context management tool for DeepSeek Harness, centered on visualizing model context and allowing controlled edits to conversation surface content. The README shows a dedicated Context UI tab plus a POST /ctm control API for replace/delete/rollback/restore/undo operations and optional real-application of edits into session logging, so its impact is on context transparency, editing, and session-state behavior rather than external service integrations or file/terminal actions.",
+  "summaries": {
+    "zh": "dsh-ctm 是 DeepSeek Harness 的上下文透明度插件，在对话界面提供可查看与编辑上下文的入口，并支持替换、删除、回滚与恢复等会话操作。",
+    "en": "dsh-ctm is a DeepSeek Harness plugin that adds a context-focused chat interface for inspecting and editing conversation context, including controls for replace, delete, rollback, and restore actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a Conversation Context tab for viewing turn/segment history and token usage",
+      "Exposes POST /ctm operations to replace, delete, rollback, restore, and undo context segments",
+      "Supports replacing the initial system prompt and overriding segment effectiveness values",
+      "Can apply edits to the session log in host pipeline when enabled (agent/pre-step)",
+      "Computes and displays token/accounting summaries from session projections or full-log fallback"
+    ],
+    "reasons": [
+      {
+        "code": "Context visibility and editable segment surface are documented as the plugin's primary feature set in the README.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Wire protocol defines state-mutating ops (replace/delete/rollback/restore/undo/override) on session context via POST /ctm.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Host/client architecture registers web route and session integration, indicating runtime model-context mutation path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Bundle plugin packaging for DeepSeek Harness and client web platform is declared in package manifest, confirming user-facing deployment within chat UI.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata and project structure match a DSH bundle plugin with documented build/test artifacts and source modules.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides a Conversation Context tab for viewing turn/segment history and token usage",
+      "Exposes POST /ctm operations to replace, delete, rollback, restore, and undo context segments",
+      "Supports replacing the initial system prompt and overriding segment effectiveness values",
+      "Can apply edits to the session log in host pipeline when enabled (agent/pre-step)",
+      "Computes and displays token/accounting summaries from session projections or full-log fallback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:01:16.193Z",
-  "evidenceHash": "e31e18682ca8f09164b0905d37cd944bdeff800f2e33d65923657a80b752aa5d"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:33.183Z",
+  "repositoryCommitSha": "df4ce7fd31d43fc777578cfcc139f0cd5e3ffc28",
+  "evidenceHash": "f366a4fe736ebbad3492bcb0c33f8d89927085d78d865c2fb886c6b05ec9f3f6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "868e2dc100d0dd24a16aa33ba41ee53147ef1cadbe6575d62dc9f50dff3f72e9",
+  "shadowMode": false
 }

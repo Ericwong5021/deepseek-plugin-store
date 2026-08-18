@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "desktop",
+    "browser",
+    "layout",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Based on the repository and README, the plugin’s primary purpose is a user-facing conversation navigation panel for DeepSeek Harness, providing a side tick rail for locating and jumping to user messages with hover previews and keyboard/mouse controls. Its scope is UI navigation only, with no evidence of external service integration or terminal/automation capabilities.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 对话界面的导航类插件，在会话旁边显示刻度导航条，可预览与跳转到对应消息。",
+    "en": "This is a conversation navigation plugin for DeepSeek Harness that shows a side tick rail to browse your messages with preview and jump interactions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Render a conversation-side navigation rail in the DeepSeek Harness web UI",
+      "Map user messages to a tick-based index in the conversation view",
+      "Show local hover previews of selected messages",
+      "Provide click and keyboard interactions to jump/scroll to message targets",
+      "Run as a web client plugin without a separate host component"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a pure web-client plugin that mounts in `shell.overlay`, indexes conversation ticks, previews messages, and enables jump navigation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares `dsh.client.platform` as `web` and `main` exports include only plugin entry files, indicating UI-side functionality only.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository structure lists only client/manifest/plugin files (e.g., client.js, index.js, patch), with no background service or system-control components.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Render a conversation-side navigation rail in the DeepSeek Harness web UI",
+      "Map user messages to a tick-based index in the conversation view",
+      "Show local hover previews of selected messages",
+      "Provide click and keyboard interactions to jump/scroll to message targets",
+      "Run as a web client plugin without a separate host component"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:19.768Z",
+  "repositoryCommitSha": "2d103df93a7c4c11e43807cee525321b39730033",
+  "evidenceHash": "a16c809fb4d37573a608bc9f7a8e64132e19140dc2dc0095d5b833ec7a57c0af",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6786b5241e231249b4897742dd0e85a3861b519103d3d4dbdcee2fdc908190cb",
+  "shadowMode": false
+}

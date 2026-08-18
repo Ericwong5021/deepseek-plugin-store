@@ -4,36 +4,50 @@
   "category": "media-tools",
   "tags": [
     "image",
-    "tool",
     "file",
-    "terminal",
-    "desktop",
+    "tool",
     "automation",
-    "workflow"
+    "cli",
+    "workflow",
+    "browser",
+    "document"
   ],
   "confidence": "high",
-  "confidenceScore": 0.94,
-  "reason": "This plugin is a user-facing media tool that adds local OCR capability to DeepSeek Harness. Its main purpose is converting pasted or provided images into text (especially screenshots/聊天记录/文档场景) through offline PP-OCRv5 on ONNX Runtime, with support for both Web and TUI input flows. Secondary functionality includes local setup/caching of OCR models and environment bootstrap.",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用户价值是本地 OCR 转写：将图片（通过粘贴或路径）转换为可读文本以供 DeepSeek Harness agent 使用，适用于终端与 Web 两端。证据显示其核心为图片输入、离线识别流程、以及本地模型/依赖安装配置，与媒体文本化工具用途一致。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在 TUI/Web 端将图片粘贴或图片路径转换为文本输出，并可供助手继续处理。",
+    "en": "This is a DeepSeek Harness plugin for TUI/Web that converts pasted images or image paths into text output for use by the assistant."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Extracts text from local images (OCR) and returns recognized text for agent use",
-      "Supports image paste-to-path flow in both DSH Web and TUI environments",
-      "Provides local OCR setup/download tooling (environment bootstrap, model download, cache/config options)",
-      "Modifies local client behavior via install scripts (e.g., TUI paste-key binding setup)"
+      "图片到文本识别（OCR）",
+      "支持 TUI 与 Web 中的图片粘贴或图片路径输入",
+      "通过 `ocr_image` 工具返回识别结果给 DeepSeek Harness agent",
+      "通过安装/设置脚本进行本地 Python 环境与模型部署",
+      "提供本地识别模型缓存与可配置参数（模型目录、粘贴行为、缓存策略）"
     ],
     "reasons": [
       {
-        "code": "README documents primary flow: paste image in TUI/Web, agent calls ocr_image to read text locally via PP-OCRv5 + ONNX Runtime.",
+        "code": "README 指明该插件的核心功能是图片识别：将截图/图片粘贴为路径后交由 `ocr_image` 识别为文字。",
         "evidenceRef": "readme"
       },
       {
-        "code": "Repository ships setup assets (ocr/setup.py, install scripts) for local environment/model initialization, indicating dependency/runtime installation and local model caching behavior.",
-        "evidenceRef": "tree"
+        "code": "README 明确声明支持 TUI 与 Web 端粘贴图片，覆盖不同使用端的输入路径。",
+        "evidenceRef": "readme"
       },
       {
-        "code": "Plugin is packaged for DSH via manifest/exports and includes patch files and profile config hooks, confirming integration into user client behavior.",
+        "code": "README 与仓库描述均说明使用 PP-OCRv5 与 ONNX Runtime，并通过 `ocr_setup`/`ocr/setup.py` 安装依赖与下载模型。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明该项目是 DeepSeek Harness 插件，包含 dsh bundle patch 与导出入口，表明其以插件方式接入平台。",
         "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库文件清单包含 `install.sh`、`install.ps1` 与 `ocr/` 目录，说明存在本地环境配置和可执行安装流程。",
+        "evidenceRef": "tree"
       }
     ]
   },
@@ -43,30 +57,31 @@
     "finalDecision": "needs_human",
     "riskLevel": "R1",
     "capabilities": [
-      "Extracts text from local images (OCR) and returns recognized text for agent use",
-      "Supports image paste-to-path flow in both DSH Web and TUI environments",
-      "Provides local OCR setup/download tooling (environment bootstrap, model download, cache/config options)",
-      "Modifies local client behavior via install scripts (e.g., TUI paste-key binding setup)"
+      "图片到文本识别（OCR）",
+      "支持 TUI 与 Web 中的图片粘贴或图片路径输入",
+      "通过 `ocr_image` 工具返回识别结果给 DeepSeek Harness agent",
+      "通过安装/设置脚本进行本地 Python 环境与模型部署",
+      "提供本地识别模型缓存与可配置参数（模型目录、粘贴行为、缓存策略）"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.94,
+      "aiConfidence": 0.95,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:02:37.678Z",
+  "classifiedAt": "2026-08-18T17:58:58.976Z",
   "repositoryCommitSha": "5aaaf98a0258d62eaabf930eedbdcc92518d9bfe",
-  "evidenceHash": "a7a5ecb48f70e66a0fc57e3dfe25bcc3a44048db5cd7a7869766fc4355e3a08e",
+  "evidenceHash": "44a97b1e5f59dcecec2e2bcd3cf4f7628d47edaaa472c77736ef3a3eaf6cc0a7",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "5f63bc6aa40bb63b1eaa5c7d49a3b5eb8060d6fee486dfc52d97e67d3c042ed3",
-  "shadowMode": true
+  "shadowMode": false
 }

@@ -5,39 +5,48 @@
   "tags": [
     "agent",
     "automation",
+    "workflow",
+    "monitoring",
     "tool",
     "terminal",
-    "workflow",
-    "context",
-    "monitoring"
+    "context"
   ],
   "confidence": "high",
   "confidenceScore": 0.93,
-  "reason": "Primary purpose is agent automation orchestration: a dsh Cordis plugin that adds control-loop governance around tool calling. It focuses on preventing runaway behavior via pre-execution guardrails, post-execution feedback, adaptive throttling, and controllability checks, with status/snapshot/check helper tools for operator visibility. It is a control/automation utility rather than a UI, content, or file-editing feature.",
+  "reason": "The plugin is primarily an agent workflow orchestration utility for DeepSeek Harness, focused on controlling and stabilizing tool-call behavior through pre-execution rules, feedback-based mode adjustment, and per-turn warnings. It also exposes dedicated tools to inspect status and check controllability, indicating a runtime control and monitoring purpose rather than content creation or UI enhancement.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供智能体工具调用的运行时编排控制，在调用前检查、调用后反馈并通过状态注入与模式调节降低失控与重复调用风险。",
+    "en": "This plugin provides DeepSeek Harness with runtime orchestration for tool calls by combining pre-checks, feedback-based control, and status checks to moderate repetitive or unstable execution loops."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Intercepts and influences dsh tool-call lifecycle events",
-      "Can preflight-filter or require confirmation for risky commands",
-      "Applies adaptive rate/threshold controls based on observed failure signals",
-      "Collects execution telemetry in local logs and exposes status/diagnostic tools"
+      "Intercepts and conditions tool-call workflow via lifecycle hooks.",
+      "Applies configurable pre-execution rule matching for potentially risky command patterns.",
+      "Computes execution failure and behavior metrics (e.g., EMA failure estimate, divergence, oscillation) to adjust control mode.",
+      "Logs tool observations and execution outcomes to local files for state tracking and review.",
+      "Exposes operational tools (`cybernetics_snap`, `cybernetics_status`, `cybernetics_check`) that influence agent-session behavior."
     ],
     "reasons": [
       {
-        "code": "README describes hooks on tools/pre-execute, tools/result, and agent/pre-step used for preflight control, feedback adjustment, and warning injection.",
+        "code": "README describes integration with `tools/pre-execute`, `tools/result`, and `agent/pre-step` event points to monitor and steer each tool-calling cycle.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Plugin includes rule-based interception for irreversible actions (e.g., rm/mv/git push) with dry-run+confirm or block behaviors.",
+        "code": "README specifies front-end control rules including `dry-run+confirm` for irreversible writes and retry/timeout strategy for unstable-network operations.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Failure estimation uses EMA filtering and escalates/de-escalates control modes, then enforces per-turn tool-call limits.",
+        "code": "README documents per-turn stability thresholds and adaptive control modes (fast/deep/conservative) that change behavior based on observed success/failure signals.",
         "evidenceRef": "readme"
       },
       {
-        "code": "State and observed tools are written to local persistence files (state_log.ndjson/observed_tools.json), creating operational telemetry side effects.",
+        "code": "README shows persistence of `state_log.ndjson` and `observed_tools.json`, plus controllability checks using observed tool sets.",
         "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a dsh plugin with a cordis patch bundle and dependency on `@deepseek-ai/dsh-tools`, indicating runtime integration inside dsh tool infrastructure.",
+        "evidenceRef": "package.json"
       }
     ]
   },
@@ -48,13 +57,14 @@
     "riskLevel": "R1",
     "capabilities": [
       "network.access",
-      "Intercepts and influences dsh tool-call lifecycle events",
-      "Can preflight-filter or require confirmation for risky commands",
-      "Applies adaptive rate/threshold controls based on observed failure signals",
-      "Collects execution telemetry in local logs and exposes status/diagnostic tools"
+      "Intercepts and conditions tool-call workflow via lifecycle hooks.",
+      "Applies configurable pre-execution rule matching for potentially risky command patterns.",
+      "Computes execution failure and behavior metrics (e.g., EMA failure estimate, divergence, oscillation) to adjust control mode.",
+      "Logs tool observations and execution outcomes to local files for state tracking and review.",
+      "Exposes operational tools (`cybernetics_snap`, `cybernetics_status`, `cybernetics_check`) that influence agent-session behavior."
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
@@ -68,10 +78,10 @@
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:04:29.607Z",
+  "classifiedAt": "2026-08-18T17:59:10.183Z",
   "repositoryCommitSha": "1932ae073fe298596ed47a90ff38ad26e531c9c9",
-  "evidenceHash": "f5aef3ec28edadb37689f14f3641ad41c92ac49798da043b1b78647d38d2a668",
+  "evidenceHash": "f0c5b53ce9f89beefa3d7f99d4fc189bf3385db3b35122685719fc83cde775e6",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "c93a52b84249d5c7784616379b03595eba720f6470cf64588f4f98a4e2d5cc31",
-  "shadowMode": true
+  "shadowMode": false
 }

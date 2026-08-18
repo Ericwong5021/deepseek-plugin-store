@@ -1,41 +1,45 @@
 {
   "status": "classified",
-  "group": "research-knowledge",
-  "category": "document-processing",
+  "group": "tools-data",
+  "category": "files-terminal",
   "tags": [
     "file",
     "document",
     "image",
     "tool",
-    "integration"
+    "integration",
+    "workflow"
   ],
   "confidence": "high",
-  "confidenceScore": 0.95,
-  "reason": "Primary purpose is document/media upload bridging: it handles selected file types and turns them into workspace paths so models can access them via downstream tools. Capabilities are local file handling and typed file-path handoff; no evident high-risk behavior.",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a file-handling bridge: it uploads images and common documents, rewrites them as workspace paths, and enables downstream text-only DeepSeek workflows to consume them via image/document-aware tools. It is scoped to attachment conversion and model-facing routing, with evidence limited to its README and package metadata.",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，用于将图片和常见文档上传后转换为工作区路径，便于文本模型在后续流程中通过视觉或文件工具读取这些内容。",
+    "en": "This is a DSH plugin that converts uploaded images and common documents into workspace paths so text-only model flows can consume them through vision or file tools."
+  },
   "risk": {
-    "level": "R0",
+    "level": "R1",
     "capabilities": [
-      "Accepts uploaded images and common document file types",
-      "Stores uploads under a workspace directory",
-      "Converts uploads into workspace path-based references for downstream model tools",
-      "Supports routing hints for both image and document types"
+      "Converts uploaded image attachments and supported document formats into workspace file-path references for model tool routing.",
+      "Supports a defined set of image and document file types for upload handling.",
+      "Stores uploaded files under a workspace-local `.dsh-vision/uploads/` directory before they are referenced by models."
     ],
     "reasons": [
       {
-        "code": "Plugin is described as a lightweight upload bridge that converts images and documents into workspace paths for text-only models to access through vision/file tools.",
+        "code": "PATH_BRIDGING",
         "evidenceRef": "readme"
       },
       {
-        "code": "Defines storage location for uploaded files in `.dsh-vision/uploads/`, indicating local workspace file handling.",
+        "code": "SUPPORTED_FILE_TYPES",
         "evidenceRef": "readme"
       },
       {
-        "code": "Manifest metadata marks it as a DSH web plugin bundle with injected client-side integration entrypoint, consistent with document/file-processing behavior.",
+        "code": "DSH_WEB_BUNDLE",
         "evidenceRef": "package.json"
       },
       {
-        "code": "Repository includes plugin source files (`lib/client.js`, `lib/index.js`) and patch manifest for runtime behavior.",
-        "evidenceRef": "tree"
+        "code": "LOCAL_WORKSPACE_STORAGE",
+        "evidenceRef": "readme"
       }
     ]
   },
@@ -45,30 +49,29 @@
     "finalDecision": "needs_human",
     "riskLevel": "R1",
     "capabilities": [
-      "Accepts uploaded images and common document file types",
-      "Stores uploads under a workspace directory",
-      "Converts uploads into workspace path-based references for downstream model tools",
-      "Supports routing hints for both image and document types"
+      "Converts uploaded image attachments and supported document formats into workspace file-path references for model tool routing.",
+      "Supports a defined set of image and document file types for upload handling.",
+      "Stores uploaded files under a workspace-local `.dsh-vision/uploads/` directory before they are referenced by models."
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.95,
+      "aiConfidence": 0.93,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:02:29.939Z",
+  "classifiedAt": "2026-08-18T17:58:58.362Z",
   "repositoryCommitSha": "81b09e36c0bd23969c7a7f4555d545e75e2cbb3e",
-  "evidenceHash": "96762afe224e3b7fe7cc5b73e402cdf30edce24ce0bc7960e1a2ed319a6c01a5",
+  "evidenceHash": "8ae39a562d288bba6b0ff2bf7e0bfa7e2e1cae07e859e4800f5f6ea4f18016a4",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "0b32521f76ee289721fc95e02415b98a158a983ce4395abc0d36ccf108f123bd",
-  "shadowMode": true
+  "shadowMode": false
 }

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "chat",
+    "api",
+    "workflow",
+    "ui",
+    "notification",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是围绕 DeepSeek V4 Flash/Pro 高峰与离峰计费时段，在用户发送前给出提醒并支持延后执行，属于降低成本的自动化操作类工具。证据显示其核心行为是拦截发送、弹窗提示、计划任务排程及在目标时段自动重放消息。风险主要来自本地任务持久化与自动执行可能带来的误发风险，因此评为中低风险。",
+  "summaries": {
+    "zh": "OffPeak 是一款 DeepSeek Harness Web 插件，用于在高峰计费时段拦截待发送内容并支持按离峰时段预约自动提交。",
+    "en": "OffPeak is a DeepSeek Harness Web plugin that intercepts send actions during peak pricing windows and lets users schedule those messages for automatic submission in off-peak time windows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts composer send actions in the DeepSeek web UI",
+      "Shows a pricing reminder dialog during configured peak windows",
+      "Schedules message execution for later off-peak time slots",
+      "Submits scheduled tasks automatically at the target time to an existing session",
+      "Exposes local endpoints to get state and manage scheduled tasks"
+    ],
+    "reasons": [
+      {
+        "code": "Composer send is intercepted on Enter/send during peak windows and a dialog is shown with Continue/Schedule options.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Scheduled tasks include fields such as text, atMs, and sessionId and are intended to be submitted automatically when the time arrives.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is a web-targeted DSH plugin with client-side injection and exported client/server entry points.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Intercepts composer send actions in the DeepSeek web UI",
+      "Shows a pricing reminder dialog during configured peak windows",
+      "Schedules message execution for later off-peak time slots",
+      "Submits scheduled tasks automatically at the target time to an existing session",
+      "Exposes local endpoints to get state and manage scheduled tasks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:35.903Z",
+  "repositoryCommitSha": "a3d676f3b8643b8d7b869a3c7a7a517556d6ea55",
+  "evidenceHash": "7553bf9fa022b03fe830fa95c38c00b9dfdc895984038b8bb77841a9f99266f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "91a7614064be3eca0bc899bdf1bf915f4d31d33ab46a46367ea7bd43a67bdc5e",
+  "shadowMode": false
+}

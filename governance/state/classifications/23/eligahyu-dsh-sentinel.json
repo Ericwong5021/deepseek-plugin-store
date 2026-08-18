@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "agent",
+    "cli",
+    "tool",
+    "automation",
+    "file",
+    "data",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is a DeepSeek Harness security/health scanner focused on static, read-only auditing of DSH plugins and profiles. Evidence shows it applies heuristic rules, validates bundle/manifests, produces a 0–100 risk score with verdict tiers, and supports both DSH tool use and standalone CLI execution, making it primarily a project-analysis utility with workflow/automation features.",
+  "summaries": {
+    "zh": "dsh-sentinel 是一个针对 DeepSeek Harness 插件的只读静态体检工具，支持以 DSH 工具或 CLI 方式扫描插件与 profile，并给出风险评分与处置建议。",
+    "en": "dsh-sentinel is a read-only static audit tool for DeepSeek Harness plugins, available as a DSH plugin tool or standalone CLI, that scans plugins/profile and outputs risk scores with review guidance."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "static file-based plugin scanning",
+      "heuristic rule matching for risky patterns",
+      "plugin manifest and entry-contract validation",
+      "risk scoring and structured JSON reporting",
+      "DSH plugin/tool invocation",
+      "standalone CLI execution in CI",
+      "filesystem read access to scanned targets"
+    ],
+    "reasons": [
+      {
+        "code": "readme states read-only static analysis and no execution of scanned code, so primary impact is advisory analysis of local targets rather than active code modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool and CLI are both exposed (sentinel_scan/sentinel_scan_profile plus bin entry), introducing local filesystem access and automated CI use paths",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "scanner profiles third-party plugins under user/home profile locations, so output can affect trust decisions but depends on user-supplied paths and repositories",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "static file-based plugin scanning",
+      "heuristic rule matching for risky patterns",
+      "plugin manifest and entry-contract validation",
+      "risk scoring and structured JSON reporting",
+      "DSH plugin/tool invocation",
+      "standalone CLI execution in CI",
+      "filesystem read access to scanned targets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:48.112Z",
+  "repositoryCommitSha": "221c94070a46b877df03a6facc906f79b7d528ad",
+  "evidenceHash": "567cba1b4eb0190ca735f1cc7e4d5e9d2592c26a0e90c0fb96aa9bf830f2e260",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c6450c8657f3eb7bb40c1befe384fcf54dc65dff3b8080b2ddf3cd27cb918055",
+  "shadowMode": false
+}

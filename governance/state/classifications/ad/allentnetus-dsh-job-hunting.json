@@ -5,15 +5,74 @@
   "tags": [
     "data",
     "document",
+    "file",
     "search",
-    "browser",
-    "tool",
-    "integration"
+    "integration",
+    "workflow",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin is primarily for job-data workflows: importing and standardizing local job files, parsing DOCX/PDF/TXT/Markdown resumes, matching and generating reports, and optionally collecting jobs via browser access, which is fundamentally data/document processing and retrieval with workspace outputs.",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是求职流程数据化处理：其 README 明确说明可导入岗位与简历、标准化去重匹配并生成报告和可本地打开的静态页面，同时可通过配置好的白名单站点调用外部 BrowserSkill 读取招聘信息，因此属于面向求职情报与数据处理的插件。由于会处理个人简历/岗位画像并访问外部招聘站点，风险评估为中等（R1）。",
+  "summaries": {
+    "zh": "这是一个面向求职者的 DeepSeek Harness 插件，支持整理本地岗位与求职画像数据、解析简历、生成匹配分析与静态站点，并可在白名单招聘站点上执行只读岗位采集。",
+    "en": "This is a DeepSeek Harness plugin for job-hunting workflows that organizes local job and profile data, parses resumes, generates matching reports and static pages, and can run read-only job collection on configured whitelisted recruitment sites."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores and updates job-related data (positions, profiles, interests, reports) in the active workspace.",
+      "Parses local resume and posting files (DOCX, text-based PDF, TXT, Markdown) using local processing dependencies.",
+      "Collects structured job data from whitelisted recruitment domains via BrowserSkill in read-only mode."
+    ],
+    "reasons": [
+      {
+        "code": "Plugin purpose and behavior are centered on local workspace-based job intelligence workflows (import, normalization, matching, reporting, and workspace outputs).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Resume parsing pipeline includes DOCX/PDF/TXT/Markdown support with explicit limits for scanned/encrypted PDFs and OCR not used.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Browser-based collection is restricted to configured allowed domains and requires confirmed flag, with per-run and interval controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Runtime exports and CLI/package metadata expose DSH plugin/skill entry points and dependencies for local resume parsing.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Stores and updates job-related data (positions, profiles, interests, reports) in the active workspace.",
+      "Parses local resume and posting files (DOCX, text-based PDF, TXT, Markdown) using local processing dependencies.",
+      "Collects structured job data from whitelisted recruitment domains via BrowserSkill in read-only mode."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:09.045Z",
-  "evidenceHash": "eb89f1453bd548f56c638d129985558a6a7c9c0c28e85b581974de7e9b112dce"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:43.569Z",
+  "repositoryCommitSha": "f8fd565545eaf50d13b8a39e55aac4d61c7af91a",
+  "evidenceHash": "20d67c6156ca48f2615d0578e6aac44377665f947e086433e57f6c8b0acb7531",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d16c69d17f15cd2e86e84662f54cedb942e9494a3d718453690476701fb144f8",
+  "shadowMode": false
 }

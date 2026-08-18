@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "data",
+    "file",
+    "tool",
+    "api",
+    "automation",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily an in-DSH office content processor and editor, with user-facing workflows for creating, editing, inspecting, and exporting spreadsheets, documents, presentations, and related units. Evidence from the README and package metadata shows it is centered on document/workbook/presentation production and review, supported by dedicated `univer_*` tools and conversation-based live previews, worktree isolation, and explicit merge/discard decisions.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的办公内容插件，可在会话中创建、编辑并导出电子表格、文档与演示文稿等内容，并通过内置 `univer_*` 工具与预览/审核流程帮助用户确认变更。",
+    "en": "This is an office content plugin for DeepSeek Harness that lets users create, edit, and export spreadsheets, documents, and presentations, using built-in `univer_*` tools with in-conversation preview and approval flows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Create and edit spreadsheets, documents, presentations, bases, and canvases inside DSH via Univer units",
+      "Import and export office-like formats such as xlsx, docx, pptx, csv, and tsv",
+      "Inspect and lint content including range inspection and slide text/layout checks",
+      "Use isolated worktree-based edits with review states (submit, merge, discard)",
+      "Provide live worktree previews and per-turn review cards for user confirmation"
+    ],
+    "reasons": [
+      {
+        "code": "README documents primary user function as creating, editing, and exporting office content (Sheet/Doc/Slide/Base/Board) in `.univer` with supported formats.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Built-in tool list includes direct mutation/readback operations (`univer_execute`, `univer_import`, `univer_export`, `univer_lint`, `univer_worktree`) that modify and validate user documents.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Risk-relevant behavior is surfaced as explicit worktree workflow (submit/merge/discard) and session-review flow, indicating user-facing file-editing operations rather than silent background changes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package declares browser automation/render dependencies (`puppeteer-core`, `@puppeteer/browsers`) and layout/font-related modules used for slide rendering checks.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Create and edit spreadsheets, documents, presentations, bases, and canvases inside DSH via Univer units",
+      "Import and export office-like formats such as xlsx, docx, pptx, csv, and tsv",
+      "Inspect and lint content including range inspection and slide text/layout checks",
+      "Use isolated worktree-based edits with review states (submit, merge, discard)",
+      "Provide live worktree previews and per-turn review cards for user confirmation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:30.852Z",
+  "repositoryCommitSha": "54762d310eae50d05f7fbc4af9f1d61fcea4aaac",
+  "evidenceHash": "27de9cdc6b66a3707fde4b225a9386b5fa7868509e55834863563c5c3debbe69",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87a34fb650f3e8b98a18c7081290cc99733a25aec48456af60faf87288d75c0c",
+  "shadowMode": false
+}

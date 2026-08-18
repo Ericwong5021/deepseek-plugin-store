@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "tool",
+    "browser",
+    "image",
+    "search",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用户用途是将 OpenAI Codex（基于 ChatGPT Plus/Pro OAuth）作为模型接入 DeepSeek Harness，支持在模型选择与对话流程中使用 Codex、查询状态与配额并处理相关工具能力；基于证据其核心价值是外部 LLM 服务接入与运行时适配，故归类为 external-services。",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的插件，可接入 OpenAI Codex（ChatGPT Plus/Pro）并通过模型选择与 `/codex` 命令在会话中使用该模型。",
+    "en": "This plugin connects DeepSeek Harness to OpenAI Codex (ChatGPT Plus/Pro) so users can use Codex models through the model selector and `/codex` workflow in chat."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Integrates OpenAI Codex as a DeepSeek Harness LLM provider via `openai-codex`.",
+      "Implements `/codex` command operations for login, device login, logout, status, and usage queries.",
+      "Bridges Codex Responses streaming, tool-calling, and image input to Harness stream/chunk handling.",
+      "Adds native hosted `web_search` request transformation when enabled by turn options.",
+      "Stores and refreshes OAuth credentials through DSH credential service and surfaces usage data from external endpoints."
+    ],
+    "reasons": [
+      {
+        "code": "README describes `openai-codex` provider route and Codex model availability in DSH model selector.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `/codex` login/device login/logout/status/usage command flow and OAuth token use.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states native web_search conversion and image/tool handling are part of request/response adaptation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines DSH plugin bundle/client entry points and network/LLM dependencies for external service integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree lists adapter, web-search, credentials, usage, and client modules consistent with provider/runtime integration.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Integrates OpenAI Codex as a DeepSeek Harness LLM provider via `openai-codex`.",
+      "Implements `/codex` command operations for login, device login, logout, status, and usage queries.",
+      "Bridges Codex Responses streaming, tool-calling, and image input to Harness stream/chunk handling.",
+      "Adds native hosted `web_search` request transformation when enabled by turn options.",
+      "Stores and refreshes OAuth credentials through DSH credential service and surfaces usage data from external endpoints."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:15.846Z",
+  "repositoryCommitSha": "85dd1c4cdc8e0606d4b04ae0a7e5b967af2eb42e",
+  "evidenceHash": "549b053ba2c89ccfcb7fb828e1bbd373a872c4ff34deb27a4f2c918db774b65e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7c61f8e28350a87d8649d06711835812a7b693fe065ec8cde2508c921e98753e",
+  "shadowMode": false
+}

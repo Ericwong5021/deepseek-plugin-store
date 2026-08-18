@@ -4,34 +4,43 @@
   "category": "navigation-panels",
   "tags": [
     "ui",
-    "context",
     "desktop",
+    "context",
+    "tool",
     "file",
     "api",
-    "tool"
+    "integration"
   ],
   "confidence": "high",
-  "confidenceScore": 0.9,
-  "reason": "该插件是一个面向 DeepSeek Harness 桌面封装端的 UI 增强插件，主要目的在于提供更完整的右键上下文菜单体验并暴露会话/工作区相关操作。其能力主要为本地菜单增强与常见编辑/文件与链接快捷操作，不涉及明显高风险功能。",
+  "confidenceScore": 0.95,
+  "reason": "该插件主要用于为 DeepSeek Harness 的桌面承载端补充更完整的右键上下文菜单交互，以会话/工作区/对话界面为核心场景并通过应用服务执行复制、路径与链接打开等操作，因此可归类为界面导航与面板交互增强。",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的桌面封装端提供更完整的原生风格右键菜单，支持会话、工作区和对话区域的常见操作与扩展入口。",
+    "en": "Provides a richer native-style context menu for DeepSeek Harness desktop wrapper interfaces, covering sessions, workspaces, and conversation areas with common actions and extension hooks."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Enhances context menus in the desktop webview shell",
-      "Invokes host/runtime APIs for path and session actions",
-      "Performs clipboard and text-selection operations",
-      "Provides extensible menu registration and event dispatch"
+      "Provides custom context menus across session, workspace, settings, conversation output, and input contexts",
+      "Performs copy/paste/edit actions (cut/copy/paste/undo/redo/select all) via browser/host capabilities",
+      "Opens local paths and URLs through host/workspace runtime services",
+      "Registers extension hooks and dispatches context-menu event payloads for other plugins"
     ],
     "reasons": [
       {
-        "code": "README 明确说明插件提供“完整上下文菜单”，覆盖会话、工作区、设置、对话正文与输入框，并列出具体操作如重命名、归档、打开路径、复制文本/链接、撤销重做、剪切粘贴。",
+        "code": "README describes an enhanced right-click experience for DeepSeek Harness desktop-wrapped clients, covering session, workspace, settings, conversation, link, and input contexts.",
         "evidenceRef": "readme"
       },
       {
-        "code": "兼容策略与更新说明中提到通过宿主 RPC `host.openPath`、`workspaces.openPath` 等实现路径/链接打开行为，并说明与其他插件协作与卸载后不留补丁。",
+        "code": "Built-in context actions include copying selected text, open path, copy directory/session ID, open links, and editing actions for input fields.",
         "evidenceRef": "readme"
       },
       {
-        "code": "package.json 声明 `dsh.client.platform: web` 且注入 `@deepseek-ai/dsh-client-runtime`，通过 `lib/index.js`/`lib/client.js` 导出并作为 dsh 插件加载，体现运行时集成能力。",
+        "code": "Compatibility notes state the plugin calls POST /api/host.openPath for directory opening and uses workspaces.openPath for links, and handles clipboard fallback behavior when writable access is unavailable.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares runtime client injection under web platform and depends on DeepSeek Harness runtime/workspace packages, indicating integration with application services rather than standalone execution.",
         "evidenceRef": "package.json"
       }
     ]
@@ -43,30 +52,30 @@
     "riskLevel": "R1",
     "capabilities": [
       "network.access",
-      "Enhances context menus in the desktop webview shell",
-      "Invokes host/runtime APIs for path and session actions",
-      "Performs clipboard and text-selection operations",
-      "Provides extensible menu registration and event dispatch"
+      "Provides custom context menus across session, workspace, settings, conversation output, and input contexts",
+      "Performs copy/paste/edit actions (cut/copy/paste/undo/redo/select all) via browser/host capabilities",
+      "Opens local paths and URLs through host/workspace runtime services",
+      "Registers extension hooks and dispatches context-menu event payloads for other plugins"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.9,
+      "aiConfidence": 0.95,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T16:03:25.259Z",
+  "classifiedAt": "2026-08-18T17:58:57.844Z",
   "repositoryCommitSha": "fc9ab4692fc9d1d9825b671c56abf21aeabca938",
-  "evidenceHash": "0b33233a30847fc98f68eb58ab22443a090cc93e9c7f01fee4540c1fdde9b1ab",
+  "evidenceHash": "a76393849df31c555b34f2c084bf3d36911d30fd14e960c4b09175398f2f35e6",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "6e36e22575504743ef1d170fb07b3320cc8fe07426b562c78ce31590773723d8",
-  "shadowMode": true
+  "shadowMode": false
 }

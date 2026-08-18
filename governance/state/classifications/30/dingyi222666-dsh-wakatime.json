@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "automation",
+    "api",
+    "cli",
+    "data",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily an external-service integration for DeepSeek Harness: it listens to agent/tool/session events, derives file-level AI coding activity metrics, and sends them to WakaTime via its CLI, with rate limiting and batching managed in local state.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，会自动提取会话中的文件操作行为并上报到 WakaTime，用于记录 AI 辅助开发的心跳、代码行数与时长。",
+    "en": "A DeepSeek Harness plugin that captures session file activity and reports heartbeat and line-change metrics to WakaTime for tracking AI-assisted coding time and output."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures file-related agent actions from dsh events and computes per-file line-change metrics",
+      "Invokes an external WakaTime CLI process to send heartbeat/metrics reports",
+      "Maintains per-project local state for heartbeat rate limiting and batching",
+      "Accepts and uses WakaTime API key configuration for authenticated reporting"
+    ],
+    "reasons": [
+      {
+        "code": "README describes tracking edit/write/read/str_replace_editor operations and sending AI coding metrics as heartbeats, indicating activity telemetry is transmitted outward to WakaTime.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README requires a WakaTime API key in ~/.wakatime.cfg and documents that data is sent via WakaTime CLI, which creates network and credential-sensitivity concerns.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata identify the plugin as a dsh bundle plugin that auto-downloads/uses wakatime-cli and hooks into session/tool events, confirming external-service integration and process invocation.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures file-related agent actions from dsh events and computes per-file line-change metrics",
+      "Invokes an external WakaTime CLI process to send heartbeat/metrics reports",
+      "Maintains per-project local state for heartbeat rate limiting and batching",
+      "Accepts and uses WakaTime API key configuration for authenticated reporting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:22.369Z",
+  "repositoryCommitSha": "1832f18ea2ba7780acd4fa25b4cfa8594e5d7ba9",
+  "evidenceHash": "eb8262f13672870ab5aac7f7bb4125a6c99282a4fb0d52928c7f84c1a6ee9830",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3cd48a83d003e1305de687a07184235975c5745d3e1fc4300d92086711b2cdac",
+  "shadowMode": false
+}

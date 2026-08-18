@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily a DSH Web UI utility that lets users manage sessions through UI additions: adding delete controls in session rows and a separate archived-session manager. It also performs persistence-side restore/delete operations via registered host commands, so it is best described as UI-focused session lifecycle management with file-backed session data handling. Potentially destructive actions are manual and explicitly permanent per README.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness Web UI 的会话管理，在会话菜单和侧边栏提供入口，可查看归档会话并进行恢复或永久删除操作。",
+    "en": "This plugin provides session-management actions in the DeepSeek Harness Web UI, adding session menu controls and an archived-sessions window to restore or permanently delete sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds UI controls to session menus and sidebar to trigger session deletion/restoration actions",
+      "Registers host-side DSH commands for delete/restore/permanent-delete flow",
+      "Archives sessions from the workspace UI before removal operations",
+      "Removes persisted session log directories via persistence APIs"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a Delete session item to each session row menu and a View archived sessions button on the toolbar, and opens a DSH-native modal for restore/delete operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes host-side commands (/dsh-delete-session, /dsh-archived-restore, /dsh-archived-delete) and that deletion removes persisted JSONL directories via sessionPersistence.locate.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares dependencies on dsh-session and dsh-session-persistence modules, indicating integration with session and persistence management flows.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Adds UI controls to session menus and sidebar to trigger session deletion/restoration actions",
+      "Registers host-side DSH commands for delete/restore/permanent-delete flow",
+      "Archives sessions from the workspace UI before removal operations",
+      "Removes persisted session log directories via persistence APIs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:58.925Z",
+  "repositoryCommitSha": "ec1ecb002d8be5973c790034052d26faf8e56935",
+  "evidenceHash": "5250cb0593047838504509f390be8ba3259381eede99676c48b8985e2b2b6491",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c277e35d2d1c3bd2fe16801db755efcab0a5eb6a204e2200996f215a52c02ffe",
+  "shadowMode": false
+}

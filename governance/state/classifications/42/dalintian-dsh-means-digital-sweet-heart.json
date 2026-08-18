@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "api",
+    "image",
+    "video",
+    "file",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要面向功能是将 DeepSeek Harness 的 Web 界面改造为可管理角色的人设聊天客户端：提供微信式左右栏对话界面、角色创建与头像生成，以及基于图片/视频生成功能的互动扩展；同时它依赖用户配置的 OpenAI 兼容接口并进行本地配置与文件存储，因此分类为界面导航面板类插件且具备外部服务集成风险。",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的 Web 插件，可将界面替换为微信式双栏聊天体验，创建并管理 AI 角色，并通过配置的兼容接口完成聊天、照片分析和文生图/文生视频互动。",
+    "en": "This is a DeepSeek Harness web plugin that provides a WeChat-style two-panel chat experience, lets you create and manage AI characters, and supports chat, image analysis, and image/video generation through configured compatible APIs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a custom sidebar and conversation UI into the web client",
+      "Stores and reads local role/portrait data files for character profiles",
+      "Sends chat, vision, image, and video generation requests to user-configured API endpoints",
+      "Handles photo upload and multimodal processing through backend routes",
+      "Writes local DSH profile and plugin configuration files during installation"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as transforming the UI into a WeChat-style girlfriend-style chat interface with friend list, conversation panel, and companion-role setup.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes role data and avatar files being stored under `<DSH 主目录>/storages/girlfriend/` and API keys/config in browser localStorage, while `/girlfriend/*` routes proxy model requests.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies a web UI plugin (`@deepseek-ai/dsh-client-runtime`/slots) and a postinstall script that generates profile/config files under DSH directories.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Injects a custom sidebar and conversation UI into the web client",
+      "Stores and reads local role/portrait data files for character profiles",
+      "Sends chat, vision, image, and video generation requests to user-configured API endpoints",
+      "Handles photo upload and multimodal processing through backend routes",
+      "Writes local DSH profile and plugin configuration files during installation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:06.553Z",
+  "repositoryCommitSha": "24796d4666e40417a5b2bf7cb29cde37ab900ba4",
+  "evidenceHash": "877c6ab2f918f0d7082cf3800cb81bcbf4cfe73c075b773cc3c48727bca463bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4fbda6b5a464a043e55b9529c44a432f74cd1008d9c2ea0690f7183996233c14",
+  "shadowMode": false
+}

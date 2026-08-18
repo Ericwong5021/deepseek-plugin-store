@@ -4,13 +4,72 @@
   "category": "navigation-panels",
   "tags": [
     "ui",
-    "monitoring",
-    "data"
+    "api",
+    "integration",
+    "data",
+    "browser",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s main user-facing behavior is adding a sidebar footer card that shows current balance, spend, and quota status, so its core purpose is a UI panel for monitoring session/channel billing state.",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a user-facing sidebar panel that shows account balance and quota information for the active conversation provider, making its core purpose UI/navigation-oriented with external service integration for data retrieval. Evidence in the repository description and README describes sidebar footer placement, provider-aware rendering, and API-backed balance/spend/quotas updates, which fits a navigation-panel utility role rather than infrastructure or generation tooling.",
+  "summaries": {
+    "zh": "该插件在 dsh Web 侧边栏底部展示按当前会话渠道变化的余额与用量/额度卡片，支持 DeepSeek 与火山方舟等渠道的信息展示。",
+    "en": "This plugin adds a sidebar footer card in the dsh web UI that shows session-channel-specific balance and usage or quota information for DeepSeek and Volcano accounts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads credentials from DSH server config for authenticated external API calls.",
+      "Fetches balance, spend, and quota data from external DeepSeek and Volcano endpoints.",
+      "Displays provider-aware usage/balance cards in the DSH sidebar footer with periodic refresh and staleness handling."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin registers at `sidebar.footer.action` and renders a sidebar balance card in the bottom area, with provider-based content switching (DeepSeek/Volcano/unsupported).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents server-side RPC endpoints `/balance` and `/ark-quota` that call DeepSeek balance/usage APIs and Volcano GetAFPUsage, plus polling behavior and credential-backed auth.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares both `dsh.bundle` patch and `dsh.client` web injection, confirming a server+client plugin architecture.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads credentials from DSH server config for authenticated external API calls.",
+      "Fetches balance, spend, and quota data from external DeepSeek and Volcano endpoints.",
+      "Displays provider-aware usage/balance cards in the DSH sidebar footer with periodic refresh and staleness handling."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:57:38.468Z",
-  "evidenceHash": "a884097e59918540a45e0e10e5d55caba002b1f9639d173d628df84ced8daa25"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:37.436Z",
+  "repositoryCommitSha": "0927ae03bf933164c6b6e6b1d157f8fba88e565d",
+  "evidenceHash": "787ad266a061986a3873a9b95a40b96269275022f63e458f3115bcb4b7163557",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c2731ed42cc8507d3cd6ace105fa087bfdaaeb413fa68d02cbebe2417f7ac7b0",
+  "shadowMode": false
 }

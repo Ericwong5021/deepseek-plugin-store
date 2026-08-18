@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "data",
+    "visualization",
+    "monitoring",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向用户用途是深度监控 DeepSeek Harness 会话中的模型调用行为：它在 DSH Web 界面内以浮动面板方式展示 token、缓存、延迟与费用等指标，并允许查看按会话/轮次/步骤展开的请求明细，证据来自仓库说明和包清单对 host/client 结构、`/metrics` 接口与事件流采集的描述。",
+  "summaries": {
+    "zh": "dsh-metrics-panel 是面向 DeepSeek Harness 的 Web 插件，在界面中提供可折叠监控面板，实时展示 token、缓存命中、费用与延迟等指标，并支持请求明细与计费配置。",
+    "en": "dsh-metrics-panel is a DeepSeek Harness web plugin that adds a floating monitoring panel with realtime token, cache-hit, latency, and cost metrics plus request-level detail views and pricing configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures and aggregates DeepSeek Harness session event data (for usage, latency, errors, and tools)",
+      "Displays usage/cost/timing metrics in a web dashboard with chart and table views",
+      "Provides request-level trace/detail retrieval by session, turn, and step",
+      "Exposes local `/metrics` endpoints for dashboard data, trace lookup, pricing config, and refresh actions"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides a floating monitoring panel in the DSH Web UI with real-time token usage, cache hit, cost, latency, request list, error list, and model/provider aggregation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents the host component registering `/metrics/*` HTTP routes (dashboard, request, trace, pricing, refresh, panel) and consuming `session/event` data such as `turn/start`, `request/header`, `assistant/chunk`, and `tool/call` events.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes request detail views include service interface, prompts, tool arguments, request/response content, and reconstructed HTTP examples, with session data held in runtime memory and cleared when the plugin stops or process restarts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json shows this is a DSH Cordis plugin package with web client runtime/theme hooks and `dsh.bundle.patch`, confirming integration as an in-app plugin rather than a standalone external service.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Captures and aggregates DeepSeek Harness session event data (for usage, latency, errors, and tools)",
+      "Displays usage/cost/timing metrics in a web dashboard with chart and table views",
+      "Provides request-level trace/detail retrieval by session, turn, and step",
+      "Exposes local `/metrics` endpoints for dashboard data, trace lookup, pricing config, and refresh actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:13.546Z",
+  "repositoryCommitSha": "8fb22984d77be0ed83592d5eb9b47dafa15041dc",
+  "evidenceHash": "6c1348aae9a82a17682a9d67e9629b8b20dfc318d3ce800143af6443b05ca0aa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0fde0772aa6c42a8c2d0534a9306700be26e6859cd7cd3ff8cd162b57cdcab84",
+  "shadowMode": false
+}

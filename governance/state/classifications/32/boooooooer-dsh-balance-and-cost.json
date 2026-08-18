@@ -4,42 +4,43 @@
   "category": "external-services",
   "tags": [
     "api",
-    "integration",
-    "data",
     "ui",
+    "data",
     "monitoring",
+    "file",
+    "integration",
     "tool"
   ],
   "confidence": "high",
-  "confidenceScore": 0.98,
-  "reason": "该插件的主要用途是为 DeepSeek 官方模型调用提供成本与余额可视化：在 DSH 界面显示会话/总计消耗条目，并在设置面板提供按模型、按会话统计与 CSV 导出。它还会调用官方余额接口、监听 `llm/stream` 进行实时计费估算，并对外提供状态查询与 SSE 推送。",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户功能是面向 DSH 使用场景展示 DeepSeek 账户余额与模型用量/消耗统计，并在主页与设置页提供明细与导出视图，核心是费用与用量监控；分类依据为其通过外部 DeepSeek 服务获取余额、在本机统计并在界面中展示可观测数据，属于外部服务工具化监控能力而非代码生成或调试功能。",
+  "summaries": {
+    "zh": "该插件用于在 DSH Web 中显示 DeepSeek 账户余额与模型用量和估算费用，并按会话与模型给出可查看与导出的消耗明细。",
+    "en": "This plugin shows DeepSeek account balance and model usage/cost estimates in DSH Web, with per-session and per-model consumption details and exportable records."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "credential.read",
-      "network.access",
-      "llm.stream.listener",
-      "sse",
-      "filesystem.write",
-      "ui.panel",
-      "pricing-calculation"
+      "balance query from DeepSeek API",
+      "real-time token/event tracking for DeepSeek calls",
+      "per-session and per-model usage accounting",
+      "local persistence of usage state",
+      "export of usage records",
+      "UI injection into DSH web interface",
+      "SSE event updates"
     ],
     "reasons": [
       {
-        "code": "插件通过 DeepSeek 余额接口获取账户数据（`api.deepseek.com/user/balance`），并显示与计费相关统计，涉及外部服务访问与 API 计费逻辑。",
+        "code": "Reads DeepSeek credentials and queries official balance endpoint `api.deepseek.com/user/balance` for account balance.",
         "evidenceRef": "readme"
       },
       {
-        "code": "插件监听 `llm/stream` 并在主机端实时累计 token/成本，提供会话级与模型级明细，属于会话内容元数据统计处理。",
+        "code": "Tracks `llm/stream` usage events and computes token buckets and cost estimates in host, which affects billing-related telemetry.",
         "evidenceRef": "readme"
       },
       {
-        "code": "统计结果持久化到 `$DSH_HOME/dsh-balance-and-cost.json`，并提供清空重置接口，涉及本地文件写入与可恢复状态。",
+        "code": "Persists plugin usage data at `$DSH_HOME/dsh-balance-and-cost.json` and exposes reset/export of that data, indicating local file read/write behavior.",
         "evidenceRef": "readme"
-      },
-      {
-        "code": "插件声明为 DSH web bundle 插件并包含客户端 UI 注入与主机端 HTTP/SSE 路由（`/balance`, `/usage`, `/events`, `/reset`）。",
-        "evidenceRef": "package.json"
       }
     ]
   },
@@ -51,31 +52,33 @@
     "capabilities": [
       "credential.read",
       "network.access",
-      "llm.stream.listener",
-      "sse",
-      "filesystem.write",
-      "ui.panel",
-      "pricing-calculation"
+      "balance query from DeepSeek API",
+      "real-time token/event tracking for DeepSeek calls",
+      "per-session and per-model usage accounting",
+      "local persistence of usage state",
+      "export of usage records",
+      "UI injection into DSH web interface",
+      "SSE event updates"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "HIGH_RISK_CAPABILITY"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.98,
+      "aiConfidence": 0.94,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:04:36.175Z",
+  "classifiedAt": "2026-08-18T17:59:14.171Z",
   "repositoryCommitSha": "22846b82fc5431eaf3fd53817782c06de1b30023",
-  "evidenceHash": "8769b2b47665b7c2ba461b5c7bca3665d37592b3271b4abfea780e1f50ac69bc",
+  "evidenceHash": "4edc9cb85c1dc10084f59e55f63a844071c58493d6ba8a3c96e53df27081fa89",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "529eedc2c0510aa7e746b27333f1e43e850bf22e06aa29d5e9c1190bbbe1d737",
-  "shadowMode": true
+  "shadowMode": false
 }

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "file",
+    "api",
+    "tool",
+    "automation",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "基于仓库说明与清单，该插件核心面向用户的是中文网页文案的断行静态审查与可选修复：提供 CLI 与 Node API，对 HTML/CSS 应用规则生成报告并在修复模式下插入 `<wbr>`；同时具备 DSH 插件能力，可被工作流代理调用，但功能仍限定于对已解析文本结构的静态处理。",
+  "summaries": {
+    "zh": "中文网页文案断行审查与修复工具，支持 CLI 或 API 扫描 HTML/CSS 的断行问题、生成审查报告，并在修复模式下自动插入 `<wbr>` 输出供复核的修订版。",
+    "en": "Chinese web-typography line-break checker/fixer that provides CLI and API scanning of HTML/CSS, generates issue reports, and can output a fix-mode HTML draft with inserted `<wbr>` tags for review."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Static check of HTML/CSS for Chinese typography line-break rule violations",
+      "Optional fix mode that inserts `<wbr>` into HTML output",
+      "DSH plugin/tool entry for agent invocation (`cn_linebreak_audit`)"
+    ],
+    "reasons": [
+      {
+        "code": "The tool is documented as a CLI that reads HTML from file or stdin and outputs audits/fixes to stdout/stderr or files, so it processes and transforms supplied document content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Public API entry points such as `auditHtml` and helper functions are exposed for programmatic use, indicating executable analysis logic in host environments.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH bundle (`dsh.bundle`), enabling external workflow tooling to call the plugin as an automated service.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Static check of HTML/CSS for Chinese typography line-break rule violations",
+      "Optional fix mode that inserts `<wbr>` into HTML output",
+      "DSH plugin/tool entry for agent invocation (`cn_linebreak_audit`)"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:30.200Z",
+  "repositoryCommitSha": "d846f3126584163edd65f82f36b77c20d8f2aebd",
+  "evidenceHash": "be10093c200fe6654ac47e80ef26a07f67b19b16255d777ec3c9fe5ecdd5fd0d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6f9f4b8230a9874d311f7a55fb9e121efd2c330702fc1bd3f700043fa43037ea",
+  "shadowMode": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "tool",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is a terminal/web composer integration that lets users run workspace shell commands by prefixing a message with `!`, executes them through the existing DSH shell runner, and surfaces results in the chat interface as command cards; therefore its primary user-facing purpose is terminal command execution tooling.",
+  "summaries": {
+    "zh": "该插件让你在 DeepSeek Harness Web 里用 `!` 开头直接执行当前会话工作区的 Shell 命令，并将标准输出、错误和状态结果展示为持久化命令卡。",
+    "en": "This plugin lets you run workspace shell commands from DeepSeek Harness Web by typing a `!`-prefixed command and shows execution output, errors, and status as persistent command cards."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Run shell commands typed in the web composer when prefixed with `!`.",
+      "Execute commands via DSH workspace shell executor (`ctx.shell`) rather than sending them to the language model.",
+      "Display command output, errors, and exit status as persistent command cards in the conversation UI."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin runs `!-prefixed` commands directly from the DeepSeek Harness web composer and shows outputs with exit state as durable command cards.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains execution uses DSH’s active `ctx.shell` executor in the current session workspace and that non-zero exits are represented as error command cards without an AI turn.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata and package manifest identify this as a web platform DSH plugin with client runtime injection and a bundle patch for trigger behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Run shell commands typed in the web composer when prefixed with `!`.",
+      "Execute commands via DSH workspace shell executor (`ctx.shell`) rather than sending them to the language model.",
+      "Display command output, errors, and exit status as persistent command cards in the conversation UI."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:36.746Z",
+  "repositoryCommitSha": "96f46e20f3a280f20de73cb8cae6968384c1334e",
+  "evidenceHash": "b56440f47949d50dcd3a4302da4d22030f6ad7da12df13c6f01eccfd52855449",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8519802899a52c80924a5365b44e20828daa910385f249a2a60edc28e4adbdeb",
+  "shadowMode": false
+}

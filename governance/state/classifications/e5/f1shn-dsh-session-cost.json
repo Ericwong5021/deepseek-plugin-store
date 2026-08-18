@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "chat",
+    "data",
+    "ui",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a user utility for DeepSeek Harness sessions, focused on surfacing estimated API spending in the interface by reading session usage data and applying configured DeepSeek token pricing, rather than modifying core client behavior or providing non-utility automation.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 会话界面显示当前会话累计费用和每条回复费用估算，并基于会话日志中的 token 使用量与计费规则进行计算。",
+    "en": "This plugin displays session total and per-response API cost estimates in the DeepSeek Harness chat UI, computing them from session log token usage and DeepSeek pricing rules."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read usage fields from DeepSeek session logs for cost calculation",
+      "Compute estimated token-cost totals and per-turn costs in the client",
+      "Inject cost-related UI elements into the conversation interface"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a DeepSeek Harness plugin that shows cumulative session API cost and per-completed-reply cost in the conversation UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines a DSH web client plugin with injection dependencies for web conversation/runtime UI modules.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README and repository description indicate pricing logic uses provider-reported usage and model-specific rates, including peak/off-peak handling, with recomputation from stored session logs.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Read usage fields from DeepSeek session logs for cost calculation",
+      "Compute estimated token-cost totals and per-turn costs in the client",
+      "Inject cost-related UI elements into the conversation interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:55.494Z",
+  "repositoryCommitSha": "8c80a5ba6968636c395bfc5d984529597a57892a",
+  "evidenceHash": "d6aa54504308cafb93cba5566c05ff501aa9238894660a600775678d74d7067b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "64322908ad1b813f927cde9bdc93b263c5f7bc492112bfd61be39f7be705b486",
+  "shadowMode": false
+}

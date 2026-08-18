@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "tool",
+    "automation",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s purpose is to help users discover and vet DSH plugins: it accepts plain-language queries, searches indexed plugin sources, cross-checks against known registries, runs a pre-install scan, and supports installing only after user approval. This is primarily a plugin search/browsing utility with network-based registry and repository access, so it is classified conservatively as a search-oriented external-services integration tool.",
+  "summaries": {
+    "zh": "该插件是面向 DSH 的插件发现与检查工具，支持按自然语言检索候选插件，并在安装前给出扫描报告供用户确认。",
+    "en": "This is a DSH plugin that lets users find candidate plugins with natural-language queries and view a pre-install scan report before adding them."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Remote lookup of plugin candidates via GitHub topic/registry queries",
+      "Remote fetch and analysis of candidate plugin metadata/source for risk indicators",
+      "Triggering/participating in DSH profile plugin installation or removal flow"
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly states the plugin searches the live dsh-plugin topic with filtering, then cross-checks candidates against curated registries before reporting.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a pre-install security scan that checks lifecycle scripts, external domains, subprocesses, credential-read patterns, and prompt-injection related risks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH bundle and README documents install/remove commands that affect the active DSH profile plugin set.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Remote lookup of plugin candidates via GitHub topic/registry queries",
+      "Remote fetch and analysis of candidate plugin metadata/source for risk indicators",
+      "Triggering/participating in DSH profile plugin installation or removal flow"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:36.160Z",
+  "repositoryCommitSha": "3f6e69d165046b6bdd54c9abfa85cb80e1ebb913",
+  "evidenceHash": "96cc119f4f9732e525f62dab4a60677e284872a83e64a816e90db2907d0b269c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63ba99d5e5ab9934d30323f1a185abb4e2ae4d8e561daa1ade5791429400d8a8",
+  "shadowMode": false
+}

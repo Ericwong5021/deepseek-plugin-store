@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "integration",
+    "tool",
+    "automation",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Evidence shows this repository is primarily a DeepSeek Harness plugin that focuses on web search routing: it swaps in a multi-search provider, applies a provider fallback chain for web search requests, and performs result merging/deduplication, which aligns directly with the Search & Browsing category.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供多提供商网页搜索路由，在主搜索不足或失败时按策略切换到其他搜索服务并返回合并后的结果。",
+    "en": "This plugin provides a multi-provider web search router for DeepSeek Harness, switching between configured search services when needed and returning merged results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes web_search requests across multiple online search providers",
+      "Calls external web search APIs as needed for fallback behavior",
+      "Deduplicates and merges search results before returning output",
+      "Tracks provider quota/cooldown state for provider selection"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the package as a free multi-provider web search router and states it registers a multi-search provider for DSH.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists Optional providers (Tavily, Exa, Brave Search, Serper, SerpApi), provider cooldowns, and quota-refresh behavior, indicating external API and network usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository package manifest marks it as a DSH web client plugin via the dsh bundle/client fields and web runtime injection.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes web_search requests across multiple online search providers",
+      "Calls external web search APIs as needed for fallback behavior",
+      "Deduplicates and merges search results before returning output",
+      "Tracks provider quota/cooldown state for provider selection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:27.764Z",
+  "repositoryCommitSha": "e8d25aeb82d7999d99069093454c9921cc755f38",
+  "evidenceHash": "aeaec425fd1dadb83f8257a558b145310ef1ff5b72cb087a24e502f3bde5e298",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0003e77231298dec9972fcc84d09609041104ed937a594fa83f04f0a2e98b37d",
+  "shadowMode": false
+}

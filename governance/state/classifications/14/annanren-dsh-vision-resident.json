@@ -6,13 +6,78 @@
     "image",
     "tool",
     "chat",
+    "memory",
+    "context",
     "ui",
-    "memory"
+    "integration"
   ],
   "confidence": "high",
-  "reason": "Primary purpose is adding image vision capabilities: it auto-translates pasted images, provides describe_image/subagent_vision tools for vision recognition/OCR/Q&A, and presents visual interaction UI (status capsule and detail view) with per-session visual memory.",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是为 DSH 聊天场景提供视觉能力增强：在纯文本主模型下自动将图片转写并提供 describe_image 识别工具，同时保留会话级视觉历史支持追问，因此应归类为媒体工具类插件。其核心风险在于读取图片内容与调用外部视觉模型并保存会话上下文，未见代码执行、终端调用或系统级操作能力。",
+  "summaries": {
+    "zh": "这是一个 DSH 常驻视觉插件，可在聊天中自动识别并转译粘贴图片，提供图片识别工具，并按会话保留视觉追问上下文。",
+    "en": "This is a resident DSH vision plugin that auto-translates pasted images for chat, exposes image-recognition tools, and keeps session-scoped visual context for follow-up questions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read local/embedded images from conversation context and forward them to vision analysis",
+      "Integrate with configured external vision LLM providers to generate textual descriptions",
+      "Store and reuse recent visual recognition text/context across sessions",
+      "Inject a web UI capsule and detail pane to display visual-agent status and history",
+      "Manage session-scoped retention and cleanup policies for stored visual records"
+    ],
+    "reasons": [
+      {
+        "code": "README states `describe_image`/`subagent_vision` read image input and return vision-based text results.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes automatic pasted-image translation via llm/stream hook and handling of tool-result embedded images.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists session-isolated visual memory with bounded context, persistence, and cleanup behavior, indicating state retention.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata show configurable `VISION_PROVIDER`/`VISION_MODEL` settings and web client slot injection, indicating external model usage and UI surface changes.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Read local/embedded images from conversation context and forward them to vision analysis",
+      "Integrate with configured external vision LLM providers to generate textual descriptions",
+      "Store and reuse recent visual recognition text/context across sessions",
+      "Inject a web UI capsule and detail pane to display visual-agent status and history",
+      "Manage session-scoped retention and cleanup policies for stored visual records"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:56.293Z",
-  "evidenceHash": "16b347c02aa67e1d34393fbd245929eac04b7aca85f391007317c516db4de9cf"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:46.166Z",
+  "repositoryCommitSha": "571bad884eb1e71e134cf960e10aef9c7235eb4d",
+  "evidenceHash": "443e8b367ae6907b9b1cd3d21cb7fca2b49b2a37e064a4378508082aba88f540",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "19c8d6c71e4f95d93e79a47c1a6198a5e1afb02410d158e6194d82041ff7bcb2",
+  "shadowMode": false
 }

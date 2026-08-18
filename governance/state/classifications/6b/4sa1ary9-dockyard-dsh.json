@@ -3,13 +3,78 @@
   "group": "integrations-communication",
   "category": "external-services",
   "tags": [
+    "api",
+    "chat",
+    "browser",
     "integration",
-    "api"
+    "desktop",
+    "cli",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s user-facing purpose is adding and managing external model-provider accounts (Codex, Grok, Claude, Cursor, Antigravity) inside DeepSeek Harness via login/import, provider switching, and credential handling.",
+  "confidenceScore": 0.94,
+  "reason": "This plugin’s primary user-facing purpose is to integrate DeepSeek Harness with multiple external AI providers by adding a supplier picker and account actions inside the DSH web interface, with login and import options for supported services. Evidence from the repository metadata and README consistently frames it as an external-service connector for model/provider switching (rather than testing, media, file, or general system utilities) and it is explicitly a Windows-focused fork, so classification is kept conservative to external-service integration.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件，在 DSH Web 中提供供应商选择入口，并通过浏览器登录或导入本机会话，实现 Codex、Grok、Claude、Cursor 与 Antigravity 账号/模型的切换。",
+    "en": "This is a DeepSeek Harness plugin that adds a provider picker in the DSH web UI and supports browser login or local session import to switch between Codex, Grok, Claude, Cursor, and Antigravity accounts/models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "provider authentication workflow support",
+      "local credential/session import",
+      "browser-based OAuth login initiation",
+      "provider list/model switching in DSH web UI",
+      "integration with multiple external AI services"
+    ],
+    "reasons": [
+      {
+        "code": "README.md states this is a Windows fork of a Dockyard DSH account-pool plugin for Codex/Grok/Claude/Cursor/Antigravity, indicating external AI service connectivity and account/provider orchestration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README.md describes using browser login and scanning local auth files (e.g., %USERPROFILE%\\\\.codex\\\\auth.json, %USERPROFILE%\\\\.grok\\\\auth.json) and DPAPI-backed local storage under %LOCALAPPDATA%\\\\dockyard-dsh\\\\secrets.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes web platform plugin entry points and depends on @deepseek-ai/dsh-* API/runtime packages, showing runtime integration with the DeepSeek Harness client and external services.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "provider authentication workflow support",
+      "local credential/session import",
+      "browser-based OAuth login initiation",
+      "provider list/model switching in DSH web UI",
+      "integration with multiple external AI services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:03:01.561Z",
-  "evidenceHash": "1912d713dcfbbe140eba003d706975591e5c154e3eda87cda2d0bfdcfa28ba88"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:21.144Z",
+  "repositoryCommitSha": "92de7754d27e848f99eff625a3c3cc8053f8c616",
+  "evidenceHash": "2ceb6487d86b0ad828d7f48bf48e83aee3798c1ac9c29ba4fdd5ab9385034474",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1909f5123b02085f768df1e01bfdd5d44c89b1af47d53dc904e3562d2781bdf4",
+  "shadowMode": false
 }

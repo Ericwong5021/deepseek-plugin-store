@@ -1,16 +1,77 @@
 {
   "status": "classified",
   "group": "integrations-communication",
-  "category": "notifications-monitoring",
+  "category": "external-services",
   "tags": [
-    "monitoring",
+    "api",
+    "integration",
     "ui",
-    "api"
+    "data",
+    "browser",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s main function is to monitor and display account usage data (today’s estimated spend and remaining balance) directly in the DeepSeek Harness web chat area with periodic refresh, making it a usage/billing monitoring tool rather than a dev or UI-layout feature.",
+  "confidenceScore": 0.94,
+  "reason": "该插件是面向 DeepSeek Harness Web 的用户工具，核心功能是在对话区域展示账户余额与基于余额变化估算的当日消耗，并支持 3 分钟刷新与可选校准设置；其主要风险来自读取本地凭据并访问 DeepSeek API 获取余额，因此归类为外部服务集成型实用工具。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在对话输入区下方显示账户总余额和依据余额变化估算的今日消费（约值），便于快速了解当日用量。",
+    "en": "This is a DeepSeek Harness web plugin that shows account balance and an estimated today’s consumption value beneath the chat input area for quick daily usage awareness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local.storage.write",
+      "ui.render",
+      "session-log.read"
+    ],
+    "reasons": [
+      {
+        "code": "通过 DSH 凭据服务读取 DEEPSEEK_API_KEY 并访问 api.deepseek.com 获取余额数据，属于外部服务调用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件为 DeepSeek Harness 的 web client 插件，说明其面向会话界面展示今日消费与总余额并提供自动刷新。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "插件会在本机路径存储当天余额基线文件（$DSH_HOME/storages/deepseek-usage-day.json），并读取本机会话统计用于首次启动补算。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local.storage.write",
+      "ui.render",
+      "session-log.read"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T13:27:32.650Z",
-  "evidenceHash": "22f4b8dd12359cb3a1969d2144a1a888879b3d828907195a58d8cb7071d5aa28"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:51.176Z",
+  "repositoryCommitSha": "6bedd135902fa607f11cfe96b75bd37fd0b9b3dc",
+  "evidenceHash": "f5b9f9e77d1b3e78528f56628f7d006008fd4e613d55306164c5b6c2808a3859",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7c1cf0ff2bf136cfd5debff3b729fde063eb9383ad822cc42f3aba592ecbca07",
+  "shadowMode": false
 }

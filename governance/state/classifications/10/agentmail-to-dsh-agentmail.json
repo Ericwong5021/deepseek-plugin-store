@@ -5,12 +5,79 @@
   "tags": [
     "integration",
     "api",
-    "tool"
+    "automation",
+    "tool",
+    "workflow",
+    "context",
+    "notification",
+    "chat"
   ],
   "confidence": "high",
-  "reason": "The plugin’s core function is giving a DeepSeek Harness agent an email inbox via AgentMail, including send/read/search/follow-up email tooling and inbound thread/session binding, which is primarily integrating an external email service into the agent.",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is an external agent integration that adds email inbox capabilities to DeepSeek Harness by mounting subplugins for tools, inbound message handling, approval/allowlisting, and identity prompt behavior. Its user-facing purpose is to let an agent manage email threads as sessions, read/search messages, send/reply, and schedule follow-ups tied to mail threads via AgentMail.",
+  "summaries": {
+    "zh": "dsh-agentmail 是 DeepSeek Harness 的插件，为代理人提供按邮件线程绑定的独立邮箱会话，并提供读取、搜索、发送和追踪邮件的工具能力。",
+    "en": "dsh-agentmail is a DeepSeek Harness plugin that gives an agent a thread-bound email inbox, with tools to read, search, send, and follow up on messages."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects to an external email service API for message operations",
+      "Can send, reply, draft, and forward email-like messages via agent-invoked tools",
+      "Receives inbound mail events and injects message context into running or restored agent sessions",
+      "Stores and uses session/thread linkage and label-based follow-up state"
+    ],
+    "reasons": [
+      {
+        "code": "The tool list includes outbound-capable actions such as agentmail_send_message, agentmail_reply, agentmail_create_draft, and agentmail_send_draft.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Inbound and outbound operation requires an AGENTMAIL_API_KEY and supports websocket/poll inbound transport, indicating external network access and remote state synchronization.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Thread sessions and follow-up behavior are derived from AgentMail thread/event state, and labels are written for due follow-ups, showing ongoing cross-session state interactions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package is explicitly a DSH plugin with dependency on runtime services and exports multiple mountable subplugins (tools/identity/approval/inbound).",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to an external email service API for message operations",
+      "Can send, reply, draft, and forward email-like messages via agent-invoked tools",
+      "Receives inbound mail events and injects message context into running or restored agent sessions",
+      "Stores and uses session/thread linkage and label-based follow-up state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T13:27:18.268Z",
-  "evidenceHash": "a47b9829101f2a1c4d6b0a5736c6d7fc485620000a564244a5d84ad6a9c254fc"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:35.410Z",
+  "repositoryCommitSha": "ea3b03dac5d71d836aa1f9c267b1563bbfb75bff",
+  "evidenceHash": "19635b1827ab1150131e86ca78147cf1773568aa5407d32279fe5f55af781c4d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "68942a8383f0006769aa345a3ff498da751da7e3737d9a195eeed869752f5808",
+  "shadowMode": false
 }

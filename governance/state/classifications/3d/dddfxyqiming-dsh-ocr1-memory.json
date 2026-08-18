@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "data",
+    "document",
+    "image",
+    "api",
+    "integration",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a memory/context tool for DSH agents, as it defines OCR1-style memory tools to store, retrieve, update, list, forget, and inspect memory entries, with a rendering pipeline that turns text into image-based segments and uses age-based resolution/active-recall behavior. The manifest and README explicitly expose this as a DeepSeek-OCR memory system, and configuration is centered on OCR endpoints, rendering paths, and memory store settings, indicating user-facing memory management rather than general coding, UI, or search utilities.",
+  "summaries": {
+    "zh": "该插件为 DSH 提供基于 OCR 渲染记忆的管理工具，支持文本记忆存储、检索、更新、删除，并可查看记忆状态与指标。",
+    "en": "This plugin provides DSH memory-management tools using OCR-rendered memory entries, including storing, retrieving, updating, deleting, and checking memory status and metrics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "configurable remote OCR/embedding API calls",
+      "local file-backed memory storage and metadata files",
+      "rendering pipeline that generates and caches images for memory entries",
+      "embedding-based retrieval and fallback text matching for recall"
+    ],
+    "reasons": [
+      {
+        "code": "REMOTE_OCR_SERVICE_INTEGRATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_MEMORY_PERSISTENCE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "IMAGE_RENDER_AND_CACHE_PROCESSING",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "configurable remote OCR/embedding API calls",
+      "local file-backed memory storage and metadata files",
+      "rendering pipeline that generates and caches images for memory entries",
+      "embedding-based retrieval and fallback text matching for recall"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:16.536Z",
+  "repositoryCommitSha": "5a6393f396a781b50a7548e9cbe634d343891069",
+  "evidenceHash": "9eb651ba86852c68f8721adae27d1781f1985fe7e13a69d6b109e95a90c65108",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ef00eb2ef2bef270f422d3a7c30115d559eb04e486eda6bfd98ee3cc5c78fa58",
+  "shadowMode": false
+}

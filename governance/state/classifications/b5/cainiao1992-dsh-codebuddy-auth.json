@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "chat",
+    "cli",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Classified as an external service integration plugin because it explicitly adds Tencent CodeBuddy to DeepSeek Harness as a native provider, with OAuth login, credential refresh, and model synchronization to expose and use CodeBuddy chat models inside the host platform.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，可接入腾讯 CodeBuddy 服务，在模型列表中提供可用模型，并支持浏览器 OAuth 登录、凭据续期和模型同步。",
+    "en": "This is a DeepSeek Harness plugin that connects to Tencent CodeBuddy, exposing its models in the host and supporting browser OAuth login, credential refresh, and model synchronization."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browser-based OAuth login and token handling for CodeBuddy access",
+      "Automatic token refresh logic on startup and periodic refresh cycles",
+      "Native LLM adapter wiring for streaming chat requests to an external model API",
+      "Model metadata synchronization from external service config endpoint",
+      "Terminal/CLI login helper entrypoint"
+    ],
+    "reasons": [
+      {
+        "code": "README describes browser OAuth login, token renewal behavior, and credential usage for CodeBuddy access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states a native ctx.llm adapter and model-list sync are used to integrate CodeBuddy chat and configuration endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines a DSH plugin bundle and a login CLI binary, confirming external-service integration plus terminal entrypoint.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata and topic tags identify the project as a DSH plugin targeting CodeBuddy/DeepSeek Harness integration.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Browser-based OAuth login and token handling for CodeBuddy access",
+      "Automatic token refresh logic on startup and periodic refresh cycles",
+      "Native LLM adapter wiring for streaming chat requests to an external model API",
+      "Model metadata synchronization from external service config endpoint",
+      "Terminal/CLI login helper entrypoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:17.768Z",
+  "repositoryCommitSha": "3fea159fcd105cc088c172d1d10d70a8afff40b2",
+  "evidenceHash": "8f3f57402ca867c99e2c4cdfaa8fa3270e04442502ca9309760758f7fe54f2c1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "843eca5112c265fa2ce1d3514779b680f99fe68c980bd1af38533e4c273a5b04",
+  "shadowMode": false
+}

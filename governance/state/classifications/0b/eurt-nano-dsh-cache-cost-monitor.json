@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "chat",
+    "ui",
+    "data",
+    "tool",
+    "integration",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a monitoring utility for DSH sessions: it collects DeepSeek model usage metrics, estimates costs, and exposes hit-rate health, trend, and alert information to users through chat UI elements and reports. This is evidenced by README feature/usage descriptions and its Cordis plugin packaging in package metadata.",
+  "summaries": {
+    "zh": "dsh-cache-cost-monitor 是一款 DSH 插件，用于在会话中统计 DeepSeek 模型调用的缓存命中率、Token 与费用，并在对话界面与报表中展示健康度、趋势和告警。",
+    "en": "dsh-cache-cost-monitor is a DSH plugin that tracks DeepSeek model usage, cache-hit rates, and estimated costs, then presents trend, health, and alert information in chat UI and reports."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors model-call token fields to compute cache-hit rate, token usage, and estimated API cost.",
+      "Renders aggregated session statistics and footers in the web chat interface.",
+      "Provides threshold and budget alert outputs based on configured rates and budgets.",
+      "Registers a callable `cache_report` tool for on-demand summaries."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin automatically listens to each model call and extracts prompt_cache_hit_tokens, prompt_cache_miss_tokens, and completion_tokens.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents threshold alerts, budget alerts, and a `cache_report` tool for cost and cache-hit summaries.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH patch/client integration and web platform injection modules, indicating active runtime and UI integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Monitors model-call token fields to compute cache-hit rate, token usage, and estimated API cost.",
+      "Renders aggregated session statistics and footers in the web chat interface.",
+      "Provides threshold and budget alert outputs based on configured rates and budgets.",
+      "Registers a callable `cache_report` tool for on-demand summaries."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:54.492Z",
+  "repositoryCommitSha": "4d3817c85039bcc32e69c7265c45a388ec0e0622",
+  "evidenceHash": "881c632a42c6d04cee22831eaaa0ff066de9c36a088b72c69ec44e88d43bbe2b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9206363ab94768a2409957be0daf8d7e9e21b2448c7c966affa05ba545e1580e",
+  "shadowMode": false
+}

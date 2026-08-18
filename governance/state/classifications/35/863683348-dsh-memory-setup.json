@@ -4,16 +4,73 @@
   "category": "memory-context",
   "tags": [
     "memory",
-    "context",
     "knowledge",
-    "project-analysis",
+    "context",
+    "automation",
+    "file",
     "tool",
-    "workflow"
+    "workflow",
+    "data"
   ],
   "confidence": "high",
-  "reason": "The plugin’s main purpose is to provide persistent, auditable agent memory (preferences, project conventions, lessons, and knowledge) and inject relevant context into sessions across runs, with tools to manage/update/snapshot/restore that memory.",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a memory/context management utility for DeepSeek Harness: it provides tools to set up and update long-lived preferences, conventions, lessons, and knowledge entries, then inject relevant items back into sessions. Evidence shows local storage in workspace memory files, changelog-backed changes, snapshots, import/export, and troubleshooting/retrieval flows, so its core purpose is preserving and reusing agent-facing context rather than editing files directly, generating code, or browsing web content.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供本地可审计的记忆与知识库功能，可记录偏好、项目约定与错误经验，并支持按会话复用上下文。",
+    "en": "This plugin provides a local, auditable memory and knowledge layer for DeepSeek Harness, helping users store preferences, conventions, and lessons for reuse across sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and writes persisted memory/knowledge data under the workspace",
+      "Maintains changelog and backup artifacts for memory updates",
+      "Optionally invokes an external embeddings endpoint for semantic knowledge search"
+    ],
+    "reasons": [
+      {
+        "code": "README states memory is stored as plain JSON in <workspace>/.dsh-memory-setup/memory.json and that updates append to a changelog.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists tools for import/export, merge, snapshots, restore, and backup-related operations, indicating writable state management in workspace files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and config section include optional embeddingEndpoint and embeddingKey/model fields for external semantic retrieval.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads and writes persisted memory/knowledge data under the workspace",
+      "Maintains changelog and backup artifacts for memory updates",
+      "Optionally invokes an external embeddings endpoint for semantic knowledge search"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:00:04.671Z",
-  "evidenceHash": "7b3f7db602bd37fce3916783b6c131f3e9f35318d0087d88ebe0b38193bcf4fa"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:27.056Z",
+  "repositoryCommitSha": "113e25474bd7fa6e561e0bc67d6a47752f30dddd",
+  "evidenceHash": "a86a8a4728568fff6ab4c34de9328fb5379aadcf64d7d3e72e220d5502257ee1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3e3dd5aac573897ed62f4299bce7ea8a2a06f4864c3d92109c34f3dad604f06f",
+  "shadowMode": false
 }

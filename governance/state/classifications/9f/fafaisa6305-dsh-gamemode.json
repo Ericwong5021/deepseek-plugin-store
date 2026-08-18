@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "automation",
+    "tool",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This plugin is primarily a user-facing mode-switch helper for DeepSeek Harness agents: it exposes a `/gamemode` slash command to switch the running agent into the built-in `cordis` creative preset, with a documented way to switch back. Evidence is limited to repository metadata, package manifest, and README, all describing only this command/preset functionality.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，通过 `/gamemode 1` 快速切换到内置的 cordis 创造模式预设，并可通过 `/gamemode 0` 切回其他模式。",
+    "en": "This plugin for DeepSeek Harness adds a `/gamemode` slash command so users can switch to the built-in Cordis creative preset with `/gamemode 1` and revert with `/gamemode 0`."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Adds a dsh slash command (`/gamemode`) for agent preset switching.",
+      "Switches the agent to the built-in `cordis` Creative Mode preset via `/gamemode 1` as documented.",
+      "Supports a reverse/revert command (`/gamemode 0`) according to plugin docs."
+    ],
+    "reasons": [
+      {
+        "code": "Repository description and README define the plugin’s purpose as `/gamemode 1` switching to built-in Creative Mode (`cordis`), with `/gamemode 0` to return.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "README explains a single command flow (`/gamemode 1`) and installation as a DSH plugin, indicating no broader feature set is advertised.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares DSH plugin metadata (`dsh.bundle.patch`) and plugin entry points, confirming loadable plugin behavior rather than external tooling or data processing.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds a dsh slash command (`/gamemode`) for agent preset switching.",
+      "Switches the agent to the built-in `cordis` Creative Mode preset via `/gamemode 1` as documented.",
+      "Supports a reverse/revert command (`/gamemode 0`) according to plugin docs."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:57.593Z",
+  "repositoryCommitSha": "4e26fc577d1e61c9cdb2273a148f8c49e9f77d04",
+  "evidenceHash": "d8395723b5c1731a3d97647bbb2957fdb1e6fcf56c1011e38f2803687ed489cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "324b3eb792dfe089bbd1642316776aa117acf0fdc07d41267a58332ef4631b6c",
+  "shadowMode": false
+}

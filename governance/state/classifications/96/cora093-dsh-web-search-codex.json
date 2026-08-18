@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主旨是替换 DeepSeek Harness 的网页搜索后端为 Codex 提供方：它向 DSH 注册 codex 搜索源，并将当前搜索词发送到配置好的 /alpha/search 接口，因此属于搜索与浏览集成型插件，涉及外部 API 调用和密钥配置。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中添加 Codex 搜索提供方，并按配置将搜索请求发送到指定的 /alpha/search 接口。",
+    "en": "This plugin adds a Codex search provider to DeepSeek Harness and sends search requests to a configured `/alpha/search` endpoint."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "search query forwarding",
+      "web search provider configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述该插件为 DeepSeek Harness 提供 Codex Web Search 能力，并注册 codex 搜索提供方",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明搜索请求会被发送到用户配置的 /alpha/search 接口",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 表明支持 OpenAI 配置复用或独立 API Key，涉及凭据读取与使用",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 标明为 DSH 插件并导出运行时/客户端集成入口，定位为搜索提供方扩展",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "search query forwarding",
+      "web search provider configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:48.093Z",
+  "repositoryCommitSha": "d9b7f695207586f84f78e190c44e15c4f2c8d7ab",
+  "evidenceHash": "a40a7124a655be694c0fa4fbe0c105d033a77b405bcf89aabb0bd7a2eea855e1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3f16c0610f60e89a8a19b4ddd9188b384f0fb5b6755fb3b41335b64b4535b82f",
+  "shadowMode": false
+}

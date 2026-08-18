@@ -3,14 +3,75 @@
   "group": "integrations-communication",
   "category": "external-services",
   "tags": [
-    "integration",
     "api",
-    "chat"
+    "chat",
+    "integration",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "This plugin primarily adapts DeepSeek Harness to route requests to external AI provider services via aimux, adding/model-configuring provider integrations with credentials and endpoints for chat/completion usage.",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要用途是将 aimux 的模型接入层映射为 DeepSeek Harness 的模型路由，在 DSH 内按模型 route 调度多个外部 LLM 服务；该结论来自仓库描述、README 中的安装与配置说明（含供应商路由、环境变量/凭据、流式聊天与工具调用）以及包清单中对 @arcships/aimux 与 dsh 相关依赖的声明。",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的模型适配器，将 aimux 的多厂商模型能力映射为 DSH 模型路由，用于在 DSH 内配置并调用外部 LLM 服务。",
+    "en": "This is a DeepSeek Harness adapter plugin that maps aimux model providers to DSH model routes so users can configure and use external LLM providers from within DSH."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read and pass provider credentials from dsh credential store or environment variables",
+      "Forward chat requests to external LLM provider endpoints through aimux",
+      "Support per-route provider configuration including baseUrl and headers",
+      "Provide configurable model route mapping from dsh route IDs to aimux providers",
+      "Enable streaming responses and pass-through of JSON tool-call payloads"
+    ],
+    "reasons": [
+      {
+        "code": "readme-multi-provider-route-mapping",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-credential-env-and-headless-mode",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package-json-aimux-and-dsh-dependencies",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Read and pass provider credentials from dsh credential store or environment variables",
+      "Forward chat requests to external LLM provider endpoints through aimux",
+      "Support per-route provider configuration including baseUrl and headers",
+      "Provide configurable model route mapping from dsh route IDs to aimux providers",
+      "Enable streaming responses and pass-through of JSON tool-call payloads"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T13:27:24.032Z",
-  "evidenceHash": "c3d7cb8b870b9b19ab1b318c7d49be6df256c22c9f75bfe68d2782d41785bdd1"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:51.027Z",
+  "repositoryCommitSha": "12eea00bec7e0d300491abfdb99f4297615ac48b",
+  "evidenceHash": "adc557372493bcc83c949363515c72426dcf803165adeab734801c6f52d3d910",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3665023da9451959593970d5b47c401da5f4846b6847bc9ccef7678d680aeb15",
+  "shadowMode": false
 }

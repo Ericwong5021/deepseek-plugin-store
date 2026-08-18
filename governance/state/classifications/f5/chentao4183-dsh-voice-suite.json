@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "api",
+    "browser",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a speech interaction utility for DSH web conversations, combining in-page text-to-speech playback and voice-to-text input. Evidence in the README and package metadata shows user-facing controls for announcements, ASR mic input, hotkeys, and settings, with networked external TTS/ASR engines, so it is best classified as a media-oriented web utility with medium interaction risk.",
+  "summaries": {
+    "zh": "DSH Web 语音套件插件，用于在会话界面中进行语音播报与语音转文字输入，支持热键控制、可选自动发送和语音参数设置。",
+    "en": "A DSH web plugin for speech interaction in chat, enabling in-page voice playback and microphone-to-text input with configurable hotkeys and optional auto-send behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "In-browser text-to-speech playback of reply content via configurable engines",
+      "Microphone recording and streaming transcription into the chat input box",
+      "Hotkey-triggered toggle/push-to-talk control flow with optional auto-send",
+      "Local browser preference storage and external network-based service integration"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin can read each reply in-page via a per-message button and auto-announce toggle in the conversation UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a speech pipeline from browser PCM capture through plugin WebSocket to Aliyun Bailian/Volcengine realtime ASR, then inserting text into the composer.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README mentions optional API keys for ASR services and selectable engines (dashscope/volcengine) plus hotkey (Alt+Q) and hold-to-talk behavior, indicating external service dependence and user credential usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web DSH client plugin with websocket-related dependency (`ws`) and platform binding to web, matching browser-side integration with networked voice services.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "In-browser text-to-speech playback of reply content via configurable engines",
+      "Microphone recording and streaming transcription into the chat input box",
+      "Hotkey-triggered toggle/push-to-talk control flow with optional auto-send",
+      "Local browser preference storage and external network-based service integration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:28.327Z",
+  "repositoryCommitSha": "27088f90fef8066c4849ed1b56f28e3f472a55e0",
+  "evidenceHash": "9b39254baa04ac5cb892d52668cf6d30035e671024ad8be3994b2614c1f5cfec",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0ae3a115c0f2f57b2f2534d495f784dab364d47057e225a5bbfef5a3445dc0e0",
+  "shadowMode": false
+}

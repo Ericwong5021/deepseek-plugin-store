@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "tool",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a conversation utility for DSH users, adding a UI setting and configuration-backed behavior switch to choose Chinese or English responses, with a small helper tool to read the active language setting.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在设置中切换中文/英文对话语言，并可查询当前已设置的会话语言。",
+    "en": "This is a DeepSeek Harness plugin that allows users to switch conversation language between Chinese and English in settings and retrieve the currently selected language."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provide a user-facing setting to switch conversation language between Chinese and English in the DSH interface",
+      "Store selected language in plugin settings (settings namespace and settings.yaml persistence)",
+      "Dynamically adapt assistant persona/system prompt to match the selected conversation language",
+      "Expose a local tool (`get_conversation_language`) to return the current language setting"
+    ],
+    "reasons": [
+      {
+        "code": "language_toggle_setting_ui",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "settings_yaml_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dynamic_persona_override_by_language",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh_client_web_injection",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provide a user-facing setting to switch conversation language between Chinese and English in the DSH interface",
+      "Store selected language in plugin settings (settings namespace and settings.yaml persistence)",
+      "Dynamically adapt assistant persona/system prompt to match the selected conversation language",
+      "Expose a local tool (`get_conversation_language`) to return the current language setting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:19.946Z",
+  "repositoryCommitSha": "bc3b87d70620a615231a3d01c5a0f4a9e6167ee9",
+  "evidenceHash": "3cc68b81076da34b55c3ab27d262622262d95beb8a371b14db12be105e7af717",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "80422711b38e3982420c3838fd4f0b930670a6b86ee1e5f0147b1d465f95f1df",
+  "shadowMode": false
+}

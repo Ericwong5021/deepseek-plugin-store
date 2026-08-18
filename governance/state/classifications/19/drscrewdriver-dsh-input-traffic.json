@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "ui",
+    "chat",
+    "workflow",
+    "automation",
+    "planning",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is a user-facing workflow orchestration utility for DeepSeek Harness Web GUI, centered on managing what happens when the agent is busy. Evidence shows it is a Cordis client-side extension (no core source edits) that reimplements busy-input behavior with a three-level steering model (now/next/later), adds an in-console queue management panel, and includes freeze/resume controls; therefore its primary purpose is orchestrating interaction flow rather than generating code, accessing files, or connecting external services.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web GUI 的客户端插件，在发送输入时提供三档（立即/下一轮/排队）控制，并可冻结与恢复会话队列，帮助用户管理对话中的消息处理顺序。",
+    "en": "This is a DeepSeek Harness web client plugin that adds three-mode input steering (now/next/later) plus queue management with freeze and resume controls to help users organize how pending messages are processed."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a web client plugin into DeepSeek Harness to intercept busy-Enter behavior and reroute message dispatching.",
+      "Adds a queue dock for managing pending user inputs (reorder, edit, retract, clear) during active conversation flow.",
+      "Supports session freeze/recover controls that temporarily remove queued text from active submission and restore it later."
+    ],
+    "reasons": [
+      {
+        "code": "The plugin registers client-side slots/injected components and shadows existing queue/setting UI entries, changing how user input is submitted and scheduled.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Readme describes now/next/later modes (interrupt/insert-later/requeue), explicit cancel→remove→resend flow, queue reordering, editing, and clear-all actions affecting pending messages.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme documents session freeze/resume that manipulates pending queue state via existing session update/send/cancel calls and stores frozen text locally in plugin state.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Injects a web client plugin into DeepSeek Harness to intercept busy-Enter behavior and reroute message dispatching.",
+      "Adds a queue dock for managing pending user inputs (reorder, edit, retract, clear) during active conversation flow.",
+      "Supports session freeze/recover controls that temporarily remove queued text from active submission and restore it later."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:29.833Z",
+  "repositoryCommitSha": "2c02ee9ca4572184302f088012c47f30fd060c73",
+  "evidenceHash": "307970ef83b5f8794958a44e1ca347b052b2db796def9ff865dac761695cbcc4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "78b7a56975a0caae098f367d39d31106b360abc0f3ad2ca6bed6884a9f069924",
+  "shadowMode": false
+}

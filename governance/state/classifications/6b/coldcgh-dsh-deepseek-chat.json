@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "chat",
+    "desktop",
+    "integration",
+    "api",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s user-facing purpose is a UI entrypoint enhancement: it adds a sidebar control in DSH and routes users to chat.deepseek.com, preferring a desktop-child-window flow when the local desktop bridge is available and otherwise using webview navigation. This is a navigation/interaction plugin with a minor local-bridge call and a toggle setting, so it is best classified under navigation-panels with moderate caution around network and local bridge use.",
+  "summaries": {
+    "zh": "该插件为 DSH 侧边栏新增“网页对话”入口，默认可点击打开 chat.deepseek.com，在支持 dsh-desktop 的环境下优先以独立子窗口打开聊天，否则在当前页面内跳转。",
+    "en": "This plugin adds a \"Web Chat\" entry in the DSH sidebar to open chat.deepseek.com, opening it in a dedicated desktop child window when the dsh-desktop bridge is available, and otherwise navigating in the current webview."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a sidebar entry in the DSH web UI",
+      "Opens the DeepSeek web chat URL via browser navigation",
+      "Invokes a local desktop bridge endpoint when present to open a dedicated chat window",
+      "Falls back to in-webview behavior if the bridge is unavailable",
+      "Registers a user setting to show/hide the entry"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a \"网页对话\" button under New Session in the sidebar to open chat.deepseek.com.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes fallback behavior: use window.__DSH_DESKTOP_API__/window/chat in dsh-desktop, otherwise navigate in the current webview.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes web client entry and DSH bundle patch for integration into the web plugin roster.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a sidebar entry in the DSH web UI",
+      "Opens the DeepSeek web chat URL via browser navigation",
+      "Invokes a local desktop bridge endpoint when present to open a dedicated chat window",
+      "Falls back to in-webview behavior if the bridge is unavailable",
+      "Registers a user setting to show/hide the entry"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:45.557Z",
+  "repositoryCommitSha": "cf80996db5d5cf5ff58db4c2dd8abbbaf6ac910c",
+  "evidenceHash": "57817914cad91f1e59c149bf67a35e2742e05aa56121fadd29e22b49b2f9dae0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "54ba63edd37ac666a7b35d08bea544c4b52f00395c13c36a9c277b489573de32",
+  "shadowMode": false
+}

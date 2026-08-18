@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "file",
+    "search",
+    "tool",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily a memory/context tool for DeepSeek Harness agents: it adds a local long-term experience archive and related agent tools to search, write, transition, and remove memory records while linking to existing DSH session recall/search. Evidence in the README and package metadata shows its core behavior is context continuity for agents, not data transformation pipelines, media tools, or UI features.",
+  "summaries": {
+    "zh": "DSH ExpMem 是 DeepSeek Harness 的记忆插件，为智能体提供本地长期记忆存储和检索能力，可跨会话检索、写入、校验状态迁移与遗忘经验记录。",
+    "en": "DSH ExpMem is a DeepSeek Harness memory plugin that provides a local long-term memory store for agents, enabling cross-session search, record writing, status transitions, and forgetting of experience entries."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local file-backed memory archive read/write and indexed recall/search integration",
+      "Agent-facing tools for creating, updating, verifying, disputing, and forgetting stored records",
+      "CLI import of external Markdown memory sources into plugin archive",
+      "Session event search and recall access within active workspace"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin exposes expmem_search, expmem_write, expmem_transition, and expmem_forget tools for memory operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Archive is persisted as local JSON records and tombstones under $DSH_HOME/expmem, with session search backed by a SQLite index.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Import commands read user memory paths for Claude and Codex and provide CLI operations such as forget with confirmation/JSON output.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package defines a CLI entrypoint and DSH plugin bundle wiring, indicating executable/plugin integration surface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Local file-backed memory archive read/write and indexed recall/search integration",
+      "Agent-facing tools for creating, updating, verifying, disputing, and forgetting stored records",
+      "CLI import of external Markdown memory sources into plugin archive",
+      "Session event search and recall access within active workspace"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:52.420Z",
+  "repositoryCommitSha": "0bc0b79f0af8407f8f7c2239ee8ed2ef37b800f0",
+  "evidenceHash": "a0631a849ebfd7c8c5715f7f426d41c270a77e16dc2023430ec736869fcba6b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6b09c8342c86de5940eab0847d1ccdafd86a4715e821b1b20d95ee91f83716f3",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "data",
+    "tool",
+    "integration",
+    "automation",
+    "monitoring",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a web UI cost-visualization utility for DeepSeek Harness sessions: it computes cumulative session cost from token usage, displays it live in the composer area, and updates pricing from external official pricing data with local override/fallback handling.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的 Web 插件，会在对话输入框下方实时展示当前会话的费用和相关 token 使用信息，并在价格源异常时给出提示。",
+    "en": "This DeepSeek Harness web plugin shows live per-session cost and token usage metrics in the composer area, using configured or externally synced pricing and surfacing pricing source warnings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Compute per-session spend from recorded model usage in session logs",
+      "Fetch pricing data from an external service and apply model/time-based pricing to calculations",
+      "Render live cost and token metrics in the web composer UI via a session projection",
+      "Persist observed pricing history locally for reuse across restarts",
+      "Display pricing-source and warning state for pricing freshness"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a sessionCost projection fed from assistant usage (input/cache/output/cacheWrite buckets) and rendered under the composer as a live status/cost line.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents automatic official price polling with fallback behavior and source metadata (pricingSource/pricingWarn), which implies outbound network access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web bundle/client plugin entry with a web platform client, confirming UI integration behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Compute per-session spend from recorded model usage in session logs",
+      "Fetch pricing data from an external service and apply model/time-based pricing to calculations",
+      "Render live cost and token metrics in the web composer UI via a session projection",
+      "Persist observed pricing history locally for reuse across restarts",
+      "Display pricing-source and warning state for pricing freshness"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:22.555Z",
+  "repositoryCommitSha": "4ad8399f0ba4d2de8047c6b633f1332b346f3a03",
+  "evidenceHash": "c87a64884dd372d877134f80c157d69f447b17dc6be465fb48b6a4fa61e8291d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4653aa386494741ece5343bf885252a183c6fa4cd75eff4bb7b96571df46c795",
+  "shadowMode": false
+}

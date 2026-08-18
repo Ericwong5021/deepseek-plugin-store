@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "image",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Based on README and package metadata, the plugin’s primary purpose is integrating Grok subscription models into DeepSeek Harness as an LLM provider, with chat/completions request routing and multimodal text-image support. The evidence shows minimal surface beyond provider registration, request serialization/stream translation, and authenticated access to the external service endpoint, so classification is External Services rather than coding, automation, or data-management tooling.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness（DSH）中接入 Grok 订阅模型，提供 `grok` LLM 提供方并支持文本与图片的 chat/completions 调用。",
+    "en": "This plugin integrates Grok subscription models into DeepSeek Harness (DSH) as a `grok` provider, enabling chat/completions requests with text and image input."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Forwarding chat/completions requests to an external Grok endpoint",
+      "Handling and forwarding user attachment image data in requests",
+      "Using environment/config credentials for authenticated API access",
+      "Integrating provider registration/configuration into DSH"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin connects Grok subscription as a DSH LLM provider and uses `chat/completions` against the Grok endpoint.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states image attachments are included as `image_url` in the request payload (multimodal input), not as text-only OCR fallback.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README indicates credentials are taken from `GROK_SESSION_TOKEN` and sent with request headers, so authenticated external calls are supported.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json includes DSH bundle metadata and TypeScript source files (`src/index.ts`, `adapter.ts`, `serialize.ts`) consistent with a provider integration plugin.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Forwarding chat/completions requests to an external Grok endpoint",
+      "Handling and forwarding user attachment image data in requests",
+      "Using environment/config credentials for authenticated API access",
+      "Integrating provider registration/configuration into DSH"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:41.400Z",
+  "repositoryCommitSha": "3e3407350ec1ba58eeea6d00a45ea4a31c51d429",
+  "evidenceHash": "3588fc5aa832d720a17757e513b84fd7fa570ae18c42390526d385a395192f53",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ca9a004202b48b07454f0e87290880dc0ab416618b51ade816a25c884869c9f",
+  "shadowMode": false
+}

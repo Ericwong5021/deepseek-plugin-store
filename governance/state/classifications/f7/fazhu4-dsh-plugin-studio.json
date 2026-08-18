@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "api",
+    "search",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的核心面向对象是 DSH Web 用户，用于集中管理已安装插件（官方/社区分组、启停、详情、卸载）并提供 GitHub 插件市场（搜索与列表、一键安装）。证据来自仓库说明与包清单，均显示其主要行为是插件管理与安装流程整合，而非生成代码或数据分析。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件管理器，提供已安装插件按官方/社区分组展示，并支持启停、详情查看、卸载，同时集成 GitHub 插件市场进行搜索与安装。",
+    "en": "This is a DSH web plugin manager that groups installed plugins into official and community views, supports enable/disable, details, and uninstall, and includes a GitHub plugin market for search and adding plugins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Manages DSH 插件生命周期与状态（启用、停用、卸载）",
+      "按官方/社区分组展示已安装插件与插件详情",
+      "通过内置市场进行插件搜索与一键添加",
+      "将变更写入 DSH 配置补丁文件以控制运行时行为",
+      "从 GitHub/npm 元数据获取市场与安装信息"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述提供“插件管理”功能页，支持官方/社区分组、启停、详情与卸载",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述“插件市场”页提供 GitHub 搜索、排行展示与一键安装",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明启停与卸载通过修改 cordis.patch.yml 与 CLI add/remove 流程等效",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 列出服务端环回 HTTP 路由：/dsh-plugin-studio/{list,toggle,search,install,uninstall}",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明 dsh 客户端平台为 web 并包含 bundle patch 与客户端入口，表明为 DSH 插件扩展",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Manages DSH 插件生命周期与状态（启用、停用、卸载）",
+      "按官方/社区分组展示已安装插件与插件详情",
+      "通过内置市场进行插件搜索与一键添加",
+      "将变更写入 DSH 配置补丁文件以控制运行时行为",
+      "从 GitHub/npm 元数据获取市场与安装信息"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:01:01.617Z",
+  "repositoryCommitSha": "99b18b466270ca1fc8c17b3c36623925e0160f97",
+  "evidenceHash": "5398c53c3e56d537c4a77ea6c8dac18097ebdaef8433902114ad22374c218fd1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a3c867b990e0a9bb0ad965365cc47533d9f7568615ec9d1d088884b5d6fcc239",
+  "shadowMode": false
+}

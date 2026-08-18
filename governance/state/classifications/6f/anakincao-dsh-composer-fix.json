@@ -3,13 +3,73 @@
   "group": "interface-experience",
   "category": "themes-layout",
   "tags": [
+    "ui",
     "layout",
-    "ui"
+    "tool",
+    "theme"
   ],
   "confidence": "high",
-  "reason": "The plugin’s purpose is to fix the DeepSeek Harness web chat UI layout by changing how scrolling works and keeping the composer/input/status bars fixed outside the scroll area, which is a user-facing interface layout improvement.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a user-interface layout utility for the DSH web client: it adjusts composer-related scrolling so the input bar and bottom status bar stay outside the message scroll area, based on attribute-level DOM operations and web-client patching rather than external services or data processing.",
+  "summaries": {
+    "zh": "这是一个面向 DSH Web 的界面布局插件，用于将输入区与状态栏移出消息滚动区域，使滚动条仅覆盖消息列表并保持底部输入区域可见。",
+    "en": "This is a DSH Web interface layout plugin that moves the composer and bottom status area out of the message scroll region so scrolling stays within the message list and the composer remains visible."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Adjusts DSH web chat layout behavior for the composer and message scroll region",
+      "Applies lightweight UI attribute-based DOM targeting in the web client",
+      "Provides a plugin installable through DSH web plugin mechanism"
+    ],
+    "reasons": [
+      {
+        "code": "Repository and README describe the plugin as a DSH Web GUI layout fix that keeps the composer and bottom status bar outside the message scroll region.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH web client plugin with bundle patch support, indicating client-side UI extension behavior rather than backend/service integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Package metadata and repository topics include css/layout/scroll/composer terms, consistent with a UI layout-focused plugin.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "Included files match expected plugin bundle structure (lib, cordis.patch.yml, package exports), with no repository evidence of external integrations.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adjusts DSH web chat layout behavior for the composer and message scroll region",
+      "Applies lightweight UI attribute-based DOM targeting in the web client",
+      "Provides a plugin installable through DSH web plugin mechanism"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:26.375Z",
-  "evidenceHash": "648717a171bc2bb8b3541ffb5ce34b5430518a1871e398c486b55dc176a46165"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:43.664Z",
+  "repositoryCommitSha": "07a9c70ea11a468a0a525224d9df63b3623a0e00",
+  "evidenceHash": "ad38bba2ddff4f3b9aa84e50104416d1b8974b2b43910ba92b203e9193180475",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8023350a0219545ab99c0c07a6ad6a0097bc1b1ba7a75651d0d8cf0f934e0a58",
+  "shadowMode": false
 }

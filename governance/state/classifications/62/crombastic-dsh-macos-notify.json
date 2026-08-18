@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "desktop",
+    "tool",
+    "automation",
+    "integration",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This plugin is primarily a macOS notification utility for DeepSeek Harness users, focused on surfacing turn lifecycle events through native alerts with configurable sounds and timing/filtering controls. Evidence in README shows event-specific notifications, sound management, suppression rules, coalescing, digesting, and diagnostics, so its purpose is clearly notification and monitoring rather than code generation, search, or data analytics.",
+  "summaries": {
+    "zh": "dsh-macos-notify 是一款用于 DeepSeek Harness 的 macOS 插件，用于在任务完成、出错、被中止或等待审批等事件发生时发送系统通知，并支持声音、过滤规则、汇总推送与勿扰/静音等设置。",
+    "en": "dsh-macos-notify is a DeepSeek Harness plugin for macOS that sends native notifications for events like task completion, errors, aborts, and approval waits, with configurable sounds, filtering, digesting, and quiet-time or pause controls via its web settings page."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "deliver native macOS notifications for harness task events",
+      "play and configure event-level notification sounds",
+      "import, convert, store, and delete user-provided sound files in local directories",
+      "send terminal-based OSC 9 notifications for supported terminals",
+      "apply local filtering logic (quiet hours, pauses, coalescing, minimum duration, duplicate suppression) before notification delivery"
+    ],
+    "reasons": [
+      {
+        "code": "README describes native macOS Notification Center alerts, event filtering controls, coalescing, digest mode, quiet hours, pause windows, and duplicate suppression, indicating local runtime behavior with user-facing notification side effects.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states custom sounds are imported from user input, converted, validated, and written under macOS sound directories with deletion/history controls in the plugin settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata identify a web-based DSH plugin entrypoint (index.js/client.js) with macOS-only package metadata (os: [\"darwin\"]), confirming environment-specific local integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "deliver native macOS notifications for harness task events",
+      "play and configure event-level notification sounds",
+      "import, convert, store, and delete user-provided sound files in local directories",
+      "send terminal-based OSC 9 notifications for supported terminals",
+      "apply local filtering logic (quiet hours, pauses, coalescing, minimum duration, duplicate suppression) before notification delivery"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:54.029Z",
+  "repositoryCommitSha": "29e412790f30fa4e461acf235ec2cbeadab28502",
+  "evidenceHash": "40ed01aaccd6548e8e3df367e42b04556c5afbab77a5c89971540be011441f8b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "03d3ddd8cb71e84745bd19e4c902246f9baffe3f7c6feaeeb8459731d90bcc2c",
+  "shadowMode": false
+}

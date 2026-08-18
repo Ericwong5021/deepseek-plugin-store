@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "api",
+    "automation",
+    "cli",
+    "terminal",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向用户功能是提供 DSH 插件的可视化安装与移除入口，在设置页签内完成 `dsh plugin` 操作并返回执行状态；依据仓库说明可见其既包含后端命令代理路由，也包含前端注入面板交互。",
+  "summaries": {
+    "zh": "这是一个 DSH 插件管理器，在设置的“插件”中新增“安装插件”页签，支持通过输入 `dsh plugin` 命令或包名来安装和移除插件。",
+    "en": "This is a DSH plugin manager that adds an Install Plugins tab under Settings, letting you install or remove plugins by entering `dsh plugin` commands or package names."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Execute DSH CLI commands from server routes",
+      "Install and remove plugins by delegating to `dsh plugin`",
+      "Fetch plugin packages from network during install",
+      "Inject and operate an interactive web settings tab for plugin actions",
+      "Expose install/status HTTP endpoints for plugin manager operations"
+    ],
+    "reasons": [
+      {
+        "code": "README说明主机端注册 `POST /api/plugin-manager/install` 与 `GET /api/plugin-manager/status`，用于代理 `dsh plugin` 相关操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README说明安装与移除支持输入完整 `dsh plugin --profile web add/remove <spec>` 或包名/`remove <package>`，并在执行后展示结果输出。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README与仓库说明该插件会向 `Settings → Plugins → Install Plugins` 注入输入框与执行按钮界面，属于可触发安装/卸载的前端操作面板。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json中的 `dsh.client` 与 `dsh.bundle.patch` 定义表明该插件会在 Web 平台自动挂载，包含客户端与服务端分离逻辑。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README要求环境具备网络与 pnpm，并在说明中给出安装命令，表明该功能依赖远程包拉取与本地命令执行。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Execute DSH CLI commands from server routes",
+      "Install and remove plugins by delegating to `dsh plugin`",
+      "Fetch plugin packages from network during install",
+      "Inject and operate an interactive web settings tab for plugin actions",
+      "Expose install/status HTTP endpoints for plugin manager operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:36.419Z",
+  "repositoryCommitSha": "18ee42243ef5ad297e0f9bd88b8aad466d897d81",
+  "evidenceHash": "25f77e8b6b98a9e9da9bcb2d3e1bdb25922d34c3fc6230efb75a098796e2fc33",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "691a1ac14fa799c7342c4d0f0891d4888fcc1cb233a524f8ba9dee1ac8d67cf6",
+  "shadowMode": false
+}

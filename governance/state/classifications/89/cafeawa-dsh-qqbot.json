@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "automation",
+    "workflow",
+    "notification",
+    "context",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Repository presents a dsh plugin whose user-facing purpose is to provide QQ IM access to a dsh agent. The README describes QQ C2C/group chat import, command-based agent controls, approvals, and session/workspace handling, while package metadata and config show integration with QQ bot SDK plus DSH plugin wiring, indicating external messaging service connectivity.",
+  "summaries": {
+    "zh": "这是一个面向用户的 QQ IM 插件，用于将 QQ 私聊/群聊消息接入 dsh agent，让用户在 QQ 中与智能体交互、执行指令并处理会话与审批。",
+    "en": "This plugin connects QQ private and group chats to dsh agents, letting users chat with an agent in QQ, run built-in commands, and handle approval or session-oriented workflows through chat."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Integrates QQ IM with dsh through a bot connector",
+      "Routes inbound/outbound messages between QQ users and dsh agent sessions",
+      "Supports session/context and workspace controls via chat commands",
+      "Supports chat-based approvals and status notifications",
+      "Handles configuration for QQ bot credentials"
+    ],
+    "reasons": [
+      {
+        "code": "README states QQ private/group chat ingress and message flow to dsh agent, including streaming responses and markdown outbound handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and config examples require QQBOT_APPID/QQBOT_SECRET (or environment aliases), indicating external credential handling and network-bound bot connectivity.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares @tencent-connect/qqbot-nodejs dependency and DSH plugin bundle patch, confirming external service integration in runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Integrates QQ IM with dsh through a bot connector",
+      "Routes inbound/outbound messages between QQ users and dsh agent sessions",
+      "Supports session/context and workspace controls via chat commands",
+      "Supports chat-based approvals and status notifications",
+      "Handles configuration for QQ bot credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:17.649Z",
+  "repositoryCommitSha": "76aa2ae7ca8c205a2d1a47c92c430402157ccd96",
+  "evidenceHash": "50c017fa957d6dc1204e201be13e8445bf4ea8606bb7a596d6e03342ce15425e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fc460365734ef0131df79d7daaf54c55aabdea1db7d0b4013f4f021d84bc1e96",
+  "shadowMode": false
+}

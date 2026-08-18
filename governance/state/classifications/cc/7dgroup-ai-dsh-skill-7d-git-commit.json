@@ -4,14 +4,75 @@
   "category": "automation",
   "tags": [
     "automation",
-    "code-generation",
+    "skill",
     "workflow",
-    "tool"
+    "cli",
+    "file"
   ],
   "confidence": "high",
-  "reason": "The plugin adds a DeepSeek skill that automatically handles git commit-message generation and validation in the user workflow, enforcing convention rules and prompting/fixing violations before commit.",
+  "confidenceScore": 0.94,
+  "reason": "The evidence indicates the plugin’s primary user-facing purpose is to automate git commit message handling inside DSH: it contributes a `7d-git-commit` skill, auto-checks/helps compose commit messages, and enforces convention rules before commit workflows proceed. Packaging metadata and source layout confirm this is an installable plugin artifact, while additional GitLab hook docs are supplementary deployment guidance.",
+  "summaries": {
+    "zh": "该插件在 DSH 中提供 `7d-git-commit` 技能，用于在生成或提交时按约定校验并规范化 git commit 信息并给出修复建议。",
+    "en": "This plugin provides a `7d-git-commit` skill in DSH to validate and help format git commit messages against a defined convention during commit-related workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read repository context (e.g., git diff/metadata) to generate or validate commit message content",
+      "Apply rule-based checks against commit message format and wording constraints",
+      "Return guidance or blocking suggestions through DSH skill interaction"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DSH composition bundle that registers `7d-git-commit` on `ctx.skills` and validates commit messages before commit-related actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The feature list in README specifies concrete validation rules for title/body length, forbidden characters/phrases, and allowed Chinese type tags, with merge and `[skip-check]` exceptions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`package.json` marks this as a DSH bundle via `dsh.bundle.patch` with runtime entry `lib/index.js`, indicating it is intended to be loaded as an installable runtime plugin.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes `src/index.ts` plus `assets/7d-git-commit/SKILL.md`, showing the core logic is tied to a single skill definition.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "Read repository context (e.g., git diff/metadata) to generate or validate commit message content",
+      "Apply rule-based checks against commit message format and wording constraints",
+      "Return guidance or blocking suggestions through DSH skill interaction"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:03:48.665Z",
-  "evidenceHash": "eedccfaf6e2a4c82757ea77d519ed886b685c4b3f0fbee68342230bdc7b3d861"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:28.280Z",
+  "repositoryCommitSha": "cbe4b3d57d754bc61ad54f334e9f0708bca85fa7",
+  "evidenceHash": "6224fa6cb33a9152ee5044745eb38d41e96e4d93eba9699b6daf4eaea93aa175",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "33462f7728ca33092c01d008a3493f264e90852b0136ef1c46ed893f892e7d06",
+  "shadowMode": false
 }

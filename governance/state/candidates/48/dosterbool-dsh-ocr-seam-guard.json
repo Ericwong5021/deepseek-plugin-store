@@ -4,7 +4,7 @@
     "fullName": "DosterBool/dsh-ocr-seam-guard",
     "url": "https://github.com/DosterBool/dsh-ocr-seam-guard"
   },
-  "summary": "Self-healing guard for dsh-ocr: auto re-applies the llm-deepseek adapter OCR seam and plugin fixes wiped by dsh upgrades",
+  "summary": "This plugin maintains DeepSeek Harness OCR-related fixes automatically at startup, reapplying known patches removed by upgrades and rolling back changes if the post-patch verification step fails.",
   "sources": [
     "github-topic"
   ],
@@ -46,26 +46,21 @@
     "group": "agents-workflows",
     "category": "automation",
     "tags": [
-      "api",
       "automation",
+      "tool",
       "file",
-      "image",
-      "monitoring",
-      "project-analysis",
-      "tool"
+      "terminal",
+      "workflow"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:automation:automat",
-      "text:document-processing:ocr",
-      "text:files-terminal:git",
-      "text:media-tools:ocr",
-      "text:general-utilities:tool",
-      "text:external-services:github",
-      "text:notifications-monitoring:status"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:6186222ea37d2d3c828f4ba3115dcb9eccc16b421a12a5410cff98584781e8f6",
+      "commit:d7bda9a1f3be86353440f2c5233410cb47f480b5"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:00:26.902Z",
+    "reason": "Primary user-facing purpose is automated maintenance of dsh-ocr/llm-deepseek compatibility: on harness boot it detects whether expected OCR seam and OCR library fixes were removed by upgrades and reapplies them, with exact-anchor matching and a verification step that can roll back changes if loading fails."
   }
 }

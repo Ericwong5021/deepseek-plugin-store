@@ -5,37 +5,38 @@
   "tags": [
     "agent",
     "context",
-    "memory",
     "file",
+    "memory",
+    "automation",
     "workflow",
-    "automation"
+    "tool"
   ],
   "confidence": "high",
-  "confidenceScore": 0.96,
-  "reason": "Primary purpose is to provide a DSH persona/profile bundle that automatically loads OpenClaw-style workspace files into agent context (system prompt sections and runtime context), including recent daily notes and memory files. It is a local context/automation plugin for agent sessions, with optional env-based directory and note limits. Risks are limited to workspace file exposure/consumption in prompts; no external integrations are indicated.",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is a DSH bundle that enriches agent sessions by loading local OpenClaw persona files into system prompt sections and runtime contexts, with optional workspace/config controls and automatic cache refresh on file changes, so its primary user-facing purpose is memory/context provisioning for agents rather than content creation or external automation.",
+  "summaries": {
+    "zh": "此插件是一个 DSH 配置包，在工作区存在指定 persona 目录时自动读取 OpenClaw 风格文件并将其注入到每个会话中的代理系统提示与运行时上下文。",
+    "en": "This plugin is a DSH bundle that automatically reads OpenClaw-style files from a workspace directory and injects them into each agent session's system prompt and runtime context."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Reads OpenClaw persona and memory markdown files from the workspace and injects their contents into agent system prompt/runtime context.",
-      "Registers itself in DSH via a bundle patch and applies automatically per agent session when workspace matches.",
-      "Listens to file tool events to refresh cached context after successful reads/writes/edits inside the persona directory."
+      "Loads OpenClaw-style Markdown persona files from workspace directories into agent system and runtime contexts.",
+      "Supports auto-injection for each agent session with per-agent cache refresh when relevant local files are changed.",
+      "Allows workspace subdirectory and note-handling limits to be configured by environment/packaged settings."
     ],
     "reasons": [
       {
-        "code": "Reads local workspace files such as SOUL.md, IDENTITY.md, USER.md, TOOLS.md, MEMORY.md, HEARTBEAT.md, and memory/*.md and uses their content in prompts.",
+        "code": "Plugin behavior is described as reading SOUL.md, IDENTITY.md, USER.md, TOOLS.md, MEMORY.md, HEARTBEAT.md, AGENTS.md, and memory/*.md from an openclaw-style folder and injecting them into prompt sections/contexts.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Applies to sessions automatically via DSH host-scoped Cordis plugin hook on agent creation, affecting all matching sessions.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "No declared external service calls or network integration; behavior is limited to local filesystem reads and agent context injection.",
+        "code": "DSH bundle configuration is declared in package metadata (`dsh` field) and documented as a host-scoped Cordis plugin that hooks agent lifecycle and tool-result events.",
         "evidenceRef": "package.json"
       },
       {
-        "code": "Plugin metadata declares a DSH bundle via cordis.patch.yml and exports a runtime loader entrypoint.",
-        "evidenceRef": "tree"
+        "code": "No network, API, or external service integrations are described; interaction is scoped to local workspace files.",
+        "evidenceRef": "readme"
       }
     ]
   },
@@ -45,29 +46,29 @@
     "finalDecision": "needs_human",
     "riskLevel": "R1",
     "capabilities": [
-      "Reads OpenClaw persona and memory markdown files from the workspace and injects their contents into agent system prompt/runtime context.",
-      "Registers itself in DSH via a bundle patch and applies automatically per agent session when workspace matches.",
-      "Listens to file tool events to refresh cached context after successful reads/writes/edits inside the persona directory."
+      "Loads OpenClaw-style Markdown persona files from workspace directories into agent system and runtime contexts.",
+      "Supports auto-injection for each agent session with per-agent cache refresh when relevant local files are changed.",
+      "Allows workspace subdirectory and note-handling limits to be configured by environment/packaged settings."
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.96,
+      "aiConfidence": 0.95,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T16:01:50.142Z",
+  "classifiedAt": "2026-08-18T17:58:53.322Z",
   "repositoryCommitSha": "be07031b1a6af0ff696346a5acc90b8ee93d74c1",
-  "evidenceHash": "7db22d45551fb5f72aad545f6f0335f2b765e32436803a79dce375a0e610b906",
+  "evidenceHash": "8e39bd11cf89a7718eae3d9476ca986c7a131afad448ed4aad7671f1220b27d1",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "150857dab3f87297ca51466d406593519209cfb2fa2f105b767502206987bb72",
-  "shadowMode": true
+  "shadowMode": false
 }

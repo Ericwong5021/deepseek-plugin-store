@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "file",
+    "tool",
+    "automation",
+    "workflow",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an agent memory/context utility for DeepSeek Harness: it provides cross-session memory capture, storage, and recall, exposes memory tools and `/memory` commands, and integrates into the agent execution flow through session hooks. The evidence for this is in the repository README and package metadata, which describe markdown-based global/project/session memory, recall injection points, and tool/API names such as `memory_write`, `memory_search`, and `memory_get`.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的记忆插件，用于以 Markdown 文件管理跨会话记忆，并在会话启动、提问或报错时按规则召回相关内容供智能体继续使用。",
+    "en": "This is a DeepSeek Harness plugin for memory context that stores cross-session notes as markdown files and recalls relevant entries during session start, prompts, or errors to support agent continuity."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores and retrieves session memory in local markdown files",
+      "Injects recalled memory into agent workflow at session start, pre-step, and error paths",
+      "Provides memory management commands and agent-callable tools"
+    ],
+    "reasons": [
+      {
+        "code": "README states memory is persisted in local paths such as ~/.dsh/memory and <git root>/.dsh/memory, with session memory kept in memory.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents automatic recall behavior on session start and pre-step, and on-error lookup, which influences later model context.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package exposes a dsh plugin bundle entry and declares dsh/agent-related peer dependencies for command/tool integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Stores and retrieves session memory in local markdown files",
+      "Injects recalled memory into agent workflow at session start, pre-step, and error paths",
+      "Provides memory management commands and agent-callable tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:30.662Z",
+  "repositoryCommitSha": "047e7fe0d75c7c461d8a2b7ec21981e721d01cbb",
+  "evidenceHash": "e4f7c060e97a84de440a098cf4908747880856a3dc89f6b939d5025c14324140",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0f00a05ef7c4618556a8eb778dfbd23364170c3fdcfd3af957d794d295e2a0c8",
+  "shadowMode": false
+}

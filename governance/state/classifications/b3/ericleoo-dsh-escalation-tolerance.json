@@ -1,0 +1,67 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "tool",
+    "automation",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Primary purpose is to make tool calls resilient to redundant sandbox permission escalation requests by sanitizing non-expansive sandbox_permissions before validation while letting genuine escalations continue through normal approval flow. Classification is plugin-development because it is packaged and loaded as a Cordis plugin extension with explicit event-hook behavior over tool execution.",
+  "summaries": {
+    "zh": "该插件用于在工具执行时处理冗余的 sandbox_permissions 请求：当权限请求未实际升级时将其清理后按当前会话权限执行，避免因重复字段导致的调用失败。",
+    "en": "This plugin handles redundant sandbox permission escalation fields during tool execution by removing non-escalating requests so calls run at current session permissions without being rejected, while preserving normal handling for genuine permission escalations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts tool execution arguments on tools/execute",
+      "Filters redundant sandbox escalation fields",
+      "Keeps escalation path unchanged for wider permission requests"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin listens on tools/execute, inspects sandbox_permissions, and removes sandbox_permissions/justification when the requested mode is not strictly wider than session mode.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Uses a Cordis patch entry and plugin package metadata (dsh.bundle.patch) for bundle registration and plugin activation.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts tool execution arguments on tools/execute",
+      "Filters redundant sandbox escalation fields",
+      "Keeps escalation path unchanged for wider permission requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:54.338Z",
+  "repositoryCommitSha": "0514531b0d28a8a52fb220e220d9f3c7628c0811",
+  "evidenceHash": "02888fda302a656e8495a69d8db1010ef8fd58d8d51bb2bd653df8b3ad0dc9f2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f6de2c2ec1047b9f4169f95008609efaabfcf92a79c0a5f314079e2152cd53ce",
+  "shadowMode": false
+}
