@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "debugging",
+    "data",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.9,
+  "reason": "Primary purpose is local diagnostics/observability for DeepSeek Harness sessions: it instruments agent/tool lifecycle events to gather timing and outcome metrics and exposes them as a session-level report, which classifies it as monitoring-oriented plugin behavior with limited scope to aggregated runtime data. Evidence is mainly from the repository README and package metadata for DSH integration.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness 的本地诊断监测，通过监听工具执行、结果与会话/错误事件进行统计，并通过 diagnostics_report 输出会话级的时延与结果指标。",
+    "en": "This plugin provides local diagnostics monitoring for DeepSeek Harness by observing tool execution, result, and session/error events, then exposing session-level timing and outcome metrics via diagnostics_report."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes runtime lifecycle hooks in the harness for tool execution and session/error events",
+      "Computes dispatch-phase timing metrics for tool calls",
+      "Tracks per-session success/failure and structured error-class aggregates",
+      "Produces a diagnostics report command output for the active session",
+      "Supports configurable cardinality limits for aggregated metric labels"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin documents hooks into tools/execute, tools/result, session/event, and agent/error to collect operational diagnostics.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin defines a diagnostics_report entry to return aggregated current-session diagnostic data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest and package metadata expose DSH patching and runtime entry points, confirming integration with host plugin loading/runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Observes runtime lifecycle hooks in the harness for tool execution and session/error events",
+      "Computes dispatch-phase timing metrics for tool calls",
+      "Tracks per-session success/failure and structured error-class aggregates",
+      "Produces a diagnostics report command output for the active session",
+      "Supports configurable cardinality limits for aggregated metric labels"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.9,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:29.869Z",
+  "repositoryCommitSha": "4dc012f836eeeb714602557b907d8010964d3a06",
+  "evidenceHash": "981411ad7439e583e4205ad438e9bdc6a6640202c1ae8c3f5c070d3c1105d597",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "34d3f058c3f52b35b4e2ef345675e7f462e2211e950b1c183fba4b62a7eaca38",
+  "shadowMode": false
+}

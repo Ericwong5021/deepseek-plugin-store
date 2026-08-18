@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "automation",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要用途是为 DSH 提供一个 DeepSeek 网页版模型接入源，用户可在 DSH 中选择 DeepSeek 快速/专家/识图模型进行对话与工具调用。依据说明文档与仓库结构，可确认其通过本地网关启动并驱动 Chrome 与网页版交互实现 OpenAI 兼容转换，但该机制依赖外部网页 UI 与登录会话，属于中等风险外部服务集成。",
+  "summaries": {
+    "zh": "该插件将 DeepSeek 网页版接入 DSH，作为本地可用的 OpenAI 兼容模型提供方，提供持续对话与工具调用能力。",
+    "en": "This plugin connects DeepSeek web (chat.deepseek.com) into DSH as a local OpenAI-compatible LLM provider, enabling chat and tool-calling workflows through a local gateway."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local HTTP gateway integration with DSH as an OpenAI-style endpoint",
+      "Browser automation of DeepSeek web UI via local Chrome",
+      "Tool-call parsing and forwarding from model output to DSH",
+      "Session-based login workflow relying on DeepSeek account credentials/cookies",
+      "Concurrent sub-agent handling through separate browser pages"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin auto-starts a gateway on localhost (5688) and exposes an OpenAI-compatible API, introducing local network/service exposure.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Files listed in tree/resources show a browser driver and gateway architecture, indicating automation against chat.deepseek.com with external UI dependency.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README explicitly marks the project as Developer Preview with limited verification for scenarios like long multi-round tool loops and reconnection behavior.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Local HTTP gateway integration with DSH as an OpenAI-style endpoint",
+      "Browser automation of DeepSeek web UI via local Chrome",
+      "Tool-call parsing and forwarding from model output to DSH",
+      "Session-based login workflow relying on DeepSeek account credentials/cookies",
+      "Concurrent sub-agent handling through separate browser pages"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:24.721Z",
+  "repositoryCommitSha": "43b4c17e7e5ee18737fc84feeed6f8c01666cedf",
+  "evidenceHash": "23e4b42a544805f7240a5750a41d1c23f09d8974ed69708e828deb76204f9306",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87a3e0714f5107d02453a12d0215d9ba26d60a5ac7eae1941cbe360147e7e726",
+  "shadowMode": false
+}

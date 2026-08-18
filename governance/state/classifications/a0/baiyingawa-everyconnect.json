@@ -1,16 +1,80 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "chat",
+    "api",
+    "automation",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily an external-services integration connector that links DSH with messaging platforms (initially WeChat via Claw/iLink, with QQ/WeCom planned), as shown by its package metadata declaring a DSH plugin bundle/client and README sections describing platform adapters, message routing, settings page, and command-driven session workflows. It focuses on bridging platform messages to DSH agents and returning replies, with additional media handling for audio/files and lifecycle/networked connector behavior.",
+  "summaries": {
+    "zh": "EveryConnect 是一个 DSH 插件，用于将微信 Claw/iLink 等平台消息接入 DSH，并通过设置页与命令菜单实现会话任务的连接和消息同步。",
+    "en": "EveryConnect is a DSH plugin that connects messaging platforms like WeChat Claw/iLink to DSH, and provides settings plus command-based workflows to synchronize session conversations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "连接外部消息平台并在其与 DSH 之间转发会话消息",
+      "提供面向用户的任务/会话切换与控制命令",
+      "支持音频与文件类消息的下载并交由 DSH 会话处理",
+      "提供 Web 设置页用于连接器、二维码登录与凭据/会话参数配置"
+    ],
+    "reasons": [
+      {
+        "code": "DSH_PLATFORM_CONNECTOR_INTEGRATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BUNDLE_AND_CLIENT_REGISTRATION_PRESENT",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "MEDIA_AND_ROUTING_FEATURES_DECLARED",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MULTI_PLATFORM_PLAN_EXPANDED_IN_DESCRIPTION",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "连接外部消息平台并在其与 DSH 之间转发会话消息",
+      "提供面向用户的任务/会话切换与控制命令",
+      "支持音频与文件类消息的下载并交由 DSH 会话处理",
+      "提供 Web 设置页用于连接器、二维码登录与凭据/会话参数配置"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:13.141Z",
   "repositoryCommitSha": "ab9bf77f88f12b5be9d94da72f98ff0bac37fa0e",
+  "evidenceHash": "a8fe06b65522f988b439c4e6d52268d9db0b85c9271cc8901772a9f1b5c3a2f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "980071eaae34c507853634f43b52f04fa032fb5a994d652856810df617e49702",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T17:02:22.932Z",
-  "lastAttemptAt": "2026-08-18T17:02:22.932Z",
-  "nextRetryAt": "2026-08-18T23:02:22.932Z",
-  "retryable": true,
-  "error": "AI classification tags are invalid",
-  "shadowMode": true
+  "shadowMode": false
 }

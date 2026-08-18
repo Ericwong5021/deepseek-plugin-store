@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "automation",
+    "ui",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Primary classification is memory-context because the plugin’s described behavior is centered on session memory checkpoints: it saves conversation state as Points, shows ancestry in a web DAG, and enables deterministic continuation from a selected Point, with optional ancestor reads via `point_read`, as documented in the README and plugin wiring in package metadata.",
+  "summaries": {
+    "zh": "dsh-point 是 DeepSeek Harness 插件，用于将会话保存为可继承的 Point 断点，并在 Web 会话界面中从选定 Point 继续对话、按授权读取祖先事件。",
+    "en": "dsh-point is a DeepSeek Harness plugin for creating checkpointed Points and continuing a conversation from a chosen Point in a web-based session lineage view with controlled access to ancestor events."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Create and stash conversation checkpoints as immutable Points",
+      "Render a Point lineage DAG in DSH web UI",
+      "Continue sessions from a selected Point with deterministic ancestry handling",
+      "Load ancestor Point events via point_read while rejecting unrelated Point IDs",
+      "Integrate with local Point CLI dependency to perform checkpoint operations"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin requires an external `point` CLI on PATH, which adds a local command/dependency execution surface tied to workspace operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It persists checkpoint and session continuity metadata, including ancestry and cursor reconciliation, which involves handling conversation history state across sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata wires a host and web client runtime for DSH, confirming active runtime integration across plugin and UI surfaces.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Create and stash conversation checkpoints as immutable Points",
+      "Render a Point lineage DAG in DSH web UI",
+      "Continue sessions from a selected Point with deterministic ancestry handling",
+      "Load ancestor Point events via point_read while rejecting unrelated Point IDs",
+      "Integrate with local Point CLI dependency to perform checkpoint operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:26.046Z",
+  "repositoryCommitSha": "1dd108997e17f9f227136b0827d19bf1c0e821b0",
+  "evidenceHash": "84213e387a8f06a9617ece74c2d30739add50f23daaa0c5599afcd4a87caa96d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a66aebbbc1793e590b8fbfda0ed184e1bbbc9566654c4fa119f258f8ddcee525",
+  "shadowMode": false
+}

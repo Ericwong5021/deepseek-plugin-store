@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is a visual polish plugin for DSH WebUI: it mainly targets theme/layout behavior by standardizing and configuring corner radii for common UI elements. Evidence from the README and package metadata shows it does not introduce external integrations, automation flows, data processing, or tooling beyond CSS/theme configuration in the web client and host injection path, with settings-based control and host fallback handling.",
+  "summaries": {
+    "zh": "本插件用于给 DSH WebUI 的界面元素统一设置并可配置圆角样式，可在插件配置中调整圆角大小并在界面中即时生效。",
+    "en": "This plugin customizes DSH WebUI visual styling by applying configurable rounded-corner styles, with settings that let users adjust radius values in the interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects and overrides CSS in the DSH WebUI to adjust element border-radius values.",
+      "Reads a configurable `radius` setting and applies it via a CSS variable for runtime updates.",
+      "Uses host defaults as a fallback when no user override is set."
+    ],
+    "reasons": [
+      {
+        "code": "README details host `tapIndex` style injection into `index.html` and client `settingsScope` usage for live radius overrides.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description states configurable radius and startup fallback behavior (`host config`), confirming setting-driven UI styling intent.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "package.json declares DSH web client/plugin wiring, indicating this plugin is scoped to UI/theme injection rather than backend or external integrations.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects and overrides CSS in the DSH WebUI to adjust element border-radius values.",
+      "Reads a configurable `radius` setting and applies it via a CSS variable for runtime updates.",
+      "Uses host defaults as a fallback when no user override is set."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:27.295Z",
+  "repositoryCommitSha": "aaf2ee08e91bc4c57cff6953a5c7fd0e958f04a5",
+  "evidenceHash": "e1a7fce5f1ad865f32cf0a35fcf53d1914144685870f3be984860d1bc9a28f32",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ee451544fe11bcc0f7b7c85b413d1fd01dbd14154bb2a5283c269ae63460a933",
+  "shadowMode": false
+}

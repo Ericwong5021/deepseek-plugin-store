@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily an orchestration aid for DeepSeek Harness that adjusts the sequence of context messages so `subagent-settled` child responses are presented before ordinary parent messages in the same agent step, using a host Cordis plugin hook rather than changing durable storage or active request execution.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的主机侧 Cordis 插件，在每个 Agent 步骤中将已完成的子智能体回调响应排在普通上下文之前，从而优先处理子智能体反馈。",
+    "en": "This is a DeepSeek Harness host-side Cordis plugin that reorders each Agent step so completed subagent callback responses are processed before ordinary context messages."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Reorders message queueing so completed subagent responses are prioritized before ordinary parent-context messages in an agent step.",
+      "Registers through existing `agent/pre-step` extension behavior without adding a new subagent protocol.",
+      "Applies a host-side plugin patch for DeepSeek Harness integration to reshape execution context ordering only."
+    ],
+    "reasons": [
+      {
+        "code": "READMETHENOTES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BUNDLE_DECLARATION",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "NO_INTERRUPT_BEHAVIOR",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reorders message queueing so completed subagent responses are prioritized before ordinary parent-context messages in an agent step.",
+      "Registers through existing `agent/pre-step` extension behavior without adding a new subagent protocol.",
+      "Applies a host-side plugin patch for DeepSeek Harness integration to reshape execution context ordering only."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:49.056Z",
+  "repositoryCommitSha": "2f0064c319ae395d41b6b59468cd46e82238404b",
+  "evidenceHash": "c1563d7291f27194b23c91e0fb2d0cd836ec3e9ae1fb9ace9817d1e28de9dbf6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f2e7d6a6ba28dc8aa5ebd66ada9434fc494880da4e8c9bf068ac3116757ef7b0",
+  "shadowMode": false
+}

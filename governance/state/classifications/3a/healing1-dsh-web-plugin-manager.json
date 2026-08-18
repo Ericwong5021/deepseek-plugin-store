@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "file",
+    "ui",
+    "api",
+    "terminal",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用户面向用途是为 DeepSeek Harness 提供统一的插件生命周期管理，核心能力是通过 Web 界面与配套 CLI（dshpm）进行插件列表查看、启停、安装/移除、环境管理和健康检查，并附带市场列表与 AI 工具链集成。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中提供 Web 管理界面与可选命令行，用于查看、启停、安装/卸载、更新检测和环境管理插件，并支持市场插件的拉取与选择。",
+    "en": "This plugin provides a DeepSeek Harness Web interface and optional CLI for plugin lifecycle tasks such as listing, toggling, installing/removing, checking updates, and managing plugin environments, with support for marketplace plugin discovery."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Web UI 与 CLI 的插件生命周期管理（查看、启停、安装、卸载、更新）",
+      "编辑 profile/patch 文件以应用托管插件状态变更",
+      "依赖与兼容性健康检查（依赖图、冲突、重复/版本问题）",
+      "远程插件市场数据聚合与展示（含缓存与失败降级）",
+      "为 AI 工具链提供插件管理指令与安装引导"
+    ],
+    "reasons": [
+      {
+        "code": "修改 profile 与 patch 文件来记录与应用托管插件状态",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "支持从 npm / github / git / tarball / 本地路径执行插件安装、卸载、更新与挂载",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "通过 dshpm 和内部路由/REST 与文件系统及终端能力交互",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "提供 CLI 入口 dshpm 并依赖本地运行时环境执行受控安装逻辑",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "从远程 awesome 仓库与 GitHub 源获取市场信息并处理超时/代理/缓存",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Web UI 与 CLI 的插件生命周期管理（查看、启停、安装、卸载、更新）",
+      "编辑 profile/patch 文件以应用托管插件状态变更",
+      "依赖与兼容性健康检查（依赖图、冲突、重复/版本问题）",
+      "远程插件市场数据聚合与展示（含缓存与失败降级）",
+      "为 AI 工具链提供插件管理指令与安装引导"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:05.269Z",
+  "repositoryCommitSha": "29f9b8320136f80f4b31c5ac1d8eafff52542b0d",
+  "evidenceHash": "cdcddb2a1c3e97bf3e9bd9b7c46927ae2fd0ef1f8a728b0402f3e91350d6de50",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0e6580077880954bc4993d6a071cdcd50cb1b260f3343b16082db7f70c4b8df0",
+  "shadowMode": false
+}

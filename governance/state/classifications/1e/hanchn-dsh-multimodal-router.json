@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "chat",
+    "image",
+    "api",
+    "tool",
+    "ui",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a media-capable chat plugin that extends DeepSeek Harness with image understanding and optional local voice interaction by routing multimodal tasks to configured providers. Its user-facing behavior centers on multimodal conversation support and media handling, with optional local TTS and tool-based image inspection features.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的多模态聊天插件，用于将图片附件交给本地或可选远程模型进行理解，并提供可选的本地实时语音输入与语音回复。",
+    "en": "This is a DeepSeek Harness multimodal chat plugin that routes image-based tasks to local or optional remote models and supports optional local realtime voice input with spoken responses."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Image attachment intake and conversion of vision tasks into text-based model inputs",
+      "Routing between local and remote multimodal providers via configurable priorities and provider IDs",
+      "Optional local realtime voice capture/transcription and TTS playback through managed MLX-Audio runtime",
+      "Caching/archiving of processed images and results",
+      "Optional filesystem image analysis via explicit `inspect_image` tool"
+    ],
+    "reasons": [
+      {
+        "code": "README shows image upload paths (paperclip, drag-and-drop, clipboard) and an explicit tool contract for `inspect_image` that passes image paths into multimodal analysis.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes provider model configuration for Ollama and OpenAI-compatible endpoints with optional remote fallback and explicit provider selection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes `dsh-multimodal-router` CLI (`setup-tts`) and an optional managed `mlx-audio` Python runtime dependency for local speech synthesis.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Image attachment intake and conversion of vision tasks into text-based model inputs",
+      "Routing between local and remote multimodal providers via configurable priorities and provider IDs",
+      "Optional local realtime voice capture/transcription and TTS playback through managed MLX-Audio runtime",
+      "Caching/archiving of processed images and results",
+      "Optional filesystem image analysis via explicit `inspect_image` tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:39.921Z",
+  "repositoryCommitSha": "4615b6d5f7667e1b1944eac7898739eea014c388",
+  "evidenceHash": "c876eb2028b3b2628bf2e445ab574eba3e9aa4fe091dad644a150cf431d230bb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5fa3a52ac15572c94f2851f9cd0e6c7d88f8008a89a5c9b5edc7ce2c64b86b1f",
+  "shadowMode": false
+}

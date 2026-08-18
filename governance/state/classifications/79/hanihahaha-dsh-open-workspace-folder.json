@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "api",
+    "desktop",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is a user-facing UI utility that adds a workspace action to open the current workspace folder in the local file explorer using the Harness API, with no signs of data processing, external integrations, or network workflows beyond UI invocation.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的工作区菜单中新增“在文件资源管理器中显示”入口，用户可直接打开对应工作区目录到本机文件管理器。",
+    "en": "This plugin adds a Show in File Explorer option to DeepSeek Harness workspace menus, letting users open a workspace directory in the default OS file manager from the web UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a workspace menu action that opens the local workspace folder in the host file manager",
+      "Reads workspace selection/path context from the workspace list and passes it to the Harness openPath API"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a \"Show in File Explorer\" action to each workspace overflow menu and opens the workspace directory via workspaces.openPath() in the host OS file manager.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata sets this as a DeepSeek Harness web client plugin (dsh.client.platform = \"web\") and exposes only plugin/runtime entrypoints, indicating UI-side integration behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes cordis.patch.yml with a client-injected web plugin build setup, consistent with workspace UI behavior customization.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Adds a workspace menu action that opens the local workspace folder in the host file manager",
+      "Reads workspace selection/path context from the workspace list and passes it to the Harness openPath API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:42.193Z",
+  "repositoryCommitSha": "c37dc3768186a01af6f63d3e39dd3095099e81d9",
+  "evidenceHash": "c20a664a793513f6287f5a7bb0d7c798956bdae38de0ba285b04d81f8e07d14e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1e9eaba6fe63cc1e3f9fcd273ba47b6c1e346224ba803de96ecb0e916654b0e8",
+  "shadowMode": false
+}

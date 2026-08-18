@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "theme",
+    "tool",
+    "file",
+    "browser",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向用户功能是管理已安装的 UI/皮肤插件，在 Web 设置中提供皮肤列表、单一启用切换、重命名显示名与卸载等操作，并通过本地补丁与设置持久化激活状态。其能力集中在主题管理与本地配置更新，不属于外部数据检索或跨应用协作类用途。",
+  "summaries": {
+    "zh": "DSH-UI-Manager 在 Web 设置界面中新增“皮肤”区域，让用户可查看并管理已安装的 UI/皮肤插件，支持切换、重命名显示名与卸载。",
+    "en": "DSH-UI-Manager adds a Skin section in the web settings so users can manage installed UI/skin plugins, switch the active skin, rename display names, and uninstall skins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Lists installed skin plugins from package metadata and displays them in web settings",
+      "Enables/disables one active skin at a time by updating local patch/settings state",
+      "Renames skin display labels and persists settings",
+      "Uninstalls skin plugins and updates local profile bundle state",
+      "Triggers manual restart flow for deferred application of UI changes"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述插件会将未激活皮肤以 disabled 标记写入 $DSH_HOME/cordis.patch.yml，并通过重载后生效的机制持久化皮肤状态。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 明确说明垃圾桶图标会触发确认后卸载皮肤插件，并执行 pnpm remove 同步 profile 的 bundle 列表。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 和仓库说明将该功能暴露为 Web 设置页面中的“皮肤”分区（settings.section）并提供重启按钮，属于界面层状态变更与配置管理。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明了 DSH bundle patch 与 web client 平台挂载，表明其会影响运行时打包/加载行为。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Lists installed skin plugins from package metadata and displays them in web settings",
+      "Enables/disables one active skin at a time by updating local patch/settings state",
+      "Renames skin display labels and persists settings",
+      "Uninstalls skin plugins and updates local profile bundle state",
+      "Triggers manual restart flow for deferred application of UI changes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:47.505Z",
+  "repositoryCommitSha": "708f873892fce305a241ac9988442d43942f922b",
+  "evidenceHash": "30e77cdc23a7630628f1a906ac1c8e6cc626f592f81e3802aed8523c26a58b5a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cc48dada0b44e8e21c4b74f3783e0bb1a07041a40673cd2105ec002a88f3d284",
+  "shadowMode": false
+}

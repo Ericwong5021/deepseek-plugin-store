@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "skill",
+    "search",
+    "data",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This repository is a DSH web plugin centered on a Settings-side panel for Agent Skill administration, matching a navigation and management interface purpose. It is primarily a UI tool for consolidating skill visibility, search, notes, enable/disable/import/delete actions, usage statistics, and local trigger matching, with local host APIs and local files for state and logs.",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，在“设置 → Skill Cockpit”面板集中管理系统、项目和技能池中的 Agent Skill，支持搜索、启用/停用、删除、导入、备注、使用统计与本地测试触发预检。",
+    "en": "This is a DSH web plugin that provides a Skill Cockpit panel in Settings to manage Agent Skills across system, project, and pool scopes with search, enable/disable, delete, import, notes, usage stats, and local test-fire matching."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local web UI for browsing and managing skills in one panel",
+      "Search and note management for skill discovery",
+      "Enable/disable, delete, and import operations on skill scopes",
+      "Reading/writing local skill metadata files for notes and usage statistics",
+      "Local lexical test-fire scoring for candidate skill triggers",
+      "Host-side HTTP API endpoints for state, mutation, and listing actions"
+    ],
+    "reasons": [
+      {
+        "code": "Skill Cockpit is a Settings panel UI that exposes skill viewing and management operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin defines local data files for notes, stats, and audit logging, indicating filesystem side effects.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Delete/import flows are bounded by scope and include guards/conflict preview, but still affect local skill files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Mutating and query APIs are listed for enable, disable, note, delete, import, state, and test-fire operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin metadata targets the DSH web platform and web client/runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Local web UI for browsing and managing skills in one panel",
+      "Search and note management for skill discovery",
+      "Enable/disable, delete, and import operations on skill scopes",
+      "Reading/writing local skill metadata files for notes and usage statistics",
+      "Local lexical test-fire scoring for candidate skill triggers",
+      "Host-side HTTP API endpoints for state, mutation, and listing actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:44.025Z",
+  "repositoryCommitSha": "0c62324912df06ba3d31dc6c18f7bb3e72c57745",
+  "evidenceHash": "fca06e40e1ac437847f46efec92e4e56d7fd34fd2e721be273a9124605f0e93f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "86403a863b6a06bf23208a038f48cb3d8579dfe1f537497c094048456c332d7e",
+  "shadowMode": false
+}

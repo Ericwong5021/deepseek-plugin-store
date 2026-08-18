@@ -1,16 +1,87 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "desktop",
+    "data",
+    "monitoring",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "Primary function is an interactive desktop-style DSH web UI extension: it provides a persistent EVA Unit-01 visual pet with session-driven HUD state, animation actions, and sound feedback. Evidence from the README and manifest shows it is fundamentally a user-facing interface/overlay plugin rather than a developer-only utility, with optional local audio override support and test/audit tooling for behavior validation.",
+  "summaries": {
+    "zh": "该插件在 DSH Web GUI 中提供可拖拽的 EVA 初号机桌宠覆盖层，并依据会话状态显示 HUD 与联动动作、音效。",
+    "en": "This plugin adds a draggable EVA Unit-01 desktop pet overlay to the DSH web GUI, showing HUD status driven by live session state with action and sound feedback."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders a draggable overlay-based visual companion in the DSH web UI.",
+      "Drives HUD/mood behavior from live session-state inputs such as running calls, tool results, and errors.",
+      "Plays action-linked synthesized sound effects and can play user-supplied local audio samples.",
+      "Adds host-side read-only audio-serving endpoints for manifest/file discovery.",
+      "Provides built-in debug/test hooks and extensive automated validation scripts for state, animation, and audio wiring."
+    ],
+    "reasons": [
+      {
+        "code": "README describes plugin UI placement in shell.overlay with portal to body, z-index/pointer-events handling, drag behavior, and dozens of action animations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents mood and HUD derivation from session snapshots (running sessions, tool calls, errors, tool-result nodes), indicating runtime session data consumption.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README T20 details host routes /eva01-audio/manifest and /eva01-audio/file as read-only endpoints backed by a local user directory.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes client entrypoint for web platform and includes test scripts for smoke/audio/sample/host-route checks, showing this is an executed DSH web plugin.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes lib/, tests/, and audit scripts, indicating runtime code plus validation for effects, actions, and triggers.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Renders a draggable overlay-based visual companion in the DSH web UI.",
+      "Drives HUD/mood behavior from live session-state inputs such as running calls, tool results, and errors.",
+      "Plays action-linked synthesized sound effects and can play user-supplied local audio samples.",
+      "Adds host-side read-only audio-serving endpoints for manifest/file discovery.",
+      "Provides built-in debug/test hooks and extensive automated validation scripts for state, animation, and audio wiring."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:31.000Z",
   "repositoryCommitSha": "aba0a3e9bec49f9a8ba2d1eb5d0bbbf386373231",
+  "evidenceHash": "dcc9c170611de5420656e38f3f26a61bb37563499c21bad24464c902abfd8ae7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "e802654959923a0aca8078d9ad5897ed99cbf9bc0d951597d0a466a56ce8ae82",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T17:58:44.238Z",
-  "lastAttemptAt": "2026-08-18T17:58:44.238Z",
-  "nextRetryAt": "2026-08-18T23:58:44.238Z",
-  "retryable": true,
-  "error": "AI decision contains unsupported fields",
   "shadowMode": false
 }

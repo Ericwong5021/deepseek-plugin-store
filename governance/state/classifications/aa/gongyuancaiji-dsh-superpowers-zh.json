@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "testing",
+    "skill",
+    "workflow",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily an agent workflow orchestrator for DeepSeek Harness: it packages and exposes a Chinese-localized set of AI coding skill modules so agents can discover and call them by scenario. Evidence in README and manifest files shows it is specifically a DSH skill pack (plugin entry via `index.js`/`dsh.bundle`, skill catalog integration, and workflow items like TDD/debugging/review/planning) rather than an application UI or external-service tool.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，安装后可加载 20 个中文 AI 编程技能（如测试驱动、调试、代码评审与规划），并让 agent 按场景自动匹配调用。",
+    "en": "This is a DeepSeek Harness plugin that loads 20 Chinese AI coding skills (such as TDD, debugging, code review, and planning) and lets the agent match and call them automatically by scenario."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers and exposes a set of DSH skills for AI-assisted software workflows from local skill definitions",
+      "Adds plugin runtime entry points so DSH can discover and load the skill pack automatically",
+      "Provides workflow-oriented prompts/tasks (for example TDD, debugging, code review, planning)",
+      "Supports installation/packaging through DSH plugin configuration and manifest metadata"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is a DSH package that ports 20 skills and relies on `index.js`/`dsh.bundle` for loading.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest and entry fields (`dsh.bundle`, `main`) indicate plugin integration with DeepSeek Harness runtime.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes `skills/`, `hooks/`, `bin/`, `docs/`, and plugin files needed for skill registration.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Readme describes automatic skill discovery and scene-based invocation by the agent after install.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers and exposes a set of DSH skills for AI-assisted software workflows from local skill definitions",
+      "Adds plugin runtime entry points so DSH can discover and load the skill pack automatically",
+      "Provides workflow-oriented prompts/tasks (for example TDD, debugging, code review, planning)",
+      "Supports installation/packaging through DSH plugin configuration and manifest metadata"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:23.489Z",
+  "repositoryCommitSha": "87ebcf94b96ebcd045e4c129d7a29d1a37206a17",
+  "evidenceHash": "a15f47a964c99ac02f016e4e68a63aef87f0715aed62c506627bc64d7e31bf74",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "92b758c419eabc8a26be8f6ade8038140b3b604f42d8ada4e085e13a63827d1b",
+  "shadowMode": false
+}

@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "tool",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is a lightweight user-facing utility that improves session management visibility by showing the active session ID in the chat session header and enabling one-click copy. Evidence points to a single-purpose UI/clipboard feature in the web client, with no declared external service integration, file modifications, or terminal/OS-level access, so risk is limited to potential local exposure of copied session IDs.",
+  "summaries": {
+    "zh": "这是一个面向会话界面的实用插件，在会话标题区域展示当前会话 ID，并支持一键将完整 ID 复制到剪贴板。",
+    "en": "This is a session-interface utility plugin that shows the active session ID in the session header and enables one-click copying of the full ID to the clipboard."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a session header action in the web conversation UI",
+      "Reads and displays the current session identifier from the host session context",
+      "Copies the complete session ID to the clipboard via web clipboard APIs, with an execCommand fallback"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin displays the current session ID in the session header and copies it to the clipboard with one click.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and implementation notes indicate use of web clipboard APIs (navigator.clipboard.writeText and document.execCommand('copy')).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a DSH web client plugin (dsh.client.platform = web), showing client-side scope.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds a session header action in the web conversation UI",
+      "Reads and displays the current session identifier from the host session context",
+      "Copies the complete session ID to the clipboard via web clipboard APIs, with an execCommand fallback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:43.962Z",
+  "repositoryCommitSha": "39faf3bd8136e566965d9f28c7dbc92667f4a771",
+  "evidenceHash": "efcf72a82a1312b4b3eb905aaa8df0a8581d168d7eeca4de3189fce003023f98",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "28dfbe287ec90ffdc66dae39a5f0f857b66983f0170f333aa0807c0f234bde83",
+  "shadowMode": false
+}

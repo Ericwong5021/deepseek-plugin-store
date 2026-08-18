@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "collaboration",
+    "agent",
+    "integration",
+    "chat",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin’s main user-facing function is multi-agent collaboration inside DeepSeek Harness Web: it integrates a local GroupX room, shows agent/status information, and enables explicit single- or multi-agent message routing. This is best classified as collaboration because it centers on agent communication and coordination through a DSH-hosted UI and bridge.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的原生插件，用于将本地 GroupX 多智能体房间接入到界面中，并查看本地 Agent 状态后向一个或多个 Agent 发送消息。",
+    "en": "This is a native DeepSeek Harness plugin that connects a local GroupX room, showing local agent information and letting users send messages to one or more agents."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read",
+      "local agent roster and status retrieval",
+      "multi-agent message routing"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is documented as a native DSH bridge for a local GroupX multi-agent room and provides a GroupX tab in DSH settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The host bridge is loopback-based (default 127.0.0.1:4310) with explicit rejection of non-loopback/LAN/public origins.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository validation metadata lists plugin capabilities including network and credential read, indicating potential access-sensitive operations.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local agent roster and status retrieval",
+      "multi-agent message routing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:58.934Z",
+  "repositoryCommitSha": "667a5dd095cade3074ddf9db501b848393c3487c",
+  "evidenceHash": "76d6efa45e9f830a69e83c5c13917f013946e12b22c96fad6bbdc0efd2136df3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "188fd764d75823d38f645cc8792d3c36b68a3d92b3a34dc4e30ce4b43834ca4b",
+  "shadowMode": false
+}

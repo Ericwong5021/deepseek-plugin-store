@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "chat",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary user-facing purpose is to integrate a private or company OpenAI-compatible model endpoint into DSH as a selectable chat vendor, with optional forward proxy handling for request routing, so it is best classified as an external-service integration rather than a general utility.",
+  "summaries": {
+    "zh": "该插件用于将 OpenAI 兼容的公司/私有模型服务接入 DSH，在界面新增模型厂商并支持按配置通过 HTTP(S) 正向代理转发请求。",
+    "en": "This plugin adds an OpenAI-compatible company/private model provider to DSH, exposing it in the chat model selection flow and optionally forwarding requests through a configured HTTP(S) proxy."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read",
+      "llm-provider-routing"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin explicitly documents registering an OpenAI-compatible provider (`openai-proxy`) and forwarding model calls through a configurable HTTP(S) proxy URL, so it actively routes outbound API traffic to external/private endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration supports `apiKeyEnv` and settings storage for API keys, indicating dependency on bearer credentials for outbound LLM requests.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package metadata exposes a web client/runtime integration bundle and includes `undici` for HTTP proxy-capable requests, confirming external service call behavior within DSH.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "llm-provider-routing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:00.727Z",
+  "repositoryCommitSha": "40626c610fa3b3cd9bfc5e8e1b36e82cf2a164d5",
+  "evidenceHash": "0739f0466caf8c69710a5a52bc0007e6ec9e06f9282929445f59044fe5c955e9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e05d89cccd01c2b9fb43f0ac854671afce23a7e8059cc314ae6b8cfdf7b212d6",
+  "shadowMode": false
+}

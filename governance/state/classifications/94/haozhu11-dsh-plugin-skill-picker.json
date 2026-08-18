@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "tool",
+    "chat",
+    "integration",
+    "browser",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This plugin is primarily a web UI feature extension for DeepSeek Harness that streamlines skill selection by adding a composer-side picker button and inserting the corresponding `/skill` draft token on user selection. Its documented behavior and manifest show it is a DSH plugin extension with UI integration and localized skill descriptions rather than a standalone automation or data-processing tool.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 的插件，在输入栏工具栏增加技能选择入口，用户可在下拉菜单中选取技能并将对应的 `/技能名 ` 写入输入草稿以便快速使用。",
+    "en": "This plugin is a DeepSeek Harness Web extension that adds a skill picker in the composer toolbar, allowing users to select a skill from a menu and insert the corresponding `/skill` draft text with one click."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a UI control to the web composer toolbar for selecting skills",
+      "Reads skill definitions via existing `skill.list` RPC source",
+      "Inserts selected `/技能名 ` text into the conversation input draft",
+      "Provides bilingual labels/descriptions for available skills"
+    ],
+    "reasons": [
+      {
+        "code": "The README describes a browser-side Cordis client plugin for the DeepSeek Harness web composer toolbar that adds a \"技能\" button and writes `/技能名 ` into the input draft when selected.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The manifest declares a web client bundle (`dsh.client.platform: \"web\"`) and patch-based injection, confirming this is a plugin intended for host UI extension rather than a standalone service.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The README states the menu uses `skill.list` RPC data with search/filter behavior and session-level cache handling, indicating remote skill-list retrieval plus local client state.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a UI control to the web composer toolbar for selecting skills",
+      "Reads skill definitions via existing `skill.list` RPC source",
+      "Inserts selected `/技能名 ` text into the conversation input draft",
+      "Provides bilingual labels/descriptions for available skills"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:53.102Z",
+  "repositoryCommitSha": "1850523aa3a22a06ac837165ac402b1ccd7bc149",
+  "evidenceHash": "f832e720c01f6afb36d28e64aac092b5e0af470844a8620a262148f9e9221880",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "90b87034216d12672c60499fd2ae2942d39f933fa22e5deb43b1a6bc80f39f5d",
+  "shadowMode": false
+}

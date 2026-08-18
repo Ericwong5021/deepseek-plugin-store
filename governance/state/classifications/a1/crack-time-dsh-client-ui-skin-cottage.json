@@ -1,16 +1,77 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "layout",
+    "file",
+    "api",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a user-facing interface customization plugin for the DeepSeek Harness web GUI, centered on themes and layout adjustments such as wallpaper, panel transparency, and message/input/scroll behavior. It also adds UI-side utilities via plugin APIs (archived session actions and file mentions), which is secondary to its main skinting goal, so it is conservatively classified under themes-layout with moderate local filesystem, network, and session-management impact.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web GUI 的界面皮肤插件，用于自定义背景、面板透明度和布局交互，并额外提供归档会话与 @ 文件提及等前端增强入口。",
+    "en": "This plugin is a DeepSeek Harness Web GUI skin and layout enhancement that customizes wallpaper, panel transparency, and interface behavior, with added front-end archive and @-mention utilities for files and sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local-file-handle-based wallpaper selection",
+      "remote image URL wallpaper source",
+      "session archive management via plugin APIs",
+      "client-side UI/CSS overrides"
+    ],
+    "reasons": [
+      {
+        "code": "README describes full UI skin behavior including full-screen wallpaper, panel transparency, and layout/scroll interaction customization for the DSH web GUI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents plugin API routes for archived-session operations including rename, unarchive, and delete, plus mention-file retrieval endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies browser File System Access API usage with IndexedDB-persisted file handles for local wallpaper images, with fallback to URL/inbuilt wallpaper.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "local-file-handle-based wallpaper selection",
+      "remote image URL wallpaper source",
+      "session archive management via plugin APIs",
+      "client-side UI/CSS overrides"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:14.997Z",
   "repositoryCommitSha": "1300b594d16b292519a109385ad360247b6fba26",
+  "evidenceHash": "27aa757f556aba2b3de1c87fce28b090ad8f2a1ed041730583def19373b9f25c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "01da892ba3f9cb74014c4c691f5899a96a5aa65e94f549dcdc7cc4edbd8701ca",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:00:44.310Z",
-  "lastAttemptAt": "2026-08-18T18:00:44.310Z",
-  "nextRetryAt": "2026-08-19T00:00:44.310Z",
-  "retryable": true,
-  "error": "The operation was aborted due to timeout",
   "shadowMode": false
 }

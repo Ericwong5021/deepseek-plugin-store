@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "api",
+    "automation",
+    "tool",
+    "workflow",
+    "integration",
+    "image",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要用途是为 DeepSeek Harness（DSH）提供本地模型协作能力，注册可调用工具以在本地优先处理文本与图像任务并在失败时回退到云端模型，因此属于工作流编排/自动化类型。",
+  "summaries": {
+    "zh": "本插件为 DSH 提供本地优先的模型调用工具，可将文本与图片任务先交给本机 LLM/视觉能力处理，再由云端模型接管处理失败的任务。",
+    "en": "This plugin adds local-first model tools to DSH so text and image tasks can be handled locally first, with fallback to a cloud model when local execution is not suitable."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls local HTTP endpoints from DSH through registered tools",
+      "Performs local-first routing between multiple local model providers with cloud fallback",
+      "Processes local image files through a local vision/OCR tool"
+    ],
+    "reasons": [
+      {
+        "code": "Tool list and routing model include local_llm_run, local_llm_route, and local_vision_read with local-first execution and needs_cloud fallback.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Architecture and install docs describe loopback integration to a localhost Control Plane and configurable local provider endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin entrypoint and DSH bundle are declared in package metadata, with source files for llm and vision tools.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Calls local HTTP endpoints from DSH through registered tools",
+      "Performs local-first routing between multiple local model providers with cloud fallback",
+      "Processes local image files through a local vision/OCR tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:06.400Z",
+  "repositoryCommitSha": "26b23eca729c1522c2231fc29484f825e843cb0d",
+  "evidenceHash": "1d70ee733938ee5eacac2179c73c6fc2d56966f46c73342d5a8244cb1f195f4b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a26b8cb56af0574bf70cb944395492f53ae7dcb286c2fa1a16c199ec3c72ea8d",
+  "shadowMode": false
+}

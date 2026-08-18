@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "api",
+    "cli",
+    "planning",
+    "context",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Evidence from the README and package metadata shows this plugin is primarily an AI multi-agent orchestrator for DSH: it adds `/octo` commands that invoke an upstream orchestrator, routes tasks to configured model providers through DSH seams (`ctx.shell` and `ctx.subagents`), and runs staged workflows with consensus gating, so its core user-facing purpose is workflow orchestration/automation rather than direct editing or UI tooling.",
+  "summaries": {
+    "zh": "该插件在 DSH 中提供 `/octo` 命令，用于调用多模型智能体进行研究、开发、评审或辩论等协同流程，并按协商结果返回汇总结果。",
+    "en": "This plugin adds an `/octo` command in DSH to run multi-model agent workflows for tasks like research, development, review, and debate, with results coordinated through a shared workflow process."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network access to external AI provider services",
+      "credential use for provider authentication or API keys",
+      "dispatching tasks via DSH subagent/shell execution paths",
+      "cross-session context/memory coordination hooks"
+    ],
+    "reasons": [
+      {
+        "code": "multi_model_orchestration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh_shell_and_subagent_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_provider_integration_points",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "test_and_build_scripts_present",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "network access to external AI provider services",
+      "credential use for provider authentication or API keys",
+      "dispatching tasks via DSH subagent/shell execution paths",
+      "cross-session context/memory coordination hooks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:18.815Z",
+  "repositoryCommitSha": "77d439e4fccdcde7bf8d483ac3db50e6e7b8ea8a",
+  "evidenceHash": "70b2b84cecc27a794e4144994dede8f5ac7aed2cd57a62ec003ed2b1dc8c298d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6888be3269264151abecf2de80a820894c91597f49545ee0dab7e4465559fb95",
+  "shadowMode": false
+}

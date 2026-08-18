@@ -1,16 +1,87 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "knowledge",
+    "automation",
+    "workflow",
+    "tool",
+    "skill",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a DeepSeek Harness memory/context assistant: it converts useful agent session cases into local Wiki content and optionally promotes repeated workflows into native Skills for later recall, which is a knowledge-management workflow inside the same workspace. Evidence of capability is limited to local persistence, batch scheduling, constrained one-shot background summarization, and read-on-demand recall tools, without external service dependency declared.",
+  "summaries": {
+    "zh": "DSH Knowledge Forge 是一个用于 DeepSeek Harness 的本地知识增强插件，可将会话中的关键任务内容沉淀为本地 Wiki，并在重复稳定流程出现时生成可复用 Skill 供后续会话按需检索与调用。",
+    "en": "DSH Knowledge Forge is a DeepSeek Harness plugin that distills useful session outcomes into local Wiki records and promotes repeated workflows into reusable Skills for on-demand recall in later sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures completed top-level agent turns and persists compact records in a project-local SQLite queue/state store.",
+      "Generates and stores Markdown Wiki pages and native DSH SKILL.md artifacts for local reuse.",
+      "Schedules per-session distillation batches and dead-letter/retry handling.",
+      "Provides local recall tools knowledge_search and knowledge_read plus web dashboard and CLI status/doctor/retry commands."
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is described as a local-first Wiki and Skill distillation plugin for DeepSeek Harness, storing data in a local project directory and .dsh/knowledge-forge.sqlite.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents session-trigger rules (5 pending turns or 60 minutes), per-session isolation, retries, dead letter, and local markdown/SQLite artifacts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata show DSH client/runtime injection, bundle patch, and CLI entry, indicating host-integrated plugin behavior rather than standalone service.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README lists knowledge_search and knowledge_read tools and an injected compact index used at agent creation time.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository structure includes src/tests and plugin-facing assets with manifest/reference files, consistent with executable plugin functionality.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures completed top-level agent turns and persists compact records in a project-local SQLite queue/state store.",
+      "Generates and stores Markdown Wiki pages and native DSH SKILL.md artifacts for local reuse.",
+      "Schedules per-session distillation batches and dead-letter/retry handling.",
+      "Provides local recall tools knowledge_search and knowledge_read plus web dashboard and CLI status/doctor/retry commands."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:15.075Z",
   "repositoryCommitSha": "97ff5ca05440a9d35b45e75abe3b08b04af631ed",
+  "evidenceHash": "0ec4db60922ed68db61ae24e225106326b11622f63464b67fe4e14469baadc58",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "b6cd82e25584dda0fee9c3ef15ef941873089ce47e8e41de7a65e928acae8ece",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T17:04:03.043Z",
-  "lastAttemptAt": "2026-08-18T17:04:03.043Z",
-  "nextRetryAt": "2026-08-18T23:04:03.043Z",
-  "retryable": true,
-  "error": "Unexpected non-whitespace character after JSON at position 1701 (line 1 column 1702)",
-  "shadowMode": true
+  "shadowMode": false
 }

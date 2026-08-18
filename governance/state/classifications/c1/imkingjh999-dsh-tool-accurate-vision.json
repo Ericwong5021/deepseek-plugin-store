@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "tool",
+    "integration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is a DeepSeek Harness media utility that exposes an `accurate_vision` tool for image analysis, using a configurable OpenAI-compatible vision model to return normalized bounding-box geometry and optional SVG annotations; its primary user-facing purpose is structured spatial understanding from images rather than code editing, browsing, or generic automation.",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness 提供的图片视觉工具，可调用兼容 OpenAI 的多模态模型返回标准化边界框并可选生成标注 SVG，用于后续的空间推理与定位分析。",
+    "en": "This is a DeepSeek Harness image vision tool that uses a configurable OpenAI-compatible multimodal model to return normalized bounding boxes and optional annotated SVG output for spatial reasoning."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts image input and forwards it to a configurable OpenAI-compatible vision endpoint",
+      "Returns structured 0–1000 normalized bounding-box primitives for downstream reasoning",
+      "Generates optional SVG overlays that draw labels and boxes on the source image",
+      "Loads API credentials and endpoint settings from configurable environment/profile fields"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the flow `image file -> base64 data URL -> vision chat/completions -> JSON note + primitives`, indicating external multimodal inference and image data transmission.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README configuration includes `apiKeyEnv`, `baseURL`, `model`, and optional `annotate`, showing network-access credentials and optional visualization output are core plugin behaviors.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the project as a DSH plugin (`dsh` bundle/patch) using external tool/credential dependencies, confirming external service integration as part of normal operation.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts image input and forwards it to a configurable OpenAI-compatible vision endpoint",
+      "Returns structured 0–1000 normalized bounding-box primitives for downstream reasoning",
+      "Generates optional SVG overlays that draw labels and boxes on the source image",
+      "Loads API credentials and endpoint settings from configurable environment/profile fields"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:41.334Z",
+  "repositoryCommitSha": "042e5c092a78f183bf2ddfcc76b16ecd42cdca11",
+  "evidenceHash": "053eaf94e72676632d5c73c6d6e52a032df2139769b0561341c834d9f34becf1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "67a984638038c2c58fba06522b01c4e58cd910b22109ccefa54d8536989374f0",
+  "shadowMode": false
+}

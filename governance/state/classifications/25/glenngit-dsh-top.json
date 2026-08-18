@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "ui",
+    "visualization",
+    "data",
+    "terminal",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary purpose is a system monitoring UI overlay for the DSH web GUI, presenting live host resource metrics and top processes in a floating panel. It is chiefly a read-only observability utility that combines a host data endpoint with a client-side dashboard view.",
+  "summaries": {
+    "zh": "这是一个 DSH Web GUI 插件，在右上角显示可折叠悬浮面板，提供 CPU、内存、磁盘、网络与进程等实时系统监控数据。",
+    "en": "This is a DSH web GUI plugin that provides a collapsible floating panel in the top-right, showing live system metrics such as CPU, memory, disk, network, and top processes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local host metrics from system sources for display (CPU, memory, disk, network, process list).",
+      "Executes fixed read-only system commands (cat, ps, df) via Node child process calls to collect those metrics.",
+      "Exposes a local endpoint and a web overlay panel that periodically polls and renders live status data."
+    ],
+    "reasons": [
+      {
+        "code": "README describes a host-side `/api/dsh-top-stats` endpoint that gathers CPU, memory, disk, network, and top process data for the plugin panel.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states process collection uses read-only `/proc` reads plus fixed commands (`cat`, `ps`, `df`) and static arguments.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares the plugin as a web client plugin injected into slots with a bundle patch (`cordis.patch.yml`) and server entry (`lib/index.js`).",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Reads local host metrics from system sources for display (CPU, memory, disk, network, process list).",
+      "Executes fixed read-only system commands (cat, ps, df) via Node child process calls to collect those metrics.",
+      "Exposes a local endpoint and a web overlay panel that periodically polls and renders live status data."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:13.508Z",
+  "repositoryCommitSha": "1843feb52c2321ac1f26b12be912b522b0800978",
+  "evidenceHash": "159663077fd3609b07eba9bac083fd9f3271049bbf74a269dbefba9573b07c9a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "609a6feda6bce384877c767ee83e496bc1543b9d2f8a9eedac4352e07805dc2d",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "document",
+    "file",
+    "memory",
+    "api",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin’s primary purpose is cross-session memory/context management for DeepSeek Harness, centered on structured Markdown memory files and agent-facing memory tools for retrieval, correction, and consolidation. It is best classified as memory-context because it persistently captures compacted session information and exposes a documented workflow of memory search/read/update/dream operations, with optional external model use for extraction.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供基于 Markdown 的跨会话记忆管理能力，支持会话摘要落库、记忆检索、展开阅读、保存纠错与梦境整合，帮助智能体持续调用上下文。",
+    "en": "This plugin provides a file-based cross-session memory layer for DeepSeek Harness, with tools to persist, search, read, correct, and consolidate memories for ongoing agent context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads and writes local Markdown memory files under a configurable memory directory",
+      "captures compacted conversation summaries and organizes them into time/project/user/semantic memory layers",
+      "provides tools for search, read, catalog, save, correction, and dream-style consolidation",
+      "optionally calls an external model endpoint for extraction and consolidation when API credentials are configured"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a file-based memory layout (daily/, user.md, agent.md, memory.md, dream.md, project.md) and a six-tool API including memory_search, memory_read, memory_catalog, memory_save, memory_correct, and memory_dream.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes consuming official compaction summary events for extraction and periodic dream consolidation, indicating workflow-level memory context processing rather than direct raw-log indexing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json identifies the package as a DSH plugin with cordis patch configuration and DSH tool/system dependencies, confirming plugin integration with the DeepSeek Harness ecosystem.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "reads and writes local Markdown memory files under a configurable memory directory",
+      "captures compacted conversation summaries and organizes them into time/project/user/semantic memory layers",
+      "provides tools for search, read, catalog, save, correction, and dream-style consolidation",
+      "optionally calls an external model endpoint for extraction and consolidation when API credentials are configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:28.134Z",
+  "repositoryCommitSha": "f75da396b59cd43933527d3c1fce17c29c3cd06b",
+  "evidenceHash": "6af5c1a3da96258af9e01e87b6f3ea30fd776ff9bd4d20df544a71bd32953672",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aaa2ab16d04421596d873bc8f7bc14e947fc29e561f6d67bfb65eb2b7368d258",
+  "shadowMode": false
+}

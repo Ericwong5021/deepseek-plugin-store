@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "data",
+    "api",
+    "file",
+    "ui",
+    "visualization",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a per-project usage and cost analytics utility for DSH, because it reads local session logs, aggregates token usage by project/model, converts usage to RMB cost with configurable pricing, and presents the results in a sidebar UI with supporting local endpoints. Its primary user-facing value is project-level LLM token/cost visibility rather than code generation or external search/automation.",
+  "summaries": {
+    "zh": "这是一个面向 DSH 的成本分析插件，读取本地会话日志按项目和模型汇总 token 用量，并按配置价格转换为人民币成本，在侧边栏面板中展示查询结果。",
+    "en": "This is a DSH plugin that reads local session logs to summarize token usage by project and model, converts it to RMB cost using configurable prices, and presents the results in a sidebar UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and parses local DSH session log files",
+      "Aggregates LLM token usage by project and model",
+      "Computes estimated RMB cost from token counts and price table",
+      "Displays project/model cost and usage in a web sidebar panel",
+      "Provides local HTTP endpoints for stats, prices, and health",
+      "Supports configurable price overrides"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin reads local DSH session logs from ~/.dsh/sessions or $DSH_HOME/sessions and replays session.jsonl(.zstd) entries.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains token usage is aggregated by session cwd (project) and model, then converted to RMB using input/cache-hit/output pricing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a loopback-only API with endpoints /dsh-token-cost/api/stats, /dsh-token-cost/api/prices, and /dsh-token-cost/healthz.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a DSH web client plugin via dsh.client.platform set to web, indicating a web-facing panel integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Reads and parses local DSH session log files",
+      "Aggregates LLM token usage by project and model",
+      "Computes estimated RMB cost from token counts and price table",
+      "Displays project/model cost and usage in a web sidebar panel",
+      "Provides local HTTP endpoints for stats, prices, and health",
+      "Supports configurable price overrides"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:07.655Z",
+  "repositoryCommitSha": "637ea42376fe29c309d7484c2edaf65420f9aa13",
+  "evidenceHash": "af7ee2338aa0336ce3666d8adcc3c9f56ba52b07bb2576bd7b6a823b0ec588d0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "904a745b6b34edba7dbe3762d2f424df82e1adcbe724841f6f443a60bfe6ee92",
+  "shadowMode": false
+}

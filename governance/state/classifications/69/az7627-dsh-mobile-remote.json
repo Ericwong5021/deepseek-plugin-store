@@ -1,16 +1,86 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "ui",
+    "layout",
+    "file",
+    "terminal",
+    "tool",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是提升 DeepSeek Harness Web GUI 在手机端的可用性并增强远程场景能力；其核心证据来自 README 中关于移动端布局改造、文件管理替换界面、内置终端、以及针对 WireGuard 远程访问与受限 API 的远程转发说明，表明其用户面向目标是“移动端可用性 + 远程操作增强”。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness Web GUI 提供移动端界面适配，并在远程访问场景下加入文件管理与交互式终端能力。",
+    "en": "This plugin adds mobile-focused UI adaptation for DeepSeek Harness Web GUI and enhances remote-use workflows with file management and interactive terminal capabilities."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "为移动端重排 DeepSeek Harness Web GUI（≤760px 视口）",
+      "在移动端提供抽屉式侧边栏、详情面板全屏与弹层越界修正",
+      "替代内置目录页并提供文件管理与终端入口",
+      "通过 node-pty/xterm.js 提供浏览器内交互式 PTY 终端",
+      "支持 WireGuard 场景下的远程访问与 trustedHosts 配置",
+      "提供 loopback 限制下的权限 API 转发路径"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确写明“手机布局（≤760px）”的单栏化、侧边栏抽屉、详情面板全屏化与桌面零改动。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 详细列出“目录选择页重建”与“文件管理”功能，包括右键菜单、上传下载、删除、属性及在终端中打开等文件操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明“真 PTY 交互终端”使用宿主 node-pty 与客户端 xterm.js，并支持 ANSI/全屏 TUI 应用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述了 WireGuard 远程访问流程、trustedHosts 与“特权 API 解除 loopback 钉死”的转发机制。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "为移动端重排 DeepSeek Harness Web GUI（≤760px 视口）",
+      "在移动端提供抽屉式侧边栏、详情面板全屏与弹层越界修正",
+      "替代内置目录页并提供文件管理与终端入口",
+      "通过 node-pty/xterm.js 提供浏览器内交互式 PTY 终端",
+      "支持 WireGuard 场景下的远程访问与 trustedHosts 配置",
+      "提供 loopback 限制下的权限 API 转发路径"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:06.927Z",
   "repositoryCommitSha": "ae383566ef4fa626b1581f6c386be5f1d9d4fac1",
+  "evidenceHash": "539860be049d2884d46bf1c3a3cd8c7370a9d4d3233c01f13cd5672f8674c532",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "9d9a6bf5ee37bc7548062ce907e7c540cd17d44e470693d448dc7246cfca7297",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:50.090Z",
-  "lastAttemptAt": "2026-08-18T16:02:50.090Z",
-  "nextRetryAt": "2026-08-18T22:02:50.090Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

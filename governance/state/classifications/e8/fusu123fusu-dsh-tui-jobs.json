@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "terminal",
+    "tool",
+    "monitoring",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily a dsh-TUI navigation/interaction feature for operational job management: it provides a `/jobs` panel to list jobs, track status changes, view settled output, and cancel active tasks. Evidence in the README and package metadata consistently frames it as a terminal UI panel over the `ctx.jobs` registry rather than an external integration or content-creation tool.",
+  "summaries": {
+    "zh": "这是一个 dsh-TUI 的后台任务面板插件，通过 `/jobs` 命令显示可见后台任务，支持实时状态刷新、查看已完成任务输出，并可对运行中的任务执行取消。",
+    "en": "This is a dsh-TUI background jobs panel plugin that uses `/jobs` to list visible tasks, show live status updates, view output of finished jobs, and cancel running jobs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "cancel or stop running background jobs via plugin actions",
+      "list and inspect visible jobs from the harness registry",
+      "display finished-job output and timing/status in a job panel",
+      "consume job-events for live status refresh"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin exposes an `/jobs` panel with an `x` action to cancel running jobs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Functionality is explicitly driven by harness `ctx.jobs` API methods `list`, `read`, `kill`, and `onJobsChanged` for live updates.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin is described as a dsh-TUI background jobs panel, indicating control over runtime job behavior rather than data-only tooling.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "cancel or stop running background jobs via plugin actions",
+      "list and inspect visible jobs from the harness registry",
+      "display finished-job output and timing/status in a job panel",
+      "consume job-events for live status refresh"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:44.635Z",
+  "repositoryCommitSha": "4b2af095b563a7d7474b5a825db624ecf63b003c",
+  "evidenceHash": "e14ea4599cdf4b5362528d0d719025b743dbd2657413ec77f9933b05f2d69ac1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d0b66e8f914b62c338ba08c10672d723236d2e1c6a13c5aa930ef67b7e895b54",
+  "shadowMode": false
+}

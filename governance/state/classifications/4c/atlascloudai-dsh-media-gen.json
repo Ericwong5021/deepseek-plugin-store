@@ -1,16 +1,77 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "image",
+    "video",
+    "mcp",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "The repository presents a DeepSeek Harness bundle (confirmed by package.json and README) whose main user-facing role is to help plan and execute Atlas Cloud media workflows, with skills for image/video/audio/3D prompt/model planning and optional MCP execution tools for running those workflows. It is primarily a workflow-planning and execution plugin for media generation and depends on external Atlas Cloud APIs when execution is enabled.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件包，提供图像、视频、音频与 3D 相关的技能与可选 Atlas Cloud MCP 工具，将创作需求转为模型选择、提示词与可执行参数。",
+    "en": "This is a DeepSeek Harness bundle offering image, video, audio, and 3D skills plus an optional Atlas Cloud MCP bridge, turning a media brief into model choices, prompts, and execution-ready parameters."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Converts media briefs into model recommendations, prompts, and generation parameters",
+      "Provides optional MCP-backed execution hooks for Atlas Cloud operations such as listing models, upload, generation, and polling",
+      "Requires a user-supplied Atlas Cloud API key at execution time for billable API calls"
+    ],
+    "reasons": [
+      {
+        "code": "README_MEDIA_WORKFLOWS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_OPTIONAL_MCP_AND_OPERATIONS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PACKAGE_DSH_BUNDLE_PATCH",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Converts media briefs into model recommendations, prompts, and generation parameters",
+      "Provides optional MCP-backed execution hooks for Atlas Cloud operations such as listing models, upload, generation, and polling",
+      "Requires a user-supplied Atlas Cloud API key at execution time for billable API calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:06.580Z",
   "repositoryCommitSha": "e552e42890aef4c2488a1d91b06c1f0b493b6aec",
+  "evidenceHash": "eec6927d77580842d18602d2f3e47a8bd3e836f02323f39d6f2004bb99903389",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "cbad0f7dd18a932299793f20c0fe4873bf3597075d96a0d5ffa7f4e263e5b91f",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:07.170Z",
-  "lastAttemptAt": "2026-08-18T16:02:07.170Z",
-  "nextRetryAt": "2026-08-18T22:02:07.170Z",
-  "retryable": true,
-  "error": "/completions: 408 {\"error\":{\"message\":\"stream error: stream disconnected before completion: stream closed before response.completed\",\"type\":\"invalid_request_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

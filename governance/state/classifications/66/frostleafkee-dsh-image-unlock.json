@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "automation",
+    "image",
+    "integration",
+    "skill",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件主要用于在 DeepSeek Harness Web GUI 中放通图片附件路径，核心是绕过未声明模型的图片输入拦截并在上游不支持图片时将图片块文本化，再交由 vision skill 处理，从而使图片可在现有 text-only 路径中被识别。功能依据于仓库 README 的方案说明、运行时开关和补丁脚本，属于媒体输入处理与平台能力整合型扩展。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于解锁 Web GUI 的图片附件输入，并在不支持图片的上游路径中把图片块转为可识别的文本标记供视觉流程使用。",
+    "en": "This is a DeepSeek Harness plugin that unlocks image attachment input and converts image blocks into text markers for use in image-handling flows on text-only upstream paths."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Applies a bundle patch to broaden default input modalities for llm-pi-ai models in DeepSeek Harness.",
+      "Transforms image attachment blocks into text markers before upstream API calls.",
+      "Provides a runtime toggle tied to vision-skill directory presence to switch image textification on/off.",
+      "Includes a script path for re-patching a dependency after reinstall/upgrade."
+    ],
+    "reasons": [
+      {
+        "code": "Repository README describes a two-part approach: adding defaultInput [text, image] and converting image blocks to text markers in requests.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin exposes runtime behavior via a global flag and skill-directory presence to control textify mode.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest marks this as a DSH bundle plugin and includes a patch script in files, with installation steps and re-patch workflow.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Applies a bundle patch to broaden default input modalities for llm-pi-ai models in DeepSeek Harness.",
+      "Transforms image attachment blocks into text markers before upstream API calls.",
+      "Provides a runtime toggle tied to vision-skill directory presence to switch image textification on/off.",
+      "Includes a script path for re-patching a dependency after reinstall/upgrade."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:43.066Z",
+  "repositoryCommitSha": "f4e51d8daead11d064f5a0f4862a74a8383d2f58",
+  "evidenceHash": "a46655ae52f62f05d58739c41ee9936d2059c44161729477da9e297f58b6f7cb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d2b11080d32d290637f0b9752c1d3fe90223d408345b40b91e4ccb8fde60b8b8",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "agent",
+    "ui",
+    "workflow",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Classified as a navigation panel plugin because it centers on terminal UI session navigation and monitoring (`/subagents` list plus full-screen trajectory view), with in-place controls for continuation and interruption of child agents. The evidence shows direct user-facing interaction rather than code generation, data processing, or external service integration.",
+  "summaries": {
+    "zh": "这是一个 dsh-TUI 插件，通过 `/subagents` 列出当前会话中的子 Agent，并提供全屏轨迹视图实时查看其思考、工具调用与回复，支持对可续子 Agent 发送 follow-up 或中断当前轮次。",
+    "en": "This dsh-TUI plugin lets users list current-session subagents with `/subagents`, open a full-screen trajectory view with live updates, and send follow-up input or interrupt a continuation-capable subagent turn."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "List subagents for the current session",
+      "Open a full-screen trajectory view for a selected subagent",
+      "Render live session event streams (reasoning, tool calls, replies)",
+      "Send follow-up messages to continuable subagents",
+      "Interrupt running subagent turns",
+      "Backfill history from live or persisted session data",
+      "Fallback to plain text list mode when scene support is unavailable"
+    ],
+    "reasons": [
+      {
+        "code": "Repository description and README define the plugin as a read-only live subagent viewer with `/subagents` and full-screen trajectory viewing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents interactive controls in the trajectory view, including `i` for follow-up messaging and `x` for turn interruption on continuable subagents.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states updates are driven by `session/event` and uses `ctx.subagents.followup`/`ctx.subagents.interrupt`, indicating runtime interaction with subagent sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a dsh plugin bundle with declared main entry and dsh patch wiring.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "List subagents for the current session",
+      "Open a full-screen trajectory view for a selected subagent",
+      "Render live session event streams (reasoning, tool calls, replies)",
+      "Send follow-up messages to continuable subagents",
+      "Interrupt running subagent turns",
+      "Backfill history from live or persisted session data",
+      "Fallback to plain text list mode when scene support is unavailable"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:54.128Z",
+  "repositoryCommitSha": "c24b751b96dac0b2d71f69efe96cb4c6f2cd6566",
+  "evidenceHash": "6b28a80d6531c64e76d251c14d558938db7d0d64a416d391350d960f05a8f65a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a61b6bb52dd0aea05be33a660d29a3cc09ed8e5effd11b1c7e7d570d20711728",
+  "shadowMode": false
+}

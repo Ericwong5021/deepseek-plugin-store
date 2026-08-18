@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "cli",
+    "terminal",
+    "automation",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary user-facing purpose is in-terminal plugin marketplace interaction: browsing and searching for dsh plugins and then installing, listing, or removing them through `/market` commands in dsh-TUI. Evidence from the README and package metadata shows it is a dsh plugin component that executes profile-specific `dsh plugin add/remove` operations, so classification is search/browsing-oriented automation with moderate risk due to remote discovery and local plugin management actions.",
+  "summaries": {
+    "zh": "这是一个 dsh-TUI 插件市场插件，可通过 `/market` 在终端界面内浏览、搜索、安装、查看和移除 dsh 插件。",
+    "en": "This is an in-TUI marketplace plugin for dsh-TUI that lets you browse, search, install, list, and remove dsh plugins via `/market` commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browse curated and all dsh-plugin lists from within the TUI",
+      "Search GitHub for dsh plugins via topic-based discovery",
+      "Install and remove dsh plugins for a selected profile",
+      "List currently installed third-party dsh plugins",
+      "Invoke dsh plugin operations through subprocess execution"
+    ],
+    "reasons": [
+      {
+        "code": "README documents `/market` subcommands for browse/search/install/list/remove and describes interactive selection behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains plugin installation/removal are executed via child process `dsh plugin --profile <当前 profile> add/remove`, indicating system/profile state changes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README references remote sources (`raw.githubusercontent.com/.../plugins.json` and GitHub `topic:dsh-plugin` search), showing external service interaction.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a dsh plugin bundle (`dsh.bundle.patch`) and exports `lib/index.js` as plugin entrypoint, confirming plugin package purpose.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Browse curated and all dsh-plugin lists from within the TUI",
+      "Search GitHub for dsh plugins via topic-based discovery",
+      "Install and remove dsh plugins for a selected profile",
+      "List currently installed third-party dsh plugins",
+      "Invoke dsh plugin operations through subprocess execution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:50.503Z",
+  "repositoryCommitSha": "34ea13a12db7bfa1917793c7e5ba4a6dc6ec423a",
+  "evidenceHash": "0007c73f5b2db05a54233fa619b385f56bd290601eb7a1db46cbd1e2b26264ce",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9655c2bf55bd135e327cfa4541243f7b4de3a85639b5b0712261b2a9f0688208",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "workflow",
+    "automation",
+    "ui",
+    "planning",
+    "agent",
+    "chat",
+    "skill",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的核心用途是面向开发者提供一个任务看板工作流：先细化需求为可执行的阶段计划，再按队列进行串行执行，并在完成后自动合并到主分支并可视化管理状态。依据 README 与仓库元信息，可确认其主要能力集中在规划执行与自动化流程编排，而非单纯的文件工具、检索或媒体处理。",
+  "summaries": {
+    "zh": "一个 DSH Web 插件，用于把需求细化为阶段计划，并通过看板与队列驱动任务串行执行与状态管理。",
+    "en": "A DSH web plugin that converts requirements into phased plans and drives task execution through a board and queue with status management."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Refines requirements into phased implementation plans and executes them in sequence.",
+      "Runs each implementation phase as a separate session using git worktrees, with queue-based task control.",
+      "Automatically merges completed work on a plan branch into main/master and cleans up related worktree artifacts.",
+      "Adds board UI states and controls for task lifecycle actions such as stop, retry, and delete."
+    ],
+    "reasons": [
+      {
+        "code": "README describes a \"任务看板\" flow that breaks requirements into phase plans and executes all phases in order.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states each phase runs in one session and is processed in git worktrees, with global parallel worker settings and FIFO queue behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents optional Skill-injected interactive refinement (`/skill-name`) and explicit error handling for unavailable skills.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata show plugin is a DSH web plugin mounted through `cordis.patch.yml` into sidebar/conversation/settings slots.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Refines requirements into phased implementation plans and executes them in sequence.",
+      "Runs each implementation phase as a separate session using git worktrees, with queue-based task control.",
+      "Automatically merges completed work on a plan branch into main/master and cleans up related worktree artifacts.",
+      "Adds board UI states and controls for task lifecycle actions such as stop, retry, and delete."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:36.350Z",
+  "repositoryCommitSha": "dfd390d5f73fca711300e46b8a789488d51ca065",
+  "evidenceHash": "f25b543495b6d2bb78a56b2d891c6ca38cb863d390460cc775ff33bb13a2c311",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a86eb7a3e07dbc3f2035da397cdce3449535f1bbf04d0684fa5cbc6aa3455bf2",
+  "shadowMode": false
+}

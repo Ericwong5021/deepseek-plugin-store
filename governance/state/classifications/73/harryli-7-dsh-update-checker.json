@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "ui",
+    "api",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin’s primary purpose is user-facing update notification within the DSH web interface: it checks the npm registry for newer @deepseek-ai/dsh versions, shows a sidebar footer notice only when an update exists, and offers quick actions (copy update command / open npm link) with per-version dismiss state.",
+  "summaries": {
+    "zh": "一个 DSH Web 插件，用于检测 @deepseek-ai/dsh 的新版本并在侧边栏提醒有可用更新，支持一键复制更新命令或打开 npm 页面。",
+    "en": "A DSH web plugin that detects newer @deepseek-ai/dsh versions and shows a sidebar notice when an update is available, with quick actions to copy the update command or open the npm page."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries npm registry for package version metadata",
+      "Displays update notices in the DSH web sidebar",
+      "Provides one-click update command copy and npm link actions",
+      "Persists dismissed update version in browser localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "NPM_REGISTRY_NETWORK_QUERY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SIDEBAR_NOTICE_RENDER_AND_POLLING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCALSTORAGE_DISMISS_PERSISTENCE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "UPDATE_COPY_AND_LINK_ACTIONS",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Queries npm registry for package version metadata",
+      "Displays update notices in the DSH web sidebar",
+      "Provides one-click update command copy and npm link actions",
+      "Persists dismissed update version in browser localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:55.471Z",
+  "repositoryCommitSha": "124156cf2bc50fd1f95824d926c3f8e78212a3c9",
+  "evidenceHash": "21214d4a2a8daebd643dc9aff08beb0a4bcef94c82177b6244ce5901af07103d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4f3f8d5f4deb0b744ba74c276533d0d171608e55f77dbc5a934152af40b6b8e1",
+  "shadowMode": false
+}

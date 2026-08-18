@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "cli",
+    "terminal",
+    "automation",
+    "file",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s user-facing role is deployment automation for a local DeepSeek Harness checkout, exposing four tools to report update status, perform controlled update/build flows, install a launcher, and manage a user-level dsh web service; this is evidenced by the README tool list and the plugin bundle metadata in package.json.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 仓库提供一组维护型工具，用于查看更新状态、执行仓库更新与构建、安装 dsh 启动器，以及管理 dsh web 的用户级 systemd 服务。",
+    "en": "This plugin provides maintenance tooling for a DeepSeek Harness checkout to check status, run update and build steps, install the dsh launcher, and manage the dsh web user service."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runs shell commands for git fetch/merge, package install, build, and optional test operations",
+      "Checks repository and service state for deployment health reporting",
+      "Writes launcher and build artifacts into user-space paths",
+      "Generates and manages a user-level systemd unit for dsh web",
+      "Can create Arch Linux package build context from the project version"
+    ],
+    "reasons": [
+      {
+        "code": "README states `dsh_update` runs `git fetch`, `git merge --ff-only`, `pnpm install`, and `pnpm run build`/`test` steps.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes `dsh_install` writing `~/.local/bin/dsh` and creating PKGBUILD in `~/.cache/dsh-arch` using `makepkg` for Arch packaging.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `dsh_systemd` writing and controlling `~/.config/systemd/user/dsh-web.service` with actions like status/start/restart/stop/disable.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata marks the project as a dsh plugin bundle (`dsh.bundle.patch`) with scripts and exported profile assets for tooling integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Runs shell commands for git fetch/merge, package install, build, and optional test operations",
+      "Checks repository and service state for deployment health reporting",
+      "Writes launcher and build artifacts into user-space paths",
+      "Generates and manages a user-level systemd unit for dsh web",
+      "Can create Arch Linux package build context from the project version"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:01.590Z",
+  "repositoryCommitSha": "bcc7c082e561158510025df13b2f9900abfc441c",
+  "evidenceHash": "fcd33a155dbbeb76a8d6c2d089328e2466320c40a8e4f2ea38505397909c110b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d06ccce3563c247757dfca74fee15350f290c26fe2d9e9c3e1954d3282a5ed3",
+  "shadowMode": false
+}

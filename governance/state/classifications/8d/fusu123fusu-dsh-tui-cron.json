@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "ui",
+    "cli",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是会话内自动化：用户在 dsh-TUI 中通过 `/cron` 定义 5 段 cron 任务，到点后按计划将预设提示词作为下一条 follow-up 用户消息发送，此外它提供任务面板与启停/删除操作，并将任务配置本地化保存。",
+  "summaries": {
+    "zh": "dsh-TUI 定时插件可通过 /cron 记录 5 字段 cron 表达式与提示词，在到点时把对应提示词作为下一轮用户 follow-up 消息发送，用于会话内定时提醒与自动化执行。",
+    "en": "A dsh-TUI plugin that lets you define 5-field cron rules with /cron and send the configured prompt as the next follow-up user message when each schedule is due."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Cron-based task scheduling within dsh-TUI",
+      "Follow-up prompt injection into live conversation turns",
+      "Local JSON-backed job persistence and basic task control (add/remove/toggle)"
+    ],
+    "reasons": [
+      {
+        "code": "README states `/cron` saves a 5-field cron schedule and prompt and fires it as a follow-up user message in the current session.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents scheduler runtime dependency on the active dsh profile process, with missed offline triggers not replayed.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes task data stored in `~/.dsh-tui/cron.json` as plain JSON fields including id/cron/prompt/enabled timestamps.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Cron-based task scheduling within dsh-TUI",
+      "Follow-up prompt injection into live conversation turns",
+      "Local JSON-backed job persistence and basic task control (add/remove/toggle)"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:44.745Z",
+  "repositoryCommitSha": "b005b754c290467c6839c7182ef5a2672cd7bea3",
+  "evidenceHash": "24901fda88c5695e8231a8d13473383bc4c1d13859232f326fb1fd1678a78fed",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b57ad2c759cfa08d45540e907593d47c560db47d919feaf377e9bc22c6105a1a",
+  "shadowMode": false
+}

@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "browser",
+    "ui",
+    "file",
+    "image",
+    "agent",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin’s primary user-facing purpose is to integrate an external official Pencil design service into DeepSeek Harness with a usable in-app canvas and model tools. Based on README and package metadata, it is best classified as an external-services plugin: it connects to external pen.dev tooling, exposes MCP design tools, and manages conversation-bound canvas sessions and workspace media/file workflows rather than performing project analysis or autonomous research.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件，用于在会话内按需启动并管理官方 Pencil（pen.dev）画布，把模型工具与画布编辑、会话工作区文件操作和导出流程结合起来。",
+    "en": "This plugin integrates official pen.dev Pencil into DeepSeek Harness, enabling conversation-bound canvas sessions with MCP-powered design editing and screenshot/export workflows for workspace files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Integrates DeepSeek Harness with an external pen.dev editing service stack via official CLI/editor components.",
+      "Exposes model-accessible MCP tools for opening, reading, editing, screenshotting, and exporting design documents.",
+      "Maintains conversation-scoped canvas sessions tied to workspace state.",
+      "Supports workspace file lifecycle actions such as open, create, save-as, import, and generated/exported image or PDF outputs.",
+      "Configures external tool behavior and assets through environment variables, including optional API keys and editor/cache paths."
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly states integration with official `@pen.dev/cli` headless engine and compatible official browser editor.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists core tools including `pencil_mcp_open`, `pencil_mcp_execute`, `pencil_mcp_get_screenshot`, and export tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes conversation-bound canvas behavior, workspace-bound file operations, and workspace-safe open/create/save-as/import/export flows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares dependency on `@pen.dev/cli` and a DSH web plugin bundle configuration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README documents environment variables for CLI keys, editor/cache directories, and offline/override paths.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Integrates DeepSeek Harness with an external pen.dev editing service stack via official CLI/editor components.",
+      "Exposes model-accessible MCP tools for opening, reading, editing, screenshotting, and exporting design documents.",
+      "Maintains conversation-scoped canvas sessions tied to workspace state.",
+      "Supports workspace file lifecycle actions such as open, create, save-as, import, and generated/exported image or PDF outputs.",
+      "Configures external tool behavior and assets through environment variables, including optional API keys and editor/cache paths."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:46.717Z",
+  "repositoryCommitSha": "a9bc5f52b23552df0a64c1b640a9c114976d1926",
+  "evidenceHash": "9926dd1bf8c35c373353223f1550329a91b243fb42c33aefffa292279283b643",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "94da1dbec74f1563f22c1aad600b35a57375a28df9221c3a7a57e5c573f2a630",
+  "shadowMode": false
+}

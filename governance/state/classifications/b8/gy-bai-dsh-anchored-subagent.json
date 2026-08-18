@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "workflow",
+    "tool",
+    "terminal",
+    "context",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的核心面向用途是面向 DSH 智能体会话的行为编排与启动管理：它通过安装并应用 agent preset，在主代理与子代理的首轮请求阶段执行最小化工具/提示约束，再在指定触发条件后恢复完整工具集，并统一处理子代理的 persona 继承与恢复流程。该归类依据来自 README 中的引导流程说明、配置字段和测试覆盖范围说明，且缺乏网络、账户接入或外部服务凭据操作的直接证据。",
+  "summaries": {
+    "zh": "该插件为 DSH 提供代理预设，令主代理与子代理在首轮以最小工具与 Minimal 人设启动，并在首个稳定交互后切换为完整工具集合。",
+    "en": "This plugin provides a DSH agent preset that starts main and subagents in a minimal bootstrap persona/tool set, then promotes them to the full tool catalog after the first durable interaction."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Configures a session preset that changes initial agent/tool behavior for main and subagents",
+      "Limits first-turn tools to a bootstrap set, then promotes to a full tool catalog",
+      "Strips and later restores subagent persona settings during handoff",
+      "Enables tool-capable interactions (including shell tool usage) within the DSH environment"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin installs an agent preset that starts with only bash + str_replace_editor and Minimal persona, then restores the full catalog after first durable turn.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains DSH subagents inherit the parent agent preset, so the plugin affects subagent session initialization behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents that subagent custom persona is stripped before first request and re-registered after promotion, which is direct behavior-modifying logic.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata exposes a DSH bundle patch and preset assets, confirming runtime installation/integration in DSH.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "Configures a session preset that changes initial agent/tool behavior for main and subagents",
+      "Limits first-turn tools to a bootstrap set, then promotes to a full tool catalog",
+      "Strips and later restores subagent persona settings during handoff",
+      "Enables tool-capable interactions (including shell tool usage) within the DSH environment"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:30.315Z",
+  "repositoryCommitSha": "31fdd22a4265aef3107d9fca05854bea78a9af10",
+  "evidenceHash": "2f2a65671b568385f905897a9d1458d913004fad37d27070b2da0f0b2697a58d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "72abddda36db42ab3074b65fc927b606a116b2e181be8c677bf8141b6b07e634",
+  "shadowMode": false
+}

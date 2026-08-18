@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "tool",
+    "ui",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Primary purpose is user-facing workflow automation for DeepSeek Harness approvals: the plugin adds an Auto approve permission preset and provides command/UI controls to switch approval mode, with logic to auto-respond to approval requests based on selected policy. The plugin is therefore classified as automation rather than code generation, security tooling, or data processing.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供自动审批模式，通过会话控制和 `/auto-approve` 命令在 off、sandbox 或 all 模式下处理权限请求。",
+    "en": "This plugin adds an Auto approve mode to DeepSeek Harness, providing session controls and a `/auto-approve` command to handle approval requests in off, sandbox, or all modes."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatic approval control for permission requests",
+      "Adds an auto-approve preset to the permission selector",
+      "Supports mode switching via `/auto-approve` command and session control",
+      "Can grant all approval requests in `all` mode"
+    ],
+    "reasons": [
+      {
+        "code": "README describes that the plugin \"auto-grants approval requests\" and adds an \"Auto approve\" preset.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states approval handling intercepts `approval/request` and can return allowed responses for sandbox-matched or all modes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json indicates a web DSH plugin with client/runtime injection and patching support, showing it runs inside the approval flow.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Automatic approval control for permission requests",
+      "Adds an auto-approve preset to the permission selector",
+      "Supports mode switching via `/auto-approve` command and session control",
+      "Can grant all approval requests in `all` mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:41.173Z",
+  "repositoryCommitSha": "446f7fc97f958f16c46f66110f7be88e03692b51",
+  "evidenceHash": "3c7403d91025d7358dd9015ac315060e6118f609afa01d32637e05dc33af55cf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "951b406e3fabddef0fb9172f16912f53d4025b44f6b292de0626969e6cff25d9",
+  "shadowMode": false
+}

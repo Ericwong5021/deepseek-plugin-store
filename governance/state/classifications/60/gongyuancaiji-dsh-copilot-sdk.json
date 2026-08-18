@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Classified as an external-services integration plugin because it primarily bridges GitHub Copilot into DeepSeek Harness as a model provider for chat usage, with DSH plugin entry points and commands for checking status, listing models, and stopping runtime. The README and package metadata show it relies on GitHub authentication tokens and external LLM dependencies, so moderate risk is present from credential handling and outbound service access; no strong evidence indicates additional high-impact local automation or execution capabilities beyond this bridge.",
+  "summaries": {
+    "zh": "这是一个将 GitHub Copilot 接入 DeepSeek Harness 的插件，在会话中提供 copilot 模型提供方并支持查看连接与模型状态的聊天模型能力。",
+    "en": "This plugin bridges GitHub Copilot into DeepSeek Harness as a copilot model provider and provides session-level chat access plus commands to check connection status and available models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a `copilot` provider so Copilot subscription models appear in DSH’s model selector, which indicates outbound calls to external model services.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents authentication via GitHub tokens in environment variables, creating credential handling paths for external service access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes the plugin starts/controls Copilot CLI runtime and provides `/copilot` commands for status/models/stop, showing external service orchestration and process/service interaction.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json depends on `@github/copilot` and `@deepseek-ai/dsh-llm`, confirming networked integration with external LLM/LLM bridge services.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:19.527Z",
+  "repositoryCommitSha": "bef063212107f55e00e75af463cb79b38f2aa35d",
+  "evidenceHash": "b44cdb1b8c4728338d59107abac1d3e3deba05479fb02416d28fb2eaad672cc8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2d0d79ce6213d0178f845bec39a4b652481503e8c7dad5cdea8d33d8f886d78e",
+  "shadowMode": false
+}

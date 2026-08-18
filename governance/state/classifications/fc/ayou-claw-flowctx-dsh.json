@@ -1,16 +1,73 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "tool",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Based on repository metadata and README, the plugin is primarily a memory/context-management extension for DeepSeek Harness agents: it enhances context handling by compressing older history, summarizing it in structured handoff notes, and projecting oversized tool outputs into reversible, hash-retrievable artifacts, while exposing working-memory tools and optional local persistence. This places it in user-facing context-memory support rather than code generation or UI functions.",
+  "summaries": {
+    "zh": "flowctx-dsh 是面向 DeepSeek Harness 的上下文管理插件，用于在会话中进行可逆压缩、分层摘要与工具结果投影，并提供可选的可编辑工作记忆与历史按需恢复能力。",
+    "en": "flowctx-dsh is a DeepSeek Harness plugin for context management that supports reversible compression, layered handoff summarization, and retrieval of projected history, with optional editable working-memory support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Hook into DeepSeek Harness agent and tool execution flow to alter injected context for token management",
+      "Persist and retrieve compressed context/tool-result artifacts via local store and optional SQLite state",
+      "Provide model-invokable scratchpad tools for maintaining working memory"
+    ],
+    "reasons": [
+      {
+        "code": "README describes flowctx-dsh as a DeepSeek Harness context engine that keeps current task context, performs reversible projection of large tool results, layered summarization, and optional scratchpad tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explicitly lists hook points (agent/pre-step, tools/post-execute) and the flowctx_retrieve API for hash/node-based recovery, indicating runtime behavior that affects agent-visible history.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a dsh bundle (cordis.patch.yml) and depends on dsh-compaction/agent/session/tooling packages, confirming integration as a DSH plugin.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Hook into DeepSeek Harness agent and tool execution flow to alter injected context for token management",
+      "Persist and retrieve compressed context/tool-result artifacts via local store and optional SQLite state",
+      "Provide model-invokable scratchpad tools for maintaining working memory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:07.151Z",
   "repositoryCommitSha": "29d2376e90ad4b14bdda828f10e22cb33c52dd05",
+  "evidenceHash": "dbc93e407c284d4a22cab7d04c10e9d9498948f585e3d6a65ca34e0643aace30",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "53663809813778189e373c34503d4f3f0fe3f5cb28b00954cc9d7f68c9486539",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:43.961Z",
-  "lastAttemptAt": "2026-08-18T16:02:43.961Z",
-  "nextRetryAt": "2026-08-18T22:02:43.961Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

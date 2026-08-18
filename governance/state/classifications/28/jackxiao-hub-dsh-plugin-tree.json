@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "data",
+    "file",
+    "terminal",
+    "workflow",
+    "api",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向终端用户的主要用途是增强 DSH Web 的“设置→插件”页面，提供插件依赖关系的分层树与可视化图，并辅以搜索、筛选和详情查看，属于插件管理的界面化操作扩展；该能力涉及本地配置持久化与 pnpm 更新动作，因此存在一定执行与系统改动风险，但功能范围主要集中在本地插件生命周期管理。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 客户端插件，在设置页插件界面提供依赖关系树和图视图，让用户可查看插件层级、筛选与详情，并进行启停及更新相关操作。",
+    "en": "This is a DSH Web client plugin that adds a dependency-focused plugin management view in the Settings area, showing tree and graph views with filters/details and allowing users to manage plugin state and updates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read plugin loader entries and package metadata to build dependency-aware plugin views",
+      "Render a plugin dependency tree and graph with interactive filtering/search in the Settings UI",
+      "Toggle plugin enabled state and persist changes in a profile patch file",
+      "Run pnpm commands to check for and apply plugin updates"
+    ],
+    "reasons": [
+      {
+        "code": "README: 功能说明明确标注在设置→插件页展示依赖分层树、可交互依赖图、搜索与三轴筛选，并支持插件详情查看。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 明确说明停用/启用会写入 cordis.patch.yml（保留其它内容）以持久化插件状态。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 描述检查更新/更新通过 pnpm outdated 与 pnpm add 实现，并会访问配置的 npm registry。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PACKAGE_JSON: dsh.bundle.patch 与 web client 注入配置表明该包作为 DSH Web 插件运行并挂载于主机/客户端运行时。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Read plugin loader entries and package metadata to build dependency-aware plugin views",
+      "Render a plugin dependency tree and graph with interactive filtering/search in the Settings UI",
+      "Toggle plugin enabled state and persist changes in a profile patch file",
+      "Run pnpm commands to check for and apply plugin updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:50.099Z",
+  "repositoryCommitSha": "f4fd4219da2d2f6cd34ddf4587c92af75bbe0118",
+  "evidenceHash": "41329c82e7d349eac8d5c0fec5bf65a2143598b35e738d42c94bf8b41b52fdec",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a06bd03558bc41ed104540801a381eb53f99042936590b372f0e8a7537b248df",
+  "shadowMode": false
+}

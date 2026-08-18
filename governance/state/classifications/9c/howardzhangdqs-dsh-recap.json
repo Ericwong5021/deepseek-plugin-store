@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "memory",
+    "tool",
+    "ui",
+    "api",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a conversation-context utility for DSH that records incremental request deltas, summarizes each unit into ordered one-line recaps, and displays them inline in chat. It also adds configurable recap settings, local storage, an internal recap queue, and helper APIs/tools, with model routing handled through existing DSH LLM provider settings.",
+  "summaries": {
+    "zh": "该插件在 DSH 会话中按每次模型请求自动生成一句话回顾并按顺序插入对话流，支持通过设置页配置生成频率、模型路由与展示行为。",
+    "en": "This plugin automatically summarizes each DSH request step into a one-line recap, inserts it in the conversation flow, and provides configurable settings for recap timing, provider/model, and behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures per-request (turn:step) conversation deltas from session events and summarizes them incrementally.",
+      "Maintains per-session recap history in local JSONL storage with retention and compaction controls.",
+      "Invokes LLM generation calls via configurable providers/models for recap summaries.",
+      "Renders inline recap lines in the conversation UI and provides user settings for cadence and routing.",
+      "Exposes /recap/api endpoints for listing, generating, stats, clearing, and settings updates.",
+      "Registers agent tools to read recap history and force queue flush"
+    ],
+    "reasons": [
+      {
+        "code": "README describes session/event capture, per-session delta handling, queueing, and persistence at ~/.dsh/recap/sessions/<sessionId>.jsonl, including storage limits and compression behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states summaries are generated via ctx.llm.stream with configurable provider/model and effort fallback behavior, indicating model network/API interaction through routed providers.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists POST /recap/api/<method> routes (list, generate, stats, clear, settings, providers), indicating local control APIs available to the client.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata show DSH web client integration with inline conversation recap lines and a settings partition in the DSH settings interface.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Captures per-request (turn:step) conversation deltas from session events and summarizes them incrementally.",
+      "Maintains per-session recap history in local JSONL storage with retention and compaction controls.",
+      "Invokes LLM generation calls via configurable providers/models for recap summaries.",
+      "Renders inline recap lines in the conversation UI and provides user settings for cadence and routing.",
+      "Exposes /recap/api endpoints for listing, generating, stats, clearing, and settings updates.",
+      "Registers agent tools to read recap history and force queue flush"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:19.749Z",
+  "repositoryCommitSha": "755610147bcfd3ba52063bd96b2e0b3721310c3d",
+  "evidenceHash": "2378897fc6da8504ed75556e962a52aed97bfe5ec07aa4e46c247b685203f1e5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e37d1f7269b0e52e26329a6cc5476a90a56988a88e3870d88382002b495a0473",
+  "shadowMode": false
+}

@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "file",
+    "automation",
+    "tool",
+    "workflow",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件核心用于在 DeepSeek Harness 中提供 GitHub 外部服务接入，面向用户的是统一的仓库读写与协作工具化能力：查询接口、提交文件、GraphQL 查询与讨论发布。其功能直接围绕 GitHub API 集成与凭据/代理配置，未体现泛用插件开发框架或界面重构用途，因此分类为外部服务集成类插件。",
+  "summaries": {
+    "zh": "DSH GitHub Tool 为 DeepSeek Harness 提供 GitHub 集成能力，可在对话中调用 REST/GraphQL、提交多文件到仓库并创建 Discussion，支持凭据与代理配置。",
+    "en": "DSH GitHub Tool provides GitHub integration for DeepSeek Harness, enabling in-conversation REST/GraphQL calls, multi-file repository commits, and Discussion creation with configurable credentials and optional proxy settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "REST 调用 GitHub API 进行仓库/Issue/PR/用户等查询与操作",
+      "GraphQL 调用用于 REST 覆盖不足场景",
+      "通过 git data API 支持多文件提交和仓库内容更新",
+      "支持基于本地文件路径的二进制安全提交",
+      "创建 GitHub Discussion 帖子"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确列出 github_api、github_push_files、github_graphql 与 github_create_discussion 四个工具并给出参数与返回结果。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述 token 通过凭据系统读取，并在未配置时返回明确提示，显示该插件具备凭据处理路径。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明 github_push_files 支持 text 与 localPath 二进制上传，并按 git refs/trees/commits 流程提交到分支，具备远程写操作能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 与仓库结构显示为 DSH 插件包（lib/index.js、lib/client.js、cordis.patch.yml），用于在宿主中注册并暴露工具。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 说明支持可选 HTTP(S) 代理（CONNECT）和网络访问，属于外部服务连通与受限网络适配能力。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "REST 调用 GitHub API 进行仓库/Issue/PR/用户等查询与操作",
+      "GraphQL 调用用于 REST 覆盖不足场景",
+      "通过 git data API 支持多文件提交和仓库内容更新",
+      "支持基于本地文件路径的二进制安全提交",
+      "创建 GitHub Discussion 帖子"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:34.428Z",
+  "repositoryCommitSha": "d78f02dd7830805e88ac25aca833821153665b73",
+  "evidenceHash": "8041e0c0f616098ee6874431fb0d9e0545cf30518b103fe72011111dd2f0d79d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "17d9c88e091779b7ce1a9fbfc4764ce5cfc87bb9f09fdd7ed07197ea7a49256e",
+  "shadowMode": false
+}

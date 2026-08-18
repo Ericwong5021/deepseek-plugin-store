@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "api",
+    "integration",
+    "search",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a web browsing provider extension for DeepSeek Harness: it does not introduce new model-facing tools, but replaces/sets the harness web search and fetch providers with Firecrawl-backed implementations. Evidence in the repository name, description, and README consistently describes mapping of `web_search` and `web_fetch` to Firecrawl endpoints, which places it squarely in web search/browsing with moderate external-network impact.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的 web_search 和 web_fetch 功能接入 Firecrawl 后端，用于通过外部服务获取搜索结果与网页抓取内容。",
+    "en": "This plugin connects DeepSeek Harness web_search and web_fetch to Firecrawl, using an external provider backend for web search and page fetch operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "third-party-web-requests",
+      "api-key configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin wires DeepSeek Harness web_search and web_fetch to Firecrawl and issues requests to /v2/search and /v2/scrape.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents FIRECRAWL_API_KEY requirement and notes that this provider can fetch content from model-requested public URLs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares package purpose as Firecrawl-backed web providers and exports provider entrypoints used by the DeepSeek Harness web seam.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "third-party-web-requests",
+      "api-key configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:29.493Z",
+  "repositoryCommitSha": "2204a7ec9cbcf814601182de64204a6ce525b5ff",
+  "evidenceHash": "a89ba6c54c17406543f661653521ddc494101dcf33e351e964b04cc8bc47bf81",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "67671fa9213199a00e9e6c08d1e1008ee52984ac9b61fb0d7c9d97263ad53845",
+  "shadowMode": false
+}

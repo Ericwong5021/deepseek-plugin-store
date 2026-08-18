@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "workflow",
+    "monitoring",
+    "api",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Primary user-facing purpose is automated LLM cost control for DeepSeek Harness: the plugin meters input/output/cache usage, computes USD cost with peak/valley pricing, and enforces user-configured budgets by warning or hard-denying requests, while exposing a budget_status query tool and optional persistent state.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中按模型与峰谷时段计费并追踪成本，通过日/周/总预算规则在 LLM 调用阶段执行告警或拦截。",
+    "en": "This plugin adds budget-aware control to DeepSeek Harness by metering LLM usage, calculating peak/valley cost, and enforcing configurable budget limits with warn or deny behavior during stream calls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Tracks LLM token usage from llm/stream calls",
+      "Calculates request cost using configurable DeepSeek model pricing and peak/valley time rules",
+      "Applies budget enforcement with deny or warn actions",
+      "Can block over-budget agent-loop requests by raising BUDGET_EXCEEDED",
+      "Stores and queries cumulative budget/usage state via optional storage or in-memory mode"
+    ],
+    "reasons": [
+      {
+        "code": "README describes LLM cost metering and budget execution with deny/warn behavior at the `llm/stream` call layer, including hard interception when budget is exceeded.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README architecture shows `store.check()` before processing and throwing `LlmError(BUDGET_EXCEEDED)` on deny, then usage is observed and recorded via `meterStream()`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package manifest indicate optional persistence through storage KV with in-memory fallback, making usage state persistence a feature and a potential reliability consideration after restart.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Tracks LLM token usage from llm/stream calls",
+      "Calculates request cost using configurable DeepSeek model pricing and peak/valley time rules",
+      "Applies budget enforcement with deny or warn actions",
+      "Can block over-budget agent-loop requests by raising BUDGET_EXCEEDED",
+      "Stores and queries cumulative budget/usage state via optional storage or in-memory mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:51.678Z",
+  "repositoryCommitSha": "9038ee283f391e58413e577b41d01d7adc46ae2b",
+  "evidenceHash": "58b6a7d455f719e04f04abbb5dca81f6d5d5f48dd1c357e7ebe6b4570ba246f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "31a591879ee38d1db979b696bb634cfca3864669e2d387a90cb67241f2c21928",
+  "shadowMode": false
+}

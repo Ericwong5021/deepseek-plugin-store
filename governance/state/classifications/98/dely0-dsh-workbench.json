@@ -1,16 +1,82 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "ui",
+    "planning",
+    "workflow",
+    "automation",
+    "knowledge",
+    "data",
+    "notification",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a planning-and-execution workbench for DeepSeek Harness Web, focused on task management in calendar/list views with AI-assisted clarify, breakdown, execution, and review flows. The evidence shows its main value is organizing and executing personal work tasks with supporting report, reminder, and knowledge-capture features rather than generic development tooling.",
+  "summaries": {
+    "zh": "这是一个面向 DSH Web 的个人工作台插件，提供日历与树状任务管理，并支持自然语言录入后结合 AI 进行任务澄清、拆解、执行和复盘，同时提供提醒与日报周报等工作流功能。",
+    "en": "This DeepSeek Harness Web plugin provides a personal workbench for calendar and hierarchical task management, with natural-language task intake and AI-assisted clarify, breakdown, execution, and review flows plus reminders and report generation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Hierarchical task creation and management with calendar/list/today views",
+      "AI-assisted task flows including clarify/consult/breakdown/execute/review",
+      "AI-generated scheduling and reporting for selected dates",
+      "Local persistence of workbench data via SQLite/JSON backup path",
+      "Desktop reminder notifications and recurring task handling",
+      "Per-task knowledge and idea capture with search"
+    ],
+    "reasons": [
+      {
+        "code": "Task and AI workflow features are user-facing and stateful, which can alter local task status and records.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin performs AI-enabled execution and workspace interactions via configured DSH models, which can consume API/token resources and trigger operational side effects.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Workbench data is stored locally under ~/.dsh/workbench and APIs are exposed on /api/workbench with loopback-only access, indicating limited but non-zero local/host-risk surface.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Hierarchical task creation and management with calendar/list/today views",
+      "AI-assisted task flows including clarify/consult/breakdown/execute/review",
+      "AI-generated scheduling and reporting for selected dates",
+      "Local persistence of workbench data via SQLite/JSON backup path",
+      "Desktop reminder notifications and recurring task handling",
+      "Per-task knowledge and idea capture with search"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:15.479Z",
   "repositoryCommitSha": "3cda91f6a1d6c235574b2e6994eb412d1abd5c2a",
+  "evidenceHash": "c1ef18723d7947bcd8f2ac7cadb15af4eac962fad901399304603ccfb6fdaad0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "f5562a8688fbd9f4506fd666d2639349d50011aedbaefb1e6a674683c064222f",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:00:12.984Z",
-  "lastAttemptAt": "2026-08-18T18:00:12.984Z",
-  "nextRetryAt": "2026-08-19T00:00:12.984Z",
-  "retryable": true,
-  "error": "/completions: 408 {\"error\":{\"message\":\"stream error: stream disconnected before completion: stream closed before response.completed\",\"type\":\"invalid_request_error\"}}",
   "shadowMode": false
 }

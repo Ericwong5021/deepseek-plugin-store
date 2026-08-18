@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "terminal",
+    "file",
+    "tool",
+    "notification",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的核心用途是为 DeepSeek Harness 提供启动时自动更新流程：对比本地版本与 npm registry 标签并在每次启动后给出提醒，按配置可自动执行安装。其主要能力是自动化维护行为，属于中等风险类型，因为可触发全局安装并会进行网络请求，但默认模式仅通知，不默认执行安装。",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness 启动时自动检查是否有新版本，默认仅提醒更新，并可按配置在启动后自动执行安装命令，同时记录最近检查状态。",
+    "en": "This plugin checks for DeepSeek Harness updates at startup, notifies when a newer version is available, and can optionally run a configured install command while tracking recent check history."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "startup update check against npm registry",
+      "optional automatic package installation",
+      "home-directory state persistence",
+      "configurable behavior via profile settings"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin checks the local dsh version against npm dist-tags at startup and runs only once.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes two modes, with notify-only default and optional install mode that runs `npm install -g {package}@{version}`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README indicates check history is persisted to `~/.dsh/dsh-auto-update-state.json`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json and tree show a dsh plugin entrypoint (`lib/index.js`) with bundle patch wiring for host/plugin integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "startup update check against npm registry",
+      "optional automatic package installation",
+      "home-directory state persistence",
+      "configurable behavior via profile settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:08.549Z",
+  "repositoryCommitSha": "7078450cefb1257d213a8faf041932095a367e2d",
+  "evidenceHash": "929b3709b01fe15c200982862d05e79fd1b0a02b09968ab8344ff64cc4864be9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "651484ed7ff5264e26aef93132fc7307f6c0c90919d8018dcdedaf0ddd7fd0fd",
+  "shadowMode": false
+}

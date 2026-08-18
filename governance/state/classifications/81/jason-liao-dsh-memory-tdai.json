@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "agent",
+    "chat",
+    "tool",
+    "context",
+    "search",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Repository evidence shows this plugin is a DeepSeek Harness extension that adds long-term, cross-session memory support by automatically capturing conversations and maintaining a four-layer memory pipeline (L0 raw logs, L1 atomic memory, L2 scene blocks, L3 persona), while offering tools for structured memory search and raw conversation retrieval; it is implemented as a DSH bundle plugin and relies on local storage plus optional remote embedding services for hybrid recall.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，在对话中自动捕获并分层保存记忆，并在后续会话前自动回调相关记忆；同时提供 memory_search 与 conversation_search 工具用于结构化记忆和原始对话检索。",
+    "en": "This is a DeepSeek Harness plugin that automatically captures and organizes conversations into layered memory, recalls relevant memory context for future turns, and exposes memory_search and conversation_search tools for structured memory and raw conversation lookup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Records conversation turns and stores memory artifacts under a local DSH memory directory",
+      "Builds and updates layered memory (raw logs, atomic memories, scene blocks, persona summaries)",
+      "Injects retrieved memories into prompt context during agent turns",
+      "Provides on-demand tools for structured memory search and raw conversation lookup",
+      "Supports optional vector/embedding retrieval via external OpenAI-compatible endpoints with fallback to keyword retrieval"
+    ],
+    "reasons": [
+      {
+        "code": "Local conversational data retention",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Prompt-context injection before model turns",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Optional external embedding provider usage with API key configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Native data/processing dependency chain in packaged plugin",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Records conversation turns and stores memory artifacts under a local DSH memory directory",
+      "Builds and updates layered memory (raw logs, atomic memories, scene blocks, persona summaries)",
+      "Injects retrieved memories into prompt context during agent turns",
+      "Provides on-demand tools for structured memory search and raw conversation lookup",
+      "Supports optional vector/embedding retrieval via external OpenAI-compatible endpoints with fallback to keyword retrieval"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:52.350Z",
+  "repositoryCommitSha": "03115c1e0a95387306840d2cf793af3270e7d221",
+  "evidenceHash": "220b7f8b0dd18f9a701f95fd1d4aad104f9c9006529f8219c066658373a0fb3f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "be30c05f179d1b91be49817578cc413e871df4905fd4e4069e5d0fde1436dd8c",
+  "shadowMode": false
+}

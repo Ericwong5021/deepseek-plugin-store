@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "ui",
+    "visualization",
+    "api",
+    "integration",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a per-session billing and usage analytics tool for DeepSeek Harness: it computes session token/cost summaries from host-side session projections, shows them in conversation UI badges and panels, and offers a settings page to edit model/provider pricing tables with peak/idle and tier options. The evidence is explicit in the repository description and package metadata, with no signs of non-UI automation or external command/control behavior.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 会话计费插件，在会话界面实时展示 token 用量与费用摘要，并提供可视化的逐轮明细和可编辑的价格表配置页。",
+    "en": "dsh-meter is a DeepSeek Harness session billing plugin that shows cost and token usage metrics in the chat UI, with per-round detail views and a configurable pricing table for model cost settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Per-session aggregation and display of token usage and cost metrics in the conversation UI",
+      "User-configurable pricing logic for providers/models including cache split, peak/idle windows, and tiered pricing",
+      "Session-level billing projections from host-side session log folding and projection data",
+      "Local billing API route (`/billing/api`) for catalog/turn-detail retrieval",
+      "Settings persistence and update flow for billing tables through host settings binding"
+    ],
+    "reasons": [
+      {
+        "code": "Billing values are user-facing financial indicators, and misconfigured/updated pricing can lead to incorrect displayed charges.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin defines custom host/client wiring and a local billedata route path, creating a runtime surface that depends on host-side security assumptions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "User pricing data is persisted via settings namespace and synchronized across sessions/tabs, so malformed or inconsistent settings could affect all sessions.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Per-session aggregation and display of token usage and cost metrics in the conversation UI",
+      "User-configurable pricing logic for providers/models including cache split, peak/idle windows, and tiered pricing",
+      "Session-level billing projections from host-side session log folding and projection data",
+      "Local billing API route (`/billing/api`) for catalog/turn-detail retrieval",
+      "Settings persistence and update flow for billing tables through host settings binding"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:53.244Z",
+  "repositoryCommitSha": "bb7d51a9932c462ba136e04dae678b3f24961a4b",
+  "evidenceHash": "911340fdb1aec5dfdd6847a6d09eb71a50a46bba15163afc9428a9a40f87a0d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3de3f38fb6626cc0684760b5ce832bedafb121db3c1873cdb901a3034162b974",
+  "shadowMode": false
+}

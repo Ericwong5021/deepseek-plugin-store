@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "chat",
+    "ui",
+    "api",
+    "planning",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an automation utility for DSH web conversations: it lets users define timed prompts and optional daily repeats, then automatically executes them via the existing /goal mechanism at the scheduled moment. Evidence from the README and package metadata shows both slash-command and browser UI workflows for task CRUD, with execution tied to full-access goal execution and persistent job storage.",
+  "summaries": {
+    "zh": "这是一个用于在 DSH 会话中创建一次性或每日重复定时任务的插件，支持通过斜杠命令和网页面板配置任务，并在到点时按预设提示词自动触发 /goal。",
+    "en": "This plugin enables one-time or daily repeating timed tasks in DSH conversations, with slash commands and a web panel for setup, then runs the configured prompt automatically through /goal at the scheduled time."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Time-based scheduling of prompts with optional daily recurrence",
+      "Automatic triggering of /goal execution at configured times",
+      "Per-task create/edit/delete/list management via web UI",
+      "Slash-command-based job management",
+      "Persistent job storage for recovery across web restarts",
+      "Automatic retry/fallback behavior on execution failure"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README documents one-time and daily scheduled tasks with absolute datetime input and future-time validation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states that at trigger time the session is set to danger-full-access and an armed goal is created to run the configured prompt.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes GET/POST/PATCH/DELETE REST endpoints for jobs and a settings/conversation UI modal for managing tasks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata shows this is a DSH web plugin with client UI/runtime injection points, indicating host integration and command surface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Time-based scheduling of prompts with optional daily recurrence",
+      "Automatic triggering of /goal execution at configured times",
+      "Per-task create/edit/delete/list management via web UI",
+      "Slash-command-based job management",
+      "Persistent job storage for recovery across web restarts",
+      "Automatic retry/fallback behavior on execution failure"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:06.508Z",
+  "repositoryCommitSha": "3c8205d1da838fb3bbfa7b2c576b1518e4afe99c",
+  "evidenceHash": "3ada806d5b33d6d508e20a573e13418a9f3c7b543d3612e13a1fde64a8272e9f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6f6304a3c36e3e5c7c89abbcdc6449fb297e0dce84eda1607af1a15911534ff0",
+  "shadowMode": false
+}

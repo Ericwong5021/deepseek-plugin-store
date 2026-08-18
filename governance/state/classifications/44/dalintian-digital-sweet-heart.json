@@ -1,16 +1,81 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "chat",
+    "ui",
+    "image",
+    "video",
+    "api",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供可见的聊天界面扩展：以联系人列表+会话区域的形式展示 AI 角色，并支持角色定义、头像生成与对话驱动的图片/视频交互。其功能核心集中在本地角色数据管理与配置、以及通过本地代理将会话与媒体生成请求转发到用户配置的外部 API，因此属于界面导航面板方向。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，将界面转为微信式 AI 角色聊天布局，支持本地保存人设与画像，并基于配置接口进行对话、发图和发视频等交互。",
+    "en": "This is a DSH web plugin that changes the interface into a WeChat-style AI character chat layout, supports local persona/avatar data, and performs chat, image, and video actions via configured model APIs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Writes and reads persona markdown and generated portrait files in local DSH storage.",
+      "Stores user settings/API model selections in browser localStorage.",
+      "Proxies model requests through local `/girlfriend/*` routes to user-configured OpenAI-compatible endpoints.",
+      "Injects custom sidebar/contact and conversation UI components into the DSH web client."
+    ],
+    "reasons": [
+      {
+        "code": "README documents role/persona storage at `<DSH 主目录>/storages/girlfriend/<角色ID>.md` and `images/<角色ID>.png`, and startup reads these files to load settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin configures a `/girlfriend/*` route that forwards `/chat/completions`, `/images/generations`, and `/videos/generations` traffic to configured model endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes API keys and settings are kept in browser localStorage under `dsh.girlfriend.*`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a web plugin with `dsh.client.platform: web` and exposes bundle patch + postinstall setup to add/enable the alternate profile.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Writes and reads persona markdown and generated portrait files in local DSH storage.",
+      "Stores user settings/API model selections in browser localStorage.",
+      "Proxies model requests through local `/girlfriend/*` routes to user-configured OpenAI-compatible endpoints.",
+      "Injects custom sidebar/contact and conversation UI components into the DSH web client."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:13.886Z",
   "repositoryCommitSha": "24796d4666e40417a5b2bf7cb29cde37ab900ba4",
+  "evidenceHash": "b8db1ed4a2d6f66dba06bc8d849c5831b616fb84001240d63a32cff4ba02aa94",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "4fbda6b5a464a043e55b9529c44a432f74cd1008d9c2ea0690f7183996233c14",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:00:05.537Z",
-  "lastAttemptAt": "2026-08-18T18:00:05.537Z",
-  "nextRetryAt": "2026-08-19T00:00:05.537Z",
-  "retryable": true,
-  "error": "AI confidence is invalid",
   "shadowMode": false
 }

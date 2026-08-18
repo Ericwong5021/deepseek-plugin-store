@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "tool",
+    "api",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This repository is primarily a DSH plugin that exposes `pcb_parts_search` for electronic component search, using a keyword query interface to fetch and return structured part metadata for PCB/EDA workflows. Evidence in the README shows the core behavior is a single network-backed search tool call with selectable pagination and filtering options, making its primary user-facing purpose search and retrieval rather than code generation, orchestration, or file operations.",
+  "summaries": {
+    "zh": "该插件为 DSH 提供 `pcb_parts_search` 工具，可按关键词检索电子元器件并返回型号、厂商、描述与数据手册等结构化结果，用于 PCB/EDA 选型辅助。",
+    "en": "This plugin adds a `pcb_parts_search` DSH tool that searches electronic components by keyword and returns structured results like part number, manufacturer, description, and datasheet information for PCB/EDA selection support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Performs keyword-based lookup of electronic component data via an external HTTPS API",
+      "Returns structured component fields (MPN, manufacturer id, description, datasheet) in tool output",
+      "Runs as a DSH tool call (`pcb_parts_search`) with input validation and result filtering"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin explicitly targets a remote EDA service endpoint (`https://www.eda.cn/api/chiplet/products/queryPage`) for search queries, creating external network dependency and potential service-failure exposure.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Input validation and bounded parameters (keyword length, page_size range, boolean flag) limit malformed request risk, but user-provided queries still affect outbound request content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Exposed functionality is limited to a single read-only search tool interface and returned data fields, with no documented file/terminal side effects in plugin entry and scripts.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Performs keyword-based lookup of electronic component data via an external HTTPS API",
+      "Returns structured component fields (MPN, manufacturer id, description, datasheet) in tool output",
+      "Runs as a DSH tool call (`pcb_parts_search`) with input validation and result filtering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:22.832Z",
+  "repositoryCommitSha": "7b02c0492e06530c3c58638639351ea7878dde3e",
+  "evidenceHash": "e250d127d2029dae33b480edc3f61b7c266396872769db8fd489d11d7f0e0fd2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4a9ec3ae252be8078f76ccccff469c04926edc3a888177c02a7c5d1f870e9580",
+  "shadowMode": false
+}

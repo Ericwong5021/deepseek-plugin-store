@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "ui",
+    "automation",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary purpose is user-facing chat message control in DSH: it surfaces unread steering messages while a model is running and lets users recall one or all pending messages before the model reads them. The evidence shows this is implemented through DSH conversation queue/removal behavior in the client UI and optional host-side inbox removal, so its impact is scoped to in-session message lifecycle management rather than broad system automation.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 聊天实用插件，在模型未读取插话消息时在输入区上方展示未读消息，并支持单条或全部撤回。",
+    "en": "This is a DeepSeek Harness chat utility plugin that shows unread steering messages above the input area and lets you recall one or all of them before the model reads them."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Shows unread/steering messages in a dedicated conversation-input strip",
+      "Removes single pending unread messages",
+      "Supports bulk clearing of pending unread messages",
+      "Uses DSH queue update or host inbox removal path to modify pending message state",
+      "Shows user feedback after recall actions"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a strip UI in `conversation.input.dock` listing sent-but-unread messages and providing per-item and all-recall actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states recall is performed via `session.updateQueue(itemId, { kind: 'remove' })` and a host path using `agents.get(sessionId).inbox.remove(itemId)`, which confirms queue/state mutation capability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata targets DSH web plugin execution (`dsh` field with web client bundle configuration), indicating this capability is applied within the chat runtime rather than external services.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Shows unread/steering messages in a dedicated conversation-input strip",
+      "Removes single pending unread messages",
+      "Supports bulk clearing of pending unread messages",
+      "Uses DSH queue update or host inbox removal path to modify pending message state",
+      "Shows user feedback after recall actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:13.443Z",
+  "repositoryCommitSha": "220321f04c982aa59d4355472ccd1b92c6dcbf6c",
+  "evidenceHash": "0902680cb8a8769ca9b7f60f3e2dae61d2f178ac98655a6c14633d7f0a6c6a8c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e3c61ef3bfafe34bb36e0ba64fc7793513102fceef3348c62d4983ea892d31b0",
+  "shadowMode": false
+}

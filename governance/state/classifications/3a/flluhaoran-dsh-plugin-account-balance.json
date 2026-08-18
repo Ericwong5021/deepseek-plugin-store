@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "integration",
+    "data",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Primary purpose is user-visible account-balance display in the sidebar settings panel: it adds a balance widget beside the Settings button and refreshes it on schedule or on click. Evidence in README shows a host route that queries provider balance APIs and a client UI slot injection, indicating a UI/financial-status feature rather than developer tooling or general automation.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的侧边栏设置区域显示当前 LLM 提供商的账户余额，并支持自动与手动刷新。",
+    "en": "This plugin shows the current LLM provider account balance in the DeepSeek Harness sidebar settings area and supports periodic automatic refresh with manual refresh on click."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads provider credential references via the host credential mechanism",
+      "Makes outbound network requests to provider balance endpoints",
+      "Injects a custom element into the sidebar settings area with auto/manual refresh behavior"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin defines a host route (/account-balance) that resolves provider settings and fetches account balance from a provider API.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The client half renders a sidebar settings-area balance box and implements 5-minute auto-refresh plus manual refresh on click.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest/package metadata exposes a bundled host/client plugin model for the web client and includes credential-related peer dependency usage context.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads provider credential references via the host credential mechanism",
+      "Makes outbound network requests to provider balance endpoints",
+      "Injects a custom element into the sidebar settings area with auto/manual refresh behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:32.945Z",
+  "repositoryCommitSha": "17eb31cdb039d48f570ff6bab6b8f1175feb61b8",
+  "evidenceHash": "fbbbf6f2d91cafbb286ad0ddb3d012328d8242aafa5bccae71f53391e631d0d1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "92e691a137c29490c3fd8436ac9bc558bf4bedc134fcde9772b975f24b41b8f7",
+  "shadowMode": false
+}

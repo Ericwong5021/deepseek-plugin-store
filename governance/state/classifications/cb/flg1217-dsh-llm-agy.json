@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "search",
+    "tool",
+    "cli",
+    "automation",
+    "workflow",
+    "image"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.88,
+  "reason": "The repository is best classified as an external-services integration plugin: it extends DeepSeek Harness by integrating Antigravity CLI/Gemini into the host for LLM subagent delegation, deep web search, and image-to-text support, with diagnostics and setup UI exposed in plugin settings. Evidence from README and package metadata consistently describes a dsh bundle patch/plugin-based extension and external provider/tool wiring, so the primary user-facing purpose is connecting dsh workflows to external AI tooling.",
+  "summaries": {
+    "zh": "dsh-llm-agy 是一个 dsh 插件，用于接入 Antigravity CLI，帮助用户在工作流中使用子代理、深度网页检索和文本模型图片读图，并提供连通性诊断面板。",
+    "en": "dsh-llm-agy is a dsh plugin that integrates Antigravity CLI, enabling sub-agent delegation, deep web search, and image-to-text support for text models with a connectivity diagnostics settings panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Invokes and delegates tasks to external Antigravity CLI via dsh LLM adapter integration",
+      "Runs web searches through an AGY search provider path that can access remote sources",
+      "Adds image-to-text tool flow that stores pasted images and sends paths to AGY/Gemini for reading",
+      "Registers extra agent/search/tool capabilities through dsh extension hooks"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin claims direct invocation/spawn of AGY CLI for subagent reasoning and model routing, which depends on external executable behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Deep web search feature is implemented through AGY search_web flow and can fetch and summarize external web content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Image paste workflow persists user images into workspace paths before model processing, introducing local file-write handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest and bundle metadata show external integration via dsh client/server plugin entry points and extension registration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Invokes and delegates tasks to external Antigravity CLI via dsh LLM adapter integration",
+      "Runs web searches through an AGY search provider path that can access remote sources",
+      "Adds image-to-text tool flow that stores pasted images and sends paths to AGY/Gemini for reading",
+      "Registers extra agent/search/tool capabilities through dsh extension hooks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.88,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:30.743Z",
+  "repositoryCommitSha": "5b7b4a067073d7a06c5cc4ce1ca42c8cfaeb9612",
+  "evidenceHash": "0d59f28959cfa6c380584500047724cb1d3750aa111299a1bc67a8bec80c41c3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ce02591158a4709a7a85f65eb20d74889c670e6ffb3260c7984bac18e9138d4",
+  "shadowMode": false
+}

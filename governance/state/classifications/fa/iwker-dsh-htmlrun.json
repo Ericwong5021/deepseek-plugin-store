@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "cli",
+    "terminal",
+    "automation",
+    "tool",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an external-service utility that lets DeepSeek Harness sessions publish local HTML files to html.run by invoking the bundled CLI as a subprocess, so its user-facing purpose is HTML link publishing/ sharing rather than code generation or analysis.",
+  "summaries": {
+    "zh": "该插件在 DSH 会话中提供 `htmlrun` 工具，通过本地 CLI 将单文件 HTML 发布为 html.run 可分享链接，并支持检查、绑定与登录等操作。",
+    "en": "This plugin provides an `htmlrun` tool for DeepSeek Harness that publishes single-file HTML through the html.run CLI to generate shareable links, with actions such as check, publish, bind, and login."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Publish local single-file HTML content to html.run via plugin-invoked CLI",
+      "Execute Node CLI through subprocess from the plugin runtime",
+      "Require and use auth token state in `~/.htmlrun/config` for service login/bind/whoami workflows",
+      "Accept file path inputs and action parameters for publish/update operations"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin’s execute path uses `ctx.subprocess` to run `node scripts/htmlrun.cjs`, then forwards CLI output for model response.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes actions including `publish`, `check`, `bind`, `login`, and `whoami`, and local HTML file path handling for publishing workflows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and repository structure show distribution as a DSH bundle plugin (`lib/index.js`, `cordis.patch.yml`) intended for installation and in-session model tool registration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Publish local single-file HTML content to html.run via plugin-invoked CLI",
+      "Execute Node CLI through subprocess from the plugin runtime",
+      "Require and use auth token state in `~/.htmlrun/config` for service login/bind/whoami workflows",
+      "Accept file path inputs and action parameters for publish/update operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:44.675Z",
+  "repositoryCommitSha": "fb2d9a687df1a61fff8c66db404ffe884c694556",
+  "evidenceHash": "d4c39dcf9bfad097d49b89b97c1f219c0f0f5c881b6ee2b044b3bd0c79e629d6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ece56b394c7ffb0e5a36b10ea257c2c14d5553cdfb18ad342732ffc1b6d422b",
+  "shadowMode": false
+}

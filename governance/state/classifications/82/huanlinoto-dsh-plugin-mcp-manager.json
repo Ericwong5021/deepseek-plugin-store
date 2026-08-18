@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "ui",
+    "tool",
+    "file",
+    "agent",
+    "automation",
+    "mcp"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向用户的核心是 MCP 服务管理：在 DSH 的设置界面提供 MCP 服务器配置的新增/编辑/删除与 `mcp__` 工具浏览，并通过 `/api/mcp-manager` 与 `mcp_server_*` 工具执行管理操作，配置数据来自 `cordis.patch.yml` 并支持 HMR 实时挂载。依据 README 显示的明文凭据存储说明（P0）与可配置的传输命令参数，当前风险为中等。",
+  "summaries": {
+    "zh": "该插件是 DSH 的 MCP 管理面板，提供 MCP 服务器配置的增删改查、工具列表浏览，并配套提供 agent 侧 `mcp_server_*` 管理能力。",
+    "en": "This plugin is an MCP management panel for DSH, offering add/edit/delete workflows for MCP server configs, browsing of MCP tools, and accompanying agent-side `mcp_server_*` management commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read and write MCP server configuration in profile `cordis.patch.yml`",
+      "Expose REST endpoints for MCP server CRUD, tools listing, and status",
+      "Provide settings-panel UI for MCP server list/edit/delete and tool browsing",
+      "Register agent tools for listing/adding/updating/removing MCP servers",
+      "Support HMR-based configuration reload after changes",
+      "Support stdio and streamable-http transport settings for MCP servers"
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly states `env`/`headers` are persisted in plain text in `cordis.patch.yml`, flagged as a P0 concern.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Management flows are implemented as HTTP routes (`/api/mcp-manager/*`) that mutate server configuration and return runtime state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository/package metadata indicate direct integration with MCP client tooling and transport configuration (`command`, `args`, `url`, `headers`) for external connections.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Read and write MCP server configuration in profile `cordis.patch.yml`",
+      "Expose REST endpoints for MCP server CRUD, tools listing, and status",
+      "Provide settings-panel UI for MCP server list/edit/delete and tool browsing",
+      "Register agent tools for listing/adding/updating/removing MCP servers",
+      "Support HMR-based configuration reload after changes",
+      "Support stdio and streamable-http transport settings for MCP servers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:24.172Z",
+  "repositoryCommitSha": "08d225720c02ec538621b3b42ca3f29b3cb84d0b",
+  "evidenceHash": "2f18f7c1e524ec4666248391431ee2f36b190e8b6de7d5cb3746c530110b0b32",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0658f4fb034156ac690caf591b8848a900c0eea47c3324bb4540c11571aa5fb3",
+  "shadowMode": false
+}

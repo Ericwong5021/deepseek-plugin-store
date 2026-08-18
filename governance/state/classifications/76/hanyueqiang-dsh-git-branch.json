@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "api",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin’s primary user-facing purpose is a UI utility that surfaces the current workspace Git branch in the composer input area and keeps it updated, evidenced by explicit mention of a status chip beside mode controls and branch-refresh behavior driven by focus/visibility and manual triggers.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在对话输入区模式控制旁显示当前工作区 Git 分支状态，并在焦点、可见性切换或点击后刷新显示。",
+    "en": "This is a DeepSeek Harness web plugin that shows the current workspace Git branch beside composer mode controls and refreshes that chip on focus, visibility, click, or periodic updates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads workspace git metadata by locating the nearest `.git` directory and parsing `HEAD` to derive branch text.",
+      "Injects a branch-status chip into the DSH conversation input area and refreshes it through a remote `git-branch` command flow with focus/visibility/click/poll triggers."
+    ],
+    "reasons": [
+      {
+        "code": "README describes a host command that walks up from `session.header.cwd` to the nearest `.git` and parses `HEAD` to return the branch.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the client registers a `conversation.input.left` chip and updates by executing the `git-branch` command with focus/visibility click and periodic refresh behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH web client entry plus bundle patch integration, indicating a UI/plugin extension with host-remote command communication.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads workspace git metadata by locating the nearest `.git` directory and parsing `HEAD` to derive branch text.",
+      "Injects a branch-status chip into the DSH conversation input area and refreshes it through a remote `git-branch` command flow with focus/visibility/click/poll triggers."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:50.079Z",
+  "repositoryCommitSha": "39953d20827ffe28e4b346d548716b40d0644272",
+  "evidenceHash": "85819d8615ac295d51b2901aca3f012b07ab013c21c7a4070c6dc061fd053d36",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a39b0e55b2fd9a3ced305146b9436185aacedb2822c745c97d5b0869c6ca2fb9",
+  "shadowMode": false
+}

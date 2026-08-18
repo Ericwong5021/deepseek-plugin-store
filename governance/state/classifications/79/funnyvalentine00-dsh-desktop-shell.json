@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "automation",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "基于仓库与清单证据，插件的主要用途是为 DeepSeek Harness 的 `dsh web` 提供桌面外壳：启动时自动弹出 Electron 窗口，并带有托盘退出/恢复、单实例和窗口状态记忆；其功能定位是桌面化运行体验增强而非业务功能扩展。风险主要来自本地进程与界面生命周期控制能力（Electron 启停、托盘交互、与 `dsh web` 的挂接）以及本地服务启动路径依赖。",
+  "summaries": {
+    "zh": "dsh-desktop-shell 是一个用于 DeepSeek Harness 的桌面外壳插件，可在运行 `dsh web` 时自动打开 Electron 窗口并提供托盘与窗口管理能力，支持失败时回退到浏览器模式。",
+    "en": "dsh-desktop-shell is a desktop shell plugin for DeepSeek Harness that launches an Electron window when running `dsh web`, adds tray and window-management behavior, and can fall back to browser mode."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts and supervises an Electron process around `dsh web`",
+      "Provides system tray controls and window lifecycle actions",
+      "Applies single-instance and window state persistence for the desktop wrapper",
+      "Falls back to browser-mode execution when Electron startup/loading fails",
+      "Injects itself into the dsh web profile via bundle patching"
+    ],
+    "reasons": [
+      {
+        "code": "RISK_LOCAL_PROCESS_CONTROL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "RISK_UI_HOST_INJECTION",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "RISK_DISTRIBUTION_ENTRYPOINTS",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Starts and supervises an Electron process around `dsh web`",
+      "Provides system tray controls and window lifecycle actions",
+      "Applies single-instance and window state persistence for the desktop wrapper",
+      "Falls back to browser-mode execution when Electron startup/loading fails",
+      "Injects itself into the dsh web profile via bundle patching"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:41.730Z",
+  "repositoryCommitSha": "680c6663f00585f062019e1767050947f13625ea",
+  "evidenceHash": "d4a632a85b1eb93e3939b1afd65584c5e187566417cbd69ece541110fc956689",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "27ec1c6125d12db67672dae0a1d0b08b16b83ecd37346679997c0ce6bb0e1156",
+  "shadowMode": false
+}

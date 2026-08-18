@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向用户的核心用途是在 dsh WebUI 会话界面提供时间轴式导航面板：在消息列边缘为用户消息生成刻度并支持悬浮预览与跳转。依据仓库说明与文件清单可见其为 web 端客户端插件，主要能力集中在界面可视化与导航交互。",
+  "summaries": {
+    "zh": "该插件在 dsh 会话界面右侧显示按用户消息生成的时间轴刻度，支持悬停查看摘要，并可通过点击或上下导航快速跳转到对应消息。",
+    "en": "This plugin adds a timeline rail to the dsh conversation panel, showing markers for user messages with hover summaries and allowing click or up/down navigation to jump to messages."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders a timeline UI in the dsh web conversation pane",
+      "Attaches to DOM elements for message and container selection",
+      "Provides click/jump and incremental navigation controls",
+      "Syncs active marker state with scroll position"
+    ],
+    "reasons": [
+      {
+        "code": "README describes rendering a right-side vertical timeline for user messages with hover summary, click jump, ▲/▼ navigation, and current position highlighting.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares `dsh.client.platform: web` and bundle patch wiring for `cordis.patch.yml`, indicating browser-side plugin behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository structure includes `src/shell.js` for selector-based DOM interaction and scrollTop writes plus `build.js` producing browser client bundles.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Troubleshooting notes mention UI failure modes tied to selector drift (`data-conversation-scroll` etc.), confirming UI depends on DOM structure selectors.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Renders a timeline UI in the dsh web conversation pane",
+      "Attaches to DOM elements for message and container selection",
+      "Provides click/jump and incremental navigation controls",
+      "Syncs active marker state with scroll position"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:09.590Z",
+  "repositoryCommitSha": "88fd5aa69fce5d1177637784bc5ae49f59b14f70",
+  "evidenceHash": "47738d69f2f2994439ade07878be0d83df7466c6aa61605a38d743ddb82da33f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2dd187eb7a125e94d1f3b68208aa849e5e75b82c0e02cb521d1f079874b7c386",
+  "shadowMode": false
+}

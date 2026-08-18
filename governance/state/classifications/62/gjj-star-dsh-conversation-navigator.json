@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "layout",
+    "tool",
+    "data",
+    "context",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要面向用途是增强 DSH 会话界面可用性：在对话页右侧展示按轮次折叠的大纲面板，并提供跳转、加载历史、滚动高亮等导航能力；基于 README 与 manifest 信息可见其核心是客户端导航面板功能，而非代码生成、数据导出或外部服务集成。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 会话导航插件，在对话界面右侧提供可折叠的轮次大纲面板，支持点击跳转和滚动高亮当前阅读位置。",
+    "en": "This is a DSH web conversation plugin that provides a collapsible turn-by-turn outline panel in the sidebar, with click-to-jump navigation and automatic scroll-based highlighting of the active position."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a conversation navigation overlay in the DSH web UI.",
+      "Builds a turn/step outline from session conversation data for quick navigation.",
+      "Supports demand-based loading of older conversation history.",
+      "Provides smooth scroll-to-anchor and current-position highlighting behavior."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a right-side floating conversation outline panel with collapsible turns and steps, and allows clicking items to jump to corresponding positions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes registration of `conversation.session.header.utilities` and `shell.overlay` slots plus scroll-tracking via `[data-conversation-scroll]`, indicating host-page UI integration and event handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains use of `sessions` service `session.loadOlder()` and anchor selectors `[data-chat-anchor-key]` with `scrollIntoView` for message navigation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares `dsh.client.platform: web` with runtime/conversation injections, confirming scope as a DSH web client plugin and not a standalone external service.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects a conversation navigation overlay in the DSH web UI.",
+      "Builds a turn/step outline from session conversation data for quick navigation.",
+      "Supports demand-based loading of older conversation history.",
+      "Provides smooth scroll-to-anchor and current-position highlighting behavior."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:11.672Z",
+  "repositoryCommitSha": "77f8df205ce0d5383686fe5173bfdd9e2bff7b2a",
+  "evidenceHash": "bff8a1fa7d93361cfe41cb3177ce88f15216444a05572ad3b20298f236bc7e72",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4a821b6b65760e444aa9e9c0818d3b23584da36727c81505122eafc07ec64cef",
+  "shadowMode": false
+}

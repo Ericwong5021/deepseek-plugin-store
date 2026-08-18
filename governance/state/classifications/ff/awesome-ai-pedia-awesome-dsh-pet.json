@@ -1,16 +1,79 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "ui",
+    "desktop",
+    "image",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin’s primary purpose is to provide an interactive desktop-style visual companion inside the DSH web interface, with user-facing configuration for animated pets, interaction actions, and role switching. Based on README and package metadata, it is best classified as an interface/desktop experience plugin rather than an automation or data-processing tool.",
+  "summaries": {
+    "zh": "这是一个用于 DSH Web GUI 的可扩展桌面宠物插件，可在页面右下角显示动画角色并提供喂食、玩耍与切换角色等互动操作。",
+    "en": "This is an extensible desktop pet plugin for DSH Web GUI that displays animated characters on the page and supports actions such as feeding, playing, and switching pet characters."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders animated desktop-style pet avatars in the DSH Web GUI",
+      "Exposes in-app interactions such as feeding, playing, and switching pet characters",
+      "Supports user-defined pet characters via asset files and manifest configuration",
+      "Validates asset/manifest consistency through provided gate checks before use",
+      "Includes build and test scripts for client generation and basic verification"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as an in-GUI desktop pet extension that displays a character in the web page and offers pet interaction menu actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH web client bundle (`dsh.client.platform: web`), confirming browser-based runtime behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Documentation provides explicit process for adding custom pets with sprite sheets, manifest entries, and required animation states, indicating user-facing visual and customization capabilities.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository includes scripts for asset gates and tests, which increases operational predictability but implies plugin behavior depends on structured assets and state definitions.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Renders animated desktop-style pet avatars in the DSH Web GUI",
+      "Exposes in-app interactions such as feeding, playing, and switching pet characters",
+      "Supports user-defined pet characters via asset files and manifest configuration",
+      "Validates asset/manifest consistency through provided gate checks before use",
+      "Includes build and test scripts for client generation and basic verification"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:06.583Z",
   "repositoryCommitSha": "d8269e1df4f828228242b00c6d1187a8297aa01d",
+  "evidenceHash": "103461fdabb56fc28f94dc122efebc6229345cad8c51e0c0d5c00c50aad06484",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "5994722683c03101735fa2d5b15e130b428d1ed02004c31115f3b51d35132018",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:16.468Z",
-  "lastAttemptAt": "2026-08-18T16:02:16.468Z",
-  "nextRetryAt": "2026-08-18T22:02:16.468Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

@@ -4,7 +4,7 @@
     "fullName": "hg1048596-pixel/dsh-recall-unread",
     "url": "https://github.com/hg1048596-pixel/dsh-recall-unread"
   },
-  "summary": "DeepSeek Harness (DSH) 插件：在模型读取前撤回已发送的文字消息，支持单条与全部撤回。A DeepSeek Harness plugin that recalls sent-but-unread text messages before the model reads them — one-by-one or all at once.",
+  "summary": "This is a DeepSeek Harness chat utility plugin that shows unread steering messages above the input area and lets you recall one or all of them before the model reads them.",
   "sources": [
     "awesome-dsh-plugin"
   ],
@@ -44,30 +44,23 @@
   },
   "classificationSuggestion": {
     "group": "tools-data",
-    "category": "data-processing",
+    "category": "general-utilities",
     "tags": [
-      "agent",
       "chat",
-      "context",
-      "data",
-      "file",
-      "monitoring",
-      "terminal",
-      "tool",
-      "ui"
+      "ui",
+      "automation",
+      "api",
+      "tool"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:插件",
-      "text:memory-context:会话",
-      "text:search-browsing:网页",
-      "text:navigation-panels:启动器",
-      "text:files-terminal:目录",
-      "text:data-processing:json",
-      "text:general-utilities:工具",
-      "text:external-services:github"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:0902680cb8a8769ca9b7f60f3e2dae61d2f178ac98655a6c14633d7f0a6c6a8c",
+      "commit:220321f04c982aa59d4355472ccd1b92c6dcbf6c"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:11:13.443Z",
+    "reason": "The plugin’s primary purpose is user-facing chat message control in DSH: it surfaces unread steering messages while a model is running and lets users recall one or all pending messages before the model reads them. The evidence shows this is implemented through DSH conversation queue/removal behavior in the client UI and optional host-side inbox removal, so its impact is scoped to in-session message lifecycle management rather than broad system automation."
   }
 }

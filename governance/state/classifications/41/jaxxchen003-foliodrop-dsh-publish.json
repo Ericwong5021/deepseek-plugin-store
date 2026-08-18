@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "automation",
+    "browser",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is an external-service integration for DeepSeek Harness that connects a FolioDrop account and publishes agent-approved content as shareable FolioDrop URLs; evidence in the README shows OAuth-based connection, credential storage, content type conversion to HTML, and explicit publish confirmation, while package metadata shows it is a DeepSeek Harness plugin package.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中连接 FolioDrop，并将用户确认的内容发布为可分享的 FolioDrop 链接。",
+    "en": "This plugin connects DeepSeek Harness to FolioDrop and lets users publish approved content as shareable FolioDrop URLs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "OAuth-based connect flow to FolioDrop",
+      "stores and reuses a dedicated API key in Harness credentials",
+      "uploads/transforms content to publish as shareable URLs",
+      "uses fixed external host (foliodrop.app) for publishing",
+      "requires explicit user confirmation before publishing"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin defines publish/connect tools for publishing agent output as shareable links",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents OAuth/DCR/PKCE and API key credential handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states content types are converted and published via FolioDrop publish endpoint",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package is a DSH plugin module with publishing-related dependencies and bundle metadata",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes plugin entrypoints and source files",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "OAuth-based connect flow to FolioDrop",
+      "stores and reuses a dedicated API key in Harness credentials",
+      "uploads/transforms content to publish as shareable URLs",
+      "uses fixed external host (foliodrop.app) for publishing",
+      "requires explicit user confirmation before publishing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:54.529Z",
+  "repositoryCommitSha": "33b385812b2d57b8a1c54bd174362179902b46ed",
+  "evidenceHash": "7afe10959227f69aee207946471f202f02f153445f693613b11ec0c90e516cee",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "64aa3b1c4d483addbccf657967784b9069b98f432c47dbb5b26a9128eeaa7432",
+  "shadowMode": false
+}

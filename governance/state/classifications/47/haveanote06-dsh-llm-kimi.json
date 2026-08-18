@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "chat",
+    "tool",
+    "image",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件主要用于把 DeepSeek Harness 连接到外部的 Kimi/Moonshot LLM 服务：README 和仓库描述都指出其为 LLM 适配器，并提供三类路由（kimi-code/kimi-cn/kimi-global）与对应端点与配置，面向用户是接入与使用第三方模型能力而非本地开发、编辑或文档处理工具。",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的 Kimi 大模型适配器，在客户端提供 kimi-code、kimi-cn、kimi-global 三个路由接入 Kimi/Moonshot，并支持流式返回、推理参数、工具调用和图片输入。",
+    "en": "This plugin is a Kimi LLM adapter for DeepSeek Harness, adding kimi-code, kimi-cn, and kimi-global routes to use Kimi/Moonshot models with streaming responses, reasoning options, tool calling, and image input support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Call remote Kimi/Moonshot chat-completion endpoints",
+      "Handle API key configuration through environment variables or credential storage",
+      "Support streaming responses, tool-calling, and image-augmented requests"
+    ],
+    "reasons": [
+      {
+        "code": "README states this is a Kimi (Moonshot) LLM adapter plugin with three routes (kimi-code/kimi-cn/kimi-global) and lists corresponding API endpoints and keys.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes external service interactions including streaming, thinking mode, function calling, and image input support for Kimi routes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository package metadata brands the package as a DeepSeek Harness LLM adapter and includes dsh client web-platform injection for settings UI integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository README documents credential configuration and hot-reload behavior, confirming runtime dependency on user-provided API keys.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Call remote Kimi/Moonshot chat-completion endpoints",
+      "Handle API key configuration through environment variables or credential storage",
+      "Support streaming responses, tool-calling, and image-augmented requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:58.180Z",
+  "repositoryCommitSha": "1271fd073cf52245244ec4ea5c0b6d3c91dcc3c7",
+  "evidenceHash": "a9a9a0c8ac6b80591c37e4a2c6371f73bbceeb06e2cde1109c7f7e24896f72fc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bf89eac9d42b883a7c00fde832438f8207d8da9872f88f596468e9773076fa01",
+  "shadowMode": false
+}

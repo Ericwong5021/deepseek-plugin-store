@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "chat",
+    "tool",
+    "data",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a UI navigation enhancement for a web chat session, adding a dedicated message rail to help users move through long conversation history. Evidence shows it renders a session-side panel with hover previews, tracks viewport position, and jumps to user-message anchors, so the best fit is navigation-panels with supporting UI/data handling rather than automation, integration, or code-generation functionality.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 对话界面中提供左侧消息轨道导航，可快速查看历史用户消息并支持悬停预览与点击跳转。",
+    "en": "This plugin adds a left-side message rail in the DeepSeek Harness chat view to navigate long conversation history with hover previews and one-click jumps to past user messages."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a custom web UI rail component into the conversation page of DeepSeek Harness",
+      "Loads and indexes session messages (user messages) for in-plugin navigation",
+      "Provides hover previews and click-to-scroll navigation to message anchors",
+      "Uses virtualized rendering for rail markers to limit DOM pressure",
+      "Automatically loads older conversation pages to build a fuller index when needed"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a left-side Codex-style message rail for DeepSeek Harness Web with hover preview and click jump behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH web client plugin with bundle patch injection and no server-side modules or external services.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README lists use of session.loadOlder/hasMore/loadingOlder to page through history and index past user messages for the rail.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects a custom web UI rail component into the conversation page of DeepSeek Harness",
+      "Loads and indexes session messages (user messages) for in-plugin navigation",
+      "Provides hover previews and click-to-scroll navigation to message anchors",
+      "Uses virtualized rendering for rail markers to limit DOM pressure",
+      "Automatically loads older conversation pages to build a fuller index when needed"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:36.222Z",
+  "repositoryCommitSha": "2efb1ded515d5f2a490c2057790d4eb1655b6f8c",
+  "evidenceHash": "063247fbf0a73d0bda03f3ed6de735b61682512aa7ecbcf923cda838689f4e15",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "778b4fac37a3003e651530a601868ae2d8b6c93e3e9c0e89299dcf5373229c66",
+  "shadowMode": false
+}

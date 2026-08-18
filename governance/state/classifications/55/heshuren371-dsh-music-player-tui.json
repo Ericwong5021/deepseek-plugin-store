@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "file",
+    "terminal",
+    "ui",
+    "tool",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用户需求是为 dsh-tui 提供本地音乐播放体验：它通过 `/music` 命令进入专用场景或直接子命令控制，扫描本地音频目录并展示/筛选/排序曲目列表，调用本机播放器进程进行播放与控制。其能力还包含循环模式、进度和音量管理以及本地状态持久化；同时提供可选的本地文件删除功能，因此归类为媒体工具类终端插件。",
+  "summaries": {
+    "zh": "该插件在 dsh-tui 中提供 `/music` 全屏音乐场景与指令控制，可扫描本地音频目录并用本机播放器进行播放、切换和音量/进度操作。",
+    "en": "This plugin adds `/music` full-screen scene and command-based controls in dsh-tui to scan local audio folders and play or control tracks through local media players."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "扫描本地目录中的音频文件并解析元数据",
+      "提供终端全屏音乐场景与 `/music` 子命令进行播放控制",
+      "支持本机播放器后端（mpv/ffplay/afplay）进行播放、暂停、音量与快进快退",
+      "支持列表搜索/排序/循环模式与状态持久化",
+      "支持按确认流程删除本地匹配曲目文件"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明插件通过 `/music` 打开全屏场景，在终端内管理曲目并进行播放控制（播放/暂停/上一首/下一首/音量/快进快退等）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与目录结构表明存在扫描与标签解析模块 `lib/scanner.js`、播放引擎 `lib/player.js`、场景 `lib/scene.js` 与状态文件 `lib/state.json`。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README 明确写明支持删除曲目（场景内 `x` 确认或 `/music delete <关键词>`）及支持外部播放器进程回退链路（mpv/ffplay/afplay）。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "扫描本地目录中的音频文件并解析元数据",
+      "提供终端全屏音乐场景与 `/music` 子命令进行播放控制",
+      "支持本机播放器后端（mpv/ffplay/afplay）进行播放、暂停、音量与快进快退",
+      "支持列表搜索/排序/循环模式与状态持久化",
+      "支持按确认流程删除本地匹配曲目文件"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:11.053Z",
+  "repositoryCommitSha": "0d782848a72009e5c9d0518a808e07802cbf2dfb",
+  "evidenceHash": "d485d410d80f2cff19ce57ae1e051df774e120589921084b453303971bbadc9e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35b8555a3916922d39e5dd86224f680cc14b0d00d97a3c4558a72ef45f989f46",
+  "shadowMode": false
+}

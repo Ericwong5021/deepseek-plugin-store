@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "api",
+    "automation",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily an event-notification integration for dsh-TUI, sending long-turn completion and approval-request alerts to IM webhook platforms (Feishu/DingTalk/WeCom/generic) and providing `/webhook` commands for status/test and `/settings`-based configuration, indicating a communications/notifications use case rather than code-editing or analytics features.",
+  "summaries": {
+    "zh": "该插件用于在 dsh-TUI 中将长轮次完成和审批请求事件推送到飞书、钉钉、企业微信或通用 webhook，并通过 `/webhook` 与 `/settings` 进行状态查看和配置。",
+    "en": "This plugin sends dsh-TUI long-turn completion and approval events to Feishu, DingTalk, WeCom, or generic webhooks, with `/webhook` status/test and `/settings` configuration support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads webhook URL and optional signing secret from local dsh settings",
+      "Sends outbound HTTP POST notifications to configured webhook endpoints",
+      "Exposes commands to show webhook status and send a test notification"
+    ],
+    "reasons": [
+      {
+        "code": "WEBHOOK_EVENT_PUSHING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_SECRET_CONFIGURATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLUGIN_DISTRIBUTION_METADATA",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads webhook URL and optional signing secret from local dsh settings",
+      "Sends outbound HTTP POST notifications to configured webhook endpoints",
+      "Exposes commands to show webhook status and send a test notification"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:52.604Z",
+  "repositoryCommitSha": "ca87b6a177de52ae1e96a39040a702a4d7fde686",
+  "evidenceHash": "f61877aeda5941b69a1682d11310f0f9ed1ce6b22633fa9e7876ceda1a5ebf2f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "685b4835ade93c141a97834ac47213fae21fa683f4a67bbfb45e3ed8bb1c1ae6",
+  "shadowMode": false
+}

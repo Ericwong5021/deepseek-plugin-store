@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "layout",
+    "browser",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a chat interface layout optimization: it is a DSH web plugin that injects CSS to the chat conversation list to enable native `content-visibility:auto` behavior on message nodes, reducing rendering work for off-screen items. The plugin’s stated goal and implementation are focused on UI performance in long conversations rather than analytics, data processing, integrations, or automation.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的聊天列表优化插件，通过给会话消息节点注入 `content-visibility: auto` 样式，降低长会话滚动中的离屏渲染开销。",
+    "en": "This is a DeepSeek Harness chat list optimization plugin that injects styles for conversation message nodes using `content-visibility: auto` to reduce off-screen rendering work during long-chat scrolling."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects client-side CSS for DeepSeek Harness web conversations",
+      "Applies `content-visibility: auto` to chat message nodes to reduce off-screen render/layout/paint work",
+      "Uses `contain-intrinsic-size` for scroll/anchor stability with skipped rendering",
+      "Targets only the chat list rendering path without changing message data logic"
+    ],
+    "reasons": [
+      {
+        "code": "Repository description and README state the plugin is a DSH chat performance plugin enabling browser-native content-visibility:auto for chat list nodes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README provides the exact injected selector and CSS declarations, including `[data-chat-flow] > [data-chat-anchor-key] { content-visibility: auto; contain-intrinsic-size: auto 320px; }`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH web client plugin with a client patch and web platform injection target.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects client-side CSS for DeepSeek Harness web conversations",
+      "Applies `content-visibility: auto` to chat message nodes to reduce off-screen render/layout/paint work",
+      "Uses `contain-intrinsic-size` for scroll/anchor stability with skipped rendering",
+      "Targets only the chat list rendering path without changing message data logic"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:14.323Z",
+  "repositoryCommitSha": "2e1aabf44358deca7312103d1b1c3e7c62bbfe30",
+  "evidenceHash": "593cbf7fcfdf66f02d1e4f5b2aa7f54488acf88d2f134fddc4c62f5c8079e625",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f88778530d65bc3e01a3d532d7f4f641784eeded5eee379b3dc278dd7f654aaf",
+  "shadowMode": false
+}

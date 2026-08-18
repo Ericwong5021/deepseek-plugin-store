@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "tool",
+    "file",
+    "desktop",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是为 DSH 提供本地编辑器集成：通过 open_in_vscode 打开工作区文件/文件夹、跳转到指定行列，并支持两个文件的差异视图查看。证据来自 README 与 package 元信息，且该行为集中于本地文件打开与编辑器启动，而非远程服务、搜索或数据处理。",
+  "summaries": {
+    "zh": "该插件为 DSH 提供 open_in_vscode 工具，可从会话中打开文件或文件夹、定位到指定行列，并可用于两个文件的差异比较。",
+    "en": "This plugin provides an open_in_vscode tool for DSH to open workspace files or folders in Visual Studio Code, jump to a target line and column, and open local file diffs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Open local files and folders from a workspace in Visual Studio Code",
+      "Jump to a specific line and column when opening a file",
+      "Open a diff view for two local files",
+      "Optionally wait for the editor window to close before returning",
+      "Auto-detect or configure the local Code.exe executable path",
+      "Execute a local editor process via direct spawn behavior"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a DSH host plugin that registers open_in_vscode and lists file/folder open, line/column jump, diff view, and wait behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package description and metadata state the plugin directly spawns Code.exe to open local VS Code instances to avoid sandboxed shell blocking.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository layout includes dsh plugin manifest and build/package configuration, indicating intended runtime integration with DSH tool execution.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Open local files and folders from a workspace in Visual Studio Code",
+      "Jump to a specific line and column when opening a file",
+      "Open a diff view for two local files",
+      "Optionally wait for the editor window to close before returning",
+      "Auto-detect or configure the local Code.exe executable path",
+      "Execute a local editor process via direct spawn behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:30.732Z",
+  "repositoryCommitSha": "f587a7a1482b028acf85e22c003fbfa09f9a2f0f",
+  "evidenceHash": "2d30b458fec7454c69e66b83f6efda2a32f8e70e462651bbf67a711c4453f378",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a45471a5ac0913d971697fdb778928b267f796d1b39153fb1b130dee3ee9f682",
+  "shadowMode": false
+}

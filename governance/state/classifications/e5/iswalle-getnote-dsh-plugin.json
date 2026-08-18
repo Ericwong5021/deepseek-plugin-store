@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "knowledge",
+    "search",
+    "tool",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用户用途是将“得到大脑”知识库能力接入 DeepSeek Harness，通过 DSH 可直接进行笔记语义搜索、保存（文本/链接/图片）、查看最近笔记、按 ID 打开笔记及列出知识库，属于外部服务与知识工作流整合型插件。该判断基于 README 的能力列表与 package.json/文件结构中明确的 DSH 插件打包信息。",
+  "summaries": {
+    "zh": "该插件将得到大脑（Getnote）接入 DeepSeek Harness，让你可直接用自然语言在 DSH 中搜索、保存并阅读笔记。",
+    "en": "This plugin integrates Getnote with DeepSeek Harness, letting you use natural language in DSH to search, save, and read notes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read"
+    ],
+    "reasons": [
+      {
+        "code": "插件文档显示其核心能力为连接得到大脑 OpenAPI，执行笔记搜索、保存与读取等操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "登录与授权流程依赖本地 getnote CLI/浏览器授权并复用会话状态，表明插件运行依赖凭据上下文。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库配置包含 DSH 插件 bundle 与 skills/patch 文件，表明功能以 DSH 工具方式注入。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:43.224Z",
+  "repositoryCommitSha": "c94c554b96e5b62116001d8d7e8dae856c9b8afb",
+  "evidenceHash": "1ee6c70ab3437ec28e7274acd8e0be85455093db9b1740b4eba71972062ef899",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2ee4622f3cffcc5fd2c892d7af96e51ce905bf575d460be54c26d4c340f43871",
+  "shadowMode": false
+}

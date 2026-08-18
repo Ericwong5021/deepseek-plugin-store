@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "chat",
+    "file",
+    "document",
+    "data",
+    "ui",
+    "image",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心面向是聊天场景中的附件处理与展示：结合前端卡片化UI与后端解析服务，支持上传/拖拽文档或图片、显示文件卡片，并将提取文本回传到对话内容；依据仓库说明其范围集中在文件接入与文档文本处理（含扫描PDF OCR）而非代码生成、搜索或项目分析类功能。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的聊天界面提供附件能力，支持上传或拖拽文档与图片并以文件卡片方式展示，同时在解析成功时将内容作为文本注入消息上下文。",
+    "en": "This plugin adds attachment support to the DeepSeek Harness chat UI, allowing users to upload or drag and drop files and images and display them as file cards, while passing extracted text into the message context when available."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "支持在聊天界面上传与展示附件",
+      "在服务端接收并解析PDF/DOCX/XLSX/TXT等文档",
+      "提供扫描版PDF OCR文字识别流程",
+      "将提取结果注入消息上下文用于后续对话",
+      "提供附件删除与会话内文件存储管理"
+    ],
+    "reasons": [
+      {
+        "code": "chat附件上传和卡片化展示功能在README中有完整说明",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README声明支持PDF/DOCX/XLSX/TXT解析并可调用外部OCR服务",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "通过dsh bundle与web客户端/服务端脚本打包方式集成",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "依赖项包含pdfjs-dist、mammoth、xlsx，表明文件内容解析能力",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "支持在聊天界面上传与展示附件",
+      "在服务端接收并解析PDF/DOCX/XLSX/TXT等文档",
+      "提供扫描版PDF OCR文字识别流程",
+      "将提取结果注入消息上下文用于后续对话",
+      "提供附件删除与会话内文件存储管理"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:17.363Z",
+  "repositoryCommitSha": "fe4b1256dd3f7fa6673b977d7157f27f4c2b4485",
+  "evidenceHash": "4eba0b99c66a13b9f0ad9a744ab4c27f1d060cd3769201a83c76c0a7e202ffc7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0c536723feb6d0d8d8dd285f85eebb8870d5e6209b165e3d985539f1b71ed906",
+  "shadowMode": false
+}

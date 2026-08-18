@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "mobile",
+    "layout",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is a user-facing DeepSeek Harness web UI enhancement that adjusts sidebar navigation behavior for narrow screens by turning it into a drawer overlay with controls and gestures, while keeping deployment tab titles distinguishable; evidence is primarily from README usage and configuration details plus web client manifest fields in package.json.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 客户端插件，在窄屏场景下将侧边栏改为抽屉式覆盖层，并提供汉堡菜单与滑动手势控制。",
+    "en": "This is a DeepSeek Harness web client plugin that turns the sidebar into an overlay drawer on narrow screens with a hamburger control and swipe-based open/close behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a narrow-viewport sidebar overlay drawer in the DeepSeek Harness web UI",
+      "Provides hamburger + scrim + swipe-based open/close interactions for sidebar navigation",
+      "Can modify browser tab title to include deployment hostname",
+      "Runs as a configurable web client plugin via DSH plugin client injection"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a narrow-viewport shell that adds a drawer sidebar with hamburger, scrim, direction-aware swipe behavior, and configurable width/title settings for the web UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README says the plugin hooks via shell.overlay and drives `ctx.layout.toggleSidebar()`, indicating direct control of navigation panel behavior and layout state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares `dsh.client.platform` as `web` with client exports/manifest wiring, confirming operation in the browser client context.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README notes that swipe is currently attached to the document and a horizontal drag in a scroll area can still move the drawer, indicating a potential interaction risk for some workflows.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds a narrow-viewport sidebar overlay drawer in the DeepSeek Harness web UI",
+      "Provides hamburger + scrim + swipe-based open/close interactions for sidebar navigation",
+      "Can modify browser tab title to include deployment hostname",
+      "Runs as a configurable web client plugin via DSH plugin client injection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:18.574Z",
+  "repositoryCommitSha": "a03ada8eceadedfab22b34ad5da6e05c07183d43",
+  "evidenceHash": "5cd99b888bc0433b3024aa3dff6b5fa1b27b02dab6f705244cc1f416786d11bb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ae2a51eb59df64c1d98cf17679903ecde0e2fb23711c62c6b494bcb8eb13ef5c",
+  "shadowMode": false
+}

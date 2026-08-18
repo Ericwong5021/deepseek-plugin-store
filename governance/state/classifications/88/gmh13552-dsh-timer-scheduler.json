@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "tool",
+    "workflow",
+    "ui",
+    "file",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily an automation utility for DSH agents: it enables scheduled reminders via exposed tools, can wake an active session automatically at due time, and displays a web UI countdown panel, with local persistence of reminder state, as documented in the repository README and plugin manifest.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 智能体的插件，用于安排、查看和取消定时提醒，并在时间到达时触发后续执行，同时在网页右下角显示待处理提醒。",
+    "en": "This is a DeepSeek Harness plugin for agents to schedule, list, and cancel timed reminders, with automatic follow-up behavior at due time and a bottom-right web UI showing pending reminders."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Schedules one-shot reminders with relative delays or absolute times through DSH tools",
+      "Automatically triggers follow-up agent activity when a reminder fires",
+      "Lists and cancels pending reminders",
+      "Persists reminder state to local disk and restores on restart",
+      "Shows a web UI panel with pending reminders and countdowns",
+      "Exposes an API endpoint to fetch reminder data for the client panel"
+    ],
+    "reasons": [
+      {
+        "code": "README describes model tools schedule_reminder, list_reminders, and cancel_reminder for creating and managing reminders.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states reminders are serialized to $DSH_HOME/timer-reminders.json for persistence and re-arming after restart.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains timer fire behavior uses agent.followup() to wake the owning active session and continue work.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH host/client plugin package with a web client injection and bundle patch entry for web profile integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Schedules one-shot reminders with relative delays or absolute times through DSH tools",
+      "Automatically triggers follow-up agent activity when a reminder fires",
+      "Lists and cancels pending reminders",
+      "Persists reminder state to local disk and restores on restart",
+      "Shows a web UI panel with pending reminders and countdowns",
+      "Exposes an API endpoint to fetch reminder data for the client panel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:15.861Z",
+  "repositoryCommitSha": "5b9c563832ac4fabf136acfb503bde0e442dd2cf",
+  "evidenceHash": "00db3b69c82e59c8b91856483a7142b6b744f53f2ac1dcb6c44589cd063db51e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e2cc2a7eb0a740bd151ddc8f32ddb0980903b9e3c6072bf7f3044ed5b018fdcc",
+  "shadowMode": false
+}

@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "image",
+    "data",
+    "tool",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a user-facing attachment extension for DeepSeek Harness Web, designed to expand supported composer attachments and process files into text/image content within the chat flow. Based on the README and package metadata, its main function is document processing (format conversion, OCR, and spill/index-card workflows), with moderate risk from file handling and optional external OCR/doc-parser integrations.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，面向用户增强聊天界面附件能力，支持更多文档与图片格式并将其内容按文档卡片方式引入输入流程。",
+    "en": "This is a DeepSeek Harness web plugin that enhances chat attachment handling by accepting additional document and image formats and injecting processed content into the composer flow as document-style attachment handling."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Parsing and converting multiple attachment formats before composing messages",
+      "Drag-and-drop/paste-based attachment ingestion in the web UI",
+      "Text extraction and OCR processing for scanned PDFs",
+      "Long-attachment overflow handling via workspace spill files and index-card workflow",
+      "Optional integration with external OCR/document parsing services"
+    ],
+    "reasons": [
+      {
+        "code": "README lists support for PDF, Office (docx/xlsx/pptx), text, EPUB/ODT/RTF, TIFF, images, plus long-document index-card handling and merge-on-send behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents optional OCR/external integration paths (Baidu OCR env vars, OpenAI-compatible VLM endpoint, external doc-server convert contract), indicating network service usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest exposes plugin host/client entrypoints (lib/index.js and lib/client.js via exports) and declares DSH web client injection settings for runtime integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes conversion modules for pdf/docx/xlsx/pptx/ocr/image formats and cache/index handling modules, matching the described attachment-processing feature set.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Parsing and converting multiple attachment formats before composing messages",
+      "Drag-and-drop/paste-based attachment ingestion in the web UI",
+      "Text extraction and OCR processing for scanned PDFs",
+      "Long-attachment overflow handling via workspace spill files and index-card workflow",
+      "Optional integration with external OCR/document parsing services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:02.136Z",
+  "repositoryCommitSha": "ebaa8d3729f3057425bb80d91de8d06cd583ef9f",
+  "evidenceHash": "8d8f2455cf9c44e87cd8bd7d26a6511195864ee8dde6520718ae2d48b1e49e32",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b41a77331c130e59c81c1b62edb588865053b074ba125550dea40caa82a8c5eb",
+  "shadowMode": false
+}

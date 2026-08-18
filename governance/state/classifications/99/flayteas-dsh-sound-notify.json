@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "ui",
+    "theme",
+    "chat",
+    "agent",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a user-facing notification and experience customization tool: it plays sounds on specific DSH agent interaction events and provides chat/theme appearance controls, while also supporting local media uploads for those custom sounds and background assets.",
+  "summaries": {
+    "zh": "该插件为 DSH Web 提供可配置的事件提示音（提问、审批、任务完成）与聊天界面个性化能力，可设置聊天/侧边栏背景、遮罩和音效参数。",
+    "en": "This DSH web plugin adds configurable event-based notification sounds for interactions and lets users customize chat visuals with background color/image and overlay settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Configurable sound notifications for chat/agent event triggers",
+      "Custom visual theming of chat and sidebar via background colors, images, and overlays",
+      "Local upload and serving of plugin assets (audio/image) through web endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "README describes per-event notification sounds for question/approval/task-completion with configurable effect, volume, repeat count, interval, and mute options.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details UI personalization settings for background color/image, global and sidebar masks, and reset-to-default behavior in the web panel.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a host service endpoint for uploads and file serving (`/plugins/sound-notify/upload`, `/plugins/sound-notify/files/*`) storing files under `$DSH_HOME/sound-notify/`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web plugin client and host entry with settings/webServer usage, indicating runtime behavior spans both backend and browser layers.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Configurable sound notifications for chat/agent event triggers",
+      "Custom visual theming of chat and sidebar via background colors, images, and overlays",
+      "Local upload and serving of plugin assets (audio/image) through web endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:28.395Z",
+  "repositoryCommitSha": "b3d904e8a60dab20061648913a95d34fb26dac58",
+  "evidenceHash": "c482a7780643757e59808aca61934f3e2c0211af2fc8aa7dc324d69f1ff9cf68",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eb4220cf4ae6353d7ecd1c74fde633b933ab738ac5ed927033f6892695b6f940",
+  "shadowMode": false
+}

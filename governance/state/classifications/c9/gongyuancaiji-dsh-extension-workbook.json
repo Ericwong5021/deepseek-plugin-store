@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "data",
+    "file",
+    "image",
+    "tool",
+    "automation",
+    "workflow",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "The repository’s README and package metadata consistently describe a single-purpose spreadsheet-processing plugin for DeepSeek Harness: inspect, render, diff, and edit Excel workbooks with controlled write/validation steps. With no declared external API integrations or communication features, the primary user-facing use case is document/workbook processing rather than orchestration, search, collaboration, or monitoring.",
+  "summaries": {
+    "zh": "该插件面向 DeepSeek Harness，提供 `.xlsx`/`.xlsm` 工作簿的检视、渲染为图片、对比与编辑能力，并在编辑流程中提供校验与确认步骤。",
+    "en": "This plugin for DeepSeek Harness provides workbook inspection, image rendering, diffing, and editing for `.xlsx`/`.xlsm` files, with an editing flow that includes validation and confirmation steps."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read and inspect `.xlsx`/`.xlsm` workbook files",
+      "Render workbook sheets or ranges to PNG output",
+      "Edit selected workbook content with planned workflow controls",
+      "Compare/diff two workbooks and review workbook structure/content differences",
+      "Validate workbook outputs after write operations"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as providing workbook inspect/render/edit/diff/validate workflows for `.xlsx` and `.xlsm` files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The edit flow is explicitly documented as dry-run plus `expectedSha256` conflict checks and post-commit validation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It exposes workbook tools and a diagnostic command through a dsh plugin package manifest.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The package is a local Node plugin (`main: dist/index.js`, `dsh.bundle` metadata, build/test scripts), indicating execution context tied to file-processing in the host environment.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Read and inspect `.xlsx`/`.xlsm` workbook files",
+      "Render workbook sheets or ranges to PNG output",
+      "Edit selected workbook content with planned workflow controls",
+      "Compare/diff two workbooks and review workbook structure/content differences",
+      "Validate workbook outputs after write operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:20.270Z",
+  "repositoryCommitSha": "c3f434d06c98cf5e2f183321c70d61d4c723002e",
+  "evidenceHash": "ff41fb433a1155b5ba38b4e6749dcf3a10e5f182e8f7c07871ac2d0a129c862f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4952d70748b7127829854ff101c18a1bf5d5f61f9704c4415e2a3cd6089e0b7d",
+  "shadowMode": false
+}

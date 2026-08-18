@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "ui",
+    "api",
+    "file",
+    "planning",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is a DeepSeek Harness web plugin centered on deferred task automation: it intercepts work tasks for queueing, manages peak/off-peak execution windows, and provides a user-facing floating control panel to view and manage queued items. This matches automation rather than code generation or search/knowledge tooling, with optional UI controls for scheduling and task handling.",
+  "summaries": {
+    "zh": "错峰任务面板用于将非即时任务自动入队并在可配置低峰时段执行，配合右上角可拖拽悬浮面板展示队列与高峰状态并支持排队任务管理。",
+    "en": "The plugin manages non-urgent tasks by queueing them automatically and executing them during configurable off-peak windows, with a draggable web panel for queue status and controls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Task queueing and deferred execution scheduling",
+      "Periodic off-peak dispatcher for automatic task execution",
+      "Queue state management through plugin tools",
+      "Persistent queue/config storage in workspace files",
+      "Web UI for queue inspection and control"
+    ],
+    "reasons": [
+      {
+        "code": "Documents a global queue tool set (`offpeak_queue_task`, `offpeak_queue_status`) to store and inspect queued tasks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Describes an interval-based scheduler that dispatches waiting tasks during configurable off-peak time windows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Specifies workspace persistence files `.offpeak-queue.json` and `.offpeak-config.json` for queue/state and settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "States a draggable floating panel with queue list, sort/delete actions, and peak/off-peak controls is provided to users.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest indicates a web client bundle plus host-side `/offpeak/api/*` JSON routes for plugin UI interaction.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Task queueing and deferred execution scheduling",
+      "Periodic off-peak dispatcher for automatic task execution",
+      "Queue state management through plugin tools",
+      "Persistent queue/config storage in workspace files",
+      "Web UI for queue inspection and control"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:14.483Z",
+  "repositoryCommitSha": "4010bc4dbbf1e63e389b53a74ae4b459b63ea6e9",
+  "evidenceHash": "aea30cc08f0494d7701463df1b6130ba394320d692e17decfb3081094af700fe",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4109d2884424ef88d0f96ef3b3929dde64260e90cb58503d89a645533894ffb7",
+  "shadowMode": false
+}

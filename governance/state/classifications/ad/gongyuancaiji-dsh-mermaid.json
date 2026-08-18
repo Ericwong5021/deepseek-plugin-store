@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "chat",
+    "ui",
+    "visualization",
+    "tool",
+    "automation",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心用户面向用途是会话中的图表可视化：把对话里的 Mermaid 代码围栏转为可查看的 SVG 图并给出解析反馈。证据来自 README 中的功能说明（自动渲染、支持类型、错误提示、手动命令、缓存与大小限制）以及 package.json 中的 web 客户端插件配置与 Mermaid 渲染依赖，故归类为可视化工具而非外部服务或系统控制类插件。",
+  "summaries": {
+    "zh": "该插件可在 DeepSeek Harness 的网页聊天中将 Mermaid 代码块自动渲染为 SVG 图表，并在语法问题时给出可见的提示。",
+    "en": "This plugin renders Mermaid blocks into SVG diagrams in DeepSeek Harness web chat, with visible feedback when Mermaid syntax cannot be validated."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "自动检测会话中的 mermaid 代码围栏并在界面中进行图形渲染",
+      "将 Mermaid 图表文本转换为 SVG 输出",
+      "基于 Mermaid parser 进行语法校验并展示警告/错误",
+      "支持在会话中手动触发对最新助手消息的 Mermaid 重渲染",
+      "限制超大代码块渲染范围以避免过度计算"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明：在 DeepSeek Harness 的 web client 中，当聊天出现 mermaid 围栏（用户或助手）时自动渲染为 SVG 图，并显示 parser 的 warning/error。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 配置了 dsh 插件并声明客户端平台为 web，同时依赖 mermaid 与 beautiful-mermaid，用于图表解析与渲染。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "自动检测会话中的 mermaid 代码围栏并在界面中进行图形渲染",
+      "将 Mermaid 图表文本转换为 SVG 输出",
+      "基于 Mermaid parser 进行语法校验并展示警告/错误",
+      "支持在会话中手动触发对最新助手消息的 Mermaid 重渲染",
+      "限制超大代码块渲染范围以避免过度计算"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:23.109Z",
+  "repositoryCommitSha": "5d3b89a37085639f6c14aa876ec1541956e89f0e",
+  "evidenceHash": "25498c522218494982aa297808da32da671bb0be18cfdbbfa86060b5117132c3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f2c808594c3a45b09125d5d82a04e763a1d272d10e3588ccaff1287befe9b1d2",
+  "shadowMode": false
+}
