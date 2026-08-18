@@ -143,10 +143,11 @@ for (const item of queue) {
 }
 
 if (!shadowMode) {
+  let candidateChanged = false
   for (const candidate of Object.values(candidateData.candidates)) {
     const entry = cache.classifications[candidate.id]
     if (entry?.status !== 'classified' || humanSources.has(candidate.classificationSuggestion?.source)) continue
-    candidate.classificationSuggestion = {
+    const classificationSuggestion = {
       group: entry.group,
       category: entry.category,
       tags: entry.tags,
@@ -157,11 +158,20 @@ if (!shadowMode) {
       classifiedAt: entry.classifiedAt,
       reason: entry.reason,
     }
-    if (entry.summaries?.en) candidate.summary = entry.summaries.en
+    if (JSON.stringify(candidate.classificationSuggestion) !== JSON.stringify(classificationSuggestion)) {
+      candidate.classificationSuggestion = classificationSuggestion
+      candidateChanged = true
+    }
+    if (entry.summaries?.en && candidate.summary !== entry.summaries.en) {
+      candidate.summary = entry.summaries.en
+      candidateChanged = true
+    }
   }
-  candidateData.updatedAt = new Date().toISOString()
-  candidateData.candidates = Object.fromEntries(Object.entries(candidateData.candidates).sort())
-  await syncStateCollection('candidates', originalCandidates, candidateData)
+  if (candidateChanged) {
+    candidateData.updatedAt = new Date().toISOString()
+    candidateData.candidates = Object.fromEntries(Object.entries(candidateData.candidates).sort())
+    await syncStateCollection('candidates', originalCandidates, candidateData)
+  }
 }
 
 if (changed) {
