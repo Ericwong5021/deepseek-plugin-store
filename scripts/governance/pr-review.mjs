@@ -7,6 +7,7 @@ import { LLMAdapter } from './llm.mjs'
 import { applyPolicy, loadPolicy } from './policy.mjs'
 import { runDeterministicChecks } from './rules.mjs'
 import { readJson } from '../registry-lib.mjs'
+import { formatGovernanceReview } from './stability.mjs'
 
 const event = JSON.parse(await fs.readFile(process.env.GITHUB_EVENT_PATH, 'utf8'))
 const pullRequest = event.pull_request
@@ -73,5 +74,5 @@ try {
 }
 
 await fs.writeFile(resultPath, JSON.stringify(decisionRecord, null, 2) + '\n')
-await fs.writeFile(reviewPath, `Governance review: **${decisionRecord.final.finalDecision}** · Risk: **${decisionRecord.final.riskLevel}**\n\n${decisionRecord.final.reasons.map((reason) => `- ${reason}`).join('\n') || '- Policy checks passed'}\n\nDecision record: \`${decisionRecord.decisionId}\`\n`)
+await fs.writeFile(reviewPath, formatGovernanceReview(decisionRecord))
 if (outputPath) await fs.appendFile(outputPath, `decision=${decisionRecord.final.finalDecision}\nrisk=${decisionRecord.final.riskLevel}\nauto_merge=${decisionRecord.final.autoMerge ? 'true' : 'false'}\nreview_file=${reviewPath}\nrecord_file=${resultPath}\n`)
