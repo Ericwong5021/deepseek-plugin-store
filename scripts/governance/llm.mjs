@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import { validateAiDecision } from './rules.mjs'
 
-const retryableFormats = new Set([400, 404, 405, 415, 422])
+const retryableFormats = new Set([400, 404, 405, 415, 422, 500, 501, 502, 503, 504])
 
 const extractText = (response) => response.output_text
   || response.output?.flatMap((item) => item.content || []).find((item) => item.type === 'output_text')?.text
