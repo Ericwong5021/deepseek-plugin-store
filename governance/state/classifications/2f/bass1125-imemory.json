@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "tool",
+    "file",
+    "ui",
+    "workflow",
+    "knowledge"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Primary purpose: long-term memory/context persistence for a DSH agent workflow. The plugin automates memory capture, relevance retrieval, and contextual recall, and adds workflow-aware tools plus a management panel. Secondary features include memory consolidation/decay, learned-* skill persistence, and local file-based storage; risk is moderate due to automatic local context/memory manipulation.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persistent local memory files for notes/profiles (MEMORY.md, USER.md)",
+      "Per-turn recall/injection of relevant memory into LLM context",
+      "Post-turn automatic memory extraction with scoring and filtering",
+      "Scheduled consolidation: dedupe/conflict merging and decay/retention handling",
+      "Provides memory management tools (memory_search, memory_add, memory_update, memory_forget, memory_sessions, memory_consolidate)",
+      "Can persist learned workflows as learned-* skills",
+      "Optional web management panel at /imemory/ for viewing/editing memory entries",
+      "Configurable local storage directory for memory data"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is explicitly described as a DSH long-term memory plugin that auto-extracts notes after each round and injects relevant memories before each step.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It stores user and agent memory in local plaintext files (MEMORY.md, USER.md) plus index/skill files under memDir, with configurable path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Six dedicated tools are exposed for memory operations: memory_search, memory_add, memory_update, memory_forget, memory_sessions, memory_consolidate.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "A web management interface is listed at /imemory/ for browsing, scoring, deleting, and conflict cleanup.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Persistent local memory files for notes/profiles (MEMORY.md, USER.md)",
+      "Per-turn recall/injection of relevant memory into LLM context",
+      "Post-turn automatic memory extraction with scoring and filtering",
+      "Scheduled consolidation: dedupe/conflict merging and decay/retention handling",
+      "Provides memory management tools (memory_search, memory_add, memory_update, memory_forget, memory_sessions, memory_consolidate)",
+      "Can persist learned workflows as learned-* skills",
+      "Optional web management panel at /imemory/ for viewing/editing memory entries",
+      "Configurable local storage directory for memory data"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:02:56.372Z",
+  "repositoryCommitSha": "b178718c0bddf9b54dfb49dcb6131e2914cd81b7",
+  "evidenceHash": "e91cd72c53090175ab1c53687d62a1493b53e3aa585fdbc93f9aa2f55cd4e924",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b9bedd06934c78f08f410edef3459ce7fbec21090b757b9bbfe31a00d9296a5f",
+  "shadowMode": true
+}
