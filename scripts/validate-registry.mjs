@@ -13,6 +13,7 @@ const unique = (label, values) => {
 }
 
 export const validateRegistry = async () => {
+  const sourceOnly = process.env.REGISTRY_SOURCE_ONLY === '1'
   const taxonomy = await readJson('registry/taxonomy.json')
   const collection = await readJson('registry/collections/editor-picks.json')
   const observations = await readJson('data/observations.json')
@@ -59,14 +60,15 @@ export const validateRegistry = async () => {
     if (!taxonomy.policies.lifecycleStatuses.includes(record.lifecycle?.status)) throw new Error(`invalid lifecycle status: ${record.id}`)
     if (!taxonomy.policies.visibilityStatuses.includes(record.visibility)) throw new Error(`invalid visibility: ${record.id}`)
     if (record.visibility === 'listed' && !['legacy-pending', 'verified'].includes(record.admission.status)) throw new Error(`listed plugin has invalid admission status: ${record.id}`)
-    if (record.admission.status === 'verified' && observations.repositories[record.id]?.compatibility?.manifestFound !== true) throw new Error(`verified plugin lacks manifest evidence: ${record.id}`)
+    if (record.source?.verifiedCommitSha && !/^[a-f0-9]{40}$/.test(record.source.verifiedCommitSha)) throw new Error(`invalid verified commit: ${record.id}`)
+    if (record.admission.status === 'verified' && observations.repositories[record.id]?.compatibility?.manifestFound !== true && !record.source?.verifiedCommitSha) throw new Error(`verified plugin lacks manifest evidence: ${record.id}`)
     if (!/^\d{4}-\d{2}-\d{2}$/.test(record.addedAt) || !Array.isArray(record.maintainers) || !record.maintainers.length) throw new Error(`invalid registry metadata: ${record.id}`)
     categoryCounts.set(record.classification.category, (categoryCounts.get(record.classification.category) || 0) + Number(record.visibility === 'listed'))
   }
   for (const [category, count] of categoryCounts) {
     if (categories.get(category).visibility === 'public' && count > 0 && count < taxonomy.policies.minimumListedPluginsForPublicCategory) throw new Error(`public category has fewer than 3 listed plugins: ${category}`)
   }
-  for (const record of listed) if (!observations.repositories[record.id]) throw new Error(`listed plugin lacks observations: ${record.id}`)
+  if (!sourceOnly) for (const record of listed) if (!observations.repositories[record.id]) throw new Error(`listed plugin lacks observations: ${record.id}`)
   for (const [id, observation] of Object.entries(observations.repositories)) {
     const record = records.find((item) => item.id === id)
     if (!record || observation.repository.toLowerCase() !== record.repository.fullName.toLowerCase()) throw new Error(`orphan observation: ${id}`)
@@ -78,7 +80,7 @@ export const validateRegistry = async () => {
     const record = repositoryMap.get(item.repository.toLowerCase())
     if (!record || record.visibility !== 'listed' || item.rank !== index + 1) throw new Error(`invalid editor pick: ${item.repository}`)
   }
-  for (const [id, candidate] of Object.entries(candidates.candidates)) {
+  for (const [id, candidate] of Object.entries(sourceOnly ? {} : candidates.candidates)) {
     if (candidate.id !== id || pluginId(candidate.repository?.fullName || '') !== id || !validRepository(candidate.repository.fullName)) throw new Error(`invalid candidate identity: ${id}`)
     if (candidate.visibility !== 'hidden' || candidate.admission?.status !== 'candidate') throw new Error(`candidate must remain hidden: ${id}`)
     if (records.some((record) => record.id === id)) throw new Error(`candidate duplicates registry plugin: ${id}`)
