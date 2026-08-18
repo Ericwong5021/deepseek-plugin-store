@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "data",
+    "tool",
+    "api",
+    "desktop",
+    "workflow",
+    "chat"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.89,
+  "reason": "该插件主要面向 DeepSeek Harness 的会话管理场景，提供界面化会话归档、恢复、搜索分组、子会话关系、详情查看与输出文件清理等功能。其用途是替代或增强官方会话列表操作流程，核心价值为会话生命周期与本地产物的集中管理；但包含本地持久化文件的删除操作，故需人工复核安全边界和失败处理。",
+  "summaries": {
+    "zh": "dsh-conversation-manager 是一个 DeepSeek Harness 会话管理插件，可在 Web 界面集中进行会话归档恢复、搜索分组、批量管理，并支持查看会话详情与清理会话产出文件。",
+    "en": "dsh-conversation-manager is a DeepSeek Harness plugin that provides a web-based conversation manager for archiving and restoring sessions, searching and grouping them, running batch actions, and managing related output files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "会话列表生命周期管理（归档、恢复、永久删除）",
+      "批量会话操作与失败重试",
+      "按标题/会话ID搜索并按工作区分组",
+      "展示会话详情与统计信息",
+      "打开会话记录目录与清理会话产出文件"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确列出归档/恢复、批量归档恢复删除、搜索与分组、子代理关系展示、会话详情与产出文件清理等核心功能。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 声明删除行为包含永久删除会话记录或文件，运行中的会话不可删除，且父会话删除不级联子会话，体现破坏性写操作存在。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 的安全边界要求文件删除需满足会话ID、普通文件、解析路径在已注册工作区内且非工作区根目录等条件。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 指定 dsh client web 注入与平台配置，显示该插件在 DeepSeek Harness Web UI 运行时与主机服务/会话持久化接口集成。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 的源代码结构包含 path-security 与 batch 模块，支持路径安全与批处理的实现线索。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "会话列表生命周期管理（归档、恢复、永久删除）",
+      "批量会话操作与失败重试",
+      "按标题/会话ID搜索并按工作区分组",
+      "展示会话详情与统计信息",
+      "打开会话记录目录与清理会话产出文件"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.89,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:48.091Z",
+  "repositoryCommitSha": "97445574e9c1b0756c17e2454f933ad6c621549c",
+  "evidenceHash": "ca1cc2a1f9db18f5eb55dd76dd0eb16c07fc746801c15e1400a32021e36556c6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5e56c5e397dcbdf283f2f6561019a2c82e897d25679a8b722cfcd2d07eb8e6a6",
+  "shadowMode": false
+}

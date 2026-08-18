@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "tool",
+    "desktop",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件面向 DSH 的编辑侧边栏体验，通过在每个标签页工具栏中加入“打开所在文件夹”入口，按标签自身路径定位文件并调用本地文件管理器打开其目录，属于面向导航面板的文件定位工具增强，证据来自仓库说明、功能清单与安装/依赖描述。",
+  "summaries": {
+    "zh": "在 dsh-better-sidebar 的每个编辑标签工具栏中加入“打开所在文件夹”按钮，点击即可在本地文件管理器中定位到该标签对应文件所在目录。",
+    "en": "Adds an Open Containing Folder button to each dsh-better-sidebar editor tab so one click opens the current tab’s file location in the local file explorer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a per-tab button into dsh-better-sidebar editor toolbar chrome",
+      "Reads the open file path from each tab context to target the corresponding file",
+      "Invokes host-side logic to reveal/open the file location in a local file explorer",
+      "Runs a DOM healing/retry flow to handle duplicate or stale UI elements after layout changes"
+    ],
+    "reasons": [
+      {
+        "code": "README describes one \"open containing folder\" button per editor tab, embedded in each tab toolbar and tied to that tab’s own file path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states Windows-only integration using explorer.exe /select and path handling for local filenames with spaces/Unicode, indicating local system interaction.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository/package purpose text identifies the plugin as a folder reveal helper for files open in dsh-better-sidebar editor tabs.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects a per-tab button into dsh-better-sidebar editor toolbar chrome",
+      "Reads the open file path from each tab context to target the corresponding file",
+      "Invokes host-side logic to reveal/open the file location in a local file explorer",
+      "Runs a DOM healing/retry flow to handle duplicate or stale UI elements after layout changes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:07.871Z",
+  "repositoryCommitSha": "f7f75c280fdafb3cd3d9d95830300654048236fc",
+  "evidenceHash": "99ab203226ab8ef24e33fe92607b87442c5430f885f6e034c75cf156c9075f1e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cfbff29d5c3b468cb0e1131742b7d1d433f135b23dbc659476dea215ee2b1780",
+  "shadowMode": false
+}

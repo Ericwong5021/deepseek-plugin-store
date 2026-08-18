@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a GUI-based skill file management utility for DeepSeek Harness, with user-facing workflows to list, create/edit, import, move location, and delete SKILL.md entries via the settings page; the evidence points to local filesystem skill storage and route-based management rather than external integrations, research, collaboration, or code generation.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的图形化技能管理插件，用于在设置界面中新建、编辑、导入和删除 SKILL.md，并可在全局或工作区路径间管理技能文件。",
+    "en": "This plugin is a graphical SKILL manager for DeepSeek Harness that lets users create, edit, import, and delete SKILL.md files from the settings UI and manage where those skill files are stored."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates, edits, lists, reads, and removes SKILL.md files through a DSH plugin settings interface.",
+      "Imports skills from ZIP archives into configured DSH global or workspace directories.",
+      "Registers local web routes (`/skill-manager`) used by the plugin UI for skill management operations."
+    ],
+    "reasons": [
+      {
+        "code": "README describes a graphical web settings manager for SKILL.md with create, edit, import (ZIP), delete, and list operations, and mentions saving to `$DSH_HOME/skills` or `workspace/.dsh/skills`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Tree lists `src/index.ts`, `routes.ts`, `skills.ts`, and `import.ts`, indicating host-side HTTP route handling for read/write/remove/list/import of skill files.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README and package metadata name the plugin as `dsh-plugin-skill-manager-gui` and show a browser-side entry (`src/client/SkillManager.tsx`) plus web settings registration, confirming a UI-driven file-management workflow.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates, edits, lists, reads, and removes SKILL.md files through a DSH plugin settings interface.",
+      "Imports skills from ZIP archives into configured DSH global or workspace directories.",
+      "Registers local web routes (`/skill-manager`) used by the plugin UI for skill management operations."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:45.194Z",
+  "repositoryCommitSha": "cc190631d23861523b858c622388596952d01859",
+  "evidenceHash": "fc73e680440bca9740251ff81a813902f17d485a060b610034f8f1c4299440db",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "57ec1ce84b81b4b6900309ea77de7ecec63c29bb1cb36c80e50ec18a9f82f29a",
+  "shadowMode": false
+}

@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "desktop",
+    "browser",
+    "image",
+    "api",
+    "data",
+    "tool",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是面向 DeepSeek Harness Web UI 的前端交互增强：在界面中注入可拖拽的桌宠组件并提供设置与养成交互面板，基于页面活动状态自动切换行为，同时支持开发者通过 JSON 定义和 `window.dshPet` API 扩展宠物与行为。",
+  "summaries": {
+    "zh": "一个注入 DeepSeek Harness Web UI 的前端插件，在界面中添加可拖拽桌面宠物并随页面活动变化状态，提供设置面板与开发者 API 供自定义宠物与行为。",
+    "en": "A web UI client plugin for DeepSeek Harness that adds a draggable companion pet to the interface, reacts to page activity, and offers a settings panel plus a developer API for custom pet definitions and behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "In-page UI injection for an interactive companion element",
+      "DOM activity monitoring to drive UI behavior",
+      "Local persistence of pet stats and interaction data",
+      "Runtime JS API exposed on window for pet registration/control",
+      "Custom visual asset and definition loading (SVG/CSS/image) at runtime"
+    ],
+    "reasons": [
+      {
+        "code": "插件在浏览器端注入右下角桌面宠物与设置面板，支持拖拽、交互和界面面板操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件通过 MutationObserver 监听页面状态标识（如输入、生成中、结束、报错等）来切换宠物状态。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件通过 `window.dshPet` 提供开发者 API（如 register/list/select/trigger/on/export 等）进行运行时控制与扩展。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "支持本地/同源及远程图片源用于自定义宠物资源，意味着可触发外部资源加载。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "功能与数据保存在浏览器端（localStorage），并以 `dsh.client` 插件方式即时注入 Web 平台客户端。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "In-page UI injection for an interactive companion element",
+      "DOM activity monitoring to drive UI behavior",
+      "Local persistence of pet stats and interaction data",
+      "Runtime JS API exposed on window for pet registration/control",
+      "Custom visual asset and definition loading (SVG/CSS/image) at runtime"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:40.693Z",
+  "repositoryCommitSha": "b0dbabdc6dcf491de6bda5114929d58da7476692",
+  "evidenceHash": "7f20e2aa577b11c20f717bd2f819108b1f9a116a7f65c1f9a9b91e3e5f89c179",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bf8269bfa3134b4a13c01d5d0ebd11466ae095906d2710075c5d81eb92769cd6",
+  "shadowMode": false
+}

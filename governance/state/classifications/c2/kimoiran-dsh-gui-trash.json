@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "automation",
+    "cli",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a desktop shell/launcher for DeepSeek Harness: it packages the existing web UI into an Electron window, auto-starts and monitors a local `dsh web` process, and exposes harness commands plus CLI start modes. Evidence points to an OS-level desktop utility rather than content-generation, search, or data-processing functionality, so it is classified as desktop-mobile with automation and integration-oriented tags.",
+  "summaries": {
+    "zh": "一个为 DeepSeek Harness 提供桌面化入口的 Electron 工具，可检测并自动拉起本地 dsh web 服务，在桌面窗口中展示现有 Web 界面。",
+    "en": "An Electron utility for DeepSeek Harness that opens the existing web interface in a desktop window, automatically starts the local dsh web process when needed, and supports plugin or CLI startup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a local Electron desktop window that hosts the existing DeepSeek Harness web UI.",
+      "Detects a running `dsh web` service, launches it with a configurable command when missing, and keeps it running.",
+      "Adds host-level commands in harness mode for enable/disable/status/launch control.",
+      "Offers CLI entrypoints for local and installed execution modes.",
+      "Writes and reads local launcher state and paths from `desktop/config.json`."
+    ],
+    "reasons": [
+      {
+        "code": "README documents auto-start, process discovery, and process lifecycle behavior (probe, launch, keep-alive, close-to-exit).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Cordis host plugin entrypoint is declared via `main: lib/index.js` and bundled into harness via `dsh.bundle` metadata.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "CLI command entrypoint is declared in `bin` and scripts invoke `electron electron/`, indicating local executable launch capability.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README and scripts indicate optional Windows exe packaging through `electron-builder`, with generated `dist/dsh-gui-trash.exe` output.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides a local Electron desktop window that hosts the existing DeepSeek Harness web UI.",
+      "Detects a running `dsh web` service, launches it with a configurable command when missing, and keeps it running.",
+      "Adds host-level commands in harness mode for enable/disable/status/launch control.",
+      "Offers CLI entrypoints for local and installed execution modes.",
+      "Writes and reads local launcher state and paths from `desktop/config.json`."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:12.080Z",
+  "repositoryCommitSha": "b2e0bd478b119336360a321992e5fbf031d91798",
+  "evidenceHash": "2178590e31413e4d0aa0544a3ba402558b0886b61077e2e88f0d17db6d7f3c01",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d492fa7421b507b9d0b21e01f0e5cd95450f2142b65ff511c922081faa62949a",
+  "shadowMode": false
+}

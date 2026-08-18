@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "notification",
+    "automation",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的核心功能是把 QQ 私聊与 DeepSeek Harness 会话连接起来：用户可在 QQ 中驱动现有或新建会话，并接收会话回复与状态通知；同时包含独立 watchdog 进程用于 DSH 上下线告警。其主要价值在于外部通讯服务集成与会话自动化，不属于代码生成或系统级文件编辑类插件。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 QQ 通知与双向桥接插件，可让 QQ 私聊与 Harness 会话互通，并将会话回复、完成/错误/待审批事件同步回 QQ。",
+    "en": "This is a DeepSeek Harness QQ bridge plugin that links QQ private chats with Harness sessions and forwards session replies plus completion, error, and approval events back to QQ."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "QQ 官方机器人网关集成（收发私聊消息）",
+      "将 QQ 消息转发到 DeepSeek Harness 会话并返回模型回复",
+      "推送 Harness 会话完成、错误与待审批事件到 QQ",
+      "支持通过 QQ 命令进行会话选择/创建/退出与工作区接入",
+      "提供独立进程 watchdog 监测 DSH 上下线并推送告警"
+    ],
+    "reasons": [
+      {
+        "code": "README.md 说明该插件为“QQ ↔ DeepSeek Harness 双向桥插件”，并定义了 QQ → Harness 与 Harness → QQ 的双向消息流程。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README.md 的“用法（QQ 私聊）”章节列出 /new、/use、/exit 等命令用于会话管理，并支持接入已有工作区/会话。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README.md 描述会话回复、回合完成、出错与待审批等事件的 QQ 推送通知逻辑。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README.md 说明存在独立脚本 qq-watch.js，通过 HTTP/PID 监控 DSH 并在上下线变化时发送 QQ 通知。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明 dsh.bundle.patch 与主入口 dist/index.js，表明该仓库为可安装的 DSH 插件包。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "QQ 官方机器人网关集成（收发私聊消息）",
+      "将 QQ 消息转发到 DeepSeek Harness 会话并返回模型回复",
+      "推送 Harness 会话完成、错误与待审批事件到 QQ",
+      "支持通过 QQ 命令进行会话选择/创建/退出与工作区接入",
+      "提供独立进程 watchdog 监测 DSH 上下线并推送告警"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:38.487Z",
+  "repositoryCommitSha": "5c45a15859e827142f08ee806d2d198dfa2ceef2",
+  "evidenceHash": "5446ca0c935b5031acae6c50921cde159e80ac428daec43f53d685e3b0b917de",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e1fa836aa224a07f3d613f633d062ad41b5719cabb9f550a17ff7f263d4ecf99",
+  "shadowMode": false
+}

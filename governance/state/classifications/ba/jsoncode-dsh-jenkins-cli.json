@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "tool",
+    "automation",
+    "ui",
+    "integration",
+    "api",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Classified as an external-services integration plugin because its primary user-facing purpose is operating Jenkins from DeepSeek Harness, via server configuration, per-workspace run-job UI, and build/status tooling; this is directly supported by its settings page, workspace modal actions, and model tools for build/status.",
+  "summaries": {
+    "zh": "这是一个 Jenkins 集成插件，用于在 DeepSeek Harness 中配置多个 Jenkins 服务器并在工作区触发参数化构建、查询构建状态与历史。",
+    "en": "This is a Jenkins integration plugin for DeepSeek Harness that lets users configure multiple Jenkins servers and run parameterized jobs from workspace actions with build-status and history visibility."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "trigger_remote_jenkins_jobs",
+      "query_remote_build_status",
+      "manage_configured_service_endpoints",
+      "read_and_store_service_tokens",
+      "persist_workspace_run_context"
+    ],
+    "reasons": [
+      {
+        "code": "Provides a settings page for multiple Jenkins servers and stores server config, including token fields, in plugin settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Exposes UI and model-facing entry points to run Jenkins jobs and check build status, including queue/build/result polling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Implements Jenkins access via host-side HTTP calls through shell-based curl commands with credentials and CSRF handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Supports workspace-level config files (json/js/ts) that drive which jobs/servers can be selected in the run modal.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "trigger_remote_jenkins_jobs",
+      "query_remote_build_status",
+      "manage_configured_service_endpoints",
+      "read_and_store_service_tokens",
+      "persist_workspace_run_context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:50.246Z",
+  "repositoryCommitSha": "6ccdd926ed4639e03beb793d81f3f9de5bbabae2",
+  "evidenceHash": "a33488a54bc84c1145b33172f0083c741ed3d66f989ae7666c3a7898b25016af",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8134ebbe50527efe2c7e96913a626e3b74226711d49e2bf9b5583301148790be",
+  "shadowMode": false
+}

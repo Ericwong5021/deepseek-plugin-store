@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "api",
+    "integration",
+    "automation",
+    "tool",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向用户的主要用途是作为 Telegram 与 DeepSeek Harness（dsh）Agent 会话的桥接入口。基于 README 与代码结构，它提供私聊转发、会话队列、重试/中断、模型和思考强度切换、会话切换与运行状态查看等能力，并通过本地文件进行队列/状态持久化与日志记录。",
+  "summaries": {
+    "zh": "该插件是 Telegram 私聊与 DeepSeek Harness（dsh）Agent 会话的桥接插件，用于在 Telegram 中发送/接收会话消息并通过命令管理会话、模型、队列与运行状态。",
+    "en": "This plugin is a Telegram-to-DeepSeek Harness (dsh) bridge that lets users chat with agents from Telegram and manage sessions, models, queues, and runtime status via bot commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Telegram-bot message relay to/from dsh sessions",
+      "dsh session/model/preset control via bot commands",
+      "per-chat queueing and task interruption",
+      "local queue/state/settings persistence"
+    ],
+    "reasons": [
+      {
+        "code": "README indicates Telegram 与 dsh Agent 的私聊一对一桥接，并支持命令式会话管理、模型切换与中断操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifested runtime flow and module list (telegram.ts, session.ts, queue.ts, state.ts) show message forwarding, queueing, and state persistence logic inside plugin code.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package dependencies (grammy, undici) and DSH plugin metadata confirm Telegram API integration and dsh plugin packaging for web profile.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Validation check reports manifest reference issue for extensions/dsh/cordis.patch.yml, indicating unresolved setup/packaging dependency.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Telegram-bot message relay to/from dsh sessions",
+      "dsh session/model/preset control via bot commands",
+      "per-chat queueing and task interruption",
+      "local queue/state/settings persistence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:56.139Z",
+  "repositoryCommitSha": "5ef5887571155bf750872af0aee4bb109b0fb525",
+  "evidenceHash": "dac51c2cc3d61b9d6fe0b72d7c18682b976c0b6d624b38380e02dbd25e3eda10",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "872d309c9fe7ab2e269f0c4a388c904c4b3f65e01627d23cadb88f85af2442f5",
+  "shadowMode": false
+}

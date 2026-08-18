@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "testing",
+    "debugging",
+    "project-analysis",
+    "workflow",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a developer workflow orchestrator for agents: its main function is to provide a bundled set of skills to DeepSeek Harness via ctx.skills. Evidence shows it adds an identifiable provider (`lion-skills`) and ships markdown-based skill definitions for tasks like code review, debugging, testing, naming, and spec writing. There is no indication of standalone service logic beyond skill registration and static prompt assets.",
+  "summaries": {
+    "zh": "这是一个面向开发者的 DeepSeek Harness 插件，安装后在 `ctx.skills` 中挂载中文的 `lion-skills` 工作流技能包，提供代码评审、调试、测试、命名、写规范和任务拆解等能力。",
+    "en": "This is a DeepSeek Harness plugin that mounts a Chinese `lion-skills` workflow skill bundle on `ctx.skills`, providing developer support skills such as code review, debugging, testing, naming, spec writing, and task breakdown."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Registers a bundled `lion-skills` provider in DeepSeek Harness via dsh bundle patching",
+      "Provides multiple Markdown-defined workflow skill templates (e.g., review, debugging, testing, naming, spec writing)",
+      "Exposes the plugin through a small manifest and static skill assets without executable binaries"
+    ],
+    "reasons": [
+      {
+        "code": "Manifest declares `dsh.bundle` patch and package exports for skill resources, indicating a bundled skill-provider role.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README states the plugin mounts `lion-skills` on `ctx.skills` and lists 11 developer workflow skills (code review, debugging, testing, etc.).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository file set is limited to plugin scaffolding and `skills/` content, with skill bodies described as plain Markdown with frontmatter.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Registers a bundled `lion-skills` provider in DeepSeek Harness via dsh bundle patching",
+      "Provides multiple Markdown-defined workflow skill templates (e.g., review, debugging, testing, naming, spec writing)",
+      "Exposes the plugin through a small manifest and static skill assets without executable binaries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:15.798Z",
+  "repositoryCommitSha": "f3bba5af021c3a1fd6157878f2faf2fde5395484",
+  "evidenceHash": "55a79ea8772766637bab70512dfac1c2d70fd3ab44cd9f2c5e2fcebfde7ef72e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0a1c2ff9f8182797bb796ed20893fc55fc9ba70365ce7b492f7ed2ffbfe0879c",
+  "shadowMode": false
+}

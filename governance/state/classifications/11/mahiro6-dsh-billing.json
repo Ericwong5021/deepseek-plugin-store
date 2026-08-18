@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "tool",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is a DeepSeek Harness utility focused on token and spending management: it processes model call usage into cost records, stores usage/billing data locally, and presents balance, budget, and summaries in the UI with optional official price/balance sync.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中按调用记录成本并汇总显示余额、预算及会话/今日/本月/累计费用，并支持官方价格与余额同步。",
+    "en": "This plugin for DeepSeek Harness records per-call cost usage, tracks balances and budgets, and shows session and period summaries, with optional synchronization of official pricing and balance data."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Tracks token usage from LLM calls and computes cost estimates.",
+      "Persists billing ledger and retention settings locally.",
+      "Displays balance, budget, and session/timeline summaries in UI panels.",
+      "Fetches official pricing and account balance data from external endpoints."
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is described as a billing plugin that hooks model call usage, computes per-call cost, and stores a persistent ledger.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The manifest declares a web client/patch plugin package and runtime wiring for Typert-based state/config RPC, indicating active plugin behavior in host and browser surfaces.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Source layout includes storage, pricing, host, and client modules, and explicitly documents official balance/price synchronization behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Tracks token usage from LLM calls and computes cost estimates.",
+      "Persists billing ledger and retention settings locally.",
+      "Displays balance, budget, and session/timeline summaries in UI panels.",
+      "Fetches official pricing and account balance data from external endpoints."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:07.633Z",
+  "repositoryCommitSha": "d485bffcf6cd290ce5931ceb2ba8b3c3c83e21f1",
+  "evidenceHash": "d406c3f87ed6b99688cccbb1fb7af18f54299bb2f5fa15c412ffce7416d720be",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c69d65f5368371a016439c4306fb47706093e440a078563ad315520520b4f8bf",
+  "shadowMode": false
+}

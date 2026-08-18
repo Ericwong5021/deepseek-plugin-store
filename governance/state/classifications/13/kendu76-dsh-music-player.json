@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "tool",
+    "ui",
+    "browser",
+    "chat",
+    "file",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily a local media player interface for DeepSeek Harness: it scans local audio files, streams them to the browser for playback, and provides controls and a playlist panel in the web chat UI, with an agent tool to start playback by keyword.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的本地音乐播放器插件，可扫描本地音乐目录，在聊天界面提供播放条与播放面板并支持曲目列表与播放控制。",
+    "en": "This is a DeepSeek Harness local music player plugin that scans local audio files and adds web chat controls with playlist and playback actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans a configurable local music directory for supported audio files",
+      "Streams local audio to the browser via HTTP range requests",
+      "Injects playback controls and a floating playlist panel into the web UI",
+      "Provides a model tool (`music_play`) for agent-triggered local playback",
+      "Shows real-time audio spectrum visualization during playback"
+    ],
+    "reasons": [
+      {
+        "code": "Host/client split is defined with a bundled dsh plugin entry and separate web client entry, matching a local playback service plus UI injector model.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Plugin reads a local music folder (default `~/Music`), recursively scans files, and serves audio with HTTP Range streaming behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "User-facing behavior includes a chat-adjacent playback bar, playlist/selection panel, mode and volume controls, and spectrum display.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a registered `music_play` model tool that enables agent-driven playback requests from conversation context.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Scans a configurable local music directory for supported audio files",
+      "Streams local audio to the browser via HTTP range requests",
+      "Injects playback controls and a floating playlist panel into the web UI",
+      "Provides a model tool (`music_play`) for agent-triggered local playback",
+      "Shows real-time audio spectrum visualization during playback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:04.845Z",
+  "repositoryCommitSha": "480a65b0772d45cf2422ce6e8bda0aa47d80353b",
+  "evidenceHash": "7ff2d9f7b02ae129f25fe31b1a6c9b93e5594e20959d45a1a326299885a01a5e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ab27022d09bfd274458b60d113776e22f2d4178d83980b39696a491f586c079",
+  "shadowMode": false
+}

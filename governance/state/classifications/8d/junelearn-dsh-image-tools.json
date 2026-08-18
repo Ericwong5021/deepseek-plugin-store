@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "image",
+    "tool",
+    "integration",
+    "automation",
+    "file",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Repository evidence shows a DeepSeek Harness plugin focused on user-facing image creation workflows: it provides image-generate and image-edit tools, supports OpenAI-compatible and Gemini backends, supports configurable multi-service setup and failover, and saves results as media with JSON sidecars, making media-tools the primary category.",
+  "summaries": {
+    "zh": "DSH Image Tools 是一款 DeepSeek Harness 的媒体插件，在对话中可使用 OpenAI 兼容接口与 Gemini 进行图片生成与编辑，并可按配置管理多个服务并保存输出。",
+    "en": "DSH Image Tools is a DeepSeek Harness media plugin for generating and editing images from chat using OpenAI-compatible and Gemini services, with configurable multi-service setup and saved outputs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls external image APIs for generation and editing",
+      "Accepts and forwards user prompts, sizes, ratios, and format options",
+      "Reads local session files as image references for editing",
+      "Writes generated images and metadata sidecar files under outputs/images",
+      "Stores provider credentials through DSH credentials handling"
+    ],
+    "reasons": [
+      {
+        "code": "EXTERNAL_IMAGE_SERVICE_USAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_REFERENCE_INPUT_AND_OUTPUT_STORAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_PLUGIN_BUNDLE_AND_RUNTIME_DEPENDENCIES",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls external image APIs for generation and editing",
+      "Accepts and forwards user prompts, sizes, ratios, and format options",
+      "Reads local session files as image references for editing",
+      "Writes generated images and metadata sidecar files under outputs/images",
+      "Stores provider credentials through DSH credentials handling"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:54.010Z",
+  "repositoryCommitSha": "e9c741fe7cddd4fad8ef689deee023f54daf9582",
+  "evidenceHash": "52305906f410fe8af6d548f32b45da9a79484811122bb81077b201f1f44dddc5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f71c5ed51330ef73bbb6cdb965d4451d37226b93d407bc275b1c16b2c43ef708",
+  "shadowMode": false
+}

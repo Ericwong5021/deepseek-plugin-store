@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "automation",
+    "workflow",
+    "tool",
+    "data",
+    "knowledge"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is best classified as an external-services integration because its primary user-facing function is to expose WorldQuant AlphaFactory capabilities inside DSH through a TypeScript-managed Python bridge, with documented tools for quota/context checks, simulation/evaluation workflows, and knowledge/library queries.",
+  "summaries": {
+    "zh": "该插件为 DSH 提供到 WorldQuant AlphaFactory 的桥接访问，借助 Python 子进程 JSON-RPC 暴露平台工具（如回测、评估与知识库查询）。",
+    "en": "This plugin provides a DSH-facing bridge to the WorldQuant AlphaFactory platform, exposing platform tools such as simulation, evaluation, and knowledge/library access through a Python subprocess JSON-RPC layer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Bridges DSH tool calls to an external WorldQuant platform service via a persistent Python subprocess using JSON-RPC over stdio",
+      "Exposes alpha mining and execution workflow tools such as simulation, checking, recover_pending, and add-to-zoo operations",
+      "Provides read/query operations for platform knowledge artifacts and signal pools"
+    ],
+    "reasons": [
+      {
+        "code": "PYTHON_STDIo_JSON_RPC_BRIDGE_TO_ALPHAFACTORY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLATFORM_TOOL_EXPOSURE_LISTS_27_WQ_TOOLS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CREDENTIAL_INJECTION_FROM_ENV_AND_LIFECYCLE_CONTROL_IN_BRIDGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_PLUGIN_PACKAGE_WITH_BUNDLE_AND_TOOLING_METADATA",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Bridges DSH tool calls to an external WorldQuant platform service via a persistent Python subprocess using JSON-RPC over stdio",
+      "Exposes alpha mining and execution workflow tools such as simulation, checking, recover_pending, and add-to-zoo operations",
+      "Provides read/query operations for platform knowledge artifacts and signal pools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:45.219Z",
+  "repositoryCommitSha": "3b3c55eeaec7ff9fddda2e03c5843bd0e6bf4a05",
+  "evidenceHash": "4334fa06c3e0906faaf5c1a526ad63146dda239c6bd3566d2ae00f880e859382",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e823787f9d20bd79642047c94385b65c8ef7520b3a2b0f924a696dc7a48425d2",
+  "shadowMode": false
+}

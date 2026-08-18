@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "ui",
+    "integration",
+    "visualization",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要功能是向 DSH 用户界面展示 OpenCode Go 套餐额度：在悬浮胶囊/面板中显示滚动、周、月窗口的用量与剩余额度及重置时间。证据表明其通过主进程提供 `/og-usage/api/usage` 接口、读取本地凭据并调用 opencode.ai 接口，再在前端进行可视化展示，因此属于外部服务使用监测与可视化工具。",
+  "summaries": {
+    "zh": "该插件在 DSH 界面提供可拖拽的浮动胶囊和可展开面板，实时展示 OpenCode Go 在滚动、周和月三个维度的用量与剩余额度。",
+    "en": "This plugin adds a draggable floating capsule and expandable panel in DSH that shows real-time OpenCode Go usage and remaining quota for rolling, weekly, and monthly windows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.request",
+      "local-file.read",
+      "periodic-polling",
+      "quota-dashboard-rendering"
+    ],
+    "reasons": [
+      {
+        "code": "Host route reads local `opencode-go` credential from `~/.local/share/opencode/auth.json` and uses it for API requests.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin sends usage queries to external endpoint `https://opencode.ai/zen/go/v1/usage` for rolling, weekly, and monthly quota data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Client UI renders a draggable, collapsible floating capsule/panel in overlay and refreshes quota data on a 60-second interval.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "network.request",
+      "local-file.read",
+      "periodic-polling",
+      "quota-dashboard-rendering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:59.870Z",
+  "repositoryCommitSha": "3cddf89a505c4b546d1f29c4382f650d4327c5e1",
+  "evidenceHash": "343ef3f1092d0fbbfe2465548a98498b96169f3b217b1aff37578bdca8207b83",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "492e905955b8fe9bdd5b2f711df60369d51ad63f6d628f3d9f379ffd5c550b37",
+  "shadowMode": false
+}

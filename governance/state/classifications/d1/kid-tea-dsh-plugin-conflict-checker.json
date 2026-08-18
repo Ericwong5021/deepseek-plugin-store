@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "cli",
+    "debugging",
+    "testing",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "基于 README 与包清单信息，该插件面向用户的核心用途是对 DeepSeek Harness 插件进行启动前冲突预检，并可选执行一次本地 `dsh web` 冒烟启动检查，因此归为测试与调试类；其能力集中在静态规则检测、结果展示和可调用检测接口。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中预检插件冲突（如重复 loader entry 与 patch 配置问题），并可选启动一次本地 `dsh web` 做冒烟检查，结果可在设置页标签页或 Agent 工具调用中查看。",
+    "en": "This plugin pre-checks DSH plugin conflicts (such as duplicate loader entries and patch issues) and optionally runs a local `dsh web` smoke launch check, with results viewable from the settings tab or via an Agent tool call."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "检查当前 profile 插件补丁合成中的已知冲突风险（如重复 loader entry id 与部分 patch 异常）",
+      "可选通过子进程启动 `dsh web` 执行本地启动就绪冒烟检测",
+      "通过 Host 工具/HTTP 路由对外暴露检测能力",
+      "在 Web 设置中的插件标签页展示检测结果"
+    ],
+    "reasons": [
+      {
+        "code": "readme-static-conflict-check-rules",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-agent-tool-json-example-and-result-format",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-smoke-mode-startup-check",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package-json-dsh-bundle-and-client-slot-config",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "tree-checker-client-implementation-structure",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "检查当前 profile 插件补丁合成中的已知冲突风险（如重复 loader entry id 与部分 patch 异常）",
+      "可选通过子进程启动 `dsh web` 执行本地启动就绪冒烟检测",
+      "通过 Host 工具/HTTP 路由对外暴露检测能力",
+      "在 Web 设置中的插件标签页展示检测结果"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:08.851Z",
+  "repositoryCommitSha": "535ae6d65a212bf4b8b2e0176759fcb79607dd71",
+  "evidenceHash": "776cd4550949c80578e7262db64d6b3c67ef95e2df3d5ad3f921de29ed69b713",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "07a870c418aeb0a1f419b9f277795d6afa714d4aa8cc1502339c8c83866f13a3",
+  "shadowMode": false
+}

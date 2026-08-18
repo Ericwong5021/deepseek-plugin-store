@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "file",
+    "document",
+    "ui",
+    "image",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary user-facing purpose is a workspace file navigation and preview sidebar in DSH. Evidence shows it provides a docked file panel with directory browsing, multi-format file previewing, and session-produced file listing, while also enabling drag-and-drop insertion of file/folder paths into the chat input. Core behavior is UI- and workspace-focused with limited stated capabilities centered on browsing and reading workspace file content.",
+  "summaries": {
+    "zh": "这是一个面向 DSH 的文件侧边栏插件，提供工作区文件浏览与多种格式预览，并可将会话中产出/修改的文件列出后快速预览或通过拖拽将文件路径插入对话。",
+    "en": "This is a DSH plugin that adds a sidebar for browsing workspace files, previews common formats, shows session-produced/modified files, and lets users drag files or folders into the conversation as path text."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and lists files from registered workspaces via host routes",
+      "Renders multiple preview formats (Markdown, PDF, images, CSV, code text) in the UI panel",
+      "Parses session event logs to surface files marked as produced/modified in the current session",
+      "Supports drag-and-drop of files/folders into the conversation as plain path text"
+    ],
+    "reasons": [
+      {
+        "code": "WORKSPACE_FILES_ACCESS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PREVIEW_MULTI_FORMAT_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SESSION_PRODUCED_FILE_EXTRACTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PATH_DROP_TO_INPUT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_CLIENT_PLUGIN_BUNDLE",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads and lists files from registered workspaces via host routes",
+      "Renders multiple preview formats (Markdown, PDF, images, CSV, code text) in the UI panel",
+      "Parses session event logs to surface files marked as produced/modified in the current session",
+      "Supports drag-and-drop of files/folders into the conversation as plain path text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:46.240Z",
+  "repositoryCommitSha": "fb91e7006c87b3e7500712a8acb3b82548f557b7",
+  "evidenceHash": "90c38c04eab5c2e1309db1b4fb40ecc0bed01e3b2f77d9995182dc8b3fb12789",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1cd42b2d75e58f6bebd2b679473d186460ec6dae98b107f21682c4161f4bb88b",
+  "shadowMode": false
+}

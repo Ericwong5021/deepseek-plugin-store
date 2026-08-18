@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "api",
+    "memory",
+    "tool",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要面向用户功能是在 DSH Web GUI 中增加一个独立的侧边栏聊天面板，复用现有 DSH 模型路由实现流式对话，并支持多会话历史管理与本地保存，因此可归类为面板/界面增强与对话入口插件。",
+  "summaries": {
+    "zh": "DSH Web GUI 的对话插件，在侧边栏提供独立聊天入口，支持本地会话管理并使用已配置模型进行流式对话。",
+    "en": "A DSH Web GUI chat plugin that adds a dedicated sidebar conversation entry, supports local session management, and runs streaming chats with configured DSH models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates and uses local HTTP endpoints under /api/dsh-chat for model listing, conversation CRUD, and streaming responses",
+      "Persists conversation data locally (history and metadata) in host filesystem path under ~/.dsh",
+      "Injects a browser-side sidebar chat panel for direct user interaction, including model switching and multi-session management",
+      "Renders markdown responses in the UI and manages local preference storage in browser localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述该插件在 DSH Web GUI 侧边栏新增“对话”入口，并提供会话管理（新建、切换、重命名、删除）",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "API 一览显示提供 /api/dsh-chat/* 路由，包括模型列表、会话列表、会话详情、会话 CRUD 与 stream 流式对话接口",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提到会话历史持久化到 ~/.dsh/dsh-chat.json，并说明文件损坏时有重命名备份与从空会话恢复",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明插件为 DSH bundle（dsh.bundle.patch）且主入口 lib/index.js 与浏览器端 ./client.js 共用同一包",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Creates and uses local HTTP endpoints under /api/dsh-chat for model listing, conversation CRUD, and streaming responses",
+      "Persists conversation data locally (history and metadata) in host filesystem path under ~/.dsh",
+      "Injects a browser-side sidebar chat panel for direct user interaction, including model switching and multi-session management",
+      "Renders markdown responses in the UI and manages local preference storage in browser localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:05.757Z",
+  "repositoryCommitSha": "df45a3f0db4da75feea7f35d3a0a3d48e2d56909",
+  "evidenceHash": "3af1c4297e1eddf6fdadfc588e6df435797b33949e84903048a6adbd88377069",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bb2fd7c4411a74a0896d0c2c2665d46630d3ae330ad72c1e391a9f626ea8aab1",
+  "shadowMode": false
+}

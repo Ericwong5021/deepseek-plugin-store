@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "search",
+    "tool",
+    "memory",
+    "research"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是为用户提供“辩论”工具入口，通过多角色子 Agent 的并行协作、轮次化编排与评审汇总产出结论，核心是工作流/智能体编排能力，而非普通文件、界面或媒体处理功能。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件工具，在对话中发起 `debate` 任务后可并行调度多位子 Agent 进行独立取证、交叉辩论并收敛结论，支持后台运行与断点续跑。",
+    "en": "This DeepSeek Harness plugin adds a `debate` tool that runs multiple sub-agents in parallel rounds to gather evidence, cross-debate, and converge on conclusions, with background execution and resumable progress."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Orchestrates multiple AI sub-agents in staged debate rounds",
+      "Runs work as background jobs with resumable progress reporting",
+      "Executes agents in parallel within each debate wave",
+      "Persists completed agent session identifiers for checkpoint resume",
+      "Supports configurable agent personas and debate parameters"
+    ],
+    "reasons": [
+      {
+        "code": "README说明插件为DeepSeek Harness提供 `debate` 工具，并使用多个独立子agent（怀疑论者/乐观派/务实派/创意派）进行隔离辩论。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README指出辩论在后台以 job 方式运行并返回 job id，可通过 job_output 查看各 agent 实时进度。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README描述三阶段流程为隔离发散、交叉辩论、评审收敛，并在波内并行、波间串行执行。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README提到通过 `sessionPersistence` 记录已完成子agent会话并支持断点续跑，避免重复执行已完成步骤。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json声明 dsh bundle patch 与必要插件依赖，表明其作为可挂载工具插件发布和集成于 DSH 生态。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Orchestrates multiple AI sub-agents in staged debate rounds",
+      "Runs work as background jobs with resumable progress reporting",
+      "Executes agents in parallel within each debate wave",
+      "Persists completed agent session identifiers for checkpoint resume",
+      "Supports configurable agent personas and debate parameters"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:41.144Z",
+  "repositoryCommitSha": "480884c4fcecb5d2d12dadbf84f9dfde7b0dfdb2",
+  "evidenceHash": "2f3a337c52916686fe72be6de0437f1846a8fbaf6b76cd4f75e71f0126316d99",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3658e0f169b193cf136d1262da6a0b46a55427c8a665b7151ace88bf33d10754",
+  "shadowMode": false
+}

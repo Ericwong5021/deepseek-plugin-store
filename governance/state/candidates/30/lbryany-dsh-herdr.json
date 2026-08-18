@@ -4,7 +4,7 @@
     "fullName": "Lbryany/dsh-herdr",
     "url": "https://github.com/Lbryany/dsh-herdr"
   },
-  "summary": "Herdr lifecycle status integration for DeepSeek Harness",
+  "summary": "This plugin listens to DSH agent lifecycle events in the TUI process and synchronizes those states to Herdr pane status indicators.",
   "sources": [
     "github-topic"
   ],
@@ -43,27 +43,25 @@
     "capturedAt": "2026-08-17T20:48:07.543Z"
   },
   "classificationSuggestion": {
-    "group": "tools-data",
-    "category": "data-processing",
+    "group": "integrations-communication",
+    "category": "external-services",
     "tags": [
       "agent",
-      "cli",
       "integration",
+      "api",
+      "cli",
       "monitoring",
-      "tool"
+      "workflow"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:插件",
-      "text:planning-execution:执行",
-      "text:memory-context:session",
-      "text:files-terminal:cli",
-      "text:data-processing:json",
-      "text:general-utilities:工具",
-      "text:external-services:integration",
-      "text:notifications-monitoring:status"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:ca36279bf4fda2a3a0a65b1166c3b73462141a76c4494ac2cfbc546977bdb32e",
+      "commit:1ef872f52dce49c9cfbaeb2646354adae7eaef0d"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:15:45.614Z",
+    "reason": "该插件的主要用途是将 DeepSeek Harness 的 agent 生命周期状态同步为 Herdr pane 的展示状态（如 working/blocked/idle/release-agent），以便在 Herdr 侧可见地反映 TUI 中的执行与审批状态；实现依据是其对 agent/session 事件的监听、状态映射、以及通过本地 Herdr 连接优先上报、失败则回退 CLI 的机制（文档中明确声明）。"
   }
 }

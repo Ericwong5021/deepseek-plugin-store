@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "browser",
+    "file",
+    "data",
+    "tool",
+    "visualization",
+    "chat",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a web user interface utility that lets users load and inspect 3D models in DeepSeek Harness, then translate those models into a standardized, LLM-readable JSON format and pass it into chat context. Evidence in the repository description, README feature list, and DSH manifest shows both a host tool (`read_3d_model`) and a client overlay panel workflow, with supported formats explicitly including OBJ/STL/STEP and optional immediate send/export paths. The classification focuses on visualization and model handling rather than automation or external service orchestration.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的 Web 界面中提供 3D 模型查看与转换能力，支持加载 OBJ/STL/STEP 模型、在悬浮面板交互预览，并将结果转换为标准化 JSON 以便发送到对话上下文。",
+    "en": "This plugin adds a DeepSeek Harness web panel for viewing OBJ/STL/STEP models, lets users interact with them in 3D, and converts models into a standardized JSON format that can be inserted into chat context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read/parse local OBJ/STL/STEP model files",
+      "Render 3D models in a web floating panel with interactive controls",
+      "Convert parsed model data to a standardized JSON schema with analytic fields",
+      "Append generated model context to conversation input or enqueue immediate send",
+      "Load STEP parser runtime via browser-side dependency during rendering"
+    ],
+    "reasons": [
+      {
+        "code": "Host-side `read_3d_model` tool is advertised to parse OBJ/STL/STEP inputs into standardized JSON for LLM use.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Client side exposes an interactive web overlay panel for rotating, panning, zooming, material, lighting, and section view of models.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "STEP handling relies on a browser-loaded WASM path (occt-import-js) and the README documents that source for wasm can be customized.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares DSH bundle/client plugin wiring and web platform injection, confirming execution as a web extension.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Read/parse local OBJ/STL/STEP model files",
+      "Render 3D models in a web floating panel with interactive controls",
+      "Convert parsed model data to a standardized JSON schema with analytic fields",
+      "Append generated model context to conversation input or enqueue immediate send",
+      "Load STEP parser runtime via browser-side dependency during rendering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:18.550Z",
+  "repositoryCommitSha": "074e8a6817aba96153e3445dcef8306731df58d1",
+  "evidenceHash": "d8c0044c1585dcc6958d0446d4b13126695effb1aab8f6eccd12234a04f71d31",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a47918f7641ea9e09ddd73bdd203e5632d8a8001a97aa01743afbe52acc868d3",
+  "shadowMode": false
+}

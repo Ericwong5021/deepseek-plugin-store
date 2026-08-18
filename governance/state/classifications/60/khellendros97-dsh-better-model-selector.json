@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "browser",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是重构 DSH Web 对话界面的模型设置交互：将模型选择与思考强度选择拆分为独立控件，并加入收藏/搜索与快捷键切换；从 README 与 package 配置可见其为前端 UI 挂载插件，不涉及文档/网络自动化等核心外部服务调用。风险集中在界面覆盖与本地 cookie 持久化上，故为中等等级。",
+  "summaries": {
+    "zh": "该插件用于优化 DSH Web 对话界面的模型设置体验，将模型选择与思考强度改为独立控件，并提供收藏搜索与快捷键快速切换。",
+    "en": "This plugin enhances the DSH web composer model settings by splitting model and reasoning-effort controls and adding favorite search plus shortcut-based switching."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Replaces the built-in web composer model selector UI",
+      "Persists user-selected favorite models in a host-scoped browser cookie",
+      "Registers and handles conversation-context keyboard shortcuts for model and effort switching",
+      "Reads/writes model and reasoning-effort state through DSH model-selection context",
+      "Runs as a web client-injected plugin"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin overrides `conversation.input.model` slot to replace the built-in ModelSelect with separate controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes adding model search, favorites marking, and a reasoning-effort slider plus Ctrl/Cmd+P and Ctrl/Cmd+T shortcuts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents persistence of favorites in a host-level cookie (`dms_favs`) with migration from prior storage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web client plugin with injected DSH runtime, conversation, and model-selection dependencies, confirming browser UI scope.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Replaces the built-in web composer model selector UI",
+      "Persists user-selected favorite models in a host-scoped browser cookie",
+      "Registers and handles conversation-context keyboard shortcuts for model and effort switching",
+      "Reads/writes model and reasoning-effort state through DSH model-selection context",
+      "Runs as a web client-injected plugin"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:08.331Z",
+  "repositoryCommitSha": "4781f4c215f1ad4d55a44e1409bafe58f05b721f",
+  "evidenceHash": "0c1ace2bd111897791f415b60f2b17b2c3431fd99575212538a7616fb1e9a247",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "251892e9dffcbe664b4cd867bf7bcf22cf9379f777fa79a2e29247edf0d6f7fe",
+  "shadowMode": false
+}

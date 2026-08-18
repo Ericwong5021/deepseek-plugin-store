@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an external LLM service integration for dsh: it is explicitly positioned as a Cline free-model provider, reads a configured API key/credential reference, and synchronizes model metadata from a Cline endpoint so models can be used in dsh’s Web Models workflow.",
+  "summaries": {
+    "zh": "本插件用于将 dsh 与 Cline 的免费模型服务对接，读取已配置的 API Key 后从 Cline 端同步模型列表，并在 Web Models 中供模型调用使用。",
+    "en": "This plugin integrates dsh with Cline free-model services by using a configured API key, syncing model catalog data from a Cline endpoint, and making those models available for use in dsh Web Models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads LLM credential reference from DSH credentials or environment variable",
+      "performs network calls to a configured Cline base URL",
+      "registers a dynamic model provider for dsh runtime"
+    ],
+    "reasons": [
+      {
+        "code": "README documents credential-backed configuration via `CLINE_API_KEY` and a configurable `baseURL` for `https://api.cline.bot/api/v1`, indicating external API access with user-supplied credentials.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package description and peer dependency set reference Cline and DSH LLM runtime modules, indicating the plugin bridges dsh to an external model service and scans a remote model catalog.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "reads LLM credential reference from DSH credentials or environment variable",
+      "performs network calls to a configured Cline base URL",
+      "registers a dynamic model provider for dsh runtime"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:33.316Z",
+  "repositoryCommitSha": "236f9403cdd9b6b8a0702c1a1d0a1d6111bba4a6",
+  "evidenceHash": "37bf004e51dfbf0803c13004b354d22129fb32c222a6ba0573e1d298066665d8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e9865d4aa07c9a59d1a9488032f0a879a5f95dcd15a9a7852b3773a557b8410d",
+  "shadowMode": false
+}

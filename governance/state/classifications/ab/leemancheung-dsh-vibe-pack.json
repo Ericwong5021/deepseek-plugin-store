@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "cli",
+    "tool",
+    "automation",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a file-management utility for DeepSeek Harness users: it manages transactional, versioned data packs via inspect/plan/install/diff/export/uninstall flows, using manifest validation and ownership tracking to control changes under `$DSH_HOME`. This is supported by the README feature list and package CLI/UI integration metadata.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的配置包管理插件，提供 UI 与 CLI 的预览、安装、对比、导出和卸载，并进行版本与所有权跟踪。",
+    "en": "This plugin is a DeepSeek Harness configuration-pack manager that provides UI and CLI workflows to preview, install, diff, export, and uninstall pack resources."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and writes versioned, manifest-listed resource files under the configured DSH home path.",
+      "Supports transactional install/uninstall flows with preview, backup, and rollback behavior.",
+      "Validates package manifests and payload constraints before applying changes.",
+      "Exposes CLI commands for inspect/plan/install/diff/export/uninstall and a UI path in DSH Settings."
+    ],
+    "reasons": [
+      {
+        "code": "README describes preview, install, diff, export, and uninstall operations over resources under $DSH_HOME with ownership and rollback semantics.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a `dsh-pack` executable and DSH web client integration, indicating local CLI and UI-facing workflow entry points.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository/package description identifies it as a transactional, data-only DSH configuration pack manager focused on integrity and ownership.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and writes versioned, manifest-listed resource files under the configured DSH home path.",
+      "Supports transactional install/uninstall flows with preview, backup, and rollback behavior.",
+      "Validates package manifests and payload constraints before applying changes.",
+      "Exposes CLI commands for inspect/plan/install/diff/export/uninstall and a UI path in DSH Settings."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:46.574Z",
+  "repositoryCommitSha": "3f348f8e6c07365f367375b012abb6bf61cfea8e",
+  "evidenceHash": "d781679f3ed9561db9ed90c6f4746f4df8b763174906be90bffce983ed560437",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f4581c9ff9890b78d46666ecae7c7ab78ba8a6cabfda3a4615185253d7e99302",
+  "shadowMode": false
+}

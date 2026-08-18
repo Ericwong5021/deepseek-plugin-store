@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "context",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Evidence shows this plugin is primarily a user-facing settings UI addition for DeepSeek Harness: it adds a General settings panel called \"Custom Instructions\" and backend routes that read/write ~/.dsh/AGENTS.md. Its functional effect is to let users configure global instructions that apply across sessions/models by editing that file, so classification is navigation-panel utility with file-backed persistence.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的设置中提供“自定义指令”面板，用于读取和保存本机级的 ~/.dsh/AGENTS.md，使会话可复用统一的全局指令。",
+    "en": "This plugin adds a Custom Instructions panel in DeepSeek Harness settings to read and save the machine-level ~/.dsh/AGENTS.md file, enabling shared global instructions across conversations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a web settings panel in DeepSeek Harness to edit a global instruction file",
+      "Provides local endpoints to read and write AGENTS.md content",
+      "Persists user-entered instructions across sessions by targeting ~/.dsh/AGENTS.md"
+    ],
+    "reasons": [
+      {
+        "code": "Host layer registers GET/POST routes for /custom-instructions to read/write ~/.dsh/AGENTS.md, indicating local file access and modification behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Client layer adds a General settings panel item and uses fetch on open/save to load and persist instruction text.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository is a DSH plugin package with web client injection and a settings-panel intent, confirming primary purpose as UI integration rather than external service tooling.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a web settings panel in DeepSeek Harness to edit a global instruction file",
+      "Provides local endpoints to read and write AGENTS.md content",
+      "Persists user-entered instructions across sessions by targeting ~/.dsh/AGENTS.md"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:56.653Z",
+  "repositoryCommitSha": "c075e9d3393bbe98bb618fb7fdace3c860c2f5a8",
+  "evidenceHash": "7dd0f04d1eb15eae7f4297210bb86e481d5a2283cbc0ceb7bae4f48528bc5c6f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2769abc6aa7d4bfb1eb49d08fdf827beb7bba8118ed58e9f8c08c84a1111e6a8",
+  "shadowMode": false
+}

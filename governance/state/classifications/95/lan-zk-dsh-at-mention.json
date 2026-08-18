@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "file",
+    "search",
+    "memory",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary user-facing purpose is to provide memory/context enhancement in chat composition by letting users insert workspace file and cross-session references via `@`, with pre-send validation and context injection; evidence for this is directly stated in the README and reinforced by declared web client/runtime wiring and workspace/session service dependencies.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 网页编辑器的上下文增强插件，支持通过 @ 快速引用工作区文件或同工作区会话，并在发送前校验引用有效性。",
+    "en": "This is a DeepSeek Harness web composer plugin that enables @ mentions for workspace files and workspace sessions, with validation of references before message send."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Supports `@`-based file mentions in DeepSeek Harness web composer using workspace file lookup",
+      "Supports `@`-based references to other sessions in the same workspace",
+      "Validates referenced files/sessions before message send and blocks stale references",
+      "Injects bounded session snapshots or exposes session-reading context for model input"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides file and session `@` context references for the DeepSeek Harness web composer.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares web client runtime and input-trigger injection, indicating UI/UX entrypoint in composer.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Peer dependencies include workspace file system, session, and session-reference/search services, implying access to local project/session context data.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Supports `@`-based file mentions in DeepSeek Harness web composer using workspace file lookup",
+      "Supports `@`-based references to other sessions in the same workspace",
+      "Validates referenced files/sessions before message send and blocks stale references",
+      "Injects bounded session snapshots or exposes session-reading context for model input"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:41.652Z",
+  "repositoryCommitSha": "a796b1e73af0d3d0bf79edc8999fba4efc3b6359",
+  "evidenceHash": "4257fe462d44605810cfb7ca0f4c60a8bfb4314180d09f374208bb1a81f4f52e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7526ad778d9e3346893fa5f92343fc8139e6ef179b6ace483fc8441034f46a24",
+  "shadowMode": false
+}

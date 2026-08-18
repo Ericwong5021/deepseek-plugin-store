@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "tool",
+    "context",
+    "memory",
+    "search",
+    "research"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Classified as an automation-focused DSH plugin because it automatically observes agent tool activity and injects a reminder context to encourage external research when repetitive local trial-and-error becomes costly. The readme states it is triggered by configurable debt thresholds, supports reset on recognized research tools, and integrates through the DeepSeek Harness post-tool lifecycle. It is user-facing as a workflow nudge, not as an external search or editing tool.",
+  "summaries": {
+    "zh": "dsh-research-nudge 是一款 DeepSeek Harness 插件，基于代理的本地工具调用与失败情况自动计算研究债务，并在达到阈值时提醒模型考虑查阅文档或联网搜索以减少反复试错。",
+    "en": "dsh-research-nudge is a DeepSeek Harness plugin that tracks agent tool usage and failures and automatically issues advisory reminders to consider docs or web research when configured research-debt thresholds are reached."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors DeepSeek Harness tool execution and results through the post-execute lifecycle",
+      "Tracks a per-agent score from tool call, mutation, failure, and repeated-failure signals",
+      "Injects an advisory user-visible context message when debt/call-count/time thresholds are reached",
+      "Resets state when configured research-tool names are used and supports configurable policy values"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin hooks into the DSH tools/post-execute waterfall and adds a model-visible context via createUserMessage/ PostToolDecision.additionalContexts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The policy describes weighted debt signals (ordinary tools, mutation, execution, failure, repeated failure) and threshold/cooldown configuration that drives reminder eligibility.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Runtime behavior is positioned as advisory-only (no blocking or result override), with stated no telemetry/network/API-key usage and no persisted storage of tool arguments.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin is packaged as a DeepSeek Harness bundle via package metadata, indicating integration as framework middleware rather than a standalone utility.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Monitors DeepSeek Harness tool execution and results through the post-execute lifecycle",
+      "Tracks a per-agent score from tool call, mutation, failure, and repeated-failure signals",
+      "Injects an advisory user-visible context message when debt/call-count/time thresholds are reached",
+      "Resets state when configured research-tool names are used and supports configurable policy values"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:50.141Z",
+  "repositoryCommitSha": "c6bc8ed33c44c1efac98cf5bb7d62bb12cac1637",
+  "evidenceHash": "0976c3858f23b7b220f2b629633eedb8ee102da2dfd316567e5ea79dc7b0a5ef",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "28a5458e177d5fe6135377433d1000f0f1181fc1b472b6cb5133a405f69775bd",
+  "shadowMode": false
+}

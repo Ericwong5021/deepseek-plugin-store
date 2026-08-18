@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "chat",
+    "ui",
+    "browser",
+    "tool",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Classified as a media interaction utility because the plugin’s primary user-facing function is voice-based chat interaction—adding speech input and read-aloud controls to the DSH Web interface via injected client-side UI slots and browser speech APIs, rather than coding, testing, analysis, or external workflow orchestration.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness Web 聊天界面，新增语音输入与回复朗读功能，提供手动/自动播放及音色、语速、语调等设置入口。",
+    "en": "This plugin for DeepSeek Harness Web adds speech input and response read-aloud capabilities, with manual/auto playback and configurable voice, speed, and pitch settings in the chat interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Speech-to-text input via browser SpeechRecognition in the DSH web client",
+      "Text-to-speech playback via browser speechSynthesis for assistant replies",
+      "UI injection of voice input/settings and assistant read-aloud controls into chat interface",
+      "Persistent storage of voice preferences using localStorage",
+      "Detection of new assistant messages to avoid duplicate automatic playback"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds microphone-driven text input and read-aloud reply features, with auto-read and manual controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains browser API integration using SpeechRecognition and speechSynthesis plus voice-rate-pitch settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata marks this as a web client plugin with bundle patch wiring and no declared runtime dependencies.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree exposes host/client plugin structure and manifest references required for DSH web injection.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Speech-to-text input via browser SpeechRecognition in the DSH web client",
+      "Text-to-speech playback via browser speechSynthesis for assistant replies",
+      "UI injection of voice input/settings and assistant read-aloud controls into chat interface",
+      "Persistent storage of voice preferences using localStorage",
+      "Detection of new assistant messages to avoid duplicate automatic playback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:41.016Z",
+  "repositoryCommitSha": "77019737addd175673168663ddd000688fe73a86",
+  "evidenceHash": "6cce11974c2027bf33bf799e1ef0b4d6c314a1a7d868dc84b6c817e2db63d28a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "04926a6b45510d14da34a0b317953d0fdb7ce3b586e516703b142b16c80d5fa4",
+  "shadowMode": false
+}

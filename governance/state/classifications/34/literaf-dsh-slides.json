@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "agent",
+    "tool",
+    "file",
+    "document",
+    "ui",
+    "image",
+    "theme",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary user-facing purpose is to generate presentation documents: a DSH agent tool turns structured slide data into a self-contained HTML deck, with optional PPTX export, fixed themes, and speaker-notes support. It is best classified as document-processing because its core value is formatting and exporting presentation content for speakers and collaborators, while also interacting with the host filesystem and media/image assets as documented.",
+  "summaries": {
+    "zh": "dsh-slides 是 DeepSeek Harness 的插件工具，可将结构化的演讲大纲生成可离线播放的 HTML 幻灯片，并可同步输出可编辑的 PPTX 文件。",
+    "en": "dsh-slides is a DeepSeek Harness plugin tool that converts structured talk outlines into self-contained HTML slide decks and can also export an editable PPTX version."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generate slide decks from structured data as offline HTML output",
+      "Optionally export a second editable PPTX artifact from the same deck",
+      "Persist outputs to workspace filesystem via configured output directory",
+      "Handle speaker notes separately from slide content",
+      "Apply predefined visual themes to generated slides"
+    ],
+    "reasons": [
+      {
+        "code": "`make_slides` is presented as a single tool that writes a talk to one HTML file and optionally a PPTX when `formats` includes both `html` and `pptx`, with defined slide layouts and notes handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin is packaged as a DeepSeek Harness plugin via `dsh` bundle metadata (`cordis.patch.yml`) in `package.json`, indicating integration into an agent workflow.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Images are described as either `data:` URIs (embedded) or `https` URLs, and the presentation is described as offline/self-contained when using the embedded form, confirming media-in-deck handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The repository includes source/tests/build setup and publishes as the `dsh-slides` package, aligning with an executable plugin artifact rather than a static doc-only repository.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Generate slide decks from structured data as offline HTML output",
+      "Optionally export a second editable PPTX artifact from the same deck",
+      "Persist outputs to workspace filesystem via configured output directory",
+      "Handle speaker notes separately from slide content",
+      "Apply predefined visual themes to generated slides"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:20.252Z",
+  "repositoryCommitSha": "eff4a56910808af2b5b4799444233fd7f8bd1aea",
+  "evidenceHash": "f02b1013aaaa58d2b975330c65e576032745a4781eeed399b588f46b3cd0d6c2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "462b91fb33b34c17808ad39373bb9219b210cbba1bcaef94fa4f5f417e7db0b0",
+  "shadowMode": false
+}

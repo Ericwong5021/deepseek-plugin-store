@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "document",
+    "skill",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary user-facing purpose is to automate academic talk creation from papers, with explicit workflow steps (paper retrieval, venue-aware planning, and slide assembly) that coordinate other services, so it is classified as orchestration rather than pure content generation or UI tooling.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中将论文转为学术汇报稿：输入论文标识和汇报场景后，按场景规划时长与结构，并驱动生成幻灯片与演讲稿式讲稿内容。",
+    "en": "This plugin helps DeepSeek Harness users turn a paper into a planned academic talk by using paper retrieval, venue-aware timing rules, and slide generation steps to produce slide content with speaker-note scripts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Coordinates a paper-to-talk workflow by invoking planning and generation steps across other plugins",
+      "Provides venue- and duration-based planning for slide structure and content allocation",
+      "Delegates deck rendering to the slide output plugin for HTML/PPTX delivery formats"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the tool chain as: read paper by DOI/title, budget the talk, then build slides, with explicit venue slot rules.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states this plugin is \"the arc between\" dsh-ai4scholar and dsh-slides, making it an orchestration layer rather than a standalone renderer.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata exposes a DSH bundle patch and declares plugin entry points and peer dependencies for DSH ecosystem integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Coordinates a paper-to-talk workflow by invoking planning and generation steps across other plugins",
+      "Provides venue- and duration-based planning for slide structure and content allocation",
+      "Delegates deck rendering to the slide output plugin for HTML/PPTX delivery formats"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:22.512Z",
+  "repositoryCommitSha": "6199fed304c7e588f5201531bb04fe3a1745b520",
+  "evidenceHash": "ab4071ab2aefb15001b0f8a096de24ab7e410bd0c72bdbf7589fe4debfca287d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cae6d3d15c6e0732c5a5d0f289b4f9fdf6b4eee703b36b01b970f7a8e4e222a1",
+  "shadowMode": false
+}

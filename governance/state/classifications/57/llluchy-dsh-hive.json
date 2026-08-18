@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "chat",
+    "tool",
+    "workflow",
+    "planning",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily for conversation orchestration: it provides tools to enumerate live sessions and delegate tasks directly between sessions with wake-on-delivery semantics, which is consistent with coordination/automation workflows in DeepSeek Harness.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness 会话编排，提供工具列出现有活动会话并向其他会话发送任务消息以触发其处理。",
+    "en": "This DeepSeek Harness plugin provides orchestration tools to list live sessions and send task messages into another session, waking it to work independently."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Model-facing tool to list currently live DeepSeek Harness conversations",
+      "Model-facing tool to send messages into another live conversation",
+      "Session wake-up on message delivery for delegated task execution",
+      "Optional automatic callback convention for returning task results",
+      "No cross-session persistence; messages are passed only through live session state"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin exposes functions that can route and inject messages into other active sessions, which can alter how work is distributed across conversations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Reply behavior depends on a soft instruction embedded in the message, so completion/loop control is behavioral rather than enforced by hard state transitions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "There is no delivery history, receipts, or audit trail, so tracking and governance of cross-session tasks is limited.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Source installations use a prepare build script in the package and require explicit build allowlisting in the environment guidance, which can increase operational risk during installation.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Model-facing tool to list currently live DeepSeek Harness conversations",
+      "Model-facing tool to send messages into another live conversation",
+      "Session wake-up on message delivery for delegated task execution",
+      "Optional automatic callback convention for returning task results",
+      "No cross-session persistence; messages are passed only through live session state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:27.535Z",
+  "repositoryCommitSha": "5841ea14b45a25e3eab268cbe01c22d5bf1c17d3",
+  "evidenceHash": "91507f31814adcfce76ffaa584013be10eed0b0e3454e2998dcef2f79d1bdac3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a32a1cbf392601bac19256b01e46d51e61c7c1721b315f0533c2c6db93f4642f",
+  "shadowMode": false
+}

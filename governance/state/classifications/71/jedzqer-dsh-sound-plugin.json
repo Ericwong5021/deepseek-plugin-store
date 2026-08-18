@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "browser",
+    "notification",
+    "tool",
+    "ui",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "The plugin is primarily a user notification helper for DeepSeek Harness Web UI: it reacts to session lifecycle states and question-waiting states to play short sounds in the browser, helping users know when they should respond or when work has finished.",
+  "summaries": {
+    "zh": "本插件用于 DeepSeek Harness Web UI，监听当前会话状态，在任务结束或等待你回答时在浏览器端播放提示音提醒。",
+    "en": "This plugin for DeepSeek Harness Web UI monitors active session state and plays browser notification sounds when work finishes or when a response from you is required."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Listens to active DSH web session signals to detect completion and question states",
+      "Plays browser-generated chime sounds for user notification",
+      "Stores/reads lightweight runtime options via localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "Package metadata declares a web client runtime plugin (`dsh.client`) with web platform injection, indicating functionality is implemented in the browser client.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README documents session-state based triggers (`running` false-transition and `pendingInteraction` values) mapped to notification sounds, defining the plugin’s notification behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states sounds are generated via Web Audio and no external files or network requests are required for alerts, suggesting a limited runtime scope.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Listens to active DSH web session signals to detect completion and question states",
+      "Plays browser-generated chime sounds for user notification",
+      "Stores/reads lightweight runtime options via localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:23.975Z",
+  "repositoryCommitSha": "ffd9365df1c3955d969dbfad742c9b77126b1b3e",
+  "evidenceHash": "48594be8f5fa54f2b50a189e297bed23d9fcc3dd2a9989c72f31be02624a053e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8e8d0ad8f7b8350994c357474fb7e86987845661f4159d9947dd5e1b55de624b",
+  "shadowMode": false
+}

@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "ui",
+    "data",
+    "context",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件面向用户的主要用途是为 DeepSeek Harness 自动化生成并展示“梦境”式会话摘要：它监听会话事件流、按配置触发生成流程，并通过命令与 Web 页面展示结果与状态。依据 README 的命令、事件处理、配置项、路由与本地持久化设计，该功能可归为自动化类插件并带有数据/界面可视化交互能力，同时涉及模型调用与本地记录管理。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，可在后台自动汇总会话内容与工具事件生成梦境风格摘要，并通过 `/dreams` 页面与命令供用户查看与管理。",
+    "en": "This is a DeepSeek Harness plugin that automatically summarizes session activity into dream-style reports in the background and lets users view or manage them through the `/dreams` page and related commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Consumes session event streams in the background to build dream reports",
+      "Generates text via configured LLM model routes",
+      "Exposes web routes and SSE endpoints for viewing and updating dream records",
+      "Provides session commands for forcing dream generation, listing recent dreams, and viewing settings",
+      "Persists dream ledger data to a local JSON file with configurable path and retention limits"
+    ],
+    "reasons": [
+      {
+        "code": "Asynchronous background digesting of conversation and tool logs is the plugin’s core workflow",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Web UI and HTTP API endpoints (`/dreams`, `/dreams/api/*`, `/dreams/api/stream`) indicate local service exposure and live event streaming",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Feature set depends on configured model/provider route and includes privacyMode controls for prompt input handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Local persistence uses a ledger file path (`storePath`) and caps stored records, implying file I/O and retention behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is packaged for the DeepSeek Harness DSH plugin ecosystem, using DSH command and session/LLM integrations",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Consumes session event streams in the background to build dream reports",
+      "Generates text via configured LLM model routes",
+      "Exposes web routes and SSE endpoints for viewing and updating dream records",
+      "Provides session commands for forcing dream generation, listing recent dreams, and viewing settings",
+      "Persists dream ledger data to a local JSON file with configurable path and retention limits"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:18.182Z",
+  "repositoryCommitSha": "d64e4e0d8bf1c6fc47025a3dc370ebd3e4b6485f",
+  "evidenceHash": "48d35a8a688ef8535b6531c6c9472acef890759eb77d74abd6ad2384d45f1059",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b427c908466fcd3e1004f8aac6a7d8fe82d22ecebbbefc331b35a9992eb11580",
+  "shadowMode": false
+}

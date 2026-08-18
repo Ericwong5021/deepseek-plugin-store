@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "chat",
+    "integration",
+    "automation",
+    "file",
+    "tool",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a communication gateway: it lets users control and converse with DeepSeek Harness agents from Feishu/Lark chat and returns status/replies there. Evidence in the repository description, README features, and package metadata consistently shows IM-to-agent bridging with session handling and file/tool command relay, matching the external-services category.",
+  "summaries": {
+    "zh": "这是一款轻量的飞书/Lark 网关插件，让你在群聊或私信中通过消息与本地 DeepSeek Harness 智能体互动，按会话处理任务并将结果回传到同一对话。",
+    "en": "This is a lightweight Lark/Feishu gateway plugin for DeepSeek Harness that lets users drive a local agent from chat messages and commands, preserving conversational session context while returning execution updates and outputs back in the same IM thread."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "message-based gateway to trigger agent sessions",
+      "manages chat-session context across threads/chats",
+      "bridges approvals and command responses between Feishu/Lark and dsh",
+      "delivers files from workspace back to chat"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a Feishu/Lark gateway for DeepSeek Harness where users chat with the bot in DM or @mention to drive the agent and receive replies in the same conversation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents environment-based configuration with DSH_LARK_APP_ID and DSH_LARK_APP_SECRET and long-connection WebSocket messaging to Feishu/Lark.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a built-in lark_deliver tool that sends workspace files/images back to chat with checks limited to the working directory.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares the plugin as dsh-plugin and includes lark-related/deepseek dependencies and peer integration points, confirming external service orchestration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "message-based gateway to trigger agent sessions",
+      "manages chat-session context across threads/chats",
+      "bridges approvals and command responses between Feishu/Lark and dsh",
+      "delivers files from workspace back to chat"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:04.305Z",
+  "repositoryCommitSha": "ef4b039026bbcf9544a69bf3047e7c2e2336f1b1",
+  "evidenceHash": "509773abb2d0b58d60063fee7d234508d5fbbb4efe2e4cf00204fc3fe8eae02a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "02fc6e8036d22883f894f5626a4287ea3f857fbbb37ded68192d0e44548901e6",
+  "shadowMode": false
+}

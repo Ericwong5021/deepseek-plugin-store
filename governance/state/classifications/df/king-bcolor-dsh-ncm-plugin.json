@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "cli",
+    "integration",
+    "tool",
+    "ui",
+    "search"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a music-service integration utility: it wraps the NetEase Cloud Music CLI and exposes those capabilities to DSH agents and its web UI as callable tools for account checks, playlist handling, search, and song metadata/link operations, which best matches the external-services category.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 Web 插件，将 NetEase Cloud Music CLI 封装为可被智能体调用的工具，支持账号状态、歌单管理、歌曲搜索以及歌词与可播放链接查询。",
+    "en": "This is a DeepSeek Harness web plugin that wraps the NetEase Cloud Music CLI into agent-callable tools, enabling account checks, playlist management, song search, and lyric/URL lookup through the DSH interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read account and playlist data from a NetEase Cloud Music workflow via wrapped CLI tools",
+      "Perform playlist and track mutations such as create/add/remove/update and tidy actions",
+      "Query songs, lyrics, recommendations, and playable URLs",
+      "Download/update external binaries used by the plugin via network and write to local DSH directories"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin purpose states it wraps ncm-cli as model-callable tools for account, playlist, song, lyric, URL, recommendation, and record operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents playlist CRUD and playlist tidy actions, indicating mutating operations exist.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies DeepSeek Harness web plugin integration with dsh client/runtime modules.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository description and topics show this is a NetEase Cloud Music/CLI integration focused on agent tooling, confirming external-service dependency.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Read account and playlist data from a NetEase Cloud Music workflow via wrapped CLI tools",
+      "Perform playlist and track mutations such as create/add/remove/update and tidy actions",
+      "Query songs, lyrics, recommendations, and playable URLs",
+      "Download/update external binaries used by the plugin via network and write to local DSH directories"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:13.674Z",
+  "repositoryCommitSha": "aa0126d9b22c5866737e5f8cd085515ca71439a3",
+  "evidenceHash": "07d922b403cd604c894c0d2e8c59e20e2726faa0d112343412f150c6a03918ad",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b091e3da4da0c2b0dc657c357b4c59b6528c03ab016c75896420391b0e53b3c7",
+  "shadowMode": false
+}

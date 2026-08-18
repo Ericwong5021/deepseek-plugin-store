@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "tool",
+    "chat",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is a DeepSeek Harness notification utility: it watches turn-completion signals for main conversations and raises a native Windows toast containing the conversation title, with simple debouncing, as described in its README and package metadata for Windows-only runtime and dsh bundle installation.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的主对话完成每轮后，自动弹出 Windows 系统通知并显示对应对话标题。",
+    "en": "This plugin automatically shows a Windows toast notification when a DeepSeek Harness main conversation finishes a turn, including the conversation title."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Windows local toast notification display",
+      "agent/status lifecycle event monitoring",
+      "debounced notification triggering",
+      "local helper process invocation (PowerShell)",
+      "local temporary logging of decisions"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin invokes hidden PowerShell to call WinRT ToastNotificationManager for native Windows notifications.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It listens to agent status completion events (idle) and only notifies for root/main conversations, with 1.5s debounce merging.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The FAQ/description notes it appends one JSON line per toast decision to %TEMP%\\ds-notify-plugin.log with a 64 KiB cap.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "Windows local toast notification display",
+      "agent/status lifecycle event monitoring",
+      "debounced notification triggering",
+      "local helper process invocation (PowerShell)",
+      "local temporary logging of decisions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:42.468Z",
+  "repositoryCommitSha": "3052a2d7eb4b2108504a723941809a931103a35e",
+  "evidenceHash": "03f641e48aa681eb57ed5405192cd4e7fa17d51c1f777df120da6d0e0b6507e0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac0f1e334e6f7ec5fe6bac501122500b7b841246f7b3e73d681871b02d06b464",
+  "shadowMode": false
+}

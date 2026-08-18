@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "workflow",
+    "terminal",
+    "tool",
+    "ui",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily a service orchestration and management tool for DSH web sessions: it adds a Service tab and model tools to start/stop/restart/list/log long-running processes, while a detached broker supervises those processes across conversation/session boundaries with restart and readiness logic. The main risk is local process lifecycle control (arbitrary command execution and log/state file handling), which matches an automation/orchestration utility class.",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，用于在独立的 broker 进程中持续运行并管理长期服务，并通过侧边栏服务卡片与模型工具提供启动、停止、重启、列表和日志查看等服务管理操作。",
+    "en": "dsh-launch is a DSH plugin for running and managing long-lived services in a detached broker process, with a sidebar and model tools for starting, stopping, restarting, listing, and viewing service logs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts and supervises long-running command-line services (dev servers/watchers/mock APIs) via model tools",
+      "Keeps services running across conversation/session/broker restarts through a detached broker process",
+      "Provides UI and tool actions for starting, stopping, restarting, listing, and reading service logs",
+      "Maintains local runtime state/log metadata (PID, status, logs, presence) for service tracking",
+      "Exposes internal service-management routes for broker/client interaction"
+    ],
+    "reasons": [
+      {
+        "code": "README documents `service_start`/`service_stop`/`service_restart`/`service_list`/`service_logs` model tools and a Service sidebar card for operational control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes detached broker architecture with PID tracking, readiness checks, crash backoff restart, and log handling to survive session end and DSH restarts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package description state the plugin runs services as the current DSH user and without sandboxing, which increases local process-control risk while enabling intended persistence.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a DSH plugin bundle (`dsh.bundle.patch`, client/web platform), confirming integration into runtime and UI surfaces.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Starts and supervises long-running command-line services (dev servers/watchers/mock APIs) via model tools",
+      "Keeps services running across conversation/session/broker restarts through a detached broker process",
+      "Provides UI and tool actions for starting, stopping, restarting, listing, and reading service logs",
+      "Maintains local runtime state/log metadata (PID, status, logs, presence) for service tracking",
+      "Exposes internal service-management routes for broker/client interaction"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:08.523Z",
+  "repositoryCommitSha": "156626494d0afeace2f7c54e18f67704a22529a9",
+  "evidenceHash": "d6597d37d3cf089cdc28696b954d252b4a7663ca2ffc12b3261d78a74fe7d133",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3d72b34a5109f8ddd7e609f1f021d722ba965f8dc51828cdea15faa9435ca1d4",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "ui",
+    "chat",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a document-processing utility for users, because it adds an Export Chat action in DeepSeek Harness Web that generates and downloads a Markdown file for the current conversation, focusing on readable transcripts (human messages and final assistant answers) and excluding backend/debug artifacts as described in the README and plugin metadata.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 中提供“导出聊天”功能，可将当前会话导出为 Markdown 文件，便于阅读和记录。",
+    "en": "This plugin adds an Export Chat action in DeepSeek Harness Web to produce a session-only Markdown export for reading and handoff."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Export the active DeepSeek Harness conversation from the web session into a Markdown file.",
+      "Adds a new Export Chat action in the DSH Web session UI.",
+      "Downloads a session-scoped Markdown artifact with conversation content.",
+      "Omits internal runtime/tool metadata from the exported transcript."
+    ],
+    "reasons": [
+      {
+        "code": "Export Chat action is added to the DSH session UI and targets the current session",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository package declares DSH web client plugin configuration and bundle injection",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Output format and scope are defined as session Markdown downloads only",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Privacy note states local-only export path with no upload/cloud path stated",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Export the active DeepSeek Harness conversation from the web session into a Markdown file.",
+      "Adds a new Export Chat action in the DSH Web session UI.",
+      "Downloads a session-scoped Markdown artifact with conversation content.",
+      "Omits internal runtime/tool metadata from the exported transcript."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:24.946Z",
+  "repositoryCommitSha": "6487ce6af8d26687a43b7ba98a92af9fc5325122",
+  "evidenceHash": "55f450948738252af1871b6a7e46333090d841d374497899f39e6030c1cef2d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "43e06fef5f687ce64cf9308cae256f5766843faf3c1eb3b1d23af246a6876f48",
+  "shadowMode": false
+}

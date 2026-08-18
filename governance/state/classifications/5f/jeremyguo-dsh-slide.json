@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "ui",
+    "document",
+    "file",
+    "image",
+    "agent",
+    "chat",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary user-facing purpose is a visual slide-deck editor inside DeepSeek Harness conversations, with an AI-annotation workflow for deck modifications and Workspace-backed document management. Evidence shows it is purpose-built for creating, loading, editing, and exporting presentation content rather than general code-generation or system tooling.",
+  "summaries": {
+    "zh": "这是一个在 DeepSeek Harness 会话中使用的可视化幻灯片编辑插件，可将当前对话切换为幻灯片编辑模式，并通过 AI 标注子代理在工作区文档上进行多页幻灯片的编辑、保存与导出。",
+    "en": "This is a DeepSeek Harness conversation plugin that provides a visual slide editor mode with AI annotation subagents, enabling multi-slide deck editing, workspace-backed loading/saving, and presentation-style export from the active session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Load, create, save, and close slide deck documents stored in Workspace file paths.",
+      "Run conversation-scoped AI annotation subagents that can apply deck/page/element update operations.",
+      "Provide a slide-editor UI in the conversation context with canvas selection, thumbnails, and presentation export."
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as a per-Conversation visual slide editor that replaces the chat surface for a selected conversation and operates on slide decks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It defines an open_slide_deck tool that opens Workspace-relative slide documents and enforces session-specific invocation constraints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Workspace file picker flows for New/Load/Save/Save As and per-session document path association indicate direct file persistence and mutation in the host workspace.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Load, create, save, and close slide deck documents stored in Workspace file paths.",
+      "Run conversation-scoped AI annotation subagents that can apply deck/page/element update operations.",
+      "Provide a slide-editor UI in the conversation context with canvas selection, thumbnails, and presentation export."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:25.765Z",
+  "repositoryCommitSha": "ebcb3539b40f65d5a2aa79129a66afb85ba33d1e",
+  "evidenceHash": "fe5e1619341acb7108d253ba527b3f0f1c0089cd043ba5e354111c1e9baa0985",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1c2fc2a1db3c55d5e770426d7ec06ee179c7aa9c987f204b346bca4d69e3b335",
+  "shadowMode": false
+}

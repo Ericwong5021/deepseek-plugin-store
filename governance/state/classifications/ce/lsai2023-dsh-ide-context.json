@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "integration",
+    "mcp",
+    "file",
+    "automation",
+    "memory",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is to provide model-facing IDE context by reading local IDE state and injecting it into conversation turns, not to modify code or perform external integrations. Evidence shows it gathers open files and selection for matching workspace sessions and posts a context message, with optional refresh/poll controls and project scoping, which places it in memory-context/assistant-context augmentation.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的 IDE 上下文插件，可在每次对话中读取 IntelliJ IDEA 或 VS Code 的当前打开文件与选中内容，并将其作为上下文注入模型。",
+    "en": "This plugin is a DeepSeek Harness IDE context bundle that reads current open files and selection from IntelliJ IDEA or VS Code and injects that context into each model turn."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local IDE bridge metadata from the user profile directory",
+      "Connects to a local IDE MCP-over-WebSocket channel",
+      "Injects selected IDE state into each model turn",
+      "Supports configurable polling and refresh behavior for context injection",
+      "Filters injected context by workspace to the current working directory"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin description states it injects currently opened files and the current editor selection into each model turn via the Claude Code IDE bridge lock files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The implementation list includes a WebSocket client module and a bridge module for connection lifecycle and snapshot maintenance, indicating local IPC/network-style bridge interaction.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It explicitly supports both IntelliJ IDEA and VS Code through the same ~/.claude/ide/<port>.lock MCP-over-WebSocket bridge.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local IDE bridge metadata from the user profile directory",
+      "Connects to a local IDE MCP-over-WebSocket channel",
+      "Injects selected IDE state into each model turn",
+      "Supports configurable polling and refresh behavior for context injection",
+      "Filters injected context by workspace to the current working directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:37.047Z",
+  "repositoryCommitSha": "034e9d75e427861f487265e8a7fc6747910707c0",
+  "evidenceHash": "ba0e57291d725154e8ed3c56bda74a1ee38cb81522d16332de6b9c6d9ce19bca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9be1e5741048236bd438e6b8e8036f5ddce29bbe1afc11042dad2ff8229e8f7c",
+  "shadowMode": false
+}

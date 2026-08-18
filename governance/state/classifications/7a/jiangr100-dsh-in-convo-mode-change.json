@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "ui",
+    "chat",
+    "api",
+    "automation",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin’s primary purpose is to let users switch conversation agent presets during an active DeepSeek session via a header UI control, which changes orchestration behavior for subsequent turns. Evidence in the readme shows both client-side UI replacement and server-side route handling for preset changes, with a turn-state guard and session event logging as implemented safeguards.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 会话界面中新增会话头部模式切换器，支持在会话进行中切换 Standard / Code / Minimal / Creator 等对话模式。",
+    "en": "This plugin adds a session-header mode switcher in DeepSeek Harness so users can change agent presets mid-conversation, including Standard, Code, Minimal, Creator, and custom presets."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "injects a conversation-header action to switch the active agent preset",
+      "registers a host route to update session agent preset state",
+      "validates and blocks preset switching while a turn is running",
+      "records preset-switch events into the session log",
+      "supports custom presets defined in the host"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin replaces the built-in read-only session header agent preset label with a selectable menu and sends a sessionId/agentPreset payload to the host route.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains the host registers POST /change-convo-mode/switch and applies changes via host agent preset recompose logic, then logs an agent-preset/selected event.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web plugin bundle and client injection for UI/runtime modules, indicating runtime behavior is tied to the DeepSeek Harness web interface and session actions.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "injects a conversation-header action to switch the active agent preset",
+      "registers a host route to update session agent preset state",
+      "validates and blocks preset switching while a turn is running",
+      "records preset-switch events into the session log",
+      "supports custom presets defined in the host"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:26.907Z",
+  "repositoryCommitSha": "238fa0899ec80194c13d64eaf245a168e5182f82",
+  "evidenceHash": "37306f56076856eb77ac25c9b304b2dc45dcaa7b0ca5bb7dbfa77782f379510b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "79b405e2f1464c0d8010cad69a8dc65da4a941c155ae9cabd950035bc8b32ffc",
+  "shadowMode": false
+}

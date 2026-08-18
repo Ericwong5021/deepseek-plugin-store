@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "ui",
+    "browser",
+    "automation",
+    "agent",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心用户价值是“会话通知中心”：基于 DSH 事件源为人工干预场景提供提醒，并将提醒以系统通知或应用内 toast 方式展示，结合设置项控制是否、何时、何类通知触达。证据（README 与 package.json）显示其为 DSH 的 Host/Client 插件、监听事件并按分类过滤、并支持点击跳转到相关会话，因此归为通知与监控类插件。",
+  "summaries": {
+    "zh": "这是一个面向 DSH 会话的通知中心插件，可将审批、提问确认、目标阻塞、任务完成和错误等事件按配置推送为系统通知或应用内 toast，并支持点击跳转到对应会话。",
+    "en": "This is a DSH session notification plugin that surfaces configured events such as approvals, question prompts, blocked goals, task completion, and errors as system notifications or in-app toasts, with one-click navigation to the related session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors DSH event streams for configured agent/workflow/session events",
+      "Displays user-facing notifications via browser Notification API and in-app toasts",
+      "Supports per-category notification level configuration and focus/session filtering",
+      "Provides session jump actions from notifications",
+      "Exposes a settings/configuration surface for notification behavior"
+    ],
+    "reasons": [
+      {
+        "code": "README documents host/client split and explicit event categories (approval/request, ask_user_question, goal/changed, agent/inbox, task/error/start events) routed through filtering and queueing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents dual notification channels: browser Notification API and app toast stack, with click actions that focus window and open sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes user settings for total switch, per-category levels (off/app/system), focus suppression, and test notification behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies this as a DSH plugin bundle with web client and host/client exports, indicating runtime integration inside the DSH platform.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Monitors DSH event streams for configured agent/workflow/session events",
+      "Displays user-facing notifications via browser Notification API and in-app toasts",
+      "Supports per-category notification level configuration and focus/session filtering",
+      "Provides session jump actions from notifications",
+      "Exposes a settings/configuration surface for notification behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:47.244Z",
+  "repositoryCommitSha": "1e1531cd73ae77ed8324ca7acaf93f459446c2bd",
+  "evidenceHash": "2f0d76b13635a197ceb87a08f5b76a16b1daad91ec9f16c6e26ebc684d52359b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "875bc3797422a280748d72d798441234dc6ef5a3d308d2d07af18688613abde3",
+  "shadowMode": false
+}

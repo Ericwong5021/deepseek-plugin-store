@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "automation",
+    "tool",
+    "workflow",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Classified as a memory-context plugin because its core user-facing function is managing and compressing session context by pruning large tool outputs while retaining recovery paths via search/recall. It is implemented as a DeepSeek Harness bundle with a Cordis patch and peer dependencies for compaction tools, with no evidence of external service orchestration or unrelated domain features.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在会话中对大型工具输出进行裁剪并生成预览，以控制上下文体积并支持更精确的检索与恢复流程。",
+    "en": "This is a DeepSeek Harness plugin that trims large tool outputs into compact previews to control session context size while supporting targeted search/recall-based recovery."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Prunes oversized tool-call outputs into compact previews before the next model step",
+      "Preserves full tool output in session history while limiting immediate context usage",
+      "Configures recall/search-oriented recovery behavior for long-session context handling"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a DeepSeek Harness preset add-on for controlling long-session token growth by pruning oversized tool results into compact previews.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains balanced policy settings for immediate pruning thresholds and a recall path where recalled results are kept for the next model step before normal pruning resumes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this project as a DSH bundle with a Cordis patch and peer dependencies on DSH compaction components, confirming plugin-install/runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Prunes oversized tool-call outputs into compact previews before the next model step",
+      "Preserves full tool output in session history while limiting immediate context usage",
+      "Configures recall/search-oriented recovery behavior for long-session context handling"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:31.918Z",
+  "repositoryCommitSha": "37bd83bc44a0c976a93f13fc8cf5214a1904a52c",
+  "evidenceHash": "ce34c8462e5da7fcdd7cf5f7e6922e2e0e031f2433c4a361a8d9c644ebc5aedb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a135ba2231aef6a5988ffae8c8e6da1d5553773fe816f148ecdedde21f683f76",
+  "shadowMode": false
+}

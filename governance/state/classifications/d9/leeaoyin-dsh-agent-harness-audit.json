@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "automation",
+    "project-analysis",
+    "testing",
+    "workflow",
+    "cli",
+    "file",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary purpose is to audit DeepSeek Harness agent implementations by running configurable harness-evaluation checks and producing local reports, as shown by the `/harness-audit` command surface, defined check matrix, and report outputs. It is an analysis and diagnostics tool for project quality/stability rather than a content generator or integration gateway, with behavior centered on code-targeted validation and subagent-driven checks.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中提供 /harness-audit 命令，用于按维度审计代理循环稳定性问题并输出本地审核报告。",
+    "en": "This plugin adds /harness-audit commands in DeepSeek Harness to run configurable harness checks and generate local audit reports for review."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automated inspection of project code for harness-failure-mode checks",
+      "Per-check subagent fan-out execution model for audit dimensions",
+      "Evidence-gated finding submission with file/path/line validation",
+      "Command-driven asynchronous job execution for long-running audits",
+      "Generation of markdown and JSON audit reports in workspace output directory"
+    ],
+    "reasons": [
+      {
+        "code": "WORKSPACE_ANALYSIS_CAN_ACCESS_LOCAL_FILES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BACKGROUND_JOB_AND_CHILD_SUBAGENT_EXECUTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLUGIN_USES_DSH_BUNDLE_AND_COMMAND_INTERFACE",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Automated inspection of project code for harness-failure-mode checks",
+      "Per-check subagent fan-out execution model for audit dimensions",
+      "Evidence-gated finding submission with file/path/line validation",
+      "Command-driven asynchronous job execution for long-running audits",
+      "Generation of markdown and JSON audit reports in workspace output directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:50.020Z",
+  "repositoryCommitSha": "923f454b108532d09538f8441fcf810fe0b41136",
+  "evidenceHash": "d5591ea5adc9af8022f5f8011829c4bb607ecaf6707aa8a6ed2be69a4f53a433",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "06f771c5e871b3fba95e71d7f8a208cef5ebe975d410cc9b8268de8b7008549e",
+  "shadowMode": false
+}

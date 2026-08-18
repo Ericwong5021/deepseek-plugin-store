@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "mobile",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "根据仓库与包清单信息，该插件主要面向 DeepSeek Harness Web 场景提供访问网关与身份控制能力：通过拦截请求和 WebSocket 升级、路由白名单及密码校验来限制访问，并提供登录/锁屏状态的前端界面与配置项。证据来源于 README 的功能说明及 package.json 的 DSH 运行时集成配置。",
+  "summaries": {
+    "zh": "dsh-plugin-auth-guard 是一款用于 DeepSeek Harness 的通用实用插件，用于在 Web 场景下提供可配置的访问控制、登录门禁和路由请求拦截。",
+    "en": "dsh-plugin-auth-guard is a DeepSeek Harness utility plugin that provides configurable access control, login gating, and request filtering for its web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "HTTP request filtering for web APIs and privileged routes",
+      "WebSocket upgrade/access gating",
+      "Authentication configuration and credential validation support",
+      "Route-level whitelisting for static/public endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a default-deny security gate that intercepts HTTP requests and WebSocket upgrades, and applies authentication and whitelist checks before forwarding to core routes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes credential lifecycle behavior including salted password hashing, HMAC-bound tokens, login throttling, and active websocket/session invalidation semantics.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares the plugin as a DSH web bundle with host webserver/connection peers and exported client runtime entrypoints, indicating integration into request-handling and client UI paths.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "HTTP request filtering for web APIs and privileged routes",
+      "WebSocket upgrade/access gating",
+      "Authentication configuration and credential validation support",
+      "Route-level whitelisting for static/public endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:11.683Z",
+  "repositoryCommitSha": "7ebf628420e51b1e17febca5b46cd9dcbe7c99a1",
+  "evidenceHash": "04c5f889cd8884bb4a24f0267a7e360dd09305e3ce6dcd4a0c44ca42dd2f4717",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "21a6afb98d791e961cdc98d0cc2681a45c8359243a92eee3d1ba97db3c6208ba",
+  "shadowMode": false
+}

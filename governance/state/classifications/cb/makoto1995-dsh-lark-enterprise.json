@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "api",
+    "integration",
+    "automation",
+    "document",
+    "notification",
+    "collaboration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心是将 DeepSeek Harness 连接到飞书/Lark 聊天，实现 AI Agent 在企业 IM 中的消息交互、协作审批与工具调用，并新增文档授权分享能力与零配置登录流程；该定位在于外部服务接入与协作通信，而非代码生成、测试或本地开发辅助。风险主要来自外部 API 通讯、凭据依赖与文档权限授予行为，但未见明显高危敏感操作指示。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供飞书/Lark 消息通道能力，支持企业聊天中的 AI 对话、协作审批，并可按会话自动完成文档分享与图片上传等功能。",
+    "en": "This plugin adds a DeepSeek Harness channel for Feishu/Lark chat, enabling AI chat workflows with approvals in enterprise conversations plus document-sharing and chat-initiated image-upload capabilities."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Lark/Feishu message channel integration for DeepSeek Harness",
+      "Document creation and permission-sharing via feishu_share_document",
+      "Web-side image upload path injected into existing composer flow",
+      "Zero-config credential/onboarding flow with local app binding reuse",
+      "Session/workspace-related operations tied to per-chat context",
+      "Websocket reconnect and lifecycle notifications"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage_and_reuse",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "channel_sdk_dependency",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "client_side_media_entry",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Lark/Feishu message channel integration for DeepSeek Harness",
+      "Document creation and permission-sharing via feishu_share_document",
+      "Web-side image upload path injected into existing composer flow",
+      "Zero-config credential/onboarding flow with local app binding reuse",
+      "Session/workspace-related operations tied to per-chat context",
+      "Websocket reconnect and lifecycle notifications"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:17:02.359Z",
+  "repositoryCommitSha": "9df2c0b1fbf2fb95770d88e3a9bdc664592cbf0b",
+  "evidenceHash": "1791a34ae829fb6326db69ee0907898f8e2074a171ec8ea2628a73b1d991ec0f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "29f29a890590aed782fcf101803ff2097a19dbd29e256ad49358fa11f18e7179",
+  "shadowMode": false
+}

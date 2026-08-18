@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "terminal",
+    "tool",
+    "automation",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a development utility interface for local service/process management: it discovers listening local services, maps them to running process context, and exposes UI actions to inspect and control those services, with no external content, search, or knowledge-management features. Its focus is local operational utility rather than code generation, browsing, or collaboration.",
+  "summaries": {
+    "zh": "DSH 本地服务控制台插件在界面中集中展示本地监听服务及其上下文信息，并提供查看、停止和重启等管理操作。",
+    "en": "A DeepSeek Harness plugin that displays local services in one console and lets you inspect them, then stop or restart eligible services from the UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans local listening TCP ports and correlates them with process metadata.",
+      "Displays service ownership/context for chat/workspace-related local processes.",
+      "Provides controls to inspect, stop, and restart eligible local services.",
+      "Supports scope/filter settings for conversation/workspace/machine views and search filtering."
+    ],
+    "reasons": [
+      {
+        "code": "README describes local discovery of listening ports and service metadata (PID, command, working directory, process group, start time), along with stop/restart actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh manifest in package.json declares a dynamic host/client plugin wired into conversation and shell UI slots, indicating UI-driven process-control operations.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README lists protected/unknown handling and confirmation/revalidation flow before stop/restart actions, which signals process-control capability and bounded local impact.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Scans local listening TCP ports and correlates them with process metadata.",
+      "Displays service ownership/context for chat/workspace-related local processes.",
+      "Provides controls to inspect, stop, and restart eligible local services.",
+      "Supports scope/filter settings for conversation/workspace/machine views and search filtering."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:42.978Z",
+  "repositoryCommitSha": "6e43aea7a8d0044936fe0439203dee64861c51c0",
+  "evidenceHash": "887c10e208e7d50627f1c30d22770f7b0a58f36a27b64a94fe74618ae1daa22d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b335ea471d5db0b4fc324d2d76ccfcb00cfc751a463914210a20f2de2a77ade1",
+  "shadowMode": false
+}

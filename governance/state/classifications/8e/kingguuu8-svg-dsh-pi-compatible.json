@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "file",
+    "terminal",
+    "search",
+    "workflow",
+    "automation",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要面向价值是为 DeepSeek Harness 提供 Pi-compatible 的智能体预设入口，使用户可在会话中使用与 Pi 风格一致的核心文件/终端/检索工具并保留 DSH 扩展能力，因此可归类为自动化执行与代理工作流辅助类插件。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中提供 Pi-compatible 智能体预设，支持小写核心工具契约的文件、搜索与终端调用，并可配合 DSH 提供的任务、计划、搜索与 Todo/Slash 等扩展。",
+    "en": "This plugin adds a Pi-compatible agent preset to DeepSeek Harness with core file, search, and terminal tools, and includes DSH-backed extensions such as task, planning, search, and todo/slash features."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "file read/write/edit/list/search via agent tools",
+      "shell command execution via provided bash tool",
+      "invocation of DSH-backed agent extensions (web search, task/plan/todo/think/slash)",
+      "local preset installation/overwrite behavior in DSH agent preset directory"
+    ],
+    "reasons": [
+      {
+        "code": "README states Pi-compatible preset provides core tools read, write, edit, bash, find, grep, and ls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README identifies DSH-backed extensions WebSearch, Task, ExitPlanMode, Think, TodoWrite, and SlashCommand.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes installation flow that writes preset files into ~/.dsh/.agent-presets/pi-compatible/ and supports force upgrade behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares dsh.bundle.patch and exports plugin entrypoints, indicating distributed plugin behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "repository tree includes pi-core-fs.mjs, pi-core-shell.mjs, pi-core-search.mjs and related preset files matching documented tool set.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "file read/write/edit/list/search via agent tools",
+      "shell command execution via provided bash tool",
+      "invocation of DSH-backed agent extensions (web search, task/plan/todo/think/slash)",
+      "local preset installation/overwrite behavior in DSH agent preset directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:16.696Z",
+  "repositoryCommitSha": "4fac8fa9208705a7349299ce51164d947e8ade7e",
+  "evidenceHash": "f5adc231fdcf55dbb9a5870fb414ee874973209490542e66a32ffe7d8907b295",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f0dbf2850b00b95f1f2b0a9512c6946634a369dbb2547f5c4d89b1e5e5d6c41b",
+  "shadowMode": false
+}

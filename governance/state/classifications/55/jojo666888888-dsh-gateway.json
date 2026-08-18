@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的用户面向目标是为 DeepSeek Harness 提供一个多平台聊天网关，支持在 QQ/Telegram/Discord/飞书/QQ 官方/钉钉等平台与 dsh 会话之间双向转发消息与指令（含会话映射与任务/状态反馈），并通过设置面板与 /api/gateway 接口集中管理适配器、会话、凭据和运行状态，因此主要归类为外部服务整合。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 多平台网关插件，用于把 QQ、Telegram、Discord、飞书、QQ 官方机器人与钉钉等聊天平台接入到 dsh，实现聊天消息与指令与 dsh 会话的双向转发，并提供网关设置、状态和会话管理入口。",
+    "en": "This is a DeepSeek Harness multi-platform gateway plugin that connects IM platforms such as QQ, Telegram, Discord, Feishu, QQ official bot, and DingTalk to dsh sessions for two-way message and command forwarding, with management for settings, status, and sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "multi-platform instant messaging integration",
+      "dsh session bridging for inbound and outbound messages",
+      "gateway control/monitoring via HTTP endpoints",
+      "configuration and sensitive credential storage in dsh credentials"
+    ],
+    "reasons": [
+      {
+        "code": "multi_platform_adapters",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_id_mapping_and_bi_directional_flow",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_api_management_endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_ui_panel_and_credentials_reference",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "multi-platform instant messaging integration",
+      "dsh session bridging for inbound and outbound messages",
+      "gateway control/monitoring via HTTP endpoints",
+      "configuration and sensitive credential storage in dsh credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:43.911Z",
+  "repositoryCommitSha": "853876fe9f76016957cea9daa56a5f47aa819813",
+  "evidenceHash": "6f0ba4f7e417441ff41559dcdfaed83c68844e4e80db882fd95f08341c820f7c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b9fbc57c30163ab5b7523a95f2fe6aaf0657bad689a3583806f5155e114665f7",
+  "shadowMode": false
+}

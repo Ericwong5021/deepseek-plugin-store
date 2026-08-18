@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "workflow",
+    "api",
+    "tool",
+    "cli",
+    "planning",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily an orchestration plugin for DeepSeek Harness that exposes governance-focused tools to create and manage a local multi-agent workflow: initializing kingdoms, defining roles and territories, planning/assigning tasks, controlling execution attempts, and reviewing results with persistent SQLite-backed state.",
+  "summaries": {
+    "zh": "dsh-Kingdom 是 DeepSeek Harness 插件，提供本地化的多智能体治理工作流命令，支持角色、领地与任务的规划、分配、执行与验收。",
+    "en": "dsh-Kingdom is a DeepSeek Harness plugin that provides session-based multi-agent governance workflows for role setup, territory management, task planning, execution control, and review."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Multi-agent role and territory management via command tools",
+      "Task planning/assignment/execution/review lifecycle control",
+      "Worker execution control and attempt/rework tracking",
+      "Local state persistence in SQLite for kingdom, tasks, events, and bindings",
+      "Optional local GUI gateway for management actions"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is a DeepSeek Harness package (`dsh-kingdom`) that defines multiple `kingdom_*` tools for kingdom, territory, role, and task governance operations.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README documents a workflow with claim/review-based execution and state transitions (e.g., CREATED→ASSIGNED→REVIEW→DONE/REWORK/FAILED), plus `kingdom_start_task` and `kingdom_execution_control` for execution orchestration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states data is stored in local SQLite (`~/.dsh/kingdom/kingdom.db`) with multiple tables and includes an optional local GUI data gateway on 127.0.0.1.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository exposes optional gateway/API surface and local profile settings (`guiPort`, token, origins), indicating network-facing plugin interfaces that should be configured securely.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Multi-agent role and territory management via command tools",
+      "Task planning/assignment/execution/review lifecycle control",
+      "Worker execution control and attempt/rework tracking",
+      "Local state persistence in SQLite for kingdom, tasks, events, and bindings",
+      "Optional local GUI gateway for management actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:47.334Z",
+  "repositoryCommitSha": "0f6a80431ff8f3160451cda952fe9770d1a357b2",
+  "evidenceHash": "5eb3982f40039916cb40ded4792be97e47e6ff24671e51c66bb9185ecc7cad45",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fb1f9ef5154242e3c0ec24ce4c68d4bd841cbff82143306eeda64931c58309e4",
+  "shadowMode": false
+}

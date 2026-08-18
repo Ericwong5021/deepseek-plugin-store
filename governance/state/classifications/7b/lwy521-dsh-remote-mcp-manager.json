@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "tool",
+    "ui",
+    "api",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "基于 README 与 package.json 的描述，该插件的核心面向用户目的是在 DSH 设置界面集中管理 MCP 服务器（新增、编辑、删除与测试），属于外部服务配置与集成管理工具；由于规则显示清单引用校验失败，需先修复清单文件可验证性后再推进。",
+  "summaries": {
+    "zh": "DSH Web GUI 插件，用于在设置界面集中管理远程和本地 MCP 服务器配置，支持新增、编辑、删除与连接测试。",
+    "en": "A DSH Web GUI plugin for managing remote and local MCP server configurations in one settings panel, including adding, editing, deleting, and testing connections."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read",
+      "local-process-config"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明插件支持管理远程/本地 MCP Server（含 Streamable-HTTP 与 stdio）并提供连接测试功能，表明其会与外部服务通信。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出配置中可填写 API Key/Token，并将配置持久化到 cordis.patch.yml，涉及凭据配置与持久化行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明为 DSH Web 插件并依赖 @deepseek-ai/dsh-mcp-client，说明其运行时与 MCP 客户端能力及外部服务集成绑定。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "规则结果显示 MANIFEST_REFERENCES_VALID 失败且提示 cordis.patch.yml，表明清单引用未通过当前树结构校验。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local-process-config"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:53.809Z",
+  "repositoryCommitSha": "f5d3317e80d8df0a711c75ffe3a93980c39932d1",
+  "evidenceHash": "b2ce94cf51a2fd69f4a8fdbb243c9ab2a9e0d7652c64188cd81738da785daa58",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cc276551578a6b60fd1e2766b5a2702ed7b5f3ddaf1951c4f2aea61f43d6d7d6",
+  "shadowMode": false
+}

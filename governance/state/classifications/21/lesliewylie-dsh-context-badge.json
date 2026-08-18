@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "ui",
+    "tool",
+    "desktop",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a local context utility for DeepSeek Harness users: it adds a context badge in the DSH composer, keeps per-session/workspace notes and todos, and provides optional macOS foreground-window context tracking. The evidence indicates a DSH web plugin with local persistence and an optional local macOS companion, which supports memory/context management rather than model control, code generation, or external service orchestration.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中提供本地化上下文管理体验，包括会话/工作区的上下文徽标、笔记与待办记录，并可选配 macOS 前台窗口伴随程序。",
+    "en": "This plugin provides local context management for DeepSeek Harness with a composer badge, per-session workspace notes and todos, plus an optional macOS companion for foreground window context tracking."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores per-session and per-workspace notes/todos in browser localStorage.",
+      "Displays session context information such as session/workspace identifiers and progress metrics in a DSH dock badge.",
+      "Optionally tracks macOS foreground application/window title and keeps recent foreground contexts locally.",
+      "Shows and reopens recent contexts through a companion interface."
+    ],
+    "reasons": [
+      {
+        "code": "Local notes/todos and session/workspace context are explicitly persisted with local-first storage and no remote sync described.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin manifests declare web client injection for DSH and optional macOS companion scripts/build flow, confirming cross-surface behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata and files include macOS companion implementation artifacts and plugin patch configuration for DSH integration.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Stores per-session and per-workspace notes/todos in browser localStorage.",
+      "Displays session context information such as session/workspace identifiers and progress metrics in a DSH dock badge.",
+      "Optionally tracks macOS foreground application/window title and keeps recent foreground contexts locally.",
+      "Shows and reopens recent contexts through a companion interface."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:52.394Z",
+  "repositoryCommitSha": "cef1954fc27876fca0f8efff67997c923241260e",
+  "evidenceHash": "73dfb7ea5d030dea0f4b0f6660d50805db6a4c5efd923ba9a807ab30c6a225e6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "00f4c878b899eef73938f3d26793427a1fb71f9692464f7eaf5dc02b904822ff",
+  "shadowMode": false
+}

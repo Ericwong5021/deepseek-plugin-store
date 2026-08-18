@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "tool",
+    "ui",
+    "integration",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily an agent-side action orchestration tool for DeepSeek Harness: it stages intended tool calls, provides an Inbox for full-call review and optional edits, and requires a review-based approval step before dispatching committed actions. Evidence shows it is designed for workflow control of external side-effect operations (for example tool actions targeting GitHub, Slack, deploy flows), with persistent state and recovery handling, so its purpose is not coding or content generation but controlled orchestration and human-in-the-loop approval.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的动作编排插件，提供批量收件箱让工具调用先暂存与审阅，再在确认后统一提交执行。",
+    "en": "This is a DeepSeek Harness orchestration plugin that stages tool actions in a batch inbox, lets users review full call details, and submits an approved batch for execution."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "tool-call staging and batching",
+      "review-before-dispatch workflow",
+      "persistent local state tracking",
+      "commit/abort control for external actions",
+      "web UI batch inspection/editing",
+      "external tool execution via existing DSH pipeline",
+      "filesystem write for durable state and recovery receipts"
+    ],
+    "reasons": [
+      {
+        "code": "README documents begin->stage->review->commit lifecycle with no target dispatch while staging or editing, indicating explicit orchestration and execution gating.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README config examples include github, slack, and deploy tool patterns and enforcement rules, showing integration with external service actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata describe DSH web client integration (sidebar/footer and overlay slots), confirming a user-facing approval and review interface.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Rule metadata and README mention local state file persistence and crash-recovery states, indicating durable writes and nontrivial operational side effects.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "tool-call staging and batching",
+      "review-before-dispatch workflow",
+      "persistent local state tracking",
+      "commit/abort control for external actions",
+      "web UI batch inspection/editing",
+      "external tool execution via existing DSH pipeline",
+      "filesystem write for durable state and recovery receipts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:38.349Z",
+  "repositoryCommitSha": "888d04742adca7e888b80a89532b940adfd79d5a",
+  "evidenceHash": "10b983a6424ab66650712bb1ac4566c95219c43ca9220cbe4aac30534faab72d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0b0ad4aee202dd4d39cddbe34f817f6a369ed812540500873809697d0cfc6ea7",
+  "shadowMode": false
+}

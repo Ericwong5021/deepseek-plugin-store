@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "file",
+    "integration",
+    "tool",
+    "ui",
+    "automation",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This is primarily an external service integration plugin that exposes Alibaba Cloud Drive capabilities through DeepSeek Harness tools and a web conversation tab, with user-facing workflows for cloud file management and transfer operations (including status and background task controls). The evidence shows concrete cloud-drive actions, service-specific CLI integration, and a dedicated UI surface, while risk is moderate due remote file manipulation and destructive-action controls.",
+  "summaries": {
+    "zh": "该插件将阿里云盘 CLI 封装为 DeepSeek Harness 可调用工具，并提供会话界面标签页，用于浏览、上传、下载、同步及管理云端文件。",
+    "en": "This plugin wraps the Alibaba Cloud Drive CLI into DeepSeek Harness tools and provides a conversation UI tab for browsing, uploading, downloading, syncing, and managing cloud files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Cloud drive account/session querying and drive switching",
+      "Cloud file listing, navigation, and basic file operations",
+      "File upload and download with concurrency/retry controls",
+      "Share link creation and album listing/download actions",
+      "Sync backup-like upload/download workflows with policy options",
+      "Background transfer task status/list/stop controls",
+      "Web UI tab for invoking and viewing tool outputs"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin wraps the aliyunpan CLI and exposes Alibaba Cloud Drive operations as model-callable tools, including account, file, transfer, share, album, and sync functions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states dangerous operations (such as removal/rename/move workflows) are confirmation-gated, indicating explicit user-intent checks for destructive actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository package metadata identifies this as a DeepSeek Harness plugin with web platform client injection and UI resources, confirming a UI-initiated and model-assisted remote service integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Cloud drive account/session querying and drive switching",
+      "Cloud file listing, navigation, and basic file operations",
+      "File upload and download with concurrency/retry controls",
+      "Share link creation and album listing/download actions",
+      "Sync backup-like upload/download workflows with policy options",
+      "Background transfer task status/list/stop controls",
+      "Web UI tab for invoking and viewing tool outputs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:11.934Z",
+  "repositoryCommitSha": "0cf0d19484f7bb01062487717a94fa587b7f5d32",
+  "evidenceHash": "68edb344917aafd92a47ac1da099f10436b3ba76168a0653c0fa3e774c1e36f0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "52717ace6ac0459696ce86fa26e077ac1ff415ed44d34f8fcc20fd1751b0cf42",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The primary user-facing purpose is providing a shared settings UI development kit for other DSH plugins, centered on `ctx.settingsUi` for consistent settings pages and floating panels. Evidence in README and package metadata indicates this is a plugin-development utility rather than a standalone end-user feature, with component primitives plus settings state helpers.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 插件提供统一的设置页与浮层 UI 套件，通过 `ctx.settingsUi` 帮助其他插件快速接入设置区块和覆盖面板。",
+    "en": "A unified settings UI kit for DeepSeek Harness plugins that exposes `ctx.settingsUi` to add consistent settings sections and overlay panels across plugins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides plugin-facing UI APIs for settings sections and overlay panels",
+      "Offers declarative settings form/state helpers for load/save/error/revision handling",
+      "Stores and synchronizes panel state such as position/visibility across tabs"
+    ],
+    "reasons": [
+      {
+        "code": "README states the package is a unified settings-page and floating-panel UI kit for DeepSeek Harness plugins and exposes `ctx.settingsUi` for plugin integration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `createSettingsStore` and `useSettings` handling load/save/busy/error/saved and revision-conflict flows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web client plugin with peer dependencies on DSH runtime/UI slot packages, indicating host-integrated plugin functionality.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides plugin-facing UI APIs for settings sections and overlay panels",
+      "Offers declarative settings form/state helpers for load/save/error/revision handling",
+      "Stores and synchronizes panel state such as position/visibility across tabs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:00.454Z",
+  "repositoryCommitSha": "59b7ad7b56e45dc9bcedbf88d63c4ab7c44a1408",
+  "evidenceHash": "691a42727f8eef6a8568730b182b6244e67606f071644da2571a83be2cc274c3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b18c840087c8f09a72f33ff4195ce32587471d3cfcb8b75b60b70fd8de00c6c4",
+  "shadowMode": false
+}

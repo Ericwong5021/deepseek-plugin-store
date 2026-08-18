@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is conversational UI navigation for DSH web: the plugin adds a right-side question rail to long chats so users can jump directly to specific user-question turns, based on DOM-extracted question items and in-page scroll position tracking.",
+  "summaries": {
+    "zh": "这是一个面向 DSH 网页对话的导航插件，在右侧显示可交互的用户问题入口，支持点击跳转到对应对话轮次并随滚动高亮当前位置。",
+    "en": "This plugin adds a right-edge navigation rail for DSH web conversations, showing user-question shortcuts you can click to jump to a specific turn while highlighting your current position as you scroll."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a right-edge in-page navigation rail into the DSH web conversation interface",
+      "Reads user question flow nodes from conversation DOM state and builds jump markers",
+      "Enables click-to-scroll navigation to specific conversation turns via element references",
+      "Tracks scroll position and highlights the currently active question marker",
+      "Uses DOM observers/timers to refresh marker rendering as conversation content changes"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as adding a slim right-edge question-navigation rail that shows hoverable ticks per user question and enables jump-to-turn behavior in long DSH conversations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The feature list explains extraction from DOM attributes (`data-chat-flow-kind=\"user\"`) and direct element-based `scrollIntoView` jumping, plus MutationObserver-based resync and scroll-based highlighting.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description and package metadata indicate the plugin is a DSH web plugin (client-side platform), so behavior is page-local and UI-oriented rather than server-side.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects a right-edge in-page navigation rail into the DSH web conversation interface",
+      "Reads user question flow nodes from conversation DOM state and builds jump markers",
+      "Enables click-to-scroll navigation to specific conversation turns via element references",
+      "Tracks scroll position and highlights the currently active question marker",
+      "Uses DOM observers/timers to refresh marker rendering as conversation content changes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:12.756Z",
+  "repositoryCommitSha": "f783bfb0f1df526a966a169333e72551de19a295",
+  "evidenceHash": "db880bd70bbae7e77024ac6390382318534c8ad3f914a6efe5a6384f29cc8090",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "45c691fb8411d61e589b65297767b3f3b51d35a8330cf5c0fbc30ecfc412842b",
+  "shadowMode": false
+}

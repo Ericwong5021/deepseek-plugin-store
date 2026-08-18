@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "ui",
+    "api",
+    "automation",
+    "tool",
+    "desktop",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an automation utility for local service control: it adds a web sidebar power control to initiate shutdown or restart operations for DeepSeek Harness and uses local endpoints to trigger process lifecycle actions. Evidence also shows optional configuration for restart command and reopen URL, so its main user-facing purpose is operational control rather than content editing, search, or data processing.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的 Web 侧边栏提供电源按钮，方便用户从界面一键关闭或重启本地 DSH 服务。",
+    "en": "The plugin adds a power button to the DeepSeek Harness web sidebar so users can shut down or restart the local DSH Web UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Shuts down or restarts the local DSH web process",
+      "Exposes power-control routes on localhost",
+      "Spawns/restarts process via detached platform-specific commands",
+      "Provides browser-side UI controls and confirmation flow"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a sidebar power button to close DSH or restart the Web UI, with confirmation before actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents exact loopback routes /api/power/shutdown and /api/power/restart as the implemented control entry points.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details restart behavior that rebuilds launch command and can use custom restartCommand, indicating process-lifecycle invocation capability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web client plugin with dsh bundle patch for UI injection and confirms target profile is DSH web.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Shuts down or restarts the local DSH web process",
+      "Exposes power-control routes on localhost",
+      "Spawns/restarts process via detached platform-specific commands",
+      "Provides browser-side UI controls and confirmation flow"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:26.314Z",
+  "repositoryCommitSha": "4ffa7195802e27de13dc8f198420c5ca40da849c",
+  "evidenceHash": "c2653e6a88c0a0e710c48615a554493f86a33b5ff2fcb8692e924e6fa78734b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "57cf0314b9ca80e1af1e44d65f2eb6474e0b59327f2043ac68f7c7cbd3177da2",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "ui",
+    "tool",
+    "chat",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a usage-monitoring utility for configured LLM providers, designed to show quota and token consumption in the DSH web interface. Evidence shows a theme-aware bottom-right bubble UI, configurable refresh policies, per-provider detail panels, and a model tool to query usage, with network calls to provider billing/usage endpoints as its core function.",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，在页面右下角展示已配置模型提供商的实时用量与配额，并提供可配置刷新策略、供应商详情和界面内查询入口。",
+    "en": "This DSH web plugin displays configured model providers’ live usage and quota in a bottom-right bubble with configurable refresh behavior, per-provider detail views, and an in-app usage query tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches provider usage/quota data from external LLM APIs",
+      "Reads provider configuration/credentials via host context",
+      "Displays live usage summaries and detailed metrics in the DSH web UI",
+      "Exposes in-app tool/query interfaces for usage inspection"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a DSH web plugin that shows real-time usage/quota of configured LLM providers in a bottom-right bubble with detailed per-provider metrics on hover.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists host JSON routes `/provider-usage/query`, `/provider-usage/config`, and `/provider-usage/activity`, plus auto-discovery and direct calls to provider endpoints like `/v1/usage`, `/auth/key`, `/user/balance`, and billing subscription routes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines a DSH web plugin bundle/exports for `lib/index.js` and `lib/client.js`, and injects web client runtime modules, confirming integration with external services and UI rendering.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Fetches provider usage/quota data from external LLM APIs",
+      "Reads provider configuration/credentials via host context",
+      "Displays live usage summaries and detailed metrics in the DSH web UI",
+      "Exposes in-app tool/query interfaces for usage inspection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:46.382Z",
+  "repositoryCommitSha": "9983c333442fc414b3a5e2e769122613e85acac0",
+  "evidenceHash": "1c5eee11c0a4f4613cdad162506ad4ee69969e8198b62e2dbd77a02926c0ec7a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f07dfb273125aabdec5d5dd7dcbdd4f744fa64be27072442e79bc1d6db061673",
+  "shadowMode": false
+}

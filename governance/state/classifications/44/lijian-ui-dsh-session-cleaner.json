@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "data",
+    "api",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户价值在于为 DeepSeek Harness 提供会话管理界面能力：列出会话、预览内容、按分组管理归档恢复，并支持带确认的永久删除，因此属于界面化会话维护工具，不涉及代码生成、研究检索或协作通信类核心功能。",
+  "summaries": {
+    "zh": "该插件在 dsh 中新增会话管理能力，支持会话列表与预览、归档/恢复，以及带二次确认的永久删除，用于整理和维护历史会话。",
+    "en": "This plugin adds dsh session management features, including session listing and previews, archive/restore actions, and two-step-confirmed permanent deletion for cleaning up conversation history."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "扫描并展示本地 dsh 会话目录列表（含标题、时间与大小）",
+      "读取并预览会话内容与最近对话片段",
+      "通过官方 RPC 执行会话归档/恢复或同步相关状态",
+      "本地永久删除会话目录、相关缓存与状态文件"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明提供“真删除（二次确认）”“删除会话目录 + 投影缓存 + workspace 状态”",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明会话列表来自 ~/.dsh/sessions 文件层扫描，含标题提取与“游离/已归档/全部”分组",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package 描述均表明可归档、恢复和删除会话，且为 dsh 插件前端功能",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "扫描并展示本地 dsh 会话目录列表（含标题、时间与大小）",
+      "读取并预览会话内容与最近对话片段",
+      "通过官方 RPC 执行会话归档/恢复或同步相关状态",
+      "本地永久删除会话目录、相关缓存与状态文件"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:11.574Z",
+  "repositoryCommitSha": "f1c222a16efdbcfe7f1fa5abd53d5a5c2b4d301d",
+  "evidenceHash": "0e64e83bb0ad3252e8078cd4fde602541f80492d5aa4e68972659d8041cf1513",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4f058d41c945c7d8fea658525be1b21f7fdadec75270baf8092c3cf7fd81b44c",
+  "shadowMode": false
+}

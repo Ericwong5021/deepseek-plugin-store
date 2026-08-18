@@ -1,16 +1,84 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "ui",
+    "visualization",
+    "monitoring",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily an external-service utility for DeepSeek Harness that surfaces provider health, quota, and account usage information in the Models settings while also generating local token-usage analytics for user-visible monitoring and planning. The evidence shows it performs provider API checks, reads credentials through the host credential service, and builds on local session data without adding external persistence features.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的插件，在模型设置中提供提供商健康检查、额度/用量查询，并展示本地会话 token 使用统计与图表。",
+    "en": "This plugin is for DeepSeek Harness, adding provider health checks, quota/account usage queries, and local token-usage dashboards in the model settings workflow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Makes HTTPS requests to provider endpoints for model health and usage checks",
+      "Reads provider credentials via DeepSeek Harness credential services",
+      "Calls provider usage APIs with provider-origin scoping",
+      "Processes and stores local token usage data and provider/account usage query results in plugin settings namespace",
+      "Renders local dashboard visualizations from session log data"
+    ],
+    "reasons": [
+      {
+        "code": "provider_health_and_usage_queries",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling_via_dsh_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_dashboard_from_session_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_bundle_and_web_client_platform",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Makes HTTPS requests to provider endpoints for model health and usage checks",
+      "Reads provider credentials via DeepSeek Harness credential services",
+      "Calls provider usage APIs with provider-origin scoping",
+      "Processes and stores local token usage data and provider/account usage query results in plugin settings namespace",
+      "Renders local dashboard visualizations from session log data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:14:24.124Z",
   "repositoryCommitSha": "32db0da4d418a469f625b84582bcf9d93f64fd4f",
+  "evidenceHash": "4f711d3f3bd6a37420572afe2754807eb197b2dfea5d18c9f96073d9ab7bc948",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "c0f2106cdcc85d362dea2c699e4d3acbd5b3a7896e082aedbe19bd5ee03d3b64",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:11:32.423Z",
-  "lastAttemptAt": "2026-08-18T18:11:32.423Z",
-  "nextRetryAt": "2026-08-19T00:11:32.423Z",
-  "retryable": true,
-  "error": "AI decision metadata is invalid",
   "shadowMode": false
 }

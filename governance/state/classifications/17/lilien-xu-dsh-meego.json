@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "tool",
+    "automation",
+    "integration",
+    "workflow",
+    "planning",
+    "collaboration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily an external project-management integration for Feishu Meego/Project, giving DeepSeek agents a controlled toolset to find projects, inspect work items, and manage personal todos and work-item state. Evidence in the README and package metadata supports that it is CLI-backed, Meego-specific tooling rather than a UI, file, media, or code-generation utility.",
+  "summaries": {
+    "zh": "dsh-meego 是一个 DeepSeek Harness 插件，通过本机 `meegle` CLI 提供飞书 Meego/Project 的项目查询、工单查看与在用户确认后进行的工单创建、更新和状态流转功能。",
+    "en": "dsh-meego is a DeepSeek Harness plugin for Feishu Meego/Project that exposes CLI-backed tools to search projects, inspect work items, and create, update, or transition items after user confirmation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Discover Meego projects and work items via query/list operations",
+      "Create, update, and transition Meego work items",
+      "Read personal ToDo and status-specific task lists",
+      "Execute operations through the local Meego CLI (`meegle`) using existing credentials"
+    ],
+    "reasons": [
+      {
+        "code": "README describes explicit tool surface including project search, work item get/query/todo, and create/update/transition actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states mutating tools are used only for creating/updating/transitioning work items and should run after user confirmation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the plugin runtime as `dsh/index.js` for DeepSeek Harness and the repository purpose is Feishu/Meego integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Discover Meego projects and work items via query/list operations",
+      "Create, update, and transition Meego work items",
+      "Read personal ToDo and status-specific task lists",
+      "Execute operations through the local Meego CLI (`meegle`) using existing credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:12.502Z",
+  "repositoryCommitSha": "9cdac2482d08977e2302405deaf8d6ede9788b45",
+  "evidenceHash": "17a2d8997dceef6e87c5d3c371f732e945d5594d5b11692cf0b54651a5a1c02a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "80c6439034c80f83512c3e0f647e45fb09d7fc2179dc58ef18350216fa0305e5",
+  "shadowMode": false
+}

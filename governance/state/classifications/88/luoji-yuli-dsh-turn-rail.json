@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "layout",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is primarily a user-interface navigation enhancement for DeepSeek Harness Web: it renders a right-side turn rail, keeps the active turn synced while scrolling, and can auto-display session history turns, as documented in the README. Manifest data confirms web-client injection and profile patching, with no evidence of data-processing, external-service, or automation/control-plane behavior beyond local conversation UI presentation.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在对话界面右侧提供可展开的回合导航轨道，用于快速定位和跳转历史聊天回合。",
+    "en": "This plugin adds an expandable right-side turn rail in DeepSeek Harness Web to help users quickly navigate historical chat turns within a conversation session."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Conversation turn navigation in chat sessions",
+      "Right-side rail marker display and expanded turn list",
+      "Scroll position sync (scrollspy) for active turn highlighting",
+      "Optional UI visual toggle in settings"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides a right-side turn navigation rail with per-user-turn markers and expandable panel for each turn.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin manifest marks platform as web client UI and bundles via dsh client/runtime/injection patch, indicating frontend UI integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes UI client bundle, tests, and patch file with no backend services, file-system tools, or external-service modules.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Conversation turn navigation in chat sessions",
+      "Right-side rail marker display and expanded turn list",
+      "Scroll position sync (scrollspy) for active turn highlighting",
+      "Optional UI visual toggle in settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:43.671Z",
+  "repositoryCommitSha": "24bdc04d2f625d89915aea11b493b52cda74afa0",
+  "evidenceHash": "7df4b973fcd7472dd9496ec1d5cfda624e8b050e4ab5661ebcbb5aa390bb8741",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0dd4836e60d37307734009ade4e06b2dec6bf7ec234f8415c1510d6c411ee22a",
+  "shadowMode": false
+}

@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "integration",
+    "tool",
+    "workflow",
+    "api",
+    "mcp",
+    "collaboration",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily an agent workflow bridge that connects Codex to locally running DeepSeek Harness sessions, with MCP tools and a companion UI module for dispatching, steering, and monitoring tasks; it is conservatively moderate risk because it performs session control and local execution wiring, and a manifest reference validation issue currently blocks clean admission.",
+  "summaries": {
+    "zh": "该插件为 Codex 提供 DeepSeek Harness 桥接能力，可在 Codex 中调度本地 DSH 会话并管理任务状态。",
+    "en": "This plugin lets Codex work with DeepSeek Harness sessions as a local bridge, allowing task dispatch and session-level collaboration from Codex tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read/write local Codex/DSH bridge configuration",
+      "Communicate with local DeepSeek Harness HTTP RPC endpoints",
+      "Create/list/filter/cancel/fork/wait on DSH sessions",
+      "Dispatch tasks/messages from Codex to DSH via MCP tools",
+      "Operate via PowerShell installer/uninstaller scripts to install or refresh plugin components"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README describes an MCP bridge and collaboration skill that lets Codex dispatch, steer, and monitor DSH sessions (e.g., create/list/filter sessions, queue/steer messages, wait for completion).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata includes a DeepSeek Harness companion package (dsh-plugin) with web-client injection and MCP/tooling integration entry points.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The plugin adds local installer/uninstaller PowerShell workflows for Codex and DSH sides, indicating executable local environment changes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Validation result reports MANIFEST_REFERENCES_VALID failed for dsh-plugin/cordis.patch.yml, indicating a blocking packaging/reference issue.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Read/write local Codex/DSH bridge configuration",
+      "Communicate with local DeepSeek Harness HTTP RPC endpoints",
+      "Create/list/filter/cancel/fork/wait on DSH sessions",
+      "Dispatch tasks/messages from Codex to DSH via MCP tools",
+      "Operate via PowerShell installer/uninstaller scripts to install or refresh plugin components"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:19.842Z",
+  "repositoryCommitSha": "3168b8611b8d02f66b4305ea447c20b545f0167d",
+  "evidenceHash": "2a30c8e11560502b5369791b770ec443030e0a5cd3d5674bd4870d34b6ed5057",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "91cd1a67c0a132d33c5054def8f76014415716ad4b201f0505c0aa7146aafb22",
+  "shadowMode": false
+}

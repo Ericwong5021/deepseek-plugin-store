@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "ui",
+    "tool",
+    "integration",
+    "data",
+    "notification",
+    "automation",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供余额监控能力：主机端提供本地 `/ds-balance` 查询入口并注册 `deepseek_balance` 工具，客户端在界面左下角展示可刷新余额与低余额提醒，并支持刷新与告警阈值设置，所有行为基于仓库和清单中的功能说明。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中显示 DeepSeek 账户余额、自动或手动刷新并提示低余额，同时支持在对话中按工具命令查询余额。",
+    "en": "This plugin adds a DeepSeek balance view in DeepSeek Harness with manual/automatic refresh and low-balance warning, and supports on-demand balance checks through a `deepseek_balance` chat tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local.http.endpoint",
+      "tool.invocation",
+      "ui.injection"
+    ],
+    "reasons": [
+      {
+        "code": "README 与仓库说明明确提供对话触发工具 `deepseek_balance` 与页面余额显示功能，表明插件会处理余额查询与展示。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明中的实现流程显示主机端提供 `/ds-balance` 端点并通过凭据 `DEEPSEEK_API_KEY` 调用 DeepSeek 余额接口，涉及外部 HTTP 访问与本地凭据读取。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明 `dsh.client` 与 bundle patch，插件可注入到 DSH web 运行时并默认激活，属于运行时扩展能力。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local.http.endpoint",
+      "tool.invocation",
+      "ui.injection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:32.704Z",
+  "repositoryCommitSha": "617876adda664c44968324e6c424a9d97120c0b5",
+  "evidenceHash": "f4130fbebade5d0f1cdffb247e68bd245ac955b224ebcc37d9c282260fbc2c5d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d91453dd036aea25ef46dd601f57a85aee0e6b5ecbd8f8651043de759cdc89c8",
+  "shadowMode": false
+}

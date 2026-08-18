@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "tool",
+    "automation",
+    "integration",
+    "ui",
+    "api",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的核心用途是为 DeepSeek Harness 的 Windows 环境提供可切换的 Bash 执行模式：将默认的 PowerShell 命令执行链改为 Git Bash（并同步更新模型可见工具与执行细节），并提供配置项与兼容翻译层来保持命令可用性。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的 Windows 会话中把命令执行切换为 Git for Windows Bash，并支持一键开关与配置管理，以便模型工具面与 Bash 命令语义保持一致。",
+    "en": "This plugin switches command execution in DeepSeek Harness on Windows to Git for Windows Bash, with runtime toggle/settings support so model-facing shell usage follows bash semantics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reroutes Windows command execution from pwsh to Git Bash at runtime",
+      "Modifies shell/tool wiring so the model-facing command tool set is switched to bash",
+      "Persists and applies an on/off setting for the shell redirection behavior via settings.yaml and plugin API",
+      "Provides compatibility translation of command tokens (env vars/drive paths/preamble) before execution",
+      "Creates PATH shim scripts for pwsh/powershell command compatibility"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin description states it replaces ctx.shell argv usage with [\"<git bash>\", \"-c\", command] for foreground/background/sandbox flows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It removes pwsh tool definitions from the model toolset and registers a bash tool with matching tool behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It exposes GET/POST /api/dsh-all-gitbash and persists enabled/sandboxGate/translation options in settings.yaml.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It documents command translation at execution time: UTF-8 preamble stripping, $env:NAME to ${NAME}, and C:\\ path conversion.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a web client injection plugin bundle (dsh client platform web, immediate), indicating host/runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reroutes Windows command execution from pwsh to Git Bash at runtime",
+      "Modifies shell/tool wiring so the model-facing command tool set is switched to bash",
+      "Persists and applies an on/off setting for the shell redirection behavior via settings.yaml and plugin API",
+      "Provides compatibility translation of command tokens (env vars/drive paths/preamble) before execution",
+      "Creates PATH shim scripts for pwsh/powershell command compatibility"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:16:03.354Z",
+  "repositoryCommitSha": "ee390769b5e0a6973773839389f25b770ff038cd",
+  "evidenceHash": "3e24157623773fba84baba0fa448bd2225c9c5c2861bb86141070bdf8d9a91bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c66276c6f86c84e475e90190468e7a339e6127cb268b959536f437ad7b7bb2f8",
+  "shadowMode": false
+}

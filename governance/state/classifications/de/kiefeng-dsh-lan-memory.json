@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "api",
+    "ui",
+    "tool",
+    "file",
+    "data",
+    "context",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Primary user-facing purpose is a memory and persona enhancement plugin for DeepSeek Harness, with evidence showing layered local memory management, response-context injection, and UI/API controls for persona and mood/state management; this aligns most directly with memory-context over other plugin/tool categories.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的记忆与人格插件，支持在三层记忆中持久化管理会话信息，并通过界面与 API 管理人格约束和心情状态。",
+    "en": "This is a DeepSeek Harness memory and persona plugin that lets users manage persistent layered memory and MOOD/persona settings through web UI and API controls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persistent local storage of user/session memory across sessions",
+      "Conversation memory tools exposed with a consistent lan_ prefix",
+      "Persona and MOOD settings that influence generated responses",
+      "GUI plus API management for memory/persona operations",
+      "Local dedup/merge maintenance workflow with backup before write"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a three-layer memory model (pinned.md, memory.jsonl, experience.jsonl) with system injection for persistent conversational context.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists lan_ tools such as lan_pin/lan_remember/lan_recall/lan_dream and REST routes for managing memory and personality.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states data is stored under ~/.dsh/hanako (override via DSH_LAN_DATA_DIR) and one-click maintenance performs backup + dedup/merge before writing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares dsh.bundle patch and web client integration entrypoints, confirming it is a DeepSeek Harness plugin with web UI components.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Persistent local storage of user/session memory across sessions",
+      "Conversation memory tools exposed with a consistent lan_ prefix",
+      "Persona and MOOD settings that influence generated responses",
+      "GUI plus API management for memory/persona operations",
+      "Local dedup/merge maintenance workflow with backup before write"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:10.225Z",
+  "repositoryCommitSha": "c3ed75e47d764420f315feda74e5f92d18e5891b",
+  "evidenceHash": "8bad3548646f69c4409744eded66a98359d8a701947e47d281baa703e1d7afd0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "13bbd175a1e7c634cca215922f254b24101de5300d8578148c7c4e7846cc50b9",
+  "shadowMode": false
+}

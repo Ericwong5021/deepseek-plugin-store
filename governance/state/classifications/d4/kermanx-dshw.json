@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "integration",
+    "ui",
+    "terminal",
+    "file",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户价值在于在 DeepSeek Harness Web 中提供 PR 工作流看板，集中展示和处理我方与待评审 PR 的状态与任务，因此核心目的是自动化软件协作与发布流程。README 明确列出了 PR 监控、CI/评审状态、冲突与落后处理、一键或自动化修复动作，以及可配置执行器的任务控制能力；因此其主分类应为自动化而非单纯开发、搜索或文档处理类能力。",
+  "summaries": {
+    "zh": "这是一个集成在 DeepSeek Harness Web 的 PR 工作流插件，用于看板化管理与追踪你的 PR 与评审状态，并提供任务驱动的自动化处理入口。",
+    "en": "This is a DeepSeek Harness web plugin that provides a dashboard view for tracking pull requests and reviews, with controls for workflow automation around PR-related tasks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Track and monitor pull request/review status in a local web panel",
+      "Create and manage local git worktrees for repositories and synchronize branch state",
+      "Automate handling of conflicts, CI issues, and review-related tasks via local workers",
+      "Run and control background jobs with start/steer/pause/continue/terminate actions",
+      "Interact with GitHub-related workflows over the network through local CLI/service integration"
+    ],
+    "reasons": [
+      {
+        "code": "README describes PR, Reviews, Jobs, Logs, and automated actions for conflict/CI/review handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes local daemon service, local clone directories, branch syncing, and worker configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines a web plugin client entry and CLI command for running the local service",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Track and monitor pull request/review status in a local web panel",
+      "Create and manage local git worktrees for repositories and synchronize branch state",
+      "Automate handling of conflicts, CI issues, and review-related tasks via local workers",
+      "Run and control background jobs with start/steer/pause/continue/terminate actions",
+      "Interact with GitHub-related workflows over the network through local CLI/service integration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:15:05.399Z",
+  "repositoryCommitSha": "2d099b800cc06aea5ea5547ed977bba372d5a831",
+  "evidenceHash": "9ab64628edb610716360714c3300698b08a1f30a7fda57232354a55892d3405b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a54d1ce2ad598c671f7a72be5a502c72974d27140d18f8726010322239d7bdc0",
+  "shadowMode": false
+}
