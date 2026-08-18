@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-18T15:35:00.429Z",
+  "updatedAt": "2026-08-18T16:03:35.975Z",
   "classifications": {
     "123cdxcc-dsh-mindsee": {
       "status": "classified",
@@ -158,7 +158,12 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": null,
       "cacheKey": null,
-      "lastAttemptAt": "2026-08-18T14:16:14.061Z",
+      "failureClass": "repository_not_found",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:01:05.644Z",
+      "lastAttemptAt": "2026-08-18T16:01:05.644Z",
+      "nextRetryAt": "2026-08-25T16:01:05.644Z",
+      "retryable": true,
       "error": "https://api.github.com/repos/2128627267/dsh-qinput-history: 404 {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/repos#get-a-repository\",\"status\":\"404\"}",
       "shadowMode": true
     },
@@ -169,7 +174,12 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": null,
       "cacheKey": null,
-      "lastAttemptAt": "2026-08-18T14:16:14.231Z",
+      "failureClass": "repository_not_found",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:01:05.779Z",
+      "lastAttemptAt": "2026-08-18T16:01:05.779Z",
+      "nextRetryAt": "2026-08-25T16:01:05.779Z",
+      "retryable": true,
       "error": "https://api.github.com/repos/2128627267/dsh-qsystem-actions: 404 {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/repos#get-a-repository\",\"status\":\"404\"}",
       "shadowMode": true
     },
@@ -930,47 +940,304 @@
       "evidenceHash": "22f4b8dd12359cb3a1969d2144a1a888879b3d828907195a58d8cb7071d5aa28"
     },
     "artificialwhale-session-reader-plugin": {
-      "status": "failed",
+      "status": "classified",
+      "group": "agents-workflows",
+      "category": "memory-context",
+      "tags": [
+        "agent",
+        "api",
+        "context",
+        "tool",
+        "cli"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.94,
+      "reason": "This plugin’s primary user-facing purpose is cross-session context retrieval for DSH agents: listing sessions and reading other sessions’ content for continuity and handoff. It is a memory/context utility exposing bounded, read-only access through agent tools and slash commands, with multiple read modes for messages, tool activity, reasoning, and raw events.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "List non-archived sessions with filtering/limit controls",
+          "Read another session’s IO messages and tool call/results",
+          "Read reasoning chunks, surfaced summaries, or raw pre-compression event stream",
+          "Provide both model-invokable tools and slash-command access",
+          "Bounded output limits to reduce context pollution"
+        ],
+        "reasons": [
+          {
+            "code": "Provides read access to other sessions’ messages, tool calls/results, and reasoning, which can include sensitive conversational/context data.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Includes a raw mode that exposes underlying event logs, increasing sensitivity relative to standard UI-facing views.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Uses DSH-provided sessionQuery/service integration and explicitly states read-only behavior with output truncation guards.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Declared as a DSH bundle plugin with no external runtime dependencies, limiting additional attack surface.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "List non-archived sessions with filtering/limit controls",
+          "Read another session’s IO messages and tool call/results",
+          "Read reasoning chunks, surfaced summaries, or raw pre-compression event stream",
+          "Provide both model-invokable tools and slash-command access",
+          "Bounded output limits to reduce context pollution"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.94,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T16:01:30.169Z",
       "repositoryCommitSha": "86249f10875f0e07a3987d1ff90ad006174b64af",
+      "evidenceHash": "1b8b39f93b9ac785eaf320ee2b4c64cf79436e964a2b37cb2a3ea458cd8274f3",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "8e43d48604f2fafb0a0e139fa8da30e0d83ba2ccbb0bd792bf9cbbba8d20bcbc",
-      "lastAttemptAt": "2026-08-18T14:16:34.055Z",
-      "error": "AI decision schemaVersion must be 1",
       "shadowMode": true
     },
     "asakumizy-dsh-local-skills": {
-      "status": "failed",
+      "status": "classified",
+      "group": "tools-data",
+      "category": "general-utilities",
+      "tags": [
+        "file",
+        "ui",
+        "tool",
+        "skill",
+        "workflow"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.93,
+      "reason": "Primary purpose is a local SKILL management utility for DSH: discover local skill definitions from filesystem paths, keep them synchronized with live watches, and present them in a web settings page for user selection/usage guidance. It is a plugin utility with web UI affordances, not a code-generation or external automation tool.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Scans local filesystem directories for skill definition files",
+          "Watches local skill directories for add/modify/delete and refreshes in real time",
+          "Parses markdown skill files with YAML frontmatter",
+          "Registers discovered skills into the host skill provider",
+          "Displays skills in a web settings page with copyable usage guidance"
+        ],
+        "reasons": [
+          {
+            "code": "Readme states local skill discovery from user-provided directories (default ~/.dsh/local-skills) with two accepted file formats and metadata in YAML frontmatter.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Readme explicitly describes chokidar-based live watch of filesystem events with invalidation/refresh behavior for model directory and UI.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Readme and package manifest show a split host/client plugin design (lib/index.js plus lib/client.js) with a web Settings page for listing and invoking skills.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "Manifest exposes a web client platform and bundles via cordis patch, confirming intent to run as a DSH plugin component rather than a standalone remote service.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "Repository includes sample local skill files under skills/ and no evidence of remote data ingestion or outbound service integration in the provided metadata.",
+            "evidenceRef": "tree"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "network.access",
+          "Scans local filesystem directories for skill definition files",
+          "Watches local skill directories for add/modify/delete and refreshes in real time",
+          "Parses markdown skill files with YAML frontmatter",
+          "Registers discovered skills into the host skill provider",
+          "Displays skills in a web settings page with copyable usage guidance"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.93,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T16:01:43.416Z",
       "repositoryCommitSha": "038d6059fb36ca5d5e1e8456befb8d928c7b958e",
+      "evidenceHash": "f9ca850d85d5a25a1dcfcbcf98b97e277a3806a8985cf83367f654de486a654b",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "5931bd341b8474a62f4cc6d7c98043bdc2f9fd02e70a724114dee175cb8008c0",
-      "lastAttemptAt": "2026-08-18T14:16:43.712Z",
-      "error": "AI decision schemaVersion must be 1",
       "shadowMode": true
     },
     "askingtheheavens-dsh-openclaw-persona": {
-      "status": "failed",
+      "status": "classified",
+      "group": "agents-workflows",
+      "category": "memory-context",
+      "tags": [
+        "agent",
+        "context",
+        "memory",
+        "file",
+        "workflow",
+        "automation"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.96,
+      "reason": "Primary purpose is to provide a DSH persona/profile bundle that automatically loads OpenClaw-style workspace files into agent context (system prompt sections and runtime context), including recent daily notes and memory files. It is a local context/automation plugin for agent sessions, with optional env-based directory and note limits. Risks are limited to workspace file exposure/consumption in prompts; no external integrations are indicated.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Reads OpenClaw persona and memory markdown files from the workspace and injects their contents into agent system prompt/runtime context.",
+          "Registers itself in DSH via a bundle patch and applies automatically per agent session when workspace matches.",
+          "Listens to file tool events to refresh cached context after successful reads/writes/edits inside the persona directory."
+        ],
+        "reasons": [
+          {
+            "code": "Reads local workspace files such as SOUL.md, IDENTITY.md, USER.md, TOOLS.md, MEMORY.md, HEARTBEAT.md, and memory/*.md and uses their content in prompts.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Applies to sessions automatically via DSH host-scoped Cordis plugin hook on agent creation, affecting all matching sessions.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "No declared external service calls or network integration; behavior is limited to local filesystem reads and agent context injection.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "Plugin metadata declares a DSH bundle via cordis.patch.yml and exports a runtime loader entrypoint.",
+            "evidenceRef": "tree"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "Reads OpenClaw persona and memory markdown files from the workspace and injects their contents into agent system prompt/runtime context.",
+          "Registers itself in DSH via a bundle patch and applies automatically per agent session when workspace matches.",
+          "Listens to file tool events to refresh cached context after successful reads/writes/edits inside the persona directory."
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.96,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T16:01:50.142Z",
       "repositoryCommitSha": "be07031b1a6af0ff696346a5acc90b8ee93d74c1",
+      "evidenceHash": "7db22d45551fb5f72aad545f6f0335f2b765e32436803a79dce375a0e610b906",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "150857dab3f87297ca51466d406593519209cfb2fa2f105b767502206987bb72",
-      "lastAttemptAt": "2026-08-18T14:16:52.547Z",
-      "error": "AI decision schemaVersion must be 1",
       "shadowMode": true
     },
     "asuna486-desuwa-dsh-safety-net": {
-      "status": "failed",
+      "status": "classified",
+      "group": "tools-data",
+      "category": "files-terminal",
+      "tags": [
+        "file",
+        "cli",
+        "automation",
+        "tool",
+        "terminal",
+        "workflow"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.95,
+      "reason": "Primary purpose is a DSH safety/guardrail plugin that protects critical harness files by intercepting write/edit operations, taking local snapshots before denied changes, and exposing CLI recovery commands (status, backup, restore, repair, one-time approval). It is a local filesystem safety utility for workflow reliability and recovery.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "intercepts file write/edit intents to protected paths",
+          "blocks destructive mutations to critical runtime directories by default",
+          "creates local snapshots of protected files before denied writes",
+          "provides CLI commands for backup, restore, status, repair, and one-time write approval"
+        ],
+        "reasons": [
+          {
+            "code": "Repository README states the plugin hard-blocks fs/write-intent and fs/edit-intent on DSH critical paths and returns FS_POLICY_DENIED.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README describes local backup-before-destroy behavior, with snapshots stored under <DSH_HOME>/safety-net/backups and restore operations.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Package metadata declares plugin bundle wiring for the DeepSeek Harness and no external network service integrations.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "intercepts file write/edit intents to protected paths",
+          "blocks destructive mutations to critical runtime directories by default",
+          "creates local snapshots of protected files before denied writes",
+          "provides CLI commands for backup, restore, status, repair, and one-time write approval"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.95,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T16:01:58.361Z",
       "repositoryCommitSha": "b4a512d29605b7941b8d31b5f5c17fb9b2b76f03",
+      "evidenceHash": "ec2251685cf7638aeb2227faf30fadf2956fa8f4bd23e1cc3c516530d994d5cd",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "e70701cbf3dd57ddd2e9e6ece94805c4f84d3e60d9ac58cdc7c69ed10dc0febb",
-      "lastAttemptAt": "2026-08-18T14:17:00.424Z",
-      "error": "AI decision schemaVersion must be 1",
       "shadowMode": true
     },
     "atlascloudai-dsh-media-gen": {
@@ -980,8 +1247,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "e552e42890aef4c2488a1d91b06c1f0b493b6aec",
       "cacheKey": "cbad0f7dd18a932299793f20c0fe4873bf3597075d96a0d5ffa7f4e263e5b91f",
-      "lastAttemptAt": "2026-08-18T14:17:10.550Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:07.170Z",
+      "lastAttemptAt": "2026-08-18T16:02:07.170Z",
+      "nextRetryAt": "2026-08-18T22:02:07.170Z",
+      "retryable": true,
+      "error": "/completions: 408 {\"error\":{\"message\":\"stream error: stream disconnected before completion: stream closed before response.completed\",\"type\":\"invalid_request_error\"}}",
       "shadowMode": true
     },
     "atomercore-dsh-qq-agent-mail": {
@@ -991,8 +1263,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "d08adbed4b26235848c1a10bce833e7f5fc16616",
       "cacheKey": "3b6a8b4fc64194f1bf7ef97827df9c403a22dc4dd9d0a700721c374552cc74a3",
-      "lastAttemptAt": "2026-08-18T14:17:17.335Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:12.528Z",
+      "lastAttemptAt": "2026-08-18T16:02:12.528Z",
+      "nextRetryAt": "2026-08-18T22:02:12.528Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "awesome-ai-pedia-awesome-dsh-pet": {
@@ -1002,8 +1279,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "d8269e1df4f828228242b00c6d1187a8297aa01d",
       "cacheKey": "5994722683c03101735fa2d5b15e130b428d1ed02004c31115f3b51d35132018",
-      "lastAttemptAt": "2026-08-18T14:17:30.072Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:16.468Z",
+      "lastAttemptAt": "2026-08-18T16:02:16.468Z",
+      "nextRetryAt": "2026-08-18T22:02:16.468Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "ax1202-ax-feishu-bridge": {
@@ -1013,8 +1295,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "e6a10036090566942b3007d3c91f5252b7cac5b4",
       "cacheKey": "441169e837c8e28e816ad78f2515c6f3d3ad2e55b3b483f4ff2243c246eb31c0",
-      "lastAttemptAt": "2026-08-18T14:17:41.018Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:25.328Z",
+      "lastAttemptAt": "2026-08-18T16:02:25.328Z",
+      "nextRetryAt": "2026-08-18T22:02:25.328Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "ayanjava111-dsh-thinking-language-zh": {
@@ -1024,8 +1311,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "ba22e31c553acc50faa43d1059234c50c2a87f8d",
       "cacheKey": "e392252dcafde169ef5a6d4a81c6148e705d88c0bdf6a3877ded4b617706c166",
-      "lastAttemptAt": "2026-08-18T14:17:49.910Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:35.637Z",
+      "lastAttemptAt": "2026-08-18T16:02:35.637Z",
+      "nextRetryAt": "2026-08-18T22:02:35.637Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "ayou-claw-flowctx-dsh": {
@@ -1035,8 +1327,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "29d2376e90ad4b14bdda828f10e22cb33c52dd05",
       "cacheKey": "53663809813778189e373c34503d4f3f0fe3f5cb28b00954cc9d7f68c9486539",
-      "lastAttemptAt": "2026-08-18T14:18:01.305Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:43.961Z",
+      "lastAttemptAt": "2026-08-18T16:02:43.961Z",
+      "nextRetryAt": "2026-08-18T22:02:43.961Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "az7627-dsh-mobile-remote": {
@@ -1046,8 +1343,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "ae383566ef4fa626b1581f6c386be5f1d9d4fac1",
       "cacheKey": "9d9a6bf5ee37bc7548062ce907e7c540cd17d44e470693d448dc7246cfca7297",
-      "lastAttemptAt": "2026-08-18T14:18:13.550Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:50.090Z",
+      "lastAttemptAt": "2026-08-18T16:02:50.090Z",
+      "nextRetryAt": "2026-08-18T22:02:50.090Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "azure5100-huahua-dsh-record-replay": {
@@ -1057,8 +1359,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "dd6a6a17515370e22c79042788913f65139a6ec4",
       "cacheKey": "14683e802856bf1e7c24550eeb0b8e958e4d31ccb359e5397d8f60be679558b5",
-      "lastAttemptAt": "2026-08-18T14:18:22.845Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:02:57.610Z",
+      "lastAttemptAt": "2026-08-18T16:02:57.610Z",
+      "nextRetryAt": "2026-08-18T22:02:57.610Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "azurehalcyon-dsh-deepseek-usage": {
@@ -1068,8 +1375,13 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "d527225365780c3deeb85c461ff455340ee462a0",
       "cacheKey": "d3eacc572ede80a587e0172a2c0416a36335bd1e5c116492efdeab09ed3518e0",
-      "lastAttemptAt": "2026-08-18T14:18:32.872Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:03:02.508Z",
+      "lastAttemptAt": "2026-08-18T16:03:02.508Z",
+      "nextRetryAt": "2026-08-18T22:03:02.508Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "badai147-dsh-mimo-link": {
@@ -1079,7 +1391,12 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": null,
       "cacheKey": null,
-      "lastAttemptAt": "2026-08-18T14:18:33.071Z",
+      "failureClass": "repository_not_found",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:03:02.633Z",
+      "lastAttemptAt": "2026-08-18T16:03:02.633Z",
+      "nextRetryAt": "2026-08-25T16:03:02.633Z",
+      "retryable": true,
       "error": "https://api.github.com/repos/badai147/dsh-mimo-link: 404 {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/repos#get-a-repository\",\"status\":\"404\"}",
       "shadowMode": true
     },
@@ -1090,30 +1407,249 @@
       "policyVersion": "2026-08-18",
       "repositoryCommitSha": "73f1f4b46ab54a88829239c0e891db3dc6c003ba",
       "cacheKey": "14a7b6ab692e06b76273ce527cb56908f27db28cc26e4033c5a00317a526ede2",
-      "lastAttemptAt": "2026-08-18T14:18:41.814Z",
-      "error": "AI decision schemaVersion must be 1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T16:03:06.572Z",
+      "lastAttemptAt": "2026-08-18T16:03:06.572Z",
+      "nextRetryAt": "2026-08-18T22:03:06.572Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": true
     },
     "baihejiangnan-dsh-plugin-dev": {
-      "status": "failed",
+      "status": "classified",
+      "group": "build-development",
+      "category": "plugin-development",
+      "tags": [
+        "tool",
+        "file",
+        "ui",
+        "workflow",
+        "integration",
+        "project-analysis",
+        "api"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.94,
+      "reason": "This plugin is a DeepSeek Harness web UI panel for managing local plugin development. Its core purpose is developer workflow support: discover local file/link-installed plugin candidates, register/unregister projects, open sources, and launch guided development/upload sessions. No direct git/gh execution is claimed by the plugin; upload/update actions are intended to stay inside user-confirmed host sessions, so the risk is medium (R1) due to local project metadata handling plus possible external publish workflows.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Scans local profile package.json entries to discover file:/link: plugin candidates",
+          "Allows users to explicitly register/unregister local development projects",
+          "Validates project paths with realpath before inclusion",
+          "Opens plugin source directories through host workspace/file-manager integration",
+          "Creates workspace-session workflows for continue-development prompts",
+          "Surfaces guided upload/update GitHub publish flows with risk constraints",
+          "Stores managed project registry in local DSH config",
+          "Depends on host services and user-authorized external Git/GitHub flow"
+        ],
+        "reasons": [
+          {
+            "code": "LOCAL_DISCOVERY_UI",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "MANUAL_REGISTRATION_CONTROL",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "SAFE_REALPATH_VALIDATION",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "USER_CONFIRMED_GITHUB_WORKFLOW",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "NO_AUTOMATIC_GIT_GH_EXECUTION",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "WEB_CLIENT_BUNDLE_MANIFEST",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "network.access",
+          "Scans local profile package.json entries to discover file:/link: plugin candidates",
+          "Allows users to explicitly register/unregister local development projects",
+          "Validates project paths with realpath before inclusion",
+          "Opens plugin source directories through host workspace/file-manager integration",
+          "Creates workspace-session workflows for continue-development prompts",
+          "Surfaces guided upload/update GitHub publish flows with risk constraints",
+          "Stores managed project registry in local DSH config",
+          "Depends on host services and user-authorized external Git/GitHub flow"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.94,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T16:03:16.593Z",
       "repositoryCommitSha": "ab6524875506efcd4fcf3c04e576402d0b99332c",
+      "evidenceHash": "b45e754c527e09d3a73ade12047afe74cb486bc617841f51fcb286d2d17d0800",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "95082e6eae95501647901a319e2522361e80bc6107c20e2587f32b6a867d4676",
-      "lastAttemptAt": "2026-08-18T14:18:52.059Z",
-      "error": "AI decision schemaVersion must be 1",
       "shadowMode": true
     },
     "baihejiangnan-dsh-session-context-menu": {
-      "status": "failed",
+      "status": "classified",
+      "group": "interface-experience",
+      "category": "navigation-panels",
+      "tags": [
+        "ui",
+        "context",
+        "desktop",
+        "file",
+        "api",
+        "tool"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.9,
+      "reason": "该插件是一个面向 DeepSeek Harness 桌面封装端的 UI 增强插件，主要目的在于提供更完整的右键上下文菜单体验并暴露会话/工作区相关操作。其能力主要为本地菜单增强与常见编辑/文件与链接快捷操作，不涉及明显高风险功能。",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Enhances context menus in the desktop webview shell",
+          "Invokes host/runtime APIs for path and session actions",
+          "Performs clipboard and text-selection operations",
+          "Provides extensible menu registration and event dispatch"
+        ],
+        "reasons": [
+          {
+            "code": "README 明确说明插件提供“完整上下文菜单”，覆盖会话、工作区、设置、对话正文与输入框，并列出具体操作如重命名、归档、打开路径、复制文本/链接、撤销重做、剪切粘贴。",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "兼容策略与更新说明中提到通过宿主 RPC `host.openPath`、`workspaces.openPath` 等实现路径/链接打开行为，并说明与其他插件协作与卸载后不留补丁。",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "package.json 声明 `dsh.client.platform: web` 且注入 `@deepseek-ai/dsh-client-runtime`，通过 `lib/index.js`/`lib/client.js` 导出并作为 dsh 插件加载，体现运行时集成能力。",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "network.access",
+          "Enhances context menus in the desktop webview shell",
+          "Invokes host/runtime APIs for path and session actions",
+          "Performs clipboard and text-selection operations",
+          "Provides extensible menu registration and event dispatch"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.9,
+          "maintainerVerified": false
+        }
+      },
       "model": "gpt-5.3-codex-spark",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T16:03:25.259Z",
       "repositoryCommitSha": "fc9ab4692fc9d1d9825b671c56abf21aeabca938",
+      "evidenceHash": "0b33233a30847fc98f68eb58ab22443a090cc93e9c7f01fee4540c1fdde9b1ab",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "6e36e22575504743ef1d170fb07b3320cc8fe07426b562c78ce31590773723d8",
-      "lastAttemptAt": "2026-08-18T14:19:02.758Z",
-      "error": "AI decision schemaVersion must be 1",
+      "shadowMode": true
+    },
+    "baisama-cloud-dsh-galgame-generator": {
+      "status": "classified",
+      "group": "tools-data",
+      "category": "media-tools",
+      "tags": [
+        "automation",
+        "tool",
+        "file",
+        "document",
+        "image",
+        "video",
+        "ui",
+        "workflow"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.93,
+      "reason": "This plugin is primarily a media-generation utility for DSH: it scans provided script and multimedia assets, builds a playable visual-novel HTML experience, and wires it into the DSH web interface for playback. Core capabilities include branching/script parsing, save states, sprite/background/BGM control, and standalone output generation. No external-service/network control is evident; risk is moderate due generated local HTML/media handling in the browser context (R1).",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Parse document-based script and workspace assets to generate a playable HTML visual-novel output.",
+          "Expose DSH tools for scanning workspace inputs and building generated output.",
+          "Integrate a web UI entrypoint (sidebar button/preset) for launching the generated game."
+        ],
+        "reasons": [
+          {
+            "code": "README describes generating a self-contained `<标题>.galgame.html` playable webpage from script and media files in workspace folders (img_human, img_bg, audio, img_cg).",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README documents two tools: `galgame_scan` for locating script/assets and `galgame_build` for generation.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "package.json declares a DSH web client/inject/bundle plugin configuration, confirming runtime integration behavior.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "Parse document-based script and workspace assets to generate a playable HTML visual-novel output.",
+          "Expose DSH tools for scanning workspace inputs and building generated output.",
+          "Integrate a web UI entrypoint (sidebar button/preset) for launching the generated game."
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.93,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T16:03:35.974Z",
+      "repositoryCommitSha": "b5568ca55e72725e54eef30a5299f195f05f5810",
+      "evidenceHash": "90853d5652032f11d31ff91d3219085407809fab22e73c2d1da5a4bc18b278b0",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "ca7fa805f654031915557b043478d679c1eda95fe74377c579938ab3206f241b",
       "shadowMode": true
     },
     "ymh0000123-dsh-theme-endfield": {
