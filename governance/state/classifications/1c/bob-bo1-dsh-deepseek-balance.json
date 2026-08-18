@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "data",
+    "tool",
+    "ui",
+    "monitoring",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "This plugin is a DSH web plugin that adds a left-side panel for viewing DeepSeek account balance and local token-cost usage statistics. Its primary function is external service integration for balance checks plus cost analytics from locally stored DSH sessions, surfaced through a web UI.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek API credential from DSH host credentials store (DEEPSEEK_API_KEY)",
+      "Calls external DeepSeek balance endpoint: https://api.deepseek.com/user/balance",
+      "Processes local DSH session records to calculate cumulative/today/Flash/Pro usage costs",
+      "Provides local plugin routes: /api/deepseek-balance and /api/deepseek-balance/usage"
+    ],
+    "reasons": [
+      {
+        "code": "credential-read-for-balance-query",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-call-to-deepseek-balance",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-usage-aggregation-from-session-logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-web-endpoints-exposed-by-plugin",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek API credential from DSH host credentials store (DEEPSEEK_API_KEY)",
+      "Calls external DeepSeek balance endpoint: https://api.deepseek.com/user/balance",
+      "Processes local DSH session records to calculate cumulative/today/Flash/Pro usage costs",
+      "Provides local plugin routes: /api/deepseek-balance and /api/deepseek-balance/usage"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:04:21.364Z",
+  "repositoryCommitSha": "88940a6bf159218b5828c79e6ab3b94fd116324f",
+  "evidenceHash": "6fb5e97b0e7d140c7e98e0c4877bbd4b625b3f8e7b72dc8e4b911e93e9b47111",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7d745846ebc17bfc881921e35d5302294d15fe13a059989b84a2d7d4af2dba33",
+  "shadowMode": true
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "image",
+    "browser",
+    "file",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is a DeepSeek Harness Web UI appearance plugin: it provides wallpaper-based theming, opacity controls, color/foundation token customization, auto palette generation, and UI scaling options. It is a user-facing theming/UI customization plugin rather than automation, search, or data-analysis tooling. Risk is moderate because it handles user-provided images and persists/export scheme data (including embedded media) locally, but no network/external execution behavior is indicated.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "User-configurable wallpaper and UI appearance themes",
+      "Local image processing for wallpaper (resize/compress/re-encode)",
+      "Theme token and CSS style override injection",
+      "Persistent settings stored in browser localStorage",
+      "Scheme export/import to JSON (including embedded wallpaper data)"
+    ],
+    "reasons": [
+      {
+        "code": "README describes wallpaper upload, local image compression, per-surface opacity, color/theme controls, and settings persistence in localStorage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README Architecture section states appearance is applied via theme override tokens plus injected body styles with a fixed background layer.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README warns exported JSON contains full wallpaper data, with explicit privacy note about sensitive images before sharing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json shows a browser web client plugin that injects theme/slot modules for host integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "User-configurable wallpaper and UI appearance themes",
+      "Local image processing for wallpaper (resize/compress/re-encode)",
+      "Theme token and CSS style override injection",
+      "Persistent settings stored in browser localStorage",
+      "Scheme export/import to JSON (including embedded wallpaper data)"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:04:55.367Z",
+  "repositoryCommitSha": "89902526c31a4e5690df97bcb5da8ffa6a4cac3f",
+  "evidenceHash": "500717644b17480204d359cf94f2b27e61893b6996be175b4d8532862b811c98",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "afe3116d1576475a57019d90f0125f1f0be2f82d24e0b734e994b35b8467d0a7",
+  "shadowMode": true
+}

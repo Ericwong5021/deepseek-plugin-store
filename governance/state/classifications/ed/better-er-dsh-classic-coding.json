@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "api",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Primary purpose is an in-chat, workspace-local file editing plugin: it adds a slide-in Monaco editor + file tree panel for editing files directly in DSH Web. User-facing value is local file navigation and editing within the interface, with RPC-backed workspace read/write support and web UI panel injection; no explicit dangerous external integrations are indicated.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read workspace files via RPC endpoints",
+      "Write/overwrite workspace files via RPC endpoints",
+      "Provide a built-in Monaco-based file editor panel in-chat",
+      "Load editor dependencies from CDN at runtime"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin defines DSH client/web integration and injects UI into shell/sidebar slots to render an embedded editing panel.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Host-side RPC provides describe/listDir/readFile/writeFile channels backed by DSH filesystem service, enabling file-system operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Monaco Editor is loaded dynamically from CDN and used for editing experience.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Read workspace files via RPC endpoints",
+      "Write/overwrite workspace files via RPC endpoints",
+      "Provide a built-in Monaco-based file editor panel in-chat",
+      "Load editor dependencies from CDN at runtime"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:03:47.330Z",
+  "repositoryCommitSha": "209dd4ee354a84f4f97db84fed9100f71314e4ed",
+  "evidenceHash": "18cb45950241a74a5326c5c0f771d53f1ef7b16cbf2912b018f420fcb1c957fe",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2958b1c551028d42694bf56f25e24b70ce7f7b4b90105fb5e4b058faf4965f72",
+  "shadowMode": true
+}

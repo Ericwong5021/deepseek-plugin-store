@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "tool",
+    "workflow",
+    "memory",
+    "monitoring",
+    "integration"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.78,
+  "reason": "This is primarily an AI orchestration plugin for the DSH ecosystem: a proactive scheduler/agent layer that observes signals, plans execution, runs multi-model task chains, and evolves strategy over time. Conservatively, user-facing capabilities center on workflow automation and host-aware agent scheduling (including safety governance). Moderately higher-risk due to credential handling and host-tool governance capabilities; no immediate blockers evident from provided evidence.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Autonomous scheduling/dispatch of tasks and model execution within DSH host runtime.",
+      "Host-level tool observation and governance hooks (including optional kill-switch style interruption) in shared tool pipeline.",
+      "Persistent memory and experience retrieval/feedback used for planning and execution decisions.",
+      "API key ingestion from host/env/config with key-rotation and fallback behavior.",
+      "Distributed operational features (consensus/sync/hot-reload) exposed as plugin services."
+    ],
+    "reasons": [
+      {
+        "code": "Core purpose is an autonomous scheduler/orchestrator that can issue and govern actions without direct user prompts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin exports host-integration tools and declares DSH plugin bundle/patch wiring, indicating it runs inside and influences host workflow.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Feature set includes host tool pre-execute/observability, autonomy loop, safety governor, and multi-key credential handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository structure includes autonomy loop, safety governor, memory, consensus, sync, and policy/sandbox/hot-reload components, confirming operational scope.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Autonomous scheduling/dispatch of tasks and model execution within DSH host runtime.",
+      "Host-level tool observation and governance hooks (including optional kill-switch style interruption) in shared tool pipeline.",
+      "Persistent memory and experience retrieval/feedback used for planning and execution decisions.",
+      "API key ingestion from host/env/config with key-rotation and fallback behavior.",
+      "Distributed operational features (consensus/sync/hot-reload) exposed as plugin services."
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.78,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:03:23.038Z",
+  "repositoryCommitSha": "960be5270c251280a59b06d7caca0d91c34ad462",
+  "evidenceHash": "714d415026ae80405b3a34f5b0d963ef4140bc37accc443ba70cd3c2017b4e4d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5668d7c5cad8c6c8814c4a54d6c46fcf592ec21a558e0f37a23c3e1ba610972d",
+  "shadowMode": true
+}

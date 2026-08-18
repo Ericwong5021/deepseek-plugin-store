@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "tool",
+    "file",
+    "terminal",
+    "desktop",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is a user-facing media tool that adds local OCR capability to DeepSeek Harness. Its main purpose is converting pasted or provided images into text (especially screenshots/聊天记录/文档场景) through offline PP-OCRv5 on ONNX Runtime, with support for both Web and TUI input flows. Secondary functionality includes local setup/caching of OCR models and environment bootstrap.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Extracts text from local images (OCR) and returns recognized text for agent use",
+      "Supports image paste-to-path flow in both DSH Web and TUI environments",
+      "Provides local OCR setup/download tooling (environment bootstrap, model download, cache/config options)",
+      "Modifies local client behavior via install scripts (e.g., TUI paste-key binding setup)"
+    ],
+    "reasons": [
+      {
+        "code": "README documents primary flow: paste image in TUI/Web, agent calls ocr_image to read text locally via PP-OCRv5 + ONNX Runtime.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository ships setup assets (ocr/setup.py, install scripts) for local environment/model initialization, indicating dependency/runtime installation and local model caching behavior.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Plugin is packaged for DSH via manifest/exports and includes patch files and profile config hooks, confirming integration into user client behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Extracts text from local images (OCR) and returns recognized text for agent use",
+      "Supports image paste-to-path flow in both DSH Web and TUI environments",
+      "Provides local OCR setup/download tooling (environment bootstrap, model download, cache/config options)",
+      "Modifies local client behavior via install scripts (e.g., TUI paste-key binding setup)"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:02:37.678Z",
+  "repositoryCommitSha": "5aaaf98a0258d62eaabf930eedbdcc92518d9bfe",
+  "evidenceHash": "a7a5ecb48f70e66a0fc57e3dfe25bcc3a44048db5cd7a7869766fc4355e3a08e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5f63bc6aa40bb63b1eaa5c7d49a3b5eb8060d6fee486dfc52d97e67d3c042ed3",
+  "shadowMode": true
+}

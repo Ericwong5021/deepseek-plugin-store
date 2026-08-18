@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "tool",
+    "terminal",
+    "workflow",
+    "context",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Primary purpose is agent automation orchestration: a dsh Cordis plugin that adds control-loop governance around tool calling. It focuses on preventing runaway behavior via pre-execution guardrails, post-execution feedback, adaptive throttling, and controllability checks, with status/snapshot/check helper tools for operator visibility. It is a control/automation utility rather than a UI, content, or file-editing feature.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts and influences dsh tool-call lifecycle events",
+      "Can preflight-filter or require confirmation for risky commands",
+      "Applies adaptive rate/threshold controls based on observed failure signals",
+      "Collects execution telemetry in local logs and exposes status/diagnostic tools"
+    ],
+    "reasons": [
+      {
+        "code": "README describes hooks on tools/pre-execute, tools/result, and agent/pre-step used for preflight control, feedback adjustment, and warning injection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin includes rule-based interception for irreversible actions (e.g., rm/mv/git push) with dry-run+confirm or block behaviors.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Failure estimation uses EMA filtering and escalates/de-escalates control modes, then enforces per-turn tool-call limits.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "State and observed tools are written to local persistence files (state_log.ndjson/observed_tools.json), creating operational telemetry side effects.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Intercepts and influences dsh tool-call lifecycle events",
+      "Can preflight-filter or require confirmation for risky commands",
+      "Applies adaptive rate/threshold controls based on observed failure signals",
+      "Collects execution telemetry in local logs and exposes status/diagnostic tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:04:29.607Z",
+  "repositoryCommitSha": "1932ae073fe298596ed47a90ff38ad26e531c9c9",
+  "evidenceHash": "f5aef3ec28edadb37689f14f3641ad41c92ac49798da043b1b78647d38d2a668",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c93a52b84249d5c7784616379b03595eba720f6470cf64588f4f98a4e2d5cc31",
+  "shadowMode": true
+}

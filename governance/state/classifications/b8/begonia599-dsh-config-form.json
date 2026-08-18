@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "api",
+    "tool",
+    "integration",
+    "workflow",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "The plugin is primarily a plugin-development utility: it provides a unified settings page framework where plugin authors declare form schemas and the base plugin renders and serves those forms. It focuses on configuration UX plus secure, constrained write paths (revisioned deltas and undeclared-field rejection), and delegates secret storage to credentials rather than settings.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a shared settings UI tab and form renderer for adopting plugins",
+      "Exposes local configuration endpoints for listing forms, reading form state, and applying revisioned updates",
+      "Validates declared settings schemas and rejects undeclared/invalid writes",
+      "Plugs into a credentials seam for secret fields to avoid storing secret values in settings payloads"
+    ],
+    "reasons": [
+      {
+        "code": "Declares `ctx.configForm.declare(...)` and central renderer/route model for plugin settings adoption",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Registers HTTP routes for forms, write updates, and secret put/delete under `/config-form/api/*` with revision conflict handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Adds admission checks (loopback peer, loopback Host, same-origin for state changes) on the host web route",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Includes browser client artifact injection (`dsh` client patch/exports) and web platform bundle metadata",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides a shared settings UI tab and form renderer for adopting plugins",
+      "Exposes local configuration endpoints for listing forms, reading form state, and applying revisioned updates",
+      "Validates declared settings schemas and rejects undeclared/invalid writes",
+      "Plugs into a credentials seam for secret fields to avoid storing secret values in settings payloads"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:03:14.303Z",
+  "repositoryCommitSha": "447ba9106802ff98723d39b4cc8bc87bd7669985",
+  "evidenceHash": "746888587e76b9ffe1d9ba02d460e45f1120a5ceaf6b43650aa1b13765ada05e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e56b870ee417c6f1443021e9c37efe3d25b23fb8b14d2b7214d0d7c20966ecca",
+  "shadowMode": true
+}
