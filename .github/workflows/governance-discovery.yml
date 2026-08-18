@@ -3,6 +3,7 @@ name: Governance discovery
 on:
   schedule:
     - cron: '23 * * * *'
+    - cron: '11 3 * * *'
     - cron: '17 4 * * 0'
   workflow_dispatch:
     inputs:
@@ -10,7 +11,7 @@ on:
         required: false
         default: incremental
         type: choice
-        options: [incremental, reconcile]
+        options: [incremental, daily, reconcile]
 
 permissions:
   actions: write
@@ -43,7 +44,7 @@ jobs:
         if: ${{ steps.pending.outputs.skip != 'true' }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          DISCOVERY_MODE: ${{ inputs.mode || (github.event.schedule == '17 4 * * 0' && 'reconcile') || 'incremental' }}
+          DISCOVERY_MODE: ${{ inputs.mode || (github.event.schedule == '17 4 * * 0' && 'reconcile') || (github.event.schedule == '11 3 * * *' && 'daily') || 'incremental' }}
           DISCOVERY_VERIFY_LIMIT: '250'
         run: node scripts/update.mjs
       - name: Validate state
