@@ -1,0 +1,72 @@
+name: Governance discovery
+
+on:
+  schedule:
+    - cron: '23 * * * *'
+    - cron: '11 3 * * *'
+    - cron: '17 4 * * 0'
+  workflow_dispatch:
+    inputs:
+      mode:
+        required: false
+        default: incremental
+        type: choice
+        options: [incremental, daily, reconcile]
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: governance-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Check pending batch
+        id: pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(gh pr list --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("automation/governance-discovery-"))] | length')
+          echo "skip=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - name: Discover governance state
+        if: ${{ steps.pending.outputs.skip != 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          DISCOVERY_MODE: ${{ inputs.mode || (github.event.schedule == '17 4 * * 0' && 'reconcile') || (github.event.schedule == '11 3 * * *' && 'daily') || 'incremental' }}
+          DISCOVERY_VERIFY_LIMIT: '250'
+        run: node scripts/update.mjs
+      - name: Validate state
+        if: ${{ steps.pending.outputs.skip != 'true' }}
+        run: node scripts/validate-registry.mjs
+      - name: Open state batch
+        if: ${{ steps.pending.outputs.skip != 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev '^governance/state/' || true)
+          if [ -n "$unexpected" ]; then echo "$unexpected"; exit 1; fi
+          git add governance/state
+          if git diff --cached --quiet; then echo "no state changes"; exit 0; fi
+          base=$(git rev-parse origin/main)
+          branch="automation/governance-discovery-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -m "chore: update governance discovery state"
+          git push origin "HEAD:$branch"
+          url=$(gh pr create --base main --head "$branch" --title "chore: update governance discovery state" --body "Governance state batch")
+          number=$(gh pr view "$url" --json number --jq .number)
+          head=$(git rev-parse HEAD)
+          gh workflow run governance-pr-ci.yml --ref "$branch" -f base_sha="$base" -f head_sha="$head" -f pr_number="$number"

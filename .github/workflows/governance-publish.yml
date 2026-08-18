@@ -1,0 +1,70 @@
+name: Governance publisher
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - governance/state/**
+      - registry/**
+      - scripts/generate-catalog.mjs
+      - scripts/governance/publisher.mjs
+      - scripts/governance/state.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: governance-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Materialize catalog
+        run: node scripts/governance/publisher.mjs
+      - name: Validate publication
+        run: |
+          node scripts/validate-registry.mjs
+          node scripts/generate-catalog.mjs --check
+          node scripts/validate.mjs
+      - name: Publish catalog branch
+        id: publish
+        run: |
+          output="$RUNNER_TEMP/governance-catalog"
+          mkdir -p "$output/data"
+          for file in data/catalog-v2.json data/catalog.json data/plugins.json data/editor-picks.json data/candidates.json data/observations.json data/plugin-classifications.json; do cp "$file" "$output/$file"; done
+          git restore data/catalog-v2.json data/catalog.json data/plugins.json data/editor-picks.json data/candidates.json data/observations.json data/plugin-classifications.json
+          git fetch origin catalog
+          git switch --detach origin/catalog
+          cp "$output"/data/*.json data/
+          git add data/catalog-v2.json data/catalog.json data/plugins.json data/editor-picks.json data/candidates.json data/observations.json data/plugin-classifications.json
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: publish governance catalog"
+          git push origin HEAD:catalog
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: governance-catalog-${{ github.sha }}
+          path: |
+            data/catalog-v2.json
+            data/catalog.json
+            data/plugins.json
+            data/editor-picks.json
+          retention-days: 30
+      - name: Trigger website deployment
+        if: ${{ steps.publish.outputs.changed == 'true' }}
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$DEPLOY_HOOK" ]; then curl --fail --silent --show-error --request POST "$DEPLOY_HOOK"; else echo "deploy hook not configured"; fi

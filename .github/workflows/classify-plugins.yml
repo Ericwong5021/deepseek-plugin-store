@@ -1,44 +1,53 @@
 name: Classify plugins with LLM
 
-concurrency:
-  group: deepseek-plugin-store-main-write
-  cancel-in-progress: false
-
 on:
   schedule:
     - cron: '43 * * * *'
   workflow_dispatch:
     inputs:
       plugin:
-        description: Plugin id or owner/repository
         required: false
         type: string
       limit:
-        description: Maximum plugins to classify
         required: false
         default: '20'
         type: string
       force:
-        description: Reclassify an already classified plugin
         required: false
         default: false
         type: boolean
 
 permissions:
+  actions: write
   contents: write
+  pull-requests: write
+
+concurrency:
+  group: governance-classification
+  cancel-in-progress: false
 
 jobs:
   classify:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - name: Classify unrecognized plugins
+      - name: Check pending batch
+        id: pending
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(gh pr list --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("automation/governance-classification-"))] | length')
+          echo "skip=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - name: Classify governance state
+        if: ${{ steps.pending.outputs.skip != 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
           LLM_CLASSIFIER_API_KEY: ${{ secrets.LLM_CLASSIFIER_API_KEY }}
           LLM_CLASSIFIER_BASE_URL: ${{ vars.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1' }}
           LLM_CLASSIFIER_MODEL: ${{ vars.LLM_CLASSIFIER_MODEL || 'gpt-5.3-codex-spark' }}
@@ -47,36 +56,26 @@ jobs:
           LLM_CLASSIFIER_FORCE: ${{ inputs.force && '1' || '0' }}
           GOVERNANCE_SHADOW_MODE: '1'
         run: node scripts/classify-plugins.mjs
-      - name: Validate registry and catalogs
+      - name: Validate state
+        if: ${{ steps.pending.outputs.skip != 'true' }}
+        run: node scripts/validate-registry.mjs
+      - name: Open state batch
+        if: ${{ steps.pending.outputs.skip != 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          node scripts/validate-registry.mjs
-          node scripts/generate-catalog.mjs --check
-          node scripts/validate.mjs
-      - name: Check generated file scope
-        run: |
-          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev '^data/(plugin-classifications|candidates|catalog-v2|catalog|plugins|editor-picks)\.json$' || true)
-          if [ -n "$unexpected" ]; then
-            echo "$unexpected"
-            exit 1
-          fi
-      - name: Commit classifications
-        id: commit
-        run: |
+          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev '^governance/state/' || true)
+          if [ -n "$unexpected" ]; then echo "$unexpected"; exit 1; fi
+          git add governance/state
+          if git diff --cached --quiet; then echo "no state changes"; exit 0; fi
+          base=$(git rev-parse origin/main)
+          branch="automation/governance-classification-${GITHUB_RUN_ID}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/plugin-classifications.json data/candidates.json data/catalog-v2.json data/catalog.json data/plugins.json data/editor-picks.json
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git commit -m "chore: classify plugins with LLM"
-          git push
-          echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Trigger website deployment
-        if: ${{ steps.commit.outputs.changed == 'true' }}
-        env:
-          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$DEPLOY_HOOK" ]; then
-            curl --fail --silent --show-error --request POST "$DEPLOY_HOOK"
-          fi
+          git switch -c "$branch"
+          git commit -m "chore: update governance classification state"
+          git push origin "HEAD:$branch"
+          url=$(gh pr create --base main --head "$branch" --title "chore: update governance classification state" --body "Governance state batch")
+          number=$(gh pr view "$url" --json number --jq .number)
+          head=$(git rev-parse HEAD)
+          gh workflow run governance-pr-ci.yml --ref "$branch" -f base_sha="$base" -f head_sha="$head" -f pr_number="$number"
