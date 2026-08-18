@@ -70,7 +70,7 @@ export const failureClass = (error) => {
   if (/invalid identity|plugin not found or protected/i.test(message)) return 'invalid_identity'
   if (/(?:\s|:)404(?:\s|$)|not found/i.test(message)) return 'repository_not_found'
   if (/\b429\b|rate.?limit|secondary limit/i.test(message)) return 'rate_limited'
-  if (/schema|invalid json|model response|response_format|choices\[|structured output/i.test(message)) return 'invalid_response'
+  if (/schema|invalid json|after json|json at position|model response|response_format|choices\[|structured output/i.test(message)) return 'invalid_response'
   return 'network_error'
 }
 

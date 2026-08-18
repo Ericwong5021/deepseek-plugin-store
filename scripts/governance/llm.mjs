@@ -8,6 +8,31 @@ const extractText = (response) => response.output_text
   || response.choices?.[0]?.message?.content
   || response.choices?.[0]?.text
 
+const parseJson = (value) => {
+  const text = String(value).trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '')
+  try {
+    return JSON.parse(text)
+  } catch (originalError) {
+    const start = text.indexOf('{')
+    let depth = 0
+    let inString = false
+    let escaped = false
+    for (let index = start; index >= 0 && index < text.length; index++) {
+      const character = text[index]
+      if (inString) {
+        if (escaped) escaped = false
+        else if (character === '\\') escaped = true
+        else if (character === '"') inString = false
+        continue
+      }
+      if (character === '"') inString = true
+      else if (character === '{') depth++
+      else if (character === '}' && --depth === 0) return JSON.parse(text.slice(start, index + 1))
+    }
+    throw originalError
+  }
+}
+
 export class LLMAdapter {
   constructor({ apiKey, baseUrl, model, promptVersion = 'classify-v2', schemaPath = 'scripts/governance/schemas/ai-decision.schema.json' }) {
     this.apiKey = apiKey
@@ -65,7 +90,7 @@ export class LLMAdapter {
         const content = extractText(response)
         if (!content) throw new Error(`${format}: response did not contain text`)
         this.capability = format
-        return JSON.parse(content)
+        return parseJson(content)
       } catch (error) {
         lastError = error
         if (this.capability || (error.status && !retryableFormats.has(error.status))) throw error
