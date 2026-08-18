@@ -107,6 +107,39 @@ export const discover = async () => {
   const sourceFailures = []
   const changedRegistryIds = new Set()
   const changedCandidateIds = new Set()
+  for (const record of registry.values()) {
+    delete candidateData.candidates[record.id]
+    if (observations.repositories[record.id]) continue
+    observations.repositories[record.id] = {
+      repository: record.repository.fullName,
+      github: {
+        stars: 0,
+        license: null,
+        archived: false,
+        lastPushAt: null,
+        capturedAt: now,
+        starHistory: [],
+      },
+      compatibility: {
+        repositoryCommitSha: null,
+        manifestFound: false,
+        manifestPath: null,
+        npmName: null,
+        installSpec: record.installTargets[0].spec,
+        readmeFound: false,
+        readmeGuidance: false,
+        checkedAt: null,
+      },
+      discovery: {
+        origins: ['registry-v2'],
+        firstSeenAt: `${record.addedAt}T00:00:00Z`,
+        lastSeenAt: now,
+      },
+      failures: [],
+      lastSuccessfulAt: null,
+    }
+    changedRegistryIds.add(record.id)
+  }
   let topicRepos = []
   let topicSucceeded = false
   try {

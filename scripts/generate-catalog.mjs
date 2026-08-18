@@ -79,6 +79,8 @@ export const buildCatalogOutputs = async () => {
   const classifications = await readStateCollection('classifications')
   const registryFiles = await loadRegistryPlugins()
   const records = registryFiles.map(({ value }) => withLlmClassification(value, classifications.classifications?.[value.id])).sort((a, b) => a.id.localeCompare(b.id))
+  const registeredIds = new Set(records.map((record) => record.id))
+  const visibleCandidates = Object.fromEntries(Object.entries(candidates.candidates || {}).filter(([id]) => !registeredIds.has(id)))
   const picks = new Map(collection.items.map((item) => [item.repository.toLowerCase(), item.rank]))
   const updatedAt = [observations.updatedAt, classifications.updatedAt].filter(Boolean).sort().at(-1)
   const sourceCommit = sha256({ taxonomy, collection, records, observations, candidates, quality, classifications })
@@ -118,11 +120,11 @@ export const buildCatalogOutputs = async () => {
     },
     plugins: pluginsV2,
     candidateSummary: {
-      total: Object.keys(candidates.candidates || {}).length,
-      checked: Object.values(candidates.candidates || {}).filter((candidate) => Boolean(candidate.checks?.checkedAt)).length,
-      unchecked: Object.values(candidates.candidates || {}).filter((candidate) => !candidate.checks?.checkedAt).length,
-      admissionReady: Object.values(candidates.candidates || {}).filter((candidate) => candidate.checks?.admissionReady === true).length,
-      hidden: Object.values(candidates.candidates || {}).filter((candidate) => candidate.visibility === 'hidden').length,
+      total: Object.keys(visibleCandidates).length,
+      checked: Object.values(visibleCandidates).filter((candidate) => Boolean(candidate.checks?.checkedAt)).length,
+      unchecked: Object.values(visibleCandidates).filter((candidate) => !candidate.checks?.checkedAt).length,
+      admissionReady: Object.values(visibleCandidates).filter((candidate) => candidate.checks?.admissionReady === true).length,
+      hidden: Object.values(visibleCandidates).filter((candidate) => candidate.visibility === 'hidden').length,
     },
   }
   const legacyPlugins = pluginsV2.map((plugin) => {

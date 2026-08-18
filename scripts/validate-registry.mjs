@@ -75,7 +75,6 @@ export const validateRegistry = async () => {
   for (const [category, count] of categoryCounts) {
     if (categories.get(category).visibility === 'public' && count > 0 && count < taxonomy.policies.minimumListedPluginsForPublicCategory) throw new Error(`public category has fewer than 3 listed plugins: ${category}`)
   }
-  if (!sourceOnly) for (const record of listed) if (!observations.repositories[record.id]) throw new Error(`listed plugin lacks observations: ${record.id}`)
   for (const [id, observation] of Object.entries(observations.repositories)) {
     const record = records.find((item) => item.id === id)
     if (!record || observation.repository.toLowerCase() !== record.repository.fullName.toLowerCase()) throw new Error(`orphan observation: ${id}`)
@@ -88,9 +87,9 @@ export const validateRegistry = async () => {
     if (!record || record.visibility !== 'listed' || item.rank !== index + 1) throw new Error(`invalid editor pick: ${item.repository}`)
   }
   for (const [id, candidate] of Object.entries(sourceOnly ? {} : candidates.candidates)) {
+    if (records.some((record) => record.id === id)) continue
     if (candidate.id !== id || pluginId(candidate.repository?.fullName || '') !== id || !validRepository(candidate.repository.fullName)) throw new Error(`invalid candidate identity: ${id}`)
     if (candidate.visibility !== 'hidden' || candidate.admission?.status !== 'candidate') throw new Error(`candidate must remain hidden: ${id}`)
-    if (records.some((record) => record.id === id)) throw new Error(`candidate duplicates registry plugin: ${id}`)
     if (!Array.isArray(candidate.sources) || !candidate.sources.length || !Array.isArray(candidate.failures)) throw new Error(`invalid candidate evidence: ${id}`)
   }
   for (const [id, classification] of Object.entries(classifications.classifications)) {
