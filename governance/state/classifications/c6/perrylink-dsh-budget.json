@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "data",
+    "monitoring",
+    "notification",
+    "cli",
+    "ui",
+    "tool",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is a budget-governance utility for DeepSeek Harness that turns session events into usage telemetry and policy actions: it aggregates token-cost-carbon-latency data, presents it through a `/budget` command and Settings panel, and applies configurable session/daily/monthly budget controls with alerting and optional over-limit behavior.",
+  "summaries": {
+    "zh": "dsh-budget 是 DeepSeek Harness 的预算治理插件，可在 `/budget` 命令与设置面板中查看模型/会话/周期的代币与成本统计，并支持配置预算阈值与超限处理策略。",
+    "en": "dsh-budget is a DeepSeek Harness budget-governance plugin that shows token and cost usage in a `/budget` command and settings panel, with configurable scope-level caps and threshold handling."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Aggregate and display token usage, estimated cost, carbon, and latency metrics per model/session/day.",
+      "Provide budget governance across session, daily, and monthly scopes with configurable thresholds.",
+      "Issue user notifications via configurable threshold alerts (webhook and desktop notification options).",
+      "Support over-limit actions that can block or route guidance when limits are reached.",
+      "Expose command and web settings surfaces for viewing, unblocking, and editing budget state."
+    ],
+    "reasons": [
+      {
+        "code": "Repository/package description and README state cost governance, per-model/session/day metering, budgets, alerts, and over-limit policies.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "README lists `/budget`, `/budget models`, and `/budget unblock` commands plus a Settings budget tab with usage bars, alerts, cap editors, and unblock controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares plugin capabilities, including command invocation `/budget` and expected per-scope overview with unblock/model-breakdown behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Manifest permissions include `network:outbound` and `session:append`, with a native-code restriction, indicating host-side logging and optional webhook integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Aggregate and display token usage, estimated cost, carbon, and latency metrics per model/session/day.",
+      "Provide budget governance across session, daily, and monthly scopes with configurable thresholds.",
+      "Issue user notifications via configurable threshold alerts (webhook and desktop notification options).",
+      "Support over-limit actions that can block or route guidance when limits are reached.",
+      "Expose command and web settings surfaces for viewing, unblocking, and editing budget state."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:11.118Z",
+  "repositoryCommitSha": "668fd1d7a446384b478caf98b950d372d76344e8",
+  "evidenceHash": "eec844da253cff4343363bcc03177eaadb03bb52f10c3c28dfc5a430aec9c25b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "98fa327a92b1572aebe5544d817709b61ca7e5ab3776e22f4c2f75119bea72b6",
+  "shadowMode": false
+}

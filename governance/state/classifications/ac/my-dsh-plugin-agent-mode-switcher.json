@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "ui",
+    "tool",
+    "api",
+    "workflow",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily an in-session orchestration utility for DeepSeek Harness users: it exposes a session-header control to switch the active agent preset after a model turn, while keeping the same conversation active. Evidence in the README shows it targets the `agent-preset` header action and uses the existing preset-selection RPC to recompute session agent composition, which defines its core user-facing purpose rather than code generation, testing, or data processing.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 对话会话添加可切换的模式入口，可在模型回复后在同一会话中切换当前代理预设并继续聊天。",
+    "en": "This plugin adds an in-chat mode switcher in DeepSeek Harness so you can change the active agent preset after a response and keep chatting in the same session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Mid-conversation switching of the active agent preset/mode",
+      "Header UI control to change session preset",
+      "Invocation of host agent preset selection API",
+      "Session continuation without opening a new conversation"
+    ],
+    "reasons": [
+      {
+        "code": "README describes replacing the session header label with a live agent-pre-set switcher and preserving session history while the conversation continues.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin calls the standard `agentPreset.select` RPC and relies on host patching of session-switch guard behavior for started sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest in package.json defines a DeepSeek Harness web client plugin bundle with dependency injections, indicating runtime integration into harness UI and agent-selection flow.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Mid-conversation switching of the active agent preset/mode",
+      "Header UI control to change session preset",
+      "Invocation of host agent preset selection API",
+      "Session continuation without opening a new conversation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:25.298Z",
+  "repositoryCommitSha": "955bc7219c6e7ede6e00ea72d21958e1b98cca65",
+  "evidenceHash": "22c1afaf45d9dfaecef1797bb265827746ce64f3dbfdce7a64ceaa4cdfd5d2b5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b98f9e2c60ef4dd89fd427f419e684d12300b2b390cfb6055867e5e2aa0d9989",
+  "shadowMode": false
+}

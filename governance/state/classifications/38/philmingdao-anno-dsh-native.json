@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "tool",
+    "workflow",
+    "automation",
+    "document",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Evidence indicates this is a DeepSeek Harness native plugin that adds an in-process HTML review/annotation workflow, including `html_review_*` model tools for starting sessions, claiming handoffs, fetching sessions, and finalizing edited output. The plugin’s user-facing role is coordinating local review workflows for agents rather than providing general content search or standalone editing outside the harness context.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供原生的 Anno 集成，开启本地 HTML 评审服务并暴露 `html_review_*` 工具，用于在会话中启动评审、接收/认领交接并注册最终的注释与修改结果。",
+    "en": "This plugin provides native Anno integration for DeepSeek Harness by adding an in-process local HTML review service with `html_review_*` tools so agents can start reviews, claim handoffs, retrieve sessions, and register finalized annotated output."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local loopback HTTP review server for model-driven HTML review sessions",
+      "persistent on-disk session and review artifact storage",
+      "model tool registration for session start/claim/list/finalize flow",
+      "automatic handoff injection into agent follow-up flow",
+      "agent-facing review artifact retrieval and editing pipeline"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as an in-process HTML review service for local-only operation on 127.0.0.1, which introduces server/file-system coupled execution risk at the host level.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It persists review sessions and versioned reviewed HTML outputs in a local data directory, meaning file writes are part of normal operation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It registers workflow tools (`html_review_start_session`, `html_review_claim_handoff`, `html_review_register_final`, etc.) that can drive agent actions automatically via follow-up messages.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH bundle patch and host-side binding (`dsh` bundle, `main` entry in `lib/index.js`), confirming direct harness/runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "local loopback HTTP review server for model-driven HTML review sessions",
+      "persistent on-disk session and review artifact storage",
+      "model tool registration for session start/claim/list/finalize flow",
+      "automatic handoff injection into agent follow-up flow",
+      "agent-facing review artifact retrieval and editing pipeline"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:23.290Z",
+  "repositoryCommitSha": "bea668f7598f2be54d7c2bec9b0257dad5c2d0c6",
+  "evidenceHash": "45e903d1bb3dc9b887beee1ba8f7ba4b236f66fd7af5213a87bbe3a1ce4a9a40",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dae1d419ba804330ec0cf1798b383a6a45037eb6d8565933e3aec2820bee2748",
+  "shadowMode": false
+}

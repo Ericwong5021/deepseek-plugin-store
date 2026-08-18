@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "chat",
+    "agent",
+    "workflow",
+    "automation",
+    "ui",
+    "context",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily an agent workflow orchestrator for DSH web users: it provides a side-chat floating input and slash commands that forward messages from the side-chat context into the main session as user messages, effectively bridging two conversation contexts for immediate action. Evidence points to UI injection, command handling, and host push/state routes, with no documented capabilities for file editing, data analysis pipelines, external integrations, or research tooling.",
+  "summaries": {
+    "zh": "这是一个 DSH Web 侧边聊天伴侣插件，可在侧边聊天窗口附近提供输入入口与斜杠命令，将内容一键作为主会话的下一条用户消息推送给主 Agent。",
+    "en": "A DSH web companion plugin that lets users send text from the side-chat context as the main session’s next user message through a floating control or /notify /to-main commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Forwards side-chat messages into the main session as user messages",
+      "Registers /notify and /to-main commands for message push",
+      "Injects a floating UI control in the web client and polls side-chat state",
+      "Exposes side-notify host routes for state/push operations"
+    ],
+    "reasons": [
+      {
+        "code": "Message forwarding is implemented as immediate main-session follow-up via agent.followup, so content from side-chat can directly trigger main-agent turns.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Global slash commands (/notify, /to-main) can be executed from side-chat contexts to dispatch actions to the main session.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "A host API path for side-notify state/push is defined with a trust-fence style route design, which is a non-trivial capability boundary.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Forwards side-chat messages into the main session as user messages",
+      "Registers /notify and /to-main commands for message push",
+      "Injects a floating UI control in the web client and polls side-chat state",
+      "Exposes side-notify host routes for state/push operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:55.264Z",
+  "repositoryCommitSha": "cab3ce838c83dd322544dcb22c887aa4190d8b99",
+  "evidenceHash": "ebdab89644e68de2631ff85bcb3560c11277f24cbfa1a41253e1b2bc81465141",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0f6038a3364a4af1b316ec7dbd5913b638872b2c79630e2cb1ec97037479e8a5",
+  "shadowMode": false
+}

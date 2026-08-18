@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin’s user-facing function is to let DSH agents archive and read X/Twitter posts by calling the x.2100laike API through a single `x_archive` tool, returning markdown snapshots plus metadata and optional re-capture support, which makes it primarily an external service integration utility rather than a local editor or system tool.",
+  "summaries": {
+    "zh": "该插件为 DSH Agent 提供 `x_archive` 工具，可将 X（Twitter）推文链接提交到归档服务并返回可读的 Markdown 快照及相关元数据。",
+    "en": "This plugin adds an `x_archive` tool for DSH agents to archive and read X/Twitter posts through an external service, returning the result as Markdown snapshots with associated metadata."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches and archives X/Twitter URLs via configured HTTP API endpoint",
+      "Returns structured archive metadata and Markdown post content",
+      "Supports optional forced refresh of an archived post"
+    ],
+    "reasons": [
+      {
+        "code": "NETWORK_CALL_TO_EXTERNAL_API",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "EXTERNAL_QUOTA_AND_RATE_LIMITS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "USER_TOKEN_TRANSMISSION_IN_BEARER_HEADER",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Fetches and archives X/Twitter URLs via configured HTTP API endpoint",
+      "Returns structured archive metadata and Markdown post content",
+      "Supports optional forced refresh of an archived post"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:55.357Z",
+  "repositoryCommitSha": "020e046ba8a41d98a6f7994a76522f63f7702933",
+  "evidenceHash": "9557d8f2a247a7828abef14a776ace820561c8d420bbc967c28a6b954fb3d864",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "73a74d94855ea3c48e4b25b95ee0083f25bb8b7597e042aa948590074851b9e9",
+  "shadowMode": false
+}

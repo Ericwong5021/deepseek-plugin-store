@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "tool",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary purpose is to expose the DSH WebUI remotely with configurable network and credential options, as described in its README and plugin manifest fields for a web client/plugin bundle. Evidence shows it is a user-facing utility for remote UI access (host/port/password, captcha, and attempt limits) rather than code generation, testing, or analytics, so it is best classified as an external service-oriented utility with moderate risk due network exposure controls being part of its behavior.",
+  "summaries": {
+    "zh": "该插件为 DSH WebUI 提供可配置的远程访问入口，可通过主机、端口、密码等设置实现远程访问界面。",
+    "en": "This plugin provides a configurable remote-access entry point for DSH WebUI, allowing users to set host, port, and password-related options for remote interface access."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Remote access configuration for DSH WebUI via host/port settings",
+      "Password-based gating for remote access",
+      "Optional captcha and request-attempt limits settings",
+      "Remote/web UI plugin patch integration via DSH bundle",
+      "Settings can be managed from UI or profile override config"
+    ],
+    "reasons": [
+      {
+        "code": "README_DESCRIBES_REMOTE_WEBUI_ACCESS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_EXPOSES_CONFIG_FIELDS_REMOTEHOST_REMOTEPORT_PASSWORD",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PKG_DSH_WEB_PLATFORM_AND_BUNDLE_PATCH",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "PKG_ENTRYPOINTS_CONFIRM_PLUGIN_DISTRIBUTION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Remote access configuration for DSH WebUI via host/port settings",
+      "Password-based gating for remote access",
+      "Optional captcha and request-attempt limits settings",
+      "Remote/web UI plugin patch integration via DSH bundle",
+      "Settings can be managed from UI or profile override config"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:56.726Z",
+  "repositoryCommitSha": "41c3c7e8821d8fa0a22da323a405f26822980973",
+  "evidenceHash": "968712a336afa09de52909d028dfa241892948a39aa04f1775c2517000876740",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "77be680206082b631d61a96ddf6fcb7e823abe09732d8bbeeb6f9da4f5e2cdc8",
+  "shadowMode": false
+}

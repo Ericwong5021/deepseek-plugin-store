@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "file",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的核心用途是为仅监听本机的 dsh Web UI 增加一个外部访问入口：先通过登录门禁，再将请求完整反向代理到本地后端，用户可通过配置主机端口进行访问。其主要能力集中在网络接入控制与鉴权，不是代码生成、测试框架或数据分析类功能。",
+  "summaries": {
+    "zh": "这是一个 dsh 插件，在不修改 dsh 核心的情况下，为本机监听的 dsh Web UI 提供可配置的外部访问入口，先完成登录验证再反向代理到本地服务。",
+    "en": "This is a dsh plugin that adds a configurable external entry for a local dsh Web UI, requiring login before proxying traffic to the local backend."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "HTTP/WS reverse proxying from external host/port to local dsh UI",
+      "Username/password setup and login workflow",
+      "Session cookie-based authentication state handling",
+      "Local user/session data file management",
+      "Login/setup rate limiting and lockout controls"
+    ],
+    "reasons": [
+      {
+        "code": "README documents an external listener (default 0.0.0.0:3081) that fronts dsh and forwards verified traffic to 127.0.0.1:3080 via reverse proxy for both HTTP and WebSocket paths.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin exposes setup and login endpoints with username/password flow, session cookie behavior (`dsh_gw_session`), and login/setup attempt limits (e.g., maxLoginAttempts, lock durations).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration and directory entries show runtime-local storage paths for users and setup tokens, indicating on-disk credential/token persistence and local state files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository structure includes dedicated modules for auth, proxying, and user-store logic, confirming implemented auth and network mediation capabilities.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "HTTP/WS reverse proxying from external host/port to local dsh UI",
+      "Username/password setup and login workflow",
+      "Session cookie-based authentication state handling",
+      "Local user/session data file management",
+      "Login/setup rate limiting and lockout controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:19.271Z",
+  "repositoryCommitSha": "850daa75237726b44adb8057e69bcb04909a4dea",
+  "evidenceHash": "d5834d26971d0af40d4fd172ba29b49b7ebd7638a2aa762adfc77a83a0c9b9fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d0e3339112ab314af4bf3bfe8ea2de085d56bf88a02dc986b8cb80f6277625b2",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "file",
+    "browser",
+    "search",
+    "desktop",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This is a user-facing UI interaction plugin that customizes right-click behavior in the DeepSeek Harness workspace UI to provide context actions for workspace/session rows, blank-area menus, and text-edit areas, while delegating actions through host APIs. The evidence is explicit about menu replacement and available operations, so the classification is navigation-focused UI enhancement with moderate risk due to user-triggered rename/delete/archive actions and host integration paths.",
+  "summaries": {
+    "zh": "本插件用于定制 DeepSeek Harness 的右键菜单，在工作区/会话界面、空白区域和可编辑文本中提供本地化的操作入口，如新建、重命名、分叉与归档等。",
+    "en": "This plugin customizes DeepSeek Harness right-click behavior in workspace/session UI, blank areas, and editable text zones to provide direct action menus such as create, rename, fork, archive, and text edit/search commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "custom contextmenu handling in targeted UI areas",
+      "workspace/session action invocation via host GUI APIs",
+      "clipboard and text-edit command handling",
+      "launching external browser/file-open paths through host integration"
+    ],
+    "reasons": [
+      {
+        "code": "Readme describes replacing native right-click behavior on workspace rows, session rows, blank areas, and text fields with plugin-provided menus.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme lists destructive/altering operations (rename/delete workspace, rename/fork/archive session) executed through GUI/API routes such as workspace.rename, workspace.delete, session.rename, session.fork, workspace.archiveSession.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares dsh.bundle patch-based web injection, and dev client injection for @deepseek-ai/dsh-client-ui-workspace.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "custom contextmenu handling in targeted UI areas",
+      "workspace/session action invocation via host GUI APIs",
+      "clipboard and text-edit command handling",
+      "launching external browser/file-open paths through host integration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:23.998Z",
+  "repositoryCommitSha": "cc55311e877321cd07693aa8b53fc1a623c1e7bd",
+  "evidenceHash": "e76115424e720f53ddb5a09d11206848b634b22f03a7a1d5338cd0e148f8649b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a5a5c1e0a2549a436ff821a5c0cbcffec09c43903dd12fb40bc1e8161a14afad",
+  "shadowMode": false
+}

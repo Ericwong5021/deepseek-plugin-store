@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "api",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "根据仓库说明，该插件为 DeepSeek Harness 提供面向用户的 Token 与费用统计能力，核心流程为读取 DSH 会话中的用量日志进行聚合计算，并在设置页以趋势图、热力图、环图和明细表展示结果；同时提供本地接口用于汇总/趋势/导出等查询，并可按配置调用外部平台接口获取账户余额，因此主要定位为数据分析与可视化工具插件。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在设置页展示 Token 与费用统计信息，支持按时间、模型和会话查看用量与费用趋势，并可查询多平台余额。",
+    "en": "This DeepSeek Harness plugin provides a user-facing dashboard for token and cost analytics with time/model/session views, trend and donut style visuals, and configurable multi-provider balance checks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Aggregates persisted session usage logs into token/cost summaries and exports usage records.",
+      "Displays usage, cost, and model/session breakdowns in interactive dashboard charts and tables.",
+      "Calls configured external provider APIs to read account balances.",
+      "Persists pricing and display settings to a workspace-level JSON file."
+    ],
+    "reasons": [
+      {
+        "code": "usage_and_pricing_analytics",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_local_web_api_routes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "multi_provider_balance_query_features",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "pricing_config_file_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh_web_plugin_and_client_bundle",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Aggregates persisted session usage logs into token/cost summaries and exports usage records.",
+      "Displays usage, cost, and model/session breakdowns in interactive dashboard charts and tables.",
+      "Calls configured external provider APIs to read account balances.",
+      "Persists pricing and display settings to a workspace-level JSON file."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:40.332Z",
+  "repositoryCommitSha": "bff5eee193fe3cffa1776b1557e294dc2e8a6bf6",
+  "evidenceHash": "894f7d0a21696f0c0b3320b9467aa62cd138ec27c6f8bc158f04b92c56edfd25",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "43673cdf147e76f37b10429fb23c09cd28b98309aefe3446c2b441b50b958bbb",
+  "shadowMode": false
+}

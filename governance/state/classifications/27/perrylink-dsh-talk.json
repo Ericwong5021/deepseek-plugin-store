@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "chat",
+    "tool",
+    "ui",
+    "browser",
+    "notification",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Evidence in the repository shows this plugin is primarily a media interaction extension for DeepSeek Harness, centered on voice I/O: microphone-based input and speech-to-text feeding the conversation composer, plus text-to-speech reply playback with interruption and announcement features, with optional external/local engines and web client settings controls.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供语音会话能力，让用户通过麦克风输入文本并可选择直接提交，同时可用可配置的语音引擎朗读助手回复，并支持说话时中断播放。",
+    "en": "This plugin adds voice interaction to DeepSeek Harness by turning microphone input into conversation text and speaking assistant replies through configurable STT/TTS engines, with optional event announcements and playback interruption support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Capture microphone input for conversational transcription",
+      "Convert speech to text via configurable STT engines",
+      "Convert assistant text to speech via browser/local/remote engines",
+      "Play generated speech in browser session",
+      "Interrupt playback when user starts speaking",
+      "Announce workflow events (turn end/approval/error) via speech",
+      "Persist user-facing plugin settings through profile patch updates",
+      "Support remote endpoints or local subprocess-based voice engines"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin capability and UI surface include mic input, TTS speak tool, and speak-to-interrupt behavior, indicating media capture and playback flow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Network and local engine usage are explicit: edge-tts and FunASR are network services, while whisper.cpp/piper are external/local binary components.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest declares permissions for network outbound and subprocess spawn, confirming potential runtime security surface beyond pure UI behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Capture microphone input for conversational transcription",
+      "Convert speech to text via configurable STT engines",
+      "Convert assistant text to speech via browser/local/remote engines",
+      "Play generated speech in browser session",
+      "Interrupt playback when user starts speaking",
+      "Announce workflow events (turn end/approval/error) via speech",
+      "Persist user-facing plugin settings through profile patch updates",
+      "Support remote endpoints or local subprocess-based voice engines"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:17.926Z",
+  "repositoryCommitSha": "c475fda51294bf0f1f33b045b434b78261d93479",
+  "evidenceHash": "11daa74316b6598f6ad698c4354a18f8deaa49fc5816dd07f6b606d55f4b0fa9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "07e1a1e619b8325bb58c8343791871e4a944e6be2a4f7ebe77c3f13c7ba27998",
+  "shadowMode": false
+}

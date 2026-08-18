@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "chat",
+    "ui",
+    "image",
+    "visualization",
+    "api",
+    "tool",
+    "integration",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用户面向用途是可视化：在 DSH Web 会话中识别 PlantUML 代码围栏并将其渲染为 SVG 图像展示，支持流程图、时序图等图形，因此属于对话 UI 内的图表可视化增强，而非文档编辑或代码生成类能力。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，可在会话消息中自动将 PlantUML 代码围栏渲染为 SVG 图像，便于直接查看图表内容。",
+    "en": "This is a DSH web plugin that automatically renders PlantUML fenced blocks in chat messages into SVG diagrams for easier inline viewing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Render PlantUML fenced code blocks from assistant messages into inline SVG output.",
+      "Send PlantUML source to a configurable remote PlantUML service for rendering.",
+      "Optionally invoke a locally configured PlantUML executable for rendering."
+    ],
+    "reasons": [
+      {
+        "code": "Conversation renderer parses ```plantuml/```puml blocks and replaces them with SVG in message display.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin exposes POST /plugin/plantuml and uses default PlantUML service URL, indicating network-based rendering path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration allows DSH_PLANTUML_COMMAND to run a local plantuml command instead of remote rendering.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Render PlantUML fenced code blocks from assistant messages into inline SVG output.",
+      "Send PlantUML source to a configurable remote PlantUML service for rendering.",
+      "Optionally invoke a locally configured PlantUML executable for rendering."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:37.021Z",
+  "repositoryCommitSha": "1003d8303896f9ab35c4be4092b9175e0f746f4c",
+  "evidenceHash": "a1b604ceca3edf33a315745a763eea4d0153b3a4a381262e3e0edc5772600133",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cf1f1f5be29facee3eb855ae79c3ca2191299a859f8da1d9544e7acd1859523d",
+  "shadowMode": false
+}

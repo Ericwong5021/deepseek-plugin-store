@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "chat",
+    "tool",
+    "ui",
+    "api",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary user-facing purpose is to automate and improve the current composer draft: it adds a visible web composer button that triggers an auxiliary LLM optimization flow and writes the rewritten text back into the draft only. Evidence shows explicit non-submission behavior (no message is sent, no turn starts), making it a UI-facing optimization utility rather than a communication, navigation, or project-analysis tool.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，提供按钮可在点击后调用辅助大模型重写当前会话草稿并回填输入框，不会发送消息或开始新回合。",
+    "en": "This is a DeepSeek Harness Web plugin that provides a button to call an auxiliary LLM to rewrite the current draft and replace the composer input, without sending a message or starting a new turn."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Draft content rewriting through an auxiliary LLM call",
+      "Web composer input capture and programmatic draft replacement",
+      "Optional explicit model/provider route selection",
+      "Request budgeting controls for input size, token limit, and timeout",
+      "User feedback via toast notifications"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README describes the plugin as a DeepSeek Harness web plugin that rewrites the current composer draft through an auxiliary LLM call and replaces only the draft.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies click behavior: captures draft, calls ctx.promptOptimize.optimize, and applies setDraft only when the draft is unchanged.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package configuration declares web platform client integration and UI conversation injection, and peer dependency on DSH runtime/API packages that support remote model calls.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Draft content rewriting through an auxiliary LLM call",
+      "Web composer input capture and programmatic draft replacement",
+      "Optional explicit model/provider route selection",
+      "Request budgeting controls for input size, token limit, and timeout",
+      "User feedback via toast notifications"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:19.856Z",
+  "repositoryCommitSha": "d40dc742c5936ddcf92da5d33ecd2c67a382dc15",
+  "evidenceHash": "5277cc0445b8b98ebc03650cb6cd022d44fda4feb7268cf1f0992cb496354a75",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b499723c427d58c6aa684b32bdccd6b44cc7d4a31c3941a028c9957eb1551d48",
+  "shadowMode": false
+}

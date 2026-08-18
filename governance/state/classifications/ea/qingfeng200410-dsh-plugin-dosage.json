@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "integration",
+    "api",
+    "data",
+    "ui",
+    "visualization",
+    "monitoring",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is a user-facing DeepSeek Harness web utility that consolidates multi-provider usage, balance, and billing views into a sidebar panel. Evidence shows it focuses on monitoring/token-cost visualization, local usage record handling, and optional export, with no code-generation or project-automation behavior.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的 Web 侧边栏新增“Usage/Balance”面板，集中展示多供应商余额与峰谷计费用量、调用明细，并支持导出相关数据。",
+    "en": "Adds a Usage/Balance panel in the DeepSeek Harness web sidebar to aggregate multi-provider balances, peak/off-peak costs, and call history, with usage data export support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads provider account/balance and usage endpoints via configured credentials",
+      "aggregates token usage and peak/off-peak cost data",
+      "renders usage/billing dashboards and call logs in the web sidebar",
+      "persists usage records and pricing/cache files under user DSH data directories",
+      "exports usage history and statistics to CSV, JSON, and PNG"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a single sidebar Usage/Balance popover with five tabs covering balances, overview, monthly usage heatmap, call log, and price list.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin uses existing provider settings/credentials (for DeepSeek, OpenRouter, etc.) and accesses account APIs to fetch multi-provider balance and usage data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents local usage data files (e.g., usage-records.json, pricing.json, cache, export outputs) and CSV/JSON/PNG merge-import/export behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DeepSeek Harness web client plugin with a Cordis patch bundle, confirming runtime UI integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "reads provider account/balance and usage endpoints via configured credentials",
+      "aggregates token usage and peak/off-peak cost data",
+      "renders usage/billing dashboards and call logs in the web sidebar",
+      "persists usage records and pricing/cache files under user DSH data directories",
+      "exports usage history and statistics to CSV, JSON, and PNG"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:30.776Z",
+  "repositoryCommitSha": "c931f6760b6aa076217e08277b41ccbf5f36655e",
+  "evidenceHash": "73a35a86c69c9704d2574e56275fabd03526474ccbbb8f109d4cc1eef12d40f8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e297420a8b8ecbda7caffa00249815714a25895be01c214acf2339e1542f0050",
+  "shadowMode": false
+}

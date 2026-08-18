@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件面向 DSH Web 用户界面，核心目的是在左侧导航 rail 底部提供 DeepSeek API 余额与当日预计消耗的可见化入口，并提供点击查看明细与消费曲线的面板，因此可归类为导航与面板类展示型插件；其主要能力是读取配置凭据、请求外部服务并按会话日志增量方式生成用量展示。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，在左侧 rail 底部显示 DeepSeek API 余额与今日估算消耗，点击徽章可查看余额明细和近30天消费趋势。",
+    "en": "This is a DSH web plugin that shows DeepSeek API balance and estimated daily consumption in the sidebar footer, with a details panel on click showing balance and recent usage trends."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a credential named DEEPSEEK_API_KEY from DSH credentials",
+      "Contacts an external DeepSeek API to obtain balance and usage data",
+      "Displays balance/usage information in a sidebar rail footer widget and expandable detail panel",
+      "Analyzes session logs incrementally to estimate daily consumption"
+    ],
+    "reasons": [
+      {
+        "code": "README说明插件在左侧 rail 底部显示余额与今日消耗徽章，并在点击后弹出详情面板",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README说明插件通过 DEEPSEEK_API_KEY 从 ctx.credentials 读取凭据并用于接口请求",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json声明为 DSH web 客户端插件并通过 cordis.patch 打包挂载",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "提交与仓库元信息显示仓库公开且未归档，具备基础发布与安装路径",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a credential named DEEPSEEK_API_KEY from DSH credentials",
+      "Contacts an external DeepSeek API to obtain balance and usage data",
+      "Displays balance/usage information in a sidebar rail footer widget and expandable detail panel",
+      "Analyzes session logs incrementally to estimate daily consumption"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:36.857Z",
+  "repositoryCommitSha": "0413ac9a22c2c77ff58f9393c33a8ef1657be5de",
+  "evidenceHash": "f7dd76b12404b8fc4a40b04079cba138dfb43cb5c81069f562ce85b6d496608d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "af3f4c6ae1c4b0d2213f8bd9f9fe186a3731957130e30a744f475a84d51da361",
+  "shadowMode": false
+}

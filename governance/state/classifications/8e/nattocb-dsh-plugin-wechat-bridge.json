@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "ui",
+    "automation",
+    "file",
+    "image",
+    "video"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是将微信 ilink bot 的私聊消息接入 DSH agent 会话并回传回复，属于外部通信服务集成；说明书强调扫码绑定账号、按天会话管理、热插拔开关、HTTP API 与命令控制，以及文本与媒体（图片/文件/视频）的收发与持久化，表明其是用户面向的微信桥接与会话互通工具。未体现代码生成、数据分析或可视化主线能力。",
+  "summaries": {
+    "zh": "该插件用于在 DSH 中桥接微信(ilink bot)私聊与 AI 会话，支持扫码绑定账号、运行时启停，并可在聊天中同步文本与相关文件内容。",
+    "en": "This plugin bridges WeChat (ilink bot) private messages into DSH sessions, supports account linking and runtime enable/disable, and enables text plus media flow between chats and the agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "bridging WeChat ilink bot private messages into DSH agent sessions",
+      "persisting account/session state and offsets in local JSON state files",
+      "sending and receiving text/media through WeChat bot APIs and file upload/download flow",
+      "runtime control via slash commands, settings UI, and hot-reload configuration",
+      "exposing plugin HTTP endpoints for account and status management"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin explicitly describes polling/syncing WeChat ilink bot updates and sending replies via bot APIs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It persists bridge credentials and conversation state in local files under ~/.dsh/wechat-bridge, including state.json and session/media artifacts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It includes settings UI, slash commands, and HTTP endpoints for account login/enable/disable and bridge control, enabling user-facing operational actions.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "bridging WeChat ilink bot private messages into DSH agent sessions",
+      "persisting account/session state and offsets in local JSON state files",
+      "sending and receiving text/media through WeChat bot APIs and file upload/download flow",
+      "runtime control via slash commands, settings UI, and hot-reload configuration",
+      "exposing plugin HTTP endpoints for account and status management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:30.786Z",
+  "repositoryCommitSha": "dceb8bf4898de2cfe06556ef6cad3d6cd4c6b356",
+  "evidenceHash": "f29a10ba80414237990ee4c2c823ccda2f7791fad551a76feba6586b11ef7efc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c020098da9af1c6ce7f72732295773a1fc7a41524e9cacd92a326e0bdca5284f",
+  "shadowMode": false
+}

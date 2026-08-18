@@ -4,7 +4,7 @@
     "fullName": "oThTJx/dsh-skill-always-apply",
     "url": "https://github.com/oThTJx/dsh-skill-always-apply"
   },
-  "summary": "DeepSeek Harness plugin: injects alwaysApply-marked skill bodies into sessions before the first model request — no skill tool load needed.",
+  "summary": "This plugin automatically injects configured `alwaysApply` skill content into the first model-visible session message so selected standing instructions are present from the start.",
   "sources": [
     "github-topic"
   ],
@@ -43,24 +43,25 @@
     "capturedAt": "2026-08-17T22:45:12.694Z"
   },
   "classificationSuggestion": {
-    "group": "tools-data",
-    "category": "files-terminal",
+    "group": "agents-workflows",
+    "category": "automation",
     "tags": [
+      "automation",
       "agent",
-      "file",
       "skill",
+      "context",
+      "workflow",
       "tool"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:orchestration:subagent",
-      "text:memory-context:session",
-      "text:visualization:render",
-      "text:files-terminal:file",
-      "text:general-utilities:tool"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:928ac6ff443dcb617157f1564eca67ff8b27d68f01aef6b8ef40181e7dfaa293",
+      "commit:d386128af827e367236a206c084d73400616d1ba"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:20:59.554Z",
+    "reason": "The plugin is primarily for automating session setup by injecting always-apply skill instructions into the model-visible history, as described in the README: it hooks `agent/pre-step`, selects opt-in skills by frontmatter/summary/config, and prepends a durable instruction message. This positions it as a workflow/context automation utility within DeepSeek Harness rather than a tool for UI, search, or external service access."
   }
 }

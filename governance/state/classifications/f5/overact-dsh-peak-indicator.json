@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "visualization",
+    "data",
+    "desktop",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is a DSH UI-focused extension that presents real-time DeepSeek pricing-window status and a visual schedule for users, with features centered on a header/floating status chip, countdowns, timezone-aware conversion, and a modal timeline, as documented in the README and corroborated by DSH patch/injection configuration in package metadata.",
+  "summaries": {
+    "zh": "这是一个用于 DSH Web GUI 的插件，会在界面中实时显示 DeepSeek 的高峰/平峰时间状态、倒计时与可视化时段表。",
+    "en": "A DSH Web GUI plugin that shows DeepSeek peak/off-peak timing status, live countdowns, and a visual schedule view for users."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays peak/off-peak pricing-window status in the DSH web interface",
+      "Shows live countdowns to next pricing-window transitions",
+      "Converts schedule times across local timezone and Beijing time",
+      "Renders an interactive 24-hour schedule timeline and status chip",
+      "Injects UI elements into DSH session header and sidebar via plugin slots"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DeepSeek peak/off-peak indicator for DSH Web GUI with live status, countdown, timezone auto-detection, and a 24-hour visual timeline.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README includes a pricing reference table and schedule rules for DeepSeek V4, so incorrect calculation or stale pricing could affect user cost awareness decisions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH bundle patch and client injections for web runtime/locale/UI slots, confirming runtime UI integration and runtime dependency usage.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes cordis.patch.yml and runtime entry files (lib) needed for DSH plugin mounting, indicating direct interface extension behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays peak/off-peak pricing-window status in the DSH web interface",
+      "Shows live countdowns to next pricing-window transitions",
+      "Converts schedule times across local timezone and Beijing time",
+      "Renders an interactive 24-hour schedule timeline and status chip",
+      "Injects UI elements into DSH session header and sidebar via plugin slots"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:07.656Z",
+  "repositoryCommitSha": "3b6bc97153bdf2f625a1c0bf251d37c560c32f28",
+  "evidenceHash": "9ecfc4870e74901ba165e1449243cbe8ae487bbcfe74f3717ce05ffd0ae87261",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37b8b5ccb9bf5a2d4db581eca4b9e895da5e4f4005ddd1bd5fb903980e28d3a3",
+  "shadowMode": false
+}

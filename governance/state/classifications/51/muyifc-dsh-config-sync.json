@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "data",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a DeepSeek Harness configuration backup and restore utility: its README defines tools for exporting/importing DSH settings, credentials, profile data, and agent presets via local bundle or encrypted `.dshsync` files, with status and import-guard behavior. This places it in file-level utility automation rather than UI, browsing, or code-generation, though it handles sensitive config content and thus has moderate risk considerations.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于将 DSH 配置导出为目录备份包或加密 `.dshsync` 文件，并支持在目标机器上按需恢复配置与相关预设。",
+    "en": "This is a DeepSeek Harness plugin for backing up DSH configuration as a local bundle or encrypted `.dshsync` file, and restoring those configurations and presets on another machine."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Export DSH settings and related config files to a local bundle directory",
+      "Export and import an encrypted `.dshsync` file for portable backup",
+      "Restore config with dry-run preview and pre-import backup of existing files",
+      "Includes credentials file handling and profile/plugin-related config assets"
+    ],
+    "reasons": [
+      {
+        "code": "plugin_exposes_five_tools_for_config_export_import_and_status_queries",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sync_scope_includes_credentials_yaml_profiles_and_agent_presets",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "import_flow_uses_dry_run_and_pre_import_backup_and_path_checks",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_is_packaged_as_dsh_bundle_entry_with_main_and_bundle_patch",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Export DSH settings and related config files to a local bundle directory",
+      "Export and import an encrypted `.dshsync` file for portable backup",
+      "Restore config with dry-run preview and pre-import backup of existing files",
+      "Includes credentials file handling and profile/plugin-related config assets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:20.803Z",
+  "repositoryCommitSha": "6444c05b250f63fad54098b03b7aff919b6b53df",
+  "evidenceHash": "57ae60aae2cc30f8ec608ca1c026a0cbd6e290035447c81de01500f0d9dc162f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "113f65c1973d911e81bf9b48083aed8571583e410c5423a511ae5770afe4f43e",
+  "shadowMode": false
+}

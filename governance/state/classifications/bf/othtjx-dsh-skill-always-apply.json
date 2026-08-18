@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "skill",
+    "context",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily for automating session setup by injecting always-apply skill instructions into the model-visible history, as described in the README: it hooks `agent/pre-step`, selects opt-in skills by frontmatter/summary/config, and prepends a durable instruction message. This positions it as a workflow/context automation utility within DeepSeek Harness rather than a tool for UI, search, or external service access.",
+  "summaries": {
+    "zh": "该插件用于在会话初始阶段自动注入标记为 `alwaysApply`（或按配置指定）的技能内容，帮助在模型可见上下文中持续生效固定指令，无需额外加载 skill 工具。",
+    "en": "This plugin automatically injects configured `alwaysApply` skill content into the first model-visible session message so selected standing instructions are present from the start."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects selected skill bodies into the first model-visible session message before the first model request.",
+      "Reads skill metadata from catalog summaries, loaded skill definitions, and skill-file frontmatter to determine `alwaysApply` candidates.",
+      "Provides opt-in control via `names`, `disabledNames`, `skipSubagent`, and `maxTotalBytes` before injection.",
+      "Can inject skill content even when `modelInvocable` is false, while leaving it out of a user tool call path."
+    ],
+    "reasons": [
+      {
+        "code": "always_apply_prestep_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_invocation_bypass_behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh_plugin_bundle_and_entrypoint",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects selected skill bodies into the first model-visible session message before the first model request.",
+      "Reads skill metadata from catalog summaries, loaded skill definitions, and skill-file frontmatter to determine `alwaysApply` candidates.",
+      "Provides opt-in control via `names`, `disabledNames`, `skipSubagent`, and `maxTotalBytes` before injection.",
+      "Can inject skill content even when `modelInvocable` is false, while leaving it out of a user tool call path."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:59.554Z",
+  "repositoryCommitSha": "d386128af827e367236a206c084d73400616d1ba",
+  "evidenceHash": "928ac6ff443dcb617157f1564eca67ff8b27d68f01aef6b8ef40181e7dfaa293",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "44fe6f441963e9bb81784edc01bc668fccf019392c7083cee9e6ea91ed7d1169",
+  "shadowMode": false
+}

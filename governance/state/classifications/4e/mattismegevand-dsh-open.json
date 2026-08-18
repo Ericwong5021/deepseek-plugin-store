@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "desktop",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is a DeepSeek Harness Web workspace launcher focused on UI navigation: it adds an Open action in conversation headers to quickly jump to internal panels or local tools like editor/file manager targets. Evidence in the README describes this behavior and host-based invocation model, while package metadata shows a web client plugin with injected dependencies, consistent with a user-facing navigation/utility plugin rather than code generation or research tooling.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在会话标题中提供“打开”入口，帮助用户快速选择并打开已注册的 dock 面板、本地文件管理器或配置的编辑器。",
+    "en": "This is a DeepSeek Harness Web plugin that adds an Open control to conversation headers so users can quickly launch registered dock panels, the local file manager, or configured editors."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Open registered workspace dock panels from conversation headers",
+      "Launch local file manager and configured editor targets via platform actions",
+      "Open a local configured terminal panel when available"
+    ],
+    "reasons": [
+      {
+        "code": "Adds an Open control in each conversation header to list and launch registered dock panels, platform file manager, and editor targets.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "States native actions are resolved on the host and invoked through a compact action mechanism using session/action identifiers, with request size and timeout controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Declares a web client-side plugin injection and bundle patch for DeepSeek Harness, indicating host-UI integration behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Open registered workspace dock panels from conversation headers",
+      "Launch local file manager and configured editor targets via platform actions",
+      "Open a local configured terminal panel when available"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:44.942Z",
+  "repositoryCommitSha": "2d529d86eff31480f0132fa519b57cfa786e0596",
+  "evidenceHash": "9cb7dda62917c11a1ce2563c36fd4391cdbc57ef5dd8400592b551efc15f7f77",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3ec9a03f763f8b5f4a6342be6f7cff3e77e9cb5120371244d654b99027e2f31e",
+  "shadowMode": false
+}

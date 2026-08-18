@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "tool",
+    "image",
+    "automation",
+    "chat",
+    "file",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 的纯文本主模型补齐视觉能力：在对话中提供 `vision` 工具并自动发现/选择已配置的多模态模型处理图片文件路径，再将识别结果以文本返回，整体定位为图片工具化处理插件。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的纯文本主模型提供 `vision` 工具，通过已配置的多模态模型将图片文件路径解析为文本描述。",
+    "en": "This plugin adds a `vision` tool for DeepSeek Harness text-only models, converting image file paths into text descriptions via configured multimodal models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local image-to-text conversion via file path input",
+      "Automatic routing from text-only model context to configured multimodal providers",
+      "Model auto-discovery and validation for image-capable models"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a `vision` tool with `file_path` (required) and `instruction` (optional) parameters.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains automatic discovery of configured image-capable models and delegation of image handling away from text-only primary models.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes automatic hiding/restoring of `read_image` behavior to enforce the `vision` path for text-only models.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json identifies the project as a DSH plugin with a bundle patch entry, confirming host integration and execution within the DSH environment.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Local image-to-text conversion via file path input",
+      "Automatic routing from text-only model context to configured multimodal providers",
+      "Model auto-discovery and validation for image-capable models"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:44.804Z",
+  "repositoryCommitSha": "3777d9f6026beff4ef0dda785ed67b97d97e1466",
+  "evidenceHash": "f2fe9b189d39206ce0e9f19a4747ae405ae57defc6caf8eced6b1feca66d5b5d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d697cc194a10334c2c52f3eae0b66f5141cc84da7cfb17862f70eb606fc7ff41",
+  "shadowMode": false
+}

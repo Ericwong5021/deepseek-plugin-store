@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "cli",
+    "workflow",
+    "skill",
+    "tool",
+    "search",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Based on repository metadata and README, this plugin is primarily an orchestration and automation tool for agent capability management: it discovers skills/plugins, builds and maintains a searchable Chinese catalog, and optionally coordinates existing trusted installers when users explicitly request installation. It also provides CLI workflows for search/filter/diff/status tasks and updates local catalog/profile files, while not presenting independent code generation, data analytics, or media processing as its core function.",
+  "summaries": {
+    "zh": "该插件用于扫描与维护已发现的技能与插件中文能力目录，并在用户明确要求时编排已有安装器以更新能力说明和安装状态。",
+    "en": "This plugin manages a searchable catalog of discovered skills and plugins, and when requested by the user, orchestrates existing installers to update related capability documentation and install status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local capability discovery and catalog generation/update",
+      "Filesystem read/write for local profile and catalog documents",
+      "Read-only metadata inspection from public repositories",
+      "Optional orchestration of existing installers when explicitly requested",
+      "Search/filter and status reporting over discovered skills/plugins"
+    ],
+    "reasons": [
+      {
+        "code": "README states the primary function is to maintain a Chinese capability catalog and scan existing Codex/DSH skills and plugins.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes explicit install orchestration paths (Codex skill-installer and DSH dsh plugin) and an install/scan workflow with clear mode switching.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents local config/state storage under OS config directories, indicating local filesystem persistence of scan/profile metadata.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes the project as a DSH bundle/plugin with skill registration files (lib/index.js, dsh/SKILL.md), confirming runtime skill behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The repository file list includes the Python CLI script set used for discover/configure/scan/search commands, showing command-line operational capabilities.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Local capability discovery and catalog generation/update",
+      "Filesystem read/write for local profile and catalog documents",
+      "Read-only metadata inspection from public repositories",
+      "Optional orchestration of existing installers when explicitly requested",
+      "Search/filter and status reporting over discovered skills/plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:51.946Z",
+  "repositoryCommitSha": "1843ac3db8f4b437ed62866cdba3c9fe08158cd5",
+  "evidenceHash": "4849bf708982d3ad473b70fa47169d50671f3d1efa186042707a541f88df792d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3a6313f130d1db182602779f87a5c28389da4e8f06012f2ff04d4e37e4251e20",
+  "shadowMode": false
+}

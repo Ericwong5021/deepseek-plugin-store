@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "chat",
+    "tool",
+    "api",
+    "data",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin’s primary user-facing purpose is cross-session conversational memory: it listens to DSH session events, embeds message content via a configured endpoint, stores vectors in a local index file, and enables semantic retrieval through a rag_search tool. The manifest and documentation indicate it is a runtime plugin with settings UI and non-destructive integration, so classification is memory-context with optional external-service dependency for embeddings.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于基于会话事件持续构建本地语义记忆索引，并通过 rag_search 在历史对话中检索相关内容以辅助上下文回溯。",
+    "en": "This is a DeepSeek Harness plugin that incrementally builds a local semantic memory index from sessions and provides rag_search to retrieve relevant past messages from chat history."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Listens to DSH session events and indexes session/tool messages",
+      "Persists an embedding index in a local JSON file",
+      "Calls a configured OpenAI-compatible embedding endpoint",
+      "Exposes a rag_search tool for retrieval of past message snippets"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as a DeepSeek Harness memory layer that indexes session messages and exposes rag_search for semantic lookup of past chats.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Index persistence is documented as `~/.dsh/rag/index.json` (or configurable dataDir) using local file writes and a cursor for incremental updates.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The configuration supports endpoint/model/apiKey options and notes indexing requires an OpenAI-compatible /embeddings request path.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Listens to DSH session events and indexes session/tool messages",
+      "Persists an embedding index in a local JSON file",
+      "Calls a configured OpenAI-compatible embedding endpoint",
+      "Exposes a rag_search tool for retrieval of past message snippets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:50.153Z",
+  "repositoryCommitSha": "85bee0b632ec36c7ce8aea20df33a7182f809888",
+  "evidenceHash": "b3068de300a4a0dca3f2a4cd25000e5df9c2f16b512c50ba0e3d2d27b526dad5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "83c90f9e3a94016a01d15552dc5611a9f700bbdb66ab95d52540b501e39f1c47",
+  "shadowMode": false
+}

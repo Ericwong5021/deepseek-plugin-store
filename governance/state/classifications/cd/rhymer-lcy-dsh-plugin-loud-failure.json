@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "automation",
+    "tool",
+    "terminal",
+    "debugging",
+    "workflow",
+    "context",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a terminal-tool reliability utility for DeepSeek Harness: it inspects post-execute tool output in real time and, based on configurable (and built-in) signature rules, either flags the call as an error or adds a notice so users/models can react. This behavior is clearly scoped to tool workflow handling rather than content creation or external integration.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的终端工具后执行插件，可在工具调用完成后按规则检测静默失败特征，并在命中时将结果标记为错误或附加提示，帮助模型更快识别异常。",
+    "en": "This is a DeepSeek Harness post-execute terminal tool plugin that scans tool outputs for configurable failure signatures and can mark matched calls as errors or add a notice for model visibility."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "post-execute interception of tool calls",
+      "regex-based matching on tool output and optional JSON canonical value",
+      "ability to block matched results by marking them as errors",
+      "ability to attach plugin-sourced notice context to results",
+      "configurable rule set with user-defined actions and filters"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is designed as a `tools/post-execute` listener that can return a block decision and convert the tool result to an error-style outcome while preserving original output.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It performs configurable regex matching on tool output (and optional successful canonical value) and applies `error` or `context` actions, so matched content can change what the model sees.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The rule table is validated on load (invalid pattern/duplicates/stateful flags reject load), which constrains malformed user configuration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package manifest declares it as a DeepSeek Harness bundle (`dsh` patch entry) with explicit peer dependencies and no separate service components, indicating local runtime behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "post-execute interception of tool calls",
+      "regex-based matching on tool output and optional JSON canonical value",
+      "ability to block matched results by marking them as errors",
+      "ability to attach plugin-sourced notice context to results",
+      "configurable rule set with user-defined actions and filters"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:03.955Z",
+  "repositoryCommitSha": "755331462ab00e7cf64d0d89cf26e54c2999c21e",
+  "evidenceHash": "4598e13c4378056c4e4cf5a15500b6a31c6b023ff05e2a9d6a635d92f47ca679",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e51e1fe7b8b9f591c37d6dcd5017c9ac6cc37dce1093669f22b1cff009ee12f7",
+  "shadowMode": false
+}

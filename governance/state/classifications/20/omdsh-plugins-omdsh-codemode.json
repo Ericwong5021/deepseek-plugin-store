@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "ui",
+    "tool",
+    "cli",
+    "automation",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is a user-facing DeepSeek Harness mode extension that adds a third UI segment called Code, placing a live terminal as the main conversation column. Evidence shows it mainly embeds and hosts `omdsh-tui` via a websocket (`/omdsh-codemode/terminal`) in the active workspace context, reusing conversation session IDs for resume/reconnect behavior rather than reimplementing terminal functionality. It is primarily a terminal + workspace workflow integration plugin with session/sidebar coordination features.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中新增“代码模式”面板，在会话页面侧边切换到代码区并启动显示终端，供用户在当前工作区继续进行命令行操作。",
+    "en": "This plugin adds a Code mode view in DeepSeek Harness, opening and displaying a terminal panel in the same session workspace so users can work in a command-line environment there."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts and manages workspace terminal sessions for the web interface.",
+      "Exposes a terminal websocket endpoint for interactive I/O.",
+      "Bridges terminal session output into the harness conversation/session workflow.",
+      "Allows configurable launcher settings (`command`/`args`/profile) for terminal process invocation."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a Code mode segment that replaces the conversation view with a terminal and uses `dsh --session-id` tied to the conversation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents socket endpoint `GET /omdsh-codemode/terminal` and socket-based terminal relay behavior, including resume/reconnect flow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares terminal-related dependencies (`node-pty`, `ws`, xterm) and web UI/client runtime/plugin wiring required for live terminal rendering and transport.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes optional configuration for `command` and `args` to launch the terminal process, which makes command execution behavior configurable by deployment settings.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Starts and manages workspace terminal sessions for the web interface.",
+      "Exposes a terminal websocket endpoint for interactive I/O.",
+      "Bridges terminal session output into the harness conversation/session workflow.",
+      "Allows configurable launcher settings (`command`/`args`/profile) for terminal process invocation."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:51.762Z",
+  "repositoryCommitSha": "85f462cd472bae47a6836bd99085016368d44abf",
+  "evidenceHash": "66d82e9ee521c474e5925a47664dcaf0ebacf573067b1497cd81e227df66e81d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "035e4d8c7dd6863aac494ebe209925f209cbc522d38b342b9dc2b93dbb0f41de",
+  "shadowMode": false
+}

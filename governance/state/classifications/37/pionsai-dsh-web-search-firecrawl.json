@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "api",
+    "integration",
+    "search",
+    "tool",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary user-facing purpose is to provide an alternative web search backend for DeepSeek Harness, replacing the default web-search route with Firecrawl and exposing provider settings in the UI. Evidence shows limited scope centered on search integration and result mapping, with external API use and configurable credentials as the main operational capabilities.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的 `ctx.web` 能力中接入 Firecrawl 搜索后端，让 `web_search` 走 Firecrawl 路径，并在设置界面提供使用开关与 API Key 配置。",
+    "en": "This plugin adds a Firecrawl-backed web search provider for DeepSeek Harness `ctx.web`, allowing `web_search` to use Firecrawl with provider behavior and API key settings managed in the plugin’s settings UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers a web search provider replacement in the DeepSeek Harness web seam.",
+      "Performs external API calls to Firecrawl search endpoint for web queries.",
+      "Uses plugin settings and environment variables for API key/configuration management."
+    ],
+    "reasons": [
+      {
+        "code": "README describes the package as a Firecrawl-backed search provider for DeepSeek Harness `ctx.web`, intended to route `web_search` through this provider.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states it registers a `WebSearchProvider` with `id: firecrawl`, calls `POST /v1/search`, and maps provider responses into the seam’s normalized web search result format.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details configuration options and key handling, including DSH settings UI for `apiKey`, `useFirecrawl`, and fallback to `$FIRECRAWL_API_KEY`, plus optional profile patching.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH bundle patch and peer dependencies on `@deepseek-ai/dsh-web` and related runtime packages, indicating integration with DeepSeek harness tooling rather than standalone behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers a web search provider replacement in the DeepSeek Harness web seam.",
+      "Performs external API calls to Firecrawl search endpoint for web queries.",
+      "Uses plugin settings and environment variables for API key/configuration management."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:23.650Z",
+  "repositoryCommitSha": "d6f7ae7e723acea49faf3151538607e13cc85b96",
+  "evidenceHash": "ac0a412d7d129f11a528e433fa8b99a09c3c3d5a29698d4fa3bfebb979fbd17b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9dff11ed83cfcc86d256ba5a69e841a4f21f745a6ad58c1fb326c8e926cdecbf",
+  "shadowMode": false
+}

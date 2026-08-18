@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "image",
+    "file",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心用途是在 DeepSeek Harness 中通过 `/ocr` 命令将当前工作区内的 PDF/图片文件交给本地 PaddleOCR 进行识别，并将结果导出为 Markdown。其功能集中于文档/媒体文本提取与结果归档，风险主要来自本地文件读取与脚本执行。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供本地 PaddleOCR 工具，支持 `/ocr` 命令识别工作区内的 PDF 与图片文件，并将识别结果输出到 artifacts/paddle-ocr 的 Markdown 文件。",
+    "en": "This plugin adds a local PaddleOCR tool to DeepSeek Harness, enabling the `/ocr` command to process workspace PDF/image files and output extracted results as Markdown files under artifacts/paddle-ocr."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads workspace PDF/PNG/JPG/WEBP/BMP/TIFF files for OCR",
+      "Invokes a local Python-based PaddleOCR process",
+      "Writes OCR output as Markdown files in artifacts/paddle-ocr"
+    ],
+    "reasons": [
+      {
+        "code": "Human command `/ocr <文件路径> [ch|en]` and supported formats are documented as workspace-only files, limiting input scope.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is packaged as a DSH bundle with a specific tool entry (`paddle_ocr`) and command wiring.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes `scripts/paddle_ocr.py` and `index.js`, indicating local script execution for processing.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads workspace PDF/PNG/JPG/WEBP/BMP/TIFF files for OCR",
+      "Invokes a local Python-based PaddleOCR process",
+      "Writes OCR output as Markdown files in artifacts/paddle-ocr"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:31.927Z",
+  "repositoryCommitSha": "fdd100dd7f117ed521e3c48080e46625912b8c6f",
+  "evidenceHash": "8b9464a3e9af0ecc7dbb1a5b62a1f454d6e673971063a9b72165cf2be6054d2a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "deeecbac7cf1474b871dd8c498158c8dd189655dee20a048b1fa00563b881eeb",
+  "shadowMode": false
+}

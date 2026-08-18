@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "theme",
+    "layout",
+    "image",
+    "browser",
+    "chat",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件主要用于 DeepSeek Harness 网页端界面个性化，用户可在新增的“个性化”设置中调整侧边栏 Logo、空对话欢迎区内容与对话区背景图，并实时生效；结合其 `package.json` 的 DSH Web 客户端注入与补丁结构，可确认其核心是主题/布局级 UI 增强。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 网页端插件，提供个性化设置入口，可修改侧边栏品牌标识、空对话欢迎区内容及对话背景，并在设置后立即生效。",
+    "en": "This is a DeepSeek Harness web plugin that provides a personalization settings page to edit sidebar branding, empty-chat welcome content, and conversation background with immediate effect."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides UI personalization settings for sidebar logo, welcome area logo/text, and conversation background.",
+      "Injects a web client settings page and applies style/DOM changes at runtime.",
+      "Observes DOM mutations to re-apply customizations after page rerender or navigation changes.",
+      "Accepts UI image inputs from local file upload (with client-side compression) or HTTPS URLs.",
+      "Persists custom settings in the DSH profile namespace and reapplies them from host settings."
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DeepSeek Harness web GUI customization page for sidebar logo, empty-chat hero logo/text, and conversation background with live updates.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata and package configuration show a dsh bundle patch plus web client injection (`dsh.bundle.patch`, `dsh.client.inject`) and files `lib/index.js`/`lib/client.js` for runtime customization behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README notes DOM targeting by stable selectors and MutationObserver-based reapplication, indicating direct front-end UI modification behavior and persistence under `customui` settings.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides UI personalization settings for sidebar logo, welcome area logo/text, and conversation background.",
+      "Injects a web client settings page and applies style/DOM changes at runtime.",
+      "Observes DOM mutations to re-apply customizations after page rerender or navigation changes.",
+      "Accepts UI image inputs from local file upload (with client-side compression) or HTTPS URLs.",
+      "Persists custom settings in the DSH profile namespace and reapplies them from host settings."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:34.647Z",
+  "repositoryCommitSha": "51b95efd50b468606833d1fbb918adb028fe6b1e",
+  "evidenceHash": "fafc0ae74344c2b4e0b7a8ad10c085eae10ff2cad4fb9379080f1e80174f483d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "18d773e0c1862ae81769f19e9a469377f9123520741060d2e814d778e4b1afd6",
+  "shadowMode": false
+}

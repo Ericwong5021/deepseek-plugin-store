@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "workflow",
+    "automation",
+    "api",
+    "integration",
+    "ui",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily an agent workflow orchestrator for DeepSeek Harness: it adds a `/moa` command to launch multiple reference-model analyses in parallel and then combine those results for the main model’s final response, with configurable presets, concurrency, and timeout/fallback behavior. Repository metadata and README show it is a DSH plugin with required DSH/LLM/runtime dependencies and explicit client integration, so its core purpose is multi-agent model orchestration rather than file operations, media processing, or unrelated tool automation.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，通过 `/moa` 指令在一次对话中并行调用多个参考模型，并将结果交由主模型汇总输出。",
+    "en": "This is a DeepSeek Harness plugin that lets a `/moa` command run multiple reference models in parallel and pass their results to the main model for a consolidated response."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runs multiple LLM reference models for a single user turn",
+      "Accepts slash command input (`/moa`) to control workflow behavior",
+      "Assembles reference outputs into a prompt artifact for downstream summarization",
+      "Supports preset-based provider/model selection with concurrency, timeout, and fallback settings",
+      "Injects plugin metadata into standard conversation events and renders reference results in client UI cards"
+    ],
+    "reasons": [
+      {
+        "code": "MOA_MULTI_MODEL_WORKFLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MOA_PRESET_AND_COMMAND_CONTROL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "STANDARD_EVENT_BASED_CLIENT_RENDERING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_PLUGIN_MANIFEST_AND_RUNTIME_DEPS",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Runs multiple LLM reference models for a single user turn",
+      "Accepts slash command input (`/moa`) to control workflow behavior",
+      "Assembles reference outputs into a prompt artifact for downstream summarization",
+      "Supports preset-based provider/model selection with concurrency, timeout, and fallback settings",
+      "Injects plugin metadata into standard conversation events and renders reference results in client UI cards"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:49.111Z",
+  "repositoryCommitSha": "42b5414519ec515b53a89663a42a5eb9f7e08e42",
+  "evidenceHash": "f18821752cae6d67fa5028689d1f035800c35849c35eb67fb19d996534be53f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0efc25a25f6f1c2c0ff616dff11d0545741aebb0ab42871a050b5c1f5617b9ae",
+  "shadowMode": false
+}

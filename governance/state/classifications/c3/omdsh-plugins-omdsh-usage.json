@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "data",
+    "monitoring",
+    "tool",
+    "project-analysis"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a usage and spend visibility tool for the DeepSeek Harness web UI: it surfaces conversation/project spend and account balance in existing interface locations, while computing totals from existing session usage data and querying the provider balance through the host server route and settings-managed pricing rules. It is therefore best classified as an external-service monitoring utility with UI and data-integration capabilities.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 会话界面中展示当前会话、当前项目与账户余额相关的 API 花费，并提供可配置的计费规则与阈值设置。",
+    "en": "Shows current conversation, project, and account-balance related API spend in the DeepSeek Harness interface, with configurable pricing, currency, and threshold settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays conversation/project/balance spend indicators in the web UI",
+      "Reads and aggregates model usage via host projection checkpoints",
+      "Calls provider balance endpoint via host web server with a configured credential name",
+      "Exposes a plugin-specific web endpoint for usage summary",
+      "Provides configurable pricing/currency/off-peak/threshold settings"
+    ],
+    "reasons": [
+      {
+        "code": "README and package metadata describe the plugin as an API spend-at-a-glance feature with three figures shown in the harness UI (session, project, balance).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states a `GET /omdsh-usage/summary` route is added through the webServer seam and is subject to the same browser-trust checks as the API gateway.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains server-side projection usage (`sessionProjections.register`) to fold per-model token data and off-peak split, then compute monetary totals.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents configurable fields such as `apiKeyEnv`, `baseURL`, `rates`, and `lowBalance`, indicating runtime network credential and endpoint handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description identifies the purpose as API spend visibility for DeepSeek Harness, confirming external-service usage monitoring as primary behavior.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Displays conversation/project/balance spend indicators in the web UI",
+      "Reads and aggregates model usage via host projection checkpoints",
+      "Calls provider balance endpoint via host web server with a configured credential name",
+      "Exposes a plugin-specific web endpoint for usage summary",
+      "Provides configurable pricing/currency/off-peak/threshold settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:54.947Z",
+  "repositoryCommitSha": "0dcb83ef8eaabb1dfab011305f358534b299fd52",
+  "evidenceHash": "2054e95c560df3860539a72e98c67c8a3092e1cb9b7e8aeb00453285913a6741",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3c36e628fa1f62b4f667d8f9d128f539a128c15241521256c88540a1d4a8bf72",
+  "shadowMode": false
+}

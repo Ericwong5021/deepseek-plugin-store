@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Classified as a search-and-browsing integration plugin because its documented behavior is to register a web search provider and set it as the active `web` search provider in DeepSeek Harness, with network calls to Kimi Coding search APIs and credential-based configuration. It is not primarily for code generation, UI changes, or debugging, but for enabling external web search within the existing web tool.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 宿主插件，用于在内置 web_search 中接入 Kimi Coding 的联网搜索能力并自动使用本地凭据进行配置。",
+    "en": "This is a DeepSeek Harness host plugin that adds Kimi Coding web search to built-in web_search with installer-level configuration and local credential reuse."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin registers a `kimi-coding` web search provider for `ctx.web` and routes built-in web search requests to that provider.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It resolves API credentials from environment variables and local Kimi config files before calling the search endpoint.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The manifest declares a DSH bundle patch, and repository files include the patch entry used to enable the provider automatically.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:43.630Z",
+  "repositoryCommitSha": "cb56f64db772f9492a3226661befa85b348df2fa",
+  "evidenceHash": "5c3a62e52cb14c0a50938fe8fc2112d11a223aaab7cbbb3e386f8163c4400966",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5e1da84010ca6d286b692342852de6cb8a62eda3ac94b893d0877f16013fea78",
+  "shadowMode": false
+}

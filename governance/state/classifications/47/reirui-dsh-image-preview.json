@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "file",
+    "image",
+    "tool",
+    "chat",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a local image-serving utility for chat, exposing a web preview endpoint and a tool that converts existing local image paths into inline-renderable URLs so users/agents can display pictures in conversation. The evidence shows it is focused on media preview workflow (preview directory, `/preview/*`, and `preview_image`) rather than general file management, workflow orchestration, search, or project analysis.",
+  "summaries": {
+    "zh": "这是一个本地图片预览插件，在 DeepSeek Harness 的 Web 会话中通过本地 HTTP 地址提供图片托管，并提供 `preview_image` 工具将本地图片放入预览目录后返回可内嵌显示的链接。",
+    "en": "This plugin enables local image preview in DeepSeek Harness web chats by serving files from a local directory through an HTTP preview route and exposing a `preview_image` tool that returns an inline-capable URL for existing local images."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Serves image files through a local web route under `/preview/*`",
+      "Provides a `preview_image(file_path)` model tool that stages existing local images and returns a URL",
+      "Supports configurable preview directory and URL prefix via plugin config",
+      "Applies image extension checks and path validation for served/staged files"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_PREVIEW_HTTP_ENDPOINT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "EXPLICIT_IMAGE_STAGING_TOOL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PATH_RESTRICTION_AND_TYPE_WHITELIST",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "NO_BUILT_IN_CLEANUP_POLICY_FOR_PREVIEW_DIR",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Serves image files through a local web route under `/preview/*`",
+      "Provides a `preview_image(file_path)` model tool that stages existing local images and returns a URL",
+      "Supports configurable preview directory and URL prefix via plugin config",
+      "Applies image extension checks and path validation for served/staged files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:00.819Z",
+  "repositoryCommitSha": "a1a81c5420ad3559678deba37b85785e4e47fb5d",
+  "evidenceHash": "1026c954462c7a53f07ca9cd9422946b9e3cac1c7541a1a873be0fc0f8149c3d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b7eb00c107e5f6f75f1bb96ae95beebbfdaae3cbeb53901b5017ddb509f8ffcd",
+  "shadowMode": false
+}

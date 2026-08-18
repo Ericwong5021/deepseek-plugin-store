@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "skill",
+    "context",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Evidence in the README and manifest shows this plugin’s main user-facing function is deterministic orchestration of skill loading: it runs on the agent pre-step, matches user input to configurable YAML rules, and injects matching skill invocations automatically, with a no-hit silent path and per-session dedupe, rather than performing UI, media editing, or content generation itself.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的前置技能路由插件，在每次对话步骤前按规则匹配用户消息，并在命中时注入对应技能调用以提前触发技能加载。",
+    "en": "This is a DeepSeek Harness pre-step skill router that matches user input against configured rules and injects matching skill invocations before a step proceeds."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides an agent `pre-step` hook that can inject `skill-invocation` messages before the model step",
+      "Performs rule-first YAML policy matching and supports ordered, first-match routing",
+      "Loads matched skills via configured policy rules and optional skill-level `whenToUse` triggers",
+      "Applies one-pour-per-session behavior to reduce duplicate skill injection",
+      "Falls back to bundled defaults when custom policy is invalid"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a pre-step skill router for DeepSeek Harness that reads the latest user message and pours matched skills before response generation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository layout identifies `index.js` as the Cordis plugin entry and `policy.js` as matching logic, confirming runtime routing and rule processing behavior.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package metadata declares this as a DSH plugin bundle (`dsh` block) with the runtime module entry `index.js`, indicating direct execution hooks in the host platform.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides an agent `pre-step` hook that can inject `skill-invocation` messages before the model step",
+      "Performs rule-first YAML policy matching and supports ordered, first-match routing",
+      "Loads matched skills via configured policy rules and optional skill-level `whenToUse` triggers",
+      "Applies one-pour-per-session behavior to reduce duplicate skill injection",
+      "Falls back to bundled defaults when custom policy is invalid"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:59.756Z",
+  "repositoryCommitSha": "0ceeb96d882bafc3aaeea6e4ce31396e1c2489e8",
+  "evidenceHash": "79ace6a8dccbcd5adf32e7ebb37cde0401de2fedf84436180e57ff1e2a490fc4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f997e21f6ece436678ae87e4d7f35a91f3c1da8e6aba5950dcf42477fe0826ba",
+  "shadowMode": false
+}

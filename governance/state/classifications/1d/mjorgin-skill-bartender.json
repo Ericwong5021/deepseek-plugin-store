@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "skill",
+    "planning",
+    "context",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "The plugin is a meta-skill that mainly routes agent tasks to the right capabilities, using a configurable policy and a laziness policy to minimize unnecessary skill loading. It also includes install governance (quarantine, scan, and human confirmation) and installed-skill maintenance features, making its user-facing role one of agent workflow orchestration rather than direct content editing or data manipulation.",
+  "summaries": {
+    "zh": "skill-bartender 是一个面向智能体的元技能，通过可配置路由策略为任务选择最合适的技能并执行最小加载策略，同时提供带人工确认的新增技能导入检查流程。",
+    "en": "skill-bartender is an agent meta-skill that routes tasks to the minimal suitable skill workflow using a configurable policy, and supports an approval-gated flow for bringing in new skills."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Task-to-skill routing with a configured policy map to prefer minimal or workflow-level skill selection.",
+      "Optional audit/rewrite flow for installed skill descriptions to improve when-to-use guidance.",
+      "Missing-skill handling flow including quarantine, scanning, and human confirmation before installation.",
+      "Logging of unused skill loads to reduce future routing actions.",
+      "Multi-platform skill packaging for DSH, Claude Code, and Codex."
+    ],
+    "reasons": [
+      {
+        "code": "TASK_TO_SKILL_ROUTING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ROUTING_TABLE_POLICY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MANUAL_APPROVAL_INSTALL_GATING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_BUNDLE_MANIFEST",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "SKILL_AND_POLICY_FILES",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Task-to-skill routing with a configured policy map to prefer minimal or workflow-level skill selection.",
+      "Optional audit/rewrite flow for installed skill descriptions to improve when-to-use guidance.",
+      "Missing-skill handling flow including quarantine, scanning, and human confirmation before installation.",
+      "Logging of unused skill loads to reduce future routing actions.",
+      "Multi-platform skill packaging for DSH, Claude Code, and Codex."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:00.306Z",
+  "repositoryCommitSha": "6beb7e0770661b5d08a9ae6a792041d185701fa9",
+  "evidenceHash": "9310bd5a295a1b5eab47db142104c944938d5f7a63ab0b9203f3b6a727070312",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fc5bc2d67940e2c4f4455b3dd5e8d63daf223b03ccfc90ade56a25536747ec56",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "terminal",
+    "cli",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是在 DeepSeek Harness 中对依赖安装命令做预执行判断，按 ALLOW/ASK/BLOCK 分类并提示风险等级；其文档明确覆盖 npm/pnpm/yarn/pip/uv/cargo 等常见流程并提到高风险来源会被升级拦截。根据仓库与 README 证据，它并不直接安装包，也未声明联网信誉/CVE 查询，因此属于可执行命令前置治理的自动化实用工具。",
+  "summaries": {
+    "zh": "该插件用于在执行前检查常见包管理器的依赖安装命令，并将其标记为 ALLOW、ASK 或 BLOCK，帮助 DeepSeek Harness 决定是否继续。",
+    "en": "This plugin checks dependency-install commands for common package managers before execution and labels them as ALLOW, ASK, or BLOCK to let DeepSeek Harness decide next steps."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Classifies dependency-install commands before execution and returns ALLOW/ASK/BLOCK.",
+      "Recognizes risky install patterns such as URLs, git-based dependencies, alternate registries, unpinned VCS refs, install script/native flags, and unparseable install forms.",
+      "Targets common package managers (npm, pnpm, yarn, pip, uv, and cargo).",
+      "Does not perform package installation itself and does not run online reputation/CVE lookups in v0.1."
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly states the plugin classifies install commands to ALLOW/ASK/BLOCK prior to execution.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists high-risk sources that can be escalated before running the underlying command, indicating pre-execution governance behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes no package is installed by the plugin and no online reputation/CVE lookup is included in v0.1.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines a DeepSeek plugin package with DSH bundle configuration, matching the plugin integration context.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Classifies dependency-install commands before execution and returns ALLOW/ASK/BLOCK.",
+      "Recognizes risky install patterns such as URLs, git-based dependencies, alternate registries, unpinned VCS refs, install script/native flags, and unparseable install forms.",
+      "Targets common package managers (npm, pnpm, yarn, pip, uv, and cargo).",
+      "Does not perform package installation itself and does not run online reputation/CVE lookups in v0.1."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:59.530Z",
+  "repositoryCommitSha": "c5aaea7788301df1eff1c6d2df3d431e087b4b5a",
+  "evidenceHash": "4efb7c003592d4da8f03b5c34703d271076e9604d0487fbe68b7f5cd9a0ed6c5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "835eb00403a84c475771896ab5c6abf4683b35e0fc2935ebe2971ceef7dabc8c",
+  "shadowMode": false
+}

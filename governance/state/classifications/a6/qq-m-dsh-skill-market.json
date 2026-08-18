@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "ui",
+    "api",
+    "search",
+    "file",
+    "integration",
+    "tool",
+    "automation",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s user-facing goal is a GitHub-backed Skill Market inside DSH settings: users can search for skill repositories, inspect them, and install or uninstall selected skills. Evidence shows it provides a dedicated settings UI plus local HTTP API routes and filesystem writes to the skill directory, making it an external-service integration utility rather than a coding, test, or analysis tool.",
+  "summaries": {
+    "zh": "在 DSH 设置页中提供“技能市场”入口，可搜索 GitHub 技能仓库，并通过界面一键将技能安装到 ~/.dsh/skills 或从列表中卸载。",
+    "en": "Adds a Skill Market entry in DSH settings to search GitHub for skills and install or uninstall them in ~/.dsh/skills from the web UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.requests.to.github",
+      "tarball.download.and.extract",
+      "write.skill.files.to.home.directory",
+      "expose.local.management.api.endpoints",
+      "render.settings.page.interface"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a Skill Market section in DSH settings to search GitHub for skills and install/uninstall them in ~/.dsh/skills.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents same-origin JSON endpoints under /skill-market/api including search, repo inspection, install, installed listing, and uninstall.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares the plugin as a DSH web client entry with bundle patch integration, indicating UI injection into the settings page and host-side runtime behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes host/index and browser/client components for separate server-side API logic and client-side interface, matching the described workflow.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "network.requests.to.github",
+      "tarball.download.and.extract",
+      "write.skill.files.to.home.directory",
+      "expose.local.management.api.endpoints",
+      "render.settings.page.interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:34.022Z",
+  "repositoryCommitSha": "8fa51ed574c10f978df85798cc48fbebc8d5d406",
+  "evidenceHash": "1d24292318985b202d8bf94b8e4bd777c2416288bc8e63bed11d169aed0ceca5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "334d84a20b24d8d328eca5e55055b8fc01b56e30e38a64a21ca2fc50e9ab73f2",
+  "shadowMode": false
+}

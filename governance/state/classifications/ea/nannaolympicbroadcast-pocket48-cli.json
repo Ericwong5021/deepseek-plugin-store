@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "desktop",
+    "chat",
+    "data",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心是为口袋48/SNH48 生态提供可操作的外部服务客户端，结合桌面端与命令行入口实现消息抓取检索、直播观看与回放、私信互动、成员与动态查询等任务，属于外部平台集成工具。README 明确说明默认只读并对发送私信、翻牌、送礼等账户写操作设置显式放行条件，显示存在受控的高权限行为，但整体功能以平台服务查询与交互为主。",
+  "summaries": {
+    "zh": "一个面向口袋48用户的桌面与命令行工具，用于查询成员消息、查看直播与回放、管理私信及查看成员和动态等平台交互功能。",
+    "en": "A desktop and CLI utility for Pocket48/SNH48 users that lets you query member messages, view live streams and replays, manage DMs, and access related platform interaction features."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "通过命令行和桌面端访问口袋48、B站等外部平台能力（需登录）",
+      "可抓取/检索成员房间消息并进行关键词与类型筛选",
+      "可查看直播与回放、下载成员媒体内容及相关音视频资源",
+      "支持可选的账号写操作（如发送私信、翻牌、送礼、切换账号等）",
+      "支持导出或结构化输出（如 JSON）用于脚本化调用"
+    ],
+    "reasons": [
+      {
+        "code": "FEATURES_LIST_MESSAGE_LIVE_ACCOUNT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CLI_AND_PLUGIN_ENTRYPOINTS",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "AUTH_AND_TOKEN_SCOPE_SEPARATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WRITE_ACTIONS_GUARDED_BY_FLAG",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "通过命令行和桌面端访问口袋48、B站等外部平台能力（需登录）",
+      "可抓取/检索成员房间消息并进行关键词与类型筛选",
+      "可查看直播与回放、下载成员媒体内容及相关音视频资源",
+      "支持可选的账号写操作（如发送私信、翻牌、送礼、切换账号等）",
+      "支持导出或结构化输出（如 JSON）用于脚本化调用"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:32.371Z",
+  "repositoryCommitSha": "43faaac5de6123c71a1552b20c8cf554c46c4415",
+  "evidenceHash": "5b5de5ed683be3152d17527aac36d72b51d7c0e180026bad811bf4e72b510aa6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d855ba21b8ff603e6c0af5ae6b1c4f3c3fe72283350178205466affc0b74c21",
+  "shadowMode": false
+}

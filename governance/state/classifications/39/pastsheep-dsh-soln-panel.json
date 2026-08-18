@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "chat",
+    "file",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The repository describes a web-client plugin that adds a right-side conversation UI panel for displaying assistant-provided HTML solutions with tabbed browsing, resize controls, unread hints, and workspace-local persistence, so it is best classified as a navigation panel utility rather than a data-analysis or automation engine.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness Web 提供对话右侧方案面板，支持多标签展示助手推送的 HTML 方案、可拖拽调宽，并按工作区保存方案数据。",
+    "en": "This plugin adds a right-side solution panel to DeepSeek Harness Web conversations, showing assistant-provided HTML solutions in tabs with resizable width and workspace-local persistence."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders HTML solution content in a right-side panel of the DeepSeek Harness web client.",
+      "Provides a host tool `show_solution` to add or update solution entries by id, title, and html.",
+      "Stores solution data per workspace in `.dsh/soln-panel.json` for session recovery.",
+      "Manages panel UI state including tabs, unread indicators, collapse/expand, and width resize."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a right-side solution panel for conversation sessions with collapsible drawer, multi-tab, resizable width, unread hints, and workspace persistence.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README defines `show_solution` with parameters id/title/html/activate/openPanel/clear for pushing, updating, activating, or clearing solutions and returning a solutions summary.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package manifest describe storage at `<workspace>/.dsh/soln-panel.json`, with workspace isolation noted for solution pools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json sets `dsh.client.platform` to `web`, confirming this is a client-side UI plugin.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Renders HTML solution content in a right-side panel of the DeepSeek Harness web client.",
+      "Provides a host tool `show_solution` to add or update solution entries by id, title, and html.",
+      "Stores solution data per workspace in `.dsh/soln-panel.json` for session recovery.",
+      "Manages panel UI state including tabs, unread indicators, collapse/expand, and width resize."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:08.797Z",
+  "repositoryCommitSha": "21f2938f0e44d62bdbf81d943a564bd373068166",
+  "evidenceHash": "cb0c8afa563257ddd1249fe7988344d58ab2d0d0dfc9480266bb83b317f5a49e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c132f2517e557d036b6ce602bf7a3962d9e723419f4ced926fbd3de4ebbab717",
+  "shadowMode": false
+}

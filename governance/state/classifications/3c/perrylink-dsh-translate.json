@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "api",
+    "data",
+    "automation",
+    "integration",
+    "workflow",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户面向用途是将 DeepSeek Harness 的标准参数在不同厂商之间做映射，并对成功工具调用的 JSON 文本结果提供可配置的修复能力（包括命令和工具两类入口）。证据显示其核心功能集中在参数互通与输出数据整形，不涉及模型训练、内容生成或外部服务调用，因此归类为通用工具类。风险主要在于对返回值进行自动文本级修补，故设为中低风险 R1。",
+  "summaries": {
+    "zh": "dsh-translate 是一款 DeepSeek Harness 插件，提供 /translate 命令在 11 个厂商间映射常用 LLM 参数，并提供 fix_json 与 post-execute 流程对成功工具结果的 JSON 文本进行修复。",
+    "en": "dsh-translate is a DeepSeek Harness plugin that provides a /translate command for mapping common LLM parameters across 11 vendors and a fix_json plus post-execute flow to repair JSON text from successful tool outputs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "跨厂商 LLM 参数映射查询与转换（/translate）",
+      "成功工具调用后的 JSON 文本修复流程",
+      "提供 fix_json 工具用于手动 JSON 修复",
+      "支持可配置修复策略与步数上限",
+      "对修复过程执行 schema 相关校验"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确声明插件提供 /translate 命令用于 11 个厂商间温度/top_p/max_tokens/stop/system 等参数映射，并提供 transformRequest 等转换入口",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明 fix_json 与 post-execute 层用于对成功工具结果中的 JSON 文本进行提取、修复与校验",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "清单中的 dsh 插件权限仅声明 fs:read、session:append、network:none、native-code:none，未声明网络或子进程调用权限",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库元数据与 README 显示该项目为 DSH 插件包（含 cordis.patch、types 与入口）",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "跨厂商 LLM 参数映射查询与转换（/translate）",
+      "成功工具调用后的 JSON 文本修复流程",
+      "提供 fix_json 工具用于手动 JSON 修复",
+      "支持可配置修复策略与步数上限",
+      "对修复过程执行 schema 相关校验"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:21.062Z",
+  "repositoryCommitSha": "88c3b3ec200373cc65173d76cde280852d0bdab0",
+  "evidenceHash": "8f79f4eab05d612e1392b214118db34f8a4ce6ae2eff262934f6ca812993a3a2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1ea20af4c63daf0fcde99067d6f5532fcef93ce2c6e31c7dc84598722ed05a78",
+  "shadowMode": false
+}

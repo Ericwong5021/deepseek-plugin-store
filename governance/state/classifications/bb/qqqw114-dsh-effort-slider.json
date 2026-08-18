@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "browser",
+    "integration",
+    "api",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is a user-facing UI customization for DSH Web that replaces the reasoning-effort menu view with a compact slider while preserving the existing two-level model-selection menu structure and using the platform's standard model-selection update path.",
+  "summaries": {
+    "zh": "该插件用于在 DSH Web 的模型选择菜单内将“推理等级”子面板替换为滑块控件，让用户在原有菜单流程里调整推理档位。",
+    "en": "This plugin customizes the DSH Web model-selection menu by replacing the reasoning-effort subpanel with a slider for users to adjust effort levels within the existing menu flow."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Replaces the web `conversation.input.model` panel/slot rendering with a custom component.",
+      "Adds an in-menu slider UI for selecting model reasoning-effort levels with damped interaction behavior.",
+      "Uses existing DSH model-selection services and `selectModel` RPC flow for applying user selections."
+    ],
+    "reasons": [
+      {
+        "code": "Readme describes overriding the `conversation.input.model` slot to render a custom effort selector in the model-selection panel.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme states that selection is submitted through the existing `selectModel` RPC while using official model data service (`modelDirectories`).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares DSH web client plugin fields (`dsh.client` for web injection) and model-selection UI/runtime dependencies.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Replaces the web `conversation.input.model` panel/slot rendering with a custom component.",
+      "Adds an in-menu slider UI for selecting model reasoning-effort levels with damped interaction behavior.",
+      "Uses existing DSH model-selection services and `selectModel` RPC flow for applying user selections."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:34.348Z",
+  "repositoryCommitSha": "da9a42814ff31695b7fc76683a94443e97a3e034",
+  "evidenceHash": "8d865ae55492a121396afbfd739821ddadce9501a88119ee1ea9d2d0d93047ed",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1403c0f9ef368dd0619cdf376acc921137fca31ea2ca9cb74abbe3e0c748424c",
+  "shadowMode": false
+}

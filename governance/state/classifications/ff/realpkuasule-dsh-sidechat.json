@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "agent",
+    "context",
+    "workflow",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is a user-facing interface plugin: a right-side panel for running an auxiliary AI side chat in DeepSeek Harness and feeding results into the main conversation. Evidence consistently frames this as a panel-based workflow aid rather than code tooling or data transformation, with only optional follow-up behavior to route prompts and responses between sessions.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的网页插件，在主会话右侧提供独立侧边聊天面板，可将选中文本输入侧聊、独立讨论后再把回复带回主会话草稿或上下文。",
+    "en": "dsh-sidechat adds a right-side panel in DeepSeek Harness for an independent side chat, letting users stage selected text, run separate conversations, and send side-chat replies back into the main thread."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates and manages isolated side conversations linked to a main conversation",
+      "Provides a right-side web UI panel for composing and controlling side conversations",
+      "Transfers selected main-thread text into side-chat input for staged sending",
+      "Injects side-chat outputs back into the main composer or context view",
+      "Allows per-side-chat configuration such as model, effort, permissions, and workspace context"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a right-side side chat panel with per-conversation isolation, workspace context inheritance, and bringing replies back to the main conversation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states side chats are created and managed through host /sidechat/api routes via agent.followup and returned via agent.inject/composer integration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web client/host plugin bundle with DeepSeek Harness runtime and host dependencies, indicating integration at web application level.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates and manages isolated side conversations linked to a main conversation",
+      "Provides a right-side web UI panel for composing and controlling side conversations",
+      "Transfers selected main-thread text into side-chat input for staged sending",
+      "Injects side-chat outputs back into the main composer or context view",
+      "Allows per-side-chat configuration such as model, effort, permissions, and workspace context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:56.150Z",
+  "repositoryCommitSha": "8a8da614198a9f98c10970c381d23ae25e814543",
+  "evidenceHash": "fee4ce7b07c610782074142ab134a95a5d2a853035de85a736f71f76833c2336",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0e7da39086278f37ab0be395ce84092ff1fbc8823a7fd658af12290f9831420c",
+  "shadowMode": false
+}

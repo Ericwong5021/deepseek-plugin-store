@@ -4,7 +4,7 @@
     "fullName": "PerryLink/dsh-translate",
     "url": "https://github.com/PerryLink/dsh-translate"
   },
-  "summary": "Vendor parameter translation and deterministic JSON repair for DeepSeek Harness: /translate maps temperature/top_p/max_tokens/stop/system across 11 vendors, and the post-execute repair layer (plus fix_json) fixes broken JSON tool output without ever fabricating data",
+  "summary": "dsh-translate is a DeepSeek Harness plugin that provides a /translate command for mapping common LLM parameters across 11 vendors and a fix_json plus post-execute flow to repair JSON text from successful tool outputs.",
   "sources": [
     "github-topic"
   ],
@@ -43,44 +43,26 @@
     "capturedAt": "2026-08-17T22:45:12.694Z"
   },
   "classificationSuggestion": {
-    "group": "agents-workflows",
-    "category": "automation",
+    "group": "tools-data",
+    "category": "general-utilities",
     "tags": [
-      "agent",
-      "api",
-      "automation",
-      "browser",
-      "data",
-      "desktop",
-      "document",
-      "image",
-      "integration",
-      "knowledge",
-      "layout",
-      "mcp",
-      "memory",
-      "monitoring",
-      "project-analysis",
-      "search",
-      "terminal",
-      "testing",
-      "theme",
       "tool",
-      "ui",
-      "workflow"
+      "api",
+      "data",
+      "automation",
+      "integration",
+      "workflow",
+      "cli"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:test",
-      "text:project-analysis:dependency",
-      "text:automation:automat",
-      "text:planning-execution:workflow",
-      "text:memory-context:token",
-      "text:search-browsing:browser",
-      "text:knowledge-management:rag"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:8f79f4eab05d612e1392b214118db34f8a4ce6ae2eff262934f6ca812993a3a2",
+      "commit:88c3b3ec200373cc65173d76cde280852d0bdab0"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:21:21.062Z",
+    "reason": "该插件的主要用户面向用途是将 DeepSeek Harness 的标准参数在不同厂商之间做映射，并对成功工具调用的 JSON 文本结果提供可配置的修复能力（包括命令和工具两类入口）。证据显示其核心功能集中在参数互通与输出数据整形，不涉及模型训练、内容生成或外部服务调用，因此归类为通用工具类。风险主要在于对返回值进行自动文本级修补，故设为中低风险 R1。"
   }
 }

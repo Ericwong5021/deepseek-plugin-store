@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "ui",
+    "api",
+    "tool",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a chat composer automation utility for DSH: it adds an in-UI prompt optimization action, optional pre-send automatic optimization, and before/after review before sending. It also integrates with external LLM services via configured backends and host routes, so it carries moderate network and configuration-scope capability risks rather than purely local-only behavior.",
+  "summaries": {
+    "zh": "该插件在 DSH 聊天输入框中新增提示词优化能力，支持手动优化和可选的发送前自动优化，并在发送前提供优化前后对比与选择提交结果的流程。",
+    "en": "This plugin adds prompt-optimization controls to the DSH chat composer with manual and optional pre-send automatic optimization, plus a before/after review step before sending."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read",
+      "local.storage",
+      "ui.interception"
+    ],
+    "reasons": [
+      {
+        "code": "manual_and_auto_prompt_optimization_controls_added_to_chat_composer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "send_pipeline_intercepts_enter_and_send_click_for_optional_auto_optimization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dual_backend_flow_includes_dsh_route_and_openai_compatible_provider",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_routes_include_settings_and_optimize_endpoints_with_request_timeout",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_is_a_dsh_web_plugin_with_client_injection_entry_points",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local.storage",
+      "ui.interception"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:50.461Z",
+  "repositoryCommitSha": "97ed735e1b0b623d739a964d05840409abef9e46",
+  "evidenceHash": "a12f8745a8a483ab15d6b2595df027c4c4c23407e60a4933e39d30d22b742499",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7ee566edd044dc1d00fd4993083403573fdeb2be1898fe13ba39db11fb8db6b4",
+  "shadowMode": false
+}

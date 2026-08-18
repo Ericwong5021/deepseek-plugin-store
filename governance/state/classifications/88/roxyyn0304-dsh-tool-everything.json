@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "search",
+    "tool",
+    "desktop",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户用途是为 DSH Agent 提供本地 Windows 文件检索能力，核心是将 `everything_search` 注册为可调用工具并返回结构化的文件结果。证据来自仓库说明、安装与错误码说明、以及包配置中对 native DLL 与插件入口的定义，显示其功能集中在本地文件索引搜索而非通用外部网络服务。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，提供 `everything_search` 工具，通过本地 Everything 索引快速检索 Windows 文件系统中的文件并返回路径与基础元数据。",
+    "en": "This is a DeepSeek Harness plugin that adds an `everything_search` tool to query the local Windows filesystem via Everything indexing and return structured file result data."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local Windows file search through the Everything index",
+      "Structured query input/output for file discovery",
+      "Native library loading via Everything64.dll through koffi FFI"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a DSH tool named everything_search that performs filename-based filesystem search and supports query syntax like wildcard, path, ext, size, regex, OR and NOT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata points to native/Everything64.dll and lib/index.js as plugin entrypoint, indicating native FFI-backed search execution",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README lists Windows-only prerequisites and explicit error codes for SDK load failures and missing Everything process, showing filesystem/index integration and local runtime dependency",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository exposes native resource files in tree (native/Everything64.dll) and plugin manifest-related files for DSH bundling",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Local Windows file search through the Everything index",
+      "Structured query input/output for file discovery",
+      "Native library loading via Everything64.dll through koffi FFI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:11.669Z",
+  "repositoryCommitSha": "b3249c313ba0d57eb80b0962e0a1c3b7660c70ca",
+  "evidenceHash": "ad84082556166d252763a7568aabe897d796014e90dc0177f0930f8b6e0d267b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "45395a795ab6f88fa9f3b351519bfab59c1ad44b4650ec5ab954b12d10e8fa23",
+  "shadowMode": false
+}

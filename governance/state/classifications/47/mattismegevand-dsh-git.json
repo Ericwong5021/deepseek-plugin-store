@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "chat",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary purpose is a code-review user interface: it adds a session-scoped panel for viewing repo diffs and preparing inline review comments. Evidence shows it is intentionally read-only, focused on displaying tracked diffs and composing comments, with bounded git execution settings that keep behavior within local review scope rather than repository mutation.",
+  "summaries": {
+    "zh": "dsh-git 是一个会话级 DeepSeek Harness 插件，在会话面板中展示当前仓库相对 HEAD 的工作区差异，并支持按行选择和编辑内嵌评审备注。",
+    "en": "dsh-git is a session-scoped DeepSeek Harness plugin that shows working-tree diffs versus HEAD in a review panel and lets users select lines to add inline review comments."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays tracked working-tree diffs against HEAD in an in-session review panel",
+      "Lists untracked paths and renders diff content in unified/split views",
+      "Supports selecting line ranges and adding inline review comments",
+      "Attaches pending review comments to the normal chat composer payload on submission",
+      "Executes local git reads with configurable request/patch/file size limits and subprocess timeout"
+    ],
+    "reasons": [
+      {
+        "code": "The README describes a session-scoped Review panel in dsh-dock showing repository working-tree diffs versus HEAD with inline commenting.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin is explicitly documented as read-only and states it does not stage, apply, commit, reset, switch branches, or integrate with forge workflows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest marks it as a dsh web plugin with bundle/patch and client injection entries, indicating UI panel integration in the DSH frontend.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes Cordis patch and client assets consistent with panel registration and browser-side behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays tracked working-tree diffs against HEAD in an in-session review panel",
+      "Lists untracked paths and renders diff content in unified/split views",
+      "Supports selecting line ranges and adding inline review comments",
+      "Attaches pending review comments to the normal chat composer payload on submission",
+      "Executes local git reads with configurable request/patch/file size limits and subprocess timeout"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:44.482Z",
+  "repositoryCommitSha": "eee005eaf76d3eae691b59e56815aafa1dac401f",
+  "evidenceHash": "142271bf36a73606293439595886f143e31af1bc0e65be9ad02796e1733d4233",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "241b471c6aa6862b63759475387d381f779814ede3be6052be1de160380a30b5",
+  "shadowMode": false
+}

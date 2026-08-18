@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "planning",
+    "workflow",
+    "automation",
+    "tool",
+    "context",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件面向用户的核心用途是 AI 代理工作流中的规划与执行分离：主代理生成计划并协调，执行子代理在独立会话中处理任务并返回汇总信息。证据主要来自 README 对 delegate_execution、主/子代理协作模型、配置项与深度限制的说明，以及 package.json 中的 DSH 插件注册与测试契约。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的 Web 插件，支持将任务按“规划-执行-汇总”流程分派给独立子代理并将结果返回主代理。",
+    "en": "This DeepSeek Harness web plugin supports a planning-execution flow, delegating tasks to dedicated subagents and returning consolidated execution results to the main agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "任务委派到独立执行子代理",
+      "规划与执行会话分离",
+      "执行子代理参数与工具范围可配置",
+      "委派深度与递归限制控制"
+    ],
+    "reasons": [
+      {
+        "code": "README 表述主模型使用 delegate_execution 将任务交由独立执行子代理执行，并将最终结果汇报给主代理。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 配置项支持子代理后端、LLM 提供方、执行模型、maxTokens、maxDepth、人格及工具过滤，表明具有可配置的执行编排能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 与 dsh 配置将该仓库定义为可在 web 平台注入的插件，并提供客户端/主端入口。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "任务委派到独立执行子代理",
+      "规划与执行会话分离",
+      "执行子代理参数与工具范围可配置",
+      "委派深度与递归限制控制"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:55.761Z",
+  "repositoryCommitSha": "83c3259b31e1846a5c10c568f6bc9eb3cb4a4980",
+  "evidenceHash": "e831c2b804562307160bf64f1729be903feb52c47dce9c9111e9325fe0e01930",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8919e6a562258658aa7b52132d3d1877cd143edccfac3217ee50c052aba5ebf1",
+  "shadowMode": false
+}

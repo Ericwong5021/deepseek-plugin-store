@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "api",
+    "data",
+    "visualization",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a user-facing visualization plugin for DeepSeek Harness that augments the web UI with a Minecraft-style HUD and mode icons to display token consumption, cache hit rate, estimated cost, and balance, while periodically updating those values; evidence for this is in the README feature list and technical notes.",
+  "summaries": {
+    "zh": "mc-hud 是一个 DeepSeek Harness Web 插件，在界面内提供 Minecraft 风格 HUD，用于可视化显示解码速率、缓存命中率、估算消费与剩余额度。",
+    "en": "mc-hud is a DeepSeek Harness web plugin that adds a Minecraft-style HUD to visualize decode speed, cache hit rate, estimated cost, and remaining balance."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays token usage and cost-related metrics in a web HUD within DeepSeek Harness",
+      "Shows remaining balance and estimated session consumption from DeepSeek billing data",
+      "Replaces/extends conversation UI elements for preset mode visuals",
+      "Refreshes usage and balance data on periodic timers",
+      "Uses configured DeepSeek API key context when querying balance"
+    ],
+    "reasons": [
+      {
+        "code": "HUD renders decode speed (tok/s), balance, cache hit rate, and session cost in sidebar/header UI slots.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Host-side description states balance is fetched through DEEPSEEK_API_KEY and shell-based curl request, while also using session projection stats.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is registered as a DeepSeek Harness client plugin targeting the web platform and exposes client/server entry points.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Displays token usage and cost-related metrics in a web HUD within DeepSeek Harness",
+      "Shows remaining balance and estimated session consumption from DeepSeek billing data",
+      "Replaces/extends conversation UI elements for preset mode visuals",
+      "Refreshes usage and balance data on periodic timers",
+      "Uses configured DeepSeek API key context when querying balance"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:42.191Z",
+  "repositoryCommitSha": "0999bbafb943235cde7160df2b87e76aced631d9",
+  "evidenceHash": "776949970c842f998661d65f90c5b6b62c076c9ba3e1398d96212005452661ed",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8132b87d9ab941ed1b03ede3bfe666aa48a31d5a962680af8a354f8a4c7af2b9",
+  "shadowMode": false
+}

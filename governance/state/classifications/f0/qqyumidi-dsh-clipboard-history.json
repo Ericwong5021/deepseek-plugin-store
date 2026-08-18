@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "api",
+    "automation",
+    "data",
+    "desktop",
+    "search",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a clipboard utility: it tracks system clipboard changes, maintains a local searchable history, and exposes both a web panel and Agent tools for clipboard and history operations. Evidence in the repository description and README consistently centers on practical clipboard management and history interaction (search/copy/delete), with no core behavior aligned to code generation, testing, analysis, or research categories.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于监控系统剪贴板并在会话中保留可搜索的剪贴板历史记录，提供面板用于检索、复制和删除条目，并通过 Agent 工具支持读取、搜索、写入与删除剪贴板数据。",
+    "en": "This plugin monitors the system clipboard, keeps a searchable local history, and exposes a DSH web panel plus Agent tools for retrieving, searching, copying, and deleting clipboard items."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "system clipboard monitoring",
+      "local clipboard history persistence",
+      "searchable history retrieval",
+      "agent tool access to clipboard operations",
+      "web-based clipboard panel controls"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README states the plugin continuously monitors system clipboard content and stores it in ~/.dsh/clipboard-history.json with a 500-item limit.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata indicate a web panel for searching, copying, deleting entries, pause/resume monitoring, and clearing history.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin registers Agent tools clipboard_get, clipboard_history_search, clipboard_copy, and clipboard_history_delete for model-driven clipboard actions.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "system clipboard monitoring",
+      "local clipboard history persistence",
+      "searchable history retrieval",
+      "agent tool access to clipboard operations",
+      "web-based clipboard panel controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:38.734Z",
+  "repositoryCommitSha": "f7f745f9cd503629dd520b9f1745ddc9061b2d1d",
+  "evidenceHash": "1aa976d4a5683f2396f4dde778be7e5b0320e41e22cb1b40bdb559e4245bf49e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "67fdfecc18e65e3ffd2c07c07467c0b3c73765f74b358a3b926c1c40cb91a2d2",
+  "shadowMode": false
+}

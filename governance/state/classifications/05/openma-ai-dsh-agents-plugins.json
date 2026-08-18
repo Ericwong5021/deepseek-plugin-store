@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "integration",
+    "workflow",
+    "cli",
+    "tool",
+    "skill",
+    "mcp"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a DSH bridge for external agent-ecosystem interoperability: it discovers and imports plugins/marketplaces from Codex, Claude Code, and Pi, normalizes their package formats, and installs supported components as DSH rows. User-facing `/plugin-bridge` commands then control installation, discovery, review, enabling, disabling, and uninstalling, matching a plugin orchestration role rather than plugin authoring.",
+  "summaries": {
+    "zh": "该插件将 Codex、Claude Code 与 Pi 的插件与市场能力桥接到 DSH，可通过 /plugin-bridge 命令发现、导入并安装支持的技能、MCP 与钩子组件。",
+    "en": "This plugin bridges supported plugins, skills, and MCP-style components from Codex, Claude Code, and Pi into DSH, and exposes /plugin-bridge commands to discover, import, and install them."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Imports and installs plugin packages from local paths, marketplace identifiers, and GitHub sources",
+      "Normalizes and materializes supported components (skills, MCP servers, hooks) into explicit DSH runtime rows",
+      "Reads user agent/plugin registries from local config locations for discovery and import",
+      "Provides command-driven activation lifecycle with review/approve/enable/disable/uninstall operations"
+    ],
+    "reasons": [
+      {
+        "code": "Marketplace and install operations accept remote and local plugin sources before copying into profile-local storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MCP adapter materializes valid servers as rows and supports stdio/streamable-http transport execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Discovery layers parse explicit registry files under ~/.codex, ~/.claude, and ~/.pi and act on their contents",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Imports and installs plugin packages from local paths, marketplace identifiers, and GitHub sources",
+      "Normalizes and materializes supported components (skills, MCP servers, hooks) into explicit DSH runtime rows",
+      "Reads user agent/plugin registries from local config locations for discovery and import",
+      "Provides command-driven activation lifecycle with review/approve/enable/disable/uninstall operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:59.950Z",
+  "repositoryCommitSha": "02e683d031a17016b81ddab9002ba18bc82fe467",
+  "evidenceHash": "8e0e1018efd870b51a85a88388f31d64516be2ee54d2cc77edc294300e008ad7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ff2e2015f8c3b5b9bda0748a164ae9f9f6665d4237f345d37498b4321fa30fc",
+  "shadowMode": false
+}

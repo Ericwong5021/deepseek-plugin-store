@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "chat",
+    "ui",
+    "tool",
+    "context",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "The plugin’s primary user-facing purpose is enhanced file attachment handling inside DeepSeek Harness Web chats, enabling arbitrary file import and making attached files available to the model through metadata injection plus explicit tools for reading/exporting attachment bytes. Evidence in the repository description and manifest points to chat UI file intake, attachment storage, context injection, and workspace export, which aligns most directly with the files-terminal category.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness Web 的文件上传增强插件，让用户可在会话中通过拖拽、粘贴或选择添加文件，并通过界面与模型工具完成附件读取与导出。",
+    "en": "This is a DeepSeek Harness Web file-upload enhancement plugin that lets users attach files in-chat via drag, paste, or picker and access or place attachments through model-facing tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Drag/paste/picker file ingestion in chat UI",
+      "Upload of attachments to a plugin-managed store",
+      "Injection of attachment metadata into model-facing context",
+      "Agent tools to read attachment contents and write attachment bytes into workspace paths",
+      "History rendering of attachment file list with download path",
+      "Per-file and batch upload size limits"
+    ],
+    "reasons": [
+      {
+        "code": "readme-describes-unified-attachment-ingest",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-exposes-agent-tools-read_attachment-place_attachment",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-shows-download-endpoint-for-attachments",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package-json-defines-dsh-web-client-runtime-and-bundle-injection",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Drag/paste/picker file ingestion in chat UI",
+      "Upload of attachments to a plugin-managed store",
+      "Injection of attachment metadata into model-facing context",
+      "Agent tools to read attachment contents and write attachment bytes into workspace paths",
+      "History rendering of attachment file list with download path",
+      "Per-file and batch upload size limits"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:48.203Z",
+  "repositoryCommitSha": "b4ce4b7224d7365484a7840f453d50d7e26bdddf",
+  "evidenceHash": "e480b734963efed9b16a17c1b00ef997453b71bfbec58f2b9d864bd7ccb611fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4738f33d885edcabf7c426f462498352e117122d62175fa6ed5921aae634ee68",
+  "shadowMode": false
+}

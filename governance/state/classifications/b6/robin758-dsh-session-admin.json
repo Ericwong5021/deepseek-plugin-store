@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "file",
+    "automation",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a DSH web session-management interface: it adds a settings panel for listing all existing and archived sessions and lets users archive, unarchive, delete, search, and batch-manage them. Its user-facing purpose is organizing session lifecycle from the settings UI, supported by explicit HTTP endpoints for the same operations, so it is best classified as a navigation/management panel utility with moderate data-loss risk due to permanent deletion.",
+  "summaries": {
+    "zh": "该插件在 DSH Web 设置界面提供会话管理入口，用于集中查看现有与归档会话，并支持归档、取消归档、删除、搜索和批量操作。",
+    "en": "This plugin adds a session management page in DSH Web settings to view active and archived sessions and perform archive, unarchive, delete, search, and batch operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "List active and archived sessions",
+      "Archive and unarchive sessions",
+      "Permanently delete session data",
+      "Search/filter sessions by keyword",
+      "Perform bulk session operations",
+      "Expose plugin HTTP endpoints for session actions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a settings panel for viewing all sessions (active + archived) with archive, unarchive, delete, search, and batch actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents API routes for listing sessions and mutating session state, including a permanent delete operation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata indicates a web plugin entry with host/client integration, confirming a UI-facing extension model within DSH.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "List active and archived sessions",
+      "Archive and unarchive sessions",
+      "Permanently delete session data",
+      "Search/filter sessions by keyword",
+      "Perform bulk session operations",
+      "Expose plugin HTTP endpoints for session actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:10.181Z",
+  "repositoryCommitSha": "5b55d573157127be44fdaf40cddde94034a37bfc",
+  "evidenceHash": "f9b6f2ffbfea43a8a69082c0d628d7fab9d3aec2c0bbcdeab1a997f8a397354f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "46f60740c7dcbec30386487133df36be537f5a5874235ea09a2f8529c76031ed",
+  "shadowMode": false
+}

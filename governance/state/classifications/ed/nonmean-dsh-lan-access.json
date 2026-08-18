@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "api",
+    "tool",
+    "integration",
+    "browser",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a DeepSeek Harness web plugin that introduces a user-facing LAN access toggle in Settings and coordinates backend/client behavior to switch the web UI bind mode between loopback-only and LAN exposure, making it primarily a plugin-extension/utility for web deployment access rather than content creation or analysis.",
+  "summaries": {
+    "zh": "该插件是一个 DeepSeek Harness Web 插件，在设置页提供局域网访问开关，用于在本地回环与局域网可访问模式间切换界面服务监听。",
+    "en": "A DeepSeek Harness web plugin that adds a LAN access toggle in Settings to switch the web interface between loopback-only and LAN-accessible hosting modes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Toggle between loopback and LAN webserver binding",
+      "Adds/updates host-side routes and settings-scoped API handling",
+      "Injects a web settings UI control for runtime enablement"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a Settings toggle that binds the GUI to 0.0.0.0 for LAN access and back to 127.0.0.1 when off.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes host-side route handling and trust-boundary updates (including a fenced /lan-access route) to support remote browser access to settings and workspace-related APIs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package manifest defines a DSH web client bundle with immediate injection and bundle patching, indicating automatic host/client behavior changes without core checkout edits.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Toggle between loopback and LAN webserver binding",
+      "Adds/updates host-side routes and settings-scoped API handling",
+      "Injects a web settings UI control for runtime enablement"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:40.562Z",
+  "repositoryCommitSha": "54fd603d9d02505fb2b074fac681a9e31044e1c5",
+  "evidenceHash": "ecc1019cb4ce19a9740e55f0ea1e7a7588802cd2ba73ed67781b129e29849b92",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "535f1f9bb2ef2426c16174f6c731466b545dc7d82ec34644b76995b354f968a3",
+  "shadowMode": false
+}

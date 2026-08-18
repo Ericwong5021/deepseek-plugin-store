@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "data",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件面向 DeepSeek Harness Web 用户，核心用途是将 DeepSeek 账户模型余额以实时面板形式展示在会话页头部（含手动刷新与状态指示），其实现通过宿主侧定时请求余额接口并在本地提供 API 给前端轮询渲染。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 的会话页头部展示 DeepSeek 账户模型余额，并支持轮询/手动刷新及状态提示。",
+    "en": "This plugin shows the DeepSeek account model balance in the DeepSeek Harness web conversation header with periodic and manual refresh and status indicators."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取本地/环境中的 DeepSeek API 凭据以访问余额接口",
+      "访问外部 DeepSeek API 获取账户余额数据",
+      "在本地 Web 服务器上提供余额查询路由供前端消费",
+      "在浏览器端轮询并展示会话页头部余额信息"
+    ],
+    "reasons": [
+      {
+        "code": "宿主端文档说明会在配置的凭据和 DEEPSEEK_API_KEY 回退逻辑下调用 /user/balance 并缓存结果。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "宿主端通过 webServer 注册 /api/model-balance 提供给浏览器端消费。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "浏览器端每 30 秒轮询该路由并在 conversation.session.header.utilities 槽位渲染余额展示。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "读取本地/环境中的 DeepSeek API 凭据以访问余额接口",
+      "访问外部 DeepSeek API 获取账户余额数据",
+      "在本地 Web 服务器上提供余额查询路由供前端消费",
+      "在浏览器端轮询并展示会话页头部余额信息"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:44.647Z",
+  "repositoryCommitSha": "b67ad58a38ae54fec5d9f8cc387a00b79e2eb84b",
+  "evidenceHash": "1f251ead7c39b6017eaa8162985d3a159cb379d144a2191019148a5a3d77c7f9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6edf9422c3a3c5939887c33178211ec287fb0ff06f05a8118f97be85e0e7b4a2",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "automation",
+    "workflow",
+    "file",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary user-facing purpose is deterministic workspace change analysis: the README states it compares two bounded snapshots, reports created/changed/deleted/unchanged paths, and outputs an attestation digest. It is scoped to reporting/summarization rather than filesystem management or rollback.",
+  "summaries": {
+    "zh": "该插件用于对比两个工作区快照，输出新建、修改、删除和未变更路径及其 SHA-256 摘要，生成可用于变更证明的记录。",
+    "en": "This plugin compares two workspace snapshots and reports created, changed, removed, and unchanged paths with a SHA-256 digest, producing a deterministic change attestation."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Compares bounded workspace snapshots to detect path-level changes",
+      "Classifies changes as created, changed, removed, or unchanged",
+      "Produces a deterministic change attestation including a SHA-256 digest",
+      "Supports attaching optional action IDs as observation references"
+    ],
+    "reasons": [
+      {
+        "code": "WORKSPACE_SNAPSHOT_COMPARISON",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CHANGE_CLASSIFICATION_FIELDS_REPORTED",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SHA256_ATTENTION_IN_OUTPUT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MINIMAL_RUNTIME_DEPENDENCIES",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Compares bounded workspace snapshots to detect path-level changes",
+      "Classifies changes as created, changed, removed, or unchanged",
+      "Produces a deterministic change attestation including a SHA-256 digest",
+      "Supports attaching optional action IDs as observation references"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:00.166Z",
+  "repositoryCommitSha": "71ca7ffa0f2853899b94042384c2288627d7d9ac",
+  "evidenceHash": "f7e2aa5162132f8e85cb48041bad8d20eaa4eeb072baea72c68fc0fd15507454",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1a92dcfe2ebc5fe0014e2d4f30b588fb753261278b5a6b6e1e572bf12d8ca088",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "file",
+    "terminal",
+    "workflow",
+    "tool",
+    "integration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Classified as an automation utility whose primary user-facing goal is cross-device DeepSeek Harness session synchronization: it mirrors session data to a user-controlled Git repository and exposes `/sync` commands and tools for status/diff/log and pull/push operations. Evidence from README and package metadata shows it requires filesystem, git subprocess, and remote network access, so it carries higher risk due to data movement and command execution against external repos.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供跨设备会话同步能力，将会话存储镜像到用户控制的 Git 仓库，并通过 `/sync` 命令与 `sync_*` 工具进行状态查看与拉取/推送同步。",
+    "en": "This plugin provides cross-device DeepSeek Harness session synchronization by mirroring session storage to a user-controlled Git repository, with `/sync` commands and `sync_*` tools for status, pull, and push workflows."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "mirrors DeepSeek Harness session files into a git worktree and writes them locally",
+      "executes git operations (status/diff/log/pull/push) via subprocess",
+      "accesses user-provided remote git URLs over network",
+      "registers `/sync` command and `sync_*` tools for read and mutating sync actions",
+      "stores sync metadata in local storage domain"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin provides `/sync` command surfaces and `sync_status/sync_pull/sync_push` tools to inspect session state and perform sync pull/push.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration includes auto sync modes (`autoPullOnStart`, `autoPushOnTurnEnd`, periodic pull interval), indicating scheduled or repeated remote sync behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Declared manifest permissions include filesystem read/write, session-log read, network git-remote, and subprocess git execution.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "mirrors DeepSeek Harness session files into a git worktree and writes them locally",
+      "executes git operations (status/diff/log/pull/push) via subprocess",
+      "accesses user-provided remote git URLs over network",
+      "registers `/sync` command and `sync_*` tools for read and mutating sync actions",
+      "stores sync metadata in local storage domain"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:19.031Z",
+  "repositoryCommitSha": "bccc67e9e9d172f2c68162496dd55c8f892bf5a2",
+  "evidenceHash": "0ff28e1529cd5d64ab18f844135cbd0f55a67bba518243b11415c69ccdd30715",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "43bef8c4182a663716d7f65fc533fb258ecf1a7250bbe66bfb848f3e6469bb94",
+  "shadowMode": false
+}

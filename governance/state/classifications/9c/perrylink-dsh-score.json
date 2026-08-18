@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "automation",
+    "cli",
+    "data",
+    "tool",
+    "api",
+    "integration",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用户价值是为 DeepSeek Harness 插件或 npm 包生成五维度质量评分并输出结构化的风险卡与排行榜报告。依据 readme 与 package.json，可见其通过 `score`/`/score`/`score_report` 工具与命令实现单目标与批量评分、证据链路记录及缓存/刷新流程，属于项目质量分析与评估工具。",
+  "summaries": {
+    "zh": "dsh-score 是一个为 DeepSeek Harness 插件和 npm 包提供五维度质量评分、结构化结果和排行榜报告的工具型插件，支持单条和批量后台评分。",
+    "en": "dsh-score is a tooling plugin that evaluates DeepSeek Harness plugins and npm packages across five scoring dimensions, returning structured results and leaderboard reports with support for single and batch background scoring."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Performs evidence gathering via external CLI probes (`gh` and `npm`) through declared subprocess capabilities",
+      "Processes and scores repository/package metadata across configured dimensions into structured output",
+      "Runs background scoring jobs and returns batch job identifiers/results",
+      "Stores/reads score cards and leaderboard records in a storage domain when available"
+    ],
+    "reasons": [
+      {
+        "code": "readme_multidimensional_scoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_background_batch_jobs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_json_declared_permissions_and_invocation_kind",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "readme_storage_domain_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Performs evidence gathering via external CLI probes (`gh` and `npm`) through declared subprocess capabilities",
+      "Processes and scores repository/package metadata across configured dimensions into structured output",
+      "Runs background scoring jobs and returns batch job identifiers/results",
+      "Stores/reads score cards and leaderboard records in a storage domain when available"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:16.076Z",
+  "repositoryCommitSha": "f2f173f520eea0aaeb35e93dc2e5298433a4bf26",
+  "evidenceHash": "46ae302eada94c9e965c5621d5b8f0b01f568c02469547f2443e5dce0c747bcd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "57592ca5b08e6fdda5e6ec9aaf0775f247ad0b57a7815459d24f07910b2042d0",
+  "shadowMode": false
+}

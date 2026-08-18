@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "browser",
+    "ui",
+    "notification",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a notification-style user interface enhancement for DeepSeek Harness Web that surfaces session attention state to the user (waiting or done reminders) through a badge, tab title tag, and favicon indicator. Evidence in the README and package metadata limits behavior to client-side session-state visualization and state tracking, with no explicit external integrations or command execution features, so it is best classified as notifications/monitoring.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，用于在会话等待你处理或完成未查看时，通过界面角标、浏览器标签前缀和图标颜色展示提醒，帮助你快速识别注意事项。",
+    "en": "This plugin for DeepSeek Harness Web shows attention reminders for session states by rendering a badge, tab title marker, and favicon cue when sessions are waiting or done."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Displays session-attention status using in-browser UI elements (badge, tab title prefix, favicon color).",
+      "Tracks session state transitions from the web client session store to show waiting/completion reminders.",
+      "Supports session-reminder acknowledgement behavior to avoid repeatedly surfacing already-seen completions."
+    ],
+    "reasons": [
+      {
+        "code": "README states primary functionality is to show an attention badge in the frame, tab-title prefixes, and recolored favicon based on waiting/completed session state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a web platform client plugin (`dsh.client.platform: \"web\"`) with runtime injection and no terminal/file service permissions, indicating client-side-only operation.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree shows only plugin bundle, client, and patch/type files without additional service or background process assets.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Displays session-attention status using in-browser UI elements (badge, tab title prefix, favicon color).",
+      "Tracks session state transitions from the web client session store to show waiting/completion reminders.",
+      "Supports session-reminder acknowledgement behavior to avoid repeatedly surfacing already-seen completions."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:32.697Z",
+  "repositoryCommitSha": "344c2a9666ca6196f0bb874ddca297c7958f9faf",
+  "evidenceHash": "e333c0b8d1855a88367a5afa92dba570559d3f27e379cd8d62d82adc11b887c3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac446f96d8e0c7c1df5613db72b0a71315d75f38d8109c22412608e3af04077f",
+  "shadowMode": false
+}

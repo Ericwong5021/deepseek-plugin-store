@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "file",
+    "tool",
+    "data",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a project environment diagnostics tool: it records a machine/environment snapshot for a project, performs local checks of runtime and dependency-readiness markers, and compares current findings to a saved baseline to surface diffs and likely blockers. Evidence from README and manifest shows it is built as a DSH plugin that inspects project files and writes a local baseline file, with no project command execution during checks.",
+  "summaries": {
+    "zh": "这是一个项目环境体检插件，可记录项目基线并在当前环境中进行对比检查，识别运行环境差异并给出可执行建议。",
+    "en": "This is a project environment check plugin that records a baseline and compares current workspace/runtime markers to report likely blockers and next actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read workspace project metadata and config markers",
+      "Read selected runtime and environment variables metadata",
+      "Write baseline JSON files into workspace",
+      "Compare current environment facts to a saved baseline and emit structured differences",
+      "No dependency installation or command execution during checks"
+    ],
+    "reasons": [
+      {
+        "code": "README documents tools for `environment_snapshot`, `environment_check`, and `environment_compare`, with checks on runtimes, package managers, lockfiles, scripts, and config names.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states checks are non-mutating and do not install dependencies or run project commands.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the baseline is persisted at `<workspace>/.dsh/environment-baseline.json`, indicating filesystem write capability within the workspace.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository manifest and metadata show a DSH plugin with a plugin bundle and a focused development dependency set, indicating local automation tooling rather than external service integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Read workspace project metadata and config markers",
+      "Read selected runtime and environment variables metadata",
+      "Write baseline JSON files into workspace",
+      "Compare current environment facts to a saved baseline and emit structured differences",
+      "No dependency installation or command execution during checks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:44.894Z",
+  "repositoryCommitSha": "ae43a4f7890131805c8e197370a5b36d74b5c44f",
+  "evidenceHash": "99def33759fdd2b707524beb878f290333d45e566fc0fbda7f158098e58140b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "49be510bfc1e60f2354ff71b90207248289e26e66a0d062be21875cc2bf439a0",
+  "shadowMode": false
+}

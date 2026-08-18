@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "ui",
+    "api",
+    "file",
+    "visualization",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "The plugin is classified as data-processing because its primary function is to collect and aggregate token usage from local session logs, then present daily/weekly cost and consumption reports in the web interface and a JSON API. It is focused on usage analytics and visualization rather than automation workflows, file-editing tools, or external service orchestration.",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，用于按本地日期聚合会话日志中的 token 用量并在设置页展示图表和明细，同时提供 /token-stats 报告页与 /api/token-stats 接口。",
+    "en": "This is a DSH web plugin that aggregates token usage from session logs by day, displays charts and usage details in the settings UI, and provides a /token-stats report page with a /api/token-stats JSON endpoint."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads local DSH session log files and in-memory active session state",
+      "aggregates token usage by local calendar day and by model",
+      "renders daily/weekly usage charts, KPI metrics, and detail tables in the web settings UI",
+      "serves token statistics through a local JSON endpoint for the web report"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin description and metadata state it aggregates provider-reported usage from every session log and exposes it in web/UI outputs.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README documents the data source path under DSH sessions and de-duplication/aggregation logic for usage records by turn and step.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin adds a settings section and serves /token-stats and /api/token-stats for report consumption.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "reads local DSH session log files and in-memory active session state",
+      "aggregates token usage by local calendar day and by model",
+      "renders daily/weekly usage charts, KPI metrics, and detail tables in the web settings UI",
+      "serves token statistics through a local JSON endpoint for the web report"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:05.669Z",
+  "repositoryCommitSha": "b50ba1a18bd74d7cfd02bea55e4bb442ca48c473",
+  "evidenceHash": "1e106a41b552972ec52b85937f0e0b73afefc4483bebd69f3f6aa220e45a5fb4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ddf39125b6442cc13e6dcc8e0331d658483bec5a1052889b862f887ed5e57664",
+  "shadowMode": false
+}

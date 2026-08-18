@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "tool",
+    "data",
+    "debugging",
+    "context",
+    "cli",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Primary purpose is runtime observability for DeepSeek Harness users: the plugin monitors session and model-related telemetry, computes performance health metrics, and presents them in a human command/tool report, with storage-backed bounded history and no claimed external service calls.",
+  "summaries": {
+    "zh": "dsh-fast 是一个 DeepSeek Harness 的只读性能诊断插件，可基于会话事件统计加载时延、溢写与压缩、上下文 token 及缓存命中等指标，并通过 `/fast` 命令或 `fast_report` 工具展示报告。",
+    "en": "dsh-fast is a read-only DeepSeek Harness plugin that reads session telemetry to report performance metrics such as load timing, spill/compaction activity, context token volume, and cache hit rate via `/fast` and the `fast_report` tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes session/agent event streams to collect diagnostics metrics",
+      "Persists bounded diagnostic snapshots in the plugin storage domain",
+      "Exposes `/fast` command output and `fast_report` tool output for users/models"
+    ],
+    "reasons": [
+      {
+        "code": "README describes read-only performance diagnostics and specific metrics computed (session load timing, spill-hit, compaction, context token usage, and LLM cache hit rate).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README defines user-visible interfaces `/fast` and `fast_report` as the report surfaces.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest capability states the plugin observes session events, persists fast/* metrics, and serves /fast plus fast_report; package permissions include session read/write and native-code:none.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Observes session/agent event streams to collect diagnostics metrics",
+      "Persists bounded diagnostic snapshots in the plugin storage domain",
+      "Exposes `/fast` command output and `fast_report` tool output for users/models"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:16.722Z",
+  "repositoryCommitSha": "357f947f63dd84a5a2677cfba26396dcba33a58b",
+  "evidenceHash": "206a6b3545fbd09492b017c95b96e051fb337cf0108fa41101cec5e15ed34920",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "46a701d22e1e9556324b339b538cc24409b2293afa6bbae86e515751496309d4",
+  "shadowMode": false
+}

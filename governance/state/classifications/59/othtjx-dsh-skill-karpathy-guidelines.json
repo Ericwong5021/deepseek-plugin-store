@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "tool",
+    "skill",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a DeepSeek Harness skill provider that adds a predefined Karpathy-inspired coding-guidelines skill to the catalog with no runtime behavior of its own, and it requires an optional companion plugin for always-on injection; this is evidenced by the README and package metadata showing a single bundled, fixed-skill package and DSH patch-based wiring.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供一个可选的 Karpathy 编码规范技能，可挂载后在技能目录中加载“karpathy-guidelines”内容，并可在需要时配合常驻注入插件使用。",
+    "en": "This plugin adds an optional Karpathy-style coding-guidelines skill to DeepSeek Harness, making the packaged guideline content available in the skill catalog and optionally reusable with an always-apply consumer."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Registers a bundled skill entry (`karpathy-guidelines`) for DeepSeek Harness.",
+      "Provides static guidance content from an `assets/` package resource for catalog/on-demand loading.",
+      "Supports optional always-apply behavior only when used with a separate consumer plugin."
+    ],
+    "reasons": [
+      {
+        "code": "SKILL_PROVIDER_ONLY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "NO_RUNTIME_SIDE_EFFECTS_DECLARED",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_BUNDLE_MANIFEST_PRESENT",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers a bundled skill entry (`karpathy-guidelines`) for DeepSeek Harness.",
+      "Provides static guidance content from an `assets/` package resource for catalog/on-demand loading.",
+      "Supports optional always-apply behavior only when used with a separate consumer plugin."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:58.951Z",
+  "repositoryCommitSha": "9e885371d8f3e0560911e9fa06277249bc9bbcdf",
+  "evidenceHash": "d7296e4f77247e65cf937c02d465f2f63c16ca1d1097fd108abb2d8f8f7dc500",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cfaa9723ec9f8ba966fc79580973ddbc48a0c37c58a67858dc38d64b82cfb4cc",
+  "shadowMode": false
+}

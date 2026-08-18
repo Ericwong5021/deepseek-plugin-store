@@ -4,7 +4,7 @@
     "fullName": "PerryLink/dsh-mask",
     "url": "https://github.com/PerryLink/dsh-mask"
   },
-  "summary": "PII masking middleware for DeepSeek Harness: anonymize names, phones, emails, ID cards, bank cards, keys, and addresses to placeholders before they reach the model, restore them at the display layer, keep the restore table only in memory and a controlled storage domain, never log plaintext, and expose /mask and the mask_test tool",
+  "summary": "dsh-mask is a DeepSeek Harness plugin that masks selected sensitive fields in messages before they reach the model and provides `/mask` and `mask_test` for status, runtime toggling, and session-based restoration from its mapping table.",
   "sources": [
     "github-topic"
   ],
@@ -43,42 +43,26 @@
     "capturedAt": "2026-08-17T19:46:53.530Z"
   },
   "classificationSuggestion": {
-    "group": "agents-workflows",
-    "category": "automation",
+    "group": "build-development",
+    "category": "plugin-development",
     "tags": [
       "agent",
       "automation",
-      "browser",
       "data",
-      "document",
-      "integration",
-      "knowledge",
-      "layout",
-      "mcp",
-      "memory",
-      "monitoring",
-      "project-analysis",
-      "search",
-      "skill",
-      "terminal",
-      "testing",
-      "theme",
       "tool",
-      "ui",
+      "cli",
+      "integration",
       "workflow"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:test",
-      "text:project-analysis:dependency",
-      "text:automation:automat",
-      "text:planning-execution:workflow",
-      "text:memory-context:memory",
-      "text:search-browsing:browser",
-      "text:knowledge-management:rag"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:11720c5a6404eb57875698174428b968e3eb5e7459bbaac137fccca3410a7460",
+      "commit:fdabd0a58222051b0a9c0303458bd13d1a8e2ac9"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:21:16.185Z",
+    "reason": "This plugin’s primary purpose is runtime message privacy handling within DeepSeek Harness: it intercepts agent messages, replaces recognized sensitive entities with placeholders before model/input logging, and keeps a session restore mapping to restore values for display or user-requested restore. User-facing controls are limited to `/mask` status/toggle/restore commands and a `mask_test` tool, while persistence is scoped to its declared storage domain."
   }
 }

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "browser",
+    "tool",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件面向用户的主要用途是增强聊天界面显示：在 DeepSeek Harness 的 composer 底部栏中展示当前会话 ID 并可快速复制，属于会话标识可见性与操作效率提升的界面增强，依据仓库清单与 README 显示其为前端 bundle 注入式插件。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 会话 ID 显示插件，在输入框下方展示当前会话 ID，并支持用户点击后复制。",
+    "en": "This plugin for DeepSeek Harness shows the current session ID under the composer and lets users copy it with a click."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "injects a UI element into the composer dock area",
+      "displays the current session identifier in the interface",
+      "copies displayed session id text on user click with clipboard fallback"
+    ],
+    "reasons": [
+      {
+        "code": "README and description state the plugin shows the current session id under the composer and supports one-click copy.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes a DSH web client bundle and patch-based bundle registration, indicating UI-only loading path.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Architecture section describes slot injection at conversation.composer.dock with no host-side logic beyond registration.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "injects a UI element into the composer dock area",
+      "displays the current session identifier in the interface",
+      "copies displayed session id text on user click with clipboard fallback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:53.397Z",
+  "repositoryCommitSha": "7ebe5049ebe48037f2ef0c3eb0416f50597e38bb",
+  "evidenceHash": "94b25a8430ee98535cf2e9c25f0742a1d0ce365bb5716294ca2259fe27f4354d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bfc7fef29cec330e6a8438323c90eb33e155d3528621f2c91a277be7e4487383",
+  "shadowMode": false
+}

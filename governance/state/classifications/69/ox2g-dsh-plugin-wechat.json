@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "api",
+    "integration",
+    "automation",
+    "tool",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "Primary purpose is to provide a WeChat channel plugin for DeepSeek Harness, where WeChat messages are bridged into DSH agent sessions and responses are dispatched back to WeChat, including approval and question interactions; this is evidenced by the README’s WeChat bridge/DSH runtime description and the repo structure (`src/wechat`, `src/bridge`, `src/dsh`, `bin/login`). The plugin’s manifest and docs show it is intended as an integration plugin with external messaging infrastructure and local state handling, matching a medium-risk external service integration profile.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的微信接入插件，用于把 DSH 会话连接到 WeChat，实现扫码登录后的消息收发，并支持在微信内完成授权与提问交互。",
+    "en": "This plugin is a DeepSeek Harness WeChat adapter that connects DSH agent sessions to WeChat, enabling QR-login based message exchange and approval/question interaction through the same runtime."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "filesystem.write"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as a WeChat access integration that relays DSH sessions to the ilink WeChat bot gateway, including a configurable backend URL and QR-code login flow, so it communicates with an external messaging service.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It persists runtime state under configurable directories (for example DSH_WECHAT_STATE_DIR / ~/.dsh-plugin-wechat), which implies local token/state/log directory usage and filesystem writes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It documents user approval and ask-user flows through WeChat message round-trips, with actions continuing after reply, so it handles interactive remote control-style messaging between user and agent tooling.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:07.239Z",
+  "repositoryCommitSha": "5b21f91cbd8f0fea8786b0197601eec9e6c66862",
+  "evidenceHash": "e69ef7904468c89b82eeae49957a16e838d079dc18db0c127bcfe431648b3617",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2550e67feda428d651cd47435e25617c43e2d253605b6961584039aa224fd368",
+  "shadowMode": false
+}

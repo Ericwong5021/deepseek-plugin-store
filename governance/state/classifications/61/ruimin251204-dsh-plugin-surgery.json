@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "automation",
+    "cli",
+    "file",
+    "tool",
+    "ui",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a DSH plugin-management helper focused on uninstall, health check, and recovery workflows within a DSH profile. README and package metadata show it exposes pm_* commands and a web settings page for impact-preview uninstall, snapshot-backed rollback, restart-pending tracking, and profile integrity checks, which are user-facing plugin lifecycle utilities.",
+  "summaries": {
+    "zh": "dsh-plugin-surgery 是一个 DSH 插件管理工具，用于在指定 profile 下提供插件卸载影响预览、快照回滚、重启状态确认以及体检与修复能力。",
+    "en": "dsh-plugin-surgery is a DSH plugin management utility that offers uninstall impact preview, snapshot-based rollback, restart-status checks, and profile maintenance checks in the context of a selected profile."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Performs local dependency/profile operations by reading and modifying package manifests, lock files, and node_modules-related state for a selected DSH profile.",
+      "Creates and restores snapshots of profile state and validates snapshot integrity before rollback.",
+      "Provides restart-state checks and a restart operation path to confirm host/plugin activation state transitions."
+    ],
+    "reasons": [
+      {
+        "code": "READOUT_UNINSTALL_WORKFLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SNAPSHOT_ROLLBACK_PROCESS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "RESTART_PENDING_AND_STATUS_CHECKS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PROFILE_LOCAL_SCOPE_NOTES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_PANEL_AND_PATCHED_BUNDLE_ENTRY",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Performs local dependency/profile operations by reading and modifying package manifests, lock files, and node_modules-related state for a selected DSH profile.",
+      "Creates and restores snapshots of profile state and validates snapshot integrity before rollback.",
+      "Provides restart-state checks and a restart operation path to confirm host/plugin activation state transitions."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:17.940Z",
+  "repositoryCommitSha": "a786171de70c0a34de206ba82ac46747066feab4",
+  "evidenceHash": "b4aedc4581024b7845417f9dacedc2194c034b5cb6c7f0e1d0e995a24414f499",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eb413bfe78ad8301bb9463855207e7a31fbe86697d786d7df6b60cbd4a2c2d8e",
+  "shadowMode": false
+}

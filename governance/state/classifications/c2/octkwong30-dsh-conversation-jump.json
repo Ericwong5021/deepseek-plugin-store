@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "tool",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件是一个面向用户界面的会话导航增强工具，证据表明其核心功能是在 DeepSeek Harness Web GUI 的会话头部提供可搜索、可筛选的节点目录面板，并允许用户点击条目快速跳转到对应对话节点，因此可归类为界面面板与导航增强类插件，未显示外部服务调用或代码生成等能力。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 会话页面新增节点目录面板，支持搜索与类型筛选，便于用户快速跳转到当前会话中的对话节点并定位查看。",
+    "en": "This plugin adds a node directory panel to the DeepSeek Harness web chat view, with search and type filtering to quickly jump to and focus a selected conversation node."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在会话界面显示可搜索/筛选的节点目录面板",
+      "可按条目快速定位并高亮会话节点",
+      "可在历史加载可见范围内分页加载更早节点",
+      "基于会话会话数据（chat.order/chat.nodes）与 DOM 锚点进行跳转操作"
+    ],
+    "reasons": [
+      {
+        "code": "README：在会话头部新增按钮并打开节点目录面板，支持摘要搜索、类型筛选与条目跳转定位。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README：跳转机制基于 data-chat-anchor-key DOM 锚点与滚动定位，并包含 1.6 秒高亮与面板关闭行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README：历史分页通过 sessions.binding(sessionId).session.loadOlder() 拉取更早历史以刷新列表。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json：dsh.client 指定 platform 为 web 并注入 slots、sessions，表明为浏览器端客户端插件。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "在会话界面显示可搜索/筛选的节点目录面板",
+      "可按条目快速定位并高亮会话节点",
+      "可在历史加载可见范围内分页加载更早节点",
+      "基于会话会话数据（chat.order/chat.nodes）与 DOM 锚点进行跳转操作"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:47.244Z",
+  "repositoryCommitSha": "2d06591afce9346ae7aa9c5d96ac42609ba39953",
+  "evidenceHash": "a0a655f06216193c388b961071278e22e68c7494f9f369f33c991fd34005fb43",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "07dff89f3457eb0fbd1a5a04ad031cf74bc65576ea91c20436d6d82c18ff9d53",
+  "shadowMode": false
+}

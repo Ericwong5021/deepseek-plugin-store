@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "workflow",
+    "tool",
+    "file",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用户可见用途是会话治理自动化：在 DSH 会话中观察运行指标并在达到阈值时注入下一轮建议，再在用户审批后发起交接流程。依据 README、package.json 与仓库目录中的核心模块文件，可确认其并不实现手工工作流逻辑，而是作为薄适配层负责观测、阈值判定、建议注入与外部命令触发。",
+  "summaries": {
+    "zh": "该插件用于在 DSH 会话中按阈值监测会话状态，在下一轮追加建议并在用户审批后触发 `harness-automation session handoff`。",
+    "en": "This plugin observes DSH session signals, injects a next-turn suggestion when configured thresholds are crossed, and triggers `harness-automation session handoff` after user approval."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors DSH session signals such as turns, steps, LLM time, titles, retries, and splices.",
+      "Evaluates configurable thresholds and schedules actions on a bounded next-open-turn injection point.",
+      "Performs append-only inbox suggestion injection with deterministic templating.",
+      "Requests approval before triggering handoff execution.",
+      "Spawns `harness-automation session handoff` with session/project/work-item arguments."
+    ],
+    "reasons": [
+      {
+        "code": "README documents an observe→decide→trigger flow with threshold-based suggestions and approval-gated CLI handoff execution.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository structure lists dedicated modules for projection, template rendering, and CLI invocation under lib, matching the described host-side behavior.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package manifest exposes this as a DSH plugin via `dsh.bundle.patch` and `main` entry `lib/index.js`, indicating integration in host runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Monitors DSH session signals such as turns, steps, LLM time, titles, retries, and splices.",
+      "Evaluates configurable thresholds and schedules actions on a bounded next-open-turn injection point.",
+      "Performs append-only inbox suggestion injection with deterministic templating.",
+      "Requests approval before triggering handoff execution.",
+      "Spawns `harness-automation session handoff` with session/project/work-item arguments."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:17.369Z",
+  "repositoryCommitSha": "6625c87f1eb461b9e83b268485e51bd7e9b5913d",
+  "evidenceHash": "ca644b7a3c8bbcbd3d55333c50fce5271b1e3bef4b68f43762801ce42e4a51f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1128aec309029714f90adbcea84716cb907d0f5c64e770173fa749c10746a32a",
+  "shadowMode": false
+}

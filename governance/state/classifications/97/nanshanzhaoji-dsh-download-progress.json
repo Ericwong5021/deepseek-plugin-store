@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "tool",
+    "ui",
+    "monitoring",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心用途是为 DSH 增加可调用的下载工具并将下载状态可视化，README 与插件配置显示其将 download 流式下载与 Web GUI 悬浮面板结合，在界面上展示百分比、速度和大小，并提供本地进度快照接口，属于以文件下载执行与进度展示为主的工具型插件。",
+  "summaries": {
+    "zh": "这是一个在 DSH Web 中的下载进度增强插件，提供下载工具并在界面实时显示进度条、速度与字节信息，同时支持本地查看下载快照。",
+    "en": "This is a DSH web plugin that adds a download tool and shows live progress (percent, speed, and size) in a floating UI panel, with a local endpoint to read progress snapshots."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "HTTP(S) 文件下载并写入工作区文件",
+      "实时上报下载进度并展示已下载/总量/速度",
+      "在 Web GUI 显示悬浮进度面板",
+      "提供本地 /download-progress JSON 快照接口"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了插件新增 download 工具并从目标 URL 发起 HTTP/HTTPS 下载，按流写入工作区文件路径。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明插件在 Web 端显示右下角实时进度面板并暴露 GET /download-progress 接口用于读取下载快照。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 指向 DSH 插件主入口与补丁注入点（cordis patch 与 web 客户端），表明为宿主工具链内的运行时扩展。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "HTTP(S) 文件下载并写入工作区文件",
+      "实时上报下载进度并展示已下载/总量/速度",
+      "在 Web GUI 显示悬浮进度面板",
+      "提供本地 /download-progress JSON 快照接口"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:30.211Z",
+  "repositoryCommitSha": "052917db31285668140a85e14cd5e4636ab644e1",
+  "evidenceHash": "346347f06b05d73c81a77ea0d9a111b709980066f9442a35e14754340b0b393c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ab86bce8aa267a43757e983dd01bef5135f1d01d22948b315d7f69cb046d468",
+  "shadowMode": false
+}

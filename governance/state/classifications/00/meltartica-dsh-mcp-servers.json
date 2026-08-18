@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "tool",
+    "api",
+    "ui",
+    "automation",
+    "file",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Conservative classification: the plugin’s primary user-facing purpose is integrating external MCP services into DeepSeek Harness by managing and registering external tool servers, as stated in the README and package metadata.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中提供 MCP 服务器的管理入口，用于配置连接、测试并将 MCP 工具注册为原生工具，同时支持本地文件或 WebDAV 的配置备份与恢复。",
+    "en": "This plugin adds MCP server management in DeepSeek Harness, allowing users to configure and test servers, expose MCP tools as native tools, and back up or restore settings via local files or WebDAV."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connect to Model Context Protocol servers via stdio, streamable HTTP, and legacy SSE transports",
+      "Register MCP tools into the Harness tool namespace",
+      "Execute/launch stdio-based server commands from configured command arguments",
+      "Manage MCP server settings through a web UI (type, command/args, env/headers, enablement)",
+      "Test server connectivity and tool listing before saving",
+      "Auto-reconnect and live connection status reporting",
+      "Export/import server configuration as JSON",
+      "Sync backup/restore data through WebDAV with HTTPS and credentials"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is described as a DSH bundle that exposes MCP servers as native tools with transport support and settings UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Supports stdio/http/sse server configuration with command, env variables, and headers, implying local process invocation and credential/config handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Backup/restore features include local JSON files and WebDAV push/pull plus scheduled daily backup.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository identifies a web-platform DSH bundle with explicit DSH integration fields in package metadata.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connect to Model Context Protocol servers via stdio, streamable HTTP, and legacy SSE transports",
+      "Register MCP tools into the Harness tool namespace",
+      "Execute/launch stdio-based server commands from configured command arguments",
+      "Manage MCP server settings through a web UI (type, command/args, env/headers, enablement)",
+      "Test server connectivity and tool listing before saving",
+      "Auto-reconnect and live connection status reporting",
+      "Export/import server configuration as JSON",
+      "Sync backup/restore data through WebDAV with HTTPS and credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:52.591Z",
+  "repositoryCommitSha": "221f45612a923f7a55c1564e2bcfcaca4b13a9a0",
+  "evidenceHash": "2d306a2c3deb931652f611a91b99e5258c27fdaf3b695d562d63ec52eb4d7ced",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a766a9f5384af442dbc0eae9ab35ecd3bd81de824909394ead1a872ffd23ad0e",
+  "shadowMode": false
+}

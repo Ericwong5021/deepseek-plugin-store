@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "skill",
+    "agent",
+    "automation",
+    "tool",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a DeepSeek Harness plugin-provider that adds prepackaged ponytail skills to the assistant skill catalog, intended for development workflow support. Evidence shows its effect is skill registration and optional configuration through DSH mounting, so the capability impact is bounded to enabled plugin behavior and not broad external service access.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的可选插件，挂载后可将 ponytail 相关技能加入 `ctx.skills`，并通过插件配置支持按需加载与技能目录覆盖。",
+    "en": "This optional DeepSeek Harness plugin adds a bundled set of ponytail skills to `ctx.skills` when mounted, with optional configuration for how those skill assets are sourced and loaded."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers multiple ponytail skills into the DSH skill catalog via a provider plugin.",
+      "Rewrites skill slash-command names for direct invocation in the dsh skill system.",
+      "Supports optional on-demand skill loading and configuration of the packaged skills directory."
+    ],
+    "reasons": [
+      {
+        "code": "README states the package contributes the ponytail skill set (ponytail, ponytail-review, ponytail-audit, ponytail-debt, ponytail-gain, ponytail-help) to ctx.skills.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes mounting/installation behavior (dsh plugin add or cordis patch) and explicit optional configuration for skillsRoot, confirming runtime integration control through composition.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package.json exports a dsh bundle patch and plugin entry points, indicating the package is meant to integrate into DSH runtime wiring.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Tree/readme evidence shows this package includes only skill assets and patching files rather than standalone execution tooling.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Registers multiple ponytail skills into the DSH skill catalog via a provider plugin.",
+      "Rewrites skill slash-command names for direct invocation in the dsh skill system.",
+      "Supports optional on-demand skill loading and configuration of the packaged skills directory."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:00.412Z",
+  "repositoryCommitSha": "6d252bdbc7f01a8fedb066d9e015cdabda212ec1",
+  "evidenceHash": "3c99f4b3681cfedc7ea0772f2ad524fb99456f218cf5a7c89413bed01844fbdb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4f4ee10fa92778e3c383fb396994ef5f3cab7a4aa60a465e2f38f278f879cbbf",
+  "shadowMode": false
+}

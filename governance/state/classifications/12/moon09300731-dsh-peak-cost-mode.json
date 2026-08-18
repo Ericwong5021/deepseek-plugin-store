@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "data",
+    "ui",
+    "notification",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Primary user-facing purpose is automated cost-saving behavior control in DSH sessions: during configured Beijing peak-pricing periods it auto-switches response style and surfaces estimated token/cost savings via UI and API reporting, which positions it as a general utility/automation plugin with monitoring-style feedback.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中按北京时间高峰/低谷时段自动切换为精简输出模式，并在界面与报告中展示节省相关的运行状态与估算数据。",
+    "en": "This plugin automatically switches output behavior in DeepSeek Harness during configured Beijing peak-pricing windows and shows a badge, transition notices, and a savings report to track estimated token and cost impact."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automatically alters model output mode on a time schedule",
+      "Captures and aggregates token usage data during selected windows",
+      "Displays runtime cost-related state and summaries in the web UI",
+      "Writes/reads plugin state and configuration files under the user DSH directory",
+      "Exposes local endpoints for state, stats, and reset actions"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin detects Beijing-time peak windows (09:00–12:00 and 14:00–18:00) and applies a peak-cost output mode automatically.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains a host-side 30-second timer and a systemPrompt section (`peak-cost-mode`) that is registered in peak windows and disposed outside them.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes subscribing to `llm/stream` completions, capturing `input/cacheRead/output` usage and persisting per-window savings metrics.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists a client UI with header badge, transition toasts, composer readout, and a savings report panel, plus `POST /api/peak-cost/reset` and related state/stat endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README says stats are stored in `${DSH_HOME:-~/.dsh}/dsh-peak-cost-mode/stats.json` and config is loaded from `${DSH_HOME:-~/.dsh}/dsh-peak-cost-mode/config.json`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares the plugin as a DSH web plugin (`dsh.client.platform` = `web`) and entrypoints for runtime and client code.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Automatically alters model output mode on a time schedule",
+      "Captures and aggregates token usage data during selected windows",
+      "Displays runtime cost-related state and summaries in the web UI",
+      "Writes/reads plugin state and configuration files under the user DSH directory",
+      "Exposes local endpoints for state, stats, and reset actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:08.537Z",
+  "repositoryCommitSha": "9621b46c20287eec89d45aecad5acac3edb4b7de",
+  "evidenceHash": "d85a38ab31f4b3844dad10e3a7335421fe5b152b547e7e78c1e1c034da0b010c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "32dc1e142ae873e4cdcc70b112d7dcce73cae340ec03205e178db4cd3573add3",
+  "shadowMode": false
+}

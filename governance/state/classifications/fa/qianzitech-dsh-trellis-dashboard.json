@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "api",
+    "file",
+    "workflow",
+    "document",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary purpose is a conversation UI panel that surfaces Trellis workspace task/status information inside DeepSeek Harness by adding a Trellis tab, while the host side reads workspace state and exposes it through local endpoints.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的对话界面新增 Trellis 仪表盘标签页，展示当前任务进度、规范/技能使用和日志摘要，并支持按会话设置当前任务。",
+    "en": "Adds a Trellis dashboard tab to the DeepSeek Harness conversation view that displays current task progress, spec/skill usage, and journal summary, with an action to set the current task for the active session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read workspace files under Trellis and related skill directories via host fs access",
+      "Expose and serve dashboard state through local webServer HTTP routes",
+      "Perform a session-scoped write to set the current task pointer"
+    ],
+    "reasons": [
+      {
+        "code": "WORKSPACE_FILE_READ",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_WEB_API_ROUTES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SESSION_TASK_WRITE_OPERATION",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Read workspace files under Trellis and related skill directories via host fs access",
+      "Expose and serve dashboard state through local webServer HTTP routes",
+      "Perform a session-scoped write to set the current task pointer"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:29.094Z",
+  "repositoryCommitSha": "84b9eb242f6fe8070f8a8ec2fe1e450ead27302a",
+  "evidenceHash": "e05ea6c7e3d6f73e2f8260e1bf09af417826c1ad8bdd97a86b575fcdbebd973d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1391f69a7bf37575a8e6d9c048b70fce627be5d0b9e2a3e01784f5d83323a609",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "browser",
+    "chat",
+    "ui",
+    "tool",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件面向用户的是在 DeepSeek Harness 聊天场景中增加语音交互能力：通过麦克风/快捷键进行语音输入，并支持对 AI 回答进行边缘语音朗读。依据 README 与清单可见其核心实现是浏览器语音识别与 DSH 内部 TTS 路由对接微软 Edge 语音服务，属于以用户交互增强为主的媒体工具类功能。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供语音能力，支持在会话中用麦克风或快捷键输入语音内容，并可对 AI 回复进行微软 Edge 语音朗读。",
+    "en": "This plugin adds voice capabilities to DeepSeek Harness by enabling speech input via microphone or shortcut and playing AI replies with Edge-based text-to-speech."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browser-based speech-to-text via microphone input",
+      "Shortcut and click controls for starting/stopping voice capture",
+      "Text-to-speech playback for assistant responses",
+      "Pluggable voice/voice-style settings with persistence",
+      "Remote synthesis via Microsoft Edge TTS endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "README: 使用浏览器原生 SpeechRecognition（Chrome/Edge）实现语音输入并通过麦克风按钮/快捷键触发",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 在回答下方提供朗读按钮，插件在 DSH 内部暴露 `/_dsh/voice/tts` 并调用微软 Edge 神经网络语音服务返回 MP3 播放",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: 插件声明为 DSH web 平台客户端注入插件（dsh.bundle.patch 与 dsh.client.platform=web），并依赖 ws",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Browser-based speech-to-text via microphone input",
+      "Shortcut and click controls for starting/stopping voice capture",
+      "Text-to-speech playback for assistant responses",
+      "Pluggable voice/voice-style settings with persistence",
+      "Remote synthesis via Microsoft Edge TTS endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:12.560Z",
+  "repositoryCommitSha": "986ff6b252a12ee2d5d9727644dd16a1611e7e82",
+  "evidenceHash": "446024d77dcdea0a2d505c42a8222b0a5ab29b7727e75c9ab0f2e4283b4c3372",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "700647228587e11d0f55d3d6d48301de64683a883cd37bd87add0d709f5c4498",
+  "shadowMode": false
+}

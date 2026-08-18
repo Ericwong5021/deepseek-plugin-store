@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "integration",
+    "automation",
+    "chat",
+    "tool",
+    "workflow",
+    "api",
+    "context"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.88,
+  "reason": "该插件的核心是将 DeepSeek Harness 的默认 agent loop 替换为通过 ACP 连接的 Kimi Code 会话执行层，并将对话、工具调用与审批等事件在 DSH 界面中闭环展示，因此主要是 AI 会话编排与自动化执行集成。证据来自 README 对桥接架构与功能列表的说明以及 package.json 中的 ACP、dsh-agent/loop 与插件打包配置，表明其是主机与模型层交互的中介。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 loop 插件，通过 ACP 将会话驱动接入 Kimi Code，使对话、工具调用与审批流程在 DSH 界面中按会话运行。",
+    "en": "This is a DeepSeek Harness loop plugin that connects sessions to Kimi Code via ACP, running conversations and tool-driven execution flow within the DSH interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "启动并管理 `kimi acp` 子进程以承接会话控制",
+      "在 ACP 与 DeepSeek Harness 会话事件之间转发消息与状态",
+      "将模型工具调用与审批/提问流程对接到 DSH 的原生 UI",
+      "支持会话内命令与模式切换，影响工具执行策略",
+      "可传递图片附件给模型并参与工具驱动的长对话执行"
+    ],
+    "reasons": [
+      {
+        "code": "DSH_LOOP_REPLACEMENT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "TOOL_APPROVAL_BRIDGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ACP_PROTOCOL_BRIDGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLUGIN_DISTRIBUTION_MANIFEST",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "PUBLIC_PLUGIN_METADATA",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "启动并管理 `kimi acp` 子进程以承接会话控制",
+      "在 ACP 与 DeepSeek Harness 会话事件之间转发消息与状态",
+      "将模型工具调用与审批/提问流程对接到 DSH 的原生 UI",
+      "支持会话内命令与模式切换，影响工具执行策略",
+      "可传递图片附件给模型并参与工具驱动的长对话执行"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.88,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:30.743Z",
+  "repositoryCommitSha": "9ac84a0322feebb9e4aa0fac252bde5f563d9abf",
+  "evidenceHash": "9e465b55e3634be8cac083084eef909d77dde4dabf7ebc2aa5a0d7a049319e96",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ba4305da13be155ba01dbddb188941f3d9b149c94e7e682c12c0637a7785cc73",
+  "shadowMode": false
+}

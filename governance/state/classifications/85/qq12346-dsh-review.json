@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "knowledge",
+    "memory",
+    "tool",
+    "search",
+    "automation",
+    "workflow",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是会话复盘与经验沉淀：它会生成可读的复盘报告，并将经验条目持久化到工作区目录，随后通过检索工具供后续会话复用；在可选配置下可结合 LLM 提取经验摘要并按预算注入上下文。",
+  "summaries": {
+    "zh": "基于 DeepSeek Harness 的会话复盘插件，可生成当前会话的复盘报告并将经验沉淀到工作区供后续检索与复用。",
+    "en": "A DeepSeek Harness plugin for session review that generates readable review reports and stores distilled lessons in the workspace for later retrieval and reuse."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generate readable session review reports",
+      "Persist lesson artifacts (reports/index/lesson files) in a workspace directory",
+      "Search lesson entries by keyword or tag",
+      "Inject a configurable number of lesson snippets into session context",
+      "Optional LLM-based lesson distillation when provider/model are configured"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is positioned as a session review and lesson-bank plugin, with output and storage in .dsh-review (reports, lessons, index files) for later reuse.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It exposes explicit tools review_session and search_lessons, indicating runtime actions on session/knowledge data and local retrieval behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Optional llmProvider/llmModel settings are documented for enabling LLM lesson distillation, which introduces external model-call behavior when enabled.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Generate readable session review reports",
+      "Persist lesson artifacts (reports/index/lesson files) in a workspace directory",
+      "Search lesson entries by keyword or tag",
+      "Inject a configurable number of lesson snippets into session context",
+      "Optional LLM-based lesson distillation when provider/model are configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:38.222Z",
+  "repositoryCommitSha": "21730d73b24c74a9f56d281e0c7a4ca455469a54",
+  "evidenceHash": "7d008138e055cb7bd37385ae28140ad3e6b02c54813ffe6334abbeab44721665",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0b5d7072068a4b90c07522a7335238fe609a3e1030eab632ca930cdfccdf2531",
+  "shadowMode": false
+}

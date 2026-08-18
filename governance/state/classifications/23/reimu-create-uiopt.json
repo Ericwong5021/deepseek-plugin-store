@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "api",
+    "integration",
+    "data",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is a DSH WebUI bundle that primarily enhances the chat interface by showing account-related display elements (real-time balance, session usage, per-message cost/cache rate) and provider branding, with an added settings tab for managing extra plugins. The host/client split and declared bundle in package.json plus documented host endpoints and imports in the README indicate a UI-facing enhancement and local plugin-management function, while also touching profile-level file mounts during plugin import/uninstall operations.",
+  "summaries": {
+    "zh": "uiopt 是一款 DSH WebUI 显示增强插件，提供会话区域的余额与每条消息消耗展示、缓存命中率与提供商图标，并在设置页支持额外插件导入与挂载管理。",
+    "en": "uiopt is a DSH WebUI enhancement plugin that adds in-chat balance and per-message usage display, provider icons, and an extra-plugins import and mount management entry in settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects custom UI into DSH WebUI slots for balance, per-message usage, and provider icon display",
+      "Exposes host routes used to read balance/context/plugin data for the UI",
+      "Performs plugin import flow that extracts and installs uploaded plugin packages into profile node_modules",
+      "Uses host-side provider credentials to query external service balance/usage-related information",
+      "Mutates local profile configuration by adding/removing patch mount entries"
+    ],
+    "reasons": [
+      {
+        "code": "readme-slot-injection-ui",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-host-routes-and-import",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-credential-reuse",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh-bundle-manifest",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "tree-plugin-install-scripts",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Injects custom UI into DSH WebUI slots for balance, per-message usage, and provider icon display",
+      "Exposes host routes used to read balance/context/plugin data for the UI",
+      "Performs plugin import flow that extracts and installs uploaded plugin packages into profile node_modules",
+      "Uses host-side provider credentials to query external service balance/usage-related information",
+      "Mutates local profile configuration by adding/removing patch mount entries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:01.005Z",
+  "repositoryCommitSha": "7c35de8650c0bf5fbaa7445b8c614e74f96a2ad6",
+  "evidenceHash": "8a5c5e77795c5aeb2fc8d3685d877f2e63666afc2d9bb1015196818497243eb3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d6b306a3250a0cd68bd1a14df5f7a4d63596c9f1ea2d976bc672e1a980162338",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "api",
+    "automation",
+    "chat",
+    "data",
+    "integration",
+    "notification",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用途是面向用户提供一个 DSH Web 的日历与待办统一操作界面：通过侧边栏进入的专属面板管理任务、日程、外部日历同步，并可在对话中用工具执行查询、增删改。证据来自 README 对场景布局、数据文件绑定和 agent 工具能力的明确说明，结合 package.json 的客户端插件声明，表明其属于界面化日历/待办插件而非代码生成或分析类插件。",
+  "summaries": {
+    "zh": "DSH Web 插件，提供基于文件夹的数据隔离日历与待办管理面板，支持时间轴浏览、快速增删改任务，并可通过对话工具结合外部 iCal/Google 日历实现同步与提醒。",
+    "en": "A DSH Web plugin that provides a folder-scoped calendar and todo management panel, supports timeline-based organization and quick task/event editing, and integrates with external iCal/Google calendars through conversation tools with reminders."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Per-folder local data storage and migration",
+      "Calendar/todo CRUD exposed through conversation tools",
+      "Local and external (iCal/Google) calendar synchronization",
+      "Timeline and quick-entry UI for task/event management",
+      "Session-bound reminder delivery and Telegram notification path",
+      "Time-based reminder scheduling and recurrence-aware expansion logic"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a DSH web plugin for calendar + todo with per-folder data root (`dsh-calendar-todo.json`) and workspace-bound migration/sync behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists agent tools `calendar_todo_query/add/add_event/update/delete` that can create, query, modify, and delete todos/events from conversation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents external calendar configuration, ICS fetching, recurrence handling, sync intervals, and automatic reminders, including Telegram message delivery through `telegramBridge`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares integration with DSH web client hooks and bundle patching (`dsh` client inject slots/workspaces/sessions/locale), indicating UI extension and tool wiring.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Per-folder local data storage and migration",
+      "Calendar/todo CRUD exposed through conversation tools",
+      "Local and external (iCal/Google) calendar synchronization",
+      "Timeline and quick-entry UI for task/event management",
+      "Session-bound reminder delivery and Telegram notification path",
+      "Time-based reminder scheduling and recurrence-aware expansion logic"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:37.427Z",
+  "repositoryCommitSha": "e730e13791dc46c37daf7dca28ec338e2b94acc1",
+  "evidenceHash": "329ba3ea9b8264fa0913174b5631e540e2c1e3b3cb9d5e2f403bef08ab933c22",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87e034cb480938a1500dee9bc04c3ee9c606ff7a17fabbf0f670d197912c60f5",
+  "shadowMode": false
+}

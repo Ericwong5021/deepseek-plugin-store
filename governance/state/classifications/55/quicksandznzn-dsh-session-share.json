@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "data",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a local file-based session portability utility for DeepSeek Harness, enabling users to export a session tree to a ZIP-based capsule and import it back into another workspace, with the behavior described as offline and manually transferred rather than cloud-synced.",
+  "summaries": {
+    "zh": "该插件支持将当前 DeepSeek Harness 会话及其子会话树导出为本地离线 Capsule（.dsh-session-share.zip），并将该文件导入到本地工作区形成新的会话副本。",
+    "en": "This plugin lets you export a DeepSeek Harness session tree as a local offline `.dsh-session-share.zip` capsule and import such a capsule into a local workspace."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Exports complete DeepSeek Harness sessions (including subagent trees and attachments) to a local `.dsh-session-share.zip` capsule",
+      "Imports session capsules from a local ZIP file into a local workspace",
+      "Creates new local session IDs on each import, producing an independent session copy",
+      "Operates as an offline file-transfer flow without built-in cloud sharing"
+    ],
+    "reasons": [
+      {
+        "code": "README states `/share-session` creates an offline `.dsh-session-share.zip` Capsule containing the current session and referenced images.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states `/import-session` loads a local Capsule into a selected workspace and opens the imported session.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies `fflate` dependency for local ZIP handling, matching the documented capsule export/import behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README notes capsules include prompts, replies, tool I/O, workspace paths, and images and can be shared manually via local file transfer.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Exports complete DeepSeek Harness sessions (including subagent trees and attachments) to a local `.dsh-session-share.zip` capsule",
+      "Imports session capsules from a local ZIP file into a local workspace",
+      "Creates new local session IDs on each import, producing an independent session copy",
+      "Operates as an offline file-transfer flow without built-in cloud sharing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:42.775Z",
+  "repositoryCommitSha": "bf347496b5b83b4e0a84ef3e205c5078d0c12721",
+  "evidenceHash": "995b4a491b0e70b30c590e646b3d20577baa8f2dd90f4efe845ce33bf6bc12be",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e4ca570d808727cf7ec788c458e2220076ed72e2f57b0a8343c3f6aa54fb4335",
+  "shadowMode": false
+}
