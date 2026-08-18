@@ -1,0 +1,102 @@
+import fs from 'node:fs/promises'
+import { validateAiDecision } from './rules.mjs'
+
+const retryableFormats = new Set([400, 404, 405, 415, 422, 500, 501, 502, 503, 504])
+
+const extractText = (response) => response.output_text
+  || response.output?.flatMap((item) => item.content || []).find((item) => item.type === 'output_text')?.text
+  || response.choices?.[0]?.message?.content
+  || response.choices?.[0]?.text
+
+export class LLMAdapter {
+  constructor({ apiKey, baseUrl, model, promptVersion = 'classify-v2', schemaPath = 'scripts/governance/schemas/ai-decision.schema.json' }) {
+    this.apiKey = apiKey
+    this.baseUrl = baseUrl.replace(/\/$/, '')
+    this.model = model
+    this.promptVersion = promptVersion
+    this.schemaPath = schemaPath
+    this.capability = null
+  }
+
+  async request(path, body) {
+    let lastError
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const response = await fetch(`${this.baseUrl}${path}`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(60000),
+      })
+      const text = await response.text()
+      if (response.ok) return JSON.parse(text)
+      const error = new Error(`${path}: ${response.status} ${text.slice(0, 300)}`)
+      error.status = response.status
+      lastError = error
+      if (attempt === 2 || ![429, 500, 502, 503, 504].includes(response.status)) throw error
+      await new Promise((resolve) => setTimeout(resolve, attempt * 1500))
+    }
+    throw lastError
+  }
+
+  async call({ name, system, input, schema }) {
+    const formats = this.capability ? [this.capability] : ['responses', 'chat', 'completions']
+    let lastError
+    for (const format of formats) {
+      try {
+        let response
+        if (format === 'responses') {
+          response = await this.request('/responses', {
+            model: this.model,
+            input: [
+              { role: 'system', content: [{ type: 'input_text', text: system }] },
+              { role: 'user', content: [{ type: 'input_text', text: JSON.stringify(input) }] },
+            ],
+            text: { format: { type: 'json_schema', name, schema, strict: true } },
+          })
+        } else if (format === 'chat') {
+          response = await this.request('/chat/completions', {
+            model: this.model,
+            messages: [{ role: 'system', content: system }, { role: 'user', content: JSON.stringify(input) }],
+            response_format: { type: 'json_schema', json_schema: { name, schema, strict: true } },
+          })
+        } else {
+          response = await this.request('/completions', { model: this.model, prompt: `${system}\n\nRequired JSON Schema:\n${JSON.stringify(schema)}\n\nInput:\n${JSON.stringify(input)}\n\nReturn one JSON object that strictly matches the schema.`, max_tokens: 1200 })
+        }
+        const content = extractText(response)
+        if (!content) throw new Error(`${format}: response did not contain text`)
+        this.capability = format
+        return JSON.parse(content)
+      } catch (error) {
+        lastError = error
+        if (this.capability || (error.status && !retryableFormats.has(error.status))) throw error
+      }
+    }
+    throw lastError
+  }
+
+  async decision(kind, input, taxonomy) {
+    const schema = JSON.parse(await fs.readFile(this.schemaPath, 'utf8'))
+    schema.properties.classification.properties.primaryCategory.enum = taxonomy.categories.map((category) => category.id)
+    schema.properties.classification.properties.tags.items.enum = taxonomy.tags
+    schema.properties.risk.properties.reasons.items.properties.evidenceRef.enum = input.evidence.evidenceRefs
+    const system = await fs.readFile(`governance/prompts/${kind}.md`, 'utf8')
+    const decision = await this.call({ name: `governance_${kind.replace(/-/g, '_')}`, system, input, schema })
+    return validateAiDecision({ decision, taxonomy, evidenceRefs: input.evidence.evidenceRefs })
+  }
+
+  classifyPlugin(evidence, taxonomy, ruleResult) {
+    return this.decision('classify-v2', { evidence, taxonomy, ruleResult }, taxonomy)
+  }
+
+  triageIssue(issue, context, taxonomy) {
+    return this.decision('issue-triage-v1', { evidence: context.evidence, issue, context }, taxonomy)
+  }
+
+  reviewCorrection(currentRecord, proposedChange, evidence, taxonomy) {
+    return this.decision('correction-review-v1', { evidence, currentRecord, proposedChange }, taxonomy)
+  }
+
+  reviewPullRequest(diff, policyContext, evidence, taxonomy) {
+    return this.decision('pr-review-v1', { evidence, diff, policyContext }, taxonomy)
+  }
+}

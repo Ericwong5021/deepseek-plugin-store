@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "repository", "repositoryCommitSha", "capturedAt", "readme", "packageJson", "files", "treeTruncated", "evidenceRefs", "evidenceHash"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "repository": { "type": "object" },
+    "repositoryCommitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "capturedAt": { "type": "string" },
+    "readme": { "type": "string" },
+    "packageJson": { "type": "string" },
+    "files": { "type": "array", "items": { "type": "string" } },
+    "treeTruncated": { "type": "boolean" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "evidenceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

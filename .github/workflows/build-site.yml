@@ -1,9 +1,5 @@
 name: Build site from README
 
-concurrency:
-  group: deepseek-plugin-store-main-write
-  cancel-in-progress: false
-
 on:
   push:
     branches: [main]
@@ -11,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -23,11 +19,12 @@ jobs:
           node-version: 22
       - name: Build site rows from READMEs
         run: node scripts/build-site.mjs
-      - name: Commit if changed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs README.md README.en.md README.zh.md data
-          git diff --cached --quiet && echo "no changes" && exit 0
-          git commit -m "chore: rebuild site from README"
-          git push
+      - uses: actions/upload-artifact@v4
+        with:
+          name: built-site-${{ github.sha }}
+          path: |
+            docs
+            README.md
+            README.en.md
+            README.zh.md
+          retention-days: 7

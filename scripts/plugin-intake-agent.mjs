@@ -297,7 +297,7 @@ const handleSubmission = async (event, issue, fields) => {
   }
   const record = await buildRecord({ evidence, issue, fields })
   await writeJson(`registry/plugins/${id}.json`, record)
-  const prBody = `## Plugin / 插件\n\n- Repository: ${evidence.repository.html_url}\n- Install: \`${record.installTargets[0].spec}\`\n- Verified commit: \`${evidence.commitSha}\`\n- Intent: \`plugin_submission\`\n- Source issue: #${issue.number}\n\n## Admission checks / 录入检查\n\n${inspection.passed.map((item) => `- [x] ${item}`).join('\n')}\n- [x] Registry source validation\n\nCloses #${issue.number}\n`
+  const prBody = `## Plugin / 插件\n\n- Repository: ${evidence.repository.html_url}\n- Install: \`${record.installTargets[0].spec}\`\n- Intent: \`plugin_submission\`\n- Source issue: #${issue.number}\n\n## Admission checks / 录入检查\n\n${inspection.passed.map((item) => `- [x] ${item}`).join('\n')}\n- [x] Registry source validation\n\nCloses #${issue.number}\n`
   await writeResult({ outcome: 'accepted', intent: 'submission', repository: canonicalName, id, prBody, title: `feat: add ${canonicalName}` })
 }
 
@@ -343,7 +343,7 @@ const handleCorrection = async (event, issue, fields) => {
   }
   record.source = { verifiedCommitSha: evidence.commitSha, lastVerifiedAt: new Date().toISOString() }
   await writeJson(`registry/plugins/${id}.json`, record)
-  const prBody = `## Correction / 修正\n\n- Repository: ${evidence.repository.html_url}\n- Field: Primary category\n- Proposed value: \`${category.id}\`\n- Verified commit: \`${evidence.commitSha}\`\n- Source issue: #${issue.number}\n\nThis draft changes only the requested classification field and keeps the submitter value as a reviewable suggestion.\n\nCloses #${issue.number}\n`
+  const prBody = `## Correction / 修正\n\n- Repository: ${evidence.repository.html_url}\n- Field: Primary category\n- Proposed value: \`${category.id}\`\n- Source issue: #${issue.number}\n\nThis draft changes only the requested classification field and keeps the submitter value as a reviewable suggestion.\n\nCloses #${issue.number}\n`
   await writeResult({ outcome: 'correction', intent: 'correction', repository: evidence.canonicalName, id, prBody, title: `fix: correct ${evidence.canonicalName} category`, draft: true })
 }
 

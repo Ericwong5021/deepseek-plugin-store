@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "policyVersion", "finalDecision", "riskLevel", "capabilities", "autoMerge", "shadowMode", "reasons", "trace"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "policyVersion": { "type": "string" },
+    "finalDecision": { "type": "string", "enum": ["approved", "needs_changes", "needs_human"] },
+    "riskLevel": { "type": "string", "enum": ["R0", "R1", "R2"] },
+    "capabilities": { "type": "array", "items": { "type": "string" } },
+    "autoMerge": { "type": "boolean" },
+    "shadowMode": { "type": "boolean" },
+    "reasons": { "type": "array", "items": { "type": "string" } },
+    "trace": { "type": "object" }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "intent", "decision", "classification", "risk", "confidence", "requestedChanges", "summary"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "intent": { "type": "string", "enum": ["submission", "correction", "claim", "report", "general", "pull_request"] },
+    "decision": { "type": "string", "enum": ["approve", "needs_changes", "needs_human", "reject", "blocked"] },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primaryCategory", "tags"],
+      "properties": {
+        "primaryCategory": { "type": "string" },
+        "tags": { "type": "array", "maxItems": 8, "uniqueItems": true, "items": { "type": "string" } }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "capabilities", "reasons"],
+      "properties": {
+        "level": { "type": "string", "enum": ["R0", "R1", "R2"] },
+        "capabilities": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["code", "evidenceRef"],
+            "properties": { "code": { "type": "string" }, "evidenceRef": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "requestedChanges": { "type": "array", "items": { "type": "string" } },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 800 }
+  }
+}

@@ -34,7 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -42,9 +45,15 @@ jobs:
         id: scope
         env:
           REQUESTED_SOURCE_ONLY: ${{ inputs.source_only && 'true' || 'false' }}
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           if [ "$REQUESTED_SOURCE_ONLY" = "true" ]; then
             echo "source_only=true" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENT_NAME" = "pull_request" ]; then
+            unexpected=$(git diff --name-only "${BASE_SHA}...${HEAD_SHA}" | grep -Ev '^registry/plugins/[a-z0-9-]+\.json$' || true)
+            if [ -z "$unexpected" ]; then echo "source_only=true" >> "$GITHUB_OUTPUT"; else echo "source_only=false" >> "$GITHUB_OUTPUT"; fi
           else
             echo "source_only=false" >> "$GITHUB_OUTPUT"
           fi
@@ -52,6 +61,9 @@ jobs:
         env:
           REGISTRY_SOURCE_ONLY: ${{ steps.scope.outputs.source_only == 'true' && '1' || '0' }}
         run: node scripts/validate-registry.mjs
+      - name: Materialize derived catalog
+        if: ${{ steps.scope.outputs.source_only != 'true' }}
+        run: node scripts/governance/publisher.mjs
       - name: Validate deterministic catalogs
         if: ${{ steps.scope.outputs.source_only != 'true' }}
         run: node scripts/generate-catalog.mjs --check
@@ -60,9 +72,11 @@ jobs:
         run: node scripts/validate.mjs
       - name: Validate registry scripts
         run: |
-          for file in scripts/registry-lib.mjs scripts/import-legacy-catalog.mjs scripts/generate-catalog.mjs scripts/discover.mjs scripts/update.mjs scripts/validate-registry.mjs scripts/validate.mjs scripts/analyze-quality.mjs scripts/monitor-upstream.mjs scripts/plugin-intake-agent.mjs; do
+          for file in scripts/registry-lib.mjs scripts/import-legacy-catalog.mjs scripts/generate-catalog.mjs scripts/discover.mjs scripts/update.mjs scripts/validate-registry.mjs scripts/validate.mjs scripts/analyze-quality.mjs scripts/monitor-upstream.mjs scripts/plugin-intake-agent.mjs scripts/classify-plugins.mjs scripts/governance/evidence.mjs scripts/governance/llm.mjs scripts/governance/policy.mjs scripts/governance/rules.mjs scripts/governance/pr-gate.mjs scripts/governance/pr-review.mjs scripts/governance/state.mjs scripts/governance/migrate-state.mjs scripts/governance/publisher.mjs scripts/governance/stability.mjs scripts/governance/stability.test.mjs; do
             node --check "$file"
           done
+      - name: Run governance stability tests
+        run: node --test scripts/governance/stability.test.mjs
       - name: Validate compiled plugin boundary
         run: |
           test ! -e src

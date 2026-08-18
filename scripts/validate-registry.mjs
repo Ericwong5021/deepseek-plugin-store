@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { pathToFileURL } from 'node:url'
 import { loadRegistryPlugins, pluginId, readJson, validInstallSpec, validRepository } from './registry-lib.mjs'
+import { readStateCollection } from './governance/state.mjs'
 
 const unique = (label, values) => {
   const seen = new Set()
@@ -16,16 +17,22 @@ export const validateRegistry = async () => {
   const sourceOnly = process.env.REGISTRY_SOURCE_ONLY === '1'
   const taxonomy = await readJson('registry/taxonomy.json')
   const collection = await readJson('registry/collections/editor-picks.json')
-  const observations = await readJson('data/observations.json')
-  const candidates = await readJson('data/candidates.json')
-  const classifications = await readJson('data/plugin-classifications.json', { schemaVersion: 1, updatedAt: null, classifications: {} })
+  const observations = await readStateCollection('observations')
+  const candidates = await readStateCollection('candidates')
+  const classifications = await readStateCollection('classifications')
+  const governancePolicy = await readJson('governance/policy.json')
+  const goldenFixtures = await readJson('governance/fixtures/golden-plugins.json')
+  const governanceSchemas = await Promise.all(['ai-decision', 'evidence', 'governance-plan', 'plugin-record'].map((name) => readJson(`scripts/governance/schemas/${name}.schema.json`)))
   const files = await loadRegistryPlugins()
   if (taxonomy.schemaVersion !== 2 || !Array.isArray(taxonomy.groups) || !Array.isArray(taxonomy.categories) || !Array.isArray(taxonomy.tags)) throw new Error('invalid registry taxonomy')
   if (taxonomy.policies?.primaryCategoriesPerPlugin !== 1 || taxonomy.policies?.minimumListedPluginsForPublicCategory !== 3 || JSON.stringify(taxonomy.policies.classificationPrecedence) !== JSON.stringify(['reviewed-override', 'accepted-maintainer', 'llm-classification', 'manifest-evidence', 'evidence-suggestion', 'keyword-suggestion', 'legacy-migration'])) throw new Error('invalid registry policies')
   if (collection.schemaVersion !== 2 || collection.id !== 'editor-picks' || !Array.isArray(collection.items)) throw new Error('invalid editor picks collection')
   if (observations.schemaVersion !== 2 || !observations.updatedAt || !observations.repositories || Array.isArray(observations.repositories)) throw new Error('invalid observations')
   if (candidates.schemaVersion !== 2 || !candidates.updatedAt || !candidates.candidates || Array.isArray(candidates.candidates)) throw new Error('invalid candidates')
-  if (classifications.schemaVersion !== 1 || !classifications.classifications || Array.isArray(classifications.classifications)) throw new Error('invalid LLM classifications')
+  if (![1, 2].includes(classifications.schemaVersion) || !classifications.classifications || Array.isArray(classifications.classifications)) throw new Error('invalid LLM classifications')
+  if (!governancePolicy.version || governancePolicy.shadowMode !== true || governancePolicy.autoMerge?.enabled !== false || governancePolicy.evidence?.maximumBytes !== 204800) throw new Error('invalid governance policy')
+  if (goldenFixtures.schemaVersion !== 1 || goldenFixtures.count !== 100 || goldenFixtures.plugins?.length !== 100) throw new Error('invalid governance golden fixtures')
+  if (governanceSchemas.some((schema) => schema.$schema !== 'https://json-schema.org/draft/2020-12/schema')) throw new Error('invalid governance schemas')
   if (!files.length) throw new Error('registry/plugins is empty')
   unique('group id', taxonomy.groups.map((group) => group.id))
   unique('category id', taxonomy.categories.map((category) => category.id))
@@ -92,6 +99,7 @@ export const validateRegistry = async () => {
     if (!categories.has(classification.category) || categories.get(classification.category).group !== classification.group) throw new Error(`invalid LLM classification category: ${id}`)
     if (!Array.isArray(classification.tags) || classification.tags.some((tag) => !tags.has(tag))) throw new Error(`invalid LLM classification tags: ${id}`)
     if (!['low', 'medium', 'high'].includes(classification.confidence) || !classification.model || !classification.promptVersion || !classification.classifiedAt || !classification.evidenceHash || !classification.reason) throw new Error(`invalid LLM classification metadata: ${id}`)
+    if (classification.cacheKey && (!/^[a-f0-9]{40}$/.test(classification.repositoryCommitSha || '') || !/^[a-f0-9]{64}$/.test(classification.cacheKey) || !/^[a-f0-9]{64}$/.test(classification.taxonomyHash || '') || !classification.policyVersion || !classification.risk || !classification.governance || classification.shadowMode !== true)) throw new Error(`invalid governance classification metadata: ${id}`)
   }
   const code2Skill = repositoryMap.get('leechen298/code2skill')
   if (!code2Skill || code2Skill.classification.category !== 'plugin-development' || code2Skill.classification.issueUrl !== 'https://github.com/Ericwong5021/deepseek-plugin-store/issues/1') throw new Error('Issue #1 classification override is missing')
