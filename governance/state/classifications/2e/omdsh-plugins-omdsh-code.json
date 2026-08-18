@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "ui",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a terminal-enabled mode for the web GUI: it registers a third 'Code' segment, replaces the conversation column with a harness terminal session, and links that session to workspace/session metadata so users can resume and create new terminal conversations. It also provides reconnect behavior and directory/workspace-aware session handling, indicating a user-facing terminal orchestration tool rather than code-generation or data-processing logic.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 网页界面新增“Code”模式，切换后在对话主区显示对应会话的终端界面，并按工作区/会话上下文对终端会话进行关联与恢复。",
+    "en": "This plugin adds a Code mode to the DeepSeek Harness web UI that opens a terminal session in the conversation area and links it to workspace/session context so terminal sessions can be resumed and managed."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches and manages terminal processes from the web host context",
+      "Exposes a terminal WebSocket stream endpoint for browser-terminal relay",
+      "Resumes and attaches terminal sessions to workspaces/conversations by session id",
+      "Can execute a configurable launcher command/profile in user-selected directories"
+    ],
+    "reasons": [
+      {
+        "code": "README: adds a Code segment beside Chat/Work and uses a terminal column in the conversation UI, including websocket-backed terminal integration at /omdsh-codemode/terminal.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: starts the terminal app with session identity (`--session-id`) and resumes/reattaches sessions across page/conversation changes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: runtime dependencies include node-pty and ws, and peers/include web client/runtime services needed to run terminal and websocket behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Launches and manages terminal processes from the web host context",
+      "Exposes a terminal WebSocket stream endpoint for browser-terminal relay",
+      "Resumes and attaches terminal sessions to workspaces/conversations by session id",
+      "Can execute a configurable launcher command/profile in user-selected directories"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:51.117Z",
+  "repositoryCommitSha": "85f462cd472bae47a6836bd99085016368d44abf",
+  "evidenceHash": "5459bf974506faf0808a2c5300c60f1e0d0a040b1c5de461aa577dd9c0111ef4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "035e4d8c7dd6863aac494ebe209925f209cbc522d38b342b9dc2b93dbb0f41de",
+  "shadowMode": false
+}

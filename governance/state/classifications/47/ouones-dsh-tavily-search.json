@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "browser",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The repository is a DSH bundle plugin whose primary user-facing purpose is to provide Tavily-based web search in DeepSeek Harness. It registers a search provider and tool for the web seam, relies on external API access and credential configuration, and is best classified as search/browsing integration rather than build, testing, or data-processing tooling.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的 web 功能提供 Tavily 网页搜索能力，提供 `web-search-tavily` 工具并通过凭据或环境变量配置 API 访问。",
+    "en": "This plugin adds Tavily-backed web search to DeepSeek Harness, exposing `web-search-tavily` and allowing API access configuration through credentials or environment variables."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Web search through external Tavily API",
+      "DSH web plugin/provider registration",
+      "Credential-based API key configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README indicates the plugin provides the DSH web search provider `tavily-official` and tool `web-search-tavily`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents direct use of `api.tavily.com/search` and configurable credential inputs (`TAVILY_API_KEY`, `apiKey`, `apiKeyEnv`).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json includes DSH bundle metadata for plugin patch mounting via `cordis.patch.yml`, confirming runtime integration into the host seam.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Web search through external Tavily API",
+      "DSH web plugin/provider registration",
+      "Credential-based API key configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:07.908Z",
+  "repositoryCommitSha": "7e14e029085f2f8afea1dc7543e4cbd0cdb478d6",
+  "evidenceHash": "655d5a3dec34101aab3d316b417f19ca0db95afe957b5b0610ca7a8f0767bf61",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ac5e3b7aa8a05995154ad77a0c95517056be395c689d7cf24a72efc8ae15052",
+  "shadowMode": false
+}

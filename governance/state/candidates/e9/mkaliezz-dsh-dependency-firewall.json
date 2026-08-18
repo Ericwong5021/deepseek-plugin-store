@@ -4,7 +4,7 @@
     "fullName": "MkaliezZ/dsh-dependency-firewall",
     "url": "https://github.com/MkaliezZ/dsh-dependency-firewall"
   },
-  "summary": "Dependency-installation guard for DeepSeek Harness: classifies package-manager commands as ALLOW, ASK, or BLOCK before execution.",
+  "summary": "This plugin checks dependency-install commands for common package managers before execution and labels them as ALLOW, ASK, or BLOCK to let DeepSeek Harness decide next steps.",
   "sources": [
     "github-topic"
   ],
@@ -43,20 +43,24 @@
     "capturedAt": "2026-08-18T01:54:53.410Z"
   },
   "classificationSuggestion": {
-    "group": "tools-data",
-    "category": "files-terminal",
+    "group": "agents-workflows",
+    "category": "automation",
     "tags": [
-      "project-analysis",
-      "testing"
+      "automation",
+      "terminal",
+      "cli",
+      "workflow",
+      "tool"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:test",
-      "text:project-analysis:dependency",
-      "text:files-terminal:git"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:4efb7c003592d4da8f03b5c34703d271076e9604d0487fbe68b7f5cd9a0ed6c5",
+      "commit:c5aaea7788301df1eff1c6d2df3d431e087b4b5a"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:19:59.530Z",
+    "reason": "该插件的主要用途是在 DeepSeek Harness 中对依赖安装命令做预执行判断，按 ALLOW/ASK/BLOCK 分类并提示风险等级；其文档明确覆盖 npm/pnpm/yarn/pip/uv/cargo 等常见流程并提到高风险来源会被升级拦截。根据仓库与 README 证据，它并不直接安装包，也未声明联网信誉/CVE 查询，因此属于可执行命令前置治理的自动化实用工具。"
   }
 }

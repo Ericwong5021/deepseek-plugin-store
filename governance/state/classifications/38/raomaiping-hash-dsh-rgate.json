@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "ui",
+    "browser",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin’s user-facing purpose is to add a remote-access authentication gate to the DeepSeek Harness Web UI: it injects a login page for non-loopback access and wraps most `/api` RPC routes with session validation, while providing related auth endpoints for login, logout, status, and password operations. Evidence in the README also explicitly notes operational limits (notably, websocket event streams remain ungated).",
+  "summaries": {
+    "zh": "该插件用于为 DeepSeek Harness 的 Web 界面提供远程访问登录门禁：对非本地访问显示登录页，并对主要 `/api` 请求进行会话校验。",
+    "en": "This plugin adds a remote-access login gate for DeepSeek Harness Web, showing a login page for non-loopback access and applying session-based checks to major `/api` operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "HTTP request gating for remote clients",
+      "Session cookie authentication",
+      "Password-based login/logout endpoints",
+      "Login throttling on failures",
+      "Local hashed credential storage",
+      "Audit logging of auth events"
+    ],
+    "reasons": [
+      {
+        "code": "FULL_PAGE_LOGIN_WALL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "API_SHADOWING_52_UNARY_RPCS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SESSION_COOKIE_AUTHENTICATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "UNGATED_WEBSOCKET_ENDPOINTS_NOTED",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "HTTP request gating for remote clients",
+      "Session cookie authentication",
+      "Password-based login/logout endpoints",
+      "Login throttling on failures",
+      "Local hashed credential storage",
+      "Audit logging of auth events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:48.091Z",
+  "repositoryCommitSha": "0cf638c14d84766c321e583b1648894ca7ad8531",
+  "evidenceHash": "b650e8076b7113aad3d0587daed2710eee16bed8b10c39fed57a1bfd49aa0d6b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "369a3e99ae179af0e91ce914d9ff546c73368748d3211642453f8c9541011a87",
+  "shadowMode": false
+}

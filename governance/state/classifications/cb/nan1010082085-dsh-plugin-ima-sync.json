@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "integration",
+    "api",
+    "knowledge",
+    "cli",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an automation utility that records DSH conversation state and synchronizes it to Tencent IMA notes/knowledge base without adding code-generation, search, or UI features. Evidence in the README shows event-driven turn/session syncing, configurable credential loading, optional local script upload path, and OpenAPI fallback, which places it in automation with external integration and knowledge-management behavior.",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，可在会话每轮结束和会话销毁时自动整理对话进度并上传到腾讯IMA的每日笔记或工作知识库，支持按优先级调用本机上传脚本或IMA接口。",
+    "en": "This DSH plugin automatically packages conversation progress at turn and session end and uploads it to Tencent IMA daily notes and optional Work knowledge base, with priority for a local upload script and fallback to IMA API calls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automatically captures and uploads DSH conversation progress on turn and session end",
+      "Reads configuration/credentials from profile, environment, and local IMA config files",
+      "Invokes a local upload binary when available, with fallback to remote IMA OpenAPI calls",
+      "Writes summaries/notes to Tencent IMA daily notes and optional Work knowledge base"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin listens to turn and session lifecycle events and triggers uploads at turn end and agent disposal.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents credential and project/kb config sources including profile config, environment variables, and local ~/.config/ima files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes upload flow that prefers ~/.local/bin/ima-upload and falls back to IMA OpenAPI endpoints (list_note/import_doc/append_doc/add_knowledge).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a DSH bundle plugin package with dsh bundle metadata, indicating integration into the DSH runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automatically captures and uploads DSH conversation progress on turn and session end",
+      "Reads configuration/credentials from profile, environment, and local IMA config files",
+      "Invokes a local upload binary when available, with fallback to remote IMA OpenAPI calls",
+      "Writes summaries/notes to Tencent IMA daily notes and optional Work knowledge base"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:23.997Z",
+  "repositoryCommitSha": "c3d6e0d8003b2b6dcd14956cebb80db0067eaca6",
+  "evidenceHash": "8584cc0c42f77d88817dba3496e7812739c5db4a61899b4b885289f34182eeda",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0ec106cab27bb699a431111410a31dac8979437860868a7ef30e99c4e12cf327",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "image",
+    "tool",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "基于仓库信息，该插件的主要用途是给 DeepSeek Harness 增加视觉能力：通过注册 `vision_describe` 工具，让模型可提交图片路径或图片 URL，由配置的外部 OpenAI 兼容视觉服务返回文本描述，并配有结果缓存与运行时配置热更新机制。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供视觉辅助能力，通过 `vision_describe` 工具读取图片并调用外部视觉模型返回文字描述。",
+    "en": "This plugin provides vision support for DeepSeek Harness by exposing a `vision_describe` tool that reads image input and returns a text description from an external vision model."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers a vision tool (`vision_describe`) for model tool-calling in DSH",
+      "Accepts image inputs from local paths, `file://` URLs, and HTTP(S) URLs",
+      "Forwards image-to-text requests to configurable OpenAI-compatible external endpoints",
+      "Supports in-memory answer caching with hash keying, TTL, and LRU-style eviction",
+      "Reloads vision settings at runtime from `~/.dsh/settings.yaml`"
+    ],
+    "reasons": [
+      {
+        "code": "E1_EXTERNAL_API_REQUEST_FLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "E2_API_KEY_AND_MODEL_CONFIGURATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "E3_LOCAL_INPUT_AND_PATH_PROCESSING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "E4_DSH_BUNDLE_PLUGIN_INTEGRATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers a vision tool (`vision_describe`) for model tool-calling in DSH",
+      "Accepts image inputs from local paths, `file://` URLs, and HTTP(S) URLs",
+      "Forwards image-to-text requests to configurable OpenAI-compatible external endpoints",
+      "Supports in-memory answer caching with hash keying, TTL, and LRU-style eviction",
+      "Reloads vision settings at runtime from `~/.dsh/settings.yaml`"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:06.253Z",
+  "repositoryCommitSha": "bad4175389366ba62774a94a56af66d93421235d",
+  "evidenceHash": "74c0baef65a75bfbe993184e91d406fe5e5e0ac1698547d2c6338451c8d4d600",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6d5fe9d928d6d4b741f0ce661d7b33f97f1a9d0d83b5d2dc37a6b91aa1a2c1bd",
+  "shadowMode": false
+}

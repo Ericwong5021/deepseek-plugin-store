@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "tool",
+    "integration",
+    "browser",
+    "cli",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a web search integration tool for DeepSeek Harness, replacing or selecting the default web search provider with AnySearch via a native WebSearchProvider that calls AnySearch /v1/search and returns result metadata. Evidence shows dedicated configuration via a web settings section, optional headless support, and profile patching for enabling/disabling the provider, so classification focuses on search-browsing with external-service integration and moderate risk from networked search calls plus profile/configuration changes.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中提供一个原生 AnySearch Web 搜索提供者，用于在 Web 与 Headless 场景下进行网页检索并将结果返回给 web_search 工具。",
+    "en": "This plugin adds a native AnySearch web search provider to DeepSeek Harness, enabling web search in both Web and Headless modes through the web_search workflow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Executes web search requests through AnySearch /v1/search",
+      "Provides a DeepSeek Harness web_search provider integration",
+      "Stores and reads provider configuration via credential references",
+      "Adds and removes profile-specific plugin registration and overrides",
+      "Supports both Web UI and headless usage paths"
+    ],
+    "reasons": [
+      {
+        "code": "anysearch-websearchprovider-maps-to-ctx.web-with-id-anysearch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin-description-identifies-native-web-search-provider-and-rest-endpoint-integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_settings_and_credentials-domain-integration-for-api-key-and-parameters",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh-bundle-patch-and-client-exports-indicate-web-and-headless-profile integration",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "installer-uninstaller-scripts-operate-on-profile-package.json-and-cordis.patch.yml",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Executes web search requests through AnySearch /v1/search",
+      "Provides a DeepSeek Harness web_search provider integration",
+      "Stores and reads provider configuration via credential references",
+      "Adds and removes profile-specific plugin registration and overrides",
+      "Supports both Web UI and headless usage paths"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:44.303Z",
+  "repositoryCommitSha": "2431cdd8d3294be594340deec09b6b03dd81f65a",
+  "evidenceHash": "1f59eb819bf44ec6168325466497d3d795b373bb5d8a2b633baf9d976c9bf715",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "beb4a3598715493c5742eefbcb72cb32c0f8f907a381445991037756b6100949",
+  "shadowMode": false
+}

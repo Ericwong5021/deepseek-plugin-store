@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "file",
+    "ui",
+    "tool",
+    "integration",
+    "planning",
+    "mcp"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily an automation utility that helps users migrate agent-related configuration into DeepSeek Harness through a settings UI: it discovers multiple local sources, lets users choose items to import, shows a preview, and then writes changes with backups. The implementation spans host and client halves, reads local agent config artifacts, and writes into DSH MCP/skill config targets, which is why it is best classified as migration automation rather than general development tooling.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的设置中提供一键迁移入口，可从 Claude Code、Cursor、Codex 与 cc-switch 读取配置并导入 MCP 与 Skills 到本地 DSH 配置。",
+    "en": "This plugin adds a settings-based import flow in DeepSeek Harness to migrate MCP and Skill configurations from Claude Code, Cursor, Codex, and cc-switch into local DSH setup files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read local configuration sources under ~/.claude, ~/.cursor, ~/.codex, and cc-switch database files",
+      "Parse MCP and skill definitions across JSON/TOML/sqlite for migration",
+      "Write imported MCP and skill artifacts into DSH target files/directories",
+      "Create timestamped .bak backups and support a dry-run preview mode before applying writes"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as importing settings from Claude Code, Cursor, Codex, and cc-switch into DSH via Settings → General → Import, confirming a configuration migration role.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It exposes host routes for source detection and run/import actions, indicating file-system-driven operational effects at runtime.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Limitations state that MCP credentials are written in plaintext to cordis.patch.yml or ~/.dsh/mcp.json, which creates moderate local sensitivity exposure.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH web bundle and client entry, showing this is an active plugin integration that operates inside the DSH runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Read local configuration sources under ~/.claude, ~/.cursor, ~/.codex, and cc-switch database files",
+      "Parse MCP and skill definitions across JSON/TOML/sqlite for migration",
+      "Write imported MCP and skill artifacts into DSH target files/directories",
+      "Create timestamped .bak backups and support a dry-run preview mode before applying writes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:45.155Z",
+  "repositoryCommitSha": "f3c059f099c37b44e54dfd22795b2427f3237469",
+  "evidenceHash": "c5dc612df02b1ae9dd6c50a2ea5bb8f55ccc14d1d5e6070c51f93356aad20fe5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b5016c6bbe42567a77b725b39f5ddb594c7865946be180274b85af8823ba625e",
+  "shadowMode": false
+}

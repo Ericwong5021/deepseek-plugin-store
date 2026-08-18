@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "memory",
+    "knowledge",
+    "integration",
+    "data",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "This plugin is primarily a memory and knowledge context layer for DeepSeek Harness: it exposes update/retrieve/subscribe services for agent workflows, supports pluggable local or remote memory/knowledge plugins, and includes durable storage through a Rust backend (including SQLite and artifact ingestion). The repository’s own description and feature list consistently position it as an agent memory context hub rather than a UI, media, or standalone analytics tool.",
+  "summaries": {
+    "zh": "Patchouli 是一款 DeepSeek Harness 插件，提供面向智能体的本地优先记忆与知识上下文服务，支持 update/retrieve/subscribe，并可接入本地或远程记忆/知识后端。",
+    "en": "Patchouli is a DeepSeek Harness plugin that provides a memory and knowledge context service for agents with update/retrieve/subscribe workflows, supporting pluggable local or remote memory/knowledge backends."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Exposes DeepSeek Harness services for updating, retrieving, and subscribing to memory/knowledge data",
+      "Routes and aggregates memory/knowledge provider results with user or plugin filtering",
+      "Ingests artifacts such as images and workspace files into typed storage",
+      "Runs a Rust-backed storage component with SQLite support and remote provider options"
+    ],
+    "reasons": [
+      {
+        "code": "MEMORY_CONTEXT_SERVICE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLUGGABLE_CONNECTOR_ARCHITECTURE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_DAEMON_STORAGE_BACKEND",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "PATCH_COMPAT_WITH_THIRD_PARTY_PLUGINS",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Exposes DeepSeek Harness services for updating, retrieving, and subscribing to memory/knowledge data",
+      "Routes and aggregates memory/knowledge provider results with user or plugin filtering",
+      "Ingests artifacts such as images and workspace files into typed storage",
+      "Runs a Rust-backed storage component with SQLite support and remote provider options"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:50.567Z",
+  "repositoryCommitSha": "2307d6c42cc9ce6ca852089e93f87c83ce92337f",
+  "evidenceHash": "2152dfb0f2f836627dea75b9340c239d5fb3bcb8236b95048ba6fca800eebf4c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d21964c7b4a47c3854435bfb89795ad75ca3141e3839e4801e839afccdb347d8",
+  "shadowMode": false
+}

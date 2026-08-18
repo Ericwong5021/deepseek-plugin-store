@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "ui",
+    "agent",
+    "tool",
+    "integration",
+    "mcp",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "证据显示该插件是面向用户的终端 AI 助手界面：README 将其定位为 dshX 终端 UI 并说明核心交互路径，包清单提供 `dshx-tui` CLI 启动入口与大量与会话、模型、技能、MCP 和终端工具相关的依赖，因此其主要用途是通过终端界面编排与控制 DeepSeek Harness 工作流，而非单纯内容生产或后台服务。",
+  "summaries": {
+    "zh": "dshx/tui 是面向终端用户的 DeepSeek Harness 前端界面，用于启动与管理智能体会话、进行会话/模型控制，并访问技能和 MCP 等流程化任务功能。",
+    "en": "dshx/tui is a terminal UI for DeepSeek Harness, letting users start and manage agent sessions, control presets and models, and access skill or MCP-based workflow features."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "提供终端交互界面用于启动和控制 AI 智能体会话",
+      "支持会话恢复、模型/预设切换等工作流操作",
+      "可通过终端工具链集成执行 bash 或子进程相关工具",
+      "支持技能与 MCP 等外部能力入口"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确标注该包为 dshX 的终端前端（\"终端前端——dsh-TUI\"），并列出会话创建/恢复、/preset、/model、技能、MCP、子代理等用户操作功能。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 定义可执行入口 `bin.dshx-tui`，说明插件以终端命令行方式供用户直接启动。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "package.json 依赖包含 `@deepseek-ai/dsh-terminal`、`@deepseek-ai/dsh-terminal-bash` 和 `@deepseek-ai/dsh-tool-bash-persistent`，显示其与终端命令/工具调用链路相连。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "提供终端交互界面用于启动和控制 AI 智能体会话",
+      "支持会话恢复、模型/预设切换等工作流操作",
+      "可通过终端工具链集成执行 bash 或子进程相关工具",
+      "支持技能与 MCP 等外部能力入口"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:43.849Z",
+  "repositoryCommitSha": "005e9126518ebcf3f87292844d4daf13f034e540",
+  "evidenceHash": "a89861c2c783199dac76c04760e61cb5837877b58cbe59943371cb37143bcffa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5acb9b852838a657b6d7e6d8c35a313f516e6e762be731e93e16ef70528e0aff",
+  "shadowMode": false
+}

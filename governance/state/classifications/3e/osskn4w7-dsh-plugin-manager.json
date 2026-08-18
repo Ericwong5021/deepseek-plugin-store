@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "cli",
+    "chat",
+    "ui",
+    "file",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "Primary purpose is plugin lifecycle and runtime management for DeepSeek Harness: users can install, enable/disable, and uninstall plugins without hand-editing config through web settings, CLI, or chat command; evidence shows it rewrites managed sections of `cordis.patch.yml`, supports package installation via pnpm, and exposes `/plugin-manager/api`, so it is best classified as a plugin-management utility in the plugin-development category.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供可视化与命令方式的插件管理入口，可在界面、命令行或聊天命令下安装、启用/禁用和卸载插件并更新配置。",
+    "en": "This plugin adds a plugin-management interface for DeepSeek Harness, allowing users to list, install, enable/disable, and remove plugins through the web UI, CLI, or `/plugin` chat command while updating profile configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs and removes plugins via pnpm commands",
+      "Edits local `cordis.patch.yml` profile configuration",
+      "Exposes plugin-management HTTP endpoints in the host runtime",
+      "Provides CLI commands and chat-command handlers for plugin actions",
+      "Toggles plugin loader entries (enable/disable) in live or restart-backed flow"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin installs, enables/disables, and uninstalls DeepSeek Harness plugins from web UI, CLI, and /plugin chat command.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes automatic writing of `cordis.patch.yml` and managed block handling, indicating local file mutation as a core capability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines a CLI binary (`dsh-plugin-manager`) and client bundle exports, indicating both terminal and web-facing integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Installs and removes plugins via pnpm commands",
+      "Edits local `cordis.patch.yml` profile configuration",
+      "Exposes plugin-management HTTP endpoints in the host runtime",
+      "Provides CLI commands and chat-command handlers for plugin actions",
+      "Toggles plugin loader entries (enable/disable) in live or restart-backed flow"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:58.566Z",
+  "repositoryCommitSha": "c052a22a0d968b185c8d022ffd0e24885a0f3962",
+  "evidenceHash": "1e014ffc539041ab887ec4aec3cacce97f83af1b096febf5a8747e4152219e8a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4abe5ca8464add888b16251ab4c0ee842eca34c0bec0c84c64b672da67f251bc",
+  "shadowMode": false
+}

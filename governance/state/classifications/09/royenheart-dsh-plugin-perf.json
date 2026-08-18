@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "automation",
+    "ui",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件主要面向 DeepSeek Harness 的 Web 界面性能优化：在不改动核心源码的前提下，通过注册覆盖路由、响应压缩、不可变缓存和首屏脚本预加载来优化资源传输与加载行为。README 与 manifest/包配置共同表明其为可配置的补充性能插件，功能范围集中于静态资源服务层与性能设置入口，而非业务逻辑或远程 API 扩展。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 的性能增强插件，用于对前端资源和客户端 bundle 进行可选压缩、缓存优化和预加载注入，并提供可重启生效的设置开关。",
+    "en": "This is a DeepSeek Harness web performance plugin that adds optional asset/bundle compression, caching optimization, and preload hints, with restart-based settings controls for configuring behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "HTTP response compression negotiation",
+      "immutable cache-control for static and bundle assets",
+      "route-level static asset interception",
+      "preload link injection into HTML index",
+      "runtime configuration of web performance options",
+      "startup capability probing against upstream behavior"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin declares purpose as a DeepSeek Harness plugin that registers frontend routes and adds gzip/brotli compression plus immutable caching for assets.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It defines per-entry `/plugins/<entryId>` bundle routes with compressed `client.js`/`client.js.map` delivery while preserving route semantics.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It injects optional `<link rel=\"preload\" ...>` hints for stage-one client bundles through index taps.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It includes startup auto-detect probes to avoid duplicating upstream optimizations already implemented by the host server.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata includes DSH bundle patch and client/web export configuration, indicating runtime plugin wiring into web profile host and client planes.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository contains local installer scripts and benchmark/analysis files for build and testing workflows, indicating operational and testing behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "HTTP response compression negotiation",
+      "immutable cache-control for static and bundle assets",
+      "route-level static asset interception",
+      "preload link injection into HTML index",
+      "runtime configuration of web performance options",
+      "startup capability probing against upstream behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:13.957Z",
+  "repositoryCommitSha": "5853e8a85ba23d3c2390197005ffdf4c96c96c2c",
+  "evidenceHash": "019874dd3cdfee63593c14b423a275a283cb42bf56790e10c3f34d069a53db2e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e79825b6226eccae63ab5ebe24c60145decd5774934a744cf035118de25125fb",
+  "shadowMode": false
+}

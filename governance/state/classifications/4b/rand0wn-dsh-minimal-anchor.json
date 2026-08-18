@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "tool",
+    "context",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This is a DeepSeek Harness automation plugin that modifies first-turn session setup by limiting the exposed tool schema and optionally adding a structural preamble, then defers to normal full tool behavior afterward. Evidence from the README and package manifest shows it is narrowly scoped to initial prompt assembly and session-level first-turn control, making it a workflow-shaping utility rather than a data-processing or content-generation plugin.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在新会话首轮只保留指定工具并可添加结构化提示词，再自动恢复后续回合的完整工具行为。",
+    "en": "This plugin for DeepSeek Harness limits exposed tools on the first turn, optionally adds a short preamble, and then lets subsequent turns use the normal full tool setup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts the system-prompt assembly pipeline for each session turn",
+      "Filters tool schema on first turn to a configurable whitelist",
+      "Prepends an optional structural preamble on first turn",
+      "Restores full behavior on later turns after first assembly"
+    ],
+    "reasons": [
+      {
+        "code": "README states this plugin hooks dsh system-prompt/assemble and applies tool pruning plus preamble only on the first session turn, with later turns unchanged",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration section documents whitelistedTools and enforcePreamble/customPreamble options controlling first-turn behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a dsh bundle patch entry, indicating activation is via profile bundle wiring rather than automatic global behavior",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts the system-prompt assembly pipeline for each session turn",
+      "Filters tool schema on first turn to a configurable whitelist",
+      "Prepends an optional structural preamble on first turn",
+      "Restores full behavior on later turns after first assembly"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:46.633Z",
+  "repositoryCommitSha": "64bce8637531166afe3a7709e8ddc9c0155016d7",
+  "evidenceHash": "ab40418ae80b9e033273b88d42a66fa67ac944535c77b99327f10d3aba42cf7b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "98319f719d613755dded65f0e097003a62737e7a9110e4c2aae097f7e85466d3",
+  "shadowMode": false
+}

@@ -4,7 +4,7 @@
     "fullName": "Nuo-cl/dsh-auto-mode",
     "url": "https://github.com/Nuo-cl/dsh-auto-mode"
   },
-  "summary": "DSH plugin: auto mode that routes permission-gated tool calls through an LLM review before approving, blocking, or asking for confirmation.",
+  "summary": "This plugin adds an Auto mode to DeepSeek Harness that automatically handles permission-gated tool calls using configured rules, review logic, and optional confirmation prompts.",
   "sources": [
     "github-topic"
   ],
@@ -46,34 +46,24 @@
     "group": "agents-workflows",
     "category": "automation",
     "tags": [
-      "agent",
-      "api",
       "automation",
+      "tool",
+      "workflow",
       "chat",
       "context",
-      "data",
-      "document",
-      "file",
-      "planning",
-      "project-analysis",
-      "search",
-      "testing",
-      "theme",
-      "tool",
-      "ui"
+      "api",
+      "ui",
+      "integration"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:eval",
-      "text:automation:automat",
-      "text:planning-execution:todo",
-      "text:memory-context:prompt",
-      "text:search-browsing:search",
-      "text:document-processing:文档",
-      "text:themes-layout:skin"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:106aeaed1e00eef439fa350affa85d6f3c3039ca2efbaa4f803e513c95e947d4",
+      "commit:0eddaea527a943deb136f73c0aee16492d8253fc"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:20:48.731Z",
+    "reason": "Evidence in the repository shows this plugin is primarily an approval-automation extension for DeepSeek Harness: it adds an Auto mode permission preset and intercepts user confirmation-required tool calls so they are handled through rule checks, optional LLM review, and prompt-based fallback. Its core behavior is changing how tool invocation permissions are decided in-session rather than adding domain tools. Because it can auto-approve and only then optionally ask for confirmation, its impact is operational risk in tool execution flow, and it depends on outbound model calls and configured policies."
   }
 }

@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "chat",
+    "integration",
+    "automation",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a terminal interaction utility for DeepSeek Harness: users run `dsh-ask` in the shell for immediate streaming answers, with durable sessions and optional shell integrations that route unknown commands in fish/bash/zsh/powershell to the ask flow.",
+  "summaries": {
+    "zh": "dsh-ask 是一个面向终端的 DeepSeek Harness 插件，用于在当前目录执行流式问答并保留会话，同时支持 fish、bash、zsh、PowerShell 的命令未找到集成以将交互式未知命令转交给问答流程。",
+    "en": "dsh-ask is a terminal-focused DeepSeek Harness plugin that runs a streaming ask session in the current shell context, supports persistent sessions, and offers optional fish/bash/zsh/PowerShell command-not-found integrations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Run terminal one-turn ask sessions via `dsh-ask`/`dsh --profile ask`",
+      "Persist session state and logs with flush on completion",
+      "Generate shell integration snippets for fish/bash/zsh/powershell",
+      "Intercept unknown interactive shell commands and forward them to ask workflow",
+      "Support session selection/creation flags for session reuse",
+      "Stream visible assistant output text in terminal"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a terminal-first CLI flow (`dsh --profile ask`) that performs a single ask turn, streams text output, and exits, showing direct user-facing terminal behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states session logs are flushed and persisted per run (`sessions.flush()` and `$DSH_HOME/sessions/.../session.jsonl.zstd`), indicating durable local session state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details generated shell-not-found integrations for fish/bash/zsh/powershell that hook interactive command handling and optionally replace unknown-command behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes a binary `dsh-ask` and shell/template assets are part of the distributable files, confirming executable + integration tooling behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Run terminal one-turn ask sessions via `dsh-ask`/`dsh --profile ask`",
+      "Persist session state and logs with flush on completion",
+      "Generate shell integration snippets for fish/bash/zsh/powershell",
+      "Intercept unknown interactive shell commands and forward them to ask workflow",
+      "Support session selection/creation flags for session reuse",
+      "Stream visible assistant output text in terminal"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:42.391Z",
+  "repositoryCommitSha": "e3f0b54f7d7505ad3827af7f6de3ba2f19c42ab0",
+  "evidenceHash": "a0c301c7c4f52de20989a47218258661e10f3b79ea25540546b0f96ed3615030",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a05dd67f5711681f2ad394fb6ee414e54317fd7ad1306e4deaf653350d37919",
+  "shadowMode": false
+}

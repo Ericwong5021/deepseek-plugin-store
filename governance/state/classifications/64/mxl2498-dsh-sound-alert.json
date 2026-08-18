@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "browser",
+    "chat",
+    "ui",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is primarily a notification utility for DSH Web that gives users an audible cue when an assistant finishes responding, with runtime behavior implemented in the browser using session-state tracking and a generated chime sound, and no evidence of non-notification or external service functionality.",
+  "summaries": {
+    "zh": "该插件用于在 DSH Web 中在助手回答结束时播放提示音，帮助用户在会话完成时快速察觉状态变化。",
+    "en": "This plugin plays a chime in DSH Web when an assistant finishes replying, helping users notice when a response has completed."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "plays a browser-generated notification sound when an assistant reply completes",
+      "monitors session running-state transitions in the DSH Web client",
+      "provides configurable toggles and volume control"
+    ],
+    "reasons": [
+      {
+        "code": "README states this is a DSH Web plugin that plays a ding sound when assistant reply ends, and explains detection by watching session running state from true to false.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a web client plugin via dsh.client and injects dsh-client-runtime, indicating browser-side execution only.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes lib/client.js and cordis.patch.yml for client integration, with lib/index.js as a server-side placeholder for loader wiring.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "plays a browser-generated notification sound when an assistant reply completes",
+      "monitors session running-state transitions in the DSH Web client",
+      "provides configurable toggles and volume control"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:15.453Z",
+  "repositoryCommitSha": "0a448e48cc165f17b5adba073fb0ea3d1c8e7448",
+  "evidenceHash": "fceb2fec01bfdb644e984a16dd99eaa33847ce060b03504ec93ca6048bbcab4e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "73278f6778fbf0d2e53a5486452d8ea3b2652f09a30149436855e299430b9a8b",
+  "shadowMode": false
+}

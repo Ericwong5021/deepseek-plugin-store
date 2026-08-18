@@ -4,7 +4,7 @@
     "fullName": "rand0wn/dsh-minimal-anchor",
     "url": "https://github.com/rand0wn/dsh-minimal-anchor"
   },
-  "summary": "DeepSeek Harness (dsh) plugin: prune the tool schema and inject a structural preamble on a session's first turn only",
+  "summary": "This plugin for DeepSeek Harness limits exposed tools on the first turn, optionally adds a short preamble, and then lets subsequent turns use the normal full tool setup.",
   "sources": [
     "github-topic"
   ],
@@ -46,25 +46,21 @@
     "group": "agents-workflows",
     "category": "automation",
     "tags": [
-      "agent",
       "automation",
+      "workflow",
+      "tool",
       "context",
-      "file",
-      "project-analysis",
-      "tool"
+      "cli"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:project-analysis:dependency",
-      "text:orchestration:subagent",
-      "text:automation:automat",
-      "text:memory-context:session",
-      "text:files-terminal:git",
-      "text:data-processing:json",
-      "text:general-utilities:tool"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:ab40418ae80b9e033273b88d42a66fa67ac944535c77b99327f10d3aba42cf7b",
+      "commit:64bce8637531166afe3a7709e8ddc9c0155016d7"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:21:46.633Z",
+    "reason": "This is a DeepSeek Harness automation plugin that modifies first-turn session setup by limiting the exposed tool schema and optionally adding a structural preamble, then defers to normal full tool behavior afterward. Evidence from the README and package manifest shows it is narrowly scoped to initial prompt assembly and session-level first-turn control, making it a workflow-shaping utility rather than a data-processing or content-generation plugin."
   }
 }

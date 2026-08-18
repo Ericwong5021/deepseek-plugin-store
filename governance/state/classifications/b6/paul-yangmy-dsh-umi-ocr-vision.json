@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "chat",
+    "image",
+    "tool",
+    "api",
+    "cli",
+    "data",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户面向功能是为 DeepSeek Harness 提供本地图像文字识别与图像工具能力：在文本模型场景下先 OCR 图片再交由模型回答，并附带多个 vision_* 工具用于图像文本定位、裁剪、长图处理与差异分析。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中通过本地 Umi-OCR 为图片附件提供文字识别桥接能力，并提供 vision_* 工具用于裁剪、文本定位、配色与图像差异等操作。",
+    "en": "This plugin adds image-to-text support in DeepSeek Harness using local Umi-OCR for text-only workflows and exposes vision_* tools for OCR, text-region lookup, cropping, color analysis, and image comparison tasks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Extracts text from chat image attachments via local Umi-OCR",
+      "Injects OCR text as additional context for text-only DeepSeek models",
+      "Calls local OCR endpoint (default 127.0.0.1) or executes a configured local CLI command",
+      "Provides vision_* tools for OCR, text localization, cropping, color analysis, and image diffing",
+      "Writes optional tool outputs/artifacts to local directories"
+    ],
+    "reasons": [
+      {
+        "code": "README states OCR bridging: when main model is text-only, images are OCRed by local Umi-OCR and recognized text is injected as auxiliary context for the model response.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes optional CLI mode using a configurable executable command and temporary image/output file flow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists exported vision_* tools including crop, text block detection, dominant color, and pixel diff functionality.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares optional dependency on sharp for image-processing features used by some vision tools.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Extracts text from chat image attachments via local Umi-OCR",
+      "Injects OCR text as additional context for text-only DeepSeek models",
+      "Calls local OCR endpoint (default 127.0.0.1) or executes a configured local CLI command",
+      "Provides vision_* tools for OCR, text localization, cropping, color analysis, and image diffing",
+      "Writes optional tool outputs/artifacts to local directories"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:07.238Z",
+  "repositoryCommitSha": "b22f1e02c5d7b2c1d2b1e0f72133d37bb29386cf",
+  "evidenceHash": "f98a9496305450b86dea56532dac8d103e9c3a4a6db8fa92bb4689f4a5686f0f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3ffa1c4f97de3e2b362bffa6ecfde8218253f489c0c8f0e0443279a3af751f7e",
+  "shadowMode": false
+}

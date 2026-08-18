@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "tool",
+    "browser",
+    "video",
+    "image",
+    "data",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a user-facing media utility plugin for DSH that enables local browser-based video/audio-adjacent operations: inspecting video properties, extracting frames, compressing images, and creating GIFs via FFmpeg.wasm. The evidence from README and package metadata consistently describes it as a local, WASM-powered DSH extension with no declared server-side processing.",
+  "summaries": {
+    "zh": "这是一个面向 DSH 的浏览器端媒体工具插件，用于本地处理视频与图像，可进行视频信息查询、抽帧、图片压缩与 GIF 转换。",
+    "en": "This is a browser-based DSH media plugin for local processing of video and images, including video metadata inspection, frame extraction, image compression, and GIF conversion."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Extract video metadata (duration, resolution, codecs)",
+      "Extract single or evenly-spaced JPEG frames from local video",
+      "Compress images to JPEG at a target width",
+      "Convert video clips to animated GIF",
+      "Run processing through FFmpeg.wasm in browser context",
+      "Validate tool inputs via DSH schema definitions"
+    ],
+    "reasons": [
+      {
+        "code": "README presents the plugin as browser-local, stating operations run in-browser via WebAssembly and no server uploads.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists tools video_info, video_frames, image_compress, and video_to_gif, directly defining the plugin's primary media-processing functions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the package as a DSH media toolset and depends on @ffmpeg/ffmpeg/@ffmpeg/util for processing behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Extract video metadata (duration, resolution, codecs)",
+      "Extract single or evenly-spaced JPEG frames from local video",
+      "Compress images to JPEG at a target width",
+      "Convert video clips to animated GIF",
+      "Run processing through FFmpeg.wasm in browser context",
+      "Validate tool inputs via DSH schema definitions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:21.847Z",
+  "repositoryCommitSha": "7e413aa52ef38c2e798f40087a17c1d8ecd39825",
+  "evidenceHash": "e8fa85adfdad007c5eeaba403cfb7760cea601ad8523b67856b266c8d3d7a734",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "26f1f8b1f1ecce1bfe49ddc5a8fbd3848e1e4558a00477618becc2812706d8b7",
+  "shadowMode": false
+}

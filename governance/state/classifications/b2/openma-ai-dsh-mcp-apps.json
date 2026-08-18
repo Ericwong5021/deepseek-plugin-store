@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "ui",
+    "browser",
+    "tool",
+    "integration",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "This plugin bundle’s user-facing role is integrating MCP Apps into DeepSeek Harness by supplying an MCP host service plus a web renderer so MCP App outputs can be displayed as UI surfaces in the DSH web client, while keeping app execution via AppBridge in a browser-rendered path.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 MCP Apps 的主机能力与 Web 渲染器，可将 `ui://` 与 `text/html;profile=mcp-app` 的 MCP App 结果在内嵌、全屏或画中画界面中展示。",
+    "en": "This is a DeepSeek Harness plugin bundle that provides MCP App host support and a web renderer to display MCP App results in inline, fullscreen, or picture-in-picture interfaces."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds DSH plugin rows for MCP Apps host and web renderer",
+      "Renders MCP App tool results in browser UI using AppBridge",
+      "Supports inline/fullscreen/picture-in-picture display modes for MCP App sessions",
+      "Bridges callTool/readResource flow from MCP client through host-remote boundary"
+    ],
+    "reasons": [
+      {
+        "code": "README describes this project as a DSH MCP Apps host and renderer bundle with a Cordis patch adding Host and Web plugin rows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies only rendered results matching mcp-app card + ui:// URI + MIME text/html;profile=mcp-app are claimed via tool.call.takeover.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details loading App HTML through a double-iframe boundary with CSP and origin checks for relay messages before rendering.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a bundle package with workspace dependencies on @openma/dsh-mcp-apps-host and @openma/dsh-mcp-apps-web.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds DSH plugin rows for MCP Apps host and web renderer",
+      "Renders MCP App tool results in browser UI using AppBridge",
+      "Supports inline/fullscreen/picture-in-picture display modes for MCP App sessions",
+      "Bridges callTool/readResource flow from MCP client through host-remote boundary"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:57.799Z",
+  "repositoryCommitSha": "a23d085f4f8a6ddb1f8d9861d4ed73ca58c87c7a",
+  "evidenceHash": "24ca2181a616b3c16920342f7dcaa25275b36be402a00e28d6fb13634dcfd3e5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "380d974554c988f86eef51b6b73c1eca1e202cbcb1d2eff60561a710143d4bb4",
+  "shadowMode": false
+}

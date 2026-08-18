@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "chat",
+    "ui",
+    "tool",
+    "api",
+    "integration",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用户面向为 DeepSeek Harness Web 会话中的文件上传与引用体验：用户可在输入区上传文件并在会话中以链接发送，插件负责文件持久化、消息内展示及模型读取接口，属于文件型工具扩展而非通用代码生成或检索插件。",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 对话的文件上传插件，支持通过按钮或拖拽上传文件、在消息中以链接发送文件，并在会话中以文件卡片展示，同时提供模型读取已上传文件的工具。",
+    "en": "This is a DeepSeek Harness Web chat plugin that lets users upload files via button or drag-and-drop, send them as links in messages, show file cards in conversation, and provide a tool for the model to read uploaded files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在 Web GUI 中通过附件按钮与拖拽上传本地文件",
+      "将上传文件持久化到宿主目录并返回可在会话中引用的链接",
+      "通过会话发送钩子在消息中注入文件链接并展示文件卡片",
+      "向模型公开 read_uploaded_file 工具以读取已上传文件内容或元数据",
+      "提供 HTTP 上传与下载接口用于附件传输与预览"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了 POST /dsh-upload/attach 与 GET /dsh-upload/raw/<id> 的服务路由，用于文件上传和下载/预览",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述了 read_uploaded_file 工具支持从 id/注释/markdown 链接读取上传文件，文本文件返回内容、二进制返回元数据与下载地址",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明支持按钮上传与 OS 文件拖拽到 composer，并在会话内以文件卡片方式展示已上传文件",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 指定 dsh.client.inject 涉及 conversation 与 slots，且插件为 Web 平台入口，表示其主要影响为聊天界面与会话交互",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "在 Web GUI 中通过附件按钮与拖拽上传本地文件",
+      "将上传文件持久化到宿主目录并返回可在会话中引用的链接",
+      "通过会话发送钩子在消息中注入文件链接并展示文件卡片",
+      "向模型公开 read_uploaded_file 工具以读取已上传文件内容或元数据",
+      "提供 HTTP 上传与下载接口用于附件传输与预览"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:46.274Z",
+  "repositoryCommitSha": "2f119d3144cc66824fa55b9be0cd8876ed53f535",
+  "evidenceHash": "5559bdb18a14802819709b55eb650c03f1e8d5b661de7ed3179e03632398290a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b7220d19a72832976bfe09105c136db462311c54b13b5ea2114247f2c65ef449",
+  "shadowMode": false
+}

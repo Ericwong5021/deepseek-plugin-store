@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "tool",
+    "automation",
+    "file",
+    "workflow",
+    "api",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "dshX is primarily a terminal AI agent launcher bundle: it packages a deepseek-harness CLI/TUI distribution with bundled preset and skill bootstrap to simplify starting and running terminal-based coding workflows. Evidence from the README and package manifest shows its user-facing role is launching and configuring AI-assisted terminal sessions (tools, presets, and session state) rather than providing a generic utility library.",
+  "summaries": {
+    "zh": "dshX 是一个基于 deepseek-harness 的终端 AI 助手启动器，提供一条命令开启的 TUI 会话、内置预设与可选技能，用于在终端中进行代码与工具协同工作。",
+    "en": "dshX is a terminal-based AI agent launcher built on deepseek-harness, providing a one-command TUI session with built-in presets and optional skills for code-focused, tool-assisted workflows."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches a terminal AI coding session via CLI and TUI",
+      "Provides shell execution and file-editing tool flows (e.g., bash and str_replace_editor)",
+      "Supports session/preset lifecycle operations (resume, preset switching, bootstrapping)",
+      "Loads and manages built-in or on-demand skills and tool catalogs",
+      "Depends on external model API access via DeepSeek key configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README describes dshx as a one-command terminal coding agent launcher using deepseek-harness + @dshx/tui, exposing command entrypoints like `dshx` and `dsh`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares bin entries for `dshx` and `dsh`, and dependency on `@deepseek-ai/dsh`, indicating direct CLI runtime behavior and model tool orchestration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README documents first-request tool exposure and behavior using terminal tools such as `bash` and `str_replace_editor`, plus session promotion and resume semantics, implying execution and stateful workflow control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository tree includes `preset/`, `skills/`, and bootstrap scripts, indicating local preset/skill synchronization and plugin wiring performed in the user environment.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README states configuration via `DEEPSEEK_API_KEY`, showing dependence on external service calls for model interaction.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Launches a terminal AI coding session via CLI and TUI",
+      "Provides shell execution and file-editing tool flows (e.g., bash and str_replace_editor)",
+      "Supports session/preset lifecycle operations (resume, preset switching, bootstrapping)",
+      "Loads and manages built-in or on-demand skills and tool catalogs",
+      "Depends on external model API access via DeepSeek key configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:41.717Z",
+  "repositoryCommitSha": "74753cacf44396e66dc72b7829a8a85345597016",
+  "evidenceHash": "8924e833a3a5186bb990547e9c018a03208b2bb225aa605c5a4aa0223d4e9b1c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ba64805c21519d3f2a5fc95b913308923419c656d1bd9a64aaf597c930ac1f68",
+  "shadowMode": false
+}

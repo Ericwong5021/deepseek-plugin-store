@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "integration",
+    "monitoring",
+    "data",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件面向终端用户提供界面化账户监控功能，在 DSH 会话界面显示可停靠/可拖拽的小部件并展示 DeepSeek API 余额与服务状态，属导航面板类工具；其后端路由与客户端挂载方式来自仓库说明，且通过 DSH 凭据读取 API key，因此存在网络访问与凭据读取相关的低到中等风险。",
+  "summaries": {
+    "zh": "这是一款 DeepSeek Harness 插件，在界面中提供可停靠/可拖拽的账户 HUD，展示 API 余额与服务状态，并在支持时提供账户侧边栏入口。",
+    "en": "This is a DeepSeek Harness plugin that shows a dockable or draggable account HUD in the UI for API balance and service status, with an optional account tab in the sidebar when available."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read",
+      "frontend.ui-widget",
+      "backend.route-exposure"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin registers backend routes for balance and status queries, implying periodic remote data retrieval.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Functionality depends on DeepSeek API key configuration from DSH credentials/settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It adds a dockable/floatable widget to DSH UI and optionally registers a sidebar account tab.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Runtime metadata and peer dependencies target DSH web platform client/runtime/react integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "frontend.ui-widget",
+      "backend.route-exposure"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:24.179Z",
+  "repositoryCommitSha": "f1447ad0a619520de2e4dcf107c19783e12eb4d1",
+  "evidenceHash": "b3ff71fc1a12d5c764824a7680f625dbf354d86092f2b28a4a6861434dc1f34d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b0c30359722a43c775f5510ac5df66c86f7058517b0494dfef6e4f2c12e3c5ec",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "tool",
+    "debugging",
+    "automation",
+    "file",
+    "project-analysis",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Based on repository metadata and README, the plugin’s primary user-facing purpose is plugin lifecycle support for DeepSeek Harness: checking plugin health, scanning installed plugins for collisions, and guiding install/promotion actions. Evidence names the tools `plugin_doctor`, `plugin_profile_scan`, `plugin_promote`, and `plugin_install`, and states read-only checks plus optional explicit install/promotion workflows, which places it in plugin-development with moderate, controlled execution impact.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件管理助手，可用于插件体检、已安装插件冲突扫描，并支持在审核通过后进行临时插件的持久化升级流程。",
+    "en": "This is a DeepSeek Harness utility for plugin health checks, conflict scanning across installed plugins, and guided promotion/install steps for transient plugins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read-only plugin and profile diagnostics",
+      "Cross-plugin conflict scanning",
+      "Optional plugin promotion with managed file output",
+      "Audited install command path with optional execution"
+    ],
+    "reasons": [
+      {
+        "code": "`plugin_doctor` and `plugin_profile_scan` are documented as read-only check tools, including static validation and conflict detection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin exposes `plugin_profile_scan` for finding duplicate/compatible issues across installed plugins, indicating analysis across multiple plugin descriptors.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`plugin_promote` writes a managed staged artifact under `$DSH_HOME/.guardian-plugins` with provenance metadata when used.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`plugin_install` includes an `approve=true` path that triggers `dsh plugin add`, so it can initiate installation behavior when explicitly enabled.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Read-only plugin and profile diagnostics",
+      "Cross-plugin conflict scanning",
+      "Optional plugin promotion with managed file output",
+      "Audited install command path with optional execution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:39.204Z",
+  "repositoryCommitSha": "da8a81e9ff6891e44098dad18163cf8ef0d47fe2",
+  "evidenceHash": "50f9833b860ec6a197516e816ef1563fab275cd2bed6d4eceff16a8d1f5b1219",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c9eafb50ec320f74fbe8b7a5956ab2f8cd61f85339c136d0367db5ebd23858ac",
+  "shadowMode": false
+}

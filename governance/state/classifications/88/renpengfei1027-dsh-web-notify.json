@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "ui",
+    "automation",
+    "monitoring",
+    "workflow",
+    "tool",
+    "browser",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a user-facing notification and monitoring aid for DSH Web sessions: it watches session-related events and surfaces them via visual, audio, and optional OS notification channels, with configurable settings for channels, quiet periods, and alert deduping. This aligns it most directly with notifications/monitoring rather than workflow automation or content generation; its documented behavior focuses on awareness of approvals, completion, failures, errors, and connection changes within existing DSH sessions.",
+  "summaries": {
+    "zh": "这是一个 DSH Web 通知监控插件，用于在会话出现待处理审批、完成、任务失败、连接异常等事件时提供可配置的声音、徽标、系统通知和停靠面板提醒。",
+    "en": "This is a DSH Web monitoring plugin that surfaces session events such as pending approvals, completions, job failures, and connection/runtime issues through configurable chimes, badges, OS notifications, and a notification dock."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Subscribes to DSH session/job/connection events to detect pending interactions, completion, failures, errors, and reconnect state.",
+      "Displays alerts through in-page UI (badge, toast messages, dock), and optional OS notifications and chime sounds.",
+      "Supports configurable behavior via plugin settings (feature toggles, volume, cooldown, quiet hours, diagnostics).",
+      "Provides one-click jump-to-session actions from notification surfaces."
+    ],
+    "reasons": [
+      {
+        "code": "README describes event-driven alerts for pending approvals/questions, completions, job failures, runtime errors, and disconnect/reconnect state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a web plugin bundle (`dsh.client.platform=web`) with client host split and injected UI/runtime modules.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README lists notification channels including tab title, favicon badge, PWA badge, OS notifications, and dock UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Scripts/readme describe optional apiproxy namespace patching and diagnostics exposure for settings and event health visibility.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata shows plugin install/usage via DSH profile patching with explicit runtime permissions and settings integration.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Subscribes to DSH session/job/connection events to detect pending interactions, completion, failures, errors, and reconnect state.",
+      "Displays alerts through in-page UI (badge, toast messages, dock), and optional OS notifications and chime sounds.",
+      "Supports configurable behavior via plugin settings (feature toggles, volume, cooldown, quiet hours, diagnostics).",
+      "Provides one-click jump-to-session actions from notification surfaces."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:01.970Z",
+  "repositoryCommitSha": "b44f916af419221ed87a1b0de98b0c2e41e099e5",
+  "evidenceHash": "1e72536511e3515af5652039468116e7949244fa66c1df755aee1dd0e81b4350",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0d5902314de88ea00c205ea77f1c94e1fb8a9528130c315aa37227eb0c8b2493",
+  "shadowMode": false
+}

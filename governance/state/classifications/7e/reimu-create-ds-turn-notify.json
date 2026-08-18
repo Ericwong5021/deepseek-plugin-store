@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "automation",
+    "browser",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该仓库的核心面向用途是会话提醒：在 DSH Web 会话的特定时机后台发送桌面通知与提示音。证据显示其主要触发事件为回合完成和权限请求，并覆盖 Windows 与 macOS 的独立实现路径，属于本地通知提醒能力而非代码生成或数据处理类功能。",
+  "summaries": {
+    "zh": "这是一个DSH会话通知插件，在回合结束或申请权限时发送桌面提醒和可选提示音，主要用于用户在后台时及时获知会话状态变化。",
+    "en": "This is a DSH session notification plugin that sends desktop alerts with optional sounds on turn completion or permission requests, helping users stay informed when running sessions in the background."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitor DSH session events and trigger user alerts",
+      "Issue native desktop notifications on Windows and macOS",
+      "Play local notification sounds",
+      "Gate reminders based on page visibility state",
+      "Execute helper commands/scripts for notification delivery"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件在 turn/end（回合结束）和 approval/asked（请求权限）事件触发通知与提示音。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 和目录说明文档表明 Windows 与 macOS 版本分别通过系统命令（如 powershell/osascript）和音频工具发送提醒，且插件存在 lib/client.js 与 cordis.patch 挂载配置。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "package.json 声明了 DSH web 插件 bundle 与 web client 注入配置，表明功能为客户端扩展而非远程服务。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "Monitor DSH session events and trigger user alerts",
+      "Issue native desktop notifications on Windows and macOS",
+      "Play local notification sounds",
+      "Gate reminders based on page visibility state",
+      "Execute helper commands/scripts for notification delivery"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:58.982Z",
+  "repositoryCommitSha": "5951d4d350df483435f1b72d24081961d50c1620",
+  "evidenceHash": "895b99c02e5dac3904a93608de429a2cd7fec4bbf0c78bad2ad2baa8f6adbaa4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "925c4fc2d09bac199ef7d57cb9c403145577c00c48a43382054b814fe5d1c6ad",
+  "shadowMode": false
+}

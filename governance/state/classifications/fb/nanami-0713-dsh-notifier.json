@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "mobile",
+    "ui",
+    "integration",
+    "automation",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用户面向功能是“任务提醒与交互事件通知”：在任务结束、需要权限审批或用户回答、任务出错时提示用户，并支持网页 toast 与系统级弹窗，还提供可视化设置与可选手机转发。依据仓库与 README 描述，其能力集中于通知展示与事件提醒，而非内容生成或代码编写。",
+  "summaries": {
+    "zh": "这是一个 DSH 通知插件，在任务完成、需要审批/提问或报错时弹出网页与系统提醒，并支持设置提醒样式与转发选项。",
+    "en": "A DSH notification plugin that shows web and optional system notifications for task completion, approval requests, questions, and errors, with configurable alert behavior and forwarding options."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "基于 DSH 事件流触发提示",
+      "跨窗口/系统级桌面通知展示（含 web toast）",
+      "本地与可选桥接的远程推送触发",
+      "提供配置页面与配置文件持久化入口"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明通过 host hook 与 client 事件流监听任务状态、审批、提问和报错事件，并据此弹出提醒面板。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 列出桌面级实现路径（macOS NSPanel、Windows PowerShell、Linux zenity/notify-send）及可通过浮窗开关控制。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明可配置 bridgeUrl/bridgeToken 并向 /api/notify.push 推送 `done` 与 `question` 事件到手机端，属于可选网络转发。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出配置通过 GET/PUT /api/dsh-notifier/config 并写入 ~/.dsh/plugins/dsh-notifier/config.json。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "基于 DSH 事件流触发提示",
+      "跨窗口/系统级桌面通知展示（含 web toast）",
+      "本地与可选桥接的远程推送触发",
+      "提供配置页面与配置文件持久化入口"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:26.176Z",
+  "repositoryCommitSha": "edf9db1390f3ecb2a0936ca058604c6792b8c8dd",
+  "evidenceHash": "472158c2ae91ab50a2e2b8e413cbd7a3af787477939c4b443d8217aeb0bf0a55",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8e0861d22c9326eff91bb381b7c59684bfe5473186d3946a91fd0751e747c922",
+  "shadowMode": false
+}

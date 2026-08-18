@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "tool",
+    "data",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin’s primary purpose is document text extraction for agent workflows: it registers a `read_pdf` tool that parses PDF files in the workspace and returns extracted text with metadata. The README and package metadata show it is a DeepSeek Harness plugin using pdfjs-dist with local file reading behavior and configurable page/character limits, so it is classified as document-processing with moderate risk from workspace file access and bounded-output extraction.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 增加 `read_pdf` 工具，可在工作区内读取指定 PDF 并逐页提取文本供智能体使用。",
+    "en": "This plugin adds a `read_pdf` tool to DeepSeek Harness that reads a workspace PDF and extracts its text page by page for agent usage."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads PDF files from workspace paths and extracts text content",
+      "Supports configurable extraction limits via maxPages and maxChars",
+      "Returns structured extraction results including truncation and empty-content indicators"
+    ],
+    "reasons": [
+      {
+        "code": "README states a `read_pdf` tool is added for DeepSeek Harness and extracts PDF text page by page using pdfjs-dist.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents plugin behavior details and output fields (pages, extractedPages, truncated, empty, text), confirming processing scope and semantics.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README indicates path is workspace-confined and rejects path traversal, while package metadata shows a DSH plugin bundle with pdfjs-dist dependency.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads PDF files from workspace paths and extracts text content",
+      "Supports configurable extraction limits via maxPages and maxChars",
+      "Returns structured extraction results including truncation and empty-content indicators"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:46.121Z",
+  "repositoryCommitSha": "c4a223a4ec1a9b713a2ff6e49f007ef4f0fdc4a3",
+  "evidenceHash": "82baaba44188e143a1a563705fe1a6f7aafa6d94d596b8b6b1ea70ea8ea798c7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1f3473ab60c1d0b0c61af820e44df6d01b5e86e67ffe617ad13e6ed2bea32ab6",
+  "shadowMode": false
+}

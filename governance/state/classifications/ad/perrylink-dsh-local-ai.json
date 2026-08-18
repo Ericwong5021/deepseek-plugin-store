@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "tool",
+    "chat",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Evidence from the repository README, package metadata, and description indicates the plugin is primarily a DeepSeek Harness extension for integrating a local Ollama service: it registers an LLM adapter, exposes Ollama model management and health tools, and offers rule-based local routing with cloud fallback and a `/ollama` status command. The observed functionality is centered on local-model provider integration and operational tooling, not general editing, UI, or non-AI workflow automation.",
+  "summaries": {
+    "zh": "本插件用于将本地 Ollama 提供商接入 DeepSeek Harness，按规则路由请求到本地模型，并提供模型列表、拉取、查看与移除等管理工具及 `/ollama` 状态命令。",
+    "en": "This plugin integrates a local Ollama provider into DeepSeek Harness, routing requests by rule to local models and providing model management plus a `/ollama` status command."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes requests to local Ollama models through a DSH adapter based on configurable rules.",
+      "Calls Ollama HTTP API endpoints for model listing, inspection, pull/delete operations, and health checks.",
+      "Runs a local CLI-based probe (`ollama list`) during health checks.",
+      "Uses a local/cloud fallback path when a local route fails before first-token output."
+    ],
+    "reasons": [
+      {
+        "code": "Model-management and tooling features are explicitly documented (ollama_list, ollama_show, ollama_pull, ollama_remove, ollama_health).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Request routing by purpose/keywords/always plus fallback-to-cloud behavior is described in the plugin overview and architecture text.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin manifest and README show subprocess usage for health probing and network access as explicit operational behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Network-to-endpoint model operations imply handling model metadata and generated content between host and Ollama endpoint.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Routes requests to local Ollama models through a DSH adapter based on configurable rules.",
+      "Calls Ollama HTTP API endpoints for model listing, inspection, pull/delete operations, and health checks.",
+      "Runs a local CLI-based probe (`ollama list`) during health checks.",
+      "Uses a local/cloud fallback path when a local route fails before first-token output."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:15.025Z",
+  "repositoryCommitSha": "2dd3d3a28bd791f3762fed4e43465c606273295e",
+  "evidenceHash": "f20851f2f098784ce218437889f183fc7a008869c2e334bd460f08fbabac649b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8add2db4b6d55c4a28efd905a10ad0194cd2f380b9c0958dd28dd0f60a6cd11d",
+  "shadowMode": false
+}

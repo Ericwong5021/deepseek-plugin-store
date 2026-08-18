@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要用户目标是为 DSH 聊天输入框提供可配置的发送快捷键（Enter 与 Ctrl/Cmd+Enter 切换），对应于聊天输入体验调整而非数据处理或外部服务集成。依据 README 与 package.json，可见其通过 dsh.web 客户端注入设置行并监听键盘事件实现行为替换，同时将模式持久化到本地设置与本地存储。",
+  "summaries": {
+    "zh": "本插件在 DSH 的“设置 → 常规”中提供发送快捷键选项，可在聊天输入框里切换 Enter 与 Ctrl/Cmd+Enter 的发送/换行行为，并保存用户设置。",
+    "en": "This plugin adds a Send shortcut option under DSH Settings → General so users can switch between Enter and Ctrl/Cmd+Enter send behavior in the chat composer, with the chosen mode persisted."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Chat composer keydown interception and remapping",
+      "Send/line-break behavior customization in a settings-controlled mode",
+      "Preference persistence through host settings and browser local storage",
+      "Install-time build step execution when installing from source"
+    ],
+    "reasons": [
+      {
+        "code": "README说明该插件在 document 捕获阶段监听 keydown 并按条件重映射 composer textarea 的 Enter/Ctrl+Enter 行为，这直接影响聊天输入行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README明确描述新增设置项（设置→常规）并通过 enter-send.mode 存储模式，读取/写入 $DSH_HOME/settings.yaml 并辅以 localStorage 回退。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README说明源码安装会触发 prepare 构建脚本（源代码安装时本地执行），存在本机执行构建逻辑的安装风险。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Chat composer keydown interception and remapping",
+      "Send/line-break behavior customization in a settings-controlled mode",
+      "Preference persistence through host settings and browser local storage",
+      "Install-time build step execution when installing from source"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:24.239Z",
+  "repositoryCommitSha": "0701de425f3d7c1d8dca9a4d0d3ddca84c6c79ce",
+  "evidenceHash": "1af94e4bc7fe9190b6953be6b1dd378cab02a053ac46b3b01b901283b4d6303a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b3d248e26b629d7a6f33758e3b795905eedf7ac144067b3f26724c68f573e592",
+  "shadowMode": false
+}

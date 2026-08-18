@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "workflow",
+    "chat",
+    "context",
+    "api",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Evidence in the repository shows this plugin is primarily an approval-automation extension for DeepSeek Harness: it adds an Auto mode permission preset and intercepts user confirmation-required tool calls so they are handled through rule checks, optional LLM review, and prompt-based fallback. Its core behavior is changing how tool invocation permissions are decided in-session rather than adding domain tools. Because it can auto-approve and only then optionally ask for confirmation, its impact is operational risk in tool execution flow, and it depends on outbound model calls and configured policies.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供“Auto mode”权限模式，可按规则与模型审核自动处理需确认的工具调用，并在必要时引导用户确认。",
+    "en": "This plugin adds an Auto mode to DeepSeek Harness that automatically handles permission-gated tool calls using configured rules, review logic, and optional confirmation prompts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automates approval decisions for permission-gated tool calls in DeepSeek Harness.",
+      "Supports configurable allow/deny rule matching and pre-approved tool allowlist handling.",
+      "Invokes an LLM review model with conversation context for non-routable tool requests.",
+      "Provides an ask path that can surface manual confirmation choices.",
+      "Handles failure behavior via failClosed or fallback approval-chain settings.",
+      "Requires outbound network access for review model calls."
+    ],
+    "reasons": [
+      {
+        "code": "Auto mode is inserted as a permission preset and used by the DSH permission picker to drive tool-call decisions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Decision flow includes explicit deny/allow rule priority, pre-approved tools, and model-based allow/reject/ask outcomes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Uncertain or unsupported model outcomes can reject automatically (failClosed) or fall back to the normal approval chain.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin manifest declares network:outbound and ui:extend permissions in workshop metadata, indicating runtime UI extension plus external model usage.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Automates approval decisions for permission-gated tool calls in DeepSeek Harness.",
+      "Supports configurable allow/deny rule matching and pre-approved tool allowlist handling.",
+      "Invokes an LLM review model with conversation context for non-routable tool requests.",
+      "Provides an ask path that can surface manual confirmation choices.",
+      "Handles failure behavior via failClosed or fallback approval-chain settings.",
+      "Requires outbound network access for review model calls."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:48.731Z",
+  "repositoryCommitSha": "0eddaea527a943deb136f73c0aee16492d8253fc",
+  "evidenceHash": "106aeaed1e00eef439fa350affa85d6f3c3039ca2efbaa4f803e513c95e947d4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c93bb0d65518d9b7fcd343eeccf81f6d33d28e4b454fdde186d94e7ebcc962c9",
+  "shadowMode": false
+}

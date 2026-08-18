@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "tool",
+    "api",
+    "chat",
+    "skill",
+    "automation",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用途是为 DeepSeek Harness 增加可在对话中触发的图像生成/编辑能力（文生图、图生图、局部重绘/指令编辑），并通过设置卡片配置 OpenAI 兼容及多家图像服务商参数，属于外部媒体服务工具类扩展。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 增加第三方生图能力，支持在对话中触发文字生图和改图，并在设置卡片中配置服务商、模型、密钥与输出参数。",
+    "en": "This plugin adds third-party image generation to DeepSeek Harness, allowing chat-triggered text-to-image and image-edit workflows while providing a settings card for API model, key, and output configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls external image-generation APIs for text-to-image and image-editing requests",
+      "Registers chat-invocable tools for image generation, status, connectivity test, and runtime configuration",
+      "Writes generated image outputs to a workspace directory and returns file paths",
+      "Stores/reads plugin configuration and API credential references through host settings/credentials flows",
+      "Modifies host-side plugin wiring at startup (settings namespace/skill installation behavior)"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin exposes text-to-image/image-editing capabilities across OpenAI兼容、DashScope、Replicate和fal.ai接口并定义 image_generate、imagegen_status、imagegen_test、imagegen_configure 等工具。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文档说明生成图片会落盘到会话工作区路径并返回绝对路径，同时返回可展示链接用于对话内预览。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明包含对设置卡片、API 凭据来源、`DSH_IMAGEGEN_API_KEY` 环境变量及凭据域处理方式的描述，表明涉及外部服务访问与密钥配置。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "包元信息声明为 DeepSeek Harness 插件并依赖/声明 dsh-settings、dsh-credentials、dsh-tools 等宿主能力，且包含 host 与 client 入口文件。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls external image-generation APIs for text-to-image and image-editing requests",
+      "Registers chat-invocable tools for image generation, status, connectivity test, and runtime configuration",
+      "Writes generated image outputs to a workspace directory and returns file paths",
+      "Stores/reads plugin configuration and API credential references through host settings/credentials flows",
+      "Modifies host-side plugin wiring at startup (settings namespace/skill installation behavior)"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:35.383Z",
+  "repositoryCommitSha": "ba7bfcee0f7281c4c2e9f30f8b2e94217e23d3df",
+  "evidenceHash": "d3208c63b510d6045f35a134986dcd41e4dd09246ae385f99ca8a880812a8423",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "210033b8fddfc2e639d6f6620c150d086105f638aa7de5bb4ab3714e4216dee7",
+  "shadowMode": false
+}

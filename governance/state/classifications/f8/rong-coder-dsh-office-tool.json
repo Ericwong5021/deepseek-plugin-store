@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "tool",
+    "automation",
+    "cli",
+    "ui",
+    "terminal",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用户用途是为 DeepSeek Harness 代理提供 Office 文档处理能力，包括对 docx/xlsx/pptx 的创建、读取、查询、修改、批量操作等，并通过 Web 侧边栏提供文档预览；这由 README 中的工具列表、依赖声明以及侧边栏路由注册信息共同支持，因此归类为文档处理，而非通用代码生成或搜索类插件。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 智能体提供 .docx/.xlsx/.pptx 的创建、读取、查询与编辑工具，并在 dsh web 侧边栏中预览文档。",
+    "en": "This plugin provides DeepSeek Harness agents with tools to create, read, query, and edit .docx/.xlsx/.pptx files, plus in-web preview support through the dsh sidebar."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local file read/write and path-based document operations for .docx/.xlsx/.pptx",
+      "Spawns and communicates with the OfficeCLI binary for document processing commands",
+      "Registers host HTTP endpoints for document preview",
+      "Integrates with a web sidebar UI for live/document preview"
+    ],
+    "reasons": [
+      {
+        "code": "OFFICE_TOOLS_CREATE_GET_QUERY_SET_BATCH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "OFFICECLI_SUBPROCESS_INTEGRATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SIDE_PANEL_PREVIEW_WITH_PREVIEW_ROUTES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DEPENDENCIES_REQUIRE_OFFICECLI_AND_DSH_WEB_PREVIEW",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Local file read/write and path-based document operations for .docx/.xlsx/.pptx",
+      "Spawns and communicates with the OfficeCLI binary for document processing commands",
+      "Registers host HTTP endpoints for document preview",
+      "Integrates with a web sidebar UI for live/document preview"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:11.647Z",
+  "repositoryCommitSha": "9c789750646ab5ef8bcaa212319118e99b5ae1ee",
+  "evidenceHash": "05535841b8cb70ec9fd0bc561d9b55947d964b2989865afbc5231a574dac5958",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1d40a7a496a935cb29fd0ebde36019ef6589dc8374eb980e85b878b3772f311",
+  "shadowMode": false
+}

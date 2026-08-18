@@ -4,7 +4,7 @@
     "fullName": "omdsh-plugins/omdsh-codemode",
     "url": "https://github.com/omdsh-plugins/omdsh-codemode"
   },
-  "summary": "Code mode for the DeepSeek Harness web GUI: a third segment beside Chat and Work whose column is the harness's own terminal, running in the conversation's workspace",
+  "summary": "This plugin adds a Code mode view in DeepSeek Harness, opening and displaying a terminal panel in the same session workspace so users can work in a command-line environment there.",
   "sources": [
     "github-topic"
   ],
@@ -43,33 +43,26 @@
     "capturedAt": "2026-08-17T21:45:44.586Z"
   },
   "classificationSuggestion": {
-    "group": "agents-workflows",
-    "category": "automation",
+    "group": "tools-data",
+    "category": "files-terminal",
     "tags": [
-      "agent",
-      "api",
-      "browser",
-      "chat",
-      "data",
-      "file",
-      "layout",
-      "memory",
       "terminal",
+      "ui",
       "tool",
-      "ui"
+      "cli",
+      "automation",
+      "workflow",
+      "api"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:automation:schedul",
-      "text:memory-context:session",
-      "text:search-browsing:browser",
-      "text:themes-layout:layout",
-      "text:navigation-panels:sidebar",
-      "text:visualization:render",
-      "text:files-terminal:terminal"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:66d82e9ee521c474e5925a47664dcaf0ebacf573067b1497cd81e227df66e81d",
+      "commit:85f462cd472bae47a6836bd99085016368d44abf"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:20:51.762Z",
+    "reason": "This plugin is a user-facing DeepSeek Harness mode extension that adds a third UI segment called Code, placing a live terminal as the main conversation column. Evidence shows it mainly embeds and hosts `omdsh-tui` via a websocket (`/omdsh-codemode/terminal`) in the active workspace context, reusing conversation session IDs for resume/reconnect behavior rather than reimplementing terminal functionality. It is primarily a terminal + workspace workflow integration plugin with session/sidebar coordination features."
   }
 }

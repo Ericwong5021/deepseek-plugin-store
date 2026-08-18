@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "chat",
+    "browser",
+    "api",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Based on the repository description and manifest, the plugin’s primary user-facing purpose is enabling file attachment handling in the DeepSeek Harness web chat (select, paste, and drag/drop upload, workspace storage, and card-style display), so it is best classified as a files and tooling utility plugin rather than automation, testing, or external-integration tooling.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的 Web 聊天界面中通过按钮、粘贴或拖拽上传文件，并在输入框和聊天记录中以卡片展示，上传文件保存到会话工作区以供后续读取和查看。",
+    "en": "This plugin enables file attachments in the DeepSeek Harness web chat via folder selection, paste, or drag-and-drop, then displays uploaded files as cards and stores them in the session workspace for retrieval in conversation flow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "file upload in web chat input",
+      "paste and drag-drop file capture",
+      "server-side upload endpoint and workspace storage",
+      "file retrieval for chat-record attachment opening",
+      "chat UI file card rendering"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a web chat attachment flow via folder button, paste, and drag-and-drop and stores files in the session workspace uploads directory.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata describe a dual-host/client design where the host registers routes and the client uploads files and renders attachment cards.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The plugin documentation includes GET/POST routes for uploading and opening files, which introduces local server file handling and file-serving behavior.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "file upload in web chat input",
+      "paste and drag-drop file capture",
+      "server-side upload endpoint and workspace storage",
+      "file retrieval for chat-record attachment opening",
+      "chat UI file card rendering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:13.776Z",
+  "repositoryCommitSha": "c6ceebcd32c977a2f7aee94664b706b0ba5b689c",
+  "evidenceHash": "257da2c2b23a02f3af08bc4cd82ed933afd4a2b0a1dfeca4ccb7ea71c47155a9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "014990628f7924b0e86cda30de8649642a827a113fcffeabd055fc21fcfcdcf4",
+  "shadowMode": false
+}

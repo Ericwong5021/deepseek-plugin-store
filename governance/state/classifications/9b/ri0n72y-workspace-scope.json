@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "skill",
+    "mcp",
+    "file",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a DeepSeek Harness plugin-development tool for workspace-scoped capability management: users configure, per project, which Skills and MCP servers are loaded for new sessions, with settings persisted to `.dsh-scope.json` and applied during session initialization.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中按工作区设置新建会话时启用的 Skill 与 MCP 服务器，并将配置写入工作区根目录的 `.dsh-scope.json` 供后续会话读取。",
+    "en": "This plugin lets you configure per-workspace enabled Skills and MCP servers in DeepSeek Harness, saving workspace settings to `.dsh-scope.json` for use by later sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Per-workspace enable/disable of Skill capabilities",
+      "Per-workspace allowlist/blacklist-style selection of MCP servers",
+      "Pre-session loading and filtering of plugin capability context",
+      "Popup UI for search, toggles, and bulk enable/disable actions",
+      "Workspace-root `.dsh-scope.json` read/write configuration persistence"
+    ],
+    "reasons": [
+      {
+        "code": "Readme states plugin enables/disables Skills and MCP servers per workspace and saves settings in workspace root config for subsequent sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Data flow description shows session pre-step reads config and trims model/tool context to enabled sets.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest fields define a DeepSeek Harness web plugin with dynamic client support and runtime integration points.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Per-workspace enable/disable of Skill capabilities",
+      "Per-workspace allowlist/blacklist-style selection of MCP servers",
+      "Pre-session loading and filtering of plugin capability context",
+      "Popup UI for search, toggles, and bulk enable/disable actions",
+      "Workspace-root `.dsh-scope.json` read/write configuration persistence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:03.023Z",
+  "repositoryCommitSha": "5cf227043da81d56af058cf600b99be30a3420df",
+  "evidenceHash": "a1d8508e758e0a55361f61ca272521717690f6777806bf67bd1731ccce1a9af3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6530c1710f830e13feb6a41604e9df08164e3fd0bcedc7d07ee075016df5e405",
+  "shadowMode": false
+}

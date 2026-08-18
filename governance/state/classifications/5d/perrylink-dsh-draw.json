@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "tool",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is best classified as a media tool: it adds a DeepSeek Harness `image_generate` tool that routes text-to-image requests through configurable OpenAI-compatible engines with fallback, applies per-session limits, and persists outputs as attachment references, with web-facing result and settings surfaces reflected in both the README and package manifest.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供统一的 `image_generate` 图片生成功能，按配置在兼容 OpenAI 的引擎间路由请求并支持回退，返回可持久化的图片附件与会话级配额信息。",
+    "en": "The plugin adds a DeepSeek Harness `image_generate` tool for text-to-image generation, routing requests across configured OpenAI-compatible engines with fallback and returning attachment-based image results with session quota metadata."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers a user-facing image generation tool in DSH",
+      "Makes outbound calls to external image-generation endpoints",
+      "Stores generated image outputs as attachments",
+      "Tracks and enforces per-session generation/byte quotas",
+      "Writes draw/session quota-related events"
+    ],
+    "reasons": [
+      {
+        "code": "Manifest permissions include network:outbound, tools:register, attachments:write, and session:append",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README documents multi-engine routing with health-aware fallback across OpenAI Images, CogView, and compatible endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents durable attachment return format and per-session quota accounting for generate calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines the `image_generate` capability and expected behavior (engine fallback, attachment refs, quota and attempts metadata)",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Plugin description and metadata describe a user-facing result card and settings tab plus credential reference workflow",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Registers a user-facing image generation tool in DSH",
+      "Makes outbound calls to external image-generation endpoints",
+      "Stores generated image outputs as attachments",
+      "Tracks and enforces per-session generation/byte quotas",
+      "Writes draw/session quota-related events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:14.897Z",
+  "repositoryCommitSha": "be434672eb95cbb2ec5125f0bf5be28f5e4269cf",
+  "evidenceHash": "93a8b3dfd3aea46a4d4d5be15cded091669f5d32fc6238845e62d4e6c6ebf758",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d2a34a5c18c744779801e40bbbe3a4d69f71aa1fbfca1a25c3118f5120881c63",
+  "shadowMode": false
+}

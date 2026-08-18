@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "theme"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin’s primary function is to customize the DSH web client sidebar interface by replacing the default sidebar shell and brand logo as a fork-level substitute for the upstream `ui-sidebar`; the evidence shows it mainly affects UI layout/branding by registering sidebar slots, disabling the upstream entry to avoid conflicts, and swapping logo rendering. ",
+  "summaries": {
+    "zh": "这是一个 DeepSeek 客户端侧边栏插件，用于将默认侧边栏替换为定制版本，并用自定义品牌图标重绘展开与折叠态 Logo，同时接管相关侧边栏槽位的接入。",
+    "en": "This is a DeepSeek web client sidebar plugin that replaces the default sidebar shell with a custom version and swaps the expanded/collapsed branding logo while wiring sidebar-related slots into the DSH UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers a sidebar shell as the replacement for the built-in DSH `ui-sidebar` shell",
+      "Provides sidebar child slots for workspaces, settings, and footer actions",
+      "Replaces the default expanded/collapsed sidebar brand logo component with a custom image source"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a fork replacement of the upstream `ui-sidebar` that declares `sidebar`, `sidebar.workspaces`, `sidebar.settings`, and `sidebar.footer.action` slots.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`cordis.patch.yml` usage is documented to disable upstream `ui-sidebar` and insert `dsh-ui-sidebar` so it becomes the active sidebar plugin in the bundle patch flow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "`package.json` defines `dsh.bundle.patch` pointing to `cordis.patch.yml`, confirming plugin-side patch-based replacement in the DSH client loading process.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README states branding comes from a hardcoded remote URL in `Logo.tsx` (`https://wfell.top/nicklin-logo.png`) used for expanded/collapsed logo display.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers a sidebar shell as the replacement for the built-in DSH `ui-sidebar` shell",
+      "Provides sidebar child slots for workspaces, settings, and footer actions",
+      "Replaces the default expanded/collapsed sidebar brand logo component with a custom image source"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:36.666Z",
+  "repositoryCommitSha": "c31e5121e4d3508c69ed8a27a91dbe6ad64c3b58",
+  "evidenceHash": "09db89b43e59cbb709aef2ed4ab4a9fec56097244548cb1ebec3202d62a28bf6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "86d25b870b0372f361aa1d8977d97cf23a43e96e5aa5edf511b3eda10769583c",
+  "shadowMode": false
+}

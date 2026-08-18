@@ -4,7 +4,7 @@
     "fullName": "MJorgin/dsh-skill-router",
     "url": "https://github.com/MJorgin/dsh-skill-router"
   },
-  "summary": "Rule-first pre-step skill router for DeepSeek Harness — pours matched skills on high-confidence hits, stays silent otherwise. Deterministic: zero LLM calls, zero token cost until a rule pours, one pour per session, broken YAML never breaks the session. 规则路由 · 高置信命中 · 静默放行 · 零 Token 消耗",
+  "summary": "This is a DeepSeek Harness pre-step skill router that matches user input against configured rules and injects matching skill invocations before a step proceeds.",
   "sources": [
     "github-topic"
   ],
@@ -44,34 +44,25 @@
   },
   "classificationSuggestion": {
     "group": "agents-workflows",
-    "category": "automation",
+    "category": "orchestration",
     "tags": [
       "agent",
       "automation",
-      "context",
-      "data",
-      "document",
-      "integration",
-      "layout",
-      "planning",
-      "project-analysis",
+      "workflow",
       "skill",
-      "testing",
+      "context",
       "tool",
-      "workflow"
+      "api"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:test",
-      "text:automation:automat",
-      "text:planning-execution:task",
-      "text:memory-context:token",
-      "text:document-processing:docx",
-      "text:themes-layout:layout",
-      "text:files-terminal:git"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:79ace6a8dccbcd5adf32e7ebb37cde0401de2fedf84436180e57ff1e2a490fc4",
+      "commit:0ceeb96d882bafc3aaeea6e4ce31396e1c2489e8"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:19:59.756Z",
+    "reason": "Evidence in the README and manifest shows this plugin’s main user-facing function is deterministic orchestration of skill loading: it runs on the agent pre-step, matches user input to configurable YAML rules, and injects matching skill invocations automatically, with a no-hit silent path and per-session dedupe, rather than performing UI, media editing, or content generation itself."
   }
 }

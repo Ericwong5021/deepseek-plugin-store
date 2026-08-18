@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "chat",
+    "ui",
+    "image",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is a file-upload utility for DeepSeek Harness web chat that adds a composer attachment UI, uploads files to host storage, manages attachments in an on-page dock, and injects attachments into user messages with model-aware formatting, while using SHA-256-based deduplication to avoid redundant storage.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 网页对话输入区新增附件按钮，支持上传文件到主机并以附件卡片管理，再按当前模型类型将图片或文件路径注入到用户消息中。",
+    "en": "This plugin adds a file attachment button to the DeepSeek Harness web composer, lets users upload files to host storage, and injects attachment references into user messages with model-aware handling."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Upload user-selected files from the web composer to DSH host storage",
+      "Display uploaded attachments as persistent cards with preview and remove controls",
+      "Inject attachment references into outgoing user messages",
+      "Detect model modality to choose image-block injection versus path-text injection",
+      "Compute SHA-256 hashes and reuse stored files via a persisted index for deduplication"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README describes a paperclip attach button that uploads files to the DSH host and shows preview-style attachment cards.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies model-aware behavior where multimodal models receive native ImageBlock injection and text-only models receive file path text blocks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents SHA-256 based content-addressed deduplication persisted in uploads/.dfu-index.json, with reused paths for identical content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH web plugin/client bundle entry, confirming integration with the DeepSeek Harness web platform.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Upload user-selected files from the web composer to DSH host storage",
+      "Display uploaded attachments as persistent cards with preview and remove controls",
+      "Inject attachment references into outgoing user messages",
+      "Detect model modality to choose image-block injection versus path-text injection",
+      "Compute SHA-256 hashes and reuse stored files via a persisted index for deduplication"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:06.885Z",
+  "repositoryCommitSha": "6ee65d1c662b1038196a2c24c800c98da5bc6e4c",
+  "evidenceHash": "c4166f85eb70bc333ab2a4623529c5d81cfb1b42d3659d1b3483e5ce182b8a7d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "58028bd5aec46b139443fb5d10406676a71af22bd50d2c3cdf29d665aede2250",
+  "shadowMode": false
+}

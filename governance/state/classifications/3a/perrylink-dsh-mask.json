@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "automation",
+    "data",
+    "tool",
+    "cli",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "This plugin’s primary purpose is runtime message privacy handling within DeepSeek Harness: it intercepts agent messages, replaces recognized sensitive entities with placeholders before model/input logging, and keeps a session restore mapping to restore values for display or user-requested restore. User-facing controls are limited to `/mask` status/toggle/restore commands and a `mask_test` tool, while persistence is scoped to its declared storage domain.",
+  "summaries": {
+    "zh": "dsh-mask 是面向 DeepSeek Harness 的隐私中间件插件，在模型边界前对消息中的敏感字段进行占位符掩码处理，并通过 `/mask` 与 `mask_test` 提供会话内状态查询、开关控制和恢复映射能力。",
+    "en": "dsh-mask is a DeepSeek Harness plugin that masks selected sensitive fields in messages before they reach the model and provides `/mask` and `mask_test` for status, runtime toggling, and session-based restoration from its mapping table."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "PII masking in agent message flow",
+      "Configurable entity selection for masking",
+      "Runtime command controls (`/mask status/on/off/restore`)",
+      "Snippet masking via `mask_test` tool",
+      "Placeholder restore table with optional persistent storage domain"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README states the plugin is a PII masking middleware for DeepSeek Harness that anonymizes detected data before messages reach the model and restores at display.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents the `agent/pre-step` masking seam and `/mask` command/tool surfaces, including explicit restore of placeholders for active session data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes mapping is kept in memory and optional `dsh_mask` storage, and that `mask/applied` records counts/type distribution rather than original values.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json `dshWorkshop` manifest identifies it as a plugin (`type: plugin`) with `/mask` capability and permissions including `network:none` and `credentials:none`, while requesting storage/session-log related permissions.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository description and metadata describe anonymization and restore behavior specifically for names, phones, emails, ID cards, bank cards, keys, and addresses.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "PII masking in agent message flow",
+      "Configurable entity selection for masking",
+      "Runtime command controls (`/mask status/on/off/restore`)",
+      "Snippet masking via `mask_test` tool",
+      "Placeholder restore table with optional persistent storage domain"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:16.185Z",
+  "repositoryCommitSha": "fdabd0a58222051b0a9c0303458bd13d1a8e2ac9",
+  "evidenceHash": "11720c5a6404eb57875698174428b968e3eb5e7459bbaac137fccca3410a7460",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "21d54e65220bc56a837610682dede68a6dd08d1cf1ad77a57047e6af6d8c74e1",
+  "shadowMode": false
+}

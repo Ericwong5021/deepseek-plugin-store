@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "tool",
+    "api",
+    "ui",
+    "browser",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "插件面向用户的主要功能是把本地 DeepSeek Harness 的 Web 界面以受登录保护的网关方式暴露到公网：通过 `/dsh` 入口进行登录，再反向代理到本地服务，并通过 `trusted-host` 与反向代理规则控制外网接入路径；据仓库说明这与代码生成、测试调试或知识检索类能力不同，主要是外部服务接入与访问控制。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的云端部署提供公网登录入口，将登录后的访问请求反向代理到本地服务，并提供账户与可信主机等网关设置。",
+    "en": "This plugin provides a public login entry for a DeepSeek Harness deployment, proxying authenticated access back to the local service with configurable gateway settings such as credentials and trusted hosts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Network-accessible reverse proxy to a local DeepSeek Harness instance",
+      "Login-protected web entrypoint for public access",
+      "Configurable trusted-host and reverse-proxy path forwarding",
+      "Handling of dropped non-image documents with server-side attachment reference insertion"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a login wall and reverse proxy for DeepSeek Harness cloud deployments.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `/dsh` public path on 8080 and trusted-host/Nginx proxy configuration for external access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json identifies a web platform plugin package (`dsh.client.platform: web`) with web-side injection.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository topic and description position the plugin as a DSH security-oriented cloud gateway plugin.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Network-accessible reverse proxy to a local DeepSeek Harness instance",
+      "Login-protected web entrypoint for public access",
+      "Configurable trusted-host and reverse-proxy path forwarding",
+      "Handling of dropped non-image documents with server-side attachment reference insertion"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:15.423Z",
+  "repositoryCommitSha": "5fcd86f58f5d76373f87412c276d5a3e5ab458e5",
+  "evidenceHash": "75acba61813b24b8628b30c6b4805d0817b06769913c3fd288d7276bf72ad44a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "848dd6c0bfb63098abf7702cd101ed413d50fca438e66b14041b343f0326e7c6",
+  "shadowMode": false
+}

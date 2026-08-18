@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "ui",
+    "mobile",
+    "layout",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a mobile UI optimization extension for the DeepSeek Harness web shell, focused on responsive layout and interaction improvements (drawer sidebar, full-screen settings sheet, bottom-sheet details, touch target adjustments) with a small client-side injection footprint and no file/network/service capabilities in the provided evidence.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 客户端插件，通过小屏断点下的样式与覆盖层组件适配，将侧边栏、设置页和详情区域的布局改为更适合移动端和触控操作的展示。",
+    "en": "A DeepSeek Harness Web client plugin that optimizes mobile and small-tablet screens by using responsive CSS and lightweight overlay components to improve sidebar, settings, and details panel interactions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects client-side CSS for small-screen UI layout adjustments",
+      "Registers and renders overlay UI components in host-defined slots",
+      "Reads layout state and drives responsive behavior via the runtime context"
+    ],
+    "reasons": [
+      {
+        "code": "The package declares a web client plugin entry (`dsh.client`) and peer dependencies for DSH client UI runtime modules, confirming client-side extension execution rather than backend logic.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The plugin is described as injecting one `<style>` block and registering a React overlay component into shell slots, indicating direct DOM/UI-layer modification in the browser.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Behavior is explicitly scoped to `@media (max-width: 820px)` and targets UI elements such as sidebar, settings panel, and details panel, limiting impact to mobile/small-tablet layouts.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Injects client-side CSS for small-screen UI layout adjustments",
+      "Registers and renders overlay UI components in host-defined slots",
+      "Reads layout state and drives responsive behavior via the runtime context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:46.914Z",
+  "repositoryCommitSha": "733c7225e7d9a42b1ce9cee2b2d92926be3f8ca8",
+  "evidenceHash": "1d3716168ba2270d86dfbadffcca5ad03b3557c6f99da29acc3df14a0ea9614b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ed571b304e4b05c841aec2efcec708b8ab1438bca3becf8f12d57fa83836e855",
+  "shadowMode": false
+}

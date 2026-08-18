@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "tool",
+    "context",
+    "planning",
+    "automation",
+    "agent",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily for repository analysis: it builds and queries a code graph to help the agent focus on relevant symbols/files and assess change impact within bounded tokens, with optional continuous sync and command/skill integration into DeepSeek Harness. This classification is based on README and package metadata, and aligns it with AI-assisted code intelligence rather than content creation or UI tooling.",
+  "summaries": {
+    "zh": "dsh-fovea 是一个 DeepSeek Harness 插件，提供仓库代码图分析能力，通过 sketch、focus、dwell 和 impact 工具帮助代理快速聚焦相关代码并评估变更影响。",
+    "en": "dsh-fovea is a DeepSeek Harness plugin that adds repository-intelligence tools to help an agent quickly focus on relevant code areas and estimate change impact within token limits."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Builds a repository-level code graph and ranks semantic relevance for focused analysis",
+      "Provides LLM-facing tools to summarize structure and estimate change impact under token budgets",
+      "Executes filesystem, git, and ast-grep operations through harness runtime providers",
+      "Maintains session/workspace sync state and emits steering/context signals during agent lifecycle"
+    ],
+    "reasons": [
+      {
+        "code": "README defines four core tools (fovea_sketch, fovea_focus, fovea_dwell, fovea_impact) and their repository-context behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a command surface (/fovea) and skill registration plus lifecycle integration hooks in DeepSeek Harness sessions for continuous sync.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes execution via ctx.fs and ctx.subprocess and mentions git/ast-grep-based discovery and impact calculations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH bundle patch export, indicating integration as a plugin package rather than a standalone app.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Builds a repository-level code graph and ranks semantic relevance for focused analysis",
+      "Provides LLM-facing tools to summarize structure and estimate change impact under token budgets",
+      "Executes filesystem, git, and ast-grep operations through harness runtime providers",
+      "Maintains session/workspace sync state and emits steering/context signals during agent lifecycle"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:09.350Z",
+  "repositoryCommitSha": "96ff8aaf1beb89562bc828a33b8f9bf37c761388",
+  "evidenceHash": "8282817850f238c70bc666cc01095016377970b3857b7c8f6bdca1c45c3189a5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9b28823b214830e63aa3ffe97e81db78bd5bac2bda98b75ecb800f8866d494a7",
+  "shadowMode": false
+}

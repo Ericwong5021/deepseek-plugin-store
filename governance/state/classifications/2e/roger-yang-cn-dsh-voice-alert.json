@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "ui",
+    "browser",
+    "agent",
+    "workflow",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Primary purpose is user-facing alerting for DSH sessions: it monitors session task completion and user-request points, then notifies through local audio, popup UI, and optional system notification, with no evidence of external integrations beyond local assets and browser notification mechanisms.",
+  "summaries": {
+    "zh": "该插件在 DSH 会话完成或需要用户确认时播放本地语音并展示页面提示条，在页面失焦时可发送系统通知，帮助用户及时获知任务状态。",
+    "en": "This plugin alerts users in DSH when tasks finish or require user input by playing local sounds, showing an in-page popup, and issuing system notifications when needed."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Plays bundled local WAV alerts for task completion or user-ask events",
+      "Displays an in-page top popup for task status prompts",
+      "Sends system notifications when the page is unfocused/minimized",
+      "Registers host-side static wav routes for playback assets"
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly describes voice alerts, popup message bar, and system notification behavior triggered by task completion or ask-user/approval moments.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists browser platform behavior including lost-focus/minimized system notification fallback and click-to-return action.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines this as a DSH web plugin with client injection and patch-based bundle registration, matching a notification-focused browser UI plugin.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Plays bundled local WAV alerts for task completion or user-ask events",
+      "Displays an in-page top popup for task status prompts",
+      "Sends system notifications when the page is unfocused/minimized",
+      "Registers host-side static wav routes for playback assets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:09.579Z",
+  "repositoryCommitSha": "7983faace9f51f582cb14515b20587231b067a58",
+  "evidenceHash": "2992b13f390aa7ba00f27ce25cf2a89c11cf53b862c05a2c5f63206b733f5f3a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cbcb4a8ae13ef9a359ce892633cde01f90a1d7ffbd9a428553c25220c08d6a1a",
+  "shadowMode": false
+}

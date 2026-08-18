@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "api",
+    "workflow",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件主要面向用户运维自动化：在界面提供重启入口、确认执行后触发重启请求，并支持重启后恢复中断会话/任务的流程。依据仓库清单与 README，功能集中在服务重启控制、状态展示、配置开关和会话恢复，不属于代码生成、搜索或文档处理等主要能力。",
+  "summaries": {
+    "zh": "该插件在 DSH Web 界面提供重启服务按钮与确认流程，可向后台发起重启请求并根据设置在重启后自动恢复被中断的会话与任务。",
+    "en": "This plugin adds a web UI restart action with confirmation flow to request service restarts and optionally resume interrupted sessions or goals after restart based on user settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local filesystem status/config file read-write",
+      "UI-triggered restart request dispatch",
+      "service lifecycle coordination via external supervisor",
+      "session and goal auto-resume orchestration after restart"
+    ],
+    "reasons": [
+      {
+        "code": "Host endpoints expose status and restart request/config operations for `/plugin/dsh-web-restart`, and restart requests are persisted as `~/.dsh/dsh-web.restart-request`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Client UI adds a sidebar footer restart control with explicit confirmation modal before sending restart action, indicating user-triggered operational control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "A launchd-hosted supervisor script performs stop/start loops and crash self-heal, so restart behavior includes process supervision outside the web process.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Auto-continue mode scans persisted sessions and may resume agents/goals after restart, showing behavior that can modify execution state.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "local filesystem status/config file read-write",
+      "UI-triggered restart request dispatch",
+      "service lifecycle coordination via external supervisor",
+      "session and goal auto-resume orchestration after restart"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:38.508Z",
+  "repositoryCommitSha": "94deef73b9406bb60f5a7530d4d44884847acc6b",
+  "evidenceHash": "a02324a56611373865f3394346b688f4696209e7d2655ac24d79f46240aecdcc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f557f8198c4bfd2cd59b71ef7be1239a0cfb235868a092e79af39ac735436bcc",
+  "shadowMode": false
+}

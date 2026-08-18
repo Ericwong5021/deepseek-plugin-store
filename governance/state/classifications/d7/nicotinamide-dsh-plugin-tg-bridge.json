@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "api",
+    "automation",
+    "integration",
+    "notification",
+    "tool",
+    "workflow",
+    "collaboration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The evidence shows a Cordis profile plugin focused on integrating DSH with Telegram: users interact with DSH agents through Telegram messages, commands, and buttons, with session/model/status management, permissioned access control, and optional in-app configuration UI. That places the primary purpose in external service integration and conversational automation rather than standalone development or analysis tooling.",
+  "summaries": {
+    "zh": "这是一个连接 DSH 与 Telegram 的 Cordis 插件，可在 Telegram 中收发消息并通过命令或按钮远程管理会话、模型、权限与状态。",
+    "en": "This is a Cordis plugin that connects DSH with Telegram, enabling message forwarding and remote management of sessions, models, permissions, and status through Telegram commands and buttons."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Telegram bot message forwarding and command handling",
+      "DSH session and model control via Telegram commands",
+      "approval/question interaction via callback buttons",
+      "per-user/group authorization and admin role management",
+      "persistent plugin settings via Cordis client card",
+      "remote DSH restart trigger from Telegram"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as a DSH ↔ Telegram bridge and defines Telegram commands for messaging, session/model switching, permissions, and status control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It supports multi-user/chat authorization with admin-only actions and separate conversation scopes for different chat IDs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It includes a dedicated remote restart flow and real-time response/progress forwarding for DSH agent activity",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Telegram bot message forwarding and command handling",
+      "DSH session and model control via Telegram commands",
+      "approval/question interaction via callback buttons",
+      "per-user/group authorization and admin role management",
+      "persistent plugin settings via Cordis client card",
+      "remote DSH restart trigger from Telegram"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:39.446Z",
+  "repositoryCommitSha": "aafa8d7bb07f734b9be61ce547d0ded4ad43e224",
+  "evidenceHash": "8195669f87c26b1d0b19aacd9608e344595449548605cf0372b0a8cd76ecb2ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ab5a4558aaa50e5d76a1729b60e57569e782cc398610b5416e54b6cea20e696d",
+  "shadowMode": false
+}

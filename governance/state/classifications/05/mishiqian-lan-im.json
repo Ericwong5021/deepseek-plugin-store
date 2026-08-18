@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "chat",
+    "file",
+    "notification",
+    "ui",
+    "browser",
+    "desktop",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向是局域网协作通信：在 DeepSeek Harness Web 端提供账号制聊天、群组/频道管理、消息已送达与离线补发、以及频道级文件共享，并通过宿主侧持久化消息与离线队列实现可恢复通信。其功能依据仓库说明与结构明确指向即时通信与文件协作用途，而非仅测试/代码生成等单一开发工具型能力。",
+  "summaries": {
+    "zh": "该插件为局域网中的 DeepSeek Harness 用户提供账号制聊天、群组频道和文件共享能力，并支持消息已送达状态、离线补发及桌面未读提醒。",
+    "en": "This plugin adds account-based LAN chat, channel-based messaging, and file sharing to DeepSeek Harness with message delivery state, offline resend behavior, and desktop-style unread notifications."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "LAN peer discovery and discovery fallback transport",
+      "WebSocket-based peer-to-peer message delivery",
+      "Per-account account/identity handling and channels",
+      "Private message ack and offline resend queue",
+      "Channel-scoped file sharing with caching",
+      "Local history and state persistence"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin README describes LAN messaging with mDNS plus UDP broadcast discovery, and temporary TCP/WebSocket channels between nodes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists private-chat ACK and offline resend (outbox) behavior, channel management, and shared file space with upload/download/delete actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes no end-to-end encryption and plaintext LAN transport, with reliability and trust assumptions restricted to trusted local network environments.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository structure includes peer-network, outbox, messaging, file-transfer, shared-file-store, and client/host bridge modules that support these behaviors.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package manifest declares websocket and mDNS libraries, confirming runtime networking and discovery dependencies.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "LAN peer discovery and discovery fallback transport",
+      "WebSocket-based peer-to-peer message delivery",
+      "Per-account account/identity handling and channels",
+      "Private message ack and offline resend queue",
+      "Channel-scoped file sharing with caching",
+      "Local history and state persistence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:56.868Z",
+  "repositoryCommitSha": "c53a018d5da7295483f4784fec8db4c3a616e462",
+  "evidenceHash": "ff909350c830451e022e138c21c6bb0f22601bf8412af1f8620b97ae36a24b2f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ceeae23610553a743e098360d173ee98c4c9de326fc87b4d395eb20e8264c10a",
+  "shadowMode": false
+}

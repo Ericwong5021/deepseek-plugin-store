@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "ui",
+    "api",
+    "tool",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a user-facing chat utility that automates prompt rewriting inside the DSH input box by adding a one-click ✨ action to call an LLM and optionally restore the original draft, which classifies it as automation; supporting details in the package manifest and README show a web client extension plus host route for model requests.",
+  "summaries": {
+    "zh": "该插件在DSH聊天输入框右侧提供✨按钮，可调用内置或外部LLM对当前草稿进行一键优化，并支持再次点击恢复原文。",
+    "en": "This plugin adds a ✨ button to the DSH chat input area to optimize the current draft with built-in or external LLMs in one click, with a second click to restore the original text."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read",
+      "chat.draft.read-write",
+      "ui.slot.extension"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a ⭐ button in the chat input area that optimizes the current draft via LLM and writes the result back to inputActions.setDraft.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a host-side /prompt-optimize/api route plus OpenAI-compatible and Anthropic provider request paths, indicating outbound model API traffic through external endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes external API Key/Base URL are stored in browser localStorage and forwarded with requests, which involves credential handling and network transmission of user text.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "chat.draft.read-write",
+      "ui.slot.extension"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:00.889Z",
+  "repositoryCommitSha": "2a78b5cf1f8690b62f89ddb9379343f0b6d992e1",
+  "evidenceHash": "84d87dfde15113bfc0b0e830e03d68f02673b564ebe98520b6713285ad3a5f78",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "97b35ab4f36b07eb9306994778b7250565f7fa53c89737aad603ebe149c20006",
+  "shadowMode": false
+}

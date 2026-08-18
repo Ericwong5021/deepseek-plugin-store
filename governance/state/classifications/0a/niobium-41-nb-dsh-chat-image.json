@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "ui",
+    "image",
+    "chat",
+    "file",
+    "tool",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a media/assistant-chat UI utility: it turns Markdown image references in assistant messages into an in-page gallery in the DSH web interface, with optional captions and click-open behavior. Evidence shows limited local file serving logic (workspace path validation, size cap, content-type handling), which introduces non-trivial file-access behavior, so classification is cautious at low-to-moderate risk while still approving the submission.",
+  "summaries": {
+    "zh": "该插件在 DSH Web 聊天界面中将 Markdown 图片引用渲染为助手消息下方的图片画廊，并支持本地路径、数据 URI 与标题显示。",
+    "en": "This plugin renders Markdown image references into a gallery under assistant messages in the DSH web chat UI, including local-path and data URI handling with optional captions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders Markdown image references in assistant replies as an on-page gallery.",
+      "Serves and validates local workspace image paths through a host route before rendering.",
+      "Handles image fallbacks and basic click-to-open behavior for local resources."
+    ],
+    "reasons": [
+      {
+        "code": "Repository description and README state the plugin renders chat Markdown image references as a gallery under assistant messages in the DSH web GUI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents validated local workspace file handling with size/path checks and failure fallbacks; HTTP(S) image refs are skipped and data URLs render directly.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata includes DSH web client/bundle manifest fields indicating it is a DSH web plugin that runs in the GUI extension context.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository is public and active, with required entry files present, indicating normal plugin distribution and runtime setup.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Renders Markdown image references in assistant replies as an on-page gallery.",
+      "Serves and validates local workspace image paths through a host route before rendering.",
+      "Handles image fallbacks and basic click-to-open behavior for local resources."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:38.928Z",
+  "repositoryCommitSha": "15c34aebf39393d8d3df121e65db327a43200273",
+  "evidenceHash": "a8c81ad8a527076bb68825ad7f80035154a4fa0629007fb9f7fa62b34417eb46",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8b5dc045ba1d33015ed71c9b8fabdb4d634d638dce982a0a2897242399f3a163",
+  "shadowMode": false
+}

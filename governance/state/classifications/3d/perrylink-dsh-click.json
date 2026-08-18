@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "desktop",
+    "tool",
+    "automation",
+    "ui",
+    "api",
+    "workflow",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向功能是为 DeepSeek Harness 提供桌面自动化能力：先观察（截图或窗口可访问性信息），再执行窗口级操作（点击、输入、滚动、按键、应用列表和应用启动），并以工具调用方式供模型/代理编排使用。依据仓库说明与包清单可确认其定位为 Windows 优先的本地桌面控制插件，而非通用开发或文档工具。",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供桌面自动化能力，支持通过截图与窗口可访问性信息观察原生应用，并执行点击、输入、滚动、按键及应用列表/启动等窗口级操作。",
+    "en": "A DeepSeek Harness plugin for desktop automation that lets agents observe native apps via screenshots or accessibility-based reads and perform window-level actions like click, type, scroll, key input, app listing, and app launching."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "desktop UI screenshot capture",
+      "accessibility tree/window observations",
+      "window-targeted input actions (click/type/scroll/key)",
+      "application enumeration and launch"
+    ],
+    "reasons": [
+      {
+        "code": "README defines tools `screen_shot` and `screen_read` for observing native windows via screenshot or accessibility-tree data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents mutating tools `click`, `type`, `scroll`, and `key`, plus `app_list` and `app_launch`, showing interactive control behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata and repository description identify the plugin as native desktop control and list Windows-first operation, implying direct host interaction and automation capabilities.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "DSH manifest includes `subprocess:spawn` and `session:append` permissions, indicating external helper invocation and session logging integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "desktop UI screenshot capture",
+      "accessibility tree/window observations",
+      "window-targeted input actions (click/type/scroll/key)",
+      "application enumeration and launch"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:12.186Z",
+  "repositoryCommitSha": "81f7e2d7d60e26b7b451c6ebb9b07a5b873393b1",
+  "evidenceHash": "52a90bcf76541570d10f3f1ef2e2e82312ae53b2b61790d7f3e27e84f9064a20",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "831cea55e29197a0dadecab328dd5240a00946f0e1f77e29decf98a0cf81cd73",
+  "shadowMode": false
+}

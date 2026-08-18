@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "file",
+    "tool",
+    "chat",
+    "automation",
+    "integration",
+    "memory",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心面向用户功能是可视化 AI 对文件改动的结果：在 DSH 对话中捕获 write/edit 操作并在对应工具卡片处展示行级 git 风格差异。该行为在 README 中有明确说明，并且包清单与入口配置表明其为 DSH 前端/后端配合的会话可视化插件，因此分类为 visualization。",
+  "summaries": {
+    "zh": "该插件在 DSH 对话中实时展示 AI 调用 write/edit 时的文件改动，支持上下对比与左右对比的差异视图并可记忆显示偏好。",
+    "en": "This plugin displays file changes in a DSH chat when write/edit is used, with unified or side-by-side diff views and remembered view preference."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "拦截并记录 DSH 会话中的 write/edit 工具调用",
+      "读取文件修改前后的内容并生成行级差异",
+      "在对话工具卡片中展示 unified 与 split 风格的差异视图",
+      "将视图偏好写入工作区偏好文件以便后续复用"
+    ],
+    "reasons": [
+      {
+        "code": "插件说明明确表示在 AI 调用 write/edit 时拦截工具调用并计算差异",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文档与特性列表描述了在对话流中原位渲染 git 风格的上下对比/左右对比差异卡片与行内高亮",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库 metadata 声明为 DSH 插件并提供 host/client 入口与 bundle 配置",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "拦截并记录 DSH 会话中的 write/edit 工具调用",
+      "读取文件修改前后的内容并生成行级差异",
+      "在对话工具卡片中展示 unified 与 split 风格的差异视图",
+      "将视图偏好写入工作区偏好文件以便后续复用"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:10.660Z",
+  "repositoryCommitSha": "17effb38760b8d41a50fdfb4b741ae64100f34cb",
+  "evidenceHash": "e57d39307bd51ff12a91ad6fe7a27a61cc1dc93679d7ff7ff1e4836b6757a9db",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b43b7a5614f057e3bdfe7ea1041289439e8149d56a61f778948af2ef56f4a513",
+  "shadowMode": false
+}

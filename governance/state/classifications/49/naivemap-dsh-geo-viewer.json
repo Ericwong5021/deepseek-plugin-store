@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "ui",
+    "data",
+    "tool",
+    "api",
+    "integration",
+    "chat",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户价值是地理数据可视化：在对话中检测并处理地理相关输入后直接展示交互式地图卡片。证据来自仓库说明与功能定义，覆盖表格坐标识别、GeoJSON 解析、地址地理编码及前后端联动渲染，因此应归入可视化场景，并结合数据处理、工具调用与外部服务集成能力。",
+  "summaries": {
+    "zh": "该插件用于在对话中自动识别地理数据并渲染交互式地图卡片，支持表格坐标、GeoJSON 与地址数据的可视化展示。",
+    "en": "This plugin renders an interactive map card within conversation when geographic data is provided, supporting coordinate tables, GeoJSON, and address-based map visualization."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Parses coordinate-bearing tables and GeoJSON-like inputs into map-ready features",
+      "Renders interactive map cards in conversation flow via a host-registered tool",
+      "Supports optional external geocoding providers with configurable API endpoints/keys",
+      "Writes rendered GeoJSON artifacts to workspace path for reuse",
+      "Loads map style and map library assets from configurable network URLs"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin renders a MapLibre-based interactive map card in conversation when geographic data is detected, via geo_view.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents CSV/TSV/XLSX table parsing, GeoJSON normalization, and address-based geocoding as input paths.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration section exposes map style URLs, geocoding provider selection, and provider keys, indicating external network dependency.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares DSH web client injection and library exports for tool/client split, matching map rendering in a browser side.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Parses coordinate-bearing tables and GeoJSON-like inputs into map-ready features",
+      "Renders interactive map cards in conversation flow via a host-registered tool",
+      "Supports optional external geocoding providers with configurable API endpoints/keys",
+      "Writes rendered GeoJSON artifacts to workspace path for reuse",
+      "Loads map style and map library assets from configurable network URLs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:24.091Z",
+  "repositoryCommitSha": "38e52019e0fe49e588e2af29227883cef520a950",
+  "evidenceHash": "8333ad0a80ec00363e9fcd584f511f4eee0c40405026a347ad61e0895d2c4d28",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e4e70e0fac1753d342f0d691f33531dc6f729b59a1b1651c686c72a99807c297",
+  "shadowMode": false
+}

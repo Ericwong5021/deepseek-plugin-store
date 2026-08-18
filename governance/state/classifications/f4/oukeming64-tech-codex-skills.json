@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "project-analysis",
+    "workflow",
+    "document",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily an agent workflow automation toolset because its README defines two instruction-only skills (`handoff-auditor` and `docs-sync-guardian`) that are invoked to validate completion/verification and documentation sync evidence before acceptance, while package metadata confirms it is a DeepSeek Harness bundle and the manifest check currently reports an invalid reference that should be resolved.",
+  "summaries": {
+    "zh": "该插件为 Codex 和 DeepSeek Harness 提供可调用的智能体技能，用于在交付前对照代码与证据审核完成声明，并在变更后进行文档对齐检查。",
+    "en": "This plugin provides callable agent skills for Codex and DeepSeek Harness to review completion claims against repository evidence and check documentation alignment after changes."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Validates completion handoff claims against code and documentation context",
+      "Checks and guides documentation synchronization to reduce drift",
+      "Provides agent-level workflow checks intended for pre-acceptance review"
+    ],
+    "reasons": [
+      {
+        "code": "README_EXPLICITLY_DESCRIBES_HANDOFF_AUDITOR_AND_DOCS_SYNC_SKILLS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PACKAGE_DECLARES_DSH_BUNDLE_CONFIGURATION_FOR_PLUGIN_DISTRIBUTION",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "MANIFEST_REFERENCE_VALIDATION_FAILED_IN_REPO_CHECKS",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Validates completion handoff claims against code and documentation context",
+      "Checks and guides documentation synchronization to reduce drift",
+      "Provides agent-level workflow checks intended for pre-acceptance review"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:04.662Z",
+  "repositoryCommitSha": "02aa4922aee8cac11fa40dc172602d1ba0d4c3ca",
+  "evidenceHash": "13bef0527869a30a12d46116247118ec026f0193cecac188c71d7c1693659ec5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ef2db9bfccb7c3ca87eb5d878fd1a381e0cc51275b2ae115bd918077bd869fb9",
+  "shadowMode": false
+}

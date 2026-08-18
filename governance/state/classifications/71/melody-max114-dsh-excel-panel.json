@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "data",
+    "ui",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心用途是为 DSH Web 的右侧栏提供 Excel 文件编辑能力：读取 .xlsx、进行单元格/样式/公式编辑并保存回源文件。证据来自 README、仓库描述与包清单，功能点集中在表格文档处理和前后端联动，而非通用自动化或外部服务集成，因此归类为文档处理类插件。",
+  "summaries": {
+    "zh": "这是一个在 DSH 右侧栏打开和编辑 .xlsx 文件的插件，提供单元格编辑、公式实时计算、格式设置以及将修改保存回原文件的功能。",
+    "en": "This plugin lets you open and edit .xlsx files in the DSH right sidebar, with cell editing, live formula updates, formatting controls, and saving changes back to the original file."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read and parse .xlsx files for display and editing in a side-panel interface",
+      "Support cell editing, formatting, merges, row/column operations, and sheet management in a spreadsheet UI",
+      "Evaluate formulas and update results in real time",
+      "Persist changes by rebuilding and writing xlsx files back to the source file",
+      "Expose backend routes for read/write/unlock actions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes backend routes /excel-panel/read and /excel-panel/write for parsing and rebuilding .xlsx files, showing direct file content read/write behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and repository description consistently identify the plugin as a DSH 右侧栏 Excel 编辑插件 that supports preview/edit and save-back workflow for .xlsx files.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "package.json declares a DSH web plugin entry with an Excel-focused backend dependency (exceljs), matching spreadsheet file processing behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Tree listing includes lib/index.js and lib/client.js, indicating a backend/frontend split for handling spreadsheet operations.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Read and parse .xlsx files for display and editing in a side-panel interface",
+      "Support cell editing, formatting, merges, row/column operations, and sheet management in a spreadsheet UI",
+      "Evaluate formulas and update results in real time",
+      "Persist changes by rebuilding and writing xlsx files back to the source file",
+      "Expose backend routes for read/write/unlock actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:50.022Z",
+  "repositoryCommitSha": "177dc4515da8e036431bdb3609438a77f74e7d40",
+  "evidenceHash": "e58c24bd5ab7225a9b165e4f99c2873b67000fe63382e13a383f3c5aa6ae1e42",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fc03002f12555d1a9f75c713abac1f9f575aa57470737ebe35862e95184bb526",
+  "shadowMode": false
+}

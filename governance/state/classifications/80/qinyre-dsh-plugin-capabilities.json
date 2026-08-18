@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "integration",
+    "skill",
+    "mcp",
+    "api",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用户价值是通过“技能与 MCP”设置界面集中管理 dsh 的技能与 MCP 配置，包括列表查看、开关、编辑、导入与市场安装。证据显示它涉及本地技能/MCP 文件与配置读写（含目录扫描、同步）以及从外部源下载仓库内容，因此属于外部服务整合型的设置管理工具，风险主要集中在配置与文件/网络导入路径。",
+  "summaries": {
+    "zh": "该插件在 dsh 设置页提供技能与 MCP 的集中管理入口，支持配置技能列表、MCP 服务器、仓库来源及导入外部配置，便于统一维护调用能力。",
+    "en": "This plugin provides a DSH Settings UI for centralized management of Skills and MCP, including listing and editing entries, repository sources, and importing from external configurations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "manage_local_skill_files",
+      "manage_mcp_server_config",
+      "import_external_agent_configs",
+      "add_remove_skill_repositories",
+      "parse_and_emit_yaml_json_mappings",
+      "download_and_extract_github_archives",
+      "open_system_file_manager_paths",
+      "restart_host_process_for_config_apply"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin manages skills in dsh settings, and allows creating, editing, and deleting skill entries stored under local skill paths ($DSH_HOME/skills) via UI actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes importing and synchronizing skill and MCP sources from Claude Code and Codex directories/configs, including parsing and populating form fields automatically.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains support for adding local or GitHub skill repositories and downloading/unpacking GitHub repos to local storage before making them available in the skills list.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details MCP page editing of profile patch server entries and reloading/restart flow required for changes to take effect.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "manage_local_skill_files",
+      "manage_mcp_server_config",
+      "import_external_agent_configs",
+      "add_remove_skill_repositories",
+      "parse_and_emit_yaml_json_mappings",
+      "download_and_extract_github_archives",
+      "open_system_file_manager_paths",
+      "restart_host_process_for_config_apply"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:30.543Z",
+  "repositoryCommitSha": "6a47fdb3cab817f2ea9d1f91c1a92caa0fbf6dba",
+  "evidenceHash": "668f573140e9b6bfecbe464f9b68a9ed22846977f318328b7c81321a2ac06bf8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "90c6e38ba9ba09237a2b0028727321d742b13886a957e5a72a7fec9be9b1d2c0",
+  "shadowMode": false
+}

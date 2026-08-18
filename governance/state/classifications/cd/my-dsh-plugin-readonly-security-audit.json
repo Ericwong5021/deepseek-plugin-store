@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "file",
+    "terminal",
+    "agent",
+    "workflow",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用户价值在于提供 DeepSeek Harness 的“只读安全审计”会话能力：通过预设和命令控制进入/退出审计状态，并在工具层做执行限制与可控的报告输出选择。证据来自 README 对审计模式、工具白名单、强制交付选择和报告写入审批流程的说明，以及 package.json 中的插件装载配置。总体属于面向会话流程自动化与受控审计执行的插件功能，而非代码生成或文档处理工具。",
+  "summaries": {
+    "zh": "只读安全审计插件为 DeepSeek Harness 提供专用审计模式，在只读策略下读取分析项目，并在用户选择后允许生成一次审计报告文件。",
+    "en": "The Read-only Security Audit plugin adds a dedicated audit mode to DeepSeek Harness for read-only code and configuration checks, with a user-approved single-step option to write a report file."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Enables a read-only audit session preset for DeepSeek Harness",
+      "Hooks tool execution to block non-allowlisted tool calls during audit mode",
+      "Adds mandatory report-delivery selection before auditing starts",
+      "Provides per-session slash commands to toggle or check read-only audit status",
+      "Supports single approved report-file write with immediate return to read-only mode",
+      "Installs as a harness plugin bundle and preset entry"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides a dedicated \"readonly-audit\" preset mode and slash commands `/readonly-audit on|off|status` for session control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes an outer `tools/pre-execute` allowlist gate that rejects non-reader tools and an explicit one-shot approved mutation path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README requires report delivery choice (chat or file) before audit reading begins, and requires user approval for writing `SECURITY_AUDIT_REPORT.md`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a plugin package entry (`main: lib/index.js`) and a DSH bundle patch, indicating integration as a loadable runtime extension.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata is public, not archived, and has immutable commit evidence, plus published files including lib/build/test tooling and preset/scripts.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Enables a read-only audit session preset for DeepSeek Harness",
+      "Hooks tool execution to block non-allowlisted tool calls during audit mode",
+      "Adds mandatory report-delivery selection before auditing starts",
+      "Provides per-session slash commands to toggle or check read-only audit status",
+      "Supports single approved report-file write with immediate return to read-only mode",
+      "Installs as a harness plugin bundle and preset entry"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:23.167Z",
+  "repositoryCommitSha": "c19153846ebb6ef223fb984425839776c2ef83b6",
+  "evidenceHash": "fbe302823e3fb16fba51f2546fcfaae7a400374377a7397db263c2ebccb8d300",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2fec1889900d5304970924250ca6018866f65b15898ec2d66edae80e3a91222f",
+  "shadowMode": false
+}

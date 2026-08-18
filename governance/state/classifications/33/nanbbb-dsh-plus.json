@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "integration",
+    "api",
+    "memory",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是增强 DSH Web 设置体验：集中提供视觉、记忆、插件市场与本地模型配置面板，并提供插件安装与重启刷新流程；分类依据来自 README 功能列表、安装与操作说明，以及 dsh 插件清单对 web 客户端注入能力的声明。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 网页端设置页新增可视化与记忆、插件市场、本地模型等配置入口，并支持模型设置、插件安装与一键重启。",
+    "en": "This plugin adds web settings panels in DSH for visual, memory, plugin-market, and local-model setup, including model configuration, plugin installation, and one-click restart."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在 Web 设置界面新增并管理视觉、记忆、插件市场和本地模型配置面板",
+      "支持配置外部视觉模型服务的 provider/baseURL/API Key 并在 UI 中展示掩码",
+      "可从远端源按主题检索并安装插件",
+      "可探测本地模型运行时并刷新模型清单",
+      "支持一键触发引擎重启以应用配置变更"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确为 Web 的设置页新增视觉/记忆/插件市场/本地模型四个面板，体现以界面配置为主",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明可配置看图引擎的 provider、baseURL、API Key 与模型，并显示 API Key 掩码",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明插件市场支持 GitHub topic:dsh-plugin 搜索、一键安装、已装清单与重启生效",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明客户端平台为 web 且注入 slots/locale，表明功能面向前端界面注入",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库元数据中规则结果记录 capabilities 包含 credential.read 与 network.access",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "在 Web 设置界面新增并管理视觉、记忆、插件市场和本地模型配置面板",
+      "支持配置外部视觉模型服务的 provider/baseURL/API Key 并在 UI 中展示掩码",
+      "可从远端源按主题检索并安装插件",
+      "可探测本地模型运行时并刷新模型清单",
+      "支持一键触发引擎重启以应用配置变更"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:27.205Z",
+  "repositoryCommitSha": "923063c402b629a41d27940d5f592553694b2b39",
+  "evidenceHash": "9f1f31269b7f7dcb5339365a2fca33e78b818d822000139856f1f5854512d494",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "48a54f362c032085ad6ed3fd43dc9ee2436e7c51cfe051f2d3f15f2359b8545e",
+  "shadowMode": false
+}

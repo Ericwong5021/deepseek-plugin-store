@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "tool",
+    "workflow",
+    "memory",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The repository is a DeepSeek Harness plugin centered on coordinating multi-agent task execution: the lead creates DAG-based plans, dispatches nodes, and reviews results, while members execute tasks and a reconciler/runtime loop keeps progress moving across restarts. Evidence shows task truth stored in an append-only workspace log with snapshot/inbox views and UI/status surfaces, so the primary user-facing purpose is orchestration and planning execution rather than generic coding or file-only tooling.",
+  "summaries": {
+    "zh": "这是一个面向长任务的 DeepSeek Harness 插件，用于让 lead 规划依赖任务图并协调成员执行与复核，并通过持久化日志和看板持续跟踪任务运行状态。",
+    "en": "This is a DeepSeek Harness plugin for coordinating multi-agent long tasks where a lead plans dependencies, dispatches and reviews node work, and tracks progress through persisted task logs plus board/status views."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Task orchestration via lead/member tools",
+      "Review-gated dependency dispatch and completion flow",
+      "Persistent task and event storage in workspace directory",
+      "Resident reconciliation to resume interrupted work",
+      "User-facing task board and status inspection routes"
+    ],
+    "reasons": [
+      {
+        "code": "WORKFLOW_TOOLING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PERSISTENT_LOG_STRUCTURE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "RECOVERY_RECONCILER",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_WEB_PLUGIN_INTEGRATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Task orchestration via lead/member tools",
+      "Review-gated dependency dispatch and completion flow",
+      "Persistent task and event storage in workspace directory",
+      "Resident reconciliation to resume interrupted work",
+      "User-facing task board and status inspection routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:49.504Z",
+  "repositoryCommitSha": "285eb2726472723a1dafa1b51fb6369858b4a857",
+  "evidenceHash": "9e4f8a1a622aa961a49721252a8e9272ea064f319aca26dfe62a8dc1da8a9ac9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ce1b01aba0162c876791302b0eb6097103a86bd8b1a8dea16ec22392a35bf597",
+  "shadowMode": false
+}

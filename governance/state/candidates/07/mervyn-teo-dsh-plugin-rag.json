@@ -4,7 +4,7 @@
     "fullName": "mervyn-teo/dsh-plugin-rag",
     "url": "https://github.com/mervyn-teo/dsh-plugin-rag"
   },
-  "summary": "DeepSeek Harness (DSH) plugin: a self-contained semantic memory (RAG) over all your chat sessions. Indexes messages live via session/event, stores embeddings in one local JSON file, and exposes a rag_search tool.",
+  "summary": "This is a DeepSeek Harness plugin that incrementally builds a local semantic memory index from sessions and provides rag_search to retrieve relevant past messages from chat history.",
   "sources": [
     "github-topic"
   ],
@@ -44,35 +44,25 @@
   },
   "classificationSuggestion": {
     "group": "agents-workflows",
-    "category": "automation",
+    "category": "memory-context",
     "tags": [
-      "agent",
-      "api",
-      "automation",
-      "chat",
-      "context",
-      "data",
-      "file",
-      "knowledge",
       "memory",
-      "monitoring",
-      "search",
-      "terminal",
-      "testing",
-      "tool"
+      "chat",
+      "tool",
+      "api",
+      "data",
+      "integration",
+      "workflow"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:eval",
-      "text:automation:automat",
-      "text:memory-context:memory",
-      "text:search-browsing:search",
-      "text:knowledge-management:rag",
-      "text:files-terminal:file",
-      "text:data-processing:json"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:b3068de300a4a0dca3f2a4cd25000e5df9c2f16b512c50ba0e3d2d27b526dad5",
+      "commit:85bee0b632ec36c7ce8aea20df33a7182f809888"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:19:50.153Z",
+    "reason": "This plugin’s primary user-facing purpose is cross-session conversational memory: it listens to DSH session events, embeds message content via a configured endpoint, stores vectors in a local index file, and enables semantic retrieval through a rag_search tool. The manifest and documentation indicate it is a runtime plugin with settings UI and non-destructive integration, so classification is memory-context with optional external-service dependency for embeddings."
   }
 }

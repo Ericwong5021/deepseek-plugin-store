@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "file",
+    "integration",
+    "api",
+    "workflow",
+    "skill",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is a DeepSeek Harness utility for end users to manage installed Skills: it adds a Settings UI for installing, updating, and uninstalling Skills from GitHub, shows loaded Skills by scope, and can optionally include read-only Claude `.claude/skills` sources; evidence in the README and package metadata consistently describes this lifecycle-management purpose rather than core platform development or data analytics.",
+  "summaries": {
+    "zh": "在 Settings 中集中管理 DeepSeek Harness Skills，支持从 GitHub 安装、更新和卸载技能，并查看当前已加载技能的作用域分组及可选的 Claude `.claude/skills` 兼容能力。",
+    "en": "Provides a Settings-based DeepSeek Harness utility to install, update, and uninstall Skills from GitHub and inspect loaded skills by scope, with optional read-only `.claude/skills` compatibility."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Install skills from GitHub sources (including tag or URL forms) into the local skills directory",
+      "Update and uninstall installed skills and maintain install metadata in a manifest",
+      "Read and display loaded skills grouped by scope (project/user/custom/bundled)",
+      "Load Claude-style skill definitions from `.claude/skills/<name>/SKILL.md` in a read-only mode",
+      "Configure GitHub download proxy settings via plugin settings"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin downloads remote skill archives from GitHub and extracts/copies them into local skill storage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin writes and deletes skill files under `<dshHome>/skills` and updates `<dshHome>/.skill-manager/manifest.json`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "A desktop install script is provided that patches host configuration files and restarts the app, requiring write access to app data paths.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Install skills from GitHub sources (including tag or URL forms) into the local skills directory",
+      "Update and uninstall installed skills and maintain install metadata in a manifest",
+      "Read and display loaded skills grouped by scope (project/user/custom/bundled)",
+      "Load Claude-style skill definitions from `.claude/skills/<name>/SKILL.md` in a read-only mode",
+      "Configure GitHub download proxy settings via plugin settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:20.370Z",
+  "repositoryCommitSha": "5827f24e03dd80036ce3f7e10eb5611ad7a8d7b3",
+  "evidenceHash": "c20835bc7625fdca4a06f1015407d2a08b6cdd717790f4e3c17137d59eff22de",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd57274257e7f6b60751840552f21cc17485e481e8fc7119d336cd71f75b7a69",
+  "shadowMode": false
+}

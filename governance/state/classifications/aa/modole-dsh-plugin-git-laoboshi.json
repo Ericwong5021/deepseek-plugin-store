@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "tool",
+    "workflow",
+    "integration",
+    "mcp",
+    "file"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.88,
+  "reason": "该插件主要用于在 DSH Web 中接入受约束的 Git Agent 功能，属于面向用户工作流的自动化工具型插件；基于 README 与包清单可确认其是集成/工具用途，而非独立界面框架或纯数据分析类能力。",
+  "summaries": {
+    "zh": "这是一个用于 DSH 的 Git 插件，提供受约束的 Git Agent 工具并接入 Laoboshi 桌面版本中心，供用户在 DSH Web 环境中调用版本控制相关能力。",
+    "en": "This is a DSH plugin that provides constrained Git agent tooling and integrates with the Laoboshi desktop version center for use within the DSH web environment."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在 DSH 环境中提供 Git 相关的代理工具能力",
+      "通过 DSH 插件清单与客户端注入配置接入 DSH Web 运行时",
+      "依赖 DSH/MCP 工具链以执行受约束的任务型操作"
+    ],
+    "reasons": [
+      {
+        "code": "仓库与 README 均直接表述该插件为“受约束的 Git Agent 工具”并用于 DSH，表明其面向工作流自动化的工具提供性质。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 的 dsh.bundle 与 dsh.client 配置、以及依赖 @deepseek-ai/dsh-mcp-client/@deepseek-ai/dsh-tools，表明其通过 DSH 插件框架运行并调用工具能力。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 的安全提示说明插件以当前用户权限执行，意味着一旦进行 Git/工具操作，其影响范围受当前用户上下文约束。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "在 DSH 环境中提供 Git 相关的代理工具能力",
+      "通过 DSH 插件清单与客户端注入配置接入 DSH Web 运行时",
+      "依赖 DSH/MCP 工具链以执行受约束的任务型操作"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.88,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:05.442Z",
+  "repositoryCommitSha": "c2217839288369d8d892ba1c2f899e7899c567a2",
+  "evidenceHash": "474bc35473b7768522cbbc7db57b3579ce2625abe004cd948501696aa3ebf127",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6ed195982ab9b1cd2a3e2035f7be603f1cde52dcbf46f69f4c7e2d5c2a250845",
+  "shadowMode": false
+}

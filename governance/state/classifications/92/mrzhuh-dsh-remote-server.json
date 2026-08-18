@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "terminal",
+    "tool",
+    "workflow",
+    "integration",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Classified as an automation plugin because it enables users to invoke remote-host actions from a DeepSeek Harness session via @ mentions, with `remote_exec` and `remote_server_info` tool behavior. Evidence shows it is centered on server registration, SSH-based command execution, and approval-controlled workflow rather than code generation, testing, visualization, or media features, which places it in an automation/terminal tooling category.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 会话中通过 @ 选择已注册服务器，并通过 SSH 执行命令或查询服务器信息。",
+    "en": "This plugin lets users pick registered servers in DeepSeek Harness with @ and execute SSH commands or query server information."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "remote shell command execution on registered servers via SSH",
+      "server information probing (facts collection)",
+      "human-in-the-loop and policy-based command gating",
+      "import and manage server definitions from SSH config paths",
+      "audit logging of execution and refusal events"
+    ],
+    "reasons": [
+      {
+        "code": "README: plugin purpose is to mention a server with @ and run commands over SSH, and the tool `remote_exec` runs one command on one registered server returning stdout, stderr, and exit code.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: command approval flow includes fixed gates (unregistered alias refusal, high-risk rules, optional alwaysAsk, classifier, then human approval) and ambiguous classifier/error outcomes are denied by default.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: supports registering host alias/host/user/port/identityFile and importing entries from SSH config, indicating direct remote target execution integration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: exported as a DeepSeek Harness DSH plugin (web client integration) with command/approval related dependencies for dsh tools and settings.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "remote shell command execution on registered servers via SSH",
+      "server information probing (facts collection)",
+      "human-in-the-loop and policy-based command gating",
+      "import and manage server definitions from SSH config paths",
+      "audit logging of execution and refusal events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:14.390Z",
+  "repositoryCommitSha": "bd85c80b8e915f294e26c06999a21771032abd8c",
+  "evidenceHash": "cb0c27d55b29b8fd8e4a268708b3eb30bf29d75bdc8dd884545b74e11932fb4e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7867cd86ab22f10d7ce74c3538aea8fc405b589260fdf915ced67dfc9dd5ab5d",
+  "shadowMode": false
+}

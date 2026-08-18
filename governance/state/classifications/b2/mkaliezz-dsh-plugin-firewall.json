@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "cli",
+    "project-analysis",
+    "file",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a project-analysis utility: the repository documentation states it performs offline static inspection of a local DeepSeek Harness plugin package and returns deterministic LOW/MEDIUM/HIGH findings with a digest-based receipt, indicating a pre-trust admission/safety-check workflow rather than runtime execution or external integration.",
+  "summaries": {
+    "zh": "这是一个离线优先的 DeepSeek Harness 插件扫描器，用于对本地插件包做静态检查并输出风险等级与结构化结果。",
+    "en": "This is an offline-first DeepSeek Harness plugin scanner that performs local static checks on plugin packages and returns risk levels with structured output."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and analyzes local plugin package files and metadata",
+      "Applies static heuristics for install scripts, dependencies, and access indicators",
+      "Outputs structured risk reports with severity labels and a digest"
+    ],
+    "reasons": [
+      {
+        "code": "STATIC_LOCAL_SCAN_PATH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "NO_EXECUTION_CLAIM",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "HARNESS_PLUGIN_BUNDLE_FORMAT",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "REPOSITORY_AND_MANIFEST_PRESENT",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads and analyzes local plugin package files and metadata",
+      "Applies static heuristics for install scripts, dependencies, and access indicators",
+      "Outputs structured risk reports with severity labels and a digest"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:00.661Z",
+  "repositoryCommitSha": "5bad35100b2a9b591db2a52b767b0cde2592f8d1",
+  "evidenceHash": "175910a3d7891c3d3919094e3d1885b070448c05630913f9bcfe97b2d0b1a3d0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a5c98549608896133b8c5821d0b7a454f988301ee93568ab5061acde20de0ec1",
+  "shadowMode": false
+}

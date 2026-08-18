@@ -4,7 +4,7 @@
     "fullName": "realpkuasule/dsh-session-handoff",
     "url": "https://github.com/realpkuasule/dsh-session-handoff"
   },
-  "summary": "dsh-session-handoff",
+  "summary": "This plugin observes DSH session signals, injects a next-turn suggestion when configured thresholds are crossed, and triggers `harness-automation session handoff` after user approval.",
   "sources": [
     "github-topic"
   ],
@@ -48,29 +48,21 @@
     "tags": [
       "agent",
       "automation",
-      "chat",
       "cli",
-      "document",
-      "file",
-      "monitoring",
-      "planning",
-      "project-analysis",
-      "testing",
+      "workflow",
       "tool",
-      "workflow"
+      "file",
+      "context"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:插件",
-      "text:testing-debugging:test",
-      "text:automation:automat",
-      "text:planning-execution:执行",
-      "text:memory-context:session",
-      "text:document-processing:文档",
-      "text:visualization:渲染",
-      "text:files-terminal:cli"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:ca644b7a3c8bbcbd3d55333c50fce5271b1e3bef4b68f43762801ce42e4a51f3",
+      "commit:6625c87f1eb461b9e83b268485e51bd7e9b5913d"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:22:17.369Z",
+    "reason": "该插件的主要用户可见用途是会话治理自动化：在 DSH 会话中观察运行指标并在达到阈值时注入下一轮建议，再在用户审批后发起交接流程。依据 README、package.json 与仓库目录中的核心模块文件，可确认其并不实现手工工作流逻辑，而是作为薄适配层负责观测、阈值判定、建议注入与外部命令触发。"
   }
 }

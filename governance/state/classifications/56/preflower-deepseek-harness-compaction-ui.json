@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "ui",
+    "context",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is a user-facing DeepSeek Harness web plugin focused on configuring context-compaction behavior through settings UI elements, including threshold and retention controls, rather than performing compression itself, as the README explicitly states its boundary and supported features.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在设置页提供可视化界面来配置上下文压缩策略，可在百分比或 Token 模式下设置触发阈值与最近消息保留量，并按模型/提供商应用规则。",
+    "en": "This is a DeepSeek Harness web plugin that provides a settings UI for context-compaction policies, allowing trigger thresholds and recent-message retention to be set in token or percentage mode with provider/model-specific rules."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a web UI for managing context compaction settings in DeepSeek Harness.",
+      "Supports configuring compression thresholds and retention values in both token and percentage modes.",
+      "Converts configured values and validates settings before applying runtime updates."
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a visual configuration UI for official DeepSeek Harness compaction and places it in the Web settings page.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists user controls for trigger threshold and recent-content retention with percentage/token modes, unit conversion, and validation that retention must be less than threshold.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package.json declares dsh client web plugin wiring and a dependency on @deepseek-ai/dsh-compaction-basic, indicating this plugin augments existing compaction behavior rather than replacing the engine.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository description and keywords identify it as a DeepSeek Harness plugin for context compaction, confirming its primary domain.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides a web UI for managing context compaction settings in DeepSeek Harness.",
+      "Supports configuring compression thresholds and retention values in both token and percentage modes.",
+      "Converts configured values and validates settings before applying runtime updates."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:27.281Z",
+  "repositoryCommitSha": "580a6e379d578a1f658c60a1965c9d27b84f073a",
+  "evidenceHash": "ed119f8ed4cad07f8f51632c3463ac9484c02e5518bc26064240bfed02a8bac9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6ab3301f479fc727e169be1ebb5d848033ab6daf72a8ac7047c7fb8929adcff5",
+  "shadowMode": false
+}

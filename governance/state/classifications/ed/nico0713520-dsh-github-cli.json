@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "cli",
+    "api",
+    "integration",
+    "terminal",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件主要用于将本地 GitHub CLI（gh）接入 DeepSeek Harness，以工具形式提供仓库、PR、Issue、workflow 等查询与操作能力。依据 README 中的工具列表与命令分级说明，其核心目的不是通用开发或 UI 功能，而是外部 GitHub 服务集成；因此归类为外部服务类插件，并需注意其可执行本地 CLI 与网络调用的潜在写操作风险。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中接入本机 GitHub CLI，方便会话调用 GitHub 相关命令查看仓库、PR、Issue 与 workflow 等信息。",
+    "en": "This plugin integrates your local GitHub CLI into DeepSeek Harness, allowing chat sessions to run GitHub-related commands for repositories, pull requests, issues, and workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local-github-cli-command-execution",
+      "github-network-operations",
+      "read-only-command-defaults",
+      "configurable-write-command-enable"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin exposes `gh_cli_run` and `gh_auth_status` tools to run GitHub CLI commands and check authentication state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It documents per-command allowlisting with read-only defaults and an optional `fullAccess` switch for write commands.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Security-relevant command categories are described (read-only, write, and permanently blocked) including credential-related commands.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin packaging includes DSH bundle metadata (`cordis.patch.yml`) indicating runtime integration in the host environment.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "local-github-cli-command-execution",
+      "github-network-operations",
+      "read-only-command-defaults",
+      "configurable-write-command-enable"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:37.845Z",
+  "repositoryCommitSha": "529b2d9e5c10a061cfcaacbf798289441b9707cb",
+  "evidenceHash": "83e258cfff50016fbd48e8205f8bc5e22b1cd2a0a3db294e242e39246855ae0d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b1ea9d6fcc63533619075c5a99fa40ffce8dfffd0314a2e9472518434bef0f7c",
+  "shadowMode": false
+}

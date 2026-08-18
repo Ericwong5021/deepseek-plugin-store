@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "skill",
+    "automation",
+    "api",
+    "testing",
+    "cli",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件主要是面向 OI 题目制作流程的自动化插件，核心目标是在会话中通过 oi-workbench 技能完成题目知识点定位、测试点与数据构造、题面/附件生成、本地验证，并支持 Hydro/HOJ 的打包与发布。其依据来自仓库说明与目录结构中的 skill 流程文档、generator 打包评测脚本以及 Hydro/HOJ 桥接、UI 与斜杠命令入口。",
+  "summaries": {
+    "zh": "OI 出题工作台是 DeepSeek Harness 的 skill 插件，提供题目出题到本地评测、打包并发布到 Hydro/HOJ 的流程化支持，同时提供 HOJ 管理的 Python 外部界面与对应斜杠命令入口。",
+    "en": "dsh-oi-workbench is a DeepSeek Harness skill plugin that supports an OI problem-setting workflow with local judging, packaging, and Hydro/HOJ publication, and provides HOJ management through a Python external UI plus slash-command entry points."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "本地构建与评测任务（打包/校验/本地评测脚本）",
+      "与 Hydro/HOJ 外部服务进行题目与管理相关交互",
+      "通过系统斜杠命令触发工作流与管理操作",
+      "启动并运行基于 Python 的外部管理 UI"
+    ],
+    "reasons": [
+      {
+        "code": "README 和仓库结构显示 hydro-bridge/ 与 hoj-bridge/ 用于 Hydro/HOJ 的题目、比赛与管理操作（含发布、管理、重判等）",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "生成器工具链提供 build_package/verify_package/local_judge 等本地执行脚本，并依赖 g++ 进行本地评测与校验",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明包含自动注册 /hoj、/oiwb、/oj 等命令，及 /hoj 子命令用于发布与 rejudge，属于可远程触发的运维入口",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "本地构建与评测任务（打包/校验/本地评测脚本）",
+      "与 Hydro/HOJ 外部服务进行题目与管理相关交互",
+      "通过系统斜杠命令触发工作流与管理操作",
+      "启动并运行基于 Python 的外部管理 UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:15.911Z",
+  "repositoryCommitSha": "2cbaadd7785019e5a6f02ac4f54e4fc20c829cf9",
+  "evidenceHash": "0f223efac64da35edd37055e46c1b6a795e8bfad38cc18bc8efaabc13d9eae60",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7d3e4652c633c1889ce5f2357322649833f43961359b42a3e565add8c5cf7971",
+  "shadowMode": false
+}

@@ -1,16 +1,84 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "ui",
+    "browser",
+    "tool",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用户用途是为 DSH Web 中的代理任务事件提供可配置的提示反馈（音效与可选桌面通知），通过内置设置面板管理事件级音效/通知开关和音量，并将资源内置于客户端以实现离线可用。证据主要来自仓库说明与包清单中的 DSH Web 插件定义，未显示远程攻击面或外部服务调用。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，用于在代理会话完成、失败、等待输入或权限申请等关键事件中播放可配置音效并可发出桌面提示，支持在设置中按事件开关、调节音量和选择提示音。",
+    "en": "This DSH web plugin provides event-based audible and notification alerts for key agent events, with a Settings panel to configure per-event sound/notification toggles, preview options, and volume."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Play sound effects for defined agent/session events",
+      "Show browser notifications for selected attention events",
+      "Provide a settings UI for per-event toggles, volume, and defaults",
+      "Store preferences locally and update behavior without host restart",
+      "Expose limited client debug helpers for manual playback"
+    ],
+    "reasons": [
+      {
+        "code": "README describes browser-side event detection on session running state, pending interactions, and turn/end reasons, then triggering sounds and notifications accordingly.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states a native Settings section is used for per-event sound/notification toggles, sound previews, volume, and reset behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README indicates browser Notification toasts are shown when the page is not focused and focus the page when clicked, which affects user-facing attention signaling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH web client plugin (`dsh.client.platform: web`) with settings namespace and client entry, confirming host integration scope.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Play sound effects for defined agent/session events",
+      "Show browser notifications for selected attention events",
+      "Provide a settings UI for per-event toggles, volume, and defaults",
+      "Store preferences locally and update behavior without host restart",
+      "Expose limited client debug helpers for manual playback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:44.611Z",
   "repositoryCommitSha": "7018bd3b060bd96c517c69cb33f525dab4ea5c2e",
+  "evidenceHash": "7148304c42509a9af5cfba9ae0c766779544a53491dacb5e94da4842e588e334",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "e506f54ad2f98770ced06c0107d71dda461f52917f3f971eb26f6068e8260655",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:14:25.807Z",
-  "lastAttemptAt": "2026-08-18T18:14:25.807Z",
-  "nextRetryAt": "2026-08-19T18:14:25.807Z",
-  "retryable": true,
-  "error": "/chat/completions: 400 {\n  \"error\": {\n    \"message\": \"Invalid schema for response_format 'governance_classify_v2': In context=('properties', 'schemaVersion'), schema must have a 'type' key.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"text.format.schema\",\n    \"code\": \"invalid_json_schema\"\n  }\n}",
   "shadowMode": false
 }

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "context",
+    "tool",
+    "terminal",
+    "planning"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "仓库内容显示该插件为 DeepSeek Harness 的 agent 预设包，核心是通过 dsh bundle/preset 配置在首条请求时用最小工具与上下文隔离实现启动行为锚定，并在后续会话阶段按模型与 epoch 管理可用工具目录与提示。该证据来自 README、package.json 与仓库结构，表明其定位为面向代理行为流程控制与执行路径编排，而非通用文档、数据处理或可视化类工具。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 Miraculous Standard agent 预设，用于通过首请求最小化和后续阶段化策略稳定模型启动行为，并按模型与会话周期管理可用工具目录。",
+    "en": "This plugin provides the Miraculous Standard agent preset for DeepSeek Harness, using a minimal first-request setup and staged policy to stabilize startup behavior and manage tool catalogs across model and session epochs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "首请求阶段工具暴露控制（最小工具集锚定）",
+      "模型感知的工具目录晋升与路径路由",
+      "会话 epoch/重放场景下的工具集恢复与回退策略",
+      "通过 dsh 插件预设注入上下文过滤与行为提示"
+    ],
+    "reasons": [
+      {
+        "code": "bootstrap-minimal-tool-gating",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model-aware-path-routing-and-promotion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "epoch-aware-compaction-reset-logic",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh-plugin-bundle-entrypoint",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "plugin-distribution-via-preset-directory",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "首请求阶段工具暴露控制（最小工具集锚定）",
+      "模型感知的工具目录晋升与路径路由",
+      "会话 epoch/重放场景下的工具集恢复与回退策略",
+      "通过 dsh 插件预设注入上下文过滤与行为提示"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:10.152Z",
+  "repositoryCommitSha": "9b54d1768143709f0718db944e2b01d010874581",
+  "evidenceHash": "c1bda526908cddced77770d8c1e8c38ff60993e70971cc558c25ccf87d285460",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37bef54f9688b37c5897a5f2f2f2410ccaa4019025dde98b03559b378753f5f9",
+  "shadowMode": false
+}

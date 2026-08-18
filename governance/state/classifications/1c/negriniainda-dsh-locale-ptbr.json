@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "browser",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供 pt-BR 本地化，属于界面体验改造：将 Web UI 文案进行葡萄牙语（巴西）翻译并在浏览器语言为葡语时自动激活。能力仅涉及客户端 UI 文字与语言选择行为，不涉及代码生成、测试执行或外部服务调用。仓库说明也明确提到存在部分固定文本未覆盖，表明定位为局部界面本地化补丁，而非完整功能性工具链扩展。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 pt-BR 本地化插件，用于将 Web 界面文本翻译为巴西葡萄牙语，并在葡语环境下自动激活对应语言。",
+    "en": "This is a DeepSeek Harness locale plugin that translates the web interface into Brazilian Portuguese and activates pt-BR language preference for Portuguese browser environments."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Registro de dicionários de interface pt-BR para namespaces do runtime de locale do DeepSeek Harness.",
+      "Adição/seleção de pt-BR na lista de idiomas e ativação automática por idioma do navegador para a sessão web.",
+      "Fornecimento de texto localizado para menus/configurações/conversa/áreas da interface via plugin de cliente web."
+    ],
+    "reasons": [
+      {
+        "code": "README describes that the plugin translates Web UI sections (menus, settings, chat, sidebar, workspaces, subagents, workflows) and registers dictionaries via locale.register(ns, 'pt-BR', dict), then applies a bridge to make pt-BR selectable.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web client plugin settings (platform web, immediate injection) and patch-based bundle integration, indicating runtime UI integration on the client side.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository file list/readme identify lib/dicts.js as source translations and generated lib/client.js used as browser plugin bundle, confirming scope is localization artifacts.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Registro de dicionários de interface pt-BR para namespaces do runtime de locale do DeepSeek Harness.",
+      "Adição/seleção de pt-BR na lista de idiomas e ativação automática por idioma do navegador para a sessão web.",
+      "Fornecimento de texto localizado para menus/configurações/conversa/áreas da interface via plugin de cliente web."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:31.134Z",
+  "repositoryCommitSha": "d4ee85d405336e8f05d8461a59fd87ce1c5c3950",
+  "evidenceHash": "ee4bc80c824a08cba52d48264061e051353c97864aeb31fdbd6c63f0aa3d0222",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a02496ec32d9cdab36958f03f841b22acb4abb4d357aba0e1c96dcc929cb10eb",
+  "shadowMode": false
+}

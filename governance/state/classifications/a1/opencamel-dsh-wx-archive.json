@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "agent",
+    "data",
+    "document",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Based on the repository name, README, and package metadata, the plugin is primarily an external-service integration that helps agents archive and read WeChat Official Account articles by calling a 2100laike endpoint, with a dedicated tool interface returning markdown content and related article metadata.",
+  "summaries": {
+    "zh": "该插件为 DSH Agent 提供 wx_archive 工具，可将微信公众号文章链接提交到 2100laike 存档服务并返回可读正文与文章元信息。",
+    "en": "This plugin provides a wx_archive tool for DSH agents to send WeChat Official Account article links to the 2100laike archive service and get back readable content with article metadata."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls a configurable external HTTP API for WeChat article archiving and retrieval",
+      "Accepts article URL input and optional refresh flag to trigger re-archiving",
+      "Returns structured article data including markdown content and metadata fields"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin purpose as archiving and reading WeChat Official Account articles, with mp.weixin.qq.com handling via wx_archive.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README defines config with apiBaseUrl and optional token, indicating outbound network dependency and external service authentication.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies it as a DeepSeek Harness tool plugin with a bundled cordis patch and main entry lib/index.js, confirming integration-style plugin behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Calls a configurable external HTTP API for WeChat article archiving and retrieval",
+      "Accepts article URL input and optional refresh flag to trigger re-archiving",
+      "Returns structured article data including markdown content and metadata fields"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:52.360Z",
+  "repositoryCommitSha": "69ce28ad6955622c092514f9544718aac3ad811b",
+  "evidenceHash": "752866aecaef62143325f1f1c86a59b023765c921b4f06dd8aaefa393f7e0b31",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e1b3fe8639c2f77d4dda72d894947c6dd85c0d2210536ee642f8789f866084ff",
+  "shadowMode": false
+}

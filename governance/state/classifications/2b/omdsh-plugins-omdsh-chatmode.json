@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "workflow",
+    "file",
+    "context",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is best classified as a navigation/interaction enhancement for the DeepSeek Harness web UI: it adds a Chat/Work session-mode toggle and a managed Chat workspace surfaced in the sidebar so users can separate non-project chat from project work sessions. Evidence shows it does not add new model behavior or external integrations; its primary action is organizing session presentation and navigation by registering modes, deriving mode from workspace membership, and applying local workspace/preset housekeeping in the harness profile.",
+  "summaries": {
+    "zh": "用于 DeepSeek Harness Web 的会话界面增强，提供 Chat/Work 切换入口并在侧边栏统一管理非项目聊天会话，便于在聊天与项目工作流间切换。",
+    "en": "This plugin adds a Chat/Work session-mode toggle in DeepSeek Harness and keeps non-project chat sessions grouped under a dedicated Chat workspace in the sidebar for easier switching between chat and project work."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "registers custom session modes and exposes a Chat/Work mode switch in the web conversation UI",
+      "creates and maintains a managed Chat workspace entry under the harness sessions location",
+      "pins/reorders the Chat workspace position in the sidebar",
+      "derives mode from the active conversation’s workspace location and handles navigation behavior",
+      "performs local legacy preset cleanup when recognized files match the plugin’s shipped preset content"
+    ],
+    "reasons": [
+      {
+        "code": "managed_chat_workspace",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "chat_work_mode_switch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_pin_and_sidebar_order",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "derived_mode_from_workspace_location",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "legacy_preset_cleanup",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "registers custom session modes and exposes a Chat/Work mode switch in the web conversation UI",
+      "creates and maintains a managed Chat workspace entry under the harness sessions location",
+      "pins/reorders the Chat workspace position in the sidebar",
+      "derives mode from the active conversation’s workspace location and handles navigation behavior",
+      "performs local legacy preset cleanup when recognized files match the plugin’s shipped preset content"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:51.098Z",
+  "repositoryCommitSha": "378d7f64b9f90080bcef761c09c9ff8d103d9439",
+  "evidenceHash": "69fb7b858e94ec6da34601e3c1e86fa073045ef2bf3e2984b391c28262ad6c98",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "93605a554f43573555f75f22fa46295a9cc31d932b2046f9735e1fc2c85daefd",
+  "shadowMode": false
+}

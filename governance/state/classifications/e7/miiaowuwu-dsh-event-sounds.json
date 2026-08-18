@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "ui",
+    "notification",
+    "file",
+    "browser",
+    "desktop",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is a user-facing DSH media utility that augments the web GUI with customizable event sounds: users configure a draggable floating control, assign sounds to conversation events, manage a local sound library, and optionally generate speech via an external AI voice API; evidence is directly documented in the README and package wiring.",
+  "summaries": {
+    "zh": "这是一个面向 DSH Web GUI 的声音工具，提供可视化设置来为会话事件绑定提示音、管理本地音频库，并可通过外部 AI 语音服务生成并加入角色语音。",
+    "en": "This is a DSH Web GUI media utility that lets users configure event-linked sounds through a visual control panel, manage a local audio library, and optionally generate and add AI voices via an external TTS service."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "audio playback for event-triggered notifications",
+      "local audio library management (upload/delete/rename/restore)",
+      "exposes host-side static routes for config and audio serving",
+      "persists plugin settings across restarts",
+      "optional external TTS integration for AI voice generation"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a Sound Lab with a floating ball UI, per-event sound assignment (session end/options/permission/stop), and a web GUI settings dialog.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a local sound library in the plugin sounds/ folder with refresh, upload/drag-drop, delete, and restore flows, implying local file read/write operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a host endpoint set (/dsh-sounds-control) for list/config/audio/TTS and client-side playback logic, indicating networked interaction between host and browser halves.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README includes an AI Voice dialog requiring Alibaba Cloud Bailian API key and cloned voice ID to generate custom speech, showing optional external service usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines the plugin dual-side wiring via dsh.bundle.patch and web client injection, confirming plugin execution in both host (Node) and web client environments.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "audio playback for event-triggered notifications",
+      "local audio library management (upload/delete/rename/restore)",
+      "exposes host-side static routes for config and audio serving",
+      "persists plugin settings across restarts",
+      "optional external TTS integration for AI voice generation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:52.688Z",
+  "repositoryCommitSha": "9ec77335ed1650ca2d27004f23855c125595b92c",
+  "evidenceHash": "af621e1163f5c8f08c6d3d180fb1cad3e4d40c757cc9052ff4072b728903a810",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "360fedc20cfeee679356e3dd08b91ec570284b7437278ea5d3f7b9d715634d9a",
+  "shadowMode": false
+}

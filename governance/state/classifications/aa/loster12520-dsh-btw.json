@@ -1,16 +1,86 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "chat",
+    "ui",
+    "workflow",
+    "context",
+    "search",
+    "tool",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要面向用途是通过 `/btw` 命令提供一个独立旁路问答入口，并用居中弹窗面板显示多轮对话；仓库说明还显示其按主会话同步上下文、在会话内实行只读工具白名单、并与主会话上下文隔离。",
+  "summaries": {
+    "zh": "该插件通过 `/btw` 命令启动独立的旁路问答会话，在居中弹窗中展示提问与回答，并在受限工具集中读取上下文与文件。",
+    "en": "This plugin provides a `/btw` side-thread command that opens a centered panel for question-and-answer sessions, running in an isolated read-restricted context with controlled access to context and files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "侧边命令 `/btw` 触发旁路问答",
+      "居中弹窗面板用于会话输入与回答展示",
+      "每会话独立 BTW 分支与问答历史",
+      "主会话内容增量同步到旁路会话",
+      "工具白名单限制为只读与 web_search",
+      "提供 `/api/dsh-btw/*` 路由供前端轮询状态"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明 `/btw <问题>` 与 `/btw` 命令会启动/打开旁路会话面板，并在独立会话中回答问题且不触发主模型上下文。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出分支工具白名单为 read/glob/grep/read_image/web_search，其余写/执行类工具全部不可见并拒绝执行，体现受限能力边界。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 与 README 均指向 `src/host.js` 与 `dist/client.js`，并说明存在 `/api/dsh-btw/*` 接口和 web 端客户端注入。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "树结构显示 `src/host.js`、`src/client.js`、脚本和 `dist/client.js`，表明存在主机-客户端分层与前端面板运行时。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "侧边命令 `/btw` 触发旁路问答",
+      "居中弹窗面板用于会话输入与回答展示",
+      "每会话独立 BTW 分支与问答历史",
+      "主会话内容增量同步到旁路会话",
+      "工具白名单限制为只读与 web_search",
+      "提供 `/api/dsh-btw/*` 路由供前端轮询状态"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:43.011Z",
   "repositoryCommitSha": "b7f691221970448630934cfccfdcb865566edbb5",
+  "evidenceHash": "a0328fc2320f801326f0b15824b41ade4c0de8eb4cfc8e0b8d4b8669e52a4e37",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "937c0204e76adb1ad4742c83fc3031b780d61249e1fa4d311c69019073a4f3aa",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:16:38.832Z",
-  "lastAttemptAt": "2026-08-18T18:16:38.832Z",
-  "nextRetryAt": "2026-08-19T00:16:38.832Z",
-  "retryable": true,
-  "error": "AI decision metadata is invalid",
   "shadowMode": false
 }

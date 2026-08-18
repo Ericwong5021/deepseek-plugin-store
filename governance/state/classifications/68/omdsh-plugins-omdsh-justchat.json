@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "file",
+    "workflow",
+    "memory",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a user-interface session navigation enhancement for the DeepSeek Harness web GUI: it introduces Chat/Work mode navigation and manages a managed Chat workspace that appears in the sidebar. Evidence shows it registers mode segments, derives mode from where a conversation is stored, and keeps the Chat workspace group first via host/browser-side workspace ordering, rather than changing agent tooling or external integrations directly. Overall, its user-facing value is organizing conversational workflows and project/non-project context switching in the UI.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 网页界面新增 Chat 与 Work 模式入口，并通过托管的 Chat 会话工作区来统一管理非项目对话，便于在对话和项目工作间切换。",
+    "en": "This plugin adds Chat and Work mode navigation to the DeepSeek Harness web UI and keeps non-project conversations organized in a managed Chat workspace for easier switching and context handling."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers Chat/Work mode segments in the host session mode system",
+      "Creates and pins a dedicated Chat workspace in the sidebar and conversation registry",
+      "Maintains chat/work mode behavior during navigation and New Session flows",
+      "Writes and reconciles workspace-related state in DeepSeek Harness session directories",
+      "Handles migration/removal logic for a legacy chat preset when safe"
+    ],
+    "reasons": [
+      {
+        "code": "CHAT_WORK_SWITCH_REGISTRATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CHAT_WORKSPACE_CREATION_PINNING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DERIVED_MODE_NAVIGATION_AND_NEWSESSION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_BUNDLE_PLUGGABLE_PACKAGE_MANIFEST",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "Registers Chat/Work mode segments in the host session mode system",
+      "Creates and pins a dedicated Chat workspace in the sidebar and conversation registry",
+      "Maintains chat/work mode behavior during navigation and New Session flows",
+      "Writes and reconciles workspace-related state in DeepSeek Harness session directories",
+      "Handles migration/removal logic for a legacy chat preset when safe"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:51.285Z",
+  "repositoryCommitSha": "378d7f64b9f90080bcef761c09c9ff8d103d9439",
+  "evidenceHash": "b98a189af84a52695f627410c314a8d571a3403ff2b60f77c0d4e3cef6c921f2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "93605a554f43573555f75f22fa46295a9cc31d932b2046f9735e1fc2c85daefd",
+  "shadowMode": false
+}

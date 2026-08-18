@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "api",
+    "automation",
+    "cli",
+    "data",
+    "desktop",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This repository is primarily an automation plugin for connecting an AI agent with a local MATLAB/Simulink environment: the DSH Node host plugin and MATLAB daemon exchange task and response JSON files to expose 20 `matlab_*` tools for editor/code inspection and Simulink model operations. The core capability set includes command execution and model mutation actions, so it is useful for agent-driven MATLAB workflows but carries elevated local risk from direct code and model modification.",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，通过本地文件 IPC 在 AI 与 MATLAB 之间传递任务和结果，提供 `matlab_*` 工具用于编辑器代码读取/修改以及 Simulink 模型的查询和操作。",
+    "en": "This is a DSH plugin that connects an AI agent to a local MATLAB instance via file-based IPC, exposing `matlab_*` tools for reading/editing editor content and interacting with Simulink models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Execute MATLAB code via `matlab_eval`",
+      "Read and modify editor content/files through dedicated tools",
+      "Inspect and manipulate open editors and workspace data",
+      "Create/read/update Simulink model structure and parameters",
+      "Run simulations through tool calls"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a Node.js DSH plugin registering 20 `matlab_*` tools, including execution and model-modifying actions such as `matlab_eval`, `matlab_replace_text`, `matlab_add_block`, `matlab_add_line`, and `matlab_run_simulation`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README defines architecture using file IPC with `%USERPROFILE%\\\\.deepseek\\\\requests` and `responses` plus a MATLAB daemon polling every 2 seconds; this is a local command/response bridge with direct action hooks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package.json show `package.json` metadata and DSH bundle wiring (`cordis.patch.yml`) indicating the plugin is packaged for direct host integration rather than a passive library.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Execute MATLAB code via `matlab_eval`",
+      "Read and modify editor content/files through dedicated tools",
+      "Inspect and manipulate open editors and workspace data",
+      "Create/read/update Simulink model structure and parameters",
+      "Run simulations through tool calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:02.797Z",
+  "repositoryCommitSha": "e6ae8342db6941122bcef4ff85c6aca89da71e43",
+  "evidenceHash": "321de91655fa682eab82e81558c87b9dc6f5ba371811a6638ff6085a98aa4823",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2bc13347417c85e1b7dfb14274e1f65885e1a5a0ec017256e464dd832550ee1b",
+  "shadowMode": false
+}

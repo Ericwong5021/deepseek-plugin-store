@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "search",
+    "skill",
+    "integration",
+    "mcp",
+    "tool",
+    "video"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily an external-services integration bundle for DSH: it packages many social-media data and media-related skills and exposes MCP tools for platform API access, AI search, and AI generation. Evidence shows the plugin’s function is service orchestration and data interaction rather than local code generation, filesystem tooling, or direct app development features.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供一体化社交平台技能与 MCP 工具包，用于在会话中调用平台数据检索、内容分析和生成类能力。",
+    "en": "This plugin provides a bundled DSH skill package with MCP tools for social-platform data access, content analysis workflows, and generation/search capabilities within DSH sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries social-media platform APIs via bundled DSH skills",
+      "Retrieves and analyzes platform content metadata (search, comments, account/work info)",
+      "Downloads or inspects media-related platform content",
+      "Invokes external AI search/generation tools through MCP",
+      "Requires external API credentials (`REDFOX_API_KEY`) for full MCP functionality",
+      "Requires network access to operate"
+    ],
+    "reasons": [
+      {
+        "code": "README describes 112+ social-media skills for search, analysis, and content tasks across Douyin, Xiaohongshu, WeChat, Bilibili, Weibo, YouTube, TikTok and more.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the bundle registers 40 MCP tools (`douyin_*`, `xiaohongshu_*`, `wechat_*`, `ai_search_*`, image/video generation tools) as native `mcp__redfox__*` tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README requires `REDFOX_API_KEY` and Python/uv (`uvx redfox-mcp`) for MCP tool usage, indicating reliance on external service authentication and execution path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks this package as a DSH bundle plugin with profile targeting (`web`, `headless`) and restart/manual install steps for runtime integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Queries social-media platform APIs via bundled DSH skills",
+      "Retrieves and analyzes platform content metadata (search, comments, account/work info)",
+      "Downloads or inspects media-related platform content",
+      "Invokes external AI search/generation tools through MCP",
+      "Requires external API credentials (`REDFOX_API_KEY`) for full MCP functionality",
+      "Requires network access to operate"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:56.295Z",
+  "repositoryCommitSha": "ecb908c2f1b46979314af837c98bbae193e4e6e4",
+  "evidenceHash": "47169b5eac7664d4ef6cc310606f1cd5674c74186fa53526e355dcb8532d9984",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ec0ef87b183a2e5348d2033ec2cf0fcdc8a15e8bdb84f749e4743d203c647760",
+  "shadowMode": false
+}

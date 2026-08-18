@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "data",
+    "monitoring",
+    "visualization",
+    "integration",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin’s primary purpose is user-facing quota monitoring inside the DSH web interface: a compact panel/card that displays API account balance and usage windows with status colors, refresh intervals, and countdowns. Evidence in the README and package metadata shows it is an overlay-style DSH web plugin that consumes external service usage data through host-side fetch logic and presents it in a UI-oriented layout.",
+  "summaries": {
+    "zh": "dsh-quota-status 是一款 DSH Web 插件，用于在界面卡片中展示 DeepSeek、Kimi 与 ChatGPT 的额度余额与重置倒计时，实现多账户用量的快速监控。",
+    "en": "dsh-quota-status is a DSH web plugin that shows DeepSeek, Kimi, and ChatGPT quota status in a compact card with remaining amounts and reset timers for quick usage monitoring."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches usage and balance data from external service endpoints for DeepSeek, Kimi, and ChatGPT subscription limits",
+      "Renders an in-app quota status panel with collapsible rows, progress visuals, and reset countdowns",
+      "Supports host-side retrieval of credentials and local auth file integration for usage queries",
+      "Persists simple display preferences and accepts profile configuration for refresh and threshold behavior",
+      "Provides a slot-based extension point for extra quota rows from other local plugins"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a minimal DSH web card for viewing DeepSeek/Kimi/ChatGPT quotas with balances, progress bars, and reset countdowns.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents external data sources for DeepSeek balance and usage windows for Kimi and ChatGPT, indicating network requests to provider endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes host/client split: host exposes `/dsh-quota-status` RPC channel and client registers a `shell.overlay` UI, including credentials resolved on host side.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a DSH web client plugin bundle (`dsh` section with web client and patch), confirming user-facing plugin delivery via web runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetches usage and balance data from external service endpoints for DeepSeek, Kimi, and ChatGPT subscription limits",
+      "Renders an in-app quota status panel with collapsible rows, progress visuals, and reset countdowns",
+      "Supports host-side retrieval of credentials and local auth file integration for usage queries",
+      "Persists simple display preferences and accepts profile configuration for refresh and threshold behavior",
+      "Provides a slot-based extension point for extra quota rows from other local plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:20.008Z",
+  "repositoryCommitSha": "39c089e646159cf548adca60226088b5779aab11",
+  "evidenceHash": "3498e7b174ce25f2d32608dffd2257afadcfd37fa25462de2a11bd0d73e9a118",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7d36e13c660fc0cf853adcc8a06c40e0dc879a478770ff0306486d2a0a7dac88",
+  "shadowMode": false
+}

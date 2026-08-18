@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "automation",
+    "tool",
+    "ui",
+    "integration",
+    "search"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a DeepSeek Harness utility for plugin management: users discover and select plugins from the OpenHarness catalog, then install or upgrade them through a dedicated host API and settings UI. The README and package metadata consistently describe catalog lookup, install/upgrade execution, state tracking, and controlled cancellation/restart paths.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中通过 OpenHarness 目录发现插件，并在设置页面完成安装与升级操作，同时提供主机接口查看目录、已安装状态与操作进度。",
+    "en": "This plugin lets users discover, install, and upgrade plugins from the OpenHarness catalog in DeepSeek Harness, with a host API and UI flow for catalog lookup, status, and operation control."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches plugin catalog data from a configured network endpoint",
+      "Provides same-origin host APIs for querying environment, catalog, installed plugins, and operation status",
+      "Performs install/upgrade and cancellation operations that mutate host plugin/profile state",
+      "Supports post-operation checks and restart/reload handling for plugin changes"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin discovers, installs, and upgrades OpenHarness catalog plugins and includes read-only catalog search plus multiple host operation endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest includes DSH host/client web integration dependencies and export surface indicating a runtime plugin with UI and host API behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Fetches plugin catalog data from a configured network endpoint",
+      "Provides same-origin host APIs for querying environment, catalog, installed plugins, and operation status",
+      "Performs install/upgrade and cancellation operations that mutate host plugin/profile state",
+      "Supports post-operation checks and restart/reload handling for plugin changes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:51.560Z",
+  "repositoryCommitSha": "ccb2da74fca1815ac9516b09499c7f72e3a24a1a",
+  "evidenceHash": "7d3ef20fa90f45d28fffb8481f0c8d276ee46df61bb67be41b9c07702112a6ac",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fd3630d1938b748fcdd4322e273406b1a60389f9d5b6ddeda8a46998cac60581",
+  "shadowMode": false
+}

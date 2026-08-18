@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "chat",
+    "ui",
+    "automation",
+    "workflow",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily an automation/orchestration feature for DeepSeek Harness conversations: it enables users to edit a prior user turn and re-run context, retry/regenerate assistant outputs, and move through branch versions in a timeline. Evidence in the README shows it is a plugin UI/control surface with branch-aware session handling, not a document editor, data pipeline, or external-service connector.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness 对话中的回合级别编辑与重跑，支持编辑历史用户消息后重新执行会话、重试/重生助手回复，并在版本树界面中进行分支查看与切换。",
+    "en": "This plugin provides turn-level control for DeepSeek Harness chats, letting you fork and rerun conversation turns, retry or regenerate assistant messages, and navigate branch history through a version-tree interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Edit/redo conversation turns by creating new branch sessions from a selected turn.",
+      "Retry or regenerate assistant replies at message or session level.",
+      "View and navigate a version tree with Undo/Redo branch switching.",
+      "Expose a local host route used by the plugin for fork/regeneration operations."
+    ],
+    "reasons": [
+      {
+        "code": "TURN_FORK_UI_FEATURES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SESSION_VERSION_NAVIGATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_HTTP_ENDPOINT_WITH_VALIDATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_PLUGIN_BUNDLE_REGISTRATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Edit/redo conversation turns by creating new branch sessions from a selected turn.",
+      "Retry or regenerate assistant replies at message or session level.",
+      "View and navigate a version tree with Undo/Redo branch switching.",
+      "Expose a local host route used by the plugin for fork/regeneration operations."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:22:17.887Z",
+  "repositoryCommitSha": "f03e20c4529e124b19cddc6d77e9f2736426bd00",
+  "evidenceHash": "f524112b8b750d401e4bcac0e5987659750198f08f2f793d385cc4482878a2f9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4d919a2e395100f1bc9936fa7cffbed9b18b9a694288628ffc65ff7bd2fe734d",
+  "shadowMode": false
+}

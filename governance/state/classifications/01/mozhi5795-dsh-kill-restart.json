@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的用户面向功能是在 DSH Web GUI 提供一键操作：点击界面按钮后调用后台 API 停止当前 DSH 进程，以便用户手动重启服务，因此可归类为自动化类实用插件。",
+  "summaries": {
+    "zh": "该插件为 DSH Web GUI 新增右下角一键按钮，点击确认后可触发接口停止当前 DSH 服务器进程，并提示用户进行重启。",
+    "en": "This plugin adds a one-click button to the DSH Web GUI that triggers a local endpoint to stop the running DSH server process and prompts the user to restart it."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers a local web API endpoint to terminate the DSH server process",
+      "Injects a web UI button to trigger process termination",
+      "Guides users to manually restart after termination"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a POST /api/kill-dsh endpoint and server behavior that calls process.exit(0) after acknowledgement.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH bundle patch and web client injection, indicating server+UI plugin integration in DSH.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Tree contains lib/index.js and lib/client.js implementing the kill route and the browser button logic.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Registers a local web API endpoint to terminate the DSH server process",
+      "Injects a web UI button to trigger process termination",
+      "Guides users to manually restart after termination"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:16.326Z",
+  "repositoryCommitSha": "539da43bb3597bbf5053c5e6d5b4a05f8c0b1c5b",
+  "evidenceHash": "1d5838c9189e01cc3adccc4329d6cd4b514be5cb9e7981052200f038eab4f6e3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8600aef540bf5c9085adebe923964f5a94f5d50ccba378692b9887f861c314ac",
+  "shadowMode": false
+}

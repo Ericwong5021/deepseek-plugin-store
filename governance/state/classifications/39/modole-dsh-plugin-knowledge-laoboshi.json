@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "agent",
+    "knowledge",
+    "document",
+    "search",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的公开说明与元数据一致指向本地知识库与检索管理场景：中文描述、README 标题及 package 关键词均明确标注“知识/knowledge”。其 DSH 插件清单、web 客户端注入配置与相关运行时依赖显示其主要面向 DSH Agent 的知识管理工具用途，而非代码生成或测试等类别，因此按知识管理分类。未提供实现细节时按元数据进行保守能力估计。",
+  "summaries": {
+    "zh": "这是一个面向 DSH Agent 的本地知识库插件，用于管理资料并提供检索与快速查找能力。",
+    "en": "This is a DSH Agent plugin for a local knowledge base, providing material organization and search-based retrieval."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local knowledge base management",
+      "knowledge retrieval/search for stored materials",
+      "DSH web plugin runtime integration"
+    ],
+    "reasons": [
+      {
+        "code": "README 与 package.json 均声明为“面向 DSH Agent 的本地知识库、检索与资料管理插件”，表明插件核心功能是知识组织与查询。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 包含 dsh.bundle 与 client.platform=web 配置，说明插件以 DSH 运行时/客户端方式分发并执行，属于集成到用户工作流中的功能插件。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "依赖包含 dsh-mcp-client、dsh-tools 等平台工具链组件，意味着其能力链路可能涉及对外部/内部工具接口的调用，需对数据处理边界做保守评估。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "local knowledge base management",
+      "knowledge retrieval/search for stored materials",
+      "DSH web plugin runtime integration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:14.312Z",
+  "repositoryCommitSha": "1a5c21d4ecba415b5f9122598dd894a6740643ac",
+  "evidenceHash": "9e9adaf8779cd97e8413bee79182d380ed3a336062dc81d477c5c11bf39a48f9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cf89f077329cbabf5a3d824aa2552a38eda8bccde1b6c2c256300f532ed0ca5a",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "tool",
+    "image",
+    "video",
+    "document",
+    "file",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a media tooling extension for DeepSeek Harness, centered on offloading non-text tasks to Gemini-based multimodal capabilities. Evidence from the README and package metadata shows it adds clearly scoped tools for media understanding, transcription, image generation, and document reading, with configurable external provider backends.",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness 提供多模态能力的插件，可通过 Gemini API 或本地 Antigravity CLI 实现图片、音频、视频和文档的理解与转写，并支持按提示生成图片。",
+    "en": "This plugin adds multimodal support to DeepSeek Harness, enabling image, audio, video, and document understanding, media transcription, and prompt-based image generation through Gemini services."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "media understanding for image, audio, video, and URL inputs",
+      "audio/video transcription",
+      "text-to-image generation",
+      "document reading/summarization for PDF, Office, and text files",
+      "external API or local CLI provider selection"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DeepSeek Harness plugin providing multimodal tools: image/audio/video/document understanding, transcription, and image generation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists provider options (Gemini API key or local Antigravity CLI), which implies network-dependent calls to external services and credential/config handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README mentions generated images are saved to a local output directory, indicating filesystem output handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the project as a DSH plugin package and includes dsh-related dependencies, confirming integration into the harness plugin runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "media understanding for image, audio, video, and URL inputs",
+      "audio/video transcription",
+      "text-to-image generation",
+      "document reading/summarization for PDF, Office, and text files",
+      "external API or local CLI provider selection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:52.495Z",
+  "repositoryCommitSha": "8af66158f81d7a1489b965776d8320ed2f482df6",
+  "evidenceHash": "f4d3cc0d004b63c46c1c170d4b833816559b1e0e15d3158beb89699dc1bf3200",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5742ff4519a4c6c2f2d51a2124ae6d58b10c62a65f578e3e3de7a8406e6c17e3",
+  "shadowMode": false
+}

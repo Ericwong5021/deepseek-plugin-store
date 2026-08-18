@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "file",
+    "data",
+    "tool",
+    "project-analysis",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供工程上下文管理：通过扫描代码与文档构建语义/实现图谱，并按任务和预算编译后注入对话上下文。README 还显示其包含可审计的注入策略、会话配置与上下文预览功能，属于以记忆与上下文增强为中心的人机协作工具。",
+  "summaries": {
+    "zh": "Context Graph 是 DeepSeek Harness 的上下文管理插件，通过扫描工程代码与文档构建图谱，并在对话前按任务注入相关上下文。",
+    "en": "Context Graph is a DeepSeek Harness plugin that builds project context graphs from code and documents, then injects task-relevant context into conversations before model requests."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans local project files for code modules, dependencies, calls, and interfaces",
+      "Builds and maintains a context graph (semantic and implementation views) with budget-aware context compilation",
+      "Injects selected task-related context into model request flow with optional include/exclude and audit controls",
+      "Reads PDF outline/sections and extracts selected chapter content and layout data"
+    ],
+    "reasons": [
+      {
+        "code": "README describes tools such as `context_graph_scan`, `context_compile`, `context_select`, and `context_audit` that directly operate on project context and influence LLM input.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states operation at `agent/pre-step` and `llm/stream` boundaries for compiling snapshots and enforcing firewall/audit decisions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents local source scanning for Python/C/C++ and optional Python-based PDF extraction, indicating file access and content processing on user projects.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines a DeepSeek Harness bundle/client plugin entrypoint (`dsh` with `main` and `exports`), confirming runtime integration in the host tool.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Scans local project files for code modules, dependencies, calls, and interfaces",
+      "Builds and maintains a context graph (semantic and implementation views) with budget-aware context compilation",
+      "Injects selected task-related context into model request flow with optional include/exclude and audit controls",
+      "Reads PDF outline/sections and extracts selected chapter content and layout data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:17.028Z",
+  "repositoryCommitSha": "11b29f04141fcdef41b9388a54ea85f6b357a57a",
+  "evidenceHash": "34f0b38781f45798c32d86f9675a0f6009823cae31e2a51e16c8284188aa7ae6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f69c062de58ec7431e36c1ea656fccde15d9c1160f27fbe949b928c1b8836f17",
+  "shadowMode": false
+}

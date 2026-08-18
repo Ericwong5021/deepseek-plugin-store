@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "browser",
+    "cli",
+    "data",
+    "api",
+    "mcp",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户面向目的在于为 DeepSeek Harness 提供可调用的 Browser4 浏览器能力：通过 dsh-browser4 安装后注册 browser4-cli 等技能，并在安装文档中明确列出页面交互、抓取、批量采集与会话控制等命令，因此核心分类为自动化而非代码生成或文档管理。",
+  "summaries": {
+    "zh": "dsh-browser4 是一款 DeepSeek Harness 插件，用于向代理环境注册 Browser4 浏览器技能，支持网页会话控制、交互操作、数据提取与结果输出。",
+    "en": "dsh-browser4 is a DeepSeek Harness plugin that registers Browser4 browser skills for agent workflows, enabling web session control, interactive actions, extraction, and output capture."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browser session control and interactive page actions",
+      "Static and dynamic page data extraction",
+      "Screenshot/PDF capture and file outputs",
+      "Batch/loop and crawl/swarm-style automated workflows",
+      "Cookie and web-storage state manipulation commands",
+      "Automatic local installation of runtime binaries via npm scripts"
+    ],
+    "reasons": [
+      {
+        "code": "NPM_INSTALL_SCRIPTS_EXECUTE_BROWSER4_SETUP",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README_EXPOSES_BROWSER4_CLI_CONTROL_COMMAND_SET",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_DESCRIBES_REMOTE_INSTALL_AND_PROXY_CONFIGURATION",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "binary.execute",
+      "network.access",
+      "Browser session control and interactive page actions",
+      "Static and dynamic page data extraction",
+      "Screenshot/PDF capture and file outputs",
+      "Batch/loop and crawl/swarm-style automated workflows",
+      "Cookie and web-storage state manipulation commands",
+      "Automatic local installation of runtime binaries via npm scripts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:27.463Z",
+  "repositoryCommitSha": "0fe538fc683224119e3e27346cac0d1707012dad",
+  "evidenceHash": "a0242ff71762ead71746add6c0c9d45f45e5b85a1a808750df1e5c6d3d1a5122",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fc89153bed6ac49e437372eb6e1d14febbb63cbf2edf188814578c33d1c84ac1",
+  "shadowMode": false
+}

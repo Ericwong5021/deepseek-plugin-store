@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "chat",
+    "automation",
+    "context",
+    "memory",
+    "tool",
+    "ui",
+    "api",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a DeepSeek Harness (dsh) plugin that adds an RPG-style encounter system to conversations: it listens to turn completion, conditionally triggers random events, updates a persistent character profile, and exposes configuration and status tools, making it a chat-facing plugin-development/automation extension rather than a utility-only tool.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness（dsh）插件，在对话结束后按条件触发随机奇遇，并持续更新可查看的主角属性与等级状态，同时提供设置页和工具供用户控制与查询。",
+    "en": "This is a DeepSeek Harness (dsh) plugin that triggers probabilistic encounter events after chat turns, updates a persistent character profile with levels and attributes, and provides settings plus status tools for user control."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects optional follow-up narrative content into chat flows after selected turns",
+      "Maintains persistent per-character attributes and level in plugin storage",
+      "Provides user-configurable behavior via a dedicated DSH settings page and API route",
+      "Registers tools for querying and resetting character status"
+    ],
+    "reasons": [
+      {
+        "code": "turn-end trigger and user-turn filtering to avoid self-loop",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "cross-session character persistence via storage domain with in-memory fallback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "settings page + custom route + tools for runtime control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh plugin manifest and UI/runtime modules indicate host integration",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Injects optional follow-up narrative content into chat flows after selected turns",
+      "Maintains persistent per-character attributes and level in plugin storage",
+      "Provides user-configurable behavior via a dedicated DSH settings page and API route",
+      "Registers tools for querying and resetting character status"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:21:27.295Z",
+  "repositoryCommitSha": "ecb8ef85cf527b414cf0ced2e9af76e3e1b9128d",
+  "evidenceHash": "f51d0f269d10cc8674e6fd794c37550926a696f640c9525b6ce915e0a0008f9c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e006b94df83cc006a807e2c1d15a586a6711ea88a4afc48e4867b6ef7222c583",
+  "shadowMode": false
+}

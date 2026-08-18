@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "file",
+    "ui",
+    "automation",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Primary user-facing purpose is credential security and management for DeepSeek Harness: a Fabric plugin that adds encrypted credential storage and unlock/password workflows while keeping the official credentials provider, then exposes management UI/API for settings and status. The design is specialized to credential handling and operational control, not generic plugin scaffolding or research tooling.",
+  "summaries": {
+    "zh": "DSH-Encrypt 是一款 DSH Fabric 插件，通过加密 sidecar 与凭证 Hook 提供凭证加密、解锁与设置面板/路由，帮助集中管理凭证的加解密与访问状态。",
+    "en": "DSH-Encrypt is a DeepSeek Harness plugin that adds a sidecar-based credential encryption layer and Fabric hooks, with web UI and API controls for unlocking, password updates, and secure credential handling state."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Encrypt/decrypt credentials using a sidecar secret store",
+      "Hook Fabric credential lifecycle methods (resolve/describe/set/unset) for credential retrieval and mutation",
+      "Persist encrypted credentials, lockout, and remember state in local files",
+      "Expose optional local web API routes for credential status/unlock/set-password/change-password/config",
+      "Apply output leak masking in HTTP/WebSocket traffic based on parsed credential values",
+      "Perform runtime integrity checks before plugin execution"
+    ],
+    "reasons": [
+      {
+        "code": "The README describes a sidecar model using .credentials.encrypt.yaml and .dsh-encrypt.json, plus AES-GCM/Argon2id/KDF and lockout behavior for credentials.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The README states Fabric hooks are mounted for resolve, describe, set, and unset, so credential read/write behavior is intercepted by this plugin.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin registers optional HTTP routes under /api/credentials.* for status/unlock/set-password/change-password/config and controls local-host access and lockout responses.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json shows filesystem/network/patch-capable plugin wiring and exported Web client/module entry points, indicating runtime integration beyond a passive utility package.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Encrypt/decrypt credentials using a sidecar secret store",
+      "Hook Fabric credential lifecycle methods (resolve/describe/set/unset) for credential retrieval and mutation",
+      "Persist encrypted credentials, lockout, and remember state in local files",
+      "Expose optional local web API routes for credential status/unlock/set-password/change-password/config",
+      "Apply output leak masking in HTTP/WebSocket traffic based on parsed credential values",
+      "Perform runtime integrity checks before plugin execution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:52.275Z",
+  "repositoryCommitSha": "aa0a225932c26b3dcf06f477a07db5381133c0c5",
+  "evidenceHash": "dbdd8a304f9ac2f0bda32f4524424121f46a10ae3f207b70b42da26e0203e442",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9337d57fd2af6f76921c006adcd9866e8d5c406eee249e440c3b3e1c05939f60",
+  "shadowMode": false
+}

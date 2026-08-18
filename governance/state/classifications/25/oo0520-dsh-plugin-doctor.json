@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "terminal",
+    "file",
+    "ui",
+    "automation",
+    "api",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户用途是 DSH 的插件治理：通过设置面板提供插件列表与运行状态，并在此基础上完成热启停、安装/卸载及更新；并提供 `plugin_audit` 对已安装插件进行清单与代码层面的体检与风险标记，属于通用实用型的插件运维管理工具。",
+  "summaries": {
+    "zh": "DSH 插件管家在设置面板中管理已安装插件，支持审计、列表展示、热启停，并提供插件的安装、卸载与版本更新操作。",
+    "en": "DSH Plugin Doctor provides plugin management in the settings panel, including auditing, listing, hot enable/disable, and install/uninstall/version update actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Audits installed plugins via manifest, patch, static code, and supply-chain checks.",
+      "Lists plugin runtime/load status and updates plugin metadata in profile configuration.",
+      "Provides hot enable/disable, install, uninstall, and update operations through host tooling and package manager commands.",
+      "Reads and writes plugin configuration/patch files to persist state changes."
+    ],
+    "reasons": [
+      {
+        "code": "HOST_TOOLS_EXPOSED",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "STATE_PERSISTENCE_PATCH_FILES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PACKAGE_MANAGER_EXECUTION_PATH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_SETTINGS_PANEL_MANAGEMENT_UI",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Audits installed plugins via manifest, patch, static code, and supply-chain checks.",
+      "Lists plugin runtime/load status and updates plugin metadata in profile configuration.",
+      "Provides hot enable/disable, install, uninstall, and update operations through host tooling and package manager commands.",
+      "Reads and writes plugin configuration/patch files to persist state changes."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:20:52.230Z",
+  "repositoryCommitSha": "6be31708f8573852264ff2bccf525c33ea5e4e65",
+  "evidenceHash": "9a510afdb122c172b649a6e6135943eff7c7c5237d6ba14b30ef04c08b2e3c51",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d3698dbe93bf33cbc752b2e7ecef0312047a78858626631855b86d84027bc3cf",
+  "shadowMode": false
+}

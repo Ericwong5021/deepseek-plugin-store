@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "ui",
+    "mobile",
+    "browser",
+    "tool",
+    "automation",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.9,
+  "reason": "This plugin is primarily for desktop-to-mobile UI access adaptation: it exposes an existing DeepSeek Harness web service to phones via a share server and applies mobile-focused UI injection. Evidence from README and package metadata shows the plugin is a DSH web bundle with client injection, not a general automation, code-generation, or data-processing tool.",
+  "summaries": {
+    "zh": "该插件用于将本地 DeepSeek Harness 的 Web 界面以可配置方式共享到手机浏览器，并通过注入式界面适配提升移动端的可用性。",
+    "en": "The plugin shares a local DeepSeek Harness Web UI to mobile browsers with configurable settings, while injecting a mobile-oriented interface so the web experience works better on phones."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Expose a local web UI for mobile access over LAN",
+      "Provide optional public access flow via cloudflared tunnel",
+      "Inject client-side mobile UI adjustments into existing pages",
+      "Collect and apply share settings such as port and credentials",
+      "Expose file/workspace selection controls in the mobile UI"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin turns the PC into a server with a reverse proxy so iPhone/Android/tablet can reach the local DeepSeek Harness UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes optional public access via one-click cloudflared tunnel plus port and credential settings, firewall rule, QR code, and share self-test.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes server-side viewport/CSS/JS injection for mobile-specific UI behavior (top bar, composer placement, workspace picker).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web client bundle with runtime client injection, confirming the plugin modifies the active client experience.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Validation report indicates manifest/packing checks did not pass, so admission readiness is currently blocked until package and manifest metadata issues are fixed.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Expose a local web UI for mobile access over LAN",
+      "Provide optional public access flow via cloudflared tunnel",
+      "Inject client-side mobile UI adjustments into existing pages",
+      "Collect and apply share settings such as port and credentials",
+      "Expose file/workspace selection controls in the mobile UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.9,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:19:51.860Z",
+  "repositoryCommitSha": "c20251db82afdaf168795a016725dde482582ae7",
+  "evidenceHash": "c9355719dbddd0e3751c7ec1b8e0a1b90dcdc53d6a4fc54389107ee60dcc3d50",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a373e23d69d68eec2fd3b80f320854bccabd07d2a0503b654562b0783d004364",
+  "shadowMode": false
+}
