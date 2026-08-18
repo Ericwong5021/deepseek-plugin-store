@@ -1,11 +1,76 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "api",
+    "context",
+    "tool",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin’s primary user-facing purpose is cross-session context retrieval for DSH agents: listing sessions and reading other sessions’ content for continuity and handoff. It is a memory/context utility exposing bounded, read-only access through agent tools and slash commands, with multiple read modes for messages, tool activity, reasoning, and raw events.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "List non-archived sessions with filtering/limit controls",
+      "Read another session’s IO messages and tool call/results",
+      "Read reasoning chunks, surfaced summaries, or raw pre-compression event stream",
+      "Provide both model-invokable tools and slash-command access",
+      "Bounded output limits to reduce context pollution"
+    ],
+    "reasons": [
+      {
+        "code": "Provides read access to other sessions’ messages, tool calls/results, and reasoning, which can include sensitive conversational/context data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Includes a raw mode that exposes underlying event logs, increasing sensitivity relative to standard UI-facing views.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Uses DSH-provided sessionQuery/service integration and explicitly states read-only behavior with output truncation guards.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Declared as a DSH bundle plugin with no external runtime dependencies, limiting additional attack surface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "List non-archived sessions with filtering/limit controls",
+      "Read another session’s IO messages and tool call/results",
+      "Read reasoning chunks, surfaced summaries, or raw pre-compression event stream",
+      "Provide both model-invokable tools and slash-command access",
+      "Bounded output limits to reduce context pollution"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T16:01:30.169Z",
   "repositoryCommitSha": "86249f10875f0e07a3987d1ff90ad006174b64af",
+  "evidenceHash": "1b8b39f93b9ac785eaf320ee2b4c64cf79436e964a2b37cb2a3ea458cd8274f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "8e43d48604f2fafb0a0e139fa8da30e0d83ba2ccbb0bd792bf9cbbba8d20bcbc",
-  "lastAttemptAt": "2026-08-18T14:16:34.055Z",
-  "error": "AI decision schemaVersion must be 1",
   "shadowMode": true
 }

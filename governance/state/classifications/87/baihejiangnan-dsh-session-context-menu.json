@@ -1,11 +1,72 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "context",
+    "desktop",
+    "file",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.9,
+  "reason": "该插件是一个面向 DeepSeek Harness 桌面封装端的 UI 增强插件，主要目的在于提供更完整的右键上下文菜单体验并暴露会话/工作区相关操作。其能力主要为本地菜单增强与常见编辑/文件与链接快捷操作，不涉及明显高风险功能。",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Enhances context menus in the desktop webview shell",
+      "Invokes host/runtime APIs for path and session actions",
+      "Performs clipboard and text-selection operations",
+      "Provides extensible menu registration and event dispatch"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件提供“完整上下文菜单”，覆盖会话、工作区、设置、对话正文与输入框，并列出具体操作如重命名、归档、打开路径、复制文本/链接、撤销重做、剪切粘贴。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "兼容策略与更新说明中提到通过宿主 RPC `host.openPath`、`workspaces.openPath` 等实现路径/链接打开行为，并说明与其他插件协作与卸载后不留补丁。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明 `dsh.client.platform: web` 且注入 `@deepseek-ai/dsh-client-runtime`，通过 `lib/index.js`/`lib/client.js` 导出并作为 dsh 插件加载，体现运行时集成能力。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Enhances context menus in the desktop webview shell",
+      "Invokes host/runtime APIs for path and session actions",
+      "Performs clipboard and text-selection operations",
+      "Provides extensible menu registration and event dispatch"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.9,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T16:03:25.259Z",
   "repositoryCommitSha": "fc9ab4692fc9d1d9825b671c56abf21aeabca938",
+  "evidenceHash": "0b33233a30847fc98f68eb58ab22443a090cc93e9c7f01fee4540c1fdde9b1ab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "6e36e22575504743ef1d170fb07b3320cc8fe07426b562c78ce31590773723d8",
-  "lastAttemptAt": "2026-08-18T14:19:02.758Z",
-  "error": "AI decision schemaVersion must be 1",
   "shadowMode": true
 }

@@ -1,11 +1,93 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "tool",
+    "file",
+    "ui",
+    "workflow",
+    "integration",
+    "project-analysis",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is a DeepSeek Harness web UI panel for managing local plugin development. Its core purpose is developer workflow support: discover local file/link-installed plugin candidates, register/unregister projects, open sources, and launch guided development/upload sessions. No direct git/gh execution is claimed by the plugin; upload/update actions are intended to stay inside user-confirmed host sessions, so the risk is medium (R1) due to local project metadata handling plus possible external publish workflows.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans local profile package.json entries to discover file:/link: plugin candidates",
+      "Allows users to explicitly register/unregister local development projects",
+      "Validates project paths with realpath before inclusion",
+      "Opens plugin source directories through host workspace/file-manager integration",
+      "Creates workspace-session workflows for continue-development prompts",
+      "Surfaces guided upload/update GitHub publish flows with risk constraints",
+      "Stores managed project registry in local DSH config",
+      "Depends on host services and user-authorized external Git/GitHub flow"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_DISCOVERY_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MANUAL_REGISTRATION_CONTROL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SAFE_REALPATH_VALIDATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "USER_CONFIRMED_GITHUB_WORKFLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "NO_AUTOMATIC_GIT_GH_EXECUTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_CLIENT_BUNDLE_MANIFEST",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Scans local profile package.json entries to discover file:/link: plugin candidates",
+      "Allows users to explicitly register/unregister local development projects",
+      "Validates project paths with realpath before inclusion",
+      "Opens plugin source directories through host workspace/file-manager integration",
+      "Creates workspace-session workflows for continue-development prompts",
+      "Surfaces guided upload/update GitHub publish flows with risk constraints",
+      "Stores managed project registry in local DSH config",
+      "Depends on host services and user-authorized external Git/GitHub flow"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T16:03:16.593Z",
   "repositoryCommitSha": "ab6524875506efcd4fcf3c04e576402d0b99332c",
+  "evidenceHash": "b45e754c527e09d3a73ade12047afe74cb486bc617841f51fcb286d2d17d0800",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "95082e6eae95501647901a319e2522361e80bc6107c20e2587f32b6a867d4676",
-  "lastAttemptAt": "2026-08-18T14:18:52.059Z",
-  "error": "AI decision schemaVersion must be 1",
   "shadowMode": true
 }

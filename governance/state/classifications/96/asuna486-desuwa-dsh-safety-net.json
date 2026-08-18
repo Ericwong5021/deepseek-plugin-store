@@ -1,11 +1,71 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "cli",
+    "automation",
+    "tool",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is a DSH safety/guardrail plugin that protects critical harness files by intercepting write/edit operations, taking local snapshots before denied changes, and exposing CLI recovery commands (status, backup, restore, repair, one-time approval). It is a local filesystem safety utility for workflow reliability and recovery.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "intercepts file write/edit intents to protected paths",
+      "blocks destructive mutations to critical runtime directories by default",
+      "creates local snapshots of protected files before denied writes",
+      "provides CLI commands for backup, restore, status, repair, and one-time write approval"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README states the plugin hard-blocks fs/write-intent and fs/edit-intent on DSH critical paths and returns FS_POLICY_DENIED.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes local backup-before-destroy behavior, with snapshots stored under <DSH_HOME>/safety-net/backups and restore operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares plugin bundle wiring for the DeepSeek Harness and no external network service integrations.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "intercepts file write/edit intents to protected paths",
+      "blocks destructive mutations to critical runtime directories by default",
+      "creates local snapshots of protected files before denied writes",
+      "provides CLI commands for backup, restore, status, repair, and one-time write approval"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T16:01:58.361Z",
   "repositoryCommitSha": "b4a512d29605b7941b8d31b5f5c17fb9b2b76f03",
+  "evidenceHash": "ec2251685cf7638aeb2227faf30fadf2956fa8f4bd23e1cc3c516530d994d5cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "e70701cbf3dd57ddd2e9e6ece94805c4f84d3e60d9ac58cdc7c69ed10dc0febb",
-  "lastAttemptAt": "2026-08-18T14:17:00.424Z",
-  "error": "AI decision schemaVersion must be 1",
   "shadowMode": true
 }
