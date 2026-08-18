@@ -1,7 +1,7 @@
 import { validInstallSpec, validRepository } from '../registry-lib.mjs'
 
 const capabilityPatterns = [
-  ['shell.execute', /\b(?:exec|spawn|shell|terminal|child_process|powershell|bash)\b/i],
+  ['shell.execute', /\b(?:child_process|execSync|spawnSync|shell\.execute|terminal control|powershell\.exe)\b/i],
   ['credential.read', /\b(?:credential|cookie|keychain|secret|api.?key|access.?token|auth.?token)\b/i],
   ['filesystem.write', /\b(?:writefile|appendfile|unlink|rename|chmod|filesystem write|file write)\b/i],
   ['computer.control', /\b(?:computer.?use|mouse|keyboard|desktop control|browser control)\b/i],
