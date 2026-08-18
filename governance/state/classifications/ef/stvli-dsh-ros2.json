@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "cli",
+    "debugging",
+    "automation",
+    "tool",
+    "desktop",
+    "image",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a ROS2 diagnostics and debugging assistant integrated with DeepSeek Harness: it exposes many ROS2 inspection commands for read-only troubleshooting and adds optional, approval-gated management actions, with an additional layer for launching/observing ROS GUIs and automating local GUI interaction. This user-facing scope is robot/system debugging rather than general-purpose generation or content tooling, so its primary category is testing-debugging with conservative high-risk handling due to command execution and local automation capabilities.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 ROS2 诊断与联合调试能力，可进行节点/话题/服务/参数与 TF 检查、拓扑与 Bag 信息读取，并在用户授权后执行构建、参数设置、录包及 GUI 观测操作。",
+    "en": "This plugin provides DeepSeek Harness with ROS2 diagnostics and debugging capabilities, covering inspection of nodes, topics, services, parameters, TF, graph, and bag info, and enabling build/install/parameter/recording workflows plus optional GUI observation and interaction after user approval."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes ROS2/colcon/rosdep commands on the host via CLI wrappers",
+      "Provides read-only diagnostics for ROS graph, topics, services, actions, params, TF, and bag metadata",
+      "Provides approval-gated write operations including builds, dependency installation, message skeleton creation, parameter setting, and bag recording",
+      "Controls local GUI sessions with process launch, screenshot capture, and input actions (click/drag/keyboard)",
+      "Supports optional external vision-provider calls when a provider is configured"
+    ],
+    "reasons": [
+      {
+        "code": "README defines an L1 read-only diagnostics layer and an L2 approval-gated management layer using host ROS2/colcon/rosdep commands.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "L2 actions include build, rosdep install, parameter setting, message skeleton creation, and bounded bag recording, which can modify workspace/system state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents GUI lifecycle tools plus xdotool/wmctrl-based interaction and screenshot capture, indicating local computer control capability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Vision features are configurable for mock/Gemini/OpenAI and include API key and endpoint settings, indicating potential outbound network usage.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Executes ROS2/colcon/rosdep commands on the host via CLI wrappers",
+      "Provides read-only diagnostics for ROS graph, topics, services, actions, params, TF, and bag metadata",
+      "Provides approval-gated write operations including builds, dependency installation, message skeleton creation, parameter setting, and bag recording",
+      "Controls local GUI sessions with process launch, screenshot capture, and input actions (click/drag/keyboard)",
+      "Supports optional external vision-provider calls when a provider is configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:59.415Z",
+  "repositoryCommitSha": "05a81fe8c476fd2f81ce40cf41e04619b8b4a480",
+  "evidenceHash": "f7c8176746db3b637aa80b4dfb057969f3ebe0d5304f1396f7be4210976e897d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d4d709b53d5f7cf71f1e45a1078943a2f62a6ca50ca57aee1747db87214edd27",
+  "shadowMode": false
+}

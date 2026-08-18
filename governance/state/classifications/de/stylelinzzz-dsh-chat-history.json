@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "context",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is best classified as a Navigation & Panels tool because its primary user-facing function is a session History tab in DeepSeek Harness that renders a clickable directory of user messages and jumps to selected messages. The README describes auto-filtering to user-only entries, automatic older-history paging, and in-chat jump behavior; package metadata shows a web client DSH bundle with `client`/`ui-conversation` integration, confirming a UI navigation purpose rather than code-generation, data export, or external service integration.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 Web 插件，在会话中提供 History 标签页，将用户消息整理为可点击的目录，并支持点击后切回聊天视图定位到对应消息。",
+    "en": "A DeepSeek Harness web plugin that adds a History tab, displays user messages as a clickable directory, and lets users jump directly to selected messages in the Chat view."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Builds a conversation-history view panel within the DeepSeek Harness session UI",
+      "Reads chat session state to list user messages as a navigable directory",
+      "Loads older chat pages while the view is open to complete the message listing",
+      "Scrolls and highlights the selected message in the Chat view after selection"
+    ],
+    "reasons": [
+      {
+        "code": "`dsh` manifest declares a web client extension with client injection and exports `./client`, indicating it is a UI plugin.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README states the plugin adds a \"History\" session tab, auto-generates entries from user messages only, auto-paginates older history (50 messages/page), and supports click-to-jump scrolling/flash behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository topic and metadata identify it as a DSH plugin package with a client-facing scope and public publication readiness.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Builds a conversation-history view panel within the DeepSeek Harness session UI",
+      "Reads chat session state to list user messages as a navigable directory",
+      "Loads older chat pages while the view is open to complete the message listing",
+      "Scrolls and highlights the selected message in the Chat view after selection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:56.852Z",
+  "repositoryCommitSha": "d8d4b022ddcb97ecbf7fb316218a4fb87858541c",
+  "evidenceHash": "06cf9ef942c6fa7adecb922d7436428e0b0afaa3a70c6179644703cf464ad695",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5f6f78372272344de709010a78a0e60998cf44db8871914aa0f41f5d79273673",
+  "shadowMode": false
+}

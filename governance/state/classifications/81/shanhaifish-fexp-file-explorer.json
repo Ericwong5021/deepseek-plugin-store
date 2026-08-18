@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "chat",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用途是为 DSH 提供左侧工作区文件导航面板：通过双入口打开可滑出的文件浏览器，展示目录与文件、支持面包屑/导航操作与文本预览，并可一键打开系统文件夹或将文件引用写入聊天输入。仓库与说明中也表明其核心是本地工作区文件系统浏览，而非外部服务集成，故归类为导航面板类插件并标记为中等风险（R1）以反映本地文件读取与目录访问。",
+  "summaries": {
+    "zh": "该插件在 DSH 左侧提供可打开的工作区文件浏览面板，用于查看目录与文件、预览文本内容，并支持打开系统资源管理器与在聊天草稿中插入文件引用。",
+    "en": "This plugin adds a workspace file-browsing panel in DSH with directory and file viewing, text preview, an open-in-system-explorer action, and insertion of file references into the chat draft."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "文件树和目录导航",
+      "读取工作区文件内容用于预览",
+      "调用系统文件管理器打开当前目录",
+      "在聊天草稿中追加文件引用"
+    ],
+    "reasons": [
+      {
+        "code": "README 中明确描述插件在左侧工作区提供目录/文件面板（320px）并支持浏览与预览文本内容。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出主机侧通过 DSH fs 服务提供 list-dir/read-file 路由来获取目录与文件数据。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 的安全边界声明标注 CAPABILITIES 为 fs、rpc，并说明无新增网络请求/spawn/凭据访问能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 表明这是 DSH bundle 插件（主入口 lib/index.js，web client）用于加载到主界面。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "文件树和目录导航",
+      "读取工作区文件内容用于预览",
+      "调用系统文件管理器打开当前目录",
+      "在聊天草稿中追加文件引用"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:17.307Z",
+  "repositoryCommitSha": "0a331a51187c56460263321b1c057f0d5ed8dd97",
+  "evidenceHash": "2b527796e487a04b12f3ba8f7b4e3629c323cbf449669eacaa25e04919bb0703",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0dbcc394db30ca7751df598f67c1345485f82cf3220e22f170eca50bdf1274de",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件主要面向用户的用途是增强会话 Web UI 的导航体验：在右上角加入视图切换入口，并提供会话消息数徽标、消息列表与右侧横条导航以快速定位消息。基于可见文档，功能边界集中于界面导航与会话操作，不涉及外部服务调用，但当前清单与打包一致性证据不完整，需要补充。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，将会话界面的“对话/轨迹”切换与消息导航放到右上角和右侧消息横条，支持快速跳转到目标消息并展示发送消息数量。",
+    "en": "This is a DeepSeek Harness Web plugin that moves conversation/trace switching and message navigation into the header and side message strips, enabling quick jumps to target messages with sent-message count context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在会话头部右上角提供“对话/轨迹”图块入口并切换会话视图。",
+      "显示会话已发送消息数量徽标，并弹出按时间排序的消息预览列表。",
+      "支持点击消息记录后滚动到对应消息并短时高亮提示。",
+      "提供右侧消息横条用于快速定位已发送消息，并支持拖拽式滚动。"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件接管原生会话标签页并在右上角 utilities 区注入“对话/轨迹”图块按钮。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明插件包含消息徽标、消息弹窗列表、自动加载历史消息（hasMore）与跳转高亮闪烁等导航行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明为 DeepSeek Harness web 客户端插件，并在 dsh.client.inject 中依赖会话、工具和 UI 运行时。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "规则结果显示 DSH_BUNDLE_PRESENT 和 MANIFEST_REFERENCES_VALID 未通过，缺少可直接校验的打包/清单匹配证据。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "在会话头部右上角提供“对话/轨迹”图块入口并切换会话视图。",
+      "显示会话已发送消息数量徽标，并弹出按时间排序的消息预览列表。",
+      "支持点击消息记录后滚动到对应消息并短时高亮提示。",
+      "提供右侧消息横条用于快速定位已发送消息，并支持拖拽式滚动。"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:55.347Z",
+  "repositoryCommitSha": "475c5102a0a8b2172062839e28c8d8e505fa543d",
+  "evidenceHash": "44ed0f13aac3e36a08af61b9aac0d1c274205c535c5d6bb425bb48cc24d94002",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dec8227cf622c779009c6f5b1715a2af4b01f0f2b6c6cd8b487af9e6c1bd64d1",
+  "shadowMode": false
+}

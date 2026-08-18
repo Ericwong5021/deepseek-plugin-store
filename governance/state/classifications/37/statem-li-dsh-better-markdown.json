@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "chat",
+    "ui",
+    "integration",
+    "document",
+    "tool",
+    "visualization",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件主要面向 DeepSeek Harness Web 对话界面，提供 assistant 消息 Markdown 渲染增强：将流式与已完成消息统一交由 markstream-react 渲染，并加入 Mermaid、KaTeX 和代码高亮等展示能力。结合 README 与 package.json 中的客户端注入配置与依赖列表，其分类为面向插件的界面渲染增强工具，风险为中等：功能集中在客户端内容渲染与展示。",
+  "summaries": {
+    "zh": "dsh-better-markdown 是一个 DeepSeek Harness Web 插件，用于统一增强 assistant 对话消息的 Markdown 渲染，覆盖流式与完成态显示，并支持代码高亮、数学公式和 Mermaid 图表。",
+    "en": "dsh-better-markdown is a DeepSeek Harness Web plugin that improves assistant message rendering by using a unified markdown renderer for streamed and completed responses, including syntax highlighting, math, and Mermaid support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Replaces DeepSeek Harness Web assistant markdown rendering path in the web client",
+      "Renders streamed assistant responses with markstream-react to avoid completion-state renderer swap",
+      "Supports markdown extensions such as Mermaid diagrams, KaTeX math, and fenced-code highlighting",
+      "Executes renderer injection through DSH client web platform patch/slot configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明该插件安装后会替换 assistant 的流式 Markdown 渲染链路，并在同一消息流结束后持续沿用相同 renderer。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "功能范围表列出 Mermaid、KaTeX、代码围栏、raw HTML 转义、链接与图片安全策略等，表明其核心是消息内容渲染增强。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明 DSH 客户端平台为 web，并列出 markstream-react、mermaid、shiki、stream-markdown 等渲染相关依赖。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库结构包含 src/client 与 tests，表明其为注入式客户端插件实现且有测试覆盖。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Replaces DeepSeek Harness Web assistant markdown rendering path in the web client",
+      "Renders streamed assistant responses with markstream-react to avoid completion-state renderer swap",
+      "Supports markdown extensions such as Mermaid diagrams, KaTeX math, and fenced-code highlighting",
+      "Executes renderer injection through DSH client web platform patch/slot configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:49.221Z",
+  "repositoryCommitSha": "5704b630f70966d219cf671acd523802cadc2ff4",
+  "evidenceHash": "1359dabf6eefe2d12e0c8fc5cc9caf0f311e1c4bc5c0a6fce66d113805893ba6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "39953d77b22d92c85237fa76d188b646ecdb115f3fb3d47a6dc7a92805574000",
+  "shadowMode": false
+}

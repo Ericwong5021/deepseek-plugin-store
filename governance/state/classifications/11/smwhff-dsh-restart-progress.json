@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "api",
+    "terminal",
+    "notification",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要面向功能是优化 DSH Web 重启体验：在用户会话内显示可退出的重启遮罩，监测重启状态并在服务恢复后自动刷新，同时通过脚本化重启流程减少 agent 被自身杀死的风险。依据证据可见其核心是自动化重启过程、状态检测与会话通知，属于自动化导向而非内容生成或搜索类插件。",
+  "summaries": {
+    "zh": "该插件用于 DSH Web 重启场景，重启时在当前页面显示遮罩并自动跟踪恢复状态，服务就绪后可自动刷新并可向发起会话发送重启完成反馈。",
+    "en": "This plugin is for DSH Web restart handling: it shows an in-page overlay during restart, tracks recovery status, auto-refreshes when the service is back, and can notify the originating session when restart finishes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "可自动化执行 DSH Web 重启流程并控制页面层面提示与恢复步骤",
+      "可创建并触发 Windows 计划任务以在独立进程树中完成重启脚本执行",
+      "可向发起会话发送重启完成通知并根据会话状态刷新/退出逻辑运行",
+      "可在前端持续轮询重启状态并根据在线/离线条件触发自动刷新",
+      "可在重启期间以可交互遮罩覆盖当前页面以减少误操作"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明前端通过每 2 秒轮询 `GET /api/restart-progress/status` 来显示遮罩、检测服务恢复并在条件满足时自动刷新页面。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明 `restart-dsh-web.ps1` 使用一次性计划任务执行重启体，包含 `taskkill /T` 与启动新进程逻辑以脱离 DSH 进程树。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package.json 表明该项目为 DSH Web 插件，包含 `lib/index.js` 与 `lib/client.js`，分别用于注入前端 UI 与主机侧状态路由。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 描述重启完成后向发起会话发送 `POST /api/session.prompt` 重试通知的行为。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "可自动化执行 DSH Web 重启流程并控制页面层面提示与恢复步骤",
+      "可创建并触发 Windows 计划任务以在独立进程树中完成重启脚本执行",
+      "可向发起会话发送重启完成通知并根据会话状态刷新/退出逻辑运行",
+      "可在前端持续轮询重启状态并根据在线/离线条件触发自动刷新",
+      "可在重启期间以可交互遮罩覆盖当前页面以减少误操作"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:38.625Z",
+  "repositoryCommitSha": "51d35cf8403d99215d26519be03e9913667c6cc6",
+  "evidenceHash": "c3cbfdb2445c33e79ed28efc8cbaa8db6412965de5cb0322798420953753d42b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a6bd6cbf09b668a2905da9239f19d1a6c1d7ebf8583fb3812084de635eded90e",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "browser",
+    "ui",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary user-facing purpose is to improve model-selection UI flow by adding a one-click deselect control in the DSH web Settings Models fetch dialog, and it functions by detecting the dialog, adding a localized button, then unchecking listed model checkboxes and triggering change events for consistent client-side state.",
+  "summaries": {
+    "zh": "该插件为 DSH 的模型获取弹窗新增“取消全选”按钮，让用户可一次性清空模型勾选项并重新设置选择状态。",
+    "en": "This plugin adds a localized “Deselect all” button in the DSH model-fetch dialog so users can clear selected models in one action and keep selection state consistent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects and observes the DSH web client DOM to insert an extra dialog action button",
+      "Clears model selection checkboxes in bulk within the open fetch-models dialog",
+      "Dispatches standard change events so dialog state updates after bulk deselection"
+    ],
+    "reasons": [
+      {
+        "code": "DOM_MUTATION_FOR_UI_EXTENSION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BULK_CHECKBOX_STATE_UPDATE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CLIENT_ONLY_CLIENT_SCOPE",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Injects and observes the DSH web client DOM to insert an extra dialog action button",
+      "Clears model selection checkboxes in bulk within the open fetch-models dialog",
+      "Dispatches standard change events so dialog state updates after bulk deselection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:37.620Z",
+  "repositoryCommitSha": "36c1f770c7d8faffbfc4c22e94365c48855f1d1f",
+  "evidenceHash": "68bb6027effd205f9b3f94dce300c3787f6171ac47325884651d4e566ce5a3dc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d78cb3d48f5fce4decdf8275d392d8c819b68b2a533c975c22b0f8b1a95f8f72",
+  "shadowMode": false
+}

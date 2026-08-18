@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "workflow",
+    "code-generation",
+    "file",
+    "testing",
+    "ui",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The repository is a standalone DeepSeek Harness plugin that adds an A/B workbench to compare multiple coding candidates. Evidence from the README and package manifest shows it orchestrates parallel Builder runs in isolated worktrees, collects deterministic gate/review evidence, supports preview and human verdict recording, and performs explicit two-phase promotion. This indicates a primary purpose of workflow automation/orchestration for model-based coding evaluation with optional repository writes.",
+  "summaries": {
+    "zh": "Evidence Arena 是一款 DeepSeek Harness 的独立 A/B 工作台，用于并行运行多个模型编程候选者、展示差异与评审证据，并在用户确认后将选定结果写回当前工作区。",
+    "en": "Evidence Arena is a standalone DeepSeek Harness workbench that runs multiple model coding contenders in parallel, shows candidate diffs and review evidence, and applies a chosen result back to the workspace after user confirmation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Run multiple independent AI builders in isolated Git worktrees",
+      "Execute model routing and provider-backed coding/review tasks",
+      "Apply policy-defined deterministic preflight, test, and review gates",
+      "Generate per-file unified diffs and artifact evidence for candidates",
+      "Run disposable candidate previews with logs and stop controls",
+      "Export versioned evidence reports and apply promoted results to workspace",
+      "Use external model credentials through host-managed credential references"
+    ],
+    "reasons": [
+      {
+        "code": "Two or three independent Builders and independent Reviewers are described as core behavior, implying parallel multi-run AI execution and code modification capability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin is delivered as a DSH host/client bundle via dsh.bundle/cordis patch and includes many DeepSeek SDK/tool dependencies for runtime and workflow integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Workflow includes explicit setup, preflight checks, policy gates, candidate preview execution, and two-phase, human-acknowledged promotion before writing to the original workspace.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Known limitations explicitly state network access and full host read isolation are not guaranteed, and network-based provider usage is part of operation.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Run multiple independent AI builders in isolated Git worktrees",
+      "Execute model routing and provider-backed coding/review tasks",
+      "Apply policy-defined deterministic preflight, test, and review gates",
+      "Generate per-file unified diffs and artifact evidence for candidates",
+      "Run disposable candidate previews with logs and stop controls",
+      "Export versioned evidence reports and apply promoted results to workspace",
+      "Use external model credentials through host-managed credential references"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:26.474Z",
+  "repositoryCommitSha": "d66eabdf4c946141d14ee4c4ddb4ac6430903d13",
+  "evidenceHash": "ba80daf525ec1edbbc7dcde6506732043072246085f3169b3b94c0bf5510fe11",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "67a4617959dec2c6f3a58a174c7f7e5f562c3102aecc5fb22f654fccbc982c4e",
+  "shadowMode": false
+}

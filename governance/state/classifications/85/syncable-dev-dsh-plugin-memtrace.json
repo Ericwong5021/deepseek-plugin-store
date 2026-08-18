@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "agent",
+    "mcp",
+    "search",
+    "memory",
+    "tool",
+    "skill",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "This is a DeepSeek Harness plugin that adds local code-intelligence tooling by running Memtrace MCP and registering agent skills, enabling tasks such as symbol lookup, impact/breakage analysis, and evolution/history checks for a workspace. Evidence shows indexing and analysis are intended to run over local project files and store results in a local `.memdb`, with MCP tool exposure (`mcp__memtrace__*`) and 27 skills as its primary user-facing behavior.",
+  "summaries": {
+    "zh": "Memtrace 插件用于 DeepSeek Harness，提供基于本地代码图的工作区检索与分析能力，通过 MCP 工具和内置技能支持符号定位、影响范围和变更沿袭查询。",
+    "en": "The Memtrace plugin for DeepSeek Harness adds local code-graph capabilities to the workspace, exposing MCP tools and packaged skills for symbol search, impact analysis, and evolution lookup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Indexes repository contents for local symbol and dependency discovery",
+      "Runs a Memtrace MCP server process in the current environment",
+      "Persists graph data in workspace-local `.memdb` storage",
+      "Exposes MCP tools and registered agent skills to the harness runtime"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as wiring Memtrace into DeepSeek Harness and exposing `mcp__memtrace__*` tools (including search, impact, and evolution queries) for workspace inspection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It states that the graph is local-first and that Memtrace is started via MCP (`npx -y memtrace mcp` by default, with `MEMTRACE_BIN` override).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package manifest declares the plugin bundle and a DSH-facing MCP row, indicating integration into the DeepSeek Harness runtime and registered agent skills.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Indexes repository contents for local symbol and dependency discovery",
+      "Runs a Memtrace MCP server process in the current environment",
+      "Persists graph data in workspace-local `.memdb` storage",
+      "Exposes MCP tools and registered agent skills to the harness runtime"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:07.515Z",
+  "repositoryCommitSha": "61e9f239330b6ace1d76fa49eb47ab7a548ce3eb",
+  "evidenceHash": "b9ef1010e2f5ab3224d6cf063ccbc6f6608c7c743b3e1d8343ea8456013f45df",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "04e8e532519b08f766af089fa2f2f488d65aa4e69c1bd6a06c22ebbf7242afc9",
+  "shadowMode": false
+}

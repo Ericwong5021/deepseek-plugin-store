@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "ui",
+    "file",
+    "tool",
+    "automation",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a session maintenance utility for DeepSeek Harness that gives users a settings UI to view historical sessions and perform controlled, irreversible deletion of session log directories. Evidence in the package and README shows the main interaction is session management (selection, listing, archive feedback), with destructive file-system cleanup and local audit logging implemented as core behavior.",
+  "summaries": {
+    "zh": "这个插件是 DeepSeek Harness 的会话管理插件，在设置页展示历史会话，并在用户确认后执行会话日志目录的物理删除，同时记录删除审计日志。",
+    "en": "This plugin is a DeepSeek Harness session-management addon that shows historical sessions in the settings page, lets users delete selected sessions after confirmation, and logs each delete attempt."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Lists historical sessions in a settings page with status and metadata.",
+      "Triggers physical deletion of session-owned directories and artifacts.",
+      "Requires explicit type-to-confirm interaction before deletion can proceed.",
+      "Archives sessions from the UI state before removal and logs each delete attempt to a JSONL audit file.",
+      "Runs through a DSH host/client remote service boundary (Typert manifest and remote calls)."
+    ],
+    "reasons": [
+      {
+        "code": "The README states the plugin is an additive Settings -> Session Management page that lists sessions and supports delete actions with a mandatory typed confirmation step, indicating user-facing session cleanup behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The same README documents that deletion is implemented by locating the session path and removing it directly with Node fs, and that each delete attempt is appended to ~/.dsh/sessions-rm.log.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata exports both client and Typert host entrypoints and declares a DSH bundle patch, confirming the plugin runs inside DSH sessions workflow.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Lists historical sessions in a settings page with status and metadata.",
+      "Triggers physical deletion of session-owned directories and artifacts.",
+      "Requires explicit type-to-confirm interaction before deletion can proceed.",
+      "Archives sessions from the UI state before removal and logs each delete attempt to a JSONL audit file.",
+      "Runs through a DSH host/client remote service boundary (Typert manifest and remote calls)."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:18.515Z",
+  "repositoryCommitSha": "02f00f3c0a496914faa36ea020bd044fe4591fbc",
+  "evidenceHash": "4920d1dfc565221869ad66ff03f4c624c79c863e8076b753018c99c5571bc205",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "620447a9c212b70c6da6e8640aace88e87dafb103dd445dcf2475427011798f4",
+  "shadowMode": false
+}

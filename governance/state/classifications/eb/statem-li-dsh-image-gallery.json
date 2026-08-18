@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "chat",
+    "ui",
+    "image",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用户用途是增强 DSH 聊天界面中的图片展示体验：在会话中把 generate_image 工具的成功输出提取并排展示为缩略图，并支持放大和保存。依据仓库 README 的功能描述与 package.json 的客户端插件配置，可将其归类为媒体工具类插件，风险为中低级别，仅涉及对话内图片显示与下载。",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，可在会话中将 generate_image 的成功图片结果以缩略图画廊展示，并支持点击查看大图与保存图片。",
+    "en": "This is a DSH plugin that displays successful `generate_image` results in the conversation as a thumbnail gallery, with options to view enlarged images and save them."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在会话流中渲染 generate_image 成功结果为并排缩略图画廊",
+      "提供图片点击后的大图查看（Lightbox）交互",
+      "提供图片保存/下载入口并支持降级下载",
+      "对可能过期的图片链接显示占位提示"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明监听 generate_image 的 tool/call 与 tool/result，并将 imageUrl 渲染为 generated-images 节点展示缩略图画廊。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提到支持点击放大（Lightbox）、右上角保存图片按钮和下载降级行为，属于媒体结果展示与处理。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 与 dsh 配置表明该项目为 DSH web 客户端插件，依赖客户端 UI 与会话运行时。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "在会话流中渲染 generate_image 成功结果为并排缩略图画廊",
+      "提供图片点击后的大图查看（Lightbox）交互",
+      "提供图片保存/下载入口并支持降级下载",
+      "对可能过期的图片链接显示占位提示"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:49.343Z",
+  "repositoryCommitSha": "a6fe1f5351d6ec56033d4c3dfa4ff25588164cb4",
+  "evidenceHash": "9a21a0b41e018d22b21d92959e7f453e722df05433a3ac0269f033067dfea7a7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f7006b6fb138623e8ea4210e6550af2753d47ebea3f35eded82db158359ac90f",
+  "shadowMode": false
+}

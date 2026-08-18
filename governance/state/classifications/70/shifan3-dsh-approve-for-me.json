@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "terminal",
+    "workflow",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "Evidence shows this plugin is primarily an approval automation utility for DeepSeek Harness: it intercepts approval requests, summarizes recent context, asks a model for ALLOW/REJECT, and lets only explicitly high-risk actions continue to normal interactive confirmation, so its main user-facing purpose is automating approval flow decisions.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在审批链中自动判断常规操作是否可执行并给出同意或拒绝结果，同时对高风险操作继续交由人工确认。",
+    "en": "This is a DeepSeek Harness plugin that automates normal approval decisions by evaluating requests and returning allow/reject results, while still deferring high-risk actions to manual user confirmation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automates approval request decisions in the DeepSeek Harness approval flow",
+      "Extracts action context from command/tool arguments and sends it to an LLM reviewer",
+      "Supports explicit high-risk pattern checks to route dangerous actions to manual user confirmation",
+      "Falls back to manual user approval when the model output is invalid, timed out, or unavailable"
+    ],
+    "reasons": [
+      {
+        "code": "README states this plugin is a host plugin for DSH that adds an approve-for-me mode by judging approval requests and returning ALLOW/REJECT outcomes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents it listens on approval/request with prepend behavior before interactive approval, and requires destructive commands to bypass model review and use normal user prompts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH bundle patch entry (dsh.bundle.patch) and static entrypoint lib/index.js, confirming it is a DSH plugin package rather than an end-user app.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Automates approval request decisions in the DeepSeek Harness approval flow",
+      "Extracts action context from command/tool arguments and sends it to an LLM reviewer",
+      "Supports explicit high-risk pattern checks to route dangerous actions to manual user confirmation",
+      "Falls back to manual user approval when the model output is invalid, timed out, or unavailable"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:21.424Z",
+  "repositoryCommitSha": "5f6e15854d251c495a14f37f476459100377194b",
+  "evidenceHash": "37a4de72876eb5c302121eca60613131cd08088afb2211bc00ef9aafbc080735",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35558e193917343431cbd76e44391eb8ccf4e6008b0ad3e0ffeac001e07990ce",
+  "shadowMode": false
+}

@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "visualization",
+    "data",
+    "tool",
+    "chat",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily an execution-trajectory visualization tool: it adds a Graph/图谱 tab in DeepSeek Harness and projects the session’s structured turn-by-turn execution snapshot into an interactive DAG-like interface with node inspection and viewport controls. Its direct user-facing purpose is viewing and understanding AI execution flow rather than modifying models, tools, or external workflows.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在会话界面新增“Graph/图谱”视图，将执行轨迹按回合以可交互图形方式展示，并支持搜索筛选、展开收起与节点详情查看。",
+    "en": "This is a DeepSeek Harness Web plugin that adds a Graph view to display per-turn trajectory execution as an interactive visualization, including search/filter controls, collapse behavior, zoom/pan navigation, and node detail inspection."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Render trajectory snapshots as an interactive graph inside the DeepSeek Harness web UI",
+      "Navigate session and per-turn execution history with search/filter/collapse controls",
+      "Pan/zoom/fit graph viewport and inspect node-level execution details",
+      "Provide live updates to the graph view during active sessions"
+    ],
+    "reasons": [
+      {
+        "code": "Reads existing trajectory data from active sessions to build graph views, so runtime execution information is displayed in the interface.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Integrates with DeepSeek Harness web host through DSH client/runtime/ui-trajectory packages and a cordis patch entry, indicating in-browser extension of product UI behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Includes features for node inspection (payload/result/schema/timing) and large-session navigation, which can expose sensitive operational details if available in session data.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Render trajectory snapshots as an interactive graph inside the DeepSeek Harness web UI",
+      "Navigate session and per-turn execution history with search/filter/collapse controls",
+      "Pan/zoom/fit graph viewport and inspect node-level execution details",
+      "Provide live updates to the graph view during active sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:12.712Z",
+  "repositoryCommitSha": "9c70a894c817d5e5b605d7352a6c1b9f3cc90f12",
+  "evidenceHash": "6957619f7f123f60382f67a63a32fab3d00348c02a8db08e12fce34c5727934b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8a4306b00b1e708222d96e3ef7351fc2677dadb14944f3df873176c22ffa31bc",
+  "shadowMode": false
+}

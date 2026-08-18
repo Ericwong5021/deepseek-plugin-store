@@ -4,7 +4,7 @@
     "fullName": "tianxia--/dsh-llm-local-token",
     "url": "https://github.com/tianxia--/dsh-llm-local-token"
   },
-  "summary": "Stop pasting API keys into DeepSeek Harness — reuse the OAuth tokens your local Codex CLI and Claude Code already hold as model routes, with subscription usage built in.",
+  "summary": "This plugin reuses local Codex and Claude CLI OAuth subscriptions in DeepSeek Harness to provide LLM routes and show provider usage data.",
   "sources": [
     "github-topic"
   ],
@@ -44,35 +44,25 @@
   },
   "classificationSuggestion": {
     "group": "integrations-communication",
-    "category": "collaboration",
+    "category": "external-services",
     "tags": [
-      "agent",
       "api",
-      "browser",
-      "chat",
-      "cli",
-      "collaboration",
-      "context",
-      "data",
-      "document",
-      "file",
       "integration",
-      "memory",
-      "monitoring",
-      "planning"
+      "cli",
+      "chat",
+      "file",
+      "terminal",
+      "tool"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:planning-execution:plan",
-      "text:memory-context:token",
-      "text:search-browsing:browser",
-      "text:document-processing:document",
-      "text:files-terminal:cli",
-      "text:data-processing:json",
-      "text:external-services:api"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:d62739d0198beca717bdac83cd1a8058f7def62db02ccc091c906935effcbb7f",
+      "commit:cdca7aeb2e872ac0d01fb5c1012bb482e1c3337a"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:26:31.206Z",
+    "reason": "The plugin is primarily an external-service integration that enables DeepSeek Harness to use existing local Codex and Claude CLI/Code OAuth subscriptions as LLM routes, rather than requiring separate API keys. It reads local credential sources, refreshes and updates tokens when needed, and displays provider quota information from response headers while registering provider-specific routes in the model picker. The presence of local credential access/writes and outbound provider network calls supports a moderate risk classification (R1)."
   }
 }

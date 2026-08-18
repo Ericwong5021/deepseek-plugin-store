@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "browser",
+    "file",
+    "tool",
+    "integration"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.86,
+  "reason": "This plugin is primarily a DeepSeek Harness UI extension that adds a dedicated Canvas panel for visual review of HTML prototypes, with local/URL preview and masking tools. Evidence from the package metadata and README consistently describes a tabbed visual workspace and `canvas_preview` actions, so it is best classified as a navigation/board-style plugin surface rather than core coding, data processing, or collaboration tooling.",
+  "summaries": {
+    "zh": "dsh-plugin-canvas 为 DeepSeek Harness 新增 Canvas 标签页，用于打开本地或网址 HTML 页面进行可视化查看，并提供模糊遮罩等标注操作。",
+    "en": "dsh-plugin-canvas adds a Canvas tab in DeepSeek Harness for visual review of local or URL-based HTML pages, with tools to mask sensitive areas during preview."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Loads and previews HTML content from local files and URLs in a plugin tab",
+      "Renders previewed web content through an iframe-based sandboxed path",
+      "Supports user-controlled blur masking/annotation on rendered pages",
+      "Provides a model tool (`canvas_preview`) for render/annotate/clear actions"
+    ],
+    "reasons": [
+      {
+        "code": "Repository description and package metadata identify this as a DeepSeek Harness plugin centered on a Canvas tab for preview/annotation.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README states the plugin opens HTML prototypes and applies privacy blur masks during visual review.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes rendering risky/untrusted content via a sandboxed iframe in the Canvas preview.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository is public and active with required manifest/package/readme assets present, confirming it is an installable DSH extension.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Loads and previews HTML content from local files and URLs in a plugin tab",
+      "Renders previewed web content through an iframe-based sandboxed path",
+      "Supports user-controlled blur masking/annotation on rendered pages",
+      "Provides a model tool (`canvas_preview`) for render/annotate/clear actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.86,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:14.014Z",
+  "repositoryCommitSha": "9af95d81776027adfc3eb1be4b786e7733f74691",
+  "evidenceHash": "bcbd101865c48357e7f4b67d6717d928b87b33a05865ddebb5492f682e24d978",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6c7e57ab2b44623f4648954f9a9fb5c9e8ddbdce810e8501882d420d1abab72c",
+  "shadowMode": false
+}

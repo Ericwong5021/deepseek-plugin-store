@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "ui",
+    "layout",
+    "api",
+    "integration",
+    "tool",
+    "file",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向用户提供移动端访问 DeepSeek Harness Web GUI 的能力：在 PC 上启动网关代理、识别接入网络环境、引导手机端扫码进入并进行设备审批门禁，同时同步会话状态并持久化设备与策略信息，核心属于桌面与移动端联动访问体验。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于让 PC 上的 Web GUI 通过网关让手机或平板在局域网/VPN 下访问，并提供 PC 端的设备审批、网络模式显示与切换。",
+    "en": "This is a DeepSeek Harness plugin that enables mobile access to the PC Web GUI over LAN or VPN through a gateway, with PC-side device approval, network mode display, and mode switching."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Expose local DSH Web GUI via a PC gateway for mobile access",
+      "Require first-time mobile devices to be approved from PC before access",
+      "Detect network source type (LAN/VPN/public) and apply access policy",
+      "Forward API and WebSocket traffic for real-time synchronization",
+      "Persist device, policy, and mode state in a local state file"
+    ],
+    "reasons": [
+      {
+        "code": "README: 插件通过 webServer 与 subprocess 启动网关代理，监听0.0.0.0端口并转发 HTTP 与 WebSocket 通道以供手机端访问",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 首次访问门禁与设备审批流程包含批准、拒绝、撤销、恢复、取消授权并删除等操作",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 支持 LAN/VPN/公网来源识别与“禁止公网直连”策略，以及网关端口修改与保存",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: 标注为 dsh-mobile-access 插件包，主入口为 lib/index.js，并声明 dsh.bundle.patch",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "repository description: 主要目的是让手机/平板通过局域网或 VPN 访问 DeepSeek Harness Web GUI",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Expose local DSH Web GUI via a PC gateway for mobile access",
+      "Require first-time mobile devices to be approved from PC before access",
+      "Detect network source type (LAN/VPN/public) and apply access policy",
+      "Forward API and WebSocket traffic for real-time synchronization",
+      "Persist device, policy, and mode state in a local state file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:37.298Z",
+  "repositoryCommitSha": "b2c8b3050443d401d97647f0f5d7bd5bc3bf771d",
+  "evidenceHash": "e63891c7c36e34bd9ce4eea2fc8b920758454294378a90d0691139e9c877e4e0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b69e065a579f5e676177722371dbea68d81de5ceddeebad6546be8ac210714c2",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "workflow",
+    "ui",
+    "agent",
+    "automation",
+    "planning",
+    "file",
+    "terminal",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily an AI workflow orchestration aid: it adds a local visual Kanban board to DeepSeek Harness and ties task cards to chat-driven execution via registered tools, with `kanban_codex` delegating bounded implementation work back to the same card context for review. Evidence from the README shows card state management, evidence tracking, and local durable storage as core behavior, while package metadata confirms it is a DSH plugin bundle with official Codex integration dependency.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的任务编排看板插件，提供本地可视化卡片管理界面，并可通过注册工具链将任务与 Codex 子代理执行过程关联到同一卡片。",
+    "en": "This plugin is a task orchestration companion for DeepSeek Harness that provides a local visual Kanban board and links task cards to Codex-driven execution through registered plugin tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a local Kanban workbench UI for creating, moving, and reviewing task cards",
+      "Exposes `kanban` tool actions for card lifecycle operations (list/create/update/move/evidence/delete)",
+      "Persists board state to a local JSON file and reads it on startup",
+      "Invokes a Codex subagent via `kanban_codex` and writes returned execution status/report data back to cards",
+      "Runs a localhost dashboard endpoint (`127.0.0.1` + configured port) for operator interaction"
+    ],
+    "reasons": [
+      {
+        "code": "KANBAN_TOOLING_ACTIONS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_PERSISTENT_BOARD",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CODex_DELEGATION_WORKFLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BUNDLE_AND_ENTRYPOINT",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Provides a local Kanban workbench UI for creating, moving, and reviewing task cards",
+      "Exposes `kanban` tool actions for card lifecycle operations (list/create/update/move/evidence/delete)",
+      "Persists board state to a local JSON file and reads it on startup",
+      "Invokes a Codex subagent via `kanban_codex` and writes returned execution status/report data back to cards",
+      "Runs a localhost dashboard endpoint (`127.0.0.1` + configured port) for operator interaction"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:46.437Z",
+  "repositoryCommitSha": "d9dd3f59ce6fc0b0a6e06d3f4736a82ffedaede2",
+  "evidenceHash": "5c8a9c6e0adc2aae1b444f8daac6c381cb267e684c16e95cb9e98b4fa4ef3421",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "83e2e9644e6c2ea1803d5bd69ae03470416f30bc7c98770665d4daf760bdaaac",
+  "shadowMode": false
+}

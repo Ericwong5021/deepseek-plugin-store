@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "api",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心面向功能是在 DSH 设置界面提供会话与归档清理入口，便于管理员查看残留/归档会话并手动清理。依据仓库说明，它会在主机端执行会话持久化文件删除并更新会话与归档索引，因此具备直接数据变更能力，结合“不可恢复”特性使风险评估为中等。",
+  "summaries": {
+    "zh": "该插件在DSH设置中新增两个清理页面，用于查看当前、残留与归档会话并手动删除残留或归档数据（支持双重确认）。",
+    "en": "This plugin adds two DSH Settings pages for session and archive cleanup, allowing users to inspect sessions and manually delete residual or archived items with confirmation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "list current, residual, and archived sessions in DSH Settings",
+      "delete residual session records",
+      "delete individual archived sessions",
+      "delete all archived sessions",
+      "call a plugin API endpoint for cleanup actions",
+      "remove persisted session storage entries on host"
+    ],
+    "reasons": [
+      {
+        "code": "README documents Settings pages for Sessions cleanup and Archive cleanup with list and delete workflows, including delete buttons and confirmation steps.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Deletion process in README states it removes persisted session files/directories via host filesystem operations and updates workspace/archive metadata, with deletions marked irrecoverable.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes that the API route is POST /_dsh/session-cleanup/api and rejects cross-site requests, indicating server-side handling for the action.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json identifies this as a DSH web bundle injecting client settings runtime modules.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "list current, residual, and archived sessions in DSH Settings",
+      "delete residual session records",
+      "delete individual archived sessions",
+      "delete all archived sessions",
+      "call a plugin API endpoint for cleanup actions",
+      "remove persisted session storage entries on host"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:24.930Z",
+  "repositoryCommitSha": "390321d27d8519677cb09eb64f897437e62568d2",
+  "evidenceHash": "630fee03ee58655363256daa6c794c86e68952a6d2b1681ac1298652298b85ba",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2ce5d15e42ca1791d7b6139aa96b2eb0f22e0a2e37283132cce7582a21d3b4d1",
+  "shadowMode": false
+}

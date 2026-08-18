@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "chat",
+    "theme",
+    "layout",
+    "image",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件是面向 dsh-web 的会话界面增强插件，其主要用户价值在于改进对话展示：将运行时节点折叠归并、将文本回复改为聊天气泡，并提供气泡与界面样式的高可配置设置与预览，核心通过 dsh 插件补丁机制接入并替换宿主会话展示组件。",
+  "summaries": {
+    "zh": "该插件用于优化 dsh-web 对话界面，将工具调用等运行时信息折叠展示，并用可配置的聊天气泡与预览设置提升回复阅读体验。",
+    "en": "This plugin enhances the dsh-web conversation view by collapsing runtime entries and rendering replies as configurable chat bubbles with settings-driven live previews."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Replaces the host conversation UI surface via a dsh bundle patch.",
+      "Groups and collapses runtime activity rows (tool calls, thinking, retries, etc.) in the chat view.",
+      "Renders assistant/user replies as configurable chat bubbles with live preview in settings.",
+      "Extends conversation UI settings schema and persists preferences/state via local settings and browser localStorage.",
+      "Supports local background image upload/cropping with client-side resizing/compression."
+    ],
+    "reasons": [
+      {
+        "code": "README documents a patch-based override of the host ui-conversation row by chat-focus for runtime activity folding and bubble rendering.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares dsh bundle patch and web client injection points, indicating front-end UI replacement behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes localStorage keys and settings fields for focus state/prefs, plus local image upload and canvas-based background processing.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Replaces the host conversation UI surface via a dsh bundle patch.",
+      "Groups and collapses runtime activity rows (tool calls, thinking, retries, etc.) in the chat view.",
+      "Renders assistant/user replies as configurable chat bubbles with live preview in settings.",
+      "Extends conversation UI settings schema and persists preferences/state via local settings and browser localStorage.",
+      "Supports local background image upload/cropping with client-side resizing/compression."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:03.982Z",
+  "repositoryCommitSha": "8ae51018d3ca6c90fdd2b096f29c3a14264274aa",
+  "evidenceHash": "9bf411b4ed879b8664b3b9801c62c8199ab825ccda9cf3e1f5da931e9d3214d4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "78da43194e881645b088ce723372ee5909713bc7e89e6f56d744f06f48f7d06c",
+  "shadowMode": false
+}

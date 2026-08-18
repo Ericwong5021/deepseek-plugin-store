@@ -4,7 +4,7 @@
     "fullName": "shengyvself/dsh-autoresume",
     "url": "https://github.com/shengyvself/dsh-autoresume"
   },
-  "summary": "dsh web 重启后自动向固定开发会话注入「继续」：只服务目标会话，完成态不动作，避免重复注入。",
+  "summary": "This plugin checks a configured dsh web session after restart and automatically sends a \"continue\" follow-up when it detects an interrupted state, helping the session resume from where it stopped.",
   "sources": [
     "github-topic"
   ],
@@ -43,21 +43,24 @@
     "capturedAt": "2026-08-17T19:46:53.530Z"
   },
   "classificationSuggestion": {
-    "group": "tools-data",
-    "category": "general-utilities",
+    "group": "agents-workflows",
+    "category": "automation",
     "tags": [
       "agent",
-      "testing",
-      "tool"
+      "automation",
+      "chat",
+      "workflow",
+      "context"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:插件",
-      "text:testing-debugging:lint",
-      "text:memory-context:会话",
-      "text:general-utilities:tool"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:8dca68ebf7e81da0b7a77aeb9452363208c09f23913c4a17b641da817cd5aa8a",
+      "commit:c257808c348a9de256598bd2cb2caeb14f633e52"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:25:18.236Z",
+    "reason": "该插件的主要面向用户价值是“会话续跑自动化”：在 dsh web 重启后自动检测指定会话是否处于未闭合或中断状态，并在满足条件时发送“继续（自动）”以恢复执行。证据显示其通过 session persistence 状态机判断、限定单一 targetSessionId、已完成/闭合态不动作并支持启动窗口与轮询控制，因此核心分类为自动化类插件。"
   }
 }

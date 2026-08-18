@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "tool",
+    "mcp"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily an external financial data connector: it integrates DeepSeek Harness with stockmcp.net to provide stock, filing, and macro data as model tools, with configuration centered on API key access rather than local code creation or file workflow automation.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件，通过连接 stockmcp.net 提供股票与宏观经济相关数据（如报价、财报、SEC 文件与经济指标）供模型以工具方式调用。",
+    "en": "This is a DeepSeek Harness plugin that connects to stockmcp.net to provide stock and macroeconomic data, such as quotes, financial statements, SEC filings, and indicators, as model-callable tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetch stock and macroeconomic data from a remote MCP endpoint",
+      "Read API key configuration from DSH settings or environment",
+      "Expose remote capabilities as model-callable tools"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides real-time stock and macro data, filings, and financial statements through model tools from stockmcp.net.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents tool schema synchronization and toolset exposure to the model, indicating runtime dependency on external service calls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares DSH bundle/client integration for web and package export points, confirming plugin role as an external service connector in DSH.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Fetch stock and macroeconomic data from a remote MCP endpoint",
+      "Read API key configuration from DSH settings or environment",
+      "Expose remote capabilities as model-callable tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:56.484Z",
+  "repositoryCommitSha": "6d50c22b03c033fc7776d345847b71d3de9ff44f",
+  "evidenceHash": "8339d2cecced9ee2da45200dd5ae84e5f01c3e460537b544ad8c4562087a1a88",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9c5a62c210ffb50e1b25b3f56c9a89d86610961f82dc1c6f038ac9d730bf2425",
+  "shadowMode": false
+}

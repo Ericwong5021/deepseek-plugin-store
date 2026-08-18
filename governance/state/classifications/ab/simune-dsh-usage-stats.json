@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心用户价值是为 DeepSeek Harness Web UI 提供可视化的用量统计面板：聚合本地会话元数据后展示 Token/会话/活跃天数等概览、7/30 天趋势与年度热力图，并提供 CSV/JSON 导出。该定位可直接从 README 的功能说明与面向 Web 的插件配置（package.json）中得到验证。",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web UI 的使用统计插件，用于在本地聚合会话数据并以图表方式展示 Token 趋势、模型分布和活跃热力图，并支持 CSV/JSON 导出。",
+    "en": "This is a DeepSeek Harness Web UI plugin that aggregates local session usage data into charts for token trends, model distribution, and activity heatmaps, with optional CSV/JSON export."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads local session-related metadata for token usage statistics",
+      "displays usage analytics views (totals, trends, heatmaps, model breakdown)",
+      "adds a web UI entry in DeepSeek Harness sidebar/settings area",
+      "supports CSV/JSON export of usage data",
+      "stores cache/aggregated stats locally"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is described as a usage analytics tool for DeepSeek Harness, listing token totals, trends, heatmaps, and model breakdown.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is packaged as a web-platform DeepSeek Harness plugin via bundle and client injection configuration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Privacy note states usage indexes are stored locally at DSH_HOME and include workspace/model/token metadata.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Feature list includes CSV and JSON export of statistics.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "reads local session-related metadata for token usage statistics",
+      "displays usage analytics views (totals, trends, heatmaps, model breakdown)",
+      "adds a web UI entry in DeepSeek Harness sidebar/settings area",
+      "supports CSV/JSON export of usage data",
+      "stores cache/aggregated stats locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:32.134Z",
+  "repositoryCommitSha": "d6463cb116620783e6d0b68f8313a68126004968",
+  "evidenceHash": "a9c197fb12f410338547b6f10ae3116d2e92a12fac75e7c1b0dcbca0945ecc1b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d09d3faea42ef477e536a58a064960124409d11d2ff5ea559ddd634c40e06b78",
+  "shadowMode": false
+}

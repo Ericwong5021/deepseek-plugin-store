@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "api",
+    "data",
+    "integration",
+    "mcp",
+    "browser",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a user-facing navigation/inspection panel for the DSH Web GUI: it surfaces MCP server and tool inventory, shows transport/state metadata, and displays tool schemas plus recent usage based on local session logs, with filtering and export utilities. Evidence supports UI presentation and local inventory/inspection behavior via a host API and client plugin slots, rather than altering core execution or creating new external integrations.",
+  "summaries": {
+    "zh": "该插件为 DSH Web GUI 提供“ MCP Tools ”侧边栏面板，用于集中查看会话可见的 MCP 服务器和工具、其参数 schema、最近使用信息，并支持检索与导出。",
+    "en": "This plugin adds an MCP Tools panel to the DSH web GUI to show session-visible MCP servers and tools, including schemas and recent usage, with search, health checks, and export features."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local session log files under the DSH session directory to compute last-used tool data",
+      "Calls configured MCP streamable-http endpoints for health checks (HEAD requests)",
+      "Provides a local GET API route that returns MCP inventory and usage metadata",
+      "Renders a floating sidebar/overlay panel and supports search/filter over tool and server metadata",
+      "Allows exporting inventory data as JSON or Markdown"
+    ],
+    "reasons": [
+      {
+        "code": "README.md states this is a DSH Web GUI MCP Tools panel with sidebar/overlay presentation, live search, usage view, and favorites.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README.md Architecture section describes a host endpoint GET /api/mcp-view/tools sourced from Cordis tool/runtime data and session logs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README.md and package manifest indicate a web profile plugin with dsh bundle patching and a dedicated client entry, confirming host+browser integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes host output (lib/index.js), client bundle (lib/client.js), and source (src/index.ts) matching a hot-pluggable web plugin.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local session log files under the DSH session directory to compute last-used tool data",
+      "Calls configured MCP streamable-http endpoints for health checks (HEAD requests)",
+      "Provides a local GET API route that returns MCP inventory and usage metadata",
+      "Renders a floating sidebar/overlay panel and supports search/filter over tool and server metadata",
+      "Allows exporting inventory data as JSON or Markdown"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:57.301Z",
+  "repositoryCommitSha": "22f385604fbfa353c9d026ea478841c015ff7036",
+  "evidenceHash": "fe53c8c518ac91e3a78e784f6d80f641a8a57d1ec5cd2a679b1013da9d5d2283",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cd8d0a72e019b3a8dbb66eb2bbb8e8878021a09473e99f959d68315d236f220a",
+  "shadowMode": false
+}

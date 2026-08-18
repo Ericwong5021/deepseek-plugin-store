@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "data",
+    "monitoring",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心用户面向用途是外部服务监测与展示：在 DSH Web 界面中集中查看多供应商账户余额/额度与 Token 用量，并通过侧边栏管理技能包。README 与清单文件共同表明其为界面化运营类插件，重点在读取聚合后显示外部服务账户与用量数据并提供对应交互入口。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，用于在侧边栏展示多供应商账户余额与 Token 用量，并提供技能包的创建、编辑与管理。",
+    "en": "This is a DeepSeek Harness web plugin that shows multi-provider account balances and token usage analytics, while providing sidebar management of skill bundles."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Aggregates token usage metrics by date, provider, and model",
+      "Queries provider account/balance and subscription quota endpoints through pluggable adapters",
+      "Displays per-provider status and warning state in a web panel",
+      "Provides side-panel skill bundle create/rename/delete/install management",
+      "Exposes local GET APIs for usage, provider, and account/subscription data"
+    ],
+    "reasons": [
+      {
+        "code": "README presents the plugin as a DeepSeek Harness Web GUI extension for provider balances, token-usage analytics, and skill bundle management.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents integrations with multiple providers and adapter types (e.g., deepseek-balance, openrouter-balance, declarative, etc.), indicating external-service account data retrieval.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH web client plugin bundle and runtime client modules, confirming user-facing web integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README includes local HTTP API routes such as /api/usage-stats/usage and /api/usage-stats/account used to serve usage and balance data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata and README description identify the primary purpose as token usage analytics, provider balances, and skill bundle management for the DSH web GUI.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Aggregates token usage metrics by date, provider, and model",
+      "Queries provider account/balance and subscription quota endpoints through pluggable adapters",
+      "Displays per-provider status and warning state in a web panel",
+      "Provides side-panel skill bundle create/rename/delete/install management",
+      "Exposes local GET APIs for usage, provider, and account/subscription data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:56.986Z",
+  "repositoryCommitSha": "832b2d4f68a1228d5663a8cf43b0a8369526f61d",
+  "evidenceHash": "fac3cbe1b9eabb73c07d7b3a1f04140b8578efd34df188a7bd2d979222ed4688",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e6be2b72381619e5f50a326f4151ba69e6da83f284299720b642c131d0406b5f",
+  "shadowMode": false
+}

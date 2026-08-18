@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "cli",
+    "api",
+    "image",
+    "video",
+    "tool",
+    "automation",
+    "integration",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "The repository describes a DeepSeek Harness plugin that registers three model-visible tools and routes them to a local Grok Build CLI for text prompting and image/video generation, with matching package metadata and CLI entrypoint confirming it is a media-generation integration plugin, while operating by calling an external/local binary rather than providing an internal UI or planning/analysis workflow.",
+  "summaries": {
+    "zh": "该插件将 `grok_ask`、`grok_imagine_image` 与 `grok_imagine_video` 集成为 DeepSeek Harness 工具，由本地 Grok Build CLI 执行文本提问、图片与视频生成并返回本地产物路径。",
+    "en": "This plugin adds `grok_ask`, `grok_imagine_image`, and `grok_imagine_video` to DeepSeek Harness, invoking the local Grok Build CLI for text prompting and image/video generation and returning local output file paths."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Invokes a local external CLI (`grok`) to perform text, image, and video tasks",
+      "Accepts prompts and generation parameters (for image/video) from tool calls",
+      "Handles auth via existing CLI session file or environment/API key inputs",
+      "Returns generated local file paths for media outputs"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_TOOLING_INTEGRATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLUGIN_TOOL_SURFACE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CLI_ENTRYPOINT_DEFINED",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "PACKAGE_INTENT_DESCRIPTION",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Invokes a local external CLI (`grok`) to perform text, image, and video tasks",
+      "Accepts prompts and generation parameters (for image/video) from tool calls",
+      "Handles auth via existing CLI session file or environment/API key inputs",
+      "Returns generated local file paths for media outputs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:38.653Z",
+  "repositoryCommitSha": "a47f4031061115b65e0c032afefebc7f30a728cd",
+  "evidenceHash": "4ab6f84ddc60cc09aa78cfc809558398318718cdcbfdb08acfbacddfbf020419",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "55b5e3a0c0c30ab713116d80b197af7efe5272570cb750cdb4f4563277bfd2eb",
+  "shadowMode": false
+}

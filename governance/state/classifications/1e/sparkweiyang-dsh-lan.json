@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户面向目的为为 DSH 提供局域网可访问的 Web GUI 与 DeepSeek 余额查询能力：通过 bundle patch 将 Web 服务绑定到 `0.0.0.0` 并新增 `deepseek/balance` RPC；同时依赖 PC 端配置的 `DEEPSEEK_API_KEY` 请求官方余额接口返回账户信息。已给出未做鉴权的安全提示，因此风险集中在网络可达与凭证传递链路。",
+  "summaries": {
+    "zh": "该插件将 DSH Web GUI 绑定为局域网可访问，同时新增 `deepseek/balance` RPC，支持通过 PC 端配置的凭证查询 DeepSeek 账户余额。",
+    "en": "This plugin enables LAN access for the DSH Web GUI and adds a `deepseek/balance` RPC to retrieve DeepSeek account balance via PC-side credentials."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Expose DSH Web GUI on LAN by binding host to 0.0.0.0",
+      "Register a `deepseek/balance` Typert remote RPC endpoint",
+      "Resolve PC-side `DEEPSEEK_API_KEY` and call DeepSeek user balance API"
+    ],
+    "reasons": [
+      {
+        "code": "Bundle patch changes the webserver host to 0.0.0.0 for LAN access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a `deepseek/balance` RPC that contacts `https://api.deepseek.com/user/balance` using PC-side credentials.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Security note states the web carrier has no auth layer, so LAN binding can broaden access by network reachability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH bundle with a patch entrypoint, confirming runtime behavior is applied to web profile.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Expose DSH Web GUI on LAN by binding host to 0.0.0.0",
+      "Register a `deepseek/balance` Typert remote RPC endpoint",
+      "Resolve PC-side `DEEPSEEK_API_KEY` and call DeepSeek user balance API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:47.292Z",
+  "repositoryCommitSha": "18639b4a1d158f06e80cb3f0e38d65dd44169d4f",
+  "evidenceHash": "3513af30afbd113f0b9ccc1a74b2abe40ae4b7532f3cd50ac1a149d7fa23875c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1107bcebc82700be0901762db5ff57c48890919dc1e10b4f4fe9c9f68e146eff",
+  "shadowMode": false
+}

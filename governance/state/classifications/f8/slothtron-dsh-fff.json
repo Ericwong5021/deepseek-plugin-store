@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "search",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Conservatively classified as a file tooling plugin: it exposes two workspace-aware search tools for model calls (`fffind` and `ffgrep`), backed by an indexed file-finder helper and optional web settings control. User-facing behavior is centered on filesystem lookup and match retrieval rather than editing, external integrations, or media handling, so it fits a files-and-terminal-style utility with a focused UI companion for search settings.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 `fffind` 与 `ffgrep` 工具，可在当前会话工作区内进行文件路径模糊查找和内容搜索，并在结果中返回匹配项。",
+    "en": "This plugin adds `fffind` and `ffgrep` tools to DeepSeek Harness to perform workspace-scoped fuzzy path search and content grep-style matching, returning structured search matches for model tool calls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers model tools for fuzzy file-path search (`fffind`) and file-content search (`ffgrep`).",
+      "Indexes and reindexes files within the active session workspace via a resident helper process.",
+      "Exposes optional live filesystem-watching toggle through the web settings UI to change watcher behavior."
+    ],
+    "reasons": [
+      {
+        "code": "README defines `fffind` and `ffgrep` tool purpose, parameters, and return shape for searching paths and content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states a resident helper owns an index and switches root per session workspace, reindexing on workspace changes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json lists `@ff-labs/fff-node` dependency and provides a web client entry (`./client`), confirming local file index/search functionality with UI integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers model tools for fuzzy file-path search (`fffind`) and file-content search (`ffgrep`).",
+      "Indexes and reindexes files within the active session workspace via a resident helper process.",
+      "Exposes optional live filesystem-watching toggle through the web settings UI to change watcher behavior."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:36.769Z",
+  "repositoryCommitSha": "c2238487ead9d6aa06108e2c15e7d2408f764faf",
+  "evidenceHash": "c5be917c0ebddb285ed562d87515d4c86860b7cd1ea87928ed93ba0d0fc6eb2a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7748c043ab71eb4e88da59b1d3d066beac8fa637a99860325a0e85e50c4c3f90",
+  "shadowMode": false
+}

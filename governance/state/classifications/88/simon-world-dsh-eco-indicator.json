@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily an external data service utility for users to fetch and return public World Bank economic indicator values by country and year range, with helper support for resolving country identifiers. The provided metadata describes only query and data-access behavior, with no explicit file system or code-execution features exposed in available evidence.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，可按国家和年份区间查询世界银行开放数据中的经济指标（如 GDP、通胀、贸易与人口）并返回逐年结果。",
+    "en": "A DeepSeek Harness plugin that queries open World Bank economic indicator data by country and year range (such as GDP, inflation, trade, and population) and returns results by year."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read-only querying of public World Bank economic indicator data",
+      "Country/region code resolution for indicator queries",
+      "Optional selection of indicators and year ranges in query responses"
+    ],
+    "reasons": [
+      {
+        "code": "README lists `wb_indicator` and `wb_countries` tools for querying World Bank indicators by country and year range.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Description states the plugin uses World Bank open data for economic indicators such as GDP, inflation, trade, and population.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The plugin is packaged for DeepSeek Harness via `dsh.bundle`, indicating runtime integration as an external utility plugin.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Read-only querying of public World Bank economic indicator data",
+      "Country/region code resolution for indicator queries",
+      "Optional selection of indicators and year ranges in query responses"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:32.452Z",
+  "repositoryCommitSha": "c0b99dcf204640c95165d9044534dc4db532e886",
+  "evidenceHash": "6958d28f3c117a03eb2c994c74a96547b6e4e69e4a19628ee043b1f54ddce5bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "75526b8a023fe0936e4312369c530a0350ef368e13480f8eb6b496dec791f43d",
+  "shadowMode": false
+}

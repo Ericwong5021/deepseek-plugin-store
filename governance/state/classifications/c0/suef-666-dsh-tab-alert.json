@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "api",
+    "browser",
+    "desktop",
+    "integration",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是对 DeepSeek Harness 的会话任务进行用户关注提醒与状态外部化：前端在需要用户介入时触发系统通知/任务栏闪烁，宿主端则维护会话状态并通过本地 WebSocket 推送标准化实时事件流。该定位来自仓库说明、插件结构及打包配置，核心功能集中在通知与任务状态流转发。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness web 环境中向用户发送注意力提醒（系统通知与任务栏闪烁），并通过本地 WebSocket 向外部客户端提供会话状态实时流。",
+    "en": "This plugin sends user-attention alerts in DeepSeek Harness web sessions via system notifications with taskbar flashing, and exposes a local WebSocket stream of real-time session status for external clients or plugins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Web Notification-based taskbar/attention alerting in the web client",
+      "Local WebSocket endpoint exposure for streaming normalized session status",
+      "Per-session state tracking for task progress/events",
+      "Event publishing to allow external plugin/client consumption"
+    ],
+    "reasons": [
+      {
+        "code": "README documents user-attention notification triggers, including browser notification behavior and taskbar flash semantics for configured events.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents host-side per-session state machine maintenance and forwarding normalized real-time task/session status via ws://127.0.0.1:<port>/tab-alert/stream for external consumers.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata lists a web client target and websocket dependency, showing network-capable behavior and browser runtime integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes protocol documentation and plugin manifest entries consistent with a distributed host/client plugin package.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Web Notification-based taskbar/attention alerting in the web client",
+      "Local WebSocket endpoint exposure for streaming normalized session status",
+      "Per-session state tracking for task progress/events",
+      "Event publishing to allow external plugin/client consumption"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:02.914Z",
+  "repositoryCommitSha": "b8ac57132a367eb89521688a2dc44bd92d9f0254",
+  "evidenceHash": "866328040668a57f5c4e8833efdffbc5023ed0630342c65aed1652336d6f5b43",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2971e2b6ffbdd2f19ca68742b626f0281ee06af0c4de052195c1f3cdf402808d",
+  "shadowMode": false
+}

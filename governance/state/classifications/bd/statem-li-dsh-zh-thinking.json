@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "api",
+    "tool",
+    "automation",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用户价值是通过 DSH 设置界面提供“中文思考”开关，影响模型对中文内部思考的系统提示词行为，并将开关状态持久化后在本地 API 可查询，因此归类为面向模型交互体验的通用工具插件。",
+  "summaries": {
+    "zh": "该插件在 DSH 设置页提供“中文思考”开关，可按需开启或关闭对模型的中文内部思考指令，并保存开关状态。",
+    "en": "This plugin adds a Chinese-thinking toggle in DSH settings so you can enable or disable injecting a Chinese internal-thinking system prompt, with the preference persisted for later sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "用户可在设置页切换模型内部思考语言开关并持久化状态",
+      "插件会在启用时向系统提示词注入中文内部思考指令",
+      "插件提供本地状态接口用于读取开关状态"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件在 DSH 设置页提供“中文思考”开关，并在开启时注入\"内部思考使用中文\"到模型系统提示词。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明开关状态持久化至 settings.yaml，并提供本地接口 /api/zh-thinking 返回状态。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明了 DSH web 客户端入口与注入点（client/ web）及主机端入口，表明该插件为带界面与主机逻辑的设置型插件。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "用户可在设置页切换模型内部思考语言开关并持久化状态",
+      "插件会在启用时向系统提示词注入中文内部思考指令",
+      "插件提供本地状态接口用于读取开关状态"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:56.008Z",
+  "repositoryCommitSha": "06ca5ebc8e0ff4c26ceb50dc3e6eff23a9c019f0",
+  "evidenceHash": "397445cbafdfa5a4897c3c73addeb7df10a8d8f9acf9ba4389243506da64f977",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1125e75666b2c4952c82eade8bbb74237a34fa65c766e0d16b9b7eabda9a720f",
+  "shadowMode": false
+}

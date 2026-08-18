@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "theme",
+    "image",
+    "file",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用途是界面美化：通过设置面板设置本地图片路径并应用为界面壁纸，同时调整主题 token 实现半透明效果；证据来自 README 的功能说明与架构图，以及 package.json 指明的 web 客户端注入与主题/设置相关能力，未表现为数据处理、外部服务集成或自动化执行类功能。",
+  "summaries": {
+    "zh": "这是一个用于 DSH 界面外观定制的插件，可通过设置面板加载本地图片作为背景，并应用半透明主题样式，同时支持恢复默认与重启保持设置。",
+    "en": "This is a DSH UI customization plugin that lets users set a local image as the background, apply a translucent theme style, and reset to default while retaining the selected setting across restarts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local background image loading from user-provided path",
+      "Serving image bytes from a host HTTP route for client rendering",
+      "Injecting UI theme token overrides for translucent surfaces",
+      "Registering a settings panel entry for wallpaper configuration",
+      "Persisting wallpaper path in browser storage"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a host route '/dsh-web-skin/bg' that reads local image bytes and the client fetches it as a blob for the HTML background.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states settings.section registers a 背景图 panel and theme.overrideTokens is used to make surfaces translucent.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package.json show this is a DSH web plugin with a client bundle (lib/client.js) and web platform target.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Local background image loading from user-provided path",
+      "Serving image bytes from a host HTTP route for client rendering",
+      "Injecting UI theme token overrides for translucent surfaces",
+      "Registering a settings panel entry for wallpaper configuration",
+      "Persisting wallpaper path in browser storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:41.103Z",
+  "repositoryCommitSha": "d5bbefba7668c51bd28b0d13a88593ffabfa4af3",
+  "evidenceHash": "609694d444f6b7ab9228340d1f7cffa1d9d139db3ef035f9b25ee2f345dd477f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ae026274ce257618a780f3f0cc95960b1fb62435ff04f9d0eab7b56a8b74fa94",
+  "shadowMode": false
+}

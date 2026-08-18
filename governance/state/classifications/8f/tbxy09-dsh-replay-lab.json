@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "tool",
+    "file",
+    "ui",
+    "chat",
+    "workflow",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "The plugin is primarily an agent testing/debugging utility: it freezes a completed DSH turn as baseline, runs a single approved candidate session, and compares baseline/candidate results via an explicit scorecard of request-surface evidence and execution metrics. Evidence in the readme and manifest shows web UI integration, replay control flow, and isolated workspace execution, so it is best classified as a testing/debugging workbench rather than a general-purpose tooling or communication plugin.",
+  "summaries": {
+    "zh": "Replay Lab 是 DeepSeek Harness 的 Web 插件，用于冻结已完成会话回合后重放候选方案并对比请求面、轨迹和执行指标，帮助做回归和行为复现排查。",
+    "en": "Replay Lab is a DeepSeek Harness web plugin that replays a completed session turn with selected candidates and compares request-surface evidence, trajectory, and execution metrics to support regression debugging."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Replays completed DeepSeek Harness turns under selected preset or plugin candidates",
+      "Compares baseline and candidate runs with recorded execution metrics and request-surface evidence",
+      "Captures provenance such as request-related hashes and workspace state for controlled comparisons",
+      "Runs candidate sessions in isolated workspace copies with drift tracking"
+    ],
+    "reasons": [
+      {
+        "code": "README_REPLAY_WORKFLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_SCORECARD_AND_METRICS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_WORKSPACE_ISOLATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PACKAGE_JSON_WEB_CLIENT_INJECTION",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "TREE_DISTRIB_FILES",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Replays completed DeepSeek Harness turns under selected preset or plugin candidates",
+      "Compares baseline and candidate runs with recorded execution metrics and request-surface evidence",
+      "Captures provenance such as request-related hashes and workspace state for controlled comparisons",
+      "Runs candidate sessions in isolated workspace copies with drift tracking"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:17.614Z",
+  "repositoryCommitSha": "14e82a41ce4496abe859643e576166dd394cc2b8",
+  "evidenceHash": "bff3fd809de64abbb32ae113d0bccda47cb89b553ec6509531d361da82a24b71",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d77af2a36236839dbcf37c595c712d33757eceb193b58fa6dd159c9f7fd23d67",
+  "shadowMode": false
+}

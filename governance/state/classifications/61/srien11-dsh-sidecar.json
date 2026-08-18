@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "context",
+    "workflow",
+    "memory",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Evidence shows the plugin’s primary user-facing purpose is a UI side-panel feature for DeepSeek Harness: it enables branching follow-up chats from completed answers without leaving the main conversation, with persistent restore behavior and branch controls. It relies on existing Harness session/storage APIs and therefore adds workflow/context management rather than standalone file or external service integration, though child sessions can still execute normal tools affecting the same workspace.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 聊天添加侧边抽屉，支持在不离开主会话的情况下对已完成回答进行持续追问和分支管理。",
+    "en": "This plugin adds a right-side sidebar in DeepSeek Harness for persistent follow-up conversation branching from completed answers without leaving the main chat."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Create persistent sidecar follow-up conversations from completed assistant replies.",
+      "Manage multiple follow-up branches (create, switch, rename, archive) from a side panel.",
+      "Persist branch anchors/child session links for later restoration.",
+      "Display streaming child responses and tool summaries while keeping the main session unchanged."
+    ],
+    "reasons": [
+      {
+        "code": "SIDE_DRAWER_UI_FOR_SIDE_CONVERSATIONS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SESSION_FORK_AND_BRANCHING_WORKFLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PERSISTENT_CHILD_ANCHOR_STORAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "HARNESS_WEB_PLUGIN_RUNTIME_INTEGRATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Create persistent sidecar follow-up conversations from completed assistant replies.",
+      "Manage multiple follow-up branches (create, switch, rename, archive) from a side panel.",
+      "Persist branch anchors/child session links for later restoration.",
+      "Display streaming child responses and tool summaries while keeping the main session unchanged."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:49.176Z",
+  "repositoryCommitSha": "79ae6dc2d0dd85ad9fe6f51afff41404b1c7fee8",
+  "evidenceHash": "4590a3509d4fd1a4205b409e42b7f007b98d58d8d1927f6140b6b2274042033a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "babab4ae1c65f121739926c9d8fef3dc4029c2ee751c57ee7cf40883d9beb4d5",
+  "shadowMode": false
+}

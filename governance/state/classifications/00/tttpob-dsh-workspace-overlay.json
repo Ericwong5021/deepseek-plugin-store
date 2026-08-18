@@ -1,0 +1,92 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "integration",
+    "context",
+    "tool",
+    "agent",
+    "file",
+    "terminal",
+    "mcp"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is a DeepSeek Harness extension focused on orchestrating runtime context and tool services by workspace, including workspace-scoped Cordis composition loading, live config-driven reload, and MCP server/process management with agent-preset integration. User-facing behavior is primarily operational/runtime management for agents and external tools rather than editor UI, content creation, or visualization features.",
+  "summaries": {
+    "zh": "本插件为 DeepSeek Harness 提供按工作区隔离的运行时管理：按 workspace 建立独立 Cordis scope，监听 `.dsh/cordis.yml` 进行热重载，并管理 MCP 服务器与 Agent 预设绑定。",
+    "en": "This plugin adds workspace-scoped runtime orchestration to DeepSeek Harness by creating per-workspace Cordis scopes, reloading on workspace config changes, and managing MCP server lifecycles with agent preset binding."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Per-workspace Cordis scope acquisition and shared lease-based ownership",
+      "Loads workspace-scoped composition from .dsh/cordis.yml when trusted",
+      "Monitors workspace config file changes and performs scoped hot reload",
+      "Wraps agent create/resume flow to bind agents to workspace-local preset generations",
+      "Manages MCP client processes and tool registrations with namespace masking per workspace",
+      "Spawns/controls subprocess-based MCP transport and tracks connection lifecycle"
+    ],
+    "reasons": [
+      {
+        "code": "WORKSPACE_SCOPE_REGISTRY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WORKSPACE_HOT_RELOAD",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "AGENT_PRESET_BINDING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MCP_MANAGER_WORKSPACE_AWARE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ENTRYPOINTS_AND_DEPS",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Per-workspace Cordis scope acquisition and shared lease-based ownership",
+      "Loads workspace-scoped composition from .dsh/cordis.yml when trusted",
+      "Monitors workspace config file changes and performs scoped hot reload",
+      "Wraps agent create/resume flow to bind agents to workspace-local preset generations",
+      "Manages MCP client processes and tool registrations with namespace masking per workspace",
+      "Spawns/controls subprocess-based MCP transport and tracks connection lifecycle"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:44.998Z",
+  "repositoryCommitSha": "d88632953ab3f402fd300594c1f70b8b88992f8a",
+  "evidenceHash": "e0e79908ad5d40d6b49ecb000d971cc28cc78bfc580ef6463254ef288c9021ab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37b939ab6486a7e2949a0855a233829c2e3b90da10015066aaf6bbe2bdb03add",
+  "shadowMode": false
+}

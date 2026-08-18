@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "file",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件面向用户的核心用途是本地图片处理：读取图片宽高与格式并支持按参数缩放及格式转换。依据 README 与 package.json 所示功能与依赖关系，分类应为媒体工具类（media-tools），风险为本地文件处理与 ffmpeg 二进制调用的中等级别。",
+  "summaries": {
+    "zh": "一个用于读取图片尺寸和格式，并按需求缩放图片后进行格式转换的 DSH 图片处理插件。",
+    "en": "A DSH image plugin that reads image dimensions/format and performs resizing followed by image format conversion."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取图片尺寸与格式信息",
+      "按比例或指定尺寸缩放图片",
+      "图片格式转换（如 jpg/png/webp）",
+      "依赖并调用本地 ffmpeg 二进制进行处理"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确声明插件用途为图片处理，并列出 `image_info`（读取尺寸/格式）与 `resize_image`（缩放与转格式）两个工具。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 描述中写明“读取图片尺寸/格式、缩放与格式转换”，并声明依赖 `@ffmpeg-installer/ffmpeg`。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库结构包含可执行插件入口文件与 DSH 打包配置，表明该能力作为插件对外提供。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "读取图片尺寸与格式信息",
+      "按比例或指定尺寸缩放图片",
+      "图片格式转换（如 jpg/png/webp）",
+      "依赖并调用本地 ffmpeg 二进制进行处理"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:27:16.242Z",
+  "repositoryCommitSha": "1ecda12fd48f5cff978fed58e2f56fd3b7f0f781",
+  "evidenceHash": "cc6e6fb202c2a5801f3b4fe0a062fc052678e6ddab654d5b1490ccd02f9069d4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5f3d7774d38626a9447b34a7e2ce1d1663f347641327197b50ad0f0594f520b3",
+  "shadowMode": false
+}

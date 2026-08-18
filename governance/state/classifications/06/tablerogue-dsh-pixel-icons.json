@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "image",
+    "tool",
+    "browser",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户价值在于在 DeepSeek Harness Web 界面中对图标显示风格进行像素化处理：它在运行时把符合条件的 SVG 图标转为 1px 像素块样式，并通过 `currentColor` 筛选跳过部分功能性 SVG，以降低对业务图形的影响。证据来自仓库说明、安装方式与客户端平台声明，属于界面主题/布局类的前端美化插件。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 客户端插件，会在运行时将界面中的 `fill=\"currentColor\"` SVG 图标重建为 1px 像素块风格以统一像素化外观。",
+    "en": "This is a DeepSeek Harness web client plugin that rebuilds `fill=\"currentColor\"` SVG icons into 1px pixel blocks at runtime to apply a pixel-art interface look."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runtime client-side SVG icon rasterization and pixel-style reconstruction",
+      "Selective processing of SVGs by `fill=\"currentColor\"`",
+      "Configurable rendering parameters (scale and block coverage threshold)",
+      "In-place icon node replacement intended to keep UI behavior stable",
+      "Web-only DSH client plugin loaded as a bundle patch"
+    ],
+    "reasons": [
+      {
+        "code": "README: \"把 DeepSeek Harness Web GUI 中的矢量 SVG 图标转为像素风...运行时把全部图标（fill=\\\"currentColor\\\" 的 SVG）光栅化并重建为 1px 像素块\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: \"只处理图标：上下文进度环等功能性 SVG（无 currentColor）自动跳过\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: `dsh.client.platform` is set to `web`, indicating client-only runtime behavior",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Runtime client-side SVG icon rasterization and pixel-style reconstruction",
+      "Selective processing of SVGs by `fill=\"currentColor\"`",
+      "Configurable rendering parameters (scale and block coverage threshold)",
+      "In-place icon node replacement intended to keep UI behavior stable",
+      "Web-only DSH client plugin loaded as a bundle patch"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:10.554Z",
+  "repositoryCommitSha": "39cf2e6e3a54ca2a6cd87cd924ba7fcf97aeed18",
+  "evidenceHash": "3c4f002739f27e56a659ba959a750eb3c24eb69c0cedb1d38fa394133477e1dc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0b01739955edb1f96a22d9cf0be86b222c619d011936f6ac9fd909792850eb97",
+  "shadowMode": false
+}

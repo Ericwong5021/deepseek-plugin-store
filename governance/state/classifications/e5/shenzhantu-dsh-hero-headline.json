@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "theme",
+    "browser",
+    "automation",
+    "image",
+    "video"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件主要面向界面定制用途，用于在 DeepSeek Harness Web 的空会话 Hero 区域替换标题文案并调整样式与颜色，同时可基于当前背景自动联动生成文本渐变，属于偏界面美化与布局展示增强类扩展。",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness Web 的客户端插件，可自定义空会话 Hero 标题文案并样式化展示，并可依据当前背景色自动调整标题渐变色。",
+    "en": "This is a client-side plugin for DeepSeek Harness Web that customizes the empty-state hero headline text and styling, with optional automatic gradient color adaptation from the current background."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Client-side DOM replacement of DeepSeek Harness empty-state hero headline text and related badge visibility.",
+      "Dynamic visual styling for hero text (gradient text, stroke/glow effects) and recoloring of a hero icon via DOM/CSS changes.",
+      "Palette extraction from background image/video output in the browser to generate headline gradient colors with fallback behavior."
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly states it is a client-only plugin that replaces the empty-state hero headline and hides the adjacent preview badge via MutationObserver-based DOM handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes auto-picking background colors (from image/video sources) via canvas median-cut clustering to generate the text gradient, with fallback when unavailable.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web-client bundle with immediate client injection, confirming the plugin’s runtime scope in the web UI.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Client-side DOM replacement of DeepSeek Harness empty-state hero headline text and related badge visibility.",
+      "Dynamic visual styling for hero text (gradient text, stroke/glow effects) and recoloring of a hero icon via DOM/CSS changes.",
+      "Palette extraction from background image/video output in the browser to generate headline gradient colors with fallback behavior."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:21.238Z",
+  "repositoryCommitSha": "0c00429d7bd7fa298f3acd478d8226caa71a41d4",
+  "evidenceHash": "95f70d83118bce466babf2fbd2bbbd9f3500dc8b9205bd6fe83359095d9b41f1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9470d7eabeb5e9739c52bee5aa761fde8df00306dbe8b9c94d81a8bba245075e",
+  "shadowMode": false
+}

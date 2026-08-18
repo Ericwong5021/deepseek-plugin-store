@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "chat",
+    "integration",
+    "data",
+    "skill",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This plugin is primarily a user-facing skill-management tool for DeepSeek Harness that runs inside DSH settings to maintain `~/.dsh/skills`, import skill directories in batch, and normalize skill metadata for `/name` invocation. Its core behavior is filesystem-based skill administration with optional AI-assisted naming, exposed through local RPC/UI integration.",
+  "summaries": {
+    "zh": "lt-lt-dsh-skill-manager 是一款 DSH 技能管理插件，在设置页面集中管理 `~/.dsh/skills` 中的技能目录，支持批量导入并可利用已配置模型标准化技能名称以用于 `/name` 调用。",
+    "en": "lt-lt-dsh-skill-manager is a DeepSeek Harness plugin that manages skills under `~/.dsh/skills` from the settings page, supports batch directory import, and can use a configured model to normalize names for `/name` use."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Lists and manages skills stored under the user’s configured DSH skills directory.",
+      "Imports multiple local skill directories and updates skill metadata after validation.",
+      "Optionally calls a configured AI model to parse/normalize skill names and descriptions.",
+      "Renames skill directories and rewrites frontmatter to keep name/description synchronized.",
+      "Exposes plugin RPC endpoints used by client and local web UI for listing/import operations."
+    ],
+    "reasons": [
+      {
+        "code": "README describes local file system management of `~/.dsh/skills`, including listing, importing, renaming, and frontmatter updates for skill directories.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin can invoke a selected harness AI model during import to parse skill names/descriptions, indicating external model/network usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata includes a web client/UI injection and DSH bundle patch for plugin operation, and scripts/API references show a runnable plugin interface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Lists and manages skills stored under the user’s configured DSH skills directory.",
+      "Imports multiple local skill directories and updates skill metadata after validation.",
+      "Optionally calls a configured AI model to parse/normalize skill names and descriptions.",
+      "Renames skill directories and rewrites frontmatter to keep name/description synchronized.",
+      "Exposes plugin RPC endpoints used by client and local web UI for listing/import operations."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:32.087Z",
+  "repositoryCommitSha": "c660885e6dd0d29a906738446465fa5a7c69e544",
+  "evidenceHash": "5a18d094ebe419e0ded15ff49d5d827775ac1d70ff141b63d7f5b96924ef8288",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b58531408b50dd3a235b4d68f96fdbb80913fb705f419220968d2421ca9dbe8e",
+  "shadowMode": false
+}

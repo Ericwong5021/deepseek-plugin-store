@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "search",
+    "ui",
+    "tool",
+    "api",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向用户的核心场景是“快速引用工作区文件路径”：在 DSH Web 输入框中提供 `@` 与 `/file` 两种入口进行文件路径模糊搜索，并将选择结果插入 `@` 形式引用供后续代理读取处理。它不注入文件内容，且功能边界主要是路径发现与引用展示，因此归类为文件与终端类工具。",
+  "summaries": {
+    "zh": "这是一个在 DSH Web 中通过 `@` 或 `/file` 快速检索会话工作区文件路径并插入 `@路径` 引用的插件，便于在输入阶段快速引用目标文件。",
+    "en": "This is a DSH Web plugin that lets users quickly search workspace file paths with `@` or `/file` and insert them as `@path` references in the composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "基于会话工作区路径进行模糊文件/目录检索与补全",
+      "将选中的路径插入输入框为@路径引用并支持菜单快速选择",
+      "展示消息草稿中已插入的@路径引用面板",
+      "提供可配置的白名单根目录与忽略目录限制"
+    ],
+    "reasons": [
+      {
+        "code": "README描述该插件通过 `@` 内联或 `/file` 命令触发，模糊搜索会话工作区路径并插入 `@` 相对路径引用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README明确说明该插件“引用自读，不注入内容”，并提到搜索端点仅暴露路径列表。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README列出环境变量 `FILE_MENTION_ALLOWED_ROOTS` 等，用于根目录白名单与可选目录剪枝，表明有权限/边界控制。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明该插件为 web 平台客户端插件并注入 UI 输入触发相关依赖，体现其前端交互入口与路径引用提示功能。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "基于会话工作区路径进行模糊文件/目录检索与补全",
+      "将选中的路径插入输入框为@路径引用并支持菜单快速选择",
+      "展示消息草稿中已插入的@路径引用面板",
+      "提供可配置的白名单根目录与忽略目录限制"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:10.681Z",
+  "repositoryCommitSha": "3779f99f4f2fdc5d76f114690c592a28b8dbad08",
+  "evidenceHash": "5ff3b1ed732b60892c649a8e441c8fc9d797a938b498c98d6c2716b68b6b4e75",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a15a703ccd6c7b3c1417d3b6d84c41f67a2d7f2c9c6940b213815b80fb8498e7",
+  "shadowMode": false
+}

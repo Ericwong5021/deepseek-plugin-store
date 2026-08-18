@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "chat",
+    "image",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily an external-service integration tool for DeepSeek Harness, focused on extending the WebUI custom provider flow with configurable request metadata and model behavior (headers, image capability, reasoning settings) for third-party API endpoints, with effects visible in conversation model selection and model capability handling.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的 WebUI 扩展自定义模型提供商设置，可让用户在自定义提供商中配置请求头、UA、图像输入能力与推理级别，并在对话中按模型使用这些设置。",
+    "en": "This plugin extends the DeepSeek Harness WebUI for custom providers by letting users configure request headers, model capabilities, and reasoning levels for third-party API calls and conversations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Customize HTTP request headers (including User-Agent) for custom model providers",
+      "Define per-model input capability, including text+image support",
+      "Configure model-level reasoning effort options and defaults",
+      "Apply custom header settings to model usage and model-discovery requests",
+      "Persist provider-level custom settings in DeepSeek Harness configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds request headers, image capability, and reasoning-level controls to user-defined custom providers.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes these settings affect normal model requests and \"Fetch available models\", confirming outbound provider request behavior is influenced by user input.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web platform DSH client plugin with injection of connection and API-remote UI/client modules, indicating integration with external model services through the WebUI.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Customize HTTP request headers (including User-Agent) for custom model providers",
+      "Define per-model input capability, including text+image support",
+      "Configure model-level reasoning effort options and defaults",
+      "Apply custom header settings to model usage and model-discovery requests",
+      "Persist provider-level custom settings in DeepSeek Harness configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:04.098Z",
+  "repositoryCommitSha": "d9ec9231546b4a27bf32d4a356cff42e26691296",
+  "evidenceHash": "d38e29f0765e80221acbf77f9621995b99bf5359f2230d0c0ee5e01e0de9e226",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e1864d1e50ea4c34f8c41fd0479ec49cc4b18a227d57d67a5de447378cf0bfce",
+  "shadowMode": false
+}

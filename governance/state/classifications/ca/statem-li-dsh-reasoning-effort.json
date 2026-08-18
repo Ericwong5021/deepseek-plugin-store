@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "theme",
+    "integration",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向是 DeepSeek Harness 用户界面增强：在输入区下方的模型入口加入可操控的推理强度滑块，并按模型公开的 effort 档位展示与选择选项；README 还说明它与 `/model` 命令/会话状态保持同步、支持主题与外观开关，并为缺少档位声明的自定义模型输出可复制的配置片段。其能力集中在客户端模型选择交互与配置辅助，未体现独立系统级操作或额外外部服务接入。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在会话页面的模型入口中加入可拖拽的“模型 + 推理强度”控件，并基于当前模型公开的档位进行选择与同步。",
+    "en": "This DeepSeek Harness plugin adds a drag-based model-and-reasoning-effort control to the chat interface, letting users pick effort levels based on each model’s advertised options and keep them aligned with current session selection."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a custom model-selection UI control in the DSH web interface, including a drag-based reasoning-effort slider.",
+      "Reads model-declared effort options and renders selectable levels from the active model configuration.",
+      "Syncs the selected reasoning effort with DSH `/model` state and session model selection.",
+      "Provides copy-ready configuration snippets for custom providers when effort levels are not discovered from upstream model metadata.",
+      "Persists interface toggles (slider/enhanced control and optional themed appearance) in the browser."
+    ],
+    "reasons": [
+      {
+        "code": "MODEL_SELECTION_PANEL_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_WEB_CLIENT_PLUGIN_BUNDLE",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "EFFORT_DISCOVERY_AND_SYNC",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CUSTOM_PROVIDER_CONFIG_GUIDANCE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "THEME_AND_EFFECT_CONTROLS",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a custom model-selection UI control in the DSH web interface, including a drag-based reasoning-effort slider.",
+      "Reads model-declared effort options and renders selectable levels from the active model configuration.",
+      "Syncs the selected reasoning effort with DSH `/model` state and session model selection.",
+      "Provides copy-ready configuration snippets for custom providers when effort levels are not discovered from upstream model metadata.",
+      "Persists interface toggles (slider/enhanced control and optional themed appearance) in the browser."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:50.354Z",
+  "repositoryCommitSha": "3c0d3dd964d268fb45aa93ff8de43e7cc06429ec",
+  "evidenceHash": "6d8e7d301e4426422fd93765f114a8ecab6125ad239add0336fab246445eb2cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "27467b848df3eb0c9e067ff0acd4d7e08616ba8ba30c03d6dc9eb35f3d2580b4",
+  "shadowMode": false
+}

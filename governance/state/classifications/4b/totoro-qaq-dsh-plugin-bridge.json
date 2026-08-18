@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "memory",
+    "context",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "Primary purpose is a DeepSeek Harness plugin that helps users migrate a session from one preset to another by orchestrating an agent-driven handoff flow: collect session material, generate a fixed-schema summary, let the user review/edit it, then start a new target-preset session with that summary as kickoff context. Evidence in the README and package manifest shows this is implemented as a `bridge` agent skill via a Cordis bundle patch package, with configurable compression/summary budgets.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，提供 `bridge` 智能体技能，用于在会话被 preset 锁定时按固定五段摘要流程迁移到目标 preset 并启动新会话。",
+    "en": "This is a DeepSeek Harness plugin that provides a `bridge` agent skill to migrate from a locked session to a target preset by generating a fixed-schema handoff summary and starting a new session from it."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "cross-preset session migration workflow orchestration",
+      "session history compression into a fixed-schema handoff summary",
+      "preview-and-confirm handoff before creating a target preset session",
+      "creation of lightweight worker sessions for context summarization"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as a migration flow that compacts current history, runs a compression worker, and starts a new preset session with a handoff summary.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin registers a Cordis bundle and a `bridge` skill for agent-driven invocation, indicating active session-control behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Files and source structure include compression and instruction builders (`src/compression.ts`) used for context handoff generation.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "cross-preset session migration workflow orchestration",
+      "session history compression into a fixed-schema handoff summary",
+      "preview-and-confirm handoff before creating a target preset session",
+      "creation of lightweight worker sessions for context summarization"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:42.730Z",
+  "repositoryCommitSha": "6f8a22b9bfe0070cff712ab9b31847f9cbbcc0e2",
+  "evidenceHash": "0eca5ce6f553781e77473d656bc81f6bedabf20375331daa421f67d9d34f3ad4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ca239c61d578611f3453796aa5d227b7041c1b1b7821bb99762c3301e77bbd7f",
+  "shadowMode": false
+}

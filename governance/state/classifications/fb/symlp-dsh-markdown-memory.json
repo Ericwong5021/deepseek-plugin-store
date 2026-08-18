@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "file",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a memory/context plugin for DeepSeek Harness: it mounts a local Markdown folder as long-term memory, indexes entries from a file like MEMORY.md, and injects that context into prompts so the model can read specific memory files on demand. Evidence from the README and package description consistently centers on filesystem-based memory recall and session-based refresh behavior, with current limitations on write support and recursive indexing acknowledged.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的长时记忆插件：将本地 Markdown 文件夹按索引挂载为上下文，在系统提示中注入记忆索引，并按需读取对应的记忆文件。",
+    "en": "This plugin for DeepSeek Harness mounts a local Markdown folder as long-term memory, injects an index into prompts, and lets the model read referenced memory files on demand."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads markdown memory facts from a user-specified local directory.",
+      "Injects a memory index/listing block into the model system prompt.",
+      "Allows on-demand reading of referenced memory files during a session.",
+      "Refreshes memory snapshot at session start from filesystem state."
+    ],
+    "reasons": [
+      {
+        "code": "Repository README defines `path` as a required absolute memory directory and describes one-file-per-fact markdown loading.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin uses host filesystem reads via node APIs and is read-only for memory recall in current design.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies this package as a DeepSeek Harness markdown long-term memory plugin.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads markdown memory facts from a user-specified local directory.",
+      "Injects a memory index/listing block into the model system prompt.",
+      "Allows on-demand reading of referenced memory files during a session.",
+      "Refreshes memory snapshot at session start from filesystem state."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:05.691Z",
+  "repositoryCommitSha": "f82064738ba0f1af0c381fbfb0329b9ebc2a3919",
+  "evidenceHash": "b030cf221bec773b70c47adce37e50353455fcade11ac58cde54266e36c8fd9d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "121b6c282f8dacb1a37b2ec056ddcbfe518d1abe38d8bd41736ef305553b7517",
+  "shadowMode": false
+}

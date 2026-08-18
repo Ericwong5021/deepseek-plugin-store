@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "tool",
+    "image",
+    "context",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供可在设置页登录并调用 ChatGPT/Codex 的 OAuth 模型接入，并增加该接入下的图片附件和会话上下文压缩能力；证据来自 README 中的功能说明（登录、模型挂载、命令、图片转换、原生压缩）以及 package.json 中的入口与依赖配置，故归类为外部服务集成类插件。风险主要集中在凭据处理和对非公开接口的调用，需人工复核合规性，整体不具备明显恶意行为但非零合规风险。",
+  "summaries": {
+    "zh": "本插件为 DeepSeek Harness 提供 ChatGPT/Codex 的 OAuth 订阅模型接入，支持在对话中使用 codex-oauth 模型并提供图片输入与会话原生压缩能力。",
+    "en": "This plugin enables a ChatGPT/Codex OAuth provider in DeepSeek Harness, allowing users to use codex-oauth models with image input and native context-compaction behavior in conversations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "OAuth device-code 登录流程",
+      "外部 LLM 服务网络调用",
+      "会话凭据（refresh/access token）桥接与持久化",
+      "图片附件到请求输入的转换",
+      "会话上下文原生压缩与重放"
+    ],
+    "reasons": [
+      {
+        "code": "UNOFFICIAL_CHATGPT_BACKEND_USAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CREDENTIAL_STORAGE_FLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PROVIDES_MEDIA_AND_CHAT_INTEGRATION_FOR_EXTERNAL_PROVIDER",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "OAuth device-code 登录流程",
+      "外部 LLM 服务网络调用",
+      "会话凭据（refresh/access token）桥接与持久化",
+      "图片附件到请求输入的转换",
+      "会话上下文原生压缩与重放"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:21.440Z",
+  "repositoryCommitSha": "f2acca89df0c150cb35cb2b095fe256b587c5fec",
+  "evidenceHash": "23fd0e2af555c9517b3b4fc6e5288794919ca4d206148272a7ba7a98d9f5f07a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cfb0ad95dbe017fc2914fe35da4276228db8972783ddb2fedc7744d2bb65675d",
+  "shadowMode": false
+}

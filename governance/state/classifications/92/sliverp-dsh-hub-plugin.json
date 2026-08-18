@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "ui",
+    "search",
+    "api",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "该插件的核心面向能力是将 DSH Hub 插件市场整合进 DeepSeek Harness 的设置页面，供用户在界面内搜索、筛选并发起插件安装请求；从 manifest 可见其为 web 端原生 DSH 插件，结合 README 的安装流程说明可见其依赖外部 dsh-hub.cc 市场数据并参与插件安装请求流转，因此归类为外部服务集成型插件。",
+  "summaries": {
+    "zh": "DSH Hub 是 DeepSeek Harness 的内置设置页面插件，可在界面中查看插件市场并发起安装请求，支持中英文切换。",
+    "en": "DSH Hub is a built-in DeepSeek Harness settings page that lets users browse the marketplace and initiate plugin installation requests, with Chinese and English interface support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads public marketplace data from dsh-hub.cc for plugin listings and status",
+      "Displays plugin list, filters, and installation state in a DSH Settings UI",
+      "Creates and forwards plugin installation requests into the active DSH task flow",
+      "Provides bilingual interface text for user browsing and workflow initiation"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a native Settings section named DSH HUB Market for browsing, filtering, and initiating plugin installation actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH bundle patch and web client injection, showing integration with DeepSeek Harness host behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README states interaction with dsh-hub.cc repository/commit/plan data and hands installs to the normal DSH task permissions workflow rather than directly executing them.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads public marketplace data from dsh-hub.cc for plugin listings and status",
+      "Displays plugin list, filters, and installation state in a DSH Settings UI",
+      "Creates and forwards plugin installation requests into the active DSH task flow",
+      "Provides bilingual interface text for user browsing and workflow initiation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:34.441Z",
+  "repositoryCommitSha": "2b21934040c167e6fb08959b66bea2767f6a1b63",
+  "evidenceHash": "03973c608680e2faf4768e25ccde1059e9972b1391881b987436d3b675acb682",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0d463e2f50067e172f8965af44de52e1b14d90b6cf0fca8193d32c635dec565c",
+  "shadowMode": false
+}

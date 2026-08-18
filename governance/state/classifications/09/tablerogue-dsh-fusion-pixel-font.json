@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该仓库是一个面向 DeepSeek Harness Web 的客户端字体主题插件，主要通过打包字体资源并在客户端注入样式变量来改变界面与代码字体，属于界面/布局类的外观定制；证据来自 README、package.json 与文件结构中对 web 客户端与 assets 的明确声明。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness Web 界面中应用本地 Fusion Pixel 12px 字体，覆盖 GUI 与代码区域字体并可由启动配置自动启用。",
+    "en": "This plugin customizes the DeepSeek Harness Web UI by applying bundled Fusion Pixel 12px fonts for both interface and code text, with profile-based activation in web mode."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "替换 DeepSeek Harness Web GUI 与代码区的字体为指定本地像素字体",
+      "按平台加载字体资源并应用到前端样式变量",
+      "通过 dsh profile 集成在启动时自动生效"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明插件用于将全 GUI 文字（--dsw-font-family）和代码文字（--ds-font-family-code）切换为 Fusion Pixel 12px 字体。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库文件列表与 README 均列出 assets 字体文件、index.js 与 lib/client.js，表明插件随包分发字体资源并用于客户端加载。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README 说明安装后会追加到 dsh.profile.bundles，并在启动 dsh --profile web 时生效（无需重建 Web 产物）。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "替换 DeepSeek Harness Web GUI 与代码区的字体为指定本地像素字体",
+      "按平台加载字体资源并应用到前端样式变量",
+      "通过 dsh profile 集成在启动时自动生效"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:13.942Z",
+  "repositoryCommitSha": "c6c67c5c3af0808ae7ba0418d2da5e7e70314ad1",
+  "evidenceHash": "57c4e836cc0d4c24e3cf0a58d5ec33acbdf96688392ab3dee4f397bfce441ff7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "03e54fe4233d394fa3ae0bde8a862c17db2ad3b259a060661d3623dc81217d7c",
+  "shadowMode": false
+}

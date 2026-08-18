@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "ui",
+    "desktop",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的核心功能是将 DSH Web 的现有会话通过本地移动桥接和 Cloudflare 临时隧道发布到手机浏览器访问，因此归类为桌面与移动端联动用途，具备网络转发、扫码配对及会话接续等能力；未见其提供代码生成、学习内容或文件处理等主要能力。",
+  "summaries": {
+    "zh": "该插件为 DSH Web 提供扫码即用的手机端远程入口，通过桥接和隧道在手机浏览器中继续使用现有会话。",
+    "en": "This plugin provides a scan-to-connect mobile entry for DSH Web, forwarding your existing DSH session to a phone browser via a bridge and tunnel so you can continue using the session remotely."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network tunneling via temporary public endpoint",
+      "mobile web session remote access",
+      "QR-based one-time pairing",
+      "session-cookie-based auth forwarding",
+      "local bridge and reverse-proxy routing"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin creates a Cloudflare Quick Tunnel temporary HTTPS/WebSocket entry and maps it to a local bridge for phone access to the DSH web profile.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains one-time pairing token flow and session cookie issuance with link revocation and TTL settings for remote access control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes auto-downloading a pinned cloudflared binary with SHA-256 verification when not present, and cleanup of bridge/tunnel processes on exit or uninstall.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "network tunneling via temporary public endpoint",
+      "mobile web session remote access",
+      "QR-based one-time pairing",
+      "session-cookie-based auth forwarding",
+      "local bridge and reverse-proxy routing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:40.578Z",
+  "repositoryCommitSha": "bfd3e169b1f009cc7e7974896253a8fb83982dd6",
+  "evidenceHash": "c434af6d60d4e9addb21e6d2db269e00bfa0314dad1aed839149ae31f2cd75a8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c5f34a74e277c934d58c2c6bdd55b749ec674c6aa788b28694c840ea268cd1bb",
+  "shadowMode": false
+}

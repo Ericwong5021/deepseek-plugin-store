@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "ui",
+    "api",
+    "tool",
+    "cli",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This repository is best classified as an automation plugin for DeepSeek Harness that governs request approval flow. It adds a separate user-facing approval mode control (manual, smart, unattended) and routes action requests through a review policy with bounded context and one-time outcomes, while reusing existing DSH access permissions rather than replacing them. The provided package metadata and files indicate a productionized DSH web plugin with UI and command integration, so the primary purpose is automated approval decision support in tool execution workflows, not development tooling generation.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供独立的审批模式控制，在会话中针对操作请求提供手动/智能/无人值守三种审核选择。",
+    "en": "This plugin adds a separate approval-mode workflow to DeepSeek Harness web sessions, letting users choose how tool requests are reviewed as manual, smart, or unattended."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automated request-review decisions for action execution",
+      "Session-specific approval mode control via manual/smart/unattended options",
+      "External reviewer model invocation through configurable provider/model route",
+      "Pre-validation of file-target safety metadata before approval"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin introduces an independent approval-review selector in addition to native permissions, enabling Smart/Unattended modes that can auto-allow, ask, or reject requests.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Review routing uses a configurable `reviewerProvider`/`reviewerModel` pair and timeout/output limits, indicating model-assisted external review service calls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Behavior is implemented as a DSH plugin bundle with approval-handler, review-policy, and LLM-reviewer components, showing it directly participates in the approval decision path.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automated request-review decisions for action execution",
+      "Session-specific approval mode control via manual/smart/unattended options",
+      "External reviewer model invocation through configurable provider/model route",
+      "Pre-validation of file-target safety metadata before approval"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:33.963Z",
+  "repositoryCommitSha": "80fe6b253233a57922192d70d5f1f6db7447d217",
+  "evidenceHash": "748829add5da67f07121e20eb33e388d63206ef7376d6f7fca822b5916608cb8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "465277c1447bb6c0c812880b2657cb7bd8902ecf2b3b3df6362de31d07c01c5d",
+  "shadowMode": false
+}

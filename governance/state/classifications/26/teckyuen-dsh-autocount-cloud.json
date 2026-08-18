@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "automation",
+    "tool",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily an integration tool for AutoCount Cloud: the README presents it as a DeepSeek Harness plugin that exposes connector command tools (schema lookup, submit, status/result fetch, and run/poll), and its usage requires AutoCount API connection settings, indicating its user-facing purpose is interacting with an external accounting service.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，提供 AutoCount Cloud 连接器命令工具，可读取命令定义、提交命令并查询执行状态与结果。",
+    "en": "This is a DeepSeek Harness plugin that provides AutoCount Cloud connector command tools to read command definitions, submit commands, and fetch execution status/results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls AutoCount Cloud API endpoints using configured environment credentials",
+      "Submits AutoCount connector commands to a command queue",
+      "Reads command schemas and query types from the connector",
+      "Polls command execution status and retrieves results"
+    ],
+    "reasons": [
+      {
+        "code": "README describes four tools for AutoCount command schema, submit, get-by-id, and run-until-complete operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README requires AUTOCOUNT_CLOUD_URL, AUTOCOUNT_API_KEY, AUTOCOUNT_CONNECTOR_ID, AUTOCOUNT_COMPANY_ID environment variables for operation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the package as a DeepSeek Harness plugin for AutoCount Cloud connector commands.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Taxonomy rule result explicitly includes a network.access capability.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Calls AutoCount Cloud API endpoints using configured environment credentials",
+      "Submits AutoCount connector commands to a command queue",
+      "Reads command schemas and query types from the connector",
+      "Polls command execution status and retrieves results"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:16.798Z",
+  "repositoryCommitSha": "763859bb05d73235a9bdf386e92f6cc41578e8b9",
+  "evidenceHash": "1b5fe1b85f15adbb7463fa0a94fc359258481b3ec28beaf6cd8cc29a6f390005",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b535f8c4db8340eeb88137bb77f15be95c2f7cad2337bc57795d152c01fdd74a",
+  "shadowMode": false
+}

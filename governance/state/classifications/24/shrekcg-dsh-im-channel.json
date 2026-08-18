@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "automation",
+    "agent",
+    "tool",
+    "mcp",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用途是作为 DSH 与多 IM 平台之间的外部服务集成桥接，提供聊天消息与会话上下文在 IM 与 DSH 智能体之间的双向流转，并基于 MCP 暴露飞书对象操作接口，属于外部协作通信类能力而非单纯本地工具。",
+  "summaries": {
+    "zh": "该插件将 DeepSeek Harness 与飞书、钉钉、Telegram、Slack、Discord 等 IM 渠道打通，支持双向消息交互和持久会话，并提供面向飞书对象的 MCP 工具调用能力。",
+    "en": "This plugin connects DeepSeek Harness with IM channels such as Feishu/Lark, DingTalk, Telegram, Slack, and Discord, enabling bidirectional chat integration with persistent sessions and Feishu MCP tool-based operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "连接并转发多通道 IM 消息（飞书/钉钉/Telegram/Slack/Discord）",
+      "将消息路由到 DSH 智能体并维持会话上下文",
+      "通过 MCP 调用飞书对象能力（文档、日历、任务、邮件、云盘等）",
+      "在运行时管理账号策略、群策略与权限相关配置",
+      "支持本地运维命令（如诊断、特性检查）"
+    ],
+    "reasons": [
+      {
+        "code": "README 将项目定义为“DSH ↔ IM Channel”，并列出飞书、钉钉、Telegram、Slack、Discord 的双向接入与渠道命令入口。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 明确列出 40 个飞书 MCP 工具（如文档、日历、任务、邮件、云盘等）供 agent 以 mcp__feishu__* 调用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 暴露 bridge 与 MCP server 启动入口，声明 @larksuite/channel 与 @modelcontextprotocol/sdk 依赖，并含 setup/install/doctor 等脚本，表明其为可运行的外部服务集成插件。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "连接并转发多通道 IM 消息（飞书/钉钉/Telegram/Slack/Discord）",
+      "将消息路由到 DSH 智能体并维持会话上下文",
+      "通过 MCP 调用飞书对象能力（文档、日历、任务、邮件、云盘等）",
+      "在运行时管理账号策略、群策略与权限相关配置",
+      "支持本地运维命令（如诊断、特性检查）"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:28.717Z",
+  "repositoryCommitSha": "ed6ea942daaad15d80edfc8b825e2316d3245529",
+  "evidenceHash": "0b629b8d075cba61f5b0731dd300062aa1f791d15d043593aa224f617ec95b6d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a8b705d2b4a8a61a18f3b9a2bece693779b2b1aa8f6f39a2612f0986e32e2aa5",
+  "shadowMode": false
+}

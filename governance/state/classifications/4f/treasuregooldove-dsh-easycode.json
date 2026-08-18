@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "code-generation",
+    "planning",
+    "workflow",
+    "file",
+    "mcp",
+    "tool",
+    "ui"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.86,
+  "reason": "该插件面向用户的核心用途是应用项目启动自动化：它通过表单收集项目需求与偏好、进行校验后在本地生成项目初始结构与上下文文件，并可选进行本地 Git 初始化，然后将任务以 Plan/Go 方式交接给当前 Harness 会话继续开发。依据仓库说明与代码组织，功能集中于脚手架与工作流衔接，而非独立执行复杂外部服务或远程代码提交。",
+  "summaries": {
+    "zh": "EasyCode 是一款面向 DeepSeek Harness 的应用启动器，用户可通过表单快速生成项目初始文件与上下文，并将其接入后续开发流程。",
+    "en": "EasyCode is a DeepSeek Harness plugin that lets users quickly scaffold an initial project with form-based setup and hand it into an ongoing development workflow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "collects project setup input from user forms",
+      "generates local project scaffold files and directories",
+      "supports temporary workspace staging before final project publish",
+      "optionally initializes a local Git repository",
+      "writes plugin metadata/config files",
+      "creates an initial task handoff to DeepSeek Harness session"
+    ],
+    "reasons": [
+      {
+        "code": "README describes form-based project/stack/workflow collection, validation, and workspace preparation before development handoff",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists generated artifacts (README.md, PLAN.md, EASYCODE.md, .easycode/config.json, optional .mcp.json) indicating local file creation behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states project is first written to a temporary path and then moved to final location, and supports Plan/Go task forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository tree shows scaffolder.ts, templates.ts, and validation.ts, consistent with local scaffold generation logic",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "collects project setup input from user forms",
+      "generates local project scaffold files and directories",
+      "supports temporary workspace staging before final project publish",
+      "optionally initializes a local Git repository",
+      "writes plugin metadata/config files",
+      "creates an initial task handoff to DeepSeek Harness session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.86,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:42.119Z",
+  "repositoryCommitSha": "635fcc0a46152552b14727375aa03617e31aeab9",
+  "evidenceHash": "70adc15b6ba73fdb8523db92540997f637301c9c39866ac7a6b8710ee8fd726a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3cf27f9e1dd8ac2f0e5486c53bc6ced47e8ce1b0a842541e4672a72b4606dc6b",
+  "shadowMode": false
+}

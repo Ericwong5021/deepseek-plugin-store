@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "browser",
+    "visualization",
+    "integration",
+    "tool",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin’s primary purpose is visualizing Mermaid content in the DeepSeek Harness web interface: it converts settled `mermaid` fenced code blocks into SVG diagrams and adds zoom and fullscreen interactions. Evidence from the README describes its rendering scope, UI controls, and lifecycle cleanup, indicating a user-facing visualization and interface enhancement plugin rather than backend automation, search, or data-processing functionality.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness Web 界面中将已完成的 Mermaid 代码块渲染为图表，并提供缩放与全屏查看交互。",
+    "en": "This plugin renders completed Mermaid code blocks as diagrams in the DeepSeek Harness web interface and provides zoom and fullscreen viewing interactions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders Mermaid diagrams from markdown code blocks in the DeepSeek Harness web UI",
+      "Adds interactive zoom controls and fullscreen viewing for rendered charts",
+      "Observes and mutates web-page code block DOM",
+      "Restores original blocks and removes injected UI on plugin disposal"
+    ],
+    "reasons": [
+      {
+        "code": "Exact-mermaid-fence rendering is explicitly scoped to settled markdown code blocks",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Web plugin integration is declared with client bundle targeting web platform",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Behavior includes zoom/fullscreen interaction and plugin cleanup of injected DOM elements",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Renders Mermaid diagrams from markdown code blocks in the DeepSeek Harness web UI",
+      "Adds interactive zoom controls and fullscreen viewing for rendered charts",
+      "Observes and mutates web-page code block DOM",
+      "Restores original blocks and removes injected UI on plugin disposal"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:26.362Z",
+  "repositoryCommitSha": "d2acc02422e8e487ad45398c1506b7d654818f35",
+  "evidenceHash": "e9b866cbad4cdadeb30da751256ec6c20dfefe052865a9d22524ecb641e6dd67",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "754b1e7d58c566d40586831f7764948af6ee9ae97ea44175cec7818ca6fbae11",
+  "shadowMode": false
+}

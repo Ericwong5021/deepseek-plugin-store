@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "automation",
+    "api",
+    "data",
+    "notification",
+    "monitoring",
+    "workflow",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary function is automated monitoring and notification for economics journals and working papers: it fetches from configured sources, applies keyword filtering, and generates push/status outputs with scheduling hooks. Evidence in the README and package metadata consistently describes it as a DSH plugin focused on scan/filter/push/status/briefing flows rather than UI authoring, code generation, or file-management utilities.",
+  "summaries": {
+    "zh": "这是一个面向经济学文献监控的自动化插件，可抓取期刊与工作论文源、按关键词筛选并生成推送与状态结果，支持去重记录与定时简报配置。",
+    "en": "This is an economics-focused automation plugin that collects journal and working-paper sources, filters items by keywords, and supports optional notification pushes, status tracking, and scheduling-oriented monitoring workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "fetches remote RSS/API sources",
+      "parses and filters journal metadata",
+      "stores deduplication records locally",
+      "sends optional webhook notifications",
+      "supports scheduled execution parameters"
+    ],
+    "reasons": [
+      {
+        "code": "README states built-in and custom sources are fetched from RSS/API (NBER, arXiv, CN journals), confirming external data acquisition.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists Bark/Feishu webhook support plus dry-run mode, indicating outbound notification integration capability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata show state persistence for deduplication and schedule_create integration, indicating local state and automation workflows.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository topic and manifest indicate plugin packaging for DSH tools/runtime execution, with integration points for tooling APIs.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "fetches remote RSS/API sources",
+      "parses and filters journal metadata",
+      "stores deduplication records locally",
+      "sends optional webhook notifications",
+      "supports scheduled execution parameters"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:32.099Z",
+  "repositoryCommitSha": "5e701342e14db5711f193ac16d66f3407da23b38",
+  "evidenceHash": "ea184bbc7d688533c7db9e6d4fcc8a857437724a9378cb50f375155163de0fbb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "22a60dcef085bf79679bfe0af0af5815bdf1980cea322be3b5f35ef6c95bb04e",
+  "shadowMode": false
+}
