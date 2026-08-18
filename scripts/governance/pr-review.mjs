@@ -35,6 +35,7 @@ try {
   const taxonomy = await readJson('registry/taxonomy.json')
   const policy = await loadPolicy()
   const evidence = await new EvidenceCollector({ token, maxEvidenceBytes: policy.evidence.maximumBytes }).collect({ fullName: record.repository.fullName, commitSha: record.source?.verifiedCommitSha })
+  const reviewEvidence = { ...evidence, evidenceRefs: [...evidence.evidenceRefs, 'diff', 'record', 'pull_request'] }
   const ruleResult = runDeterministicChecks({ snapshot: evidence, taxonomy, installSpec: record.installTargets?.[0]?.spec })
   const adapter = new LLMAdapter({
     apiKey: process.env.LLM_CLASSIFIER_API_KEY || '',
@@ -43,7 +44,7 @@ try {
     promptVersion: policy.prompts.pullRequestReview,
   })
   if (!adapter.apiKey) throw new Error('semantic review key is not configured')
-  const aiDecision = await adapter.reviewPullRequest(diff, { pullRequest: { number: pullRequest.number, author: pullRequest.user.login }, record, policyVersion: policy.version }, evidence, taxonomy)
+  const aiDecision = await adapter.reviewPullRequest(diff, { pullRequest: { number: pullRequest.number, author: pullRequest.user.login }, record, policyVersion: policy.version }, reviewEvidence, taxonomy)
   const governance = applyPolicy({ actor: { maintainerVerified: false }, ruleResult, aiDecision, policy })
   decisionRecord = {
     schemaVersion: 1,
