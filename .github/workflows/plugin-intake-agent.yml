@@ -69,17 +69,19 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          url=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --search "Closes #${ISSUE_NUMBER} in:body" --json url --jq '.[0].url // ""')
+          url=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --search "Closes #${ISSUE_NUMBER} in:body" --json url,headRefName --jq '.[0].url // ""')
+          head=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --search "Closes #${ISSUE_NUMBER} in:body" --json url,headRefName --jq '.[0].headRefName // ""')
           echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "head=$head" >> "$GITHUB_OUTPUT"
       - name: Validate registry change
-        if: ${{ (steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction') && steps.existing.outputs.url == '' }}
+        if: ${{ steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction' }}
         id: validation
         continue-on-error: true
         run: |
           REGISTRY_SOURCE_ONLY=1 node scripts/validate-registry.mjs
           node --check scripts/plugin-intake-agent.mjs
       - name: Check change scope
-        if: ${{ (steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction') && steps.existing.outputs.url == '' && steps.validation.outcome == 'success' }}
+        if: ${{ (steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction') && steps.validation.outcome == 'success' }}
         id: scope
         continue-on-error: true
         env:
@@ -90,6 +92,31 @@ jobs:
             echo "$unexpected"
             exit 1
           fi
+      - name: Update existing intake pull request
+        if: ${{ steps.existing.outputs.url != '' && steps.validation.outcome == 'success' && steps.scope.outcome == 'success' }}
+        id: update_existing
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
+          PLUGIN_ID: ${{ steps.intake.outputs.plugin_id }}
+          PR_TITLE: ${{ steps.intake.outputs.pr_title }}
+          HEAD_BRANCH: ${{ steps.existing.outputs.head }}
+        run: |
+          case "$HEAD_BRANCH" in agent/plugin-intake-*) ;; *) exit 1 ;; esac
+          record="registry/plugins/${PLUGIN_ID}.json"
+          cp "$record" "$RUNNER_TEMP/plugin-record.json"
+          if git ls-files --error-unmatch "$record" >/dev/null 2>&1; then git restore "$record"; else rm "$record"; fi
+          git fetch origin "$HEAD_BRANCH"
+          git checkout "$HEAD_BRANCH"
+          cp "$RUNNER_TEMP/plugin-record.json" "$record"
+          if ! git diff --quiet -- "$record"; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$record"
+            git commit -m "$PR_TITLE"
+            git push origin "$HEAD_BRANCH"
+          fi
+          gh workflow run validate.yml --repo "$GITHUB_REPOSITORY" --ref "$HEAD_BRANCH" -f source_only=true
       - name: Create intake pull request
         if: ${{ (steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction') && steps.existing.outputs.url == '' && steps.validation.outcome == 'success' && steps.scope.outcome == 'success' }}
         id: pull_request
@@ -131,7 +158,7 @@ jobs:
           REPLY_FILE: ${{ steps.intake.outputs.reply_file }}
         run: cp "$REPLY_FILE" "$RUNNER_TEMP/status.md"
       - name: Prepare automation failure
-        if: ${{ (steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction') && steps.existing.outputs.url == '' && (steps.validation.outcome == 'failure' || steps.scope.outcome == 'failure' || steps.pull_request.outcome == 'failure') }}
+        if: ${{ (steps.intake.outputs.outcome == 'accepted' || steps.intake.outputs.outcome == 'correction') && (steps.validation.outcome == 'failure' || steps.scope.outcome == 'failure' || steps.pull_request.outcome == 'failure' || steps.update_existing.outcome == 'failure') }}
         run: |
           printf '%s\n\n%s\n' "插件预检查已通过，但 Registry 校验或 PR 创建失败：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" "The plugin preflight passed, but registry validation or PR creation failed." > "$RUNNER_TEMP/status.md"
       - name: Update governance comment
@@ -152,5 +179,5 @@ jobs:
             gh api --method POST "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments" --field "body=$(<"$body_file")"
           fi
       - name: Fail incomplete review
-        if: ${{ steps.intake.outputs.outcome == 'error' || steps.validation.outcome == 'failure' || steps.scope.outcome == 'failure' || steps.pull_request.outcome == 'failure' }}
+        if: ${{ steps.intake.outputs.outcome == 'error' || steps.validation.outcome == 'failure' || steps.scope.outcome == 'failure' || steps.pull_request.outcome == 'failure' || steps.update_existing.outcome == 'failure' }}
         run: exit 1
