@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-import { generateCatalog } from './generate-catalog.mjs'
 import { EvidenceCollector, buildCacheKey } from './governance/evidence.mjs'
 import { LLMAdapter } from './governance/llm.mjs'
 import { applyPolicy, loadPolicy } from './governance/policy.mjs'
 import { runDeterministicChecks } from './governance/rules.mjs'
-import { loadRegistryPlugins, readJson, sha256, writeJson } from './registry-lib.mjs'
+import { readStateCollection, syncStateCollection } from './governance/state.mjs'
+import { loadRegistryPlugins, readJson, sha256 } from './registry-lib.mjs'
 
 const apiKey = process.env.LLM_CLASSIFIER_API_KEY ?? ''
 const githubToken = process.env.GITHUB_TOKEN ?? ''
@@ -14,15 +14,16 @@ const limit = Math.min(100, Math.max(1, Number.parseInt(process.env.LLM_CLASSIFI
 const target = String(process.env.LLM_CLASSIFIER_PLUGIN || '').trim().toLowerCase()
 const force = process.env.LLM_CLASSIFIER_FORCE === '1'
 const shadowMode = process.env.GOVERNANCE_SHADOW_MODE !== '0'
-const cachePath = 'data/plugin-classifications.json'
 const humanSources = new Set(['reviewed-override', 'editorial-review'])
 
 const taxonomy = await readJson('registry/taxonomy.json')
 const policy = await loadPolicy()
-const candidateData = await readJson('data/candidates.json', { schemaVersion: 2, updatedAt: new Date().toISOString(), candidates: {} })
+const candidateData = await readStateCollection('candidates')
 const registryFiles = await loadRegistryPlugins()
-const cache = await readJson(cachePath, { schemaVersion: 2, updatedAt: null, classifications: {} })
-if (![1, 2].includes(cache.schemaVersion) || !cache.classifications || Array.isArray(cache.classifications)) throw new Error(`${cachePath} is invalid`)
+const cache = await readStateCollection('classifications')
+const originalCache = structuredClone(cache)
+const originalCandidates = structuredClone(candidateData)
+if (![1, 2].includes(cache.schemaVersion) || !cache.classifications || Array.isArray(cache.classifications)) throw new Error('governance classification state is invalid')
 cache.schemaVersion = 2
 
 const items = [
@@ -130,7 +131,6 @@ for (const item of queue) {
   }
   cache.updatedAt = new Date().toISOString()
   cache.classifications = Object.fromEntries(Object.entries(cache.classifications).sort())
-  await writeJson(cachePath, cache)
 }
 
 if (!shadowMode) {
@@ -151,16 +151,14 @@ if (!shadowMode) {
   }
   candidateData.updatedAt = new Date().toISOString()
   candidateData.candidates = Object.fromEntries(Object.entries(candidateData.candidates).sort())
-  await writeJson('data/candidates.json', candidateData)
+  await syncStateCollection('candidates', originalCandidates, candidateData)
 }
 
 if (changed) {
   cache.updatedAt = cache.updatedAt || new Date().toISOString()
   cache.classifications = Object.fromEntries(Object.entries(cache.classifications).sort())
-  await writeJson(cachePath, cache)
+  await syncStateCollection('classifications', originalCache, cache)
 }
-
-await generateCatalog()
 
 const recognized = Object.values(cache.classifications).filter((entry) => entry.status === 'classified').length
 console.log(JSON.stringify({ selected: queue.length, classified, failed, unchanged, recognized, total: eligible.length, target: target || null, force, shadowMode, adapter: adapter.capability }, null, 2))

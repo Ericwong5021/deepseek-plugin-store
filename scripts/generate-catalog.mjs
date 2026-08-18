@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 import { loadRegistryPlugins, readJson, sha256, titleForLegacyCategory } from './registry-lib.mjs'
+import { readStateCollection } from './governance/state.mjs'
 
 const OUTPUTS = ['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/editor-picks.json']
 const humanClassificationSources = new Set(['reviewed-override', 'accepted-maintainer', 'editorial-review'])
@@ -72,10 +73,10 @@ const legacyCategory = (plugin, featured, taxonomy) => featured ? 'editor-picks'
 export const buildCatalogOutputs = async () => {
   const taxonomy = await readJson('registry/taxonomy.json')
   const collection = await readJson('registry/collections/editor-picks.json')
-  const observations = await readJson('data/observations.json')
-  const candidates = await readJson('data/candidates.json', { schemaVersion: 2, updatedAt: observations.updatedAt, candidates: {} })
+  const observations = await readStateCollection('observations')
+  const candidates = await readStateCollection('candidates')
   const quality = await readJson('data/plugin-quality.json', { schemaVersion: 1, assessments: {} })
-  const classifications = await readJson('data/plugin-classifications.json', { schemaVersion: 1, updatedAt: null, classifications: {} })
+  const classifications = await readStateCollection('classifications')
   const registryFiles = await loadRegistryPlugins()
   const records = registryFiles.map(({ value }) => withLlmClassification(value, classifications.classifications?.[value.id])).sort((a, b) => a.id.localeCompare(b.id))
   const picks = new Map(collection.items.map((item) => [item.repository.toLowerCase(), item.rank]))
@@ -98,9 +99,9 @@ export const buildCatalogOutputs = async () => {
     source: {
       repository: 'Ericwong5021/deepseek-plugin-store',
       registry: 'registry/plugins',
-      observations: 'data/observations.json',
-      candidates: 'data/candidates.json',
-      classifications: 'data/plugin-classifications.json',
+      observations: 'governance/state/observations',
+      candidates: 'governance/state/candidates',
+      classifications: 'governance/state/classifications',
     },
     taxonomy: {
       groups: taxonomy.groups,
@@ -189,7 +190,7 @@ export const buildCatalogOutputs = async () => {
     source: {
       provider: 'registry-v2',
       repository: 'Ericwong5021/deepseek-plugin-store',
-      sources: ['registry/plugins', 'data/observations.json', 'data/plugin-classifications.json', 'registry/collections/editor-picks.json'],
+      sources: ['registry/plugins', 'governance/state/observations', 'governance/state/classifications', 'registry/collections/editor-picks.json'],
       verification: 'package.json:dsh.bundle or legacy-pending',
     },
     plugins: legacyPlugins,

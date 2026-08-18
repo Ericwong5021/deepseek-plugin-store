@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { pathToFileURL } from 'node:url'
+import { readStateCollection, syncStateCollection } from './governance/state.mjs'
 import { classifyEvidence, loadRegistryPlugins, pluginId, readJson, repositoryFromUrl, validInstallSpec, writeJson } from './registry-lib.mjs'
 
 const TOKEN = process.env.GITHUB_TOKEN ?? ''
@@ -29,14 +30,14 @@ const fetchJson = async (url) => {
 const searchPage = async (query, page) => fetchJson(`https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=updated&order=desc&per_page=100&page=${page}`)
 const searchTimestamp = (seconds) => new Date(seconds * 1000).toISOString().replace('.000Z', 'Z')
 
-const searchRange = async (from, to) => {
-  const query = `topic:dsh-plugin fork:true created:${searchTimestamp(from)}..${searchTimestamp(to)}`
+const searchRange = async (from, to, field = 'created') => {
+  const query = `topic:dsh-plugin fork:true ${field}:${searchTimestamp(from)}..${searchTimestamp(to)}`
   const first = await searchPage(query, 1)
   if (first.incomplete_results) throw new Error(`incomplete GitHub search results for ${query}`)
   if (first.total_count > 1000) {
     if (from >= to) throw new Error(`more than 1000 topic repositories were created at ${searchTimestamp(from)}`)
     const midpoint = Math.floor((from + to) / 2)
-    return [...await searchRange(from, midpoint), ...await searchRange(midpoint + 1, to)]
+    return [...await searchRange(from, midpoint, field), ...await searchRange(midpoint + 1, to, field)]
   }
   const items = [...first.items]
   for (let page = 2; page <= Math.ceil(first.total_count / 100); page++) items.push(...(await searchPage(query, page)).items)
@@ -59,11 +60,16 @@ const failure = (reason, at) => ({ at, reason: String(reason).slice(0, 500) })
 
 const fetchEvidence = async (fullName) => {
   const repository = await fetchJson(`https://api.github.com/repos/${fullName}`)
-  const packageResult = await request(`https://raw.githubusercontent.com/${fullName}/HEAD/package.json`, { headers: { 'User-Agent': 'deepseek-plugin-store' } })
+  const commit = await fetchJson(`https://api.github.com/repos/${fullName}/commits/${encodeURIComponent(repository.default_branch)}`)
+  const repositoryCommitSha = commit.sha
+  if (!/^[a-f0-9]{40}$/.test(repositoryCommitSha || '')) throw new Error('default branch commit SHA is invalid')
+  const tree = await fetchJson(`https://api.github.com/repos/${fullName}/git/trees/${commit.commit.tree.sha}`)
+  const rootFiles = new Set((tree.tree || []).filter((entry) => entry.type === 'blob').map((entry) => entry.path))
+  const packageResult = await request(`https://raw.githubusercontent.com/${fullName}/${repositoryCommitSha}/package.json`, { headers: { 'User-Agent': 'deepseek-plugin-store' } })
   let pkg = null
   if (packageResult.response.ok) pkg = JSON.parse(packageResult.text)
   else if (packageResult.response.status !== 404) throw new Error(`package.json ${packageResult.response.status}`)
-  const readmeResult = await request(`https://api.github.com/repos/${fullName}/readme`, { headers: { ...HEADERS, Accept: 'application/vnd.github.raw+json' } })
+  const readmeResult = await request(`https://api.github.com/repos/${fullName}/readme?ref=${repositoryCommitSha}`, { headers: { ...HEADERS, Accept: 'application/vnd.github.raw+json' } })
   const readme = readmeResult.response.ok ? readmeResult.text : ''
   if (!readmeResult.response.ok && readmeResult.response.status !== 404) throw new Error(`README ${readmeResult.response.status}`)
   let release = null
@@ -72,7 +78,7 @@ const fetchEvidence = async (fullName) => {
   } catch (error) {
     if (!String(error.message).endsWith(': 404')) throw error
   }
-  return { repository, pkg, readme, release }
+  return { repository, repositoryCommitSha, rootFiles, pkg, readme, release }
 }
 
 export const discover = async () => {
@@ -83,8 +89,11 @@ export const discover = async () => {
   const collection = await readJson('registry/collections/editor-picks.json')
   const registryFiles = await loadRegistryPlugins()
   const registry = new Map(registryFiles.map(({ value }) => [value.repository.fullName.toLowerCase(), value]))
-  const observations = await readJson('data/observations.json')
-  const candidateData = await readJson('data/candidates.json', { schemaVersion: 2, updatedAt: now, candidates: {} })
+  const observations = await readStateCollection('observations')
+  const candidateData = await readStateCollection('candidates')
+  const originalObservationData = structuredClone(observations)
+  const originalCandidateData = structuredClone(candidateData)
+  const discoveryMeta = await readJson('governance/state/meta/discovery.json', { schemaVersion: 1, lastSuccessfulSearchAt: null, lastReconciliationAt: null })
   const originalObservations = JSON.stringify(observations.repositories)
   const originalCandidates = JSON.stringify({ candidates: candidateData.candidates, failures: candidateData.failures || [] })
   const upstream = await readJson('data/upstream-sync.json', {})
@@ -92,8 +101,21 @@ export const discover = async () => {
   const changedRegistryIds = new Set()
   const changedCandidateIds = new Set()
   let topicRepos = []
+  let topicSucceeded = false
   try {
-    topicRepos = await searchRange(Math.floor(Date.parse('2007-01-01T00:00:00Z') / 1000), Math.floor(Date.parse(now) / 1000))
+    const mode = process.env.DISCOVERY_MODE || 'incremental'
+    if (mode === 'reconcile') {
+      const partitions = [['2007-01-01', '2018-12-31'], ['2019-01-01', '2022-12-31'], ['2023-01-01', '2025-12-31'], ['2026-01-01', now.slice(0, 10)]]
+      const partition = partitions[Math.floor(Date.parse(now) / 604800000) % partitions.length]
+      topicRepos = await searchRange(Math.floor(Date.parse(`${partition[0]}T00:00:00Z`) / 1000), Math.floor(Date.parse(`${partition[1]}T23:59:59Z`) / 1000))
+      discoveryMeta.lastReconciliationAt = now
+      discoveryMeta.lastReconciliationPartition = partition.join('..')
+    } else {
+      const cursor = discoveryMeta.lastSuccessfulSearchAt || '2007-01-01T00:00:00Z'
+      const from = Math.max(Date.parse('2007-01-01T00:00:00Z'), Date.parse(cursor) - 2 * 3600000)
+      topicRepos = await searchRange(Math.floor(from / 1000), Math.floor(Date.parse(now) / 1000), 'updated')
+    }
+    topicSucceeded = true
   } catch (error) {
     sourceFailures.push(failure(`github-topic: ${error.message}`, now))
   }
@@ -222,12 +244,13 @@ export const discover = async () => {
     const fullName = item.record?.repository.fullName || item.candidate.repository.fullName
     try {
       const evidence = await fetchEvidence(fullName)
-      const manifestFound = Boolean(evidence.pkg?.dsh?.bundle)
+      const manifestFound = evidence.rootFiles.has('package.json') && Boolean(evidence.pkg?.dsh?.bundle)
       const installSpec = `github:${fullName}`
       const readmeGuidance = /install|安装|usage|使用|dsh plugin/i.test(evidence.readme)
       const relevant = item.type === 'registry' || (item.candidate.sources || []).some((source) => ['github-topic', 'editor-pick', 'awesome-dsh-plugin'].includes(source))
       const checks = {
         checkedAt: now,
+        repositoryCommitSha: evidence.repositoryCommitSha,
         publicRepository: !evidence.repository.private,
         manifestFound,
         manifestPath: manifestFound ? 'package.json:dsh.bundle' : null,
@@ -282,6 +305,7 @@ export const discover = async () => {
           starHistory: history.slice(-90),
         }
         observation.compatibility = {
+          repositoryCommitSha: evidence.repositoryCommitSha,
           manifestFound,
           manifestPath: manifestFound ? 'package.json:dsh.bundle' : null,
           npmName: typeof evidence.pkg?.name === 'string' ? evidence.pkg.name : null,
@@ -304,8 +328,11 @@ export const discover = async () => {
   candidateData.candidates = Object.fromEntries(Object.entries(candidateData.candidates).sort())
   if (JSON.stringify(observations.repositories) !== originalObservations) observations.updatedAt = now
   if (JSON.stringify({ candidates: candidateData.candidates, failures: candidateData.failures }) !== originalCandidates) candidateData.updatedAt = now
-  await writeJson('data/observations.json', observations)
-  await writeJson('data/candidates.json', candidateData)
+  await syncStateCollection('observations', originalObservationData, observations)
+  await syncStateCollection('candidates', originalCandidateData, candidateData)
+  if (topicSucceeded) discoveryMeta.lastSuccessfulSearchAt = now
+  discoveryMeta.schemaVersion = 1
+  await writeJson('governance/state/meta/discovery.json', discoveryMeta)
   return { discovered: discovered.size, checked: selected.length, candidates: Object.keys(candidateData.candidates).length, sourceFailures: sourceFailures.length }
 }
 

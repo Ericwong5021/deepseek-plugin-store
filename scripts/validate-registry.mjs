@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { pathToFileURL } from 'node:url'
 import { loadRegistryPlugins, pluginId, readJson, validInstallSpec, validRepository } from './registry-lib.mjs'
+import { readStateCollection } from './governance/state.mjs'
 
 const unique = (label, values) => {
   const seen = new Set()
@@ -16,9 +17,9 @@ export const validateRegistry = async () => {
   const sourceOnly = process.env.REGISTRY_SOURCE_ONLY === '1'
   const taxonomy = await readJson('registry/taxonomy.json')
   const collection = await readJson('registry/collections/editor-picks.json')
-  const observations = await readJson('data/observations.json')
-  const candidates = await readJson('data/candidates.json')
-  const classifications = await readJson('data/plugin-classifications.json', { schemaVersion: 1, updatedAt: null, classifications: {} })
+  const observations = await readStateCollection('observations')
+  const candidates = await readStateCollection('candidates')
+  const classifications = await readStateCollection('classifications')
   const governancePolicy = await readJson('governance/policy.json')
   const goldenFixtures = await readJson('governance/fixtures/golden-plugins.json')
   const governanceSchemas = await Promise.all(['ai-decision', 'evidence', 'governance-plan', 'plugin-record'].map((name) => readJson(`scripts/governance/schemas/${name}.schema.json`)))
