@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "integration",
+    "tool",
+    "data",
+    "workflow",
+    "chat",
+    "context",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户价值是通过 Git 在多设备间同步 DSH 工作区数据（对话/会话与可选全量文件），并提供在设置页执行拉取/推送及新设备接入的工作流，因此归类为文件与工作流工具类插件。证据来自 README 中的双模式同步说明、仓库克隆接入流程与会话路径适配说明，以及包清单中对 DSH Web 插件与相关运行时依赖的定义。",
+  "summaries": {
+    "zh": "该插件用于在多设备间通过 Git 同步 DSH 工作区数据，支持仅对话或全量文件同步，并提供拉取/推送和新设备接入流程。",
+    "en": "This plugin syncs DSH workspace data across devices via Git, supporting conversation-only or full-file sync modes with pull/push workflows and new-device workspace onboarding."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Synchronizes DSH workspace conversation logs and optionally full workspace files via Git.",
+      "Provides push/pull/status operations against a user-configured remote repository.",
+      "Performs cross-device workspace onboarding by cloning and registering a workspace on a new device.",
+      "Rewrites pulled session path metadata so sessions can be resumed on a different machine."
+    ],
+    "reasons": [
+      {
+        "code": "README states two modes: conversation-only sync and all-files sync, both intended for multi-device continuity.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and installation docs describe a Git sync flow with push/pull/status actions for each workspace.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes 'new device: clone workspace' flow with remote repository URL and local path setup.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the plugin as a DSH web plugin and includes dependencies for subprocess/workspace integration, matching a local sync tool.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Synchronizes DSH workspace conversation logs and optionally full workspace files via Git.",
+      "Provides push/pull/status operations against a user-configured remote repository.",
+      "Performs cross-device workspace onboarding by cloning and registering a workspace on a new device.",
+      "Rewrites pulled session path metadata so sessions can be resumed on a different machine."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:20.485Z",
+  "repositoryCommitSha": "a321021a817b62d825387903de4daa8d6827b928",
+  "evidenceHash": "9a1b69c193fe21f16bb79942d1f1a0048efb8d0643d122cb8ded5990be126757",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a2cbccfb4235e41be10fdfac4b23f7ebe1d8976d96b68442e544ba9f9bf10078",
+  "shadowMode": false
+}

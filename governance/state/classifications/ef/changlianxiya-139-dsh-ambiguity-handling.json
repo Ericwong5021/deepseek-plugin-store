@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "automation",
+    "tool",
+    "chat",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户功能是为 DeepSeek Harness 自动注入一段歧义处理规则到 system prompt（名称 `ambiguity-handling`，顺序 `50`），并在请求模糊时要求模型先给出多个可能理解与“其他”选项后再继续。证据来自 README 中对 `inject = ['systemPrompt']` 与 `ctx.systemPrompt.section` 的说明，以及包清单中对 `cordis.patch.yml` 的 bundle 配置。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 会话系统提示词追加歧义处理规则，让模型在需求不清时先给出多种理解并请求用户确认。",
+    "en": "This plugin adds ambiguity-handling instructions to the DeepSeek Harness system prompt so the model asks for clarification when requests are unclear, offering multiple interpretations before proceeding."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects an `ambiguity-handling` section into the DeepSeek Harness system prompt via the `systemPrompt` extension point.",
+      "Instructs the model to ask for clarification by listing 2-4 possible interpretations plus an \"other\" option when input appears ambiguous.",
+      "Uses DSH bundle/patch configuration (`cordis.patch.yml` + `dsh.bundle`) for profile-based activation and removal."
+    ],
+    "reasons": [
+      {
+        "code": "README_SYSTEMPROMPT_INJECTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_SECTION_METADATA_ORDER_NAME",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MANIFEST_BUNDLE_REFERENCE",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "TREE_INCLUDES_PATCH_BUNDLE_FILES",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects an `ambiguity-handling` section into the DeepSeek Harness system prompt via the `systemPrompt` extension point.",
+      "Instructs the model to ask for clarification by listing 2-4 possible interpretations plus an \"other\" option when input appears ambiguous.",
+      "Uses DSH bundle/patch configuration (`cordis.patch.yml` + `dsh.bundle`) for profile-based activation and removal."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:19.334Z",
+  "repositoryCommitSha": "a47dfc9fb3c23aebbb4fb612a833b48bb5f7950c",
+  "evidenceHash": "ca2461395b4e4c1620fbcdb5e84151eb90447ca312bcefc8ecd4d872c2afc3bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "921a0c6dfec387e29af9c536e7d4994f4d67b6e98f248ff273ce1495426610e7",
+  "shadowMode": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "file",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Primary user-facing purpose is automated maintenance of dsh-ocr/llm-deepseek compatibility: on harness boot it detects whether expected OCR seam and OCR library fixes were removed by upgrades and reapplies them, with exact-anchor matching and a verification step that can roll back changes if loading fails.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 启动时自动维护 OCR 相关修复补丁，被升级清除的适配或修正会在检测后被恢复，并在验证失败时回滚。",
+    "en": "This plugin maintains DeepSeek Harness OCR-related fixes automatically at startup, reapplying known patches removed by upgrades and rolling back changes if the post-patch verification step fails."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Checks for missing OCR-related patches during DSH startup",
+      "Rewrites targeted dependency files using anchored string replacements",
+      "Verifies patched modules in a child process and rolls back on failure"
+    ],
+    "reasons": [
+      {
+        "code": "BOOTSTRAP_SELF_PATCH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "VERIFY_AND_ROLLBACK",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_BUNDLE_PLUGIN_PACKAGING",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Checks for missing OCR-related patches during DSH startup",
+      "Rewrites targeted dependency files using anchored string replacements",
+      "Verifies patched modules in a child process and rolls back on failure"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:26.902Z",
+  "repositoryCommitSha": "d7bda9a1f3be86353440f2c5233410cb47f480b5",
+  "evidenceHash": "6186222ea37d2d3c828f4ba3115dcb9eccc16b421a12a5410cff98584781e8f6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6df7617fa228f0bbb12c2e887ac655010425c40968fd19b516c55581dd115a8e",
+  "shadowMode": false
+}

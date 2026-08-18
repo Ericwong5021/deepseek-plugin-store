@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "browser",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This plugin is primarily a user-interface localization plugin for DeepSeek Harness: it adds a Taiwan Traditional Chinese language option and rewrites interface copy to Taiwan terminology. Evidence shows it is installed as a DSH web plugin, injects into the web client, patches locale translation for zh-Hant, and applies additional label replacements in the DOM. It stores selected language in existing settings for persistence and states it only changes interface text, not user message content.",
+  "summaries": {
+    "zh": "此插件為 DeepSeek Harness 提供台灣繁體中文本地化，新增語言選單項目並套用台灣慣用語詞彙，讓介面文字改為台灣用語顯示。",
+    "en": "This plugin localizes the DeepSeek Harness web UI to Taiwan Traditional Chinese by adding a zh-Hant language option and applying Taiwan-oriented terminology replacements to interface text."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Locale selection and UI language option injection",
+      "Locale translation override for zh-Hant",
+      "Terminology replacement via Taiwan-specific phrase mapping",
+      "DOM-level fixes for hardcoded labels",
+      "Settings persistence via DSH configuration"
+    ],
+    "reasons": [
+      {
+        "code": "adds-zh-hant-option-to-language-menu-and-persists-in-settingsyaml",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "wraps-locale.translate-to-apply-traditional-conversion-and-taiwan-phrase-table",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "declares-web-client-dsh-plugin-injection-through-manifest",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Locale selection and UI language option injection",
+      "Locale translation override for zh-Hant",
+      "Terminology replacement via Taiwan-specific phrase mapping",
+      "DOM-level fixes for hardcoded labels",
+      "Settings persistence via DSH configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:31.887Z",
+  "repositoryCommitSha": "d0325ee1abeaf073e750548c1c73e1250bcf5491",
+  "evidenceHash": "e2909713bbc101171eccdc62cf8f370bc369ec73bb74cf372b2db7442a05b5f0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c9e8f2f850e5aa4f0a138ab036843041f4b1664ad772e79e3c7fc95bf4d80ff3",
+  "shadowMode": false
+}

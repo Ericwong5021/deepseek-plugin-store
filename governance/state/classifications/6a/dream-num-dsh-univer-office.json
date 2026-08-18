@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "agent",
+    "automation",
+    "tool",
+    "document",
+    "file",
+    "data",
+    "workflow",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin’s primary function is to provide an in-app office content workflow for DeepSeek Harness users: creating, editing, importing, and exporting spreadsheet, document, presentation, and related content, then reviewing changes in conversation. It is exposed through dedicated Univer tools and worktree-based task execution with merge/discard controls, so its user-facing purpose is office document processing via automation rather than general development tooling.",
+  "summaries": {
+    "zh": "该插件将 Univer 办公能力接入 DeepSeek Harness，让智能体按自然语言创建、编辑并导入/导出表格、文档、演示稿和关联内容，并在会话中展示预览与变更确认流程。",
+    "en": "This plugin integrates Univer office capabilities into DeepSeek Harness so an agent can create, edit, import, and export spreadsheets, documents, presentations, and related content from natural language requests with in-conversation preview and review."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates and edits spreadsheet, document, presentation, database, and canvas content via agent-driven tools",
+      "Imports and exports common office formats such as XLSX/CSV/TSV, DOCX, and PPTX",
+      "Provides isolated worktree-based draft/merge/discard workflow for changes",
+      "Runs local gateway/viewer components with optional browser-based render/lint steps"
+    ],
+    "reasons": [
+      {
+        "code": "README lists a set of `univer_*` tools (for create/status/worktree/unit import/inspect/execute/export/lint/api) that directly manipulate workspace Office content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README capability matrix and feature list include direct Sheet/Doc/Slide/Base/Board editing features and format conversion (xlsx/csv/tsv/docx/pptx).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes isolated worktree lifecycle with explicit merge/discard and live preview/review, indicating controlled file-change flow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies a bundled Gateway/Viewer web plugin package with runtime dependencies including Puppeteer browser tooling, indicating local execution/runtime components.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates and edits spreadsheet, document, presentation, database, and canvas content via agent-driven tools",
+      "Imports and exports common office formats such as XLSX/CSV/TSV, DOCX, and PPTX",
+      "Provides isolated worktree-based draft/merge/discard workflow for changes",
+      "Runs local gateway/viewer components with optional browser-based render/lint steps"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:31.010Z",
+  "repositoryCommitSha": "54762d310eae50d05f7fbc4af9f1d61fcea4aaac",
+  "evidenceHash": "7aba4b17f579510e57b5b34e62f15fa55ce5a2cf52e0ee03249b3768a9921c10",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87a34fb650f3e8b98a18c7081290cc99733a25aec48456af60faf87288d75c0c",
+  "shadowMode": false
+}

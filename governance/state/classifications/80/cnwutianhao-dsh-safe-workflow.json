@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "workflow",
+    "automation",
+    "tool",
+    "file",
+    "terminal",
+    "planning"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的核心面向为 DeepSeek Harness 代理工作流安全治理：通过 `safe_workflow` 命令（start/status/checkpoint/restore/verify/close）与执行前监听器，实现任务契约、变更审批、工作快照、验证和审计记录的会话内流程控制，未体现对外部服务调用或网络攻击面扩展。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 `safe_workflow` 工具，支持按任务契约进行会话级流程控制、变更审批、检查点与验证记录。",
+    "en": "This plugin provides a `safe_workflow` tool for DeepSeek Harness to run contract-based session workflows with change approval, checkpoints, and verification logging."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides the `safe_workflow` model-facing tool for task contract and workflow actions",
+      "Injects pre-execute and execute policy listeners to gate mutating operations",
+      "Creates and restores workspace checkpoints",
+      "Runs verification commands and stores output as session evidence"
+    ],
+    "reasons": [
+      {
+        "code": "SAFE_WORKFLOW_COMMAND_SET",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MUTATION_APPROVAL_LISTENER",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CHECKPOINT_AND_RESTORE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "VERIFICATION_AND_EVIDENCE_LOGGING",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides the `safe_workflow` model-facing tool for task contract and workflow actions",
+      "Injects pre-execute and execute policy listeners to gate mutating operations",
+      "Creates and restores workspace checkpoints",
+      "Runs verification commands and stores output as session evidence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:43.511Z",
+  "repositoryCommitSha": "5be03485b52a95fd276b25dd39d8ab78c85fccaf",
+  "evidenceHash": "ef290f71ec2422f3684f0b86499c7d6fd62583ba67065268010b0d4c0c647f58",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ce57a8c5333b34f2805ef9be057c4de69495b4160cc0e5f5624b9eb0c1a67f49",
+  "shadowMode": false
+}

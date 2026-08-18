@@ -4,35 +4,44 @@
   "category": "media-tools",
   "tags": [
     "automation",
-    "tool",
-    "file",
     "document",
+    "file",
     "image",
-    "video",
+    "tool",
     "ui",
+    "video",
     "workflow"
   ],
   "confidence": "high",
   "confidenceScore": 0.93,
-  "reason": "This plugin is primarily a media-generation utility for DSH: it scans provided script and multimedia assets, builds a playable visual-novel HTML experience, and wires it into the DSH web interface for playback. Core capabilities include branching/script parsing, save states, sprite/background/BGM control, and standalone output generation. No external-service/network control is evident; risk is moderate due generated local HTML/media handling in the browser context (R1).",
+  "reason": "该插件的核心用途是为 DSH 用户提供“文本剧本+媒体素材→可玩视觉小说网页”的一体化生成体验，证据来自其 README 中对产物（`<标题>.galgame.html`）与素材约定、脚本解析与分支、以及 `galgame_scan`/`galgame_build` 工作流的描述，并由 package.json 的 web 客户端配置支撑在 DSH 界面集成。",
+  "summaries": {
+    "zh": "本插件用于在 DSH 中根据剧本与立绘/背景/音乐等素材自动生成可在浏览器游玩的视觉小说网页，并可在客户端侧边栏直接进入游玩。",
+    "en": "This plugin generates a playable visual-novel web page in DSH from a script plus character, background, and audio/media assets, with in-client access for playback."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Parse document-based script and workspace assets to generate a playable HTML visual-novel output.",
-      "Expose DSH tools for scanning workspace inputs and building generated output.",
-      "Integrate a web UI entrypoint (sidebar button/preset) for launching the generated game."
+      "Reads script text and workspace media assets from configured folders to generate output",
+      "Parses structured script syntax to produce interactive visual-novel flow with branching and variables",
+      "Generates a standalone HTML game artifact in the workspace (`.galgame.html`) for browser playback",
+      "Integrates with DSH Web UI via a Galgame sidebar entry and exposes model tools for scan/build"
     ],
     "reasons": [
       {
-        "code": "README describes generating a self-contained `<标题>.galgame.html` playable webpage from script and media files in workspace folders (img_human, img_bg, audio, img_cg).",
+        "code": "README: \"提供一份剧本文档 + 立绘/背景/音乐/动画素材（img_human/、img_bg/、audio/、img_cg/）即可生成可玩视觉小说（可配置存档、多表情立绘、站位/退场控制、动画、BGM、if 条件线）。\"",
         "evidenceRef": "readme"
       },
       {
-        "code": "README documents two tools: `galgame_scan` for locating script/assets and `galgame_build` for generation.",
+        "code": "README: \"两个模型工具：`galgame_scan`（扫描素材）、`galgame_build`（解析生成）\"",
         "evidenceRef": "readme"
       },
       {
-        "code": "package.json declares a DSH web client/inject/bundle plugin configuration, confirming runtime integration behavior.",
+        "code": "README: \"`<标题>.galgame.html` —— 自包含独立网页...可发给别人玩\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: dsh.client.platform 为 web 且注入 @deepseek-ai/dsh-client-runtime / dsh-client-ui-slots",
         "evidenceRef": "package.json"
       }
     ]
@@ -43,12 +52,13 @@
     "finalDecision": "needs_human",
     "riskLevel": "R1",
     "capabilities": [
-      "Parse document-based script and workspace assets to generate a playable HTML visual-novel output.",
-      "Expose DSH tools for scanning workspace inputs and building generated output.",
-      "Integrate a web UI entrypoint (sidebar button/preset) for launching the generated game."
+      "Reads script text and workspace media assets from configured folders to generate output",
+      "Parses structured script syntax to produce interactive visual-novel flow with branching and variables",
+      "Generates a standalone HTML game artifact in the workspace (`.galgame.html`) for browser playback",
+      "Integrates with DSH Web UI via a Galgame sidebar entry and exposes model tools for scan/build"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
@@ -62,10 +72,10 @@
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T16:03:35.974Z",
+  "classifiedAt": "2026-08-18T17:58:58.272Z",
   "repositoryCommitSha": "b5568ca55e72725e54eef30a5299f195f05f5810",
-  "evidenceHash": "90853d5652032f11d31ff91d3219085407809fab22e73c2d1da5a4bc18b278b0",
+  "evidenceHash": "384b8368db1fee9fba1098930922f928ed0d211c5043908ccd296c5f3c3dc788",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "ca7fa805f654031915557b043478d679c1eda95fe74377c579938ab3206f241b",
-  "shadowMode": true
+  "shadowMode": false
 }

@@ -3,16 +3,87 @@
   "group": "agents-workflows",
   "category": "automation",
   "tags": [
-    "automation",
     "agent",
+    "automation",
+    "browser",
     "mcp",
+    "api",
+    "mobile",
     "tool",
-    "mobile"
+    "workflow"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing purpose is to provide an agent with a persistent, scriptable browser environment (profiles, sessions, navigation/click/fill/evaluate, live view, proxy + fingerprint controls), which is fundamentally browser automation/workflow execution for agents.",
+  "confidenceScore": 0.91,
+  "reason": "The plugin is an agent-focused browser automation plugin for DeepSeek Harness, adding MCP tools to start and control browser sessions and manage profiles/proxies. Its primary purpose is operational workflow automation (navigation, interaction, content extraction, screenshots) with optional identity-oriented browser settings, rather than code generation or analysis of repository contents.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件，通过 MCP 工具向模型提供可控制的浏览器会话，支持配置文件和代理管理，并可执行页面导航、点击、填写、脚本执行与截图等自动化操作。",
+    "en": "This is a DeepSeek Harness plugin that provides MCP-controlled browser sessions, with profile and proxy management plus page automation actions such as navigation, click, fill, evaluate, and screenshot."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Web browser session orchestration via MCP tools for launch/close/list operations",
+      "Profile lifecycle management with persistent state handling across runs",
+      "Proxy listing/claiming and traffic routing capabilities",
+      "Page automation actions including navigation, clicking, input, script evaluation, content retrieval, and screenshots",
+      "Live session viewing and Android device-profile emulation support"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the project as a DeepSeek Harness plugin and lists tools for sessions, profiles, proxies, page control, and live view, showing core browser workflow automation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Tool inventory in README includes `launch_browser`, `navigate`, `click`, `fill`, `evaluate`, `get_content`, `screenshot`, and `start_live_view`, indicating direct interaction with web pages.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states persistent profiles with cookies/passkeys and per-profile settings are part of normal operation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and feature list mention anti-detect behavior, engine-level fingerprinting control, and residential proxy egress.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata and topics include `anti-detect-browser`, `browser-fingerprinting`, and `residential-proxy`, reflecting identity- and network-oriented automation capabilities.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Web browser session orchestration via MCP tools for launch/close/list operations",
+      "Profile lifecycle management with persistent state handling across runs",
+      "Proxy listing/claiming and traffic routing capabilities",
+      "Page automation actions including navigation, clicking, input, script evaluation, content retrieval, and screenshots",
+      "Live session viewing and Android device-profile emulation support"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:59:03.835Z",
-  "evidenceHash": "8470502589171dcfb0998757abbe8591e94f0a5b9d82a89125d1f31313fdd234"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:49.472Z",
+  "repositoryCommitSha": "78609a165a2b8dbdec3842917feb929b46f97c6f",
+  "evidenceHash": "170d62e1ec01fc1c4ffe3742da2b61a341d34e7966f711a9e0ddfe38a6a220b0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ff499cc51cabcd8c392f69c7ab9ea2364a5c710d3d3d9e7725e2e2dbb3579ae4",
+  "shadowMode": false
 }

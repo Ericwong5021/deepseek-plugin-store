@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "workflow",
+    "ui",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is a workflow-oriented DeepSeek Harness extension that helps users keep turn-based agent sessions aligned with task tracking: it inspects the latest todo snapshot at turn-stop, blocks end-of-turn progression for unfinished non-waiting items, and prompts on prolonged absence or staleness of todo updates. The behavior and thresholds are user-configurable in a web settings section, with scope limited to conversation control messaging.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的待办事项门禁与提示插件，在每个回合结束前依据最新 Todo 状态决定是否继续，并在长期未写入或未更新 Todo 时给出可配置的建议提示。",
+    "en": "This plugin is a DeepSeek Harness todo-based turn gate that checks task state at turn stop, can continue the turn when unfinished work remains, and issues configurable reminders when there are no recent todos or todo lists go stale."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Controls whether a turn can end when TODO work remains",
+      "Injects advisory messages into the turn boundary flow",
+      "Provides configurable thresholds for no-todo and stale-todo reminders",
+      "Exposes plugin settings in the web UI"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as a DeepSeek Harness Todo-backed turn-stop gate that hooks into `agent/turn-stopping` and can inject a continuation message when unfinished, non-waiting todos exist.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It defines advisory behavior for two cases—long streaks without todo snapshots and stale existing todo lists—using configurable `noTodoPromptEveryNTurns` and `staleTodoPromptEveryNTurns` settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The repository includes host and web client files (`index.js`, `client.js`) and package metadata for DSH web client injection, indicating runtime integration and settings UI exposure.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README states the plugin does not create, delete, complete, or rewrite todos; it only gates turn completion and sends suggestion messages.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Controls whether a turn can end when TODO work remains",
+      "Injects advisory messages into the turn boundary flow",
+      "Provides configurable thresholds for no-todo and stale-todo reminders",
+      "Exposes plugin settings in the web UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:24.342Z",
+  "repositoryCommitSha": "583895b118e4188fc2961815046c678db983545b",
+  "evidenceHash": "09ec304c03db9a401ee87d69f7c86289776dfd282fb2fd2bb0f79de776ade454",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "626f09dc9442dd2f0d71e9341321ecf23482ffa8ae1b4c6f519c71b6a85d2a59",
+  "shadowMode": false
+}

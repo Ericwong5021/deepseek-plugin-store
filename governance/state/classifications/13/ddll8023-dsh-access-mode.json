@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "tool",
+    "workflow",
+    "agent",
+    "file",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件用于在 DeepSeek Harness 会话中提供访问模式控制入口，通过 Default/No Edit/Auto 三档模式联动现有会话审批与沙箱策略，从而影响工具调用是否自动放行、是否需审批及可访问范围。",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 会话中提供 Default / No Edit / Auto 三档访问模式切换，帮助用户按需控制会话中的工具访问、审批策略与沙箱权限。",
+    "en": "Adds a session access-mode switcher in DeepSeek Harness with Default, No Edit, and Auto presets, letting users control tool access, approval policy, and sandbox behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a session-scoped access mode selector (Default, No Edit, Auto) in the DSH web composer",
+      "Synchronizes mode with native sandbox and approval settings through session events",
+      "Implements pre-execution tool gating for read/edit/write operations and Bash commands",
+      "Offers slash commands to query and switch access mode during a session"
+    ],
+    "reasons": [
+      {
+        "code": "Can switch sessions to danger-full-access and control approval behavior, including no-approval mode",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Replaces native permission preset selector and injects plugin entry into DSH web profile",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Targets file and terminal-facing operations via sandbox and tool-policy controls",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides a session-scoped access mode selector (Default, No Edit, Auto) in the DSH web composer",
+      "Synchronizes mode with native sandbox and approval settings through session events",
+      "Implements pre-execution tool gating for read/edit/write operations and Bash commands",
+      "Offers slash commands to query and switch access mode during a session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:14.192Z",
+  "repositoryCommitSha": "50d8c5a282c4704e1fc30904ee2312c0a9c30e89",
+  "evidenceHash": "2f9d8c9a8fca3908a12e74268ccc77909d1992d5b1d46305518af92437da9376",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fbae1b2e26463abd11ce33cf410d0b58d94ea7646524aed7eba12d8199c66a4f",
+  "shadowMode": false
+}

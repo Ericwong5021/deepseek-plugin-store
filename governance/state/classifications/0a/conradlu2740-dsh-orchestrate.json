@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "planning",
+    "tool",
+    "collaboration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向用户的主要目的为多智能体编排：在 DeepSeek Harness 中为主 Agent 自动触发和管理子 Agent 协作。基于 README 的工具说明可确认它提供任务拆分、并行调研/审查、结果收敛及运行状态控制能力，package.json 与仓库描述进一步表明这是一个 DSH 插件生态内的编排扩展。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的智能体编排插件，用于把单次任务自动拆分为子任务并并行派发给子 Agent，再汇总和收敛输出结果。",
+    "en": "This is a DeepSeek Harness plugin for agent orchestration that splits user tasks into subtasks, runs sub-agents in parallel, and converges their outputs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "并发派发多个子 Agent 并聚合结构化结果",
+      "支持后台执行与收敛流程",
+      "提供运行状态查询与中止控制",
+      "支持任务重试与超时/成本边界参数"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确列出主工具 `orchestrate_delegate`、`orchestrate_review`、`orchestrate_explore`，用于并行拆分、对抗审查与多方向探索并返回汇总。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出 `orchestrate_converge`、`orchestrate_status`、`orchestrate_stop` 与 `run_in_background`，可在后台运行任务并在需时阻塞/中止。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package.json 显示该插件依赖 `@deepseek-ai/dsh-subagent` 与 `@deepseek-ai/dsh-tools`，定位为 DeepSeek Harness 插件扩展而非独立运行时。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "并发派发多个子 Agent 并聚合结构化结果",
+      "支持后台执行与收敛流程",
+      "提供运行状态查询与中止控制",
+      "支持任务重试与超时/成本边界参数"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:49.023Z",
+  "repositoryCommitSha": "1b758ac48d106ad4e46bee2e5facece2ac44f86f",
+  "evidenceHash": "a2624bbd8b8fe60851105d57748db34b4b7fbd2452b624920dffceaf6d0b92f1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a77a4ff800af353de72fc027f962fe8e511ba103c7040cbc6c4b764edebb2b7b",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "planning",
+    "automation",
+    "cli",
+    "tool",
+    "workflow",
+    "integration",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "This plugin is primarily a planning workflow integration for DSH users: it hooks the plan-review phase to open Plannotator and keeps plan decisions (approve/deny/dismiss) in sync, with additional commands for review and annotation. Evidence shows it is also a terminal-integrated tool bridge that launches a local Plannotator binary via configurable paths, so risk is moderate due local command execution.",
+  "summaries": {
+    "zh": "该插件在 dsh 的计划模式下调用本地 Plannotator 应用进行计划审核，并提供计划复核、标注与最近回复等命令入口。",
+    "en": "This plugin connects DSH plan mode to Plannotator for plan review, adding commands to review plans, annotate items, and work with the latest assistant reply."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "launches and interacts with the Plannotator plan-review workflow",
+      "adds slash commands for review, annotate, and last-reply actions",
+      "depends on and invokes a local `plannotator` CLI process"
+    ],
+    "reasons": [
+      {
+        "code": "plan-mode review flow is redirected from native DSH UI to Plannotator",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin defines CLI-driven commands that call `plannotator review/annotate/last`",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin is distributed as a DSH bundle with Cordis patch wiring",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "launches and interacts with the Plannotator plan-review workflow",
+      "adds slash commands for review, annotate, and last-reply actions",
+      "depends on and invokes a local `plannotator` CLI process"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:46.487Z",
+  "repositoryCommitSha": "df60aa4a82c7a4952ea41f36b1590b5c8491bc46",
+  "evidenceHash": "efbd92507d41c98f49befc6ef3a059b356e8fd4a0a4bcf2cbcd0d0b08ba8c252",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e343b4c0aaf201f687e43a0ef71d78e3def1123d2bb635b19ccac45b24b0606f",
+  "shadowMode": false
+}

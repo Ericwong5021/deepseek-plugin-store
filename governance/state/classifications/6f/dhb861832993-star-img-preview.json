@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "ui",
+    "file",
+    "chat",
+    "tool",
+    "browser",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary purpose is to let users preview local image files directly inside DeepSeek Harness conversations, which is evidenced by its README description and usage examples for `img_serve` plus `img` fenced responses. It is mainly a media rendering utility with chat-facing UI behavior (inline display and viewer interactions), not a code-generation, automation, or data-processing tool.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供本地图片内联预览能力，通过 `img_serve` 与 `img` 代码块在对话中展示工作区图片，并支持双击打开独立查看器进行缩放与平移。",
+    "en": "This plugin enables inline local image previews in DeepSeek Harness by using `img_serve` and `img` fence responses, and provides a standalone viewer for zooming and panning displayed images."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "serves local image files from the workspace through a host-side file route",
+      "renders images inline in chat using `img` fences with single/multiple image payloads",
+      "provides a standalone image viewer with zoom and pan interactions",
+      "supports TGA decoding/conversion and normalizes paths before serving",
+      "accepts only selected image extensions and enforces size limits"
+    ],
+    "reasons": [
+      {
+        "code": "host_file_route_and_tooling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "chat_fence_rendering_workflow",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_platform_and_distribution_metadata",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "serves local image files from the workspace through a host-side file route",
+      "renders images inline in chat using `img` fences with single/multiple image payloads",
+      "provides a standalone image viewer with zoom and pan interactions",
+      "supports TGA decoding/conversion and normalizes paths before serving",
+      "accepts only selected image extensions and enforces size limits"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:20.790Z",
+  "repositoryCommitSha": "02263139fe0001b25a2e654ac493c79d749b8f59",
+  "evidenceHash": "dc19e9847e1be6860310aadaeeda0539e65ac573a4074784b133b454212edf75",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "02d385c7058e491bafd64095f82dca233dc0415d4d198734b3cda66039e22817",
+  "shadowMode": false
+}

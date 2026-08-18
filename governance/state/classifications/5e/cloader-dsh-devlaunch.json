@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "terminal",
+    "ui",
+    "monitoring",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件主要用于在 DSH 会话中集中编排本地开发进程，提供按预设一键启动/停止/重启服务、日志聚合查看、就绪检测和端口/故障监控等功能，因此属于自动化运维式开发工具，而非代码生成、搜索或知识管理类插件。",
+  "summaries": {
+    "zh": "dsh-devlaunch 是一个 DSH 插件，可按会话配置一键启动或停止前端、后端等本地服务，并在内置控制台集中查看各服务状态与日志。",
+    "en": "dsh-devlaunch is a DSH plugin that lets you start and stop local frontend/backend services from a session configuration, and view per-service status and logs in a built-in console."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "启动、停止和重启用户配置的本地服务进程",
+      "按预设批量控制前端/后端等服务启动范围",
+      "通过会话内控制台收集并展示服务输出日志",
+      "周期性访问配置的就绪 URL 检测服务状态并显示运行状态",
+      "监测端口信息与冲突并在界面提示",
+      "支持可选的崩溃自动重启与重试退避策略"
+    ],
+    "reasons": [
+      {
+        "code": "READMЕ 说明插件核心为会话头部一键启动/停止及服务预设管理，并提供单服务启停重启",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "READMЕ 描述了实时输出控制台、错误标记、复制与导出日志等日志可观测能力",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 说明存在 host 与 client 分层，host 负责进程生命周期管理与 SSE 输出",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "启动、停止和重启用户配置的本地服务进程",
+      "按预设批量控制前端/后端等服务启动范围",
+      "通过会话内控制台收集并展示服务输出日志",
+      "周期性访问配置的就绪 URL 检测服务状态并显示运行状态",
+      "监测端口信息与冲突并在界面提示",
+      "支持可选的崩溃自动重启与重试退避策略"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:42.347Z",
+  "repositoryCommitSha": "514a330dda8acfd307e40d2539917f1da03fef1f",
+  "evidenceHash": "c6048628d90a3d19dcc12e5803ed27b0dbbdf1d0cb75fc5b77e4ff347717e86b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8b32a2b655a2adabd4bc3614c64a6480c522e32fbd9efcb6071328d4f72711f1",
+  "shadowMode": false
+}

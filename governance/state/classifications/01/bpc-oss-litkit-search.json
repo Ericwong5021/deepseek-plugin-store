@@ -3,43 +3,45 @@
   "group": "research-knowledge",
   "category": "search-browsing",
   "tags": [
-    "search",
-    "api",
-    "document",
     "agent",
-    "cli",
+    "integration",
+    "search",
+    "document",
+    "api",
     "tool",
-    "workflow",
-    "integration"
+    "workflow"
   ],
   "confidence": "high",
-  "confidenceScore": 0.91,
-  "reason": "Primary purpose is an agent-facing scholarly literature utility: a DeepSeek Harness plugin adapter that enables search, retrieval, and citation-audit workflows over many academic sources. Conservatively, capabilities include multi-source bibliographic search, PDF/supplement download, manuscript reference verification, result export, and workflow automation. A human check is needed due optional paywall-bypass-style fallback download paths.",
+  "confidenceScore": 0.93,
+  "reason": "The repository is best classified as a search-oriented research utility delivered as a DeepSeek Harness adapter: its own metadata and README repeatedly describe exposing litkit’s literature search, citation audit, and download capabilities to agent clients. Core behavior centers on finding and retrieving scholarly sources and checking manuscript references, so it maps to the search-browsing category with agent/integration-focused tags, while also carrying moderate external-network and content-retrieval risk.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件适配器，可将 litkit 的学术文献检索、引用核查与下载能力接入到智能体客户端。",
+    "en": "This is a DeepSeek Harness plugin adapter that exposes litkit’s scholarly literature search, citation auditing, and download workflows to agent clients."
+  },
   "risk": {
-    "level": "R2",
+    "level": "R1",
     "capabilities": [
-      "Academic literature search across many external sources",
-      "Citation extraction and verification for manuscript files",
-      "PDF and supplementary material retrieval",
-      "Result export to bibliographic formats",
-      "Bulk retrieval, deduplication, and ranking workflows",
-      "Agent access via DSH/MCP integration"
+      "Academic literature search and source discovery across multiple providers",
+      "Citation/reference checking for documents",
+      "Scholarly PDF/supplement download orchestration",
+      "Export of search/audit outputs to common formats",
+      "DSH/MCP integration for agent-driven usage"
     ],
     "reasons": [
       {
-        "code": "Package is explicitly a DSH plugin adapter exposing litkit literature search, citation audit, and download capabilities.",
+        "code": "`package.json` identifies the package as `@bpshil/litkit-dsh` with the description of a DeepSeek Harness plugin adapter for academic search, citation audit, and download tools.",
         "evidenceRef": "package.json"
       },
       {
-        "code": "README documents direct network-dependent functionality: multi-source search, downloads, citation verification, and workflows.",
+        "code": "README states features including `litkit search`, `litkit verify`, and `litkit download`, and that the project targets 25+ scholarly sources.",
         "evidenceRef": "readme"
       },
       {
-        "code": "README includes optional shadow-library fallback routes (Sci-Hub/LibGen/Anna's Archive), which raises legal/compliance concerns.",
+        "code": "README includes a legal notice describing optional shadow-library fallback download paths (Sci-Hub/LibGen/Anna's Archive), indicating potentially sensitive retrieval behavior requiring review.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Repository contains dedicated source, downloader, and workflow modules, indicating broad external service and data handling.",
+        "code": "Rule result reports `MANIFEST_REFERENCES_VALID` as failed for `adapters/dsh/cordis.patch.yml`, suggesting the manifest reference is currently inconsistent.",
         "evidenceRef": "tree"
       }
     ]
@@ -47,36 +49,35 @@
   "governance": {
     "schemaVersion": 1,
     "policyVersion": "2026-08-18",
-    "finalDecision": "needs_human",
-    "riskLevel": "R2",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
     "capabilities": [
       "network.access",
-      "Academic literature search across many external sources",
-      "Citation extraction and verification for manuscript files",
-      "PDF and supplementary material retrieval",
-      "Result export to bibliographic formats",
-      "Bulk retrieval, deduplication, and ranking workflows",
-      "Agent access via DSH/MCP integration"
+      "Academic literature search and source discovery across multiple providers",
+      "Citation/reference checking for documents",
+      "Scholarly PDF/supplement download orchestration",
+      "Export of search/audit outputs to common formats",
+      "DSH/MCP integration for agent-driven usage"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
-      "HIGH_RISK_CAPABILITY"
+      "MANIFEST_REFERENCES_VALID"
     ],
     "trace": {
-      "rulesPassed": true,
-      "aiDecision": "needs_human",
-      "aiConfidence": 0.91,
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.93,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:04:48.917Z",
+  "classifiedAt": "2026-08-18T17:59:10.780Z",
   "repositoryCommitSha": "5bae0b791535f76f680c763304fcd5dc8fc80fe0",
-  "evidenceHash": "1a32724442d3407a2749c32f7efa8050155e54e9b809bd128fa69758a0c5aa24",
+  "evidenceHash": "b3dc714f1830ed59b904567b3e376bc343ce0b958892d5afa14fff2588e6b5c3",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "a7c7d498a03e2f69eb19152fc91f72572af8952227de94445fab70554e31ad87",
-  "shadowMode": true
+  "shadowMode": false
 }

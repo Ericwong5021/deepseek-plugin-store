@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "cli",
+    "testing",
+    "terminal",
+    "tool",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "基于 README 与清单证据，该插件的核心用途是面向 DSH 的能力编排层：通过原子化插件和统一入口自动完成能力发现、审计、执行验证、许可检查与语义路由，主要服务于开发流程自动化与工具链协调。",
+  "summaries": {
+    "zh": "Polaris 是一款用于 DSH 的自动化能力编排插件，以统一接口聚合发现、审计、执行验证和检索能力，并按意图路由到合适实现以支持开发流程。",
+    "en": "Polaris is a DSH orchestration plugin that aggregates discovery, audit, execution, verification, and retrieval capabilities behind a single interface and routes requests to suitable implementations for automated development workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers model tools and atomic DSH commands for discovery, audit, bounded execution, verification, retrieval, licensing, and rule injection.",
+      "Can execute project-related commands/tests with timeout and output monitoring via execution primitive.",
+      "Performs automated candidate evaluation steps including smoke tests, contract checks, fuzzing, benchmarks, SBOM, and adversarial replay in its arena workflow.",
+      "Builds immutable indexes for candidate/promoted implementations and routes intents to selected implementations through a scheduler.",
+      "Supports dependency and licensing checks during development workflow steps."
+    ],
+    "reasons": [
+      {
+        "code": "README describes seven atomic primitives and matching model tools for discovery/audit/exec/verify/retrieve/license/rules, indicating workflow automation across development tasks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CLI and DSH entry points (`dsh-polaris`, exported subpaths like `./discovery`, `./audit`, `./exec`, etc.) confirm the package is intended for orchestrated tool use rather than a single-purpose utility.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Tree structure shows dedicated `plugins`, `lib`, and `cordis.patch.yml` plus commands like `arena`, `seal`, `promote`, and `route`, supporting an integrated orchestration/control pipeline.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Repository manifest indicates public, active plugin bundle with immutable commit metadata, but includes capabilities that can affect local code execution and dependency/license checks.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Registers model tools and atomic DSH commands for discovery, audit, bounded execution, verification, retrieval, licensing, and rule injection.",
+      "Can execute project-related commands/tests with timeout and output monitoring via execution primitive.",
+      "Performs automated candidate evaluation steps including smoke tests, contract checks, fuzzing, benchmarks, SBOM, and adversarial replay in its arena workflow.",
+      "Builds immutable indexes for candidate/promoted implementations and routes intents to selected implementations through a scheduler.",
+      "Supports dependency and licensing checks during development workflow steps."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:56.776Z",
+  "repositoryCommitSha": "7e014171c53a09afa22be4b1c7032e6dec25f3a4",
+  "evidenceHash": "1cc3c38e56daa858cc8afe3a9c17027ad22fd603d46ac643338dfdc8c1094cc7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8b9907f25e1a276c1bd12dc2197b7c4319de0f333b204af664a9b2ce6ae7ef4b",
+  "shadowMode": false
+}

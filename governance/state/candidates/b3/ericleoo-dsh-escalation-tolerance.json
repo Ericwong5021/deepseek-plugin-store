@@ -4,7 +4,7 @@
     "fullName": "ericleoo/dsh-escalation-tolerance",
     "url": "https://github.com/ericleoo/dsh-escalation-tolerance"
   },
-  "summary": "Tolerate redundant sandbox_permissions requests: a Cordis plugin that turns hard failures into harmless no-ops when a tool asks for a permission mode that is already active.",
+  "summary": "This plugin handles redundant sandbox permission escalation fields during tool execution by removing non-escalating requests so calls run at current session permissions without being rejected, while preserving normal handling for genuine permission escalations.",
   "sources": [
     "github-topic"
   ],
@@ -43,25 +43,23 @@
     "capturedAt": "2026-08-18T03:12:54.249Z"
   },
   "classificationSuggestion": {
-    "group": "agents-workflows",
-    "category": "automation",
+    "group": "build-development",
+    "category": "plugin-development",
     "tags": [
+      "tool",
       "automation",
-      "project-analysis",
-      "theme",
-      "tool"
+      "workflow",
+      "integration"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:cordis",
-      "text:project-analysis:dependency",
-      "text:automation:automat",
-      "text:memory-context:session",
-      "text:themes-layout:skin",
-      "text:general-utilities:tool",
-      "text:collaboration:share"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:02888fda302a656e8495a69d8db1010ef8fd58d8d51bb2bd653df8b3ad0dc9f2",
+      "commit:0514531b0d28a8a52fb220e220d9f3c7628c0811"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:00:54.338Z",
+    "reason": "Primary purpose is to make tool calls resilient to redundant sandbox permission escalation requests by sanitizing non-expansive sandbox_permissions before validation while letting genuine escalations continue through normal approval flow. Classification is plugin-development because it is packaged and loaded as a Cordis plugin extension with explicit event-hook behavior over tool execution."
   }
 }

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "knowledge",
+    "tool",
+    "search",
+    "automation",
+    "data",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的核心面向是为 DSH 智能体提供跨会话记忆：记录问题与多方案解决记录、可检索查询并回写执行结果与状态，README 中明确列出的工具集为 selfmem_search、selfmem_record、selfmem_hit/selfmem_fail、selfmem_import 与 selfmem_status，共同表明其主要用途是记忆与上下文增强而非执行外部服务调用。",
+  "summaries": {
+    "zh": "DSH 插件用于跨会话记录问题与解决方案，支持前提感知检索、执行反馈回写与外部导入，帮助智能体复用既有经验。",
+    "en": "DSH plugin stores problems and solutions across sessions, supports context-aware retrieval, hit/fail feedback updates, and import, so agents can reuse prior experience."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persist cross-session problem/solution records in local JSON storage",
+      "Provide context-aware search and ranking for stored records",
+      "Allow updating solution state (hit/fail) after execution",
+      "Import memory records from file or inline JSON/text"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin stores data in a local records file path and performs read/write operations for lifecycle management.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "State mutation is performed through explicit commands such as selfmem_record and selfmem_hit/selfmem_fail.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The import command accepts external sources (file/JSON/text), creating additional data integrity and content-trust considerations.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Persist cross-session problem/solution records in local JSON storage",
+      "Provide context-aware search and ranking for stored records",
+      "Allow updating solution state (hit/fail) after execution",
+      "Import memory records from file or inline JSON/text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:57.569Z",
+  "repositoryCommitSha": "5c58b335dcfdb05bf01259492c032db42759a9b4",
+  "evidenceHash": "607e821c5acf36c03990bd8d6a2d7550ce15f5e793e59f7b13a8e732b25ca5ec",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "afdfdf97ad808db05c9a2cee3dff1d815044b0b9c044768815376b65030edfa5",
+  "shadowMode": false
+}

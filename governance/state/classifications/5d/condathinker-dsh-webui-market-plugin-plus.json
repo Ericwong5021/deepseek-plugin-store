@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "tool",
+    "api",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is managing DSH web plugins from the web UI: marketplace browsing, install/uninstall/update flows, and post-install enable/disable control. Evidence in README and package metadata shows it ships a host-side API route set and a web client UI with global progress/overlay controls, confirming a plugin-management/administration tool.",
+  "summaries": {
+    "zh": "这是一个用于 DSH Web GUI 的插件市场插件，提供插件列表与安装管理，并显示持续可见的后台安装进度、可终止任务与重启提示。",
+    "en": "A DSH web GUI plugin-market plugin that lets users browse and manage plugins, shows persistent background install progress, supports canceling install tasks, and indicates restart requirements."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides plugin lifecycle operations (list/probe/installed/install/uninstall/update) through web-host routes",
+      "Runs install/update workflows with background progress tracking and supports canceling in-progress tasks",
+      "Enables enable/disable of installed plugins by writing profile bundle state",
+      "Adds web UI pages/overlays for plugin-market browsing and status visibility"
+    ],
+    "reasons": [
+      {
+        "code": "HOST_API_PLUGIN_OPERATIONS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BACKGROUND_INSTALL_WITH_PROCESS_KILL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PROFILE_BUNDLE_STATE_MUTATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_PLUGIN_ENTRYPOINT_REGISTRATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides plugin lifecycle operations (list/probe/installed/install/uninstall/update) through web-host routes",
+      "Runs install/update workflows with background progress tracking and supports canceling in-progress tasks",
+      "Enables enable/disable of installed plugins by writing profile bundle state",
+      "Adds web UI pages/overlays for plugin-market browsing and status visibility"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:47.905Z",
+  "repositoryCommitSha": "4b9991b46289e15386cdac621be041d04b95b275",
+  "evidenceHash": "2b1bc850ec4dd376a82c09fe30d857c67259710316b09c71071f142afb64e3ec",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2c90968867473e243fa7442f2f3bfce6eb42b95c79edf5975428e00693c92510",
+  "shadowMode": false
+}

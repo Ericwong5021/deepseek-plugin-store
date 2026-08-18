@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "api",
+    "chat",
+    "tool",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Evidence indicates the plugin’s primary user-facing purpose is keyboard-based task interruption in the DeepSeek Harness Web interface: users press Esc in the composer to stop the currently running task. It appears to implement this via existing harness client cancel APIs with input-state checks to avoid broad accidental termination, and is scoped to the web client plugin runtime.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 中提供快捷终止功能：当会话输入框处于焦点且任务进行中时，按 Esc 可停止本轮任务。",
+    "en": "This plugin adds a quick-cancel shortcut in DeepSeek Harness Web, stopping the active task when Esc is pressed in the active conversation composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stops an active task in DeepSeek Harness conversation flow when triggered by a keyboard shortcut",
+      "Uses the web client conversation API to issue task cancellation",
+      "Restricts cancellation triggers to specific input-focus and event conditions to reduce accidental activation"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is \"DeepSeek Harness Web plugin: press Escape in the composer to stop the active task\" and lists guard conditions like unmodified Esc, focused composer, and active task states.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a web platform plugin with dsh client runtime and UI conversation dependencies, consistent with in-client task-cancel behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata identifies this as a non-official community plugin for DeepSeek Harness Web, indicating primary scope is client-side UI behavior.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Stops an active task in DeepSeek Harness conversation flow when triggered by a keyboard shortcut",
+      "Uses the web client conversation API to issue task cancellation",
+      "Restricts cancellation triggers to specific input-focus and event conditions to reduce accidental activation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:36.211Z",
+  "repositoryCommitSha": "fd39c3d83dac7c1470ca76a83d68faf410c87b49",
+  "evidenceHash": "998f8b67a3e6139932b6be9608ebfe89a0acc17d2d01843f3bf70291969e3f8d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "427070cb725d3779a23ca8fbe1cfd820dc969e86287623c8cc52a61c095e8b53",
+  "shadowMode": false
+}

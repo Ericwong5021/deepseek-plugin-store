@@ -1,16 +1,73 @@
 {
   "status": "classified",
-  "group": "tools-data",
-  "category": "general-utilities",
+  "group": "interface-experience",
+  "category": "navigation-panels",
   "tags": [
-    "ui",
     "tool",
-    "data"
+    "ui",
+    "api",
+    "integration"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary purpose is to provide a one-click UI wallet widget in the session header that shows current DeepSeek API balance to the user, i.e., a small practical utility tool.",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s core purpose is to provide a DSH session-header wallet control for one-click viewing of DeepSeek API balance. Evidence shows it injects a small UI element into the session header and serves balance data via a host endpoint that reads a local credentials file and calls DeepSeek’s balance API.",
+  "summaries": {
+    "zh": "为 DSH 会话顶部加入一个小钱包控件，点击后可快速查看 DeepSeek API 余额。",
+    "en": "Adds a compact wallet control in the DSH session header that lets users view their DeepSeek API balance with one click."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local host credentials file for DeepSeek API key",
+      "Fetches balance data from external DeepSeek API endpoint",
+      "Renders/injects a wallet control in the DSH session header"
+    ],
+    "reasons": [
+      {
+        "code": "README documents a host endpoint GET /api/wallet/balance that reads DEEPSEEK_API_KEY from ~/.dsh/.credentials.yaml and queries https://api.deepseek.com/user/balance.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the wallet UI is implemented as a slot component in conversation.session.header.utilities to show balance in the session header.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json includes DSH web client runtime/connection/ui slot injection configuration for web platform.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local host credentials file for DeepSeek API key",
+      "Fetches balance data from external DeepSeek API endpoint",
+      "Renders/injects a wallet control in the DSH session header"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:38.684Z",
-  "evidenceHash": "06ab18efffba73a0e8f5bd63ca6bfca37380fce6d5de5ffd39918c85d56bdd79"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:44.835Z",
+  "repositoryCommitSha": "c8fec3b8b293c69ab639bf2046c9ee97f8ffefe0",
+  "evidenceHash": "5c3786b69eb33c5df6a525e29f97bd4bbcfae1f5891171807c35aeff82bf3b56",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5fc58b92fb5035955f3a92c2940c6128fb5bce1020967dcb40864dfbd22a8556",
+  "shadowMode": false
 }

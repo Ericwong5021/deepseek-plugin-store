@@ -4,40 +4,39 @@
   "category": "external-services",
   "tags": [
     "api",
-    "integration",
     "data",
-    "tool",
+    "integration",
     "ui",
-    "monitoring",
-    "visualization"
+    "tool"
   ],
   "confidence": "high",
-  "confidenceScore": 0.92,
-  "reason": "This plugin is a DSH web plugin that adds a left-side panel for viewing DeepSeek account balance and local token-cost usage statistics. Its primary function is external service integration for balance checks plus cost analytics from locally stored DSH sessions, surfaced through a web UI.",
+  "confidenceScore": 0.94,
+  "reason": "Based on repository evidence, this is a utility-style DSH plugin that fetches DeepSeek account balance from the official API and computes local usage costs for Flash/Pro from saved sessions, then displays them in a DSH web sidebar entry; primary scope is external-service billing visibility with a small local data-processing surface.",
+  "summaries": {
+    "zh": "该插件在 DSH Web 界面的侧边栏入口中展示 DeepSeek 账户余额，并按本机会话统计 Flash/Pro 的消费金额。",
+    "en": "This plugin adds a DSH web sidebar panel that shows your DeepSeek account balance and local Flash/Pro usage cost statistics."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Reads DeepSeek API credential from DSH host credentials store (DEEPSEEK_API_KEY)",
-      "Calls external DeepSeek balance endpoint: https://api.deepseek.com/user/balance",
-      "Processes local DSH session records to calculate cumulative/today/Flash/Pro usage costs",
-      "Provides local plugin routes: /api/deepseek-balance and /api/deepseek-balance/usage"
+      "Reads DEEPSEEK_API_KEY from DSH credentials",
+      "Calls an external DeepSeek balance API endpoint",
+      "Reads local DSH session records to calculate usage cost",
+      "Provides local host routes for panel data retrieval",
+      "Injects a web UI entry/panel into DSH"
     ],
     "reasons": [
       {
-        "code": "credential-read-for-balance-query",
+        "code": "The README states it uses DEEPSEEK_API_KEY and a host-side request to the DeepSeek balance endpoint.",
         "evidenceRef": "readme"
       },
       {
-        "code": "external-api-call-to-deepseek-balance",
+        "code": "The README defines local routes `GET /api/deepseek-balance` and `GET /api/deepseek-balance/usage` used to supply panel data.",
         "evidenceRef": "readme"
       },
       {
-        "code": "local-usage-aggregation-from-session-logs",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "local-web-endpoints-exposed-by-plugin",
-        "evidenceRef": "readme"
+        "code": "The package manifest marks DSH client integration for the web platform and includes bundle registration files, confirming plugin runtime and UI behavior.",
+        "evidenceRef": "package.json"
       }
     ]
   },
@@ -49,30 +48,31 @@
     "capabilities": [
       "credential.read",
       "network.access",
-      "Reads DeepSeek API credential from DSH host credentials store (DEEPSEEK_API_KEY)",
-      "Calls external DeepSeek balance endpoint: https://api.deepseek.com/user/balance",
-      "Processes local DSH session records to calculate cumulative/today/Flash/Pro usage costs",
-      "Provides local plugin routes: /api/deepseek-balance and /api/deepseek-balance/usage"
+      "Reads DEEPSEEK_API_KEY from DSH credentials",
+      "Calls an external DeepSeek balance API endpoint",
+      "Reads local DSH session records to calculate usage cost",
+      "Provides local host routes for panel data retrieval",
+      "Injects a web UI entry/panel into DSH"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "HIGH_RISK_CAPABILITY"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.92,
+      "aiConfidence": 0.94,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:04:21.364Z",
+  "classifiedAt": "2026-08-18T17:59:08.955Z",
   "repositoryCommitSha": "88940a6bf159218b5828c79e6ab3b94fd116324f",
-  "evidenceHash": "6fb5e97b0e7d140c7e98e0c4877bbd4b625b3f8e7b72dc8e4b911e93e9b47111",
+  "evidenceHash": "beb7f1f1ad60a11fd3f0e9d56519231acba4711e0a15c9608ea41a97a9c6ba01",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "7d745846ebc17bfc881921e35d5302294d15fe13a059989b84a2d7d4af2dba33",
-  "shadowMode": true
+  "shadowMode": false
 }

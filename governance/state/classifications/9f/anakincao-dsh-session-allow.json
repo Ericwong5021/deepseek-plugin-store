@@ -1,15 +1,72 @@
 {
   "status": "classified",
-  "group": "interface-experience",
-  "category": "navigation-panels",
+  "group": "agents-workflows",
+  "category": "automation",
   "tags": [
+    "automation",
     "ui",
-    "workflow"
+    "workflow",
+    "tool",
+    "browser"
   ],
   "confidence": "high",
-  "reason": "Primary purpose is to modify the web chat interface’s approval panel behavior (adding session-scoped approval options) and control right-side panel auto-open/auto-close behavior, directly affecting user navigation and panel interactions.",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is a user-facing DSH Web GUI utility that changes approval workflow behavior by adding a session-level, per-mode grant in the approval dialog and by adding a short-lived guard to stop automatic right-panel opening after an approval action, as documented in its README and plugin client/package metadata.",
+  "summaries": {
+    "zh": "这是一个面向 DSH Web GUI 的插件，在审批对话框中提供“本次会话允许”选项并按会话与模式记住授权结果，同时在审批后阻止右侧面板被自动弹开。",
+    "en": "This is a DSH Web GUI plugin that adds an “Allow for this session” approval choice, remembers mode-level grants per session, and suppresses automatic right-panel opening after approval actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds an approval-dialog option to grant a mode for the current session.",
+      "Auto-approves repeated escalation requests of the same mode within that session.",
+      "Prevents an automatically triggered right-side panel from staying open immediately after approval actions."
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as adding a session-scoped “Allow for this session” option to the approval dialog and storing per-mode grants.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin uses localStorage key dsh.sessionAllow.v1 with session-scoped keys (mode:<mode>) and optional per-request revocation via UI chips.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package manifest declares a web client bundle with browser-facing injection, confirming client-side behavior and UI/interaction logic.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds an approval-dialog option to grant a mode for the current session.",
+      "Auto-approves repeated escalation requests of the same mode within that session.",
+      "Prevents an automatically triggered right-side panel from staying open immediately after approval actions."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:32.198Z",
-  "evidenceHash": "1133867e7cf04c9ee4d2ffd75c5bcf82cc6152471c4372ddb2b801e1e1283073"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:44.862Z",
+  "repositoryCommitSha": "b2d16f6949d8f732457633904d73b43f52c982cb",
+  "evidenceHash": "6570b453c9f484cec6bc462f16a1e5cbaa6bcc191521430c7fa92f1f8ea6e122",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2036d653a444b08ac7c580c14ca0d7cd334507e06030d06f5aefb6ec8f777559",
+  "shadowMode": false
 }

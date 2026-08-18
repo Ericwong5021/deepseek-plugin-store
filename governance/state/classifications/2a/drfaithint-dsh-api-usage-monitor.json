@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "data",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的核心用途是监控与展示 LLM API 用量：在 DSH 主机端监听 API 调用并汇总实时/分对话统计，同时在设置页提供展示与历史扫描入口。证据来自仓库 README 对流事件监听、按会话聚合、扫描会话日志历史以及 `/status` 与 `/history` 接口的说明，及 package.json 对 web 插件能力的声明。",
+  "summaries": {
+    "zh": "这个插件用于在 DSH 设置页显示当前与分对话的 LLM API 用量，并支持按需扫描历史会话日志查看历史用量。",
+    "en": "This plugin displays current and per-conversation LLM API usage in the DSH settings page and supports on-demand scanning of historical conversation logs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes LLM API call events to collect provider/model usage metrics in the host process.",
+      "Aggregates token usage and call counts in memory for current runtime and per-session views.",
+      "Exposes local HTTP endpoints for current status and historical usage queries.",
+      "Renders usage metrics in a settings-page UI with periodic polling and manual history refresh."
+    ],
+    "reasons": [
+      {
+        "code": "README documents interception of `llm/stream` calls and tracking of provider/model/token usage for API usage monitoring.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents host-side routes `/api/dsh-api-usage-monitor/status` and `/api/dsh-api-usage-monitor/history` plus a client page that polls for status and reads history.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines a DSH bundle with web client surface, indicating integrated host/web plugin behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository summary and tree show dedicated host and client entry files (`lib/index.js`, `lib/client.js`) for event aggregation and settings-page display.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Observes LLM API call events to collect provider/model usage metrics in the host process.",
+      "Aggregates token usage and call counts in memory for current runtime and per-session views.",
+      "Exposes local HTTP endpoints for current status and historical usage queries.",
+      "Renders usage metrics in a settings-page UI with periodic polling and manual history refresh."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:29.844Z",
+  "repositoryCommitSha": "7764654d98412fcc27b26721cf23a3d10e2419b0",
+  "evidenceHash": "c6ed2d24ee5a3c1750ab728ca5aafc46ff4bd52ee4cede0ee16725c03e3d80ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "25d6d565fe237e36823e6d746fbdb1fb5562e39e37f7854cfbad64284a3efeac",
+  "shadowMode": false
+}

@@ -5,14 +5,81 @@
   "tags": [
     "ui",
     "tool",
+    "chat",
     "data",
-    "search",
-    "file"
+    "automation",
+    "integration",
+    "file",
+    "browser"
   ],
   "confidence": "high",
-  "reason": "This plugin’s primary user-facing purpose is a chat-input side utility panel: it adds a quick button beside the input controls, opens a vault panel with categorized entries, supports clicking to fill/send, searching, and in-panel management (add/edit/delete), which is fundamentally about in-app panel navigation and input assistance rather than code generation, testing, or other non-UI tooling.",
+  "confidenceScore": 0.92,
+  "reason": "Plugin primarily provides a DSH web input-side vault panel for quick capture and reuse of frequent items like keys, servers, addresses, and URLs, including auto-suggest from conversation patterns, in-panel search/edit, and one-click fill/send actions, with optional WebDAV backup/restore integration.",
+  "summaries": {
+    "zh": "该插件是 DSH 网页端便捷输入工具，在发送区旁提供保险箱面板，支持记录常用密钥/服务器/网址等信息并点击快速填入或 Ctrl+点击直接发送。",
+    "en": "This plugin is a DSH web input utility that adds a vault panel beside the message area to store items like keys and URLs, with quick one-click fill and Ctrl-click direct send from stored entries."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Monitor conversation messages for pattern matches",
+      "Collect and store user-entered vault records (including private/public items)",
+      "Autofill chat draft and trigger submit actions",
+      "Persist vault state in host-side store files",
+      "Backup and restore vault data via WebDAV network endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "README describes automatic sensitive-item recognition from session content (keys, URLs, servers, phones, IPs) and red-dot notification, with manual capture into a vault panel.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package metadata show a web client panel injected into the input area between use/usage and send controls, with click-to-fill and Ctrl/Cmd+click-to-send behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states private records and WebDAV config are stored encrypted with PBKDF2-SHA256 + AES-256-GCM, with auto-locking of decrypted private content and WebDAV backup/restore.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web client injection and a bundled patch, indicating host/client integration and file-backed store locations.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Monitor conversation messages for pattern matches",
+      "Collect and store user-entered vault records (including private/public items)",
+      "Autofill chat draft and trigger submit actions",
+      "Persist vault state in host-side store files",
+      "Backup and restore vault data via WebDAV network endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:03:32.466Z",
-  "evidenceHash": "6115157369eaa311026ecc3b0dda04acd978314efd2f1f4335f5088bc17cbac2"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:22.246Z",
+  "repositoryCommitSha": "874b66714e23b59f9545dda79e78c91a7d767e0f",
+  "evidenceHash": "1385bbabeffe6bf6a552bcfd62aedeeffa74ac28b55b72d07d363fece0df0365",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d876e4203494c348bf52318364a78de509ab382f4a195b0b702402522056abc5",
+  "shadowMode": false
 }

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "ui",
+    "chat",
+    "tool",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用户价值是增强 DeepSeek Harness 在 SSH/终端中的可用性，提供纯文本 TUI 交互来驱动和管理会话，而非用于代码生成、搜索浏览或文档处理类任务。核心特征包括会话管理、终端可视化、工具与思考过程展示、快捷命令与配置联动。",
+  "summaries": {
+    "zh": "这是一个面向 SSH 场景的 DeepSeek Harness 终端插件，在纯 TUI 中提供会话聊天、模型/模式切换、工具调用展示与历史会话恢复等交互功能。",
+    "en": "This is a DeepSeek Harness plugin for SSH-friendly terminals, providing a pure TUI experience for assistant interaction, model/mode switching, tool-call display, and session resume workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "终端式 AI 交互界面（含历史会话选择与恢复）",
+      "显示与交互式展开/收起模型思考与工具调用内容",
+      "基于配置支持模型与模式切换",
+      "运行时依赖 DeepSeek Harness 与外部 LLM 提供商接口",
+      "可触发终端提示与标题栏状态更新"
+    ],
+    "reasons": [
+      {
+        "code": "README.md 明确描述该插件为 SSH 场景优化的纯终端 TUI，提供会话、历史记录、工具卡片、滚动回看与键盘交互。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README.md 指定可通过 /model、/mode 与 /resume 命令以及配置文件读取模型/提供商信息，并在特定模式下依赖 webServer（含本地端口）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 的主/启动入口与 dsh bundle patch 配置表明其为可安装到 dsh profile 的运行时插件（含命令脚本用于安装/卸载/校验）。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "终端式 AI 交互界面（含历史会话选择与恢复）",
+      "显示与交互式展开/收起模型思考与工具调用内容",
+      "基于配置支持模型与模式切换",
+      "运行时依赖 DeepSeek Harness 与外部 LLM 提供商接口",
+      "可触发终端提示与标题栏状态更新"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:01.842Z",
+  "repositoryCommitSha": "8d4ca543ed32e9b63005f666f1645e9a61daef60",
+  "evidenceHash": "ddf88a1314fe7d0b91d426b988116452d5eca33abcd6bbe97069b0a1a4a9e48a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "93362d31231ffade131eb58a1c3b1ea5a0e1ea47363c8b3240f98402bab9635f",
+  "shadowMode": false
+}

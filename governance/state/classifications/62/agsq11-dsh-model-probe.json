@@ -4,14 +4,76 @@
   "category": "notifications-monitoring",
   "tags": [
     "monitoring",
-    "ui",
     "automation",
-    "tool"
+    "ui",
+    "api",
+    "integration",
+    "data",
+    "file",
+    "workflow"
   ],
   "confidence": "high",
-  "reason": "The plugin is designed to monitor DeepSeek Harness model health (Alive/Dead), run scheduled rechecks, persist status, and surface that health in the UI via badges and model-management views.",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a DeepSeek Harness model-health utility that probes advertised models, tracks Alive/Dead status with retries, and shows the results in the DSH web UI model selectors and settings workflow. The README explicitly describes persistent host-side health state, scheduled rechecks every 30 minutes, runtime failure-based verification, and UI badges/filtering, which aligns to monitoring/automation for operational model reliability.",
+  "summaries": {
+    "zh": "DSH Model Probe 是一个 DeepSeek Harness 插件，用于持续探测已注册模型的健康状态并在 Web UI 中展示存活/故障状态和可用性相关操作。",
+    "en": "DSH Model Probe is a DeepSeek Harness plugin that continuously monitors configured models and surfaces alive/dead health status directly in the DSH web UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors model availability (Alive/Dead) for provider-model pairs used by DeepSeek Harness",
+      "Runs manual and scheduled health probes with retry and recovery behavior",
+      "Persists health state and recent outcomes on the host filesystem",
+      "Injects health indicators and filtering behavior into DSH model selection UI"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin performs networked probe calls to validate model responsiveness and can trigger repeated requests during failures.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Health state and bounded history are stored in host state.json, which introduces local persistence and configurable file-path behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is packaged as a DSH web plugin with client-side integration points (settings, model pickers, theme-aware UI), confirming UI/runtime-side impact.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Monitors model availability (Alive/Dead) for provider-model pairs used by DeepSeek Harness",
+      "Runs manual and scheduled health probes with retry and recovery behavior",
+      "Persists health state and recent outcomes on the host filesystem",
+      "Injects health indicators and filtering behavior into DSH model selection UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:01:30.153Z",
-  "evidenceHash": "84289570b763e1aaa6d9897acaf9c6cb533fa1ab543b5a189dc67e50965f36d8"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:35.401Z",
+  "repositoryCommitSha": "00350ae1927dcca99844fb9ab07a6cc559a9739d",
+  "evidenceHash": "5533279eb2e99fe7d89efe43200881d1fcdee3904163a15e35d03113015ee474",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b488ffda961f1d8c782be08c9f7b9af6beb36c5fbbd53a3eaceeca403d2b5646",
+  "shadowMode": false
 }

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "tool",
+    "automation",
+    "context",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The repository is a DeepSeek Harness plugin bundle focused on editing text files through hash-anchored line tooling: it exposes read/replace/undo functions, replaces built-in editing behavior when mounted, and maintains workspace state for snapshots and undo. Its capabilities are file-operation utilities for stable line addressing and constrained edit workflows, with no evidence of external service integration or unrelated functionality.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，面向文本文件提供基于稳定锚点的行级读取、替换与撤销操作，支持按锚点精确定位并执行编辑。",
+    "en": "This is a DeepSeek Harness plugin that provides line-based file read, replace, and undo operations using stable hash anchors for precise line-level editing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides hash-anchored file line read, replace, and undo tools via DSH tool registration.",
+      "Tracks and enforces stale/ambiguous anchor checks with explicit rejection codes for unsupported or unsafe edits.",
+      "Persistently stores file snapshots and last-served ranges in a workspace store to support anchored operations and undo.",
+      "Implements a takeover mode that restricts built-in edit usage and delegates file-edit behavior to the plugin."
+    ],
+    "reasons": [
+      {
+        "code": "README documents the plugin as hash-anchored read/replace/undo tools with explicit reject cases and line-anchor addressing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and repository structure show a profile-mounted DSH bundle with takeover behavior and a core/takeover split for tool registration and behavior interception.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README identifies a workspace-local `.dsh-hash-edit/store.json` used for snapshots and undo persistence, indicating file-state persistence.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH bundle plugin with entry points and `@deepseek-ai/dsh-tools` dependency, confirming integration with DSH agent tooling.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides hash-anchored file line read, replace, and undo tools via DSH tool registration.",
+      "Tracks and enforces stale/ambiguous anchor checks with explicit rejection codes for unsupported or unsafe edits.",
+      "Persistently stores file snapshots and last-served ranges in a workspace store to support anchored operations and undo.",
+      "Implements a takeover mode that restricts built-in edit usage and delegates file-edit behavior to the plugin."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:14.381Z",
+  "repositoryCommitSha": "f0231e8e1a6f2f1dc14a92030d21d71e59ddbb11",
+  "evidenceHash": "16be11ade31a0328e0a5b9cd8b3408f515da9e4495ef801153c32140868c06e0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "723624e19a6cb987a64445d6cb3fca486e5e4badbc8926a618256704fff377f1",
+  "shadowMode": false
+}

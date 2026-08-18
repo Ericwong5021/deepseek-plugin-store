@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "tool",
+    "data",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This is a DSH plugin that inspects local system signals (locale, timezone, keyboard layout, and region), computes a local identity verdict, and can stop workflow execution when configured conditions indicate non-CN. It is packaged for DSH plugin use and includes a `system_identity` diagnostic tool, with configurable behavior for threshold, art output, and termination mode.",
+  "summaries": {
+    "zh": "该插件是一个 DSH 自动化工具，会基于本机语言、时区、键盘和地区信号生成身份判定，并可按配置终止当前工作流或提供 `system_identity` 诊断工具输出。",
+    "en": "This DSH automation plugin collects local locale, timezone, keyboard, and region signals to produce an identity verdict and can either terminate workflows or expose a `system_identity` diagnostic result based on configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Collects local system signals (locale, timezone, keyboard layout, region)",
+      "Evaluates an identity verdict with configurable threshold logic",
+      "Terminates workflow execution when configured conditions are met",
+      "Registers a diagnostic tool (`system_identity`)",
+      "Provides reusable core identity/decision utilities for library import"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin collects locale/timezone/keyboard/region signals at startup and aggregates them into an identity verdict with a threshold-based rule engine.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents that a non-CN verdict can trigger termination behavior (default forceTerminate) and process exit code 1, while pass mode only prints a banner and registers `system_identity`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes a plugin entry and dsh bundle patch for Cordis integration, and dependencies indicate runtime integration via dsh-related packages.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Collects local system signals (locale, timezone, keyboard layout, region)",
+      "Evaluates an identity verdict with configurable threshold logic",
+      "Terminates workflow execution when configured conditions are met",
+      "Registers a diagnostic tool (`system_identity`)",
+      "Provides reusable core identity/decision utilities for library import"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:30.901Z",
+  "repositoryCommitSha": "d7f3a2aae88e41a60eb33678d4d0d674460a148d",
+  "evidenceHash": "d8ea78d5facc153a139877a2778b4f86a4bec1422e2007f208a41913aac31644",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "53dc556f24653d0d957b3cd982d05ae42cf790c803541b79ce029357ad368c0f",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "ui",
+    "video",
+    "chat",
+    "integration",
+    "api",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a user-facing media interaction extension: the manifest and README show it is a DSH web plugin that adds a Live Talk conversation panel with animated virtual character playback and provider-based ASR/TTS/avatar-media support, so it fits best under media tools rather than development or orchestration tooling.",
+  "summaries": {
+    "zh": "Live Talk 是一款 DSH 的 Web 插件，可在会话界面中展示并驱动虚拟角色，通过语音/文本能力与角色进行动画化交互。",
+    "en": "Live Talk is a DSH web plugin that displays and drives a virtual character in the conversation view while connecting media and speech capabilities for interactive dialogue."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs as a DSH plugin with a web conversation UI surface for displaying animated characters",
+      "Provides ASR/TTS/avatar-media provider integration and runtime seams for pluggable speech/media backends",
+      "Processes conversation-related media (audio/video) with character state/emotion handling for animated responses"
+    ],
+    "reasons": [
+      {
+        "code": "package.json defines the DSH bundle/client manifest and web client entry points, showing runtime integration into host UI and packaging as an installed plugin.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes a Live Talk conversation panel, character rendering, emotion/image/video assets, and registered providers for ASR/TTS/avatar-media including browser fallbacks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Source structure and manifest-related files indicate provider seams and media pipeline modules (e.g., provider registry and conversation/character modules), which implies external service/media processing behavior.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README notes credentials are supplied via dsh ctx.credentials or local proxy for providers, introducing runtime external service interaction and sensitive-config handling.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Installs as a DSH plugin with a web conversation UI surface for displaying animated characters",
+      "Provides ASR/TTS/avatar-media provider integration and runtime seams for pluggable speech/media backends",
+      "Processes conversation-related media (audio/video) with character state/emotion handling for animated responses"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:38.230Z",
+  "repositoryCommitSha": "86e342409ca620441fdea2b6cb9800d84c539d9e",
+  "evidenceHash": "916e4cb71b7e959a4864254857a670bb91c35871238a00bce951212856c83006",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b05ac76aeaf30d13bcbdf5dab064a325527f7123ca43046d3023a268f2401636",
+  "shadowMode": false
+}

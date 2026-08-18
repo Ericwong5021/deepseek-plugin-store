@@ -1,16 +1,82 @@
 {
   "status": "classified",
-  "group": "interface-experience",
-  "category": "themes-layout",
+  "group": "tools-data",
+  "category": "general-utilities",
   "tags": [
     "ui",
     "chat",
+    "browser",
+    "tool",
     "workflow"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing function is customizing the compose/input experience in the web UI by remapping Enter, Ctrl/Cmd+Enter, and Shift+Enter behaviors (newline, queue send, interject send) via settings, which is an interface behavior/layout interaction adjustment.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a user-facing utility that customizes composer key behavior in the DeepSeek Harness web GUI, letting users independently define how Enter, Ctrl/Cmd+Enter, and Shift+Enter submit or insert newlines. Evidence shows event interception and setting persistence are local UI/runtime features, with no external services or content-generation/data-processing pipelines.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，可让用户独立配置 Enter、Ctrl/Cmd+Enter 和 Shift+Enter 在对话输入区的换行、排队发送或插话发送行为。",
+    "en": "This DeepSeek Harness web plugin lets users independently configure Enter, Ctrl/Cmd+Enter, and Shift+Enter to perform newline, queue send, or interject send in the composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures Enter, Ctrl/Cmd+Enter, and Shift+Enter input events in the web composer context",
+      "Maps each key independently to newline, queue send, or steer/interject send behavior",
+      "Invokes the existing conversation input submission flow (`submit`) for queue/steer actions",
+      "Persists user configuration in browser localStorage",
+      "Adds a settings UI entry for submit-key configuration",
+      "Overrides the built-in busy-Enter preference for the intercepted keys"
+    ],
+    "reasons": [
+      {
+        "code": "Readme describes this as a standalone DeepSeek Harness web plugin that configures Enter-family keys for newline, queue send, or interject send independently.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme states key handling is done on document capture phase and that these intercepted key behaviors replace the built-in busy-Enter behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme states settings are configured in Settings → General → Submit keys and saved in localStorage under `dsh.customEnterKey`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata includes `dsh` client bundle/injection configuration for the web platform, confirming client-side plugin integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Captures Enter, Ctrl/Cmd+Enter, and Shift+Enter input events in the web composer context",
+      "Maps each key independently to newline, queue send, or steer/interject send behavior",
+      "Invokes the existing conversation input submission flow (`submit`) for queue/steer actions",
+      "Persists user configuration in browser localStorage",
+      "Adds a settings UI entry for submit-key configuration",
+      "Overrides the built-in busy-Enter preference for the intercepted keys"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:01:08.661Z",
-  "evidenceHash": "4bb036dfee893684786c723aac1cc4fa46901b6207728b5074696f2f74b28c2e"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:30.018Z",
+  "repositoryCommitSha": "c6554d64c586c5f79d86076afd84bdb2b60532f6",
+  "evidenceHash": "fe83c1911da21bfda4a04b56efaed1b1d85300e936284a40ccc67afe321f47bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c257f8caee1d1baea913b0f1e7f3be07698987c23b3245df7f6bf5cc58ecbd8c",
+  "shadowMode": false
 }

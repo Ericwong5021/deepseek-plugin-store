@@ -4,15 +4,75 @@
   "category": "search-browsing",
   "tags": [
     "search",
-    "research",
-    "tool",
     "data",
-    "workflow"
+    "automation",
+    "planning",
+    "workflow",
+    "agent",
+    "knowledge"
   ],
   "confidence": "high",
-  "reason": "This plugin is primarily a literature search assistant: it provides topic/person-based scientific paper discovery via Crossref/arXiv and access to literature records in a local database, with follow-up tracking workflows built around those searches.",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用户面向用途是科学文献检索与跟踪：在 DSH 中通过特定 preset 激活后，提供文献搜索、研究者消歧与按主题/作者持续跟踪，并将结果与计划状态记录到本地数据库，同时支持定时提醒和相关参考数据查询。风险为 R1，原因是涉及外部元数据服务访问与持久化本地数据。",
+  "summaries": {
+    "zh": "该插件为 DSH 的文献检索与跟踪助理提供智能体技能，支持按主题或研究者搜索文献、筛选后入库、查看研究者与期刊辅助数据，并在启用 preset 后按计划执行持续跟踪。",
+    "en": "This plugin adds a DSH literature assistant capability, enabling topic- or researcher-based literature search, curation into a local database, researcher/journal reference lookups, and periodic tracking runs when used via its preset."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Crossref/arXiv 文献检索与结果入库",
+      "基于 SQLite 的本地文献数据库与检索",
+      "研究者档案与杂志目录查询支持",
+      "定时跟踪任务与到期提醒编排",
+      "通过 DSH preset/skill 方式提供 agent 工具调用"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件提供 `literature_search`、`tracking_*`、`researcher_profile_*` 等技能，并可在会话内执行检索、筛选与入库流程。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出使用 Crossref 与 arXiv 的远程检索源，并将数据写入本地 `literature.db`，含缓存与全局新库。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与 package.json 均表明该包为 DSH bundle（含 `dsh.bundle.patch`），面向插件集成与数据处理能力。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Crossref/arXiv 文献检索与结果入库",
+      "基于 SQLite 的本地文献数据库与检索",
+      "研究者档案与杂志目录查询支持",
+      "定时跟踪任务与到期提醒编排",
+      "通过 DSH preset/skill 方式提供 agent 工具调用"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:22.239Z",
-  "evidenceHash": "3940d2cff327b260a25afb6c16971c7a9529bf225dd483f9dec64c5841d0996b"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:43.368Z",
+  "repositoryCommitSha": "6762e277219d3c33fee2597770ba4d62385136d9",
+  "evidenceHash": "5cf3efc1ecc65f268b15ee9e86846e061414acc3525495245bbfdf6442ac3cad",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9bc91f17bc0a0660f1102e1a66ace7e11769e351cafeb362aaa0ced78a2bf87c",
+  "shadowMode": false
 }

@@ -4,12 +4,81 @@
   "category": "desktop-mobile",
   "tags": [
     "desktop",
-    "ui"
+    "ui",
+    "api",
+    "tool",
+    "integration",
+    "terminal",
+    "file",
+    "automation"
   ],
   "confidence": "high",
-  "reason": "Primary purpose is to provide a native desktop Electron shell for DeepSeek Harness web UI, including window launch, desktop shortcut management, and optional native in-shell renderer plugins, making the core value a desktop desktop-first interface experience.",
+  "confidenceScore": 0.93,
+  "reason": "该仓库主要是一个面向用户的桌面化外壳插件，将 DeepSeek Harness 的 Web UI 封装在 Electron 窗口中并通过 dsh 插件机制安装与启动。证据来自 README 对“原生桌面套壳”和插件化安装流程的说明、package.json 的入口与 dsh bundle patch 声明，以及树中主进程与内核/插件模块结构。其核心用途是本地桌面启动和会话入口，不属于生成、检索或学习型功能。",
+  "summaries": {
+    "zh": "dsh-gui 是一个将 DeepSeek Harness 官方 Web UI 运行在本机 Electron 桌面窗口中的应用，并可作为 dsh 插件包安装以快速启动和访问本地 GUI。",
+    "en": "dsh-gui is a native Electron desktop wrapper for the official DeepSeek Harness web UI and can be installed as a dsh profile bundle for quick local GUI startup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local Electron desktop shell launching",
+      "local dsh process/subprocess orchestration via CLI",
+      "desktop shortcut creation and maintenance",
+      "HTTP/WebSocket bridge to local or configured dsh host",
+      "plugin loading with manifest-based IPC permissions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes an Electron-based native desktop shell that loads the official DeepSeek Harness Web UI and is installable as a dsh profile bundle",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata sets the package entry for Electron main process and declares a dsh bundle patch for plugin installation behavior",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes dedicated kernel, plugin, bridge, and host-management modules for protocol handling and extension loading",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "README documents automatic desktop shortcut refresh, dsh web process startup/port handling, and configurable host URL/ports, indicating host control and local file/shortcut side effects",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "local Electron desktop shell launching",
+      "local dsh process/subprocess orchestration via CLI",
+      "desktop shortcut creation and maintenance",
+      "HTTP/WebSocket bridge to local or configured dsh host",
+      "plugin loading with manifest-based IPC permissions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:01:03.199Z",
-  "evidenceHash": "e97a6730670f52159a70810dbb9af637baeeb3c1a8a80df603719ad62bba5318"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:28.693Z",
+  "repositoryCommitSha": "e04e8b3224e973bb490b28fd0a5cf179783f97b7",
+  "evidenceHash": "a7c29b6090a6e8b8dfcd518d35060d74d7cf565ff7abd927a2132a34efa20909",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d05a145b3420315eaaf21e371c23eea8a32a930c357639a721a29b8d1ecf5ee8",
+  "shadowMode": false
 }

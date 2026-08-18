@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "tool",
+    "workflow",
+    "automation",
+    "context",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件主要面向用户对 dsh 对话的子代理编排：用户在本地 Markdown 文件定义代理（含描述、模型路由、系统提示词），在聊天中以 @mention 触发后由主模型调度 `call_agent` 执行子代理并将结果回流。依据仓库说明，其核心能力是将代理目录配置转为会话级调用能力与可用工具枚举，属于会话工作流中的自动化分派与编排功能。",
+  "summaries": {
+    "zh": "该插件让 dsh 在聊天中通过 `@` 提及调用你在 `~/.dsh/agents` 中定义的子 Agent，并按每个文件配置的模型和提示词运行对应任务。",
+    "en": "This plugin lets dsh users call custom subagents in chat with @mentions, using Markdown-defined prompts and per-agent model routing for delegated tasks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "加载并解析本地 agents 目录中的 Markdown 文件作为子代理定义",
+      "将代理描述注入会话系统提示并展示为 @ 触发菜单条目",
+      "通过 `call_agent` 工具按请求调度子代理，并传递子代理提示词与路由参数",
+      "支持 `provider`/`model` 配置以选择子代理调用的模型提供方",
+      "监视代理文件变更并在运行时刷新代理清单"
+    ],
+    "reasons": [
+      {
+        "code": "插件说明支持从 `~/.dsh/agents/` 目录读取每个 `.md` 文件并将正文作为子代理系统提示词，这使本地文件内容可直接影响模型行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明中明确加入 `@name` 触发 `call_agent` 分派流程，由主模型根据提及名称将任务转发给子代理执行。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh 打包配置与客户端注入表明插件会挂载到运行时并扩展系统提示与工具，影响核心会话执行路径。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "加载并解析本地 agents 目录中的 Markdown 文件作为子代理定义",
+      "将代理描述注入会话系统提示并展示为 @ 触发菜单条目",
+      "通过 `call_agent` 工具按请求调度子代理，并传递子代理提示词与路由参数",
+      "支持 `provider`/`model` 配置以选择子代理调用的模型提供方",
+      "监视代理文件变更并在运行时刷新代理清单"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:22.661Z",
+  "repositoryCommitSha": "4eee6d36bc8518edaed0ecad9860ac628ba0184c",
+  "evidenceHash": "2628083b868f81acbba94ee93f9406dd8bcb2d1fb41625da50772212b06be163",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b27efe235fee0ecb1a1c8315e620c7c9823348aafb9af3e54d6276cf951048bd",
+  "shadowMode": false
+}

@@ -4,14 +4,87 @@
   "category": "notifications-monitoring",
   "tags": [
     "monitoring",
-    "visualization",
     "ui",
-    "automation"
+    "automation",
+    "api",
+    "data",
+    "tool",
+    "workflow",
+    "terminal"
   ],
   "confidence": "high",
-  "reason": "The plugin’s core user-facing function is real-time supervision of reasoning behavior, with live charts/gauges and a web monitor UI, plus automated L1/L2/L3 corrective actions when drift is detected.",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a monitoring and runtime control interface for DeepSeek Harness sessions: it continuously evaluates reasoning-text patterns, renders a live visualization panel, and can optionally trigger configurable interventions to influence session flow. Evidence from the repository and readme also shows it runs as a local monitor process with API access, event streaming, and experiment logging/calibration tools, confirming a notification/monitoring-first posture rather than development tooling or content generation.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的实时思维链监控插件，在侧边栏展示推理状态可视化，并可按配置在会话中触发提示、重置或重启相关的干预动作。",
+    "en": "This is a DeepSeek Harness plugin that provides real-time chain-of-thought monitoring with live visualization and optional configurable session interventions such as hints, resets, and restart guidance."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Real-time monitoring of model reasoning text and visible text streams",
+      "Three-band fingerprint state tracking (spec/mixed/react) with live streaming visualization",
+      "Configurable automated interventions (hint/reset/restart) during active sessions",
+      "Web UI panel/sidebar interaction for enabling/disabling interventions and viewing session state",
+      "Local monitor process with loopback API endpoints and SSE event stream",
+      "Experiment logging (JSONL) with replay and calibration tooling"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin purpose is explicitly a real-time chain-of-thought monitor with intervention logic",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Describes tiered L1/L2/L3 intervention behavior and auto-continue workflow",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Publishes and consumes local API routes (/api/overview, /api/push, /api/stream, etc.) through a monitor process",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Provides a web plugin entry and bundled client injection configuration",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Plugin includes a CLI/bin entry and standalone monitor process, indicating runtime execution surface",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Real-time monitoring of model reasoning text and visible text streams",
+      "Three-band fingerprint state tracking (spec/mixed/react) with live streaming visualization",
+      "Configurable automated interventions (hint/reset/restart) during active sessions",
+      "Web UI panel/sidebar interaction for enabling/disabling interventions and viewing session state",
+      "Local monitor process with loopback API endpoints and SSE event stream",
+      "Experiment logging (JSONL) with replay and calibration tooling"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:01:46.253Z",
-  "evidenceHash": "15c94f453610014fd8de2068334b51d5769663febbada84e8c78361db37efa41"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:35.829Z",
+  "repositoryCommitSha": "133e0adc2f11a2eb0844683b9405eb88b97d52c0",
+  "evidenceHash": "e441d3991885485cfe8b95a58ff8eacdbdb12cccd506e92b4fe9577506f2a3f2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3b84232430c116a9833c6eadde44072f4a2a63706fbec0e699e30346ce1b06b1",
+  "shadowMode": false
 }

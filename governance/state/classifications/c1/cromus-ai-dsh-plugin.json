@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "agent",
+    "automation",
+    "integration",
+    "mcp",
+    "skill",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This package is a Cromus integration plugin for DeepSeek Harness that exposes multiple MCP tools for scoring, validating, checking drift, estimating costs, and summarizing reality-check/usage-waste data for AI skill artifacts, so its primary function is external AI-governance service integration rather than local code generation or UI tooling.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 Cromus 插件，可让 dsh 通过 MCP 调用外部服务，对 AI skill 相关文件进行评分、校验、成本评估与漂移检查。",
+    "en": "This is a Cromus plugin for DeepSeek Harness that connects to an external MCP service so dsh can run skill scoring, validation, cost simulation, drift checks, and usage analysis."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects the DeepSeek Harness agent to a remote Cromus MCP endpoint",
+      "Requires a user-provided `CROMUS_API_KEY` for authenticated requests",
+      "Performs validation, scoring, cost simulation, and drift/usage analysis on skill-related files and exports"
+    ],
+    "reasons": [
+      {
+        "code": "remote_endpoint_and_auth_header",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling_via_environment",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_data_processing_of_skill_artifacts",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects the DeepSeek Harness agent to a remote Cromus MCP endpoint",
+      "Requires a user-provided `CROMUS_API_KEY` for authenticated requests",
+      "Performs validation, scoring, cost simulation, and drift/usage analysis on skill-related files and exports"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:52.182Z",
+  "repositoryCommitSha": "1515b2e046667a5c7efa8d56a30d1379b2c71bb3",
+  "evidenceHash": "39201e23f3c2f63adaecaf8c96b0bd6326da9c1b793251a2cd5b7d5a539faddc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5d8bfe25712a64c797ccabd04789083cd5184f0b27e23e2ab98ba4a44445ed3c",
+  "shadowMode": false
+}

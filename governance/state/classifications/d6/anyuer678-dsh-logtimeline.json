@@ -3,14 +3,77 @@
   "group": "tools-data",
   "category": "data-processing",
   "tags": [
-    "data",
     "file",
-    "tool"
+    "data",
+    "tool",
+    "terminal",
+    "cli"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary purpose is offline log analysis: it lets users query local log files by Chinese natural-language time expressions, filters/parses matching lines, and returns structured results plus error/warn/info statistics.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary user-facing role is local log analysis: it accepts Chinese natural-language time input and log file targets, resolves those into time ranges, and returns structured filtered matches plus stats. Evidence from README and repository structure shows it is a DSH tool plugin built around a vendored local CLI workflow, fitting a data-processing utility rather than content creation, networking, or UI-focused functionality.",
+  "summaries": {
+    "zh": "这是一个给 DeepSeek Harness 使用的本地日志查询插件，可通过中文时间表达式筛选日志文件并返回匹配日志与统计信息，帮助快速定位事件。",
+    "en": "This plugin for DeepSeek Harness queries local log files using Chinese time expressions and returns matching log lines with concise summary statistics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local log files from user-specified paths or directories",
+      "Parses Chinese natural-language time expressions into query windows and applies file filtering",
+      "Executes a vendored Python CLI (LogTimeline) as part of query execution",
+      "Returns structured result objects including matched lines and level counts"
+    ],
+    "reasons": [
+      {
+        "code": "README describes tool API `log_query` with parameters `time_text`, `files`, `dir`, `pattern`, and `max_lines` for querying local logs by time windows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin shells out to vendored `python/lq.py --json --no-llm` for parsing and filtering.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Architecture/test files in repository tree (`src/query.ts`, `src/runtime.ts`, `python/`, `tests/`) indicate local log ingestion and CLI-driven processing.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Repository metadata identifies the package as a DSH plugin (`name`, topics, and DSH patch/bundle configuration).",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local log files from user-specified paths or directories",
+      "Parses Chinese natural-language time expressions into query windows and applies file filtering",
+      "Executes a vendored Python CLI (LogTimeline) as part of query execution",
+      "Returns structured result objects including matched lines and level counts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:59:10.487Z",
-  "evidenceHash": "0008b832aae41edee4af6c612b1c49d6814b325acbd9ee636c421148390984d6"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:48.501Z",
+  "repositoryCommitSha": "d4950af4b2301c5992774c951ab1a2f52f170fea",
+  "evidenceHash": "501c35d42432658e4abf483b68b86e33141d7c2d0ba431684fba7cb7ce9cb35f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7e2b4ce3d40cb927dcf715397a2514008e3ab04f3723a50f42dd494c545f89ef",
+  "shadowMode": false
 }

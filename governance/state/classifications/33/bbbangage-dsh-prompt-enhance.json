@@ -3,35 +3,37 @@
   "group": "agents-workflows",
   "category": "automation",
   "tags": [
-    "automation",
     "chat",
     "ui",
-    "api",
     "tool",
-    "workflow"
+    "automation",
+    "api"
   ],
   "confidence": "high",
-  "confidenceScore": 0.94,
-  "reason": "This plugin is primarily a chat productivity utility that automates prompt refinement in DeepSeek Harness: a one-click action (and slash command) rewrites user prompts with structured output, then supports one-click undo. It appears safe and low-to-moderate risk (R1) because it processes user prompt text and can trigger network model calls, but it does not indicate file, shell, or external side-effect operations.",
+  "confidenceScore": 0.92,
+  "reason": "Evidence shows this is a DeepSeek Harness web utility focused on user-facing prompt enhancement in the chat input area: it rewrites drafts into clearer requirement lists, keeps the original text available, and restores it via undo, with a fallback path when model invocation is unavailable.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 网页聊天输入框中提供一键提示词增强和撤回功能，通过按钮或 `/prompt-enhance` 指令将当前内容改写为更清晰的要求项，并可快速恢复原文。",
+    "en": "This plugin adds one-click prompt enhancement with undo in the DeepSeek Harness web chat input, allowing users to rewrite a draft via button or `/prompt-enhance` and quickly restore the original text."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Reads user-entered prompt text from chat input",
-      "Sends prompt text to model endpoint for enhancement when available",
-      "Falls back to built-in rule-based expansion when model is unavailable",
-      "Injects an in-chat button and performs one-click text replace/undo in the composer"
+      "Transforming user-entered chat prompt text into expanded instructions",
+      "Replacing and restoring chat input content in-place",
+      "Invoking default model path via DSH remotes with rule-based fallback"
     ],
     "reasons": [
       {
-        "code": "README describes a `/prompt-enhance` command and default-model-based prompt rewrite flow with automatic rule fallback when LLM times out/unavailable.",
+        "code": "The plugin is described as adding a chat input button and slash command to expand current prompt text into structured requirements",
         "evidenceRef": "readme"
       },
       {
-        "code": "README specifies a web chat UI button added to conversation input for one-click expansion and one-click undo of replaced text.",
+        "code": "It explicitly states behavior for model fallback: LLM path first, then rule-based fallback when model unavailable or timed out",
         "evidenceRef": "readme"
       },
       {
-        "code": "Package metadata declares web client integration and dependencies on DSH API/model remotes, implying runtime communication with model services.",
+        "code": "Packaging metadata shows web client and DSH API remote integrations required for operation",
         "evidenceRef": "package.json"
       }
     ]
@@ -44,30 +46,29 @@
     "capabilities": [
       "credential.read",
       "network.access",
-      "Reads user-entered prompt text from chat input",
-      "Sends prompt text to model endpoint for enhancement when available",
-      "Falls back to built-in rule-based expansion when model is unavailable",
-      "Injects an in-chat button and performs one-click text replace/undo in the composer"
+      "Transforming user-entered chat prompt text into expanded instructions",
+      "Replacing and restoring chat input content in-place",
+      "Invoking default model path via DSH remotes with rule-based fallback"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "HIGH_RISK_CAPABILITY"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.94,
+      "aiConfidence": 0.92,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:03:05.094Z",
+  "classifiedAt": "2026-08-18T17:58:59.978Z",
   "repositoryCommitSha": "8e4abd2b4641e6cbfc05aacf7e8518158ff87744",
-  "evidenceHash": "41c6735d08d12be1bc2164c23d00815a713170a43ea2742cf9013dcc98d04403",
+  "evidenceHash": "2ada2f8013e5b06947591defb8d93e2d9cfd82489e6b026fc0314013d1f2ded6",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "204630a8b94a1154b290eb7f1ffdf8a5b07c9a1710c4678f825936d1bf1ff2c5",
-  "shadowMode": true
+  "shadowMode": false
 }

@@ -3,14 +3,80 @@
   "group": "integrations-communication",
   "category": "external-services",
   "tags": [
-    "integration",
     "api",
-    "cli"
+    "chat",
+    "cli",
+    "integration",
+    "file",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s core purpose is connecting DeepSeek Harness to external AI services (Codex, Grok, Claude) via OAuth and local token import/login flows, including provider authentication status and token-based access management.",
+  "confidenceScore": 0.94,
+  "reason": "This plugin’s primary user-facing purpose is to integrate external LLM subscription services into DeepSeek Harness, letting users authenticate and import credentials for Codex, Grok, and Claude and manage them in the DSH settings panel. Based on README and package metadata, it is a credential-and-auth orchestration utility for external-provider access rather than a general code-generation or development utility.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供外部服务接入能力，面向用户在 Windows 下通过登录或导入本机凭据来连接 Codex、Grok 与 Claude 订阅。",
+    "en": "This plugin is a DeepSeek Harness integration that lets users connect Codex, Grok, and Claude subscriptions by logging in or importing local credentials."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "OAuth login and local-token import for multiple external LLM subscription providers",
+      "Reading local CLI/OS credential stores to obtain provider access tokens",
+      "Writing plugin-specific stored credentials under the user profile",
+      "Exposing UI and CLI operations for provider status/import/login/logout"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds Codex, Grok, and Claude subscription pages in DSH settings for login or importing local auth state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes reading %USERPROFILE%\\.codex\\auth.json, %USERPROFILE%\\.grok\\auth.json, %USERPROFILE%\\.claude\\.credentials.json, and Windows credential manager entries for token import.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies imported credentials are stored in %USERPROFILE%\\.dsh\\.everything-oauth.json and provides command-line exec flows for status/import/login.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web plugin metadata and client injection for runtime/UI integration, indicating direct interaction with DeepSeek Harness.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "OAuth login and local-token import for multiple external LLM subscription providers",
+      "Reading local CLI/OS credential stores to obtain provider access tokens",
+      "Writing plugin-specific stored credentials under the user profile",
+      "Exposing UI and CLI operations for provider status/import/login/logout"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:03:12.540Z",
-  "evidenceHash": "750a995c663451fd0f9cb1e19cbb75a1ce7b0512752660df5d8b03b545d05632"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:23.000Z",
+  "repositoryCommitSha": "c85914c86661baa84b56f0bf29084cc3edd5f4c9",
+  "evidenceHash": "b07e3641d8ef4604728aa156e1c7365c0084325b835d3f48a42e2f1257609cea",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9619314ef3d6e78efe6b14b6e781695f173f37bff4abd3bc3214963976a4c315",
+  "shadowMode": false
 }

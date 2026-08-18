@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "automation",
+    "tool",
+    "testing",
+    "file",
+    "data",
+    "workflow"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.82,
+  "reason": "This plugin is primarily presented as a code analysis utility: README and metadata describe code review, OWASP-aligned security scanning, dependency/CVE checks, performance checks, and quick validation, which maps to project analysis for developers rather than generation, UI, or communication tooling. Admission checks show missing/invalid DSH manifest linkage, and the package metadata contains unusual attack-themed wording, so additional verification is needed before safe acceptance.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness，提供代码审查与安全扫描功能，可执行代码质量、OWASP 类风险、依赖项和性能问题的静态检测并输出分析结果。",
+    "en": "This plugin for DeepSeek Harness provides code review and security scanning functionality, including static checks for code quality, OWASP-style issues, dependency risks, and performance problems."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Static code review and quality checks",
+      "Security vulnerability scanning",
+      "Dependency/CVE auditing",
+      "Performance issue detection (e.g., N+1/memory patterns)",
+      "SARIF-style reporting",
+      "Network access"
+    ],
+    "reasons": [
+      {
+        "code": "README_FEATURES_DECLARED",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MANIFEST_VALIDATION_FAILED",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "MANIFEST_REFERENCE_MISMATCH",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "UNUSUAL_SECURITY_CLAIM_TEXT",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Static code review and quality checks",
+      "Security vulnerability scanning",
+      "Dependency/CVE auditing",
+      "Performance issue detection (e.g., N+1/memory patterns)",
+      "SARIF-style reporting",
+      "Network access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.82,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:27.540Z",
+  "repositoryCommitSha": "dd50d142bd73277bf7c0da77d61beb0fffccd7be",
+  "evidenceHash": "cb6ec1362ae597c2a8646d1d09999e8d3557dee54d81a47619933354bfd7c7bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a44a0a001464a5290b9cb8e911b5024e4dc7417b25f1ceefb5e64bba400e37cc",
+  "shadowMode": false
+}

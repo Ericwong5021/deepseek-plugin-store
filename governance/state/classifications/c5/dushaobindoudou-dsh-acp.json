@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "chat",
+    "cli",
+    "tool",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin’s user-facing purpose is to act as an ACP server frontend for DeepSeek Harness, letting ACP-compatible clients drive dsh coding-agent sessions via stdio or HTTP+SSE. Evidence from the README and package metadata shows it focuses on session orchestration (start, prompt, resume, close), streaming interaction, tool/permission handling, and optional host-plane observability endpoints for jobs/goals/skills/tree rather than standalone coding or UI features.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 ACP 服务器插件，可通过 stdio 或 HTTP/SSE 让支持 ACP 的客户端连接并驱动 dsh 代理会话，支持会话交互、会话管理与相关工具调用。",
+    "en": "This is a DeepSeek Harness ACP server plugin that lets ACP-compatible clients connect via stdio or HTTP/SSE to run and manage dsh agent sessions with interactive prompts and tool-driven workflow events."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "ACP JSON-RPC session orchestration and streaming conversation handling",
+      "Tool-call and permission-dialog mediation between client and dsh services",
+      "Local and remote transport for session control (stdio and HTTP+SSE)",
+      "Session persistence and resume/load workflows",
+      "Read-only host-plane introspection for sessions/jobs/goals/skills/agent tree"
+    ],
+    "reasons": [
+      {
+        "code": "README documents supported ACP methods including session creation, prompt streaming, permission requests, cancellation, close, list/resume/load, and mode switching, showing it manages interactive agent sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents vendor extension methods under dsh/* for sessions, jobs, goals, skills, and agents, plus watch/unwatch and changed notifications, indicating orchestration/state-exposure behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines the executable entrypoint `dsh-acp-server` and marks the package as a dsh bundle via `dsh.bundle.patch`, confirming it is intended as an installable integration plugin for DSH profiles.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "ACP JSON-RPC session orchestration and streaming conversation handling",
+      "Tool-call and permission-dialog mediation between client and dsh services",
+      "Local and remote transport for session control (stdio and HTTP+SSE)",
+      "Session persistence and resume/load workflows",
+      "Read-only host-plane introspection for sessions/jobs/goals/skills/agent tree"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:37.388Z",
+  "repositoryCommitSha": "d7b00dbec80ec11579a381b7a0e6949634988f6a",
+  "evidenceHash": "36e9458774361ac2ddb2308e79c7cecba207bfffa9db98008745fc9fb06f8c4f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "578c1befea9c13f0787658e894d9b52b56a5d3e6db5485694cf2ccf10017f724",
+  "shadowMode": false
+}

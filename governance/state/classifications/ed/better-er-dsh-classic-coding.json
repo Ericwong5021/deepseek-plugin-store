@@ -5,33 +5,42 @@
   "tags": [
     "file",
     "ui",
-    "api",
     "tool",
-    "integration"
+    "layout",
+    "api"
   ],
   "confidence": "high",
-  "confidenceScore": 0.98,
-  "reason": "Primary purpose is an in-chat, workspace-local file editing plugin: it adds a slide-in Monaco editor + file tree panel for editing files directly in DSH Web. User-facing value is local file navigation and editing within the interface, with RPC-backed workspace read/write support and web UI panel injection; no explicit dangerous external integrations are indicated.",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心面向是为 DSH Web 用户在聊天界面内提供本地工作区文件管理与编辑能力，README 明确描述了右侧可折叠文件树与 Monaco 编辑器面板，以及通过 Host RPC 的 describe/listDir/readFile/writeFile 与 ctx.fs 交互，因此其主要用途是文件浏览与代码编辑，结合界面挂载能力可归类为文件类工具。",
+  "summaries": {
+    "zh": "该插件在 DSH 对话界面内提供可折叠侧边栏文件树与 Monaco 编辑器，让你可直接浏览和编辑本地工作区文件。",
+    "en": "This plugin adds a collapsible file-tree and Monaco editor panel in the DSH chat interface so you can browse and edit files in your local workspace directly."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
       "Read workspace files via RPC endpoints",
-      "Write/overwrite workspace files via RPC endpoints",
-      "Provide a built-in Monaco-based file editor panel in-chat",
-      "Load editor dependencies from CDN at runtime"
+      "List workspace directories via RPC endpoints",
+      "Write workspace files via RPC endpoint",
+      "Render an in-UI side panel/editor overlay",
+      "Load editor assets from network CDN"
     ],
     "reasons": [
       {
-        "code": "Plugin defines DSH client/web integration and injects UI into shell/sidebar slots to render an embedded editing panel.",
+        "code": "filesystem.read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem.write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network.access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui.overlay",
         "evidenceRef": "package.json"
-      },
-      {
-        "code": "Host-side RPC provides describe/listDir/readFile/writeFile channels backed by DSH filesystem service, enabling file-system operations.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "Monaco Editor is loaded dynamically from CDN and used for editing experience.",
-        "evidenceRef": "readme"
       }
     ]
   },
@@ -44,29 +53,30 @@
       "filesystem.write",
       "network.access",
       "Read workspace files via RPC endpoints",
-      "Write/overwrite workspace files via RPC endpoints",
-      "Provide a built-in Monaco-based file editor panel in-chat",
-      "Load editor dependencies from CDN at runtime"
+      "List workspace directories via RPC endpoints",
+      "Write workspace files via RPC endpoint",
+      "Render an in-UI side panel/editor overlay",
+      "Load editor assets from network CDN"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "HIGH_RISK_CAPABILITY"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.98,
+      "aiConfidence": 0.93,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:03:47.330Z",
+  "classifiedAt": "2026-08-18T17:59:04.767Z",
   "repositoryCommitSha": "209dd4ee354a84f4f97db84fed9100f71314e4ed",
-  "evidenceHash": "18cb45950241a74a5326c5c0f771d53f1ef7b16cbf2912b018f420fcb1c957fe",
+  "evidenceHash": "d70d5d097ebb36204dfef9b7b45df24fcfc11b47e240b71a8734dd6f78baeafc",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "2958b1c551028d42694bf56f25e24b70ce7f7b4b90105fb5e4b058faf4965f72",
-  "shadowMode": true
+  "shadowMode": false
 }

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "tool",
+    "workflow",
+    "cli",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的用户面向目的在于自动化代码审查流程：通过 DSH 的 `/review` 交互界面选择审查范围，并把请求转化为结构化参数交给当前 Agent 执行审查。证据显示其功能集中于目标选择、差异范围解析与任务下发，而非直接修改代码或运行测试。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 中提供 `/review` 命令与交互菜单，可选择未提交、commit 或分支差异后提交结构化代码审查任务给当前 Agent。",
+    "en": "This plugin adds a `/review` command and interactive flow in DeepSeek Harness Web to select uncommitted, commit, or branch diffs and submit structured code-review tasks to the active Agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures repository review scope via `/review` options (uncommitted, commit, branch, custom) and forwards it as tasks.",
+      "Provides a structured `review` tool contract with fields for target, base, task, spec, and focus.",
+      "Reads local repository/git context to generate diff-based review instructions.",
+      "Integrates with DeepSeek Harness web UI and agent command flow for review task queuing."
+    ],
+    "reasons": [
+      {
+        "code": "README describes interactive `/review` workflow with uncommitted, commit diff, branch base diff, and custom requirement modes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a structured `review` tool schema (`target`, `targetKind`, `base`, `task`, `spec`, `focus`) and return values including `diffCommand` and `instructions`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata and README describe the plugin as a DeepSeek Harness code-review plugin for direct code review through slash-picker selection.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "Package configuration declares DSH web plugin integration points and deepseek-dsh related dependencies, with no explicit external service dependency list in manifest metadata.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Captures repository review scope via `/review` options (uncommitted, commit, branch, custom) and forwards it as tasks.",
+      "Provides a structured `review` tool contract with fields for target, base, task, spec, and focus.",
+      "Reads local repository/git context to generate diff-based review instructions.",
+      "Integrates with DeepSeek Harness web UI and agent command flow for review task queuing."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:46.109Z",
+  "repositoryCommitSha": "66e38adce267e841c1a9fe9408d08d9f37c2d636",
+  "evidenceHash": "c1c3983bbbd023abec6be2eaa37bf7834cc14322e7d1e88d5deb01f96ba1097a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9eebb0d3d90fb8629c78b4ea9ae747aa46e7800db3020c41dbda6d96f1055476",
+  "shadowMode": false
+}

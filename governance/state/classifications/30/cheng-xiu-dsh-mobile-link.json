@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "notification",
+    "mobile",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Classified as automation because the plugin’s primary user-facing function is to automate making a local DeepSeek Harness instance accessible from a phone: it launches/configures a tunnel, verifies service readiness, and optionally auto-sends the resulting URL through a chosen notification channel.",
+  "summaries": {
+    "zh": "该插件提供一键启动与自动化流程，在本地 DeepSeek Harness 与手机之间通过 Cloudflare 隧道建立可访问链接，并按配置将该链接推送到所选通知渠道。",
+    "en": "This plugin provides one-click and automatic workflows to expose a local DeepSeek Harness instance via a Cloudflare tunnel and send the mobile access link through a configured notification channel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "starts and manages a Cloudflare quick tunnel for a local service",
+      "spawns/manages dsh web and tunnel-related processes",
+      "sends HTTP requests to external notification services",
+      "stores and reads channel credentials from local config",
+      "performs network reachability checks before sharing links"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as a one-click flow that creates/reuses a Cloudflare quick tunnel, starts dsh web with trusted-host handling, and pushes a mobile link via selectable channels.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It supports auto mode to run the same start/tunnel/verify/push workflow on dsh web startup, indicating ongoing background automation behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration and command options include Server酱/PushPlus/Bark/ntfy/custom webhook credentials and channel metadata, with local config path specified for storage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata exposes a CLI entry point and depends on Node runtime tooling, consistent with terminal-based execution and process/network automation.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "starts and manages a Cloudflare quick tunnel for a local service",
+      "spawns/manages dsh web and tunnel-related processes",
+      "sends HTTP requests to external notification services",
+      "stores and reads channel credentials from local config",
+      "performs network reachability checks before sharing links"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:34.488Z",
+  "repositoryCommitSha": "0ce05f41758df870ec6b350b7d4d2829f7b00e73",
+  "evidenceHash": "029cae73839b4d0938bbed6157777115501ce31d0f2410897753d341c316613a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "27665af0973d42f23a7bbbac67293792b6615a70cb280848c899d979d1bec93b",
+  "shadowMode": false
+}

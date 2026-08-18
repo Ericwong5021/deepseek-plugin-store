@@ -6,38 +6,36 @@
     "theme",
     "ui",
     "image",
-    "browser",
     "file",
     "data",
-    "integration"
+    "tool"
   ],
   "confidence": "high",
-  "confidenceScore": 0.95,
-  "reason": "Primary purpose is a DeepSeek Harness Web UI appearance plugin: it provides wallpaper-based theming, opacity controls, color/foundation token customization, auto palette generation, and UI scaling options. It is a user-facing theming/UI customization plugin rather than automation, search, or data-analysis tooling. Risk is moderate because it handles user-provided images and persists/export scheme data (including embedded media) locally, but no network/external execution behavior is indicated.",
+  "confidenceScore": 0.97,
+  "reason": "该仓库主要提供的是面向 DeepSeek Harness Web UI 的外观主题插件（壁纸与样式定制），README 与 package 配置均显示核心能力在于客户端界面美化与配置管理：上传背景图、调节透明度/色彩/字体等参数、自动配色生成，以及通过 JSON 导出导入方案。",
+  "summaries": {
+    "zh": "BestUI 是一款 DeepSeek Harness Web UI 壁纸与主题定制插件，支持上传背景图并调节透明度、配色、字体等外观参数，还可导出与导入完整配置方案。",
+    "en": "BestUI is a DeepSeek Harness Web UI wallpaper and theme customization plugin that lets users tune appearance settings such as opacity, colors, and fonts, and supports exporting and importing full configuration schemes."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "User-configurable wallpaper and UI appearance themes",
-      "Local image processing for wallpaper (resize/compress/re-encode)",
-      "Theme token and CSS style override injection",
-      "Persistent settings stored in browser localStorage",
-      "Scheme export/import to JSON (including embedded wallpaper data)"
+      "Client-side wallpaper upload and processing",
+      "UI theme and style token overrides",
+      "Local storage of appearance settings",
+      "Export/import of full UI scheme JSON"
     ],
     "reasons": [
       {
-        "code": "README describes wallpaper upload, local image compression, per-surface opacity, color/theme controls, and settings persistence in localStorage.",
+        "code": "The plugin is described as a wallpaper/theme plugin for DeepSeek Harness Web UI, focused on appearance controls for surfaces, colors, fonts, opacity, radius, and scaling.",
         "evidenceRef": "readme"
       },
       {
-        "code": "README Architecture section states appearance is applied via theme override tokens plus injected body styles with a fixed background layer.",
+        "code": "It persists user settings in browser localStorage and supports full scheme export/import as JSON, with image data included in exports.",
         "evidenceRef": "readme"
       },
       {
-        "code": "README warns exported JSON contains full wallpaper data, with explicit privacy note about sensitive images before sharing.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "package.json shows a browser web client plugin that injects theme/slot modules for host integration.",
+        "code": "Package manifest declares web client injection of UI theme/slots modules and immediate injection, indicating runtime DOM/CSS styling behavior in the web UI.",
         "evidenceRef": "package.json"
       }
     ]
@@ -49,31 +47,30 @@
     "riskLevel": "R1",
     "capabilities": [
       "network.access",
-      "User-configurable wallpaper and UI appearance themes",
-      "Local image processing for wallpaper (resize/compress/re-encode)",
-      "Theme token and CSS style override injection",
-      "Persistent settings stored in browser localStorage",
-      "Scheme export/import to JSON (including embedded wallpaper data)"
+      "Client-side wallpaper upload and processing",
+      "UI theme and style token overrides",
+      "Local storage of appearance settings",
+      "Export/import of full UI scheme JSON"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.95,
+      "aiConfidence": 0.97,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:04:55.367Z",
+  "classifiedAt": "2026-08-18T17:59:11.202Z",
   "repositoryCommitSha": "89902526c31a4e5690df97bcb5da8ffa6a4cac3f",
-  "evidenceHash": "500717644b17480204d359cf94f2b27e61893b6996be175b4d8532862b811c98",
+  "evidenceHash": "8c816a47b97554d14e9203d492aad7332159e8274d731d8ada85e77facc12b29",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "afe3116d1576475a57019d90f0125f1f0be2f82d24e0b734e994b35b8467d0a7",
-  "shadowMode": true
+  "shadowMode": false
 }

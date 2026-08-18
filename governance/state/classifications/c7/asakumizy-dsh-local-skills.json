@@ -1,46 +1,46 @@
 {
   "status": "classified",
-  "group": "tools-data",
-  "category": "general-utilities",
+  "group": "interface-experience",
+  "category": "navigation-panels",
   "tags": [
     "file",
     "ui",
     "tool",
     "skill",
-    "workflow"
+    "workflow",
+    "desktop"
   ],
   "confidence": "high",
-  "confidenceScore": 0.93,
-  "reason": "Primary purpose is a local SKILL management utility for DSH: discover local skill definitions from filesystem paths, keep them synchronized with live watches, and present them in a web settings page for user selection/usage guidance. It is a plugin utility with web UI affordances, not a code-generation or external automation tool.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary user-facing purpose is a web-based local SKILL browser: it discovers SKILL markdown files from configured local paths, watches for file changes, and displays them in a Settings UI with an invocation helper, as documented in the README and plugin manifest.",
+  "summaries": {
+    "zh": "该插件在 DSH 网页设置中提供本地 SKILL 浏览功能，可扫描并实时更新本地技能文件列表，并给出每个技能的使用说明。",
+    "en": "This plugin adds a local SKILL browser in the DSH web Settings UI that scans configured local directories, updates the list in real time, and shows how to invoke each skill."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Scans local filesystem directories for skill definition files",
-      "Watches local skill directories for add/modify/delete and refreshes in real time",
-      "Parses markdown skill files with YAML frontmatter",
-      "Registers discovered skills into the host skill provider",
-      "Displays skills in a web settings page with copyable usage guidance"
+      "Discover local skill definitions from configured directories",
+      "Watch local skill directories for add/modify/delete changes",
+      "Render discovered skills in a web Settings panel",
+      "Provide per-skill usage guidance and copy-ready prompts"
     ],
     "reasons": [
       {
-        "code": "Readme states local skill discovery from user-provided directories (default ~/.dsh/local-skills) with two accepted file formats and metadata in YAML frontmatter.",
+        "code": "README states the plugin scans local directories for SKILL.md and <name>.md files and supports configurable skillDirs.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Readme explicitly describes chokidar-based live watch of filesystem events with invalidation/refresh behavior for model directory and UI.",
+        "code": "README states chokidar is used to watch file changes and refresh models/UI on updates.",
         "evidenceRef": "readme"
       },
       {
-        "code": "Readme and package manifest show a split host/client plugin design (lib/index.js plus lib/client.js) with a web Settings page for listing and invoking skills.",
-        "evidenceRef": "package.json"
+        "code": "README describes a web Settings page in the plugin UI listing all available skills with description and scenario.",
+        "evidenceRef": "readme"
       },
       {
-        "code": "Manifest exposes a web client platform and bundles via cordis patch, confirming intent to run as a DSH plugin component rather than a standalone remote service.",
+        "code": "Package metadata identifies a host entry (lib/index.js) and a web client entry (lib/client.js), indicating split runtime behavior across app profiles.",
         "evidenceRef": "package.json"
-      },
-      {
-        "code": "Repository includes sample local skill files under skills/ and no evidence of remote data ingestion or outbound service integration in the provided metadata.",
-        "evidenceRef": "tree"
       }
     ]
   },
@@ -51,31 +51,30 @@
     "riskLevel": "R1",
     "capabilities": [
       "network.access",
-      "Scans local filesystem directories for skill definition files",
-      "Watches local skill directories for add/modify/delete and refreshes in real time",
-      "Parses markdown skill files with YAML frontmatter",
-      "Registers discovered skills into the host skill provider",
-      "Displays skills in a web settings page with copyable usage guidance"
+      "Discover local skill definitions from configured directories",
+      "Watch local skill directories for add/modify/delete changes",
+      "Render discovered skills in a web Settings panel",
+      "Provide per-skill usage guidance and copy-ready prompts"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.93,
+      "aiConfidence": 0.96,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T16:01:43.416Z",
+  "classifiedAt": "2026-08-18T17:58:52.658Z",
   "repositoryCommitSha": "038d6059fb36ca5d5e1e8456befb8d928c7b958e",
-  "evidenceHash": "f9ca850d85d5a25a1dcfcbcf98b97e277a3806a8985cf83367f654de486a654b",
+  "evidenceHash": "9c7f48a47115bdef7e673a47e0d59ab57e122944404210cf69b7b23c0de747f4",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "5931bd341b8474a62f4cc6d7c98043bdc2f9fd02e70a724114dee175cb8008c0",
-  "shadowMode": true
+  "shadowMode": false
 }

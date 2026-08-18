@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "tool",
+    "context",
+    "data",
+    "search"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a memory/context utility for DeepSeek Harness agents, centered on persisting and retrieving knowledge entries across sessions. Evidence from the README and package metadata shows it exposes three dedicated tools for writing, searching, and refreshing recent memory with local FTS5-backed storage, with no explicit external service integration described.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供持久化智能体记忆工具（kg_remember、kg_search、kg_recent），可在本地存储与检索会话间的经验和上下文。",
+    "en": "This plugin adds persistent memory tools to DeepSeek Harness (kg_remember, kg_search, kg_recent) so agents can store and retrieve session context and notes from a local database."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persist notes/lessons/patterns/decisions across agent sessions in a local node:sqlite FTS5 database",
+      "Provide three model-facing tools: kg_remember, kg_search, and kg_recent",
+      "Support full-text recall and recent-context retrieval via search and ranking",
+      "Sanitize malformed search input and fall back to recent listing behavior"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a durable knowledge tool for agent memory with kg_remember/kg_search/kg_recent as user-facing tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package manifest describe a local node:sqlite-backed store with FTS5 and a shared profile path, indicating persistent, file-based data storage.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Tool contract documentation in README enumerates structured memory entry fields and return behavior, confirming primary context-management functionality.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Persist notes/lessons/patterns/decisions across agent sessions in a local node:sqlite FTS5 database",
+      "Provide three model-facing tools: kg_remember, kg_search, and kg_recent",
+      "Support full-text recall and recent-context retrieval via search and ranking",
+      "Sanitize malformed search input and fall back to recent listing behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:01:05.200Z",
+  "repositoryCommitSha": "b08a8bc0960b056cdbba3d4e012090e381e99f9b",
+  "evidenceHash": "2186fea08cd5fb35c5bfaf86a073f834f5cf87aad65aa20e0d9c4736a1e5d461",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ec4f4c6be5850c31823d2d80301536719c749e6ab407c0bb93c6d2f3c84e97e",
+  "shadowMode": false
+}

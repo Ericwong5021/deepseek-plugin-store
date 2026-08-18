@@ -8,41 +8,46 @@
     "planning",
     "workflow",
     "tool",
-    "monitoring",
     "integration",
-    "memory"
+    "monitoring",
+    "knowledge"
   ],
   "confidence": "high",
   "confidenceScore": 0.9,
-  "reason": "Primary purpose is an AI orchestration plugin for the DSH/Cordis ecosystem: it actively schedules, executes, evaluates, and evolves multi-model tasks in an autonomous loop, with tooling for memory/experience retrieval, policy feedback, and host-tool governance. It is best categorized as orchestration/automation of AI workflows (not a UI, editing, or media plugin). Conservative risks include host-side governance hooks and external model API/key handling, so classified as medium risk (R1).",
+  "reason": "该插件主要面向 DeepSeek Harness 的运行时智能调度场景，用户可通过一个插件接入实现信号监听、任务决策、执行、反思和策略演化的闭环，核心价值在于自动化和编排，而非内容创作或界面增强。README 显示它提供 18 个工具、宿主级工具观测与治理、kill-switch、持久化记忆与检索、模型路由与密钥管理等能力，并通过自动化流程优化任务调度，因此可归为工作流/自动化编排类插件。",
+  "summaries": {
+    "zh": "dsh-proactive 是一款 DSH 插件，用于提供多模型任务的感知、决策与执行编排能力，并结合记忆、反思与策略优化实现持续调度优化。",
+    "en": "dsh-proactive is a DSH plugin that provides task sensing, decision, and execution orchestration for multi-model workflows, with memory, reflection, and strategy tuning to improve scheduling over time."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Multi-model task scheduling and autonomous execution loop",
-      "Host-level tool-call observation and governance (including kill-switch style refusal flow)",
-      "Long-running memory/knowledge retrieval with persistent storage and strategy feedback",
-      "External API access for LLM providers with multi-key routing/rotation"
+      "多模型任务感知与调度执行（信号采集、策略决策、DAG 任务执行）",
+      "通过宿主融合层实现工具调用观测与治理（含预执行治理与 kill-switch）",
+      "持久化记忆与经验检索（SQLite/JSON 双后端、检索与蒸馏）",
+      "支持模型与密钥路由、健康检查与轮换（含多密钥故障切换）",
+      "提供任务/自治状态可观测能力（自省报告、进度与监控）"
     ],
     "reasons": [
       {
-        "code": "plugin_automates_model_and_tool_workflows",
+        "code": "AUTONOMOUS_SCHEDULING",
         "evidenceRef": "readme"
       },
       {
-        "code": "host_fusion_can_intercept_and_gate_host_tool_calls",
+        "code": "HOST_TOOL_GOVERNANCE",
         "evidenceRef": "readme"
       },
       {
-        "code": "handles_api_key_sources_and_rotation_for_model_access",
+        "code": "PERSISTENT_MEMORY_STORE",
         "evidenceRef": "readme"
       },
       {
-        "code": "includes_consensus_sync_and_hot_reload_components_in_distribution",
+        "code": "MULTI_MODEL_KEY_ROUTING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_DB_PERSISTENCE",
         "evidenceRef": "tree"
-      },
-      {
-        "code": "distributed_runtime plugin packaging for DSH via cordis bundle",
-        "evidenceRef": "package.json"
       }
     ]
   },
@@ -54,13 +59,14 @@
     "capabilities": [
       "credential.read",
       "network.access",
-      "Multi-model task scheduling and autonomous execution loop",
-      "Host-level tool-call observation and governance (including kill-switch style refusal flow)",
-      "Long-running memory/knowledge retrieval with persistent storage and strategy feedback",
-      "External API access for LLM providers with multi-key routing/rotation"
+      "多模型任务感知与调度执行（信号采集、策略决策、DAG 任务执行）",
+      "通过宿主融合层实现工具调用观测与治理（含预执行治理与 kill-switch）",
+      "持久化记忆与经验检索（SQLite/JSON 双后端、检索与蒸馏）",
+      "支持模型与密钥路由、健康检查与轮换（含多密钥故障切换）",
+      "提供任务/自治状态可观测能力（自省报告、进度与监控）"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "HIGH_RISK_CAPABILITY"
     ],
@@ -74,10 +80,10 @@
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:03:38.966Z",
+  "classifiedAt": "2026-08-18T17:59:06.203Z",
   "repositoryCommitSha": "960be5270c251280a59b06d7caca0d91c34ad462",
-  "evidenceHash": "7318607ca86a8d364c14133ced8dbd77b3972a9fb82b0e4f5ef3df96ae4f38a3",
+  "evidenceHash": "7180d30cc5f549bc25991f48dd829c455790cf581a66220a28a8635165823641",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "5668d7c5cad8c6c8814c4a54d6c46fcf592ec21a558e0f37a23c3e1ba610972d",
-  "shadowMode": true
+  "shadowMode": false
 }

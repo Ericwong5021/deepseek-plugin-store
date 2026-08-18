@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "file",
+    "ui",
+    "tool",
+    "browser",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Based on repository name, README, and package metadata, this plugin is primarily for managing persistent agent instructions by editing a single local global AGENTS.md file through a DeepSeek Harness Web settings page, with features like default document creation, atomic writes, revision checks, and size limiting; this indicates a memory/context utility rather than a broader automation, search, or code-generation tool.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的设置界面提供“全局记忆”页面，可直接编辑 `$DSH_HOME/AGENTS.md`，用于管理面向跨项目长期生效的开发指令和偏好。",
+    "en": "This plugin adds a Global Memory page to DeepSeek Harness settings so users can edit `$DSH_HOME/AGENTS.md` in-browser for reusable development instructions and preferences."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read and edit the local `$DSH_HOME/AGENTS.md` file",
+      "Persist edited instructions via web-based settings interface",
+      "Enforce revision-based concurrency checks and size limits on saved content"
+    ],
+    "reasons": [
+      {
+        "code": "Readme states the plugin edits the global AGENTS.md file directly from DeepSeek Harness Web settings and saves content to `$DSH_HOME/AGENTS.md`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin description and README specify local-only behavior and fixed target path for AGENTS.md with no configurable file path input from the browser.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH web client plugin bundle and platform integration, confirming execution inside the DeepSeek Harness Web plugin system.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Read and edit the local `$DSH_HOME/AGENTS.md` file",
+      "Persist edited instructions via web-based settings interface",
+      "Enforce revision-based concurrency checks and size limits on saved content"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:43.546Z",
+  "repositoryCommitSha": "594e4eb965f689e088bdf3f4475e09b678ece548",
+  "evidenceHash": "b10de9fef854cf9b74d5b6fd80030120b1bc8d8b358e6fa0318b44abb6514428",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d4342321b81cdc92cbbc7c4493a9d4e9b9b6ffcfc6858e7672394e67668125ad",
+  "shadowMode": false
+}

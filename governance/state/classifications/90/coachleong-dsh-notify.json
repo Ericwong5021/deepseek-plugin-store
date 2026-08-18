@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "browser",
+    "chat",
+    "tool",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该仓库核心特征是为 DeepSeek Harness 会话提供桌面端提醒：README 明确说明它在模型输出状态变化或需要用户处理时发送浏览器通知、支持点击跳转会话，并提供可配置开关与可见性控制，因此主要面向“通知与监控”用途而非内容生成或数据处理。",
+  "summaries": {
+    "zh": "dsh-notify 是一个 DeepSeek Harness 插件，在模型开始输出、完成输出或等待你处理审批、提问或计划评审时发送浏览器桌面通知，并支持点击通知直达对应会话。",
+    "en": "dsh-notify is a DeepSeek Harness plugin that sends browser desktop notifications when a model starts, finishes, or needs your input for approval, questions, or plan review, with notifications linking back to the relevant session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browser desktop notifications",
+      "Desktop notification permission handling",
+      "Session-level focus on notification click",
+      "Model event-based reminders",
+      "Local preference persistence in browser storage",
+      "Cross-tab notification deduplication behavior"
+    ],
+    "reasons": [
+      {
+        "code": "通知触发场景包含模型开始输出、完成输出与等待用户处理（审批/提问/评审）三类会话事件",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明将配置与通知偏好存储在浏览器 localStorage，并依赖浏览器通知权限",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "支持点击通知聚焦并打开对应会话，属于用户交互和会话导航功能",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件为 Web 客户端运行，注入 dsh 客户端运行时并声明桌面通知与 Web Locks 场景依赖",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Browser desktop notifications",
+      "Desktop notification permission handling",
+      "Session-level focus on notification click",
+      "Model event-based reminders",
+      "Local preference persistence in browser storage",
+      "Cross-tab notification deduplication behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:42.384Z",
+  "repositoryCommitSha": "185abcdcd63a8dcdfcbc73ebab839a9cf623af34",
+  "evidenceHash": "096a1ba328933363d3216e04cf7573c483de2046b26d88ebc370637f99f2ea3b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "185b4e744a337782980f3712037f47192be11c2d562884446cb004ebf9feed97",
+  "shadowMode": false
+}

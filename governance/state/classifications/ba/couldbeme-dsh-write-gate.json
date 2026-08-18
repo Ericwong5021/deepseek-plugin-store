@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "tool",
+    "terminal",
+    "file",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This is an AI-agent automation guard plugin for DeepSeek Harness that enforces operator-defined write policies before tool execution. Its primary function is execution-governance: it checks actions against deterministic constraints and optionally adds semantic LLM review, then logs contradiction outcomes, so it is best classified as automation rather than content generation, UI, or analytics tooling.",
+  "summaries": {
+    "zh": "这是一个面向 AI 编码代理的执行前策略插件，在工具调用前按用户定义的约束规则进行拦截与判定，并在必要时阻断不合规操作并输出审计记录。",
+    "en": "This is a pre-execution policy plugin for AI coding agents that evaluates tool calls against user-defined constraints, can apply an optional semantic judge, and blocks non-compliant actions while recording audit events."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts AI agent tool calls before execution and can deny actions.",
+      "Applies deterministic checks from operator-defined commitments (paths, commands, scopes).",
+      "Optionally routes selected checks to an LLM judge via a configured provider endpoint.",
+      "Emits contradiction/audit data for blocked actions to log output."
+    ],
+    "reasons": [
+      {
+        "code": "Two-tier pre-execution policy (deterministic guard + semantic judge) is applied before tool execution.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration-driven commitments use command/path rules and scoped tool kinds; violations are recorded as events/JSONL logs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata exposes DeepSeek Harness integration and peer dependencies needed for runtime tool orchestration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Intercepts AI agent tool calls before execution and can deny actions.",
+      "Applies deterministic checks from operator-defined commitments (paths, commands, scopes).",
+      "Optionally routes selected checks to an LLM judge via a configured provider endpoint.",
+      "Emits contradiction/audit data for blocked actions to log output."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:51.168Z",
+  "repositoryCommitSha": "de8c58100574a23df8e729e884661bc5fa60b8ec",
+  "evidenceHash": "eeaaab1c7820feaab6f0281e2313312499059b71195706b508379292517976cf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d4c3f929420d7710a9d021388c5d07b29393f17066d84e73f3aeda8526d3cc29",
+  "shadowMode": false
+}

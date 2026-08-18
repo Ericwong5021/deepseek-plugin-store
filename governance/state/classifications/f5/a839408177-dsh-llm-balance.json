@@ -5,15 +5,69 @@
   "tags": [
     "api",
     "integration",
-    "data",
-    "ui",
     "chat",
-    "tool"
+    "ui",
+    "tool",
+    "data"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing function is to display configured LLM providers’ API balance information in the chat composer area and open provider recharge pages. It relies on calling provider endpoints via credentials and presents that external service data as an in-chat status strip.",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily an external-service integration utility for DSH that displays API account balances for configured LLM providers directly under the chat input, with refresh behavior and recharge-link actions. It combines a host service that queries provider endpoints and a web client UI panel that polls and presents those balances, so its user-facing purpose is to surface provider billing status inside the conversation interface.",
+  "summaries": {
+    "zh": "该插件会在 DSH 聊天输入区下方显示已配置 LLM 提供商的余额状态，并在可用时提供充值页跳转入口。",
+    "en": "This plugin shows configured LLM provider balance status under the DSH chat input area and provides links to open recharge pages when supported."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "provider-balance-query-ui"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin reads configured LLM providers from DSH and resolves API keys via host credentials, then calls provider balance APIs for those providers.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a host endpoint GET /llm-balance and a web client that polls it and renders a provider balance strip in the chat composer footer.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes lib/index.js and lib/client.js with dsh web client injection plus bundle patch, indicating host-side and browser-side integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "provider-balance-query-ui"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:00:51.027Z",
-  "evidenceHash": "6bc46c685e019ccdf3bf932b40ae0daa99ba82e895e2a09650b839ce51dfd0fc"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:27.279Z",
+  "repositoryCommitSha": "189050c72e758f4ca62190e13dcfde99d52bce86",
+  "evidenceHash": "adcc534f0f0474384ce1f58c6200d856223117be9906955c411c7595514b47de",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e83cf2cfe498967c6365f8192e554ec5f8f90fbb8eb4cb9f3b15e62260756719",
+  "shadowMode": false
 }

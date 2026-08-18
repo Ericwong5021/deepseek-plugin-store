@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Primary user-facing purpose is UI theming for DeepSeek Harness: the repository provides a web plugin that supplies selectable skins and exposes an Aurora/Paper/Hologram chooser in settings, with styling implemented through DSH token variables (`--dsw-alias-*`) rather than core code patches.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 网页端主题插件，提供 Aurora、Paper 和 Hologram 三套皮肤，并在设置里支持切换与回退系统外观，采用 `--dsw-alias-*` 变量进行样式覆盖。",
+    "en": "This is a DeepSeek Harness web plugin that provides Aurora, Paper, and Hologram skins, letting users switch UI appearances in settings and revert to the system look while applying `--dsw-alias-*` token-based style overrides."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Applies global CSS token overrides for UI colors in the DSH web client",
+      "Persists selected skin choice in localStorage",
+      "Adds/integrates a skin-selection option into DSH settings workflow"
+    ],
+    "reasons": [
+      {
+        "code": "README explains the plugin is a set of three hand-tuned skins that only writes `--dsw-alias-*` custom properties on `<body>` for visual styling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a web client bundle with immediate injection (`platform: \"web\"`, `immediately: true`), confirming runtime execution in the browser UI.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository and install/use instructions describe adding the plugin to DSH profiles and enabling selection in Settings, indicating user-facing UI extension behavior.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Applies global CSS token overrides for UI colors in the DSH web client",
+      "Persists selected skin choice in localStorage",
+      "Adds/integrates a skin-selection option into DSH settings workflow"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:13.995Z",
+  "repositoryCommitSha": "c594be6d1f505aa0f67ae6ea1d43ddddfc6993a4",
+  "evidenceHash": "625c4d448b126424193ec3ba67c9e03fc18e1bb6e594b65f3d6674b5c0b5e6d2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c39cd359621f0079dd8545903af12e2b77ab03920345711e04c28cff5d668eb8",
+  "shadowMode": false
+}

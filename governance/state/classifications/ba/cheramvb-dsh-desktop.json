@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "automation",
+    "integration",
+    "cli",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a desktop-wrapper utility for users of the DSH web GUI, as shown by its name, description, and README, which describe an Electron-based native windowed client that embeds the web interface while hiding browser UI and backend command details. It additionally includes local process lifecycle features (single-instance windows, tray behavior, hidden bootstrap/startup of the dsh web backend, and multiple launch entry points), matching a user-facing desktop application purpose.",
+  "summaries": {
+    "zh": "该插件用于将 DSH Web 界面封装为本地桌面 Electron 应用并运行，支持从侧边栏、桌面快捷方式或命令行打开，同时在需要时本地启动并托管对应的 dsh web 服务。",
+    "en": "This plugin wraps the DSH web interface in a local Electron desktop app, letting users launch it from the DSH UI, a desktop shortcut, or the command line while managing the local dsh web service as needed."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "launches a native desktop Electron shell for the DSH web interface",
+      "auto-starts the local dsh web service when needed and reuses a local loopback connection",
+      "manages app lifecycle behavior including single-instance window handling and tray minimization",
+      "exposes launch pathways via side panel UI, CLI entrypoint, and shortcut helpers"
+    ],
+    "reasons": [
+      {
+        "code": "ELECTRON_DESKTOP_WRAPPER",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_SERVICE_BOOTSTRAP",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CLI_AND_BIN_ENTRYPOINT",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "PLUGIN_HOOK_AND_CLIENT_PATCH",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "launches a native desktop Electron shell for the DSH web interface",
+      "auto-starts the local dsh web service when needed and reuses a local loopback connection",
+      "manages app lifecycle behavior including single-instance window handling and tray minimization",
+      "exposes launch pathways via side panel UI, CLI entrypoint, and shortcut helpers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:30.443Z",
+  "repositoryCommitSha": "d467175b43e8ccb640d2b281e81dbccbef11b852",
+  "evidenceHash": "ffdbf6eee07e2a13a2b61ca342adefb412cb28d9e320d10e3ad421e1e778278f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "41a98869d518f47dceda3db8dd187a39e1ffee72d82dfd440bdb11defa4785b5",
+  "shadowMode": false
+}

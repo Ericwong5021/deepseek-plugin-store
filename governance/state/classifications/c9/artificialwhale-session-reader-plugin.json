@@ -4,38 +4,37 @@
   "category": "memory-context",
   "tags": [
     "agent",
-    "api",
     "context",
     "tool",
-    "cli"
+    "chat",
+    "workflow"
   ],
   "confidence": "high",
-  "confidenceScore": 0.94,
-  "reason": "This plugin’s primary user-facing purpose is cross-session context retrieval for DSH agents: listing sessions and reading other sessions’ content for continuity and handoff. It is a memory/context utility exposing bounded, read-only access through agent tools and slash commands, with multiple read modes for messages, tool activity, reasoning, and raw events.",
+  "confidenceScore": 0.97,
+  "reason": "该插件的核心用途是提供会话上下文检索能力，面向用户和 agent 在当前 DSH 会话内读取其他会话的信息以便继续讨论或复用上下文。其主要功能为列出会话与按会话读取内容，包含消息、工具交互、思考片段及原始事件模式，因此归类为记忆与上下文类插件。",
+  "summaries": {
+    "zh": "该插件为 DSH 会话提供跨会话读取能力，可通过工具或 /sessions 命令查看其他会话的消息、工具调用结果、推理片段和原始事件。",
+    "en": "This plugin provides cross-session reading in DSH, letting users or agents list sessions and read other sessions' messages, tool calls/results, reasoning chunks, or raw event streams via tools or /sessions commands."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "List non-archived sessions with filtering/limit controls",
-      "Read another session’s IO messages and tool call/results",
-      "Read reasoning chunks, surfaced summaries, or raw pre-compression event stream",
-      "Provide both model-invokable tools and slash-command access",
-      "Bounded output limits to reduce context pollution"
+      "列出会话并支持按ID/工作区/归档状态筛选",
+      "按会话ID读取消息与工具调用/结果",
+      "按模式读取推理内容或原始事件流",
+      "通过 /sessions 命令直接输出会话列表或会话内容"
     ],
     "reasons": [
       {
-        "code": "Provides read access to other sessions’ messages, tool calls/results, and reasoning, which can include sensitive conversational/context data.",
+        "code": "README 明确提供 session_list 与 session_read 两个工具，用于读取其他会话内容（消息、工具调用/结果、推理与原始事件）",
         "evidenceRef": "readme"
       },
       {
-        "code": "Includes a raw mode that exposes underlying event logs, increasing sensitivity relative to standard UI-facing views.",
+        "code": "README 描述支持 /sessions list 与 /sessions read 命令用于跨会话检索与读取",
         "evidenceRef": "readme"
       },
       {
-        "code": "Uses DSH-provided sessionQuery/service integration and explicitly states read-only behavior with output truncation guards.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "Declared as a DSH bundle plugin with no external runtime dependencies, limiting additional attack surface.",
+        "code": "package.json 指定 dsh.bundle 集成方式，表明插件可在 DSH 环境中激活并提供上述上下文读取能力",
         "evidenceRef": "package.json"
       }
     ]
@@ -46,31 +45,30 @@
     "finalDecision": "needs_human",
     "riskLevel": "R1",
     "capabilities": [
-      "List non-archived sessions with filtering/limit controls",
-      "Read another session’s IO messages and tool call/results",
-      "Read reasoning chunks, surfaced summaries, or raw pre-compression event stream",
-      "Provide both model-invokable tools and slash-command access",
-      "Bounded output limits to reduce context pollution"
+      "列出会话并支持按ID/工作区/归档状态筛选",
+      "按会话ID读取消息与工具调用/结果",
+      "按模式读取推理内容或原始事件流",
+      "通过 /sessions 命令直接输出会话列表或会话内容"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.94,
+      "aiConfidence": 0.97,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T16:01:30.169Z",
+  "classifiedAt": "2026-08-18T17:58:51.121Z",
   "repositoryCommitSha": "86249f10875f0e07a3987d1ff90ad006174b64af",
-  "evidenceHash": "1b8b39f93b9ac785eaf320ee2b4c64cf79436e964a2b37cb2a3ea458cd8274f3",
+  "evidenceHash": "0bcc156c7892997af3ac6aa858fae99b3625db8090025d7146b7284da624bbe5",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "8e43d48604f2fafb0a0e139fa8da30e0d83ba2ccbb0bd792bf9cbbba8d20bcbc",
-  "shadowMode": true
+  "shadowMode": false
 }

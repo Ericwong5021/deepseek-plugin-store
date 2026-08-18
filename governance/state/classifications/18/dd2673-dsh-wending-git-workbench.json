@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "api",
+    "terminal",
+    "ui",
+    "file",
+    "workflow",
+    "integration",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心是为 DSH 用户提供一个嵌入会话界面的 Git 工作台，主要用途是对已注册工作区执行代码版本控制日常操作（查看变更、diff、暂存与提交、分支管理及 fetch/pull/push），并通过官方插件槽位和主机 API 集成界面与状态刷新。",
+  "summaries": {
+    "zh": "该插件在 DSH 会话界面中提供工作区级 Git 工作台，支持查看变更与差异、暂存与提交、分支切换，以及 fetch/pull/push 等 Git 操作。",
+    "en": "This plugin adds a workspace-scoped Git workbench to the DSH conversation UI for viewing changes and diffs, staging and committing files, switching branches, and running fetch/pull/push operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "执行工作区级 Git 命令（如 fetch/pull/push/branch-switch）并影响会话对应工作目录",
+      "在会话中展示并操作变更列表与文本 diff，包括暂存/取消暂存和提交",
+      "订阅后端事件与焦点刷新以同步分支与仓库状态",
+      "通过 DSH 插件注入点提供分支入口与工作台界面"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了覆盖更改列表、diff、暂存/提交、fetch、pull --ff-only、push、分支切换与提交图谱的工作台能力，仅作用于 DSH 已注册工作区。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json/peerDependencies 指定了官方 host 与 subprocess 等 DSH 依赖，表明通过官方 API 执行工作区 Git 操作。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "readme 指明仅对已注册 workspace 生效，并提及 realpath 校验、分支操作守卫与回退挂载逻辑，降低误操作范围。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "执行工作区级 Git 命令（如 fetch/pull/push/branch-switch）并影响会话对应工作目录",
+      "在会话中展示并操作变更列表与文本 diff，包括暂存/取消暂存和提交",
+      "订阅后端事件与焦点刷新以同步分支与仓库状态",
+      "通过 DSH 插件注入点提供分支入口与工作台界面"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:06.001Z",
+  "repositoryCommitSha": "d9cbb9cf1b1666b0f18149f7f0c77049bbc8e5c9",
+  "evidenceHash": "9d4f817962cc2ee93eca34d7f8a05344d253233d4730f80f0dcb9d1973b6479f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3b83f9319aeab3d55a747af1b377503f4819a6fb49756059bfede1be1d39aef4",
+  "shadowMode": false
+}

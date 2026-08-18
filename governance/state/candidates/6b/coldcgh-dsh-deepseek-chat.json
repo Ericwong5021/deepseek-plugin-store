@@ -4,7 +4,7 @@
     "fullName": "ColdCGH/dsh-deepseek-chat",
     "url": "https://github.com/ColdCGH/dsh-deepseek-chat"
   },
-  "summary": "Web chat entry for DeepSeek Harness (dsh plugin): a sidebar button (right below New Session) that opens chat.deepseek.com in a dedicated desktop window when running under dsh-desktop (Wails bridge), falling back to in-webview navigation in plain web environments",
+  "summary": "This plugin adds a \"Web Chat\" entry in the DSH sidebar to open chat.deepseek.com, opening it in a dedicated desktop child window when the dsh-desktop bridge is available, and otherwise navigating in the current webview.",
   "sources": [
     "github-topic"
   ],
@@ -44,30 +44,26 @@
   },
   "classificationSuggestion": {
     "group": "interface-experience",
-    "category": "desktop-mobile",
+    "category": "navigation-panels",
     "tags": [
-      "api",
-      "browser",
+      "ui",
+      "layout",
       "chat",
       "desktop",
-      "file",
       "integration",
-      "layout",
-      "planning",
-      "testing"
+      "api",
+      "browser",
+      "tool"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:testing-debugging:测试",
-      "text:planning-execution:任务",
-      "text:memory-context:session",
-      "text:search-browsing:网页",
-      "text:themes-layout:布局",
-      "text:navigation-panels:sidebar",
-      "text:desktop-mobile:desktop"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:57817914cad91f1e59c149bf67a35e2742e05aa56121fadd29e22b49b2f9dae0",
+      "commit:cf80996db5d5cf5ff58db4c2dd8abbbaf6ac910c"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T17:59:45.557Z",
+    "reason": "The plugin’s user-facing purpose is a UI entrypoint enhancement: it adds a sidebar control in DSH and routes users to chat.deepseek.com, preferring a desktop-child-window flow when the local desktop bridge is available and otherwise using webview navigation. This is a navigation/interaction plugin with a minor local-bridge call and a toggle setting, so it is best classified under navigation-panels with moderate caution around network and local bridge use."
   }
 }

@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "api",
+    "browser",
+    "integration",
+    "tool",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该仓库是一个为 DeepSeek Harness Web 提供 MCP Apps 集成的 Cordis 插件包（含 Host、浏览器包和补丁），面向用户在界面内托管并调用 MCP 应用。证据显示其主要用途是模型可见工具与应用专用工具分离、通过 loopback 沙箱视图承载交互 App，并通过标准 MCP 传输连接外部 MCP 服务，因此分类为插件开发类插件，风险中等（涉及网络 MCP 连接与沙箱消息桥接）。",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 的 Cordis 插件包，用于在界面内托管并运行 MCP 应用，向模型/代理暴露应用工具并通过沙箱化视图呈现交互界面。",
+    "en": "This is a Cordis plugin bundle for DeepSeek Harness Web that hosts MCP Apps in the UI, exposing model-visible tools and providing sandboxed app views for interactive use."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects to MCP servers via stdio or Streamable HTTP",
+      "Hosts and renders MCP App views in the web UI with sandboxed proxying",
+      "Routes model-visible tools separately from app-only tools",
+      "Supports bounded ui/download-file mediation for embedded JSON resources",
+      "Operates over loopback-bound web profile networking"
+    ],
+    "reasons": [
+      {
+        "code": "TOOL_VISIBILITY_SEPARATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SANDBOXED_VIEW_BRIDGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MCP_TRANSPORTS_NETWORK",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCALHOST_BINDING_RESTRICTION",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Connects to MCP servers via stdio or Streamable HTTP",
+      "Hosts and renders MCP App views in the web UI with sandboxed proxying",
+      "Routes model-visible tools separately from app-only tools",
+      "Supports bounded ui/download-file mediation for embedded JSON resources",
+      "Operates over loopback-bound web profile networking"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:52.855Z",
+  "repositoryCommitSha": "dc8b053e2d144de9b10c5e03641b85cbcd8cde4f",
+  "evidenceHash": "c32fe7f696c9fe2aafe2ae5dea5e0548176390e94e265c8da06fb16a520744f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "deaaa5709d9c11d72544b503b182a0e55f97073fc68f3e7c5057721ce3649757",
+  "shadowMode": false
+}

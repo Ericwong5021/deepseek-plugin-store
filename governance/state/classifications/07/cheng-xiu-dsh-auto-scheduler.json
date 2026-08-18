@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a timed automation tool for DeepSeek Harness: users set goals and schedules in a sidebar panel, and the plugin starts and stops agent sessions automatically based on configured windows, including optional repeat and preset time ranges. Evidence points to scheduling orchestration rather than code generation or analysis, so classification is best fit in Automation.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的定时自动化插件，可在侧边栏配置目标和时间窗，并在设定时自动启动和停止智能体会话。",
+    "en": "This is a DeepSeek Harness plugin that lets you configure goals and time windows in a sidebar panel, then automatically starts and stops agent sessions on schedule."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Timed scheduling of DSH agent sessions",
+      "Automatic session creation and task dispatch",
+      "Automatic session interruption and stop at configured end time",
+      "Persistence of schedule configuration on host",
+      "Optional silent unattended execution mode",
+      "Preset synchronization during startup",
+      "Host-side timer loop in DSH web process"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a host-side timed scheduler that creates sessions and starts work at configured times and stops them at end times.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a silent mode that disables user questioning and runs with full-permission automation until externally stopped by time.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata and manifest entries show a DSH web plugin bundle with client injection, confirming user-facing UI + host behavior integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "Timed scheduling of DSH agent sessions",
+      "Automatic session creation and task dispatch",
+      "Automatic session interruption and stop at configured end time",
+      "Persistence of schedule configuration on host",
+      "Optional silent unattended execution mode",
+      "Preset synchronization during startup",
+      "Host-side timer loop in DSH web process"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:22.616Z",
+  "repositoryCommitSha": "dcc207b2f88076934db49c41eed1a5757712ac99",
+  "evidenceHash": "9c39e207db73d194320f8b6070f42676162140482f944fb1cd98593dc449eb52",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b924303f2060443ccec461c60f2ef2c079c0cc90c2cd82148d9fa3fa90a32061",
+  "shadowMode": false
+}

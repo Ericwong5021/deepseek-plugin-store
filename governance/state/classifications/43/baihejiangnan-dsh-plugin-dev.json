@@ -3,53 +3,45 @@
   "group": "build-development",
   "category": "plugin-development",
   "tags": [
-    "tool",
-    "file",
     "ui",
-    "workflow",
+    "file",
     "integration",
-    "project-analysis",
-    "api"
+    "workflow",
+    "automation",
+    "tool"
   ],
   "confidence": "high",
-  "confidenceScore": 0.94,
-  "reason": "This plugin is a DeepSeek Harness web UI panel for managing local plugin development. Its core purpose is developer workflow support: discover local file/link-installed plugin candidates, register/unregister projects, open sources, and launch guided development/upload sessions. No direct git/gh execution is claimed by the plugin; upload/update actions are intended to stay inside user-confirmed host sessions, so the risk is medium (R1) due to local project metadata handling plus possible external publish workflows.",
+  "confidenceScore": 0.9,
+  "reason": "该插件的主要用户价值在于本地 DeepSeek Harness 插件开发管理：通过设置面板扫描本地候选项目、让用户主动加入/移出开发管理，并结合宿主工作区会话提供继续开发与上传/更新讨论入口。其功能定位与插件开发流程工具高度一致，未显示通用研究、搜索、教学或媒体处理为主功能，因此分类为 plugin-development。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 本地插件开发管理面板，支持按路径登记本地 file:/link: 插件项目、打开源码目录，并通过确认式会话继续开发或触发 GitHub 上传/更新流程。",
+    "en": "This is a DeepSeek Harness web settings panel for local plugin development, allowing manual registration of local file-/link-based plugin projects, opening source folders, and starting confirmation-based sessions for continue-development or GitHub upload/update workflows."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "Scans local profile package.json entries to discover file:/link: plugin candidates",
-      "Allows users to explicitly register/unregister local development projects",
-      "Validates project paths with realpath before inclusion",
-      "Opens plugin source directories through host workspace/file-manager integration",
-      "Creates workspace-session workflows for continue-development prompts",
-      "Surfaces guided upload/update GitHub publish flows with risk constraints",
-      "Stores managed project registry in local DSH config",
-      "Depends on host services and user-authorized external Git/GitHub flow"
+      "local discovery of candidate plugins from package manifests",
+      "manual registration and removal of plugin projects",
+      "opening project source locations through host workspace/filesystem integration",
+      "facilitating workspace sessions for continue-development and GitHub upload/update workflows",
+      "storing plugin-management state in local plugin-dev config"
     ],
     "reasons": [
       {
-        "code": "LOCAL_DISCOVERY_UI",
+        "code": "LOCAL_FILEPATH_DISCOVERY",
         "evidenceRef": "readme"
       },
       {
-        "code": "MANUAL_REGISTRATION_CONTROL",
+        "code": "USER_CONTROLLED_REGISTRATION",
         "evidenceRef": "readme"
       },
       {
-        "code": "SAFE_REALPATH_VALIDATION",
+        "code": "SESSION_BASED_GITHUB_WORKFLOW",
         "evidenceRef": "readme"
       },
       {
-        "code": "USER_CONFIRMED_GITHUB_WORKFLOW",
+        "code": "LOCAL_STATE_PERSISTENCE",
         "evidenceRef": "readme"
-      },
-      {
-        "code": "NO_AUTOMATIC_GIT_GH_EXECUTION",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "WEB_CLIENT_BUNDLE_MANIFEST",
-        "evidenceRef": "package.json"
       }
     ]
   },
@@ -60,34 +52,31 @@
     "riskLevel": "R1",
     "capabilities": [
       "network.access",
-      "Scans local profile package.json entries to discover file:/link: plugin candidates",
-      "Allows users to explicitly register/unregister local development projects",
-      "Validates project paths with realpath before inclusion",
-      "Opens plugin source directories through host workspace/file-manager integration",
-      "Creates workspace-session workflows for continue-development prompts",
-      "Surfaces guided upload/update GitHub publish flows with risk constraints",
-      "Stores managed project registry in local DSH config",
-      "Depends on host services and user-authorized external Git/GitHub flow"
+      "local discovery of candidate plugins from package manifests",
+      "manual registration and removal of plugin projects",
+      "opening project source locations through host workspace/filesystem integration",
+      "facilitating workspace sessions for continue-development and GitHub upload/update workflows",
+      "storing plugin-management state in local plugin-dev config"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.94,
+      "aiConfidence": 0.9,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T16:03:16.593Z",
+  "classifiedAt": "2026-08-18T17:58:59.188Z",
   "repositoryCommitSha": "ab6524875506efcd4fcf3c04e576402d0b99332c",
-  "evidenceHash": "b45e754c527e09d3a73ade12047afe74cb486bc617841f51fcb286d2d17d0800",
+  "evidenceHash": "47a212e19c1466ee997fe245dcb2962f186b1c9c27ced67e7595d61343201aa9",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "95082e6eae95501647901a319e2522361e80bc6107c20e2587f32b6a867d4676",
-  "shadowMode": true
+  "shadowMode": false
 }

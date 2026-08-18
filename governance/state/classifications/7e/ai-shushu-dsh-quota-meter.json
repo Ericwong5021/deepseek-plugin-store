@@ -4,15 +4,72 @@
   "category": "notifications-monitoring",
   "tags": [
     "monitoring",
-    "notification",
     "ui",
-    "layout",
+    "automation",
+    "api",
+    "data",
     "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing purpose is to monitor per-session token spending in real time and warn/notify users when quota is exhausted, while visually showing a live progress bar and blocking further model calls to enforce the budget.",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a usage/quotа monitoring utility for DSH sessions, exposing spend status in the chat UI and enforcing budget-aware behavior by blocking additional calls when configured limits are hit, based on per-session token accounting and pricing rules defined in the README and plugin manifest.",
+  "summaries": {
+    "zh": "该插件为 DSH 会话提供额度监控与计费展示，在界面上显示实时消耗进度，并在额度耗尽时拦截后续模型调用。",
+    "en": "This plugin provides per-session quota monitoring for DSH, showing live budget usage in the UI and preventing additional model calls when the configured limit is reached."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Tracks per-session model usage and spending from DSH token usage events and persists session ledger data",
+      "Displays a live quota progress indicator and cost deduction feedback in the web client UI",
+      "Automatically intercepts/blocks model invocations when configured quota is exhausted",
+      "Supports configurable model pricing and peak/off-peak tariff settings for billing calculations"
+    ],
+    "reasons": [
+      {
+        "code": "README: lists budget blocking via `agent/pre-step` to reject new model calls when quota is exhausted",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: describes real-token billing, live progress bar, per-session accounting, and persisted ledger storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: declares a DSH web client + host bundle via `dsh.bundle.patch`, indicating runtime interception and UI extension",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Tracks per-session model usage and spending from DSH token usage events and persists session ledger data",
+      "Displays a live quota progress indicator and cost deduction feedback in the web client UI",
+      "Automatically intercepts/blocks model invocations when configured quota is exhausted",
+      "Supports configurable model pricing and peak/off-peak tariff settings for billing calculations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:01:35.629Z",
-  "evidenceHash": "3f3e559ef2e03f82ee9449b634fbb369ebb3bd8b355c417fc87ac28204354185"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:35.437Z",
+  "repositoryCommitSha": "d9941af76f46d723ed4a5a23718330c9aec9f683",
+  "evidenceHash": "1de184d4f33cd3ce2fdda241ef23b17612d769a00daa9327d024bd9a3a6360c5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b9ffedc6ec8653d7086294b3ccc1386042b3eb9d59e601e4de89a3f6ac560b73",
+  "shadowMode": false
 }

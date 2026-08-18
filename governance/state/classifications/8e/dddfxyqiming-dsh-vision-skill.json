@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "tool",
+    "file",
+    "api",
+    "data",
+    "skill",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a media-processing extension for DeepSeek Harness, focused on vision capabilities rather than general project tooling or orchestration. It exposes a runtime `vision` skill plus multiple image tools for analysis, OCR, grounding, detection, and color extraction, with path-based image input and web paste-to-path handling. Evidence from README and package metadata confirms external multimodal API usage, local image OCR fallback, and DSH plugin/client bundle integration, so classification is centered on media tools with moderate integration risk from optional external calls and file/image handling.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的视觉能力插件，提供图片识别、OCR、目标定位、目标枚举和主色分析等工具，并支持通过本地路径或粘贴图片进行图像识别。",
+    "en": "This is a DeepSeek Harness vision plugin that provides image analysis, OCR, grounding, detection, and color tools, with image input via local paths and paste-to-path image handling."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Image and OCR analysis tools (general analysis, OCR, grounding, detection, color analysis, long-screenshot OCR)",
+      "Path-based image ingestion via local path, clipboard fallback, and paste-to-path workflow",
+      "Structured JSON outputs and result caching for repeated image analysis requests",
+      "Configurable failover among multiple multimodal providers with timeout and retry handling",
+      "Credential-based API key integration for external vision services"
+    ],
+    "reasons": [
+      {
+        "code": "plugin_invokes_external_vision_apis_for_image_processing",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "toolset_includes_local_file_path_inputs_and_pasted_image_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_and_client_integration_via_dsh_bundle_and_path_fenced_workspaces",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_credentials_and_config_keys_for_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Image and OCR analysis tools (general analysis, OCR, grounding, detection, color analysis, long-screenshot OCR)",
+      "Path-based image ingestion via local path, clipboard fallback, and paste-to-path workflow",
+      "Structured JSON outputs and result caching for repeated image analysis requests",
+      "Configurable failover among multiple multimodal providers with timeout and retry handling",
+      "Credential-based API key integration for external vision services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:13.489Z",
+  "repositoryCommitSha": "ab08f5d5cfa0e2abd3b10a74f62e07abec595843",
+  "evidenceHash": "7565ae2d7f099c85887560350fd6d6042ff421cd0b5d210ea5b367c5d90911e5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "01afd3004cec58a2474bfaf023f71ba5262eec610753a98bffd354455409c1bc",
+  "shadowMode": false
+}

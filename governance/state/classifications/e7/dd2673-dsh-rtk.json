@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "automation",
+    "terminal",
+    "tool",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary purpose is to act as a DSH terminal automation layer: it intercepts `pwsh` tool calls and attempts to rewrite them with a local RTK binary to return reduced command output to the model context, while keeping certain execution paths unchanged. Evidence consistently describes hook-based interception, rewrite/fallback logic, and configurable controls, with no separate RTK runtime logic bundled in this package.",
+  "summaries": {
+    "zh": "该插件是 DSH 的原生扩展，会在模型发起的 `pwsh` 调用中尝试自动调用本机 RTK 重写命令并通过 DSH 执行，返回压缩后的结果。",
+    "en": "This plugin is a native DSH extension that intercepts model `pwsh` calls, attempts local RTK rewriting when configured, and executes through DSH with context-facing output compression."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts DSH `tools/execute` dispatch for targeted tools before native command execution.",
+      "Rewrites `pwsh` commands using a local `rtk rewrite` call when rewrite is applicable.",
+      "Executes rewritten commands by delegating back to the native `pwsh` tool and returns rewritten output.",
+      "Allows passthrough behavior for blocked/denied/unsupported cases and explicit exclusion prefixes.",
+      "Falls back to original command execution when RTK is unavailable or not applicable."
+    ],
+    "reasons": [
+      {
+        "code": "README explains command interception via the DSH tools/execute hook and automatic rewrite of model-issued `pwsh` commands to RTK-filtered forms.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies rewrite outcomes (passthrough/deny/ask) and non-rewrite conditions like background and sandboxed calls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata marks this as a DSH bundle plugin and exposes plugin integration files and peer dependencies for DSH runtime packages.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README documents configuration knobs for enabling/disabling interception, target tools, RTK binary path, exclusions, and timeout behavior.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts DSH `tools/execute` dispatch for targeted tools before native command execution.",
+      "Rewrites `pwsh` commands using a local `rtk rewrite` call when rewrite is applicable.",
+      "Executes rewritten commands by delegating back to the native `pwsh` tool and returns rewritten output.",
+      "Allows passthrough behavior for blocked/denied/unsupported cases and explicit exclusion prefixes.",
+      "Falls back to original command execution when RTK is unavailable or not applicable."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:06.599Z",
+  "repositoryCommitSha": "cdbce016540e7071743ebce603268b2e93582138",
+  "evidenceHash": "7d0ce2e6c45a70e292324453c06598206b3591b47324f2380ad6ca35e6103312",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "83e75a30fe0faf6e7f8115811bb8e6411878d24eabc7ea14a085efb89f76afe6",
+  "shadowMode": false
+}

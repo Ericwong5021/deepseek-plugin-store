@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "chat",
+    "search",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用途是文件导航与输入增强：在 DSH 聊天输入框中通过 `@` 调出工作目录文件菜单，支持筛选、递归搜索和逐级目录进入，并将选中文件或目录路径直接写入输入框。其行为以本地工作区上下文为中心，定位为文件与会话交互工具，而非外部服务、数据处理或代码生成类功能。",
+  "summaries": {
+    "zh": "该插件在 DSH 会话输入框输入 @ 时打开工作目录文件菜单，可按名称筛选、递归搜索并逐级进入目录后将文件或目录路径引用写入输入框。",
+    "en": "This plugin opens a workspace file menu in the DSH chat input when typing @, allowing name filtering, recursive search, folder drill-down, and insertion of selected file or directory references."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在会话输入框触发并展示基于工作目录的文件与目录候选菜单",
+      "支持名称过滤与递归目录搜索以定位条目",
+      "按层级目录深入并将选中结果写入输入框路径引用",
+      "路径解析与候选范围绑定当前会话工作目录上下文"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了在 DSH 输入框输入 `@` 即呼出“文件”菜单，可对当前层条目按名称过滤并在无匹配时在工作目录内递归查找。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出会话目录来源于 `header.cwd`（缺失则回退）并在候选选中时写入文件路径或 `@目录/`，体现核心为会话级文件路径引用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 定义了 DSH 插件 bundle/客户端入口与 web 平台运行信息，表明其为本地运行时插件的功能扩展点。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "在会话输入框触发并展示基于工作目录的文件与目录候选菜单",
+      "支持名称过滤与递归目录搜索以定位条目",
+      "按层级目录深入并将选中结果写入输入框路径引用",
+      "路径解析与候选范围绑定当前会话工作目录上下文"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:32.926Z",
+  "repositoryCommitSha": "d6022e0cd459ee2131942ed601d0819e14bf446c",
+  "evidenceHash": "7975be4901f4ff149fa1aa2fda56e7033a6ff902231dff34198d3b4551a4898b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e1603c2dc480ada2e3a444d16688fe8d9ed7d1282bfc521f96dfed9c3cd7cb1e",
+  "shadowMode": false
+}

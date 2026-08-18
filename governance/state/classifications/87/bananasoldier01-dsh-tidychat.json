@@ -3,40 +3,39 @@
   "group": "interface-experience",
   "category": "navigation-panels",
   "tags": [
-    "chat",
-    "ui",
-    "layout",
-    "automation",
     "browser",
+    "ui",
+    "chat",
+    "automation",
+    "layout",
     "tool"
   ],
   "confidence": "high",
-  "confidenceScore": 0.92,
-  "reason": "该插件主要面向 DSH Web 聊天界面的可视化体验优化：将长会话按已完成轮次进行可折叠整理、加入过程/正文分隔线、提供左缘定位导航与跳转入口，并支持开关式配置。它属于面向用户界面导航与布局改善的插件，能力边界主要在当前会话 DOM 的本地重排与展示控制；未见远程数据抓取或外部服务集成迹象，但具备自动点击加载历史等交互自动化特征，因此评为中低风险。",
+  "confidenceScore": 0.93,
+  "reason": "该插件面向用户主要用途是整理 DSH Web 会话时间线的可读性与导航，README 与清单均显示其核心在于界面整理（折叠、分隔、左侧导航）而非代码生成、外部服务调用或数据处理，因此分类为导航与面板类插件，风险以浏览器内 UI 自动化操作为主。",
+  "summaries": {
+    "zh": "dsh-tidychat 是一款 DSH Web 插件，用于整理长会话界面：自动折叠已完成轮次并保留结论、在过程与正文间加入分隔，并通过左侧定位条快速跳转到对应消息。",
+    "en": "dsh-tidychat is a DSH Web plugin that tidies long conversations by collapsing completed turns, separating thinking from final text, and adding a left-side navigator for quick jumping between messages."
+  },
   "risk": {
     "level": "R1",
     "capabilities": [
-      "自动整理并折叠 DSH Web 会话中的已完成轮次，突出显示最终结论",
-      "在会话中插入过程与正文分隔线以提升可读性",
-      "在聊天左缘生成可悬停摘要与点击跳转的导航条",
-      "自动检测并触发“加载更早”以纳入历史消息",
-      "通过设置开关控制功能，默认可全量开启"
+      "自动折叠已完成会话轮次并可展开恢复",
+      "在思考与正文之间插入可视分隔标记",
+      "添加左侧定位条用于会话项跳转",
+      "检测并自动触发历史加载按钮"
     ],
     "reasons": [
       {
-        "code": "DOM_REWRITING_IN_BROWSER",
+        "code": "README 描述了“自动折叠已完成轮次”“思考/正文分隔线”“左缘定位条”“自动加载更早历史”四项主要功能。",
         "evidenceRef": "readme"
       },
       {
-        "code": "AUTOMATIC_HISTORY_CLICKING",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "CLIENT_RUNTIME_INJECTION_ON_WEB",
+        "code": "package.json 的 dsh client 配置将插件指定为 web 平台并注入 dsh-client-runtime/ui-settings/ui-slots，表明其为前端界面运行时插件。",
         "evidenceRef": "package.json"
       },
       {
-        "code": "OPTIONAL_HOST_WHITELIST_PATCH_INSTRUCTION",
+        "code": "项目功能依赖 DOM 契约属性与 MutationObserver 进行会话 DOM 的动态观察与处理，带来界面行为变化。",
         "evidenceRef": "readme"
       }
     ]
@@ -47,31 +46,30 @@
     "finalDecision": "needs_human",
     "riskLevel": "R1",
     "capabilities": [
-      "自动整理并折叠 DSH Web 会话中的已完成轮次，突出显示最终结论",
-      "在会话中插入过程与正文分隔线以提升可读性",
-      "在聊天左缘生成可悬停摘要与点击跳转的导航条",
-      "自动检测并触发“加载更早”以纳入历史消息",
-      "通过设置开关控制功能，默认可全量开启"
+      "自动折叠已完成会话轮次并可展开恢复",
+      "在思考与正文之间插入可视分隔标记",
+      "添加左侧定位条用于会话项跳转",
+      "检测并自动触发历史加载按钮"
     ],
     "autoMerge": false,
-    "shadowMode": true,
+    "shadowMode": false,
     "reasons": [
       "UNVERIFIED_MAINTAINER"
     ],
     "trace": {
       "rulesPassed": true,
       "aiDecision": "approve",
-      "aiConfidence": 0.92,
+      "aiConfidence": 0.93,
       "maintainerVerified": false
     }
   },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:02:47.169Z",
+  "classifiedAt": "2026-08-18T17:58:58.358Z",
   "repositoryCommitSha": "3742b4e2c50ce26136da212f8d14741f2e286f4e",
-  "evidenceHash": "a0f5dd7be4e316d6be57e21a1959464ec28cac46e6899685b037240a7c19b446",
+  "evidenceHash": "2f34d48f9b6aed4716b79f417b1c6251f9b63d0e884946dc911dc51402c613d6",
   "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "a189bc61c91a2e41b6f610ef158556ea1be74b2a5d600abf20457c616d198f52",
-  "shadowMode": true
+  "shadowMode": false
 }

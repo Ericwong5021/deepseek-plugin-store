@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "integration",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily a user-facing DSH configuration management panel for MCP servers, enabling visual CRUD and enable/disable operations on profile patch entries. Evidence shows it edits `@deepseek-ai/dsh-mcp-client` entries in `cordis.patch.yml`, supports MCP transport fields and env metadata display, and provides save-to-reload behavior within the host/session lifecycle, while also handling a bundled Node execution fallback for `npx`.",
+  "summaries": {
+    "zh": "该插件在 DSH 侧边栏提供 MCP 配置管理面板，支持可视化查看、添加、编辑、删除并启用/禁用 MCP server 配置，并将变更写回配置以供主机生效。",
+    "en": "This plugin provides an MCP management panel in the DSH sidebar to visually inspect, add, edit, remove, and enable or disable MCP server configurations, with changes persisted to the host profile configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Edit and persist MCP-related profile patch configuration entries in `cordis.patch.yml`",
+      "Provide UI workflows for creating, updating, deleting, and toggling MCP server entries",
+      "Store and apply transport/command/headers/url/env-oriented settings used by MCP client instances",
+      "Persist configuration changes and trigger host-side reconnect behavior",
+      "Resolve `npx` command execution path in packaged environments"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a sidebar MCP management panel that lists and edits MCP server entries in `cordis.patch.yml`, including add/edit/delete/enable-disable actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents saved changes triggering disconnect/reconnect hot-reload behavior without restarting the host session.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states support for `stdio` and `streamable-http` transport fields plus `command`, `args`, `env`, `url`, `headers`, and `cwd` configuration fields.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json includes DSH bundle/patch wiring and web client injection, indicating runtime integration with the host configuration and UI surface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Edit and persist MCP-related profile patch configuration entries in `cordis.patch.yml`",
+      "Provide UI workflows for creating, updating, deleting, and toggling MCP server entries",
+      "Store and apply transport/command/headers/url/env-oriented settings used by MCP client instances",
+      "Persist configuration changes and trigger host-side reconnect behavior",
+      "Resolve `npx` command execution path in packaged environments"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:53.800Z",
+  "repositoryCommitSha": "1e57e85b4b7f52aa3cc5f886e6b2cdda8bf6ee9c",
+  "evidenceHash": "4bdaf7b976fa920c9fe5d9b48aeedc64a1a71c9f59fb628186bc2be5a205a24d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "841f0fc13fcc69f83bbbd898a127ac838577450aec09d66b0af4836e0fadbb2c",
+  "shadowMode": false
+}

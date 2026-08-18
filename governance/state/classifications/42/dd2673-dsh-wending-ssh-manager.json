@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "automation",
+    "file",
+    "terminal",
+    "tool",
+    "integration",
+    "workflow",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Based on repository name, package metadata, and README, this is primarily a DeepSeek Harness SSH management plugin focused on remote operations workflows: managing SSH hosts, running commands, transferring files, and opening PTY/web terminal sessions with corresponding Agent tool integrations. Its purpose aligns with file-and-terminal tooling rather than search, document, media, or research utilities.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 SSH 管理插件，用于集中管理主机并提供远程命令执行、SFTP 文件传输、端口转发隧道与 Web 终端，同时支持通过内置 Agent 工具进行批量和流程化操作。",
+    "en": "This is a DeepSeek Harness SSH management plugin that provides host management, remote command execution, SFTP file transfer, tunnel support, and a web terminal, with built-in Agent tools for batch and workflow-based operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Remote SSH command execution and command output handling",
+      "SSH/SFTP upload and download with directory browsing",
+      "Local web terminal access for remote shell sessions",
+      "SSH host management plus host-key validation and credential/config storage",
+      "Agent tool APIs for list/exec/upload/download/tunnel/cluster operations"
+    ],
+    "reasons": [
+      {
+        "code": "README lists command execution, file transfer, terminal, tunneling, and clustering as core features.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents agent-facing tools such as ssh_exec, ssh_upload, ssh_download, ssh_tunnel, and ssh_cluster, enabling workflow-driven remote actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes host configuration and credential handling in local files with host-key pinning and DPAPI/permission controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest and dependencies include ssh2, ws, and xterm components aligned with SSH/network and terminal operations.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Remote SSH command execution and command output handling",
+      "SSH/SFTP upload and download with directory browsing",
+      "Local web terminal access for remote shell sessions",
+      "SSH host management plus host-key validation and credential/config storage",
+      "Agent tool APIs for list/exec/upload/download/tunnel/cluster operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:07.059Z",
+  "repositoryCommitSha": "6fa9f2a032319185591a52881f18f07ab6484ae5",
+  "evidenceHash": "49bb82304b39e735d2e32a5967ff376bf44877e92bd336b36c68a1f10c5ca0d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fb9e374534fc7c37bb6601df8b949a9b459a8013d9e7b56bc22312ee231d3207",
+  "shadowMode": false
+}

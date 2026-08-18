@@ -4,7 +4,7 @@
     "fullName": "dd2673/dsh-rtk",
     "url": "https://github.com/dd2673/dsh-rtk"
   },
-  "summary": "Native DSH bundle that rewrites pwsh commands through RTK while preserving DSH execution policy.",
+  "summary": "This plugin is a native DSH extension that intercepts model `pwsh` calls, attempts local RTK rewriting when configured, and executes through DSH with context-facing output compression.",
   "sources": [
     "github-topic"
   ],
@@ -44,32 +44,23 @@
   },
   "classificationSuggestion": {
     "group": "tools-data",
-    "category": "data-processing",
+    "category": "files-terminal",
     "tags": [
-      "agent",
-      "cli",
-      "context",
-      "file",
-      "integration",
-      "monitoring",
-      "project-analysis",
+      "automation",
       "terminal",
-      "testing",
-      "theme",
-      "tool"
+      "tool",
+      "cli",
+      "workflow"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:bundle",
-      "text:testing-debugging:test",
-      "text:planning-execution:执行",
-      "text:memory-context:token",
-      "text:themes-layout:background",
-      "text:visualization:渲染",
-      "text:files-terminal:shell",
-      "text:data-processing:json"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:7d0ce2e6c45a70e292324453c06598206b3591b47324f2380ad6ca35e6103312",
+      "commit:cdbce016540e7071743ebce603268b2e93582138"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:00:06.599Z",
+    "reason": "The plugin’s primary purpose is to act as a DSH terminal automation layer: it intercepts `pwsh` tool calls and attempts to rewrite them with a local RTK binary to return reduced command output to the model context, while keeping certain execution paths unchanged. Evidence consistently describes hook-based interception, rewrite/fallback logic, and configurable controls, with no separate RTK runtime logic bundled in this package."
   }
 }

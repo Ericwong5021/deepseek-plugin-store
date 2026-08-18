@@ -1,16 +1,75 @@
 {
   "status": "classified",
-  "group": "integrations-communication",
-  "category": "external-services",
+  "group": "agents-workflows",
+  "category": "automation",
   "tags": [
-    "integration",
+    "automation",
     "api",
-    "tool"
+    "integration",
+    "tool",
+    "workflow"
   ],
   "confidence": "high",
-  "reason": "The plugin’s core purpose is to adapt custom provider routes to external model APIs: it auto-injects/normalizes reasoning metadata and compatibility settings so custom LLM providers can expose and use reasoning effort correctly across OpenAI/Anthropic-compatible endpoints.",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is a dsh host extension that automates model-provider configuration for custom LLM routes. Based on the repository description, it listens for adapter/settings updates and applies local settings mutations so custom providers expose reasoning effort levels and have compatible metadata defaults, then manages protocol-specific `compat` fields. Its effects are configuration-level (local model metadata and compatibility behavior) with no separate code-generation, search, or UI-building capability shown in the evidence.",
+  "summaries": {
+    "zh": "该插件用于 dsh 的自定义模型提供方，自动补齐推理强度等模型元数据并按协议管理兼容字段，帮助模型在 Composer 中更稳定地使用。",
+    "en": "This plugin for dsh automates custom provider model configuration by filling missing reasoning and model metadata and adjusting protocol compatibility fields for route behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Mutates local dsh provider/model settings files to add missing metadata",
+      "Injects reasoning effort options for supported custom-provider models",
+      "Backfills missing maxTokens/contextWindow values when absent",
+      "Applies protocol-aware compatibility flags for provider routes"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin writes `reasoningEfforts` and fills missing token/context fields for eligible custom routes and some directory routes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains auto-management of `compat` fields for openai-completions/openai-responses/anthropic-messages to match protocol capabilities.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares this as a dsh plugin with a main module and patch bundle for host integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Mutates local dsh provider/model settings files to add missing metadata",
+      "Injects reasoning effort options for supported custom-provider models",
+      "Backfills missing maxTokens/contextWindow values when absent",
+      "Applies protocol-aware compatibility flags for provider routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:03:42.607Z",
-  "evidenceHash": "00e4434b9fae91a236482d94bbaa171ff409aab8c6825f24280bdf648e82b973"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:22.235Z",
+  "repositoryCommitSha": "3c698619419a4dfbe2f2b49034a3c38c7cf93e29",
+  "evidenceHash": "3997158011efd91c1b77ec5222031e30f16ed1cc7bf7c9c9a27e2d80ff61415f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "edce393641ec815e6b3a641862e40ecacbfa9f85511c5180f13baf613ed8a5e8",
+  "shadowMode": false
 }

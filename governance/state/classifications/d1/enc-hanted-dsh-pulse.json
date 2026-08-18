@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "data",
+    "ui",
+    "api",
+    "integration",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a web dashboard for observing DeepSeek Harness session usage and cost, adding visualization panels and summaries for token consumption, model/project distribution, and pricing/balance trends; the evidence consistently describes analytics and reporting surfaces rather than automation or workflow orchestration.",
+  "summaries": {
+    "zh": "dsh-pulse 是一款 dsh Web 插件，用于汇总展示会话使用与成本数据，提供按时间、模型和项目维度的可视化统计与查询界面。",
+    "en": "dsh-pulse is a dsh web plugin that aggregates usage and spending data into dashboard views, with filters and charts for time-based, model-level, and project-level analysis."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "aggregates usage statistics across sessions, models, and projects for reporting",
+      "computes estimated cost and budget/forecast values from usage and pricing rules",
+      "queries official DeepSeek balance snapshots through configured host credentials",
+      "stores and reads plugin settings and cached snapshots locally"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin documentation states it provides usage trend charts, heatmaps, model/project rankings, and shared dashboard views via GET /pulse/stats.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin documents an official balance feature that calls DeepSeek using the host-stored key through a credentials seam, with cached snapshot storage and balance-derived spend line.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package declares a dsh web plugin with exported host/client modules and credentials/storage dependencies, indicating integrated host-side and external-service interactions.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "aggregates usage statistics across sessions, models, and projects for reporting",
+      "computes estimated cost and budget/forecast values from usage and pricing rules",
+      "queries official DeepSeek balance snapshots through configured host credentials",
+      "stores and reads plugin settings and cached snapshots locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:46.774Z",
+  "repositoryCommitSha": "2406ad26e9561f132993a75dfba6fa993386966b",
+  "evidenceHash": "05a0e10541e1b1d0c1d35e54461955309326c206463164852f21236eca560712",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d2bfe4bf0e652745f5bee0d421f3e5ce64c714bfa66e0714724e635b8d93b82",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "api",
+    "automation",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向是 DeepSeek Harness 用户的模型调度体验：在不同时间段基于配置时区自动选择 `deepseek-v4-flash` 与 `deepseek-v4-pro` 以适配峰谷定价，并通过监听用户模型选择事件保证手动选择优先。它提供状态查询与重置命令，限制作用域到 DeepSeek 官方 provider 的 V4 模型、可对请求配置进行替换并记录变更路径，属于面向会话模型调用的自动化路由插件。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，可按峰谷时段自动在 deepseek-v4-flash 与 deepseek-v4-pro 间路由模型请求，并优先遵循用户在界面中的手动模型选择。",
+    "en": "This is a DeepSeek Harness plugin that automatically routes requests between deepseek-v4-flash and deepseek-v4-pro by peak/valley time and respects user-selected models as the highest priority."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "按高峰/谷时段自动切换 DeepSeek V4 模型路由",
+      "读取并处理会话级模型选择事件以优先保留用户显式选择",
+      "在请求链路中替换模型配置（agent/request 处置）",
+      "提供对话工具用于查看路由状态与重置用户选择",
+      "仅对目标服务/模型生效，其余请求原样放行"
+    ],
+    "reasons": [
+      {
+        "code": "AGENT_REQUEST_ROUTING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "TIMEZONE_PEAK_VALLEY_DECISION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "USER_CHOICE_PRIORITY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SCOPE_LIMITS_NON_DEEPSEEK_NON_V4",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "INSTALLABLE_DSH_BUNDLE",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "按高峰/谷时段自动切换 DeepSeek V4 模型路由",
+      "读取并处理会话级模型选择事件以优先保留用户显式选择",
+      "在请求链路中替换模型配置（agent/request 处置）",
+      "提供对话工具用于查看路由状态与重置用户选择",
+      "仅对目标服务/模型生效，其余请求原样放行"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:45.845Z",
+  "repositoryCommitSha": "6e1ee9fe699366f020c37600c6112a8dcc34b76c",
+  "evidenceHash": "f14136ff363da60b48a4e2442111bf030ea448c3fa16327bcd2097de90b35fbb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3ab96b7271a8e2d562f6cb29c36d865ae1a6938e143a19d96fcd831919502a15",
+  "shadowMode": false
+}

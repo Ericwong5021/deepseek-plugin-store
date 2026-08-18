@@ -1,17 +1,83 @@
 {
   "status": "classified",
-  "group": "integrations-communication",
-  "category": "external-services",
+  "group": "agents-workflows",
+  "category": "automation",
   "tags": [
     "cli",
-    "integration",
+    "terminal",
+    "automation",
+    "tool",
     "ui",
-    "terminal"
+    "integration",
+    "file",
+    "workflow"
   ],
   "confidence": "high",
-  "reason": "The plugin is primarily for managing remote DeepSeek Harness instances over SSH (connecting, tunneling, start/stop/status/log actions, and remote provisioning), while also exposing a dedicated SSH Remotes panel in the web UI for user control of those remotes.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an automation utility for managing remote DeepSeek Harness instances over SSH from a local dsh profile. Evidence shows it ships both a CLI (`dsh-ssh`) and a web-profile bundle that creates an SSH Remotes panel, plus tunnel setup and remote process commands, so users can provision, connect to, and control remote sessions from one place. The plugin’s main value is remote orchestration rather than content creation or analytics.",
+  "summaries": {
+    "zh": "该插件为 dsh 提供 SSH 远程管理能力，通过 CLI 与 Web 面板统一管理远程 Harness 的配置、隧道连接、启动停止和日志，并在本地浏览器以薄客户端方式打开远程界面。",
+    "en": "This plugin enables SSH-based remote management for dsh, providing a CLI and web panel to configure, connect to, and control remote harness instances with local browser access via tunnel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Establishes SSH tunnels to remote hosts for dsh access",
+      "Executes remote setup/start/stop workflows via SSH and Node/npm tooling",
+      "Reads local SSH configuration and credentials inputs and can copy local settings to remote hosts",
+      "Writes/reads local and remote state files used to manage tunnel and process lifecycle"
+    ],
+    "reasons": [
+      {
+        "code": "README documents local command-line operations including add, connect, open, start/stop, status, logs, and setup, indicating direct remote lifecycle control and process management.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes connect/open using detached `ssh -L` forwarding and status/logs against remote-local endpoints, confirming tunnel-based access to remote harness services.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README includes `--copy-settings`, `--identity`, and SSH host/user/port/jump options, showing handling of user SSH/auth-related inputs and optional transfer of `settings.yaml`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes `bin.dsh-ssh` and web bundle integration (`dsh` client fields), and tree includes shared libs for tunnel/config/remote/browser flow, confirming distributed CLI + GUI control behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Establishes SSH tunnels to remote hosts for dsh access",
+      "Executes remote setup/start/stop workflows via SSH and Node/npm tooling",
+      "Reads local SSH configuration and credentials inputs and can copy local settings to remote hosts",
+      "Writes/reads local and remote state files used to manage tunnel and process lifecycle"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:59:34.076Z",
-  "evidenceHash": "60d796a19839274c871cc84ceb225196f0670a151e351dcebb983cde266566b5"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:49.910Z",
+  "repositoryCommitSha": "26e329400cf201d9a79d51c4d69fcd7b8c9a9edf",
+  "evidenceHash": "2819aa46cf5c4edbc13f4edbf5f7bc46a93bdc44210e65483d1d442e9aac091e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f4d3aeea93741ef47d1a3ffa2439230c6b41027b2ab1c7f9c0aa87c33b33971",
+  "shadowMode": false
 }

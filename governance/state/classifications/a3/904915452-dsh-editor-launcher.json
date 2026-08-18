@@ -1,17 +1,83 @@
 {
   "status": "classified",
-  "group": "integrations-communication",
-  "category": "external-services",
+  "group": "interface-experience",
+  "category": "navigation-panels",
   "tags": [
-    "integration",
-    "tool",
     "ui",
-    "file"
+    "tool",
+    "file",
+    "desktop",
+    "terminal",
+    "api",
+    "automation"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing purpose is to add a session-header dropdown that lists detected local editors and opens the current workspace in the selected editor, effectively integrating DeepSeek Harness with external editor applications.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is a conversation-header enhancement that lets users open the current workspace in locally detected editors. Evidence shows a dual host/client design: the host scans installed editors and exposes routes, while the web client renders a dropdown action in the session header. Its primary user-facing role is launching external editors from the UI, with local process spawning and path handling as supporting behavior.",
+  "summaries": {
+    "zh": "该插件在会话头部提供“在编辑器中打开”下拉菜单，扫描本机已安装编辑器并可一键打开当前会话对应的工作区。",
+    "en": "This plugin adds an “Open in Editor” dropdown in the session header to scan local editors and open the current workspace in a selected local editor."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "scan local editor installations",
+      "launch local editor processes",
+      "open selected workspace in external editor",
+      "provide host-side web endpoints for editor actions",
+      "perform local workspace path validation before launch"
+    ],
+    "reasons": [
+      {
+        "code": "client-injects-header-dropdown",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin-exposes-editor-list-refresh-open-routes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host-side-spawn-to-start-editors",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web-platform-only-client-entrypoint",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "scan local editor installations",
+      "launch local editor processes",
+      "open selected workspace in external editor",
+      "provide host-side web endpoints for editor actions",
+      "perform local workspace path validation before launch"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:00:12.802Z",
-  "evidenceHash": "f875cfb90b9b76dd9176dc6b0e594d4694f2d6bc8539e349ce5e18e17210145c"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:27.628Z",
+  "repositoryCommitSha": "ee4269476a6c1baf9e26f6efb7dddb76e2b33c09",
+  "evidenceHash": "19f6baee7021932545b0f69d7a927b999cfe42887a070460421f2b27969dc647",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d72541d5fabeae2a9b0e33651d79edae653aa09b75cd90956eb550ebb680ee7a",
+  "shadowMode": false
 }

@@ -1,16 +1,82 @@
 {
   "status": "classified",
   "group": "interface-experience",
-  "category": "visualization",
+  "category": "themes-layout",
   "tags": [
-    "visualization",
     "ui",
-    "layout"
+    "desktop",
+    "browser",
+    "image",
+    "tool",
+    "integration"
   ],
   "confidence": "high",
-  "reason": "This plugin’s primary user-facing purpose is to add a floating Live2D desktop-pet style visual in the DeepSeek Harness web UI, including animated expressions and mouse-following behavior, which is mainly a user interface visualization feature.",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is a DeepSeek Harness web UI enhancement that injects a floating visual companion (Live2D/Cubism model), with configurable placement and size and cursor/state-driven animation behavior. Evidence points to a user-facing purpose of interface layout/visual augmentation rather than data processing, automation, or external service tooling.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 网页界面提供一个可配置的浮动 Live2D 桌宠，展示角色模型并根据状态和光标实现表情与视线联动。",
+    "en": "Provides a configurable floating Live2D companion in the DeepSeek Harness web UI, rendering a model with state-based expression switching and cursor-responsive movement."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders a floating Live2D canvas element in the web UI",
+      "Loads and displays configured Cubism 4 model assets",
+      "Updates model expression/state from host activity states",
+      "Tracks mouse movement to drive model eye/head parameters",
+      "Persists enable/disable preference via browser localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "README identifies the plugin as a Live2D companion that renders a Cubism model in the Web UI with state-driven expressions and mouse tracking.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents localStorage keys to toggle visibility and persistence behavior, indicating browser-side state control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web client injection and bundle patch usage for cordis.patch.yml configuration, confirming UI-extension behavior in the web platform.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata and description emphasize Live2D/pet and DeepSeek Harness plugin purpose.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Renders a floating Live2D canvas element in the web UI",
+      "Loads and displays configured Cubism 4 model assets",
+      "Updates model expression/state from host activity states",
+      "Tracks mouse movement to drive model eye/head parameters",
+      "Persists enable/disable preference via browser localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:49.244Z",
-  "evidenceHash": "2643efab34441089c5ff7d81a50c36a4dce5f15cb89af8e500d3e28cc624eba6"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:45.837Z",
+  "repositoryCommitSha": "d6957edc6383c8c51d133f53ae24172e197c3e07",
+  "evidenceHash": "c7782f950a55f3b5fd6830886bab463e17bdd8cc3014fd138f57246210504c42",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c19a1c295f802c3decf2db7d36044ee37d62fb35e1d7b618f428f1652170712e",
+  "shadowMode": false
 }

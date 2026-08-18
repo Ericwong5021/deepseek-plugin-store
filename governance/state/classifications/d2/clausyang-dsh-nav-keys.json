@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a chat input utility that improves message composition workflow by enabling keyboard-based recall of recent sent messages in the current session, with mode-aware behavior to preserve normal caret movement. Evidence in the README and manifest points to a small browser client plugin for DeepSeek Harness rather than automation, analysis, or external-service tooling.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness Web 的聊天输入框插件，通过方向键在当前会话内快速召回并切换已发送消息历史，在检测到光标定位后恢复普通上下移动。",
+    "en": "This is a DeepSeek Harness Web chat composer plugin that lets users browse recently sent messages with Up/Down keys and resumes normal cursor movement when caret-positioning actions are used."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts keyboard events in the web composer and conditionally handles Up/Down for history navigation",
+      "Reads current session conversation snapshots to collect user-message history for recall",
+      "Writes recalled history text back into the composer draft via the platform input facade",
+      "Switches behavior between history recall and normal cursor movement based on caret/selection actions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes this plugin as a DeepSeek Harness Web input-field plugin that enables terminal-like Up/Down recall of sent-message history and caret-mode fallback for normal cursor movement.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states history is sourced from current conversation snapshots and draft updates use conversation.input.for(actx).setDraft().",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this as a DSH web client plugin with platform=web and client bundle injection, indicating browser-side runtime behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Intercepts keyboard events in the web composer and conditionally handles Up/Down for history navigation",
+      "Reads current session conversation snapshots to collect user-message history for recall",
+      "Writes recalled history text back into the composer draft via the platform input facade",
+      "Switches behavior between history recall and normal cursor movement based on caret/selection actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:39.704Z",
+  "repositoryCommitSha": "9dd71a17cfe92f21570614fd9f9b3386675f885b",
+  "evidenceHash": "5155ce4f51239c33fafb7436555d16280a551a9136188295143140402677e7e9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "04deb75d9d676b85e7bf0a6e82f19542bfd5ece7a2200873116ac840c3a74f1c",
+  "shadowMode": false
+}

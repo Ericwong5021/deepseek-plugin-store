@@ -6,13 +6,78 @@
     "integration",
     "chat",
     "api",
+    "automation",
+    "tool",
+    "cli",
     "ui",
-    "tool"
+    "image"
   ],
   "confidence": "high",
-  "reason": "Primary purpose is connecting DeepSeek Harness to Feishu/Lark as an external messaging service: it receives/sends chat messages via Lark/Feishu credentials and sync tools, with a web page for connection and session configuration.",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要用户面向用途是将飞书/ Lark 聊天接入 DeepSeek Harness：利用飞书官方 SDK 长连接接收消息、按会话映射创建并隔离 DSH 会话、经 Agent 处理后回复原消息。证据显示它还提供 Web 配置页面用于管理 App 凭据、CLI 路径与默认会话参数，体现其核心为外部通信服务接入。基于其读取凭据并与外部服务网络交互的能力，判定为中低风险。",
+  "summaries": {
+    "zh": "该插件用于将飞书/Lark 聊天接入 DeepSeek Harness：消息通过机器人进入独独立会话，由 Agent 处理后回复原聊天，并提供 Web 设置页用于管理连接凭据与默认会话参数。",
+    "en": "This plugin connects Feishu/Lark chats to DeepSeek Harness sessions, forwarding messages through an agent workflow and replying in the original chat, while exposing a web settings page to manage connector credentials and default session options."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "chat-to-session routing",
+      "message de-duplication and ordering handling",
+      "image attachment forwarding"
+    ],
+    "reasons": [
+      {
+        "code": "readme_websocket_long_connection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_session_per_chat_mapping",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_credential_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_json_dsh_bundle_web_client",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "chat-to-session routing",
+      "message de-duplication and ordering handling",
+      "image attachment forwarding"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:03:20.918Z",
-  "evidenceHash": "6669d635a242b0bde1a01d1bd6e773325b39cb625370033409d94d7a910d6196"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:20.540Z",
+  "repositoryCommitSha": "a0820b9dfe5502f46b7470c13a74c9082a9d14ca",
+  "evidenceHash": "0cb61e753b5f7e450cb1f65d9d7de37fbc70435459f003fb1d6c68b1aa3ff70a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ed315aff804689e4231d4cb276f58c94fc9ec8184670e97d0983d4089ba61080",
+  "shadowMode": false
 }

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "file",
+    "tool",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户功能是增强 DSH Web 对话界面：在 edit/write 工具执行后实时可视化行级代码差异，并在回合结尾展示文件级变更汇总，因此可归类为可视化类插件，带有文件变更展示与 UI 展示能力，且实现依赖于本地 git/工具参数差异来源。",
+  "summaries": {
+    "zh": "该插件在 DSH Web 对话中展示代码改动，支持在工具卡片内逐行高亮显示 edit/write 差异，并在每个回合后给出文件级变更汇总，方便快速查看改动范围。",
+    "en": "This plugin enhances the DSH web conversation view by showing edit/write changes as inline line-level diffs and adding per-turn file-level change summaries for quick review of modified files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays inline line-level diffs for edit/write tool calls inside DSH conversation cards.",
+      "Shows per-turn file-change summary cards with file status and add/remove counts.",
+      "Provides a streaming visual reveal mode for diff lines and optional auto-scroll.",
+      "Falls back to tool-argument diffs when git diff is unavailable and truncates large diffs for display."
+    ],
+    "reasons": [
+      {
+        "code": "README documents inline diff rendering for edit/write tool cards with streaming line reveal",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents per-turn file-change summary card and Git-first fallback behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web client plugin wiring and host/client split entrypoints",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Displays inline line-level diffs for edit/write tool calls inside DSH conversation cards.",
+      "Shows per-turn file-change summary cards with file status and add/remove counts.",
+      "Provides a streaming visual reveal mode for diff lines and optional auto-scroll.",
+      "Falls back to tool-argument diffs when git diff is unavailable and truncates large diffs for display."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:58.550Z",
+  "repositoryCommitSha": "57a89d409ed3e9b3f5a34ac0768cec80a4f7cc39",
+  "evidenceHash": "f1a682f28b50bf1f451e63041bb84be113fd8eef57cdb13f784021c54c983b8e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "678a2f47faef0441e456bbff7aa391ec76a8f5acac94c2f808bdf160e8935df0",
+  "shadowMode": false
+}

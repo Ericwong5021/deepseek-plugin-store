@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "ui",
+    "browser",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是为 DSH Web 用户提供可配置的回复语言设置，并在会话构建系统提示词时使用该设置约束模型语言输出，属于面向用户体验的通用工具型增强，不涉及文件操作、外部服务调用或测试调试功能。",
+  "summaries": {
+    "zh": "本插件在 DeepSeek Harness 的 Web 设置页新增“用户语言”选项，并按该设置在每次会话中向系统提示词注入语言指令，让模型按选定语言回答。",
+    "en": "This plugin adds a User Language option in DeepSeek Harness web settings and injects a language instruction into each system-prompt assembly so responses follow the selected language."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在每次对话系统提示词中追加用户配置的语言指令",
+      "提供 Web 设置页中的语言配置并持久化到 user-language 命名空间",
+      "通过 DSH web 客户端注入和主机端配置扩展实现功能"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件用于“应答语言”，在 Web 设置页提供“用户语言”小节，并在组装系统提示词时注入对应语言指令。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库说明和文件列表表明 index.js 与 client.js 分别处理宿主端 settings 注册与浏览器端设置界面渲染。",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "package.json 声明 dsh.client 为 web 平台注入客户端运行时与 settings/slots 模块，表明属于 web 端功能扩展。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "在每次对话系统提示词中追加用户配置的语言指令",
+      "提供 Web 设置页中的语言配置并持久化到 user-language 命名空间",
+      "通过 DSH web 客户端注入和主机端配置扩展实现功能"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:23.381Z",
+  "repositoryCommitSha": "65a6c202f9af68832b915d6f8b7e2ba63992f519",
+  "evidenceHash": "0dda041a633a08346de5cc75cb4e876849c7ebfc8c315cc2fb1b038ce22fbc6f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5d2a945664518880dfadeef05f1fd0961e32432faa076e5079ea47116fe00d16",
+  "shadowMode": false
+}

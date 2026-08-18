@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "automation",
+    "context",
+    "memory",
+    "planning",
+    "workflow",
+    "tool",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要面向用户价值是为 DeepSeek Harness 中的 Agent 提供可复用的反思记忆层：记录每次假设与执行闭环，蒸馏出经验，再在后续同类任务中注入复用，直接服务于上下文记忆与任务规划改进，而非直接的文件、搜索或单次执行工具。",
+  "summaries": {
+    "zh": "Orbit 是 DeepSeek Harness 插件，用于把 Agent 的假设、任务与结果过程记录为可回溯环，并在审阅通过后沉淀为 playbook 供后续同类任务参考。",
+    "en": "Orbit is a DeepSeek Harness plugin that records agent steps as traceable rings, then turns reviewed outputs into playbooks for reuse in future similar tasks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Capture structured hypothesis→task→result rings with objective done_when criteria",
+      "Persist ring and playbook data in shared DSH domain storage",
+      "Distill closed rings into structured experience candidates for review",
+      "Provide accept/edit/reject review workflow before activation",
+      "Inject approved experiences into later similar planning flows by track and scope",
+      "Support scheduled or manual distillation cadence",
+      "Send optional HTTP notifications after distillation"
+    ],
+    "reasons": [
+      {
+        "code": "README documents dedicated tools for ring create/close/review, reflect, distill, review, and playbook readback, confirming the plugin’s reflection-and-memory workflow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states rings and playbooks are stored in ctx.storage.domain with track/scope matching and are injected into subsequent task setup, indicating shared-context behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README/config shows optional notifyUrl/notifyTargetId and scheduled distillIntervalSeconds, plus model provider/model settings, indicating external service interaction paths.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DeepSeek Cordis/DSH plugin and storage/tool dependencies with DSH bundle configuration, confirming runtime integration and platform-level tooling.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Capture structured hypothesis→task→result rings with objective done_when criteria",
+      "Persist ring and playbook data in shared DSH domain storage",
+      "Distill closed rings into structured experience candidates for review",
+      "Provide accept/edit/reject review workflow before activation",
+      "Inject approved experiences into later similar planning flows by track and scope",
+      "Support scheduled or manual distillation cadence",
+      "Send optional HTTP notifications after distillation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:39.771Z",
+  "repositoryCommitSha": "0d9ea474f3dbbd719a70a1e64f20a32415ebe847",
+  "evidenceHash": "14994f60f3df16ef89e0e673169d7d3e7ef725e5fc8d1c9df7c445c8e79ea7ac",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "119a1885c77acab0f9c2a95af0a28cf4c3fdd68d5bf94b193ba0615337fc2e94",
+  "shadowMode": false
+}

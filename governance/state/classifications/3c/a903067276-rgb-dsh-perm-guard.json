@@ -6,12 +6,75 @@
     "automation",
     "tool",
     "terminal",
-    "workflow"
+    "file",
+    "cli",
+    "integration",
+    "ui"
   ],
   "confidence": "high",
-  "reason": "The plugin’s main purpose is to automate permission handling by automatically approving safe command/file operations and requiring human confirmation for risky ones, with configurable policy rules, modes, and audit logging.",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily an automation utility for DeepSeek Harness web permission handling: it sits in the approval flow and automatically answers command permission requests based on configurable category and mode rules, while routing risky operations to user confirmation and recording decisions. Its evidence-backed scope is command/session-level workflow control inside DSH, not direct external service access or standalone execution.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的自动审批插件，用于在命令执行前按规则判断权限请求并自动决定是否继续或转交人工确认，同时记录每次审批结果。",
+    "en": "This is a DeepSeek Harness plugin that auto-handles approval requests before execution by applying configurable rules and routes risky actions to user confirmation, while recording each approval decision."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts and auto-responds to DSH approval requests for shell and file-edit operations before execution prompts",
+      "Applies configurable policy rules by mode (Standard/Aggressive), trust directories, and category defaults",
+      "Supports per-category tri-state handling (auto, ask, deny) for predefined command/tool categories",
+      "Forwards risky actions to human confirmation, including deletion, disk/device operations, privilege escalation, and force-push/download-execute patterns",
+      "Persists settings in a local config file and logs approval decisions with summaries/timestamps"
+    ],
+    "reasons": [
+      {
+        "code": "README documents that the plugin intercepts approval requests before host prompts and performs pre-execute classification for safe versus risky commands with two operation modes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states coverage includes bash, pwsh, and write/edit tools, and describes a saved decision/audit trail of approved, forwarded, and rejected approvals.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web client/plugin bundle configuration, indicating integration with the DeepSeek Harness plugin runtime rather than independent system-level execution.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Intercepts and auto-responds to DSH approval requests for shell and file-edit operations before execution prompts",
+      "Applies configurable policy rules by mode (Standard/Aggressive), trust directories, and category defaults",
+      "Supports per-category tri-state handling (auto, ask, deny) for predefined command/tool categories",
+      "Forwards risky actions to human confirmation, including deletion, disk/device operations, privilege escalation, and force-push/download-execute patterns",
+      "Persists settings in a local config file and logs approval decisions with summaries/timestamps"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:00:57.639Z",
-  "evidenceHash": "67df12caf540f9ac8a40ed3a1101efe85509354354352315baa6aea6638fcf35"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:30.317Z",
+  "repositoryCommitSha": "94686824ed588bdf93022d96cd54b1fc06ac6c91",
+  "evidenceHash": "122207a4ced865e02a299a9a7982296a173a774b26ad943c9506e7ad6fe81eff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "25b3586f276a104946e7220c545b8a0934b80ef72802c7084a1c0d334bde72d9",
+  "shadowMode": false
 }

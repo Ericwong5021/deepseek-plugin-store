@@ -3,14 +3,75 @@
   "group": "build-development",
   "category": "testing-debugging",
   "tags": [
+    "agent",
     "debugging",
+    "workflow",
     "ui",
-    "visualization"
+    "tool",
+    "api",
+    "automation"
   ],
   "confidence": "high",
-  "reason": "该插件的主要功能是对 agent 会话轨迹进行重放与重演控制（逐步执行、继续/撤销/停止），并提供与原轨迹的并列对比视图，用于复现与排查执行过程中的问题。",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心目标是为 deepseek-harness 提供 agent 轨迹回放能力：README 说明其提供按 turn/message/tool 粒度的重放切点、子会话重跑、步进控制与原始轨迹/重放轨迹对比，因此以测试与调试目的为主，主要用于验证与复现执行路径。",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness 中的 agent 轨迹回放，在对话轨迹中选择回合/消息/工具调用切点后可创建重放子会话，并进行单步继续、撤销与结果对比。",
+    "en": "This plugin for DeepSeek Harness provides agent trajectory replay by forking from turn, message, or tool checkpoints so you can run replay sessions, step through execution, and compare original versus replayed results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "replay agent sessions from recorded checkpoints via host API endpoints",
+      "fork and control execution of replay sub-sessions",
+      "step-level control for replay continuation and rollback",
+      "export replay workspace sessions"
+    ],
+    "reasons": [
+      {
+        "code": "README documents POST endpoints for replay start/checkpoints/control and step-level step gating via agent/request interception, indicating runtime execution control and checkpoint replay behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists UI components for checkpoint selection, run control, execution ledger, and side-by-side trajectory comparison, indicating user-visible replay and debugging workflows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DeepSeek-harness plugin bundle and web client injection, confirming direct integration with the host runtime and UI surfaces.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "replay agent sessions from recorded checkpoints via host API endpoints",
+      "fork and control execution of replay sub-sessions",
+      "step-level control for replay continuation and rollback",
+      "export replay workspace sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:59:18.570Z",
-  "evidenceHash": "7f799bd5a1718afa5960d3206594ab492d31a0b34583fdaf1cf28a8d400dc7c0"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:49.277Z",
+  "repositoryCommitSha": "52e283d1b09d96f7951a98a59894c3cdbdc32030",
+  "evidenceHash": "d5883c9d893b296e99edb8c001fa35a4eed891c58153ebfae7f96bb534c99ab2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7b7c6bdc3649439ebb563e6627aacb5d04db8fc5dda7dfc4224900ea75be47c3",
+  "shadowMode": false
 }

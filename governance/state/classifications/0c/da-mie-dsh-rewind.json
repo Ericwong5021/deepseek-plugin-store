@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "chat",
+    "ui",
+    "workflow",
+    "file",
+    "automation",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Primary purpose is an automation-focused DeepSeek Harness plugin for conversation state management: it lets users rewind/restore chat turns via UI controls and optionally revert workspace files when continuing from a rewind point, using background session and snapshot operations.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，在会话中提供时间线式回退与恢复能力，可在回退后继续输入新提示词，并在需要时回滚到对应阶段的工作区文件。",
+    "en": "This DeepSeek Harness web plugin adds timeline-based conversation rewind and restore actions, supports continuing from a rewinded state with new prompts, and can rollback workspace files to the chosen checkpoint."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides timeline- and message-level conversation rewind and restore actions in the DeepSeek Harness web chat interface.",
+      "Implements branch-continue behavior where sending after rewind continues the selected path without a disruptive session switch.",
+      "Captures workspace snapshots per completed turn and can rollback project files to a selected checkpoint when continuing from rewind.",
+      "Uses background session fork/archive and checkpoint-switching flow to keep UI interaction responsive during recovery operations."
+    ],
+    "reasons": [
+      {
+        "code": "README states a timeline dialog, docked rollback bar, per-turn/message revert actions, and restore modes for conversations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states project files are rolled back only when new prompts are sent, based on `/dsh-rewind rollback`, with incremental snapshots stored by workspace.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH web client integration for runtime, conversation UI, and layout modules, indicating UI/plugin-level behavior inside the chat application.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides timeline- and message-level conversation rewind and restore actions in the DeepSeek Harness web chat interface.",
+      "Implements branch-continue behavior where sending after rewind continues the selected path without a disruptive session switch.",
+      "Captures workspace snapshots per completed turn and can rollback project files to a selected checkpoint when continuing from rewind.",
+      "Uses background session fork/archive and checkpoint-switching flow to keep UI interaction responsive during recovery operations."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:00.969Z",
+  "repositoryCommitSha": "813c0ec0c9de2377d922113ef2c03fd4450a4d04",
+  "evidenceHash": "4424b7ecab5034118429188bdd91dc5ce4121aecd69601dd1f3c7d401bb26171",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0e0751b059ce45d7caca9e3f940a08bb7ad4cb862264bcef70a17fff909994a7",
+  "shadowMode": false
+}

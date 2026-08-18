@@ -4,13 +4,77 @@
   "category": "desktop-mobile",
   "tags": [
     "mobile",
+    "cli",
+    "tool",
     "ui",
-    "tool"
+    "integration"
   ],
   "confidence": "high",
-  "reason": "The plugin’s main function is enabling mobile access to a local DeepSeek Harness Web UI via a paired phone and relay connection (pairing, pairing management, remote access commands), which is primarily about desktop-to-mobile interface access.",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a DSH web companion that enables paired phone access to a local DeepSeek Harness instance, as shown by QR-based pairing flow, relay-based remote connectivity, and bundled CLI commands for start/pair/status/unpair/update; this aligns best with remote desktop/mobile access tooling rather than development, generation, or data-heavy utilities.",
+  "summaries": {
+    "zh": "这是一个用于通过配对手机远程访问本地 DeepSeek Harness Web 界面的 DSH 插件，提供基于中继的连接、二维码配对与命令行管理能力。",
+    "en": "This is a DSH plugin for paired mobile access to a local DeepSeek Harness web interface, providing relay-based connection, QR pairing, and CLI management commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "remote mobile access to local web UI",
+      "outbound relay networking",
+      "pairing token and credential handling",
+      "CLI-based management commands"
+    ],
+    "reasons": [
+      {
+        "code": "remote-mobile-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound-only-relay-connection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-device-token-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web-plugin-and-cli-entrypoints",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "remote mobile access to local web UI",
+      "outbound relay networking",
+      "pairing token and credential handling",
+      "CLI-based management commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:59:27.212Z",
-  "evidenceHash": "64427192843b2e930d61f694b844ad9a2fb09c4f4a1c2d8d1877a7ba9917bea5"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:50.034Z",
+  "repositoryCommitSha": "fafd12c4866de6d14d84e6c6386293ce8c5390ca",
+  "evidenceHash": "689b8058c98fd9863c15882e414ba2b0a5a2470d4060dfea6d99a4aa496978c5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eb13c0a09f9989b58def06c814666e6c857f9242919c40c5cc15f4b84d738314",
+  "shadowMode": false
 }

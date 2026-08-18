@@ -1,16 +1,83 @@
 {
   "status": "classified",
-  "group": "tools-data",
-  "category": "media-tools",
+  "group": "integrations-communication",
+  "category": "external-services",
   "tags": [
+    "api",
+    "integration",
     "image",
     "tool",
-    "api"
+    "mcp",
+    "file"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary purpose is adding a vision tool (`image_understand`) that enables image analysis and OCR by sending image inputs to multimodal APIs, i.e., processing media content for text-only models.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary purpose is to add image-understanding capability to text-only DeepSeek Harness sessions by exposing an `image_understand` tool that sends image inputs to configured multimodal services, based on the explicit README workflow, tool registration, and provider/configuration docs. Its behavior is primarily external API integration for vision/OCR tasks, with local image path allowance and provider settings as supporting features.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 `image_understand` 工具，通过配置的 OpenAI 兼容多模态接口，让文本模型处理图片输入并返回 OCR、描述或界面分析等文本结果。",
+    "en": "This plugin adds an `image_understand` tool for DeepSeek Harness so text-only models can send image inputs to a configured OpenAI-compatible multimodal endpoint for OCR, image description, and UI-oriented analysis."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "exposes an image-understanding tool (`image_understand`) to sessions",
+      "accepts image inputs from local paths, URLs, and data URIs",
+      "forwards image analysis requests to configured OpenAI-compatible API endpoints",
+      "supports OCR, UI, and description-style vision tasks",
+      "loads model/API settings from repository-provided config path and environment variables",
+      "launches a local vision engine process for request handling",
+      "supports configurable image source directory whitelist"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin registers `image_understand` and routes to a spawned luma-mcp vision engine which calls a multimodal API.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents provider configuration including CUSTOM_API_KEY, base URLs, and model names, indicating credential/configuration-driven API access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents allowedDirs for workspace image access and image_source formats, plus multi-crop and 10 MB file size handling details.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "exposes an image-understanding tool (`image_understand`) to sessions",
+      "accepts image inputs from local paths, URLs, and data URIs",
+      "forwards image analysis requests to configured OpenAI-compatible API endpoints",
+      "supports OCR, UI, and description-style vision tasks",
+      "loads model/API settings from repository-provided config path and environment variables",
+      "launches a local vision engine process for request handling",
+      "supports configurable image source directory whitelist"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:58:15.331Z",
-  "evidenceHash": "9f6017f75e0e949f2beb77e9c79d2d762c75676a0853e7fb173486a5a9e5589c"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:41.456Z",
+  "repositoryCommitSha": "e0d6bcef274a00f8e1acc3de4194b5f5848d731f",
+  "evidenceHash": "fad5f5e4feb70e10b85af9247f456ddaac32641f16e42f6fb30c4f32537459e9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "54869bfca3b57da6b8d5d7ef8df906d6d6057d99fbeecb86fd8deee85619e255",
+  "shadowMode": false
 }

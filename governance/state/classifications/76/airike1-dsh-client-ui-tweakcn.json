@@ -4,12 +4,81 @@
   "category": "themes-layout",
   "tags": [
     "theme",
-    "ui"
+    "ui",
+    "integration",
+    "desktop",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing purpose is visual theming: it imports tweakcn CSS and maps it to DSH design tokens so users can apply, save, edit, and switch UI themes (colors, radius, shadows, fonts, and light/dark behavior).",
+  "confidenceScore": 0.93,
+  "reason": "该仓库的核心用户面向目标是“主题定制插件”：主要功能是把 tweakcn 导出的 index.css 映射为 DSH 的语义主题 token，并支持保存/切换/编辑主题；这从仓库 README 的功能说明和 package.json 的 dsh 客户端清单可被验证。插件的主要风险在于本地 UI 样式覆盖与用户粘贴内容解析，故判定为低到中等风险。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 客户端主题插件，支持将 tweakcn 导出的主题 CSS 映射为 DSH 主题语义 token，并提供主题的应用、保存、切换与编辑。",
+    "en": "This is a DeepSeek Harness client theme plugin that maps tweakcn-exported theme CSS to DSH semantic tokens, with support for applying, saving, switching, and editing themes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Map CSS token variables from tweakcn-exported themes to DSH semantic theme tokens",
+      "Parse pasted CSS blocks including light/dark selector variants before applying theme values",
+      "Persist and switch between saved theme presets through host settings state",
+      "Expose theme management actions in DSH settings UI",
+      "Register as a DSH client bundle for runtime injection"
+    ],
+    "reasons": [
+      {
+        "code": "README_THEME_FEATURE_LIST",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_PARSER_DETAILS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_SETTINGS_AND_PRESETS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PACKAGE_DSH_CLIENT_MANIFEST",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "REPO_PLUGIN_TOPIC",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Map CSS token variables from tweakcn-exported themes to DSH semantic theme tokens",
+      "Parse pasted CSS blocks including light/dark selector variants before applying theme values",
+      "Persist and switch between saved theme presets through host settings state",
+      "Expose theme management actions in DSH settings UI",
+      "Register as a DSH client bundle for runtime injection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T11:01:53.566Z",
-  "evidenceHash": "359800a095ae689b6b64fbc68321f1e2439ef653a2c7a8ab295602bbee2663a1"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:58:37.185Z",
+  "repositoryCommitSha": "dba5bc3eb644309c82b37feba6c9664ba8d39fd0",
+  "evidenceHash": "703cc1291b82f509ea2d5cb2b16af97cdfd35dc4e93849403d015ec2384caac9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "af22e843200f8b8ad2aca4c560b79c91390f34f2313dcfc01eb56be5eaedc97a",
+  "shadowMode": false
 }

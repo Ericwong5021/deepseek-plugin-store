@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "data",
+    "ui",
+    "visualization",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要用户面对用途是提供一个统一的额度与费用看板，在 dsh Web 中并列展示 DeepSeek、OpenCode GO、Kimi、GLM 与火山方舟等服务的余额/用量/重置信息；结合其 manifest 与 README 信息，其核心行为是聚合并展示外部服务的配额与计费数据。",
+  "summaries": {
+    "zh": "该插件在 dsh Web 中提供多平台额度看板，可汇总展示多家 AI 服务的余额、Token 用量和重置进度，并支持在设置中配置对应凭据。",
+    "en": "This plugin adds a unified dsh web dashboard that aggregates quota and token usage from multiple AI providers, showing balances and progress while letting users configure provider credentials in settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads credentials from DSH credential store or environment variables",
+      "Performs network calls to multiple external provider endpoints",
+      "Stores plugin configuration/state in local DSH storage"
+    ],
+    "reasons": [
+      {
+        "code": "插件清单声明了会访问多个外部域名（如 api.deepseek.com、api.kimi.com、open.bigmodel.cn、open.volcengineapi.com）用于查询额度与余额。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库说明/配置示例中明确列出多个服务提供方与对应凭据键（如 DEEPSEEK_API_KEY、KIMI_CODING_API_KEY、ARK_ACCESS_KEY_ID/ARK_SECRET_ACCESS_KEY）供额度查询使用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述服务在本地账本配置与 DSH_HOME/storages/quota-dashboard/ledger.json 中持久化相关状态。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads credentials from DSH credential store or environment variables",
+      "Performs network calls to multiple external provider endpoints",
+      "Stores plugin configuration/state in local DSH storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:59:56.758Z",
+  "repositoryCommitSha": "9e189e77d77269652fc2dbc12b5512aa8d61222c",
+  "evidenceHash": "eb27a5b7f73bd05174c68423339665bd1b1d332964e2f76703d833fbfa6026a1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c697cb23bf7f132ec9569f3b1f77ba7c758c5a1baaa98be7efb0c91ef678279a",
+  "shadowMode": false
+}

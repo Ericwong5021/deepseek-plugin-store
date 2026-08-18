@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "desktop",
+    "tool",
+    "file",
+    "api",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件主要是面向 DSH Desktop 用户的“插件管理工具”扩展：在设置界面内提供安装、重启和第三方插件管理能力（启用、停用、卸载、更新检查），并将变更写入本机 profile 目录生效，因此分类为插件开发类通用工具。功能依据 README 与包清单确认，包括重启接口、dsh 插件命令调用与网络版更新检测。",
+  "summaries": {
+    "zh": "该插件在 DSH Desktop 设置中新增插件管理入口，支持一键重启、按地址安装插件，以及第三方插件的启用、停用、卸载与版本检测更新。",
+    "en": "This plugin adds plugin-management controls to DSH Desktop settings, including restart, install-by-address, and third-party plugin enable/disable, uninstall, and version check/update actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在本机 DSH profile 目录写入/更新插件配置文件以启用或停用插件",
+      "通过 DSH 插件命令执行插件的安装与卸载操作",
+      "读取并更新第三方插件版本信息（网络访问 npm registry / GitHub）",
+      "提供重启 DSH Desktop 的本地运行时调用能力"
+    ],
+    "reasons": [
+      {
+        "code": "提供了设置面板安装入口并支持按仓库地址添加插件，属于直接的本地配置与能力调用",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文档明确说明使用 `dsh plugin --profile <name> add|remove <spec>` 执行安装/卸载并改写 profile 组合",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "版本检测说明会访问 `registry.npmjs.org` 与 GitHub API，涉及外网访问",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件声明类型与入口文件用于与桌面端设置界面和 HTTP 接口集成，体现了 UI 与本地运行时交互",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "在本机 DSH profile 目录写入/更新插件配置文件以启用或停用插件",
+      "通过 DSH 插件命令执行插件的安装与卸载操作",
+      "读取并更新第三方插件版本信息（网络访问 npm registry / GitHub）",
+      "提供重启 DSH Desktop 的本地运行时调用能力"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:17.552Z",
+  "repositoryCommitSha": "e1c97bfa47f472998f8a7ae205ba6d937210cb8e",
+  "evidenceHash": "22e6094d3df2f15ce63820b4b8927ecec5e2ec6b34930289cb67d0c321d2638d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bfd3fd12e97ac4e8345092797540133b369a25eedd950e13aa3cb4167a43e1df",
+  "shadowMode": false
+}

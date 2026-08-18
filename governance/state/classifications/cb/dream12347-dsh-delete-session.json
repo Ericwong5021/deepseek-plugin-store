@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "file",
+    "workflow",
+    "data",
+    "automation",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是增强 DSH Web 的会话管理体验：在设置页与会话页入口集中展示并操作会话列表、回收站、归档、继续/暂停、统计及日志目录入口，并提供会话分组与上下文压缩阈值设置，因此归类为界面导航面板类插件。其功能包含可恢复/可清理的会话删除流程与本地持久化状态，具有可观察但可控的数据变更风险。",
+  "summaries": {
+    "zh": "这是一个用于 DSH Web 的会话管理插件，可在会话列表和侧边抽屉中集中进行回收站恢复、删除、继续/暂停、统计查看、分组排序及日志目录访问等会话操作。",
+    "en": "This is a DSH Web session manager plugin that lets users handle sessions from dedicated UI panels with trash restore, delete, continue/pause, stats, workspace grouping/sorting, log-folder access, and unread state actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Delete sessions to a trash list with restore and purge options",
+      "Pause active sessions and mark unread/read states in the session list",
+      "Open session log folders from the interface",
+      "Persist trash and workspace/session management data through host/client state",
+      "Configure a global context compaction threshold used by agent presets"
+    ],
+    "reasons": [
+      {
+        "code": "SESSION_LIFECYCLE_MUTATING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DESTRUCTIVE_PURGE_OPTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_PERSISTED_STATE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "GLOBAL_MODEL_CONTEXT_SETTING_HOOK",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_UI_EXTENSION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Delete sessions to a trash list with restore and purge options",
+      "Pause active sessions and mark unread/read states in the session list",
+      "Open session log folders from the interface",
+      "Persist trash and workspace/session management data through host/client state",
+      "Configure a global context compaction threshold used by agent presets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:32.070Z",
+  "repositoryCommitSha": "75a3ac1996e2c1d87c61bd65e90dc173776b7226",
+  "evidenceHash": "eb10be8b4ec18cb82f43ea36d4eae0780a7131ec04371cac725c78eeb0db39fd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d64f3c8dc64c57fdeaa338cc4cacb0582109306e7935041cb15537cd4ecb964f",
+  "shadowMode": false
+}

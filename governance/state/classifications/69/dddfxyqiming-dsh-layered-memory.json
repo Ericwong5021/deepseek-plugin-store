@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "tool",
+    "context",
+    "workflow",
+    "automation",
+    "skill",
+    "file",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a memory management utility for DeepSeek Harness agents: it maintains cross-session structured memory and exposes agent-facing tools to read, write, index, archive, and roll back memory entries. Evidence indicates it is designed for workflow/context support inside DSH sessions through namespaced file-backed storage and per-turn prompt-context injection, with no separate external service integration shown.",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness 提供跨会话长期记忆能力的插件，支持按命名空间管理记忆并提供读取、写入、归档和回滚等操作工具。",
+    "en": "This is a DeepSeek Harness plugin for cross-session memory, offering namespace-aware memory operations such as read, write, list, archive, and rollback via agent-facing tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Cross-session persistent memory storage and retrieval",
+      "Namespace-aware organization of memory records",
+      "Runtime tools for listing/reading/writing/updating/archiving/rolling back memory entries",
+      "Per-turn context index injection for model prompts",
+      "Automatic candidate maintenance and periodic cleanup"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README documents a DSH cross-session long-term memory plugin with namespace isolation and layered memory (L1/L2/L3).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists runtime tools such as memory_read, memory_write, memory_archive, memory_rollback, memory_list, and memory_maintain, showing runtime behavior and command surface.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes each turn L1 index injection via ctx.systemPrompt.context and storage under ~/.dsh/memory with facts.md, sops, pending, archive, and .history paths.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest marks a DSH plugin bundle via cordis.patch.yml and sets lib/index.js as entry, indicating integration with the DSH runtime skill/tool system.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository topics and keywords include long-term-memory and deepseek-harness, matching an agent memory/context function rather than external network or media tooling.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Cross-session persistent memory storage and retrieval",
+      "Namespace-aware organization of memory records",
+      "Runtime tools for listing/reading/writing/updating/archiving/rolling back memory entries",
+      "Per-turn context index injection for model prompts",
+      "Automatic candidate maintenance and periodic cleanup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:00:09.540Z",
+  "repositoryCommitSha": "d1c995b9ac4b008d26d53a7716a041281b44cd7f",
+  "evidenceHash": "0b0b851688b20b00dc5cd4d89c36835b99d1030ad86dcbb2c1f74ccb90343263",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d686e6c4f991606eec64b4a4eb4fb2febedf99fcf27a25d466ec63da00a515a",
+  "shadowMode": false
+}
