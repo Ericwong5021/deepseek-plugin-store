@@ -54,13 +54,14 @@ jobs:
           LLM_CLASSIFIER_LIMIT: ${{ inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
           LLM_CLASSIFIER_PLUGIN: ${{ inputs.plugin || '' }}
           LLM_CLASSIFIER_FORCE: ${{ inputs.force && '1' || '0' }}
-          GOVERNANCE_SHADOW_MODE: '1'
+          GOVERNANCE_SHADOW_MODE: '0'
         run: node scripts/classify-plugins.mjs
       - name: Validate state
         if: ${{ steps.pending.outputs.skip != 'true' }}
         run: node scripts/validate-registry.mjs
       - name: Open state batch
         if: ${{ steps.pending.outputs.skip != 'true' }}
+        id: batch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -78,4 +79,24 @@ jobs:
           url=$(gh pr create --base main --head "$branch" --title "chore: update governance classification state" --body "Governance state batch")
           number=$(gh pr view "$url" --json number --jq .number)
           head=$(git rev-parse HEAD)
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "head=$head" >> "$GITHUB_OUTPUT"
           gh workflow run governance-pr-ci.yml --ref "$branch" -f base_sha="$base" -f head_sha="$head" -f pr_number="$number"
+      - name: Merge validated batch and publish
+        if: ${{ steps.batch.outputs.number != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.batch.outputs.number }}
+          HEAD_SHA: ${{ steps.batch.outputs.head }}
+        run: |
+          ready=false
+          for attempt in $(seq 1 90); do
+            state=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/status" --jq .state)
+            passed=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/status" --jq '[.statuses[] | select(.state == "success") | .context] | unique | length')
+            if [ "$state" = "success" ] && [ "$passed" -ge 6 ]; then ready=true; break; fi
+            if [ "$state" = "failure" ] || [ "$state" = "error" ]; then exit 1; fi
+            sleep 5
+          done
+          if [ "$ready" != "true" ]; then exit 1; fi
+          gh api --method PUT "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/merge" -f merge_method=squash -f sha="$HEAD_SHA" -f commit_title="chore: publish model classifications (#${PR_NUMBER})" --jq 'select(.merged == true) | .sha'
+          gh workflow run governance-publish.yml --ref main

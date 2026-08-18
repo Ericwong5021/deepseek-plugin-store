@@ -76,6 +76,18 @@ export class LLMAdapter {
 
   async decision(kind, input, taxonomy) {
     const schema = JSON.parse(await fs.readFile(this.schemaPath, 'utf8'))
+    if (kind === 'classify-v2') {
+      schema.required.push('descriptions')
+      schema.properties.descriptions = {
+        type: 'object',
+        additionalProperties: false,
+        required: ['zh', 'en'],
+        properties: {
+          zh: { type: 'string', minLength: 8, maxLength: 320 },
+          en: { type: 'string', minLength: 8, maxLength: 320 },
+        },
+      }
+    }
     schema.properties.classification.properties.primaryCategory.enum = taxonomy.categories.map((category) => category.id)
     schema.properties.classification.properties.tags.items.enum = taxonomy.tags
     schema.properties.risk.properties.reasons.items.properties.evidenceRef.enum = input.evidence.evidenceRefs

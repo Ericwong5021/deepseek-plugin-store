@@ -19,6 +19,7 @@ const ids = new Set(catalogV2.plugins.map((plugin) => plugin.id))
 for (const plugin of catalogV2.plugins) {
   const classification = classifications.classifications[plugin.id]
   if (classification?.status === 'classified' && !['reviewed-override', 'accepted-maintainer', 'editorial-review'].includes(plugin.classification.source) && (plugin.classification.category !== classification.category || plugin.classification.source !== 'llm-classification')) throw new Error(`LLM classification projection is incorrect: ${plugin.id}`)
+  if (classification?.summaries && (plugin.summaries.zh !== classification.summaries.zh || plugin.summaries.en !== classification.summaries.en)) throw new Error(`LLM summary projection is incorrect: ${plugin.id}`)
 }
 const rankings = catalogV2.collections.rankings
 if (!rankings.generatedAt || !Number.isInteger(rankings.eligibleCount) || rankings.eligibleCount < 1) throw new Error('ranking metadata is invalid')

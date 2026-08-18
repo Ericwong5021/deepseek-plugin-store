@@ -7,8 +7,12 @@ import { readStateCollection } from './governance/state.mjs'
 const OUTPUTS = ['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/editor-picks.json']
 const humanClassificationSources = new Set(['reviewed-override', 'accepted-maintainer', 'editorial-review'])
 
-const withLlmClassification = (record, entry) => entry?.status === 'classified' && entry.shadowMode !== true && !humanClassificationSources.has(record.classification.source) ? {
+const withLlmClassification = (record, entry) => entry?.status === 'classified' && !humanClassificationSources.has(record.classification.source) ? {
   ...record,
+  summaries: entry.summaries ? {
+    zh: entry.summaries.zh,
+    en: entry.summaries.en,
+  } : record.summaries,
   classification: {
     group: entry.group,
     category: entry.category,
@@ -16,7 +20,7 @@ const withLlmClassification = (record, entry) => entry?.status === 'classified' 
     source: 'llm-classification',
     confidence: entry.confidence,
     evidence: [`llm:${entry.model}`, `sha256:${entry.evidenceHash}`],
-    needsReview: entry.confidence === 'low',
+    needsReview: entry.confidence === 'low' || entry.governance?.finalDecision !== 'approved',
     classifiedAt: entry.classifiedAt,
     reason: entry.reason,
   },

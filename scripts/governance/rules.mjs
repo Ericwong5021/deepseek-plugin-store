@@ -54,7 +54,7 @@ export const runDeterministicChecks = ({ snapshot, taxonomy, installSpec = '' })
 
 export const validateAiDecision = ({ decision, taxonomy, evidenceRefs }) => {
   if (!decision || decision.schemaVersion !== 1) throw new Error('AI decision schemaVersion must be 1')
-  const allowed = new Set(['intent', 'decision', 'classification', 'risk', 'confidence', 'requestedChanges', 'summary', 'schemaVersion'])
+  const allowed = new Set(['intent', 'decision', 'classification', 'risk', 'confidence', 'requestedChanges', 'summary', 'descriptions', 'schemaVersion'])
   if (Object.keys(decision).some((key) => !allowed.has(key))) throw new Error('AI decision contains unsupported fields')
   if (!['approve', 'needs_changes', 'needs_human', 'reject', 'blocked'].includes(decision.decision)) throw new Error('AI decision is invalid')
   const category = taxonomy.categories.find((entry) => entry.id === decision.classification?.primaryCategory)
@@ -67,5 +67,14 @@ export const validateAiDecision = ({ decision, taxonomy, evidenceRefs }) => {
   if (invalidReason) throw new Error(`AI risk reason references unknown evidence: ${String(invalidReason.evidenceRef)}`)
   if (typeof decision.confidence !== 'number' || decision.confidence < 0 || decision.confidence > 1) throw new Error('AI confidence is invalid')
   if (!Array.isArray(decision.requestedChanges) || typeof decision.summary !== 'string' || !decision.summary.trim()) throw new Error('AI decision metadata is invalid')
+  if (decision.descriptions && (
+    typeof decision.descriptions !== 'object'
+    || Array.isArray(decision.descriptions)
+    || Object.keys(decision.descriptions).some((key) => !['zh', 'en'].includes(key))
+    || typeof decision.descriptions.zh !== 'string'
+    || typeof decision.descriptions.en !== 'string'
+    || !decision.descriptions.zh.trim()
+    || !decision.descriptions.en.trim()
+  )) throw new Error('AI plugin descriptions are invalid')
   return decision
 }

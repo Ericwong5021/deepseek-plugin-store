@@ -15,7 +15,7 @@ const limit = Math.min(100, Math.max(1, Number.parseInt(process.env.LLM_CLASSIFI
 const target = String(process.env.LLM_CLASSIFIER_PLUGIN || '').trim().toLowerCase()
 const force = process.env.LLM_CLASSIFIER_FORCE === '1'
 const shadowMode = process.env.GOVERNANCE_SHADOW_MODE !== '0'
-const humanSources = new Set(['reviewed-override', 'editorial-review'])
+const humanSources = new Set(['reviewed-override', 'accepted-maintainer', 'editorial-review'])
 
 const taxonomy = await readJson('registry/taxonomy.json')
 const policy = await loadPolicy()
@@ -102,6 +102,10 @@ for (const item of queue) {
       confidence: aiDecision.confidence >= 0.9 ? 'high' : aiDecision.confidence >= 0.7 ? 'medium' : 'low',
       confidenceScore: aiDecision.confidence,
       reason: aiDecision.summary,
+      summaries: {
+        zh: aiDecision.descriptions.zh.trim(),
+        en: aiDecision.descriptions.en.trim(),
+      },
       risk: aiDecision.risk,
       governance,
       model,
@@ -153,6 +157,7 @@ if (!shadowMode) {
       classifiedAt: entry.classifiedAt,
       reason: entry.reason,
     }
+    if (entry.summaries?.en) candidate.summary = entry.summaries.en
   }
   candidateData.updatedAt = new Date().toISOString()
   candidateData.candidates = Object.fromEntries(Object.entries(candidateData.candidates).sort())

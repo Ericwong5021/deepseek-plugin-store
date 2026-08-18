@@ -105,8 +105,9 @@ export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = nu
     const nextRetry = Date.parse(entry.nextRetryAt || 0)
     return !Number.isFinite(nextRetry) || nextRetry <= now
   }
-  if (entry.status !== 'classified' || !entry.cacheKey) return true
-  return Boolean(repositoryCommitSha && entry.repositoryCommitSha !== repositoryCommitSha)
+  if (entry.status !== 'classified') return true
+  if (!repositoryCommitSha || !entry.repositoryCommitSha) return false
+  return entry.repositoryCommitSha !== repositoryCommitSha
 }
 
 export const formatGovernanceReview = (decisionRecord) => {
