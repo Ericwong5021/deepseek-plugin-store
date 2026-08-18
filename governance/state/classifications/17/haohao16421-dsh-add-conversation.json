@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "chat",
+    "ui",
+    "browser",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向作用是增强 DeepSeek Harness Web 的聊天交互：在会话区选择文本后快速生成引用条目，并在发送新消息时自动将其作为引用块放入消息开头，属于会话工作流中的界面增强工具。依据 README 与 package 配置可确认其为纯前端 Web 插件入口（conversation composer dock 挂载）而非服务端或外部服务集成功能。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness Web 聊天界面中快速引用已对话内容：选中文本后生成引用条目并在发送追问时自动按 Markdown 引用块加入消息开头。",
+    "en": "This plugin lets users quickly quote selected text in DeepSeek Harness Web by queuing snippets and automatically inserting them as Markdown blockquotes at the start of outgoing follow-up messages."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a floating action UI in the chat area when text is selected.",
+      "Caches selected conversation text as temporary quote chips above the composer with preview and delete controls.",
+      "Preprends selected quotes to outgoing messages as Markdown blockquote text.",
+      "Limits queued quote items and quote length per documented constraints."
+    ],
+    "reasons": [
+      {
+        "code": "Selection- and floating-button behavior for adding quotes is described in the README feature list.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Feature set (quote chip queue, preview, and message injection) is stated in repository description and usage documentation.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "DSH web plugin wiring (client platform, bundle patch, and browser-targeted injection) is declared in package metadata.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects a floating action UI in the chat area when text is selected.",
+      "Caches selected conversation text as temporary quote chips above the composer with preview and delete controls.",
+      "Preprends selected quotes to outgoing messages as Markdown blockquote text.",
+      "Limits queued quote items and quote length per documented constraints."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:51.269Z",
+  "repositoryCommitSha": "784e7f042de1ca5f759321a40d8c4801570dca2e",
+  "evidenceHash": "138d215ab683ca37523e399dc048bbc51cf7d1cbc5dda5f6473ce128f42e3987",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c73d408f5e4c184ef1708c6fe87c185127333fcb6b68798da25edfe7723dbb2d",
+  "shadowMode": false
+}

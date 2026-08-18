@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "debugging",
+    "notification",
+    "ui",
+    "browser",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is a Web UI resilience utility for DeepSeek Harness that focuses on client-side bootstrap stability: it hooks the module loader to skip crashing/malformed plugins, reports missing plugin bundles, and offers localStorage-based plugin blocking and reset controls, with stated no-server/no-disk-write behavior. Its primary purpose is user-facing load-time protection and operational feedback rather than plugin creation, data processing, external integrations, or collaboration.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness Web 客户端启动阶段的容错处理：当插件加载失败时会给出提示并支持将异常插件加入黑名单，以便界面继续加载。",
+    "en": "This plugin provides client-side boot-time fault handling for DeepSeek Harness Web by notifying users of plugin load failures and allowing problematic plugins to be blacklisted so page loading can continue."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Client-side boot-time interception of plugin factory loading with fallback behavior for malformed or throwing factories.",
+      "User-visible notices for load failures and missing bundle 404s to avoid silent startup breakage.",
+      "LocalStorage-based blocked-plugin list with revision-aware entries and clear/reset controls.",
+      "No disk writes or server/loader-route modifications by design; limited persistence is browser storage."
+    ],
+    "reasons": [
+      {
+        "code": "LOADER_PATCH_BOOT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BANNER_AND_DISABLE_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCALSTORAGE_ID_REV_BLACKLIST",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "NO_DISK_WRITES_HOST_LOGIC",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "WEB_PLATFORM_CLIENT_INJECT",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Client-side boot-time interception of plugin factory loading with fallback behavior for malformed or throwing factories.",
+      "User-visible notices for load failures and missing bundle 404s to avoid silent startup breakage.",
+      "LocalStorage-based blocked-plugin list with revision-aware entries and clear/reset controls.",
+      "No disk writes or server/loader-route modifications by design; limited persistence is browser storage."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:20.391Z",
+  "repositoryCommitSha": "9938cc532f6024cc74aadb3d6711f67f45928747",
+  "evidenceHash": "97eea6b9d5720ab972954cddcc4bdda0c2b5d4abbcdde739c441b239ddf0bdd8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6527da2f4986787807318224a503aeeedabe1232b96786ced798a5f285ab0f64",
+  "shadowMode": false
+}

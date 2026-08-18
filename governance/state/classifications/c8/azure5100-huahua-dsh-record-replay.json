@@ -1,16 +1,82 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "browser",
+    "video",
+    "image",
+    "file",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin’s primary user-facing purpose is session and workflow automation in DSH Web GUI: replaying recorded conversations in a timeline, exporting/importing replay packages, re-running recorded user messages, and converting browser screen captures into generated skills. The README and package metadata also show it is a dual host/client plugin focused on local session/recording data flows and agent-assisted processing, with validation flags indicating packaging/manifest issues that should be corrected.",
+  "summaries": {
+    "zh": "这是一个用于 DSH Web GUI 的录制回放插件，可在侧边栏查看会话时间线并复刻回放，对会话进行导入/导出，还支持录屏与逐帧生成可安装技能。",
+    "en": "This is a DSH Web GUI record-and-replay plugin that offers session timeline playback, replay-pack import/export, rerun of recorded sessions, and browser-based screen capture with frame-based skill generation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local reading of recorded session files and export/import of replay-pack data",
+      "Local browser screen capture via getDisplayMedia with webm/video frame storage",
+      "Automated re-execution of recorded user turns in new sessions",
+      "Agent-assisted skill generation from recorded frame data"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin reads from ~/.dsh/sessions and writes to ~/.dsh/replay-packs, ~/.dsh/recordings, and ~/.dsh/skills, so it handles potentially sensitive local session and media data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The feature set includes recording screen/window content with getDisplayMedia and generating replayable video plus sampled frames, which can capture arbitrary on-screen information.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin can route selected frames to agent-side describe_image analysis and create SKILL.md files, introducing workflow actions that operate across recorded artifacts and local filesystem targets.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "binary.execute",
+      "network.access",
+      "Local reading of recorded session files and export/import of replay-pack data",
+      "Local browser screen capture via getDisplayMedia with webm/video frame storage",
+      "Automated re-execution of recorded user turns in new sessions",
+      "Agent-assisted skill generation from recorded frame data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:07.688Z",
   "repositoryCommitSha": "dd6a6a17515370e22c79042788913f65139a6ec4",
+  "evidenceHash": "ab235b32e1f46b26d5fbe170bef0ecce1fcc0c7db1fb650ec7b6733b88593464",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "14683e802856bf1e7c24550eeb0b8e958e4d31ccb359e5397d8f60be679558b5",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:57.610Z",
-  "lastAttemptAt": "2026-08-18T16:02:57.610Z",
-  "nextRetryAt": "2026-08-18T22:02:57.610Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

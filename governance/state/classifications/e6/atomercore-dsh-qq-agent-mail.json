@@ -1,16 +1,78 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "tool",
+    "automation",
+    "api",
+    "cli",
+    "workflow",
+    "data",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Primary purpose is Tencent QQ Agent Mail integration for DeepSeek Harness, exposing a service and 14 tools to authenticate, list/read/search/watch, send/reply/forward, manage folders/trash/delete, and download attachments, which classifies it as an external-services integration plugin with moderate mailbox-access risk.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供腾讯 QQ 邮箱（QQ Agent Mail）集成，可在模型工具中进行邮件的认证、读取、搜索、发送、回复、转发、删除和附件下载等操作。",
+    "en": "This plugin adds Tencent QQ Agent Mail capabilities to DeepSeek Harness, enabling authentication plus mail list/read/search/send/reply/forward/delete operations and attachment download through native tools and watch events."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read, search, and monitor QQ Agent Mail inbox data via native tools and event streams",
+      "Send, reply, forward, trash, and delete messages through provided tooling",
+      "Authenticate with QQ Agent Mail via OAuth and account status checks",
+      "Resolve and invoke the QQ Agent Mail CLI and download attachments with large-attachment handling"
+    ],
+    "reasons": [
+      {
+        "code": "The README lists QQ Mail tools including qq_mail_list, qq_mail_read, qq_mail_search, qq_mail_send, qq_mail_reply, qq_mail_forward, qq_mail_trash, qq_mail_delete, and qq_mail_watch, indicating direct mailbox access and message manipulation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin supports OAuth login status and whoami workflows, showing account-level access to external email data and operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The dependency on @tencent-qqmail/agently-cli indicates the plugin delegates email actions to an external CLI runtime for account integration and execution.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Read, search, and monitor QQ Agent Mail inbox data via native tools and event streams",
+      "Send, reply, forward, trash, and delete messages through provided tooling",
+      "Authenticate with QQ Agent Mail via OAuth and account status checks",
+      "Resolve and invoke the QQ Agent Mail CLI and download attachments with large-attachment handling"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:04.370Z",
   "repositoryCommitSha": "d08adbed4b26235848c1a10bce833e7f5fc16616",
+  "evidenceHash": "bcf1f962fa554ab08d181263095fd2d2c5d2dd3e7629dad57bd72baf1f5aa42a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "3b6a8b4fc64194f1bf7ef97827df9c403a22dc4dd9d0a700721c374552cc74a3",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:12.528Z",
-  "lastAttemptAt": "2026-08-18T16:02:12.528Z",
-  "nextRetryAt": "2026-08-18T22:02:12.528Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

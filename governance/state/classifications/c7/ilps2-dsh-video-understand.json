@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "video",
+    "tool",
+    "api",
+    "file",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心面向用户功能是提供视频理解能力：通过 DSH 插件工具接收 B站链接/BV号或本地视频，生成结构化理解结果并支持问答；其主要价值是媒体内容分析而非文档处理、搜索或代码生成，同时 README 中的 L1/L2 说明会触发外部网络调用，因此在风险上属于中等级。",
+  "summaries": {
+    "zh": "该插件为 dsh 提供 video_understand 工具，可对 B 站视频、BV 号或本地视频进行理解分析并返回摘要与问答结果。",
+    "en": "This plugin registers a video_understand tool for DSH to analyze Bilibili videos, BV IDs, or local video files and return structured understanding with answers."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "将 B 站链接、BV 号或本地视频输入转换为摘要与问答输出",
+      "本地处理音频转写与场景/运动相关的信息层分析",
+      "在高层级模式下向外部模型服务发送视频帧进行视觉分析"
+    ],
+    "reasons": [
+      {
+        "code": "README 定义了 video_understand 工具，参数包含 target（B站链接/BV/本地路径）、questions、level，并返回 video / duration_s / answers 等结果。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出 L1/L2 模式会将视频帧（JPEG）发送至 MiMo API 进行视觉理解，并要求配置 LLM_API_KEY 与可选 API URL/模型。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 提供 dsh 插件入口 ./dsh/index.js 与 dsh.bundle.patch 配置，确认其为可安装的 DSH 工具插件。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "将 B 站链接、BV 号或本地视频输入转换为摘要与问答输出",
+      "本地处理音频转写与场景/运动相关的信息层分析",
+      "在高层级模式下向外部模型服务发送视频帧进行视觉分析"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:37.450Z",
+  "repositoryCommitSha": "26572b8ef0086e5bcf0c0b3bb7da252f1a98e200",
+  "evidenceHash": "b0d3e77519a9ed73c5f67f03edc2b6fa24882899cbf97ababf2f0f309abcd387",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "032cd287cbc44f0c481e71bcf0ffd8209ab6531765fa448068259f88adc59e80",
+  "shadowMode": false
+}

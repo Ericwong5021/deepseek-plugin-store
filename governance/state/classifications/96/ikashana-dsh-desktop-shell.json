@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "automation",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a local desktop launcher shell for DeepSeek Harness. Evidence shows it wraps an existing web profile into an Electron app with tray residency, single-instance window handling, and local server lifecycle checks, making its core purpose a desktop convenience interface and process manager rather than content generation, networking service, or code tooling.",
+  "summaries": {
+    "zh": "本插件为 DeepSeek Harness 提供桌面启动器外壳，可检查并启动/复用本地 web 服务，并在 Electron 原生窗口中打开界面，支持托盘常驻与后台驻留交互。",
+    "en": "This plugin is a desktop launcher shell for DeepSeek Harness that checks for or starts a local server and opens the web UI in an Electron window, with tray-based resident behavior for quick access."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "starts or reuses a local process-defined server via configurable command",
+      "opens a native Electron window for a local web UI",
+      "manages system tray behavior and single-instance window focus",
+      "performs local port/endpoint checks to coordinate app lifecycle",
+      "reads local config and writes local log files"
+    ],
+    "reasons": [
+      {
+        "code": "Repository README describes a tray-resident Electron wrapper that checks 127.0.0.1:3080, starts dsh when needed, and opens the web UI in a native window.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents configurable shell settings including dshCommand, cwd, env, and port in config.json, indicating user-defined local process execution behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes an Electron main entry (main.js) and a bundle patch, with package purpose aligned to desktop launcher and launch-time behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "starts or reuses a local process-defined server via configurable command",
+      "opens a native Electron window for a local web UI",
+      "manages system tray behavior and single-instance window focus",
+      "performs local port/endpoint checks to coordinate app lifecycle",
+      "reads local config and writes local log files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:32.149Z",
+  "repositoryCommitSha": "c1ca9c5b2d53f438789eac21e76431b513a9dfa8",
+  "evidenceHash": "8740ce39d302bf9db8f4eb3f9cf4dd92c9bec2bbfe67f5e2fbcf3121f28c4845",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "765aab32e6be940cb4e61d16f2b1dfc3bbd3f66219b19810f8aa5a8616a2f581",
+  "shadowMode": false
+}

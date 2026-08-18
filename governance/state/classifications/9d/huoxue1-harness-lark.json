@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "api",
+    "integration",
+    "tool",
+    "automation",
+    "collaboration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是作为 DeepSeek Harness 的飞书/ Lark 通道插件，将 AI 会话接入 IM 平台并提供消息收发、卡片交互与多种飞书工具调用，因此归类为外部服务集成类插件。其能力集中在通道通信与业务协作（文档、日历、任务等）能力扩展，未体现独立应用开发或通用文件系统/终端编程功能。",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness 提供飞书/ Lark 通道能力的插件，可在聊天中接收与发送消息、展示卡片，并支持调用飞书文档、表格、日历、任务等服务。",
+    "en": "This plugin adds Lark/Feishu channel support to DeepSeek Harness, enabling IM message handling and card-based interaction while exposing tools for Feishu docs, spreadsheets, calendars, tasks, and related services."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "通过飞书/ Lark 通道接收与发送 IM 消息",
+      "支持卡片交互与流式回复",
+      "支持图片/文件/音频等媒体收发",
+      "提供飞书云文档、知识库、网盘、多维表格、电子表格、日历、任务等 API 工具",
+      "支持用户级 OAuth 并按授权身份调用外部服务",
+      "可在群聊或私聊中执行本地/会话管理指令"
+    ],
+    "reasons": [
+      {
+        "code": "plugin bridges DeepSeek Harness and Lark/Feishu with WebSocket event gateway and message receive/send for chat-based interaction",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tools include cloud doc/wiki/drive/base/sheet/calendar/task operations and media upload/download, indicating direct integration with external account data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "supports user OAuth flow and user-token-based API calls for certain tools, changing execution identity based on auth state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "depends on @larksuiteoapi/node-sdk and exposes a dsh plugin bundle, indicating networked third-party service integration",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "通过飞书/ Lark 通道接收与发送 IM 消息",
+      "支持卡片交互与流式回复",
+      "支持图片/文件/音频等媒体收发",
+      "提供飞书云文档、知识库、网盘、多维表格、电子表格、日历、任务等 API 工具",
+      "支持用户级 OAuth 并按授权身份调用外部服务",
+      "可在群聊或私聊中执行本地/会话管理指令"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:26.340Z",
+  "repositoryCommitSha": "d88d9ebc31ab58e481b9f1e3ed776877c1429fbe",
+  "evidenceHash": "cb73a511d6a580a154107ce03100c42cfcd2b717021994ff77389f824064290f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "05b146b6699a9a4d5e46e8eddea820fa11c8b9f04510ecca36689f1b5344f505",
+  "shadowMode": false
+}

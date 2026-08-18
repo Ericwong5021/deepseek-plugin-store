@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is best classified as a file-management utility for DSH Web: it patches bundle configuration to force workspace directory selection through a browser-based browse picker, giving consistent local and remote behavior by avoiding host-native OS dialogs. Evidence from the README and manifest shows the core behavior centers on directory browsing/selection and folder creation via DSH’s browse host/UI picker integration.",
+  "summaries": {
+    "zh": "该插件用于 DSH Web 的工作区目录选择场景，将目录选择固定为浏览器内的 browse 模式，以便在本地和反代/远程访问时使用一致的目录选择器。",
+    "en": "This plugin for DSH Web sets workspace directory selection to an in-browser browse picker so local and remote/reverse-proxy access use a consistent folder selection flow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browse host directories from the web workspace selector",
+      "Edit paths and navigate directory hierarchy in the browser picker",
+      "Create folders in the selected host directory during browsing"
+    ],
+    "reasons": [
+      {
+        "code": "README describes replacing the default picker behavior so remote/local DSH Web sessions use the in-browser directory browse interaction for workspace selection instead of host-native dialogs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin composes host capabilities via browse services and invokes host.listDirectory and host.createDirectory RPC flows to list directories and create folders.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH bundle patch package and peer dependencies on the browse-host and browse-UI directory picker packages, indicating filesystem directory-picking integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Browse host directories from the web workspace selector",
+      "Edit paths and navigate directory hierarchy in the browser picker",
+      "Create folders in the selected host directory during browsing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:03.059Z",
+  "repositoryCommitSha": "6895750ada6b31fe8fdc85646e80ff867d2a4644",
+  "evidenceHash": "5654016e8f124680e0bf01d4aa15d32e81e07e3f1bee054a845156cdf06d7d17",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b61736000eb306a2809fc584e9c4c189602cf588eab42b5d150e660b342cbe08",
+  "shadowMode": false
+}

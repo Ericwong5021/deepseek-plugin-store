@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "tool",
+    "file",
+    "workflow",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a memory/context utility for DeepSeek Harness agents: it exposes three tools to offload large tool logs into local Markdown references, recall them by node_id, and render a Mermaid-based canvas of task context, which is a local, file-backed memory aid rather than an automation or external-integration workflow plugin.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供记忆上下文工具，可将大量工具日志写入本地 refs Markdown、通过 node_id 检索内容，并输出 Mermaid 画布用于上下文回看。",
+    "en": "This plugin provides memory/context tools for DeepSeek Harness to store bulky tool outputs in local Markdown references, recall them by node_id, and render a Mermaid canvas for context review."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Writes and reads plugin memory artifacts to local files under .dsh-memory/canvas.md and .dsh-memory/refs/{id}.md",
+      "Provides DSH tools for storing bulky tool output (memory_offload) and retrieving stored content by node_id (memory_recall)",
+      "Generates a Mermaid task-memory canvas view via memory_canvas"
+    ],
+    "reasons": [
+      {
+        "code": "README documents tools `memory_offload`, `memory_recall`, and `memory_canvas` with params and returned data shapes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states storage defaults to `<cwd>/.dsh-memory/...` and can be overridden with `DSH_MEMORY_DIR`, indicating local filesystem persistence.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH bundle via `cordis.patch.yml` and a JavaScript module entry, consistent with a plugin package loaded into DSH runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Writes and reads plugin memory artifacts to local files under .dsh-memory/canvas.md and .dsh-memory/refs/{id}.md",
+      "Provides DSH tools for storing bulky tool output (memory_offload) and retrieving stored content by node_id (memory_recall)",
+      "Generates a Mermaid task-memory canvas view via memory_canvas"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:31.097Z",
+  "repositoryCommitSha": "a11f50184b51325cb4bac8dca10f69fd67cd29bd",
+  "evidenceHash": "caf25ed02236ba79fc1620e510d8b67d6a6a8203c7488a04dc9bc927db3b4f86",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ca30bf7e5bbc686627f6d4917d7621362978407cf98289f2c7c1bef2798100d",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "browser",
+    "ui",
+    "cli",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要用途是为 DeepSeek Harness Web 会话界面内置交互式终端，面向用户提供可折叠的多标签主机终端窗口、快捷命令与会话控制。其功能核心集中于本机 PTY shell 的启动与管理、终端 UI 渲染及 WebSocket 数据流转，不属于文档检索、搜索或代码生成类能力。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 会话中内嵌可折叠的交互式终端面板，提供多标签本机 shell 会话、快捷命令和基础会话控制。",
+    "en": "This plugin adds a collapsible in-conversation terminal panel in DeepSeek Harness Web, offering multi-tab local shell sessions with quick commands and basic terminal session controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Spawns and manages local PTY shell sessions per tab",
+      "Streams terminal input/output between browser UI and host process via WebSocket",
+      "Executes interactive shell commands and supports full-screen terminal apps through the host shell",
+      "Supports session lifecycle operations such as create, close, restart, signal, and resize"
+    ],
+    "reasons": [
+      {
+        "code": "README describes an in-conversation collapsible interactive terminal where each tab is a live host PTT shell rendered with xterm.js, enabling user shell interactions inside web conversations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Architecture documentation shows a plugin-private WebSocket data path plus RPC-based control for tab and command operations, indicating direct terminal I/O and session control from the web client to host processes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies the plugin as an in-conversation interactive terminal using xterm.js over WebSocket and includes web/client-side platform entry, confirming terminal tooling behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Spawns and manages local PTY shell sessions per tab",
+      "Streams terminal input/output between browser UI and host process via WebSocket",
+      "Executes interactive shell commands and supports full-screen terminal apps through the host shell",
+      "Supports session lifecycle operations such as create, close, restart, signal, and resize"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:03.707Z",
+  "repositoryCommitSha": "526bb161966c93876d0a686a551d8cccaf90069a",
+  "evidenceHash": "c936ed549baa2e884152fe94d09af271b4112d0afba97d524c4974cf93045da1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ffed218c8699ba2ef422746f89cdcff54ac7d577d00bd029d245ada7b1c32428",
+  "shadowMode": false
+}

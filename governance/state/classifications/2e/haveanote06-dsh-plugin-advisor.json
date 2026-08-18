@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "search",
+    "integration",
+    "workflow",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is a user-facing advisory utility for DeepSeek Harness that helps users discover and choose ecosystem plugins by first checking local availability, then searching and quality-scoring community options, and finally helping install a selected option after confirmation. Its impact profile is moderate because it performs external lookups and can initiate installs via npm/GitHub identifiers, which introduces controlled operational risk.",
+  "summaries": {
+    "zh": "这款插件为 DeepSeek Harness 提供插件顾问能力：在对话中先检查本地已安装插件，再搜索并评分社区插件候选，并在你确认后协助安装。",
+    "en": "This plugin provides a plugin-advisor workflow for DeepSeek Harness by checking installed plugins, searching the DSH ecosystem, ranking candidates with quality signals, and helping install a chosen plugin after confirmation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Checks installed plugins before proposing new ones.",
+      "Looks up plugin candidates from external sources (e.g., GitHub and npm-related metadata).",
+      "Ranks or scores candidate plugins before recommending.",
+      "Can trigger plugin installation for allowed npm/GitHub package references after user confirmation."
+    ],
+    "reasons": [
+      {
+        "code": "README states flow: detect need, check local plugin inventory, search ecosystem, score candidates, and proceed only after user confirmation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists external data sources and scoring signals used for recommendations, including GitHub topic data, awesome list, and npm downloads, implying network-based lookup.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package description and name identify this as a DeepSeek Harness plugin advisor focused on searching and installing DSH plugins.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Checks installed plugins before proposing new ones.",
+      "Looks up plugin candidates from external sources (e.g., GitHub and npm-related metadata).",
+      "Ranks or scores candidate plugins before recommending.",
+      "Can trigger plugin installation for allowed npm/GitHub package references after user confirmation."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:58.505Z",
+  "repositoryCommitSha": "cd6382a1e0d389f4be9eeaaecdfcc1b58e892da3",
+  "evidenceHash": "fab55b8a664837d10a26abd45ecb1b361d35304808e47ff6ff040d31b355a259",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d2f66eeb239d54f68bf7aa2634d969901d9c7611ef2f6dba83767672c0dd5f1b",
+  "shadowMode": false
+}

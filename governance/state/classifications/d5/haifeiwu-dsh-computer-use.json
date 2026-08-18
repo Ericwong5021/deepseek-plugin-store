@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "desktop",
+    "browser",
+    "image",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily for automation in an agent workflow, enabling DSH to observe and interact with a local macOS environment through screenshot/OCR plus mouse, keyboard, and browser controls; this is evidenced by the repository README and DSH plugin manifest wiring in package metadata.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的本地 macOS 自动化插件，支持截图与 OCR 兜底，并提供键鼠与浏览器操作能力，供模型执行界面驱动任务。",
+    "en": "This is a DeepSeek Harness plugin for local macOS automation that provides screenshot plus OCR fallback, along with mouse, keyboard, and browser operations for model-driven workflow actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Screen capture for state observation",
+      "OCR-based text extraction fallback",
+      "Mouse movement, click, drag, and scroll control",
+      "Keyboard text input and allowed-key shortcuts",
+      "Browser DOM-style automation actions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a local macOS computer-use toolset with screenshot, screen_ocr, desktop mouse/keyboard tools, and browser_open/click/type/scroll/extract/close operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description and topic metadata explicitly position it as a DSH plugin for local computer use on macOS.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "package.json declares a DSH bundle patch entry and includes playwright-core dependency, indicating agent-tool integration rather than standalone application behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Screen capture for state observation",
+      "OCR-based text extraction fallback",
+      "Mouse movement, click, drag, and scroll control",
+      "Keyboard text input and allowed-key shortcuts",
+      "Browser DOM-style automation actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:32.422Z",
+  "repositoryCommitSha": "5f017134e75b10c82bf96fd2a70b4eca88db2821",
+  "evidenceHash": "1b36dbdd6f901031d24bfe64211e80094c8438611b9c1a5566d0a3b0e7ae6d9f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "90668c69855a7e474b715282c4715535fac9412ea7122e3aece292f23ea386b9",
+  "shadowMode": false
+}

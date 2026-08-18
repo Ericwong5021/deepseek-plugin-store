@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "file",
+    "document",
+    "image",
+    "tool",
+    "ui",
+    "browser",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The primary user-facing purpose is document-oriented file handling: it enables users to attach files to a DeepSeek Harness session and then inspect, read, OCR, and render those files through explicit tools, which aligns most directly to document processing rather than general development utilities. Evidence from README and package metadata consistently frames the plugin as a web file attachment and content-extraction workflow.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，用于在会话中添加文件附件并通过内置工具对上传内容进行检查、读取、OCR 识别和渲染。",
+    "en": "This is a DeepSeek Harness web plugin that lets users attach files to a session and use built-in tools to inspect, read, OCR, and render uploaded content."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "workspace-scoped file attachment and upload handling",
+      "document, archive, and image parsing/read workflows",
+      "OCR processing via packaged language data",
+      "rendering of file parts to image artifacts for downstream use"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds Add→Attachment actions and supports drag/drop/paste uploads of multiple files into DeepSeek Harness Web sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists four agent tools: file_inspect, file_read, file_ocr, and file_render, showing explicit file-processing and reasoning integrations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes same-origin upload endpoints and workspace storage under the active session path, indicating session-bound file ingestion and processing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json includes file-processing dependencies including tesseract.js and OCR language packs, confirming OCR and document/image extraction functionality.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "workspace-scoped file attachment and upload handling",
+      "document, archive, and image parsing/read workflows",
+      "OCR processing via packaged language data",
+      "rendering of file parts to image artifacts for downstream use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:30.494Z",
+  "repositoryCommitSha": "b3b0fe11eb5669fc9d7ca0dbdecfa63a68bdb407",
+  "evidenceHash": "fb8787b1bbc2c1a65c5f959ec69377563fdda73c9014568483dc53cd34363329",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "76acaf0f52554089ae72fb79c410f5e12c9b01c1dade05dc856759340e542b42",
+  "shadowMode": false
+}

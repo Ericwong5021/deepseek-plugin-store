@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "automation",
+    "workflow",
+    "tool",
+    "ui",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is primarily an LLM-model routing utility: it creates a virtual provider that merges configured providers/models and forwards each request to the currently selected provider for that model, with settings and UI controls for per-model provider ordering and switching. It also persists routing configuration for both web and headless profiles, so the user-facing goal is model-provider management and request delegation, not development tooling or content generation.",
+  "summaries": {
+    "zh": "这是一个 DSH 模型路由插件，在模型选择与会话请求中按每个模型当前配置的供应商进行转发，并提供模型级别的供应商排序与切换设置。",
+    "en": "This is a DSH model routing plugin that forwards requests through the currently configured supplier for each model and provides per-model provider ordering and switching controls in the UI settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes model requests to one active provider at request time within DSH",
+      "Lets users configure and switch provider priority and active provider per model",
+      "Injects a model-router provider into DSH model selection and a settings panel for provider management",
+      "Supports shared routing behavior via `settings.yaml` for web and headless/CLI profiles"
+    ],
+    "reasons": [
+      {
+        "code": "MODEL_ROUTER_PROVIDER_REGISTERED_IN_DSH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PER_MODEL_ACTIVE_PROVIDER_AND_ORDERING_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_PLUGIN_PATCH_AND_SETTINGS_NAMESPACE",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "REQUEST_TIME_ROUTING_AND_PREFIX_MATCHING_BEHAVIOR",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Routes model requests to one active provider at request time within DSH",
+      "Lets users configure and switch provider priority and active provider per model",
+      "Injects a model-router provider into DSH model selection and a settings panel for provider management",
+      "Supports shared routing behavior via `settings.yaml` for web and headless/CLI profiles"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:41.547Z",
+  "repositoryCommitSha": "42d83db2cbb9ed5aff59d1e82e5a0b30101ae143",
+  "evidenceHash": "81ff9d7d8eff248e50c4f6a48c6cc331c7ac21a5604f0615722135f6ee013e44",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7f625aabb15ee5e1125f6301963905d552cd61dc4ba12d293198024d62e7cb6f",
+  "shadowMode": false
+}

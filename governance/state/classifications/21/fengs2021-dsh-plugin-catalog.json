@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "api",
+    "tool",
+    "search",
+    "file",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件面向用户的是 DSH Web 设置中的“插件目录”功能：提供已安装插件的分组展示、搜索过滤、备注记录与版本检查，并在支持范围内提供 npm 插件的一键更新，因此分类为插件开发场景下的通用插件管理/设置工具。",
+  "summaries": {
+    "zh": "这是一个在 DSH Web GUI 设置页提供插件目录视图的插件，可按来源分组展示已安装插件、支持搜索、记录逐插件备注，并提供版本检查与支持情况下的 npm 一键更新。",
+    "en": "This plugin adds a Plugin Catalog section in DSH web settings to view installed plugins in grouped lists, search by name/description, keep per-plugin notes, and perform version checks with optional one-click npm updates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local plugin/package metadata and renders a grouped, searchable plugin catalog view.",
+      "Provides HTTP endpoints for listing catalog data and reading/writing plugin notes.",
+      "Writes plugin notes to a host-side JSON file.",
+      "Checks remote registry/source versions and can run npm plugin updates with backup/rollback behavior."
+    ],
+    "reasons": [
+      {
+        "code": "settings-catalog-ui-and-search",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host-api-list-notes-endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "npm-github-version-check-and-update-path",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dsh-web-client-injection-configuration",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local plugin/package metadata and renders a grouped, searchable plugin catalog view.",
+      "Provides HTTP endpoints for listing catalog data and reading/writing plugin notes.",
+      "Writes plugin notes to a host-side JSON file.",
+      "Checks remote registry/source versions and can run npm plugin updates with backup/rollback behavior."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:22.747Z",
+  "repositoryCommitSha": "73a010227acdd480084ac05e37cfab48c74fa9b7",
+  "evidenceHash": "654cd77fa3f1f8985c06c6db51e3a01ac97e47e56c2edbd163744054a72e7878",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "004e0dade71bbdbbfb164651abade290fe578ff728870a32b7ccfdb373a9a59f",
+  "shadowMode": false
+}

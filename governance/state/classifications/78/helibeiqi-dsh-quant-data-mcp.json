@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "api",
+    "data",
+    "integration",
+    "tool",
+    "automation",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.9,
+  "reason": "该仓库的核心用途是将 A 股相关数据能力包装为 DeepSeek Harness 的 MCP 插件，核心实现是本地 stdio MCP server 并通过 DSH patch/bundle 注册，对外暴露行情与财务查询工具。依据仓库结构、package.json 中的 dsh bundle 声明及 README 的工具清单，可归类为外部服务类插件，主要价值在于让模型可直接调用公开数据端点而非本地代码开发或文件处理。",
+  "summaries": {
+    "zh": "这是一个本地 DSH MCP 插件，提供 A 股行情、快照、财务与板块/北向资金相关查询工具并支持扩展更多工具。",
+    "en": "This is a local DSH MCP plugin bundle that exposes MCP tools for A-share market data queries such as quotes, financials, sectors, and northbound flows, with support for adding more tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches market data from public HTTP endpoints",
+      "Exposes multiple MCP tools via stdio/NDJSON protocol",
+      "Runs as a local Node process launched by DSH via bundle config",
+      "Supports user/configurable endpoint and path variables"
+    ],
+    "reasons": [
+      {
+        "code": "package_declares_dsh_bundle_with_cordis_patch_reference_for_stdio_plugin_integration",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "readme_describes_six_a_share_mcp_tools_for_quotes_quotes_batch_financials_northbound_sectors_and_daily_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_specifies_network_sources_eastmoney_and_tencent_public_endpoints_without_local_data_store_dependency",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "repository_topics_include_mcp_mcp-server_and_study_quant_data",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "tree_lists_bundle_files_for_plugin_deployment_including_cordis.patch.yml_lib_quant-mcp-server.mjs_and_setup.ps1",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetches market data from public HTTP endpoints",
+      "Exposes multiple MCP tools via stdio/NDJSON protocol",
+      "Runs as a local Node process launched by DSH via bundle config",
+      "Supports user/configurable endpoint and path variables"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.9,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:04.773Z",
+  "repositoryCommitSha": "ce89f29b2e1a4cbdb1627b9d5df2990e4da63d7b",
+  "evidenceHash": "132e03be5469fe222209a86a8c1ea54ea0caba41dd138c7dbca13442a68bfebf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b9f5166c514a879808b785e0854159aa28eeb15da051a635a8e51b11ca1da70d",
+  "shadowMode": false
+}

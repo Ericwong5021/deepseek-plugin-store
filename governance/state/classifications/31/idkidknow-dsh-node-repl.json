@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "tool",
+    "ui",
+    "context",
+    "agent",
+    "debugging",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The primary user-facing purpose is providing an interactive terminal experience within the DSH web interface: it opens a floating, session-local REPL window and executes JavaScript through a host-process `node:repl` session. Evidence in the README and package metadata consistently points to terminal UI + websocket bridge behavior rather than search, file editing, or knowledge-management features. Because execution is in-process and linked to live agent context, its capability is terminal/tooling oriented but with high-impact local effects.",
+  "summaries": {
+    "zh": "这是一个面向会话的 DSH 网页终端插件，可在会话内打开浮动 Node.js REPL，直接运行代码并在同一会话中使用运行时上下文。",
+    "en": "This plugin adds a per-session floating Node.js terminal in the DSH web UI so users can run JavaScript in a live REPL with session runtime context."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Per-session interactive Node.js REPL execution in the browser UI",
+      "WebSocket bridge to a backend node:repl process",
+      "Direct access to live runtime context objects (`ctx`/`agent`) from the REPL",
+      "Session-scoped terminal window lifecycle controls (open, collapse, close)"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as a per-session floating Node REPL terminal in the DSH web UI, with session-local controls and lifecycle behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The REPL is described as an in-process `node:repl` instance with live agent context (`ctx`, `agent`) in scope.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata includes terminal/WebSocket tooling (`node-pty`, `ws`) and web client injection for DSH, matching a terminal bridge implementation.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository description and README explicitly state the REPL runs inside the host process and is unsandboxed.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Per-session interactive Node.js REPL execution in the browser UI",
+      "WebSocket bridge to a backend node:repl process",
+      "Direct access to live runtime context objects (`ctx`/`agent`) from the REPL",
+      "Session-scoped terminal window lifecycle controls (open, collapse, close)"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:34.466Z",
+  "repositoryCommitSha": "66f4f8c2da8ae67c95e742609301bb1616b9c1f0",
+  "evidenceHash": "72423c6c9124737f042ef4ff417d9932ef10b098d96dbd1943a3cc27bf2a4aac",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d330728af9a60bd2de070084e274178cc46ae452f10ab2954773645a2b56d65",
+  "shadowMode": false
+}

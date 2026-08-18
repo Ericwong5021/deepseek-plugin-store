@@ -1,16 +1,72 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件从仓库说明可确认其核心为 DSH Web 聊天界面的布局行为增强：在会话较长时自动折叠旧记录并在顶部滚动时分批恢复，以保持窗口可见区域更稳定、轻量。它通过注入客户端 UI 运行时并监听聊天滚动触发点实现，与后端数据处理或外部服务集成无直接关系，故归为界面布局类。",
+  "summaries": {
+    "zh": "该插件用于 DSH Web 聊天界面，在消息列表较长时自动折叠旧消息，并在滚动到顶部时逐步恢复早期消息，使聊天窗口始终保持更轻量的可浏览状态。",
+    "en": "This plugin is for the DSH Web chat interface, automatically folding older messages and revealing earlier ones in batches when scrolled to the top so the chat window stays compact and easier to browse."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Hides and restores rendered chat message rows in the browser UI to fold/expand conversation history.",
+      "Monitors chat scroll position to trigger automatic fold at bottom and incremental expand at top.",
+      "Stores fold state per session inside the plugin runtime and coordinates with loaded conversation pages."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin auto-folds older chat messages and restores earlier messages when scrolling to the top, directly changing visible UI content in the chat window.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web client plugin bundle and injects runtime/UI-conversation modules, confirming client-side UI integration rather than standalone tooling.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README lists explicit DOM hook selectors and slot props used by the plugin, indicating behavior is tied to specific host UI structure and version compatibility.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Hides and restores rendered chat message rows in the browser UI to fold/expand conversation history.",
+      "Monitors chat scroll position to trigger automatic fold at bottom and incremental expand at top.",
+      "Stores fold state per session inside the plugin runtime and coordinates with loaded conversation pages."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:18.134Z",
   "repositoryCommitSha": "90458bba64ff393aa19ac5d6e6ac445867c1fb5c",
+  "evidenceHash": "6dd15c54c230ae0f6b4f4b58dacfda9be4323d0e5f5597e03d0c74c1f6457e72",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "002ee879443f7e68479b3e30ba819d35a8b75df1f1f4bfe3e203c37e996deec2",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:00:29.851Z",
-  "lastAttemptAt": "2026-08-18T18:00:29.851Z",
-  "nextRetryAt": "2026-08-19T00:00:29.851Z",
-  "retryable": true,
-  "error": "AI decision contains unsupported fields",
   "shadowMode": false
 }

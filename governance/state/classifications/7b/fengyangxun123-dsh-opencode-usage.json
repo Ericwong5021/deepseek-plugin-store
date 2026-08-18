@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "notification",
+    "ui",
+    "data",
+    "integration",
+    "tool",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a quota and balance monitoring tool: it retrieves usage and balance data from configured providers, computes simple trend/threshold conditions, and presents the status through a DSH sidebar badge plus detail overlay with alert indicators; this is user-facing monitoring/notification behavior rather than code generation or orchestration.",
+  "summaries": {
+    "zh": "该插件用于在 DSH Web 中展示 OpenCode Go 用量与 DeepSeek 余额，并在侧边栏徽标和弹出详情卡中进行状态刷新与阈值告警展示。",
+    "en": "This plugin monitors OpenCode Go quota and DeepSeek balance in DSH Web, showing status in a sidebar badge and popup detail card with threshold-based refresh and alerts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches usage and balance data from external APIs for OpenCode Go and DeepSeek",
+      "Evaluates threshold rules and exposes alert states to the user interface",
+      "Displays status in a sidebar badge and popup overlay with periodic refresh",
+      "Provides an agent tool endpoint for querying provider status (`opencode_usage`)",
+      "Reads credentials from environment variables and local plugin config for API access",
+      "Writes usage history to a local file for trend tracking"
+    ],
+    "reasons": [
+      {
+        "code": "Readme documents polling of provider endpoints for usage and balance (`/v1/usage`, `/user/balance`) and alert conditions for usage spikes/low balance.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme states a persistent sidebar footer badge and shell overlay card for provider details, reset countdown, trends, and warnings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines a DSH web plugin with client injection and plugin entrypoints, and the repository structure references API routes and client UI modules.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Capability extraction from review data includes `network.access` and `credential.read`.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetches usage and balance data from external APIs for OpenCode Go and DeepSeek",
+      "Evaluates threshold rules and exposes alert states to the user interface",
+      "Displays status in a sidebar badge and popup overlay with periodic refresh",
+      "Provides an agent tool endpoint for querying provider status (`opencode_usage`)",
+      "Reads credentials from environment variables and local plugin config for API access",
+      "Writes usage history to a local file for trend tracking"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:23.309Z",
+  "repositoryCommitSha": "3aeaba41571e42e6a12076f5c5877a0bb5c44958",
+  "evidenceHash": "f6dcaf08f1779e9b528bcc1dc46d57ceb0c8a9b04867eaf93fbf79c386ee5ffc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ff41645b4e6c7fa64c687406f61beca1994e6c3170d457c2471fc324e65f0b89",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "api",
+    "automation",
+    "integration",
+    "agent",
+    "workflow",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用户价值在于提供一个可被 A2A 对端发现并调用的 DeepSeek Harness 入站任务接口：README 明确说明其发布 Agent Card、实现 A2A v0.3.0 JSON-RPC 绑定并支持 message/send、tasks/get 等任务接口，因此属于面向自动化任务接入与编排的服务型插件。其风险主要为对外 HTTP 入口、身份凭证鉴权与上下文执行能力，且 README 进一步披露为入站-only与隔离模型，属于中等风险范围。",
+  "summaries": {
+    "zh": "dsh-a2a-server 是一个 DeepSeek Harness 插件，提供符合 A2A v0.3.0 的入站 JSON-RPC 服务与 Agent Card，允许对端提交任务并通过接口查询或管理任务状态。",
+    "en": "dsh-a2a-server is a DeepSeek Harness plugin that provides an inbound A2A v0.3.0 JSON-RPC endpoint with an Agent Card so peers can submit tasks and check/manage task state via the server."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Expose an inbound HTTP JSON-RPC endpoint for A2A task exchange",
+      "Publish and serve an Agent Card for peer discovery",
+      "Authenticate per-peer task requests and apply rate limits",
+      "Map incoming A2A task lifecycle methods (send/stream/get/cancel/resubscribe) to harness agent execution"
+    ],
+    "reasons": [
+      {
+        "code": "A2A_INBOUND_ADAPTER",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PEER_IDENTITY_AUTH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "TASK_LIFECYCLE_APIS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WORKSPACE_ISOLATION_AND_ROUTING",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Expose an inbound HTTP JSON-RPC endpoint for A2A task exchange",
+      "Publish and serve an Agent Card for peer discovery",
+      "Authenticate per-peer task requests and apply rate limits",
+      "Map incoming A2A task lifecycle methods (send/stream/get/cancel/resubscribe) to harness agent execution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:21.022Z",
+  "repositoryCommitSha": "3d137d48608ed3606187ea3941421e6166bbdf09",
+  "evidenceHash": "03655707ae2b376e8db9b581fc06a2ffe185783bae3cb9813c0de31601978ffa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "102d46121df0a047e328c5f85541e1966523acfd455354632562ed87cfad2239",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "chat",
+    "integration",
+    "tool",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily a Grafana service integration: it connects to a Grafana instance, allows dashboard retrieval/search, enables conversational editing, and pushes approved updates back to the dashboard API. Evidence in the README and package metadata consistently describes dashboard management capabilities rather than coding utilities, file tooling, or generic testing tools, so the classification is external-services with automation/data-oriented tool behavior.",
+  "summaries": {
+    "zh": "dsh-grafana 是一款 DeepSeek Harness 插件，可通过会话方式读取/搜索 Grafana 仪表盘，并在确认后将修改后的仪表盘配置回写到 Grafana。",
+    "en": "dsh-grafana is a DeepSeek Harness plugin that lets you read and search Grafana dashboards through conversation and write approved dashboard JSON updates back to Grafana."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetch Grafana dashboard JSON by URL or UID",
+      "Search dashboards by title/tag via Grafana API",
+      "Edit and write dashboard JSON through an approval-gated push flow",
+      "Validate Grafana connectivity and service-account status"
+    ],
+    "reasons": [
+      {
+        "code": "Primary workflow describes conversational fetch-edit-push operations against Grafana dashboards via dedicated tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration requires Grafana URL and service-account token, and writes are performed through Grafana Dashboard API endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies this as a DeepSeek Harness web plugin with DSH client/runtime integration, confirming external-service tool behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetch Grafana dashboard JSON by URL or UID",
+      "Search dashboards by title/tag via Grafana API",
+      "Edit and write dashboard JSON through an approval-gated push flow",
+      "Validate Grafana connectivity and service-account status"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:26.389Z",
+  "repositoryCommitSha": "3b44623cfb24aaa9da0c0b5193f17a49a7750b67",
+  "evidenceHash": "9f99b38a452bb57fd79c8ea5bbdaf0b9299390e8a89e6a9b68d4e5479504730b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "098da8daf1d7b7b3b8ee35d954fb2966cf58cd2319b5829f628562ff3c39cb96",
+  "shadowMode": false
+}

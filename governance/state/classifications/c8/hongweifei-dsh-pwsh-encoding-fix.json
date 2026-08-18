@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "tool",
+    "integration",
+    "cli",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的用户面向用途是修复 DeepSeek Harness 在 Windows 上 PowerShell 命令输出的乱码问题：通过在 shell 解析阶段包裹 pwsh 命令、按字节保留输出并按 UTF-8/ANSI 规则重解码再回传，以减少中文和其他非 ASCII 文本的乱码。",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness 的 PowerShell 工具，针对 Windows 下命令输出乱码进行编码修正，通过捕获与重解码输出提升终端显示可读性。",
+    "en": "This plugin targets DeepSeek Harness PowerShell output on Windows, applying capture-and-redecode handling to improve terminal display for Chinese and other non-ASCII command output."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Wraps PowerShell shell resolution for DSH command execution",
+      "Captures pwsh output at byte level and re-decodes for display",
+      "Allows configured ANSI code page fallback during decoding"
+    ],
+    "reasons": [
+      {
+        "code": "Behavioral change is scoped to PowerShell execution and affects run/start command output handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Function relies on encoding conversion and re-encoding path, which can alter how certain edge-case outputs are represented",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin is activated as a DSH bundle patch, so it is injected into profile runtime behavior",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Wraps PowerShell shell resolution for DSH command execution",
+      "Captures pwsh output at byte level and re-decodes for display",
+      "Allows configured ANSI code page fallback during decoding"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:18.215Z",
+  "repositoryCommitSha": "2e81d79a189563d96610903aeafad32200ffdaba",
+  "evidenceHash": "21cda4f95a0225fafbc4543a57d28a0c5c57459614722c59bffc01d4b373b1c5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "511d6547ed0a40801e356b661e32d2a0892f53a5441548fcc20f955ebfd11925",
+  "shadowMode": false
+}

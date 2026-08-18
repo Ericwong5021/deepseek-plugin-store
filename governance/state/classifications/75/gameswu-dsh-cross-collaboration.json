@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "agent",
+    "chat",
+    "api",
+    "workflow",
+    "notification",
+    "ui",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向场景是 DSH 多设备协作：在局域网或跨网段网络中发现节点、建立网络会话并提供会话级消息投递入口，用于唤醒和协调对端主 Agent 工作。依据 README 与 package 信息，它更偏向协作/通信型插件，而非代码生成或数据处理类工具。",
+  "summaries": {
+    "zh": "该插件用于在多台 DSH 设备间建立协作连接，并通过会话级消息在不同主 Agent 之间发送指令与状态通知。",
+    "en": "This plugin connects multiple DSH devices and enables session-targeted messaging to coordinate main agents across machines."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "LAN/跨网段设备发现与连接",
+      "跨设备会话级消息发送（`lan_message`）",
+      "对端离线时离线消息持久化与重试投递",
+      "可配置的中继/配对与节点同步"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述该插件用于让多台运行 DSH 的设备互发现并互发消息唤醒对端主 Agent。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明通信路径包含同网段 UDP 自动发现、跨网段 TCP/JSON-RPC 及可选 WebSocket 中继，并支持 `ip:port` 手动添加节点。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出消息可按会话精确投递、离线时自动排队并上线后补投（最多 50 条），存在持久化与重试行为。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "LAN/跨网段设备发现与连接",
+      "跨设备会话级消息发送（`lan_message`）",
+      "对端离线时离线消息持久化与重试投递",
+      "可配置的中继/配对与节点同步"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:53.122Z",
+  "repositoryCommitSha": "2c96155d62b0d14545f8e41bf1d9e2cb71a63c0b",
+  "evidenceHash": "7e077d05fdade5345bb4c1618d9539fc6e130513886bf4a540a4dd8a2a08efcc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f5e34e8c81e5a942596eab41cf731727aa5b7c4ea1a9b8985cead874b99b2a54",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "integration",
+    "api",
+    "browser",
+    "tool",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的核心面向用户是界面控件替换：在 DeepSeek Harness Web 输入区用 6 档滑块统一控制模型与推理强度，并提供悬停图示与切换动画。根据仓库说明与清单，该插件通过官方 DSH Web 插件注入点与 modelDirectories 会话接口实现选择映射，属前端界面布局/交互增强，未体现需要审批的高风险能力。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 的输入区域加入一个 6 档滑动条，用于同时切换模型和推理等级，并在滑块状态变化时显示对应档位预览图。",
+    "en": "This plugin adds a six-step slider to DeepSeek Harness Web input controls to switch model and reasoning level together, with a preview image for the active level shown during hover or switching."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Replaces in-page model and reasoning-level controls with a 6-position slider UI",
+      "Maps slider positions to configured model/effort combinations",
+      "Calls Harness session/model selection APIs when the position changes",
+      "Displays local per-position preview imagery in the plugin bundle",
+      "Overrides conversation input model slot and restores default UI when uninstalled"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a front-end slider that replaces built-in model and reasoning controls and switches both together.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents that switching uses Harness modelDirectories/session.selectModel with model id and effort id.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a DSH web client plugin with UI injection dependencies for conversation and model-selection packages.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README states slider level images are embedded into the client bundle as data URLs, avoiding runtime external static asset loading.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Replaces in-page model and reasoning-level controls with a 6-position slider UI",
+      "Maps slider positions to configured model/effort combinations",
+      "Calls Harness session/model selection APIs when the position changes",
+      "Displays local per-position preview imagery in the plugin bundle",
+      "Overrides conversation input model slot and restores default UI when uninstalled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:47.509Z",
+  "repositoryCommitSha": "4ad19960a01bd088f565c1a12b90e1c2a796b5cc",
+  "evidenceHash": "9ed306fee831d519b0e22c70748bdde8659ec4d24bd6828d4f316b00108ce391",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "94944bb4a424dbcf8e0439b5d7925b4e9c0d86fa8bdf8554467403a61155ce46",
+  "shadowMode": false
+}

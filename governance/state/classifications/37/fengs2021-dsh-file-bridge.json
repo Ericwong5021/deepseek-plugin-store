@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "chat",
+    "ui",
+    "image",
+    "tool",
+    "desktop",
+    "mobile",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件在 README 与插件配置中明确定位为“文件收发桥”，核心能力是为 DSH 对话场景提供附件上传、agent 下发文件链接/预览，以及通过可点击路径在侧边栏 explorer 打开文件，并配套 `/dsh-files/*` 只读静态服务，因此其主要用户场景是文件传输与文件访问辅助，不属于代码生成、搜索、研究或图形可视化类插件。",
+  "summaries": {
+    "zh": "DSH 文件收发桥插件可在对话中实现附件上传与文件下发，并支持在消息中点击路径快速打开侧边栏 explorer。",
+    "en": "The DSH file bridge plugin enables chat-based file upload and agent file delivery, with clickable path mentions that open files in the sidebar explorer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "user-to-agent file uploads from the chat UI",
+      "agent-to-user file delivery via send_files",
+      "read-only static file serving under /dsh-files",
+      "path-based explorer launch from response text"
+    ],
+    "reasons": [
+      {
+        "code": "read-only static serving for shared file directory",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem path mention handling to open explorer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "UI attachment upload flow for images and general files",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "user-to-agent file uploads from the chat UI",
+      "agent-to-user file delivery via send_files",
+      "read-only static file serving under /dsh-files",
+      "path-based explorer launch from response text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:21.126Z",
+  "repositoryCommitSha": "124eb8ffb09e007110fdba91986cad79daa74872",
+  "evidenceHash": "13f192d6c99df93b9d2478905723128ec6182b05962742df9d0c483c1dff7598",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f0c1a04320619b216194fdbd030d07006419f0f66fe37d75c5e718c60c5bb6f6",
+  "shadowMode": false
+}

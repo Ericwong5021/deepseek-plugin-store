@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "tool",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is primarily for memory and context continuity, as documented in its README: it stores user/model facts per workspace, makes them durable, and re-injects a bounded set of recent memories into later sessions, while exposing explicit tools to write, list, search, and forget memory entries. This classifies it as a memory-context utility rather than code generation, search, UI, or external-service integration.",
+  "summaries": {
+    "zh": "dsh-memory 是 DeepSeek Harness 的记忆插件，用于在同一工作区内跨会话持久保存重要事实，并提供 memory_write、memory_list、memory_search、memory_forget 工具供模型读写与检索。",
+    "en": "dsh-memory is a DeepSeek Harness memory plugin that persists workspace-scoped facts across sessions and provides memory_write, memory_list, memory_search, and memory_forget tools for model-driven storage and retrieval."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persist workspace-scoped memory entries across sessions",
+      "Expose model-facing tools: memory_write, memory_list, memory_search, memory_forget",
+      "Render a bounded memory section into later session prompts",
+      "Support configurable limits for stored and returned memory entries"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides persistent cross-session workspace-scoped memory and lists the four model tools for write/list/search/forget.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README defines bounded prompt injection via app:memory with default and configurable entry limits, indicating cross-session context reuse.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata and name describe a persistent memory plugin for DeepSeek Harness, confirming the plugin’s core purpose.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Persist workspace-scoped memory entries across sessions",
+      "Expose model-facing tools: memory_write, memory_list, memory_search, memory_forget",
+      "Render a bounded memory section into later session prompts",
+      "Support configurable limits for stored and returned memory entries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:26.099Z",
+  "repositoryCommitSha": "cc17aba9868122981e496380345e288d27bb8ac2",
+  "evidenceHash": "18337de6a935b9478467cdba00ee54504dc14a19824f0e7858cfb1d55e554738",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f00033ff04c226b1c7e2c966f84d3fe96c9389738d41766685371133c21d4c7f",
+  "shadowMode": false
+}

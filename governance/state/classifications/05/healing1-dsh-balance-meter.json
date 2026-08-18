@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "tool",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary user-facing purpose is to present account-financial telemetry for DeepSeek users inside the DSH web interface by fetching balance/usage data and estimating session cost. It is best classified under external-services because its core behavior is calling external account and pricing services and surfacing that result to users, with auxiliary utility behavior in the UI display.",
+  "summaries": {
+    "zh": "该插件在 DSH Web GUI 中显示 DeepSeek 账户余额与当前会话预计花费，并可展示按费用类型和币种的分项，用于快速查看账户使用成本。",
+    "en": "This plugin shows DeepSeek account balance and estimated current-session cost in the DSH web interface, including breakdown views for balance and token-cost buckets."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek account balance via official API endpoint",
+      "Fetches official pricing data on a refresh schedule",
+      "Computes session cost estimates from token usage buckets",
+      "Displays balance and cost in DSH web composer dock UI",
+      "Reads API key from configured credential reference"
+    ],
+    "reasons": [
+      {
+        "code": "The README states the plugin queries the official Get User Balance endpoint and official pricing page, then shows remaining balance and spend in the UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration references DEEPSEEK_API_KEY via DSH credentials seam, indicating dependence on stored API credentials.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata marks this as a DSH web plugin with client/UI runtime dependencies and web platform injection, confirming integration into the running web interface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek account balance via official API endpoint",
+      "Fetches official pricing data on a refresh schedule",
+      "Computes session cost estimates from token usage buckets",
+      "Displays balance and cost in DSH web composer dock UI",
+      "Reads API key from configured credential reference"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:01.717Z",
+  "repositoryCommitSha": "de42c4c2255c0e49469d260c7324cd98454f826a",
+  "evidenceHash": "4a59fcdb318b7c6b3f7592d852058c37a5d3aeda0c2498d6a09055a886c4c51b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b9d54d38e49d149b251e7f08d21cdbbf2fd4fe97fa4bd6f47d38f9a9dd35175d",
+  "shadowMode": false
+}

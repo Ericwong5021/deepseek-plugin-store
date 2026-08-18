@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "layout",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要面向用户用途是界面布局体验优化：在 DeepSeek Harness 的设置页增加显示参数入口，允许通过滑块调节输入框与内容展示区的宽度并即时生效。证据显示其核心功能是设置持久化与运行时 CSS/样式应用（包括自定义变量和页面区域对齐），属于界面布局类插件，不涉及数据处理、外部服务调用或协作型功能。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 的界面设置插件，在“设置→显示”中提供滑块，实时调整消息内容区和输入框的宽度并保存设置。",
+    "en": "This is a DSH web UI plugin that adds a Display settings page with sliders to adjust chat content and composer widths in real time and save preferences."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides adjustable UI layout controls for chat content and composer widths",
+      "Persists user-selected display preferences to local DSH settings",
+      "Applies width changes in the web client at runtime via bound settings updates",
+      "Includes an optional compatibility patch script for older DSH versions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a Display settings page with two sliders that adjust input and content area widths (30%–100%, default 100%), live updates, and reset actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the node side registers a `dsh-width` settings namespace and persists values in `~/.dsh/settings.yaml` with defaults for the two percentage fields.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains the browser side subscribes to setting changes and updates CSS variables (`--dsh-chat-content-width`, `--dsh-composer-card-max-width`) to resize layout elements in real time.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json `dsh.client.platform` is set to `web` and includes UI settings/runtime dependencies, confirming the plugin runs in the web interface.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes `scripts/patch-apiproxy.mjs`, documented as an optional helper for legacy DSH versions to expose settings namespaces.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides adjustable UI layout controls for chat content and composer widths",
+      "Persists user-selected display preferences to local DSH settings",
+      "Applies width changes in the web client at runtime via bound settings updates",
+      "Includes an optional compatibility patch script for older DSH versions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:45.548Z",
+  "repositoryCommitSha": "466154555188700ddc9b9e62d8b01ffdfcf434b7",
+  "evidenceHash": "497f58d2532619d26aadf15d04b84021f068758b3674fd09f65e0fb5ef5da518",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1b7a275d000f9690d78138732585f4bc4cb726575855311f0febf54082c34aa",
+  "shadowMode": false
+}

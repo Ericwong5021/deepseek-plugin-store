@@ -1,16 +1,88 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "automation",
+    "tool",
+    "file",
+    "image",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件主要用于把飞书/Lark 聊天与 Pi 或 DeepSeek Harness 连接成桥接通道，实现消息、附件、会话与命令在两侧的同步与交互，因此分类为“外部服务”。依据仓库描述与清单可见其核心在于聊天集成、会话路由、运行时命令控制及本地配置/状态文件管理，不属于代码生成或纯开发调试类插件。",
+  "summaries": {
+    "zh": "该插件用于将飞书/Lark 聊天与 Pi 或 DeepSeek Harness 打通，实现对话消息、附件和控制指令在聊天与本地智能体之间的同步与转换。",
+    "en": "This plugin connects Feishu/Lark chat with Pi or DeepSeek Harness so users can route messages, attachments, and control commands between chat and the local agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Bridges Feishu/Lark chat events with Pi/DSH agent sessions",
+      "Supports private and group chat routing with per-topic/session context",
+      "Accepts chat attachments and forwards interactive card content",
+      "Provides runtime controls via chat commands and environment/config settings",
+      "Runs local webhook/WS callback handling for card actions"
+    ],
+    "reasons": [
+      {
+        "code": "README states configuration uses Feishu/Lark App ID and Secret plus FEISHU_* / HARNESS_* environment variables for bridge setup.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata exports Pi and harness adapter entry points and declares a Pi extension and DSH bundle integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes attachment handling for images and code/text files, as well as interactive card parsing before sending context to the agent.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents webhook/card callback host, path, and port settings, indicating external API interaction and local listener configuration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists local config/state files (for credentials, session mapping, runtime overrides, logs) under agent directories.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Bridges Feishu/Lark chat events with Pi/DSH agent sessions",
+      "Supports private and group chat routing with per-topic/session context",
+      "Accepts chat attachments and forwards interactive card content",
+      "Provides runtime controls via chat commands and environment/config settings",
+      "Runs local webhook/WS callback handling for card actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "e6a10036090566942b3007d3c91f5252b7cac5b4",
-  "cacheKey": "441169e837c8e28e816ad78f2515c6f3d3ad2e55b3b483f4ff2243c246eb31c0",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:25.328Z",
-  "lastAttemptAt": "2026-08-18T16:02:25.328Z",
-  "nextRetryAt": "2026-08-18T22:02:25.328Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "classifiedAt": "2026-08-18T18:09:11.613Z",
+  "repositoryCommitSha": "479de00b82eda3a3458bff45bb395bd674df90d7",
+  "evidenceHash": "77ec22ed0a745e10f394bdd651e153234421a6b382f4756e4ab130d85c51e4b1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9846be3907a8f51af00e0475d11b7cec7c9dc90c7a5634779c0fd8173c125eb4",
+  "shadowMode": false
 }

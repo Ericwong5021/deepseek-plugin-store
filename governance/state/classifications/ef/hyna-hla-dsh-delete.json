@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "chat",
+    "cli",
+    "file",
+    "tool",
+    "automation",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a DeepSeek Harness session-management utility that gives users a UI menu item and slash command to delete conversations, then performs a queued, two-phase cleanup that hides sessions and archives logs to a recoverable trash directory on startup.",
+  "summaries": {
+    "zh": "DSH-DELETE 是 DeepSeek Harness 会话管理插件，提供会话列表删除入口与 /delete-conversation 命令，在确认后提交删除请求，并在后续启动时将会话日志移入可恢复的回收区。",
+    "en": "DSH-DELETE is a DeepSeek Harness session-management plugin that adds a session delete menu action and /delete-conversation command, queues deletion requests after confirmation, and archives conversation logs to a recoverable trash area during startup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queue and process conversation deletion requests",
+      "Add a session-row deletion action in the workspace UI",
+      "Register a /delete-conversation user command",
+      "Hide sessions immediately after deletion confirmation",
+      "Move conversation log directories to a configurable trash location during startup recovery",
+      "Require explicit confirmation token before writing deletion actions"
+    ],
+    "reasons": [
+      {
+        "code": "deletes_conversation_logs_via_filesystem_archival",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "two_phase_deletion_queues_before_final_move",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_and_menu_controls_exposed_to_users",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Queue and process conversation deletion requests",
+      "Add a session-row deletion action in the workspace UI",
+      "Register a /delete-conversation user command",
+      "Hide sessions immediately after deletion confirmation",
+      "Move conversation log directories to a configurable trash location during startup recovery",
+      "Require explicit confirmation token before writing deletion actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:32.530Z",
+  "repositoryCommitSha": "aea404b2bbfa25e373c81ef45a15b6795c46e2af",
+  "evidenceHash": "ad0d27fb920f2e59940a35b382d905cf4c43091b799df2d2fe3327aa3d12884b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eaa08ce9adba3f223df2695acc831329cc0bd3c5fc949e44d82a80987f1d2e3a",
+  "shadowMode": false
+}

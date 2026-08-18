@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "integration",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily an agent orchestration utility for dsh-TUI: it enables users to route subagent execution through different models/providers and reasoning settings than the main session, with configuration managed in settings and a command to inspect active routing. The evidence directly shows subagent lifecycle and request interception behavior rather than unrelated functions, so orchestration is the strongest fit.",
+  "summaries": {
+    "zh": "这是一个面向 dsh-TUI 的插件，可在设置中为子代理配置独立的模型/提供商和推理强度，并通过 /model-switch 查看当前模型路由。",
+    "en": "This is a dsh-TUI plugin that lets users configure subagents to use separate model/provider and reasoning-effort settings, and check active routing via /model-switch."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Configure subagent model and provider routing separately from the main conversation",
+      "Merge model-route settings into subagent start options while honoring explicit request-level overrides",
+      "Inject subagent-specific request parameters (such as reasoning effort) through interceptors"
+    ],
+    "reasons": [
+      {
+        "code": "README describes per-stage model routing for subagents, configurable in the /settings model switch section with provider/model and optional reasoning effort settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states that subagent start flows (`subagents.start` / `startContinuable`) are wrapped to merge configured options into `agentOptions`, with explicit caller fields taking priority.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes reasoning-effort is injected through the child agent `agent/request` interceptor for `origin: subagent` sessions only.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata includes peer dependencies on dsh subagent and settings packages, indicating integration with orchestration and routing control points in the host application.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Configure subagent model and provider routing separately from the main conversation",
+      "Merge model-route settings into subagent start options while honoring explicit request-level overrides",
+      "Inject subagent-specific request parameters (such as reasoning effort) through interceptors"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:54.652Z",
+  "repositoryCommitSha": "251120faf04594162546e0ce8a12b7e63e581913",
+  "evidenceHash": "620bf2f58eeb8878dd3dfb00cf47f2e098ba79d346f6d40b352cbe18a901b466",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a3ab7755c0862a3bd7256019e99539b20d25120335c25ecb471734350985accb",
+  "shadowMode": false
+}

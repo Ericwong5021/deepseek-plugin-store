@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "tool",
+    "file",
+    "api",
+    "automation",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供本地图片背景去除能力：用户在对话中调用 `remove_background` 工具，输入图片路径后输出透明 PNG 到本地目录。README 与文件结构显示其为 DSH Web 插件，含主运行入口、客户端配置卡片与服务生命周期管理（启动/停止本地服务），因此归类为媒体工具中的图片处理类插件。",
+  "summaries": {
+    "zh": "DSH BG Tool 是一款 DSH 插件，支持在对话中调用本地模型服务完成图片去背景，并把结果保存为透明背景 PNG 到本地可配置目录。",
+    "en": "DSH BG Tool is a DSH plugin that lets you perform image background removal from a conversation and save the transparent PNG result to a configurable local output directory."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "本地图片背景去除处理",
+      "调用本地模型服务进行图像分割",
+      "通过会话工具输入输出文件路径",
+      "在本地启动/回收后端服务进程",
+      "将处理结果写入本地输出目录"
+    ],
+    "reasons": [
+      {
+        "code": "repo_readme_states_remove_background_tool_for_conversations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme_describes_local_http_service_lifecycle_and_output_path",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_json_declares_dsh_bundle_plugin_entrypoints",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "tree_shows_host_and_client_files_for_plugin_runtime",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "本地图片背景去除处理",
+      "调用本地模型服务进行图像分割",
+      "通过会话工具输入输出文件路径",
+      "在本地启动/回收后端服务进程",
+      "将处理结果写入本地输出目录"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:30.749Z",
+  "repositoryCommitSha": "403b767f84b5168ed37aa1f75304a7e324428959",
+  "evidenceHash": "14892cdf0591b921b83dabaa4ddd0f70e0eabdba5151bf0d83d2c8d784168c1c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "98a6425743a85f0c837746f38d937e97f81c3c7de78ef4a92e4072edf8605606",
+  "shadowMode": false
+}

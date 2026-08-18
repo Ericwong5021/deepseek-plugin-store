@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "ui",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is primarily a conversation-memory management tool for DeepSeek Harness that lets users delete one completed turn from a session without deleting the session itself; evidence in the README describes UI-facing turn actions, protected execution conditions, and durable replacement-event handling, so classification is centered on turn-level context cleanup rather than general automation or workflow orchestration.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 Web 插件，用于在会话中对已完成的单个回合进行删除操作，保留会话与后续上下文，仅清除该回合在模型可见面的内容。",
+    "en": "This is a DeepSeek Harness web plugin that lets users delete one completed turn from a session while keeping the session and later context, clearing that turn from the model-visible chat surface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Removes the model-visible prompt/assistant/tool content for a completed conversation turn",
+      "Adds a tombstone replacement event while keeping the original append-only session event history",
+      "Injects a web UI action into conversation controls for turn deletion",
+      "Calls a host-side turn-deletion endpoint and flushes session state"
+    ],
+    "reasons": [
+      {
+        "code": "Readme states turn deletion is available as a trash action on completed ordinary turns with confirmation and is disabled while a session is running",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme states the action removes prompt, assistant, and tool content for the selected turn while keeping session id, title, workspace association, and later turns",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme states deletion writes a durable zero-content replacement and persists via flush so it remains after reload/restart",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Design section documents a host POST endpoint handling turn deletion and session flush acknowledgment",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Removes the model-visible prompt/assistant/tool content for a completed conversation turn",
+      "Adds a tombstone replacement event while keeping the original append-only session event history",
+      "Injects a web UI action into conversation controls for turn deletion",
+      "Calls a host-side turn-deletion endpoint and flushes session state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:44.352Z",
+  "repositoryCommitSha": "4716bcbdee27b110ceea9df21f027c6dfe5888b8",
+  "evidenceHash": "c98c76af4f723bf64f530049ff0abf093b8279fb1ad2389c948c2bfa0842692c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7ab8281cf5a838b3ef097338d01da84a9dac3716efbf8d45baea21e3fd072eba",
+  "shadowMode": false
+}

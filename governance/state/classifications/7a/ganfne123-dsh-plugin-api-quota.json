@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is a sidebar UI extension that presents API quota/balance information to users inside DSH Web, with a host-served endpoint that queries a DeepSeek balance API on behalf of the browser UI, so its primary user-facing purpose is navigation-panel based quota visibility.",
+  "summaries": {
+    "zh": "该插件在 DSH Web 侧边栏新增“API 配额”入口，点击后通过插件主机代理获取 DeepSeek 余额数据，并在弹出的面板中展示账户余额信息。",
+    "en": "This plugin adds an API Quota entry to the DSH Web sidebar, then opens a panel to display DeepSeek balance information fetched through a plugin-host endpoint."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "server-side-proxy-api-call",
+      "ui-panel-rendering"
+    ],
+    "reasons": [
+      {
+        "code": "Host registers GET /api-quota/balance and resolves DeepSeek API key through ctx.credentials before querying https://api.deepseek.com/user/balance.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Browser side adds a sidebar footer action and opens a modal panel showing total/granted/topped-up balance and query time.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin exposes apiKeyEnv, baseURL, and balancePath configuration fields for API endpoint and credential reference setup.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "server-side-proxy-api-call",
+      "ui-panel-rendering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:56.658Z",
+  "repositoryCommitSha": "a571a35773d517aca7a3e2f3c28876919c9ea3eb",
+  "evidenceHash": "6fa3d21d4889e41d421a98ef49aa76ebb42c16ad0d4917888b65013b6beee776",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d4eade0851c8139684f75c1b04a7d6b685eed85de113737943e86edae86b9856",
+  "shadowMode": false
+}

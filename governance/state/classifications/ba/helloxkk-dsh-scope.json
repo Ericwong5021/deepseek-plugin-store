@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "data",
+    "context",
+    "api",
+    "tool",
+    "file",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is user-facing visualization of conversation context and token usage within DeepSeek Harness, evidenced by README-described UI additions (context lens + 53-week heatmap) and package wiring for DSH web client/plugin integration, with local aggregation via a loopback API endpoint.",
+  "summaries": {
+    "zh": "dsh-scope 为 DeepSeek Harness Web 用户界面新增上下文可视化与使用情况展示组件，提供会话头部的上下文占用视图和侧边栏的 53 周 Token 使用热力图。",
+    "en": "dsh-scope adds context visibility and usage visualizations to the DeepSeek Harness Web UI, including a session context lens and a sidebar 53-week token-usage heatmap."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays session context occupancy and KV-cache composition in the DSH conversation UI",
+      "Shows a 53-week token usage heatmap in the sidebar UI with per-day and per-model details",
+      "Aggregates local session usage/events via a host endpoint and caches fold state in local storage",
+      "Reads DSH projection data (`tokenUsage`, `contextPressure`, `contextBreakdown`) for user-facing metrics"
+    ],
+    "reasons": [
+      {
+        "code": "Package manifest wires a DSH web plugin (`dsh.client`) and client entrypoints, indicating explicit UI extension behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes a session header lens and sidebar footer heatmap that render usage/context metrics for sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states a same-origin `/api/dsh-scope/days` GET endpoint is used, with local-state cache at `~/.dsh/storages/dsh-scope-cache.json` for fold aggregation.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Displays session context occupancy and KV-cache composition in the DSH conversation UI",
+      "Shows a 53-week token usage heatmap in the sidebar UI with per-day and per-model details",
+      "Aggregates local session usage/events via a host endpoint and caches fold state in local storage",
+      "Reads DSH projection data (`tokenUsage`, `contextPressure`, `contextBreakdown`) for user-facing metrics"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:07.117Z",
+  "repositoryCommitSha": "c1ff24c541b77cdc5e5111044b3f8ae2134ac849",
+  "evidenceHash": "09ad0accf67472eda423dc2fead648151f431acabb349a4b9db462fcb2b9f540",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "21a86cdd8d282bf15fecc16673e9f7da84a858dcd9527658d45ef05e77f0aa36",
+  "shadowMode": false
+}

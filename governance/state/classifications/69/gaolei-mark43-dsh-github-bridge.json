@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "tool",
+    "integration",
+    "automation",
+    "search",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件面向用户的核心作用是将 DSH 与 GitHub 连接起来，支持 OAuth 登录并提供一组 github_* 工具以执行仓库、Issue/PR、文件和搜索相关操作，因此归类为外部服务类集成插件。",
+  "summaries": {
+    "zh": "这是一个面向 DSH 的 GitHub 桥接插件，通过 OAuth 设备码登录并提供 github_* 工具，用于在对话中查询仓库、Issues/PR、文件和搜索信息。",
+    "en": "This is a DSH GitHub bridge plugin that supports OAuth device-flow login and exposes github_* tools for repository, issue/PR, file, and search operations inside conversations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "OAuth device-flow login and logout for GitHub access",
+      "Read/search access to GitHub repos, users, issues, PRs, and files",
+      "Issue creation in GitHub repositories",
+      "Token handling through DSH credential/settings interfaces",
+      "Network calls to external GitHub API endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确提供 github_login、github_auth_status、github_logout 等认证工具，并说明使用 OAuth 设备码流程。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 列出多个 github_* 工具用于仓库、用户、Issues、Pull Request、文件与搜索等操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明了 DSH 插件 bundle 与 web client 注入入口，表明其作为 DSH 外部服务集成插件运行。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "OAuth device-flow login and logout for GitHub access",
+      "Read/search access to GitHub repos, users, issues, PRs, and files",
+      "Issue creation in GitHub repositories",
+      "Token handling through DSH credential/settings interfaces",
+      "Network calls to external GitHub API endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:53.975Z",
+  "repositoryCommitSha": "959de3cf233c38c5974a6771aeb46d75c13ab83d",
+  "evidenceHash": "ac23d30c03b68b0a37642ce87413e7ed9ffe7e62cd1592388b320d9638399db0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2cd6fedc43c0bcdbb493f09d2c2b82af5588cd4274d0112da32f52331c6e88c4",
+  "shadowMode": false
+}

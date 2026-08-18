@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "file",
+    "terminal",
+    "search"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Primary purpose is user-interface optimization in DSH WebUI: the plugin consolidates repeated tool-call cards into grouped, collapsible display units to reduce chat clutter. It is a front-end visualization/layout enhancement for conversation logs, with configurable scope and grouping, while leaving underlying conversation data semantics intact. This is evidenced by its README implementation details and web-only plugin configuration.",
+  "summaries": {
+    "zh": "该插件在 DSH WebUI 中将连续的同类工具调用以“主卡片+紧凑子行”形式展示，减少聊天流中的重复卡片噪音，并支持按工具列表、分组方式和最大组大小进行配置。",
+    "en": "This plugin renders consecutive same-type tool calls in DSH WebUI as a compact parent/child card view to reduce chat flow clutter, with options to configure target tools, grouping mode, and maximum group size."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Groups consecutive tool-call entries in the DSH WebUI chat flow into a compact parent/child row presentation.",
+      "Supports configurable merging by tool whitelist and grouping mode/size options for adjacent or per-step tool-call sets.",
+      "Uses a client-side slot override to customize tool row rendering while preserving raw chat snapshots and non-target nodes.",
+      "Adds configurable expand/collapse interaction for merged child rows to reduce visual noise from repeated calls."
+    ],
+    "reasons": [
+      {
+        "code": "Repository README states the plugin merges continuous adjacent same-tool calls into a main-card plus compact child-row tree view in WebUI conversation flow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details `tools`, `groupBy`, and `maxGroupSize` config controls and default handling for built-in tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest marks the plugin as a web client plugin with inject runtime UI modules and web platform target, indicating front-end only behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Groups consecutive tool-call entries in the DSH WebUI chat flow into a compact parent/child row presentation.",
+      "Supports configurable merging by tool whitelist and grouping mode/size options for adjacent or per-step tool-call sets.",
+      "Uses a client-side slot override to customize tool row rendering while preserving raw chat snapshots and non-target nodes.",
+      "Adds configurable expand/collapse interaction for merged child rows to reduce visual noise from repeated calls."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:21.710Z",
+  "repositoryCommitSha": "33495a1049320d5a794b6356d435a62675f88231",
+  "evidenceHash": "5c72509b7241d11faaee095e165808c86f63939d3ecf6ae6118a991123e7a8b4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "52a4839d32364e3151145c97aa53add175e5d95b9b25f2ad6c5ceaa86e6e9544",
+  "shadowMode": false
+}

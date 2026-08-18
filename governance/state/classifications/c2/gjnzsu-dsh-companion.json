@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "visualization",
+    "agent",
+    "context",
+    "data",
+    "integration",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Primary purpose is a user-facing DeepSeek Harness Web companion interface: the plugin overlays an activity orb and usage panel tied to the selected session, prioritizing quick status/context-pressure visibility with on-demand numeric details, and does not position itself as an automation or content-generation tool.",
+  "summaries": {
+    "zh": "DSH Companion 是面向 DeepSeek Harness Web 的会话伴侣插件，在页面上以可交互的面板和图标化状态展示当前会话活动状态与上下文压力，并可在需要时查看用量细节。",
+    "en": "DSH Companion is a DeepSeek Harness Web companion plugin that shows current session activity and context-pressure status in an overlay panel, with usage details available on demand."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads current DeepSeek Harness session summary and status/usage projections for the active session",
+      "Renders a web overlay that shows agent activity state and context-pressure indicators",
+      "Displays optional usage details (context, input/output, cache hit, steps) in an expandable panel",
+      "Stores companion UI position/collapse preferences in browser-local state"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as running inside DeepSeek Harness Web via a shell.overlay with session-linked display updates.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Documentation states it shows agent activity states and context-pressure levels plus optional metrics such as context, billed input, output, cache hit, and steps.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package manifest declares a web client plugin entry and injected DSH client modules for UI/runtime integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata shows a public DSH plugin package with add/remove commands for web profile usage.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads current DeepSeek Harness session summary and status/usage projections for the active session",
+      "Renders a web overlay that shows agent activity state and context-pressure indicators",
+      "Displays optional usage details (context, input/output, cache hit, steps) in an expandable panel",
+      "Stores companion UI position/collapse preferences in browser-local state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:11.424Z",
+  "repositoryCommitSha": "e4285ef342d8702442cf2544c2d584dba2bc3e9e",
+  "evidenceHash": "043c8c079c8794a248d9258c5f223dfe7dc976ec1cb0f1bb3ac96a9dd0403f17",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bb8cd59450a2c3fc398c946f9b8ae43c3fbf12e9399e017996b49f1a6030f2cb",
+  "shadowMode": false
+}

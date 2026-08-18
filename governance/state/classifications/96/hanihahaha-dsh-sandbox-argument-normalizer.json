@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "tool",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的核心用途是面向用户的 DSH 工具调用自动化修复：在 `tools/execute` 前处理参数，移除会话已具备权限的无效沙箱升级字段以避免调用被拒，再保留真正需要扩展的参数交给正常流转。该分类依据来自仓库说明、包元数据和功能描述。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 主机插件，在工具分发前对 `sandbox_permissions` 和 `justification` 等参数进行清理，移除未扩展会话权限的沙箱参数，减少错误拒绝。",
+    "en": "This is a DeepSeek Harness host plugin that normalizes tool arguments by removing non-widening sandbox escalation fields such as `sandbox_permissions` and `justification` before dispatch."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Normalizes tool-call arguments by removing sandbox escalation fields that do not increase effective sandbox scope.",
+      "Hooks into the `tools/execute` flow of the DSH host to adjust outgoing arguments before dispatch.",
+      "Preserves escalation requests that do widen permissions for normal approval handling."
+    ],
+    "reasons": [
+      {
+        "code": "README说明该插件用于在原生工具分发前清理无效的 sandbox 升级参数（`sandbox_permissions` 与 `justification`），并仅在参数未严格扩展权限时移除。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README说明该插件只移除不合法的非扩展参数，不会变更会话权限状态，也不自动通过审批。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 指明该项目为 DSH 插件（含 dsh.bundle 配置与相关插件元数据），其作用域为 DSH 工具调度链。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Normalizes tool-call arguments by removing sandbox escalation fields that do not increase effective sandbox scope.",
+      "Hooks into the `tools/execute` flow of the DSH host to adjust outgoing arguments before dispatch.",
+      "Preserves escalation requests that do widen permissions for normal approval handling."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:46.805Z",
+  "repositoryCommitSha": "f71edd783caac3536fbcd4fa610f3976929f5155",
+  "evidenceHash": "712a68ddfae551a3d9ec3da839463c859e44f9279886517fe1ed1c7b865fce5c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b307871dea5fbab92aad0e76b41bbeb6e642331d9e2edb0f23b9eff84d016967",
+  "shadowMode": false
+}

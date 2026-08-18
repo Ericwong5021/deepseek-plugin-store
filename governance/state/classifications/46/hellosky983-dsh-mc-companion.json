@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "tool",
+    "memory",
+    "agent",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is a user-facing game companion layer for DeepSeek Harness that automates Minecraft in-game social behavior (chat, follow, status prompts) and exposes companion-control tools; evidence shows this is centered on companion automation rather than development tooling or data analysis.",
+  "summaries": {
+    "zh": "dsh-mc-companion 是一个 DeepSeek Harness 的 Minecraft 插件，为游戏内 AI 伙伴提供自动跟随、聊天回复和短期记忆能力，并通过工具面板便于在会话中查看和控制其状态。",
+    "en": "dsh-mc-companion is a DeepSeek Harness Minecraft plugin that provides an in-game AI companion with automated following, chat responses, and short-term memory, plus tool-based controls for status and behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "In-game social automation via chat responses and proactive companion messages",
+      "Player following control including start/stop follow behavior and distance targeting",
+      "Companion state, persona, and memory exposure through DSH tool calls (`mc_friend_*`)",
+      "Local persistence of conversation facts/memory in `~/.dsh-mc/companion.json`",
+      "Event-driven reactions on spawn/player join/death via shared bot hooks"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is documented as a host-only DSH bundle that adds a companion social layer, including chat replies and follow behavior tied to game events.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin depends on and injects the shared `mcBot` service from `dsh-mc-agent`, and uses methods/events such as `chat`, `follow`, `on`, and `setChatResponder` for automated in-game actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states memory is stored locally in `~/.dsh-mc/companion.json` and includes persona/mood/facts/recent messages, indicating local persistence of user interaction data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest and package metadata mark this as an official DSH bundle plugin (`dsh.bundle.patch`), confirming installation/runtime integration behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "In-game social automation via chat responses and proactive companion messages",
+      "Player following control including start/stop follow behavior and distance targeting",
+      "Companion state, persona, and memory exposure through DSH tool calls (`mc_friend_*`)",
+      "Local persistence of conversation facts/memory in `~/.dsh-mc/companion.json`",
+      "Event-driven reactions on spawn/player join/death via shared bot hooks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:05.356Z",
+  "repositoryCommitSha": "4eb7821601874925a414575c64bde630dc891add",
+  "evidenceHash": "cd029b5faeecacf5f6c75b2f8d60222561edd11ef2c29ecb9b7879ec82224232",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "337cc4f45e7179c64edcc55b85832233a6495d13b21840fb2b419124cb4fded1",
+  "shadowMode": false
+}

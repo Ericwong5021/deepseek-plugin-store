@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "layout",
+    "theme",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Primary purpose is user interface layout customization for the DSH web GUI: the plugin rearranges panels into a VSCode-style arrangement with left tabs, centered content, and right dock behavior when files are open. Evidence from README and manifest metadata shows it is a web-only DSH profile plugin that modifies page layout behavior without adding external integrations or automation beyond UI rearrangement.",
+  "summaries": {
+    "zh": "该插件用于重排 DeepSeek Harness Web 界面布局，提供左侧工作区/文件切换栏、文件打开时居中的编辑区，以及右侧会话停靠面板的 VSCode 风格布局。",
+    "en": "This plugin reworks the DeepSeek Harness web interface into a VSCode-style layout with a left workspace/file rail, centered content, and a right-docked conversation panel while editing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browser-side UI layout modification via injected styles and DOM changes",
+      "DSH web profile integration through bundle patching",
+      "Context-sensitive panel switching based on preview/file-open state"
+    ],
+    "reasons": [
+      {
+        "code": "The client side overrides the frame grid with an important stylesheet and reassigns grid columns to produce a VSCode-like layout.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin injects a left tab rail and monitors preview-column visibility to dock conversation and editor areas dynamically.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It is registered as a DSH web plugin bundle with a profile patch and client entry points, indicating runtime UI injection at boot.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Browser-side UI layout modification via injected styles and DOM changes",
+      "DSH web profile integration through bundle patching",
+      "Context-sensitive panel switching based on preview/file-open state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:53.310Z",
+  "repositoryCommitSha": "d1972bd5ca37e57a2a0af3b36d1f06323e4ef56e",
+  "evidenceHash": "4635c54055c3ac9cf6ea8f4fb275879f410dce7e2fac2ebce25e55001f2b7f6f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8a30bde13f3692de8d4cabad7585f4d60da52a7dec132a74a2352d6ebfbc1c70",
+  "shadowMode": false
+}

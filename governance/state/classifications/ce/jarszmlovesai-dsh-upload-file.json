@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "chat",
+    "tool",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily a user-facing file attachment utility for DeepSeek Harness web chat, enabling file paste/selection with previews and delivering inbox storage plus read/list tools for agent workflows.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 的文件交互插件，可在输入框直接粘贴或选择文件并显示缩略图，把文件保存到会话工作区的 inbox 目录，并提供 `list_inbox`、`read_inbox` 工具供代理读取内容。",
+    "en": "This DeepSeek Harness web plugin lets users paste or attach files in the composer with thumbnail previews, stores attachments in a session inbox folder, and exposes `list_inbox` and `read_inbox` for agent access."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Allows pasting or selecting files in the web composer before sending messages.",
+      "Stores uploaded files under an `inbox/` directory in the session workspace.",
+      "Shows file thumbnails in the composer before send and in the user bubble.",
+      "Provides `list_inbox` and `read_inbox` tools for agents to access uploaded content, with image understanding delegated to external vision tooling."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a web bundle for pasting/picking files in the composer, showing thumbnails, and saving to `{session.cwd}/inbox/` on send.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata identifies it as a DeepSeek Harness web plugin with a bundle patch and web client entry.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository topic and files include README, client, and patch configuration consistent with a DSH plugin package.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Allows pasting or selecting files in the web composer before sending messages.",
+      "Stores uploaded files under an `inbox/` directory in the session workspace.",
+      "Shows file thumbnails in the composer before send and in the user bubble.",
+      "Provides `list_inbox` and `read_inbox` tools for agents to access uploaded content, with image understanding delegated to external vision tooling."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:50.265Z",
+  "repositoryCommitSha": "c81fd3b715e8746ad4ba27ec744bab7aa90e5963",
+  "evidenceHash": "91f7bcff60343486f6bb891edeb3ebd840b8629f476dd01877e9b7733faaf6df",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ddfbe7b4549c72561a0d0c181aa6a6456d2e215dedb891cdb2b2199ab59f9b05",
+  "shadowMode": false
+}

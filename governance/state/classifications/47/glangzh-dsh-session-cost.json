@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a DeepSeek-integrated DSH web utility that shows session cost details and account balance in a popup, and it is driven by external API interaction (DEEPSEEK_API_KEY + balance lookup), so it is best classified under external services with monitoring-like cost visibility.",
+  "summaries": {
+    "zh": "该插件在 dsh 网页端会话界面增加入口，展示当前会话的 DeepSeek 花费明细，并提供账户余额查询。",
+    "en": "This plugin adds an entry in the DSH web session UI to display current DeepSeek session cost details and provide account balance lookup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads DeepSeek API credentials from environment or local credentials config",
+      "queries external service endpoints for DeepSeek session pricing context and account balance",
+      "adds a web-session UI control to display cost and balance information"
+    ],
+    "reasons": [
+      {
+        "code": "credential.read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network.access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_plugin_ui",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "reads DeepSeek API credentials from environment or local credentials config",
+      "queries external service endpoints for DeepSeek session pricing context and account balance",
+      "adds a web-session UI control to display cost and balance information"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:13.316Z",
+  "repositoryCommitSha": "5ac101ece3a3134e9ce6af6d52caafde748c48fd",
+  "evidenceHash": "8b65916bdf723381dc367f11130ddd0dfc96b24f02ae06b6c536a192b29b16bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "59beb801ec29727d58328b222ae074d3fb6687428ee5bb3f0fb632e6fb18a5fd",
+  "shadowMode": false
+}

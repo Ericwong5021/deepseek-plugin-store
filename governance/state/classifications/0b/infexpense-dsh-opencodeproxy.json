@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "ui",
+    "tool",
+    "terminal",
+    "monitoring",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily an automation utility for managing a local proxy service through the DSH web settings interface: it starts/stops the service, optionally auto-starts with DSH, refreshes model data, and performs connectivity checks via proxy endpoints. Evidence in README and package metadata indicates it is a DSH web plugin with explicit service lifecycle, model management, and local configuration behavior.",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，用于在设置页里管理本地 opencode-free-proxy 服务，包括启动与停止、随 dsh 启动、模型刷新和连通性检查。",
+    "en": "This is a DSH Web plugin for managing a local opencode-free-proxy service from the settings page, including start/stop control, optional auto-start with DSH, model refresh, and connectivity checks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Start and stop a local proxy service from plugin settings",
+      "Auto-start the proxy when DSH starts (if enabled)",
+      "Trigger proxy management endpoints for model refresh and health checks",
+      "Display proxy model list and basic connectivity metrics (latency/model count)",
+      "Persist and apply local service settings such as port and proxy directory"
+    ],
+    "reasons": [
+      {
+        "code": "README: settings switch controls proxy start/stop, with dsh auto-start behavior when enabled.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: functionality includes manual refresh through /admin/refresh-models and connectivity tests via /health and /v1/models.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: runtime options include proxyDir and port persisted under ~/.dsh/settings.yaml and service restarts on in-run configuration changes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: declares DSH web client plugin metadata and dependency injection for UI settings/locale modules, confirming UI-facing plugin role.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Start and stop a local proxy service from plugin settings",
+      "Auto-start the proxy when DSH starts (if enabled)",
+      "Trigger proxy management endpoints for model refresh and health checks",
+      "Display proxy model list and basic connectivity metrics (latency/model count)",
+      "Persist and apply local service settings such as port and proxy directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:41.046Z",
+  "repositoryCommitSha": "5afbcafe6c8c82f9e1c7da0a9322dd1a4aaaabb2",
+  "evidenceHash": "1535e45b5ea7a2526ed1cb1aa0254ef165b6d0f7bf614029b34a79b2ac7eea7a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5e195a67866257354c1e9fc66c62b216fbbf54f3473d845dd0f5c566108458f1",
+  "shadowMode": false
+}

@@ -1,0 +1,92 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "search",
+    "api",
+    "automation",
+    "file",
+    "integration",
+    "skill",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的核心定位是作为 DSH/Whale 设置页中的“市场面板”，用于发现与管理 DSH 插件生态：提供搜索与分类浏览、安装更新卸载、已装列表与状态、以及用于 Agent 的市场工具。依据 README 与 package.json 的入口与功能声明，可确认其面向用户的是插件发现/管理而非单一代码生成功能。",
+  "summaries": {
+    "zh": "鲸鱼插件市场是 DSH/Whale 的设置页插件市场，支持浏览与搜索社区插件、技能、皮肤和预设，并提供安装、更新、卸载及已安装管理流程，还可通过可选 Agent 工具执行检索与安装操作。",
+    "en": "Whale Market is a DSH/Whale settings-page marketplace plugin for browsing and searching community plugins, skills, themes, and presets, with installation, update, and management flows plus optional Agent tools for search and install operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Browse and search plugin/skill/theme/preset listings from GitHub-backed and local/remote indexes.",
+      "Install, update, uninstall, enable/disable, and restore plugins or related content within the DSH profile.",
+      "Perform environment and cache operations that affect local DSH state (including .dsh paths and settings-related files).",
+      "Expose local HTTP endpoints for marketplace operations and write actions with CSRF protection.",
+      "Offer Agent tool endpoints (`market_search`, `market_install`, `market_installed`, `market_update`).",
+      "Support backups/restores and optional WebDAV backup targets for marketplace state.",
+      "Run workflow steps that may involve fetching and executing repository-provided scripts/commands during install paths."
+    ],
+    "reasons": [
+      {
+        "code": "README describes GitHub 搜索/API、静态索引与降级策略用于市场检索与列表展示，涉及外部网络源拉取数据。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README列出插件安装、更新、卸载、开关、环境变量写入和市场自更新等本地状态变更能力，并说明依赖 .dsh 目录。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README提到脚本型仓库会在安装前确认并在授权后执行 install.sh/ps1 等脚本路径，存在执行外部仓库代码的风险。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README提供大量本地 HTTP API 路径，覆盖 list/info/install/status/set-enabled/update/uninstall/backup/restore 等写操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json显示该项目为 DSH 插件 bundle（dsh.patch 与 web client 注入），明确为宿主插件运行上下文。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Browse and search plugin/skill/theme/preset listings from GitHub-backed and local/remote indexes.",
+      "Install, update, uninstall, enable/disable, and restore plugins or related content within the DSH profile.",
+      "Perform environment and cache operations that affect local DSH state (including .dsh paths and settings-related files).",
+      "Expose local HTTP endpoints for marketplace operations and write actions with CSRF protection.",
+      "Offer Agent tool endpoints (`market_search`, `market_install`, `market_installed`, `market_update`).",
+      "Support backups/restores and optional WebDAV backup targets for marketplace state.",
+      "Run workflow steps that may involve fetching and executing repository-provided scripts/commands during install paths."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:22.414Z",
+  "repositoryCommitSha": "5bdd73e3a20f4ca7dd617c067a402ca04f70b9f3",
+  "evidenceHash": "99c61a85d52b969093ba32e2ccbfe1dadae4996abfbfe2a40895903114ec42df",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cf9378a75014fb92c6397d3b39c6a6aa51c579593c57586904cceb3fb1939f99",
+  "shadowMode": false
+}

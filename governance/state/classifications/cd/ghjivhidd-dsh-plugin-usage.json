@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "data",
+    "api",
+    "integration",
+    "file",
+    "tool",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Based on repository evidence, the plugin is primarily a user-facing web panel for usage monitoring: it adds a Usage tab to DeepSeek Harness conversation pages and presents real-time and historical session token/cost data, pricing breakdowns, status indicators, and export options. It also supports a custom price table and optional OpenCode Go quota lookup, so the core purpose is a navigation/monitoring UI panel rather than automation, code generation, or backend infrastructure tooling.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 会话界面新增“用量”页签，实时展示本会话 token、费用与调用明细，并提供计价方式切换、模型价格配置与 CSV/JSON 导出。",
+    "en": "This plugin adds a Usage tab to the DeepSeek Harness conversation interface to show real-time and historical session token and cost details, with pricing options, custom price configuration, and CSV/JSON export."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Collects and aggregates per-model call token and cost data for current sessions",
+      "Reads environment-provided keys for optional OpenCode Go quota lookup",
+      "Calls external OpenCode usage API endpoint for quota refresh",
+      "Writes a custom price file and provides local one-shot export download links"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a conversation-view tab named \"用量\" with live session usage, token splits, pricing modes, and export links.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists `/usage-api/*` routes and states OpenCode Go quota is fetched from `opencode.ai/zen/go/v1/usage` using env keys.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme notes custom price table persistence to `.dsh-usage-prices.json`; repo tree includes corresponding plugin files.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package manifest includes DSH web client injection metadata and a plugin bundle patch entry, indicating UI integration behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Collects and aggregates per-model call token and cost data for current sessions",
+      "Reads environment-provided keys for optional OpenCode Go quota lookup",
+      "Calls external OpenCode usage API endpoint for quota refresh",
+      "Writes a custom price file and provides local one-shot export download links"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:12.055Z",
+  "repositoryCommitSha": "c352ba01379b0be9b49fa4265c1e033f5dbd680d",
+  "evidenceHash": "719853082df6e704315142a8a2db259b1b882203e89eb8695c5a92b4e2164c44",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "51af9da038450c6146838166e57a65ae10f88f009fad6d5c0e89474665d50e33",
+  "shadowMode": false
+}

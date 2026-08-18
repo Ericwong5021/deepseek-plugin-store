@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "integration",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily a DSH Web UI enhancement for model selection, adding a quick 3-level slider plus advanced picker and usage/balance display in the selector panel, so it is best classified as a navigation-panel UI utility. Evidence supports only UI and external-service-connected utility behavior, with moderate risk from network access and credential-backed provider queries.",
+  "summaries": {
+    "zh": "这是一个面向 DSH Web 的模型选择器增强插件，在弹出面板中提供低/中/高快速切换、进阶模型与推理档位选择，并展示供应商用量或余额信息。",
+    "en": "This DSH Web plugin enhances model selection with a panel UI offering a low/medium/high quick switch, advanced model and reasoning-effort selection, and provider usage or balance information."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a UI panel/popup for model selection with low/medium/high quick switching.",
+      "Displays provider usage or balance details from configured external endpoints.",
+      "Reads provider API access through DSH credential settings.",
+      "Stores and reads plugin settings from a user-level config file path."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a popup with a 3-level slider and advanced model/effort picker for switching models in the DSH UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents provider usage/balance behavior with membership and prepaid handling, including endpoint usage and endpoint disable behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes API keys come from DSH credentials settings (apiKeyEnv in settings.yaml) rather than being hard-coded in plugin config.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository structure and manifest show a server/client split for DSH (server plugin plus web client injection), indicating runtime model and RPC flow.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides a UI panel/popup for model selection with low/medium/high quick switching.",
+      "Displays provider usage or balance details from configured external endpoints.",
+      "Reads provider API access through DSH credential settings.",
+      "Stores and reads plugin settings from a user-level config file path."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:46.930Z",
+  "repositoryCommitSha": "30d97621ad1365600d4d9323c2303fc0b8469b97",
+  "evidenceHash": "9bb7c0577d20fc681bc1ffcc729c1f2c822c3ea200b6ec00595c43caa97b4c08",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0759959bf09b54cf71a5ef2fe98403db97899e7c30b65b30efa24eb3d0589f40",
+  "shadowMode": false
+}

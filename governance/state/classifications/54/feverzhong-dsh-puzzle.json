@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "image",
+    "tool",
+    "chat",
+    "api",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向用户用途是“在 DSH WebUI 中提供可打开的滑块拼图小游戏面板”，并在面板中支持换图与进度查看；证据来自仓库描述和 README 的功能特性、AI 工具与界面入口说明。",
+  "summaries": {
+    "zh": "这是一个在 DeepSeek Harness WebUI 中运行的滑块拼图游戏插件，可打开浮窗面板进行对局、换图并查看进度。",
+    "en": "This is a DeepSeek Harness WebUI plugin that provides a slider puzzle game panel where users can play, switch images, and view game progress."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Loads puzzle images from local files or remote URLs (http/https/data)",
+      "Persists plugin state to a local config file",
+      "Provides internal routes/endpoints for puzzle state, messages, and config"
+    ],
+    "reasons": [
+      {
+        "code": "README 中明确将本插件定义为“滑块拼图小游戏”并列出新局、步数、用时、完成提示等核心玩法。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明通过 conversation.input.left 开关、shell.overlay 浮窗面板和 settings.section 提供前端交互入口。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "AI 工具说明包含 `puzzle_talk`、`puzzle_state`、`puzzle_set_image`，并支持本地图库与 URL 图源切换。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明了 DSH web 平台客户端注入与主入口 index.js，表明该项目为可安装的 Web 插件包。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Loads puzzle images from local files or remote URLs (http/https/data)",
+      "Persists plugin state to a local config file",
+      "Provides internal routes/endpoints for puzzle state, messages, and config"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:27.922Z",
+  "repositoryCommitSha": "07ee8a8ebccdc4bc4d8cf583a5fb6bbbd236c993",
+  "evidenceHash": "06fd3a9904462a53fd5ffb20eddb4cbe2a1c8d1d7f2b23af9091138bef3045b0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3c4a6b613a91f8f2cb070c5270d15d2d5749589b1bfcf47cd91b3d13507dc158",
+  "shadowMode": false
+}

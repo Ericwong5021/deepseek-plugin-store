@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "ui",
+    "visualization",
+    "monitoring",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该仓库提供的是一个可安装到 DeepSeek Harness 的 Web 插件，主要向用户展示会话级的 token 使用构成、估算花费与账户余额，并以侧边栏进度条进行可视化显示，因此其用户面对的核心用途是资源消耗监控与展示。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 侧边栏仪表盘插件，用于实时显示当前会话的 token 使用明细、预计花费以及 DeepSeek 账号余额。",
+    "en": "A DeepSeek Harness Web sidebar dashboard plugin that shows real-time session token usage breakdown, estimated cost, and DeepSeek account balance."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "调用 DeepSeek 外部余额接口并展示账户余额",
+      "读取会话/模型使用信息并计算预估费用",
+      "在 DSH Web 侧边栏实时渲染 token 与花费可视化面板"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明这是 DSH Web 左下角侧边栏仪表盘，用于显示当前会话累计的 token 用量、预估花费与账户余额。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提到账户余额来自 DeepSeek 官方 GET /user/balance 接口，并说明 60 秒刷新间隔与模型/费率读取逻辑。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 显示该仓库为面向 web 的 DSH 插件，主入口 lib/index.js 并配置 cordis patch 与客户端运行时注入。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "调用 DeepSeek 外部余额接口并展示账户余额",
+      "读取会话/模型使用信息并计算预估费用",
+      "在 DSH Web 侧边栏实时渲染 token 与花费可视化面板"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:43.311Z",
+  "repositoryCommitSha": "23c6b11cffe2673ffb85b3fb2c321d2afd11b888",
+  "evidenceHash": "2c4c6c6f0895680dfd5b10df6ccefea175618bc938cf1c4d5d2a824162e5d99c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "874f0dbf472589a8102c6073e6bdabe860caf57a93f62efe54af6f533c0deecc",
+  "shadowMode": false
+}

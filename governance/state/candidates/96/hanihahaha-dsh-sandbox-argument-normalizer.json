@@ -4,7 +4,7 @@
     "fullName": "Hanihahaha/dsh-sandbox-argument-normalizer",
     "url": "https://github.com/Hanihahaha/dsh-sandbox-argument-normalizer"
   },
-  "summary": "Normalize invalid non-widening sandbox escalation arguments before DSH tool dispatch.",
+  "summary": "This is a DeepSeek Harness host plugin that normalizes tool arguments by removing non-widening sandbox escalation fields such as `sandbox_permissions` and `justification` before dispatch.",
   "sources": [
     "github-topic"
   ],
@@ -43,20 +43,22 @@
     "capturedAt": "2026-08-17T20:48:07.543Z"
   },
   "classificationSuggestion": {
-    "group": "tools-data",
-    "category": "files-terminal",
+    "group": "agents-workflows",
+    "category": "automation",
     "tags": [
-      "terminal",
-      "tool"
+      "tool",
+      "automation",
+      "workflow"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:plugin",
-      "text:memory-context:session",
-      "text:files-terminal:shell",
-      "text:general-utilities:tool"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:712a68ddfae551a3d9ec3da839463c859e44f9279886517fe1ed1c7b865fce5c",
+      "commit:f71edd783caac3536fbcd4fa610f3976929f5155"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:10:46.805Z",
+    "reason": "该插件的核心用途是面向用户的 DSH 工具调用自动化修复：在 `tools/execute` 前处理参数，移除会话已具备权限的无效沙箱升级字段以避免调用被拒，再保留真正需要扩展的参数交给正常流转。该分类依据来自仓库说明、包元数据和功能描述。"
   }
 }

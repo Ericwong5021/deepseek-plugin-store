@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "integration",
+    "tool",
+    "mcp",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a search utility extension that replaces the DeepSeek Harness web_search provider with a multi-backend implementation, using Exa and Firecrawl, and adds fallback behavior when one backend fails.",
+  "summaries": {
+    "zh": "该插件用于 DeepSeek Harness 的 web_search 功能，提供 Exa 与 Firecrawl 两种后端的搜索能力，并支持自动切换与可选免密钥方式。",
+    "en": "This plugin extends DeepSeek Harness web_search with Exa and Firecrawl backends, adding automatic failover and optional keyless search operation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Send web search requests to external provider APIs (Exa and Firecrawl) and return source/snippet results",
+      "Automatically fail over across multiple backends on provider errors, including rate-limit conditions",
+      "Apply per-backend cooldown after rate-limit responses and support keyless fallback mode"
+    ],
+    "reasons": [
+      {
+        "code": "README describes this plugin as a replacement web_search provider for DeepSeek Harness with Exa and Firecrawl backends and automatic failover on errors.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration documentation shows provider selection, preferred backend ordering, API/key options, and rate-limit cooldown behavior as runtime behavior, confirming external network integration with user-facing control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository manifests the package as a DSH plugin with a bundle patch and declares peer dependencies on dsh-web and related runtime modules, indicating integration into the host web tool seam.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Send web search requests to external provider APIs (Exa and Firecrawl) and return source/snippet results",
+      "Automatically fail over across multiple backends on provider errors, including rate-limit conditions",
+      "Apply per-backend cooldown after rate-limit responses and support keyless fallback mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:35.094Z",
+  "repositoryCommitSha": "527b5dbb4ea2c9b69aa74d48b52b366435e2d20a",
+  "evidenceHash": "d14864a54d7af10c028491484e010f2d2cad874e54cd77389dd69bc654a2249c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5c0de01add221fbd815ee5a72e019b38792ca35cd332048a8d2d8e35a5e074af",
+  "shadowMode": false
+}

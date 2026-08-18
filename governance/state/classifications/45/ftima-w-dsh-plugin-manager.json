@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "api",
+    "mcp",
+    "skill",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 提供“插件管理”设置页，面向用户进行 MCP 服务、Skills 与已装插件的可视化治理（查看、开关、删除/回收）和内置包只读浏览。依据仓库说明与清单可见其能力集中在本地 DSH 运行配置与目录编辑，并通过内嵌后端 API 提供状态查询与变更执行，属于插件开发/运维工具性质，而非内容创作或研究类插件。",
+  "summaries": {
+    "zh": "这是一个集成在 DeepSeek Harness 设置面板中的插件管理器，支持可视化查看与操作 MCP、Skills 及已安装插件，并提供开关、删除和可恢复的回收站流程。",
+    "en": "This is a DeepSeek Harness settings-panel plugin manager that provides a visual workflow to manage MCP services, Skills, and installed plugins, including toggling, deletion, and recoverable trash-based removal steps."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local read/write operations on DSH profile and plugin config files (for example cordis.patch.yml and profile package.json).",
+      "Enable/disable MCP services and installed plugins by updating runtime patch/config state.",
+      "Delete operations can move skill and plugin data to trash locations and alter installed plugin state.",
+      "Exposes same-origin API routes for state retrieval and action execution within the DSH web host."
+    ],
+    "reasons": [
+      {
+        "code": "README documents plugin-management operations (MCP/skill/plugin enable, disable, delete) and real-time hot-apply behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes API endpoints /plugin-manager/api/state and /plugin-manager/api/action used to read state and apply kinds such as mcp-toggle, skill-delete, plugin-delete.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states write operations modify ~/.dsh paths including cordis.patch.yml and profile package.json with .bak backups before edits.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares this package as a DSH web plugin with bundle patch and client inject configuration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Local read/write operations on DSH profile and plugin config files (for example cordis.patch.yml and profile package.json).",
+      "Enable/disable MCP services and installed plugins by updating runtime patch/config state.",
+      "Delete operations can move skill and plugin data to trash locations and alter installed plugin state.",
+      "Exposes same-origin API routes for state retrieval and action execution within the DSH web host."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:37.767Z",
+  "repositoryCommitSha": "189238a404bd6d909adb51c72f4d595941e31674",
+  "evidenceHash": "1d8a9280b00daa45db2bb806e3c801bf7a8985170166effff0488228ab29e66f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "428e809a9cc60e7c74c3d4041cc273374416852f9da85a2e8c287bb294876d96",
+  "shadowMode": false
+}

@@ -1,16 +1,73 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "workflow",
+    "automation",
+    "context",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Primary purpose is to automate prompt-level language policy across DeepSeek Harness agents by injecting a bundled system-prompt section that instructs thinking/replying language. Evidence shows it is a small deployment prompt plugin (not a standalone app) with config keys for prompt text and scope (`complete`), so a low-to-moderate automation risk applies due to model-behavior influence rather than privileged execution.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供一个可配置的提示词层，在每个部署中的代理提示中加入语言指令，使其默认按指定语言进行思考、推理与回复。",
+    "en": "This plugin adds a configurable prompt layer for DeepSeek Harness that injects a language instruction into deployed agents, so they reason and reply in the configured language by default."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a configurable system-prompt section to DeepSeek Harness deployments",
+      "Injects an instruction that sets the agent response language for thinking, reasoning, and replies",
+      "Allows profile-level override of the injected instruction text"
+    ],
+    "reasons": [
+      {
+        "code": "The package is a DeepSeek Harness bundle that registers one `systemPrompt` section and states it contributes only a system-prompt section.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The README explains default and configurable fields (`text`, `complete`) for language instruction in the prompt row.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest wiring is through `dsh.bundle` with a `cordis.patch.yml` file, indicating controlled prompt-layer installation.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Adds a configurable system-prompt section to DeepSeek Harness deployments",
+      "Injects an instruction that sets the agent response language for thinking, reasoning, and replies",
+      "Allows profile-level override of the injected instruction text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:04.766Z",
   "repositoryCommitSha": "ba22e31c553acc50faa43d1059234c50c2a87f8d",
+  "evidenceHash": "3c74c90123854fcf1ecd542f8b1ff0d6a5b01dbd715caec372e2e72e0c4fb97c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "e392252dcafde169ef5a6d4a81c6148e705d88c0bdf6a3877ded4b617706c166",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:02:35.637Z",
-  "lastAttemptAt": "2026-08-18T16:02:35.637Z",
-  "nextRetryAt": "2026-08-18T22:02:35.637Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

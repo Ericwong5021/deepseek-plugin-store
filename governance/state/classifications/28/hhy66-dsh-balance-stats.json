@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "data",
+    "visualization",
+    "integration",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向是向 DeepSeek Harness 用户提供使用成本和余额可视化面板，集中展示账户余额、预算状态、会话/工作区 token 消耗与计费说明，属于界面化财务监控工具。依据仓库说明与包清单，它依赖 DeepSeek 官方接口以及本地 DSH 会话数据进行计算并持续刷新显示。能力集中在读取本地凭据/日志并在宿主界面呈现，属于中等风险范围，关键风险点在于外部账单接口访问与本地使用数据处理。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在侧边栏和设置页展示账户余额、预算进度与按会话/工作区的 token 消耗统计。",
+    "en": "This is a DeepSeek Harness plugin that displays account balance, budget progress, and token usage statistics by session or workspace in sidebar and settings views."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "调用 DeepSeek 官方接口获取账户余额",
+      "读取并解析本地 DSH 会话日志与持久化会话以计算用量与成本",
+      "在 DSH Web 界面的侧边栏与设置页中展示余额/预算/会话消耗卡片",
+      "按时间范围和工作区筛选会话并展示汇总",
+      "在界面中显示预算超支与缓存命中率提示"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述该插件在侧边栏与设置页显示账户余额、续航、今日/本月消耗和会话明细，并提供预算提示。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出通过 GET /user/balance 并使用本机 DeepSeek API 密钥读取官方账单口径数据，再按会话日志进行本地计价。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 声明为 DSH web 客户端插件并注入官方 UI 插槽，表明该插件以 UI 面板方式提供功能。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "调用 DeepSeek 官方接口获取账户余额",
+      "读取并解析本地 DSH 会话日志与持久化会话以计算用量与成本",
+      "在 DSH Web 界面的侧边栏与设置页中展示余额/预算/会话消耗卡片",
+      "按时间范围和工作区筛选会话并展示汇总",
+      "在界面中显示预算超支与缓存命中率提示"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:18.152Z",
+  "repositoryCommitSha": "42ad34e92fc087756432adf482bee898a5ad5a66",
+  "evidenceHash": "a11878b7ab4ab43517b18e611928cae1db23cc97d150c2bda6f52cc8ada59bab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8997d077489e7009a3d524a5b67c87d3ee95b2b3e266d7e4b34da64ef1ac57ad",
+  "shadowMode": false
+}

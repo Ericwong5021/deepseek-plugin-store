@@ -1,16 +1,77 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "file",
+    "tool",
+    "integration",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该仓库插件的主要用途是为 DeepSeek Harness 的文本主模型补充图片能力：通过 `understand_image` 提供图片理解、通过 `generate_image` 提供图片生成（含 DashScope 图像编辑变体），并将结果写入工作区，属典型的媒体工具类插件，能力边界由 README 中的可配置 API 端点与参数决定，且已将未配置状态设为默认。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中提供图片理解与图片生成工具，支持基于可配置的 OpenAI 兼容或 DashScope 接口在工作区内处理图像输入并返回结果路径。",
+    "en": "This plugin adds image understanding and image generation tools to DeepSeek Harness, using configurable OpenAI-compatible or DashScope endpoints to process workspace images and return output paths."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls external image/vision APIs for inference and generation",
+      "Reads user-provided credentials from plugin config or environment variables",
+      "Writes generated image outputs to the workspace file path",
+      "Supports OpenAI-compatible and DashScope provider modes for tool execution"
+    ],
+    "reasons": [
+      {
+        "code": "README documents two user-facing model tools: `understand_image` and `generate_image`, both reliant on configured endpoint, apiKey, and model settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states endpoints are OpenAI-compatible and that the `image` tool saves generated results into workspace paths, creating local binary outputs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares this as a dsh bundle with required dsh tooling dependencies, confirming plugin execution within the host platform and external service integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls external image/vision APIs for inference and generation",
+      "Reads user-provided credentials from plugin config or environment variables",
+      "Writes generated image outputs to the workspace file path",
+      "Supports OpenAI-compatible and DashScope provider modes for tool execution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:07.506Z",
   "repositoryCommitSha": "69c1cb2bfd62396737f4502b6e6c80b4c90bf615",
+  "evidenceHash": "3147ca931a5aa9ee9b956890276ef6a3071349cfd8dbd6b79b7fc427af8170ea",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "fc7820c9f0f9a698284ee5429773f146f0db195db1e344da298fd67d2739e919",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T17:58:39.703Z",
-  "lastAttemptAt": "2026-08-18T17:58:39.703Z",
-  "nextRetryAt": "2026-08-18T23:58:39.703Z",
-  "retryable": true,
-  "error": "AI decision contains unsupported fields",
   "shadowMode": false
 }

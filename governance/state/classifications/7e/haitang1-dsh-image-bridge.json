@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "file",
+    "tool",
+    "chat",
+    "automation",
+    "mcp",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "Primary purpose is enabling image sending in text-only model workflows inside DeepSeek Harness by bridging client image input to local attachment storage and model-facing path text, then letting existing vision/MCP tools consume the image paths, which matches a media-tooling automation function rather than development or analysis tooling.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中为文本模型补齐图片发送能力：图片先落盘到会话 `.attachments/`，再以模型可见路径文本供视觉/MCP 工具识别。",
+    "en": "This plugin enables image sending for text-only models in DeepSeek Harness by saving images to session attachments and forwarding a model-visible path token for vision/MCP tool recognition."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Writes uploaded images to the workspace attachment directory.",
+      "Intercepts model capability checks and agent request flow for message handling.",
+      "Rewrites user-image content to model-visible path text for downstream vision/MCP processing."
+    ],
+    "reasons": [
+      {
+        "code": "IMAGE_TO_WORKSPACE_PATH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MODEL_PIPELINE_HOOKING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MODEL_VISIBLE_PLACEHOLDER_REPLACEMENT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_BUNDLE_PLUGIN_ENTRY",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Writes uploaded images to the workspace attachment directory.",
+      "Intercepts model capability checks and agent request flow for message handling.",
+      "Rewrites user-image content to model-visible path text for downstream vision/MCP processing."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:38.395Z",
+  "repositoryCommitSha": "838fb3ee4a70d34a7a4ee5c8967e9ff57268c482",
+  "evidenceHash": "27244a6297a508d74ac8ec5ddcbbd26e5cf045aaae2a9cf4393a0f1745a2d156",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8f091b05612b89cdf66f629cfa80a62e54f5fbdc629b7b0dd423385ab5175a15",
+  "shadowMode": false
+}

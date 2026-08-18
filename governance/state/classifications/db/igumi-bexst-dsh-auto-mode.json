@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "workflow",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is a DeepSeek Harness web plugin whose user-facing purpose is to automate approval handling: it adds a persistent composer chip to toggle an Auto Mode and, when active, pre-approves most approval requests through a higher-priority approval listener, while explicitly excluding danger-full-access escalations.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 的插件，通过界面开关在会话中自动同意绝大多数审批提示，并显示当前模式状态。",
+    "en": "This is a DeepSeek Harness web plugin that adds a composer switch to automatically approve most approval prompts during sessions while showing current mode status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automatically accepts eligible approval prompts in the DeepSeek Harness web profile when enabled",
+      "Shows a composer-mounted status chip that lets users toggle auto-mode and persists the setting",
+      "Intercepts approval request handling in the host plugin pipeline and forwards requests normally when auto-mode is off",
+      "Excludes danger-full-access escalation requests from auto-approval"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin auto-accepts approval prompts (including workspace writes and wider shell commands) when enabled, with a composer chip as the control surface.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes registration of the approval/request waterfall listener and behavior: it claims requests with allowed-once when auto-mode is on, otherwise calls next() to keep normal approval flow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explicitly states danger-full-access escalations are never auto-granted and remain interactive.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a DeepSeek Harness web client bundle with UI runtime dependencies, indicating plugin scope is inside the web interface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Automatically accepts eligible approval prompts in the DeepSeek Harness web profile when enabled",
+      "Shows a composer-mounted status chip that lets users toggle auto-mode and persists the setting",
+      "Intercepts approval request handling in the host plugin pipeline and forwards requests normally when auto-mode is off",
+      "Excludes danger-full-access escalation requests from auto-approval"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:34.060Z",
+  "repositoryCommitSha": "ec530fe9ef111ffecf829e2edfa5d04e5a3cd7cb",
+  "evidenceHash": "61e75cd5d40b6b6849ed1c7e8195f4aed59b64e1314005a276554379ce193f9f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dfcb9a657036e4f6c881d41d7e5542343357db27e093c18e4c0d6e633ca15527",
+  "shadowMode": false
+}

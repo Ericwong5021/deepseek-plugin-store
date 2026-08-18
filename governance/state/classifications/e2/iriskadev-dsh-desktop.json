@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "api",
+    "integration",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a local desktop runtime interface for DSH: it is a bundle patch that adds a `desktop` profile, turns off the standard local web server, and launches an Electron window to host the existing DSH Web UI via a custom protocol and IPC transport. The exposed functionality is centered on desktop user interaction rather than content creation, search, or analytics.",
+  "summaries": {
+    "zh": "该插件提供 DSH 的 `desktop` 运行面，使用 `dsh --profile desktop` 启动原生 Electron 窗口并加载现有的 DSH Web UI。",
+    "en": "This plugin adds a DSH `desktop` profile so you can launch a native Electron window with the existing DSH Web UI from `dsh --profile desktop`."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a desktop shell for DSH through an Electron window.",
+      "Disables DSH's local HTTP webserver and routes UI/API-like requests via a local IPC bridge.",
+      "Starts and monitors a host-embedded Electron process lifecycle from the `dsh --profile desktop` command.",
+      "Includes packaged Electron runtime artifacts for local execution through release artifacts."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a DSH bundle patch with a `desktop` surface that launches a native Electron window and loads the DSH Web UI through `dsh-desktop://`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains DSH disables `node:http` and provides a non-listening webServer-shaped service, indicating custom local transport behavior instead of a standard HTTP listener.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Project structure and scripts include `apps/electron` plus packaging targets under `dist/electron/runtime/` and release archives, indicating local native runtime handling.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "`package.json` declares only development dependencies and references the DSH bundle patch via `dsh.bundle.patch`, confirming integration as a host patch rather than a standalone web service.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides a desktop shell for DSH through an Electron window.",
+      "Disables DSH's local HTTP webserver and routes UI/API-like requests via a local IPC bridge.",
+      "Starts and monitors a host-embedded Electron process lifecycle from the `dsh --profile desktop` command.",
+      "Includes packaged Electron runtime artifacts for local execution through release artifacts."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:43.069Z",
+  "repositoryCommitSha": "256bdf5f1d8310ef8d4f5e4a2277f1fd7902c71c",
+  "evidenceHash": "aa13a376e63fd1a0e1da0e096cb613650cc5b2f7fe1b56cff0353a047fea384d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fbcb73931659582b0bac055e8ac7e47fa3213d21ece808913606170034d138e5",
+  "shadowMode": false
+}

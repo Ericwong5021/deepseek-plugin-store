@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "chat",
+    "api",
+    "automation",
+    "file",
+    "tool",
+    "context",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is a user-facing chat-media integration for DSH that enables text-only models to process image inputs by auto-running MiniMax mmx vision descriptions and injecting those results into model context while keeping thumbnail display for users. Evidence in the repository description, README, and package metadata consistently frames it as image-handling automation in the request pipeline.",
+  "summaries": {
+    "zh": "该插件用于在 DSH 会话中发送图片时自动调用 MiniMax mmx 识别图片，并将识别结果写入文本模型可见上下文，从而让不支持图片输入的模型基于图片内容回复。",
+    "en": "This plugin automatically runs MiniMax mmx vision on images shared in DSH chats and injects the results into the text-model context so image content is available to models during response generation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Ingest and persist chat image attachments for model processing",
+      "Run command-line image description via mmx-cli",
+      "Replace image blocks with generated text descriptions in model-visible context",
+      "Bypass native model image path for models that already support image input",
+      "Fallback to path/text-only behavior when recognition is unavailable"
+    ],
+    "reasons": [
+      {
+        "code": "Image messages are sent through the plugin flow to a pre-step that stores attachments locally and invokes `mmx vision describe` for each image, including parallel multi-image handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The hook behavior is described as wrapping `llm.resolveModelInfo` and modifying request/error handling to inject recognized text into model-visible content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin package declares a DSH Cordis patch bundle (`cordis.patch.yml`) and depends on Node >=18 with runtime integration entrypoints, confirming nontrivial runtime behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README explicitly requires local mmx-cli install/auth and demonstrates external recognition usage, implying network-dependent external service calls.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Ingest and persist chat image attachments for model processing",
+      "Run command-line image description via mmx-cli",
+      "Replace image blocks with generated text descriptions in model-visible context",
+      "Bypass native model image path for models that already support image input",
+      "Fallback to path/text-only behavior when recognition is unavailable"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:21.583Z",
+  "repositoryCommitSha": "569cc5e00bf420e4623d8810459d55ed631cf457",
+  "evidenceHash": "ad09e87de6bb52652e54c3271959574e32c5a34b089e2984ff651dff0a60a490",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a5a331843c2e4b04f4e743dc31c185499ee8c0d5877b2654dcfd419959300f0f",
+  "shadowMode": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "cli",
+    "file",
+    "document",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是通过 DSH 斜杠命令自动化生成和预览发布说明：用户在会话中触发命令后，插件读取 GitHub 版本/PR/提交信息并输出可发布文本，兼具仓库风格配置管理。基于 README 的功能说明与入口信息，该插件可归类为自动化类工具，属于中低风险外部服务集成场景。",
+  "summaries": {
+    "zh": "该插件为 DSH 提供发布说明自动化命令，可从 GitHub 与仓库历史生成未发布预览和版本发布文案，并支持生成仓库风格化说明文件。",
+    "en": "This plugin adds release-note automation commands in DSH to generate release-note previews and version notes from repository history, and to create repository-specific style files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generate release-note content from repository git history, releases, PRs, and commit metadata",
+      "Preview unreleased changes since latest tag via slash command",
+      "Create/update `.dsh/release-notes-style.md` and release-notes output files"
+    ],
+    "reasons": [
+      {
+        "code": "README states `/unreleased` 和 `/release-notes <version|from..to>` 命令用于自动生成/预览发布说明，并写入 `release-notes/<version>.md`。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 明确提到 `/unreleased` 和 `/release-notes` 依赖已认证 GitHub CLI（`gh auth login`），表示与 GitHub 外部服务交互。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 定义了 DSH 插件打包入口 `main: ./dist/index.js`、构建脚本与 peer dependencies（@deepseek-ai/cordis, dsh-llm），确认该插件为可执行的 DSH 命令适配器。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Generate release-note content from repository git history, releases, PRs, and commit metadata",
+      "Preview unreleased changes since latest tag via slash command",
+      "Create/update `.dsh/release-notes-style.md` and release-notes output files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:18.560Z",
+  "repositoryCommitSha": "08820fad5382f2aa61bd90eecfecd91f8e41250d",
+  "evidenceHash": "93293a3064a744f956b20f5304ba7a6f9dac39d8d748f909851b6cf54aa17cc3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2edb6685bd3e06a8b249cedd64b84f090bf126ad7078c0efae68623bfb71f362",
+  "shadowMode": false
+}

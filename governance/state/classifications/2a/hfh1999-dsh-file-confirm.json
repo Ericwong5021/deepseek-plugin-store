@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "automation",
+    "workflow",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a file-operation approval utility for DSH: it intercepts write/edit/str_replace_editor tool calls, shows a pre-execution confirmation bar with inline diff preview in the web conversation UI, and lets users approve or reject each change, which places it in file operation control rather than creation or data processing.",
+  "summaries": {
+    "zh": "dsh-file-confirm 是一款 DSH 插件，在 write、edit 与 str_replace_editor 等文件写入操作执行前弹出确认界面并展示行级差异，让用户逐次批准或拒绝本次修改。",
+    "en": "dsh-file-confirm is a DSH plugin that shows a confirmation bar with inline diff before write/edit/str_replace_editor operations run, allowing users to approve or reject each file change."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts file-write related tool calls before execution and returns approval prompts.",
+      "Displays an inline line-level diff in the confirmation UI for write/edit/str_replace_editor operations.",
+      "Allows the user to allow or reject each file modification call before it is applied.",
+      "Supports configuration of targeted tools and optional path-based filtering for approval scope."
+    ],
+    "reasons": [
+      {
+        "code": "FILE_CHANGE_PRE_EXECUTION_GUARD",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "INLINE_DIFF_PREVIEW_BEFORE_COMMIT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_HOOK_BASED_HOST_CLIENT_SPLIT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_WEB_BUNDLE_AND_CLIENT_DECLARATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts file-write related tool calls before execution and returns approval prompts.",
+      "Displays an inline line-level diff in the confirmation UI for write/edit/str_replace_editor operations.",
+      "Allows the user to allow or reject each file modification call before it is applied.",
+      "Supports configuration of targeted tools and optional path-based filtering for approval scope."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:11.944Z",
+  "repositoryCommitSha": "eea7cad60429043f53ceb5a242e833fdd4623299",
+  "evidenceHash": "bfd7c829d344bbdf7be0dab179ef6199edd1f9fc77ebad611c3e53604e86fbdb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "56340f0f77f087d92346e8f64d42956dfe36984d3ddc283c788c7cba3726695b",
+  "shadowMode": false
+}

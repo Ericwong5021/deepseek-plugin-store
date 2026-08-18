@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "api",
+    "search",
+    "integration",
+    "tool",
+    "browser",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要作用是将 DeepSeek Harness 的网络搜索能力（ctx.web）替换为 Doubao/feedcoop 的 global_search 提供方，并在安装时通过 bundle patch 自动挂载并选用 doubao；其对外功能聚焦于搜索能力扩展与配置化切换，且包含对 API token 与错误返回的处理逻辑，因此归类为搜索与浏览类插件。",
+  "summaries": {
+    "zh": "本插件用于在 DeepSeek Harness 的 ctx.web 搜索能力中接入豆包（feedcoop）联网搜索，安装后可通过配置将搜索提供方切换为 doubao。",
+    "en": "This plugin integrates a Doubao/feedcoop web search provider into DeepSeek Harness’s ctx.web capability, and allows sessions to use doubao as the configured search backend through profile setup."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "调用外部搜索 API 获取联网结果",
+      "读取/使用配置中的 API Key（环境变量或 profile 配置）进行认证",
+      "将搜索结果字段映射为 DeepSeek Harness 的 ctx.web 搜索结果格式"
+    ],
+    "reasons": [
+      {
+        "code": "README: 明确说明插件为 DeepSeek Harness 的 ctx.web 搜索能力提供方，注册 id 为 doubao 的 WebSearchProvider。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 提供 apiKey、apiKeyEnv、baseURL 配置项，并在未提供 token 时标记提供方不可用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与目录/包清单: 通过 cordis.patch.yml 作为 bundle patch 挂载插件并自动切换 searchProvider。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "调用外部搜索 API 获取联网结果",
+      "读取/使用配置中的 API Key（环境变量或 profile 配置）进行认证",
+      "将搜索结果字段映射为 DeepSeek Harness 的 ctx.web 搜索结果格式"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:54.815Z",
+  "repositoryCommitSha": "ce8a6cfabf53bb8d3a4f9bf57fc2c2e567acf8c8",
+  "evidenceHash": "0bc17960d7e4c3d082dd2cd5ad6ff1fb6f4458c0635c10fb21679f23b829ae07",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "80394a71fe4e3262f2017fb488bb5d17db22d5f9a8c42ea52388ff18c1f41f47",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "integration",
+    "automation",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary purpose is orchestrating external agent work via GROX from DeepSeek Harness: it adds tools to inspect account/balance, find and hire agents, check hire status, and a subagent provider (`grox_agent`) for delegated task execution. Evidence shows this behavior is API-driven and externally hosted, with payment/escrow handled by GROX, while the local risk is mainly credential handling and network interaction.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 增加 GROX Network 的集成，提供查找/雇佣代理、查询状态以及将任务交由 GROX 代理执行并返回结果的功能。",
+    "en": "This plugin adds GROX Network integration to DeepSeek Harness, letting users find and hire agents, check hire status, and delegate tasks to a GROX subagent provider with returned outcomes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "environment-based credential usage",
+      "remote API calls to external service",
+      "agent marketplace delegation",
+      "hire/job status retrieval",
+      "subagent handoff support"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is configured via `apiKeyEnv` and `GROX_API_KEY`, with per-call authentication using a base URL, indicating authenticated external access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Tool and provider surface exposes agent listing, hiring, status lookup, and delegated task execution through GROX Network.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a DSH bundle patch that auto-mounts the GROX tools and provider into the harness profile.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "environment-based credential usage",
+      "remote API calls to external service",
+      "agent marketplace delegation",
+      "hire/job status retrieval",
+      "subagent handoff support"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:34.230Z",
+  "repositoryCommitSha": "bfe8a3ebb9f147e811b30f6c5b3c480eeb78a304",
+  "evidenceHash": "9d9ffe7da08bfeabc8480476a47b23b7a8f3196d5220fb1d45e04341d0eedbb3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4b99a23497e3ed521e88b624bdf7c1f18e6f49794c3c1e7754417ee6d20e740a",
+  "shadowMode": false
+}

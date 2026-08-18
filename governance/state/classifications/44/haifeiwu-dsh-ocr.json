@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "tool",
+    "ui",
+    "file",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is primarily a user-facing media tool for DSH that enables OCR and image understanding workflows, then presents image-related results directly in the web interface. It exposes image-processing tools and augments existing tool-result cards with inline previews, making image-heavy interactions easier for end users, with local OCR and local model-backed viewing configured at runtime.",
+  "summaries": {
+    "zh": "这是一个面向 DSH 的网页插件，提供本地图片文字识别与图片理解工具（如 ocr_image 与 view_image），并在工具结果卡片中内嵌显示图片缩略图和放大预览。",
+    "en": "This DSH web plugin provides local image OCR and image-understanding tools (such as ocr_image and view_image) and shows inline image previews in tool-result cards."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "local OCR on image files",
+      "local image understanding via VLM",
+      "image preview rendering in web tool cards",
+      "integration with host tools for read_image/screenshot"
+    ],
+    "reasons": [
+      {
+        "code": "README describes two primary tools: ocr_image (OCR text+coordinates) and view_image (local image understanding/Q&A), both designed for image processing.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states the plugin adds inline image previews (thumbnail + lightbox) to read_image/screenshot/view_image/ocr_image tool-result cards in the web UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines a web client bundle and host/client entry points for DSH, confirming plugin execution path and UI integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "local OCR on image files",
+      "local image understanding via VLM",
+      "image preview rendering in web tool cards",
+      "integration with host tools for read_image/screenshot"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:34.841Z",
+  "repositoryCommitSha": "210adb9dc7323486fcdbf1fdef31e82b7c3f77ef",
+  "evidenceHash": "eb38dd3a7c940f2bf07328d6e25776f64152602b4a921c2c6a24140b7b84ff87",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "edf1f56f8aadaec079a9aa5fb4a821a6e044672fe4bce2bc36c54707a0d77f53",
+  "shadowMode": false
+}

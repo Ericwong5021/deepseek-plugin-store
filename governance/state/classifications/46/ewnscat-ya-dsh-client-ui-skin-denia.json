@@ -1,16 +1,80 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "layout",
+    "ui",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件主要定位为 DeepSeek Harness Web 的主题/布局增强：它通过 DSH 插件 patch 方式注入皮肤资源，并在 README 中体现了大量界面外观与可视化配置能力（亮暗皮肤、立绘、粒子、边框、调色板等），同时提供用户端偏好设置与持久化。",
+  "summaries": {
+    "zh": "这是一个用于 DSH Web 的皮肤插件，提供 Denia 主题的亮/暗双形态、角色立绘与特效，并通过内置调色板让用户调节对话区和装饰元素的显示与透明度。",
+    "en": "This is a DSH Web skin plugin that provides a Denia-themed light/dark interface with character visuals and effects, plus an in-app palette to adjust layout and appearance options like spacing and transparency."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "应用自定义皮肤样式与界面装饰到 DSH Web 客户端",
+      "提供亮/暗双形态与可调 UI 外观参数",
+      "提供侧边栏/角色立绘/粒子等视觉效果与面板控制",
+      "将设置持久化到浏览器 localStorage",
+      "支持插件更新检查与版本提示"
+    ],
+    "reasons": [
+      {
+        "code": "dsh manifest 声明为 web 客户端插件并挂载 patch，指向 skin.json 与打包入口，确认为界面主题注入型插件",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 详细列出双形态切换、侧边立绘、泡泡粒子、锁链边框、渐变文字等皮肤视觉功能",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明调色板可调节对话宽度、透明度、图层显示等外观参数，并支持恢复默认设置",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "更新日志与使用说明提到自动检查 GitHub Release 版本与更新提示，表明存在外部网络访问特征",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "应用自定义皮肤样式与界面装饰到 DSH Web 客户端",
+      "提供亮/暗双形态与可调 UI 外观参数",
+      "提供侧边栏/角色立绘/粒子等视觉效果与面板控制",
+      "将设置持久化到浏览器 localStorage",
+      "支持插件更新检查与版本提示"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:19.237Z",
   "repositoryCommitSha": "1b846939864137123203f1cc8db628e1331df62a",
+  "evidenceHash": "644ad92aa584f4268556c73942b54c71ae37960c0b8afe8eb142c9785c9af669",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "eab95556a09c523794108e6d1f3e26c4fbb6b81b3abcb4add80abc38d3435b12",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:00:54.779Z",
-  "lastAttemptAt": "2026-08-18T18:00:54.779Z",
-  "nextRetryAt": "2026-08-19T18:00:54.779Z",
-  "retryable": true,
-  "error": "AI decision schemaVersion must be 1",
   "shadowMode": false
 }

@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "tool",
+    "mcp",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "This is primarily an automation plugin for DeepSeek Harness that introduces a user-selectable managed approval preset to reduce manual prompts by reviewing certain tool calls automatically. It combines risk-based MCP classification, configurable tool rules, and one-shot grants with native fallbacks to human approval when reviewer outcomes are missing or failing, so it changes permission workflow rather than adding core content editing or data-processing features.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 增加“Approve for me”会话级权限预设，在侧重风险的策略下对部分工具调用进行一次性自动审批，并在审核失败时回退到原生人工确认。",
+    "en": "This plugin adds an \"Approve for me\" session preset to DeepSeek Harness, applying one-time, rule and risk-based review to selected tool calls and deferring to the native human approval flow when automated review is not available."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automates approval handling by adding a managed permission preset",
+      "Performs risk-based routing of MCP tool calls into reviewer flow",
+      "Enforces one-time tool execution grants and configurable allow/review/deny rules",
+      "Falls back to native human approval on reviewer failures"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a fourth DSH permission preset named \"Approve for me\" and routes selected MCP calls into managed review before execution.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies risk-based policy behavior, unknown/side-effecting actions defaulting to review, and one-time (allowed-once) grants with explicit deny/ask handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH host bundle patch and web client injection, indicating it modifies host/runtime permission behavior and UI menu integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automates approval handling by adding a managed permission preset",
+      "Performs risk-based routing of MCP tool calls into reviewer flow",
+      "Enforces one-time tool execution grants and configurable allow/review/deny rules",
+      "Falls back to native human approval on reviewer failures"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:51.051Z",
+  "repositoryCommitSha": "a6e6532fd711d514337cce63e37b93f3a975f765",
+  "evidenceHash": "6434febc2ec04712427de41ea17406644f68d8e98cd2e5979053797536f4bba5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0b32c0b54c8acdc698cb1f7585b0e60e0f1b078105354d1a0b7007fcf0440fd5",
+  "shadowMode": false
+}

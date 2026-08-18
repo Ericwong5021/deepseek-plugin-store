@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "cli",
+    "terminal",
+    "chat",
+    "tool",
+    "automation",
+    "integration",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is a DeepSeek Harness CLI utility that primarily automates AI session interaction from the command line, including starting and resuming headless conversations, scoping sessions, and emitting machine-readable results; README and package metadata consistently describe CLI session control, output modes, and dsh plugin wiring, with tests covering accepted/rejected CLI combinations and session behavior.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供可恢复的头less CLI 会话执行能力，支持新建与继续会话、会话列表与目录隔离，并支持文本或 JSON 风格输出。",
+    "en": "This plugin is a DeepSeek Harness headless CLI session runner that supports starting and resuming sessions, listing sessions, directory-scoped context, and returning conversational or machine-readable output."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Resumable headless CLI session execution",
+      "Session listing and explicit session resume by ID",
+      "Session scoping by profile/workdir for contextual isolation",
+      "Configurable output as text, json, or stream-json",
+      "Command-line request validation at startup for critical runner options"
+    ],
+    "reasons": [
+      {
+        "code": "README describes replacing one-shot runner behavior with resumable sessions and options for new/resume/list/specific-session execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents machine-readable output modes (json, stream-json) and CLI flags for headless API-style usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest exports plugin entrypoint and declares DSH bundle patch, showing direct integration with the DeepSeek Harness CLI runtime",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Resumable headless CLI session execution",
+      "Session listing and explicit session resume by ID",
+      "Session scoping by profile/workdir for contextual isolation",
+      "Configurable output as text, json, or stream-json",
+      "Command-line request validation at startup for critical runner options"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:07.255Z",
+  "repositoryCommitSha": "0f487e74c81ed102c6899440d9f5d65e8e9eabda",
+  "evidenceHash": "ce9c8dd713133005287b393096093a33a2eefb2886a52fc40437674551fa566b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bcbb8ae3f3d324f54c2b8c0dfc61ed90c7d4db47296dace76a29e3c058743b5c",
+  "shadowMode": false
+}

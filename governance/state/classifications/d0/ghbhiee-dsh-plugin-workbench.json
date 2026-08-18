@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "ui",
+    "document",
+    "search",
+    "tool",
+    "api",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The repository is a DeepSeek Harness plugin that adds a docked workbench panel for file browsing, previewing, searching, and file-system operations, with an optional web terminal. Evidence from the README and manifest shows the primary function is local workspace file management plus terminal sessions, while package metadata confirms it is a web plugin package with terminal and websocket dependencies.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，为界面提供可停靠的文件浏览与预览面板，并在启用配置后提供文件读写操作与终端会话能力。",
+    "en": "This is a DeepSeek Harness web plugin that adds a docked file browser and preview panel, with configurable file operations and terminal session support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Read and browse files/directories and retrieve file stats/metadata.",
+      "Search filenames under configured roots.",
+      "Read and download file contents via text and byte endpoints.",
+      "Write/Upload/Mkdir/Rename/Delete files and directories when write mode is enabled.",
+      "Open and interact with a PTY terminal over WebSocket."
+    ],
+    "reasons": [
+      {
+        "code": "README documents host routes for listing, stat, search, read/read bytes, write, upload, mkdir, rename, delete, and a websocket PTY gateway, defining the plugin's core surface.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes mutating file operations are available behind writeEnabled and include rename/delete/create semantics that change workspace files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details PTY protocol messages for create/switch/close/resize and created/switch/error status handling via WS /plugins/workbench/pty.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json identifies this as a dsh web plugin with terminal-related dependencies including xterm and ws, indicating interactive terminal functionality in the UI.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Read and browse files/directories and retrieve file stats/metadata.",
+      "Search filenames under configured roots.",
+      "Read and download file contents via text and byte endpoints.",
+      "Write/Upload/Mkdir/Rename/Delete files and directories when write mode is enabled.",
+      "Open and interact with a PTY terminal over WebSocket."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:10:10.051Z",
+  "repositoryCommitSha": "114287891b33a5768bc423ebff3107f41f8ef865",
+  "evidenceHash": "b5960f8472e06389af5daf83145d1e86e9ae035561bc21e163c419a592c370c5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c30316a2caf4b28daacbbfc44ebbf3066b6197685e80e5b7f6100ccd4a19e59c",
+  "shadowMode": false
+}

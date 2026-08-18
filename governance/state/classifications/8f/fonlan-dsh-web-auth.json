@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "ui",
+    "integration",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件是用于 DSH Web 的身份访问控制插件，主要面向用户提供登录页和会话门禁，用于在反向代理或公网暴露场景下给 Web 控制台加一层密码访问层。证据显示其主要功能包括 HTTP/WS 请求拦截、密码设置与改密、会话签名与续期、登录限速及监听地址配置，因此分类为插件开发类通用工具。",
+  "summaries": {
+    "zh": "dsh-web-auth 是一款 DSH Web 插件，用于为 Web 界面提供登录页并通过会话校验实现密码访问保护。",
+    "en": "dsh-web-auth is a DSH web plugin that adds a login page and session-based access checks to gate DSH Web access with a password."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Enforces login access control for web requests and WebSocket upgrades.",
+      "Stores and verifies access credentials with scrypt hashing and signed session cookies.",
+      "Applies per-IP rate limiting for login/password-change operations.",
+      "Provides logout, password rotation, and session invalidation behavior.",
+      "Offers UI-driven host listen-address switching with HMR-based webserver rebinding."
+    ],
+    "reasons": [
+      {
+        "code": "AUTH_GATE_ALL_ENTRYPOINTS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SIGNED_COOKIE_SESSIONS_AND_HASH_STORAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CREDENTIAL_MANAGEMENT_VIA_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH_PLUGIN_BUNDLE_INTEGRATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Enforces login access control for web requests and WebSocket upgrades.",
+      "Stores and verifies access credentials with scrypt hashing and signed session cookies.",
+      "Applies per-IP rate limiting for login/password-change operations.",
+      "Provides logout, password rotation, and session invalidation behavior.",
+      "Offers UI-driven host listen-address switching with HMR-based webserver rebinding."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:38.098Z",
+  "repositoryCommitSha": "1e397397266051844e6db1aa2b6d0babb5f5d3d1",
+  "evidenceHash": "260ceb538c935fa0e3b49162b330b5b632648aa3c229a4b82dc1e7b5b43d529d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2dfb4640361ce0c88a4be8d077ca207367126879ac58231a136412fcd4777c43",
+  "shadowMode": false
+}

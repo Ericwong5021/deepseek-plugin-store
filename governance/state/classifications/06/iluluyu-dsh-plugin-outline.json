@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "layout",
+    "theme",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is a DeepSeek Harness web UI add-on that adds a right-edge conversation outline panel for chat turns, using DOM-based turn detection plus hover/scroll-driven highlighting and click-to-jump behavior; this is primarily a user-interface navigation enhancement, with no evidence of code generation, testing automation, or external service orchestration.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 网页端新增右侧对话导航面板，按轮次展示记录，支持悬停展开并点击跳转到对应聊天轮次。",
+    "en": "This plugin adds a right-side conversation outline panel in DeepSeek Harness web, showing chat turns and enabling hover expansion with one-click jump navigation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "injects a web UI overlay into the host chat page",
+      "reads conversation DOM markers to detect user turns",
+      "tracks scroll position to highlight the current turn",
+      "provides click-to-jump navigation to specific turns",
+      "derives style values from host page variables"
+    ],
+    "reasons": [
+      {
+        "code": "Web plugin client entry is explicitly integrated into the web runtime (`dsh.client` web platform), indicating direct browser execution context.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "The plugin builds an outline from conversation DOM data attributes and supports navigation actions across turns.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states that it tracks scroll state per frame and updates current-turn highlighting, which introduces continuous UI-state observation.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "injects a web UI overlay into the host chat page",
+      "reads conversation DOM markers to detect user turns",
+      "tracks scroll position to highlight the current turn",
+      "provides click-to-jump navigation to specific turns",
+      "derives style values from host page variables"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:37.532Z",
+  "repositoryCommitSha": "c50ec9ce78ab9ce5a3156ee7818ee29d3416975f",
+  "evidenceHash": "f852aac0f70bcc0e960981900d63fc856cbcbae2b2d91d1c120ebedb45a64ec2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "10054185613772c60bb184478d0689b5ebe14d3a5fc125a3751ef1d4db002d31",
+  "shadowMode": false
+}

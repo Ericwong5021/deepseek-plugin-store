@@ -1,16 +1,79 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "image",
+    "browser",
+    "api",
+    "integration",
+    "data",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Plugin is primarily a DeepSeek Harness web UI customization utility focused on wallpaper/theme visuals (predefined presets, local image upload with compression, blur, transparency, and adaptive font color), with an optional sidebar balance view that can trigger a host-side API query, so it is best classified under themes and layout with moderate external-service interaction risk.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness Web GUI 提供自定义壁纸与界面外观设置，支持切换预设或上传图片并进行本地处理、调节毛玻璃模糊与面板透明度，并可联动文字颜色。",
+    "en": "This plugin provides custom wallpaper and interface appearance settings for the DeepSeek Harness web GUI, including preset switching, local image upload handling, adjustable glass blur and panel opacity, and auto text color adaptation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Client-side image upload handling with compression and brightness-based UI color adaptation",
+      "Web UI theming controls for wallpaper, blur, and panel opacity",
+      "Optional external API-based balance retrieval when enabled by user settings",
+      "Potential access to configured host credentials for that balance query path"
+    ],
+    "reasons": [
+      {
+        "code": "CUSTOM_WALLPAPER_FEATURES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "OPTIONAL_BALANCE_QUERY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WEB_PLUGIN_INTEGRATION",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Client-side image upload handling with compression and brightness-based UI color adaptation",
+      "Web UI theming controls for wallpaper, blur, and panel opacity",
+      "Optional external API-based balance retrieval when enabled by user settings",
+      "Potential access to configured host credentials for that balance query path"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:09:12.334Z",
   "repositoryCommitSha": "73f1f4b46ab54a88829239c0e891db3dc6c003ba",
+  "evidenceHash": "a22408f826de88d9440a908d2a51a6523985754992d136fad80ad382f1302fe2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "14a7b6ab692e06b76273ce527cb56908f27db28cc26e4033c5a00317a526ede2",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T16:03:06.572Z",
-  "lastAttemptAt": "2026-08-18T16:03:06.572Z",
-  "nextRetryAt": "2026-08-18T22:03:06.572Z",
-  "retryable": true,
-  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.3-codex-spark)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
-  "shadowMode": true
+  "shadowMode": false
 }

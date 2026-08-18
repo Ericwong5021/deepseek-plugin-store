@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "learning",
+  "category": "education-explanation",
+  "tags": [
+    "education",
+    "visualization",
+    "api",
+    "image",
+    "file",
+    "browser",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主场景是教学可视化：在 DeepSeek Harness 中根据话题生成结构化图解数据，通过模板渲染为可浏览的画廊页面，并可通过 HTTP API 与本地文件导出使用。证据显示其核心能力集中于知识讲解和视觉化内容生成（含 Playwright 截图、图片检索与降级逻辑），不体现代码生成、项目分析或协作管理的核心功能。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 教学插件，可将知识点自动转为结构化图解并生成可打开的画廊页面，同时支持 API 调用触发与本地图片/清单导出。",
+    "en": "This is a DeepSeek Harness plugin for education that converts topics into structured visual explanations, generates an openable gallery, and supports API-triggered generation with local image and manifest exports."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generates and renders knowledge diagrams into image galleries",
+      "Captures Playwright-based screenshots and supports SVG fallback rendering",
+      "Calls external Wikimedia/Wikipedia image sources during optional image enrichment",
+      "Exposes local HTTP endpoints for health/generate operations",
+      "Exports generated PNG/image data and manifest files to a local directory"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了 `/illustrated-teaching/health` 与 `/illustrated-teaching/generate` 接口，并返回 galleryUrl/galleryFile/images 等生成结果。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 的“图片管线”说明包含 Wikimedia Commons 与 Wikipedia 图片检索，并在无网络时降级为 SVG。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与目录结构显示支持 Playwright 渲染、HTML/SVG 模板、PNG 与 captions/manifest 本地导出。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "package.json 标注依赖包含 playwright，且为 dsh 插件打包提供 .dsh-plugin/index.mjs 入口。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Generates and renders knowledge diagrams into image galleries",
+      "Captures Playwright-based screenshots and supports SVG fallback rendering",
+      "Calls external Wikimedia/Wikipedia image sources during optional image enrichment",
+      "Exposes local HTTP endpoints for health/generate operations",
+      "Exports generated PNG/image data and manifest files to a local directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:11:16.149Z",
+  "repositoryCommitSha": "d0de8e322217c30a446cb180f24a4f4d111b7a2f",
+  "evidenceHash": "c4fd8ef26218945afeaced2027aebad8dfec6574c4b2e85984f2e392b6097987",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aace6c0dbd20be7109762e763bcac07c1631d317d775acec5b94032a6c6d7a03",
+  "shadowMode": false
+}
