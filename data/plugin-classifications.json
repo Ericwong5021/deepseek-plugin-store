@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-18T14:21:27.026Z",
+  "updatedAt": "2026-08-18T14:23:16.003Z",
   "classifications": {
     "123cdxcc-dsh-mindsee": {
       "status": "classified",
@@ -1118,31 +1118,35 @@
       "tags": [
         "theme",
         "ui",
-        "layout",
-        "browser"
+        "browser",
+        "tool"
       ],
       "confidence": "high",
-      "confidenceScore": 0.96,
-      "reason": "Primary user-facing purpose is UI theming for the DSH web interface: applying a custom visual style (colors, typography, radius, interaction accents) and optional watermark/settings behavior in conversation pages. The plugin’s capabilities are predominantly presentation-layer customizations within the browser client and are low risk.",
+      "confidenceScore": 0.94,
+      "reason": "The plugin is a DSH Web theme/appearance plugin whose primary purpose is interface theming and visual style customization. It overrides DSH client theme tokens, injects global CSS, and adds UI preference toggles (including watermark behavior) via localStorage. It is primarily a user-facing cosmetic/UX plugin with no evidence of external integrations, network calls, or data-processing side effects.",
       "risk": {
-        "level": "R0",
+        "level": "R1",
         "capabilities": [
-          "Apply DSH web UI theme token overrides (light/dark palette)",
-          "Inject global CSS for visual styling and corner/interaction behavior",
-          "Persist theme-related UI toggles in browser localStorage",
-          "Render optional background watermark in web conversation views"
+          "global UI theme styling",
+          "theme token override in DSH client runtime",
+          "watermark rendering logic with persistence",
+          "client-side preference storage via localStorage"
         ],
         "reasons": [
           {
-            "code": "The plugin is explicitly described as a DSH web theme plugin that uses client-side token overrides and CSS injection for styling.",
+            "code": "README describes theme.overrideTokens usage to replace default color tokens for light/dark themes",
             "evidenceRef": "readme"
           },
           {
-            "code": "Stateful options are described as localStorage-backed switches (no external backend dependency shown).",
+            "code": "README describes styles.insert injecting global stylesheet overrides (fonts, border radius, accent colors, hover states, buttons, tables, etc.)",
             "evidenceRef": "readme"
           },
           {
-            "code": "Declared as a web client plugin with DSH client-side runtime dependencies and no server/API integration capabilities.",
+            "code": "README describes watermark UI with anti-translation attributes and placement/opacity controls",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README and package metadata show a client-side DSH plugin entry (exports ./client, bundle patch/injection config), confirming browser-side execution only",
             "evidenceRef": "package.json"
           }
         ]
@@ -1151,32 +1155,31 @@
         "schemaVersion": 1,
         "policyVersion": "2026-08-18",
         "finalDecision": "needs_human",
-        "riskLevel": "R2",
+        "riskLevel": "R1",
         "capabilities": [
-          "shell.execute",
-          "Apply DSH web UI theme token overrides (light/dark palette)",
-          "Inject global CSS for visual styling and corner/interaction behavior",
-          "Persist theme-related UI toggles in browser localStorage",
-          "Render optional background watermark in web conversation views"
+          "global UI theme styling",
+          "theme token override in DSH client runtime",
+          "watermark rendering logic with persistence",
+          "client-side preference storage via localStorage"
         ],
         "autoMerge": false,
         "shadowMode": true,
         "reasons": [
-          "HIGH_RISK_CAPABILITY"
+          "UNVERIFIED_MAINTAINER"
         ],
         "trace": {
           "rulesPassed": true,
           "aiDecision": "approve",
-          "aiConfidence": 0.96,
+          "aiConfidence": 0.94,
           "maintainerVerified": false
         }
       },
       "model": "gpt-5.3-codex-spark",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-18T14:21:27.026Z",
+      "classifiedAt": "2026-08-18T14:23:16.002Z",
       "repositoryCommitSha": "488582cf6110c1b1951fa31924cfd25d35daa594",
-      "evidenceHash": "61b9b0ea9377d73eaba50e666846f12af887887d422c75ca9357f55e8c896e18",
+      "evidenceHash": "c464e35fe2bf5c4bc3d5d691d951b40dbb86e2fd1b7ad9b1d865c3182be8ae40",
       "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "18d3b1bdfa155037be52b8ce067fd38c40db37912826620c66e48c0b0628b352",
       "shadowMode": true
