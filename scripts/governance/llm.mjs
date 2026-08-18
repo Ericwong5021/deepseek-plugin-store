@@ -60,7 +60,7 @@ export class LLMAdapter {
             response_format: { type: 'json_schema', json_schema: { name, schema, strict: true } },
           })
         } else {
-          response = await this.request('/completions', { model: this.model, prompt: `${system}\n\n${JSON.stringify(input)}\n\nReturn JSON only.`, max_tokens: 1200 })
+          response = await this.request('/completions', { model: this.model, prompt: `${system}\n\nRequired JSON Schema:\n${JSON.stringify(schema)}\n\nInput:\n${JSON.stringify(input)}\n\nReturn one JSON object that strictly matches the schema.`, max_tokens: 1200 })
         }
         const content = extractText(response)
         if (!content) throw new Error(`${format}: response did not contain text`)
