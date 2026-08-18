@@ -1,16 +1,81 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "chat",
+    "ui",
+    "automation",
+    "tool",
+    "context",
+    "memory",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a prompt-writing automation utility for the DeepSeek Harness web composer: users trigger an Optimize action to rewrite draft prompts with selectable strategies, languages, and optional session context, then confirm whether to adopt results, while it also maintains short optimization history and persisted settings.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的输入框中提供提示词优化功能，支持多种策略与语言重写草稿，可选带入会话上下文，并在用户确认后替换内容。",
+    "en": "This plugin adds a composer prompt-optimizer in DeepSeek Harness, rewriting draft prompts with selectable strategies and languages, with optional session context and user confirmation before applying results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Composer draft rewriting using configured LLM",
+      "Optional session/context-aware prompt assembly",
+      "Three-tier user setting persistence including workspace file storage",
+      "History handling and draft replacement via confirmation dialog"
+    ],
+    "reasons": [
+      {
+        "code": "PROMPT_REWRITE_UI",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CONTEXT_OPTIONAL_INJECTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WORKSPACE_PERSISTENCE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "HOST_SURFACE_DEPENDENCIES",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Composer draft rewriting using configured LLM",
+      "Optional session/context-aware prompt assembly",
+      "Three-tier user setting persistence including workspace file storage",
+      "History handling and draft replacement via confirmation dialog"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:55:32.108Z",
   "repositoryCommitSha": "02e705dd4b18dcb86bbcb2b6cac861916eef8bb5",
+  "evidenceHash": "e830ca13b2ca789480739e195366ec5a53ebcfc23860becb47b7755185a070ba",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "855317a662a780ad11e8c9500de313b0f55a3acdddb7b18b978322bb431edebe",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T17:52:21.195Z",
-  "lastAttemptAt": "2026-08-18T17:52:21.195Z",
-  "nextRetryAt": "2026-08-18T23:52:21.195Z",
-  "retryable": true,
-  "error": "Unexpected non-whitespace character after JSON at position 2078 (line 1 column 2079)",
   "shadowMode": false
 }
