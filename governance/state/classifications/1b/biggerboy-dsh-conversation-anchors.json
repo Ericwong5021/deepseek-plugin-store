@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "browser",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Primary purpose is a DeepSeek Harness web GUI navigation enhancement: a sidebar panel that lists per-message conversation anchors and lets users jump to specific chat turns by smooth scrolling. The plugin is client-side and UI-focused, with no indicated external integrations or command execution.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generates a sidebar anchor list for visible chat turns",
+      "Subscribes to session snapshot updates to refresh anchor data in real time",
+      "Injects UI elements into DSH web sidebar via DOM-level insertion and MutationObserver re-heal",
+      "Performs click-to-scroll navigation to conversation DOM anchors"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is an out-of-tree browser-side sidebar extension that adds anchor navigation for conversation nodes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The behavior is implemented on the client side for platform \"web\" and depends on DOM markers like [data-chat-anchor-key], indicating UI/DOM manipulation scope.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "It supports DeepSeek Harness web GUI only and notes DOM compatibility dependence, implying potential layout fragility if host DOM changes.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Generates a sidebar anchor list for visible chat turns",
+      "Subscribes to session snapshot updates to refresh anchor data in real time",
+      "Injects UI elements into DSH web sidebar via DOM-level insertion and MutationObserver re-heal",
+      "Performs click-to-scroll navigation to conversation DOM anchors"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:03:53.851Z",
+  "repositoryCommitSha": "364e20cd74b5d80ef0de5af94eb39001de9d17ea",
+  "evidenceHash": "19f70c49c134f21f6e6224a539b2375d956aa318c6e9a4ec0164ce97fdad34c0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "853dba81e7e114f6dbc7ba33460dd6e76bb9ba52a26d2ceb7e277661ea9275e5",
+  "shadowMode": true
+}

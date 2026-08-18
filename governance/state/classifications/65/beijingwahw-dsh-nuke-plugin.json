@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "automation",
+    "file",
+    "tool",
+    "terminal",
+    "workflow",
+    "data",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用户面向目的是“文件系统清理与可回滚运维”：在 DSH 环境中扫描插件残留与孤儿文件、评估风险与收益、执行事务化清理（并支持恢复、审计与告警）。能力上以可控清理、备份/恢复和磁盘健康决策为核心，包含明显的自动化运维与管理员操作助手特性。",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "扫描残留与依赖关系，识别可清理对象（插件目录、配置引用、TEMP）",
+      "执行可回滚的文件系统清理事务（预演/提交/回滚）",
+      "通过备份区与 WAL/事务日志支持崩溃恢复与审计",
+      "对可疑大规模删除进行策略守卫、上限与黑窗控制",
+      "在恢复失败时保持备份与可追溯台账",
+      "检测并可执行内容去重（含硬链接替换与可逆动作）",
+      "提供磁盘趋势/倒计时分析与告警"
+    ],
+    "reasons": [
+      {
+        "code": "插件主功能以清理残留、目录/文件生命周期管理为核心，并强调回收区、事务与恢复机制。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库结构包含 WAL、锁、备份、审计链等基础设施，表明其主要是安全化文件系统清理工具。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "通过 dsh 插件工具链向 Agent 注册 19 个命令，包括扫描、预演、清理、恢复与巡检。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "包名与入口为 dsh 插件，定位于插件生态中的环境清理与维护。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "扫描残留与依赖关系，识别可清理对象（插件目录、配置引用、TEMP）",
+      "执行可回滚的文件系统清理事务（预演/提交/回滚）",
+      "通过备份区与 WAL/事务日志支持崩溃恢复与审计",
+      "对可疑大规模删除进行策略守卫、上限与黑窗控制",
+      "在恢复失败时保持备份与可追溯台账",
+      "检测并可执行内容去重（含硬链接替换与可逆动作）",
+      "提供磁盘趋势/倒计时分析与告警"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:03:29.835Z",
+  "repositoryCommitSha": "8bbcba31c27a6e1afd6a7615c737920c9a5a3b2a",
+  "evidenceHash": "e575c5bc21b3f66ed5c459e472d93e95f6c8ef5d8441c37cd2c2f95ed2f5cd19",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "452743a0f3dcdbf81992407c9e300eb020483d0141be04dc58383de75e14da09",
+  "shadowMode": true
+}

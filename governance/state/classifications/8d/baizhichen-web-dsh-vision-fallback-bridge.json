@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "file",
+    "document",
+    "image",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is document/media upload bridging: it handles selected file types and turns them into workspace paths so models can access them via downstream tools. Capabilities are local file handling and typed file-path handoff; no evident high-risk behavior.",
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Accepts uploaded images and common document file types",
+      "Stores uploads under a workspace directory",
+      "Converts uploads into workspace path-based references for downstream model tools",
+      "Supports routing hints for both image and document types"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin is described as a lightweight upload bridge that converts images and documents into workspace paths for text-only models to access through vision/file tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Defines storage location for uploaded files in `.dsh-vision/uploads/`, indicating local workspace file handling.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest metadata marks it as a DSH web plugin bundle with injected client-side integration entrypoint, consistent with document/file-processing behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes plugin source files (`lib/client.js`, `lib/index.js`) and patch manifest for runtime behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Accepts uploaded images and common document file types",
+      "Stores uploads under a workspace directory",
+      "Converts uploads into workspace path-based references for downstream model tools",
+      "Supports routing hints for both image and document types"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:02:29.939Z",
+  "repositoryCommitSha": "81b09e36c0bd23969c7a7f4555d545e75e2cbb3e",
+  "evidenceHash": "96762afe224e3b7fe7cc5b73e402cdf30edce24ce0bc7960e1a2ed319a6c01a5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0b32521f76ee289721fc95e02415b98a158a983ce4395abc0d36ccf108f123bd",
+  "shadowMode": true
+}

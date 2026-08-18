@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "workflow",
+    "tool",
+    "monitoring",
+    "integration",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.9,
+  "reason": "Primary purpose is an AI orchestration plugin for the DSH/Cordis ecosystem: it actively schedules, executes, evaluates, and evolves multi-model tasks in an autonomous loop, with tooling for memory/experience retrieval, policy feedback, and host-tool governance. It is best categorized as orchestration/automation of AI workflows (not a UI, editing, or media plugin). Conservative risks include host-side governance hooks and external model API/key handling, so classified as medium risk (R1).",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Multi-model task scheduling and autonomous execution loop",
+      "Host-level tool-call observation and governance (including kill-switch style refusal flow)",
+      "Long-running memory/knowledge retrieval with persistent storage and strategy feedback",
+      "External API access for LLM providers with multi-key routing/rotation"
+    ],
+    "reasons": [
+      {
+        "code": "plugin_automates_model_and_tool_workflows",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_fusion_can_intercept_and_gate_host_tool_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "handles_api_key_sources_and_rotation_for_model_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "includes_consensus_sync_and_hot_reload_components_in_distribution",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "distributed_runtime plugin packaging for DSH via cordis bundle",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Multi-model task scheduling and autonomous execution loop",
+      "Host-level tool-call observation and governance (including kill-switch style refusal flow)",
+      "Long-running memory/knowledge retrieval with persistent storage and strategy feedback",
+      "External API access for LLM providers with multi-key routing/rotation"
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.9,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:03:38.966Z",
+  "repositoryCommitSha": "960be5270c251280a59b06d7caca0d91c34ad462",
+  "evidenceHash": "7318607ca86a8d364c14133ced8dbd77b3972a9fb82b0e4f5ef3df96ae4f38a3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5668d7c5cad8c6c8814c4a54d6c46fcf592ec21a558e0f37a23c3e1ba610972d",
+  "shadowMode": true
+}
