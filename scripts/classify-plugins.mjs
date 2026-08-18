@@ -5,7 +5,7 @@ import { LLMAdapter } from './governance/llm.mjs'
 import { applyPolicy, loadPolicy } from './governance/policy.mjs'
 import { runDeterministicChecks } from './governance/rules.mjs'
 import { readStateCollection, syncStateCollection } from './governance/state.mjs'
-import { createFailureRecord, failureRetryAt, shouldClassify } from './governance/stability.mjs'
+import { createFailureRecord, failureClass, failureRetryAt, shouldClassify } from './governance/stability.mjs'
 import { loadRegistryPlugins, readJson, sha256 } from './registry-lib.mjs'
 
 const apiKey = process.env.LLM_CLASSIFIER_API_KEY ?? ''
@@ -32,11 +32,21 @@ cache.schemaVersion = 2
 let changed = false
 
 for (const entry of Object.values(cache.classifications)) {
-  if (entry.status !== 'failed' || entry.failureClass !== 'rate_limited') continue
-  const nextRetryAt = failureRetryAt({ classification: entry.failureClass, errorText: entry.error, now: entry.lastAttemptAt })
-  if (!nextRetryAt || nextRetryAt === entry.nextRetryAt) continue
-  entry.nextRetryAt = nextRetryAt
-  changed = true
+  if (entry.status !== 'failed') continue
+  const classification = failureClass(entry.error)
+  const nextRetryAt = failureRetryAt({ classification, errorText: entry.error, now: entry.lastAttemptAt })
+  const failureState = {
+    failureClass: classification,
+    attemptCount: entry.attemptCount || 1,
+    firstFailedAt: entry.firstFailedAt || entry.lastAttemptAt,
+    nextRetryAt,
+    retryable: nextRetryAt !== null,
+  }
+  for (const [key, value] of Object.entries(failureState)) {
+    if (entry[key] === value) continue
+    entry[key] = value
+    changed = true
+  }
 }
 
 const registryItems = registryFiles.map(({ value }) => ({
