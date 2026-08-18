@@ -77,7 +77,7 @@ test('unchanged or first-observed SHA preserves candidate classification suggest
   assert.equal(shouldReplaceCandidateClassification({ existingSuggestion: existingCandidate.classificationSuggestion, previousCommitSha: 'a'.repeat(40), repositoryCommitSha: 'b'.repeat(40) }), true)
 })
 
-test('repository not found failures wait seven days before retry', () => {
+test('repository not found failures retry once before waiting seven days', () => {
   const now = '2026-08-18T14:52:55.146Z'
   const entry = createFailureRecord({
     previous: null,
@@ -92,8 +92,19 @@ test('repository not found failures wait seven days before retry', () => {
   assert.equal(entry.attemptCount, 1)
   assert.equal(entry.retryable, true)
   assert.equal(entry.nextRetryAt, '2026-08-25T14:52:55.146Z')
-  assert.equal(shouldClassify({ status: 'failed', ...entry }, Date.parse('2026-08-25T14:52:55.145Z')), false)
-  assert.equal(shouldClassify({ status: 'failed', ...entry }, Date.parse(entry.nextRetryAt)), true)
+  assert.equal(shouldClassify({ status: 'failed', ...entry }, Date.parse('2026-08-18T14:52:55.147Z')), true)
+  const retry = createFailureRecord({
+    previous: entry,
+    error: new Error('https://api.github.com/repos/example/missing: 404 Not Found'),
+    now: '2026-08-18T14:53:55.146Z',
+    model: 'gpt-5.3-codex-spark',
+    promptVersion: 'classify-v2',
+    policyVersion: '2026-08-18',
+    shadowMode: true,
+  })
+  assert.equal(retry.attemptCount, 2)
+  assert.equal(shouldClassify(retry, Date.parse('2026-08-25T14:53:55.145Z')), false)
+  assert.equal(shouldClassify(retry, Date.parse(retry.nextRetryAt)), true)
 })
 
 test('permanent identity failures never retry', () => {

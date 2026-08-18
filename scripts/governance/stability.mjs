@@ -70,14 +70,13 @@ export const failureClass = (error) => {
   if (/invalid identity|plugin not found or protected/i.test(message)) return 'invalid_identity'
   if (/(?:\s|:)404(?:\s|$)|not found/i.test(message)) return 'repository_not_found'
   if (/\b429\b|rate.?limit|secondary limit/i.test(message)) return 'rate_limited'
-  if (/schema|invalid json|after json|json at position|model response|response_format|choices\[|structured output/i.test(message)) return 'invalid_response'
+  if (/schema|invalid json|after json|json at position|unsupported fields|confidence is invalid|decision is invalid|risk result is invalid|classification .*invalid|plugin descriptions are invalid|model response|response_format|choices\[|structured output/i.test(message)) return 'invalid_response'
   return 'network_error'
 }
 
 export const createFailureRecord = ({ previous, error, now, model, promptVersion, policyVersion, shadowMode, repositoryCommitSha = null, cacheKey = null }) => {
   const errorText = String(error?.message || error).slice(0, 500)
   const classification = failureClass(error)
-  const sameFailure = previous?.status === 'failed' && previous.failureClass === classification && previous.error === errorText
   const delay = retryPolicy[classification]
   const retryable = Number.isFinite(delay)
   return {
@@ -88,8 +87,8 @@ export const createFailureRecord = ({ previous, error, now, model, promptVersion
     repositoryCommitSha,
     cacheKey,
     failureClass: classification,
-    attemptCount: sameFailure ? (previous.attemptCount || 1) + 1 : 1,
-    firstFailedAt: sameFailure ? previous.firstFailedAt || previous.lastAttemptAt || now : now,
+    attemptCount: previous?.status === 'failed' ? (previous.attemptCount || 1) + 1 : 1,
+    firstFailedAt: previous?.status === 'failed' ? previous.firstFailedAt || previous.lastAttemptAt || now : now,
     lastAttemptAt: now,
     nextRetryAt: retryable ? new Date(Date.parse(now) + delay).toISOString() : null,
     retryable,
@@ -102,6 +101,7 @@ export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = nu
   if (force || !entry) return true
   if (entry.status === 'failed') {
     if (entry.retryable === false) return false
+    if ((entry.attemptCount || 1) < 2) return true
     const nextRetry = Date.parse(entry.nextRetryAt || 0)
     return !Number.isFinite(nextRetry) || nextRetry <= now
   }

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import { validateAiDecision } from './rules.mjs'
 
-const retryableFormats = new Set([400, 404, 405, 415, 422, 500, 501, 502, 503, 504])
+const retryableFormats = new Set([400, 404, 405, 408, 415, 422, 429, 500, 501, 502, 503, 504])
 
 const extractText = (response) => response.output_text
   || response.output?.flatMap((item) => item.content || []).find((item) => item.type === 'output_text')?.text
@@ -33,6 +33,20 @@ const parseJson = (value) => {
   }
 }
 
+const normalizeClassificationDecision = (value) => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return value
+  const allowed = new Set(['intent', 'decision', 'classification', 'risk', 'confidence', 'requestedChanges', 'summary', 'descriptions', 'schemaVersion'])
+  const decision = Object.fromEntries(Object.entries(value).filter(([key]) => allowed.has(key)))
+  decision.schemaVersion = 1
+  if (typeof decision.decision === 'string') decision.decision = decision.decision.toLowerCase()
+  if (typeof decision.confidence !== 'number') decision.confidence = Number.parseFloat(decision.confidence)
+  if (Number.isFinite(decision.confidence) && decision.confidence > 1 && decision.confidence <= 100) decision.confidence /= 100
+  if (!Array.isArray(decision.requestedChanges)) decision.requestedChanges = []
+  if (decision.risk?.level) decision.risk.level = String(decision.risk.level).toUpperCase()
+  if (decision.descriptions && typeof decision.descriptions === 'object') decision.descriptions = { zh: decision.descriptions.zh, en: decision.descriptions.en }
+  return decision
+}
+
 export class LLMAdapter {
   constructor({ apiKey, baseUrl, model, promptVersion = 'classify-v2', schemaPath = 'scripts/governance/schemas/ai-decision.schema.json' }) {
     this.apiKey = apiKey
@@ -46,18 +60,23 @@ export class LLMAdapter {
   async request(path, body) {
     let lastError
     for (let attempt = 1; attempt <= 2; attempt++) {
-      const response = await fetch(`${this.baseUrl}${path}`, {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-        signal: AbortSignal.timeout(60000),
-      })
-      const text = await response.text()
-      if (response.ok) return JSON.parse(text)
-      const error = new Error(`${path}: ${response.status} ${text.slice(0, 300)}`)
-      error.status = response.status
-      lastError = error
-      if (attempt === 2 || ![429, 500, 502, 503, 504].includes(response.status)) throw error
+      try {
+        const response = await fetch(`${this.baseUrl}${path}`, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          signal: AbortSignal.timeout(60000),
+        })
+        const text = await response.text()
+        if (response.ok) return JSON.parse(text)
+        const error = new Error(`${path}: ${response.status} ${text.slice(0, 300)}`)
+        error.status = response.status
+        lastError = error
+        if (attempt === 2 || ![408, 429, 500, 502, 503, 504].includes(response.status)) throw error
+      } catch (error) {
+        lastError = error
+        if (attempt === 2 || error.status && ![408, 429, 500, 502, 503, 504].includes(error.status)) throw error
+      }
       await new Promise((resolve) => setTimeout(resolve, attempt * 1500))
     }
     throw lastError
@@ -117,7 +136,8 @@ export class LLMAdapter {
     schema.properties.classification.properties.tags.items.enum = taxonomy.tags
     schema.properties.risk.properties.reasons.items.properties.evidenceRef.enum = input.evidence.evidenceRefs
     const system = await fs.readFile(`governance/prompts/${kind}.md`, 'utf8')
-    const decision = await this.call({ name: `governance_${kind.replace(/-/g, '_')}`, system, input, schema })
+    let decision = await this.call({ name: `governance_${kind.replace(/-/g, '_')}`, system, input, schema })
+    if (kind === 'classify-v2') decision = normalizeClassificationDecision(decision)
     if (kind === 'classify-v2' && Array.isArray(decision.classification?.tags)) {
       const tags = new Set(taxonomy.tags)
       decision.classification.tags = [...new Set(decision.classification.tags)].filter((tag) => tags.has(tag)).slice(0, 8)
