@@ -5,12 +5,65 @@
   "tags": [
     "ui",
     "file",
+    "tool",
     "desktop"
   ],
   "confidence": "high",
-  "reason": "The plugin augments the left workspace sidebar by adding a folder button per workspace row and opens the corresponding path in the system file manager, so it is primarily a navigation/panel UI enhancement for workspace management.",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a workspace navigation UI enhancement for DeepSeek Harness, adding an Open Folder control to each real workspace row in the left list and delegating to host file-manager opening. Its functionality is limited to local path launch behavior and UI placement, with no repository-exposed external service integration.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 左侧工作区列表的真实工作区行中新增“打开文件夹”入口，点击后由主机按系统默认行为打开对应工作区目录。",
+    "en": "This plugin adds an Open Folder action to each real workspace row in the DeepSeek Harness left workspace list, and opens that workspace folder in the host system’s default file manager when clicked."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds an Open Folder button to workspace rows in the sidebar UI.",
+      "Invokes host API ctx.workspaces.openPath(path) to open a workspace directory in the local file manager."
+    ],
+    "reasons": [
+      {
+        "code": "README documents a sidebar workspace-list button that opens a workspace folder path via ctx.workspaces.openPath.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explicitly lists OS behavior mappings to Explorer, Finder, and xdg-open for opening workspace folders.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks this as a DSH web client plugin with workspace UI dependencies, confirming the user-facing workspace panel integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds an Open Folder button to workspace rows in the sidebar UI.",
+      "Invokes host API ctx.workspaces.openPath(path) to open a workspace directory in the local file manager."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:02:00.393Z",
-  "evidenceHash": "ac09425c51e5370f4e1ed61a703fff79cb62228967ff7db1419bb89be209a375"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:52:20.343Z",
+  "repositoryCommitSha": "1da0d2ce1c0d2f9786e173aaaae2a294eaa6b797",
+  "evidenceHash": "3d952182917c36a6095a31ec27349c5ac61ab7cee469a9c35c1f37dfa0a192be",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87eca1fe97d69c0589fcac293134eac34582ab3dc55d0b9fd9bc671e26c1b822",
+  "shadowMode": false
 }
