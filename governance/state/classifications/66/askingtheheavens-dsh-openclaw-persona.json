@@ -1,11 +1,73 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "memory",
+    "file",
+    "workflow",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Primary purpose is to provide a DSH persona/profile bundle that automatically loads OpenClaw-style workspace files into agent context (system prompt sections and runtime context), including recent daily notes and memory files. It is a local context/automation plugin for agent sessions, with optional env-based directory and note limits. Risks are limited to workspace file exposure/consumption in prompts; no external integrations are indicated.",
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads OpenClaw persona and memory markdown files from the workspace and injects their contents into agent system prompt/runtime context.",
+      "Registers itself in DSH via a bundle patch and applies automatically per agent session when workspace matches.",
+      "Listens to file tool events to refresh cached context after successful reads/writes/edits inside the persona directory."
+    ],
+    "reasons": [
+      {
+        "code": "Reads local workspace files such as SOUL.md, IDENTITY.md, USER.md, TOOLS.md, MEMORY.md, HEARTBEAT.md, and memory/*.md and uses their content in prompts.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Applies to sessions automatically via DSH host-scoped Cordis plugin hook on agent creation, affecting all matching sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "No declared external service calls or network integration; behavior is limited to local filesystem reads and agent context injection.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Plugin metadata declares a DSH bundle via cordis.patch.yml and exports a runtime loader entrypoint.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads OpenClaw persona and memory markdown files from the workspace and injects their contents into agent system prompt/runtime context.",
+      "Registers itself in DSH via a bundle patch and applies automatically per agent session when workspace matches.",
+      "Listens to file tool events to refresh cached context after successful reads/writes/edits inside the persona directory."
+    ],
+    "autoMerge": false,
+    "shadowMode": true,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T16:01:50.142Z",
   "repositoryCommitSha": "be07031b1a6af0ff696346a5acc90b8ee93d74c1",
+  "evidenceHash": "7db22d45551fb5f72aad545f6f0335f2b765e32436803a79dce375a0e610b906",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "150857dab3f87297ca51466d406593519209cfb2fa2f105b767502206987bb72",
-  "lastAttemptAt": "2026-08-18T14:16:52.547Z",
-  "error": "AI decision schemaVersion must be 1",
   "shadowMode": true
 }
