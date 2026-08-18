@@ -106,6 +106,7 @@ export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = nu
     return !Number.isFinite(nextRetry) || nextRetry <= now
   }
   if (entry.status !== 'classified') return true
+  if (!entry.summaries?.zh?.trim() || !entry.summaries?.en?.trim()) return true
   if (!repositoryCommitSha || !entry.repositoryCommitSha) return false
   return entry.repositoryCommitSha !== repositoryCommitSha
 }

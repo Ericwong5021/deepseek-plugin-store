@@ -7,13 +7,17 @@ import { readStateCollection } from './governance/state.mjs'
 const OUTPUTS = ['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/editor-picks.json']
 const humanClassificationSources = new Set(['reviewed-override', 'accepted-maintainer', 'editorial-review'])
 
-const withLlmClassification = (record, entry) => entry?.status === 'classified' && !humanClassificationSources.has(record.classification.source) ? {
-  ...record,
-  summaries: entry.summaries ? {
-    zh: entry.summaries.zh,
-    en: entry.summaries.en,
-  } : record.summaries,
-  classification: {
+const withLlmClassification = (record, entry) => {
+  if (entry?.status !== 'classified') return record
+  const next = {
+    ...record,
+    summaries: entry.summaries ? {
+      zh: entry.summaries.zh,
+      en: entry.summaries.en,
+    } : record.summaries,
+  }
+  if (humanClassificationSources.has(record.classification.source)) return next
+  next.classification = {
     group: entry.group,
     category: entry.category,
     tags: entry.tags,
@@ -23,8 +27,9 @@ const withLlmClassification = (record, entry) => entry?.status === 'classified' 
     needsReview: entry.confidence === 'low' || entry.governance?.finalDecision !== 'approved',
     classifiedAt: entry.classifiedAt,
     reason: entry.reason,
-  },
-} : record
+  }
+  return next
+}
 
 const buildRankings = (plugins, updatedAt, publicCategories) => {
   const eligible = plugins.filter((plugin) => plugin.admission.status === 'verified' && plugin.observations?.compatibility?.manifestFound === true && publicCategories.has(plugin.classification.category) && !plugin.classification.needsReview && ['active', 'incubating'].includes(plugin.lifecycle.status))

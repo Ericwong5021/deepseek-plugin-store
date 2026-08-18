@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import fs from 'node:fs/promises'
 import { EvidenceCollector, buildCacheKey } from './governance/evidence.mjs'
 import { LLMAdapter } from './governance/llm.mjs'
 import { applyPolicy, loadPolicy } from './governance/policy.mjs'
@@ -11,7 +12,8 @@ const apiKey = process.env.LLM_CLASSIFIER_API_KEY ?? ''
 const githubToken = process.env.GITHUB_TOKEN ?? ''
 const baseUrl = process.env.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1'
 const model = process.env.LLM_CLASSIFIER_MODEL || 'gpt-5.3-codex-spark'
-const limit = Math.min(100, Math.max(1, Number.parseInt(process.env.LLM_CLASSIFIER_LIMIT || '20', 10) || 20))
+const limit = Math.min(250, Math.max(1, Number.parseInt(process.env.LLM_CLASSIFIER_LIMIT || '20', 10) || 20))
+const concurrency = Math.min(20, Math.max(1, Number.parseInt(process.env.LLM_CLASSIFIER_CONCURRENCY || '6', 10) || 6))
 const target = String(process.env.LLM_CLASSIFIER_PLUGIN || '').trim().toLowerCase()
 const force = process.env.LLM_CLASSIFIER_FORCE === '1'
 const shadowMode = process.env.GOVERNANCE_SHADOW_MODE !== '0'
@@ -28,24 +30,25 @@ const originalCandidates = structuredClone(candidateData)
 if (![1, 2].includes(cache.schemaVersion) || !cache.classifications || Array.isArray(cache.classifications)) throw new Error('governance classification state is invalid')
 cache.schemaVersion = 2
 
-const items = [
-  ...registryFiles.map(({ value }) => ({
-    id: value.id,
-    fullName: value.repository.fullName,
-    summary: value.summaries.en || value.summaries.zh || '',
-    type: 'registry',
-    classification: value.classification,
-    repositoryCommitSha: observations.repositories[value.id]?.compatibility?.repositoryCommitSha || null,
-  })),
-  ...Object.values(candidateData.candidates).filter((candidate) => candidate.checks?.admissionReady === true).map((candidate) => ({
-    id: candidate.id,
-    fullName: candidate.repository.fullName,
-    summary: candidate.summary || '',
-    type: 'candidate',
-    classification: candidate.classificationSuggestion,
-    repositoryCommitSha: candidate.checks?.repositoryCommitSha || null,
-  })),
-]
+const registryItems = registryFiles.map(({ value }) => ({
+  id: value.id,
+  fullName: value.repository.fullName,
+  summary: value.summaries.en || value.summaries.zh || '',
+  type: 'registry',
+  classification: value.classification,
+  repositoryCommitSha: observations.repositories[value.id]?.compatibility?.repositoryCommitSha || null,
+}))
+const candidateItems = Object.values(candidateData.candidates).filter((candidate) => candidate.checks?.admissionReady === true).map((candidate) => ({
+  id: candidate.id,
+  fullName: candidate.repository.fullName,
+  summary: candidate.summary || '',
+  type: 'candidate',
+  classification: candidate.classificationSuggestion,
+  repositoryCommitSha: candidate.checks?.repositoryCommitSha || null,
+}))
+const itemsById = new Map(registryItems.map((item) => [item.id, item]))
+for (const item of candidateItems) if (!itemsById.has(item.id)) itemsById.set(item.id, item)
+const items = [...itemsById.values()]
 
 const activeIds = new Set(items.map((item) => item.id))
 let changed = false
@@ -56,9 +59,9 @@ for (const id of Object.keys(cache.classifications)) {
   }
 }
 
-const eligible = items.filter((item) => !humanSources.has(item.classification?.source))
+const eligible = items
 const matched = target ? eligible.filter((item) => item.id.toLowerCase() === target || item.fullName.toLowerCase() === target) : eligible
-if (target && !matched.length) throw new Error(`plugin not found or protected by human classification: ${target}`)
+if (target && !matched.length) throw new Error(`plugin not found: ${target}`)
 const queue = matched
   .filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, force))
   .sort((a, b) => Number(Boolean(b.classification?.needsReview)) - Number(Boolean(a.classification?.needsReview)) || Number(b.type === 'candidate') - Number(a.type === 'candidate') || a.id.localeCompare(b.id))
@@ -72,12 +75,15 @@ const taxonomyHash = sha256(taxonomy)
 let classified = 0
 let failed = 0
 let unchanged = 0
+const evidenceResults = await collector.collectMany(queue)
+let cursor = 0
 
-for (const item of queue) {
+const classifyItem = async (item, evidenceResult) => {
   let evidence = null
   let cacheKey = ''
   try {
-    evidence = await collector.collect(item)
+    if (evidenceResult instanceof Error) throw evidenceResult
+    evidence = evidenceResult
     cacheKey = buildCacheKey({
       evidence,
       taxonomy,
@@ -86,9 +92,9 @@ for (const item of queue) {
       model,
       evidenceSchemaVersion: policy.evidence.schemaVersion,
     })
-    if (!force && cache.classifications[item.id]?.status === 'classified' && cache.classifications[item.id]?.cacheKey === cacheKey) {
+    if (!force && cache.classifications[item.id]?.status === 'classified' && cache.classifications[item.id]?.cacheKey === cacheKey && cache.classifications[item.id]?.summaries?.zh?.trim() && cache.classifications[item.id]?.summaries?.en?.trim()) {
       unchanged++
-      continue
+      return
     }
     const ruleResult = runDeterministicChecks({ snapshot: evidence, taxonomy })
     const aiDecision = await adapter.classifyPlugin(evidence, taxonomy, ruleResult)
@@ -138,6 +144,16 @@ for (const item of queue) {
     changed = true
     console.log(`::warning::classification failed for ${item.fullName}: ${error.message}`)
   }
+}
+
+const worker = async () => {
+  while (cursor < queue.length) {
+    const index = cursor++
+    await classifyItem(queue[index], evidenceResults[index])
+  }
+}
+await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, worker))
+if (queue.length) {
   cache.updatedAt = new Date().toISOString()
   cache.classifications = Object.fromEntries(Object.entries(cache.classifications).sort())
 }
@@ -146,7 +162,12 @@ if (!shadowMode) {
   let candidateChanged = false
   for (const candidate of Object.values(candidateData.candidates)) {
     const entry = cache.classifications[candidate.id]
-    if (entry?.status !== 'classified' || humanSources.has(candidate.classificationSuggestion?.source)) continue
+    if (entry?.status !== 'classified') continue
+    if (entry.summaries?.en && candidate.summary !== entry.summaries.en) {
+      candidate.summary = entry.summaries.en
+      candidateChanged = true
+    }
+    if (humanSources.has(candidate.classificationSuggestion?.source)) continue
     const classificationSuggestion = {
       group: entry.group,
       category: entry.category,
@@ -160,10 +181,6 @@ if (!shadowMode) {
     }
     if (JSON.stringify(candidate.classificationSuggestion) !== JSON.stringify(classificationSuggestion)) {
       candidate.classificationSuggestion = classificationSuggestion
-      candidateChanged = true
-    }
-    if (entry.summaries?.en && candidate.summary !== entry.summaries.en) {
-      candidate.summary = entry.summaries.en
       candidateChanged = true
     }
   }
@@ -181,5 +198,9 @@ if (changed) {
 }
 
 const recognized = Object.values(cache.classifications).filter((entry) => entry.status === 'classified').length
-console.log(JSON.stringify({ selected: queue.length, classified, failed, unchanged, recognized, total: eligible.length, target: target || null, force, shadowMode, adapter: adapter.capability }, null, 2))
+const unavailable = Object.values(cache.classifications).filter((entry) => entry.status === 'failed').length
+const remaining = eligible.filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, false)).length
+const result = { selected: queue.length, classified, failed, unchanged, recognized, unavailable, remaining, total: eligible.length, target: target || null, force, shadowMode, concurrency, adapter: adapter.capability }
+console.log(JSON.stringify(result, null, 2))
+if (process.env.GITHUB_OUTPUT) await fs.appendFile(process.env.GITHUB_OUTPUT, `remaining=${remaining}\nunavailable=${unavailable}\nrecognized=${recognized}\n`)
 if (target && failed) process.exitCode = 1
