@@ -34,7 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -42,9 +45,15 @@ jobs:
         id: scope
         env:
           REQUESTED_SOURCE_ONLY: ${{ inputs.source_only && 'true' || 'false' }}
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           if [ "$REQUESTED_SOURCE_ONLY" = "true" ]; then
             echo "source_only=true" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENT_NAME" = "pull_request" ]; then
+            unexpected=$(git diff --name-only "${BASE_SHA}...${HEAD_SHA}" | grep -Ev '^registry/plugins/[a-z0-9-]+\.json$' || true)
+            if [ -z "$unexpected" ]; then echo "source_only=true" >> "$GITHUB_OUTPUT"; else echo "source_only=false" >> "$GITHUB_OUTPUT"; fi
           else
             echo "source_only=false" >> "$GITHUB_OUTPUT"
           fi

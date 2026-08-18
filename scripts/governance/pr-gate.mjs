@@ -8,8 +8,9 @@ import { validateRegistry } from '../validate-registry.mjs'
 const mode = process.argv[2]
 const event = process.env.GITHUB_EVENT_PATH ? JSON.parse(await fs.readFile(process.env.GITHUB_EVENT_PATH, 'utf8')) : {}
 const baseSha = event.pull_request?.base?.sha || process.env.GITHUB_BASE_SHA
+const headSha = event.pull_request?.head?.sha || process.env.GITHUB_HEAD_SHA || 'HEAD'
 if (!baseSha) throw new Error('pull request base SHA is missing')
-const diff = execFileSync('git', ['diff', '--name-status', `${baseSha}...HEAD`], { encoding: 'utf8' }).trim().split('\n').filter(Boolean)
+const diff = execFileSync('git', ['diff', '--name-status', `${baseSha}...${headSha}`], { encoding: 'utf8' }).trim().split('\n').filter(Boolean)
 const changes = diff.map((line) => {
   const [status, ...parts] = line.split('\t')
   return { status, file: parts.at(-1) }
