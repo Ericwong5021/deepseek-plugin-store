@@ -17,12 +17,14 @@ export const validateRegistry = async () => {
   const collection = await readJson('registry/collections/editor-picks.json')
   const observations = await readJson('data/observations.json')
   const candidates = await readJson('data/candidates.json')
+  const classifications = await readJson('data/plugin-classifications.json', { schemaVersion: 1, updatedAt: null, classifications: {} })
   const files = await loadRegistryPlugins()
   if (taxonomy.schemaVersion !== 2 || !Array.isArray(taxonomy.groups) || !Array.isArray(taxonomy.categories) || !Array.isArray(taxonomy.tags)) throw new Error('invalid registry taxonomy')
-  if (taxonomy.policies?.primaryCategoriesPerPlugin !== 1 || taxonomy.policies?.minimumListedPluginsForPublicCategory !== 3 || JSON.stringify(taxonomy.policies.classificationPrecedence) !== JSON.stringify(['reviewed-override', 'accepted-maintainer', 'manifest-evidence', 'evidence-suggestion', 'keyword-suggestion', 'legacy-migration'])) throw new Error('invalid registry policies')
+  if (taxonomy.policies?.primaryCategoriesPerPlugin !== 1 || taxonomy.policies?.minimumListedPluginsForPublicCategory !== 3 || JSON.stringify(taxonomy.policies.classificationPrecedence) !== JSON.stringify(['reviewed-override', 'accepted-maintainer', 'llm-classification', 'manifest-evidence', 'evidence-suggestion', 'keyword-suggestion', 'legacy-migration'])) throw new Error('invalid registry policies')
   if (collection.schemaVersion !== 2 || collection.id !== 'editor-picks' || !Array.isArray(collection.items)) throw new Error('invalid editor picks collection')
   if (observations.schemaVersion !== 2 || !observations.updatedAt || !observations.repositories || Array.isArray(observations.repositories)) throw new Error('invalid observations')
   if (candidates.schemaVersion !== 2 || !candidates.updatedAt || !candidates.candidates || Array.isArray(candidates.candidates)) throw new Error('invalid candidates')
+  if (classifications.schemaVersion !== 1 || !classifications.classifications || Array.isArray(classifications.classifications)) throw new Error('invalid LLM classifications')
   if (!files.length) throw new Error('registry/plugins is empty')
   unique('group id', taxonomy.groups.map((group) => group.id))
   unique('category id', taxonomy.categories.map((category) => category.id))
@@ -82,9 +84,16 @@ export const validateRegistry = async () => {
     if (records.some((record) => record.id === id)) throw new Error(`candidate duplicates registry plugin: ${id}`)
     if (!Array.isArray(candidate.sources) || !candidate.sources.length || !Array.isArray(candidate.failures)) throw new Error(`invalid candidate evidence: ${id}`)
   }
+  for (const [id, classification] of Object.entries(classifications.classifications)) {
+    if (!['classified', 'failed'].includes(classification.status)) throw new Error(`invalid LLM classification status: ${id}`)
+    if (classification.status === 'failed') continue
+    if (!categories.has(classification.category) || categories.get(classification.category).group !== classification.group) throw new Error(`invalid LLM classification category: ${id}`)
+    if (!Array.isArray(classification.tags) || classification.tags.some((tag) => !tags.has(tag))) throw new Error(`invalid LLM classification tags: ${id}`)
+    if (!['low', 'medium', 'high'].includes(classification.confidence) || !classification.model || !classification.promptVersion || !classification.classifiedAt || !classification.evidenceHash || !classification.reason) throw new Error(`invalid LLM classification metadata: ${id}`)
+  }
   const code2Skill = repositoryMap.get('leechen298/code2skill')
   if (!code2Skill || code2Skill.classification.category !== 'plugin-development' || code2Skill.classification.issueUrl !== 'https://github.com/Ericwong5021/deepseek-plugin-store/issues/1') throw new Error('Issue #1 classification override is missing')
-  return { plugins: records.length, listed: listed.length, candidates: Object.keys(candidates.candidates).length, editorPicks: collection.items.length }
+  return { plugins: records.length, listed: listed.length, candidates: Object.keys(candidates.candidates).length, classifications: Object.keys(classifications.classifications).length, editorPicks: collection.items.length }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

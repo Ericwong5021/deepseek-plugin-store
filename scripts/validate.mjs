@@ -8,6 +8,7 @@ await generateCatalog({ check: true })
 const catalogV2 = await readJson('data/catalog-v2.json')
 const catalog = await readJson('data/catalog.json')
 const mirror = await readJson('data/plugins.json')
+const classifications = await readJson('data/plugin-classifications.json', { schemaVersion: 1, classifications: {} })
 if (JSON.stringify(catalog) !== JSON.stringify(mirror)) throw new Error('data/plugins.json must mirror data/catalog.json')
 if (catalogV2.schemaVersion !== 2 || catalog.schemaVersion !== 1) throw new Error('invalid public catalog schema versions')
 const v2Urls = catalogV2.plugins.map((plugin) => plugin.repository.url).sort()
@@ -15,6 +16,10 @@ const v1Urls = catalog.plugins.map((plugin) => plugin.url).sort()
 if (JSON.stringify(v2Urls) !== JSON.stringify(v1Urls)) throw new Error('v1 and v2 public rosters differ')
 if (catalogV2.plugins.some((plugin) => plugin.visibility !== 'listed')) throw new Error('hidden plugin leaked into catalog v2')
 const ids = new Set(catalogV2.plugins.map((plugin) => plugin.id))
+for (const plugin of catalogV2.plugins) {
+  const classification = classifications.classifications[plugin.id]
+  if (classification?.status === 'classified' && !['reviewed-override', 'accepted-maintainer', 'editorial-review'].includes(plugin.classification.source) && (plugin.classification.category !== classification.category || plugin.classification.source !== 'llm-classification')) throw new Error(`LLM classification projection is incorrect: ${plugin.id}`)
+}
 const rankings = catalogV2.collections.rankings
 if (!rankings.generatedAt || !Number.isInteger(rankings.eligibleCount) || rankings.eligibleCount < 1) throw new Error('ranking metadata is invalid')
 for (const ranking of Object.values(rankings).filter((value) => value && Array.isArray(value.items))) {

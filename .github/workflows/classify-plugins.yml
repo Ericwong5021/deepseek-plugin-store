@@ -1,0 +1,81 @@
+name: Classify plugins with LLM
+
+concurrency:
+  group: deepseek-plugin-store-main-write
+  cancel-in-progress: false
+
+on:
+  schedule:
+    - cron: '43 * * * *'
+  workflow_dispatch:
+    inputs:
+      plugin:
+        description: Plugin id or owner/repository
+        required: false
+        type: string
+      limit:
+        description: Maximum plugins to classify
+        required: false
+        default: '20'
+        type: string
+      force:
+        description: Reclassify an already classified plugin
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Classify unrecognized plugins
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LLM_CLASSIFIER_API_KEY: ${{ secrets.LLM_CLASSIFIER_API_KEY }}
+          LLM_CLASSIFIER_BASE_URL: ${{ vars.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1' }}
+          LLM_CLASSIFIER_MODEL: ${{ vars.LLM_CLASSIFIER_MODEL || 'gpt-5.3-codex-spark' }}
+          LLM_CLASSIFIER_LIMIT: ${{ inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
+          LLM_CLASSIFIER_PLUGIN: ${{ inputs.plugin || '' }}
+          LLM_CLASSIFIER_FORCE: ${{ inputs.force && '1' || '0' }}
+        run: node scripts/classify-plugins.mjs
+      - name: Validate registry and catalogs
+        run: |
+          node scripts/validate-registry.mjs
+          node scripts/generate-catalog.mjs --check
+          node scripts/validate.mjs
+      - name: Check generated file scope
+        run: |
+          unexpected=$(git status --short | sed -E 's/^.. //g' | grep -Ev '^data/(plugin-classifications|candidates|catalog-v2|catalog|plugins|editor-picks)\.json$' || true)
+          if [ -n "$unexpected" ]; then
+            echo "$unexpected"
+            exit 1
+          fi
+      - name: Commit classifications
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/plugin-classifications.json data/candidates.json data/catalog-v2.json data/catalog.json data/plugins.json data/editor-picks.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "chore: classify plugins with LLM"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Trigger website deployment
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$DEPLOY_HOOK" ]; then
+            curl --fail --silent --show-error --request POST "$DEPLOY_HOOK"
+          fi

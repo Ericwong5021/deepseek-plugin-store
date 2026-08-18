@@ -4,6 +4,22 @@ import { pathToFileURL } from 'node:url'
 import { loadRegistryPlugins, readJson, sha256, titleForLegacyCategory } from './registry-lib.mjs'
 
 const OUTPUTS = ['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/editor-picks.json']
+const humanClassificationSources = new Set(['reviewed-override', 'accepted-maintainer', 'editorial-review'])
+
+const withLlmClassification = (record, entry) => entry?.status === 'classified' && !humanClassificationSources.has(record.classification.source) ? {
+  ...record,
+  classification: {
+    group: entry.group,
+    category: entry.category,
+    tags: entry.tags,
+    source: 'llm-classification',
+    confidence: entry.confidence,
+    evidence: [`llm:${entry.model}`, `sha256:${entry.evidenceHash}`],
+    needsReview: entry.confidence === 'low',
+    classifiedAt: entry.classifiedAt,
+    reason: entry.reason,
+  },
+} : record
 
 const buildRankings = (plugins, updatedAt, publicCategories) => {
   const eligible = plugins.filter((plugin) => plugin.admission.status === 'verified' && plugin.observations?.compatibility?.manifestFound === true && publicCategories.has(plugin.classification.category) && !plugin.classification.needsReview && ['active', 'incubating'].includes(plugin.lifecycle.status))
@@ -59,11 +75,12 @@ export const buildCatalogOutputs = async () => {
   const observations = await readJson('data/observations.json')
   const candidates = await readJson('data/candidates.json', { schemaVersion: 2, updatedAt: observations.updatedAt, candidates: {} })
   const quality = await readJson('data/plugin-quality.json', { schemaVersion: 1, assessments: {} })
+  const classifications = await readJson('data/plugin-classifications.json', { schemaVersion: 1, updatedAt: null, classifications: {} })
   const registryFiles = await loadRegistryPlugins()
-  const records = registryFiles.map(({ value }) => value).sort((a, b) => a.id.localeCompare(b.id))
+  const records = registryFiles.map(({ value }) => withLlmClassification(value, classifications.classifications?.[value.id])).sort((a, b) => a.id.localeCompare(b.id))
   const picks = new Map(collection.items.map((item) => [item.repository.toLowerCase(), item.rank]))
-  const updatedAt = observations.updatedAt
-  const sourceCommit = sha256({ taxonomy, collection, records, observations, candidates, quality })
+  const updatedAt = [observations.updatedAt, classifications.updatedAt].filter(Boolean).sort().at(-1)
+  const sourceCommit = sha256({ taxonomy, collection, records, observations, candidates, quality, classifications })
   const pluginsV2 = records
     .filter((record) => record.visibility === 'listed')
     .map((record) => ({
@@ -83,6 +100,7 @@ export const buildCatalogOutputs = async () => {
       registry: 'registry/plugins',
       observations: 'data/observations.json',
       candidates: 'data/candidates.json',
+      classifications: 'data/plugin-classifications.json',
     },
     taxonomy: {
       groups: taxonomy.groups,
@@ -171,7 +189,7 @@ export const buildCatalogOutputs = async () => {
     source: {
       provider: 'registry-v2',
       repository: 'Ericwong5021/deepseek-plugin-store',
-      sources: ['registry/plugins', 'data/observations.json', 'registry/collections/editor-picks.json'],
+      sources: ['registry/plugins', 'data/observations.json', 'data/plugin-classifications.json', 'registry/collections/editor-picks.json'],
       verification: 'package.json:dsh.bundle or legacy-pending',
     },
     plugins: legacyPlugins,
