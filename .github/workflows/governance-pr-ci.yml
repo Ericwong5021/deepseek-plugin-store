@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: read
+  statuses: write
 
 env:
   GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha || inputs.base_sha }}
@@ -37,6 +38,10 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/governance/pr-gate.mjs registry-schema
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_HEAD_SHA}" -f state=success -f context=registry-schema
 
   identity-uniqueness:
     name: identity-uniqueness
@@ -51,6 +56,10 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/governance/pr-gate.mjs identity-uniqueness
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_HEAD_SHA}" -f state=success -f context=identity-uniqueness
 
   path-scope:
     name: path-scope
@@ -65,6 +74,10 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/governance/pr-gate.mjs path-scope
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_HEAD_SHA}" -f state=success -f context=path-scope
 
   immutable-evidence:
     name: immutable-evidence
@@ -79,6 +92,10 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/governance/pr-gate.mjs immutable-evidence
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_HEAD_SHA}" -f state=success -f context=immutable-evidence
 
   policy-gate:
     name: policy-gate
@@ -93,6 +110,10 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/governance/pr-gate.mjs policy-gate
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_HEAD_SHA}" -f state=success -f context=policy-gate
 
   catalog-determinism:
     name: catalog-determinism
@@ -107,3 +128,7 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/governance/pr-gate.mjs catalog-determinism
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_HEAD_SHA}" -f state=success -f context=catalog-determinism
