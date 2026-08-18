@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-18T16:03:35.975Z",
+  "updatedAt": "2026-08-18T17:04:55.368Z",
   "classifications": {
     "123cdxcc-dsh-mindsee": {
       "status": "classified",
@@ -1650,6 +1650,1370 @@
       "evidenceHash": "90853d5652032f11d31ff91d3219085407809fab22e73c2d1da5a4bc18b278b0",
       "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
       "cacheKey": "ca7fa805f654031915557b043478d679c1eda95fe74377c579938ab3206f241b",
+      "shadowMode": true
+    },
+    "baiyingawa-everyconnect": {
+      "status": "failed",
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "repositoryCommitSha": "ab9bf77f88f12b5be9d94da72f98ff0bac37fa0e",
+      "cacheKey": "980071eaae34c507853634f43b52f04fa032fb5a994d652856810df617e49702",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T17:02:22.932Z",
+      "lastAttemptAt": "2026-08-18T17:02:22.932Z",
+      "nextRetryAt": "2026-08-18T23:02:22.932Z",
+      "retryable": true,
+      "error": "AI classification tags are invalid",
+      "shadowMode": true
+    },
+    "baizhichen-web-dsh-vision-fallback-bridge": {
+      "status": "classified",
+      "group": "research-knowledge",
+      "category": "document-processing",
+      "tags": [
+        "file",
+        "document",
+        "image",
+        "tool",
+        "integration"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.95,
+      "reason": "Primary purpose is document/media upload bridging: it handles selected file types and turns them into workspace paths so models can access them via downstream tools. Capabilities are local file handling and typed file-path handoff; no evident high-risk behavior.",
+      "risk": {
+        "level": "R0",
+        "capabilities": [
+          "Accepts uploaded images and common document file types",
+          "Stores uploads under a workspace directory",
+          "Converts uploads into workspace path-based references for downstream model tools",
+          "Supports routing hints for both image and document types"
+        ],
+        "reasons": [
+          {
+            "code": "Plugin is described as a lightweight upload bridge that converts images and documents into workspace paths for text-only models to access through vision/file tools.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Defines storage location for uploaded files in `.dsh-vision/uploads/`, indicating local workspace file handling.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Manifest metadata marks it as a DSH web plugin bundle with injected client-side integration entrypoint, consistent with document/file-processing behavior.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "Repository includes plugin source files (`lib/client.js`, `lib/index.js`) and patch manifest for runtime behavior.",
+            "evidenceRef": "tree"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "Accepts uploaded images and common document file types",
+          "Stores uploads under a workspace directory",
+          "Converts uploads into workspace path-based references for downstream model tools",
+          "Supports routing hints for both image and document types"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.95,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:02:29.939Z",
+      "repositoryCommitSha": "81b09e36c0bd23969c7a7f4555d545e75e2cbb3e",
+      "evidenceHash": "96762afe224e3b7fe7cc5b73e402cdf30edce24ce0bc7960e1a2ed319a6c01a5",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "0b32521f76ee289721fc95e02415b98a158a983ce4395abc0d36ccf108f123bd",
+      "shadowMode": true
+    },
+    "balcoz-dsh-ocr-local": {
+      "status": "classified",
+      "group": "tools-data",
+      "category": "media-tools",
+      "tags": [
+        "image",
+        "tool",
+        "file",
+        "terminal",
+        "desktop",
+        "automation",
+        "workflow"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.94,
+      "reason": "This plugin is a user-facing media tool that adds local OCR capability to DeepSeek Harness. Its main purpose is converting pasted or provided images into text (especially screenshots/聊天记录/文档场景) through offline PP-OCRv5 on ONNX Runtime, with support for both Web and TUI input flows. Secondary functionality includes local setup/caching of OCR models and environment bootstrap.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Extracts text from local images (OCR) and returns recognized text for agent use",
+          "Supports image paste-to-path flow in both DSH Web and TUI environments",
+          "Provides local OCR setup/download tooling (environment bootstrap, model download, cache/config options)",
+          "Modifies local client behavior via install scripts (e.g., TUI paste-key binding setup)"
+        ],
+        "reasons": [
+          {
+            "code": "README documents primary flow: paste image in TUI/Web, agent calls ocr_image to read text locally via PP-OCRv5 + ONNX Runtime.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Repository ships setup assets (ocr/setup.py, install scripts) for local environment/model initialization, indicating dependency/runtime installation and local model caching behavior.",
+            "evidenceRef": "tree"
+          },
+          {
+            "code": "Plugin is packaged for DSH via manifest/exports and includes patch files and profile config hooks, confirming integration into user client behavior.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "Extracts text from local images (OCR) and returns recognized text for agent use",
+          "Supports image paste-to-path flow in both DSH Web and TUI environments",
+          "Provides local OCR setup/download tooling (environment bootstrap, model download, cache/config options)",
+          "Modifies local client behavior via install scripts (e.g., TUI paste-key binding setup)"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.94,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:02:37.678Z",
+      "repositoryCommitSha": "5aaaf98a0258d62eaabf930eedbdcc92518d9bfe",
+      "evidenceHash": "a7a5ecb48f70e66a0fc57e3dfe25bcc3a44048db5cd7a7869766fc4355e3a08e",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "5f63bc6aa40bb63b1eaa5c7d49a3b5eb8060d6fee486dfc52d97e67d3c042ed3",
+      "shadowMode": true
+    },
+    "bananasoldier01-dsh-tidychat": {
+      "status": "classified",
+      "group": "interface-experience",
+      "category": "navigation-panels",
+      "tags": [
+        "chat",
+        "ui",
+        "layout",
+        "automation",
+        "browser",
+        "tool"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.92,
+      "reason": "该插件主要面向 DSH Web 聊天界面的可视化体验优化：将长会话按已完成轮次进行可折叠整理、加入过程/正文分隔线、提供左缘定位导航与跳转入口，并支持开关式配置。它属于面向用户界面导航与布局改善的插件，能力边界主要在当前会话 DOM 的本地重排与展示控制；未见远程数据抓取或外部服务集成迹象，但具备自动点击加载历史等交互自动化特征，因此评为中低风险。",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "自动整理并折叠 DSH Web 会话中的已完成轮次，突出显示最终结论",
+          "在会话中插入过程与正文分隔线以提升可读性",
+          "在聊天左缘生成可悬停摘要与点击跳转的导航条",
+          "自动检测并触发“加载更早”以纳入历史消息",
+          "通过设置开关控制功能，默认可全量开启"
+        ],
+        "reasons": [
+          {
+            "code": "DOM_REWRITING_IN_BROWSER",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "AUTOMATIC_HISTORY_CLICKING",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "CLIENT_RUNTIME_INJECTION_ON_WEB",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "OPTIONAL_HOST_WHITELIST_PATCH_INSTRUCTION",
+            "evidenceRef": "readme"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "自动整理并折叠 DSH Web 会话中的已完成轮次，突出显示最终结论",
+          "在会话中插入过程与正文分隔线以提升可读性",
+          "在聊天左缘生成可悬停摘要与点击跳转的导航条",
+          "自动检测并触发“加载更早”以纳入历史消息",
+          "通过设置开关控制功能，默认可全量开启"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.92,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:02:47.169Z",
+      "repositoryCommitSha": "3742b4e2c50ce26136da212f8d14741f2e286f4e",
+      "evidenceHash": "a0f5dd7be4e316d6be57e21a1959464ec28cac46e6899685b037240a7c19b446",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "a189bc61c91a2e41b6f610ef158556ea1be74b2a5d600abf20457c616d198f52",
+      "shadowMode": true
+    },
+    "bass1125-imemory": {
+      "status": "classified",
+      "group": "agents-workflows",
+      "category": "memory-context",
+      "tags": [
+        "agent",
+        "memory",
+        "context",
+        "tool",
+        "file",
+        "ui",
+        "workflow",
+        "knowledge"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.94,
+      "reason": "Primary purpose: long-term memory/context persistence for a DSH agent workflow. The plugin automates memory capture, relevance retrieval, and contextual recall, and adds workflow-aware tools plus a management panel. Secondary features include memory consolidation/decay, learned-* skill persistence, and local file-based storage; risk is moderate due to automatic local context/memory manipulation.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Persistent local memory files for notes/profiles (MEMORY.md, USER.md)",
+          "Per-turn recall/injection of relevant memory into LLM context",
+          "Post-turn automatic memory extraction with scoring and filtering",
+          "Scheduled consolidation: dedupe/conflict merging and decay/retention handling",
+          "Provides memory management tools (memory_search, memory_add, memory_update, memory_forget, memory_sessions, memory_consolidate)",
+          "Can persist learned workflows as learned-* skills",
+          "Optional web management panel at /imemory/ for viewing/editing memory entries",
+          "Configurable local storage directory for memory data"
+        ],
+        "reasons": [
+          {
+            "code": "The plugin is explicitly described as a DSH long-term memory plugin that auto-extracts notes after each round and injects relevant memories before each step.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "It stores user and agent memory in local plaintext files (MEMORY.md, USER.md) plus index/skill files under memDir, with configurable path.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Six dedicated tools are exposed for memory operations: memory_search, memory_add, memory_update, memory_forget, memory_sessions, memory_consolidate.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "A web management interface is listed at /imemory/ for browsing, scoring, deleting, and conflict cleanup.",
+            "evidenceRef": "readme"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "network.access",
+          "Persistent local memory files for notes/profiles (MEMORY.md, USER.md)",
+          "Per-turn recall/injection of relevant memory into LLM context",
+          "Post-turn automatic memory extraction with scoring and filtering",
+          "Scheduled consolidation: dedupe/conflict merging and decay/retention handling",
+          "Provides memory management tools (memory_search, memory_add, memory_update, memory_forget, memory_sessions, memory_consolidate)",
+          "Can persist learned workflows as learned-* skills",
+          "Optional web management panel at /imemory/ for viewing/editing memory entries",
+          "Configurable local storage directory for memory data"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.94,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:02:56.372Z",
+      "repositoryCommitSha": "b178718c0bddf9b54dfb49dcb6131e2914cd81b7",
+      "evidenceHash": "e91cd72c53090175ab1c53687d62a1493b53e3aa585fdbc93f9aa2f55cd4e924",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "b9bedd06934c78f08f410edef3459ce7fbec21090b757b9bbfe31a00d9296a5f",
+      "shadowMode": true
+    },
+    "bbbangage-dsh-prompt-enhance": {
+      "status": "classified",
+      "group": "agents-workflows",
+      "category": "automation",
+      "tags": [
+        "automation",
+        "chat",
+        "ui",
+        "api",
+        "tool",
+        "workflow"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.94,
+      "reason": "This plugin is primarily a chat productivity utility that automates prompt refinement in DeepSeek Harness: a one-click action (and slash command) rewrites user prompts with structured output, then supports one-click undo. It appears safe and low-to-moderate risk (R1) because it processes user prompt text and can trigger network model calls, but it does not indicate file, shell, or external side-effect operations.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Reads user-entered prompt text from chat input",
+          "Sends prompt text to model endpoint for enhancement when available",
+          "Falls back to built-in rule-based expansion when model is unavailable",
+          "Injects an in-chat button and performs one-click text replace/undo in the composer"
+        ],
+        "reasons": [
+          {
+            "code": "README describes a `/prompt-enhance` command and default-model-based prompt rewrite flow with automatic rule fallback when LLM times out/unavailable.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README specifies a web chat UI button added to conversation input for one-click expansion and one-click undo of replaced text.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Package metadata declares web client integration and dependencies on DSH API/model remotes, implying runtime communication with model services.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "Reads user-entered prompt text from chat input",
+          "Sends prompt text to model endpoint for enhancement when available",
+          "Falls back to built-in rule-based expansion when model is unavailable",
+          "Injects an in-chat button and performs one-click text replace/undo in the composer"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.94,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:03:05.094Z",
+      "repositoryCommitSha": "8e4abd2b4641e6cbfc05aacf7e8518158ff87744",
+      "evidenceHash": "41c6735d08d12be1bc2164c23d00815a713170a43ea2742cf9013dcc98d04403",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "204630a8b94a1154b290eb7f1ffdf8a5b07c9a1710c4678f825936d1bf1ff2c5",
+      "shadowMode": true
+    },
+    "begonia599-dsh-config-form": {
+      "status": "classified",
+      "group": "build-development",
+      "category": "plugin-development",
+      "tags": [
+        "ui",
+        "api",
+        "tool",
+        "integration",
+        "workflow",
+        "data"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.92,
+      "reason": "The plugin is primarily a plugin-development utility: it provides a unified settings page framework where plugin authors declare form schemas and the base plugin renders and serves those forms. It focuses on configuration UX plus secure, constrained write paths (revisioned deltas and undeclared-field rejection), and delegates secret storage to credentials rather than settings.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Provides a shared settings UI tab and form renderer for adopting plugins",
+          "Exposes local configuration endpoints for listing forms, reading form state, and applying revisioned updates",
+          "Validates declared settings schemas and rejects undeclared/invalid writes",
+          "Plugs into a credentials seam for secret fields to avoid storing secret values in settings payloads"
+        ],
+        "reasons": [
+          {
+            "code": "Declares `ctx.configForm.declare(...)` and central renderer/route model for plugin settings adoption",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Registers HTTP routes for forms, write updates, and secret put/delete under `/config-form/api/*` with revision conflict handling",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Adds admission checks (loopback peer, loopback Host, same-origin for state changes) on the host web route",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Includes browser client artifact injection (`dsh` client patch/exports) and web platform bundle metadata",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "Provides a shared settings UI tab and form renderer for adopting plugins",
+          "Exposes local configuration endpoints for listing forms, reading form state, and applying revisioned updates",
+          "Validates declared settings schemas and rejects undeclared/invalid writes",
+          "Plugs into a credentials seam for secret fields to avoid storing secret values in settings payloads"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.92,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:03:14.303Z",
+      "repositoryCommitSha": "447ba9106802ff98723d39b4cc8bc87bd7669985",
+      "evidenceHash": "746888587e76b9ffe1d9ba02d460e45f1120a5ceaf6b43650aa1b13765ada05e",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "e56b870ee417c6f1443021e9c37efe3d25b23fb8b14d2b7214d0d7c20966ecca",
+      "shadowMode": true
+    },
+    "beijingwahw-dsh-autonomous-scheduler": {
+      "status": "classified",
+      "group": "agents-workflows",
+      "category": "orchestration",
+      "tags": [
+        "agent",
+        "automation",
+        "planning",
+        "tool",
+        "workflow",
+        "memory",
+        "monitoring",
+        "integration"
+      ],
+      "confidence": "medium",
+      "confidenceScore": 0.78,
+      "reason": "This is primarily an AI orchestration plugin for the DSH ecosystem: a proactive scheduler/agent layer that observes signals, plans execution, runs multi-model task chains, and evolves strategy over time. Conservatively, user-facing capabilities center on workflow automation and host-aware agent scheduling (including safety governance). Moderately higher-risk due to credential handling and host-tool governance capabilities; no immediate blockers evident from provided evidence.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Autonomous scheduling/dispatch of tasks and model execution within DSH host runtime.",
+          "Host-level tool observation and governance hooks (including optional kill-switch style interruption) in shared tool pipeline.",
+          "Persistent memory and experience retrieval/feedback used for planning and execution decisions.",
+          "API key ingestion from host/env/config with key-rotation and fallback behavior.",
+          "Distributed operational features (consensus/sync/hot-reload) exposed as plugin services."
+        ],
+        "reasons": [
+          {
+            "code": "Core purpose is an autonomous scheduler/orchestrator that can issue and govern actions without direct user prompts.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Plugin exports host-integration tools and declares DSH plugin bundle/patch wiring, indicating it runs inside and influences host workflow.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "Feature set includes host tool pre-execute/observability, autonomy loop, safety governor, and multi-key credential handling.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Repository structure includes autonomy loop, safety governor, memory, consensus, sync, and policy/sandbox/hot-reload components, confirming operational scope.",
+            "evidenceRef": "tree"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "Autonomous scheduling/dispatch of tasks and model execution within DSH host runtime.",
+          "Host-level tool observation and governance hooks (including optional kill-switch style interruption) in shared tool pipeline.",
+          "Persistent memory and experience retrieval/feedback used for planning and execution decisions.",
+          "API key ingestion from host/env/config with key-rotation and fallback behavior.",
+          "Distributed operational features (consensus/sync/hot-reload) exposed as plugin services."
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.78,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:03:23.038Z",
+      "repositoryCommitSha": "960be5270c251280a59b06d7caca0d91c34ad462",
+      "evidenceHash": "714d415026ae80405b3a34f5b0d963ef4140bc37accc443ba70cd3c2017b4e4d",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "5668d7c5cad8c6c8814c4a54d6c46fcf592ec21a558e0f37a23c3e1ba610972d",
+      "shadowMode": true
+    },
+    "beijingwahw-dsh-nuke-plugin": {
+      "status": "classified",
+      "group": "tools-data",
+      "category": "files-terminal",
+      "tags": [
+        "automation",
+        "file",
+        "tool",
+        "terminal",
+        "workflow",
+        "data",
+        "cli"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.96,
+      "reason": "该插件的主要用户面向目的是“文件系统清理与可回滚运维”：在 DSH 环境中扫描插件残留与孤儿文件、评估风险与收益、执行事务化清理（并支持恢复、审计与告警）。能力上以可控清理、备份/恢复和磁盘健康决策为核心，包含明显的自动化运维与管理员操作助手特性。",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "扫描残留与依赖关系，识别可清理对象（插件目录、配置引用、TEMP）",
+          "执行可回滚的文件系统清理事务（预演/提交/回滚）",
+          "通过备份区与 WAL/事务日志支持崩溃恢复与审计",
+          "对可疑大规模删除进行策略守卫、上限与黑窗控制",
+          "在恢复失败时保持备份与可追溯台账",
+          "检测并可执行内容去重（含硬链接替换与可逆动作）",
+          "提供磁盘趋势/倒计时分析与告警"
+        ],
+        "reasons": [
+          {
+            "code": "插件主功能以清理残留、目录/文件生命周期管理为核心，并强调回收区、事务与恢复机制。",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "仓库结构包含 WAL、锁、备份、审计链等基础设施，表明其主要是安全化文件系统清理工具。",
+            "evidenceRef": "tree"
+          },
+          {
+            "code": "通过 dsh 插件工具链向 Agent 注册 19 个命令，包括扫描、预演、清理、恢复与巡检。",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "包名与入口为 dsh 插件，定位于插件生态中的环境清理与维护。",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "filesystem.write",
+          "扫描残留与依赖关系，识别可清理对象（插件目录、配置引用、TEMP）",
+          "执行可回滚的文件系统清理事务（预演/提交/回滚）",
+          "通过备份区与 WAL/事务日志支持崩溃恢复与审计",
+          "对可疑大规模删除进行策略守卫、上限与黑窗控制",
+          "在恢复失败时保持备份与可追溯台账",
+          "检测并可执行内容去重（含硬链接替换与可逆动作）",
+          "提供磁盘趋势/倒计时分析与告警"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.96,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:03:29.835Z",
+      "repositoryCommitSha": "8bbcba31c27a6e1afd6a7615c737920c9a5a3b2a",
+      "evidenceHash": "e575c5bc21b3f66ed5c459e472d93e95f6c8ef5d8441c37cd2c2f95ed2f5cd19",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "452743a0f3dcdbf81992407c9e300eb020483d0141be04dc58383de75e14da09",
+      "shadowMode": true
+    },
+    "beijingwahw-dsh-proactive": {
+      "status": "classified",
+      "group": "agents-workflows",
+      "category": "orchestration",
+      "tags": [
+        "agent",
+        "automation",
+        "planning",
+        "workflow",
+        "tool",
+        "monitoring",
+        "integration",
+        "memory"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.9,
+      "reason": "Primary purpose is an AI orchestration plugin for the DSH/Cordis ecosystem: it actively schedules, executes, evaluates, and evolves multi-model tasks in an autonomous loop, with tooling for memory/experience retrieval, policy feedback, and host-tool governance. It is best categorized as orchestration/automation of AI workflows (not a UI, editing, or media plugin). Conservative risks include host-side governance hooks and external model API/key handling, so classified as medium risk (R1).",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Multi-model task scheduling and autonomous execution loop",
+          "Host-level tool-call observation and governance (including kill-switch style refusal flow)",
+          "Long-running memory/knowledge retrieval with persistent storage and strategy feedback",
+          "External API access for LLM providers with multi-key routing/rotation"
+        ],
+        "reasons": [
+          {
+            "code": "plugin_automates_model_and_tool_workflows",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "host_fusion_can_intercept_and_gate_host_tool_calls",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "handles_api_key_sources_and_rotation_for_model_access",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "includes_consensus_sync_and_hot_reload_components_in_distribution",
+            "evidenceRef": "tree"
+          },
+          {
+            "code": "distributed_runtime plugin packaging for DSH via cordis bundle",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "Multi-model task scheduling and autonomous execution loop",
+          "Host-level tool-call observation and governance (including kill-switch style refusal flow)",
+          "Long-running memory/knowledge retrieval with persistent storage and strategy feedback",
+          "External API access for LLM providers with multi-key routing/rotation"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.9,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:03:38.966Z",
+      "repositoryCommitSha": "960be5270c251280a59b06d7caca0d91c34ad462",
+      "evidenceHash": "7318607ca86a8d364c14133ced8dbd77b3972a9fb82b0e4f5ef3df96ae4f38a3",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "5668d7c5cad8c6c8814c4a54d6c46fcf592ec21a558e0f37a23c3e1ba610972d",
+      "shadowMode": true
+    },
+    "better-er-dsh-classic-coding": {
+      "status": "classified",
+      "group": "tools-data",
+      "category": "files-terminal",
+      "tags": [
+        "file",
+        "ui",
+        "api",
+        "tool",
+        "integration"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.98,
+      "reason": "Primary purpose is an in-chat, workspace-local file editing plugin: it adds a slide-in Monaco editor + file tree panel for editing files directly in DSH Web. User-facing value is local file navigation and editing within the interface, with RPC-backed workspace read/write support and web UI panel injection; no explicit dangerous external integrations are indicated.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Read workspace files via RPC endpoints",
+          "Write/overwrite workspace files via RPC endpoints",
+          "Provide a built-in Monaco-based file editor panel in-chat",
+          "Load editor dependencies from CDN at runtime"
+        ],
+        "reasons": [
+          {
+            "code": "Plugin defines DSH client/web integration and injects UI into shell/sidebar slots to render an embedded editing panel.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "Host-side RPC provides describe/listDir/readFile/writeFile channels backed by DSH filesystem service, enabling file-system operations.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Monaco Editor is loaded dynamically from CDN and used for editing experience.",
+            "evidenceRef": "readme"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "filesystem.write",
+          "network.access",
+          "Read workspace files via RPC endpoints",
+          "Write/overwrite workspace files via RPC endpoints",
+          "Provide a built-in Monaco-based file editor panel in-chat",
+          "Load editor dependencies from CDN at runtime"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.98,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:03:47.330Z",
+      "repositoryCommitSha": "209dd4ee354a84f4f97db84fed9100f71314e4ed",
+      "evidenceHash": "18cb45950241a74a5326c5c0f771d53f1ef7b16cbf2912b018f420fcb1c957fe",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "2958b1c551028d42694bf56f25e24b70ce7f7b4b90105fb5e4b058faf4965f72",
+      "shadowMode": true
+    },
+    "biggerboy-dsh-conversation-anchors": {
+      "status": "classified",
+      "group": "interface-experience",
+      "category": "navigation-panels",
+      "tags": [
+        "ui",
+        "chat",
+        "tool",
+        "browser",
+        "context"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.93,
+      "reason": "Primary purpose is a DeepSeek Harness web GUI navigation enhancement: a sidebar panel that lists per-message conversation anchors and lets users jump to specific chat turns by smooth scrolling. The plugin is client-side and UI-focused, with no indicated external integrations or command execution.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Generates a sidebar anchor list for visible chat turns",
+          "Subscribes to session snapshot updates to refresh anchor data in real time",
+          "Injects UI elements into DSH web sidebar via DOM-level insertion and MutationObserver re-heal",
+          "Performs click-to-scroll navigation to conversation DOM anchors"
+        ],
+        "reasons": [
+          {
+            "code": "README states the plugin is an out-of-tree browser-side sidebar extension that adds anchor navigation for conversation nodes.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "The behavior is implemented on the client side for platform \"web\" and depends on DOM markers like [data-chat-anchor-key], indicating UI/DOM manipulation scope.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "It supports DeepSeek Harness web GUI only and notes DOM compatibility dependence, implying potential layout fragility if host DOM changes.",
+            "evidenceRef": "readme"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "Generates a sidebar anchor list for visible chat turns",
+          "Subscribes to session snapshot updates to refresh anchor data in real time",
+          "Injects UI elements into DSH web sidebar via DOM-level insertion and MutationObserver re-heal",
+          "Performs click-to-scroll navigation to conversation DOM anchors"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.93,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:03:53.851Z",
+      "repositoryCommitSha": "364e20cd74b5d80ef0de5af94eb39001de9d17ea",
+      "evidenceHash": "19f70c49c134f21f6e6224a539b2375d956aa318c6e9a4ec0164ce97fdad34c0",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "853dba81e7e114f6dbc7ba33460dd6e76bb9ba52a26d2ceb7e277661ea9275e5",
+      "shadowMode": true
+    },
+    "bill084153-cell-dsh-knowledge-forge": {
+      "status": "failed",
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "repositoryCommitSha": "97ff5ca05440a9d35b45e75abe3b08b04af631ed",
+      "cacheKey": "b6cd82e25584dda0fee9c3ef15ef941873089ce47e8e41de7a65e928acae8ece",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T17:04:03.043Z",
+      "lastAttemptAt": "2026-08-18T17:04:03.043Z",
+      "nextRetryAt": "2026-08-18T23:04:03.043Z",
+      "retryable": true,
+      "error": "Unexpected non-whitespace character after JSON at position 1701 (line 1 column 1702)",
+      "shadowMode": true
+    },
+    "bitxeno-dsh-at-github": {
+      "status": "failed",
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "repositoryCommitSha": null,
+      "cacheKey": null,
+      "failureClass": "repository_not_found",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-18T17:04:03.336Z",
+      "lastAttemptAt": "2026-08-18T17:04:03.336Z",
+      "nextRetryAt": "2026-08-25T17:04:03.336Z",
+      "retryable": true,
+      "error": "https://api.github.com/repos/bitxeno/dsh-at-github: 404 {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/repos#get-a-repository\",\"status\":\"404\"}",
+      "shadowMode": true
+    },
+    "blooming-fang-dsh-feishu-notifier": {
+      "status": "classified",
+      "group": "integrations-communication",
+      "category": "notifications-monitoring",
+      "tags": [
+        "notification",
+        "integration",
+        "api",
+        "automation",
+        "workflow"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.95,
+      "reason": "Primary purpose is user-facing notification integration: sending DeepSeek Harness interaction/turn events to a user-configured Feishu bot for approval and workflow awareness. Capabilities appear limited to event-triggered webhook messaging and settings persistence, with moderate risk from external webhook endpoints and stored configuration.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Sends interaction and turn-completion events to a Feishu webhook",
+          "Provides a web settings UI for integration configuration",
+          "Persists webhook configuration in host settings",
+          "Supports test message sending to verify connectivity"
+        ],
+        "reasons": [
+          {
+            "code": "Plugin description and README state it notifies a Feishu bot for user approval, user-question, plan-confirm, and turn-end events.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Webhook configuration is managed in plugin settings and persisted via DSH host settings (settings.yaml), which implies handling integration endpoint credentials.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Manifest and repository metadata indicate outbound network usage is a core requirement.",
+            "evidenceRef": "repository"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "network.access",
+          "Sends interaction and turn-completion events to a Feishu webhook",
+          "Provides a web settings UI for integration configuration",
+          "Persists webhook configuration in host settings",
+          "Supports test message sending to verify connectivity"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.95,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:04:13.493Z",
+      "repositoryCommitSha": "0383e40b90aa14a9cd7c67e39124b43392c9134a",
+      "evidenceHash": "aa158298cfa86b5b685ce9bdea2d6e9f50b1788a306f2ef9278d57e905ca1704",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "d2109b0311ce0c1bdb298bb6d973399a1bf62c8d1830831cb3aeb58c03419f2a",
+      "shadowMode": true
+    },
+    "bob-bo1-dsh-deepseek-balance": {
+      "status": "classified",
+      "group": "integrations-communication",
+      "category": "external-services",
+      "tags": [
+        "api",
+        "integration",
+        "data",
+        "tool",
+        "ui",
+        "monitoring",
+        "visualization"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.92,
+      "reason": "This plugin is a DSH web plugin that adds a left-side panel for viewing DeepSeek account balance and local token-cost usage statistics. Its primary function is external service integration for balance checks plus cost analytics from locally stored DSH sessions, surfaced through a web UI.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Reads DeepSeek API credential from DSH host credentials store (DEEPSEEK_API_KEY)",
+          "Calls external DeepSeek balance endpoint: https://api.deepseek.com/user/balance",
+          "Processes local DSH session records to calculate cumulative/today/Flash/Pro usage costs",
+          "Provides local plugin routes: /api/deepseek-balance and /api/deepseek-balance/usage"
+        ],
+        "reasons": [
+          {
+            "code": "credential-read-for-balance-query",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "external-api-call-to-deepseek-balance",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "local-usage-aggregation-from-session-logs",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "local-web-endpoints-exposed-by-plugin",
+            "evidenceRef": "readme"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "Reads DeepSeek API credential from DSH host credentials store (DEEPSEEK_API_KEY)",
+          "Calls external DeepSeek balance endpoint: https://api.deepseek.com/user/balance",
+          "Processes local DSH session records to calculate cumulative/today/Flash/Pro usage costs",
+          "Provides local plugin routes: /api/deepseek-balance and /api/deepseek-balance/usage"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.92,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:04:21.364Z",
+      "repositoryCommitSha": "88940a6bf159218b5828c79e6ab3b94fd116324f",
+      "evidenceHash": "6fb5e97b0e7d140c7e98e0c4877bbd4b625b3f8e7b72dc8e4b911e93e9b47111",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "7d745846ebc17bfc881921e35d5302294d15fe13a059989b84a2d7d4af2dba33",
+      "shadowMode": true
+    },
+    "boomzikazita-dsh-cybernetics": {
+      "status": "classified",
+      "group": "agents-workflows",
+      "category": "orchestration",
+      "tags": [
+        "agent",
+        "automation",
+        "tool",
+        "terminal",
+        "workflow",
+        "context",
+        "monitoring"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.93,
+      "reason": "Primary purpose is agent automation orchestration: a dsh Cordis plugin that adds control-loop governance around tool calling. It focuses on preventing runaway behavior via pre-execution guardrails, post-execution feedback, adaptive throttling, and controllability checks, with status/snapshot/check helper tools for operator visibility. It is a control/automation utility rather than a UI, content, or file-editing feature.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Intercepts and influences dsh tool-call lifecycle events",
+          "Can preflight-filter or require confirmation for risky commands",
+          "Applies adaptive rate/threshold controls based on observed failure signals",
+          "Collects execution telemetry in local logs and exposes status/diagnostic tools"
+        ],
+        "reasons": [
+          {
+            "code": "README describes hooks on tools/pre-execute, tools/result, and agent/pre-step used for preflight control, feedback adjustment, and warning injection.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Plugin includes rule-based interception for irreversible actions (e.g., rm/mv/git push) with dry-run+confirm or block behaviors.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Failure estimation uses EMA filtering and escalates/de-escalates control modes, then enforces per-turn tool-call limits.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "State and observed tools are written to local persistence files (state_log.ndjson/observed_tools.json), creating operational telemetry side effects.",
+            "evidenceRef": "readme"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "network.access",
+          "Intercepts and influences dsh tool-call lifecycle events",
+          "Can preflight-filter or require confirmation for risky commands",
+          "Applies adaptive rate/threshold controls based on observed failure signals",
+          "Collects execution telemetry in local logs and exposes status/diagnostic tools"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.93,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:04:29.607Z",
+      "repositoryCommitSha": "1932ae073fe298596ed47a90ff38ad26e531c9c9",
+      "evidenceHash": "f5aef3ec28edadb37689f14f3641ad41c92ac49798da043b1b78647d38d2a668",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "c93a52b84249d5c7784616379b03595eba720f6470cf64588f4f98a4e2d5cc31",
+      "shadowMode": true
+    },
+    "boooooooer-dsh-balance-and-cost": {
+      "status": "classified",
+      "group": "integrations-communication",
+      "category": "external-services",
+      "tags": [
+        "api",
+        "integration",
+        "data",
+        "ui",
+        "monitoring",
+        "tool"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.98,
+      "reason": "该插件的主要用途是为 DeepSeek 官方模型调用提供成本与余额可视化：在 DSH 界面显示会话/总计消耗条目，并在设置面板提供按模型、按会话统计与 CSV 导出。它还会调用官方余额接口、监听 `llm/stream` 进行实时计费估算，并对外提供状态查询与 SSE 推送。",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "llm.stream.listener",
+          "sse",
+          "filesystem.write",
+          "ui.panel",
+          "pricing-calculation"
+        ],
+        "reasons": [
+          {
+            "code": "插件通过 DeepSeek 余额接口获取账户数据（`api.deepseek.com/user/balance`），并显示与计费相关统计，涉及外部服务访问与 API 计费逻辑。",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "插件监听 `llm/stream` 并在主机端实时累计 token/成本，提供会话级与模型级明细，属于会话内容元数据统计处理。",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "统计结果持久化到 `$DSH_HOME/dsh-balance-and-cost.json`，并提供清空重置接口，涉及本地文件写入与可恢复状态。",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "插件声明为 DSH web bundle 插件并包含客户端 UI 注入与主机端 HTTP/SSE 路由（`/balance`, `/usage`, `/events`, `/reset`）。",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "llm.stream.listener",
+          "sse",
+          "filesystem.write",
+          "ui.panel",
+          "pricing-calculation"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.98,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:04:36.175Z",
+      "repositoryCommitSha": "22846b82fc5431eaf3fd53817782c06de1b30023",
+      "evidenceHash": "8769b2b47665b7c2ba461b5c7bca3665d37592b3271b4abfea780e1f50ac69bc",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "529eedc2c0510aa7e746b27333f1e43e850bf22e06aa29d5e9c1190bbbe1d737",
+      "shadowMode": true
+    },
+    "bpc-oss-litkit-search": {
+      "status": "classified",
+      "group": "research-knowledge",
+      "category": "search-browsing",
+      "tags": [
+        "search",
+        "api",
+        "document",
+        "agent",
+        "cli",
+        "tool",
+        "workflow",
+        "integration"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.91,
+      "reason": "Primary purpose is an agent-facing scholarly literature utility: a DeepSeek Harness plugin adapter that enables search, retrieval, and citation-audit workflows over many academic sources. Conservatively, capabilities include multi-source bibliographic search, PDF/supplement download, manuscript reference verification, result export, and workflow automation. A human check is needed due optional paywall-bypass-style fallback download paths.",
+      "risk": {
+        "level": "R2",
+        "capabilities": [
+          "Academic literature search across many external sources",
+          "Citation extraction and verification for manuscript files",
+          "PDF and supplementary material retrieval",
+          "Result export to bibliographic formats",
+          "Bulk retrieval, deduplication, and ranking workflows",
+          "Agent access via DSH/MCP integration"
+        ],
+        "reasons": [
+          {
+            "code": "Package is explicitly a DSH plugin adapter exposing litkit literature search, citation audit, and download capabilities.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "README documents direct network-dependent functionality: multi-source search, downloads, citation verification, and workflows.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README includes optional shadow-library fallback routes (Sci-Hub/LibGen/Anna's Archive), which raises legal/compliance concerns.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "Repository contains dedicated source, downloader, and workflow modules, indicating broad external service and data handling.",
+            "evidenceRef": "tree"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "network.access",
+          "Academic literature search across many external sources",
+          "Citation extraction and verification for manuscript files",
+          "PDF and supplementary material retrieval",
+          "Result export to bibliographic formats",
+          "Bulk retrieval, deduplication, and ranking workflows",
+          "Agent access via DSH/MCP integration"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "needs_human",
+          "aiConfidence": 0.91,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:04:48.917Z",
+      "repositoryCommitSha": "5bae0b791535f76f680c763304fcd5dc8fc80fe0",
+      "evidenceHash": "1a32724442d3407a2749c32f7efa8050155e54e9b809bd128fa69758a0c5aa24",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "a7c7d498a03e2f69eb19152fc91f72572af8952227de94445fab70554e31ad87",
+      "shadowMode": true
+    },
+    "bpz0726-dsh-bestui": {
+      "status": "classified",
+      "group": "interface-experience",
+      "category": "themes-layout",
+      "tags": [
+        "theme",
+        "ui",
+        "image",
+        "browser",
+        "file",
+        "data",
+        "integration"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.95,
+      "reason": "Primary purpose is a DeepSeek Harness Web UI appearance plugin: it provides wallpaper-based theming, opacity controls, color/foundation token customization, auto palette generation, and UI scaling options. It is a user-facing theming/UI customization plugin rather than automation, search, or data-analysis tooling. Risk is moderate because it handles user-provided images and persists/export scheme data (including embedded media) locally, but no network/external execution behavior is indicated.",
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "User-configurable wallpaper and UI appearance themes",
+          "Local image processing for wallpaper (resize/compress/re-encode)",
+          "Theme token and CSS style override injection",
+          "Persistent settings stored in browser localStorage",
+          "Scheme export/import to JSON (including embedded wallpaper data)"
+        ],
+        "reasons": [
+          {
+            "code": "README describes wallpaper upload, local image compression, per-surface opacity, color/theme controls, and settings persistence in localStorage.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README Architecture section states appearance is applied via theme override tokens plus injected body styles with a fixed background layer.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README warns exported JSON contains full wallpaper data, with explicit privacy note about sensitive images before sharing.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "package.json shows a browser web client plugin that injects theme/slot modules for host integration.",
+            "evidenceRef": "package.json"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R1",
+        "capabilities": [
+          "network.access",
+          "User-configurable wallpaper and UI appearance themes",
+          "Local image processing for wallpaper (resize/compress/re-encode)",
+          "Theme token and CSS style override injection",
+          "Persistent settings stored in browser localStorage",
+          "Scheme export/import to JSON (including embedded wallpaper data)"
+        ],
+        "autoMerge": false,
+        "shadowMode": true,
+        "reasons": [
+          "UNVERIFIED_MAINTAINER"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.95,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:04:55.367Z",
+      "repositoryCommitSha": "89902526c31a4e5690df97bcb5da8ffa6a4cac3f",
+      "evidenceHash": "500717644b17480204d359cf94f2b27e61893b6996be175b4d8532862b811c98",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "afe3116d1576475a57019d90f0125f1f0be2f82d24e0b734e994b35b8467d0a7",
       "shadowMode": true
     },
     "ymh0000123-dsh-theme-endfield": {
