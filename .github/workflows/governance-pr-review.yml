@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   review:
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'automation/governance-') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
