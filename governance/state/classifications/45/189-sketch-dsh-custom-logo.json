@@ -1,16 +1,78 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "theme",
+    "layout",
+    "browser",
+    "image",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is mainly a DSH web UI branding/appearance plugin: it replaces the fixed top-left wordmark with user-configured image or text, adds an inline on-logo settings handle and panel, and persists preferences locally in the browser; it does not present external integrations or workflow automation beyond in-interface customization.",
+  "summaries": {
+    "zh": "在 DSH 网页界面左上角，该插件可将默认品牌标志替换为自定义图片或文字，并提供内联设置入口快速打开配置。",
+    "en": "In the DSH web UI, this plugin lets you replace the default top-left logo with your own image or text and open a settings UI from an inline control on the wordmark."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "browser-side UI customization",
+      "sidebar logo replacement",
+      "localStorage-based preference persistence",
+      "user image upload parsing"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin appends elements to the DSH `button.brand` wordmark and hides the original SVG via a sibling selector to replace the top-left logo/wordmark.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents persistence of runtime choice in `window.localStorage` under `dsh.custom-logo.v1` with fields for mode, text, color, alignment, and font size.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes image mode accepts PNG/SVG/JPG uploads with a 256 KB limit and uses browser-side processing (`FileReader` data URL).",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "browser-side UI customization",
+      "sidebar logo replacement",
+      "localStorage-based preference persistence",
+      "user image upload parsing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:06:27.074Z",
   "repositoryCommitSha": "9a2f15f73b47b3112d3dcc147bd7a00e8edf3426",
+  "evidenceHash": "ff6d2ce5a84945a2adb1c86bdebe122298f2b98725125669b52ea846f988610b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "f134ceedb369a3920db050b81d95fe9a9d5070c247f335a8612ecbb444430bcc",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T17:58:21.403Z",
-  "lastAttemptAt": "2026-08-18T17:58:21.403Z",
-  "nextRetryAt": "2026-08-18T23:58:21.403Z",
-  "retryable": true,
-  "error": "AI decision contains unsupported fields",
   "shadowMode": false
 }
