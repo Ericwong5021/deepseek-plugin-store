@@ -5,7 +5,7 @@ import { LLMAdapter } from './governance/llm.mjs'
 import { applyPolicy, loadPolicy } from './governance/policy.mjs'
 import { runDeterministicChecks } from './governance/rules.mjs'
 import { readStateCollection, syncStateCollection } from './governance/state.mjs'
-import { createFailureRecord, shouldClassify } from './governance/stability.mjs'
+import { createFailureRecord, failureRetryAt, shouldClassify } from './governance/stability.mjs'
 import { loadRegistryPlugins, readJson, sha256 } from './registry-lib.mjs'
 
 const apiKey = process.env.LLM_CLASSIFIER_API_KEY ?? ''
@@ -29,6 +29,15 @@ const originalCache = structuredClone(cache)
 const originalCandidates = structuredClone(candidateData)
 if (![1, 2].includes(cache.schemaVersion) || !cache.classifications || Array.isArray(cache.classifications)) throw new Error('governance classification state is invalid')
 cache.schemaVersion = 2
+let changed = false
+
+for (const entry of Object.values(cache.classifications)) {
+  if (entry.status !== 'failed' || entry.failureClass !== 'rate_limited') continue
+  const nextRetryAt = failureRetryAt({ classification: entry.failureClass, errorText: entry.error, now: entry.lastAttemptAt })
+  if (!nextRetryAt || nextRetryAt === entry.nextRetryAt) continue
+  entry.nextRetryAt = nextRetryAt
+  changed = true
+}
 
 const registryItems = registryFiles.map(({ value }) => ({
   id: value.id,
@@ -51,7 +60,6 @@ for (const item of candidateItems) if (!itemsById.has(item.id)) itemsById.set(it
 const items = [...itemsById.values()]
 
 const activeIds = new Set(items.map((item) => item.id))
-let changed = false
 for (const id of Object.keys(cache.classifications)) {
   if (!activeIds.has(id)) {
     delete cache.classifications[id]
@@ -62,7 +70,10 @@ for (const id of Object.keys(cache.classifications)) {
 const eligible = items
 const matched = target ? eligible.filter((item) => item.id.toLowerCase() === target || item.fullName.toLowerCase() === target) : eligible
 if (target && !matched.length) throw new Error(`plugin not found: ${target}`)
-const queue = matched
+const pauseCandidates = [process.env.LLM_CLASSIFIER_PAUSED_UNTIL, ...Object.values(cache.classifications).filter((entry) => entry.status === 'failed' && entry.failureClass === 'rate_limited').map((entry) => entry.nextRetryAt)].filter(Boolean).sort()
+const pausedUntil = pauseCandidates.at(-1) || null
+const paused = !target && pausedUntil && Date.parse(pausedUntil) > Date.now()
+const queue = (paused ? [] : matched)
   .filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, force))
   .sort((a, b) => Number(Boolean(b.classification?.needsReview)) - Number(Boolean(a.classification?.needsReview)) || Number(b.type === 'candidate') - Number(a.type === 'candidate') || a.id.localeCompare(b.id))
   .slice(0, limit)
@@ -200,7 +211,7 @@ if (changed) {
 const recognized = Object.values(cache.classifications).filter((entry) => entry.status === 'classified').length
 const unavailable = Object.values(cache.classifications).filter((entry) => entry.status === 'failed').length
 const remaining = eligible.filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, false)).length
-const result = { selected: queue.length, classified, failed, unchanged, recognized, unavailable, remaining, total: eligible.length, target: target || null, force, shadowMode, concurrency, adapter: adapter.capability }
+const result = { selected: queue.length, classified, failed, unchanged, recognized, unavailable, remaining, total: eligible.length, target: target || null, force, shadowMode, concurrency, paused, pausedUntil, adapter: adapter.capability }
 console.log(JSON.stringify(result, null, 2))
-if (process.env.GITHUB_OUTPUT) await fs.appendFile(process.env.GITHUB_OUTPUT, `remaining=${remaining}\nunavailable=${unavailable}\nrecognized=${recognized}\n`)
+if (process.env.GITHUB_OUTPUT) await fs.appendFile(process.env.GITHUB_OUTPUT, `remaining=${remaining}\nunavailable=${unavailable}\nrecognized=${recognized}\npaused=${paused}\npaused_until=${pausedUntil || ''}\n`)
 if (target && failed) process.exitCode = 1

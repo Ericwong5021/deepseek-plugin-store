@@ -74,6 +74,17 @@ export const failureClass = (error) => {
   return 'network_error'
 }
 
+export const failureRetryAt = ({ classification, errorText, now }) => {
+  if (classification === 'rate_limited') {
+    const resetAt = String(errorText).match(/"resets_at":\s*(\d+)/)?.[1]
+    if (resetAt) return new Date(Number(resetAt) * 1000).toISOString()
+    const resetSeconds = String(errorText).match(/"reset_seconds":\s*(\d+)/)?.[1]
+    if (resetSeconds) return new Date(Date.parse(now) + Number(resetSeconds) * 1000).toISOString()
+  }
+  const delay = retryPolicy[classification]
+  return Number.isFinite(delay) ? new Date(Date.parse(now) + delay).toISOString() : null
+}
+
 export const createFailureRecord = ({ previous, error, now, model, promptVersion, policyVersion, shadowMode, repositoryCommitSha = null, cacheKey = null }) => {
   const errorText = String(error?.message || error).slice(0, 500)
   const classification = failureClass(error)
@@ -90,7 +101,7 @@ export const createFailureRecord = ({ previous, error, now, model, promptVersion
     attemptCount: previous?.status === 'failed' ? (previous.attemptCount || 1) + 1 : 1,
     firstFailedAt: previous?.status === 'failed' ? previous.firstFailedAt || previous.lastAttemptAt || now : now,
     lastAttemptAt: now,
-    nextRetryAt: retryable ? new Date(Date.parse(now) + delay).toISOString() : null,
+    nextRetryAt: failureRetryAt({ classification, errorText, now }),
     retryable,
     error: errorText,
     shadowMode,
@@ -101,7 +112,7 @@ export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = nu
   if (force || !entry) return true
   if (entry.status === 'failed') {
     if (entry.retryable === false) return false
-    if ((entry.attemptCount || 1) < 2) return true
+    if (entry.failureClass !== 'rate_limited' && (entry.attemptCount || 1) < 2) return true
     const nextRetry = Date.parse(entry.nextRetryAt || 0)
     return !Number.isFinite(nextRetry) || nextRetry <= now
   }

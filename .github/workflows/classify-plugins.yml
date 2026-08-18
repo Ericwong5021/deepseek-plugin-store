@@ -56,8 +56,9 @@ jobs:
           LLM_CLASSIFIER_API_KEY: ${{ secrets.LLM_CLASSIFIER_API_KEY }}
           LLM_CLASSIFIER_BASE_URL: ${{ vars.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1' }}
           LLM_CLASSIFIER_MODEL: ${{ vars.LLM_CLASSIFIER_MODEL || 'gpt-5.3-codex-spark' }}
-          LLM_CLASSIFIER_LIMIT: ${{ inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
+          LLM_CLASSIFIER_LIMIT: ${{ github.event_name == 'schedule' && '200' || inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
           LLM_CLASSIFIER_CONCURRENCY: ${{ vars.LLM_CLASSIFIER_CONCURRENCY || '10' }}
+          LLM_CLASSIFIER_PAUSED_UNTIL: ${{ vars.LLM_CLASSIFIER_PAUSED_UNTIL || '' }}
           LLM_CLASSIFIER_PLUGIN: ${{ inputs.plugin || '' }}
           LLM_CLASSIFIER_FORCE: ${{ inputs.force && '1' || '0' }}
           GOVERNANCE_SHADOW_MODE: '0'
@@ -94,9 +95,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ steps.batch.outputs.number }}
           HEAD_SHA: ${{ steps.batch.outputs.head }}
-          DRAIN: ${{ inputs.drain || false }}
-          LIMIT: ${{ inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
+          DRAIN: ${{ github.event_name == 'schedule' || inputs.drain || false }}
+          LIMIT: ${{ github.event_name == 'schedule' && '200' || inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
           REMAINING: ${{ steps.classify.outputs.remaining }}
+          PAUSED: ${{ steps.classify.outputs.paused }}
         run: |
           ready=false
           for attempt in $(seq 1 90); do
@@ -108,13 +110,13 @@ jobs:
           done
           if [ "$ready" != "true" ]; then exit 1; fi
           gh api --method PUT "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/merge" -f merge_method=squash -f sha="$HEAD_SHA" -f commit_title="chore: publish model classifications (#${PR_NUMBER})" --jq 'select(.merged == true) | .sha'
-          if [ "$DRAIN" = "true" ] && [ "$REMAINING" != "0" ]; then
+          if [ "$DRAIN" = "true" ] && [ "$REMAINING" != "0" ] && [ "$PAUSED" != "true" ]; then
             gh workflow run classify-plugins.yml --ref main -f limit="$LIMIT" -f force=false -f drain=true
-          else
+          elif [ "$PAUSED" != "true" ]; then
             gh workflow run governance-publish.yml --ref main
           fi
       - name: Publish completed drain
-        if: ${{ inputs.drain && steps.pending.outputs.skip != 'true' && steps.batch.outputs.number == '' }}
+        if: ${{ (github.event_name == 'schedule' || inputs.drain) && steps.classify.outputs.paused != 'true' && steps.pending.outputs.skip != 'true' && steps.batch.outputs.number == '' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run governance-publish.yml --ref main
