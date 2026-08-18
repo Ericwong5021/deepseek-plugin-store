@@ -19,6 +19,12 @@ on:
       - .github/workflows/**
       - .github/ISSUE_TEMPLATE/**
   workflow_dispatch:
+    inputs:
+      source_only:
+        description: Validate canonical registry changes without derived catalogs
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -32,15 +38,29 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Determine validation scope
+        id: scope
+        env:
+          REQUESTED_SOURCE_ONLY: ${{ inputs.source_only && 'true' || 'false' }}
+        run: |
+          if [ "$REQUESTED_SOURCE_ONLY" = "true" ]; then
+            echo "source_only=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "source_only=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Validate registry source
+        env:
+          REGISTRY_SOURCE_ONLY: ${{ steps.scope.outputs.source_only == 'true' && '1' || '0' }}
         run: node scripts/validate-registry.mjs
       - name: Validate deterministic catalogs
+        if: ${{ steps.scope.outputs.source_only != 'true' }}
         run: node scripts/generate-catalog.mjs --check
       - name: Validate public projections
+        if: ${{ steps.scope.outputs.source_only != 'true' }}
         run: node scripts/validate.mjs
       - name: Validate registry scripts
         run: |
-          for file in scripts/registry-lib.mjs scripts/import-legacy-catalog.mjs scripts/generate-catalog.mjs scripts/discover.mjs scripts/update.mjs scripts/validate-registry.mjs scripts/validate.mjs scripts/analyze-quality.mjs scripts/monitor-upstream.mjs; do
+          for file in scripts/registry-lib.mjs scripts/import-legacy-catalog.mjs scripts/generate-catalog.mjs scripts/discover.mjs scripts/update.mjs scripts/validate-registry.mjs scripts/validate.mjs scripts/analyze-quality.mjs scripts/monitor-upstream.mjs scripts/plugin-intake-agent.mjs; do
             node --check "$file"
           done
       - name: Validate compiled plugin boundary

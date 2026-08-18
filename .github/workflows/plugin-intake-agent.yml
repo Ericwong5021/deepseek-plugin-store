@@ -107,7 +107,7 @@ jobs:
           if [ "$PR_DRAFT" = "true" ]; then draft_flag=(--draft); fi
           url=$(gh pr create --repo "$GITHUB_REPOSITORY" --head "$branch" --base "${{ github.event.repository.default_branch }}" --title "$PR_TITLE" --body-file "$PR_BODY_FILE" "${draft_flag[@]}")
           echo "url=$url" >> "$GITHUB_OUTPUT"
-          gh workflow run validate.yml --repo "$GITHUB_REPOSITORY" --ref "$branch"
+          gh workflow run validate.yml --repo "$GITHUB_REPOSITORY" --ref "$branch" -f source_only=true
       - name: Mark pull request state
         if: ${{ steps.existing.outputs.url != '' || steps.pull_request.outputs.url != '' }}
         env:
