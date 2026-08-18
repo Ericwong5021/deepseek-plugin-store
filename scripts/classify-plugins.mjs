@@ -128,7 +128,7 @@ const items = [
     type: 'registry',
     classification: value.classification,
   })),
-  ...Object.values(candidateData.candidates).map((candidate) => ({
+  ...Object.values(candidateData.candidates).filter((candidate) => candidate.checks?.admissionReady === true).map((candidate) => ({
     id: candidate.id,
     fullName: candidate.repository.fullName,
     summary: candidate.summary || '',
