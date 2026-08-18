@@ -58,12 +58,17 @@ const mapLimit = async (items, limit, fn) => {
 
 const failure = (reason, at) => ({ at, reason: String(reason).slice(0, 500) })
 
-const fetchEvidence = async (fullName) => {
+const fetchRepositoryState = async (fullName) => {
   const repository = await fetchJson(`https://api.github.com/repos/${fullName}`)
   const commit = await fetchJson(`https://api.github.com/repos/${fullName}/commits/${encodeURIComponent(repository.default_branch)}`)
   const repositoryCommitSha = commit.sha
   if (!/^[a-f0-9]{40}$/.test(repositoryCommitSha || '')) throw new Error('default branch commit SHA is invalid')
-  const tree = await fetchJson(`https://api.github.com/repos/${fullName}/git/trees/${commit.commit.tree.sha}`)
+  return { repository, repositoryCommitSha, treeSha: commit.commit.tree.sha }
+}
+
+const fetchEvidence = async (fullName, state) => {
+  const { repository, repositoryCommitSha, treeSha } = state
+  const tree = await fetchJson(`https://api.github.com/repos/${fullName}/git/trees/${treeSha}`)
   const rootFiles = new Set((tree.tree || []).filter((entry) => entry.type === 'blob').map((entry) => entry.path))
   const packageResult = await request(`https://raw.githubusercontent.com/${fullName}/${repositoryCommitSha}/package.json`, { headers: { 'User-Agent': 'deepseek-plugin-store' } })
   let pkg = null
@@ -83,6 +88,7 @@ const fetchEvidence = async (fullName) => {
 
 export const discover = async () => {
   const now = new Date().toISOString()
+  const mode = process.env.DISCOVERY_MODE || 'incremental'
   const staleBefore = Date.parse(now) - 7 * 86400000
   const retryBefore = Date.parse(now) - 6 * 3600000
   const taxonomy = await readJson('registry/taxonomy.json')
@@ -103,7 +109,6 @@ export const discover = async () => {
   let topicRepos = []
   let topicSucceeded = false
   try {
-    const mode = process.env.DISCOVERY_MODE || 'incremental'
     if (mode === 'reconcile') {
       const partitions = [['2007-01-01', '2018-12-31'], ['2019-01-01', '2022-12-31'], ['2023-01-01', '2025-12-31'], ['2026-01-01', now.slice(0, 10)]]
       const partition = partitions[Math.floor(Date.parse(now) / 604800000) % partitions.length]
@@ -216,13 +221,13 @@ export const discover = async () => {
     const changed = changedRegistryIds.has(record.id)
     const retryDue = !observation?.failures?.length || Date.parse(observation.failures.at(-1).at) < retryBefore
     const stale = observation?.failures?.length ? retryDue : !observation?.compatibility?.checkedAt || Date.parse(observation.compatibility.checkedAt) < staleBefore
-    if (changed || stale && retryDue) queue.push({ type: 'registry', record, priority: changed ? 1 : 3 })
+    if (changed || !observation?.compatibility?.checkedAt || mode !== 'incremental' && stale && retryDue) queue.push({ type: 'registry', record, priority: changed ? 1 : 3 })
   }
   for (const candidate of Object.values(candidateData.candidates)) {
     const changed = changedCandidateIds.has(candidate.id)
     const retryDue = !candidate.failures?.length || Date.parse(candidate.failures.at(-1).at) < retryBefore
     const stale = candidate.failures?.length ? retryDue : candidate.checks?.checkedAt ? Date.parse(candidate.checks.checkedAt) < staleBefore : true
-    if (changed || stale) queue.push({ type: 'candidate', candidate, priority: !candidate.checks?.checkedAt ? 0 : changed ? 1 : 2 })
+    if (changed || !candidate.checks?.checkedAt || mode !== 'incremental' && stale) queue.push({ type: 'candidate', candidate, priority: !candidate.checks?.checkedAt ? 0 : changed ? 1 : 2 })
   }
   queue.sort((a, b) => {
     const priority = a.priority - b.priority
@@ -243,7 +248,32 @@ export const discover = async () => {
   await mapLimit(selected, 8, async (item) => {
     const fullName = item.record?.repository.fullName || item.candidate.repository.fullName
     try {
-      const evidence = await fetchEvidence(fullName)
+      const state = await fetchRepositoryState(fullName)
+      const target = item.type === 'candidate' ? item.candidate : observations.repositories[item.record.id]
+      const previousSha = item.type === 'candidate' ? target.checks?.repositoryCommitSha : target.compatibility?.repositoryCommitSha
+      if (previousSha === state.repositoryCommitSha) {
+        const history = target.github?.starHistory || []
+        if (!history.length || history.at(-1).stars !== state.repository.stargazers_count) history.push({ capturedAt: now, stars: state.repository.stargazers_count })
+        target.github = {
+          ...target.github,
+          stars: state.repository.stargazers_count,
+          license: state.repository.license?.spdx_id ?? null,
+          archived: Boolean(state.repository.archived),
+          private: Boolean(state.repository.private),
+          lastPushAt: state.repository.pushed_at,
+          capturedAt: now,
+          ...(item.type === 'registry' ? { starHistory: history.slice(-90) } : {}),
+        }
+        if (item.type === 'candidate') target.checks.commitCheckedAt = now
+        else {
+          target.compatibility.commitCheckedAt = now
+          target.lastSuccessfulAt = now
+        }
+        target.lastSeenAt = now
+        target.failures = []
+        return
+      }
+      const evidence = await fetchEvidence(fullName, state)
       const manifestFound = evidence.rootFiles.has('package.json') && Boolean(evidence.pkg?.dsh?.bundle)
       const installSpec = `github:${fullName}`
       const readmeGuidance = /install|安装|usage|使用|dsh plugin/i.test(evidence.readme)
