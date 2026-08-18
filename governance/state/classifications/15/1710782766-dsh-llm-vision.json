@@ -3,15 +3,82 @@
   "group": "tools-data",
   "category": "media-tools",
   "tags": [
-    "image",
-    "tool",
+    "api",
+    "chat",
+    "data",
     "document",
-    "api"
+    "image",
+    "integration",
+    "tool"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary user-facing purpose is image/media understanding: it provides describe_image and extract_text tools (including OCR) for screenshots and documents in DeepSeek Harness, with options for image input handling, preprocessing, retries, and cached results via vision endpoints.",
+  "confidenceScore": 0.96,
+  "reason": "The repository’s primary user-facing purpose is to add media understanding to a text-only chat/agent workflow: it provides tools for describing images and extracting text by forwarding requests to configurable OpenAI-compatible vision/OCR endpoints. Evidence in README and package metadata shows this is a DSH web plugin that additionally adds attachment handling UX (paste/send flow and previews) and reliability settings such as preprocessing, retries, and caching.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 文本模型提供图片理解与 OCR 能力，支持通过 describe_image 和 extract_text 工具对截图/文档进行识别并返回文本化结果。",
+    "en": "This plugin adds image-understanding and OCR capability to DeepSeek Harness text-only models by exposing tools such as describe_image and extract_text for generating descriptions and extracting text from images or documents."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls configured external OpenAI-compatible vision/OCR endpoints",
+      "Accepts image input via local paths, HTTP(S) URLs, or attachment references",
+      "Performs vision description via normal/critical modes and OCR extraction",
+      "Supports preprocessing (rescale/re-encode), retries, and response caching",
+      "Stores extracted text responses in a local persistent cache"
+    ],
+    "reasons": [
+      {
+        "code": "README documents `describe_image` and `extract_text` tools plus `llm_vision_check`, with provider/model/baseURL configuration for external vision endpoints.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states image sources are local paths, http(s) URLs (redirects rejected), or attachment references, and that attachments are validated before persistence.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details a local content-addressed cache storing text answers (with a note that sensitive OCR output is stored in plain text).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks this as a DeepSeek Harness web plugin and exposes a web client bundle/patch, confirming intended integration in the DSH interface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls configured external OpenAI-compatible vision/OCR endpoints",
+      "Accepts image input via local paths, HTTP(S) URLs, or attachment references",
+      "Performs vision description via normal/critical modes and OCR extraction",
+      "Supports preprocessing (rescale/re-encode), retries, and response caching",
+      "Stores extracted text responses in a local persistent cache"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:02:21.282Z",
-  "evidenceHash": "9a7106057c1b5b12e758135ab66621bdc2f5e12c462389562caca0ab32899bf3"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:52:26.596Z",
+  "repositoryCommitSha": "b5137da9a640798c8d27bd925400ded5f9ab968e",
+  "evidenceHash": "c1c221cab28b1ff0a23eb125e68d584610a7cf55ac4b448a0fa0d755fdbc3d4b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "619ad24d39da5f67dbd0cd45aa2f4af0066f15b84538a20032d76b53a2479d29",
+  "shadowMode": false
 }

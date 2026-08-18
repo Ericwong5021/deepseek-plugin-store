@@ -5,12 +5,76 @@
   "tags": [
     "image",
     "integration",
-    "api"
+    "tool",
+    "api",
+    "chat",
+    "file"
   ],
   "confidence": "high",
-  "reason": "The plugin’s primary purpose is to let DeepSeek process and understand screenshots/local images via MindSee (image-to-text description for chat questions), which is fundamentally an image/media capability with an external service integration.",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an image-to-text utility for DeepSeek Harness, enabling users to paste screenshots or provide local JPEG/PNG/WEBP files so the chat model can answer questions about image content; evidence in the README and package manifest consistently identifies MindSee as the external backend and web-client plugin integration.",
+  "summaries": {
+    "zh": "MindSee 是一款 DeepSeek Harness 插件，可将粘贴截图或本地图片转换为文字描述，让 DeepSeek 在对话中基于图片内容作答。",
+    "en": "MindSee is a DeepSeek Harness plugin that converts pasted screenshots or local images into text so DeepSeek can respond to questions about image content."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Describe pasted or local images via MindSee for use in DeepSeek conversations",
+      "Support for JPEG, PNG, and WebP image input in web chat flow",
+      "Read configured plugin credential/token for external service access",
+      "Operate as a DeepSeek Harness web plugin extension"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin purpose and flow describe screenshots/local images being converted into descriptions for model use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Uses MindSee as the backend service for image description, indicating external service integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Requires user to create and configure a MindSee access token in plugin settings",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Manifest indicates web platform client injection and plugin packaging for DeepSeek Harness",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Describe pasted or local images via MindSee for use in DeepSeek conversations",
+      "Support for JPEG, PNG, and WebP image input in web chat flow",
+      "Read configured plugin credential/token for external service access",
+      "Operate as a DeepSeek Harness web plugin extension"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
-  "promptVersion": "1",
-  "classifiedAt": "2026-08-18T10:01:54.133Z",
-  "evidenceHash": "5da8c9e8131ed94d37fe10fa52d6c8e86b3f0bef2154b921e3248a62f347ca73"
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T17:52:20.196Z",
+  "repositoryCommitSha": "5887b1d3675d7d478d25f60b4dc03ca1b40d583b",
+  "evidenceHash": "4a8dcef783176b81136edccc51d887711322c90459dcf2c1d944b6d1e93e16fd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "31d34e22fefdcc965a1f5e73d9804f06c6eb00972f56a4b83665301ef17d44dc",
+  "shadowMode": false
 }
