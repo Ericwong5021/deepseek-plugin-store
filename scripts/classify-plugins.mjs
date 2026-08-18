@@ -20,6 +20,7 @@ const taxonomy = await readJson('registry/taxonomy.json')
 const policy = await loadPolicy()
 const candidateData = await readStateCollection('candidates')
 const registryFiles = await loadRegistryPlugins()
+const observations = await readStateCollection('observations')
 const cache = await readStateCollection('classifications')
 const originalCache = structuredClone(cache)
 const originalCandidates = structuredClone(candidateData)
@@ -33,6 +34,7 @@ const items = [
     summary: value.summaries.en || value.summaries.zh || '',
     type: 'registry',
     classification: value.classification,
+    repositoryCommitSha: observations.repositories[value.id]?.compatibility?.repositoryCommitSha || null,
   })),
   ...Object.values(candidateData.candidates).filter((candidate) => candidate.checks?.admissionReady === true).map((candidate) => ({
     id: candidate.id,
@@ -40,6 +42,7 @@ const items = [
     summary: candidate.summary || '',
     type: 'candidate',
     classification: candidate.classificationSuggestion,
+    repositoryCommitSha: candidate.checks?.repositoryCommitSha || null,
   })),
 ]
 
@@ -56,7 +59,7 @@ const eligible = items.filter((item) => !humanSources.has(item.classification?.s
 const matched = target ? eligible.filter((item) => item.id.toLowerCase() === target || item.fullName.toLowerCase() === target) : eligible
 if (target && !matched.length) throw new Error(`plugin not found or protected by human classification: ${target}`)
 const queue = matched
-  .filter((item) => force || cache.classifications[item.id]?.status !== 'classified' || !cache.classifications[item.id]?.cacheKey)
+  .filter((item) => force || cache.classifications[item.id]?.status !== 'classified' || !cache.classifications[item.id]?.cacheKey || item.repositoryCommitSha && cache.classifications[item.id]?.repositoryCommitSha !== item.repositoryCommitSha)
   .sort((a, b) => Number(Boolean(b.classification?.needsReview)) - Number(Boolean(a.classification?.needsReview)) || Number(b.type === 'candidate') - Number(a.type === 'candidate') || a.id.localeCompare(b.id))
   .slice(0, limit)
 
