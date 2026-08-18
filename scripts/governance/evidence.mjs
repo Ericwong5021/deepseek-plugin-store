@@ -37,8 +37,9 @@ export class EvidenceCollector {
     const fullName = typeof input === 'string' ? input : input.fullName
     const fallbackSummary = typeof input === 'string' ? '' : input.summary || ''
     const repository = await this.json(`/repos/${fullName}`)
-    const branch = await this.json(`/repos/${repository.full_name}/branches/${encodeURIComponent(repository.default_branch)}`)
-    const commitSha = branch.commit.sha
+    const requestedCommitSha = typeof input === 'string' ? '' : input.commitSha || ''
+    const branch = requestedCommitSha ? null : await this.json(`/repos/${repository.full_name}/branches/${encodeURIComponent(repository.default_branch)}`)
+    const commitSha = requestedCommitSha || branch.commit.sha
     const ref = encodeURIComponent(commitSha)
     const results = await Promise.allSettled([
       this.raw(`/repos/${repository.full_name}/readme?ref=${ref}`, [404]),
