@@ -49,6 +49,7 @@ jobs:
           gh label create "risk:r0" --repo "$GITHUB_REPOSITORY" --color "0e8a16" --force
           gh label create "risk:r1" --repo "$GITHUB_REPOSITORY" --color "fbca04" --force
           gh label create "risk:r2" --repo "$GITHUB_REPOSITORY" --color "b60205" --force
+          for label in "risk:r0" "risk:r1" "risk:r2"; do gh pr edit "${{ github.event.pull_request.number }}" --repo "$GITHUB_REPOSITORY" --remove-label "$label" >/dev/null 2>&1 || true; done
           gh pr edit "${{ github.event.pull_request.number }}" --repo "$GITHUB_REPOSITORY" --add-label "risk:${RISK,,}"
           marker="<!-- governance-pr-review:v1 pr=${{ github.event.pull_request.number }} -->"
           body_file="$RUNNER_TEMP/governance-pr-comment.md"
