@@ -19,19 +19,23 @@ export class LLMAdapter {
   }
 
   async request(path, body) {
-    const response = await fetch(`${this.baseUrl}${path}`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(60000),
-    })
-    const text = await response.text()
-    if (!response.ok) {
+    let lastError
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const response = await fetch(`${this.baseUrl}${path}`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(60000),
+      })
+      const text = await response.text()
+      if (response.ok) return JSON.parse(text)
       const error = new Error(`${path}: ${response.status} ${text.slice(0, 300)}`)
       error.status = response.status
-      throw error
+      lastError = error
+      if (attempt === 2 || ![429, 500, 502, 503, 504].includes(response.status)) throw error
+      await new Promise((resolve) => setTimeout(resolve, attempt * 1500))
     }
-    return JSON.parse(text)
+    throw lastError
   }
 
   async call({ name, system, input, schema }) {
