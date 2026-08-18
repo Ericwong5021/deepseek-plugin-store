@@ -1,21 +1,16 @@
-name: Classify plugins with LLM
+name: Governance discovery
 
 on:
   schedule:
-    - cron: '43 * * * *'
+    - cron: '23 * * * *'
+    - cron: '17 4 * * 0'
   workflow_dispatch:
     inputs:
-      plugin:
+      mode:
         required: false
-        type: string
-      limit:
-        required: false
-        default: '20'
-        type: string
-      force:
-        required: false
-        default: false
-        type: boolean
+        default: incremental
+        type: choice
+        options: [incremental, reconcile]
 
 permissions:
   actions: write
@@ -23,11 +18,11 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: governance-classification
+  group: governance-discovery
   cancel-in-progress: false
 
 jobs:
-  classify:
+  discover:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -42,20 +37,15 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          count=$(gh pr list --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("automation/governance-classification-"))] | length')
+          count=$(gh pr list --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("automation/governance-discovery-"))] | length')
           echo "skip=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
-      - name: Classify governance state
+      - name: Discover governance state
         if: ${{ steps.pending.outputs.skip != 'true' }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          LLM_CLASSIFIER_API_KEY: ${{ secrets.LLM_CLASSIFIER_API_KEY }}
-          LLM_CLASSIFIER_BASE_URL: ${{ vars.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1' }}
-          LLM_CLASSIFIER_MODEL: ${{ vars.LLM_CLASSIFIER_MODEL || 'gpt-5.3-codex-spark' }}
-          LLM_CLASSIFIER_LIMIT: ${{ inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
-          LLM_CLASSIFIER_PLUGIN: ${{ inputs.plugin || '' }}
-          LLM_CLASSIFIER_FORCE: ${{ inputs.force && '1' || '0' }}
-          GOVERNANCE_SHADOW_MODE: '1'
-        run: node scripts/classify-plugins.mjs
+          DISCOVERY_MODE: ${{ inputs.mode || (github.event.schedule == '17 4 * * 0' && 'reconcile') || 'incremental' }}
+          DISCOVERY_VERIFY_LIMIT: '250'
+        run: node scripts/update.mjs
       - name: Validate state
         if: ${{ steps.pending.outputs.skip != 'true' }}
         run: node scripts/validate-registry.mjs
@@ -69,13 +59,13 @@ jobs:
           git add governance/state
           if git diff --cached --quiet; then echo "no state changes"; exit 0; fi
           base=$(git rev-parse origin/main)
-          branch="automation/governance-classification-${GITHUB_RUN_ID}"
+          branch="automation/governance-discovery-${GITHUB_RUN_ID}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git commit -m "chore: update governance classification state"
+          git commit -m "chore: update governance discovery state"
           git push origin "HEAD:$branch"
-          url=$(gh pr create --base main --head "$branch" --title "chore: update governance classification state" --body "Governance state batch")
+          url=$(gh pr create --base main --head "$branch" --title "chore: update governance discovery state" --body "Governance state batch")
           number=$(gh pr view "$url" --json number --jq .number)
           head=$(git rev-parse HEAD)
           gh workflow run governance-pr-ci.yml --ref "$branch" -f base_sha="$base" -f head_sha="$head" -f pr_number="$number"
