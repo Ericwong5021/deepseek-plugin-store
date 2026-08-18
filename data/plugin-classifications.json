@@ -1,7 +1,89 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-18T17:04:55.368Z",
+  "updatedAt": "2026-08-18T17:18:44.525Z",
   "classifications": {
+    "01virex-dsh-status-rotator": {
+      "status": "classified",
+      "group": "interface-experience",
+      "category": "themes-layout",
+      "tags": [
+        "ui",
+        "tool",
+        "api",
+        "integration",
+        "layout",
+        "file",
+        "cli"
+      ],
+      "confidence": "high",
+      "confidenceScore": 0.92,
+      "reason": "Primary user-facing purpose is UI text customization: the plugin replaces DeepSeek Harness turn-status copy with configurable, phase-aware phrases and optional animated effects inside the web UI, plus a settings page for editing those phrases and timing options. Evidence also shows node-side config serving/persistence and a companion script that can build local configs from external OneBot-compatible APIs, so behavior is mostly low-to-moderate risk with local file/network interaction.",
+      "summaries": {
+        "zh": "这是一个 DSH Web 插件，用于将回合状态行文案替换为可配置的中文/英文短语并按阶段轮播，支持打字机与彩色渐变效果，并提供设置页编辑文本与参数。",
+        "en": "This plugin for DSH Web replaces the turn-status label with configurable Chinese/English phrases, rotates them by phase with optional typewriter and gradient effects, and provides a settings page to edit phrase banks and timing options."
+      },
+      "risk": {
+        "level": "R1",
+        "capabilities": [
+          "Replaces a specific DSH Web turn-status UI text and displays rotating, phase-aware phrases.",
+          "Provides user-configurable behavior and display options (rotation timing, typewriter speed, gradient rendering).",
+          "Node side can read and write plugin configuration via local file endpoints used by the settings page.",
+          "Can generate phrase-config files from external QQ group/member data sources via an HTTP API script."
+        ],
+        "reasons": [
+          {
+            "code": "README documents that the plugin replaces the DSH turn-status label with custom phrases and supports phase-aware rotation, typewriter output, and optional rainbow gradient.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "README describes a browser settings page that saves full JSON and the node side writes/serves `config.json`, with optional external/local configuration sources.",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "package.json shows the project is a DSH web plugin with bundle patch metadata and client injection hooks.",
+            "evidenceRef": "package.json"
+          },
+          {
+            "code": "README documents `scripts/fetch-qq-group.cjs` that accepts OneBot HTTP URL/token and fetches group member data to generate local config files.",
+            "evidenceRef": "readme"
+          }
+        ]
+      },
+      "governance": {
+        "schemaVersion": 1,
+        "policyVersion": "2026-08-18",
+        "finalDecision": "needs_human",
+        "riskLevel": "R2",
+        "capabilities": [
+          "credential.read",
+          "network.access",
+          "Replaces a specific DSH Web turn-status UI text and displays rotating, phase-aware phrases.",
+          "Provides user-configurable behavior and display options (rotation timing, typewriter speed, gradient rendering).",
+          "Node side can read and write plugin configuration via local file endpoints used by the settings page.",
+          "Can generate phrase-config files from external QQ group/member data sources via an HTTP API script."
+        ],
+        "autoMerge": false,
+        "shadowMode": false,
+        "reasons": [
+          "HIGH_RISK_CAPABILITY"
+        ],
+        "trace": {
+          "rulesPassed": true,
+          "aiDecision": "approve",
+          "aiConfidence": 0.92,
+          "maintainerVerified": false
+        }
+      },
+      "model": "gpt-5.3-codex-spark",
+      "promptVersion": "classify-v2",
+      "policyVersion": "2026-08-18",
+      "classifiedAt": "2026-08-18T17:18:44.525Z",
+      "repositoryCommitSha": "049c61c6295fe6ddf8ad4934d13c48f1eda5c623",
+      "evidenceHash": "139acbebdab4a18de186779ce30c122f668c983478d14d11dd609cd32b7aede5",
+      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+      "cacheKey": "393258763d3bc857353f6c254c6d3c3091bcb8cfc2895481c96cacf6fc239d15",
+      "shadowMode": false
+    },
     "123cdxcc-dsh-mindsee": {
       "status": "classified",
       "group": "tools-data",
