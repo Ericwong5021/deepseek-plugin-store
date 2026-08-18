@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "agent",
+    "data",
+    "file",
+    "tool",
+    "context",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a session/context usage analytics utility: it focuses on reading DSH session logs and producing per-session and project-level context-cost metrics, rather than generating code or controlling workflows. This maps to data-processing because its main user value is metric extraction, aggregation, and reporting from local logs.",
+  "summaries": {
+    "zh": "该插件是 DSH 会话上下文统计面板，可读取本地会话日志并输出每会话消息、轮次、工具调用与预估 token 统计，以及全局与按项目的上下文报告。",
+    "en": "This plugin is a DSH context usage dashboard that reads local session logs and outputs per-session metrics (messages, turns, tool calls, estimated tokens) along with global and per-project context reports."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read and parse local DeepSeek Harness session logs in `.jsonl` and `.jsonl.zstd` formats",
+      "Generate per-session metrics such as message counts, turns, tool calls, character counts, and estimated tokens",
+      "Produce aggregate context usage reports, including global totals and per-project summaries"
+    ],
+    "reasons": [
+      {
+        "code": "Session analytics and reporting are explicit plugin functions exposed via `session_stats` and `context_report`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin purpose and scope is limited to context usage statistics for DSH sessions, with no declared external service integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata confirms plugin packaging for DSH bundle integration and public availability, matching a utility-style analysis tool.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Read and parse local DeepSeek Harness session logs in `.jsonl` and `.jsonl.zstd` formats",
+      "Generate per-session metrics such as message counts, turns, tool calls, character counts, and estimated tokens",
+      "Produce aggregate context usage reports, including global totals and per-project summaries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:27:03.579Z",
+  "repositoryCommitSha": "a2dc91f9d687393cc167b0b73ea8c7b8f0119d04",
+  "evidenceHash": "f57340bb3519376b6e75cef5fcdca619f230fad1866a0152bba6beff22926de6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37b81c2e20f72f9cdc4d3fbbb82737982ecf52b4947d72374f0a7eb71c79027d",
+  "shadowMode": false
+}

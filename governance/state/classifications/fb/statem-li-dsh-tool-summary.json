@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "theme"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心用途是优化 DeepSeek Harness Web 对话界面的工具调用展示：按回合聚合 tool-call 日志并以折叠摘要卡片替代原始逐行刷屏输出。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的会话界面中按回合聚合工具调用，并以可折叠分组展示摘要和状态，支持展开查看单条调用详情。",
+    "en": "This plugin groups tool calls by conversation turn in the DeepSeek Harness web chat UI, showing a collapsed summary card per turn with expandable rows for individual call details."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Consolidates tool-call messages per conversation turn into grouped UI entries in the chat stream",
+      "Shows per-turn summary metadata such as total, in-progress, and failed call counts",
+      "Provides expandable tool-call rows with truncated output and single-line summaries",
+      "Supports optional hiding/showing of read-only tool calls",
+      "Falls back to built-in rendering if custom tool-call rendering fails"
+    ],
+    "reasons": [
+      {
+        "code": "README describes collapsing each turn's tool calls into one collapsible group with a summary card to reduce chat stream clutter.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states read-only calls (read/grep/glob/web_search) can be hidden by default with a toggle and preference stored in localStorage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web client plugin with UI tool runtime dependencies, indicating behavior is implemented in the web conversation interface.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Consolidates tool-call messages per conversation turn into grouped UI entries in the chat stream",
+      "Shows per-turn summary metadata such as total, in-progress, and failed call counts",
+      "Provides expandable tool-call rows with truncated output and single-line summaries",
+      "Supports optional hiding/showing of read-only tool calls",
+      "Falls back to built-in rendering if custom tool-call rendering fails"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:55.691Z",
+  "repositoryCommitSha": "f2577367fc2d26154621df56cad0a65e5e38ca15",
+  "evidenceHash": "5aa41a8c10809ad0fac0c6f00e74fb02bc063301f52ad606e4f590598ade74df",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "26110af138cd08762027c101b1421ddf82ccf74405e6edb415a403129782c8c3",
+  "shadowMode": false
+}

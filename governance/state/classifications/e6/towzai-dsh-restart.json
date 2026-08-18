@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "api",
+    "agent",
+    "tool",
+    "ui",
+    "notification",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用途是为 DSH 提供应用内重启自动化，支持通过模型工具或侧边栏按钮触发重启，并在执行前后进行会话协调、失败回滚与任务恢复，属于工作流/运维类控制能力而非内容生产或外部集成工具。",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，用于在应用内发起并管理整体重启，支持按钮或工具触发重启，并在重启前协调忙碌会话、失败回滚后恢复原会话继续任务。",
+    "en": "This is a DSH plugin for orchestrating in-app restarts, allowing restarts via a tool or sidebar control, with busy-session coordination, rollback handling, and session recovery after restart."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "In-app application restart orchestration for DSH",
+      "Agent-triggered and manual restart invocation",
+      "Busy-session coordination before restart execution",
+      "Automatic rollback on restart or initialization failure",
+      "Session state recovery and continuation after restart"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as an in-app restart plugin with restart modes, coordination, rollback, and resume behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines a DSH client entry and web platform injection (./client.js, dsh.client), indicating a UI-facing control path in addition to runtime logic.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree includes lib and docs implementing restart API, client UI button, and troubleshooting docs, consistent with lifecycle control behavior rather than data/content tools.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "In-app application restart orchestration for DSH",
+      "Agent-triggered and manual restart invocation",
+      "Busy-session coordination before restart execution",
+      "Automatic rollback on restart or initialization failure",
+      "Session state recovery and continuation after restart"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:39.599Z",
+  "repositoryCommitSha": "676660e726b65433b7b9c9ea6846e6a36a702033",
+  "evidenceHash": "8f44ab876fc19416a128636934c9a2acfab61004b3d83b503a5750dc425289ab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "db7b777901ae97c04020f2b12e0cb34722ce9d19eba183936e5e79caac839840",
+  "shadowMode": false
+}

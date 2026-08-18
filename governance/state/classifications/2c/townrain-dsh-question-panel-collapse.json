@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "agent",
+    "chat",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a user-interface navigation/interaction enhancement for DeepSeek Harness Web that targets question and plan panels, adding a collapse/expand control to reduce occupied space while retaining draft input. Evidence from the repository metadata, package manifest, and README consistently describes only front-end panel behavior and local UI state handling.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 的提问/审批面板增强插件，可在面板标题区提供折叠入口，让面板在紧凑条与完整输入模式间切换并保留当前未提交草稿。",
+    "en": "This is a DeepSeek Harness Web question/approval panel helper that adds a collapse control in the panel header to switch between compact strip mode and full view while keeping the current unsent draft."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a chevron control in DSH question/approval panel headers for collapse/expand.",
+      "Collapses the panel UI to a compact strip and restores full panel content on demand.",
+      "Preserves unsent draft input while collapsed by keeping panel state active.",
+      "Stores collapsed state in localStorage for persistence across refresh/workspace changes.",
+      "Targets both QuestionFlow and PlanReviewPanel panel shapes in DSH Web."
+    ],
+    "reasons": [
+      {
+        "code": "Repository description and README state the plugin collapses the DSH question panel into a compact strip and restores it, preserving unsent draft text.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies implementation via class toggling and hiding `[data-question-scroll]` content area/footer while keeping component state alive.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents persistence behavior: collapsed state is saved to localStorage and retained after refresh/workspace switching.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "manifest-like package settings indicate a web client plugin using DSH client platform with no server-side entry dependencies.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds a chevron control in DSH question/approval panel headers for collapse/expand.",
+      "Collapses the panel UI to a compact strip and restores full panel content on demand.",
+      "Preserves unsent draft input while collapsed by keeping panel state active.",
+      "Stores collapsed state in localStorage for persistence across refresh/workspace changes.",
+      "Targets both QuestionFlow and PlanReviewPanel panel shapes in DSH Web."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:39.189Z",
+  "repositoryCommitSha": "20c67cbacb49adb7abfa642ac98f5ec575edefce",
+  "evidenceHash": "16f2a63b80229bfa47646cd89b497dd5e6d2255fb13615082ce833d0435e356f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cb2327d2694ede824dce226cfa7e1009eef8adeae0265478a66f1ee4c71a70b4",
+  "shadowMode": false
+}

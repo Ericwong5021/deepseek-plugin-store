@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要面向功能是作为 DeepSeek Harness 的连接授权适配器，将 Tailscale Serve 注入的身份与能力信息用于访问控制；依据 README 的实现描述和包元数据，可保守归类为外部服务集成类型，核心能力是基于 allowlist 与 capability 的连接请求鉴权与拦截，不涉及内容生成或通用办公流程自动化。",
+  "summaries": {
+    "zh": "该插件是为 DeepSeek Harness 提供的 Tailscale Serve 认证适配器，依据 Tailscale 用户身份与能力头对连接请求进行规则化鉴权。",
+    "en": "This plugin is a Tailscale Serve authentication adapter for DeepSeek Harness that enforces connection request authorization using Tailscale user identity and app-capability headers."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Validates Tailscale identity and capability headers for request authorization.",
+      "Supports allowlist and capability-based access rules for DSH connection requests.",
+      "Uses fail-closed behavior when required authorization inputs are missing or invalid."
+    ],
+    "reasons": [
+      {
+        "code": "README states this package is a Tailscale Serve authentication adapter for dsh-client-connection-authz and describes use of Tailscale-User-Login, Tailscale-User-Name, and Tailscale-App-Capabilities for authorization.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Configuration in README defines environment variables for allowed logins and required regular/admin capabilities, and notes startup failure when allowlist is empty.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares DSH bundle patch integration and dependency wiring for the DSH authz plugin, confirming plugin/runtime integration role.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository metadata shows a public, active plugin package with explicit Node/TS build scripts and tests, indicating distributed executable plugin artifact.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Validates Tailscale identity and capability headers for request authorization.",
+      "Supports allowlist and capability-based access rules for DSH connection requests.",
+      "Uses fail-closed behavior when required authorization inputs are missing or invalid."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:46.119Z",
+  "repositoryCommitSha": "ea7ca9fa3db4ef237cb6f9194bb34e4ee3593ada",
+  "evidenceHash": "6e0877349b98f102f3792d3085ff64bac1b6bc74482006588bb1b3ef80907c73",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd4362eaf3e45f9f765470dcb266a5660925abb61d2dcc5726c4041b6d36c25c",
+  "shadowMode": false
+}

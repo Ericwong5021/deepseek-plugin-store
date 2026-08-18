@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "chat",
+    "cli",
+    "browser",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily an external-services integration that lets users use ChatGPT/Codex models from DeepSeek Harness by adding an `openai-codex` provider and related configuration. Evidence in README and package metadata shows it provides OAuth login flows, token lifecycle commands, and streaming response handling as a DSH plugin with CLI commands, so the core user-facing purpose is connecting an external LLM service rather than standalone code generation or testing tooling.",
+  "summaries": {
+    "zh": "该插件用于将 ChatGPT/Codex 接入 DeepSeek Harness，通过浏览器回调或设备码完成 OAuth 登录，并在本地管理凭据与配置以在 DSH 中使用模型对话和流式输出。",
+    "en": "This plugin connects DeepSeek Harness to ChatGPT/Codex via OAuth, exposing model access in DSH while handling local credential lifecycle and streaming model outputs through the configured provider."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "ChatGPT/Codex OAuth authentication (PKCE browser callback and device-code)",
+      "Local OAuth credential file handling under DSH home path",
+      "OpenAI Codex API request/stream handling through DSH provider adapter",
+      "DSH CLI workflow for login, status, refresh, and logout"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as enabling ChatGPT OAuth and Codex model use inside DeepSeek Harness via browser callback and device-code flows, indicating external service access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details credential lifecycle behavior including auth.json storage and token refresh, which implies local token handling and potential credential sensitivity.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata exports a `dsh-chatgpt-codex` CLI entry and includes a DSH bundle patch, confirming integration and tool-level invocation paths.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "ChatGPT/Codex OAuth authentication (PKCE browser callback and device-code)",
+      "Local OAuth credential file handling under DSH home path",
+      "OpenAI Codex API request/stream handling through DSH provider adapter",
+      "DSH CLI workflow for login, status, refresh, and logout"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:58.120Z",
+  "repositoryCommitSha": "403e7aa4aecfe65c1784450e6bffcaba4c350cb3",
+  "evidenceHash": "55a4410afc33d2a02b75ed3cc290e236a67b09bdcf6ada6bf22bfd8af683e773",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ab8866e5ccad94437524784323847eac2541a9d28b4b52d08511a2e916e51e5b",
+  "shadowMode": false
+}

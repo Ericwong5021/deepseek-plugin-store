@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "planning",
+    "workflow",
+    "agent",
+    "cli",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Evidence from the readme and manifest shows the plugin is an agent-workflow bundle for DeepSeek Harness that installs an orchestrator preset and enables subagent dispatch, model-profile management, and in-place re-rendering of configuration, making orchestration/automation the core user-facing purpose.",
+  "summaries": {
+    "zh": "该插件是一个 DeepSeek Harness 的 dsh bundle，安装后会在用户预设目录部署编排式主智能体预设，并通过 `omoslim` CLI 管理子模型配置与切换。",
+    "en": "This plugin is a DeepSeek Harness dsh bundle that installs an orchestrator preset and provides an `omoslim` CLI to manage subagent model profiles and workflow configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs an orchestrator preset into the user agent-presets directory via a dsh bundle patch",
+      "Renders and updates orchestrator composition files from templates and profile data",
+      "Provides a CLI for listing, viewing, and switching named model/profile configurations"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin declares a dsh bundle patch in package metadata and ships installer/renderer logic under lib for preset bootstrapping.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "It documents writing and re-rendering `agent.cordis.yml` under `~/.dsh/.agent-presets/orchestrator/` plus active profile updates in `~/.dsh/settings.yaml` during `omoslim switch`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The repository includes CLI entrypoint and preset/model files (`lib/cli.js`, `config/presets`, `config/models.d`), indicating direct local configuration modification as primary behavior.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Installs an orchestrator preset into the user agent-presets directory via a dsh bundle patch",
+      "Renders and updates orchestrator composition files from templates and profile data",
+      "Provides a CLI for listing, viewing, and switching named model/profile configurations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:21.707Z",
+  "repositoryCommitSha": "8b0f1bed332af9352bf874d01e69e1677cfaceb5",
+  "evidenceHash": "0b62da26964cea6cda3b9fd77cadb9e59faa75b7fc7e5c928a440979b4306fe5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e04049e0c997681a4e543d6187aac4544d4518f2c0bd6c315d1eeec676a17ebd",
+  "shadowMode": false
+}

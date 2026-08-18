@@ -1,16 +1,88 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "tool",
+    "ui",
+    "automation",
+    "workflow",
+    "api",
+    "terminal",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "This plugin is best classified as automation tooling for local development operations: it integrates a DSH web panel and agent-facing tools to discover/register services, manage start-stop-restart actions, and coordinate service metadata through a shared local registry with port conflict handling. Risk is moderate because it can launch/stop local processes and writes control state/logs, but it appears scoped to local project service management rather than remote system administration.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 本地服务控制插件，可通过 Web 面板和工具统一进行项目服务的登记、启动、停止、重启及日志查看，并结合端口规则进行协同管理。",
+    "en": "This is a DeepSeek Harness local service control plugin that lets users and agents manage projects through a web panel and tools, including registering services, starting/stopping/restarting them, and handling port conflicts with shared local state."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Start, stop, restart, and restart-status local services",
+      "Detect and register services from project configuration files",
+      "Manage a cross-project service registry and persist service metadata/log paths",
+      "Arbitrate port conflicts and rewrite launch arguments for alternative ports",
+      "Expose RPC endpoints consumed by the web client for control actions"
+    ],
+    "reasons": [
+      {
+        "code": "The host component explicitly defines service lifecycle tools (start/stop/restart/status) and process management behavior, including detached startup and recursive termination logic.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The UI client provides a floating service panel with one-click controls and expandable logs for each service.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "A global registry file is used (service-registry.json) and includes runtime fields like pid and actualPort, indicating persistent local process/state control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin declares a web host/client entry model in package metadata (dsh bundle + web client) and exports host/client modules.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Control requests are sent via HTTP RPC (`/service-deck/rpc`) with host-injected token, so runtime command inputs can reach host-side execution paths.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Start, stop, restart, and restart-status local services",
+      "Detect and register services from project configuration files",
+      "Manage a cross-project service registry and persist service metadata/log paths",
+      "Arbitrate port conflicts and rewrite launch arguments for alternative ports",
+      "Expose RPC endpoints consumed by the web client for control actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:01.804Z",
   "repositoryCommitSha": "5098ec0103fa804563471196dd67e291a21463a1",
+  "evidenceHash": "382b232ee0b9b6def12070901f5242ce71a40df7a1acf61c83b19bf932857b64",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "87ae00e23e2256219a035e7296150ff7358f1f21f5762fc06a91c7735634312e",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:21:53.354Z",
-  "lastAttemptAt": "2026-08-18T18:21:53.354Z",
-  "nextRetryAt": "2026-08-19T18:21:53.354Z",
-  "retryable": true,
-  "error": "AI decision is invalid",
   "shadowMode": false
 }

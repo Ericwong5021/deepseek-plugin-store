@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "automation",
+    "chat",
+    "integration",
+    "notification",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用户面对目的为会话提醒：它在 DeepSeek Harness 对话结束或中断时推送 QQ 私聊通知，并提供绑定、模板变量与可编辑预设用于提醒内容个性化，因此归类为通知与监控类插件；仓库证据显示其核心功能依赖外部 QQ Bot API、会话事件监听和配置化消息发送。",
+  "summaries": {
+    "zh": "该插件在 DSH 会话完成或需等待用户时，可自动向你的 QQ 私聊发送提醒，并支持扫码绑定与可编辑模板变量来定制通知内容。",
+    "en": "This plugin sends automatic QQ private notifications for DSH conversation turn events and supports QR-code binding plus editable templates with variables for customizing alert content."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "监听 DSH 会话生命周期事件并触发通知动作",
+      "通过 QQ 官方接口发送私聊消息",
+      "从会话上下文提取字段用于通知模板变量替换",
+      "执行扫码绑定流程并存储应用凭据",
+      "写入/读取插件配置文件与凭据存储",
+      "进行外部 HTTPS 请求"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件监听 agent/turn-stopping 并在会话回合结束或等待用户输入时发送提醒。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与实现说明写明通过 QQ Bot API 获取 token 并调用发送消息接口向用户 OpenID 私聊推送内容。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述支持扫码绑定与手动填充 AppID/AppSecret/UserOpenID，并在凭据与配置中持久化。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 和 manifest 声明（dsh.bundle）表明其为 DSH 插件并含 web 客户端界面注入。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "监听 DSH 会话生命周期事件并触发通知动作",
+      "通过 QQ 官方接口发送私聊消息",
+      "从会话上下文提取字段用于通知模板变量替换",
+      "执行扫码绑定流程并存储应用凭据",
+      "写入/读取插件配置文件与凭据存储",
+      "进行外部 HTTPS 请求"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:46.013Z",
+  "repositoryCommitSha": "e5f6271ae63ba44ed8dc2504d3cd21eba24140c6",
+  "evidenceHash": "568be3d4a0314a7b3068e8642ae1cc00cb09e0897db45b7b16a1578a70b1cfe5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fd88e63d6c6adb5a249a3d07370c31f5d45eed7c13206ff4747a4a3cbaa811ec",
+  "shadowMode": false
+}

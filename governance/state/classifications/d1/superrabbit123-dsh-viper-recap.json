@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "tool",
+    "ui",
+    "data",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a data-processing utility for session feedback: it aggregates local session event-log metrics into a deterministic roast/toast recap, exposes those figures via a host projection, and shows them in a web composer card for user viewing and copy actions.",
+  "summaries": {
+    "zh": "该插件会基于当前会话日志中的轮次、步骤、工具调用等数字生成中文复盘，并通过模型可见工具与客户端浮窗展示，可切换毒舌或鼓励语气并复制结果。",
+    "en": "This plugin generates a deterministic Chinese session recap from local event-log metrics, exposes it through a model tool and web projection, and shows it in a composer floating card with roast/toast mode switching and copy support."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Reads and aggregates local session event-log data (turns, steps, tool calls, tool failures, output tokens)",
+      "Generates deterministic recap text in Chinese in roast/toast modes from aggregated metrics",
+      "Publishes recap figures via a host projection for client consumption",
+      "Displays a web composer floating card and supports text copy actions"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin describes itself as folding current session logs into recap metrics (turns, steps, tool calls, failures, output tokens) and rendering deterministic Chinese recap text.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "A model-visible `viper_recap` tool and a `viperRecap` projection are provided, with a composer 🐍 button opening a floating recap card.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The README states recap text is computed from local session numbers with no extra model call or API-key use, indicating no external inference dependency for generation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a web client entry (`./client`) under `dsh.client.platform`, matching the documented composer UI behavior.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and aggregates local session event-log data (turns, steps, tool calls, tool failures, output tokens)",
+      "Generates deterministic recap text in Chinese in roast/toast modes from aggregated metrics",
+      "Publishes recap figures via a host projection for client consumption",
+      "Displays a web composer floating card and supports text copy actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:06.110Z",
+  "repositoryCommitSha": "cd5ee7aff776991327baf61a5e4f7d665827659e",
+  "evidenceHash": "c4b5bad53615bf6ec5ba0f082ea3d9bdb502836ce05eeb01491b356f39b65ee3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2a44ea9deb56166c768bc788b9d441d4affb0538f0119ccd9fa8407ec4d14f6e",
+  "shadowMode": false
+}

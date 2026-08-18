@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "automation",
+    "api",
+    "tool",
+    "integration",
+    "data",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin’s primary user-facing purpose is safe multimodal request handling in DeepSeek Harness by governing image payloads per call: its README describes interception of `llm/stream` agent-loop requests, image budget accounting, compression/deduplication, overflow handling with evidence notes, and optional report surfacing. This is best classified as a media-focused utility rather than a core generation or analysis tool.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的智能体请求链路中管理图片附件大小与数量，通过可选压缩、去重与外置策略保持多模态会话可持续，并可在 Web 页面查看处理报告。",
+    "en": "This plugin manages media attachment size handling in DeepSeek Harness agent-loop calls by applying budgets, optional compression, deduplication, and overflow handling, with an optional web interface to view media-guard reports."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Inspect and modify DSH agent-loop multimodal requests before provider calls.",
+      "Enforce per-request image budgets and serialize/decode byte limits.",
+      "Compress image attachments with Sharp, with caching by content address.",
+      "Deduplicate attached images by hash and replace overflow items with evidence notes.",
+      "Optional reporting via DSH web route and media-guard/report events."
+    ],
+    "reasons": [
+      {
+        "code": "AGENT_LOOP_REQUEST_HOOK",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BUDGET_AND_PROJECTION_ENFORCEMENT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "SHARP_COMPRESSION_AND_ATTACHMENT_WRITE",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "REPORT_UI_AND_EVENTS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "OFFLINE_FIRST_DISCLOSURE",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Inspect and modify DSH agent-loop multimodal requests before provider calls.",
+      "Enforce per-request image budgets and serialize/decode byte limits.",
+      "Compress image attachments with Sharp, with caching by content address.",
+      "Deduplicate attached images by hash and replace overflow items with evidence notes.",
+      "Optional reporting via DSH web route and media-guard/report events."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:46.396Z",
+  "repositoryCommitSha": "3a095b93953871bf9613bbdc8dcbb349127bb164",
+  "evidenceHash": "3ab36cce296d20914c156264ff2acb4050121ed42b164749f1375f3f9a048dd2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "97ea03aa92bd7fbc488cbe4fd89be74fc28d496a3f5e7321e4ab83cae4a966e7",
+  "shadowMode": false
+}

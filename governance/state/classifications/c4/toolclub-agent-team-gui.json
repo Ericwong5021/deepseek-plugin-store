@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "workflow",
+    "automation",
+    "planning",
+    "ui",
+    "tool",
+    "chat",
+    "api",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily a DeepSeek Harness web plugin for orchestrating reusable multi-model agent teams rather than code generation or generic utilities. Evidence in README and package metadata shows its core flow is team/member definition, DAG-based or fixed-order execution, conversation mode selection, and run monitoring via a Run Center, which are all workflow-management features. It also adds recipe/version backup-import tooling and provider token insights to support operational control of those runs. It is tightly coupled to DSH host/client services and does not present standalone unrelated plugin capabilities.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 插件，帮助用户创建和复用智能体团队，在会话中按团队模式编排多模型任务并通过运行中心查看执行结果与过程。",
+    "en": "This is a DeepSeek Harness Web plugin for creating reusable AI agent teams, orchestrating multi-model tasks in conversation workflows, and reviewing execution outcomes in a run center."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Orchestrates multi-agent team execution within DeepSeek Harness",
+      "Supports bounded task planning/execution with fixed order or DAG-based dependencies",
+      "Dispatches model/tool-based member runs including retries, quality checks, and background runs",
+      "Provides durable run history and export/backup of team definitions",
+      "Shows provider token usage (input/cache/output buckets) by run"
+    ],
+    "reasons": [
+      {
+        "code": "MODEL_TOOL_DISPATCH",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MULTI_AGENT_TEAM_EXECUTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DURABLE_STORAGE_OF_TASK_STATE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "BACKGROUND_RUNS_AND_CANCELLATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "HOST_PLUGIN_INTEGRATION_WITH_DSH_SERVICES",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Orchestrates multi-agent team execution within DeepSeek Harness",
+      "Supports bounded task planning/execution with fixed order or DAG-based dependencies",
+      "Dispatches model/tool-based member runs including retries, quality checks, and background runs",
+      "Provides durable run history and export/backup of team definitions",
+      "Shows provider token usage (input/cache/output buckets) by run"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:41.262Z",
+  "repositoryCommitSha": "bd2a04bee7120ece85fa9233234b0b09a4de5592",
+  "evidenceHash": "1e03644a839bf78833034c5ef3738476bf9677f706f35532c901e855c6b023c1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7d283962dfbd6dae7c35feea6608363cb7dba1b2ab7e20b9e548bd4de9eecec9",
+  "shadowMode": false
+}

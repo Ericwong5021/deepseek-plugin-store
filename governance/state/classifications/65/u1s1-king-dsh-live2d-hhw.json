@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "ui",
+    "desktop",
+    "browser",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该仓库核心功能是为 DeepSeek Harness 提供一个可视化界面插件：在 Web 端注入 Live2D 宠物到页面角落，并支持角色切换、换装、交互与状态记忆；README、package 配置与目录结构均表明其目标是桌面式 UI 体验增强而非数据处理、外部自动化或研究分析类能力。",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的 Web 桌宠插件，可在界面中显示并交互 Live2D 角色，支持角色切换、换装和状态记忆。",
+    "en": "This is a Live2D desktop pet plugin for DeepSeek Harness that displays and animates a draggable character in the web interface with character switching, costume changes, and persisted pet state."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects and renders a Live2D desktop pet widget in the DeepSeek Harness web client",
+      "Provides user interactions such as drag, click, and character/costume controls in a UI panel",
+      "Loads bundled runtime and model assets through a plugin-provided static asset route",
+      "Persists pet state (display/position/config) in browser localStorage keys"
+    ],
+    "reasons": [
+      {
+        "code": "README 中明确描述了“右下角 Live2D 看板娘（5角色）支持拖拽”“换装面板”“点击/抚摸/拖拽互动”等功能。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与树结构显示包含 src/index.ts（host入口）、src/routes.ts（/hhw-assets）及 client/waifu 相关交互与模型加载代码。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "package.json 指定 dsh.client.platform 为 web，插件通过前端客户端注入方式运行，并导出客户端入口。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 说明本地化资源模型与运行时存于 assets（含 model 与 vendor）并通过 localStorage 键进行状态记忆。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects and renders a Live2D desktop pet widget in the DeepSeek Harness web client",
+      "Provides user interactions such as drag, click, and character/costume controls in a UI panel",
+      "Loads bundled runtime and model assets through a plugin-provided static asset route",
+      "Persists pet state (display/position/config) in browser localStorage keys"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:54.888Z",
+  "repositoryCommitSha": "880be40fc1f06e0a317aa10e5830a0a2d5723749",
+  "evidenceHash": "2a504aad22732293a5745ece5dad0dda7b3c9aa66f7055987dd49f045ba13c39",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1e9fc90ded97618f4ae25b2f1c9f14a6749129a861f2c7817e2cd46f24e5608c",
+  "shadowMode": false
+}

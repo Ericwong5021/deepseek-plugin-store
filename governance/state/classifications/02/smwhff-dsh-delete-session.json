@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "browser",
+    "file",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件面向终端用户在DSH Web界面提供会话清理能力，核心是通过会话列表溢出菜单触发会话删除，并在客户端进行风险确认后由主机端执行持久化与工作区状态清理。证据来自仓库说明与包清单，显示其为Web端host/client双端插件，并实现会话状态检查、会话事件联动、日志目录移除与反馈提示的完整流程。",
+  "summaries": {
+    "zh": "该插件是一个DSH Web会话管理工具，可在会话菜单中新增删除入口并在确认后移除会话及相关持久化记录。",
+    "en": "This plugin is a DSH Web session-management utility that adds a delete option in the session menu and removes the selected session and related persisted records after confirmation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a user-triggered delete action to the session overflow menu in DSH Web",
+      "Invokes a host-side delete runtime via Typert remote contract",
+      "Performs safe-guarded deletion flow for running/idle sessions",
+      "Deletes persistent session log directory data and detaches workspace session references",
+      "Renders confirmation and toast feedback in the client UI"
+    ],
+    "reasons": [
+      {
+        "code": "README说明该插件在会话列表每行省略号菜单中新增“删除会话”项，并要求风险确认后执行删除。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README描述删除流程包含运行中拒绝、空闲会话flush并detach、触发host/session-removed事件和会话列表移除。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README和功能说明显示该项目为DSH Web主机+客户端插件，依赖Typert远程能力并由会话持久化机制移除日志目录。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json定义为DSH bundle/client插件，并标注平台为web及client运行时依赖注入，确认其为UI端插件。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库描述和topic标明其为dsh-plugin，且名为dsh-delete-session，主旨为删除会话与持久化日志。",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a user-triggered delete action to the session overflow menu in DSH Web",
+      "Invokes a host-side delete runtime via Typert remote contract",
+      "Performs safe-guarded deletion flow for running/idle sessions",
+      "Deletes persistent session log directory data and detaches workspace session references",
+      "Renders confirmation and toast feedback in the client UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:38.868Z",
+  "repositoryCommitSha": "a39b42ea48bddd96f6db4cb7b4c4489b17fc644d",
+  "evidenceHash": "d4bc83cb45a42dd0f2bfb3f52a8bc9fffcd828e3ac2300af213a0bdc33a58d1d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b0fca018f9bb5d1724a8a4f38068affb5815bb5226cac4a36b57db912abdd82a",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "tool",
+    "automation",
+    "data",
+    "workflow",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Conservatively classified as a general utility plugin, this package is primarily for user-facing management of DSH conversation lifecycle (archive and trash) through slash commands, including listing, filtering, restoring, deleting, and purging sessions with batch and workspace-aware handling; the evidence does not indicate external service integration or code-generation behavior.",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，通过 `/t-archive` 与 `/t-restore` 命令帮助用户查看、恢复和删除会话归档/回收站中的对话，支持关键词与编号筛选、批量处理和工作区恢复。",
+    "en": "This is a DSH plugin that lets users manage archived and trashed conversations through `/t-archive` and `/t-restore`, including listing, filtering, restoring, deleting, and purging sessions with batching and workspace-aware behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Conversation lifecycle management for archived and trashed sessions",
+      "State-changing actions including restore, delete-to-trash, and permanent purge"
+    ],
+    "reasons": [
+      {
+        "code": "README describes `/t-archive` and `/t-restore` commands that list, restore, delete to trash, or purge conversations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents support for batch operations and both conversation IDs and list-number based selection, which can remove or restore multiple items in one action.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README includes workspace-aware restore behavior and stable list indexing, indicating direct mutation of conversation metadata/state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package manifest declares a DSH bundle entry (`dsh.bundle.patch`), confirming runtime integration as a DSH command plugin.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Conversation lifecycle management for archived and trashed sessions",
+      "State-changing actions including restore, delete-to-trash, and permanent purge"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:11.776Z",
+  "repositoryCommitSha": "99b33cefef0d183ddc8da94c2adfbc56f8720d6c",
+  "evidenceHash": "2ea8e1705b5a24852013226770fea239c8d0ca5999d70949f32ebadc0c6eee0b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3d57d9bfa89c08357d82321ff866bee3fca856dae87effa2c415a1afd8432dc2",
+  "shadowMode": false
+}

@@ -4,7 +4,7 @@
     "fullName": "SparkWeiyang/dsh-lan",
     "url": "https://github.com/SparkWeiyang/dsh-lan"
   },
-  "summary": "DSH bundle: expose the Web GUI on the LAN (bind 0.0.0.0) and add a deepseek/balance RPC (PC-side credential, never leaves the PC)",
+  "summary": "This plugin enables LAN access for the DSH Web GUI and adds a `deepseek/balance` RPC to retrieve DeepSeek account balance via PC-side credentials.",
   "sources": [
     "github-topic"
   ],
@@ -43,25 +43,22 @@
     "capturedAt": "2026-08-17T23:41:52.994Z"
   },
   "classificationSuggestion": {
-    "group": "tools-data",
-    "category": "data-processing",
+    "group": "integrations-communication",
+    "category": "external-services",
     "tags": [
-      "agent",
       "api",
-      "browser",
-      "file"
+      "integration",
+      "tool"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:bundle",
-      "text:planning-execution:执行",
-      "text:memory-context:会话",
-      "text:search-browsing:浏览器",
-      "text:files-terminal:git",
-      "text:data-processing:json",
-      "text:external-services:api"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:3513af30afbd113f0b9ccc1a74b2abe40ae4b7532f3cd50ac1a149d7fa23875c",
+      "commit:18639b4a1d158f06e80cb3f0e38d65dd44169d4f"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:25:47.292Z",
+    "reason": "该插件的主要用户面向目的为为 DSH 提供局域网可访问的 Web GUI 与 DeepSeek 余额查询能力：通过 bundle patch 将 Web 服务绑定到 `0.0.0.0` 并新增 `deepseek/balance` RPC；同时依赖 PC 端配置的 `DEEPSEEK_API_KEY` 请求官方余额接口返回账户信息。已给出未做鉴权的安全提示，因此风险集中在网络可达与凭证传递链路。"
   }
 }

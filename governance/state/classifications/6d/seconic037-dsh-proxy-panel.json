@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "monitoring",
+    "tool",
+    "data",
+    "integration",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用户目的为在 DSH 的设置页提供一个代理状态可视面板，用于展示本机 mihomo 运行与连接状态。基于仓库说明，它只进行本地控制 API 的只读状态读取与界面展示，因此归类为导航/设置面板类工具，具备外部控制接口读取和状态监控展示能力。",
+  "summaries": {
+    "zh": "dsh-proxy-panel 是一个 DSH Web 插件，在设置页展示本机 mihomo 的代理运行状态、当前节点、延迟与监听端口。",
+    "en": "dsh-proxy-panel is a DSH web plugin that shows local mihomo proxy status, active node, latency, and mixed port in the Settings page."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads local mihomo controller status data",
+      "displays active proxy node, latency, run state, and port in a settings panel",
+      "polls status/latency on a periodic timer with optional manual refresh"
+    ],
+    "reasons": [
+      {
+        "code": "README明确说明插件在 DSH 设置页提供“代理状态”面板并展示 mihomo（proxy-gate）节点、延迟、运行状态与监听端口。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README列出权限说明：通过只读路由 `/_dsh/proxy-panel/status` 读取状态，不修改 mihomo/系统代理配置。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README标注面板每5秒自动刷新延迟且可手动“测延迟”，并提到依赖 `external-controller`（默认 127.0.0.1:54438）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 显示该项目为 DSH web 插件（web client/platform）且打包入口为 `lib/index.mjs` 与 `lib/client.js`。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "reads local mihomo controller status data",
+      "displays active proxy node, latency, run state, and port in a settings panel",
+      "polls status/latency on a periodic timer with optional manual refresh"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:10.544Z",
+  "repositoryCommitSha": "665a37a8a273127452e3bbbb683082799c1f85ae",
+  "evidenceHash": "b4d6bed118415c499fb884c9ccd9c86a59b88ccae2580a5c18f74746f16f74e4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b77d0aaa19a165812255e3a3221f3cc91b4a07472c8c00912027222dd8872c13",
+  "shadowMode": false
+}

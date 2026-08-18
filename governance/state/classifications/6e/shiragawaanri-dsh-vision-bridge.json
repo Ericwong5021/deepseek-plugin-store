@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "tool",
+    "file",
+    "image",
+    "workflow",
+    "terminal",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "This is a workflow automation/orchestration plugin that enables image-use continuation when using models that do not accept image input. Evidence shows it conditionally transforms image messages into a tool-based vision-analysis path using DSH pre-step hooks, system prompt guidance, and LLM stream/metadata patches, with model and preset-based controls.",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，用于在不支持图片输入的模型会话中自动将图片改为文件并引导调用视觉工具完成分析，继续执行原有对话流程。",
+    "en": "This DSH plugin routes image messages in unsupported-model sessions into a configured vision-tool workflow so the conversation can continue with tool-based image analysis."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Bridges image input for text-only models by materializing attachments into the session workspace.",
+      "Rewrites message flow via agent pre-step to carry image paths and guide the model toward a vision-tool call.",
+      "Injects a system-prompt rule to require a configured vision tool for bridged sessions.",
+      "Patches LLM model capability and stream serialization paths to allow continuation under text-only adapters.",
+      "Applies configurable model/preset filtering and persists settings through DSH settings service."
+    ],
+    "reasons": [
+      {
+        "code": "README describes interception flow: materialize image, rewrite user message, and require vision tool usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents patches to llm.resolveModelInfo and llm.streamWithRegistration to transform unsupported-image sessions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes shared/global patch behavior across sessions and shell-based workspace file writes with platform checks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json identifies a DSH profile bundle with patch entry and dependencies on llm/agent/prompt/tooling modules.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Bridges image input for text-only models by materializing attachments into the session workspace.",
+      "Rewrites message flow via agent pre-step to carry image paths and guide the model toward a vision-tool call.",
+      "Injects a system-prompt rule to require a configured vision tool for bridged sessions.",
+      "Patches LLM model capability and stream serialization paths to allow continuation under text-only adapters.",
+      "Applies configurable model/preset filtering and persists settings through DSH settings service."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:25.102Z",
+  "repositoryCommitSha": "65717f9fa61700300ac24258c6c92c3622de7504",
+  "evidenceHash": "11fdfa81666fb695170928a07e05ea8ba52255dcdd9d62885405c509eb65e716",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ba17f2e5e08ea643f9761adeaee94d797efdfba99b707e4b7fb3a067bb33e24f",
+  "shadowMode": false
+}

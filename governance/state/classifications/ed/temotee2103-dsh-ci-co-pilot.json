@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Classified as automation because the repository’s published plugin exposes GitHub workflow tools for PR review, CI failure handling, issue triage/update, and release-note/release creation, making it primarily a GitHub task automation utility rather than a standalone code generator or UI feature.",
+  "summaries": {
+    "zh": "该插件是为 DeepSeek Harness 提供 GitHub 协作自动化能力的工具，支持 PR 审核、CI 失败排查、Issue 分类处理和发布说明/发布创建等操作。",
+    "en": "This plugin provides GitHub automation tools for DeepSeek Harness agents, including PR review workflows, CI failure troubleshooting, issue triage and updates, and release note or release creation tasks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Uses GitHub REST API operations for PR/CI/issue/release workflows",
+      "Can read repository CI, PR, issue, and release data",
+      "Can perform write actions such as submitting reviews, updating issues, rerunning workflows, and creating releases"
+    ],
+    "reasons": [
+      {
+        "code": "README lists multiple GitHub action tools including gh_submit_review, gh_update_issue, gh_rerun_ci, and gh_create_release, which indicates write-capable operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents authentication via GITHUB_TOKEN/GH_TOKEN for private repos and higher usage, implying credential-based API access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines a DSH plugin bundle entrypoint (index.js/cordis patch), confirming it executes as an integrated automation plugin in the DeepSeek Harness workflow.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Uses GitHub REST API operations for PR/CI/issue/release workflows",
+      "Can read repository CI, PR, issue, and release data",
+      "Can perform write actions such as submitting reviews, updating issues, rerunning workflows, and creating releases"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:19.183Z",
+  "repositoryCommitSha": "5eb579632b9eaf9a00bfd37c08fbb4cf6b3aceff",
+  "evidenceHash": "ceed006840bb17fe00f1baa2b3d568b02ea9947ec674ed7a61e65fe3c9685f18",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "94ef126d329941a6c2759e5080e06277c81e0ea1f6af149cdfa5a47e52b710c6",
+  "shadowMode": false
+}

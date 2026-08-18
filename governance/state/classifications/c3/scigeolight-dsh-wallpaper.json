@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "theme",
+    "image",
+    "file",
+    "layout",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin’s primary function is end-user interface customization: it adds a Wallpaper page in DSH Settings for choosing a background image and tuning frosted-glass visual tokens (blur, opacity, saturation), then applies those settings as runtime CSS overrides and saves them in localStorage for persistence. Evidence from the README and manifest shows this is a web client-facing visual/theme feature with no explicit third-party integrations in runtime code.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 客户端插件，提供设置页中的壁纸上传与磨砂玻璃参数调节（模糊、透明度、饱和度）功能，用于个性化界面外观。",
+    "en": "This is a DeepSeek Harness web client plugin that adds a Wallpaper settings page for uploading background images and adjusting frosted-glass effects like blur, opacity, and saturation to customize the UI."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Local image upload and base64/data-url handling for wallpaper preview.",
+      "Client-side CSS variable/style token injection to override app background and frosted-glass appearance.",
+      "Settings UI extension under the Harness Settings panel.",
+      "Persistence of user preferences via browser localStorage."
+    ],
+    "reasons": [
+      {
+        "code": "README describes a Wallpaper settings page that supports uploading JPEG/PNG/WebP images and adjusting Frost, panel opacity, and saturation controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states preferences are saved under localStorage key dsh.wallpaper and reapplied on boot via injected style variables.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest declares a web DSH client plugin with client entry points and optional runtime peer dependencies, indicating in-app UI extension rather than external service integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository includes bundle wiring files and patch entry points for client activation (cordis.patch.yml) in plugin distribution.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Local image upload and base64/data-url handling for wallpaper preview.",
+      "Client-side CSS variable/style token injection to override app background and frosted-glass appearance.",
+      "Settings UI extension under the Harness Settings panel.",
+      "Persistence of user preferences via browser localStorage."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:09.201Z",
+  "repositoryCommitSha": "861b416a949bb228b1858575aacc8b4e797ef111",
+  "evidenceHash": "270b927777112836a746b6f9d64ac30a0e7f3ef81c39597cdaebaf82aeca7650",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "186189a03788dbaa20e417a8081564bee54ad22d17a6fda4ea5c24a2471e3cd1",
+  "shadowMode": false
+}

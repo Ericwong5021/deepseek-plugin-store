@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "ui",
+    "agent",
+    "tool",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a user-facing UI utility for DeepSeek Harness: it helps users create quote-linked comments on assistant content and send a combined draft-plus-annotations message to the agent. Evidence in the README and package metadata consistently shows chat-message annotation staging, composer docking, and single-message send behavior with no additional automation service integrations.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 聊天界面中提供逐条引用批注功能，可选中文本或整条回复后生成可编辑的编号批注卡片，并一键将草稿与所有批注合并发送给助手。",
+    "en": "This plugin adds quote-and-comment annotation tools to DeepSeek Harness web chat, letting users create and queue numbered notes on selected or whole assistant content and send the draft plus all annotations in one composed message to the agent."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Adds quote-based annotation controls in the DSH web chat UI",
+      "Stages numbered annotation cards in-session and allows editing/removal before sending",
+      "Composes draft text with aligned quote-and-note blocks for one outbound message",
+      "Uses DSH input action hooks to insert drafted output or submit the composed message"
+    ],
+    "reasons": [
+      {
+        "code": "README: floating Annotate trigger on text selection and per-message action button are explicitly described as the core workflow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: annotations are staged as numbered cards in a dock above the composer and can be sent together as one structured message.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json: plugin is a web client plugin declared via DSH bundle manifest and client inject configuration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds quote-based annotation controls in the DSH web chat UI",
+      "Stages numbered annotation cards in-session and allows editing/removal before sending",
+      "Composes draft text with aligned quote-and-note blocks for one outbound message",
+      "Uses DSH input action hooks to insert drafted output or submit the composed message"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:26.734Z",
+  "repositoryCommitSha": "3367d60509e2da51b85a48f4c5d6c212cc5ea3ce",
+  "evidenceHash": "7da1a77b831d26859cc1546a78a49783f1dac200c2dbed772d246660edc8a680",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "50c3136ae5452acafbef3d5181890a8699251890503879bf73c90009ee43805a",
+  "shadowMode": false
+}

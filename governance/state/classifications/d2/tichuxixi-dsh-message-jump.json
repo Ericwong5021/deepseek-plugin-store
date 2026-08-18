@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "browser",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的可见功能是提升 DSH Web 聊天会话体验：在会话区显示可切换左/右的指令导航面板，并提供输入框上下键历史回填，均为界面导航与消息操作增强，因此主分类应为“navigation-panels”；风险为中等，主要在于读取会话历史与监听输入键盘事件后进行页面滚动定位与草稿回填。",
+  "summaries": {
+    "zh": "这是一款 DSH Web 插件，在会话区提供可切换左右的指令导航侧栏，并在输入框焦点时支持用 ↑/↓ 快速回填历史已发送内容。",
+    "en": "This is a DSH Web plugin that adds a side command-navigation bar to conversations and allows users to use Up/Down keys in the focused input to browse and refill previously sent messages."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read local user message events from session data and build a complete user-instruction index",
+      "Render and update a side navigation strip overlay linked to the conversation view",
+      "Capture focused-input key events for Up/Down history traversal and restore draft state",
+      "Programmatically scroll to message anchors and trigger temporary highlight behavior",
+      "Persist a UI position preference in local storage",
+      "Invoke host-side session history APIs to load older messages when needed"
+    ],
+    "reasons": [
+      {
+        "code": "Manifest and client slot usage indicate in-browser UI injection and input interception behavior in the chat interface",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README describes a persistent side instruction timeline with click-to-jump scrolling and hover preview of historical user commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies host client RPC `msgjump.fullHistory` and session-log loading (`loadOlder`) to include unloaded history for navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Read local user message events from session data and build a complete user-instruction index",
+      "Render and update a side navigation strip overlay linked to the conversation view",
+      "Capture focused-input key events for Up/Down history traversal and restore draft state",
+      "Programmatically scroll to message anchors and trigger temporary highlight behavior",
+      "Persist a UI position preference in local storage",
+      "Invoke host-side session history APIs to load older messages when needed"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:31.707Z",
+  "repositoryCommitSha": "ecbe3874cbf7efc40a1c81cbe3449580113b74ae",
+  "evidenceHash": "5afca2c2dd2d1e410a9c410be801c550afc171001dc6d14fa221e8c2cc718313",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "064452f4e47cfcda9a9fb6e1c6ea730e07e825019e04956e521d01d3d32e2f19",
+  "shadowMode": false
+}

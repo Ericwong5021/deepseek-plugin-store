@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "desktop",
+    "integration",
+    "file",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心面向用户功能是作为 DeepSeek Harness 的桌宠插件：在插件端提供“桌宠”设置与任务状态归约并落盘（pet.json），在壳端提供可选的 Electron 集成实现用于显示悬浮宠物窗口与状态卡，因此主要用途为 DSH 插件功能扩展（桌面交互体验）。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供桌宠功能，包含设置页与任务状态持久化，并配合 Electron 壳展示状态驱动的悬浮宠物窗口。",
+    "en": "This plugin adds a desktop pet feature to DeepSeek Harness with a settings page and task-state persistence, designed to drive a floating pet window in an Electron shell."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Writes and reads user-level state files under ~/.dsh (pet status and completion markers)",
+      "Runs in DeepSeek Harness as a plugin with host/client routing and settings page logic",
+      "Includes an Electron shell integration layer to display and animate an on-screen desktop pet window"
+    ],
+    "reasons": [
+      {
+        "code": "Package metadata declares a DSH plugin bundle patch and web client injection, indicating distributed plugin runtime behavior.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository documentation states the plugin stores status in ~/.dsh/pet.json, consumes session/task events via a reducer, and exposes completion markers for shell usage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The tree includes bigfish/ shell integration files (main.js, pet.html/js, assets) that depend on Electron window APIs for a floating desktop pet.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Writes and reads user-level state files under ~/.dsh (pet status and completion markers)",
+      "Runs in DeepSeek Harness as a plugin with host/client routing and settings page logic",
+      "Includes an Electron shell integration layer to display and animate an on-screen desktop pet window"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:02.075Z",
+  "repositoryCommitSha": "562146807de1052cfb8fb3a1beb02cf02ab093d8",
+  "evidenceHash": "549ae5de389cd3a7c232c6f172a9c3f0b8146866a25e60a79afd13954592e6cc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "02b09f56c34b7a9f15b987314a77f231de76b0d0c98c294af95f79ebbbb24cc4",
+  "shadowMode": false
+}

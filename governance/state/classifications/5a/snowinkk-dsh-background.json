@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "desktop",
+    "image",
+    "file",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向功能是为 DSH 界面提供自定义背景图和遮罩亮度控制，配合设置面板与 `/background` 命令进行快速操作，因此应归类为主题/布局类界面增强插件。",
+  "summaries": {
+    "zh": "DSH 桌面版背景主题插件，支持从本地选择图片、调整背景遮罩明暗、清除恢复默认，并可通过 `/background` 命令与配置文件快速管理个性化壁纸。",
+    "en": "A DSH desktop plugin for customizing the app background with image selection, darken/lighten overlay controls, reset-to-default, and quick management via the `/background` command."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "选择并加载本地或网络背景图片",
+      "在本地存储中保存背景与遮罩设置",
+      "读取 `~/.config/dsh-background/config.json` 覆盖配置",
+      "通过 `/background` 命令快速切换背景",
+      "调整背景遮罩亮度用于界面显示效果"
+    ],
+    "reasons": [
+      {
+        "code": "仓库说明与README明确将该插件定位为 DSH 桌面版自定义背景插件，核心是窗口底层背景图片与遮罩显示效果。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README写明支持图片来源为 data URL、本地路径或 http(s) 地址，并支持覆盖层透明度调节、清除与持久化。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 指定了 DSH 客户端 UI 注入与主题相关依赖，表明其作为界面增强插件集成到聊天命令与设置面板。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "选择并加载本地或网络背景图片",
+      "在本地存储中保存背景与遮罩设置",
+      "读取 `~/.config/dsh-background/config.json` 覆盖配置",
+      "通过 `/background` 命令快速切换背景",
+      "调整背景遮罩亮度用于界面显示效果"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:39.899Z",
+  "repositoryCommitSha": "09b38fb2e1079f371794dcdd7b1fd04277adcbdd",
+  "evidenceHash": "62499a5abe1353977d9c05c9434058962572460878264bc246b1fadba8126d82",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c937fdfa1648bba5c18a1cd885e5c08f0480b612c4919a1df4c504070b5721ea",
+  "shadowMode": false
+}

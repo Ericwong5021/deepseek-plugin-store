@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "layout",
+    "chat",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a UI layout/visual focus utility for DSH: it uses a web client extension to render a single selected panel based on the `focus` query parameter and hide other panels for a focused editing or reading view.",
+  "summaries": {
+    "zh": "该插件为 DSH 网页客户端提供聚焦模式：通过 URL 参数 `?focus=<插槽名>` 聚焦指定区域并隐藏其他面板，以便在单一槽位中集中查看页面内容。",
+    "en": "This plugin adds a focus mode for the DSH web UI, using the `?focus=<slot>` query parameter to show a selected panel while hiding other panels for a single-pane interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Applies URL-driven focus mode in the DSH web client.",
+      "Hides or compresses non-target UI slots to produce a single-pane layout.",
+      "Uses runtime DOM/CSS manipulation in the browser via data attributes and MutationObserver.",
+      "Targets specific DSH sections including conversation, composer, sidebar, and details slots.",
+      "Auto-switches to a recent non-empty session when no active session exists."
+    ],
+    "reasons": [
+      {
+        "code": "README states `?focus=<插槽路径>` shows only the targeted slot (e.g., message flow, composer, sidebar) and keeps unknown/missing values as no-op.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes reading `location.search` and setting `data-focus` plus CSS/slot sibling rules for top-level and nested visibility control.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares a DSH web client plugin (`dsh.client.platform: \"web\"`) with session injection and bundle patch entry, confirming runtime UI behavior in the client.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Applies URL-driven focus mode in the DSH web client.",
+      "Hides or compresses non-target UI slots to produce a single-pane layout.",
+      "Uses runtime DOM/CSS manipulation in the browser via data attributes and MutationObserver.",
+      "Targets specific DSH sections including conversation, composer, sidebar, and details slots.",
+      "Auto-switches to a recent non-empty session when no active session exists."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:23.270Z",
+  "repositoryCommitSha": "26472f866e9f7f2ca7ca6ba97357ae225be41a29",
+  "evidenceHash": "52bc085cddbe0b3caaaed72a90aa09055def847f14377d969a9befad4607d47e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e36dbd9b3fa1008dd4f636570e9c73404597b51bb4e02654a97809301d7ee5d3",
+  "shadowMode": false
+}

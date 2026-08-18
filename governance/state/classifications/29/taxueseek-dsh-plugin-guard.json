@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "search",
+    "api",
+    "workflow",
+    "integration",
+    "terminal",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "This plugin is a DSH-facing automation utility for plugin supply-chain screening, centered on pre/post install checks rather than code generation or user-facing UI work. It is described as doing static audits, hash/capability verification, optional peer matching via GitHub, and detox-style transformations, which supports an install-guard/clinic workflow. Risk is moderate because it can influence install decisions and performs network lookups, but evidence also says it avoids executing the target plugin.",
+  "summaries": {
+    "zh": "该插件用于DSH生态中的插件守门与体检，提供安装前静态审查、安装后校验、同类插件指纹检索，并可选用 GitHub 查询辅助筛选。",
+    "en": "This plugin is for DSH plugin gate/clinic workflows, providing pre-install static checks, post-install verification, local peer fingerprinting, and optional GitHub lookups to help screen plugins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Static pre-install analysis of plugin content",
+      "Post-install hash and capability lock checks",
+      "Local plugin peer fingerprinting",
+      "Optional remote plugin-peer lookup on GitHub",
+      "Install-time gating via warning/block scoring"
+    ],
+    "reasons": [
+      {
+        "code": "README states `plugin_audit` performs static audit before install and explicitly says the target plugin is never executed.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states `plugin_verify` performs hash + capability lock checks after install.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `plugin_peers` local fingerprinting and optional remote query to GitHub `topic:dsh-plugin`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes scoring rules that emit warn/block outcomes based on detected severities.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks this as a DSH plugin package with bundle metadata and plugin entrypoint wiring.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Static pre-install analysis of plugin content",
+      "Post-install hash and capability lock checks",
+      "Local plugin peer fingerprinting",
+      "Optional remote plugin-peer lookup on GitHub",
+      "Install-time gating via warning/block scoring"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:19.612Z",
+  "repositoryCommitSha": "7b7195eae9e01f83ec2979ee11a5c6ec72c1e051",
+  "evidenceHash": "6c7e287f5d5bd65f2f2262a161846f1a336e397ea7f34ac341413d2ee4a15bc4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "91247d95e4ab01bee30ead98132a084bebb2e3bf811b4d42cbd29e5630a9980c",
+  "shadowMode": false
+}

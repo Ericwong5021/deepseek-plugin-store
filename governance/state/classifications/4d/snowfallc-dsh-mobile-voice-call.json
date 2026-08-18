@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "ui",
+    "mobile",
+    "browser",
+    "chat",
+    "tool",
+    "integration",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心是为 DeepSeek Harness 提供“手机端语音通话”入口：通过二维码配对后在移动浏览器中接入现有会话，并利用桌面端转写与合成能力完成对话音频化。依据说明与清单可确认其主要是桌面与移动端语音交互桥接类工具，带有网络与音频处理能力。",
+  "summaries": {
+    "zh": "该插件用于将现有 DeepSeek Harness 会话扩展为手机网页语音通话模式，扫码配对后可通过麦克风与会话进行听说交互，并在手机端播放语音回复。",
+    "en": "This plugin extends an existing DeepSeek Harness session into a mobile web voice-call flow, letting users pair by QR code and interact by speaking with replies played back as synthesized audio."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "mobile-web voice-call UI integration",
+      "session pairing via QR code and URL fragment",
+      "browser microphone capture and playback",
+      "local speech-to-text with whisper.cpp",
+      "text-to-speech playback (Hojo-TTS-Light or system fallback)",
+      "remote access through Cloudflare tunnel"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a mobile voice-call add-on for existing DSH sessions, using a scanned QR to enter a narrowed mobile web page and start calls, with no standalone APK.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details the call flow: phone browser records audio, desktop performs local whisper.cpp transcription, and replies are synthesized and sent back for playback on phone, with Cloudflare Quick Tunnel used for HTTPS access.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks it as a DSH plugin with bundle patch metadata and includes dependencies for proxy and QR-code handling, confirming plugin integration and web bridge/network functionality.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "mobile-web voice-call UI integration",
+      "session pairing via QR code and URL fragment",
+      "browser microphone capture and playback",
+      "local speech-to-text with whisper.cpp",
+      "text-to-speech playback (Hojo-TTS-Light or system fallback)",
+      "remote access through Cloudflare tunnel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:42.802Z",
+  "repositoryCommitSha": "1d3b9709e8350ace22fda188147e91f290c1c7a0",
+  "evidenceHash": "42b466f48f6ba9cfa7474edaccb0912eb7ab20b23de8bad342dbbad7a9583124",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1ddec2001a69d609aa774ed60e722b561b814dcb8cd693ae7b067edd593fd1ec",
+  "shadowMode": false
+}

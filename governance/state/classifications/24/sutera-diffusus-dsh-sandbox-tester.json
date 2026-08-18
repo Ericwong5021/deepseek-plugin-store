@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "tool",
+    "testing",
+    "automation",
+    "terminal",
+    "file",
+    "workflow",
+    "ui",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "该插件的主要面向用户用途是为 DeepSeek Harness 提供隔离式开发/测试工作台：先在独立沙盒进程中执行插件与补丁验证，再通过受控门禁流程回写，避免直接影响本体实例。依据 package.json 与 README 的工具清单、架构说明和合回流程可归类为测试与调试导向的开发工具。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供进程级隔离沙盒测试功能，支持创建、启动、注入、健康检查、停止与销毁沙盒，并提供合并前的门禁校验流程。",
+    "en": "This plugin provides a process-isolated sandbox testing workflow for DeepSeek Harness, letting users create, run, inspect, stop, and destroy test instances with an explicit pre-merge validation gate."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "本地沙盒进程生命周期管理（创建/启动/停止/销毁）",
+      "本地文件系统读写（沙盒副本、补丁注入、合并备份与回滚清单）",
+      "本地端口与服务健康检查（HTTP/测试报告）",
+      "本机进程树/监听端口保护逻辑",
+      "本地浏览器驱动测试（CDP）"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了 9 个原生工具，包括 sandbox_create/list/inject/run/health/stop/destroy/prune/merge，核心用于测试与调试隔离环境",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 明确提到独立进程、独立 DSH_HOME、独立端口与 sandbox_run/merge 的门禁式校验（逐文件语法检查、bundle 校验、dryRun/回滚）",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 描述为 DSH 测试沙盒插件，提供创建/运行/健康检查/销毁/清理与门禁式合回工具",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README 的安装流程说明会修改 DSH 安装目录相关文件（profile manifest 与 apiproxy 白名单）并在目录中注册插件入口",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "目录结构包含 lib/proctree.js、merge-gate.js、ports.js 与 test/qa-cdp.mjs，表明包含进程管理、合并校验与测试执行逻辑",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "本地沙盒进程生命周期管理（创建/启动/停止/销毁）",
+      "本地文件系统读写（沙盒副本、补丁注入、合并备份与回滚清单）",
+      "本地端口与服务健康检查（HTTP/测试报告）",
+      "本机进程树/监听端口保护逻辑",
+      "本地浏览器驱动测试（CDP）"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:05.670Z",
+  "repositoryCommitSha": "8fd746dc1fd0946c5491b0e2967ab0d22e4fba4e",
+  "evidenceHash": "b235f16d0e95111abcfaf16631e365307d732b30b1d539463d3bc852e4184484",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8615a8f9f784ed35799a87b2d09a2e7453b51ba25ae9cfc6eb5dd6a0b9e60291",
+  "shadowMode": false
+}

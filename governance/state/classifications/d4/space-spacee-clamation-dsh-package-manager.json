@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "automation",
+    "cli",
+    "api",
+    "integration",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "The plugin is primarily a DSH plugin-management utility: it packages as a DSH extension and, per README, manages dsh-bundle plugins by adding them as profile dependencies and editing managed patch rows in `cordis.patch.yml` for hot lifecycle control. Manifest metadata and docs also show CLI and web/API surface (`dpm`, web/client exports), supporting operational tooling for plugin installation and control rather than standalone app logic.",
+  "summaries": {
+    "zh": "这是一个 DSH 插件管理工具，用于在 profile 层面安装、卸载、启用/禁用及更新插件，并通过 CLI、Web/API 与热更新机制同步状态。",
+    "en": "This is a DSH plugin manager that installs, removes, enables/disables, and updates plugins via profile-level management, with CLI and web/API paths for operating plugin state."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Manage lifecycle operations for DSH plugins (install/uninstall/enable/disable)",
+      "Modify profile-level configuration (`cordis.patch.yml`) to control plugin hot mount/unmount behavior",
+      "Validate and synchronize plugin dependencies for profile state",
+      "Perform plugin checks/updates for git sources via remote version queries",
+      "Expose management via CLI and web/API/programmatic surfaces"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a single installation pipeline that writes normalized plugin patch rows into profile `cordis.patch.yml` and relies on watch-based hot reload for add/remove/disable behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists CLI commands (`dpm ...`) and Web/API usage, showing user-facing operations that can alter plugin state across profiles.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest defines `bin.dpm`, plus exports for web/client/tools, indicating shipped management tooling beyond core runtime patch files.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "README includes update checking via `git ls-remote` and mirror sync for git-sourced plugins, implying network access and remote source interaction.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Manage lifecycle operations for DSH plugins (install/uninstall/enable/disable)",
+      "Modify profile-level configuration (`cordis.patch.yml`) to control plugin hot mount/unmount behavior",
+      "Validate and synchronize plugin dependencies for profile state",
+      "Perform plugin checks/updates for git sources via remote version queries",
+      "Expose management via CLI and web/API/programmatic surfaces"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:46.575Z",
+  "repositoryCommitSha": "49398a3ee3ab696281964d4c73f93e4c46c03c50",
+  "evidenceHash": "fc96a8986ed085953037f91e0766fd50c430e53bd10a7ad40397e941567cc132",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6dfb589b560fa5da962563bd78706c8ad33b2dba922bf6b91944e45d3bc701c4",
+  "shadowMode": false
+}

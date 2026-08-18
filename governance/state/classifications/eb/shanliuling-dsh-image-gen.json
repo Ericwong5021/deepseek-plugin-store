@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "chat",
+    "image",
+    "tool",
+    "api",
+    "integration",
+    "ui",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用户价值在于在 DeepSeek Harness 对话中生成图片而非代码编辑或项目分析，归类为媒体工具。依据仓库说明与包元数据，它将 `generate_image` 能力接入 Agent 对话、支持多提供商图像 API，并在会话中回显结果，因此分类为 media-tools 且需考虑外部服务调用和凭据使用风险。",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的对话中直接调用图像生成工具，支持多种图片生成服务与自有 API Key，并将生成结果展示在当前会话中。",
+    "en": "Generate images directly within DeepSeek Harness conversations by adding a chat-facing image tool, using your own provider API keys to produce and return images in the conversation flow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Image generation via chat commands",
+      "Supports multiple external image provider APIs",
+      "Stores/uses provider credentials in DeepSeek Harness settings",
+      "Displays generated images in conversation context",
+      "Web plugin runtime/tool integration for DSH"
+    ],
+    "reasons": [
+      {
+        "code": "README shows the plugin is a DeepSeek Harness-native image generation plugin where the Agent can invoke generate_image and return images in the current chat.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists supported providers (Gemini, OpenAI Images, OpenAI Compatible, Seedream/Volcengine) and configurable model/endpoint settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json marks this as a DeepSeek Harness web plugin with client injection modules, indicating integration into platform UI and toolchains.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Image generation via chat commands",
+      "Supports multiple external image provider APIs",
+      "Stores/uses provider credentials in DeepSeek Harness settings",
+      "Displays generated images in conversation context",
+      "Web plugin runtime/tool integration for DSH"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:17.274Z",
+  "repositoryCommitSha": "42d53b0ee26f4b4c8eeabbd4ba89662a1b3179f5",
+  "evidenceHash": "c1befe0e28666e50ad681b4156f140e176df3da62b2055bcfeb45dfcce436108",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cacfb47ad57daaf21c4275e727737ff254a38781c7a1a74e152b861401c583e5",
+  "shadowMode": false
+}

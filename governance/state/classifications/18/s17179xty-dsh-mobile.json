@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "ui",
+    "browser",
+    "desktop",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin’s primary user-facing purpose is mobile access integration for DeepSeek Harness: it adds a phone connection UI in the web settings row and enables phone pairing plus LAN-based mobile client use via an internal bridge, so it best fits the Desktop & Mobile category. Its exposed behavior centers on connectivity and session/chat interaction rather than coding, analytics, or external automation control.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，用于在网页设置区域提供手机连接入口并支持二维码配对，从而在局域网内访问 DSH 移动端客户端。",
+    "en": "This DeepSeek Harness plugin adds a phone connection entry in the web UI and enables QR-based pairing to a local bridge so a phone can use the DSH mobile client over LAN."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "hosts a LAN HTTP bridge for phone pairing and mobile access",
+      "supports QR-based desktop-approved pairing with token lifecycle",
+      "provides a mobile DSH web client for sessions and prompts",
+      "forwards only an allowlisted set of RPC calls to harness endpoints",
+      "injects web UI elements for phone connection state and management"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin serves a separate LAN bridge (`lan-bridge.mjs`) with pairing, mobile client, and RPC forwarding behavior described in README documentation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme explicitly lists only allowlisted RPC methods (`workspace.list`, `session.list`, `session.history`, `session.create`, `session.prompt`, `session.cancel`) for bridge forwarding.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository layout includes `lib/index.js`, `lib/client.js`, `lan-bridge.mjs`, and `pages.mjs`, indicating host/plugin logic plus browser-side integration for pairing/settings UI.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Manifested package setup (`dsh.bundle.patch`, web client export) shows the plugin is a DSH web-profile extension rather than a standalone app.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "hosts a LAN HTTP bridge for phone pairing and mobile access",
+      "supports QR-based desktop-approved pairing with token lifecycle",
+      "provides a mobile DSH web client for sessions and prompts",
+      "forwards only an allowlisted set of RPC calls to harness endpoints",
+      "injects web UI elements for phone connection state and management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:01.918Z",
+  "repositoryCommitSha": "6b781548e2948926f9acaf9f3a2b27fc8ad22a18",
+  "evidenceHash": "2566fa042473104ca5f538e6770c06e1fe695c7bfa3b851e6b63e63e97526454",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c1fefa685a067312f8f17289b72cb6270e025d4259c77c9dbd689ea0e92db599",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "ui",
+    "workflow",
+    "agent",
+    "automation",
+    "tool",
+    "integration",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin is primarily an orchestration utility for DeepSeek Harness subagents: it adds a sidebar web UI to set model and reasoning settings, supports global and per-session scope, and applies these settings dynamically to subagent/workflow operations; this is evidenced by the README feature and usage sections plus the package’s DSH web client/plugin configuration.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 界面中提供子代理模型配置入口，可按会话或全局设置供应商、模型和推理强度，以控制子代理使用的模型策略。",
+    "en": "This plugin adds a Subagent Models configuration panel in the DeepSeek Harness web UI so users can set provider, model, and reasoning effort for subagents globally or per session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Configures provider/model/reasoning settings for subagent execution.",
+      "Supports global defaults and per-session overrides for subagent behavior.",
+      "Applies updated settings at runtime without requiring a web restart.",
+      "Stores configuration data locally in a structured JSON file."
+    ],
+    "reasons": [
+      {
+        "code": "User-facing plugin description and usage flow define the main capability: configuring subagent model/provider/reasoning mode per session or globally via the GUI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states settings include global vs session scopes (default/inherit/custom) and are applied to new subagent/workflow requests immediately after save.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents configuration persistence at ~/.dsh/storages/subagent_model.json with default and sessions sections.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares DSH web plugin bundle/client wiring, indicating runtime integration with the web interface and subagent-capable context.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Configures provider/model/reasoning settings for subagent execution.",
+      "Supports global defaults and per-session overrides for subagent behavior.",
+      "Applies updated settings at runtime without requiring a web restart.",
+      "Stores configuration data locally in a structured JSON file."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:51.924Z",
+  "repositoryCommitSha": "0118343aa5ff67742bfa721ece0fa431922a7393",
+  "evidenceHash": "f9436c11a779bd7d8fb8159b237599504eb5ae1cd7636ffecd98cae10a9480b2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3df95979d54ac26425de90c7d0b57b63e192c318a747aa76ebea550e0c1877e9",
+  "shadowMode": false
+}

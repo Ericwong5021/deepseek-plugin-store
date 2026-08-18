@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "automation",
+    "chat",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的主要用途是增强 DSH 的 DeepSeek 官方 provider 在图片场景下的可用性：README 明确描述其接管 `deepseek-official` 路由，并在 `resolveModel` 中补充 `image` 输入模态以通过 apiproxy 的图片准入检查。仓库结构与 `package.json` 显示这是一个带有 `dsh` patch 的标准 DSH 插件，并附带上游漂移检测脚本；说明其能力边界集中在路由接管与模型元数据改写，而非实现图片转写。",
+  "summaries": {
+    "zh": "这是一个 DSH 插件，用于接管 DeepSeek 官方 provider 路由并补充图片输入模态声明，让图片消息可通过 apiproxy 准入，由其他 `image-bridge` 类插件在前置步骤将图片内容转写后继续处理。",
+    "en": "This DSH plugin takes over the DeepSeek official provider route and adds image input modality metadata so image messages can pass apiproxy admission, while image-to-text conversion is handled by separate pre-step components."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Overrides DeepSeek provider route behavior inside DSH plugin patch flow",
+      "Alters model metadata returned by resolveModel to include image modality",
+      "Depends on existing external DeepSeek adapter and API behavior"
+    ],
+    "reasons": [
+      {
+        "code": "README-ROUTE-TAKEOVER",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README-MODALITY-INJECTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DSH-PATCH-MANIFEST",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "DRIFT-DETECTION-DEPENDENCY",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Overrides DeepSeek provider route behavior inside DSH plugin patch flow",
+      "Alters model metadata returned by resolveModel to include image modality",
+      "Depends on existing external DeepSeek adapter and API behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:19.162Z",
+  "repositoryCommitSha": "a029e2c33141c76035608902f4d6111b2091742f",
+  "evidenceHash": "a64cddef60ad33009675a1b0ea2a1a9640d8603f84659507a12465ffd78009fd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "522fb755aac2cc528d7231881c47de614c2c7ebf631c278476b9f872f6b79dcb",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "ui",
+    "monitoring",
+    "browser",
+    "data",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心用户可见用途是把 DeepSeek Harness 运行中的组件活动可视化为实时面板（`/evo`）并通过 SSE 进行事件推送，属于前端可视化监控类能力，基于仓库 README 和 package 信息可直接确认，不属于代码生成或文档处理类插件。",
+  "summaries": {
+    "zh": "dsh-evo-vis 是一款 DeepSeek Harness 宿主侧插件，在 Web UI 中实时展示会话、模型与工具等组件活动，并以可视化面板方式呈现事件与状态。",
+    "en": "dsh-evo-vis is a host-side DeepSeek Harness plugin that shows session, model, and tool activity in the Web UI as a real-time visualization panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers Web UI routes for a full-screen panel, snapshot data endpoint, and SSE stream in the host web profile.",
+      "Listens to DeepSeek Harness Cordis events and normalizes them into real-time UI activity metrics.",
+      "Injects a floating entry point in the Web UI via tapIndex and supports runtime configuration via patch file."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin provides `/evo` (UI), `/evo/data` (snapshot), and `/evo/stream` (SSE) for real-time visualization and replay.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes listening to `session/event`, `tools/result`, `agent/*`, and related events to map component activity into energy/level-based visuals and stats.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata defines the plugin as a dsh bundle patch (`dsh.bundle.patch`), confirming it runs as a host-side integration through DeepSeek Harness configuration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Registers Web UI routes for a full-screen panel, snapshot data endpoint, and SSE stream in the host web profile.",
+      "Listens to DeepSeek Harness Cordis events and normalizes them into real-time UI activity metrics.",
+      "Injects a floating entry point in the Web UI via tapIndex and supports runtime configuration via patch file."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:32.635Z",
+  "repositoryCommitSha": "ffc584e942617086cc4bc6dc70a6714d2bdf62ca",
+  "evidenceHash": "32a656c20845a00a28a5774f7e9cc60297c153a227d778247f625657d42d59d3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "48555c70b4972dfd474f4e9b516fed3293ad61e9d48ea0f38c00c78191d3d0e9",
+  "shadowMode": false
+}

@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "tool",
+    "image",
+    "automation",
+    "workflow",
+    "mcp",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin is primarily an integration bridge between DeepSeek Harness and Paper Desktop via MCP, exposing Paper design MCP operations as native DSH tools plus design skills and guide/context injection, with additional reconnect and OAuth command support for servers that require authentication. Core capabilities include tool invocation, screenshot/image attachment handling, and auth token workflow, so it is best classified as an external-services integration plugin with medium risk due network/auth/token state and external tool control.",
+  "summaries": {
+    "zh": "该插件是一个 DeepSeek Harness 插件，用于将 Paper Desktop 的 MCP 工具桥接为本地 paper_* 工具与设计技能，并提供重连与 OAuth 认证命令入口。",
+    "en": "This plugin is a DeepSeek Harness bundle that bridges Paper Desktop MCP functionality into native paper_* tools and design skills, with reconnect and OAuth auth command support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "MCP tool/session bridging with a local/remote server endpoint",
+      "Exposure of Paper design operations through native DSH tools and skills",
+      "Screenshot capture output handling via attachment-backed image blocks",
+      "OAuth 2.1 discovery/PKCE/login/logout/state management",
+      "Prompt/guide injection behavior within agent context"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin connects to Paper Desktop MCP and registers Paper tools as native paper_* tools on the DSH context.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states get_screenshot image blocks are decoded and saved through ctx.attachments as image-backed outputs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents discovery-driven OAuth, token exchange/refresh, bearer-token persistence at $DSH_HOME/paper-design/oauth.json, and auth management commands.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository tree and source layout include mcp-client.ts, auth.ts, and schema/guide/skills modules for runtime connectivity and command/assistant integrations.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package manifest declares this as a DeepSeek Harness bundle with tool/system-prompt/attachment/skill/command peer dependencies.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "MCP tool/session bridging with a local/remote server endpoint",
+      "Exposure of Paper design operations through native DSH tools and skills",
+      "Screenshot capture output handling via attachment-backed image blocks",
+      "OAuth 2.1 discovery/PKCE/login/logout/state management",
+      "Prompt/guide injection behavior within agent context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:43.500Z",
+  "repositoryCommitSha": "e8a356779eb2bb316bec40de9717a3e1280d0f9c",
+  "evidenceHash": "2aa3a01800aa40ca0f055e3ed7c2b2f3cc03ee78bbcaf57dca221dff3094e745",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f2aa68b1c99d410f058b4e1e96b9d701bc65f3da5bf3f7426e959c583ce004d",
+  "shadowMode": false
+}

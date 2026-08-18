@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "ui",
+    "chat",
+    "file",
+    "image",
+    "tool",
+    "workflow",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Primary purpose is an AI-assisted design workflow plugin for the DeepSeek Harness: it adds a persistent Design Studio UI, a live design preview route, an element-picker edit flow, and a design_studio agent tool for managing mockup files in temp_design_folder, with optional OpenRouter-powered vision review. This indicates the plugin’s main user-facing value is orchestrating design edits and verification, not general code generation or broad repository tooling.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，在对话中提供持久化的 Design Studio 标签页与实时预览，支持元素选取、设计文件管理，并结合 DeepSeek 与设计代理完成修改与校验。",
+    "en": "This is a DeepSeek Harness plugin that provides a persistent Design Studio experience with live preview, enabling design-file management and element-based edits through coordinated AI flows with DeepSeek and a design agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Exposes a design_studio toolset that performs design-system management and file operations such as list/create/read/write/zip/reveal/delete within a configured workspace folder.",
+      "Provides a web UI workflow (Design Studio tab, element picker, live preview, settings) for AI-guided UI design iteration.",
+      "Supports image handling through uploads/drops, screenshot capture into design assets, and image-based prompt flow.",
+      "Invokes AI/vision workflows via an external service path (OpenRouter) for image description and review."
+    ],
+    "reasons": [
+      {
+        "code": "FILE_TOOLING_IN_DESIGN_SCOPE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "IMAGE_AND_SCREENSHOT_WORKFLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "TWO_AGENT_AI_APPLY_FLOW",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "HOST_CLIENT_DUAL_FACE_MANIFEST",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes a design_studio toolset that performs design-system management and file operations such as list/create/read/write/zip/reveal/delete within a configured workspace folder.",
+      "Provides a web UI workflow (Design Studio tab, element picker, live preview, settings) for AI-guided UI design iteration.",
+      "Supports image handling through uploads/drops, screenshot capture into design assets, and image-based prompt flow.",
+      "Invokes AI/vision workflows via an external service path (OpenRouter) for image description and review."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:03.081Z",
+  "repositoryCommitSha": "c08abef3856ef56ed34fcf903466b7dd08eb219e",
+  "evidenceHash": "629c7f721baeba5dd12c35be1dd5b8fa9d46081dfc15732b2697353a30c56d34",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a52c43edecc3e96215e54973566ef29908a54e4087a9c945adf20cf2f12c7a7",
+  "shadowMode": false
+}

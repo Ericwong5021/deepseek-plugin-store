@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "tool",
+    "context",
+    "chat",
+    "browser",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "Conservative classification: this is primarily a file utility for DSH Web users, centered on selecting local files in the UI and passing selected path information into the current conversation context. Evidence in the repository and README indicates the plugin is implemented as a DSH web bundle with conversation/context integration and tests covering host filesystem and prompt-context behavior.",
+  "summaries": {
+    "zh": "这是一个 DSH Web 插件，在对话界面提供本地文件选择入口，将选中的文件路径加入当前会话上下文。",
+    "en": "This DSH Web plugin adds a local-file picker control in the conversation interface and adds selected file paths to the active chat context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Browse local filesystem paths from the DSH host via a web GUI control",
+      "Select one or more regular local files and expose selected path metadata to the conversation",
+      "Insert selected file paths into the active conversation context and allow clearing/replacement of that selection"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a UI flow where users open a DSH web conversation, click a file icon, browse local files, apply selection, and send selected paths in conversation context.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata declares a DSH web client plugin bundle (dsh.client platform web) with profile integration, confirming filesystem-related UI/plugin behavior in the client.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository description and package description both state adding local file paths from the DSH Web GUI into the active conversation context.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Browse local filesystem paths from the DSH host via a web GUI control",
+      "Select one or more regular local files and expose selected path metadata to the conversation",
+      "Insert selected file paths into the active conversation context and allow clearing/replacement of that selection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:17.538Z",
+  "repositoryCommitSha": "bf5f6553b0eb4765185d3199fa87e4daebcd3110",
+  "evidenceHash": "6f54e846acf0ccbbd453b6a778c1fbea9a8e70b03098a95e9774edc13f1e3e8f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "072cf79be601175841c3fb5e1fd4afe3a3e3dfbd6abdd8fc68e21323e81cdd94",
+  "shadowMode": false
+}

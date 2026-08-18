@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "image",
+    "tool",
+    "api",
+    "chat",
+    "automation",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "本插件的主要用户-facing 价值在于将消息中的图片块在模型请求前自动转写为文字说明，再注入对话上下文，让不支持图片输入的模型也能继续工作；其核心能力包括视觉模型调用、消息预处理、失败重试与回退，因此归类为媒体工具类插件。",
+  "summaries": {
+    "zh": "这是一个 DSH 图片理解桥接插件，在消息进入模型前自动将图片块转写成文字并注入对话内容，使纯文本模型能够基于图片信息继续回答。",
+    "en": "This is a DSH image-understanding bridge plugin that automatically transcribes image message parts into text before model invocation so text-only models can continue with image-based context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Converts image message attachments into text during agent pre-step processing.",
+      "Calls external vision model endpoints with configurable API credentials and model fallback order.",
+      "Applies size/pixel limits, retry/backoff, and failure degrades to text notices instead of hard blocking."
+    ],
+    "reasons": [
+      {
+        "code": "MESSAGE_REWRITES_IMAGES_AT_PRESTEP",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CONFIGURABLE_VISION_API_AND_CREDENTIAL_CHAIN",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "RETRY_FALLBACK_AND_BOUNDING_LIMITS_DEFINED",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Converts image message attachments into text during agent pre-step processing.",
+      "Calls external vision model endpoints with configurable API credentials and model fallback order.",
+      "Applies size/pixel limits, retry/backoff, and failure degrades to text notices instead of hard blocking."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:13.595Z",
+  "repositoryCommitSha": "eadd2a137f60cdf8aea7a419938d08149799ef57",
+  "evidenceHash": "fa460aafdce843167f5eb73033a07a428ff27b7efb8a0eabbedaa74b24250713",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "acf8173762c192edbf03cb6bd58f54cd7b67473b38e92db563e13a2c29e71011",
+  "shadowMode": false
+}

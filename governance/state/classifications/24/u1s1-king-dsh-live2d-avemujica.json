@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "ui",
+    "desktop",
+    "image",
+    "browser",
+    "theme",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心用途是为 DeepSeek Harness Web 平台提供一个可交互的 Live2D 桌宠界面，集中体现在右下角显示、拖拽、角色/换装切换与动作交互，源代码结构与 README 均体现其为前端界面增强与桌面化小组件功能，未展示外部服务接入或自动化工作流能力。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web 平台的桌面宠物插件，可在页面中显示可拖拽的 Live2D 看板娘，并支持角色切换、换装和交互对话台词。",
+    "en": "This is a DeepSeek Harness web plugin that displays a draggable Live2D desktop pet in the interface, with character switching, costume changes, and interactive behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a web client UI module into the DeepSeek Harness web interface",
+      "Renders animated Live2D character graphics from bundled assets",
+      "Stores view position/state in browser localStorage for continuity"
+    ],
+    "reasons": [
+      {
+        "code": "README lists right-lower-corner floating mascot, drag/click/pet interactions, costume switching, and greeting/祝福 features, indicating interactive on-page UI behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Source tree includes web client entry (src/client/index.ts), static asset routing (src/routes.ts), and assets/model/vendor directories used to provide rendering resources locally.",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "Package manifest declares `dsh.client.platform: web` and includes a web bundle patch path, confirming this is a web-hosted plugin runtime.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects a web client UI module into the DeepSeek Harness web interface",
+      "Renders animated Live2D character graphics from bundled assets",
+      "Stores view position/state in browser localStorage for continuity"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:50.816Z",
+  "repositoryCommitSha": "5da138eee99d87854181e78cc75fd9394894b5dc",
+  "evidenceHash": "3b455c36ed998f379e9c0ceaf3e7b2c9652b5c1fb1c9343efb46796fd051ee24",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0e2ea3264cad062e9dcfb08ddb9627e3cc69cd70a47615528f4b24d07c4797d1",
+  "shadowMode": false
+}

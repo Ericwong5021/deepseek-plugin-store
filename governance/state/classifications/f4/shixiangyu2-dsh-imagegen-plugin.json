@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "tool",
+    "api",
+    "image",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is a DeepSeek Harness plugin that exposes a `generate_image` tool to models and delegates image creation to SiliconFlow-hosted models, returning image URLs, which makes its primary user-facing purpose image/media generation. Evidence is explicit in the repository README and package metadata describing the tool name, supported image models, backend API, and plugin wiring.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，向模型提供 `generate_image` 工具，可通过配置的外部图像模型服务生成图片并返回图片链接。",
+    "en": "This is a DeepSeek Harness plugin that provides a `generate_image` tool for model calls to generate images via an external service and return image URLs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "text-to-image generation",
+      "calls to external image-generation API",
+      "model-callable tool registration",
+      "environment-based API key usage"
+    ],
+    "reasons": [
+      {
+        "code": "MODEL_CALLABLE_GENERATE_IMAGE_TOOL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "EXTERNAL_IMAGE_SERVICE_BACKEND",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "REQUIRES_SILICONFLOW_API_KEY",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "DYNAMIC_TOOL_MANIFEST_IN_DSH_BUNDLE",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "text-to-image generation",
+      "calls to external image-generation API",
+      "model-callable tool registration",
+      "environment-based API key usage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:26.304Z",
+  "repositoryCommitSha": "da9402d2db591e43006a2bdaf4410e455e2c2fc3",
+  "evidenceHash": "ff264c2c9ad98815b18b561ac21e0f618f68dcabb7ebf5d14efd72ef181f7984",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aa94eb8edfeae6d80879fe051ebb0ec38fe58d2f151263601b94f70d4af25285",
+  "shadowMode": false
+}

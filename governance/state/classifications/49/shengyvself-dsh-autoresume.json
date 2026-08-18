@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "chat",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要面向用户价值是“会话续跑自动化”：在 dsh web 重启后自动检测指定会话是否处于未闭合或中断状态，并在满足条件时发送“继续（自动）”以恢复执行。证据显示其通过 session persistence 状态机判断、限定单一 targetSessionId、已完成/闭合态不动作并支持启动窗口与轮询控制，因此核心分类为自动化类插件。",
+  "summaries": {
+    "zh": "该插件在 dsh web 重启后检查指定会话状态，并在检测到中断时自动发送“继续（自动）”消息，帮助会话从中断点继续执行。",
+    "en": "This plugin checks a configured dsh web session after restart and automatically sends a \"continue\" follow-up when it detects an interrupted state, helping the session resume from where it stopped."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取目标会话持久化事件流并判断中断/完成/已闭合状态",
+      "在检测到中断时自动向目标会话注入一条 followup 消息",
+      "仅针对配置的单一会话执行，不扫描其他会话",
+      "支持启动宽限期与重试间隔参数控制注入时机"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件在 web 重启后检测目标会话状态，并在 interrupted 时向该会话注入“继续（自动）”。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "状态判定规则定义了 interrupted、completed、settled 分支，completed/settled 分支明确“不动作”，用于避免重复注入。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "配置项仅包含 targetSessionId 作为必填项，且注入流程通过该单会话对象获取 agent.followup 实现。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明文件包含 bootGraceMs、initialDelayMs、pollIntervalMs 等参数，表示可配置的一次性进程级执行边界。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 指向 main./lib/service.js 并声明 dsh web bundle/patch 插件机制，表明其为 dsh web 平台插件。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "读取目标会话持久化事件流并判断中断/完成/已闭合状态",
+      "在检测到中断时自动向目标会话注入一条 followup 消息",
+      "仅针对配置的单一会话执行，不扫描其他会话",
+      "支持启动宽限期与重试间隔参数控制注入时机"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:18.236Z",
+  "repositoryCommitSha": "c257808c348a9de256598bd2cb2caeb14f633e52",
+  "evidenceHash": "8dca68ebf7e81da0b7a77aeb9452363208c09f23913c4a17b641da817cd5aa8a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b545a6faada5dedb48a73999693114bf5b99759f7318eefc53fc421a5b6027e8",
+  "shadowMode": false
+}

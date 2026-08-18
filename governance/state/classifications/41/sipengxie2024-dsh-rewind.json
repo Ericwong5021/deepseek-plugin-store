@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "automation",
+    "workflow",
+    "chat",
+    "file",
+    "tool",
+    "ui",
+    "memory",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.91,
+  "reason": "This plugin is classified as orchestration because it adds user-facing conversation control features that coordinate session state: selecting historical turns, forking and rerunning messages, and restoring files from captured snapshots at turn boundaries. Evidence in the README and manifest indicates it intercepts relevant tool calls, stores file change history, and exposes rewind actions through the UI.",
+  "summaries": {
+    "zh": "dsh-rewind 是 DeepSeek Harness 的回溯插件，支持在对话历史中选取用户消息并在新会话中重发，同时可按边界恢复文件改动。",
+    "en": "dsh-rewind is a DeepSeek Harness plugin that lets you jump back to a past user turn, rerun it in a forked session, and optionally restore workspace files to their earlier snapshot state."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Capture file-changing tool calls (write/edit/str_replace_editor) and persist before-images for rollback",
+      "Display turn-based rewind menu in the client UI with options to rerun messages or restore files",
+      "Fork a session and resend an edited historical user message to a new conversation branch",
+      "Restore tracked files to a selected turn boundary and perform cleanup-like branch summarization via compact flow",
+      "Persist snapshots with retention and object deduplication, with configurable capture and retention settings"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin wires a client menu into the conversation flow to let users trigger rewind/fork and recovery actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Restoration writes workspace content via ctx.fs.writeText directly, which performs direct workspace mutation outside the normal tool middleware path.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Capture coverage is explicitly limited to structured file-editing tools, excluding bash and other side-effect channels from rewind scope.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The package declares a DSH plugin with host and web client components, confirming integration points and distributed execution.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Capture file-changing tool calls (write/edit/str_replace_editor) and persist before-images for rollback",
+      "Display turn-based rewind menu in the client UI with options to rerun messages or restore files",
+      "Fork a session and resend an edited historical user message to a new conversation branch",
+      "Restore tracked files to a selected turn boundary and perform cleanup-like branch summarization via compact flow",
+      "Persist snapshots with retention and object deduplication, with configurable capture and retention settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.91,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:33.709Z",
+  "repositoryCommitSha": "44480f59890dd8caefc7c28f654e347d1ac1d3fc",
+  "evidenceHash": "51d20231bb8e96b6428aa899503de13f70801aefaabcb544c934d349eba43a25",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63868ddd51f2df997f395110285d335189b659eeb5a4d5b9f1c6cae982ce479c",
+  "shadowMode": false
+}

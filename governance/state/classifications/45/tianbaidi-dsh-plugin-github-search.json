@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "tool",
+    "agent",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Primary purpose is external knowledge search support for plugin development workflows: the plugin exposes `github_search` and `npm_search` tools plus an optional prompt rule to guide agents to search existing projects first before creating new capabilities.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，提供 GitHub 与 npm 的结构化检索工具，并可在代理开发新能力前先执行搜索，帮助用户先发现可复用的现有项目。",
+    "en": "This is a DeepSeek Harness plugin that provides structured GitHub and npm search tools, and can guide an agent to search existing projects before building new functionality."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Performs GitHub repository searches via GitHub Search API",
+      "Performs npm package searches via npm search API",
+      "Provides structured query inputs and outputs (name, stars, description, language, etc.)",
+      "Adds an optional agent guidance rule to require search-before-build checks"
+    ],
+    "reasons": [
+      {
+        "code": "README documents `github_search` as a structured GitHub repo search tool using GitHub Search API with fields and sorting.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `npm_search` as structured npm package search, including support for npm qualifiers like `keywords:dsh-plugin`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents `guidePrompt` (default on) as a rule requiring agents to call search tools before writing a new plugin or capability.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package metadata and scripts indicate this is a dsh plugin package with no source showing local destructive operations in the provided evidence.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Performs GitHub repository searches via GitHub Search API",
+      "Performs npm package searches via npm search API",
+      "Provides structured query inputs and outputs (name, stars, description, language, etc.)",
+      "Adds an optional agent guidance rule to require search-before-build checks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:28.952Z",
+  "repositoryCommitSha": "2bc9e3f9ebff181483c31574c8d753677fff1513",
+  "evidenceHash": "b612adb9e659db5cdb6713c4123f08f4b627a6be55631192de243156146a80e1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e652ee4a6d0f570c73fd7124fa3af0663a3fae57b9fd339acab069a1a4721f80",
+  "shadowMode": false
+}

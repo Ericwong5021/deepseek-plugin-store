@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "browser",
+    "chat",
+    "ui",
+    "data",
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "This plugin is primarily a cost-visibility extension for DeepSeek chat sessions in the DSH web GUI: README and package metadata describe it as a DSH plugin that computes and displays conversation and per-message costs using snapshot-anchored pricing, plus account balance and related settings UI. Its primary user-facing behavior is presenting billed and estimated costs directly in conversation panels and tabs, with host-side projection logic behind a DSH route.",
+  "summaries": {
+    "zh": "DSH Cost Meter 是一个用于 DeepSeek Harness Web GUI 的对话计费插件，可在聊天界面显示余额信息，并按消息与会话展示成本数据与估算结果。",
+    "en": "DSH Cost Meter is a DeepSeek Harness web GUI plugin that shows account balance and cost data for chat sessions, including per-message and session-level cost views."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Network access for pricing/balance data sources",
+      "Host-side cost route and projection data exposure",
+      "Conversation UI injection for per-message/session cost displays"
+    ],
+    "reasons": [
+      {
+        "code": "Uses external pricing and balance lookups, including official pricing pages and balance endpoint, creating network and external-data dependency.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Maintains and selects append-only price snapshots plus per-session cost projections, introducing persistent cost data handling in storage.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Adds multiple host-injected chat surfaces (composer dock, cost tab, assistant action chip, header utility pill, settings card) for cost and balance presentation.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Network access for pricing/balance data sources",
+      "Host-side cost route and projection data exposure",
+      "Conversation UI injection for per-message/session cost displays"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:02.931Z",
+  "repositoryCommitSha": "0ff844e0384fd1c72e53a0bfa9c642195ada207c",
+  "evidenceHash": "a3176bdf1d79aa9eee54c8e0cd252c973cc1ed105fb653cb79b590606112cd68",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ef4d63df7c2c7f50f984256247878a8e518b6af7664fc43f04673025b7733727",
+  "shadowMode": false
+}

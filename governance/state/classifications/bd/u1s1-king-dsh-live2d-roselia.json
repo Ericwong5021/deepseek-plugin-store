@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "browser",
+    "layout",
+    "visualization",
+    "image",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件主要面向终端用户的用途是在 DeepSeek Harness Web GUI 中展示并交互 Roselia Live2D 桌宠，通过拖拽、角色/装扮切换、气泡互动和截图下载提升页面可视化与娱乐体验，属于界面可视化增强而非自动化或外部服务插件。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness Web GUI 插件，用于显示 Roselia 看板娘角色，可拖拽移动、切换人物与服装，并支持点击互动和 PNG 截图下载。",
+    "en": "This is a DeepSeek Harness Web GUI plugin that displays a Roselia mascot character, allows dragging, character and outfit switching, and supports interactive actions plus PNG screenshot export."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a browser-side interactive Live2D widget into the web UI via DOM/style/runtime effects",
+      "Registers local static routes and serves bundled model/assets from the plugin package",
+      "Persists avatar position/state in localStorage",
+      "Adds click/interaction handlers, timers, and screenshot export behavior on the page"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述了“右下角 Live2D 看板娘”“拖拽自由移动”“拍照（下载 PNG 截图）”等客户端交互行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出角色位置持久化到 localStorage，属本地浏览器存储行为。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 与仓库结构显示 assets/、model/ 等本地资源目录，并在 host 路由中提供同源静态服务。",
+        "evidenceRef": "tree"
+      },
+      {
+        "code": "package.json 与 dsh 字段指向 web 平台客户端入口与插件打包方式，表明其为 DeepSeek Harness Web 插件。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects a browser-side interactive Live2D widget into the web UI via DOM/style/runtime effects",
+      "Registers local static routes and serves bundled model/assets from the plugin package",
+      "Persists avatar position/state in localStorage",
+      "Adds click/interaction handlers, timers, and screenshot export behavior on the page"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:52.077Z",
+  "repositoryCommitSha": "57da53a60df8f55de0245f7898c3dc0c9021dd55",
+  "evidenceHash": "03affe93e7acd01b319f89996b833067a579e497f87edcdc4dba40cb8494f6ce",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e0277154a73bd68b77b8383f17e85d030776275671b0591fae143a1ee83932d6",
+  "shadowMode": false
+}

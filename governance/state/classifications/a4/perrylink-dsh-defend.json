@@ -1,16 +1,90 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "tool",
+    "automation",
+    "workflow",
+    "integration",
+    "terminal",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Primary purpose is a DeepSeek Harness security middleware plugin that filters dangerous content and risky tool usage: it scans user messages, tool arguments, and tool outputs for prompt-injection/jailbreak/secret patterns and routes them through configurable allow/ask/block enforcement, with optional destructive-delete command protection and sanitized session audit/reporting.",
+  "summaries": {
+    "zh": "dsh-defend 是面向 DeepSeek Harness 的安全防护插件，在用户消息、工具参数与工具结果上按规则检测提示注入、越狱与敏感信息模式，并结合 allow/ask/block 进行处置及摘要汇总。",
+    "en": "dsh-defend is a DeepSeek Harness plugin that scans inbound messages, tool arguments, and tool outputs for prompt-injection, jailbreak, and secret-leak patterns, then applies configurable allow/ask/block handling with reporting through detection audit outputs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts inbound agent messages",
+      "Intercepts tool arguments before execution",
+      "Intercepts tool results after execution",
+      "Applies configurable allow/ask/block policy decisions",
+      "Provides destructive-delete command guard",
+      "Emits sanitized detection audit events",
+      "Exposes a defend_report tool and /defend command"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin declares interception at agent/pre-step, tools/pre-execute, and tools/post-execute with allow/ask/block logic for prompt-injection, jailbreak, and secret-leak patterns.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It includes a destructive-delete guard that blocks recursive delete commands unless workspace constraints are satisfied.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin manifest specifies permissions session:append and network:none, and the project description indicates in-memory bounded reporting rather than disk persistence.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Capabilities metadata lists invocation points agent/pre-step, tools/pre-execute, tools/post-execute, defend_report, and /defend.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Intercepts inbound agent messages",
+      "Intercepts tool arguments before execution",
+      "Intercepts tool results after execution",
+      "Applies configurable allow/ask/block policy decisions",
+      "Provides destructive-delete command guard",
+      "Emits sanitized detection audit events",
+      "Exposes a defend_report tool and /defend command"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:03.243Z",
   "repositoryCommitSha": "cbab091ab8e62c806d5dad30f7ca2df91d64c83a",
+  "evidenceHash": "84a4d08b143e48f1943db22fcdddaa40a9cff4e071d048866855dae2d186b0eb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "a2930c6b733033c9dbd42c78855753423d7d4bbd0592ee20506edaaa697386d0",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:21:19.385Z",
-  "lastAttemptAt": "2026-08-18T18:21:19.385Z",
-  "nextRetryAt": "2026-08-19T18:21:19.385Z",
-  "retryable": true,
-  "error": "Expected ':' after property name in JSON at position 828 (line 1 column 829)",
   "shadowMode": false
 }

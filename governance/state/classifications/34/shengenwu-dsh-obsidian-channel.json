@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "agent",
+    "file",
+    "knowledge",
+    "search",
+    "ui",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "This plugin is primarily a knowledge-management integration: it connects DeepSeek Harness to a local Obsidian vault for note browsing and agent-assisted maintenance. Evidence from the repository metadata and README shows a vault home UI, note reading/search tasks, and optional write actions with journaling and rollback, which indicates a user-facing focus on managing local knowledge content rather than code generation or infrastructure tooling.",
+  "summaries": {
+    "zh": "该插件用于在 DSH 中接入本地 Obsidian 笔记库，提供笔记入口与检索与编辑工作流，并支持在可配置审批下进行记录化的修改与回滚。",
+    "en": "This plugin connects DSH to a local Obsidian vault, providing note navigation and search with optional user-approved edits, along with journaled change/rollback support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Read local Obsidian vault files and surface note content in DSH",
+      "Search and inspect vault structure/notes (including backlinks/broken links)",
+      "Create, update, append, delete, and move notes in supported workflows",
+      "Maintain a change journal and support one-click rollback of vault edits",
+      "Bind and use a configured local vault path with excluded directories and daily-note settings",
+      "Provide DSH UI flows for vault sessions and homepage widgets"
+    ],
+    "reasons": [
+      {
+        "code": "Repository and package metadata describe the plugin as a DSH channel for a local Obsidian vault with rollback and approval-oriented editing.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "README states the plugin enables binding a local vault path, reading/writing notes with approval, and journaling/undo behavior for edits.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and package description list features including create/update/append/delete operations, search/backlinks, and change-history rollback, indicating file-level knowledge-base manipulation.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Read local Obsidian vault files and surface note content in DSH",
+      "Search and inspect vault structure/notes (including backlinks/broken links)",
+      "Create, update, append, delete, and move notes in supported workflows",
+      "Maintain a change journal and support one-click rollback of vault edits",
+      "Bind and use a configured local vault path with excluded directories and daily-note settings",
+      "Provide DSH UI flows for vault sessions and homepage widgets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:19.405Z",
+  "repositoryCommitSha": "695b443386ad4a23148efacefd5d98e57022b923",
+  "evidenceHash": "fa6226a05e5632121d3ac4892589679d2e5b016189dcfd9308903f408cde1de3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3a7a907e0119a90cc6cf0c377c16e8cbe0c6b137325b6d40b898b8fbd4805459",
+  "shadowMode": false
+}

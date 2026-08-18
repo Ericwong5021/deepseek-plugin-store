@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "terminal",
+    "file",
+    "ui",
+    "tool",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的核心用途是为 DSH WebUI 提供 WSL 保活控制：在设置界面新增开关，并由宿主端通过 webServer/shell 接口实现 dbus-daemon 的状态查询与启动/停止，显示当前 PID；其配置（如目标发行版名与 wsl.exe 路径）持久化在 ~/.dsh/wsl-keepalive.json。",
+  "summaries": {
+    "zh": "该插件在 DSH WebUI 的设置中提供 WSL 保活开关，并通过宿主机接口管理 dbus-daemon 的启动与停止状态，同时展示当前运行状态与 PID。",
+    "en": "This plugin adds a WSL keep-alive toggle in the DSH WebUI settings, using host endpoints to control dbus-daemon start/stop status and display runtime state with PID."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "启动/停止/查询宿主机中的 dbus-daemon 进程",
+      "读取与写入本地插件配置文件以持久化参数",
+      "通过本地 Web API 端点向前端提供状态与控制动作",
+      "在 WebUI 设置页显示运行状态与 PID"
+    ],
+    "reasons": [
+      {
+        "code": "readme-status-and-control-endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-process-management-and-precision-stop",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readme-persistent-config-path",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package-json-host-client-dependencies",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "启动/停止/查询宿主机中的 dbus-daemon 进程",
+      "读取与写入本地插件配置文件以持久化参数",
+      "通过本地 Web API 端点向前端提供状态与控制动作",
+      "在 WebUI 设置页显示运行状态与 PID"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:33.923Z",
+  "repositoryCommitSha": "15592c1ca0a7dbdea0e736fd9c411fee5ac5910d",
+  "evidenceHash": "f616e194516ece45852b83eafd0567678ab30b6370dc4c5a98acc84fa16aa425",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d24a5ef6ede302994944ee996c8ef1c8b6e5a691a3a7aea7887762e8984e83aa",
+  "shadowMode": false
+}

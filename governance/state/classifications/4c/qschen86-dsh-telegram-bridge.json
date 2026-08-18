@@ -1,16 +1,79 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "chat",
+    "integration",
+    "automation",
+    "workflow",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Primary purpose is Telegram-based session notification and interaction. Evidence from the README and package metadata shows the plugin sends DSH session events to Telegram and supports two-way control through message replies/commands, with durable state for routing and authorization.",
+  "summaries": {
+    "zh": "该插件将 DSH 会话事件通过 Telegram 推送给用户，并可通过回复通知或发送命令在 Telegram 中继续会话、回答确认问题或设置审批策略。",
+    "en": "This plugin sends DSH session events to Telegram and lets users continue sessions or respond to confirmation and approval requests by replying to notifications or using Telegram commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Receive and poll Telegram updates for inbound messages/commands",
+      "Push structured DSH session notifications via Telegram",
+      "Route Telegram replies back to specific DSH sessions by message mapping or session tags",
+      "Persist chat authorization and session-routing state in local state.json",
+      "Process approval-related commands that affect session confirmation behavior"
+    ],
+    "reasons": [
+      {
+        "code": "Plugin reads and writes Telegram notifications and replies through the Telegram Bot API polling flow for session alerts and user inputs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It stores authorization lists, approval strategies, and message-to-session mappings in data/state.json, which introduces durable cross-restart session-control state.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It exposes commands and reply-based controls for continue, answer, and approval actions that can influence sandbox/agent workflows.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Receive and poll Telegram updates for inbound messages/commands",
+      "Push structured DSH session notifications via Telegram",
+      "Route Telegram replies back to specific DSH sessions by message mapping or session tags",
+      "Persist chat authorization and session-routing state in local state.json",
+      "Process approval-related commands that affect session confirmation behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:01.416Z",
   "repositoryCommitSha": "1ca25fa7f0be66ceccf4fc7f367aa4ca21f4e96d",
+  "evidenceHash": "4517155a0a6c5c4d97b17a65d97a361bbc42ae51bf7945217421c168387ca9c8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "b29b8b294160e039945156dbb867b79771c243df02e9f80cb3f48237d73f5903",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:21:37.996Z",
-  "lastAttemptAt": "2026-08-18T18:21:37.996Z",
-  "nextRetryAt": "2026-08-19T00:21:37.996Z",
-  "retryable": true,
-  "error": "AI decision metadata is invalid",
   "shadowMode": false
 }

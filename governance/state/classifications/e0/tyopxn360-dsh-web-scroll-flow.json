@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "browser",
+    "chat",
+    "ui",
+    "layout",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要面向用户目的是提升 DSH Web 对话界面的浏览体验：在聊天滚动容器中平滑贴底动画、边缘回弹手感与可选逐字打字展示，并提供设置项进行控制。依据 README 与项目结构可见其为纯客户端 UI 行为增强插件，核心能力集中在界面布局/交互而非外部服务调用或数据处理。",
+  "summaries": {
+    "zh": "该插件是 DSH Web 聊天界面的纯客户端交互增强插件，用于优化消息流动的滚动与显示体验，并提供可调的边缘回弹与逐字打字效果设置。",
+    "en": "This plugin is a client-side enhancement for the DSH Web chat UI that improves scrolling and message reveal behavior with configurable edge bounce and typewriter-style typing effects."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a client-side script bundle into the DSH Web runtime",
+      "Observes and animates chat conversation scroll container behavior",
+      "Implements optional edge-bounce interaction for manual scrolling",
+      "Adds configurable message typewriter display behavior",
+      "Adds a settings UI entry set with persisted preferences"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DSH Web conversational UI effect plugin providing automatic follow scrolling, edge bounce, and stream-style typewriter behavior, plus a settings panel.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exports a `./client` entry (`lib/client.js`) and declares DSH client runtime/ui slots injection targeting the web platform, indicating browser-side integration.",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "Repository tree lists `src/client/scroll-flow-controller.ts` and `src/client/typewriter.ts`, showing scroll control and typing effect logic in a dedicated client module.",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Injects a client-side script bundle into the DSH Web runtime",
+      "Observes and animates chat conversation scroll container behavior",
+      "Implements optional edge-bounce interaction for manual scrolling",
+      "Adds configurable message typewriter display behavior",
+      "Adds a settings UI entry set with persisted preferences"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:44.843Z",
+  "repositoryCommitSha": "0ba828090f6470670a35c5982fa3de57cf4f21f1",
+  "evidenceHash": "747a6705bceb54dd82fc58b82da28a8135fc7b6b819037558f76bcc10f537886",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d1cd708da90decd107eab48f52816b33b59340e99dbb4a38e90b84c58db156ce",
+  "shadowMode": false
+}

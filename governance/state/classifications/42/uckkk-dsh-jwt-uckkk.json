@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用途是提供一个 JWT 解码/检查工具：在调用 `jwt_decode` 时解析 token 的 header/payload 并提示是否过期，证据来自 README 与 package.json 的用途描述与打包配置；其能力不涉及外部调用，仅用于本地字符串解析与时间字段判断。",
+  "summaries": {
+    "zh": "该插件提供 JWT 解码工具，可解析 token 的 header 与 payload，并可用于判断 token 是否已过期。",
+    "en": "This plugin provides a JWT decoding utility that parses a token’s header and payload and can be used to check whether the token is expired."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "解析 JWT 的 header 与 payload",
+      "判断 token 的过期状态（基于字段）",
+      "提供单一 `jwt_decode` 工具入口",
+      "不执行签名验证，仅做解码与字段解析"
+    ],
+    "reasons": [
+      {
+        "code": "README_TOOL_AND_SCOPE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PKG_DESCRIPTION_NO_SIGNATURE_VERIFY",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "PKG_TOOL_ENTRYPOINT",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "解析 JWT 的 header 与 payload",
+      "判断 token 的过期状态（基于字段）",
+      "提供单一 `jwt_decode` 工具入口",
+      "不执行签名验证，仅做解码与字段解析"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:27:20.013Z",
+  "repositoryCommitSha": "81c8eb12099bae4f047e6a73ca6abd20d33d64bd",
+  "evidenceHash": "37ac1f97684da31b986f80ab2e9ba446ab33c11b6474a6dddc6b2796d4999815",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e43592a35fcc396f707052ae649faa4e64be89d7b50fd7d2d7f3772e7ba5ac86",
+  "shadowMode": false
+}

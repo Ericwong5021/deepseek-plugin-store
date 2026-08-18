@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "automation",
+    "file",
+    "terminal",
+    "tool",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.92,
+  "reason": "该插件的主要面向用户用途是为 DeepSeek Harness 提供插件维护工具：通过界面查看已安装插件、卸载插件时自动清理相关数据残留并进行启动前体检。README 与仓库元数据均表明其操作主要发生在本地：包括 `.bak`/残留清理、数据目录清理和本地配置快照，不涉及外部服务调用；因此风险主要为本地文件与命令执行相关。",
+  "summaries": {
+    "zh": "DSH 插件护卫是 DeepSeek Harness 的图形化维护插件，可列出已装插件、执行卸载并清理残留文件，并提供启动前健康检查。",
+    "en": "DSH Plugin Guardian is a DeepSeek Harness web plugin that lets users list installed plugins, uninstall selected ones with cleanup, and run pre-start health checks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "List installed DeepSeek Harness plugins and their versions/data directories.",
+      "Run plugin uninstallation via package-manager command flow.",
+      "Create local snapshots of configuration files before uninstalling.",
+      "Scan and delete residue files such as `.bak` and orphaned plugin data.",
+      "Run local health checks for startup-related conditions (port/config/bundle)."
+    ],
+    "reasons": [
+      {
+        "code": "RESIDUE_MANAGEMENT_AND_DELETION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "UNINSTALL_EXECUTES_PACKAGE_MANAGER_COMMANDS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_SNAPSHOT_BASEDIR_NOTES",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "List installed DeepSeek Harness plugins and their versions/data directories.",
+      "Run plugin uninstallation via package-manager command flow.",
+      "Create local snapshots of configuration files before uninstalling.",
+      "Scan and delete residue files such as `.bak` and orphaned plugin data.",
+      "Run local health checks for startup-related conditions (port/config/bundle)."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.92,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:41.012Z",
+  "repositoryCommitSha": "7a6cecd75e61be47f2c9966dd67f1067f86e03f1",
+  "evidenceHash": "221083d8146be8c992c3325033a834518591d9b328d901d8bb7e3b98e6ec9752",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7a7ac37a162329dcbebadc965c6f1fc21089b9fc835b8a67f8648632688e1693",
+  "shadowMode": false
+}

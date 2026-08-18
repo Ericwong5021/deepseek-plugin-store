@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "browser",
+    "document",
+    "file",
+    "search",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的核心用途是将 DeepSeek Harness 与金山文档（WPS 个人账号）对接，面向用户提供文档浏览、搜索、引用、读取、下载与新建等外部云文档能力，并通过模型工具供会话内调用，因此归为外部服务集成类插件。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的金山文档连接器插件，可通过 WPS 个人账号登录后在界面中浏览、搜索并引用云文档，支持文档创建与下载。",
+    "en": "This is a DeepSeek Harness plugin that connects to WPS Kingsoft Docs for personal accounts, letting you browse and search cloud documents, reference them in chat, and create or download documents."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "连接并调用金山文档（WPS 个人账号）云端服务",
+      "浏览/搜索/列出用户云文档与共享文档",
+      "将文档链接用于会话内引用并供模型工具读取",
+      "支持在线文档下载与新建文档",
+      "支持插件会话内的界面面板导航与路径恢复"
+    ],
+    "reasons": [
+      {
+        "code": "README 与仓库说明将该插件定义为“金山文档连接器”，并明确支持网页登录/Token 登录、文档浏览、搜索、共享、引用、下载与新建文档。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 列出模型工具集为 kdocs_status/kdocs_list/kdocs_search/kdocs_read/kdocs_link/kdocs_download/kdocs_create，表明其可调用外部文档服务进行读取与操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json 定义了 DSH 插件清单与客户端平台入口，表明该能力通过插件运行时对外部服务进行调用并在界面上暴露。",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "连接并调用金山文档（WPS 个人账号）云端服务",
+      "浏览/搜索/列出用户云文档与共享文档",
+      "将文档链接用于会话内引用并供模型工具读取",
+      "支持在线文档下载与新建文档",
+      "支持插件会话内的界面面板导航与路径恢复"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:13.022Z",
+  "repositoryCommitSha": "e945f84c5ad6e473682914c25708af181f215996",
+  "evidenceHash": "492cca534cc85183bd665510cf691bd5e95b59bceaad3b314d5250c92420eb0d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2783c257d9822f43b14259b836eb03eb0c84419ac8a19b9777194eea13d1f7e7",
+  "shadowMode": false
+}

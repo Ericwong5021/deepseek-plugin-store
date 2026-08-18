@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "layout",
+    "theme",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is primarily a user-interface layout enhancement for DeepSeek Harness web UI, adding a General Settings toggle that expands chat and related session page elements from a fixed-width column to full available width. Evidence in the README and package manifest indicates it works by injecting client-side style/settings logic in the web profile and persisting a local preference, with no functional server-side logic or external integration described.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 网页端插件，在通用设置中提供“宽屏模式”开关，可将会话详情页内容列从固定 748px 调整为占满可用宽度。",
+    "en": "A DeepSeek Harness web UI plugin that adds a General Settings toggle to make the session detail page use full browser width instead of a fixed 748px content column."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adjusts web UI content width",
+      "Adds a user-facing settings toggle",
+      "Persists plugin preference in DSH settings",
+      "Injects client-side CSS/DOM behavior for width control"
+    ],
+    "reasons": [
+      {
+        "code": "README states this is a DSH web UI plugin that adds a Widescreen switch in Settings → General.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes switching `--dsh-chat-content-width` to `100%` via an `html[data-dsh-widescreen=\"on\"]`-scoped stylesheet rule and setting an HTML attribute.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Package manifest includes a web client plugin with immediate injection and registers `lib/index.js` and client artifacts, confirming runtime behavior is loaded into the browser session.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adjusts web UI content width",
+      "Adds a user-facing settings toggle",
+      "Persists plugin preference in DSH settings",
+      "Injects client-side CSS/DOM behavior for width control"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:18.311Z",
+  "repositoryCommitSha": "5a4f7022ee07201b03c19707fce59bda31ec4eaa",
+  "evidenceHash": "3586dbf28db841a7689c02879f104a20e0e300551695d19f903c652208b68364",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fcfba70c0a13d1f79735c4de6b517b62e886a9bfc2fd3e435a27395d696810ee",
+  "shadowMode": false
+}

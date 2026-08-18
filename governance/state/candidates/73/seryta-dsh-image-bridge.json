@@ -4,7 +4,7 @@
     "fullName": "Seryta/dsh-image-bridge",
     "url": "https://github.com/Seryta/dsh-image-bridge"
   },
-  "summary": "DSH 图片理解桥接插件:挂 agent/pre-step,把消息中的图片块经视觉模型(默认智谱 GLM-4V-Flash 免费档)转成文字描述,让纯文本模型(DeepSeek)也能看图",
+  "summary": "This is a DSH image-understanding bridge plugin that automatically transcribes image message parts into text before model invocation so text-only models can continue with image-based context.",
   "sources": [
     "github-topic"
   ],
@@ -44,29 +44,26 @@
   },
   "classificationSuggestion": {
     "group": "tools-data",
-    "category": "data-processing",
+    "category": "media-tools",
     "tags": [
       "agent",
+      "image",
+      "tool",
       "api",
       "chat",
-      "data",
-      "image",
+      "automation",
       "integration",
-      "testing",
-      "tool"
+      "workflow"
     ],
-    "source": "evidence-suggestion",
-    "confidence": "low",
+    "source": "llm-classification",
+    "confidence": "high",
     "evidence": [
-      "text:plugin-development:插件",
-      "text:testing-debugging:日志",
-      "text:memory-context:prompt",
-      "text:files-terminal:git",
-      "text:data-processing:数据",
-      "text:media-tools:image",
-      "text:general-utilities:tool",
-      "text:external-services:bridge"
+      "llm:gpt-5.3-codex-spark",
+      "sha256:fa460aafdce843167f5eb73033a07a428ff27b7efb8a0eabbedaa74b24250713",
+      "commit:eadd2a137f60cdf8aea7a419938d08149799ef57"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "classifiedAt": "2026-08-18T18:25:13.595Z",
+    "reason": "本插件的主要用户-facing 价值在于将消息中的图片块在模型请求前自动转写为文字说明，再注入对话上下文，让不支持图片输入的模型也能继续工作；其核心能力包括视觉模型调用、消息预处理、失败重试与回退，因此归类为媒体工具类插件。"
   }
 }

@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "chat",
+    "tool",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "该插件的核心是界面增强：README明确其将 DSH 新建会话入口改为四步卡片向导，并在用户完成配置后再进入正常对话输入，因此主要面向会话启动流程的布局与交互优化。它属于UI体验类插件，核心能力是重定向并扩展新会话输入/配置界面。",
+  "summaries": {
+    "zh": "这是一个 DSH Web 客户端插件，用四步卡片向导引导新建会话配置（任务模式、模型、会话参数、输入内容），并在确认后进入正常聊天输入。",
+    "en": "This is a DSH Web client plugin that guides new-session setup through a four-step card wizard (task mode, model, session options, input) before entering the normal chat composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Replaces the DSH new-session composer UI with a guided multi-step flow.",
+      "Collects model/agent preset/workspace/session settings before enabling first message send.",
+      "Persists a wizard-onboarding preference in browser localStorage.",
+      "Integrates with existing DSH client runtime services for session/model data.",
+      "Provides a fallback switch to the standard input interface."
+    ],
+    "reasons": [
+      {
+        "code": "Readme describes replacing the new-session screen with a four-step card wizard (任务模式/模型/配置/输入) and routing to normal chat after the first message.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Readme documents a browser localStorage preference key (dsh-new-session-cards:useWizard) and a settings toggle to return to the standard input mode.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json declares DSH client and bundle manifest entries plus injected client modules, showing it is a DSH browser plugin extension.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Replaces the DSH new-session composer UI with a guided multi-step flow.",
+      "Collects model/agent preset/workspace/session settings before enabling first message send.",
+      "Persists a wizard-onboarding preference in browser localStorage.",
+      "Integrates with existing DSH client runtime services for session/model data.",
+      "Provides a fallback switch to the standard input interface."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:03.373Z",
+  "repositoryCommitSha": "517c585f84cff4ff8b20fc8fbf00cd08cf2fd1f3",
+  "evidenceHash": "a11d6a8bd47626d4706eca052408b2f2e2108d9b1e2484e521d050532bb81720",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0ac7b52fa033c8e000e42adc279b3d00e75a614aa1ce0678c7cbe3e734e394aa",
+  "shadowMode": false
+}

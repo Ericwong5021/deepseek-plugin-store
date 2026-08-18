@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "cli",
+    "chat",
+    "file",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin is primarily an external-service integration that enables DeepSeek Harness to use existing local Codex and Claude CLI/Code OAuth subscriptions as LLM routes, rather than requiring separate API keys. It reads local credential sources, refreshes and updates tokens when needed, and displays provider quota information from response headers while registering provider-specific routes in the model picker. The presence of local credential access/writes and outbound provider network calls supports a moderate risk classification (R1).",
+  "summaries": {
+    "zh": "本插件用于在 DeepSeek Harness 中复用本地 Codex 与 Claude CLI 的 OAuth 订阅凭据，提供对应 LLM 路由并可显示模型调用的配额使用信息。",
+    "en": "This plugin reuses local Codex and Claude CLI OAuth subscriptions in DeepSeek Harness to provide LLM routes and show provider usage data."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local OAuth credential files used by Codex and Claude CLIs",
+      "Reads from macOS Keychain for Claude credentials when available",
+      "Refreshes and writes OAuth token values back to local auth files",
+      "Performs network requests to external LLM provider endpoints",
+      "Collects usage/quota status from provider response headers for display"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin defines model routes for `openai-codex` and `anthropic` and obtains credentials from local CLI auth paths and optional macOS Keychain, then exposes them as DSH model routes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Token handling is described as per-request read, refresh near expiry, and write-back to the same local credential file with restricted file permissions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It sends calls to provider endpoints such as `https://chatgpt.com/backend-api` and `https://api.anthropic.com`, and reads provider quota headers for the usage badge.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Plugin metadata exports a web client bundle and platform hooks via the DSH bundle/cordis patch integration.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local OAuth credential files used by Codex and Claude CLIs",
+      "Reads from macOS Keychain for Claude credentials when available",
+      "Refreshes and writes OAuth token values back to local auth files",
+      "Performs network requests to external LLM provider endpoints",
+      "Collects usage/quota status from provider response headers for display"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:31.206Z",
+  "repositoryCommitSha": "cdca7aeb2e872ac0d01fb5c1012bb482e1c3337a",
+  "evidenceHash": "d62739d0198beca717bdac83cd1a8058f7def62db02ccc091c906935effcbb7f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "efeee01d9dcaba0fe374cc02715cd55e64a8d03f43f6b81662f0ed23d992a269",
+  "shadowMode": false
+}

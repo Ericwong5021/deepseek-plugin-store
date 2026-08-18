@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "tool",
+    "ui",
+    "chat",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主打用途是给 DSH 助手增加图片识别能力：通过可视化配置接入 OpenAI 兼容的视觉模型接口，并通过 local_vision 工具将本地图片发送到该模型返回文本结果，因此它属于媒体类工具插件而非纯开发或流程类插件。",
+  "summaries": {
+    "zh": "该插件为 DSH Web 助手提供 `local_vision` 图像识别工具，并通过设置页接入本地或兼容 OpenAI 的多模态模型接口。",
+    "en": "This plugin adds a `local_vision` image analysis tool to DSH on web and provides a settings page to connect to a local or OpenAI-compatible multimodal model endpoint."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "image-to-text tool execution via local_vision",
+      "configurable API endpoint and model selection",
+      "network access to user-specified baseUrl",
+      "handling of user-provided API credentials"
+    ],
+    "reasons": [
+      {
+        "code": "README说明了工具 `local_vision`：读取本地图片并调用 OpenAI 兼容的识图接口返回文字描述，未配置时返回未配置提示。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README与仓库描述都定义了通过接口地址、模型名、API Key 进行识图模型接入（LM Studio / vLLM / Ollama）。",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "package.json 中声明了 DSH 插件元数据与 web client 导出，显示该插件提供浏览器端配置页（设置界面）与主端工具实现。",
+        "evidenceRef": "package.json"
+      },
+      {
+        "code": "仓库树中包含 `src/index.ts` 与 `src/client.ts`，对应工具逻辑与前端设置页面的分离实现。",
+        "evidenceRef": "tree"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "image-to-text tool execution via local_vision",
+      "configurable API endpoint and model selection",
+      "network access to user-specified baseUrl",
+      "handling of user-provided API credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:32.476Z",
+  "repositoryCommitSha": "1d82ee2dfbc8f41892ed8eefdab6fab87d8106e4",
+  "evidenceHash": "da32f3dde83ea108c804a114f3e022614f0ce3b57a2f4fa0f708850db1fc4103",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9251141160a77244ea3a3d53148fa67c189a2a330b0587bdae802f39fde9765c",
+  "shadowMode": false
+}

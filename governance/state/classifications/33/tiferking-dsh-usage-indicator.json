@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "api",
+    "ui",
+    "data",
+    "monitoring",
+    "visualization",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "主要功能集中在 DeepSeek Web 侧边栏界面：展示使用量与余额状态并提供可配置刷新和阈值，属于导航面板类插件，风险点主要是本地读取用户凭证配置并进行外部网络轮询以查询余额。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的 Web 侧边栏插件，用于在侧边栏顶部实时显示上下文余量、账户余额与下次压缩预估，并提供可调阈值和刷新参数。",
+    "en": "This is a DeepSeek Harness web sidebar plugin that shows context headroom, account balance, and estimated compaction timing in real time, with configurable refresh and threshold settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "network.access",
+      "credential.read",
+      "sidebar-panel-rendering",
+      "periodic-polling",
+      "settings-configuration"
+    ],
+    "reasons": [
+      {
+        "code": "README indicates the plugin is a DSH Web sidebar plugin that displays context headroom, account balance, and estimated compaction rounds with compact/minimized sidebar visuals.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents fetching balance via configured API credentials (DEEPSEEK_API_KEY/baseURL) and a refresh interval for periodic updates.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json defines web client injection and DSH bundle metadata, confirming it is an installed runtime plugin in the DSH web ecosystem.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "sidebar-panel-rendering",
+      "periodic-polling",
+      "settings-configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:26:32.343Z",
+  "repositoryCommitSha": "6b5c0bd1c89f3b5b300e1bb449fd4216a3991103",
+  "evidenceHash": "6a56ce93545e3640775f00fa3d1da19d1b39557d2f0a101bfec67683b9df3932",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "61afde3040ddfbefabe8c17e6e07c4a3311c00b69087b5c81ac8d0ac11f09318",
+  "shadowMode": false
+}

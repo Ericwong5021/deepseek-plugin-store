@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "tool",
+    "file",
+    "terminal",
+    "automation",
+    "planning",
+    "workflow",
+    "skill",
+    "code-generation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "基于仓库说明与清单，该插件面向 Minecraft 开发场景，核心是为 DeepSeek Harness 提供可调用的技能与工具来生成/配置项目骨架、执行构建，并通过内置子代理组织开发流程，因此主要用途是插件开发辅助而非通用内容服务。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 插件，提供 Minecraft 项目开发所需的知识技能、项目脚手架与构建执行能力，并支持按计划-骨架-内容-验证链路协助任务推进。",
+    "en": "This is a DeepSeek Harness plugin that provides Minecraft development skills, project scaffolding, and build execution, with an optional chain of planning, skeleton, content, and verification steps to help complete development tasks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates and updates files for Minecraft project scaffolds and metadata via `mc_scaffold`.",
+      "Executes Gradle tasks in a user-specified project directory via `mc_gradle`.",
+      "Provides built-in subagents for plan/skeleton/content/verify workflow steps.",
+      "May write preset files into the user preset directory when the plugin starts."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds 7 Minecraft development skills and 2 tools (mc_scaffold, mc_gradle) for Paper/Spigot/Fabric/Forge/NeoForge workflows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a 4-subagent chain (plan/skeleton/content/verify) and behavior to auto-install/update preset files under `$DSH_HOME/.agent-presets/minecraft/`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package.json exposes a DSH server plugin manifest and includes disclosed filesystem/perprocess permissions for mc_scaffold and mc_gradle.",
+        "evidenceRef": "package.json"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates and updates files for Minecraft project scaffolds and metadata via `mc_scaffold`.",
+      "Executes Gradle tasks in a user-specified project directory via `mc_gradle`.",
+      "Provides built-in subagents for plan/skeleton/content/verify workflow steps.",
+      "May write preset files into the user preset directory when the plugin starts."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-18T18:25:27.891Z",
+  "repositoryCommitSha": "ff5458c52358b2e945018c8b8a140d56f01b1008",
+  "evidenceHash": "01e0f55ffda0d518b6712a3084e762c534a147698166484de3b2d71a5c2d207d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2d91462c8a8d6b3bfc1c8cb126c5474d70323162b384c3c807e88410c6714cf9",
+  "shadowMode": false
+}
