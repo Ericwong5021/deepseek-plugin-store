@@ -2,6 +2,7 @@ import { sha256 } from '../registry-lib.mjs'
 
 const defaultLimit = 200 * 1024
 const graphqlBatchSize = 5
+const llmReadmeLimit = 12000
 
 const boundedRequest = async (url, headers, limit, fallback = []) => {
   const response = await fetch(url, { headers, signal: AbortSignal.timeout(45000) })
@@ -172,6 +173,22 @@ export class EvidenceCollector {
     evidence.evidenceHash = sha256(evidence)
     return evidence
   }
+}
+
+export const buildLlmEvidence = (evidence) => {
+  const projected = {
+    schemaVersion: evidence.schemaVersion,
+    repository: {
+      fullName: evidence.repository.fullName,
+      name: evidence.repository.name,
+      description: evidence.repository.description,
+      topics: evidence.repository.topics,
+    },
+    repositoryCommitSha: evidence.repositoryCommitSha,
+    readme: String(evidence.readme || '').slice(0, llmReadmeLimit),
+    evidenceRefs: ['repository', 'commit', 'readme'],
+  }
+  return { ...projected, evidenceHash: sha256(projected) }
 }
 
 export const buildCacheKey = ({ evidence, taxonomy, policyVersion, promptVersion, model, evidenceSchemaVersion = 1 }) => sha256({

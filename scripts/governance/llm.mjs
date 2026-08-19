@@ -145,8 +145,8 @@ export class LLMAdapter {
     return validateAiDecision({ decision, taxonomy, evidenceRefs: input.evidence.evidenceRefs })
   }
 
-  classifyPlugin(evidence, taxonomy, ruleResult) {
-    return this.decision('classify-v2', { evidence, taxonomy, ruleResult }, taxonomy)
+  classifyPlugin(evidence, taxonomy) {
+    return this.decision('classify-v2', { evidence, taxonomy }, taxonomy)
   }
 
   triageIssue(issue, context, taxonomy) {

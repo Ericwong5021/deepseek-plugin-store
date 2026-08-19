@@ -6,6 +6,7 @@ const retryPolicy = {
   rate_limited: HOUR,
   network_error: 6 * HOUR,
   invalid_response: DAY,
+  insufficient_evidence: Infinity,
   invalid_identity: Infinity,
 }
 
@@ -68,6 +69,7 @@ export const shouldReplaceCandidateClassification = ({ existingSuggestion, previ
 export const failureClass = (error) => {
   const message = String(error?.message || error)
   if (/invalid identity|plugin not found or protected/i.test(message)) return 'invalid_identity'
+  if (/insufficient_evidence/i.test(message)) return 'insufficient_evidence'
   if (/(?:\s|:)404(?:\s|$)|not found/i.test(message)) return 'repository_not_found'
   if (/\b429\b|rate.?limit|secondary limit/i.test(message)) return 'rate_limited'
   if (/schema|invalid json|after json|json at position|unsupported fields|confidence is invalid|decision is invalid|risk result is invalid|classification .*invalid|plugin descriptions are invalid|model response|response did not contain text|unknown evidence|response_format|choices\[|structured output/i.test(message)) return 'invalid_response'
@@ -111,6 +113,7 @@ export const createFailureRecord = ({ previous, error, now, model, promptVersion
 export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = null, force = false) => {
   if (force || !entry) return true
   if (entry.status === 'failed') {
+    if (entry.failureClass === 'insufficient_evidence') return Boolean(repositoryCommitSha && entry.repositoryCommitSha && repositoryCommitSha !== entry.repositoryCommitSha)
     if (entry.retryable === false) return false
     if (entry.failureClass !== 'rate_limited' && (entry.attemptCount || 1) < 2) return true
     const nextRetry = Date.parse(entry.nextRetryAt || 0)

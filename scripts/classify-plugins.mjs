@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises'
-import { EvidenceCollector, buildCacheKey } from './governance/evidence.mjs'
+import { EvidenceCollector, buildCacheKey, buildLlmEvidence } from './governance/evidence.mjs'
 import { LLMAdapter } from './governance/llm.mjs'
 import { applyPolicy, loadPolicy } from './governance/policy.mjs'
 import { runDeterministicChecks } from './governance/rules.mjs'
@@ -101,12 +101,15 @@ let cursor = 0
 
 const classifyItem = async (item, evidenceResult) => {
   let evidence = null
+  let llmEvidence = null
   let cacheKey = ''
   try {
     if (evidenceResult instanceof Error) throw evidenceResult
     evidence = evidenceResult
+    llmEvidence = buildLlmEvidence(evidence)
+    if (!llmEvidence.readme.trim()) throw new Error('insufficient_evidence: README is missing or empty')
     cacheKey = buildCacheKey({
-      evidence,
+      evidence: llmEvidence,
       taxonomy,
       policyVersion: policy.version,
       promptVersion: policy.prompts.classification,
@@ -118,9 +121,10 @@ const classifyItem = async (item, evidenceResult) => {
       return
     }
     const ruleResult = runDeterministicChecks({ snapshot: evidence, taxonomy })
-    const aiDecision = await adapter.classifyPlugin(evidence, taxonomy, ruleResult)
-    const governance = applyPolicy({ actor: { maintainerVerified: false }, ruleResult, aiDecision, policy: { ...policy, shadowMode } })
+    const aiDecision = await adapter.classifyPlugin(llmEvidence, taxonomy)
     const category = taxonomy.categories.find((entry) => entry.id === aiDecision.classification.primaryCategory)
+    if (aiDecision.decision === 'blocked' || category.id === 'uncategorized' || aiDecision.confidence < 0.7) throw new Error('insufficient_evidence: README does not establish a confident primary user-facing purpose')
+    const governance = applyPolicy({ actor: { maintainerVerified: false }, ruleResult, aiDecision, policy: { ...policy, shadowMode } })
     cache.classifications[item.id] = {
       status: 'classified',
       group: category.group,
@@ -139,8 +143,8 @@ const classifyItem = async (item, evidenceResult) => {
       promptVersion: policy.prompts.classification,
       policyVersion: policy.version,
       classifiedAt: new Date().toISOString(),
-      repositoryCommitSha: evidence.repositoryCommitSha,
-      evidenceHash: evidence.evidenceHash,
+      repositoryCommitSha: llmEvidence.repositoryCommitSha,
+      evidenceHash: llmEvidence.evidenceHash,
       taxonomyHash,
       cacheKey,
       shadowMode,
@@ -157,7 +161,7 @@ const classifyItem = async (item, evidenceResult) => {
       model,
       promptVersion: policy.prompts.classification,
       policyVersion: policy.version,
-      repositoryCommitSha: evidence?.repositoryCommitSha || null,
+      repositoryCommitSha: llmEvidence?.repositoryCommitSha || evidence?.repositoryCommitSha || null,
       cacheKey: cacheKey || null,
       shadowMode,
     })
