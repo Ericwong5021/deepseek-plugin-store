@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "api",
+    "ui",
+    "data",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的核心面向用户功能是在 DSH Web 页面右下角以卡片方式展示额度余额、今日消耗估算与峰谷状态，并提供重置配置，因此主要用途是 Web 界面面板监测展示。",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness Web 的插件，在页面右下角显示余额、今日消耗估算和峰谷计价状态，并可按设置调整每日重置时间。",
+    "en": "This is a DeepSeek Harness Web plugin that shows balance, estimated daily consumption, and peak/valley pricing status in a corner panel with configurable daily reset timing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches balance data from DeepSeek official API with an API key.",
+      "Displays a real-time web UI card with balance, daily usage estimate, and peak/valley pricing state.",
+      "Provides install/uninstall support through DSH plugin profile bundling and supports temporary dynamic loading.",
+      "Supports configurable daily reset timing for local usage estimation."
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件在 DSH Web 页面右下角显示额度小仪表，并包含“余额、今日已消耗、峰谷计价”信息。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出通过 GET https://api.deepseek.com/user/balance 获取余额，使用 Authorization: Bearer <API Key>。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明可通过 dsh plugin 进行安装/卸载，且支持临时动态插件运行方式。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetches balance data from DeepSeek official API with an API key.",
+      "Displays a real-time web UI card with balance, daily usage estimate, and peak/valley pricing state.",
+      "Provides install/uninstall support through DSH plugin profile bundling and supports temporary dynamic loading.",
+      "Supports configurable daily reset timing for local usage estimation."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:33.694Z",
+  "repositoryCommitSha": "2dd0d76f081b085dce6da1d915b2b7f15ab652f6",
+  "evidenceHash": "b9dff6e0525257a57e800ba4fc489162db4a2fed83d34e4f342cef87a2e638f4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c5de5e061d047025e817a41d67b3ce71eca644fdd8d63cde967849f2a487ca83",
+  "shadowMode": false
+}

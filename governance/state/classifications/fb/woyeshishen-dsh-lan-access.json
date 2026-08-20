@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "api",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "This plugin is a user-facing utility for DeepSeek Harness that enables LAN access to the web interface and improves HTTP compatibility by binding the GUI host to `0.0.0.0` and injecting a small UUID polyfill, while also providing a LAN-facing privileged API toggle that can expand attack surface.",
+  "summaries": {
+    "zh": "在不修改官方代码的前提下，本插件用于将 DeepSeek Harness Web 界面绑定到 `0.0.0.0`，使其可供局域网机器访问，并对 HTTP 场景注入 `crypto.randomUUID` 补丁以保持功能可用。",
+    "en": "This plugin enables LAN access to the DeepSeek Harness web UI by binding it to `0.0.0.0` and adds a `crypto.randomUUID` compatibility injection so HTTP-origin API behavior works without modifying shipped DSH code."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "LAN network exposure by patching the web GUI host binding to 0.0.0.0.",
+      "HTTP compatibility injection of a crypto.randomUUID polyfill in the served page.",
+      "Remote privileged API access can be enabled for LAN clients via default `allowRemotePrivileged` behavior."
+    ],
+    "reasons": [
+      {
+        "code": "Plugin feature table states it rebinds DeepSeek Harness Web GUI to 0.0.0.0 so other LAN machines can reach it.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Feature notes describe adding a `crypto.randomUUID` polyfill into `index.html` so `/api` RPC works on non-secure HTTP LAN origins.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Notes document that privileged `/api` methods (settings/credentials/agent presets) are reachable from trusted LAN hosts by default unless configured off.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Notes explicitly warn the plugin intentionally exposes a remote-code-execution surface on the network.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "LAN network exposure by patching the web GUI host binding to 0.0.0.0.",
+      "HTTP compatibility injection of a crypto.randomUUID polyfill in the served page.",
+      "Remote privileged API access can be enabled for LAN clients via default `allowRemotePrivileged` behavior."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:54.942Z",
+  "repositoryCommitSha": "2727fa7629b396ddefc758c9572f4d6e29c6d759",
+  "evidenceHash": "ba032ddd48a30b4a4de1be44689a0320d46dacc7037c60564bd5edf7ba6cc056",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "50afd9d99b82fc4887f5b44136cb54011265da589f974e35da9f410397697bfa",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "automation",
+    "context",
+    "memory",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要面向用户用途是为 DeepSeek Harness 极简模式提供上下文管理与压缩支持，核心是通过新增压缩路径、`/compact` 命令与 `/context` 命令帮助会话在长任务下保持可继续运行。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 极简模式提供上下文管理能力，支持自动与手动压缩以及 `/context` 命令来查看和设置会话上下文窗口。",
+    "en": "This plugin adds context-management support for DeepSeek Harness minimal mode by providing automatic/manual compaction and a `/context` command to view or set the model context window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在 DeepSeek Harness 极简模式中增加上下文压缩能力（自动压缩、人工 `/compact`、模型触发 `compact_now`）。",
+      "提供 `/context` 命令用于查看及写入模型上下文窗口设置。",
+      "安装器可向 web profile 写入插件与 `minimal-compaction` preset，并可设置为默认预设。"
+    ],
+    "reasons": [
+      {
+        "code": "README指出插件目标是为极简模式长会话增加三类压缩路径：自动 token 压力压缩、手动 /compact、模型任务中 compact_now 调度。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README描述 `/context` 命令的行为：可显示当前有效上下文窗口并可通过 `/context 256k`、`/context 1m` 等写入 DeepSeek 模型配置。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README说明安装器会将插件加入 DSH web profile、安装/更新 preset，并可将 `agent-presets.default` 设置为 `minimal-compaction`（可通过 --no-default 禁用该默认设置）。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "在 DeepSeek Harness 极简模式中增加上下文压缩能力（自动压缩、人工 `/compact`、模型触发 `compact_now`）。",
+      "提供 `/context` 命令用于查看及写入模型上下文窗口设置。",
+      "安装器可向 web profile 写入插件与 `minimal-compaction` preset，并可设置为默认预设。"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:56.141Z",
+  "repositoryCommitSha": "e563c5b4be955482dbcbacab5dbf5d2c6747d55c",
+  "evidenceHash": "a961f741b54a49aee960e683e3ac6d765ffffbbc1f8673fedb8727820ae2bd72",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "27225938c03ec6130c25d88fa9e1ee7639a3ed162af40d51340cf1a90d2cb83c",
+  "shadowMode": false
+}
