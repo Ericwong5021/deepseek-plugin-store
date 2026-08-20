@@ -1,16 +1,81 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "visualization",
+    "data",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该仓库的 README 提供了充足证据表明该插件的核心目的在于面向用户的“Token 用量仪表盘”功能：读取本机会话日志并在 DSH 设置页可视化呈现总量、近7天/逐时趋势及模型与会话分布。分类为可视化类插件并保留数据处理属性。",
+  "summaries": {
+    "zh": "该插件在 DSH 设置页面提供 Token 用量可视化面板，将会话日志聚合为指标卡、日/小时趋势以及模型与会话分布的展示。",
+    "en": "This plugin provides a Token Usage dashboard in the DSH settings page, displaying aggregated session data as summary metrics, daily/hourly trends, and model/session distribution views."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "扫描并聚合本机会话日志中的 token 用量数据。",
+      "将汇总结果展示为指标卡、按日趋势、按小时趋势及按模型/按会话分布。",
+      "在 DSH 设置页插入专用面板并以图表与列表方式呈现该视图。",
+      "提供只读只读查询接口 `/usage/api/dashboard` 用于获取聚合后的统计结果。",
+      "支持周期性重扫与事件监听以持续刷新可见统计数据。"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确描述该插件是“设置页 Token 用量”仪表盘，并列出指标卡、近7天趋势、逐时趋势、按模型和按会话分布。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明数据源为 `~/.dsh/sessions/**/session.jsonl.zstd` 并按 `assistant/message` 的 usage 字段进行聚合。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 给出 API 文档：`GET /usage/api/dashboard`，返回 totals、daily、hourly、byModel、bySession 等字段。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明插件有 settings.section 挂载并通过客户端界面展示 SVG 图表与分布列表。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "扫描并聚合本机会话日志中的 token 用量数据。",
+      "将汇总结果展示为指标卡、按日趋势、按小时趋势及按模型/按会话分布。",
+      "在 DSH 设置页插入专用面板并以图表与列表方式呈现该视图。",
+      "提供只读只读查询接口 `/usage/api/dashboard` 用于获取聚合后的统计结果。",
+      "支持周期性重扫与事件监听以持续刷新可见统计数据。"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:06.987Z",
   "repositoryCommitSha": "d1ad239f3f027532cdedc5c00963bebf2635efd7",
+  "evidenceHash": "5fbde5925b3c8acf65b9c024c40286473db9601dff645d733816467dc7aafc47",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "b6522773df26ca43e6d1405ee1337b73175b25816752ed1652dcae166ed86ebb",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:07.622Z",
-  "lastAttemptAt": "2026-08-20T09:18:07.622Z",
-  "nextRetryAt": "2026-08-20T14:16:57.622Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17930,\"reset_time\":\"4h58m49s\"}}",
   "shadowMode": false
 }

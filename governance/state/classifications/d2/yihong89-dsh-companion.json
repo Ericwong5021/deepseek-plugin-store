@@ -1,16 +1,75 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "tool",
+    "chat",
+    "automation",
+    "browser",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README clearly presents this plugin as a DeepSeek Harness companion for conversation sessions, where users configure personas and voices and get spoken responses with optional timed greetings and chat commands, making its primary purpose a media-oriented companion/voice utility for chat interactions rather than coding, search, or project-analysis tooling.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的对话伴随插件，支持按会话自定义人设与声音，并在回复时自动播报或通过 /speak、/cheer 命令即时朗读。",
+    "en": "This is a DeepSeek Harness chat companion plugin that lets each session define persona and voice, then automatically reads replies or speaks instantly via /speak and /cheer commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Plays generated speech audio in the browser for assistant replies",
+      "Supports per-session persona/voice configuration for chat behavior",
+      "Provides scheduled per-session greeting prompts and explicit /speak or /cheer commands for speech actions"
+    ],
+    "reasons": [
+      {
+        "code": "README describes configurable per-session companion settings (name/personality/voice) and automatic voice playback of each reply, showing a user-facing chat-plus-audio experience.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Architecture section shows browser fetching WAV and using <audio> playback, with plugin-side proxying to a local TTS service endpoint.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Feature list and command table define /speak and /cheer behavior to trigger spoken output and in-session encouragement content.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Plays generated speech audio in the browser for assistant replies",
+      "Supports per-session persona/voice configuration for chat behavior",
+      "Provides scheduled per-session greeting prompts and explicit /speak or /cheer commands for speech actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:25.626Z",
   "repositoryCommitSha": "50c084adb81c13f919c38e7e9929befae66809d6",
+  "evidenceHash": "08c6fe818e163861fd12a265abafa0c5e4944b80452d4609ad84add01004aea8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "8a80bd627406e7f73fa8e89f8f7d32abf802d54d38b61e1a6e13009c77960003",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:13.680Z",
-  "lastAttemptAt": "2026-08-20T09:18:13.680Z",
-  "nextRetryAt": "2026-08-20T14:16:56.680Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17923,\"reset_time\":\"4h58m43s\"}}",
   "shadowMode": false
 }

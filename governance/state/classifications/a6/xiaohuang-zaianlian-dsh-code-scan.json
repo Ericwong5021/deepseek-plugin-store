@@ -1,16 +1,69 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "agent",
+    "terminal",
+    "file",
+    "tool",
+    "project-analysis",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要用途是为 DSH Agent 提供代码扫描能力：根据用户指定目录调用本地 semgrep 进行静态检查，并将发现按文件、行号和严重级别进行分组与排序后返回中文 Markdown 报告。仓库描述与 README 均明确围绕该扫描工具的单一功能展开，因此分类为项目分析类。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的 Agent 新增 code_scan 工具，可按指定目录调用本地 semgrep 进行代码扫描，并以文件、行号和严重级别分组输出中文 Markdown 报告。",
+    "en": "This plugin adds a `code_scan` tool to DeepSeek Harness Agent so a specified directory can be scanned with local semgrep, with results returned as a Chinese Markdown report grouped by file, line, and severity."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Run code scanning on a user-specified directory",
+      "Parse semgrep JSON output (file, line, severity, rule, description)",
+      "Return grouped, prioritized scan reports in markdown"
+    ],
+    "reasons": [
+      {
+        "code": "README说明这是一个为 DeepSeek Harness Agent 新增 `code_scan` 工具的插件，用户在对话中可传入目录路径进行扫描。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README列出工作原理为调用 `semgrep scan --json <目录>` 并解析结果生成中文 Markdown 报告。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Run code scanning on a user-specified directory",
+      "Parse semgrep JSON output (file, line, severity, rule, description)",
+      "Return grouped, prioritized scan reports in markdown"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:51.951Z",
   "repositoryCommitSha": "c236c41f771715dc724d7351300e4d85ba449ceb",
+  "evidenceHash": "ff3a27f6ad89725d371c4bce2b61f462af4f43ba260e66dd6fc4c445e23fd402",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "03a616d1afcc04f73312da575f8434a83b3f12cadbdef5b136e8852cf12cf784",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:02.543Z",
-  "lastAttemptAt": "2026-08-20T09:18:02.543Z",
-  "nextRetryAt": "2026-08-20T14:16:57.543Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17935,\"reset_time\":\"4h58m54s\"}}",
   "shadowMode": false
 }

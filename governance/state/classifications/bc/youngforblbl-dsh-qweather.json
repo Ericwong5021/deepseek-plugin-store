@@ -1,16 +1,80 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "tool",
+    "integration",
+    "data",
+    "ui",
+    "skill",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的核心是将和风天气服务嵌入 DSH：README 明确说明它提供天气侧边栏组件、自动/手动定位设置，以及两个 LLM 工具 qweather_weather 与 qweather_card，用于返回天气摘要与可回放的天气卡片。基于“外部天气数据接入+工具化查询+界面展示”这一主线，最合适的主分类为 external-services。",
+  "summaries": {
+    "zh": "该插件将和风天气数据接入 DSH，在侧边栏展示实时与预测天气，并提供模型可调用的天气查询工具与天气卡片输出。",
+    "en": "This plugin integrates QWeather into DSH, shows weather in the sidebar, and provides model-callable weather query tools with card-style outputs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "从 QWeather API 获取实时与预测天气数据（含逐小时/逐日、空气质量、预警等）供界面与模型使用",
+      "在 DSH 侧边栏和对话流中展示天气信息与可回放卡片",
+      "通过两种工具接口按参数返回结构化天气摘要或天气卡片内容",
+      "支持自动定位与手动位置输入，并写入本机设置用于持续调用",
+      "提供错误码与日志分级用于调用失败与重试处理"
+    ],
+    "reasons": [
+      {
+        "code": "QW_NETWORK / QW_HTTP_ERROR：插件通过配置的 API Host 与 API Key 调用外部天气服务，依赖第三方网络与响应可用性",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "QW_NO_API_KEY 与 API Host 配置：功能需要用户输入接口凭据并持久化在本机设置文件后才能生效",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "侧边栏与卡片均基于实时天气数据驱动（含自动刷新/手动刷新与错误码提示）",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "从 QWeather API 获取实时与预测天气数据（含逐小时/逐日、空气质量、预警等）供界面与模型使用",
+      "在 DSH 侧边栏和对话流中展示天气信息与可回放卡片",
+      "通过两种工具接口按参数返回结构化天气摘要或天气卡片内容",
+      "支持自动定位与手动位置输入，并写入本机设置用于持续调用",
+      "提供错误码与日志分级用于调用失败与重试处理"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:35.887Z",
   "repositoryCommitSha": "81feed7c9d3a68023daefce6c72ef7fa1e144840",
+  "evidenceHash": "0239947ad47eef3f155ebf41e70403ebb48c95f1393236cadf788e743956190d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "3591bbc7c38c76f3140e4142c43148d5194f029e07cb1243d8744d945fd92826",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:15.605Z",
-  "lastAttemptAt": "2026-08-20T09:18:15.605Z",
-  "nextRetryAt": "2026-08-20T14:16:57.605Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17922,\"reset_time\":\"4h58m41s\"}}",
   "shadowMode": false
 }

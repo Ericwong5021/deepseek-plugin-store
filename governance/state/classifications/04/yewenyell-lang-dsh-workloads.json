@@ -1,16 +1,83 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "api",
+    "terminal",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly defines the plugin as a DeepSeek Harness workload manager for workspace-owned long-running processes, with a Runtime Center UI and host APIs for lifecycle management plus optional agent tools. This makes its primary user-facing purpose process automation and operational control rather than code generation, search, or content/document workflows.",
+  "summaries": {
+    "zh": "DSH Workloads 为 DeepSeek Harness 提供会话外的工作区级长期运行进程管理能力，在运行中心界面和 workload 工具中支持查看、启动、等待就绪、读取日志、重启与停止。",
+    "en": "DSH Workloads adds workspace-owned long-running process management to DeepSeek Harness, letting users monitor and control workloads through a Runtime Center UI and workload tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Manages long-running local processes through start/stop/restart/list/log/wait operations.",
+      "Enables process control via Agent tools (`workload_*`) in configured presets.",
+      "Displays workload status, health, PID, and log tails in a Runtime Center UI.",
+      "Persists workload metadata and run identity outside project repositories with session-authorized API access.",
+      "Includes local-process restrictions and workspace-bound command execution checks."
+    ],
+    "reasons": [
+      {
+        "code": "The plugin exposes a host service with lifecycle methods such as start, wait, logs, stop, restart, and list for workspace workloads.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It registers a Runtime Center conversation view and presents workload readiness, phase, health, PID, and log tail information with stop/restart controls.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The tools package exposes agent-facing workload management tools (`workload_list`, `workload_start`, `workload_wait`, `workload_logs`, `workload_stop`, `workload_stop_all`, `workload_restart`).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Local-process safety notes include command filtering, workspace-bound cwd checks, environment scrubbing, and controlled Windows process termination behavior.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Manages long-running local processes through start/stop/restart/list/log/wait operations.",
+      "Enables process control via Agent tools (`workload_*`) in configured presets.",
+      "Displays workload status, health, PID, and log tails in a Runtime Center UI.",
+      "Persists workload metadata and run identity outside project repositories with session-authorized API access.",
+      "Includes local-process restrictions and workspace-bound command execution checks."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:22.039Z",
   "repositoryCommitSha": "bb9270ac1535bc20802951d1de607dc1da659f32",
+  "evidenceHash": "1fb79c9bf9287764b6941bafe667df83bed32ce076b233e276f090df7f4b9651",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "baddb72a2372fcfe69c1b05733e918020785c29ecf6f95fd6e54d2f8599a563d",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:11.898Z",
-  "lastAttemptAt": "2026-08-20T09:18:11.898Z",
-  "nextRetryAt": "2026-08-20T14:16:56.898Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17925,\"reset_time\":\"4h58m45s\"}}",
   "shadowMode": false
 }

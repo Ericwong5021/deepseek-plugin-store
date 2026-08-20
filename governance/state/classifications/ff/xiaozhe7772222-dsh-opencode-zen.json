@@ -1,16 +1,73 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README shows the plugin’s primary user-facing purpose is integrating DSH with external LLM services: it adds an `opencode` provider with six free OpenCode Zen models, optional API-key configuration/rotation, and quota-aware request handling. This indicates a direct external-services integration rather than local tooling, analytics, or UI-only functionality.",
+  "summaries": {
+    "zh": "该插件在 DSH 中注册 opencode 提供方，接入 OpenCode Zen 免费模型并在模型选择器中使用，支持可选的 API Key 配置与密钥轮换及配额退避处理。",
+    "en": "This plugin integrates DSH with OpenCode Zen as an `opencode` model provider, enabling free model selection in the interface with optional API key setup, key rotation, and quota-aware request backoff."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers an OpenCode Zen LLM provider route in DSH model integration (`ctx.llm.registerAdapter`)",
+      "Exposes six remote free LLM models for selection in DSH model picker",
+      "Supports optional environment/API key configuration and optional key-pool rotation",
+      "Implements request throttling and 429/5xx backoff behavior for quota-aware remote calls"
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly states the plugin registers an `opencode` provider route and exposes OpenCode Zen free models to DSH session models/sub-agents.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents six externally hosted models and that the plugin is used to connect to the OpenCode Zen free tier without signup by default.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README mentions optional `OPENCODE_ZEN_API_KEY` / `OPENCODE_GO_API_KEY` configuration and built-in 429/5xx backoff with quota handling.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers an OpenCode Zen LLM provider route in DSH model integration (`ctx.llm.registerAdapter`)",
+      "Exposes six remote free LLM models for selection in DSH model picker",
+      "Supports optional environment/API key configuration and optional key-pool rotation",
+      "Implements request throttling and 429/5xx backoff behavior for quota-aware remote calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:55.961Z",
   "repositoryCommitSha": "e569f42e2ef245fe1edf779af6caab2280ce5add",
+  "evidenceHash": "56b159fdc6379948f5d5fb3d6086f2941e58c05b60682b2d259de6c2fb1391e3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "8ee895e73a828c8fb7b26a722abbcbd6be22e2918c3557bbd910fcf4e407bb06",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:04.206Z",
-  "lastAttemptAt": "2026-08-20T09:18:04.206Z",
-  "nextRetryAt": "2026-08-20T14:16:57.206Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17933,\"reset_time\":\"4h58m52s\"}}",
   "shadowMode": false
 }

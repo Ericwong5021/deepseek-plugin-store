@@ -1,16 +1,71 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "search",
+    "tool",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin’s primary user-facing purpose is terminal log search within DeepSeek Harness, exposing a `terminal_search` tool to locate lines in retained terminal scrollback by substring or regex and then jump to matches via existing terminal read tooling.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 `terminal_search` 工具，可在终端保留的历史输出中按文本或正则查找匹配行，并返回可用于后续 `terminal_read` 的偏移信息。",
+    "en": "This plugin adds a `terminal_search` tool to DeepSeek Harness to find matching lines in retained terminal output by literal text or regex and return offsets usable in follow-up `terminal_read` calls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Search retained terminal scrollback lines by literal substring or optional JavaScript regex.",
+      "Return match offsets in newest-first order for direct follow-up terminal reads.",
+      "Page through matches and report match counts, retained line totals, and truncation state."
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as a `terminal_search` tool for DeepSeek Harness that scans terminal output and supports `pattern`, `regex`, `offset`, and `limit` parameters.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Behavior section states it pages retained scrollback, matches each line, and returns results with offsets and match metadata (`matchCount`, `totalLines`, `truncated`).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It is implemented over the public `ctx.terminals.read` seam without changing upstream packages, indicating a read-only terminal integration model.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Search retained terminal scrollback lines by literal substring or optional JavaScript regex.",
+      "Return match offsets in newest-first order for direct follow-up terminal reads.",
+      "Page through matches and report match counts, retained line totals, and truncation state."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:36.243Z",
   "repositoryCommitSha": "3ad27821d9e8042b80217222f1141a18d70dffd9",
+  "evidenceHash": "60235559e5762ad79f6cd4ed31777f370172dfd31d733c4ee111a3b01758f623",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "9857c483fa785b8fe9b6ce26973aa3cd96e1adeab16fbc1d9d97173d86d5e6c0",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:16.334Z",
-  "lastAttemptAt": "2026-08-20T09:18:16.334Z",
-  "nextRetryAt": "2026-08-20T14:16:57.334Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17921,\"reset_time\":\"4h58m40s\"}}",
   "shadowMode": false
 }

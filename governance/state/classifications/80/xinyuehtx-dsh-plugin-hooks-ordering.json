@@ -1,16 +1,71 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly defines the plugin as a Cordis/DeepSeek-Harness utility for deterministic hook execution ordering, using before/after constraints and topological sort to stabilize waterfall and serial dispatch regardless of load order, with optional DAG logging and explicit hook control APIs.",
+  "summaries": {
+    "zh": "这是一个面向 Cordis 的插件，提供可预测的 hook 执行排序能力，允许独立插件通过 before/after 约束和拓扑排序稳定控制 waterfall 与 serial 钩子的执行顺序，并可用于 DeepSeek-Harness 场景。",
+    "en": "This is a Cordis plugin that provides deterministic hook execution ordering by letting plugins register before/after constraints and applying stable topological sorting for waterfall and serial dispatch, including support for DeepSeek-Harness hook ordering."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides deterministic ordering for Cordis hooks from independent plugins via before/after constraints",
+      "Uses stable topological sorting and a constraint graph to compute participant order",
+      "Adds coordinators for waterfall and serial hook dispatch phases with front/back registration"
+    ],
+    "reasons": [
+      {
+        "code": "README explains the package is an ordinary Cordis plugin that brackets a chosen hook and controls participant order itself instead of relying on registration order.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states participants register with before/after names and a stable topological sort determines execution order, and control/register methods are provided.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents support for both HookOrdering (waterfall) and SerialHookOrdering (serial), plus a dsh entrypoint to control real dsh hooks.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides deterministic ordering for Cordis hooks from independent plugins via before/after constraints",
+      "Uses stable topological sorting and a constraint graph to compute participant order",
+      "Adds coordinators for waterfall and serial hook dispatch phases with front/back registration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:07.324Z",
   "repositoryCommitSha": "a56532dbf7662d8d93b7f1c5f0bf6e407fab4b8b",
+  "evidenceHash": "0ba9cd107a143db620a8bf00cf7c3d48b0cbee36b9342747e0f8ff0bbfbbe4b7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "91fb96e7231490b34922f1b808ada30707d2f97c596cae97b152725cf993531e",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:09.015Z",
-  "lastAttemptAt": "2026-08-20T09:18:09.015Z",
-  "nextRetryAt": "2026-08-20T14:16:57.015Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17928,\"reset_time\":\"4h58m48s\"}}",
   "shadowMode": false
 }

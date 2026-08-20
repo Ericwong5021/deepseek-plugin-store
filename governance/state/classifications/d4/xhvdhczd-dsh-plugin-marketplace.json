@@ -1,16 +1,74 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "visualization",
+    "search",
+    "data",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README explicitly identifies the plugin as a marketplace dashboard embedded in the DSH settings panel that presents and filters the `dsh-plugin` GitHub topic repository list with charts and stats, so the primary user-facing purpose is a navigation/panel-style marketplace interface for browsing plugin ecosystem data.",
+  "summaries": {
+    "zh": "这是一个集成到 DSH Web 设置中的插件市场看板，展示 `dsh-plugin` 生态仓库的统计与仓库列表，并提供搜索筛选、语言分布和分页加载以便快速浏览。",
+    "en": "This plugin is a marketplace dashboard integrated into the DSH Web settings area, showing `dsh-plugin` repositories with stats, searchable filters, language distribution, and paginated browsing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays GitHub repository metadata in a dashboard-style settings panel for discovery and monitoring of `dsh-plugin` projects",
+      "Fetches topic repository data from GitHub Search API with batched pagination and refresh progress handling",
+      "Falls back to an embedded snapshot of repository data when live fetch fails"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a dashboard for the GitHub `dsh-plugin` topic, integrated into DSH Web settings under \"设置 → 插件市场\" with repository cards, stats cards, and language chart UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes one-click refresh using batched GitHub Search API queries to fetch all repositories and handle rate limits, with a progress bar, while retaining bundled snapshots on failure.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists search by name/description and language dropdown filtering plus paginated cards (120 per page) as core functionality.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays GitHub repository metadata in a dashboard-style settings panel for discovery and monitoring of `dsh-plugin` projects",
+      "Fetches topic repository data from GitHub Search API with batched pagination and refresh progress handling",
+      "Falls back to an embedded snapshot of repository data when live fetch fails"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:45.624Z",
   "repositoryCommitSha": "a3856dadc9a1934f60fb0dac2692a4b4dbf53431",
+  "evidenceHash": "fffa2195fa972547aad46d3f86512ff52682ace10b10be8a1cd67ee75c844f13",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "7b9075b4b2ad067c8ea7aec3096b86674ee8538d023ea7c93dee4fa1eee629fe",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:01.281Z",
-  "lastAttemptAt": "2026-08-20T09:18:01.281Z",
-  "nextRetryAt": "2026-08-20T14:16:57.281Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17936,\"reset_time\":\"4h58m55s\"}}",
   "shadowMode": false
 }

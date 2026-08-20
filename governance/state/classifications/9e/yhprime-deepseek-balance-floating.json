@@ -1,16 +1,72 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "visualization",
+    "data",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的核心用途是为 DeepSeek Harness 用户在界面左下角提供余额与消耗情况的可视化悬浮组件，主要功能是展示余额条、剩余 token 环和今日用量横条，并通过 dsh-cost-meter 提供的数据定期刷新，属于面向界面展示与状态监控的功能插件。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 左下角新增悬浮展示面板，以余额条、剩余 token 环和今日消耗横条的方式可视化展示账户余额与用量，并基于 dsh-cost-meter 数据定时更新。",
+    "en": "This plugin adds a floating panel in DeepSeek Harness to visualize balance and usage via a balance bar, remaining-token ring, and today’s consumption bar, with periodic updates from dsh-cost-meter data."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders account balance and usage metrics in a floating sidebar widget within DeepSeek Harness.",
+      "Reads cost and balance data from the dsh-cost-meter data channel and refreshes on a periodic timer.",
+      "Adapts display styling to the active theme and hides in constrained sidebar states to reduce UI impact."
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly describes a \"左下角悬浮窗\" with \"余额血条/估算剩余 token 环/今日消耗横条\" to present balance and usage visuals.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states data is sourced from dsh-cost-meter, including official balance API and llm/stream ledger-derived token/fee data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description identifies it as a DeepSeek Harness left-bottom balance/usage floating plugin.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Renders account balance and usage metrics in a floating sidebar widget within DeepSeek Harness.",
+      "Reads cost and balance data from the dsh-cost-meter data channel and refreshes on a periodic timer.",
+      "Adapts display styling to the active theme and hides in constrained sidebar states to reduce UI impact."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:24.174Z",
   "repositoryCommitSha": "b7c45a9d0a30f96fce7c8451912976466787ce70",
+  "evidenceHash": "7b7df70bdc0d19facfa145e02c9353c90a93c94f652e70e6eb88d0b84b4de389",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "ef146152920b2de2e2162edc4092b834b8e674df855b817a31c50290a48704ed",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:12.355Z",
-  "lastAttemptAt": "2026-08-20T09:18:12.355Z",
-  "nextRetryAt": "2026-08-20T14:16:57.355Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17925,\"reset_time\":\"4h58m44s\"}}",
   "shadowMode": false
 }

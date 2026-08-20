@@ -1,16 +1,85 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "chat",
+    "automation",
+    "file",
+    "terminal",
+    "context",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "README明确表明该插件的主要用途是将飞书机器人作为入口，接收用户消息后触发 DeepSeek Harness 任务执行并回写结果；因此按以用户任务自动化与外部通信集成为核心。",
+  "summaries": {
+    "zh": "该插件将 Feishu 飞书机器人接入 DeepSeek Harness，供授权用户在聊天内提交任务并接收执行进度与结果。",
+    "en": "This plugin connects a Feishu bot to DeepSeek Harness so authorized users can submit tasks in chat and receive execution progress and results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Bridges Feishu chat messages to execution of dsh tasks and returns results in the same chat.",
+      "Supports user authorization and admin approval commands to control who can run tasks.",
+      "Supports serial task queuing, runtime heartbeat/progress updates, and execution time/output limits.",
+      "Handles inbound/downstream file transfer between Feishu and workspace files with size and location checks.",
+      "Persists per-chat/per-user conversation context for follow-up task continuity."
+    ],
+    "reasons": [
+      {
+        "code": "README说明“将飞书机器人连接到 DeepSeek Harness…用户在飞书中发送文字消息后…把消息作为任务交给指定的 dsh profile 执行，并将结果回复到原会话”。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README详细列出 `/request`、`/approve`、`/deny`、`/revoke` 等审批流程，以及 `adminOpenIds`/`allowedOpenIds` 白名单控制。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README描述入站文件下载到 `.dsh-feishu/inbox` 及任务输出文件通过 `DSH_FILE` 或 `/send` 回传到飞书，并进行工作区边界与大小校验。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README提到插件执行期间更新同一条消息、超时与输出长度限制、任务队列与串行执行。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Bridges Feishu chat messages to execution of dsh tasks and returns results in the same chat.",
+      "Supports user authorization and admin approval commands to control who can run tasks.",
+      "Supports serial task queuing, runtime heartbeat/progress updates, and execution time/output limits.",
+      "Handles inbound/downstream file transfer between Feishu and workspace files with size and location checks.",
+      "Persists per-chat/per-user conversation context for follow-up task continuity."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:17.501Z",
   "repositoryCommitSha": "52c44eaea60e54f6f5fea0cf3b4d26b58315c895",
+  "evidenceHash": "69713b35740be7c2069df3d88e57cb4794051a5773255e23864831db7650896c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "ad923377051f6ecece16ad3083da432bcd25561a720e10710ef35014543ab95e",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:11.287Z",
-  "lastAttemptAt": "2026-08-20T09:18:11.287Z",
-  "nextRetryAt": "2026-08-20T14:16:57.287Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17926,\"reset_time\":\"4h58m45s\"}}",
   "shadowMode": false
 }

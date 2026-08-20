@@ -1,16 +1,70 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "README 充分说明该插件的主要用途是作为 DSH 工具调用兼容层，在执行前自动清理会导致验证失败的权限提升参数，使受模型调用方行为影响的调用可继续按原有权限模型执行，因此应归类为自动化兼容处理型通用工具。",
+  "summaries": {
+    "zh": "该插件在工具调用执行前自动清理会导致沙箱校验失败的提权参数（如空 justification 或不匹配的 sandbox_permissions），帮助模型调用保持可执行的原始调用形态。",
+    "en": "This plugin automatically cleans up tool-call arguments before execution by removing privilege-related fields that fail validation (such as empty justification or mismatched sandbox permissions), allowing calls to proceed as intended."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "拦截工具调用执行前参数并进行兼容化清理",
+      "移除特定会导致权限校验失败的提权参数",
+      "在异常情况下放行原始调用以避免请求变坏"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件在 tools/pre-execute（分发前）监听并拦截工具调用，剥离必然校验失败的提权参数。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明监听器注册在进程级 root 作用域，覆盖所有会话的 pwsh/bash 及文件系统工具族调用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明清理规则限定于空/非字符串 justification、sandbox_permissions 与 justification 不成对以及不严格更宽权限等情形，并在异常时放行原调用。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "拦截工具调用执行前参数并进行兼容化清理",
+      "移除特定会导致权限校验失败的提权参数",
+      "在异常情况下放行原始调用以避免请求变坏"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:32.340Z",
   "repositoryCommitSha": "f9031dd6375f2a54d15ee97fdfb19905951c5d12",
+  "evidenceHash": "f6e0d083bf6ef5f9ec404d0763afbadaafd6716027a57337498bbc7a8e60b74a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "51368402fdc77588d3233bf81c77b80ac15a1dd7fcdf6ee29793ecfdee1b9d31",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:16.160Z",
-  "lastAttemptAt": "2026-08-20T09:18:16.160Z",
-  "nextRetryAt": "2026-08-20T14:16:57.160Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17921,\"reset_time\":\"4h58m40s\"}}",
   "shadowMode": false
 }

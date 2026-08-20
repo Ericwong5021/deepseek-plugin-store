@@ -1,16 +1,69 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "ui",
+    "tool"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.88,
+  "reason": "The plugin is a user-facing automation tool for DeepSeek Harness that automatically translates approval-dialog reason text to Simplified Chinese before it appears in the interface, with behavior documented in the README and metadata as dialog-focused translation rather than plugin-development tooling.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件，可在审批对话框触发前自动将审批原因文本转换为中文以便直接显示。",
+    "en": "This plugin for DeepSeek Harness automatically translates approval dialog reason text into Simplified Chinese before it is shown, improving readability during approval workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts approval request events in DeepSeek Harness and translates approval reason text before display",
+      "Targets approval dialog content specifically for readability/understanding in Chinese",
+      "Uses existing DSH LLM integration for translation behavior",
+      "Provides install/remove commands for plugin lifecycle management"
+    ],
+    "reasons": [
+      {
+        "code": "Repository metadata explicitly describes the plugin as a DeepSeek Harness approval dialog auto-translation plugin, indicating its user-facing goal is automatic localization of approval prompts.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "README describes listening to `approval/request`, translating `req.reason` via `ctx.llm`, and handling the translated content through `approval/asked` before it reaches the browser.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts approval request events in DeepSeek Harness and translates approval reason text before display",
+      "Targets approval dialog content specifically for readability/understanding in Chinese",
+      "Uses existing DSH LLM integration for translation behavior",
+      "Provides install/remove commands for plugin lifecycle management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.88,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "7e6c384695e859ccc013aadf37584913a6c7e75a",
-  "cacheKey": "931e0d8dff342b56768e2b8be5e4574f773a86ee597dcfbda405638193799fe1",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:07.626Z",
-  "lastAttemptAt": "2026-08-20T09:18:07.626Z",
-  "nextRetryAt": "2026-08-20T14:16:57.626Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17930,\"reset_time\":\"4h58m49s\"}}",
+  "classifiedAt": "2026-08-20T14:21:07.970Z",
+  "repositoryCommitSha": "7a11020681a57388e40db4d2e5005179d7ab47f2",
+  "evidenceHash": "b1fa57cae3cbb4b4a6e48ef560253e0942473cb1a8d07362c13cd47dfb800996",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b4026459a5ea435282fbfcc341100d7ea77f6b12ac98f07b295b4829385b5231",
   "shadowMode": false
 }

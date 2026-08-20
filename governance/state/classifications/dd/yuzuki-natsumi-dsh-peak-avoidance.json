@@ -1,16 +1,83 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "ui",
+    "workflow",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README and repository metadata consistently describe a plugin whose user-facing purpose is scheduled, automatic switching of model routing to avoid peak-hour model pricing, with optional manual override, making its primary role automation of model selection behavior within DeepSeek Harness.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中按配置的高峰时段自动切换模型，并在高峰结束后恢复默认模型，同时提供状态与手动控制入口。",
+    "en": "This plugin automatically switches models in DeepSeek Harness during configured peak-hour windows and restores the normal model afterward, with manual status and control options."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "time-based automatic model switching",
+      "model route switching for both default and active session paths",
+      "manual status check and control via card/tools",
+      "live model/effort data lookup from llm service"
+    ],
+    "reasons": [
+      {
+        "code": "README states this plugin auto-switches to an alternate model before DeepSeek peak hours and restores the official model afterwards.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Feature list includes scheduled switching using `leadMinutes`, support for multiple windows, and cross-midnight ranges like `22:00-02:00`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It explicitly applies switching to `agentDefaultModel` and `apiProxy.sessions.selectModel` (next-turn effect for live sessions).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata description labels it as \"peak-hour model auto-switch\" and topics include `model-switch` and `peak-avoidance`.",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "README describes manual UI card buttons plus model tools (`peak_avoidance_status` / `peak_avoidance_control`) and switch toast notifications.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "time-based automatic model switching",
+      "model route switching for both default and active session paths",
+      "manual status check and control via card/tools",
+      "live model/effort data lookup from llm service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:45.490Z",
   "repositoryCommitSha": "4435fe2ce5e81216001f1d31012f9f8277c3d564",
+  "evidenceHash": "9c1f5ced0ea318ce7cfbf000e033585a3dc9235668f5345e12ac3e628d65b631",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "27b5c9156fdad2dbda76c34f7dc05f6d3810ad2a99081ae9d5a830d5790849ee",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:18.767Z",
-  "lastAttemptAt": "2026-08-20T09:18:18.767Z",
-  "nextRetryAt": "2026-08-20T14:16:56.767Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17918,\"reset_time\":\"4h58m38s\"}}",
   "shadowMode": false
 }

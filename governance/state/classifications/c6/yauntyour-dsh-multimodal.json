@@ -1,16 +1,82 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "video",
+    "file",
+    "tool",
+    "chat",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin’s primary user-facing purpose is media-input adaptation for chat sessions: it converts attachment content (especially image/video/audio) into text using configurable models and sends that into the model conversation flow, with configurable presets and fallback behavior.",
+  "summaries": {
+    "zh": "DSH-Multimodal 是一个面向会话场景的媒体输入处理插件，可按预设模型链把图片、音视频等附件先转为文本，再交由会话模型处理。",
+    "en": "DSH-Multimodal is a conversation-focused media input plugin that preprocesses image and media attachments into text through configurable model chains before sending them to the chat model."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts multimodal attachment inputs (image/video/audio/text) in DSH conversation send flows",
+      "Converts supported media files to text via configurable model chains before passing to the active chat model",
+      "Provides preset-based routing, model fallback, and size/type-based handling per file type",
+      "Provides configurable error behavior when conversion fails and supports pass-through fallback",
+      "Adds a dedicated Multimodal settings page for enabling and managing these behaviors in DSH"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a multimodal input plugin that processes image/video/audio/text files into prompt tokens via independent processing model chains before sending to the conversation model.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes a settings page with presets, per-pattern matching, prompt customization, model-chain order/fallback, and failure strategies (note/pass-through).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Architecture section explains send-path interception and attachment-button flow for immediate multimodal processing and model-call rewrite to inject converted text.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description explicitly labels it as DSH 多模态输入插件并在 DSH 设置中新增独立 Multimodal 页面。",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Intercepts multimodal attachment inputs (image/video/audio/text) in DSH conversation send flows",
+      "Converts supported media files to text via configurable model chains before passing to the active chat model",
+      "Provides preset-based routing, model fallback, and size/type-based handling per file type",
+      "Provides configurable error behavior when conversion fails and supports pass-through fallback",
+      "Adds a dedicated Multimodal settings page for enabling and managing these behaviors in DSH"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:16.526Z",
   "repositoryCommitSha": "b0795a47a899c7d148e7299420a000928188780f",
+  "evidenceHash": "40ca6af37b469695b764ccfdcafb22f110cfce51e03d3cc9ab0cf816db95f01e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "dd0c5f057759f9fadfd2cea6e9e8004d0232cf598a72d1e4d5b71cc841bdcbc8",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:10.474Z",
-  "lastAttemptAt": "2026-08-20T09:18:10.474Z",
-  "nextRetryAt": "2026-08-20T14:16:57.474Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17927,\"reset_time\":\"4h58m46s\"}}",
   "shadowMode": false
 }

@@ -1,16 +1,72 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "integration",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Insufficiently uncertain? no—README explicitly positions this as a usage-monitoring plugin: it shows provider token-plan/余额 in the DeepSeek Harness sidebar footer and provides a settings area for provider-specific query configuration, with explicit support for DeepSeek Platform and OpenCode Go.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 侧边栏展示不同供应商的 API 余额或 Token 用量卡片，并提供按供应商配置查询参数（如 API Key / Cookie）的设置入口。",
+    "en": "This plugin shows provider API balance or token-plan usage in the DeepSeek Harness sidebar and provides a settings area to configure provider-specific query parameters such as API keys and cookies."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads user-configured credentials/params for provider APIs",
+      "Queries external provider endpoints to retrieve balance or token-plan usage",
+      "Displays usage summaries in a sidebar card and settings section",
+      "Persists provider configuration in settings storage"
+    ],
+    "reasons": [
+      {
+        "code": "The README states the plugin supports querying provider balances/usage and needs extra config such as API keys/cookies, with settings stored in settings.yaml.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The project structure and usage description reference host-side settings persistence, HTTP endpoint handling, and client-side sidebar usage cards for DeepSeek Platform and OpenCode Go.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads user-configured credentials/params for provider APIs",
+      "Queries external provider endpoints to retrieve balance or token-plan usage",
+      "Displays usage summaries in a sidebar card and settings section",
+      "Persists provider configuration in settings storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:34.863Z",
   "repositoryCommitSha": "56ffba8b16b3fbc34cf35daef3ebbbf8e8df3b25",
+  "evidenceHash": "490802460a1f108e0539e0fd90e75a1a3badad2a65746d7d644c8f2924c8909e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "76c819f82b3e445029509627869fbd2242833e8458aebd1e1d13c368ad6676b0",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:16.717Z",
-  "lastAttemptAt": "2026-08-20T09:18:16.717Z",
-  "nextRetryAt": "2026-08-20T14:16:56.717Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17920,\"reset_time\":\"4h58m40s\"}}",
   "shadowMode": false
 }

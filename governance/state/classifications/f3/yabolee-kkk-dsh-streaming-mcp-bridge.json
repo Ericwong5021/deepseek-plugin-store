@@ -1,16 +1,73 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "mcp",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin is primarily an integration bridge that connects DeepSeek Harness with external clients by streaming live execution events via MCP progress notifications and forwarding ACP/Feishu updates.",
+  "summaries": {
+    "zh": "该插件是一个 DeepSeek Harness 与外部客户端之间的桥接插件，可将会话事件与状态实时转发到 MCP/ACP（如飞书）以显示执行进度。",
+    "en": "This plugin is an integration bridge from DeepSeek Harness to external clients, forwarding live session events and status updates through MCP and ACP (including Feishu) for real-time progress visibility."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Expose a local MCP Streamable HTTP endpoint for `dsh_run_stream` task sessions",
+      "Forward Harness `session.event` and `session.status` updates as MCP progress notifications",
+      "Relay ACP updates for Feishu/cc-connect including thinking and tool-result state"
+    ],
+    "reasons": [
+      {
+        "code": "README describes MCP mode using Streamable HTTP and `dsh_run_stream` to send `notifications/progress`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes ACP mode that forwards thinking, tool calls, and status in real time to Feishu via cc-connect.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents configurable host/port and optional Bearer token authentication for the MCP endpoint.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Expose a local MCP Streamable HTTP endpoint for `dsh_run_stream` task sessions",
+      "Forward Harness `session.event` and `session.status` updates as MCP progress notifications",
+      "Relay ACP updates for Feishu/cc-connect including thinking and tool-result state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:13.602Z",
   "repositoryCommitSha": "f6c96745cbc9b8fd1a376b20d090ce27c464806e",
+  "evidenceHash": "f7510ad6e2dcac6c677555e9f6b8ec878db0e44944d1896c9b019c03530ecc87",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "5457157f6e6f87d626602b330686ffa39a112e7ad1f9d558812faa9efc72c962",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:10.688Z",
-  "lastAttemptAt": "2026-08-20T09:18:10.688Z",
-  "nextRetryAt": "2026-08-20T14:16:56.688Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17926,\"reset_time\":\"4h58m46s\"}}",
   "shadowMode": false
 }

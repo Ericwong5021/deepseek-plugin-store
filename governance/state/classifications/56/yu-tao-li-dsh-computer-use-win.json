@@ -1,16 +1,75 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "desktop",
+    "ui",
+    "tool",
+    "mcp"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly states a Windows-only MCP plugin that provides 22 computer-use tools for DeepSeek Harness, combining UI observation (UIA tree, screenshots, OCR) with input and window-control actions, so its primary user-facing purpose is desktop automation.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的 Windows MCP 插件，提供 22 个桌面工具，用于通过 UIA 树、截图和 OCR 观察界面，并执行点击、输入与窗口操作等自动化任务。",
+    "en": "This is a Windows MCP plugin for DeepSeek Harness that provides 22 desktop tools to observe UI state via UIA tree, screenshots, and OCR, and to perform clicks, text input, and window actions for desktop automation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes MCP tools for observing Windows UI state via accessibility tree, screenshots, and OCR",
+      "Executes real desktop actions through mouse and keyboard input synthesis",
+      "Provides window lifecycle and focus/control operations",
+      "Runs a persistent local backend to automate tasks against Windows applications"
+    ],
+    "reasons": [
+      {
+        "code": "README lists 22 tools including click, drag, scroll, type_text, keypress, invoke, and window management functions, indicating direct desktop manipulation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin is positioned as adding Windows computer control to DeepSeek Harness and targets real Windows applications with foreground/background input paths.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Security-oriented behavior is described only as safeguards around input and window identity (emergency stop, fail-closed foreground checks, identity guard), implying potentially high-impact automation on host UI.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "Exposes MCP tools for observing Windows UI state via accessibility tree, screenshots, and OCR",
+      "Executes real desktop actions through mouse and keyboard input synthesis",
+      "Provides window lifecycle and focus/control operations",
+      "Runs a persistent local backend to automate tasks against Windows applications"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:40.595Z",
   "repositoryCommitSha": "04f4643eba86b28ee26788dbe72e34fa87503852",
+  "evidenceHash": "e402562370b0701115c876b6df7aced4ee336030eadffb6550832fb3989f8232",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "37cad6d596d5f7462acb15fde7c939d4057f00e4d0a7791577109e813868b321",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:16.240Z",
-  "lastAttemptAt": "2026-08-20T09:18:16.240Z",
-  "nextRetryAt": "2026-08-20T14:16:57.240Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17921,\"reset_time\":\"4h58m40s\"}}",
   "shadowMode": false
 }

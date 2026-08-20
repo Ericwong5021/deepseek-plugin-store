@@ -1,16 +1,74 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "browser",
+    "integration",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件明确面向 DSH 的界面扩展场景：在界面右侧提供可开关的分屏面板并嵌入 DeepSeek 网页版以便在当前任务中并行使用。其核心能力为本地反向代理配合 iframe 嵌入，因此归类为面板化导航/界面增强，而非代码生成或自动化流程类。",
+  "summaries": {
+    "zh": "该插件在 DSH 中新增右侧分屏面板，用于在 DSH 界面内打开并使用 DeepSeek 网页版聊天服务。",
+    "en": "This plugin adds a split-side panel in DSH to open and use the DeepSeek web chat interface without leaving the current workspace."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在 DSH 中提供右侧分屏/侧边栏面板以加载外部网页聊天界面",
+      "本地启动反向代理以转发并改写 DeepSeek 网页请求与头信息",
+      "对流式聊天输出进行透传以保持网页版交互体验"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明插件会本地启动反向代理并剥离 CSP/X-Frame-Options/HSTS、改写 Cookie 与静态资源路径以实现 iframe 嵌入。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指明代理监听 127.0.0.1 的本地端口，并通过 /dsw-proxy-port 将端口信息暴露给客户端。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提到功能依赖 DeepSeek 网页结构与外部风控/限流策略，表明存在对外部服务的运行时依赖。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "在 DSH 中提供右侧分屏/侧边栏面板以加载外部网页聊天界面",
+      "本地启动反向代理以转发并改写 DeepSeek 网页请求与头信息",
+      "对流式聊天输出进行透传以保持网页版交互体验"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:08.905Z",
   "repositoryCommitSha": "1741dfd6509d8fc15431cb1d311d3bca188d7338",
+  "evidenceHash": "2adb68697eaf0d339b31e890ed6dd99d433ba52f69e78174df7a4885fbef7888",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "8ce957ac53f2bade23e2cdfb3bb875cd5126468f2b927ca5c17ce9d5c1225529",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:08.341Z",
-  "lastAttemptAt": "2026-08-20T09:18:08.341Z",
-  "nextRetryAt": "2026-08-20T14:16:57.341Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17929,\"reset_time\":\"4h58m48s\"}}",
   "shadowMode": false
 }

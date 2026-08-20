@@ -1,16 +1,78 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "skill",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The plugin’s primary purpose is to provide remote cross-border compliance skills to DeepSeek Harness users by fetching a catalog and registering those skills in `ctx.skills`; the README explicitly documents `list()`/`get()` catalog operations, remote catalog/network behavior, and integration-focused usage.",
+  "summaries": {
+    "zh": "dsh-compliancehub 是一个 DeepSeek Harness 远程技能提供者插件，用于从目录服务加载并注册跨境合规技能到 `ctx.skills`，供模型会话调用。",
+    "en": "dsh-compliancehub is a DeepSeek Harness remote skill provider plugin that loads compliance skills from a catalog and registers them in `ctx.skills` for model session use."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Loads skill definitions from a remote catalog URL and validates them.",
+      "Registers catalog-provided skills into the DSH `ctx.skills` registry.",
+      "Fetches skill documentation (`SKILL.md`) on demand through provider `get()`.",
+      "Supports catalog-based disclosure metadata including network endpoints and optional API key configuration."
+    ],
+    "reasons": [
+      {
+        "code": "README: \"Remote skill provider for DeepSeek Harness: install skills from a JSON catalog through the standard `ctx.skills` registry — no manual folder copying.\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: \"`list()` — fetch + validate a curated catalog, expose its skills to the registry\" and \"`get()` — fetch the `SKILL.md` body on demand from the owning repo.\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README disclosure example includes fields such as `cloud`, `network`, and `apiKeys: [{\"env\": \"COMPLIANCEHUB_API_KEY\"}]`.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README topics and usage mention DeepSeek Harness / skills catalog integration and registration via `ctx.skills.registerProvider`.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Loads skill definitions from a remote catalog URL and validates them.",
+      "Registers catalog-provided skills into the DSH `ctx.skills` registry.",
+      "Fetches skill documentation (`SKILL.md`) on demand through provider `get()`.",
+      "Supports catalog-based disclosure metadata including network endpoints and optional API key configuration."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:47.694Z",
   "repositoryCommitSha": "5eab45e4e5239b63ee204c9341ac3ce7104974f6",
+  "evidenceHash": "a33791142aeed53daaf1357ec1cc70e2a7fa8629b1c38d20c056d58f380d3088",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "3fd4da034e839d219f3781ffda40cc1d361d7f0ccaab7ec0b2dabb893662e16d",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:00.810Z",
-  "lastAttemptAt": "2026-08-20T09:18:00.810Z",
-  "nextRetryAt": "2026-08-20T14:16:56.810Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17936,\"reset_time\":\"4h58m56s\"}}",
   "shadowMode": false
 }

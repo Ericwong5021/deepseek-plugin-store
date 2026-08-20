@@ -1,16 +1,68 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "chat",
+    "tool",
+    "automation",
+    "memory",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly positions this plugin as a user-facing tool for managing and compressing agent conversation context in DeepSeek Harness, with explicit commands to trim or compact dialogue regions; primary purpose is memory/context management for long sessions.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 `/compact-directive` 和 `/trim-directive` 命令，支持按自然语言要求压缩或裁剪会话上下文并生成新的上下文快照。",
+    "en": "This plugin adds `/compact-directive` and `/trim-directive` commands to DeepSeek Harness so users can trim or compact conversation context by natural-language instructions and produce a new context checkpoint."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides conversation compaction commands (`/compact-directive`, `/trim-directive`) that can delete, summarize, or rewrite message content based on user requirements",
+      "Supports a whole-session trim mode without head/protected-node guarantees, and documents destructive behavior with no direct undo"
+    ],
+    "reasons": [
+      {
+        "code": "README defines two slash commands for context management and explains they can replace middle content or the whole conversation with summarized or edited nodes.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states `/trim-directive` can delete any content in conversation (including injected system-like nodes) and that trims are destructive with no undo, with operation-mode manifests (`delete`, `rewrite`, `summarize`).",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides conversation compaction commands (`/compact-directive`, `/trim-directive`) that can delete, summarize, or rewrite message content based on user requirements",
+      "Supports a whole-session trim mode without head/protected-node guarantees, and documents destructive behavior with no direct undo"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:14.802Z",
   "repositoryCommitSha": "b2c5bdaaec8721847a75f149a5bb9b7c412a2349",
+  "evidenceHash": "8d1cfa0f4fe0baefafe60ca80a16dc8a51be9311e7add34b53aac093b247a8fe",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "d59ef4c7d0adf5a97ee8feb8a3b7732f203e5ae414d4322e391c40f3f738247a",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:09.405Z",
-  "lastAttemptAt": "2026-08-20T09:18:09.405Z",
-  "nextRetryAt": "2026-08-20T14:16:57.405Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17928,\"reset_time\":\"4h58m47s\"}}",
   "shadowMode": false
 }
