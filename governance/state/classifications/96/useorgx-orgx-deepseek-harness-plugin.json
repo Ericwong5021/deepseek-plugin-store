@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "mcp",
+    "tool",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Classified as an external services integration plugin because the README shows the primary user-facing behavior is to connect DeepSeek Harness to OrgX via MCP tools and run an OrgX gateway peer for task execution in a harness workspace. The plugin is invoked through DeepSeek/OrgX CLI flows and relies on external endpoints and credentials, rather than providing standalone content editing, UI, or general-purpose productivity tools.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的 headless 配置中加载 OrgX MCP 工具，并启动 OrgX 对等端点以进行工作区任务派发与执行。",
+    "en": "This plugin connects DeepSeek Harness to OrgX by loading OrgX MCP tools into a headless profile and running an OrgX peer for workspace task dispatch and execution."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds OrgX MCP tools into DeepSeek Harness profiles.",
+      "Runs an OrgX gateway peer in DeepSeek Harness headless mode.",
+      "Authenticates to external OrgX MCP and DeepSeek endpoints using provided tokens/keys.",
+      "Validates readiness via MCP initialize/tool sync and external balance endpoint checks before dispatch.",
+      "Captures and retries execution receipts and heartbeat state for task lifecycle tracking."
+    ],
+    "reasons": [
+      {
+        "code": "README states this package adds OrgX MCP tools to a DeepSeek Harness profile and runs a workspace-bound OrgX peer through Harness headless mode.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents connections to `https://mcp.useorgx.com/mcp` using `Authorization: Bearer $ORGX_MCP_ACCESS_TOKEN` and separate `DEEPSEEK_API_KEY`, showing external service/API integration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explicitly notes that `workspace-write` does not isolate same-user host reads/processes/network access and requires host-access acknowledgment, indicating elevated host/network risk context.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Adds OrgX MCP tools into DeepSeek Harness profiles.",
+      "Runs an OrgX gateway peer in DeepSeek Harness headless mode.",
+      "Authenticates to external OrgX MCP and DeepSeek endpoints using provided tokens/keys.",
+      "Validates readiness via MCP initialize/tool sync and external balance endpoint checks before dispatch.",
+      "Captures and retries execution receipts and heartbeat state for task lifecycle tracking."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:22.536Z",
+  "repositoryCommitSha": "628bcc41449c76a10b0e598b676c03669094db56",
+  "evidenceHash": "6aac5d5665b9edc073aaabe03131d7d2df69d0bcf6f3e435140c8a66098ba597",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "46d5653ff66636a1e32a29daea089ba8815c9cf417994045576c1375a580c90d",
+  "shadowMode": false
+}

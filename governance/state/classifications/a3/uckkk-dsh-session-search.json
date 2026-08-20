@@ -1,16 +1,77 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "data",
+    "agent",
+    "tool",
+    "memory",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is clearly a session-search utility for DeepSeek Harness users, described as cross-session full-text retrieval in local logs with configurable scope and limits, making its primary purpose searchable retrieval of historical agent conversations. Its supported behavior and outputs are documented around `session_search`, line-level hits, and session metadata, fitting the Search & Browsing category.",
+  "summaries": {
+    "zh": "该插件用于在本地 DSH 会话中按关键词进行全文检索，扫描会话日志并返回命中的会话与具体文本片段，帮助用户快速定位历史讨论内容。",
+    "en": "This plugin performs keyword-based full-text search across local DSH sessions, scanning session logs and returning matching sessions with hit snippets to quickly locate past conversation content."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Full-text keyword search across local DeepSeek Harness sessions via session_search.",
+      "Supports both compressed `.jsonl.zstd` and plaintext `.jsonl` session log formats.",
+      "Returns matched session metadata (title/ID/workdir) and hit line details for retrieval."
+    ],
+    "reasons": [
+      {
+        "code": "README: plugin enables full-text keyword search across all local DSH sessions (“DSH 会话全文搜索：跨所有本地会话按关键词检索”).",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: function `session_search` returns hit session title/ID/workdir plus line numbers and line content.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: supports `.jsonl.zstd` and `.jsonl` session storage formats and is a pure Node implementation with zero runtime third-party dependencies.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata description explicitly describes local session full-text search across all sessions.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Full-text keyword search across local DeepSeek Harness sessions via session_search.",
+      "Supports both compressed `.jsonl.zstd` and plaintext `.jsonl` session log formats.",
+      "Returns matched session metadata (title/ID/workdir) and hit line details for retrieval."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:07.478Z",
   "repositoryCommitSha": "6a87eec3554418614a67e683e628fe532508477f",
+  "evidenceHash": "1409d5079995d6b0284cea5e6609975922d08c21152f176d07c2bf4ee280cd7f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "b7c64638d7c091342a26c39d16941612a1ec6aab79724aa3c1095baba8ee52c4",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:27:25.487Z",
-  "lastAttemptAt": "2026-08-18T18:27:25.487Z",
-  "nextRetryAt": "2026-08-20T08:20:01.487Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":136356,\"reset_time\":\"37h52m36s\"}}",
   "shadowMode": false
 }

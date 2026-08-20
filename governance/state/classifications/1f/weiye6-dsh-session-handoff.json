@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "automation",
+    "context",
+    "chat",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The README clearly positions the plugin as a session handoff utility: users run `/handoff` to summarize recent chat, create a clean new session/agent in the same workspace, inject the summary as the first message, and auto-open the result while leaving the original session intact. This supports context transfer and session continuity as its primary user-facing purpose.",
+  "summaries": {
+    "zh": "该插件提供 `/handoff` 命令，可将近期对话总结为结构化交接文档，在同一工作区创建新的会话和代理，并自动打开新会话以延续后续讨论。",
+    "en": "This plugin adds a `/handoff` command that summarizes recent chat context, creates a fresh session and agent in the same workspace, injects the summary as the first message, and opens the new session automatically."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Summarizes selected conversation history with an LLM.",
+      "Creates a new session and agent in the same workspace from a handoff summary.",
+      "Automatically opens the new session in the client after creation.",
+      "Allows configuration of turns, input limits, token budget, model route, and timeout for summary generation."
+    ],
+    "reasons": [
+      {
+        "code": "README describes `/handoff` as summarizing recent conversation and creating a brand-new session+agent, using the summary document as the first message.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes recent conversation text is sent to the configured model to produce the summary, indicating data flow to the model endpoint.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Summarizes selected conversation history with an LLM.",
+      "Creates a new session and agent in the same workspace from a handoff summary.",
+      "Automatically opens the new session in the client after creation.",
+      "Allows configuration of turns, input limits, token budget, model route, and timeout for summary generation."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:44.698Z",
+  "repositoryCommitSha": "4196434b730f8e66849ec76e76a1172085188f58",
+  "evidenceHash": "43e990827bd2491de896c9d6f2482caeb4381c8925e1f42c4cf1e04a3d713a8b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6ec41581bb732dddfa48d62c9f6d2c71b1b65d88efb738c9956c54bc15a524af",
+  "shadowMode": false
+}

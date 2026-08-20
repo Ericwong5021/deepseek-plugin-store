@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "memory",
+    "ui",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "根据 README，dsh-cite 的主要面向用户用途是增强 DeepSeek Harness 对话上下文管理：支持当前会话文字引用与注释、跨会话 @ 引用取证、以及展示本轮产物文件。该行为最贴近“记忆与上下文”能力，因此归类为 memory-context。",
+  "summaries": {
+    "zh": "dsh-cite 是 DeepSeek Harness 的 Web 插件，用于在聊天中引用当前或历史对话内容并添加批注，并在回复后快速查看本轮生成文件。",
+    "en": "dsh-cite is a DeepSeek Harness web plugin that lets you cite current or past chat content with annotations and quickly access files produced in the latest response."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在当前会话中将选中文本转为可回传模型的引用并支持注释",
+      "在新对话中通过 @ 从历史会话插入引用快照并带来源标识",
+      "在发送前对历史会话引用进行校验/失败模式处理",
+      "在回复下方展示本轮生成文件并提供打开与路径复制入口"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件用于“选中...加注释”“@ 一段旧会话当只读证据”“这一轮写出的文件钉在回复下面”，体现其上下文与会话引用核心用途。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明提到会话引用会读取历史会话、限制来源范围（workspace/all）并生成可读快照供模型使用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件包含会话/工作区菜单功能（如复制 session id、打开文件夹），涉及会话元数据与本地文件展示。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "在当前会话中将选中文本转为可回传模型的引用并支持注释",
+      "在新对话中通过 @ 从历史会话插入引用快照并带来源标识",
+      "在发送前对历史会话引用进行校验/失败模式处理",
+      "在回复下方展示本轮生成文件并提供打开与路径复制入口"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:32.191Z",
+  "repositoryCommitSha": "1d244e1ade870a055f7e0a694ec3ac12fffe78d4",
+  "evidenceHash": "e5a92d0ed819dd044267696c0989117e38801555fde25609cb4e095f02c179dc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "30eb24d08a0524453473ef160b2a97be88b6b8d0bba1f5ca99237f84dd30c79b",
+  "shadowMode": false
+}

@@ -1,16 +1,67 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的主要用户场景是提供行级文本差异比较能力，依据仓库描述与 README 的“行级文本 diff”表述可确定其为文本处理工具；目前未提供可显示为高风险的外部调用或系统级副作用信息。",
+  "summaries": {
+    "zh": "该插件提供行级文本差异比较功能，帮助你快速识别两段文本之间逐行不同。",
+    "en": "This plugin provides line-based text diff functionality to help identify line-by-line differences between text inputs."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "line-level text difference computation",
+      "local text processing without external services"
+    ],
+    "reasons": [
+      {
+        "code": "仓库名与 README 标题都明确写明“行级文本 diff”，说明其核心用途为文本差异对比。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库描述字段为“行级文本 diff”，再次确认主要面向文本差异比较。",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "README 声明“纯 Node 实现，无网络、无外部服务”，表明该能力在本地执行。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "line-level text difference computation",
+      "local text processing without external services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "0626893df216d4d2ab86d4a18bfd60d2a7ed83e0",
-  "cacheKey": "b192936ab82870b3ba8c59d08243e14ed47bd66d3066c9af2f0f55807c73162a",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:27:25.819Z",
-  "lastAttemptAt": "2026-08-18T18:27:25.819Z",
-  "nextRetryAt": "2026-08-20T08:20:01.819Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":136356,\"reset_time\":\"37h52m36s\"}}",
+  "classifiedAt": "2026-08-20T09:17:09.450Z",
+  "repositoryCommitSha": "cf766cd9d37df1aca0037553c85eec6a2d717579",
+  "evidenceHash": "5f5903fbdb3e4ed34ff1554d5e302681a79490b39f21bd3725646ef3623a8884",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d88c1f0107c06e0708ea871a54764110c7e1ec2dd0ab15cb279c4ce7b8e98ec7",
   "shadowMode": false
 }

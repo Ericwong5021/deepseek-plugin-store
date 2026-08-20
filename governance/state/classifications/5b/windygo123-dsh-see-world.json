@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "automation",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin’s primary user-facing purpose is to control when the assistant should search the web and enforce a search-first workflow, including source-marked replies and fallback handling, as stated in the README: it is explicitly a \"决策层插件\" that judges whether to search, while web execution is provided by external search capability plugins. This positions it in search orchestration for browsing workflows, with local-only decision logging and graceful no-network fallback behavior.",
+  "summaries": {
+    "zh": "“开眼看世界”是一个 DSH 决策层插件，用于判定对话是否需要联网检索，并在需要时先搜索后答复，在搜索生效时返回可见的来源标记。",
+    "en": "Open-Eyes is a DSH decision-layer plugin that determines whether a turn needs web search and enforces a search-first response flow, adding visible source indicators when search is performed."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Decides when a conversation turn should trigger web lookup before replying.",
+      "Forces a search-first behavior and appends search-source indicators in search-triggered replies.",
+      "Integrates with existing search execution seams such as `ctx.web`/`web_search` and defers execution to those providers.",
+      "Falls back gracefully when no search provider is installed to avoid blocking normal local interactions.",
+      "Writes local per-turn decision records (JSONL) including reasons, latency, and whether search occurred."
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DeepSeek Harness decision-layer plugin that determines whether internet search is needed and enforces \"search first\" responses.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states it does not include a search engine itself and instead consumes `ctx.web` and standard search tools, with silent degradation when no search plugin is present.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists configurable limits/overrides and logs decision metadata locally, with optional verbose logging controls.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Decides when a conversation turn should trigger web lookup before replying.",
+      "Forces a search-first behavior and appends search-source indicators in search-triggered replies.",
+      "Integrates with existing search execution seams such as `ctx.web`/`web_search` and defers execution to those providers.",
+      "Falls back gracefully when no search provider is installed to avoid blocking normal local interactions.",
+      "Writes local per-turn decision records (JSONL) including reasons, latency, and whether search occurred."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:48.791Z",
+  "repositoryCommitSha": "9c48e32a222e02baed470da461018b3a17dfda84",
+  "evidenceHash": "00edf6a4d8ff88e8205126b194083b8d66bb1b6be8766778f849b2f1bf9b65a9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f28ffd70e3523a2a59c9e3a21a386a4f783097770451ee6611cab583ad63971f",
+  "shadowMode": false
+}

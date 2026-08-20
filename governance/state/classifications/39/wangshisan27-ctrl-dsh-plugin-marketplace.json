@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "ui",
+    "api",
+    "tool",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "The README clearly identifies this as a permanent DeepSeek Harness plugin marketplace that surfaces GitHub-topic plugin discovery and provides install/update/uninstall management, so the primary user-facing purpose is browsing/searching and managing plugins rather than code generation, testing, or unrelated data utilities.",
+  "summaries": {
+    "zh": "该插件是 DeepSeek Harness 的永久插件市场入口，允许用户在设置中搜索并浏览 `dsh-plugin` 仓库清单，进行安装、更新、启用/停用和卸载等插件生命周期操作，并显示异步安装进度。",
+    "en": "This is a permanent DeepSeek Harness plugin that adds a marketplace in settings to browse and search `dsh-plugin` repositories and perform plugin install, update, enable/disable, and uninstall actions with async progress reporting."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Marketplace browsing and filtering of GitHub `dsh-plugin` repositories",
+      "Agent-accessible tools for searching and installing/updating plugins",
+      "Asynchronous install/update workflow with progress, cancellation, and restart requirements",
+      "Plugin lifecycle operations that invoke `dsh plugin` commands and external registry/topic lookups"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin turns the GitHub `dsh-plugin` topic into a searchable plugin market with topic-wide keyword search and pagination in the UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It provides Host endpoints and agent tools (`market_search`, `market_install`, `market_installed`, `market_update`) for plugin search, install, update, enable/disable, and uninstall flows.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The install/update path runs `dsh plugin --profile web add/remove` commands and handles pnpm/GitHub/npm sources, with async job APIs and cancellation.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Marketplace browsing and filtering of GitHub `dsh-plugin` repositories",
+      "Agent-accessible tools for searching and installing/updating plugins",
+      "Asynchronous install/update workflow with progress, cancellation, and restart requirements",
+      "Plugin lifecycle operations that invoke `dsh plugin` commands and external registry/topic lookups"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:38.496Z",
+  "repositoryCommitSha": "529e0f19caad53600e67eef5c83bb710dc1deba1",
+  "evidenceHash": "f41d69bf79b776a5ba7ea5c94b1ebadff7406ac2bc411ae7f1ecf5878ed9e7f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9431c72699ea020c8e2b93a57593ea2af0106ed4d5137aa0fd58d431aaacac4f",
+  "shadowMode": false
+}
