@@ -1,16 +1,69 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "README 清晰描述该插件用于为 DeepSeek Harness 提供 AI 人格“角色面具”能力：用户可查看角色列表、切换当前角色，并通过配置定义角色提示词与注入方式。核心能力是对话体验中的角色/人格管理与行为定制，而非文件处理、搜索、代码生成或外部服务集成，因此归为通用工具类插件。",
+  "summaries": {
+    "zh": "这是一个 DSH 角色面具插件，帮助你在对话中快速切换和管理 AI 角色，并通过配置控制角色提示词和默认角色设置。",
+    "en": "This is a DSH role-mask plugin that helps switch and manage AI personas during chat, with configurable role prompts and default role behavior."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Role management in chat sessions via built-in tools (`switch_role`, `list_roles`, `get_current_role`).",
+      "Configuration-driven persona control including `defaultRoleId`, `mode` (replace/append), and custom role definitions.",
+      "System prompt behavior adjustment by injecting role text as part of DSH profile configuration."
+    ],
+    "reasons": [
+      {
+        "code": "README 的功能列表明确说明插件提供 `switch_role`、`list_roles`、`get_current_role` 工具，并支持按名称/ID或序号切换角色。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "配置章节说明了 `defaultRoleId`、`mode` 与 `roles` 的可配置项，可用于增删改角色与注入方式设置。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "安装与覆盖示例显示通过 `cordis.patch.yml` 对 profile 配置进行叠加与覆盖，从而影响角色提示词注入行为。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Role management in chat sessions via built-in tools (`switch_role`, `list_roles`, `get_current_role`).",
+      "Configuration-driven persona control including `defaultRoleId`, `mode` (replace/append), and custom role definitions.",
+      "System prompt behavior adjustment by injecting role text as part of DSH profile configuration."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:37.183Z",
   "repositoryCommitSha": "017692c8e85369bbbf13ca4d24edf1193287cc62",
+  "evidenceHash": "ef5af328ebeb1b6aef13b4bbd641cd58e8e593f6dcce7b7716edfd5e1054b3da",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "9d4653fbea99a244a0d68fa864afdbcff33b9f1ebae9676f89d2b54075dfdd1a",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:16.667Z",
-  "lastAttemptAt": "2026-08-20T09:18:16.667Z",
-  "nextRetryAt": "2026-08-20T14:16:56.667Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17920,\"reset_time\":\"4h58m40s\"}}",
   "shadowMode": false
 }

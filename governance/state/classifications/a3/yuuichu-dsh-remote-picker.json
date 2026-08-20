@@ -1,16 +1,69 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要面向点是远程访问场景下的目录选择器可用性：当用户通过 tailscale serve 或 cloudflared 从手机/远端浏览器进入 DSH 时，将设置页工作区目录选择从主机侧 native 对话框改为浏览器内目录树交互，避免远端用户无法操作。分类依据来自 README 对远程链路、故障表现、修复方式（禁用 native 行并挂载 browse 后端/界面）与安装生效路径的明确说明。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的远程访问场景中修复工作区目录选择问题，将目录选择改为浏览器内可见可操作的目录树方式。",
+    "en": "This plugin is used to fix workspace directory selection in remote DeepSeek Harness scenarios by switching to an in-browser browse file-tree experience that remote clients can use."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Replace the default native directory-picker path with an in-browser browse-based directory picker for directory selection",
+      "Patch bundle loading to disable auto directory-picker behavior and inject browse backend/client components",
+      "Detect and warn at startup if browse directory-picker capability is not loaded"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a fix for remote DeepSeek Harness usage where a remote client cannot use a native OS directory dialog, and that it forces browser-based directory picking.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes replacing `directory-picker-auto` native behavior with `dsh-host-directory-picker-browse` and `dsh-client-ui-directory-picker-browse` components via a bundle patch.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Replace the default native directory-picker path with an in-browser browse-based directory picker for directory selection",
+      "Patch bundle loading to disable auto directory-picker behavior and inject browse backend/client components",
+      "Detect and warn at startup if browse directory-picker capability is not loaded"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:42.640Z",
   "repositoryCommitSha": "68f729e4dc62dd654eab95c6cf3574d056bf72ec",
+  "evidenceHash": "255f64e6132f109108469bdeb835bc9f5c8019e8cf9af19aa0567246336ced99",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "b0ea76a2b006ccf8783868f3a3bfd08a1e3d98f5f05c064877110d58e2ea2790",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:18.745Z",
-  "lastAttemptAt": "2026-08-20T09:18:18.745Z",
-  "nextRetryAt": "2026-08-20T14:16:56.745Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17918,\"reset_time\":\"4h58m38s\"}}",
   "shadowMode": false
 }

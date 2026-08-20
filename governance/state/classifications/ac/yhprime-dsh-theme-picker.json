@@ -1,16 +1,76 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件是一个主题选择与管理插件：它在 DeepSeek Harness 设置面板中提供主题管理页面，支持应用主题与已安装主题插件的展示与切换，并通过市场接口维护单主题独占与状态同步；因此其主要用户面对用途为界面主题与布局管理。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的设置面板中提供主题管理入口，可查看并切换应用主题与已安装主题插件，并在同一时间仅保留一个主题生效。",
+    "en": "This plugin adds a Themes page in DeepSeek Harness settings to manage and switch app themes and installed theme plugins, while ensuring only one theme is active at a time."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Theme switching for built-in app themes",
+      "Theme plugin listing and activation management",
+      "Single-active-theme enforcement with automatic disabling",
+      "State persistence through market state storage",
+      "Periodic synchronization with market status"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a Settings \"Themes\" page to manage app themes and installed theme plugins with one active at a time",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists dsh-market endpoints used for installed/registry queries and skin enablement including POST /dsh-market/use-skin and POST /dsh-market/toggle",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains theme/plugin selection is persisted to state.json and synchronized every 6 seconds with market page status",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Theme switching for built-in app themes",
+      "Theme plugin listing and activation management",
+      "Single-active-theme enforcement with automatic disabling",
+      "State persistence through market state storage",
+      "Periodic synchronization with market status"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:22.741Z",
   "repositoryCommitSha": "3177474137d99d65242a1718a28c175f6b3461b8",
+  "evidenceHash": "7fe404796c8783b4b22f05f58946cf63777dcb0f221e2a0a80b7b8b4887b06b6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "4124bf25a02c9a977b0430856ebfdc551f6310ef663ab85f19c47f73ad005946",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:13.278Z",
-  "lastAttemptAt": "2026-08-20T09:18:13.278Z",
-  "nextRetryAt": "2026-08-20T14:16:57.278Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17924,\"reset_time\":\"4h58m43s\"}}",
   "shadowMode": false
 }

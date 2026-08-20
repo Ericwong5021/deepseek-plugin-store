@@ -1,16 +1,75 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "chat",
+    "ui",
+    "agent",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README clearly shows this plugin is a communication bridge between side-chat and the main agent: it adds UI and slash-command mechanisms to send side-chat messages as user follow-ups in the main session and trigger the main agent turn, so the user-facing purpose is collaboration/hand-off support across chat contexts.",
+  "summaries": {
+    "zh": "该插件在侧边聊天中提供“Notify main agent”入口与指令，可将信息一键推送到主会话并让主代理继续处理下一轮。",
+    "en": "This plugin provides a side-chat entry and commands to send messages directly into the main conversation so the main agent can take over on its next turn."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "adds a floating side-chat UI control to notify the main agent",
+      "registers global slash commands to forward side-chat text to the main session",
+      "routes side-chat messages into the main conversation as user follow-up messages",
+      "uses agent session context to deliver messages via host-side APIs"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a companion to dsh-sidechat and its purpose is to push messages from side chat to the main agent.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a floating pill interface and `/notify` + `/to-main` commands that send side-chat input to the main conversation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description and README feature list explicitly define this as pushing messages straight to the main agent rather than manual copy-paste.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "adds a floating side-chat UI control to notify the main agent",
+      "registers global slash commands to forward side-chat text to the main session",
+      "routes side-chat messages into the main conversation as user follow-up messages",
+      "uses agent session context to deliver messages via host-side APIs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:00.238Z",
   "repositoryCommitSha": "cab3ce838c83dd322544dcb22c887aa4190d8b99",
+  "evidenceHash": "552cbe93b48e15abcec7d7dde65641b172b8ed4709d7418e128f522c56081cbe",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "0f6038a3364a4af1b316ec7dbd5913b638872b2c79630e2cb1ec97037479e8a5",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:04.982Z",
-  "lastAttemptAt": "2026-08-20T09:18:04.982Z",
-  "nextRetryAt": "2026-08-20T14:16:56.982Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17932,\"reset_time\":\"4h58m52s\"}}",
   "shadowMode": false
 }

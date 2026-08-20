@@ -1,16 +1,71 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "browser",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin’s explicit user-facing purpose is to automate DSH web-mode process lifecycle handling by automatically exiting the CLI when all connected Web UI pages close, so it is classified as automation. Evidence from the README directly defines detection, grace-period behavior, and exit action plus related runtime configuration.",
+  "summaries": {
+    "zh": "这是一个为 DSH Web 模式提供自动化流程控制的插件，在浏览器页面全部关闭后经过可配置等待时间后，自动让 CLI 进程按退出流程退出。",
+    "en": "This plugin adds automation for DSH web mode by automatically exiting the CLI process after all connected Web UI pages are closed, using a configurable grace period before it exits."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors browser/UI WebSocket connection state for a DSH web session",
+      "Automatically exits the running CLI process after all UI connections close and a grace period elapses",
+      "Offers configurable parameters such as enabled, graceSeconds, pollMs, armAfterFirstConnect, and dryRun",
+      "Exposes a local status endpoint for runtime state visibility"
+    ],
+    "reasons": [
+      {
+        "code": "README describes auto-termination logic when all Web UI pages close via socket-disconnect detection, with a 15-second (configurable) grace window before invoking a Ctrl+C-equivalent exit.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README includes installation, status endpoint, and configuration fields, confirming primary workflow and user-facing behavior centered on automated process-exit control.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Monitors browser/UI WebSocket connection state for a DSH web session",
+      "Automatically exits the running CLI process after all UI connections close and a grace period elapses",
+      "Offers configurable parameters such as enabled, graceSeconds, pollMs, armAfterFirstConnect, and dryRun",
+      "Exposes a local status endpoint for runtime state visibility"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:00.286Z",
   "repositoryCommitSha": "7eebd9b2806b28c5a3bc9bff7f8c5d4a88dabc50",
+  "evidenceHash": "02ef15577c9c78cd389621005b0577c91e10c50431ab7210e3545f0e49c5ca84",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "610a46fc0a30cfe26adc5c83ba2ae192cc53093317b487fa2f5a3bf9df77ef32",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:05.898Z",
-  "lastAttemptAt": "2026-08-20T09:18:05.898Z",
-  "nextRetryAt": "2026-08-20T14:16:56.898Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17931,\"reset_time\":\"4h58m51s\"}}",
   "shadowMode": false
 }

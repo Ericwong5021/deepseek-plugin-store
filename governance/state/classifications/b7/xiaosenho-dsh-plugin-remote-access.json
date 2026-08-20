@@ -1,16 +1,73 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "tool",
+    "integration",
+    "browser",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README explicitly describes the plugin as a remote-access add-on for DeepSeek Harness Web that lets users enable LAN access or frpc tunneling and use generated authenticated links to control the Web UI from another device, so the primary purpose is external remote access integration.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness Web 提供远程访问能力，支持通过局域网或 frpc 隧道连接，并可在其他设备上打开访问链接来操作完整 Web 界面。",
+    "en": "This plugin provides remote access for DeepSeek Harness Web by supporting LAN or frpc tunnel connections and generated links to access the full Web UI from another device."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts LAN-based and frpc-tunnel remote access paths to the Web UI.",
+      "Generates and serves authenticated remote-access links for use from other devices.",
+      "Configures/relies on external tunnel client settings (frpc/frps), including endpoint, tokens, and transport mode."
+    ],
+    "reasons": [
+      {
+        "code": "README: \"adds a Remote Access settings section, starts LAN access or an `frpc` tunnel on demand, and produces authenticated links for controlling the full Web UI from another computer, tablet, or phone.\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: \"Select Tunnel in Settings and provide: frpc client path, Server address, Server port, server.token... Public endpoint... Domain or IP + port.\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README security model: \"HTTP and WebSocket requests without a valid cookie receive `401` at the authenticated proxy.\"",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Starts LAN-based and frpc-tunnel remote access paths to the Web UI.",
+      "Generates and serves authenticated remote-access links for use from other devices.",
+      "Configures/relies on external tunnel client settings (frpc/frps), including endpoint, tokens, and transport mode."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:59.175Z",
   "repositoryCommitSha": "dfeaabc938e75f6f28177f23da02bc1ffd9d4dfc",
+  "evidenceHash": "6ceac787631672b21995a6ff52988d84c1c0fcd3fc26db3458bd3ae0263cfa9a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "d3b210eff9e0774c9099b3655531d17eb7a0031af796ce3e8c52bcdc192cd124",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T09:18:03.073Z",
-  "lastAttemptAt": "2026-08-20T09:18:03.073Z",
-  "nextRetryAt": "2026-08-20T14:16:57.073Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17934,\"reset_time\":\"4h58m54s\"}}",
   "shadowMode": false
 }
