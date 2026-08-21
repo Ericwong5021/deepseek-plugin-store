@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "notification",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A monitoring plugin that displays DeepSeek API account balance in a persistent composer card, refreshes it periodically, and provides low-balance visual warnings.",
+  "summaries": {
+    "zh": "在聊天输入框下方常驻显示 DeepSeek API 账户余额，支持定时或手动刷新，并在余额较低时提供颜色提醒。",
+    "en": "Displays the DeepSeek API account balance in a persistent composer card with scheduled or manual refreshes and low-balance color warnings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Makes outbound requests to the DeepSeek balance API",
+      "Exposes local HTTP endpoints for balance retrieval and diagnostic reporting",
+      "Renders a persistent balance card and periodically polls for updates",
+      "Writes client diagnostic reports to a workspace file"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-http-endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace-file-write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Makes outbound requests to the DeepSeek balance API",
+      "Exposes local HTTP endpoints for balance retrieval and diagnostic reporting",
+      "Renders a persistent balance card and periodically polls for updates",
+      "Writes client diagnostic reports to a workspace file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:40.498Z",
+  "repositoryCommitSha": "3975f965c83df66ee48dbe9e98578f58c85e48ab",
+  "evidenceHash": "6ea1142e91517e7d93f5bac8788e8591c0d498061eac92f2088432e229bde8f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "65c2be9e477d89697991164beab96f412c383a43f15835b2548d7d72be3c9a08",
+  "shadowMode": false
+}

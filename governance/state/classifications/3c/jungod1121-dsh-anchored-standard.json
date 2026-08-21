@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "planning",
+    "terminal",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An agent orchestration preset for DeepSeek Harness that anchors the first request with a task-matched prompt and limited tools, then promotes the session to the full Standard tool catalog after a durable tool call or reply.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的智能体编排预设，先以任务匹配的提示词和有限工具启动会话，再在首次持久化工具调用或回复后开放完整的 Standard 工具目录。",
+    "en": "An agent orchestration preset for DeepSeek Harness that starts sessions with a task-matched prompt and limited tools, then exposes the full Standard tool catalog after the first durable tool call or reply."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Changes the agent's initial prompt and tool catalog by session phase",
+      "Enables bash, read, edit, and write tools during bootstrap or later exposes the full Standard tool catalog",
+      "Persists mode and promotion state through durable session events"
+    ],
+    "reasons": [
+      {
+        "code": "agent_behavior_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_and_file_tool_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "durable_session_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Changes the agent's initial prompt and tool catalog by session phase",
+      "Enables bash, read, edit, and write tools during bootstrap or later exposes the full Standard tool catalog",
+      "Persists mode and promotion state through durable session events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:29:10.087Z",
+  "repositoryCommitSha": "560530f0e1af6dba3528ac8962f5e5e63951b1bb",
+  "evidenceHash": "9d7a09ca2a68db2e387dac41bd23aa61499fde5b55da579b560d0e62fbb0644d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a9cbc0cd97262d127d08955a81d29b29b483da3319c2a141ee19123a4061a135",
+  "shadowMode": false
+}

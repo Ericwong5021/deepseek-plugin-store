@@ -1,16 +1,91 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "collaboration",
+    "document",
+    "file",
+    "memory",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Yunzhijia integration bundle for DeepSeek Harness that exposes CLI-backed collaboration, document, data, messaging, file, task, calendar, memory, and workflow capabilities through tools and a browser workspace.",
+  "summaries": {
+    "zh": "将云之家 CLI 与协作、文档、表格、日程、消息、文件、待办、推进和本地记忆能力集成到 DeepSeek Harness，并提供配套工作台。",
+    "en": "Integrates Yunzhijia CLI-backed collaboration, documents, sheets, calendars, messaging, files, tasks, advancement, and local memory into DeepSeek Harness with a companion workspace."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Yunzhijia through yzj-cli and WebSocket or HTTP channels",
+      "Reads and writes Yunzhijia documents, sheets, calendars, contacts, messages, files, todos, and advancement records",
+      "Provides a browser workspace panel for conversations, tasks, calendars, knowledge, and advancement",
+      "Stores scoped Markdown memory locally and can inject bounded context into prompts",
+      "Supports scheduled unattended routines and message delivery",
+      "Uses confirmation flows for agent-initiated write operations"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_external_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_and_message_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_unattended_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_memory_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "Connects to Yunzhijia through yzj-cli and WebSocket or HTTP channels",
+      "Reads and writes Yunzhijia documents, sheets, calendars, contacts, messages, files, todos, and advancement records",
+      "Provides a browser workspace panel for conversations, tasks, calendars, knowledge, and advancement",
+      "Stores scoped Markdown memory locally and can inject bounded context into prompts",
+      "Supports scheduled unattended routines and message delivery",
+      "Uses confirmation flows for agent-initiated write operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:05.612Z",
   "repositoryCommitSha": "668839bee529b4173db23b9b34229fa36fe921be",
+  "evidenceHash": "12993e58ee6d89443c7c4e506abf65c55bbd23954802a8de5ab4bdecf949026a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "b1e54367f1d5ce2b398f81ce8cfceb0b693df292c96139eaadcde380cfc60eeb",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T19:23:06.749Z",
-  "lastAttemptAt": "2026-08-21T19:23:06.749Z",
-  "nextRetryAt": "2026-08-22T01:23:06.749Z",
-  "retryable": true,
-  "error": "The operation was aborted due to timeout",
   "shadowMode": false
 }

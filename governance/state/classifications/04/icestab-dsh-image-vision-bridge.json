@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Bridges image messages to a configured vision model, replacing image blocks in main-model requests with text descriptions while preserving the original image display in chat.",
+  "summaries": {
+    "zh": "将聊天中的图片交给配置的视觉模型生成文字描述，并把描述提供给主模型，同时保留聊天记录中的原图显示。",
+    "en": "Sends chat images to a configured vision model for text descriptions, provides those descriptions to the main model, and preserves the original images in chat history."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends image content to a configured vision-model provider for analysis",
+      "Rewrites image blocks in outbound language-model requests as generated text descriptions",
+      "Caches generated descriptions in process memory",
+      "Uses a configured API route and existing API key environment variable"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_request_rewriting",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_memory_cache",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Sends image content to a configured vision-model provider for analysis",
+      "Rewrites image blocks in outbound language-model requests as generated text descriptions",
+      "Caches generated descriptions in process memory",
+      "Uses a configured API route and existing API key environment variable"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:52.257Z",
+  "repositoryCommitSha": "0ffbdfa07fffc80bce004eaab941c25cf73b59ae",
+  "evidenceHash": "7e10d02511d435b7532905be062757ec116218893a0320d9bd4c3e65607bac12",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "baba661b8696a5a3bddd1b6839518c970a7ec82d7fa91456997baa46b8a0a410",
+  "shadowMode": false
+}

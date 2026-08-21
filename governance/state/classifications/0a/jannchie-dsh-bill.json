@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "visualization",
+    "monitoring",
+    "api",
+    "agent",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a cost tracking and attribution plugin that processes LLM usage and session data, calculates spending, and presents reports, budgets, forecasts, and visualizations.",
+  "summaries": {
+    "zh": "用于跟踪和归因 LLM 使用成本，并在会话界面中展示账单、预算、预测和可视化报告的 DSH 插件。",
+    "en": "A DSH plugin that tracks and attributes LLM usage costs and presents billing, budget, forecast, and visualization reports in the session interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session logs and LLM usage metadata",
+      "Writes cost records, rollups, and preferences to local storage",
+      "Fetches model pricing and exchange-rate data from external services",
+      "Queries account balance data",
+      "Provides a bill_stats agent tool for spend questions"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_pricing_and_balance_requests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads session logs and LLM usage metadata",
+      "Writes cost records, rollups, and preferences to local storage",
+      "Fetches model pricing and exchange-rate data from external services",
+      "Queries account balance data",
+      "Provides a bill_stats agent tool for spend questions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:43.981Z",
+  "repositoryCommitSha": "a95b79dbe068060dc2723d4fd43d70bdceaf4728",
+  "evidenceHash": "26df952de81f4b821693c22747ad85b169ff5c7c9429770bd35984a6941b5ad6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1441ba691e241a58e141cceb82778dfc8460bae003d9794e6dc4ed9011305eb1",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "chat",
+    "context",
+    "document",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Integrates a user-configured external vision model to analyze images and return textual, optionally coordinate-based visual evidence for text-only conversational models.",
+  "summaries": {
+    "zh": "将用户提供的图片交给配置的外部视觉模型分析，并把带有可选坐标信息的文字视觉证据返回给纯文本对话模型。",
+    "en": "Sends user-provided images to a configured external vision model and returns textual visual evidence, optionally with coordinates, to text-only conversation models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends user-provided images or image URLs to a configured external vision-model API",
+      "Requests available models from the configured API endpoint",
+      "Stores and uses a user-provided API key for authenticated requests",
+      "Caches session-level visual evidence for follow-up questions"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "authenticated_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_visual_evidence_cache",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends user-provided images or image URLs to a configured external vision-model API",
+      "Requests available models from the configured API endpoint",
+      "Stores and uses a user-provided API key for authenticated requests",
+      "Caches session-level visual evidence for follow-up questions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:04.722Z",
+  "repositoryCommitSha": "d7957c4168824559a905772fbe2770bfa34deead",
+  "evidenceHash": "4625d87db5ae717337c547c26484d6892a4bd6ce0f36908dc0319bbbd7ab8669",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "322558eb263e5100b382461e4b14f6ebe2b99c3cd1bf403d4104b9368c405192",
+  "shadowMode": false
+}

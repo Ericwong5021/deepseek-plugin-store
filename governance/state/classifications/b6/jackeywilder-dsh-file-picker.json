@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "desktop",
+    "ui",
+    "context",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-only DSH web plugin that adds a native file picker and injects selected absolute paths into the next conversation context so the agent can read the chosen files.",
+  "summaries": {
+    "zh": "为 DSH Web 添加 Windows 原生文件选择器，将用户选中的文件路径注入下一条会话上下文供智能体读取。",
+    "en": "Adds a native Windows file picker to DSH Web and injects selected file paths into the next conversation context for the agent to read."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Opens a native Windows file picker for selecting files from arbitrary local directories",
+      "Stages selected absolute paths for the next message",
+      "Injects selected paths into the conversation context for agent access through the existing read tool"
+    ],
+    "reasons": [
+      {
+        "code": "local-file-selection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context-injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "out-of-workspace-file-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Opens a native Windows file picker for selecting files from arbitrary local directories",
+      "Stages selected absolute paths for the next message",
+      "Injects selected paths into the conversation context for agent access through the existing read tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:33.170Z",
+  "repositoryCommitSha": "fdd5cbec0105dcd7169bf4b435086f21f49074bb",
+  "evidenceHash": "4dc704d4affabe3ee66cf34113c74c3cac885e53cbfe1e077eb47fe04b19050a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "da31faa20de6aed18a07ea9893d64ecc9eaeb664ddf301fec7e098818833684c",
+  "shadowMode": false
+}

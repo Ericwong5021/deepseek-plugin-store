@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "collaboration",
+    "automation",
+    "workflow",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Sideband primarily transfers bounded, summarized visible conversation context between DeepSeek Harness sessions and optionally Agent Team Rooms, with asynchronous delivery and optional destination wakeup.",
+  "summaries": {
+    "zh": "Sideband 可将当前会话中限定范围的可见对话内容异步摘要并转发到其他会话或 Agent Team Room。",
+    "en": "Sideband asynchronously summarizes a bounded portion of visible conversation context and relays it to another session or Agent Team Room."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures bounded visible user and model conversation text",
+      "Summarizes captured context through a separate LLM call",
+      "Delivers context capsules to another session or agent team room",
+      "Can schedule a destination model wakeup",
+      "Runs asynchronous in-memory background jobs with status and cancellation"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_wakeup",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Captures bounded visible user and model conversation text",
+      "Summarizes captured context through a separate LLM call",
+      "Delivers context capsules to another session or agent team room",
+      "Can schedule a destination model wakeup",
+      "Runs asynchronous in-memory background jobs with status and cancellation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:19.369Z",
+  "repositoryCommitSha": "393acf603fbbfec89958f5c8735e26e7a5da477c",
+  "evidenceHash": "b33d65aa2064dd287f59671d6bca4a778b0e4583cfc0b3a951dcc19e13a8a780",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "309486c869d9c15e8d769ca2dac0c935c2a0aa857acd9435846c307677dced0b",
+  "shadowMode": false
+}

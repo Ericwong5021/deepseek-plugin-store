@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a desktop experience plugin whose primary purpose is automatically opening the DSH web interface in a dedicated WebView2 or browser application window, with configurable fallback and lifecycle behavior.",
+  "summaries": {
+    "zh": "自动将 DSH 网页界面打开为 WebView2 独立窗口、浏览器应用窗口或默认浏览器页面，并提供相关窗口与浏览器配置。",
+    "en": "Automatically opens the DSH web interface in a WebView2 window, browser app window, or default browser page with configurable window and browser behavior."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automatically opens the DSH web interface in a WebView2 host, browser app window, or default browser",
+      "Starts and manages local browser or host processes",
+      "Provides configuration UI for window mode, browser path, and window-close behavior",
+      "Uses native Windows dialogs and process lifecycle management when available"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_window_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "native_dialog_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automatically opens the DSH web interface in a WebView2 host, browser app window, or default browser",
+      "Starts and manages local browser or host processes",
+      "Provides configuration UI for window mode, browser path, and window-close behavior",
+      "Uses native Windows dialogs and process lifecycle management when available"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:36.185Z",
+  "repositoryCommitSha": "9ec3ae1d04eb4c35492d842f8bb789119a3fa731",
+  "evidenceHash": "2cdf17151ec4ef723f42a38ea9a3578794fb28342b75a02e9b0f5d0ba1d3f090",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "03499e4b975d833f58178dd7937f83094ccaaeba5ef8975443eaf2ae372e6001",
+  "shadowMode": false
+}

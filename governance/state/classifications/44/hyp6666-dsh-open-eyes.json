@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "tool",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A vision integration plugin that delegates image analysis to configured external multimodal providers and returns the analysis as text to the current DeepSeek Harness conversation.",
+  "summaries": {
+    "zh": "将图片发送至配置的外部多模态模型进行分析，并把结果以文本形式返回到当前 DeepSeek Harness 对话中。",
+    "en": "Delegates image analysis to a configured external multimodal provider and returns the result as text in the current DeepSeek Harness conversation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads supported local image files from the agent workspace",
+      "Optionally processes explicitly enabled remote image URLs",
+      "Sends selected images and prompts to a configured third-party vision provider",
+      "Supports OpenAI Responses, OpenAI Chat Completions, and Anthropic Messages API formats",
+      "Provides a vision_analyze tool and bridges images from the WebUI for text-only model routes"
+    ],
+    "reasons": [
+      {
+        "code": "third_party_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_image_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_remote_url_fetch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_external_api_calls",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads supported local image files from the agent workspace",
+      "Optionally processes explicitly enabled remote image URLs",
+      "Sends selected images and prompts to a configured third-party vision provider",
+      "Supports OpenAI Responses, OpenAI Chat Completions, and Anthropic Messages API formats",
+      "Provides a vision_analyze tool and bridges images from the WebUI for text-only model routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:28.520Z",
+  "repositoryCommitSha": "390e2305798dd6fcec9897fdc8414ed3753f01a3",
+  "evidenceHash": "fe04c4a13991cd71d4139ec86a87138bfc7ecfee294a8004bcd63e77f4ce77b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3cd24d548e291175b32e9aa1ebe9a316d09bf34ee18169ebdab4710abc8bf0bc",
+  "shadowMode": false
+}

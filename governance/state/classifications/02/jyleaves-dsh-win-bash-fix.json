@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "desktop",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-specific DSH compatibility plugin that restores Git Bash operation through runtime environment and service patches, while explicitly disabling restricted-token sandboxing for shell tools; the elevated execution risk requires human review.",
+  "summaries": {
+    "zh": "该插件通过运行时补丁和环境配置修复 Windows 上 DSH 的 Git Bash 终端，并提供配套代理预设，但会绕过 shell 工具的受限令牌沙箱。",
+    "en": "This plugin restores DSH Git Bash operation on Windows through runtime patches and environment configuration, adds agent presets, and bypasses the restricted-token sandbox for shell tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Injects MSYS-related environment variables and Git Bash paths into the runtime",
+      "Monkey-patches Windows terminal inspection behavior",
+      "Bypasses the restricted-token sandbox for Windows shell tools",
+      "Writes or synchronizes agent preset files under the DSH home directory"
+    ],
+    "reasons": [
+      {
+        "code": "shell_sandbox_bypass",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_monkey_patching",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_preset_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Injects MSYS-related environment variables and Git Bash paths into the runtime",
+      "Monkey-patches Windows terminal inspection behavior",
+      "Bypasses the restricted-token sandbox for Windows shell tools",
+      "Writes or synchronizes agent preset files under the DSH home directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:29:17.635Z",
+  "repositoryCommitSha": "8abd5f79b72a70731c00fea110a006e942cb53f7",
+  "evidenceHash": "0004fdaae34f86e1189cf16ec39dd692b9c33122e828c4bfade7a490c6b6713d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "76e174a6f4ab70c27417e28b8c1249b83c5cc3959cc1858a43a7111f2189a7e0",
+  "shadowMode": false
+}

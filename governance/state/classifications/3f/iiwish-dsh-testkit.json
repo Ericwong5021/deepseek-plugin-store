@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "cli",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "DSH Testkit is a lifecycle conformance testing tool for DeepSeek Harness plugins, covering packaging, installation, real-host registration, deterministic exercises, removal, reboot recovery, residue checks, and repeatability with reviewable reports.",
+  "summaries": {
+    "zh": "DSH Testkit 用于在隔离的 Docker 环境中对 DeepSeek Harness 插件执行打包、安装、启动、测试、卸载和恢复生命周期测试。",
+    "en": "DSH Testkit runs deterministic lifecycle conformance tests for DeepSeek Harness plugins in disposable Docker environments, including packaging, installation, execution, removal, and recovery checks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes plugin package scripts and runtime code during lifecycle tests",
+      "Installs, boots, exercises, uninstalls, and reboots plugins in disposable Docker environments",
+      "Writes lifecycle reports, logs, and stage evidence to the local workspace",
+      "May use Docker daemon access and network access inside the test runner"
+    ],
+    "reasons": [
+      {
+        "code": "executes_untrusted_plugin_code",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "requires_docker_runtime",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_local_test_artifacts",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Executes plugin package scripts and runtime code during lifecycle tests",
+      "Installs, boots, exercises, uninstalls, and reboots plugins in disposable Docker environments",
+      "Writes lifecycle reports, logs, and stage evidence to the local workspace",
+      "May use Docker daemon access and network access inside the test runner"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:53.334Z",
+  "repositoryCommitSha": "27607d18f9d05ce262be197aa9f74cffbbf59cbd",
+  "evidenceHash": "822b69bef1393aba40cf876d7c210007f5e06335623639fc1ff0021fbc9e3307",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cb0b226f37eae9b8033b32d37176c1b9c34ca9ec7e1a0795ee7b017be24bf491",
+  "shadowMode": false
+}

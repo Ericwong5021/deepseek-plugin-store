@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "file",
+    "tool",
+    "monitoring",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-focused terminal safety plugin that reviews model-issued PowerShell commands, protects configured workspace and system targets, and optionally records audit events.",
+  "summaries": {
+    "zh": "用于 Windows DeepSeek Harness 的 PowerShell 执行防护插件，可在执行前检查命令、保护工作区和系统路径，并按配置进行放行、询问或阻止。",
+    "en": "A Windows DeepSeek Harness plugin that reviews PowerShell commands before execution, protects configured workspace and system paths, and allows, prompts for, or blocks operations according to policy."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Inspects model-issued PowerShell commands before execution",
+      "Allows, requests confirmation for, or blocks commands based on configured policies",
+      "Guards workspace files, protected paths, Git recovery operations, Windows system state, processes, and persistent PowerShell state",
+      "Writes optional append-only JSONL audit records with redacted previews and command hashes",
+      "Provides a live settings card for configuring guard behavior"
+    ],
+    "reasons": [
+      {
+        "code": "pre_execution_command_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_and_process_mutation_guarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "audit_log_writing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "Inspects model-issued PowerShell commands before execution",
+      "Allows, requests confirmation for, or blocks commands based on configured policies",
+      "Guards workspace files, protected paths, Git recovery operations, Windows system state, processes, and persistent PowerShell state",
+      "Writes optional append-only JSONL audit records with redacted previews and command hashes",
+      "Provides a live settings card for configuring guard behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:29:06.867Z",
+  "repositoryCommitSha": "66b44113df08475069f34923ab2c2dc8597dbd3c",
+  "evidenceHash": "0bcc61668ffd2c15f05eaaf34f4a18ebb50f4743607d5d8fbea8a4c3b58821a2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5eb957569b554d432ef14e6e464a65ba72492ec7c670c97b6d27b1f741fd98c0",
+  "shadowMode": false
+}

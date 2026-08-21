@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "mcp",
+    "workflow",
+    "planning",
+    "automation",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes an MCP bridge whose primary purpose is orchestrating and supervising DeepSeek Harness agent sessions from ChatGPT Web, including goal control and action tools that can affect registered workspaces.",
+  "summaries": {
+    "zh": "通过 MCP 将 ChatGPT Web 连接到 DeepSeek Harness，以创建、查看、继续和监督智能体会话及其目标执行。",
+    "en": "Connects ChatGPT Web to DeepSeek Harness over MCP to create, inspect, continue, and supervise agent sessions and goal execution."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates, views, continues, and supervises DeepSeek Harness agent sessions through MCP",
+      "Exposes read-only health and workspace inspection tools",
+      "Provides write and action tools that can send messages, start or update goals, and approve actions",
+      "Drives DSH agents that may modify files within registered workspaces subject to DSH policies",
+      "Manages the lifecycle and diagnostics of a configured tunnel-client process"
+    ],
+    "reasons": [
+      {
+        "code": "agent_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "authenticated_mcp_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Creates, views, continues, and supervises DeepSeek Harness agent sessions through MCP",
+      "Exposes read-only health and workspace inspection tools",
+      "Provides write and action tools that can send messages, start or update goals, and approve actions",
+      "Drives DSH agents that may modify files within registered workspaces subject to DSH policies",
+      "Manages the lifecycle and diagnostics of a configured tunnel-client process"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:24.821Z",
+  "repositoryCommitSha": "5897638786a3ad5f79c2246586f421d581118dc1",
+  "evidenceHash": "cae172e976ba810910fddafba2b21001181ad1eea07bac5e2ad3ba5f6a3ae158",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1855a9866641d679cd7264fcf0ae57420858b27b59def0c8eb4fc8752725b431",
+  "shadowMode": false
+}

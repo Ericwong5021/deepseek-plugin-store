@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "notification",
+    "desktop",
+    "browser",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a Windows desktop notification plugin that alerts users when a root DSH agent turn completes and links the toast to the corresponding Web UI session.",
+  "summaries": {
+    "zh": "在 Windows 上为 DSH 交互式回合完成显示系统通知，并可点击通知返回对应的 Web UI 会话。",
+    "en": "Displays Windows system notifications when a DSH interactive turn completes and lets users click through to the corresponding Web UI session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Listens for completed root interactive agent turns",
+      "Displays Windows toast notifications through Windows PowerShell and WinRT",
+      "Reads the current session title and beginning of the latest AI reply for notification content",
+      "Registers and removes a Windows AppUserModelId registry entry",
+      "Opens a local DSH Web UI session route in the default browser when a notification is clicked"
+    ],
+    "reasons": [
+      {
+        "code": "system_notification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "powershell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "registry_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_browser_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Listens for completed root interactive agent turns",
+      "Displays Windows toast notifications through Windows PowerShell and WinRT",
+      "Reads the current session title and beginning of the latest AI reply for notification content",
+      "Registers and removes a Windows AppUserModelId registry entry",
+      "Opens a local DSH Web UI session route in the default browser when a notification is clicked"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:25.416Z",
+  "repositoryCommitSha": "d8f06a3e49a7a6ae208e8705df9661aa53b38634",
+  "evidenceHash": "634858c2bdb06cb1d8353992113984d7d52e13093c58cd26247202f943c21e8c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "15daff1e7789cd7f6bb41f90e0358a5b8b4f347982d5cbbc9c475d9328e39711",
+  "shadowMode": false
+}

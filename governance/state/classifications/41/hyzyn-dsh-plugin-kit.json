@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "ui",
+    "mcp",
+    "search",
+    "terminal",
+    "data",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web GUI plugin bundle providing configurable utilities for environment and secret management, MCP servers, prompts, profiles, RSS aggregation, global search, codegraph inspection, and an interactive terminal; the terminal, profile, filesystem, and network capabilities warrant R2.",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness Web GUI 的综合插件包，提供环境变量与密钥、MCP 服务器、Prompt、Profile、RSS、全局搜索、Codegraph 和交互式终端等功能。",
+    "en": "A plugin bundle for the DeepSeek Harness Web GUI that provides environment and secret management, MCP server configuration, prompts, profiles, RSS aggregation, global search, codegraph tools, and an interactive terminal."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Manages environment variables and secrets in the host process environment",
+      "Configures local stdio and remote streamable HTTP MCP servers",
+      "Creates, copies, renames, and recursively deletes DSH profiles",
+      "Runs interactive shell commands through a PTY terminal panel",
+      "Fetches RSS or Atom feeds and writes daily Markdown digests",
+      "Indexes and queries project code graphs through local CLI operations",
+      "Searches historical sessions and plugin settings in the DSH web GUI"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_profile_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_secret_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_access_and_remote_service_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Manages environment variables and secrets in the host process environment",
+      "Configures local stdio and remote streamable HTTP MCP servers",
+      "Creates, copies, renames, and recursively deletes DSH profiles",
+      "Runs interactive shell commands through a PTY terminal panel",
+      "Fetches RSS or Atom feeds and writes daily Markdown digests",
+      "Indexes and queries project code graphs through local CLI operations",
+      "Searches historical sessions and plugin settings in the DSH web GUI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:38.817Z",
+  "repositoryCommitSha": "b228972b92973fab71cbada280f75758574f5399",
+  "evidenceHash": "97980b6c8d247d799eeb7804bfb4d57532cad9909f92c081cc532d8379718006",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e9678c298023750fcce4bed3a3ab88d70aecf8b434700e6d1593de5fa54c970a",
+  "shadowMode": false
+}

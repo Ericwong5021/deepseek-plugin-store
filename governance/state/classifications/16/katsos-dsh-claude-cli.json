@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "integration",
+    "agent",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates the installed Claude Code CLI as an external LLM provider for DeepSeek Harness, including streamed responses and translated tool calls while leaving tool execution to the harness.",
+  "summaries": {
+    "zh": "将已安装的 Claude Code CLI 接入 DeepSeek Harness，作为可提供流式响应和工具调用的外部语言模型提供方。",
+    "en": "Connects an installed Claude Code CLI to DeepSeek Harness as an external language-model provider with streamed responses and translated tool calls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "launches the installed Claude Code CLI as a subprocess",
+      "sends harness prompts and history to the CLI-backed model",
+      "streams model output back to the harness",
+      "exposes harness tool schemas through an MCP bridge without executing the tools itself"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "mcp_tool_bridge",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "launches the installed Claude Code CLI as a subprocess",
+      "sends harness prompts and history to the CLI-backed model",
+      "streams model output back to the harness",
+      "exposes harness tool schemas through an MCP bridge without executing the tools itself"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:29:43.993Z",
+  "repositoryCommitSha": "3a3a57f22a3e748c9720a1b96ce64e015f0f9643",
+  "evidenceHash": "a0103c02412c3eae8c3a76dfd2c480ddb1a9c1a25bec00306fb4063004ca3b0c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "777054de8aa284b4586fbaaca7ef10d2fad06c4ef58bcde58d51430e2d08fa87",
+  "shadowMode": false
+}

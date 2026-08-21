@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A token-usage analytics plugin that parses DSH session logs, aggregates historical and live usage, and presents statistics through Web Settings and a local web dashboard, with optional DeepSeek balance display.",
+  "summaries": {
+    "zh": "解析 DSH 会话日志并在 Web 界面中展示 Token 用量、活动热力图、模型与工作区明细及 DeepSeek 账户余额。",
+    "en": "Parses DSH session logs and presents token usage, activity heatmaps, model and workspace breakdowns, and DeepSeek account balance in web interfaces."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Parses DSH session logs for recorded provider token usage",
+      "Aggregates and persists usage statistics locally",
+      "Provides a web statistics page with charts, breakdowns, drill-downs, and CSV export",
+      "Exposes local HTTP endpoints for statistics, session details, and configuration",
+      "Queries and displays DeepSeek account balance through the host-side credential service"
+    ],
+    "reasons": [
+      {
+        "code": "reads_session_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_usage_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "provides_local_http_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "accesses_external_account_balance",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Parses DSH session logs for recorded provider token usage",
+      "Aggregates and persists usage statistics locally",
+      "Provides a web statistics page with charts, breakdowns, drill-downs, and CSV export",
+      "Exposes local HTTP endpoints for statistics, session details, and configuration",
+      "Queries and displays DeepSeek account balance through the host-side credential service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:00.285Z",
+  "repositoryCommitSha": "5cb7b53962db1a75c710efc7a2d299388bdf907c",
+  "evidenceHash": "21e03a68c3463aa781b5dd42501c0cc308f682492a12c3c85df73f2556ba94f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9922736d212539b9da49c5d38a359eb249f847df243bc9dbcd5e7d8d37a8d38f",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "chat",
+    "context",
+    "memory",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin providing isolated /btw side questions that reuse the active session context, answer through a separate tool-free model request, and show results without adding them to the main conversation history.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 /btw 旁路提问，在复用当前会话上下文的同时独立生成一次回答，并通过临时面板展示而不写入主会话历史。",
+    "en": "Adds /btw side questions to DeepSeek Harness by reusing the active session context for a separate tool-free model response shown in a temporary panel without entering the main conversation history."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "reads and snapshots context from the active parent session",
+      "sends a separate one-shot model request without tool execution",
+      "displays the response in a temporary interface panel",
+      "can persist sidechain records as private JSONL or keep them in memory",
+      "supports request cancellation and timeout handling"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context_snapshot",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_local_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "reads and snapshots context from the active parent session",
+      "sends a separate one-shot model request without tool execution",
+      "displays the response in a temporary interface panel",
+      "can persist sidechain records as private JSONL or keep them in memory",
+      "supports request cancellation and timeout handling"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:24.695Z",
+  "repositoryCommitSha": "0ca9db4bfd864ef510dfd469d13845d5d5b872fb",
+  "evidenceHash": "881ebbcb297c9d5afe7b5a51e23d9eaf2fbbdfef48cd87d6d5e2e95f1e9f5cf0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a04be7b00eda201dc8122e1dd107f3c2368667a9b91915bce05c72a983aedf05",
+  "shadowMode": false
+}

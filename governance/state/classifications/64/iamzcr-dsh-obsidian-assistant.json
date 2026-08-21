@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "knowledge",
+    "search",
+    "file",
+    "document",
+    "api",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a knowledge-management plugin for searching, reading, editing, organizing, linking, and exporting an Obsidian vault, with optional Local REST API enhancements.",
+  "summaries": {
+    "zh": "用于搜索、读写、整理和导出 Obsidian 知识库笔记，并提供反向链接分析及可选的 Local REST API 能力。",
+    "en": "Manage an Obsidian vault by searching, reading, editing, organizing, and exporting notes with backlink analysis and optional Local REST API support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads and searches files in a configured local Obsidian vault",
+      "Creates and updates Markdown notes",
+      "Moves or renames notes and rewrites wikilinks in batch",
+      "Builds backlink and tag relationship information",
+      "Exports chapter notes to TXT or Markdown files",
+      "Calls an optional Obsidian Local REST API",
+      "Lists and triggers Obsidian commands",
+      "Passes requests to arbitrary configured REST endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "batch_file_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "rest_api_passthrough",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads and searches files in a configured local Obsidian vault",
+      "Creates and updates Markdown notes",
+      "Moves or renames notes and rewrites wikilinks in batch",
+      "Builds backlink and tag relationship information",
+      "Exports chapter notes to TXT or Markdown files",
+      "Calls an optional Obsidian Local REST API",
+      "Lists and triggers Obsidian commands",
+      "Passes requests to arbitrary configured REST endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:44.218Z",
+  "repositoryCommitSha": "95efa7f5ab4cbac1f1d489ae26baee8760c3b2a2",
+  "evidenceHash": "8ced3a1db32a50ba9878788131b4bb0f54861a1926c43b288e38cdfd7fe7f495",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8613fdcf57764deabe5fa4abd9dd363c5e96d3ad14c89922031239c840a19b4e",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "monitoring",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin monitors configured LLM provider balances by resolving host-side credentials, querying supported balance APIs, and displaying results beneath the chat input with recharge links.",
+  "summaries": {
+    "zh": "在聊天输入框下显示已配置大模型提供商的账户余额，并支持刷新余额和打开充值页面。",
+    "en": "Displays balances for configured LLM providers beneath the chat input, with refresh controls and links to provider recharge pages."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads configured LLM provider credentials through the host credential system",
+      "Calls configured provider balance endpoints",
+      "Serves balance data through a web route",
+      "Displays provider balances beneath the chat input",
+      "Opens provider recharge pages in a new browser tab"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured LLM provider credentials through the host credential system",
+      "Calls configured provider balance endpoints",
+      "Serves balance data through a web route",
+      "Displays provider balances beneath the chat input",
+      "Opens provider recharge pages in a new browser tab"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:53.447Z",
+  "repositoryCommitSha": "189050c72e758f4ca62190e13dcfde99d52bce86",
+  "evidenceHash": "7bcd0ed284ed73c7355c0e62ecd799bc1ce03cbc20e4f1d388dadba940dc21e4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d3e2b330b00e2ee50abbae50953b2837508802cb4af023451db1c4b433f97d63",
+  "shadowMode": false
+}

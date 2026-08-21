@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "data",
+    "ui",
+    "api",
+    "monitoring",
+    "notification",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A billing dashboard plugin that aggregates session usage, estimates model costs, and presents provider balances, budgets, trends, and subscription data through a web UI.",
+  "summaries": {
+    "zh": "一个从会话日志聚合用量并展示模型费用、预算、余额、趋势和订阅信息的计费仪表盘插件。",
+    "en": "A billing dashboard plugin that aggregates session usage and displays model costs, budgets, balances, trends, and subscription information."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Aggregates usage and cost data from persisted session logs",
+      "Displays billing dashboards, charts, budgets, balances, and subscription information",
+      "Fetches pricing, exchange-rate, balance, and model-status data from external services",
+      "Stores budget preferences in browser-local storage",
+      "Triggers browser notifications for budget overruns and low balances"
+    ],
+    "reasons": [
+      {
+        "code": "reads_persisted_session_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "calls_external_pricing_and_balance_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_browser_notifications_and_local_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Aggregates usage and cost data from persisted session logs",
+      "Displays billing dashboards, charts, budgets, balances, and subscription information",
+      "Fetches pricing, exchange-rate, balance, and model-status data from external services",
+      "Stores budget preferences in browser-local storage",
+      "Triggers browser notifications for budget overruns and low balances"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:29:54.279Z",
+  "repositoryCommitSha": "f1b9701d8b99338aa546be5b67e25568b3203242",
+  "evidenceHash": "df9f0d594113b7fa97137c25abc9b31df885d50868870c0e1c89576262e97c66",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dad433f670f0e13085a100ed01175a46a2970d7599aa98b574e33abd6376fbac",
+  "shadowMode": false
+}

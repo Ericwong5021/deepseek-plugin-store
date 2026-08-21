@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "api",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Adds a multi-tab local terminal to the web GUI, using node-pty shells on the host and WebSocket streaming; human review is warranted because commands run with the host user's privileges.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web GUI 中提供多标签本地终端，可通过 node-pty 启动主机 Shell 并使用 WebSocket 传输交互内容。",
+    "en": "Adds a multi-tab local terminal to the DeepSeek Harness web GUI, running host Shell sessions through node-pty and streaming interaction over WebSocket."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "spawns interactive pseudo-terminal shells on the host process",
+      "executes user-entered commands with host-user privileges",
+      "streams terminal input and output over a local WebSocket route",
+      "injects a multi-tab terminal panel into the web GUI"
+    ],
+    "reasons": [
+      {
+        "code": "host_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged_command_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "websocket_terminal_streaming",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "spawns interactive pseudo-terminal shells on the host process",
+      "executes user-entered commands with host-user privileges",
+      "streams terminal input and output over a local WebSocket route",
+      "injects a multi-tab terminal panel into the web GUI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:37.401Z",
+  "repositoryCommitSha": "7015bacb80840836dbbcbccab2b43a44c6adde49",
+  "evidenceHash": "0bf6939b18d917628a25525acf11294eee201eb2b4da4109b80a0a720e511af1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2c950d7ec98ef4ad6d8c76806957333fb9606241ef09e5f3cf1cc0f4bbd5ba19",
+  "shadowMode": false
+}

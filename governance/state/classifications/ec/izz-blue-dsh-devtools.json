@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "agent",
+    "debugging",
+    "monitoring",
+    "visualization",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only Web GUI profiler that folds persisted agent session events into timelines, execution summaries, performance metrics, and error or retry traces.",
+  "summaries": {
+    "zh": "这是一个只读的智能体运行时分析插件，可在 Web GUI 中展示会话步骤、工具调用、耗时、重试、错误和令牌使用情况。",
+    "en": "A read-only agent runtime profiler that displays session steps, tool calls, timing, retries, errors, and token usage in a Web GUI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads persisted session event metadata",
+      "Aggregates agent turns, steps, model calls, tool calls, retries, errors, timing, and token usage",
+      "Displays runtime traces and performance summaries in a Web GUI DevTools panel",
+      "Provides an RPC endpoint for runtime trace snapshots"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_session_metadata",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_ui_and_rpc_surface",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_request_interception_or_mutation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads persisted session event metadata",
+      "Aggregates agent turns, steps, model calls, tool calls, retries, errors, timing, and token usage",
+      "Displays runtime traces and performance summaries in a Web GUI DevTools panel",
+      "Provides an RPC endpoint for runtime trace snapshots"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:30.086Z",
+  "repositoryCommitSha": "a5353db21bfd24a05ba5fc433722e38fe0e1cde6",
+  "evidenceHash": "4555b2e782a333feccd3d9d2bfc527e03ab17722a7d53b047f721086d56848ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0453aae12c563a21cbd37332b135c2e52df437bb045719473ab361a740f23a5a",
+  "shadowMode": false
+}

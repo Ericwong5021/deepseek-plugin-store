@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "data",
+    "visualization",
+    "api",
+    "notification",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README documents a DSH plugin primarily focused on monitoring API usage, costs, cache efficiency, provider quotas, and balances through dashboards, polling, persistence, export, and threshold alerts.",
+  "summaries": {
+    "zh": "用于在 DSH Web 中统计 API 用量、费用和缓存效率，并监控 OpenCode 配额与 DeepSeek 余额。",
+    "en": "A DSH Web plugin that tracks API usage, costs, and cache efficiency while monitoring OpenCode quotas and DeepSeek balances."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads provider-reported token and request usage from session events",
+      "Aggregates and stores usage statistics locally",
+      "Displays usage, cost, cache, model, quota, and balance visualizations",
+      "Polls OpenCode and DeepSeek provider endpoints for quota and balance data",
+      "Reads API keys from configured environment variables or local credentials",
+      "Exports usage data as CSV",
+      "Displays a daily cost threshold alert"
+    ],
+    "reasons": [
+      {
+        "code": "external_read_only_provider_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_usage_data_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access_for_provider_balance_queries",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads provider-reported token and request usage from session events",
+      "Aggregates and stores usage statistics locally",
+      "Displays usage, cost, cache, model, quota, and balance visualizations",
+      "Polls OpenCode and DeepSeek provider endpoints for quota and balance data",
+      "Reads API keys from configured environment variables or local credentials",
+      "Exports usage data as CSV",
+      "Displays a daily cost threshold alert"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:11.810Z",
+  "repositoryCommitSha": "7d78f9ab6311f52ccc09553ae99b3306658b00ba",
+  "evidenceHash": "d36d9b5d0b0996157e6b4d8769dc06f5fa096ea445b3498a2b0b039d6b71c30b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "530f4c6f528d46298299ef15d8d183097c0cfe35afb379732912c786f2cf2c40",
+  "shadowMode": false
+}
