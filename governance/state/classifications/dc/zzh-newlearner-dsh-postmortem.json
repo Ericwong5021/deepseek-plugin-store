@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "debugging",
+    "document",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only DeepSeek Harness diagnostic plugin that analyzes existing session event logs, detects failure patterns, and produces redacted postmortem reports with optional explanatory model review.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的只读故障复盘插件，可从既有会话事件日志生成脱敏报告、导出 JSON 并提供仅可复制的修复提示。",
+    "en": "A read-only DeepSeek Harness plugin that analyzes existing session event logs to produce redacted postmortem reports, JSON exports, and copy-only repair prompts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads existing DeepSeek Harness session event logs",
+      "Detects specified failure patterns with local rules",
+      "Generates redacted incident reports",
+      "Exports redacted schema-v2 JSON reports",
+      "Produces copy-only repair prompts",
+      "Optionally sends up to four redacted findings to the configured DSH language model for explanatory review"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_session_analysis",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "redacted_report_generation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_model_review",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_tool_execution_or_retry",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads existing DeepSeek Harness session event logs",
+      "Detects specified failure patterns with local rules",
+      "Generates redacted incident reports",
+      "Exports redacted schema-v2 JSON reports",
+      "Produces copy-only repair prompts",
+      "Optionally sends up to four redacted findings to the configured DSH language model for explanatory review"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:13.979Z",
+  "repositoryCommitSha": "88246d1b776c9ab572d8c778b3e339f3fe2c42a4",
+  "evidenceHash": "24e20bdbe15977d538e4f2e9913b163ec6b6ff07de89f2cc1460e840a7d18c19",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0a0f1485e85a8e989438169d21ed84abf26076011a7e7ccc45712eacaef1b2c6",
+  "shadowMode": false
+}

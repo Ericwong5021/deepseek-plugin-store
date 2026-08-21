@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "file",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness UI workbench for reviewing AI code changes through diff panels, file history, workspace navigation, conversation turn navigation, and workspace-scoped file editing.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供代码审阅工作台，集中展示每轮文件差异、工作区状态、对话轮次导航，并支持在工作区内编辑文件。",
+    "en": "A DeepSeek Harness code-review workbench that presents per-turn file diffs, workspace status, conversation navigation, and workspace-scoped file editing."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads persisted conversation logs and workspace file state",
+      "Reads Git status and diffs without modifying Git",
+      "Displays reconstructed per-turn file changes and diffs",
+      "Writes edits to files within the selected workspace",
+      "Persists interface settings in localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_log_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "readonly_git_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads persisted conversation logs and workspace file state",
+      "Reads Git status and diffs without modifying Git",
+      "Displays reconstructed per-turn file changes and diffs",
+      "Writes edits to files within the selected workspace",
+      "Persists interface settings in localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:13.245Z",
+  "repositoryCommitSha": "47b233a181f6f900c763ebb2b0af86a67cce956b",
+  "evidenceHash": "303ab3eb5a60650ba08944f2dfb68ad0bf06ae7d08bd9a75b771e22b0eb3611a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fab4cc932a8d80eb0ec44647559f702b395ec3b410611614a6722f3e7befbeee",
+  "shadowMode": false
+}

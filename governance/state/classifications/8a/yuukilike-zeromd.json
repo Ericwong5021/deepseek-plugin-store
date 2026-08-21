@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "file",
+    "integration",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "zeromd is a macOS command-line automation tool that synchronizes an Obsidian vault across iCloud and GitHub using scheduled Git operations.",
+  "summaries": {
+    "zh": "zeromd 是一个在 macOS 上通过 iCloud 和 Git 定时同步 Obsidian 知识库的命令行工具。",
+    "en": "zeromd is a macOS command-line tool that periodically synchronizes an Obsidian vault through iCloud and Git."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs and configures a macOS launchd job",
+      "Reads and modifies an Obsidian vault stored in iCloud",
+      "Stages, commits, pulls, and pushes vault changes with Git",
+      "Connects the local vault to a GitHub repository using SSH or HTTPS",
+      "Provides CLI commands for sync status, diagnostics, logs, setup, and uninstall"
+    ],
+    "reasons": [
+      {
+        "code": "executes_shell_scripts",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_local_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automates_external_repository_sync",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configures_periodic_background_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Installs and configures a macOS launchd job",
+      "Reads and modifies an Obsidian vault stored in iCloud",
+      "Stages, commits, pulls, and pushes vault changes with Git",
+      "Connects the local vault to a GitHub repository using SSH or HTTPS",
+      "Provides CLI commands for sync status, diagnostics, logs, setup, and uninstall"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:29.829Z",
+  "repositoryCommitSha": "6db157d591de1b8c7483401edbd3a451431e1dd9",
+  "evidenceHash": "897a9a6c8bfe0c951da30aa140fbe09410186769e4d47f7375b2481380b228d3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "67597224694591b7ff03fef85f3bf588a7aa7c17b5415e7b2be7b7f9e1a2cc1f",
+  "shadowMode": false
+}

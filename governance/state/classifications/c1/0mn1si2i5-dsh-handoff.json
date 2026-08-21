@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "document",
+    "file",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin preserves development context across DeepSeek Harness sessions by saving a summarized handoff document with Git state and loading it into a new session as recall context.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 会话之间保存和加载开发交接文档，并携带摘要后的上下文与 Git 状态。",
+    "en": "Save and load summarized development handoff documents between DeepSeek Harness sessions, including captured Git state."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Summarizes the current session into a handoff document",
+      "Writes and atomically updates docs/handoffs/current.md",
+      "Reads the handoff document and injects it into a new session as recall context",
+      "Captures Git branch, HEAD, and changed-file status",
+      "Calls a configured or session-default model/provider for summarization and confirmation",
+      "Applies deterministic redaction to documented secret patterns"
+    ],
+    "reasons": [
+      {
+        "code": "writes_repository_document",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads_git_metadata",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_call",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Summarizes the current session into a handoff document",
+      "Writes and atomically updates docs/handoffs/current.md",
+      "Reads the handoff document and injects it into a new session as recall context",
+      "Captures Git branch, HEAD, and changed-file status",
+      "Calls a configured or session-default model/provider for summarization and confirmation",
+      "Applies deterministic redaction to documented secret patterns"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:28.243Z",
+  "repositoryCommitSha": "821c61f3a0455400a303ee14050fa22d7f0a32eb",
+  "evidenceHash": "a945c764b947625f6256e0ec39402a92ec9829044521d70a91975b13ff6de9a1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "55b248747a6a1bdeb669e7d7cd29ecfdff4c0f7b3ca58f0b9ecdc76b3d8b165e",
+  "shadowMode": false
+}

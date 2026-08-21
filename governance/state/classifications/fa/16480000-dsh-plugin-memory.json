@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "skill",
+    "automation",
+    "api",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a session-memory plugin that distills completed conversations into durable Markdown entries and exposes them as model skills, making memory-context the primary category.",
+  "summaries": {
+    "zh": "该插件会将已完成会话中的问题、回答和工具调用提炼为持久化记忆条目，并以记忆技能形式提供给模型使用。",
+    "en": "This plugin distills completed session content into durable memory entries and exposes them to the model as memory skills."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads completed turn questions, answers, and tool calls",
+      "Sends distilled turn content to an auxiliary model call",
+      "Stores durable Markdown memory entries and an index on disk",
+      "Registers dynamically generated memory skills for model access",
+      "Appends memory-related session events and logs"
+    ],
+    "reasons": [
+      {
+        "code": "conversation_data_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dynamic_skill_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Reads completed turn questions, answers, and tool calls",
+      "Sends distilled turn content to an auxiliary model call",
+      "Stores durable Markdown memory entries and an index on disk",
+      "Registers dynamically generated memory skills for model access",
+      "Appends memory-related session events and logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:53.803Z",
+  "repositoryCommitSha": "41520e2e3f7e179d431e24efe20756fcad398251",
+  "evidenceHash": "f37de7f2ae152f782dafc19f4d57bccad96b00c8ca960745e898656e78fa7e8d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1a400f2987cb350c6218ac8df7ad667cbd17ad349c14ac158cba580d8567a4ba",
+  "shadowMode": false
+}

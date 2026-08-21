@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "agent",
+    "ui",
+    "monitoring",
+    "browser",
+    "api",
+    "visualization",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web interface plugin that adds a conversation-header panel showing actual models, reasoning effort, names, providers, and runtime status for the current session and its agent tree.",
+  "summaries": {
+    "zh": "在会话标题栏中显示当前会话及其子代理实际使用的模型、推理档位和运行状态。",
+    "en": "Adds a conversation-header panel showing the actual models, reasoning effort, and runtime status of the current session and its subagents."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads current and persisted agent request headers",
+      "Enumerates parent and subagent session metadata",
+      "Registers a same-origin GET endpoint",
+      "Adds a conversation-header button and popup panel",
+      "Polls the local endpoint every two seconds"
+    ],
+    "reasons": [
+      {
+        "code": "read_session_metadata",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "cross_workspace_agent_enumeration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_web_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads current and persisted agent request headers",
+      "Enumerates parent and subagent session metadata",
+      "Registers a same-origin GET endpoint",
+      "Adds a conversation-header button and popup panel",
+      "Polls the local endpoint every two seconds"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:18.723Z",
+  "repositoryCommitSha": "1aa1109d0ebba94c2a5a74b651155564eebb69a9",
+  "evidenceHash": "da97b8f7f02ae31719b2f902ed4948cb3ecf203a04fed48226fa675b6053adc0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f70d739218247b6f9d8f480472c9146858de1612fe8f49a1a3b1aad3575cd6cc",
+  "shadowMode": false
+}

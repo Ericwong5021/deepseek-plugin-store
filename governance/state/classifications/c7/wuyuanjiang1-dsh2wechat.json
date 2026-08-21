@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "context",
+    "integration",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that bridges WeChat ClawBot messages to persistent DSH agent sessions and returns responses through Tencent iLink.",
+  "summaries": {
+    "zh": "将微信 ClawBot 消息接入 DeepSeek Harness，并通过持久化会话处理后回复微信。",
+    "en": "Connects WeChat ClawBot messages to persistent DeepSeek Harness sessions and sends the responses back through Tencent iLink."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Receives WeChat messages through the Tencent iLink service",
+      "Sends generated replies back to WeChat",
+      "Maintains persistent per-user agent sessions and conversation context",
+      "Stores configured service credentials in the profile configuration",
+      "Exposes a local health-check endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_ingress_and_egress",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_session_context",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_health_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Receives WeChat messages through the Tencent iLink service",
+      "Sends generated replies back to WeChat",
+      "Maintains persistent per-user agent sessions and conversation context",
+      "Stores configured service credentials in the profile configuration",
+      "Exposes a local health-check endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:18.076Z",
+  "repositoryCommitSha": "e86cb7530ac53a750d2d425d0ce05444f47497c3",
+  "evidenceHash": "ce79b84366557f334c81544a36021f8748ec34507b639970e1c19b298ee2603d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "17d3a6dd4bf97f63b8d0457e182472085ed3b0887052d757bdd27a675147400e",
+  "shadowMode": false
+}

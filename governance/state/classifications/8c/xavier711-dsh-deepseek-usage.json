@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "api",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a DeepSeek Harness sidebar usage panel that visualizes local token usage, per-model cost estimates, pricing periods, and optionally the account balance from DeepSeek's balance endpoint.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中添加用量面板，展示本地会话统计、按模型的成本估算、定价时段和可选的账户余额。",
+    "en": "Adds a DeepSeek Harness usage panel showing local session statistics, per-model cost estimates, pricing periods, and an optional account balance."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local session logs to calculate usage statistics",
+      "Calls the DeepSeek balance endpoint when an API key is configured",
+      "Serves balance, local usage, and pricing-period data through local HTTP routes",
+      "Displays usage summaries, charts, session breakdowns, and model statistics in a sidebar panel"
+    ],
+    "reasons": [
+      {
+        "code": "local-session-data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-http-routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Reads local session logs to calculate usage statistics",
+      "Calls the DeepSeek balance endpoint when an API key is configured",
+      "Serves balance, local usage, and pricing-period data through local HTTP routes",
+      "Displays usage summaries, charts, session breakdowns, and model statistics in a sidebar panel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:28.461Z",
+  "repositoryCommitSha": "8300e696d0d11975ac0859241022f6e495f44ceb",
+  "evidenceHash": "67a2b44ad9f6298e659b86b21699dcf776755e24adfea4c488586424c7aa6047",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63c1f2b19b66a817280974675b35a4738d0e0b05f1505d2afda850dc96cbef8c",
+  "shadowMode": false
+}

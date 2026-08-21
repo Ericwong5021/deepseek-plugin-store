@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "cli",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH LLM adapter that reuses Codex CLI credentials to connect to ChatGPT subscription models through ChatGPT or OpenAI Responses API endpoints; credential access and optional write-back warrant human review.",
+  "summaries": {
+    "zh": "通过复用 Codex CLI 的本地登录凭证，将 ChatGPT 订阅模型接入 DeepSeek Harness，并支持流式文本响应。",
+    "en": "Connects ChatGPT subscription models to DeepSeek Harness by reusing local Codex CLI credentials and supporting streamed text responses."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "reads local Codex CLI authentication data",
+      "refreshes OAuth tokens and may write updated credentials back to the local auth file",
+      "sends chat requests to ChatGPT or OpenAI endpoints",
+      "streams text, reasoning, usage, and tool-call responses"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_writeback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "reads local Codex CLI authentication data",
+      "refreshes OAuth tokens and may write updated credentials back to the local auth file",
+      "sends chat requests to ChatGPT or OpenAI endpoints",
+      "streams text, reasoning, usage, and tool-call responses"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:12.178Z",
+  "repositoryCommitSha": "200a5d3e32fadc99468f8a5e0764a6d089d3bb01",
+  "evidenceHash": "6d89283c5b1ca64c25df031ada2ada5bac949a7c4cae5e58a93a86539cb4d1e8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2590340b47e398657e09d32297ebfd9a58f710b959a34808dfdbaadf66386882",
+  "shadowMode": false
+}

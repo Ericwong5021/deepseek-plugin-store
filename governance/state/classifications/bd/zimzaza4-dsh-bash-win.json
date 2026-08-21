@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "tool",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Provides Git Bash and WSL2 terminal tools for Windows-based DeepSeek Harness deployments, including command execution, background jobs, optional sandboxing, and approval flows; the documented default full-access execution warrants human review.",
+  "summaries": {
+    "zh": "为 Windows 上的 DeepSeek Harness 提供 Git Bash 与 WSL2 终端工具，支持命令执行、后台任务、可选沙箱和审批流程。",
+    "en": "Provides Git Bash and WSL2 terminal tools for DeepSeek Harness on Windows, with command execution, background jobs, optional sandboxing, and approval flows."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes commands through Git Bash and WSL2 bash",
+      "Can read and write local files and paths",
+      "Supports background jobs, cancellation, timeouts, and process-tree termination",
+      "Provides optional bwrap sandboxing for WSL2",
+      "Supports approval prompts and sandbox permission escalation",
+      "Collects and displays command output"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "broad_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privilege_escalation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_process_control",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Executes commands through Git Bash and WSL2 bash",
+      "Can read and write local files and paths",
+      "Supports background jobs, cancellation, timeouts, and process-tree termination",
+      "Provides optional bwrap sandboxing for WSL2",
+      "Supports approval prompts and sandbox permission escalation",
+      "Collects and displays command output"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:09.455Z",
+  "repositoryCommitSha": "814574a80b31d9de4eb09709dac0230cf4e3ba56",
+  "evidenceHash": "6d23199ed68fa690b966ed66849ca014e6f8ee1c33b97b7517a56595da8d229d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f246dcf25977cc06fe1f379255b27c09e2fd87e61b3643bb5a50f7194f57ab4",
+  "shadowMode": false
+}

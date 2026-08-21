@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "planning",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin enforces a goal-completion gate that waits for observed subagents to settle and requires their terminal outputs to be acknowledged in the parent context, making orchestration its primary user-facing purpose.",
+  "summaries": {
+    "zh": "通过跟踪子智能体运行状态并要求确认其终端输出，该插件在相关证据可见前阻止目标完成。",
+    "en": "This plugin tracks observed subagent runs and requires their terminal outputs to be acknowledged before allowing a goal to complete."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "observes subagent start and end lifecycle events",
+      "blocks goal completion until observed runs settle and are acknowledged",
+      "returns settled subagent terminal output to the parent agent context"
+    ],
+    "reasons": [
+      {
+        "code": "lifecycle_observation_and_completion_gate",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_local_policy_with_explicit_boundaries",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "observes subagent start and end lifecycle events",
+      "blocks goal completion until observed runs settle and are acknowledged",
+      "returns settled subagent terminal output to the parent agent context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:30.138Z",
+  "repositoryCommitSha": "660fff29a7ebc19dedd52e2dbaf14e9fa696730b",
+  "evidenceHash": "17708bc66f3802769b9831820d22c0183ef5fa498105aa143e5b68cf3b27e632",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "258aa548bbf9e1e06efe8ef27ac6384af18202bf07e4e1f51bfa79dd6f5cc012",
+  "shadowMode": false
+}

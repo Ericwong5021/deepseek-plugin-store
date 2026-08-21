@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "file",
+    "terminal",
+    "context",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for managing multi-project groups and letting an agent read, write, list, and run commands across registered project folders in one conversation.",
+  "summaries": {
+    "zh": "在同一会话中管理多个项目文件夹，并让智能体对已注册文件夹执行文件读写、目录查看和命令运行。",
+    "en": "Manage multiple project folders in one conversation and let the agent read, write, list, and run commands within registered folders."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads files and lists directories within registered project folders",
+      "Writes files within registered project folders",
+      "Runs shell commands such as git, npm, and builds in registered project folders",
+      "Persists project-group configuration",
+      "Provides an HTTP API for project-group management"
+    ],
+    "reasons": [
+      {
+        "code": "file_write_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Reads files and lists directories within registered project folders",
+      "Writes files within registered project folders",
+      "Runs shell commands such as git, npm, and builds in registered project folders",
+      "Persists project-group configuration",
+      "Provides an HTTP API for project-group management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:25.001Z",
+  "repositoryCommitSha": "f2e9062a20b001fa59979b82b0aa442c42a942ad",
+  "evidenceHash": "f9207439a35ff09fbb4390475c0057af4bbe9f872357fcf7ab9209c36e8bc36c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "51a9f546bd5e3bd49ad3f358a2d1ae183388ba7048b8cc9c93070d8fc7363d11",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web plugin that adds a live git branch and clean/dirty indicator to the chat composer, with local branch browsing and branch switching, including optional stashing of changes.",
+  "summaries": {
+    "zh": "在聊天界面的编辑器工具栏中显示当前 Git 分支和工作区状态，并支持浏览及切换本地分支。",
+    "en": "Adds a live Git branch and working-tree status indicator to the chat composer, with browsing and switching of local branches."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads git branch and working-tree status",
+      "Lists local git branches and upstream tracking information",
+      "Switches local git branches",
+      "Can stash uncommitted and untracked changes before switching",
+      "Provides HTTP endpoints for git status and checkout operations"
+    ],
+    "reasons": [
+      {
+        "code": "repository_write_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executes_git_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "can_stash_uncommitted_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Reads git branch and working-tree status",
+      "Lists local git branches and upstream tracking information",
+      "Switches local git branches",
+      "Can stash uncommitted and untracked changes before switching",
+      "Provides HTTP endpoints for git status and checkout operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:47.637Z",
+  "repositoryCommitSha": "4ffb4af97b04c4e34bfe0b25842ddab1e9186237",
+  "evidenceHash": "82fbb32237e11773f6446d43afb150ab3b4d0c619037200ee9cd7029d01cd8c8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "efc4d9a485b5a6c5d768018c347df1473febcbfb5697549f95d94c4df9d0ad90",
+  "shadowMode": false
+}

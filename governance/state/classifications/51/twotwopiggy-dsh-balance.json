@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "visualization",
+    "ui",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily monitors DeepSeek account balance and estimated session costs, presenting status and pricing details in the dsh Web UI while querying the DeepSeek API with configured credentials.",
+  "summaries": {
+    "zh": "在 dsh Web UI 中实时显示 DeepSeek 账户余额、额度状态和会话消耗估算，并支持价格、阈值及查询设置。",
+    "en": "Displays DeepSeek account balance, availability status, and estimated session costs in the dsh Web UI with configurable pricing, thresholds, and refresh settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a DeepSeek API credential through the Harness credentials system",
+      "Sends balance queries to the DeepSeek API",
+      "Polls and caches account balance data",
+      "Estimates and displays session token costs using configured model pricing",
+      "Provides interactive settings for thresholds, currency, API endpoint, and pricing"
+    ],
+    "reasons": [
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a DeepSeek API credential through the Harness credentials system",
+      "Sends balance queries to the DeepSeek API",
+      "Polls and caches account balance data",
+      "Estimates and displays session token costs using configured model pricing",
+      "Provides interactive settings for thresholds, currency, API endpoint, and pricing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:08.313Z",
+  "repositoryCommitSha": "010ecccd48272ca07982086bba9e83ab7ca4df1d",
+  "evidenceHash": "1b131e5ab885d31ed30029ba56196e93fc172070f7e517acd68e73660cb86359",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8530f680b7af8d2013eca05e59ccb845e37f3293aa04ee8ef07b51ee7c119b49",
+  "shadowMode": false
+}

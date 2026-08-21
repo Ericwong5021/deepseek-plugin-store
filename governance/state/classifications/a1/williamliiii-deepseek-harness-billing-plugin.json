@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "插件通过 DeepSeek API 读取账户余额，汇总各模型会话用量并在 Web 会话界面展示余额、任务数量估算和详情，因此主要属于外部服务集成。",
+  "summaries": {
+    "zh": "通过 DeepSeek API 在 Web 会话界面显示账户余额、各模型用量及基于历史消耗的剩余任务估算。",
+    "en": "Displays DeepSeek account balance, per-model usage, and a history-based estimate of remaining tasks in the Web session interface via the DeepSeek API."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取 DeepSeek API 账户余额",
+      "汇总跨会话模型用量",
+      "按余额和历史用量估算可运行任务数",
+      "在会话头部徽标和详情面板展示计费信息",
+      "按需刷新余额与用量估算"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_dependent",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_estimation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "读取 DeepSeek API 账户余额",
+      "汇总跨会话模型用量",
+      "按余额和历史用量估算可运行任务数",
+      "在会话头部徽标和详情面板展示计费信息",
+      "按需刷新余额与用量估算"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:03.873Z",
+  "repositoryCommitSha": "69dce8eb3236ad447c8c446e903d7df7d605dc36",
+  "evidenceHash": "daba4cf1e36bfd52886414c28c04149b3f3eaee53c88b5f22f5df57f5e7e637f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "24f485830c389b36192a369937ff193bf76ec21b7f426504ce4869f74047fa2f",
+  "shadowMode": false
+}

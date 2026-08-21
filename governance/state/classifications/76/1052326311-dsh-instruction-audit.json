@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "monitoring",
+    "data",
+    "file",
+    "cli",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin audits which workspace instruction events affected a Harness session by recording structured metadata and content digests in local JSONL receipts without reading or storing instruction text.",
+  "summaries": {
+    "zh": "记录 DeepSeek Harness 会话中实际发出的工作区指令事件元数据与内容摘要，生成可供审计的本地 JSONL 回执。",
+    "en": "Records metadata and content digests for workspace instruction events emitted in DeepSeek Harness sessions, producing local JSONL receipts for auditing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes durable agent-instructions events emitted by the active Harness",
+      "Records session and event metadata plus producer-owned content digests",
+      "Writes JSONL receipts to a configurable local directory",
+      "Provides a CLI to read receipts for a session"
+    ],
+    "reasons": [
+      {
+        "code": "observes-session-instruction-events",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes-local-receipts",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "does-not-store-instruction-text",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Observes durable agent-instructions events emitted by the active Harness",
+      "Records session and event metadata plus producer-owned content digests",
+      "Writes JSONL receipts to a configurable local directory",
+      "Provides a CLI to read receipts for a session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:35.104Z",
+  "repositoryCommitSha": "8548400c1932a6a05d004189d5a9cf8deab3edd2",
+  "evidenceHash": "9aed4f0da6440cb096c697155f91396f68dd9ae75e95cf02b473f3bd1a2a8d98",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8dd2c9694381be82e26145fe3f3f4ee3c9352b34bc20c6991faabd6d33ed2a03",
+  "shadowMode": false
+}

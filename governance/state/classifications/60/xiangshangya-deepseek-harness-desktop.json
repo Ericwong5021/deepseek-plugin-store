@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Electron desktop wrapper that bundles DeepSeek Harness and its web frontend, automatically starting the local server and displaying its interface in an installable desktop application.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 服务器和网页前端封装为可安装的 Electron 桌面应用，并自动启动本地服务与打开界面。",
+    "en": "An Electron desktop application that bundles DeepSeek Harness and its web frontend, starts the local server automatically, and displays the interface in an installable app."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts a local DeepSeek Harness web server as a child process",
+      "Opens a local web interface in an Electron desktop window",
+      "Reads and writes local application data, logs, and server files",
+      "Can use configured local Node.js or DeepSeek Harness source paths"
+    ],
+    "reasons": [
+      {
+        "code": "local-server-process",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-file-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "electron-browser-window",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Starts a local DeepSeek Harness web server as a child process",
+      "Opens a local web interface in an Electron desktop window",
+      "Reads and writes local application data, logs, and server files",
+      "Can use configured local Node.js or DeepSeek Harness source paths"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:30.084Z",
+  "repositoryCommitSha": "4e087ff0c12f167c6e38b815c8d4f9b9234281f7",
+  "evidenceHash": "d0ae34fa67b2a73531e7097f111d28ffa024e6383749bceeacc4432cb0ed825c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e6a5bf3b1912d238c176ab3b12347d67c26e29c063053ea28652cb3e58aa3914",
+  "shadowMode": false
+}

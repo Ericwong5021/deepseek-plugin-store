@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "tool",
+    "chat",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a dsh plugin whose primary purpose is to bridge a view_image tool to configurable OpenAI-compatible vision-language model endpoints, allowing text-only DeepSeek sessions to analyze local images.",
+  "summaries": {
+    "zh": "该插件通过 view_image 工具将本地图片和用户问题转发至兼容 OpenAI 接口的视觉语言模型，以便文本模型获得图像分析能力。",
+    "en": "This plugin adds image analysis to text-only DeepSeek sessions by sending local images and user questions through a view_image tool to a configurable OpenAI-compatible vision-language model endpoint."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local image files provided to the view_image tool",
+      "Encodes images as data URLs",
+      "Sends images and user questions to a configured OpenAI-compatible VLM endpoint",
+      "Uses configured API keys or environment variables for external service authentication"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local image files provided to the view_image tool",
+      "Encodes images as data URLs",
+      "Sends images and user questions to a configured OpenAI-compatible VLM endpoint",
+      "Uses configured API keys or environment variables for external service authentication"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:06.390Z",
+  "repositoryCommitSha": "72978aa176df8e01a685bf270a1b1d016660c492",
+  "evidenceHash": "576888c2c8e872d94c94f53e403c3cc151e2375c47e9f306ea7e5472d63267e9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "29368ec1599b9b6daf231d4447084fbd8758d5eb61b8e91c921abe0275b149d6",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "data",
+    "debugging",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local observability plugin for DeepSeek Harness that records agent turns, model steps, tool calls, errors, and related telemetry in an embedded yiTrace database for debugging and historical querying.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的智能体会话、模型步骤、工具调用和错误遥测记录到本地嵌入式 yiTrace 数据库中，便于调试与查询。",
+    "en": "Records DeepSeek Harness agent turns, model steps, tool calls, errors, and related telemetry in a local embedded yiTrace database for debugging and querying."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes post-telemetry DeepSeek Harness session records",
+      "Stores model, message, reasoning, tool-call, error, and session data in a local embedded yiTrace database",
+      "Creates and queries local traces, spans, logs, and full-text search indexes",
+      "Persists data to a configured local directory without opening a network connection"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_telemetry_retention",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_built_in_redaction",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Observes post-telemetry DeepSeek Harness session records",
+      "Stores model, message, reasoning, tool-call, error, and session data in a local embedded yiTrace database",
+      "Creates and queries local traces, spans, logs, and full-text search indexes",
+      "Persists data to a configured local directory without opening a network connection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:22.964Z",
+  "repositoryCommitSha": "caadf1b831ae2643bd25a365cc1356c2100e7a05",
+  "evidenceHash": "0e57d078605eda14400eb70f73705c816841ac9c834ab000a50cf479bbb1d11b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ccf3169ab97b95c8d45a33fd88a71dec0ac667b487fe0ae09cbf8a8a916292ab",
+  "shadowMode": false
+}

@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "visualization",
+    "api",
+    "monitoring",
+    "file",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A token usage analytics plugin that collects real LLM usage, stores a durable local ledger, aggregates performance and cost metrics, and presents them through dashboards and local query interfaces.",
+  "summaries": {
+    "zh": "用于统计 DeepSeek Harness 中的真实 Token 用量、缓存与延迟指标，并通过本地账本、可视化面板和查询工具展示估算费用及使用趋势。",
+    "en": "Tracks real token usage, cache and latency metrics in DeepSeek Harness, then presents estimated costs and usage trends through a local ledger, visual dashboards, and query tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Collects token usage and latency metrics from llm/stream calls",
+      "Persists usage records in a local JSONL ledger across restarts",
+      "Aggregates usage by provider, model, session, and date",
+      "Estimates costs using configured or OpenRouter model prices",
+      "Provides a dashboard, floating UI, and token_stats model tool",
+      "Exposes local HTTP endpoints for querying statistics and refreshing prices",
+      "Reads historical session files for optional backfill"
+    ],
+    "reasons": [
+      {
+        "code": "local_data_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_price_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Collects token usage and latency metrics from llm/stream calls",
+      "Persists usage records in a local JSONL ledger across restarts",
+      "Aggregates usage by provider, model, session, and date",
+      "Estimates costs using configured or OpenRouter model prices",
+      "Provides a dashboard, floating UI, and token_stats model tool",
+      "Exposes local HTTP endpoints for querying statistics and refreshing prices",
+      "Reads historical session files for optional backfill"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:40.132Z",
+  "repositoryCommitSha": "ca0c98635bd9e32c1da73e74816e365c73555c94",
+  "evidenceHash": "a34da115e549638e3bfb3ed43a9963024ee2d41146b001d83904b485089158b9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6c3f5f59a76277b70bcfc3c6494f5781fbff6a09915ada366db809113c918571",
+  "shadowMode": false
+}

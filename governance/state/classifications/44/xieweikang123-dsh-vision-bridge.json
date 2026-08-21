@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "document",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh plugin that converts pasted image attachments into text through a configurable OpenAI-compatible vision endpoint so text-only models can process the image content.",
+  "summaries": {
+    "zh": "将用户粘贴的图片发送到可配置的兼容 OpenAI 接口进行视觉识别，并把识别文字交给纯文本模型理解。",
+    "en": "Sends pasted images to a configurable OpenAI-compatible vision endpoint and provides the returned text to a text-only model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads pasted image attachments before model processing",
+      "Converts images to base64 data URLs",
+      "Sends image data to a configurable OpenAI-compatible vision API",
+      "Replaces image blocks with returned text descriptions",
+      "Caches recognition results by attachment ID",
+      "Reads API credentials from configuration or environment variables"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "attachment_reading",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads pasted image attachments before model processing",
+      "Converts images to base64 data URLs",
+      "Sends image data to a configurable OpenAI-compatible vision API",
+      "Replaces image blocks with returned text descriptions",
+      "Caches recognition results by attachment ID",
+      "Reads API credentials from configuration or environment variables"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:44.450Z",
+  "repositoryCommitSha": "6ae38b9d9768f1a862e11049d47fc6c9eb2e26ec",
+  "evidenceHash": "de0877dfbb5f6bc34cc6e2849f48f50ae6ad618025ab3065037a7975be53069b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1a02f07379ab16d5af826ae4e97c098e68fab2f3c64d724593d4d295d38baf74",
+  "shadowMode": false
+}

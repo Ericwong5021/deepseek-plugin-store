@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "chat",
+    "integration",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness companion plugin centered on persona injection and persistent cross-session memory, with an optional QQ messaging channel.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于 SOUL、USER 和 MEMORY 文件的人设陪伴与跨会话记忆，并可选接入 QQ 消息通道。",
+    "en": "A DeepSeek Harness companion plugin that provides persona configuration, persistent cross-session memory, and an optional QQ messaging channel."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Renders persona and persistent memory files into agent context",
+      "Provides an update_memory tool that modifies USER.md and MEMORY.md",
+      "Optionally connects to QQ through configured app credentials to relay agent messages",
+      "Exposes status checks for memory usage and QQ connectivity"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_communication_channel",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_third_party_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Renders persona and persistent memory files into agent context",
+      "Provides an update_memory tool that modifies USER.md and MEMORY.md",
+      "Optionally connects to QQ through configured app credentials to relay agent messages",
+      "Exposes status checks for memory usage and QQ connectivity"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:32.553Z",
+  "repositoryCommitSha": "787c8a0c4ed9a2dcae67e15544bfab0d69b219a3",
+  "evidenceHash": "c5fde5ee6a30e874b5a4d4cbd5de12d6f32015e9640bd2e58030fa03afd174ee",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7fe5ab2ce7588f64eb3054af40454d52783b66904d5bb3a50168cba8e2ad9c3e",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "integration",
+    "cli",
+    "file",
+    "api",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Provides a DSH image-attachment bridge that transcribes images through Codex Luna and forwards the resulting text to configurable text-only downstream models.",
+  "summaries": {
+    "zh": "通过 Codex Luna 将 DSH 中的图片附件转写为文字，并交给可配置的纯文本下游模型处理。",
+    "en": "Transcribes DSH image attachments with Codex Luna and forwards the resulting text to configurable downstream text models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads validated image attachments from the DSH attachment store",
+      "Writes temporary image files and deletes them after transcription",
+      "Invokes the Codex CLI with the configured Luna model",
+      "Persists derived image descriptions in a local cache when enabled",
+      "Delegates the resulting text and user request to a configured downstream text model"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_cli_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "temporary_and_cached_file_io",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads validated image attachments from the DSH attachment store",
+      "Writes temporary image files and deletes them after transcription",
+      "Invokes the Codex CLI with the configured Luna model",
+      "Persists derived image descriptions in a local cache when enabled",
+      "Delegates the resulting text and user request to a configured downstream text model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:05.979Z",
+  "repositoryCommitSha": "a7d3fbfc802193375b1c86e762f79fdec299ce86",
+  "evidenceHash": "487b9c1eb2e708df45a7e688707104a2b003a64785369cfec3a2eb20afa5fc6b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1b80430a231c0001e5f147175339e1c0a1d7c836f81302a78e076ea03de83665",
+  "shadowMode": false
+}

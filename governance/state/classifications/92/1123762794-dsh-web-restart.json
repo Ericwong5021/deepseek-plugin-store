@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "automation",
+    "desktop",
+    "monitoring",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a persistent sidebar control for restarting the DSH web process and displaying its liveness, but uses hidden PowerShell execution with danger-full-access, warranting human review.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web 界面侧边栏添加一键重启 dsh web 进程并显示在线状态的按钮。",
+    "en": "Adds a persistent sidebar button to restart the DeepSeek Harness web process and display its liveness status."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a sidebar button that triggers a DSH web process restart",
+      "Exposes POST /restart-dsh and polls GET /dsh-health",
+      "Launches an independent hidden PowerShell process with danger-full-access sandbox policy"
+    ],
+    "reasons": [
+      {
+        "code": "process_restart",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "elevated_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "health_status_polling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds a sidebar button that triggers a DSH web process restart",
+      "Exposes POST /restart-dsh and polls GET /dsh-health",
+      "Launches an independent hidden PowerShell process with danger-full-access sandbox policy"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:39.237Z",
+  "repositoryCommitSha": "5de8214051b3245a8cfc825e7e907cf5e57f51d8",
+  "evidenceHash": "995cd16ea277b568fc1ab83c1572fce29476f9da5c838b4abdef51e9a402d923",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "27421b60ee95c08dee59b091649b4a40977b18cb4a6b1ad81d7a74e27907e845",
+  "shadowMode": false
+}

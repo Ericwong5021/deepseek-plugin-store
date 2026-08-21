@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "planning",
+    "skill",
+    "testing",
+    "debugging",
+    "project-analysis"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "WhaleKit is primarily an agent orchestration framework for DeepSeek Harness, providing composable skills for user-selected task routing, planning, execution, review, testing, debugging, and subagent delegation, with local symlink installation and Git-based artifact traceability.",
+  "summaries": {
+    "zh": "WhaleKit 是一个面向 DeepSeek Harness 的智能体编排技能框架，通过可组合技能支持分级任务路由、规划执行、审查测试、调试和子智能体协作。",
+    "en": "WhaleKit is an agent orchestration skill framework for DeepSeek Harness that provides composable workflows for tiered task routing, planning, execution, review, testing, debugging, and subagent collaboration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs and removes local skill symlinks under the DSH home or project directory",
+      "Routes agent tasks through five user-selected process tiers",
+      "Provides planning, execution, review, testing, debugging, and subagent-dispatch skills",
+      "Uses Git commits as a traceability mechanism for artifacts and amendments"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_FILESYSTEM_CHANGES",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "AGENT_WORKFLOW_CONTROL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "GIT_TRACEABILITY_OPERATIONS",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Installs and removes local skill symlinks under the DSH home or project directory",
+      "Routes agent tasks through five user-selected process tiers",
+      "Provides planning, execution, review, testing, debugging, and subagent-dispatch skills",
+      "Uses Git commits as a traceability mechanism for artifacts and amendments"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:12.794Z",
+  "repositoryCommitSha": "feb9aaff13470d4e8269b9d44b596d7c125c86dd",
+  "evidenceHash": "66a2838a9b18d4c4a0a3a248b9db1a770458d88be272b2f800d45d4c68666475",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "81698e0e27dfca71d0a7aa4ceb8e1e25db9f9926c956b69e85f6d015bfff0ce0",
+  "shadowMode": false
+}

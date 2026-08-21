@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "cli",
+    "terminal",
+    "workflow",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates DeepSeek Harness sandbox approval decisions through configured rules, AI risk assessment, optional human fallback, and audit logging.",
+  "summaries": {
+    "zh": "通过规则、AI 风险评估和可选的人类确认，自动处理 DeepSeek Harness 的沙箱操作审批请求。",
+    "en": "Automates DeepSeek Harness sandbox approval requests using configurable rules, AI risk assessment, optional human review, and audit logging."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts sandbox approval requests",
+      "Applies allow, ask, and deny glob rules",
+      "Uses an AI provider to assess risk and authorization",
+      "Automatically allows or denies some agent operations",
+      "Routes unresolved requests to a human GUI approval flow",
+      "Persists approval decision audit logs",
+      "Provides runtime approval-mode switching and configuration persistence"
+    ],
+    "reasons": [
+      {
+        "code": "controls_agent_operation_authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "can_enable_automatic_allow_decisions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "calls_external_ai_provider_for_decisions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_audit_logs_and_settings",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts sandbox approval requests",
+      "Applies allow, ask, and deny glob rules",
+      "Uses an AI provider to assess risk and authorization",
+      "Automatically allows or denies some agent operations",
+      "Routes unresolved requests to a human GUI approval flow",
+      "Persists approval decision audit logs",
+      "Provides runtime approval-mode switching and configuration persistence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:22.235Z",
+  "repositoryCommitSha": "8ef378717aa6ce03d2cfb7316072ab3de41e7dd9",
+  "evidenceHash": "717b6404c2fd72f442c96035f35dc1b61b852614c24675ed53044da987b66fcf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d3d20443784d70b87a28dd476d6867d96bda9ea5d89ad689039196347f8b7175",
+  "shadowMode": false
+}

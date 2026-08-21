@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for monitoring account balance and estimated current-session API costs using the official DeepSeek API and local session usage data.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中查看账户余额，并根据当前会话用量估算和展示会话费用。",
+    "en": "View your DeepSeek account balance and estimate and display the current session cost in DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek account balance through the official API",
+      "Reads session token usage from the DSH session projection",
+      "Calculates estimated session costs using configured pricing data",
+      "Displays balance and estimated cost in the DSH interface",
+      "Sends the configured DeepSeek API key to api.deepseek.com"
+    ],
+    "reasons": [
+      {
+        "code": "credentialed_external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_usage_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek account balance through the official API",
+      "Reads session token usage from the DSH session projection",
+      "Calculates estimated session costs using configured pricing data",
+      "Displays balance and estimated cost in the DSH interface",
+      "Sends the configured DeepSeek API key to api.deepseek.com"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:44.881Z",
+  "repositoryCommitSha": "d388087bfe635162d344f728a3ed40bb3d270e73",
+  "evidenceHash": "53700fbffde7d7ca4739402257274505ec8a2ba1afb14b6d528bdf4dd1062182",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "421de4861d5929055d5edafc677c5351965eb846c19189fcdd0bb5370652d2b9",
+  "shadowMode": false
+}

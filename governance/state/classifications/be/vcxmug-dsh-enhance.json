@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "agent",
+    "api",
+    "browser",
+    "search",
+    "image",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes host-side DeepSeek Harness plugins whose primary user-facing purpose is native web search and scraping, with an additional image-understanding tool and installation-time profile configuration.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 智能体提供原生网页搜索、网页抓取和可配置的图像理解工具。",
+    "en": "Provides DeepSeek Harness agents with native web search, webpage scraping, and configurable image understanding tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides agent tools for web search and scraping through a configured self-hosted Firecrawl-compatible HTTP service",
+      "Sends image inputs to a configured Responses API-compatible multimodal model endpoint",
+      "Reads configured API keys and local image files",
+      "Installs plugins and modifies DeepSeek Harness profiles and agent presets",
+      "Can optionally restart the DeepSeek Harness web profile"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_configuration_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Provides agent tools for web search and scraping through a configured self-hosted Firecrawl-compatible HTTP service",
+      "Sends image inputs to a configured Responses API-compatible multimodal model endpoint",
+      "Reads configured API keys and local image files",
+      "Installs plugins and modifies DeepSeek Harness profiles and agent presets",
+      "Can optionally restart the DeepSeek Harness web profile"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:16.701Z",
+  "repositoryCommitSha": "dfb1ae36d4058639cda3a0f8be5b8051b4a199eb",
+  "evidenceHash": "4cec738bb2c0ee99705c366a0131e46fb8da556937231faad05648b1ecc31638",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5ea0de99be0dd910e258ccf6637410869b28b0fc5ff4a3c0dfc1d7cb9b584398",
+  "shadowMode": false
+}
