@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "visualization",
+    "ui",
+    "desktop",
+    "api",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH Web GUI plugin that provides a draggable floating dashboard for real-time local system performance metrics, with optional process-network and GPU sampling.",
+  "summaries": {
+    "zh": "为 DSH Web GUI 提供可拖动、可折叠的系统性能悬浮看板，实时显示 CPU、内存、磁盘、网络、负载、运行时长及可用的 GPU 指标。",
+    "en": "A DSH Web GUI plugin that adds a draggable, collapsible floating dashboard for real-time CPU, memory, disk, network, load, uptime, and available GPU metrics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Collects local CPU, memory, disk, network, load, uptime, and supported GPU metrics",
+      "Reads Linux system interfaces including /proc and statfs",
+      "Samples current-user process network information via ss when available",
+      "Optionally invokes nvidia-smi for NVIDIA GPU metrics",
+      "Exposes collected metrics through a same-origin HTTP snapshot route",
+      "Stores widget position and visibility in browser localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "local_system_observation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_system_sampling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Collects local CPU, memory, disk, network, load, uptime, and supported GPU metrics",
+      "Reads Linux system interfaces including /proc and statfs",
+      "Samples current-user process network information via ss when available",
+      "Optionally invokes nvidia-smi for NVIDIA GPU metrics",
+      "Exposes collected metrics through a same-origin HTTP snapshot route",
+      "Stores widget position and visibility in browser localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:56:57.163Z",
+  "repositoryCommitSha": "cc3aa37980091161ea82d00634b2a5b65ae7230d",
+  "evidenceHash": "22c4c744abde841803278f209c2ad5de8a2bfb1c7fd8f10b56254c7730e19998",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5011a5dd78068ed384bab2092618a7f16fe2f6374c485661f21107d0cf3498a1",
+  "shadowMode": false
+}

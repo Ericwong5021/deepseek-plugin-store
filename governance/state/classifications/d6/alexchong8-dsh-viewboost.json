@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "file",
+    "desktop",
+    "monitoring",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness web-profile UI enhancement that adds preview-panel actions for Finder reveal, fullscreen, path copying, and file copying, plus a token-usage card with optional MiniMax quota information.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 右侧预览面板增加访达显示、全屏、复制路径、复制文件等工具栏操作，并提供可选的 Token 用量与 MiniMax 配额卡片。",
+    "en": "Enhances the DeepSeek Harness preview panel with Finder reveal, fullscreen, path-copying, and file-copying actions, plus an optional token-usage and MiniMax quota card."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Enhances the DeepSeek Harness preview-panel toolbar and injects a token-usage card",
+      "Reads local file paths and file content through host-provided routes for preview-related operations",
+      "Invokes platform-specific subprocesses for Finder reveal and file-copy operations",
+      "Writes file paths or file references to the system clipboard",
+      "Optionally calls the MiniMax API using a user-provided API key to display quota status"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_and_credentials",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Enhances the DeepSeek Harness preview-panel toolbar and injects a token-usage card",
+      "Reads local file paths and file content through host-provided routes for preview-related operations",
+      "Invokes platform-specific subprocesses for Finder reveal and file-copy operations",
+      "Writes file paths or file references to the system clipboard",
+      "Optionally calls the MiniMax API using a user-provided API key to display quota status"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:52.635Z",
+  "repositoryCommitSha": "81a911a1e61fd16e69102c787c8efee375238d00",
+  "evidenceHash": "c3de37fc981bcfccd6eb42d43f0c1d0442beaa15047884a7a66b675bcbda91e0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2adf33795b34cdca70e012a59282845ae475ba3583b0e9913572dbccae1598fb",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "monitoring",
+    "automation",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH watchdog that monitors agent activity, identifies genuine stalls while exempting in-flight work, records events, exposes local status, and nudges the agent through staged recovery messages without terminating tasks.",
+  "summaries": {
+    "zh": "监控 DSH 智能体活动并识别真正卡顿，在豁免进行中操作的同时记录事件、提供本地状态查询并发送分级恢复提示。",
+    "en": "Monitors DSH agent activity to detect genuine stalls, record events, provide local status information, and send staged recovery prompts while exempting in-flight operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors agent and session activity events",
+      "Detects prolonged silence when no in-flight operation is present",
+      "Injects diagnostic, repair, and redirection messages into stalled sessions",
+      "Writes JSONL event records to local storage",
+      "Exposes a loopback HTTP status route"
+    ],
+    "reasons": [
+      {
+        "code": "event_monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_event_logging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loopback_status_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Monitors agent and session activity events",
+      "Detects prolonged silence when no in-flight operation is present",
+      "Injects diagnostic, repair, and redirection messages into stalled sessions",
+      "Writes JSONL event records to local storage",
+      "Exposes a loopback HTTP status route"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:28.110Z",
+  "repositoryCommitSha": "db5b2147ccd60c0a0f9305f12402fb84491e919d",
+  "evidenceHash": "689bd01a73cfafeb3c691d0f57aaf39c776d9a18c10d0361cb2800e41b7095d6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87f017e0cc896452eef814a2afc9241fc5068911eb7df6a025d5d0bd36e0bdf8",
+  "shadowMode": false
+}

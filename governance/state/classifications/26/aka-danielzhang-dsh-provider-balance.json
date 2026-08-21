@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "integration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Displays remaining quotas, balances, usage windows, reset times, and plan details for configured model providers in the DSH web interface, with polling, refresh status, and inline settings badges.",
+  "summaries": {
+    "zh": "在 DSH 网页界面中展示已配置模型供应商的余额、配额窗口、重置时间和套餐信息。",
+    "en": "Displays balances, quota windows, reset times, and plan information for configured model providers in the DSH web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured provider credentials through the host credential service or environment variables",
+      "Makes authenticated requests to provider usage and billing endpoints",
+      "Exposes aggregated provider quota data through a local host route",
+      "Injects quota badges and detail panels into the web interface"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access_and_external_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_ui_and_route_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured provider credentials through the host credential service or environment variables",
+      "Makes authenticated requests to provider usage and billing endpoints",
+      "Exposes aggregated provider quota data through a local host route",
+      "Injects quota badges and detail panels into the web interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:22.135Z",
+  "repositoryCommitSha": "35b5879f87d02dd61baf8153de9e6be01f344255",
+  "evidenceHash": "05649ad44b1694ce17d0a889232d4992c8ba84f83b93922bb63ac36d90fc238a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "74b62718388593cdb6c1243cce78a602a20334b393dcd99d78aab20f2cf6452b",
+  "shadowMode": false
+}

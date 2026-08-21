@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DeepSeek Harness settings panel for browsing installed plugins, toggling their enabled state, editing local notes, and managing configuration backups.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的设置页面提供插件目录、启停控制、备注编辑以及本地配置备份管理功能。",
+    "en": "Adds a DeepSeek Harness settings panel for browsing plugins, toggling their enabled state, editing local notes, and managing local configuration backups."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Lists installed DeepSeek Harness plugins",
+      "Adds a Plugin Manager tab under Settings → Plugins",
+      "Enables or disables plugin rows by editing the global cordis.patch.yml file",
+      "Edits and stores per-plugin names and descriptions in a local catalog.json file",
+      "Exports and imports local plugin configuration backups"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_state_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Lists installed DeepSeek Harness plugins",
+      "Adds a Plugin Manager tab under Settings → Plugins",
+      "Enables or disables plugin rows by editing the global cordis.patch.yml file",
+      "Edits and stores per-plugin names and descriptions in a local catalog.json file",
+      "Exports and imports local plugin configuration backups"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:09.096Z",
+  "repositoryCommitSha": "35827d22724034e3bd53c03429ce10ea1a67a1b1",
+  "evidenceHash": "ad3db3111e4bd122b6a9b66fe0816e349026395e7219d2de86e3eec70ee1fddf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a2705d91542edca88ae4d77275db6fb430312e916641de1af27cdbe710e7f14c",
+  "shadowMode": false
+}

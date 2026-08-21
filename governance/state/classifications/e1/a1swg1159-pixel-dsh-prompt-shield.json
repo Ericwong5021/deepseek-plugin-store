@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "agent",
+    "context",
+    "monitoring",
+    "tool",
+    "mcp",
+    "browser",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "A runtime utility that scans tool results for indirect prompt-injection patterns and can warn or quarantine suspicious content before it reaches model context.",
+  "summaries": {
+    "zh": "在工具结果进入模型上下文前检测间接提示注入，并根据配置记录警告或隔离可疑内容。",
+    "en": "Detects indirect prompt-injection patterns in tool results before they enter model context and can warn or quarantine suspicious content according to configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans text returned by web, MCP, browser, shell, file, and other tools",
+      "Detects prompt-injection patterns using deterministic English and Chinese rules",
+      "Can observe findings, prepend warnings, or replace tool results with quarantine errors",
+      "Can prevent blocked raw tool results from entering model context",
+      "Produces rule IDs, scores, and SHA-256-derived fingerprints without logging matched text"
+    ],
+    "reasons": [
+      {
+        "code": "intercepts_and_may_modify_tool_results",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "blocks_content_from_model_context",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_network_service_or_extra_model_call",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Scans text returned by web, MCP, browser, shell, file, and other tools",
+      "Detects prompt-injection patterns using deterministic English and Chinese rules",
+      "Can observe findings, prepend warnings, or replace tool results with quarantine errors",
+      "Can prevent blocked raw tool results from entering model context",
+      "Produces rule IDs, scores, and SHA-256-derived fingerprints without logging matched text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:20.253Z",
+  "repositoryCommitSha": "f85b9190b12c40c870b937a53a4dae3af6883b4a",
+  "evidenceHash": "853212b7e9804ea8edcae8c050adfbf390bf735337599505615476921319ecb0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c54d1e809153f545c9047c437dbaf42bed95a7633d7bd353ee749b4856be3fef",
+  "shadowMode": false
+}

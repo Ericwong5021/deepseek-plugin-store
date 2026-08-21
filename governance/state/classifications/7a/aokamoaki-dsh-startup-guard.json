@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "testing",
+    "automation",
+    "file",
+    "terminal",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH startup reliability guard that detects and repairs session or plugin integrity problems, validates plugin composition and client bundles, smoke-tests host apply(), and isolates failure-causing plugins.",
+  "summaries": {
+    "zh": "用于 DeepSeek Harness 启动阶段修复会话日志、预检插件与客户端产物、执行宿主插件冒烟测试并隔离故障插件。",
+    "en": "A DeepSeek Harness startup guard that repairs session logs, validates plugin composition and client bundles, smoke-tests host apply(), and isolates problematic plugins."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Repairs and truncates corrupted session logs",
+      "Creates plugin manifest, source, and fingerprint snapshots",
+      "Validates plugin bundles and composition",
+      "Executes plugin apply() smoke tests in a child process with a mock environment",
+      "Loads client bundles in a VM for validation",
+      "Automatically disables, rolls back, or quarantines problematic plugins",
+      "Writes startup, crash, report, state, backup, and blocking marker files"
+    ],
+    "reasons": [
+      {
+        "code": "modifies_local_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executes_plugin_code_for_smoke_testing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatically_disables_or_rolls_back_plugins",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Repairs and truncates corrupted session logs",
+      "Creates plugin manifest, source, and fingerprint snapshots",
+      "Validates plugin bundles and composition",
+      "Executes plugin apply() smoke tests in a child process with a mock environment",
+      "Loads client bundles in a VM for validation",
+      "Automatically disables, rolls back, or quarantines problematic plugins",
+      "Writes startup, crash, report, state, backup, and blocking marker files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:43.237Z",
+  "repositoryCommitSha": "82cead84e795f04d33b3ff803b65d2de9dafa706",
+  "evidenceHash": "467c58362a6f71da2b35fe77f60eb2fbb6a7ae5f1024b6eb25a8122bfa0dadc9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b3ab949660f41774eba0d29ee2def9b6627c298a97c3090939db3025ac079cac",
+  "shadowMode": false
+}

@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "agent",
+    "integration",
+    "memory",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README consistently describes a vision plugin that accepts images, performs OCR and visual analysis through local or remote VLM channels, and feeds structured evidence back into a text-only DeepSeek workflow.",
+  "summaries": {
+    "zh": "为纯文本模型提供图片理解、OCR、区域分析和多图对比能力，并支持本地或兼容 API 的视觉模型通道。",
+    "en": "Adds image understanding, OCR, region analysis, and multi-image comparison to text-only models through local or API-compatible vision backends."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Accepts pasted images and local image paths for visual analysis",
+      "Sends image data to configured Gemini or OpenAI-compatible endpoints",
+      "Can use a local Ollama vision model",
+      "Provides an agent-invokable vision tool and an HTTP vision endpoint",
+      "Stores visual analysis results in the conversation timeline and reuses them across turns",
+      "Caches repeated image-analysis requests in process memory"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_service_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts pasted images and local image paths for visual analysis",
+      "Sends image data to configured Gemini or OpenAI-compatible endpoints",
+      "Can use a local Ollama vision model",
+      "Provides an agent-invokable vision tool and an HTTP vision endpoint",
+      "Stores visual analysis results in the conversation timeline and reuses them across turns",
+      "Caches repeated image-analysis requests in process memory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:34.443Z",
+  "repositoryCommitSha": "86f02fa124cd158438e4d9290625d2f8dd610967",
+  "evidenceHash": "7daba2b39b7f0b283b3dfe79b55061001bdd9dea982e5999836d9e7438330105",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "354d174910a3c4512f1815f31549c7b026718931719c24fd065b51fad67edef8",
+  "shadowMode": false
+}

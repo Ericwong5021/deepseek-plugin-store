@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "api",
+    "monitoring",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness web dashboard centered on balance, token-usage statistics, channel comparison, usage logs, and activity heatmap visualization.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 网页界面提供可自定义的余额、令牌用量、渠道对比、使用日志和活动热力图面板。",
+    "en": "Provides DeepSeek Harness web users with a customizable dashboard for balances, token usage, channel comparisons, usage logs, and activity heatmaps."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays a persistent customizable usage and balance dashboard in the DeepSeek Harness web interface",
+      "Reads local aggregated usage data and Claude Code log data for token statistics",
+      "Queries configured provider balance endpoints over HTTPS",
+      "Exposes loopback-only GET endpoints for provider and usage data",
+      "Stores interface preferences and aggregated usage caches locally"
+    ],
+    "reasons": [
+      {
+        "code": "local_usage_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_balance_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays a persistent customizable usage and balance dashboard in the DeepSeek Harness web interface",
+      "Reads local aggregated usage data and Claude Code log data for token statistics",
+      "Queries configured provider balance endpoints over HTTPS",
+      "Exposes loopback-only GET endpoints for provider and usage data",
+      "Stores interface preferences and aggregated usage caches locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:21.179Z",
+  "repositoryCommitSha": "6b67e6d400dc08e4fcdc06fb384b4b2dadfa3874",
+  "evidenceHash": "638bc7316e41bb325cddb6a6f8130bb682c686c7d07b883b8d85da4c48fed81f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd8421442d96c4d129b295580b9fc72f6bfe453df974e73194756ab5c598837d",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "desktop",
+    "terminal",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Windows DSH plugin that provides a configurable MSYS2/UCRT64 or Git Bash executor for agent shell calls, with preset-based activation and Web configuration; the README explicitly states execution is unsandboxed with full DSH process permissions.",
+  "summaries": {
+    "zh": "为 Windows 上的 DeepSeek Harness 提供可配置的 MSYS2/UCRT64 Bash 或 Git Bash 智能体命令执行器，并支持按预设启用和网页配置。",
+    "en": "Provides DeepSeek Harness on Windows with a configurable MSYS2/UCRT64 Bash or Git Bash executor for agent commands, including preset-based activation and Web configuration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes agent shell commands through MSYS2/UCRT64 Bash or Git Bash on Windows",
+      "Configures Bash executable paths, arguments, PATH prefixes, and environment variables",
+      "Manages foreground and background processes, timeouts, output limits, aborts, and process-tree termination",
+      "Adds a Web settings card and controls Bash tool visibility by preset"
+    ],
+    "reasons": [
+      {
+        "code": "unsandboxed_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "full_dsh_process_permissions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_control_and_environment_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Executes agent shell commands through MSYS2/UCRT64 Bash or Git Bash on Windows",
+      "Configures Bash executable paths, arguments, PATH prefixes, and environment variables",
+      "Manages foreground and background processes, timeouts, output limits, aborts, and process-tree termination",
+      "Adds a Web settings card and controls Bash tool visibility by preset"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:20.166Z",
+  "repositoryCommitSha": "514aa458036993ad09e4316082c75be2d035a143",
+  "evidenceHash": "cba349552de0483db34d8113834e608cc6c8dfd8c60b970439bef568786b936f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bcf0b47af4d75bcd6cd4fffdf6f5918a20f6b9e5b09467267dc7b4f205a735a5",
+  "shadowMode": false
+}

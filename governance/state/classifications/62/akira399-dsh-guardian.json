@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "monitoring",
+    "agent",
+    "api",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A task-protection and debugging plugin that preflights plugin injections, detects tool-call loops and excessive workflow recursion, reports interruption-related status, and guides agents without normally terminating tasks.",
+  "summaries": {
+    "zh": "用于任务防护与调试的插件，可预检插件注入声明、检测工具调用循环和工作流递归，并提供状态查看与安全重启辅助。",
+    "en": "A task-protection and debugging plugin that preflights injection declarations, detects tool-call loops and excessive workflow recursion, and provides status and safer restart assistance."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans plugin source for missing service injection declarations",
+      "Detects repeated tool-call loops within a configurable window",
+      "Tracks nested subagent or workflow depth",
+      "Reports session status and restart readiness through a local API",
+      "Writes guardian events to a JSONL log",
+      "Injects guidance messages when loops or excessive recursion are detected",
+      "Provides a helper that refuses restart while sessions are running unless forced"
+    ],
+    "reasons": [
+      {
+        "code": "monitors_and_records_task_execution_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "injects_guidance_into_agent_workflows",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "provides_restart_assistance_with_optional_force_override",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Scans plugin source for missing service injection declarations",
+      "Detects repeated tool-call loops within a configurable window",
+      "Tracks nested subagent or workflow depth",
+      "Reports session status and restart readiness through a local API",
+      "Writes guardian events to a JSONL log",
+      "Injects guidance messages when loops or excessive recursion are detected",
+      "Provides a helper that refuses restart while sessions are running unless forced"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:24.726Z",
+  "repositoryCommitSha": "5bf7ef3ad56d5e0b78e40071ac99d94b697e468b",
+  "evidenceHash": "b9a90ea33d079f8d68e49b10bd6f6df3bf7de6de1c40cac2cdc5fe607b541e77",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a6533286a6ed0c23152894d5481a92c625d76ea6aab989602522c8348f93468",
+  "shadowMode": false
+}

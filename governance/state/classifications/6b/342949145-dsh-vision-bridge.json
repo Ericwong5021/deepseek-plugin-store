@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a DSH plugin whose primary user-facing purpose is converting image inputs into text through an external vision service, with optional image generation and caching.",
+  "summaries": {
+    "zh": "为 DSH 中的纯文本模型提供图片识别转文字能力，并可通过外部视觉服务生成图片。",
+    "en": "Enables image-to-text understanding for text-only DSH models and optionally generates images through an external vision service."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads image attachments and embedded image blocks",
+      "Sends image data to a configured external vision API for description or OCR-style processing",
+      "Replaces image inputs with generated text before sending requests to text-only models",
+      "Optionally calls an external image-generation API and saves generated images as attachments",
+      "Caches recognition results in memory and on local storage"
+    ],
+    "reasons": [
+      {
+        "code": "external-api-data-transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-persistent-cache",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image-generation-side-effect",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads image attachments and embedded image blocks",
+      "Sends image data to a configured external vision API for description or OCR-style processing",
+      "Replaces image inputs with generated text before sending requests to text-only models",
+      "Optionally calls an external image-generation API and saves generated images as attachments",
+      "Caches recognition results in memory and on local storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:25.273Z",
+  "repositoryCommitSha": "da4ef0ca14bcff2cd2c877bca8eaa27f59d414bd",
+  "evidenceHash": "358ec1d9a1eb20fcd4ba516b919dfc0538424bd9b1a17c42cf6990a5bda7834f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d1204c29c71dc6b0266a2cef8a050981b4ec314efb17af367fc00a410c311f28",
+  "shadowMode": false
+}

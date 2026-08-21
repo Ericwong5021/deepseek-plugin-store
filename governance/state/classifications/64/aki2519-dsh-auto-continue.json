@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "file",
+    "memory",
+    "notification",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin automates recovery after restart by repairing local session logs and automatically resuming unfinished agent sessions, with visible notifications; human review is appropriate because it performs autonomous execution and local file modifications.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 重启后自动修复损坏的会话日志、继续未完成的智能体任务，并通过界面横幅和系统通知提示恢复结果。",
+    "en": "Automatically repairs damaged session logs and resumes unfinished agent tasks after DeepSeek Harness restarts, with web banners and system notifications indicating recovery results."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Scans and modifies local session log files",
+      "Creates backups of repaired session logs",
+      "Automatically resumes unfinished agent sessions by injecting continuation messages",
+      "Writes operational logs to a local file",
+      "Displays web UI banners and system notifications",
+      "Uses a lock to coordinate recovery across processes"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "autonomous_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Scans and modifies local session log files",
+      "Creates backups of repaired session logs",
+      "Automatically resumes unfinished agent sessions by injecting continuation messages",
+      "Writes operational logs to a local file",
+      "Displays web UI banners and system notifications",
+      "Uses a lock to coordinate recovery across processes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:22.953Z",
+  "repositoryCommitSha": "f9032b9a197cec739437b7445867abebb8690b19",
+  "evidenceHash": "4e97730ae0bc5554465491b4d34c8c390e363fa47ff7b434d6799bb5a39a4e7f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f20d1a3992f40d62c7461d7e54ed74ea7797f2310aa9a45b61749c87ed11404b",
+  "shadowMode": false
+}

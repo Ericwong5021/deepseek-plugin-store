@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "memory",
+    "api",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH host plugin for model-directed conversation context pruning, using compaction to hide selected history while retaining original session events and providing status, search, compression, and decompression tools.",
+  "summaries": {
+    "zh": "通过 DSH 压缩 API 让模型主动裁剪对话上下文，并提供状态、搜索、压缩和读取隐藏原文的工具。",
+    "en": "A DSH host plugin that lets models prune conversation context through the compaction API and provides status, search, compression, and hidden-history reading tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides status, compression, decompression, and search tools for conversation context",
+      "Uses the DSH compaction API to hide selected historical context from subsequent requests",
+      "Reads original hidden event content when decompression or search is requested",
+      "Requires host plugin tool access"
+    ],
+    "reasons": [
+      {
+        "code": "context_visibility_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_tool_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_network_requests_declared",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides status, compression, decompression, and search tools for conversation context",
+      "Uses the DSH compaction API to hide selected historical context from subsequent requests",
+      "Reads original hidden event content when decompression or search is requested",
+      "Requires host plugin tool access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:54.350Z",
+  "repositoryCommitSha": "d52b5f2acb44be9ee71e2a68e0178dd227a2f2ef",
+  "evidenceHash": "8ea908e39305d84f82e63fd437d816541c5fb00d8ca043e617ade92741aceb88",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9a3de8832c1f8c1b39a6c902a9cdbf1fbb05f8a6fe369e1d91c2849135b37aef",
+  "shadowMode": false
+}

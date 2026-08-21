@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "api",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a settings-page visualization plugin that reads local DeepSeek Harness billing data and presents token totals, trends, heatmaps, and model usage through charts and a statistics API.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的使用统计页面读取本地账单数据，并以统计卡片、热力图、趋势图和模型用量图展示 Token 消耗。",
+    "en": "Reads local DeepSeek Harness billing data and displays token consumption through summary cards, heatmaps, trend charts, and model usage visualizations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local usage data from ~/.dsh/storages/web-billing.json",
+      "Displays token consumption statistics and charts in a settings page",
+      "Provides a local GET /usage-stats/api endpoint for statistics JSON",
+      "Caches statistics data and invalidates it when the billing file changes or the day changes"
+    ],
+    "reasons": [
+      {
+        "code": "local-data-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-statistics-api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local usage data from ~/.dsh/storages/web-billing.json",
+      "Displays token consumption statistics and charts in a settings page",
+      "Provides a local GET /usage-stats/api endpoint for statistics JSON",
+      "Caches statistics data and invalidates it when the billing file changes or the day changes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:56:57.674Z",
+  "repositoryCommitSha": "3c41b1ba82e2617ffa0ee64f7171b074da95d94b",
+  "evidenceHash": "62c734f135412933d4d806368bbfb3bc3eea480fcf64cd77d14a8c1dd2a3e390",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dc21e0cae1e0df57d79c144276b9b735bdf29f954eb49ddc62ac4a8676921cd6",
+  "shadowMode": false
+}

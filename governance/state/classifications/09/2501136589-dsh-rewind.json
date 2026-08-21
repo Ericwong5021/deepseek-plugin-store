@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "file",
+    "chat",
+    "api",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH plugin for rolling back conversation context and associated workspace files by restoring snapshots and opening a forked session.",
+  "summaries": {
+    "zh": "用于将 DSH 会话回退到指定轮次，同时从内容寻址快照恢复相关工作区文件并创建新的分叉会话。",
+    "en": "A DSH plugin that rewinds a conversation to a selected turn, restores related workspace files from content-addressed snapshots, and creates a forked session."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates content-addressed workspace snapshots",
+      "Restores workspace files to a selected snapshot",
+      "Creates or forks DSH sessions",
+      "Archives the original session by default",
+      "Provides browser and command-based rewind controls"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_write_restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_creation_and_archival",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_snapshot_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Creates content-addressed workspace snapshots",
+      "Restores workspace files to a selected snapshot",
+      "Creates or forks DSH sessions",
+      "Archives the original session by default",
+      "Provides browser and command-based rewind controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:56:57.781Z",
+  "repositoryCommitSha": "3212cddd3001af0d023df4e1080a5efba32bc9ba",
+  "evidenceHash": "783f05bc97224884514f39cee309b97a08dbc67bdb895e1af50db23ccb333634",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c73d8c0a1a6fbf8a5fdec05414042b9b2be969197a202e9d7340c6242e3335fe",
+  "shadowMode": false
+}

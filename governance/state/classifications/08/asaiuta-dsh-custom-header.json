@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH transport-layer integration plugin that conditionally modifies allowlisted outbound LLM requests through header injection, fingerprint stripping, URL rewriting, and Anthropic body patching.",
+  "summaries": {
+    "zh": "通过 fetch 传输层按主机白名单修改外发大语言模型请求的请求头、URL 和 Anthropic 请求体。",
+    "en": "A fetch transport-layer plugin that conditionally modifies allowlisted outbound LLM request headers, URLs, and Anthropic request bodies."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Modifies outbound HTTP request headers",
+      "Rewrites allowlisted request URLs",
+      "Patches Anthropic Messages request bodies",
+      "Strips SDK fingerprint headers",
+      "Maintains per-conversation request session identifiers",
+      "Provides configurable client-identity header presets"
+    ],
+    "reasons": [
+      {
+        "code": "outbound_request_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "identity_header_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "url_and_body_rewriting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Modifies outbound HTTP request headers",
+      "Rewrites allowlisted request URLs",
+      "Patches Anthropic Messages request bodies",
+      "Strips SDK fingerprint headers",
+      "Maintains per-conversation request session identifiers",
+      "Provides configurable client-identity header presets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:58.204Z",
+  "repositoryCommitSha": "ba58f58140849782b9fd40fe7245e3851e06c40f",
+  "evidenceHash": "231ac59f8860d37a404d3523d61c66f288a898daa55c71d98764cae6efcf59e2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "123ae7813e41e4cc4f778bc34ec6a9477f0d42cd6025e7fd7c163de082a2d0d3",
+  "shadowMode": false
+}

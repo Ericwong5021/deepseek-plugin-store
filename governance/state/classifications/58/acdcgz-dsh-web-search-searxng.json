@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "integration",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A WebSearchProvider implementation that connects the DeepSeek Harness web seam to a configured SearXNG JSON API, aggregates search results, and optionally uses an API key.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的网页搜索能力连接到可配置的 SearXNG 实例，并返回规范化的聚合搜索结果。",
+    "en": "Connects the DeepSeek Harness web-search seam to a configured SearXNG instance and returns normalized aggregated search results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends web search queries to a configured SearXNG HTTP JSON API",
+      "Reads an optional API key from configured credentials or the process environment",
+      "Records the resolved search endpoint and query in an initiating Agent session without the API key",
+      "Maps and deduplicates returned search results into normalized web search results"
+    ],
+    "reasons": [
+      {
+        "code": "external_http_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "query_logging",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends web search queries to a configured SearXNG HTTP JSON API",
+      "Reads an optional API key from configured credentials or the process environment",
+      "Records the resolved search endpoint and query in an initiating Agent session without the API key",
+      "Maps and deduplicates returned search results into normalized web search results"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:57.587Z",
+  "repositoryCommitSha": "1b54a6249c2c21d4c5046fde3d779b028f4a53b3",
+  "evidenceHash": "3e7e6b1a65526ecf5eaf7e86a1f543ec0263cc93390b8fefe089ad2ec5790bb1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1eba636385818ac57b4f2427bdb1d7a3f546e8b39e323d0dc24f8ee9a52801f3",
+  "shadowMode": false
+}

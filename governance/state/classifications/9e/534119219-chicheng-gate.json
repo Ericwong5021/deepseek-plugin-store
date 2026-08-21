@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "integration",
+    "mobile",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a Web GUI gateway for enabling LAN or public access, managing frpc tunneling, enforcing a password gate, and adapting the interface for mobile devices; human review is warranted because it can expose a control panel with file, terminal, credential, and code-execution capabilities.",
+  "summaries": {
+    "zh": "为 DSH Web GUI 提供局域网与公网访问控制、frpc 内网穿透、面板密码验证及移动端界面适配。",
+    "en": "Provides DSH Web GUI access control for LAN and public tunneling, frpc management, panel password authentication, and mobile interface adaptation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Changes Web GUI network binding between localhost and all interfaces",
+      "Downloads, starts, stops, and configures frpc for tunneling to an external frps server",
+      "Adds password-based access control and reverse proxying for non-local access",
+      "Modifies Web GUI behavior and injects mobile-oriented CSS"
+    ],
+    "reasons": [
+      {
+        "code": "network-exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote-control-surface",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "binary-download-execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Changes Web GUI network binding between localhost and all interfaces",
+      "Downloads, starts, stops, and configures frpc for tunneling to an external frps server",
+      "Adds password-based access control and reverse proxying for non-local access",
+      "Modifies Web GUI behavior and injects mobile-oriented CSS"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:37.636Z",
+  "repositoryCommitSha": "cfee329acf7f886749469779259a6a9147a2b190",
+  "evidenceHash": "a5faf73e7e116588abad5beda886d194ee805d886b7e4661414c644f1714e382",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f115374822f032e152095fff1e0cfa0b60e488c814ec8b64f6e5883cde22622c",
+  "shadowMode": false
+}

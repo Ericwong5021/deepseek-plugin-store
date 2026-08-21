@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "api",
+    "automation",
+    "agent",
+    "ui",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a DSH settings interface for searching the GitHub plugin library and can install selected npm or GitHub plugins, including through model-callable tools; human review is warranted because it installs external code and modifies profile configuration.",
+  "summaries": {
+    "zh": "在 DSH 设置页搜索 GitHub 官方插件库、浏览插件详情，并通过 npm 或 GitHub 源安装选定插件。",
+    "en": "Searches and browses the official GitHub plugin library in DSH settings and installs selected plugins from npm or GitHub sources."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Queries GitHub Search API and falls back to scraping the GitHub dsh-plugin topic page",
+      "Displays searchable and paginated plugin listings in a DSH settings tab",
+      "Installs plugins from npm or GitHub sources by invoking pnpm",
+      "Modifies DSH profile plugin configuration for installed plugins",
+      "Registers model-callable tools for searching, installing, and listing installed plugins"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_code_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "profile_configuration_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_initiated_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Queries GitHub Search API and falls back to scraping the GitHub dsh-plugin topic page",
+      "Displays searchable and paginated plugin listings in a DSH settings tab",
+      "Installs plugins from npm or GitHub sources by invoking pnpm",
+      "Modifies DSH profile plugin configuration for installed plugins",
+      "Registers model-callable tools for searching, installing, and listing installed plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:19.605Z",
+  "repositoryCommitSha": "68bffd328a938088eb9c943690c342cc78d5d34d",
+  "evidenceHash": "1d5eb108a892234e13c86778b30468354145311565f179841813d37e67f3952e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a2a21d03869dfedb4a4c39a4ba9f09ec480b55cd5409045e2e0b311cde661613",
+  "shadowMode": false
+}
