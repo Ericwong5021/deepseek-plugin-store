@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "chat",
+    "context",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness plugin that recognizes pasted images through Zhipu GLM-4V, displays image attachments, and injects recognition results into conversation context; human review is warranted because it transmits images externally, stores API keys unencrypted, and can modify a local checkout.",
+  "summaries": {
+    "zh": "通过智谱 GLM-4V 识别粘贴到 DeepSeek Harness 中的图片，并将识别结果注入对话上下文。",
+    "en": "Recognizes images pasted into DeepSeek Harness with Zhipu GLM-4V and injects the results into the conversation context."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "forwards pasted images to the Zhipu GLM-4V API for recognition",
+      "stores API keys in an unencrypted local JSON file",
+      "injects recognition results into conversation context",
+      "automatically modifies a local dsh checkout to apply an attachment-authorization patch"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext_api_key_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_local_checkout_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "forwards pasted images to the Zhipu GLM-4V API for recognition",
+      "stores API keys in an unencrypted local JSON file",
+      "injects recognition results into conversation context",
+      "automatically modifies a local dsh checkout to apply an attachment-authorization patch"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:52.671Z",
+  "repositoryCommitSha": "a6af6d01bb63779666e3175ee42a3d2e033fc190",
+  "evidenceHash": "4b367287b244b99003a97be863039958cbcce1b8af975d87138ff05d44a66c68",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6fb07dd788fd8dec7d867ce04edbac839a52537e94468b1b75b5ccd67b3f69b7",
+  "shadowMode": false
+}

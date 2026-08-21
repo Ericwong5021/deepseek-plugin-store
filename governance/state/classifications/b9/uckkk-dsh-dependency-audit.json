@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "project-analysis",
+    "research"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a dependency auditing plugin that analyzes installed Node project dependencies for known vulnerabilities via OSV.dev and outdated versions via the npm registry.",
+  "summaries": {
+    "zh": "审计 Node 项目的已安装依赖，查询 OSV.dev 漏洞信息并对比 npm registry 检测过期版本及升级幅度。",
+    "en": "Audits installed Node project dependencies for known vulnerabilities through OSV.dev and outdated versions through the npm registry."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads installed dependency versions from a project",
+      "Queries OSV.dev for known vulnerabilities",
+      "Queries the npm registry for latest dependency versions",
+      "Reports vulnerability details, severity, fixes, and upgrade magnitude"
+    ],
+    "reasons": [
+      {
+        "code": "network-access-to-osv-and-npm",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-project-dependency-inspection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Reads installed dependency versions from a project",
+      "Queries OSV.dev for known vulnerabilities",
+      "Queries the npm registry for latest dependency versions",
+      "Reports vulnerability details, severity, fixes, and upgrade magnitude"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:58.062Z",
+  "repositoryCommitSha": "dd8d34601fb676bfba93010608196f9122151701",
+  "evidenceHash": "b84248ddb5377c5491730984afd9d1d1b7ad39f68e3c8f0f0cd1f507b06e66dc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aa52c78fdb6b8b16ea58fc04b30f444041dd3f76d0471850cb8d3becd5338c30",
+  "shadowMode": false
+}

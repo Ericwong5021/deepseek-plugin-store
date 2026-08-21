@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "file",
+    "automation",
+    "document",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A settings plugin for managing global and project agent rules, including editing AGENTS.md files and using an LLM to split rules into layered instruction and skill files before applying changes.",
+  "summaries": {
+    "zh": "用于在设置中编辑全局和项目 AGENTS.md 规则，并通过预览和备份将规则拆分为分层指令与技能文件。",
+    "en": "A settings plugin for editing global and project AGENTS.md rules and previewing, backing up, and applying LLM-generated layered instruction and skill files."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Read and edit the global ~/.dsh/AGENTS.md file",
+      "Read and edit AGENTS.md files in selected workspaces and subdirectories",
+      "List workspaces, models, and rule files",
+      "Invoke an LLM to split project rules into layered AGENTS.md and SKILL.md files",
+      "Preview generated changes and apply them with backups before overwriting"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_rule_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Read and edit the global ~/.dsh/AGENTS.md file",
+      "Read and edit AGENTS.md files in selected workspaces and subdirectories",
+      "List workspaces, models, and rule files",
+      "Invoke an LLM to split project rules into layered AGENTS.md and SKILL.md files",
+      "Preview generated changes and apply them with backups before overwriting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:07:02.286Z",
+  "repositoryCommitSha": "1ec0f30b76c90af8360a67a20c033486a73c061b",
+  "evidenceHash": "40b1089a337319e186a421c80d7b29e16c39879d37f92827c1f9ff8ae3407f8f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "39b820f312317e273fd01981471a8bf952016fd1abdd96cb923cd44402dfb9ea",
+  "shadowMode": false
+}

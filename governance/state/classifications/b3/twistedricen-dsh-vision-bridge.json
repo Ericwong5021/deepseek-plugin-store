@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH integration that forwards image attachments to a configured vision model, validates the returned Evidence, and supplies it to a text-only reasoning model.",
+  "summaries": {
+    "zh": "通过配置的视觉模型分析图片附件，将经过验证的结构化证据传递给文本推理模型。",
+    "en": "Bridges image attachments to a configured vision model and passes validated structured evidence to a text-only reasoning model."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends image attachments to a configured image-capable vision model through a DSH route",
+      "Parses and validates vision-model output into structured Evidence",
+      "Injects validated Evidence into requests for a text-only downstream model",
+      "Caches validated Evidence in memory per session"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_data_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "downstream_request_transformation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Sends image attachments to a configured image-capable vision model through a DSH route",
+      "Parses and validates vision-model output into structured Evidence",
+      "Injects validated Evidence into requests for a text-only downstream model",
+      "Caches validated Evidence in memory per session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:31.394Z",
+  "repositoryCommitSha": "9aef429031dbe3f546e99f91b08fceb208f9bcb4",
+  "evidenceHash": "ef881d5121c08da96eb720b8a8b02259a949f6aaf79728120911ea2433284481",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0e653ad1975ea71fc4762689ebe3d82d4be77abaf37df67861227a83873e9897",
+  "shadowMode": false
+}

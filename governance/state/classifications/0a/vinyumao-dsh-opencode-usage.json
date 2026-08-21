@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "agent",
+    "ui",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Displays OpenCode Go rolling, weekly, and monthly quota usage with reset countdowns in the DSH web interface and provides an agent query tool backed by an external usage endpoint.",
+  "summaries": {
+    "zh": "在 DSH 网页界面中显示 OpenCode Go 的滚动、每周和每月用量及重置倒计时，并提供供智能体查询用量的工具。",
+    "en": "Displays OpenCode Go rolling, weekly, and monthly usage with reset countdowns in the DSH web interface and provides an agent tool for querying usage."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads an OpenCode Go API key from plugin configuration or the OPENCODE_GO_API_KEY environment variable",
+      "Calls the OpenCode Go usage endpoint to retrieve rolling, weekly, and monthly quota data",
+      "Displays usage percentages and reset countdowns in the DSH web interface",
+      "Exposes an opencode_go_usage agent tool for querying usage data",
+      "Stores a configured API key in a local plaintext configuration file"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_endpoint_undocumented",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads an OpenCode Go API key from plugin configuration or the OPENCODE_GO_API_KEY environment variable",
+      "Calls the OpenCode Go usage endpoint to retrieve rolling, weekly, and monthly quota data",
+      "Displays usage percentages and reset countdowns in the DSH web interface",
+      "Exposes an opencode_go_usage agent tool for querying usage data",
+      "Stores a configured API key in a local plaintext configuration file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:54.910Z",
+  "repositoryCommitSha": "191b1d32b0ec0d29a4305eae89a825faf0658bf0",
+  "evidenceHash": "a6a8a0b776523a0142b1884ffbfbb31751fe61638d65c5224a9457a302a8e00e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "098f6f6b7ded3b03718148686fa2d1519bd85298db56ef7f2a4d0b52bf1f79cc",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "browser",
+    "ui",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides mobile browser access to a desktop DSH Web UI over a local network with password-gated sessions and real-time synchronization, but the README documents a public default password, HTTP credential transmission, and potentially unauthenticated API endpoints.",
+  "summaries": {
+    "zh": "通过局域网让手机或平板以密码访问 DSH Web UI，并与电脑端实时同步会话及输入输出。",
+    "en": "Enables password-based access to the DSH Web UI from phones or tablets on a local network with real-time session and input/output synchronization."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes a web UI to devices on the local network",
+      "Authenticates browser sessions with a configured password and cookie token",
+      "Enables real-time synchronization between mobile clients and the desktop web UI",
+      "May leave API endpoints callable without authentication according to the README",
+      "Transmits the access password over HTTP when used as documented"
+    ],
+    "reasons": [
+      {
+        "code": "network-exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "default-public-credential",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated-api-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext-credential-transport",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes a web UI to devices on the local network",
+      "Authenticates browser sessions with a configured password and cookie token",
+      "Enables real-time synchronization between mobile clients and the desktop web UI",
+      "May leave API endpoints callable without authentication according to the README",
+      "Transmits the access password over HTTP when used as documented"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:07:12.606Z",
+  "repositoryCommitSha": "bef815b1d0f2d83751a7b5bb0c1ff41f23a430f2",
+  "evidenceHash": "15b53b89896bdeaa31ed43184040f40068f8e7877b65eb9ce86164bc302ca9bf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1976f0f440ff27a4945a32c219f28fc7b9e666217535acf266fead6173d76ae1",
+  "shadowMode": false
+}

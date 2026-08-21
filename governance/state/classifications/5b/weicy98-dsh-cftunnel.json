@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "integration",
+    "terminal",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A web-profile plugin that provisions cloudflared, manages Cloudflare Tunnel connectivity, and exposes the local DSH web GUI through configurable public access controls.",
+  "summaries": {
+    "zh": "通过配置 Cloudflare Tunnel、下载并管理 cloudflared，将本地 DSH 网页界面发布到可访问的公网地址。",
+    "en": "Configures and manages a Cloudflare Tunnel, provisioning cloudflared as needed to publish the local DSH web interface at an accessible public URL."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Downloads and caches the cloudflared executable from GitHub or a configured mirror",
+      "Starts and manages a Cloudflare Tunnel subprocess",
+      "Exposes the local web GUI through a public tunnel",
+      "Calls Cloudflare APIs to create tunnels, ingress, DNS records, and optional Access policies",
+      "Stores Cloudflare and proxy tokens in the host credential store",
+      "Provides an access-token and optional email OTP gate for remote requests"
+    ],
+    "reasons": [
+      {
+        "code": "public_local_service_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_and_secret_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executable_download_and_subprocess",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged_remote_gui_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Downloads and caches the cloudflared executable from GitHub or a configured mirror",
+      "Starts and manages a Cloudflare Tunnel subprocess",
+      "Exposes the local web GUI through a public tunnel",
+      "Calls Cloudflare APIs to create tunnels, ingress, DNS records, and optional Access policies",
+      "Stores Cloudflare and proxy tokens in the host credential store",
+      "Provides an access-token and optional email OTP gate for remote requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:33.395Z",
+  "repositoryCommitSha": "d490f1cc38eacc53a603a49c5cd5daf516ce5ab9",
+  "evidenceHash": "7e04ca820dfd2d6df8116fa1f8518552b48d57d7a87b05450922190a1cbe6ffd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a8ced5ebd761424fd4276e1d55080d7c7644415e32424cb43f52daaec3e5e44",
+  "shadowMode": false
+}

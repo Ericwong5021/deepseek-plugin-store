@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "chat",
+    "api",
+    "integration",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH chat plugin for displaying uploaded images and obtaining visual descriptions through configurable cloud or local multimodal models.",
+  "summaries": {
+    "zh": "在 DSH 聊天界面中显示用户上传的图片，并通过云端或本地视觉模型进行图像解读。",
+    "en": "Displays user-uploaded images in the DSH chat interface and analyzes them with configurable cloud or local vision models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "renders uploaded PNG, JPEG, WebP, and GIF images in the chat interface",
+      "stores uploaded images as session attachments",
+      "analyzes session attachments or local image files through a visual_review tool",
+      "can send image data to a configured OpenAI-compatible multimodal API",
+      "can run a local Python worker with a Qwen3-VL model for image analysis",
+      "reads and updates cloud endpoint, API key, and model configuration"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "renders uploaded PNG, JPEG, WebP, and GIF images in the chat interface",
+      "stores uploaded images as session attachments",
+      "analyzes session attachments or local image files through a visual_review tool",
+      "can send image data to a configured OpenAI-compatible multimodal API",
+      "can run a local Python worker with a Qwen3-VL model for image analysis",
+      "reads and updates cloud endpoint, API key, and model configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:13.092Z",
+  "repositoryCommitSha": "0e2a4a6c2cbee9667b544e57f0232b2cc7ddcc21",
+  "evidenceHash": "e9b1e9239efe30ec06864d316e9513d849ea48ba936772bc51cd86df3423c9f8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "769372bf34657d9e762f801b4f1e3d5e4005f992837d2405a84680f830619b11",
+  "shadowMode": false
+}

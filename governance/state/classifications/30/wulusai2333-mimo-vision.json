@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "agent",
+    "tool",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that registers describe_image to read supported image files, optionally transcode them, and obtain text descriptions from a remote multimodal model.",
+  "summaries": {
+    "zh": "通过远程多模态模型分析图片并返回文字描述的 DSH 视觉工具插件。",
+    "en": "A DSH vision tool plugin that analyzes image files with a remote multimodal model and returns text descriptions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads image files through the DSH filesystem capability",
+      "Sends image data as base64 to configured external multimodal model endpoints",
+      "Resolves API credentials for authorization",
+      "Optionally invokes ImageMagick through a subprocess capability and uses system temporary files for format conversion",
+      "May fall back from a free route to a paid model route"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_and_temp_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "paid_route_fallback",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Reads image files through the DSH filesystem capability",
+      "Sends image data as base64 to configured external multimodal model endpoints",
+      "Resolves API credentials for authorization",
+      "Optionally invokes ImageMagick through a subprocess capability and uses system temporary files for format conversion",
+      "May fall back from a free route to a paid model route"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:06:52.523Z",
+  "repositoryCommitSha": "9a6bacab4119158f1dbe4c24e70f14fb8b15fbec",
+  "evidenceHash": "daa2a0da71d24a1bcffa53ef9efa46fb8a09a2940dbd38961ac1aa6af5aa2508",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "36d18635e862b7c913b2bc15037e8c2baaeedb3b23eaf1f858129411d35073ed",
+  "shadowMode": false
+}

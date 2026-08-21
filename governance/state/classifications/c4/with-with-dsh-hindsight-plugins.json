@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "api",
+    "automation",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH settings plugin for configuring Hindsight external memory, managing service routes, controlling session synchronization, and installing the official adapter, so memory-context is the primary user-facing purpose.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中配置 Hindsight 外部记忆服务、管理路由与会话同步，并检测或安装官方适配器。",
+    "en": "A DeepSeek Harness plugin for configuring Hindsight external memory, managing service routes and session synchronization, and detecting or installing the official adapter."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Manages Hindsight memory service routing and session-retention settings",
+      "Tests configured service endpoints over HTTP",
+      "Automatically runs the official Hindsight DSH adapter installer via npx",
+      "Writes and backs up DSH configuration files",
+      "Audits and removes duplicate plugin registration entries when requested"
+    ],
+    "reasons": [
+      {
+        "code": "executes_external_installer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_local_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "performs_network_requests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Manages Hindsight memory service routing and session-retention settings",
+      "Tests configured service endpoints over HTTP",
+      "Automatically runs the official Hindsight DSH adapter installer via npx",
+      "Writes and backs up DSH configuration files",
+      "Audits and removes duplicate plugin registration entries when requested"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:06:17.957Z",
+  "repositoryCommitSha": "e7dec462a7d21dd638b7837f1542b6d25dfbd83d",
+  "evidenceHash": "b58514bdab8a4be5d6b8e5419a91b0f938f54c4d27488a652ee761480726f0d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "47747d8a5290534f87d356ec0ca58ecdb0e28eec2747c03ec7fc51c94466226f",
+  "shadowMode": false
+}

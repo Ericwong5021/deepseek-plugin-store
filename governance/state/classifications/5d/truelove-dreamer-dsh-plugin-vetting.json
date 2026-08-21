@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "tool",
+    "file",
+    "monitoring",
+    "cli",
+    "testing"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A plugin analysis tool that statically vets installed third-party DSH plugins, reports suspicious patterns and coverage, and offers optional hash-baseline, subprocess logging, and tool-call gating features.",
+  "summaries": {
+    "zh": "对已安装的第三方 DSH 插件进行启发式静态扫描，报告可疑模式、依赖与运行时表面，并提供可选的哈希基线、子进程日志和工具调用门禁。",
+    "en": "Heuristically scans installed third-party DSH plugins to report suspicious patterns, dependencies, and runtime surfaces, with optional hash baselines, subprocess logging, and tool-call gating."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads installed third-party plugin source files and package metadata",
+      "Performs heuristic static pattern scans for suspicious behaviors",
+      "Counts runtime-related API occurrences and reports scan coverage",
+      "Reads and writes an optional content-hash baseline for official packages",
+      "Optionally logs suspicious harness subprocess commands",
+      "Optionally denies calls to unvetted plugin-provided tools when explicitly configured"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_read_analysis",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "baseline_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_tool_call_gate",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_subprocess_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Reads installed third-party plugin source files and package metadata",
+      "Performs heuristic static pattern scans for suspicious behaviors",
+      "Counts runtime-related API occurrences and reports scan coverage",
+      "Reads and writes an optional content-hash baseline for official packages",
+      "Optionally logs suspicious harness subprocess commands",
+      "Optionally denies calls to unvetted plugin-provided tools when explicitly configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:10.891Z",
+  "repositoryCommitSha": "aa92e5aa71574cbd760f5b61bda40163f64de591",
+  "evidenceHash": "dd3dc745fc915af1e7bc619e283235433e3309bf41650f8698f4af29f3137fc5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "52ccd30524be378981f55ffb20707c1e5206c919ac3308e44c34e3a530daddab",
+  "shadowMode": false
+}

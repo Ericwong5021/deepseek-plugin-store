@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "data",
+    "ui",
+    "tool",
+    "agent",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web weather utility that displays current conditions and a three-day forecast, supports city search and IP-based approximate location, and exposes weather lookup to the model.",
+  "summaries": {
+    "zh": "在网页界面中提供可拖拽的天气卡片、城市搜索、当前天气与三日预报，并支持模型调用天气查询工具。",
+    "en": "Provides a draggable web weather card with city search, current conditions, a three-day forecast, and a model-callable weather lookup tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches weather forecasts from Open-Meteo",
+      "Resolves approximate city location through third-party IP geolocation services",
+      "Provides a searchable draggable weather card in the web interface",
+      "Exposes a model-callable weather tool"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ip_geolocation_disclosure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetches weather forecasts from Open-Meteo",
+      "Resolves approximate city location through third-party IP geolocation services",
+      "Provides a searchable draggable weather card in the web interface",
+      "Exposes a model-callable weather tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:07:15.035Z",
+  "repositoryCommitSha": "02104add3381cf14ece56b0086dc2569245c2823",
+  "evidenceHash": "ddbd426a3af7c1c39daf80fb7d32dd82d3ee3e3410b3f639a1f0ddb3ec493f27",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e89249c393dbb50eed43f2be461087dd31243a123131cdfdf3bd93d717c167ea",
+  "shadowMode": false
+}

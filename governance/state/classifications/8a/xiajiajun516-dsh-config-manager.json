@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "file",
+    "data",
+    "automation",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH configuration management utility for backing up, restoring, migrating, synchronizing, and selectively installing complete workspace configurations.",
+  "summaries": {
+    "zh": "用于备份、恢复、迁移和同步 DeepSeek Harness 设置、插件、MCP 服务、技能及工作区配置的配置管理插件。",
+    "en": "A configuration management plugin for backing up, restoring, migrating, and synchronizing DeepSeek Harness settings, plugins, MCP servers, skills, and workspaces."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads and packages DSH settings, plugins, MCP servers, skills, profiles, agent presets, and workspace configuration",
+      "Writes imported configuration and can restore or roll back DSH state",
+      "Creates ZIP backups and optionally encrypts backup contents",
+      "Synchronizes configuration through Git repositories or WebDAV",
+      "Installs plugins and other configuration components during approved imports",
+      "Connects to GitHub for marketplace listing management"
+    ],
+    "reasons": [
+      {
+        "code": "config_write_and_restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_sync_and_external_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_encrypted_backup_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and packages DSH settings, plugins, MCP servers, skills, profiles, agent presets, and workspace configuration",
+      "Writes imported configuration and can restore or roll back DSH state",
+      "Creates ZIP backups and optionally encrypts backup contents",
+      "Synchronizes configuration through Git repositories or WebDAV",
+      "Installs plugins and other configuration components during approved imports",
+      "Connects to GitHub for marketplace listing management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:07:37.605Z",
+  "repositoryCommitSha": "cbac337c64e269edb3ac9a828016338af29fa663",
+  "evidenceHash": "09e90646dacf4b85cd52e1a2a8204298741391637661c0943214bc676a7b6d0a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e0d629ff8806cf4a72da2c77b7fab090929abd285294fbe2e1ae081c11e16816",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "integration",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README identifies this as a Cordis authentication gateway for remote DeepSeek Harness Web access, combining password/TOTP login, request interception, session management, rate limiting, and audit logging; human review is appropriate because it handles credentials and mediates network access.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web 提供密码与可选 TOTP 双因素认证、请求拦截、会话管理和登录审计的远程访问网关插件。",
+    "en": "An authentication gateway plugin for DeepSeek Harness Web that provides password and optional TOTP two-factor login, request interception, session management, and login auditing."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides password authentication and optional TOTP two-factor authentication",
+      "Intercepts and proxies HTTP and WebSocket requests",
+      "Manages login sessions and revocation",
+      "Stores authentication data and encrypted OTP secrets on disk",
+      "Writes persistent login audit logs including source IPs and failure reasons",
+      "Applies authentication-attempt rate limits and lockouts"
+    ],
+    "reasons": [
+      {
+        "code": "network_request_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_secret_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_audit_logging",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides password authentication and optional TOTP two-factor authentication",
+      "Intercepts and proxies HTTP and WebSocket requests",
+      "Manages login sessions and revocation",
+      "Stores authentication data and encrypted OTP secrets on disk",
+      "Writes persistent login audit logs including source IPs and failure reasons",
+      "Applies authentication-attempt rate limits and lockouts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:07:16.982Z",
+  "repositoryCommitSha": "c406fd4868d03cd0565d60e6d4ff71bc90f7b999",
+  "evidenceHash": "d49c0430170f3f9eb1dc482c6a8b7c821c04eadf7eeeb672e4d19b9c67d88a5c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87de8785d1dba18cf8b640ace3ee9012b694683080ea56974b8f1cbfe3fc8e4c",
+  "shadowMode": false
+}

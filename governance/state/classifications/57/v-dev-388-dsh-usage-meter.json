@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "插件在设置页提供本机会话 Token 用量仪表盘，按服务商、模型和时间范围汇总并可视化统计数据；README 明确说明其读取会话数据、写入本地存储且不联网。",
+  "summaries": {
+    "zh": "在设置页查看按服务商、模型和时间范围汇总的本机会话 Token 用量及趋势。",
+    "en": "View local session token usage summaries and trends by provider, model, and time range in the settings page."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取本机会话事件及历史会话数据",
+      "按服务商和模型聚合并统计 Token 用量",
+      "将聚合数据写入本地 usage-meter.json",
+      "提供本地 HTTP 查询接口",
+      "在设置页展示时间趋势和汇总图表"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "读取本机会话事件及历史会话数据",
+      "按服务商和模型聚合并统计 Token 用量",
+      "将聚合数据写入本地 usage-meter.json",
+      "提供本地 HTTP 查询接口",
+      "在设置页展示时间趋势和汇总图表"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:29.909Z",
+  "repositoryCommitSha": "c552367069c45c8619e27780999d6e5cea394b5f",
+  "evidenceHash": "c9afe0f54f9b6553aca0156b43f65cd4b1bde2af238494d0c5c6246a63519b1e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "26710880c5a24418da45821f560e6badaa2e41feaef62c88c72a475608b5756e",
+  "shadowMode": false
+}

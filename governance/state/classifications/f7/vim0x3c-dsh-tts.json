@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "notification",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A dsh web text-to-speech plugin that reads final assistant replies and approval prompts aloud using Edge TTS or browser speech synthesis, with configurable voices, playback controls, and notification sounds.",
+  "summaries": {
+    "zh": "为 dsh web 将助手最终答复和审批提示转换为语音播放，并提供音色、语速、自动朗读及提示音设置。",
+    "en": "A dsh web text-to-speech plugin that reads final assistant replies and approval prompts aloud with configurable voices, speed, autoplay, and notification sounds."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads final assistant replies from the current dsh web session for speech playback",
+      "Requests speech synthesis from Microsoft Edge TTS over the network",
+      "Runs a localhost HTTP bridge for speech synthesis requests",
+      "Plays generated audio in the browser and can fall back to browser speech synthesis",
+      "Stores plugin settings in browser localStorage",
+      "Reads approval prompts and plays configurable notification sounds"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "localhost_http_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_audio_and_local_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads final assistant replies from the current dsh web session for speech playback",
+      "Requests speech synthesis from Microsoft Edge TTS over the network",
+      "Runs a localhost HTTP bridge for speech synthesis requests",
+      "Plays generated audio in the browser and can fall back to browser speech synthesis",
+      "Stores plugin settings in browser localStorage",
+      "Reads approval prompts and plays configurable notification sounds"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:55.933Z",
+  "repositoryCommitSha": "4ac3538ee5fef4c4be1eaf5465906979e5afe78f",
+  "evidenceHash": "a80a2e779372781fc66779c391bb2c0ca4200684dd986be161467a0b1f1738eb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "db0c5cddf13eff9dbd1d47895797f88068b7bcda6ba17f92ea5d3b07bcb5ff7e",
+  "shadowMode": false
+}

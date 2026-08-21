@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "chat",
+    "context",
+    "memory",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides runtime session context utilities: /btw asks one-off questions through a tool-disabled forked subagent, while /remember records, injects, manages, and persists session notes.",
+  "summaries": {
+    "zh": "通过 /btw 进行不打断主对话的侧边提问，并通过 /remember 管理会话备忘与持久化记录。",
+    "en": "Adds /btw for non-disruptive side questions and /remember for managing and persisting session notes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers /btw and /remember slash commands",
+      "Forks a single-turn subagent with tools disabled for side questions",
+      "Injects session notes into subsequent model requests",
+      "Persists session notes in a local JSON file"
+    ],
+    "reasons": [
+      {
+        "code": "subagent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Registers /btw and /remember slash commands",
+      "Forks a single-turn subagent with tools disabled for side questions",
+      "Injects session notes into subsequent model requests",
+      "Persists session notes in a local JSON file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:48.682Z",
+  "repositoryCommitSha": "04a6e329039629cafc037ce3ee7d9c66d18eb54c",
+  "evidenceHash": "3cccaa5074c2b168b2bcda26381e09608af7b0814c6dbe39fc349b660b628da4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "787628d35970563e18ea7cb9670cad66e4d93b167e5fc46407e6a41679e98d56",
+  "shadowMode": false
+}

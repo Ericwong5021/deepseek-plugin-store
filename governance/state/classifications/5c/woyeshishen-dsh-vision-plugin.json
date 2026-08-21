@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "file",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides image understanding for DeepSeek Harness by routing specified image files to a configured external vision model and returning text descriptions through the describe_image tool.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供图像理解功能，通过配置的外部视觉模型将指定图片转换为文字描述。",
+    "en": "Adds image understanding to DeepSeek Harness by sending specified images to a configured external vision model and returning text descriptions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads supported image files from a specified path",
+      "Sends image content and an optional prompt to a configured OpenAI-compatible external vision model",
+      "Returns a plain-text image description to the main model",
+      "Provides a settings interface for configuring the external endpoint, API key, and model"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads supported image files from a specified path",
+      "Sends image content and an optional prompt to a configured OpenAI-compatible external vision model",
+      "Returns a plain-text image description to the main model",
+      "Provides a settings interface for configuring the external endpoint, API key, and model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:06:36.409Z",
+  "repositoryCommitSha": "f001cdb874b2e3e99673fd1413969353d1c0cbe3",
+  "evidenceHash": "69c453f3636f07d3529227f1f9bcc87226faf92a305c8847e5ad89e2737417f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b484959f5a2e3a3bb558e908f1ab5d12fdfbf1c9dc02229366cecfb6da0dbdc7",
+  "shadowMode": false
+}
