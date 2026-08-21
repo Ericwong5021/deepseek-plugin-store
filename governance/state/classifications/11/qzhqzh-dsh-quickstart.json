@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "cli",
+    "desktop",
+    "browser",
+    "automation",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A cross-platform CLI and desktop shortcut launcher for starting DeepSeek Harness, waiting for its local web interface, opening it in the browser, and optionally restarting it in watchdog mode.",
+  "summaries": {
+    "zh": "用于通过命令行或桌面快捷方式启动 DeepSeek Harness，等待本地网页界面就绪并自动打开浏览器。",
+    "en": "A CLI and desktop shortcut launcher that starts DeepSeek Harness, waits for its local web interface, and opens it in the browser."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "spawns the DeepSeek Harness web process",
+      "polls a local HTTP port for readiness",
+      "opens the default browser to the local web interface",
+      "creates desktop or application-menu shortcuts",
+      "optionally restarts the process in watchdog mode"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_network_polling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shortcut_creation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_process_restart",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "spawns the DeepSeek Harness web process",
+      "polls a local HTTP port for readiness",
+      "opens the default browser to the local web interface",
+      "creates desktop or application-menu shortcuts",
+      "optionally restarts the process in watchdog mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:12.640Z",
+  "repositoryCommitSha": "18e16707cc0d231763a6cc7b57cbe7d6b22a0dac",
+  "evidenceHash": "31b70118e2a523889295681743ede4e0e0a1a9bb648295cf29c9d97c9f572a7b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35410192de2aee6e7b878878520f8a8db8f723e61e78b35966dd8261ef5aace6",
+  "shadowMode": false
+}

@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "browser",
+    "cli",
+    "desktop",
+    "file",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Community Docker, Compose, and Helm packaging for running the DeepSeek Harness AI agent runtime through a local Web UI or headless CLI, with persistent state, workspace tools, and an optional embedded Chromium desktop.",
+  "summaries": {
+    "zh": "通过 Docker、Compose 或 Helm 运行 DeepSeek Harness，提供本地 Web UI、无头 CLI、持久化状态、工作区工具和可选的内嵌 Chromium 浏览器桌面。",
+    "en": "Run DeepSeek Harness with Docker, Compose, or Helm, providing a local Web UI, headless CLI, persistent state, workspace tools, and an optional embedded Chromium desktop."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs an AI agent runtime in Docker or Kubernetes",
+      "Provides Web UI and headless CLI interfaces",
+      "Executes shell, PTY, and file tools in a mounted workspace",
+      "Persists sessions, settings, credentials, and workspace-related state",
+      "Runs Chromium with an embedded noVNC desktop and browser agent tool",
+      "Accepts provider credentials through environment variables, secrets, or Web settings"
+    ],
+    "reasons": [
+      {
+        "code": "code-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace-write-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser-and-network-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs an AI agent runtime in Docker or Kubernetes",
+      "Provides Web UI and headless CLI interfaces",
+      "Executes shell, PTY, and file tools in a mounted workspace",
+      "Persists sessions, settings, credentials, and workspace-related state",
+      "Runs Chromium with an embedded noVNC desktop and browser agent tool",
+      "Accepts provider credentials through environment variables, secrets, or Web settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:49.989Z",
+  "repositoryCommitSha": "77cf78a699cfe9c048b5536bc9a006e1eb9f29af",
+  "evidenceHash": "9e4b9b5c714a3092335bc286f172f7c987df089e23a03a7e517f0263b781ff34",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1e0f0254fb6ebb3a38c82da711ace0b7784b05b501ea6298a586099fd2a182c7",
+  "shadowMode": false
+}

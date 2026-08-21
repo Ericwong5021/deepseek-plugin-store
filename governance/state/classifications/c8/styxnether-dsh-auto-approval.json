@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "terminal",
+    "file",
+    "api",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is automating approval decisions for selected harmless commands and operations targeting configured trusted areas, while deferring other requests to the user.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 添加可配置的自动审批权限层，自动批准符合规则的命令及可信区域内的文件操作，并将其他请求交由用户处理。",
+    "en": "Adds a configurable auto-approval permission tier to DeepSeek Harness that approves eligible commands and file operations in trusted areas while deferring other requests to the user."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatically approves selected shell commands",
+      "Automatically approves filesystem writes and edits within configured trusted areas",
+      "Adds and switches a permission preset for DeepSeek Harness sessions",
+      "Provides a configuration HTTP API for plugin settings",
+      "Records auto-approval decisions in the session log"
+    ],
+    "reasons": [
+      {
+        "code": "command-execution-approval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-write-approval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "permission-policy-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration-api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Automatically approves selected shell commands",
+      "Automatically approves filesystem writes and edits within configured trusted areas",
+      "Adds and switches a permission preset for DeepSeek Harness sessions",
+      "Provides a configuration HTTP API for plugin settings",
+      "Records auto-approval decisions in the session log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:57.657Z",
+  "repositoryCommitSha": "f3b83b319b37dbbef47d814e23bb48a78d75dd33",
+  "evidenceHash": "9aa43f3a3cc6ac5b2017e8941f89dd294db87a6a4a4c3b680dfdccd9d73c6532",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "362287ff1ee328db7e57af085dd923d893b49d43b8882723687e061de2b09792",
+  "shadowMode": false
+}

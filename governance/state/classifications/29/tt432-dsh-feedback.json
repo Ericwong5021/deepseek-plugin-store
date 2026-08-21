@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "data",
+    "file",
+    "ui",
+    "api",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-context feedback mechanism that persists process feedback in work/feedback.json, exposes model tools for managing entries, and provides a web panel for viewing and editing them.",
+  "summaries": {
+    "zh": "跨上下文反馈插件，将工作过程中的问题持久化到工作区，并通过模型工具和 Web 面板进行查看、编辑与删除。",
+    "en": "A cross-context feedback plugin that persists process feedback in the workspace and supports viewing, editing, and deleting entries through model tools and a web panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "persists feedback records in the workspace",
+      "provides add/list/update/delete tools",
+      "serves HTTP endpoints for feedback operations",
+      "renders a web feedback panel",
+      "registers a runtime skill"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_api_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_interface_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "persists feedback records in the workspace",
+      "provides add/list/update/delete tools",
+      "serves HTTP endpoints for feedback operations",
+      "renders a web feedback panel",
+      "registers a runtime skill"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:55.607Z",
+  "repositoryCommitSha": "ccf14d5a96c186dcd1752056bdb9699b57dc8ed2",
+  "evidenceHash": "6626a6f6261e029659cc12a4c3dfd0b352a102a49ea49481f48552cf5ea85af7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7a3718c3f3964727d9d5266484f9620c7a34c07843c62322e7fffc4d71c437e6",
+  "shadowMode": false
+}

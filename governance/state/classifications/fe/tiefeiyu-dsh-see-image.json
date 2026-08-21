@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Registers a see_image tool that reads image files and returns model-generated descriptions through configurable OpenAI-compatible vision backends.",
+  "summaries": {
+    "zh": "通过可配置的 OpenAI 兼容视觉模型读取图像文件并返回文字描述的 DeepSeek Harness 工具插件。",
+    "en": "A DeepSeek Harness tool plugin that reads image files and returns text descriptions through configurable OpenAI-compatible vision models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads image files through the host file service",
+      "Base64-encodes image data and sends it to a configured OpenAI-compatible vision endpoint",
+      "Uses configured API credentials or GitHub Copilot OAuth tokens for remote requests",
+      "Writes refreshed Copilot credentials to local DSH credential files"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access_and_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads image files through the host file service",
+      "Base64-encodes image data and sends it to a configured OpenAI-compatible vision endpoint",
+      "Uses configured API credentials or GitHub Copilot OAuth tokens for remote requests",
+      "Writes refreshed Copilot credentials to local DSH credential files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:28.933Z",
+  "repositoryCommitSha": "2282bb586442938e5ad6dd541a6e63b67502f236",
+  "evidenceHash": "71187194b2c0b22000bda26cbe46569c8664947ef80c6e6a25b9658be681ffda",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ab6ffaafac5239376b1be2a0676732482055304c62eea1c824b918515732659a",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "monitoring",
+    "agent",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "README明确说明该插件监听 DSH 会话状态并通过 Windows 系统通知提醒任务完成、审批请求和用户提问，主要用途属于通知与监控。",
+  "summaries": {
+    "zh": "在 Windows 上监听 DeepSeek Harness 会话事件，并通过桌面通知提醒任务完成、审批请求或等待回答。",
+    "en": "Monitors DeepSeek Harness session events on Windows and sends desktop notifications for completed tasks, approval requests, or pending questions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "监听 DSH 会话完成、错误、审批和提问事件",
+      "发送 Windows 桌面 Toast 通知",
+      "可选写入本地日志和调试事件",
+      "通知点击后打开或聚焦 DSH Web GUI",
+      "在当前用户范围注册通知标识和协议处理器"
+    ],
+    "reasons": [
+      {
+        "code": "local-desktop-notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "event-monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user-scope-registration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser-navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "监听 DSH 会话完成、错误、审批和提问事件",
+      "发送 Windows 桌面 Toast 通知",
+      "可选写入本地日志和调试事件",
+      "通知点击后打开或聚焦 DSH Web GUI",
+      "在当前用户范围注册通知标识和协议处理器"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:11.682Z",
+  "repositoryCommitSha": "b18733a70db4e56395c4ff97d6521f29a5026607",
+  "evidenceHash": "5fee1732ee9a0152a1ef8e7f0156704b33fcc62089d85568984fd928108fc754",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2e49c5d0a5492d89afc2a743dd660da3977af372f3fdf717ddf2cc91e2b53e90",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "mcp",
+    "api",
+    "cli",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Provides a Node.js bridge that adapts Streamable HTTP MCP to stdio clients and exposes a connected Chrome MCP service for browser automation, interaction, extraction, and browser data operations.",
+  "summaries": {
+    "zh": "通过 Node.js 将 Streamable HTTP MCP 服务桥接为 stdio 接口，供 AI 客户端调用 Chrome 浏览器自动化工具。",
+    "en": "A Node.js bridge that exposes Streamable HTTP MCP browser automation services to AI clients through a stdio interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Bridges Streamable HTTP MCP services to stdio MCP clients",
+      "Maintains and persists MCP session identifiers in temporary files",
+      "Invokes configured Chrome browser automation tools",
+      "Can navigate pages, interact with elements, extract page data, capture screenshots, monitor network requests, execute page JavaScript, and access browser history, bookmarks, and cookies through the connected MCP service"
+    ],
+    "reasons": [
+      {
+        "code": "browser_control_and_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_and_script_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_state_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Bridges Streamable HTTP MCP services to stdio MCP clients",
+      "Maintains and persists MCP session identifiers in temporary files",
+      "Invokes configured Chrome browser automation tools",
+      "Can navigate pages, interact with elements, extract page data, capture screenshots, monitor network requests, execute page JavaScript, and access browser history, bookmarks, and cookies through the connected MCP service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:46:42.875Z",
+  "repositoryCommitSha": "16f6b16f3ea86fea8ea133f29d9e7eee27ab512d",
+  "evidenceHash": "e74cb758c80407a7cf2676c87f2b4f757fad5097102698116bebf256cd361b3b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fa8e5878bef61741ab44b75feb1d2d82c6bb02868102ad6e18f8426ac3036fb6",
+  "shadowMode": false
+}

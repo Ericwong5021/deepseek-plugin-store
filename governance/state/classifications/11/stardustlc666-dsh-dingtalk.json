@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "notification",
+    "integration",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a plugin that provides two agent tools for one-way Markdown and plain-text notifications to DingTalk groups through a configured webhook.",
+  "summaries": {
+    "zh": "通过钉钉自定义机器人 Webhook 向群聊发送 Markdown 或纯文本通知。",
+    "en": "Sends Markdown or plain-text notifications to DingTalk groups through a configured custom-robot webhook."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends Markdown or plain-text messages to a configured DingTalk group via webhook",
+      "Uses an optional HMAC-SHA256 signature for DingTalk webhook requests",
+      "Reads webhook and optional signing-secret configuration or environment variable"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "webhook_secret_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends Markdown or plain-text messages to a configured DingTalk group via webhook",
+      "Uses an optional HMAC-SHA256 signature for DingTalk webhook requests",
+      "Reads webhook and optional signing-secret configuration or environment variable"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:46.339Z",
+  "repositoryCommitSha": "26cd245e4bb3730d50fc3bee06a04a9200a9f953",
+  "evidenceHash": "d056cb80ed857103b03f5ce1b5163ea240abb5963ea472b7ff834cb9b743f4bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1cddd15bc9c0c70dbd499a3f6bdbcd6bcb19d80c4309107b38e2a9f104396b5f",
+  "shadowMode": false
+}

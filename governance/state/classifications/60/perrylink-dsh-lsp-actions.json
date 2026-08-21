@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "api",
+    "code-generation",
+    "debugging",
+    "integration",
+    "testing",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A language-server integration that provides code diagnostics, editor assistance, formatting, code actions, and workspace-wide rename operations through tools and a JSON-RPC editor protocol.",
+  "summaries": {
+    "zh": "通过语言服务器为智能体和编辑器提供代码诊断、补全、格式化、代码操作、符号信息及跨工作区重命名功能。",
+    "en": "Provides language-server-powered diagnostics, completion, formatting, code actions, symbol information, and workspace-wide renaming for agents and editors."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads workspace files for language-server operations",
+      "Spawns configured local language-server subprocesses",
+      "Provides diagnostics, completion, symbols, signature help, and inlay hints",
+      "Formats files and applies server-provided code actions",
+      "Renames symbols across workspace files",
+      "Exposes editor actions and events over newline-delimited JSON-RPC"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "json-rpc-editor-api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads workspace files for language-server operations",
+      "Spawns configured local language-server subprocesses",
+      "Provides diagnostics, completion, symbols, signature help, and inlay hints",
+      "Formats files and applies server-provided code actions",
+      "Renames symbols across workspace files",
+      "Exposes editor actions and events over newline-delimited JSON-RPC"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:46:42.964Z",
+  "repositoryCommitSha": "be2a29cf826830e77934fea61ec929c10224f601",
+  "evidenceHash": "9c6cc2636776a622fc29ac3aee9b4b0482d47142b638d5b713256085afbc6fef",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "60f07dadfb6a78b583836e5a61181383d7045000826e4b763ff5e20f038235e2",
+  "shadowMode": false
+}

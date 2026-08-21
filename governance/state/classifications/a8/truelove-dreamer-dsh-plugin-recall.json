@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "search",
+    "context",
+    "tool",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH plugin for recalling relevant excerpts and metadata from persisted past sessions through full-text search, supporting cross-session model context.",
+  "summaries": {
+    "zh": "通过全文检索当前 DSH_HOME 中的历史会话，为模型和用户返回相关片段及会话信息。",
+    "en": "Searches persisted sessions in the current DSH_HOME and returns relevant excerpts and session metadata for cross-session recall."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Full-text searches persisted sessions in the current DSH_HOME through ctx.sessionQuery",
+      "Returns matching session metadata and highlighted excerpts to the current context",
+      "Provides a model tool named recall and a /recall human command"
+    ],
+    "reasons": [
+      {
+        "code": "reads_historical_session_content",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "depends_on_session_query_index",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Full-text searches persisted sessions in the current DSH_HOME through ctx.sessionQuery",
+      "Returns matching session metadata and highlighted excerpts to the current context",
+      "Provides a model tool named recall and a /recall human command"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:49.989Z",
+  "repositoryCommitSha": "f72e1d22122a5f86358dc0a2b6f140877d0a5fad",
+  "evidenceHash": "faa0dcc2518989ac5d2c7fc3c99ff0dd1a46009ba596accd35f45d0a7f0dcf9b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "66200e8c4838b02b9d1b1a8403f6527beda0515e0df8e61447ae5185a650ef89",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "automation",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Tokilake is primarily a self-hosted external-service gateway that exposes an OpenAI-compatible API and routes requests to distributed GPU workers through NAT-traversing tunnels, with registration and failover features.",
+  "summaries": {
+    "zh": "Tokilake 是一个自托管 AI 网关，用于通过 OpenAI 兼容 API 将请求路由到分布在不同网络中的本地 GPU 模型工作节点。",
+    "en": "Tokilake is a self-hosted AI gateway that routes OpenAI-compatible API requests to local GPU model workers distributed across different networks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides an OpenAI-compatible API gateway for local and distributed LLM workers",
+      "Routes inference requests across registered Ollama, vLLM, SGLang, and other workers",
+      "Establishes outbound WebSocket or QUIC reverse tunnels for workers behind NAT",
+      "Supports worker registration, heartbeat monitoring, load balancing, and failover",
+      "Offers gateway features including authentication, billing, and multi-tenant access"
+    ],
+    "reasons": [
+      {
+        "code": "network_tunneling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_routing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "distributed_worker_control",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Provides an OpenAI-compatible API gateway for local and distributed LLM workers",
+      "Routes inference requests across registered Ollama, vLLM, SGLang, and other workers",
+      "Establishes outbound WebSocket or QUIC reverse tunnels for workers behind NAT",
+      "Supports worker registration, heartbeat monitoring, load balancing, and failover",
+      "Offers gateway features including authentication, billing, and multi-tenant access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:43.901Z",
+  "repositoryCommitSha": "c91476661648eac39aa11ee018cc8d1daa52296d",
+  "evidenceHash": "49bd81a2bda66ad7f47196a411072549cab49daf68160d57baf0f5969b6d8b91",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9a2a62cb35090c60542d16eb869d723fed161f6c54875d350875d0dad49d62d3",
+  "shadowMode": false
+}

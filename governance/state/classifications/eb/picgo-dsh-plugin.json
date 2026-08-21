@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "image",
+    "file",
+    "integration",
+    "api",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a DeepSeek Harness integration that uploads local images and files to PicGo-configured external image hosts and exposes related commands for clipboard uploads and authentication.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 中的本地图片和文件上传到 PicGo 已配置的图床，并提供文件、剪贴板上传及登录命令。",
+    "en": "Uploads local images and files from DeepSeek Harness to a PicGo-configured image host, with commands for file, clipboard, and authentication operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local files selected for upload",
+      "Uploads files and images to a PicGo-configured external image host",
+      "Can access clipboard images through the /picgo command",
+      "Can open a browser for PicGo Cloud sign-in",
+      "Stores or clears PicGo Cloud authentication through PicGo"
+    ],
+    "reasons": [
+      {
+        "code": "external_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "clipboard_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_authentication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Reads local files selected for upload",
+      "Uploads files and images to a PicGo-configured external image host",
+      "Can access clipboard images through the /picgo command",
+      "Can open a browser for PicGo Cloud sign-in",
+      "Stores or clears PicGo Cloud authentication through PicGo"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:46:42.959Z",
+  "repositoryCommitSha": "8616305583fde0d02f2cf9bcfc8b957e81f36476",
+  "evidenceHash": "67d6cf5dbebb5d3dee4a986a2055ddfac101475bbe3d44b45a2e56894cbd1578",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e0a814a58be61e04e13fdb6b293ebe5f92cf3d05b06af36ffb2716ef63372ec3",
+  "shadowMode": false
+}

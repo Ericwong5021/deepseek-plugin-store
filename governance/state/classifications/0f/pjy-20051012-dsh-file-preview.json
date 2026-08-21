@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "document",
+    "image",
+    "ui",
+    "desktop",
+    "api",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Adds a DeepSeek Harness web interface for recent-file listings, local previews of text, images, PDFs, and Office documents, plus actions to open files or reveal them in their containing folders.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 网页端提供会话文件列表、文本与常见文档预览，以及打开文件和定位所在文件夹的操作。",
+    "en": "Adds session file listings, previews for text and common document formats, and actions to open files or reveal them in their containing folders in the DeepSeek Harness web interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local files for preview and serves selected content to the local web interface",
+      "Registers loopback-only HTTP endpoints for file preview, opening, and revealing files",
+      "Launches the operating system default program or file manager for a specified absolute path",
+      "Installs plugin files and updates the DeepSeek Harness web profile patch configuration"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Reads local files for preview and serves selected content to the local web interface",
+      "Registers loopback-only HTTP endpoints for file preview, opening, and revealing files",
+      "Launches the operating system default program or file manager for a specified absolute path",
+      "Installs plugin files and updates the DeepSeek Harness web profile patch configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:46:55.526Z",
+  "repositoryCommitSha": "6995ab871b7fe9b1c555f4e36b7515e468ed8c79",
+  "evidenceHash": "204365cb0d0c20a713f9074d572e4010d8bc6a56184864b73b0cc666dc466abe",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "43cb937fed5ae6a38e3ee7a4a1e45f3ff922f262cdfc552c9b5778ccec374a75",
+  "shadowMode": false
+}

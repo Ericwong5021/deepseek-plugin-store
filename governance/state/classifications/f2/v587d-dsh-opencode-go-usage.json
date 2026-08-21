@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "browser",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a web plugin that polls authenticated OpenCode Go usage data and displays rolling, weekly, and monthly quota status with reset countdowns in the composer dock. Its primary purpose is usage monitoring, with host-side credential configuration and external API access creating elevated handling risk.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中显示 OpenCode Go 的多时间窗口订阅用量、重置倒计时和刷新状态。",
+    "en": "Displays OpenCode Go subscription usage, reset countdowns, and refresh status across multiple time windows in the DeepSeek Harness web interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads OpenCode Go subscription usage from an external service using a user-provided session cookie",
+      "Stores workspace ID and cookie configuration on the host",
+      "Polls usage data and exposes it through same-origin API endpoints",
+      "Displays usage percentages, reset countdowns, refresh status, and error states in the web interface"
+    ],
+    "reasons": [
+      {
+        "code": "full_session_cookie",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_authenticated_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads OpenCode Go subscription usage from an external service using a user-provided session cookie",
+      "Stores workspace ID and cookie configuration on the host",
+      "Polls usage data and exposes it through same-origin API endpoints",
+      "Displays usage percentages, reset countdowns, refresh status, and error states in the web interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:50:12.739Z",
+  "repositoryCommitSha": "721dfebbfa6329fb3345cee3fc9e673aad0b2971",
+  "evidenceHash": "f07b3b00a79db3a592c678c03f095eff87440a072cdeb13371c14ac65d7dc675",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "883204b232e9927690e6de19fedd242ce89a66ac414a7ab0a98e2247be9a7a79",
+  "shadowMode": false
+}

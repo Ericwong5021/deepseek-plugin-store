@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "monitoring",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows desktop launcher for DeepSeek Harness that provides a native WebView2 window, local service lifecycle management, optional startup behavior, logging, diagnostics, and limited update notifications.",
+  "summaries": {
+    "zh": "一个用于在 Windows 上启动和管理 DeepSeek Harness 的轻量原生桌面启动器，提供 WebView2 窗口、服务生命周期管理、日志和诊断功能。",
+    "en": "A lightweight native Windows desktop launcher for DeepSeek Harness, providing a WebView2 window, service lifecycle management, logging, and diagnostics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Launches DeepSeek Harness on Windows",
+      "Manages the local service lifecycle",
+      "Provides a WebView2 desktop window",
+      "Supports optional startup launch",
+      "Writes logs and exports a redacted diagnostic package",
+      "Displays system notifications for security and version updates"
+    ],
+    "reasons": [
+      {
+        "code": "local_service_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "startup_persistence_optional",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "diagnostic_and_log_output",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Launches DeepSeek Harness on Windows",
+      "Manages the local service lifecycle",
+      "Provides a WebView2 desktop window",
+      "Supports optional startup launch",
+      "Writes logs and exports a redacted diagnostic package",
+      "Displays system notifications for security and version updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:41.341Z",
+  "repositoryCommitSha": "957b0ddbe9cc5967fd95dd198f5fa14c4d07dff1",
+  "evidenceHash": "2aa3c996c1214627979772108aa6910f32ff67c5424e48bc9ac69bc3504fac30",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f7a65b0bcda9a4464a52c7b456bf9cf979d9767a76bbfddcb0fbcd037ee9c32c",
+  "shadowMode": false
+}

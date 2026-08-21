@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "api",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows desktop application for DeepSeek Harness that bundles its engine, provides a graphical and tray-based interface, manages local processes, and stores shared credentials and settings.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供带托盘功能、首次运行配置向导和内置引擎的 Windows 桌面应用。",
+    "en": "A Windows desktop application for DeepSeek Harness with a tray interface, first-run configuration wizard, and bundled local engine."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a Windows Electron desktop interface for DeepSeek Harness",
+      "Launches and manages an embedded local engine process",
+      "Stores API credentials and application settings under the user's home directory",
+      "Provides tray controls and optional portable or installer-based distribution"
+    ],
+    "reasons": [
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides a Windows Electron desktop interface for DeepSeek Harness",
+      "Launches and manages an embedded local engine process",
+      "Stores API credentials and application settings under the user's home directory",
+      "Provides tray controls and optional portable or installer-based distribution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:20.495Z",
+  "repositoryCommitSha": "922d01f7664034e55b33756bf3c37c1a5e5a8ca1",
+  "evidenceHash": "2ae022addb26ab704da8c17bbf04f3a19ceacce14fad5fb8741b9031accc1101",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35b41e3cde36c9c35db99e0b12c9a6df35ca7822b07648d090dd0164a32207dc",
+  "shadowMode": false
+}

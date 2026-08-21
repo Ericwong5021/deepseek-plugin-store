@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "api",
+    "integration",
+    "agent",
+    "collaboration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness lifecycle integration that recalls and persists project and account memory through the TMCRA API across conversations and connected tools.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的对话生命周期连接到 TMCRA，在每轮对话前召回相关项目记忆并在完成后保存用户与助手记录。",
+    "en": "Connects DeepSeek Harness to TMCRA to recall relevant project memory before each turn and save separate user and assistant records afterward."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads user prompts and assistant results for memory recall and writeback",
+      "Sends recalled and recorded conversation data to the TMCRA Memory API",
+      "Stores TMCRA connection credentials in the local Harness credential store",
+      "Derives project scopes from workspace and Git metadata",
+      "Maintains a durable local outbox for failed memory writes"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_data_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage_and_authentication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_project_metadata_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads user prompts and assistant results for memory recall and writeback",
+      "Sends recalled and recorded conversation data to the TMCRA Memory API",
+      "Stores TMCRA connection credentials in the local Harness credential store",
+      "Derives project scopes from workspace and Git metadata",
+      "Maintains a durable local outbox for failed memory writes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:32.115Z",
+  "repositoryCommitSha": "71fd8758f693223ffd905bfcd3a60bedcb8b7dd2",
+  "evidenceHash": "f30725c0c8bb27e96074e1b660671ad263b888516f3aa493d0c2a1564923d837",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2651c7c422f662e485eacf50d8a640e6ac53aeea2d4056bd7e29eda081845baa",
+  "shadowMode": false
+}

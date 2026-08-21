@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "planning",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An opt-in DeepSeek Harness plugin that monitors per-turn step counts and appends advisory wrap-up reminders after a configured budget without rejecting or rewriting steps.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的可选插件，用于在智能体单轮步骤超过配置预算后追加收尾提醒。",
+    "en": "An opt-in DeepSeek Harness plugin that adds wrap-up reminders when an agent turn exceeds its configured step budget."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads durable session-log turn and step boundaries",
+      "Validates positive integer step-budget configuration during plugin load",
+      "Appends source-attributed advisory UserMessage reminders after configured step thresholds",
+      "Operates only when enabled through configuration"
+    ],
+    "reasons": [
+      {
+        "code": "advisory_agent_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_log_reading",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration_validation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads durable session-log turn and step boundaries",
+      "Validates positive integer step-budget configuration during plugin load",
+      "Appends source-attributed advisory UserMessage reminders after configured step thresholds",
+      "Operates only when enabled through configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:18.601Z",
+  "repositoryCommitSha": "d2adea4f059c93c9dd5ce1eb82b8d2fc19b4a2dc",
+  "evidenceHash": "0c9867eee2b52e95233d37c1477e190da2e8babb24c616c5c5adddb72ce0839f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac9ca4c5354774e120b1c882a26e8d146a40516f578b59a48a80ebc8ce9c2e18",
+  "shadowMode": false
+}

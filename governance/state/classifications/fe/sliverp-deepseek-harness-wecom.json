@@ -1,0 +1,95 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "agent",
+    "collaboration",
+    "file",
+    "image",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness channel plugin that bridges WeCom AI Bot conversations, media, files, durable sessions, and selected agent operations to Harness agents.",
+  "summaries": {
+    "zh": "将企业微信 AI Bot 的文本、图片和文件消息连接到 DeepSeek Harness 持久化智能体会话，并支持回复与受控文件传输。",
+    "en": "Connects WeCom AI Bot text, image, and file conversations to persistent DeepSeek Harness agent sessions with replies and controlled file transfer."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the WeCom AI Bot service over a WebSocket long connection",
+      "Authenticates with a WeCom Bot ID and Secret",
+      "Receives text, image, file, and video messages",
+      "Downloads and decrypts inbound media and stores files locally",
+      "Sends text, image, and file responses to WeCom",
+      "Maintains durable per-conversation Harness agent sessions",
+      "Invokes configured Harness agent tools and forwards selected commands",
+      "Supports one-shot approval and rejection of agent tool operations"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_connection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_write_and_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_file_transfer",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the WeCom AI Bot service over a WebSocket long connection",
+      "Authenticates with a WeCom Bot ID and Secret",
+      "Receives text, image, file, and video messages",
+      "Downloads and decrypts inbound media and stores files locally",
+      "Sends text, image, and file responses to WeCom",
+      "Maintains durable per-conversation Harness agent sessions",
+      "Invokes configured Harness agent tools and forwards selected commands",
+      "Supports one-shot approval and rejection of agent tool operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:29.493Z",
+  "repositoryCommitSha": "e241355f081c90cddfcc16d0e26020a5db30be25",
+  "evidenceHash": "603cb20bdd7bd3b1da329010dd86497cd2c3087ace4de767f3f5a2896c32a3c7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "adf94ad34eb2046cbe369d0c6147bd182643cbe8f9f9b3ff64860d21e36d57f5",
+  "shadowMode": false
+}

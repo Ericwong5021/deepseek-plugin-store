@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "file",
+    "api",
+    "integration",
+    "automation",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Integrates DeepSeek Harness file, subprocess, Bash, terminal, and LSP operations with short-lived Tensorlake microVMs; human review is warranted due to remote command execution, external credentials, full-access policy options, and documented dependency advisories.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的文件、子进程、Bash、终端和 LSP 操作转移到短生命周期的 Tensorlake 微虚拟机中执行。",
+    "en": "Moves DeepSeek Harness file, subprocess, Bash, terminal, and LSP operations into short-lived Tensorlake microVMs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs Bash and subprocess operations inside an ephemeral Tensorlake microVM",
+      "Provides remote filesystem, terminal, subprocess, and LSP services to DeepSeek Harness",
+      "Creates and terminates external Tensorlake sandboxes during dsh profile lifecycle",
+      "Uses Tensorlake and DeepSeek API credentials supplied through the host environment",
+      "Can operate with a danger-full-access Bash sandbox policy"
+    ],
+    "reasons": [
+      {
+        "code": "remote_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_service_and_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "danger_full_access_policy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "known_transitive_dependency_advisories",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Runs Bash and subprocess operations inside an ephemeral Tensorlake microVM",
+      "Provides remote filesystem, terminal, subprocess, and LSP services to DeepSeek Harness",
+      "Creates and terminates external Tensorlake sandboxes during dsh profile lifecycle",
+      "Uses Tensorlake and DeepSeek API credentials supplied through the host environment",
+      "Can operate with a danger-full-access Bash sandbox policy"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:22.505Z",
+  "repositoryCommitSha": "5d90a33888641c5fcedb6a78878eb43ee5d0c38d",
+  "evidenceHash": "b95a82f2a73840077dff939e35b6150b8e8be047312d11aaa302af39bc7e144c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4a61f5526c9802897a69baab861910319a02b75adf176bed561e37b78024ea29",
+  "shadowMode": false
+}

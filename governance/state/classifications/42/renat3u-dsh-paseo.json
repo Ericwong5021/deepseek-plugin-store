@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "cli",
+    "desktop",
+    "mobile",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates DeepSeek Harness with Paseo as an ACP provider, enabling users to launch, run, monitor, and stop multiple dsh agents from Paseo clients.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 集成为 Paseo 的 ACP provider，支持从 Paseo 客户端启动、管理和并行运行多个 dsh agent。",
+    "en": "Integrates DeepSeek Harness as a Paseo ACP provider for launching, managing, and running multiple dsh agents in parallel from Paseo clients."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers a DSH ACP provider in Paseo",
+      "Spawns and manages independent dsh agent processes",
+      "Runs agent tasks with workspace file and shell access",
+      "Transmits prompts and agent activity through ACP over stdio",
+      "Uses dsh-configured model endpoints and credentials"
+    ],
+    "reasons": [
+      {
+        "code": "process-spawn-and-management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace-and-shell-tool-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-and-api-endpoint-use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional-full-access-mode",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers a DSH ACP provider in Paseo",
+      "Spawns and manages independent dsh agent processes",
+      "Runs agent tasks with workspace file and shell access",
+      "Transmits prompts and agent activity through ACP over stdio",
+      "Uses dsh-configured model endpoints and credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:30.352Z",
+  "repositoryCommitSha": "8d3ec852c2a2e9bdd4e9c19c2384205470a337f3",
+  "evidenceHash": "b27caa06c76f73e98807ba52c9bdd0441d3cb3782ec0b477d1dd9643d05a435a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4830a2b840e79bf66e48e7b3045692effd0ad0b77e421fd923acaac0265c21aa",
+  "shadowMode": false
+}

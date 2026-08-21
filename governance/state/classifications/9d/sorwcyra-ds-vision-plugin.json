@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "automation",
+    "cli",
+    "integration",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An image-to-text bridge for DeepSeek Harness that converts pasted attachments or workspace images through configured vision and OCR routes, with concurrent model racing and CLI configuration.",
+  "summaries": {
+    "zh": "将粘贴的图片或工作区图像通过配置的视觉模型和 OCR 路由转换为文本，供 DeepSeek Harness 使用。",
+    "en": "Converts pasted attachments or workspace images into text through configured vision and OCR routes for use in DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads pasted Web attachments and explicitly requested workspace image files",
+      "Sends image data to configured cloud vision, OCR, relay, or local model endpoints",
+      "Converts vision or OCR results into text for a text-only DeepSeek model",
+      "Provides CLI commands for configuration, API key setup, status, model routing, and verification",
+      "Caches results and applies configured timeouts, size limits, and file-path confinement"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_provider_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads pasted Web attachments and explicitly requested workspace image files",
+      "Sends image data to configured cloud vision, OCR, relay, or local model endpoints",
+      "Converts vision or OCR results into text for a text-only DeepSeek model",
+      "Provides CLI commands for configuration, API key setup, status, model routing, and verification",
+      "Caches results and applies configured timeouts, size limits, and file-path confinement"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:40.380Z",
+  "repositoryCommitSha": "55967fad750f86d0826068cb9cd228be03c943ba",
+  "evidenceHash": "bcf2350813e65c715e6da2064b2eb0fe5f7722a2c72c2c8a28ac8db21382e1ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "96ab648042fff832c380e73527c7ea705140f8c74c518a04682776944e79a37d",
+  "shadowMode": false
+}

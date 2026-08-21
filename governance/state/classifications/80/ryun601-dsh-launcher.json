@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "desktop",
+    "terminal",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows command-line launcher that automates installation, startup, browser opening, status monitoring, stopping, upgrading, and uninstallation of a local DeepSeek Harness web service.",
+  "summaries": {
+    "zh": "用于在 Windows 上通过 deepseek 命令安装、启动、管理和升级本地 DeepSeek Harness Web 服务的命令行启动器。",
+    "en": "A Windows command-line launcher for installing, starting, managing, upgrading, and uninstalling a local DeepSeek Harness web service."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts and stops a local DeepSeek Harness service",
+      "Downloads and prepares Node.js/npm runtime dependencies",
+      "Modifies the user PATH to register the deepseek command",
+      "Opens a local web interface in the browser",
+      "Checks versions and performs runtime upgrades",
+      "Removes launcher files, logs, shortcuts, and runtime data during full uninstall"
+    ],
+    "reasons": [
+      {
+        "code": "network_dependency_download",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_deletion",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Starts and stops a local DeepSeek Harness service",
+      "Downloads and prepares Node.js/npm runtime dependencies",
+      "Modifies the user PATH to register the deepseek command",
+      "Opens a local web interface in the browser",
+      "Checks versions and performs runtime upgrades",
+      "Removes launcher files, logs, shortcuts, and runtime data during full uninstall"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:44.679Z",
+  "repositoryCommitSha": "c4be723e2894daaa01e9bdb79cc96d5d8ff5958a",
+  "evidenceHash": "6cd87dcd840de1cda08e67129939f77ae7def5cd32837a0a14e32e85d2a6c7fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ff53417ef310bf9ddc8d55f1157af277d960b919ade32455bd1ee3adf2046319",
+  "shadowMode": false
+}
