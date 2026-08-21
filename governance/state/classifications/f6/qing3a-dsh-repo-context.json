@@ -1,0 +1,67 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "memory",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a plugin that reads Git repository state and injects repository context and guidance into each system prompt, making memory-context the primary user-facing purpose.",
+  "summaries": {
+    "zh": "将当前 Git 分支、工作区状态、最近提交和仓库规范动态注入系统提示词，帮助模型了解项目上下文。",
+    "en": "Dynamically adds the current Git branch, working-tree status, recent commits, and repository guidance to the system prompt so the model can use project context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local Git repository status, branch, and recent commit information",
+      "Injects repository context and rule guidance into the system prompt",
+      "Caches Git context in process memory"
+    ],
+    "reasons": [
+      {
+        "code": "local-read-only-git-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system-prompt-context-injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads local Git repository status, branch, and recent commit information",
+      "Injects repository context and rule guidance into the system prompt",
+      "Caches Git context in process memory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:01.464Z",
+  "repositoryCommitSha": "94b4f0c5591f3a038670dc0292224c5daf0754fd",
+  "evidenceHash": "47230eea048ecc853d3214d307d9931947e598d2daf067f1105951aa91484331",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2fd44441289c7f18ab5eb1a95949aa55963127405f9d71edb96751336fcc8535",
+  "shadowMode": false
+}

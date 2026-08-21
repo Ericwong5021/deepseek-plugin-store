@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides BYOK integration for OpenAI-compatible language model providers, with per-provider endpoints, API keys, text streaming, and HTTP/SOCKS5 proxy configuration.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 接入任意 OpenAI 兼容模型服务，支持自带 API key、文本流式响应以及按供应商配置 HTTP/SOCKS5 代理。",
+    "en": "Connects DeepSeek Harness to OpenAI-compatible model providers with user-supplied API keys, text streaming, and per-provider HTTP or SOCKS5 proxy settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects to user-configured OpenAI-compatible model APIs",
+      "Uses user-provided API keys or environment-variable references",
+      "Routes provider requests through configured HTTP, HTTPS, or SOCKS5 proxies",
+      "Streams text responses using OpenAI Chat Completions and SSE"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "proxy_routing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to user-configured OpenAI-compatible model APIs",
+      "Uses user-provided API keys or environment-variable references",
+      "Routes provider requests through configured HTTP, HTTPS, or SOCKS5 proxies",
+      "Streams text responses using OpenAI Chat Completions and SSE"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:11.690Z",
+  "repositoryCommitSha": "4c6450d73e5f98e0b816c0df3fe64b54369687c7",
+  "evidenceHash": "6c31c56c9f11ebcb35c3dce664bfeef98bbf1611954bd95cf010437c33350f90",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "05615aa538d1ba043a3038f9d2f90007d917c542998ff80484f8b232bdba7ad7",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "debugging",
+    "cli",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A read-only deployment security health-check plugin that inspects runtime and configuration facts and reports categorized findings with remediation recommendations.",
+  "summaries": {
+    "zh": "对当前部署执行只读安全体检，检查凭据权限、进程环境、审批策略、遥测、网络暴露和沙箱状态并生成报告。",
+    "en": "Runs a read-only security health check on the current deployment, inspecting credential permissions, process environment, approval policies, telemetry, network exposure, and sandbox status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads deployment facts from context and node services",
+      "Inspects credential file permissions and process environment variables",
+      "Checks permission, approval, telemetry, anonymous ID, LAN exposure, and sandbox settings",
+      "Produces a PASS/WARN/FAIL audit report with recommendations"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_system_inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "may_observe_sensitive_metadata",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads deployment facts from context and node services",
+      "Inspects credential file permissions and process environment variables",
+      "Checks permission, approval, telemetry, anonymous ID, LAN exposure, and sandbox settings",
+      "Produces a PASS/WARN/FAIL audit report with recommendations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:54.378Z",
+  "repositoryCommitSha": "6842509caa438cf6b649a5823d88bd98e28dab4c",
+  "evidenceHash": "05f2b4a6f86c5857964333296c511909b8bee019923fd0da7bfa30a66fb6b96f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f6f69b8dfb0663ad6de276f4eb735ac7c50240fc9fb2e84e816a9531236d067b",
+  "shadowMode": false
+}

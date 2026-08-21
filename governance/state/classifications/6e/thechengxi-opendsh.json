@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "browser",
+    "automation",
+    "desktop",
+    "ui",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A VS Code integration extension for launching and managing the local DeepSeek Harness web interface, with configurable in-editor or system-browser access.",
+  "summaries": {
+    "zh": "在 VS Code 中打开 DeepSeek Harness Web UI，并为当前工作区启动或停止本地 dsh 服务。",
+    "en": "Open the DeepSeek Harness Web UI in VS Code or a system browser while starting and stopping the local dsh service for the current workspace."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts and stops the local dsh web service for the current workspace",
+      "Opens the DeepSeek Harness Web UI in a VS Code tab, Simple Browser, or system browser",
+      "Runs the configured dsh CLI and can use workspace patch files",
+      "Provides a script that may modify an installed DSH dependency on Windows"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "opens_external_web_ui",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_dependency_with_optional_patch_script",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Starts and stops the local dsh web service for the current workspace",
+      "Opens the DeepSeek Harness Web UI in a VS Code tab, Simple Browser, or system browser",
+      "Runs the configured dsh CLI and can use workspace patch files",
+      "Provides a script that may modify an installed DSH dependency on Windows"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:20.652Z",
+  "repositoryCommitSha": "7512336419ea0329a4446861c102d7dd024638e7",
+  "evidenceHash": "de2dc3e213583377c0850c427fa9553211303c8aaee5ce3d100086f25ec0822c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "838ce126e4773de3bbf57449f6116dca03a9f48d0bf36423d8bb4269549e586b",
+  "shadowMode": false
+}

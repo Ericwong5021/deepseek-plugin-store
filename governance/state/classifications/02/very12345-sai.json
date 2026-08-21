@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "code-generation",
+    "file",
+    "terminal",
+    "mobile",
+    "browser",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README identifies sai as an Android coding agent that orchestrates model-driven coding sessions with local files, terminals, Git, browser capabilities, approvals, and external service integrations.",
+  "summaries": {
+    "zh": "sai 是一款面向 Android 的本地优先编码智能体，可在工作区中协调模型会话、文件与终端操作、Git 及浏览器工具，并通过审批执行任务。",
+    "en": "sai is a local-first Android coding agent that coordinates model sessions with workspace files, terminal operations, Git, browser tools, and approval-based task execution."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "runs coding-agent workflows in a local Android workspace",
+      "reads and modifies project files",
+      "executes shell commands through a PRoot-compatible runtime",
+      "uses model APIs and GitHub integrations",
+      "supports browser operations and MCP or skill extensions",
+      "stores provider credentials and GitHub credentials in Android-managed encrypted storage"
+    ],
+    "reasons": [
+      {
+        "code": "command-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-and-github-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "runs coding-agent workflows in a local Android workspace",
+      "reads and modifies project files",
+      "executes shell commands through a PRoot-compatible runtime",
+      "uses model APIs and GitHub integrations",
+      "supports browser operations and MCP or skill extensions",
+      "stores provider credentials and GitHub credentials in Android-managed encrypted storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:50:15.775Z",
+  "repositoryCommitSha": "1e67d66cb199991b3950a1e67cbf39d8267ff77d",
+  "evidenceHash": "1ccddb12b9d57bbac179ca8113bbfc191e1f75403f0914d5ce1434a57ada6179",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5ed00b866c405cd1cd7313b6aa04ea1c6c338c6601d6ddc28cd3065f80835493",
+  "shadowMode": false
+}

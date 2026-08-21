@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "terminal",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A configuration-driven lifecycle hook plugin that automates shell commands around model tool calls, with pre-tool failures able to block execution.",
+  "summaries": {
+    "zh": "通过配置在模型工具调用前后自动运行 Shell 命令，并支持在前置命令失败时阻止工具执行。",
+    "en": "Configures shell commands to run before and after model tool calls, with failed pre-tool commands able to block execution."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes configured shell commands before and after model tool calls",
+      "Reads JSON tool-event payloads from standard input",
+      "Can block matching tool calls when pre-tool commands fail",
+      "Records hook execution results and supports configuration hot reload"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_host_shell_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "pre_tool_execution_blocking",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Executes configured shell commands before and after model tool calls",
+      "Reads JSON tool-event payloads from standard input",
+      "Can block matching tool calls when pre-tool commands fail",
+      "Records hook execution results and supports configuration hot reload"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:49.406Z",
+  "repositoryCommitSha": "6cf763e7d6fe59b26937c3e07a17687474018de5",
+  "evidenceHash": "a42bf6973584129181ebc5da580200fc9483dbe5802f96e99ad1dc49e68a58d8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "479bcf22380ceef8ad9d94052e9ca81c8576914364054733ebcf1bc51c0849ec",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "browser",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A web UI plugin that retrieves an account balance from a DeepSeek-compatible endpoint and displays it in the conversation header with automatic and manual refresh, caching, and error details.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 会话头部显示账户余额，并支持自动刷新、手动刷新、缓存和错误详情查看。",
+    "en": "Displays account balance in the DeepSeek Harness conversation header with automatic and manual refresh, caching, and error details."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads configured API credentials from a credentials service or environment variable",
+      "Makes authenticated network requests to a balance endpoint through curl",
+      "Displays account balance and refresh status in the web interface",
+      "Runs a local curl subprocess with a configurable timeout"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured API credentials from a credentials service or environment variable",
+      "Makes authenticated network requests to a balance endpoint through curl",
+      "Displays account balance and refresh status in the web interface",
+      "Runs a local curl subprocess with a configurable timeout"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:46:57.199Z",
+  "repositoryCommitSha": "aa47bea3296a4914b976f605e88574b6b8ab5125",
+  "evidenceHash": "a8439f3d81446c445cdec147d724e507129f8046f3ab60dc9dc3283dcb7a5211",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "48bb38b21f8cb5e3f3ca5c02c95e2217ec6b6aa52093940a3515e0d3c1681d0c",
+  "shadowMode": false
+}

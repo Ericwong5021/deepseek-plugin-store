@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "automation",
+    "desktop",
+    "browser",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a portable Windows one-click launcher that bundles Node.js, configures a DeepSeek API key, starts the local DeepSeek Harness web service, and opens its browser interface; its primary purpose is general utility and setup automation.",
+  "summaries": {
+    "zh": "一个适用于 Windows 的便携式一键启动器，用于配置并启动 DeepSeek Harness 本地 Web 界面。",
+    "en": "A portable Windows one-click launcher that configures and starts the local DeepSeek Harness web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Executes a bundled Windows launcher and Node.js runtime",
+      "Starts a local DeepSeek Harness web service",
+      "Writes a user-provided DeepSeek API key to local configuration",
+      "Opens the local web interface in a browser",
+      "Uses the DeepSeek API through the launched service"
+    ],
+    "reasons": [
+      {
+        "code": "local_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_usage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Executes a bundled Windows launcher and Node.js runtime",
+      "Starts a local DeepSeek Harness web service",
+      "Writes a user-provided DeepSeek API key to local configuration",
+      "Opens the local web interface in a browser",
+      "Uses the DeepSeek API through the launched service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:34.746Z",
+  "repositoryCommitSha": "db56460bee552f9f7fd59262ce68f3295adcda2c",
+  "evidenceHash": "d2f98c19c7ff82e75d19de822dd836abc0230fb324be5b890ea94d91c3826ccb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63fb6e38b2b80eecf74b0312d4e55866750fa6a38713af951c519dbd086b4c8c",
+  "shadowMode": false
+}

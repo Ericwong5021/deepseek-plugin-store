@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "visualization",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a DeepSeek Harness settings plugin that monitors API balance, estimated spend, token counts, and request counts through a timeline dashboard.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 设置页中展示 API 余额、估算费用、令牌用量和请求次数，并提供按小时或按天查看的时间线图表。",
+    "en": "Displays DeepSeek API balance, estimated cost, token usage, and request counts in a Harness settings page with hourly or daily timeline charts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the configured DEEPSEEK_API_KEY credential",
+      "Calls the DeepSeek balance API over the network",
+      "Tracks model token usage and estimated costs in memory",
+      "Persists aggregated usage data locally",
+      "Runs curl as a host subprocess",
+      "Serves a local snapshot endpoint and adds a settings page"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host-subprocess-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-data-persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DEEPSEEK_API_KEY credential",
+      "Calls the DeepSeek balance API over the network",
+      "Tracks model token usage and estimated costs in memory",
+      "Persists aggregated usage data locally",
+      "Runs curl as a host subprocess",
+      "Serves a local snapshot endpoint and adds a settings page"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:08.593Z",
+  "repositoryCommitSha": "d7644200ed0530f60794a1b081b7176cb3ac93fd",
+  "evidenceHash": "46198777b3d3f228f843d1a926f3955078d6e4ca6907f4b0aad31bb589342487",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "84d9505f6ccb5980f89bd180eecc6c07ca9804c3e110868a34bf5dc370893d83",
+  "shadowMode": false
+}

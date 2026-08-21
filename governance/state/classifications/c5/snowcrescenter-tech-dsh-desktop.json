@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "notification",
+    "automation",
+    "api",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A native Windows Electron desktop shell that packages and launches the DeepSeek Harness Web UI with tray integration, notifications, single-instance behavior, optional startup, and update support.",
+  "summaries": {
+    "zh": "这是一个将 DeepSeek Harness Web UI 封装为原生 Windows 桌面应用的 Electron 客户端，提供系统托盘、原生通知、单实例运行、可选开机自启和自动更新。",
+    "en": "An Electron-based Windows desktop client that wraps the DeepSeek Harness Web UI with system tray integration, native notifications, single-instance behavior, optional startup, and update support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Wraps and launches the bundled DeepSeek Harness CLI",
+      "Stores a DeepSeek API key in a local environment file",
+      "Runs in the Windows system tray and can configure startup on login",
+      "Displays native Windows notifications",
+      "Downloads updates in the background for installed builds"
+    ],
+    "reasons": [
+      {
+        "code": "local_cli_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "startup_registration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_update",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Wraps and launches the bundled DeepSeek Harness CLI",
+      "Stores a DeepSeek API key in a local environment file",
+      "Runs in the Windows system tray and can configure startup on login",
+      "Displays native Windows notifications",
+      "Downloads updates in the background for installed builds"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:35.736Z",
+  "repositoryCommitSha": "6b983616bf347d078c3f29cddadcca077645b7e3",
+  "evidenceHash": "5c5b4aba10f930f5c2aa9ef557bdf511e5a5237136bfd7c2f80a4406bc18c84e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ee243abf09d7352b7e6a7b5a0d88f9b85da42ab2a267f740e61e18dad77b2af4",
+  "shadowMode": false
+}

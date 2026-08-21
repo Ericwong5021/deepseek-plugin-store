@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "agent",
+    "automation",
+    "mobile",
+    "terminal",
+    "ui",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an Android-focused deployment app and control plugin that runs an agent on-device and provides screen, system, shell, hardware, media, and application-control tools.",
+  "summaries": {
+    "zh": "这是一个将 DeepSeek Harness 部署到安卓设备并提供屏幕、应用、系统命令及硬件控制能力的移动端插件。",
+    "en": "A mobile plugin that deploys DeepSeek Harness on Android and provides screen, app, shell, system, hardware, and media control tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Android screen capture and UI interaction",
+      "Opening applications and sending text or key input",
+      "Executing shell commands",
+      "Installing APKs",
+      "Accessing device status, sensors, camera, microphone, location, notifications, clipboard, and media controls",
+      "Operating through root or Shizuku privileges"
+    ],
+    "reasons": [
+      {
+        "code": "root_or_privileged_device_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_and_apk_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "camera_microphone_location_and_sensor_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Android screen capture and UI interaction",
+      "Opening applications and sending text or key input",
+      "Executing shell commands",
+      "Installing APKs",
+      "Accessing device status, sensors, camera, microphone, location, notifications, clipboard, and media controls",
+      "Operating through root or Shizuku privileges"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:15.881Z",
+  "repositoryCommitSha": "2bd336fe1774552963d813841f24bccb628f7bf4",
+  "evidenceHash": "8f16ece355436857e4c08ff7588aabd1f3e59b7a33e188ded77438258b829c62",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0fafa49fdea01f99314705e9277ed3eb4a875cefcb79c6cebad99113e72b1e6d",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "browser",
+    "cli",
+    "terminal",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A macOS menu bar utility that manages the local dsh web service with launchd, including service control, local Web UI access, package installation and updates, startup configuration, and log management.",
+  "summaries": {
+    "zh": "一款 macOS 菜单栏工具，用于通过 launchd 管理本地 dsh Web 服务，并提供启动、停止、更新和打开 Web UI 等操作。",
+    "en": "A macOS menu bar utility for managing a local dsh web service through launchd, with controls for starting, stopping, updating, and opening its Web UI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts, stops, restarts, and monitors a local dsh web service through macOS launchd",
+      "Installs and updates the @deepseek-ai/dsh npm package",
+      "Opens the local web interface in a browser",
+      "Reads and writes local launchd configuration, application data, and log files",
+      "Queries the npm registry for available dsh versions"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_installation_and_update",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_configuration_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_registry_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Starts, stops, restarts, and monitors a local dsh web service through macOS launchd",
+      "Installs and updates the @deepseek-ai/dsh npm package",
+      "Opens the local web interface in a browser",
+      "Reads and writes local launchd configuration, application data, and log files",
+      "Queries the npm registry for available dsh versions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:49:59.478Z",
+  "repositoryCommitSha": "14b7314575ab6b3c883f3b57f776857511f60a7c",
+  "evidenceHash": "c2e9f5b1f0ca05712c33695d5bf6c2fa3deb09b5233e2502531e6f82749a99a9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2e1e4c03a54b3bfcd683bc66ef62cced842dcf71e6f5b08fae95c87e1d520c2e",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "agent",
+    "automation",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes a cross-session persistent memory plugin that stores bounded plaintext notes and user profiles, injects snapshots into prompts, and optionally performs isolated background memory reviews.",
+  "summaries": {
+    "zh": "用于在会话之间持久保存有限长度的纯文本笔记和用户画像，并将记忆快照注入智能体上下文。",
+    "en": "A plugin for persisting bounded plain-text notes and user profiles across sessions and injecting memory snapshots into the agent context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "persists plain-text memory and user-profile entries to local files",
+      "provides tools to add, replace, remove, batch-edit, view, and refresh memory",
+      "injects frozen memory snapshots into system prompts",
+      "periodically uses an isolated subagent to review recent user messages and update memory",
+      "can deliver memory update notifications through the agent inbox"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_prompt_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "isolated_subagent_orchestration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_notification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "persists plain-text memory and user-profile entries to local files",
+      "provides tools to add, replace, remove, batch-edit, view, and refresh memory",
+      "injects frozen memory snapshots into system prompts",
+      "periodically uses an isolated subagent to review recent user messages and update memory",
+      "can deliver memory update notifications through the agent inbox"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:14.196Z",
+  "repositoryCommitSha": "244eef0b0706a41ae182099bbe8ce8bf504f6503",
+  "evidenceHash": "4fceebe790025c7663d09c5dcf5dbc48a1a89ffc4ddfc9197e7c4418e47fa5a2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "910060bd90a9f9cd584349c7babe246441175aa5375dc2defb2920fa0d2111a6",
+  "shadowMode": false
+}

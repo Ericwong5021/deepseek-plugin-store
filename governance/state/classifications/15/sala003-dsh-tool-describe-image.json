@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "browser",
+    "file",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly describes a plugin that converts pasted or path-specified images into text descriptions using the DashScope qwen-vl vision API, with browser and tool integrations.",
+  "summaries": {
+    "zh": "通过阿里云百炼 qwen-vl 视觉模型，将粘贴或指定路径的图片转换为文字描述，供文本模型理解和处理。",
+    "en": "Converts pasted or path-specified images into text descriptions with the DashScope qwen-vl vision model for use by text-based models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads user-selected local image files by path",
+      "Captures pasted images in the web interface",
+      "Sends image data to the DashScope qwen-vl vision API",
+      "Returns image descriptions as tool results or draft text",
+      "Provides a loopback RPC endpoint between browser and host components"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_paste_capture",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads user-selected local image files by path",
+      "Captures pasted images in the web interface",
+      "Sends image data to the DashScope qwen-vl vision API",
+      "Returns image descriptions as tool results or draft text",
+      "Provides a loopback RPC endpoint between browser and host components"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:53.903Z",
+  "repositoryCommitSha": "2adfbe9bdff462d7dcb3de6bbe614c2723db010f",
+  "evidenceHash": "732f70e53e166077e2ad26d393ff349405e9d4b5634fd427c098136b1b8835d2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "740430c83a150ac07cbc40486323cbd8033ab440a1878f532387a6ab4e5f24cf",
+  "shadowMode": false
+}

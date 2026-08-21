@@ -1,0 +1,93 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "chat",
+    "agent",
+    "planning",
+    "notification",
+    "integration",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An Android companion app for remotely viewing and controlling DeepSeek Harness sessions, including chat, planning, approvals, subagents, workflows, and completion notifications.",
+  "summaries": {
+    "zh": "用于在安卓手机上通过局域网或中继连接、查看并控制 DeepSeek Harness 会话的移动端伴侣应用。",
+    "en": "An Android companion app for connecting to, viewing, and controlling DeepSeek Harness sessions over a local network or relay."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to a DeepSeek Harness over a local network or relay",
+      "Displays and streams harness chat sessions",
+      "Sends prompts, slash commands, and skill requests to the harness",
+      "Reviews plans, goals, approvals, and user questions",
+      "Can interrupt subagents and manage background jobs and workflow runs",
+      "Discovers reachable hosts on the local network",
+      "Runs a foreground service for background notifications",
+      "Exports session logs and supports image attachments"
+    ],
+    "reasons": [
+      {
+        "code": "remote_harness_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution_authority",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_network_discovery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to a DeepSeek Harness over a local network or relay",
+      "Displays and streams harness chat sessions",
+      "Sends prompts, slash commands, and skill requests to the harness",
+      "Reviews plans, goals, approvals, and user questions",
+      "Can interrupt subagents and manage background jobs and workflow runs",
+      "Discovers reachable hosts on the local network",
+      "Runs a foreground service for background notifications",
+      "Exports session logs and supports image attachments"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:39.712Z",
+  "repositoryCommitSha": "04483700716fdac96ef5c4580717ca9e3c0eaaa4",
+  "evidenceHash": "23c39eea49ac3e22ed35b3b5b0eef659a6922d39db718a45639e1bbf349ac446",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d4d4a934f0282f07d54d16e0e4aa5c8165691e2be9400112a9fecace7558b4a2",
+  "shadowMode": false
+}

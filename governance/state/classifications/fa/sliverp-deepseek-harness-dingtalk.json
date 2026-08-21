@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "agent",
+    "collaboration",
+    "file",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DingTalk communication-channel plugin for DeepSeek Harness that connects via Stream WebSocket, supports multimodal message exchange, maintains sessions, and relays Harness agent tool execution with in-chat approvals.",
+  "summaries": {
+    "zh": "通过钉钉 Stream WebSocket 将 DeepSeek Harness 智能体接入单聊和群聊，支持文本与多媒体消息、会话管理及工具审批交互。",
+    "en": "Connects DeepSeek Harness agents to DingTalk direct and group chats over Stream WebSocket with multimodal messaging, session management, and in-chat tool approvals."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to DingTalk through the official Stream WebSocket SDK",
+      "Receives and sends text, Markdown, rich-text, voice, image, and file messages",
+      "Runs DeepSeek Harness Agent Loop turns with structured tool events",
+      "Persists isolated conversation sessions and restores agent presets",
+      "Uploads generated images and workspace files to DingTalk",
+      "Requests and processes one-shot tool approvals through conversation commands"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_sessions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to DingTalk through the official Stream WebSocket SDK",
+      "Receives and sends text, Markdown, rich-text, voice, image, and file messages",
+      "Runs DeepSeek Harness Agent Loop turns with structured tool events",
+      "Persists isolated conversation sessions and restores agent presets",
+      "Uploads generated images and workspace files to DingTalk",
+      "Requests and processes one-shot tool approvals through conversation commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:48:26.863Z",
+  "repositoryCommitSha": "1cc1e0eaf15de62c373c7616b8fb588d6264cc97",
+  "evidenceHash": "d4e7b3830f2714b1a76474aec5c32aa66f42125cf72ae1621fbe03be70bf99b4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0a30c9f50e0564551650ee75aa5c3caabd4ee523f1748127af783f86ef26da27",
+  "shadowMode": false
+}

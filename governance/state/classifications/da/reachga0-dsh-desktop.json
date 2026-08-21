@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "image",
+    "chat",
+    "file",
+    "terminal",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows Electron desktop shell for DeepSeek Harness that adds standalone window and system-tray access, region screenshot questioning, session management, and local dsh service setup.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 Windows 桌面壳，支持独立窗口、系统托盘、区域截图提问、会话管理和本地服务启动。",
+    "en": "A Windows desktop shell for DeepSeek Harness with a standalone window, system tray, region screenshot questions, session management, and local service startup."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a Windows Electron desktop interface for DeepSeek Harness",
+      "Captures selected screen regions and places screenshots into the chat input",
+      "Runs or reuses a local dsh web service and manages its child process",
+      "Maintains system-tray presence and local session management",
+      "Writes captured screenshots and application logs to local storage"
+    ],
+    "reasons": [
+      {
+        "code": "desktop_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "screen_capture_and_clipboard",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_storage_and_session_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_service_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides a Windows Electron desktop interface for DeepSeek Harness",
+      "Captures selected screen regions and places screenshots into the chat input",
+      "Runs or reuses a local dsh web service and manages its child process",
+      "Maintains system-tray presence and local session management",
+      "Writes captured screenshots and application logs to local storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:47:18.957Z",
+  "repositoryCommitSha": "73e0d0103aaff46a7a934c46bf61636393a0233b",
+  "evidenceHash": "063a018c878e9c8495b559452e30bccbbaa781b7da84faff002568ef60a53fad",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8ef991a57858251df85e78a077cb5af9c88da50ad13252b1c594dcf2ad6cfc50",
+  "shadowMode": false
+}
