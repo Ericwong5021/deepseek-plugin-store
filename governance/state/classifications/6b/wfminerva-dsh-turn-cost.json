@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "data",
+    "chat",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README consistently describes a user-facing DeepSeek Harness web plugin whose primary function is to show per-turn conversation cost and usage metrics (cost, token consumption, cache-hit ratio) directly beneath each AI reply, which maps to UI visualization of runtime data rather than automation, workflow, or external integration.",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 的每条助手回复下方展示本轮对话的人民币花费、Token 使用量与缓存读占比，帮助你直观看到对话成本。",
+    "en": "This plugin shows a per-turn cost and usage summary below each assistant reply in DeepSeek Harness, including cost, token usage, and cache-hit ratio for quick cost visibility."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Displays per-turn cost, token usage, and cache-hit details in the chat UI",
+      "Parses DeepSeek session usage data to compute a single cost summary per conversation turn",
+      "Renders the cost summary inline with assistant reply action area so it is visible in normal chat flow"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin shows how much one conversation turn costs in CNY under each AI reply in the DeepSeek Harness web UI.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains the host scans local DSH session logs and client registers `conversation.chat.assistant-actions` to query and render turn-cost results on the assistant message area.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata topics include cost-tracking and llm-cost, supporting a cost-visibility use case.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays per-turn cost, token usage, and cache-hit details in the chat UI",
+      "Parses DeepSeek session usage data to compute a single cost summary per conversation turn",
+      "Renders the cost summary inline with assistant reply action area so it is visible in normal chat flow"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:48.157Z",
+  "repositoryCommitSha": "861f1bacb610a7c7e4c894dfa9bb46bc2fbe762c",
+  "evidenceHash": "c2165a0ddb04db1fb7654b255f64f1f060569f467db0f40142d0091bb758cef0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ba0c8174cffe895d9646744d5680aa7ec0ccd0f639566d6c523960d6aa131816",
+  "shadowMode": false
+}

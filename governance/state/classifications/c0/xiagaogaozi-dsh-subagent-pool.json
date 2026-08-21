@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "automation",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的 README 明确描述其核心功能为为 DeepSeek Harness 配置命名子代理并在对话中按名称调度调用，属于智能体编排场景下的执行分派与角色复用工具；其证据集中在设置页维护代理模板与 subagent_run 调用接口，因此分类为 orchestration 最为贴合。",
+  "summaries": {
+    "zh": "该插件提供命名子代理池，允许你在 DeepSeek Harness 中配置可复用的子代理，并在对话时通过 subagent_run(name, task) 按名称调用完成任务。",
+    "en": "This plugin provides a named sub-agent pool for DeepSeek Harness, letting you configure reusable agents and invoke them by name with subagent_run(name, task) during conversation."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "在设置页管理可复用的命名子代理（名称、模型、推理等级、预设）",
+      "通过 subagent_run(name, task) 按名称调用子代理并应用对应模型/推理等级/预设",
+      "在对话上下文中向主代理暴露子代理目录变量用于调度"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件用于维护“可重用的子代理池”，并支持按名称配置与调用（subagent_run）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出主代理可依据子代理描述在对话中判断“什么时候用谁”并进行调用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "技术要点提到子代理为一次性会话调用模式（每次新会话，完成后弃置），表明其为任务分派机制。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "在设置页管理可复用的命名子代理（名称、模型、推理等级、预设）",
+      "通过 subagent_run(name, task) 按名称调用子代理并应用对应模型/推理等级/预设",
+      "在对话上下文中向主代理暴露子代理目录变量用于调度"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:48.774Z",
+  "repositoryCommitSha": "babbbb2e080f8ddbb2454db2b4e09e94ba58d065",
+  "evidenceHash": "8b37e60452945ce7adc6e46ee5b877e4d48bb85868b4c27b29463dbdd4ad755a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a3b02bff4af7fd74cfb265d67b13f4ff14c3339358b0a4a991407a77522a0660",
+  "shadowMode": false
+}

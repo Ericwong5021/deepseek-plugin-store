@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "insufficient_evidence: no—evidence is sufficient. The README explicitly describes WSL workspace management and command execution behavior, so the plugin is best classified as Files & Terminal integration: it enables selecting WSL directories and runs Agent shell commands in that environment.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 的 Web 工作区侧边栏提供手动启用的 WSL 开关、发行版与目录选择入口，可将所选 Linux 目录作为 DSH 工作区并在其中运行 bash 命令。",
+    "en": "This plugin adds a manual WSL toggle, distribution selector, and Linux directory browser to the DeepSeek Harness web sidebar so a selected WSL directory can be opened as a workspace and used for agent bash execution."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a sidebar-based WSL workspace switch and distribution picker in DeepSeek Harness",
+      "Browses/selects Linux directories and opens them as DSH workspaces",
+      "Executes agent bash commands through wsl.exe inside the selected WSL distribution and directory"
+    ],
+    "reasons": [
+      {
+        "code": "插件提供 WSL 开关、发行版选择和 Linux 目录浏览，并可将所选目录作为 DSH 工作区打开。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文档说明启用 WSL 工作区后 Agent 命令会在对应发行版和 Linux cwd 下通过 wsl.exe 运行 bash。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "限制说明中指出进入 Linux 后会使用完整 WSL 权限，建议仅用于可信项目，表明存在运行命令权限风险。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Adds a sidebar-based WSL workspace switch and distribution picker in DeepSeek Harness",
+      "Browses/selects Linux directories and opens them as DSH workspaces",
+      "Executes agent bash commands through wsl.exe inside the selected WSL distribution and directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:44.555Z",
+  "repositoryCommitSha": "63c1fe8c2d55a37854bb1ef52ee3173683928729",
+  "evidenceHash": "23a1809230ddb57f51a277497c3856c02c7032cb5352dc1c8463de656f9e2032",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7de25c5919dc7f84f72b7e2a2826b01d6f904d1775525f91e9c37c7bc991bc73",
+  "shadowMode": false
+}

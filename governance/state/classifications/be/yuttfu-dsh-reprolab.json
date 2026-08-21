@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "automation",
+    "testing",
+    "terminal",
+    "cli",
+    "workflow",
+    "debugging",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "README clearly positions dsh-reprolab as a DeepSeek Harness plugin for deterministic bug verification through frozen repro tests, RED/GREEN/REGRESSION gates, and replayable evidence artifacts, which is primarily a testing-debugging capability rather than UI, browsing, or external integration.",
+  "summaries": {
+    "zh": "ReproLab 是一款 DeepSeek Harness 插件，用于将复现测试和修复方案固定化后按 RED/GREEN/REGRESSION 流程验证，并生成可复现的修复证据报告。",
+    "en": "ReproLab is a DeepSeek Harness plugin that freezes repro tests and candidate fixes, runs RED/GREEN/REGRESSION checks, and produces reproducible evidence for fix validation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates and manages isolated control/candidate worktrees and run artifacts under repository-local directories.",
+      "Executes user-declared test commands to verify RED, GREEN, and regression outcomes on frozen test inputs.",
+      "Generates structured evidence outputs (JSON/Markdown reports) and maintains run state for replayability."
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as a \"deterministic bug-proof executor\" with a RED/GREEN/REGRESSION flow for test verification.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The tool list includes reprolab_start, reprolab_set_test, reprolab_verify_red, reprolab_verify_green, and reprolab_verify_regression, explicitly defining a test-validation workflow.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Permissions section states it writes runDir state and reports, creates worktrees under runDir/worktrees, and executes Git plus user-declared test commands via subprocess.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Creates and manages isolated control/candidate worktrees and run artifacts under repository-local directories.",
+      "Executes user-declared test commands to verify RED, GREEN, and regression outcomes on frozen test inputs.",
+      "Generates structured evidence outputs (JSON/Markdown reports) and maintains run state for replayability."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:42.220Z",
+  "repositoryCommitSha": "bdf332e37b19fbe50e2377ad8911e6d600d44d30",
+  "evidenceHash": "d169e946ab5854d3e146f2f94c73924a9c73eb6d3be00c161189bcff0cc630ab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "05c7343bcf467775a454c7bc754c9540ef138bc8d159a7979587e8c301a703f0",
+  "shadowMode": false
+}

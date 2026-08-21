@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "automation",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README provides clear evidence of a single primary purpose: improving DSH web search reliability by pooling multiple backends and handling provider failover/rotation with quota-aware circuit breaking. It also documents user-facing settings and status features for search providers, confirming this is a search-browsing utility centered on external search provider orchestration.",
+  "summaries": {
+    "zh": "该插件提供 DSH 的 provider 级搜索池，在保持原生 web_search 的同时，在多个搜索后端间按策略执行自动切换与轮询，并支持后端状态与密钥的本地配置管理。",
+    "en": "This plugin provides a DSH provider-level search pool that keeps native web_search behavior and automatically handles search requests across multiple backends with configurable failover or rotation, plus local settings for backend keys and status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes web searches through multiple external search backends with failover or rotate strategies",
+      "Applies circuit-breaking behavior based on quota and transient failures",
+      "Supports local storage of provider keys and runtime configuration from settings/UI",
+      "Exposes local endpoints to update keys, reset config, and inspect provider state",
+      "Provides an optional explicit search tool for selecting a source"
+    ],
+    "reasons": [
+      {
+        "code": "README states this is a provider-level search pool and that native web_search remains unchanged while internally failing over or rotating across multiple backends.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents a quota-aware circuit breaker with cooldown behavior and thresholds, including rotate/failover strategy selection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README includes a GUI settings page, key management via local settings.yaml, and a per-backend state view with cooldown status and test-connection actions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository metadata describes it as a provider-level web search failover pool with free/paid backends.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes web searches through multiple external search backends with failover or rotate strategies",
+      "Applies circuit-breaking behavior based on quota and transient failures",
+      "Supports local storage of provider keys and runtime configuration from settings/UI",
+      "Exposes local endpoints to update keys, reset config, and inspect provider state",
+      "Provides an optional explicit search tool for selecting a source"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:35.894Z",
+  "repositoryCommitSha": "d389b0c54ba52172ac3d84f150b83c594898157b",
+  "evidenceHash": "d0a8caed1e4a168f38885500e44b63a57adbcfa61410ea92df7b5098ee1c3bd3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e7b64ee761da59f7a97d2a6f521fa30a9a6c89db4551ef4cc0e615e9a15072ad",
+  "shadowMode": false
+}

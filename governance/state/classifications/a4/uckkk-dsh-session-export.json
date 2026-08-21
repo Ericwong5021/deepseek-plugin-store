@@ -1,16 +1,67 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "data",
+    "document",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is presented as a DeepSeek Harness session backup/export utility: it reads local DSH session logs and lets users list sessions and export one to Markdown or JSON, with optional file output. This indicates a local file-oriented utility for session archival and data portability.",
+  "summaries": {
+    "zh": "dsh-session-export 是 DeepSeek Harness 会话导出工具，可列出本地会话并将指定会话导出为 Markdown 或 JSON 文件，支持备份与后续处理。",
+    "en": "dsh-session-export is a DeepSeek Harness session utility that lists local sessions and exports selected sessions to Markdown or JSON files for backup and reuse."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "List local DSH sessions with metadata like title, ID, working directory, create time, and size.",
+      "Export a chosen session to Markdown with chat turns and tool calls.",
+      "Export a chosen session to JSON and optionally write the result to a specified output path."
+    ],
+    "reasons": [
+      {
+        "code": "README states tools `session_list` and `session_export` for listing local sessions and exporting sessions to Markdown/JSON.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains exports support full chat turns, tool calls/results, and allow `outPath` direct file writing.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "List local DSH sessions with metadata like title, ID, working directory, create time, and size.",
+      "Export a chosen session to Markdown with chat turns and tool calls.",
+      "Export a chosen session to JSON and optionally write the result to a specified output path."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:04.798Z",
   "repositoryCommitSha": "f6562b7015e723a44a1a01d7b187e1b36519fa73",
+  "evidenceHash": "67f58c21d174c453fc8d539ecf1a2ebf450f398e26844d994a3f469a8fee1a3c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "fea8ac30d673e43b911228eadb56fba907e4b61997b9f04b9e0ff6a44dbb4736",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:27:25.188Z",
-  "lastAttemptAt": "2026-08-18T18:27:25.188Z",
-  "nextRetryAt": "2026-08-20T08:20:02.188Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":136357,\"reset_time\":\"37h52m36s\"}}",
   "shadowMode": false
 }

@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "ui",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README 明确将该插件定位为 DeepSeek Harness 的“引注”Web 插件，主要用于在聊天中引用当前或历史会话内容、添加批注、并在新轮对话中复用上下文，同时提供与会话/文件产物相关的操作入口，故归类为记忆与上下文增强类。",
+  "summaries": {
+    "zh": "dsh-cite 是一款 DeepSeek Harness 的 Web 插件，用于在对话中引用前文或历史会话并可添加批注，帮助用户将相关上下文快速带入新对话。",
+    "en": "dsh-cite is a DeepSeek Harness web plugin that lets users bring context into a conversation by quoting current text or historical sessions with annotations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "可让用户在当前会话中圈选文本并附加注释后发送为模型输入的 Markdown 引用块",
+      "支持通过 `@` 引用其他历史会话内容并生成带来源信息的快照用于新对话",
+      "支持在当前回合显示本轮生成的文件列表，并允许打开、复制路径或在文件管理器中定位",
+      "提供会话与工作区级操作入口，如复制会话 ID 和打开工作区目录",
+      "对引用内容与评论长度进行截断和校验，并在跨会话引用失败时按配置保留可读文本或拒绝提交"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明插件核心用于“圈一段前文加批注”并将注释化引文回传模型。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明插件支持输入 `@` 选择历史会话，宿主侧生成“snapshot + 可读引用”的跨会话上下文。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提到回复下方展示“产物”文件列表，支持打开、复制路径、在 Finder/资源管理器显示所在文件夹。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "可让用户在当前会话中圈选文本并附加注释后发送为模型输入的 Markdown 引用块",
+      "支持通过 `@` 引用其他历史会话内容并生成带来源信息的快照用于新对话",
+      "支持在当前回合显示本轮生成的文件列表，并允许打开、复制路径或在文件管理器中定位",
+      "提供会话与工作区级操作入口，如复制会话 ID 和打开工作区目录",
+      "对引用内容与评论长度进行截断和校验，并在跨会话引用失败时按配置保留可读文本或拒绝提交"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:33.213Z",
+  "repositoryCommitSha": "1d244e1ade870a055f7e0a694ec3ac12fffe78d4",
+  "evidenceHash": "e5a92d0ed819dd044267696c0989117e38801555fde25609cb4e095f02c179dc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "30eb24d08a0524453473ef160b2a97be88b6b8d0bba1f5ca99237f84dd30c79b",
+  "shadowMode": false
+}

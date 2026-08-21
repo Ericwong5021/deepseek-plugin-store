@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "mcp",
+    "api",
+    "tool",
+    "automation",
+    "data",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的主要用途是将 ArcGIS Pro 的 MCP 功能接入 DeepSeek Harness，在模型侧暴露 `mcp__arcgis__*` 工具用于本机 GIS 项目与地理数据读写、分析与脚本执行，属于外部服务集成类型插件。README 明确列出包括 `list_gis_layers`、`inspect_gdb`、`buffer_features`、`clip_features` 与 `execute_arcpy_code` 在内的可用工具。",
+  "summaries": {
+    "zh": "该插件将本机 ArcGIS Pro 的 MCP 功能接入 DeepSeek Harness，使模型可以调用工具来读取 GIS 工程与地理数据库并执行 Buffer/Clip 及 ArcPy 操作。",
+    "en": "This plugin connects local ArcGIS Pro MCP capabilities to DeepSeek Harness, letting models call tools to read GIS projects/GDB data and run Buffer/Clip and ArcPy-based operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "启动本地 ArcGIS Pro MCP 服务并通过 DSH 与模型建立工具调用链路",
+      "提供可调用的 GIS 读取与数据处理工具（如项目图层与 GDB 检查、Buffer/Clip）",
+      "提供 `execute_arcpy_code` 工具，可在本机 ArcPy 环境执行代码"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确列出 `mcp__arcgis__execute_arcpy_code`，提示可在本地执行 ArcPy 代码，增加高风险操作面。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述通过 stdio 启动 `arcgis_mcp_server.py` 并暴露一组 `mcp__arcgis__*` 工具供模型调用，表明可直接触发本机 GIS 操作。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "仓库简介说明为 DeepSeek Harness 的 ArcGIS Pro 桥接插件，强调与外部桌面应用（ArcGIS Pro）集成。",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "启动本地 ArcGIS Pro MCP 服务并通过 DSH 与模型建立工具调用链路",
+      "提供可调用的 GIS 读取与数据处理工具（如项目图层与 GDB 检查、Buffer/Clip）",
+      "提供 `execute_arcpy_code` 工具，可在本机 ArcPy 环境执行代码"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:13.865Z",
+  "repositoryCommitSha": "dab9212cb48597a9dd6d6b715ec6b31eaaea28e2",
+  "evidenceHash": "3dc55dad46e4d7e4fe3f59772315593db1e6bb374cda4b375c51cb3937e7e09a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c17c793b4ae1a7b1ade6dd87d98a28e7a0bcc94212ecde7134c82b95addc8bbf",
+  "shadowMode": false
+}

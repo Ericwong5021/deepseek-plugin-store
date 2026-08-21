@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "data",
+    "layout",
+    "file",
+    "document",
+    "chat",
+    "api",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "README 清晰表明该插件是面向 DSH 用户的法律案件工作台界面扩展，核心是以面板化首页聚合案件列表、看板、日历、档案与实时动态，并将案件流程与 DSH 原生会话、技能和命令绑定。基于“办案首页”“侧边栏入口”“可调工作区”“看板”等表述，主要用途属于导航与面板类。",
+  "summaries": {
+    "zh": "dsh-law 是面向法律场景的本地 DeepSeek Harness 工作台插件，提供案件看板、日程期限与档案视图，并在每案中连接 DSH 原生会话与工具命令。",
+    "en": "dsh-law is a local DeepSeek Harness legal workspace plugin that provides a case board, calendar, and dossier views, while linking each case to native DSH conversations and command/skill workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "本地案件与材料数据管理（本机目录与看板/日程记录）",
+      "在本机 HTTP/SSE 服务中提供工作台状态与数据接口",
+      "通过 DSH 原生接口与会话/技能/命令进行交互",
+      "支持可选的 DSH Remote 配对用于手机端入口"
+    ],
+    "reasons": [
+      {
+        "code": "README 指出插件为本地法律工作台，集中展示办案首页、看板、日历、案件详情与动态，并可管理案件、期限、材料与档案。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明提供 `/api/dsh-lawbench/info`、`/api/dsh-lawbench/workbench/` 等本机路由，并通过同源 iframe 访问 DSH 的 `session.*`、`skill.list`、`commands/*` 接口。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提及工作台使用本地数据目录并保留可选 Remote 流程（一次性配对链接与 `/m` 手机端入口），需配合 DSH Remote 设置。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "本地案件与材料数据管理（本机目录与看板/日程记录）",
+      "在本机 HTTP/SSE 服务中提供工作台状态与数据接口",
+      "通过 DSH 原生接口与会话/技能/命令进行交互",
+      "支持可选的 DSH Remote 配对用于手机端入口"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:45.540Z",
+  "repositoryCommitSha": "dc4dbffaf73475a34f58373947848fb584d400d8",
+  "evidenceHash": "f35bea6f551fb39970e5f1afdd2a227c6e15d2f036aab4c07af81ec880966ff6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f6684a8598f8069e00003ae42aaadb1b3d059d6b8d94e2c9caeb57a38804225",
+  "shadowMode": false
+}

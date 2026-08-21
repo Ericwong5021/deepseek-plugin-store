@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "data",
+    "mcp",
+    "search"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The primary user-facing purpose is to expose external package and security intelligence to DeepSeek Harness as callable tools, evidenced by the plugin’s own description and README detailing MCP-over-HTTP integration, multiple read-only pkgseek_* tool operations, and API-base configuration.",
+  "summaries": {
+    "zh": "dsh-plugin-pkgseek 是一个 DeepSeek Harness 插件，通过接入 PkgSeek 服务为用户提供 Linux 软件包、命令建议、CVE 漏洞与发布周期等只读情报工具。",
+    "en": "dsh-plugin-pkgseek is a DeepSeek Harness plugin that integrates with PkgSeek to provide read-only Linux package, command, and security-intelligence tools directly in the DSH workflow."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Forwards user tool requests to PkgSeek’s MCP-over-HTTP endpoint and registers returned tool definitions as native DSH tools.",
+      "Provides read-only Linux package, command, vulnerability (CVE), and distro lifecycle tooling via names like pkgseek_search_packages and pkgseek_search_vulnerabilities.",
+      "Supports runtime configuration for API endpoint, request timeout, prompt guidance, tool refresh behavior, and optional tool allowlisting.",
+      "Uses snapshot fallback when live discovery fails, then surfaces call failures clearly instead of crashing the host profile."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a thin adapter over PkgSeek’s public MCP-over-HTTP endpoint and forwards calls as tools/call with read-only operations.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists numerous remote-intelligence tools for package search, install resolution, command diagnosis, CVE lookup, and distro lifecycle planning.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description explicitly defines the plugin as Linux package, command and CVE intelligence for DeepSeek Harness.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Forwards user tool requests to PkgSeek’s MCP-over-HTTP endpoint and registers returned tool definitions as native DSH tools.",
+      "Provides read-only Linux package, command, vulnerability (CVE), and distro lifecycle tooling via names like pkgseek_search_packages and pkgseek_search_vulnerabilities.",
+      "Supports runtime configuration for API endpoint, request timeout, prompt guidance, tool refresh behavior, and optional tool allowlisting.",
+      "Uses snapshot fallback when live discovery fails, then surfaces call failures clearly instead of crashing the host profile."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:41.513Z",
+  "repositoryCommitSha": "f0c3b3044b2760e83c7000c969cf870817b5ddea",
+  "evidenceHash": "813a019e04f290fa00f41ff8348ff7acd5893e4b2bc94fd2723b2c0f78d0a2a6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "685d2b897e31d68fa322d278aafef3e99951f7f597152e89e8032a8abdc0dbaa",
+  "shadowMode": false
+}

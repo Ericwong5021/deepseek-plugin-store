@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "ui",
+    "api",
+    "file",
+    "terminal",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "README clearly states this plugin provides a Settings page in DeepSeek Harness for managing MCP services configured in cordis.patch.yml, including list/add/edit/delete and real connectivity verification via MCP initialize handshakes. That establishes its primary user-facing purpose as external service orchestration for MCP endpoints, with additional utility features for persistence and status monitoring.",
+  "summaries": {
+    "zh": "这是一个在 DSH 设置中管理 MCP 服务的静态插件，可对已配置服务进行展示、增删改并执行真实的 MCP initialize 连接检测。",
+    "en": "This is a static DSH plugin that adds an MCP service management page in Settings to list, add, edit, delete configured servers, and run real MCP initialize connectivity checks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Lists, adds, edits, deletes MCP server entries and saves changes to cordis.patch.yml",
+      "Runs real MCP initialize checks for configured servers (streamable-http and stdio)",
+      "Spawns and tests MCP server processes via stdio transport during connectivity checks",
+      "Exposes host endpoints for MCP management actions (/dsh-mcp/list, /dsh-mcp/check, /dsh-mcp/save)"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin adds a Settings MCP management page that lets users manage MCP server definitions and persists edits, showing it is designed for external service configuration rather than local coding tasks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The described probe functionality performs real MCP initialize handshakes and includes stdio spawning and streamable-http requests, which introduces higher operational impact than passive UI tools.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Host-side routes and real Node APIs (node:fs, node:os, node:child_process) are documented as part of the plugin’s implementation surface.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Lists, adds, edits, deletes MCP server entries and saves changes to cordis.patch.yml",
+      "Runs real MCP initialize checks for configured servers (streamable-http and stdio)",
+      "Spawns and tests MCP server processes via stdio transport during connectivity checks",
+      "Exposes host endpoints for MCP management actions (/dsh-mcp/list, /dsh-mcp/check, /dsh-mcp/save)"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:57.331Z",
+  "repositoryCommitSha": "8443be1cf03a79ade5f50be772a2b649bc341cdf",
+  "evidenceHash": "3193a7e4031bb5a841dbbfa460385efbe7fe092ef163d1748d11ebf00fd848f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1fb1a76648623636ade84f7c609009705db77dc9b270584631b317f104568185",
+  "shadowMode": false
+}

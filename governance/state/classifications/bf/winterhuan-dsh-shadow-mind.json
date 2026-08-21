@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is primarily an agent orchestration utility for DSH: it manages parallel, configurable shadow subagents and schedules their executions to augment the main agent with independent review/fact-check work, with user-facing slash commands and model tools for status, control, and configuration.",
+  "summaries": {
+    "zh": "dsh-shadow-mind 是一个 DSH 插件，用于在主代理旁并行运行 Shadow Mind 子代理，并在每次主轮次后按配置触发复核与事实核验流程，同时提供状态查看、控制与配置管理命令。",
+    "en": "dsh-shadow-mind is a DSH plugin that runs parallel Shadow Mind subagents alongside the main agent, triggering review and fact-checking runs by heartbeat or command, with integrated status/control and configuration management."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runs multiple shadow subagents in parallel alongside the main agent",
+      "Provides model-tool management for creating/updating/deleting/running shadow definitions",
+      "Allows configuration changes via command/model tools with bounded execution via timeouts"
+    ],
+    "reasons": [
+      {
+        "code": "README describes the plugin as a DSH plugin that runs multiple \"Shadow Mind\" agents beside the main agent and triggers random shadow activations after each main-agent turn.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists heartbeat scheduling, pause/resume, and auto on/off controls for parallel shadow runs.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states shadows use configurable tool allowlists and exposes management tools such as create/update/delete/list shadows plus config read/write.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Runs multiple shadow subagents in parallel alongside the main agent",
+      "Provides model-tool management for creating/updating/deleting/running shadow definitions",
+      "Allows configuration changes via command/model tools with bounded execution via timeouts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:53.324Z",
+  "repositoryCommitSha": "6f81467840c0817d2bc858f813778b21e39ce3e6",
+  "evidenceHash": "499b2be4bf0c8ce47c1428ac7fd8422d6bab75dd05cec0d5b3c561b922fd0bd0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e7d9e0ba6fa27c39754a5cfd68d8d41722c780433cc43250af793d0beb44c2c3",
+  "shadowMode": false
+}

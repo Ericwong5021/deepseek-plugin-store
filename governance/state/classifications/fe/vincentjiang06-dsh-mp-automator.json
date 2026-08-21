@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "testing",
+    "tool",
+    "ui",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "sufficient_evidence: README clearly positions the plugin as a WeChat Mini Program automation/testing extension for dsh agents, with explicit `mp_*` test tools to run, inspect, act on, screenshot, and validate a real Mini Program session in WeChat DevTools. Its primary user-facing purpose is automated testing and debugging workflows rather than content creation or external knowledge tasks.",
+  "summaries": {
+    "zh": "dsh-mp-automator 是面向 dsh 的微信小程序测试插件，提供 session、query、act、screenshot、console 等工具，在微信开发者工具的真实运行环境中执行自动化测试与校验。",
+    "en": "dsh-mp-automator is a dsh plugin for WeChat Mini Program testing that provides mp_* tools to run real DevTools sessions with actions, inspections, screenshots, and console-based validation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "驱动微信开发者工具中的真实小程序会话进行自动化操作",
+      "执行界面交互（点击、输入、导航）与运行时查询（页面结构、快照、控制台）",
+      "执行页面 appservice VM 中的 JS 逃生命令（可选开关控制）",
+      "生成并落盘截图文件，返回几何与可见性事实"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明 mp_act 可按选择器执行 tap/input/导航等真实交互，属于对小程序运行时的可控操作能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指出 mp_eval 在页面 appservice VM 中执行 JS，且有开关控制，可带来执行任意脚本的潜在影响。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 描述 mp_session、mp_console、mp_screenshot 等工具会直接读取小程序控制台与截图产物，并连接微信开发者工具。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "驱动微信开发者工具中的真实小程序会话进行自动化操作",
+      "执行界面交互（点击、输入、导航）与运行时查询（页面结构、快照、控制台）",
+      "执行页面 appservice VM 中的 JS 逃生命令（可选开关控制）",
+      "生成并落盘截图文件，返回几何与可见性事实"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:26.730Z",
+  "repositoryCommitSha": "11e7abbd0867e60ad57e97538485b2e94386f0df",
+  "evidenceHash": "04f726d34188f9bd423f92d978b022f5aa3499fa4f745875ec4056d2c5ee8e2f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9b61c701d9af2dcc62fc2817fb74af01b9cb3d889a68d357b00503a7f5d8fda2",
+  "shadowMode": false
+}

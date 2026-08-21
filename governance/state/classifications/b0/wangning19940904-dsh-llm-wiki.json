@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "knowledge",
+    "document",
+    "search",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README consistently states this plugin’s primary function is to provide a workspace-local LLM wiki: it imports Markdown/TXT files from the active workspace, builds an indexed knowledge store, and exposes agent tools to search, read, write, ingest, and graph-query wiki content. It is therefore classified as knowledge-management.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的本地化知识库插件，支持从工作区导入、索引、搜索并维护 Markdown/TXT 维基页面。",
+    "en": "This is a workspace-local LLM wiki plugin for DeepSeek Harness that imports, indexes, searches, and enables the agent to read and maintain Markdown/TXT knowledge pages."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Workspace-local document indexing and search",
+      "Import of workspace markdown/text sources into a local wiki",
+      "Agent-facing tools to read and write wiki pages",
+      "Graph-based exploration of wiki entities and relationships"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as a workspace-scoped, local-first LLM wiki for DeepSeek Harness with tools like llm_wiki_search, llm_wiki_import, llm_wiki_ingest, llm_wiki_read, llm_wiki_write, and llm_wiki_graph.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It stores durable sources under per-workspace directories (`raw/docs`, `wiki/...`) and supports explicit maintenance actions; `.index` is rebuildable derived data.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Safety checks include required cwd session, path/symlink/path traversal restrictions, extension and size limits, UTF-8 validation, and read/write bounds.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Workspace-local document indexing and search",
+      "Import of workspace markdown/text sources into a local wiki",
+      "Agent-facing tools to read and write wiki pages",
+      "Graph-based exploration of wiki entities and relationships"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:32.997Z",
+  "repositoryCommitSha": "d7d896d58e3de4e2fbe0cf51d2938ea98a303bba",
+  "evidenceHash": "0eca9447ea0f614eada86aa18c8d63fed8bc6e0993c7a112f22b9ac30f5d2091",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a9bcfb9eec2db1498638cf72ef03c373b2f93604e94b3838d0183ef7b59dad83",
+  "shadowMode": false
+}

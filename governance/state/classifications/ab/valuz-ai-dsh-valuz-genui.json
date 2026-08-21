@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "ui",
+    "tool",
+    "chat",
+    "browser",
+    "data",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README explicitly describes a chat-facing UI generation flow where a model emits A2UI messages, the plugin streams and renders interactive surfaces in the chat, and interaction events are fed back to the model, making the primary purpose interactive visualization UI delivery within chat.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供 `generate_ui` 工具，使模型可在聊天中流式生成并展示 A2UI 交互界面（如图表、表格、表单和仪表盘），并将界面交互结果回传给模型。",
+    "en": "This plugin adds a `generate_ui` tool to DeepSeek Harness, allowing a model to stream and render A2UI interactive surfaces in chat (such as charts, tables, forms, and dashboards) while sending UI actions back to the model."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Streams model-authored A2UI documents and renders live interactive surfaces in chat.",
+      "Supports interactive components such as charts, KPI cards, tables, forms, and dashboards.",
+      "Forwards rendered UI actions back to the model for follow-up responses or regeneration.",
+      "Validates generated A2UI content and persists a canonical document in tool result metadata."
+    ],
+    "reasons": [
+      {
+        "code": "Repository README and description state the plugin provides `generate_ui` so the model-authored A2UI document is rendered as an interactive surface inline in chat.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README says tool-call deltas stream as `assistant/chunk` and render incrementally before execution, enabling live component-by-component display.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains that surface interactions are sent as `<ui_action ...>` user messages and can trigger further `generate_ui` updates.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Streams model-authored A2UI documents and renders live interactive surfaces in chat.",
+      "Supports interactive components such as charts, KPI cards, tables, forms, and dashboards.",
+      "Forwards rendered UI actions back to the model for follow-up responses or regeneration.",
+      "Validates generated A2UI content and persists a canonical document in tool result metadata."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:26.268Z",
+  "repositoryCommitSha": "244bb988401626473f228231e127bfb153880b95",
+  "evidenceHash": "3bbf2ef18ddf71d2479007b6c21de1f2ebdcdf67ea4803d3b00a6d4529d46d5d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "584ab4c5b6216a3ca4b444c5f19e2e34b8b2d0ff969e791accc2e1804e61bcc3",
+  "shadowMode": false
+}

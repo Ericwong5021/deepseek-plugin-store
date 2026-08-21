@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The plugin is primarily for request flow automation by adding pre-flight rate control to DeepSeek Harness model provider calls. README clearly states it enforces a per-provider token bucket before request dispatch and queues over-limit requests with delays, which aligns with an automation utility for API traffic control rather than content creation, debugging, UI, or storage functions.",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 请求前置限流插件，用于按提供商执行令牌桶节流，并在超额时排队等待以减少 429 返回。",
+    "en": "This is a DeepSeek Harness plugin that enforces provider-level token-bucket rate limiting before requests are sent and queues over-limit requests with delay."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Prevents request bursts by enforcing per-provider token-bucket throttling before requests are sent",
+      "Queues excess requests with delays instead of failing immediately",
+      "Supports abort-aware waiting so queued delays can be canceled when the user stops the request"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is described as a proactive rate limiter that controls request rate per provider before model requests are issued.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It is explicitly configured at install/use time with provider-specific `rate` and `burst` values in the profile patch.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "When over limits are reached, requests are queued with delay rather than rejected, which can delay or defer operations but does not drop requests.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description identifies it as a proactive rate limiter plugin for DeepSeek Harness, confirming the plugin-level purpose.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Prevents request bursts by enforcing per-provider token-bucket throttling before requests are sent",
+      "Queues excess requests with delays instead of failing immediately",
+      "Supports abort-aware waiting so queued delays can be canceled when the user stops the request"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:01.288Z",
+  "repositoryCommitSha": "4eff161a18817d42f2fb6bf41483ff8224c15caf",
+  "evidenceHash": "1ba7cc8eb4b3da709842690dd9e9b732dd44232bfe13ae7746612b9da4d4d92f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "467672f6357609d6c55a3c09c23e62ab9675b9aa478cfec12b8581380b78f330",
+  "shadowMode": false
+}

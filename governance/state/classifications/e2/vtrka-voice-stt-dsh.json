@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "ui",
+    "desktop",
+    "browser",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is primarily a local voice input tool for the DeepSeek Harness desktop chat composer, enabling microphone recording and offline transcription into message drafts. Evidence in the README clearly shows user-facing audio capture, keyboard-triggered recording, and transcript insertion, which aligns with media/input functionality rather than code, search, or collaboration features.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的 Composer 增加本地语音输入能力，可通过麦克风按钮或快捷键录音，并使用离线模型转写后将文本写入草稿。",
+    "en": "This plugin adds local voice input to DeepSeek Harness Composer with a microphone button or shortcut, records audio, performs offline transcription, and inserts the result into the draft."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Local microphone audio capture for recording user speech",
+      "Shortcut- and button-based control of recording start/stop",
+      "Local offline speech-to-text transcription via Parakeet model",
+      "Inserts transcript text into DeepSeek Harness composer draft"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin adds a local microphone button in the DeepSeek Harness composer and supports Ctrl/Cmd+E shortcuts to start and stop recording.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents that the offline model receives a local WAV file and returns a final transcript inserted into the draft, with sending kept as a separate user action.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README and repository description describe the plugin as local, offline voice input for DeepSeek Harness using Parakeet/NeMo-Speech.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Local microphone audio capture for recording user speech",
+      "Shortcut- and button-based control of recording start/stop",
+      "Local offline speech-to-text transcription via Parakeet model",
+      "Inserts transcript text into DeepSeek Harness composer draft"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:25.713Z",
+  "repositoryCommitSha": "228ee1c9f06e2426c4b465751579a4e79ab780ab",
+  "evidenceHash": "ed46f3dde0c0c2fe59884834cc1ac590955e793e662b741775439057f7e9452a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f4ee1e6b7d51749d4a22d3939fe5da44b1f87be054e71ff488ac80eeca03af8d",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "image",
+    "api",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是为 DeepSeek Harness 文本会话补充图片理解能力：提供“视觉代理”开关，在当前消息含图时自动转发到配置好的外部视觉模型服务商，而不干预纯文本请求并保持原模型处理。README 明确给出服务商管理、连接测试和 OpenAI 兼容调用逻辑，故判定为外部服务集成类插件。",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 的聊天会话添加视觉代理开关，可在检测到图片时将当前消息转发到已配置的外部视觉模型服务，并保留文本消息的原模型响应路径。",
+    "en": "This plugin adds a Vision Agent toggle to DeepSeek Harness chats, routing image-containing messages to a configured external vision model while keeping text-only messages on the user’s original model path."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在含图消息时将请求路由到可配置的外部视觉模型服务",
+      "维持文本消息对原始会话模型的透传处理",
+      "支持多视觉服务商的配置、测试连接与凭据驱动的调用",
+      "将会话路由切换与 UI 开关/设置页操作绑定"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明可配置多个 OpenAI 兼容服务商并通过 /chat/completions、/models 等接口调用，属于外部模型服务接入。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "插件通过“视觉代理”开关在会话中动态切换模型路由并发送图片+文本到外部服务，触及聊天与外部 API 交互边界。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "在含图消息时将请求路由到可配置的外部视觉模型服务",
+      "维持文本消息对原始会话模型的透传处理",
+      "支持多视觉服务商的配置、测试连接与凭据驱动的调用",
+      "将会话路由切换与 UI 开关/设置页操作绑定"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:41.912Z",
+  "repositoryCommitSha": "14a1398cb13a184fcf5826b6e74f01103a0c3f76",
+  "evidenceHash": "af81705cdcff41467033aa57d319a7a9b7daace135fb186b3e3bcb68de7b12a2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "505253a0d768ee6fa402cc3290f365bacbc84935ba0be67588e0bd749c6a7eff",
+  "shadowMode": false
+}

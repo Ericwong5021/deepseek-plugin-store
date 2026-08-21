@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "tool",
+    "integration",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要用途是为 DSH Web GUI 提供网易云音乐播放能力：在侧边栏提供入口，支持搜索试听歌曲，并在登录后播放“我喜欢的音乐”列表，属于面向音乐内容处理与外部服务播放集成的工具型插件。",
+  "summaries": {
+    "zh": "这是一个 DSH Web GUI 网易云音乐播放器插件，在侧边栏提供入口，支持搜索在线试听和登录后播放“我喜欢的音乐”，并带有可拖拽的播放浮窗。",
+    "en": "This is a DSH Web GUI NetEase Music plugin that adds a sidebar launcher for searching and streaming songs, supports playing liked tracks after login, and provides a draggable mini/floating playback window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "搜索并在线试听网易云音乐歌曲",
+      "登录后读取并播放“我喜欢的音乐”列表",
+      "提供可拖拽/最小化的播放浮窗",
+      "基于用户登录凭证请求外部音乐服务接口"
+    ],
+    "reasons": [
+      {
+        "code": "README将其定义为“网易云音乐播放器（DSH Web GUI 插件）”，并说明通过侧边栏底部入口打开",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README提供扫码登录和 Cookie + UID 登录两种方式以访问“我喜欢的音乐”",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README提到歌曲数据与播放地址由插件 Host 端代理请求网易云音乐 API 获取，并描述扫码登录涉及网易云官方接口路径",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "搜索并在线试听网易云音乐歌曲",
+      "登录后读取并播放“我喜欢的音乐”列表",
+      "提供可拖拽/最小化的播放浮窗",
+      "基于用户登录凭证请求外部音乐服务接口"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:37.691Z",
+  "repositoryCommitSha": "98ceb84bd661e0a38a707e26a2b93f44c8b5142e",
+  "evidenceHash": "03b14a21ce46695cc5889df27e532724c62443e14af6c049fc78d874a892016f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d92be1cb97eacedbfc19ef132a0fc85bd83359884faabc9cf2b79864d5ebb0cc",
+  "shadowMode": false
+}
