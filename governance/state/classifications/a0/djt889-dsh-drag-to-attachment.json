@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "ui",
+    "image",
+    "integration",
+    "search"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a DSH Web UI plugin whose primary purpose is handling locally dragged or pasted files and folders as attachment cards or resolved filesystem paths.",
+  "summaries": {
+    "zh": "在 DSH Web UI 中支持拖入或粘贴本地文件、文件夹和图片，并将其作为附件卡片或真实路径插入消息。",
+    "en": "Adds DSH Web UI support for dragging or pasting local files, folders, and images as attachment cards or resolved filesystem paths."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts file and folder drag-and-drop or paste events in the DSH Web UI",
+      "Locates files and folders on local storage using workspace, system index, and bounded recursive search",
+      "Displays local file references as attachment cards or inserts resolved paths into the message draft",
+      "Generates local image previews and computes file hashes for attachment deduplication",
+      "Saves pasted or unresolved content to a local .drops directory as a fallback"
+    ],
+    "reasons": [
+      {
+        "code": "local-filesystem-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-search-and-path-exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-fallback-file-write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Intercepts file and folder drag-and-drop or paste events in the DSH Web UI",
+      "Locates files and folders on local storage using workspace, system index, and bounded recursive search",
+      "Displays local file references as attachment cards or inserts resolved paths into the message draft",
+      "Generates local image previews and computes file hashes for attachment deduplication",
+      "Saves pasted or unresolved content to a local .drops directory as a fallback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:42.864Z",
+  "repositoryCommitSha": "84dfc17cd1a7ed5b23dcdf68afad69ae61234555",
+  "evidenceHash": "f6c109ddee69cba3c0709757db1049a504595c47ff9e1299c02745595b283bf4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7afc8fec72e6fb7279ccfe3a909df684c72114bfa6ff00b53e8576b7e0485deb",
+  "shadowMode": false
+}

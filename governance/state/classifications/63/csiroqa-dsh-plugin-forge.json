@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "automation",
+    "code-generation",
+    "testing",
+    "workflow",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes forge_plugin as an AI-driven plugin development tool that delegates implementation, validates builds, migrates results into repositories, commits changes, and optionally installs and hot-mounts generated plugins.",
+  "summaries": {
+    "zh": "一个通过子代理开发、构建、迁移、提交并可选安装和热挂载 DeepSeek Harness 插件的插件生成工具。",
+    "en": "A plugin generator that uses subagents to develop, build, migrate, commit, and optionally install and hot-mount DeepSeek Harness plugins."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "spawns subagents to develop plugins",
+      "writes and migrates plugin files into independent repositories",
+      "runs pnpm install, typecheck, test, and build workflows",
+      "creates git commits and updates a local plugin registry",
+      "installs generated plugins into a profile and hot-mounts them into the runtime"
+    ],
+    "reasons": [
+      {
+        "code": "subagent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_package_install",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_commit",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_installation_and_mount",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "spawns subagents to develop plugins",
+      "writes and migrates plugin files into independent repositories",
+      "runs pnpm install, typecheck, test, and build workflows",
+      "creates git commits and updates a local plugin registry",
+      "installs generated plugins into a profile and hot-mounts them into the runtime"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:45.865Z",
+  "repositoryCommitSha": "ceebe9aa89224772f607248f0d6dbbbcf8fc80da",
+  "evidenceHash": "46ec6feda413923ca878575262e18a3e38f6e108f654e23aa99abbd00ff0b3d4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "621a35c4265a604709c6fbe4c8e7d856119b0567038d532eadf660b6d26229b3",
+  "shadowMode": false
+}

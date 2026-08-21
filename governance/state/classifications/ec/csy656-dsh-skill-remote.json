@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "file",
+    "integration",
+    "search",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A remote skill provider and installer for DeepSeek Harness that discovers skills from skills.sh and public GitHub repositories, loads them on demand, and installs bundles locally.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供从 skills.sh 和公开 GitHub 仓库发现、按需加载并安装远程技能的能力。",
+    "en": "Provides DeepSeek Harness with discovery, on-demand loading, and local installation of skills from skills.sh and public GitHub repositories."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Discovers skills from skills.sh and public GitHub sources",
+      "Fetches remote skill files over the network",
+      "Installs validated skill bundles into the local DeepSeek Harness skills directory",
+      "Provides an agent-callable install_skill tool"
+    ],
+    "reasons": [
+      {
+        "code": "network_access_to_public_skill_sources",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_downloaded_bundles_to_local_filesystem",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_callable_install_operation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Discovers skills from skills.sh and public GitHub sources",
+      "Fetches remote skill files over the network",
+      "Installs validated skill bundles into the local DeepSeek Harness skills directory",
+      "Provides an agent-callable install_skill tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:48.409Z",
+  "repositoryCommitSha": "b7bb88aaadd37160e32386562f77ba791882becf",
+  "evidenceHash": "e40ba5776e077f8fd334f9ea9ce6dd398824451a94421577d4266bbcd8d4da9b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7989cd859423595824e962e4acc9903a4f72aad4b5ca69f9ac753e14990ba5cc",
+  "shadowMode": false
+}

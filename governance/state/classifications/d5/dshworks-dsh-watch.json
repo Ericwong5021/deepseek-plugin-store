@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "agent",
+    "automation",
+    "terminal",
+    "file",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A monitoring plugin that watches command streams or growing files, filters and batches matching output, and wakes the agent through bounded background-job notices, with optional unattended daemon hosting.",
+  "summaries": {
+    "zh": "监控命令输出或增长中的文件，按正则筛选并批量通知匹配内容，同时支持后台监听和无人值守运行。",
+    "en": "Monitors command streams or growing files, filters and batches matching lines, and notifies the agent through background watches with optional unattended hosting."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Watches command output and growing files for regex-matching lines",
+      "Spawns and monitors shell commands when configured",
+      "Runs background watches and an unattended daemon",
+      "Wakes the agent with bounded notices and exposes watch job lifecycle controls"
+    ],
+    "reasons": [
+      {
+        "code": "shell_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_daemon",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_wakeup_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Watches command output and growing files for regex-matching lines",
+      "Spawns and monitors shell commands when configured",
+      "Runs background watches and an unattended daemon",
+      "Wakes the agent with bounded notices and exposes watch job lifecycle controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:30.702Z",
+  "repositoryCommitSha": "c29ce1ec7df347f995b78b318760025ba2964d24",
+  "evidenceHash": "70576920706bad8ef2f0b38cb3a028780d650bdd46e9e9b0fd2d6d2504ac94c7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a45ba3962239e00cda2b91b8033c8af6515b42d35bf7414d573ea0dcda9bfc92",
+  "shadowMode": false
+}

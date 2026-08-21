@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "file",
+    "automation",
+    "agent",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A file-snapshot utility that automatically captures agent file changes and supports reviewing, restoring, and managing snapshots through a timeline panel and rollback commands.",
+  "summaries": {
+    "zh": "在智能体修改或删除文件前自动保存快照，并通过时间线面板和回滚命令查看及恢复历史文件状态。",
+    "en": "Automatically captures file snapshots before agent edits or deletions and provides a timeline panel and rollback commands for reviewing and restoring previous states."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads target file contents before agent write, edit, or shell-based deletion operations",
+      "Persists file snapshots per session in JSONL storage",
+      "Restores or rolls back files to selected historical snapshots",
+      "Deletes stored snapshots when the user clears them or retention rules apply",
+      "Provides a sidebar timeline, rollback command, and configuration interface"
+    ],
+    "reasons": [
+      {
+        "code": "file_read_write_and_restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_snapshot_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_initiated_snapshot_deletion",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads target file contents before agent write, edit, or shell-based deletion operations",
+      "Persists file snapshots per session in JSONL storage",
+      "Restores or rolls back files to selected historical snapshots",
+      "Deletes stored snapshots when the user clears them or retention rules apply",
+      "Provides a sidebar timeline, rollback command, and configuration interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:11.255Z",
+  "repositoryCommitSha": "9d3696be6aebb8b14f3d85c8065b25efd99ca03c",
+  "evidenceHash": "757026cac49d4433bba6bf90663f0d4dcb22e6dc729d67b8f9aec3360bbc93ac",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37e0e853038f6a481dba34f4f8c68bed86d700c6373ea5615902dd08ed0eecc9",
+  "shadowMode": false
+}

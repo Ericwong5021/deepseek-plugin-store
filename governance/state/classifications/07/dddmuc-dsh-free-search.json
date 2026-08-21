@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "api",
+    "integration",
+    "tool",
+    "agent",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A web search and browsing plugin for DeepSeek Harness that provides multi-engine search, webpage fetching, platform-specific search, time filtering, and configurable provider credentials.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供多引擎网页搜索、网页内容抓取、平台搜索、时间过滤和搜索引擎配置功能。",
+    "en": "Provides DeepSeek Harness with multi-engine web search, webpage fetching, platform-specific search, time filtering, and configurable search providers."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches the web through multiple external search providers",
+      "Fetches and extracts content from specified web pages",
+      "Searches public platform APIs including GitHub, Reddit, npm, and Wikipedia",
+      "Stores configurable provider settings and API keys",
+      "Uses external network services and supports provider fallback"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "webpage_fetch_without_ssrf_protection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "stores_external_service_credentials",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Searches the web through multiple external search providers",
+      "Fetches and extracts content from specified web pages",
+      "Searches public platform APIs including GitHub, Reddit, npm, and Wikipedia",
+      "Stores configurable provider settings and API keys",
+      "Uses external network services and supports provider fallback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:12:34.747Z",
+  "repositoryCommitSha": "998fcebbebb7f08a972d3a9efb53a56cd6e1bcf5",
+  "evidenceHash": "cd79d9cb77bec428cc1ee65f232b525b810031d79ef5cba244dfa31963fbb809",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bb54b841c92f8398d9f3bdc8fac40df3ed1f160a28919835488018fbc70e197d",
+  "shadowMode": false
+}

@@ -1,16 +1,91 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "agent",
+    "automation",
+    "browser",
+    "desktop",
+    "integration",
+    "mobile",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes an authenticated gateway that exposes a local DeepSeek Harness or compatible web UI and API for remote browser control, with session forking, pairing, health monitoring, and optional notifications; human review is warranted because it expands network access to privileged RPCs and handles session credentials.",
+  "summaries": {
+    "zh": "通过配对认证和反向代理，将本地 DeepSeek Harness 或兼容 Web 服务提供给移动设备远程访问，并支持会话分叉与连接状态监控。",
+    "en": "Provides authenticated reverse-proxy access to a local DeepSeek Harness or compatible web service for remote browser control, with session forking and connection monitoring."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "binds a network listener",
+      "reverse-proxies a local web interface and API",
+      "supports QR/HMAC pairing and cookie sessions",
+      "enables remote browser-based control of an agent",
+      "provides a session-forking tool",
+      "publishes mDNS service discovery",
+      "reports connection and upstream health status",
+      "optionally sends approval notifications to external endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged_rpc_forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_and_device_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_notification_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "binds a network listener",
+      "reverse-proxies a local web interface and API",
+      "supports QR/HMAC pairing and cookie sessions",
+      "enables remote browser-based control of an agent",
+      "provides a session-forking tool",
+      "publishes mDNS service discovery",
+      "reports connection and upstream health status",
+      "optionally sends approval notifications to external endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:11.863Z",
   "repositoryCommitSha": "f7a444eb6e0254c1c2f79a54d8389c01886dfc7f",
+  "evidenceHash": "5bb75ab53eeec077e71349d7887310a2dfe1ed37d7ce3ed4a5d7e8d7c9716a57",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "485426905303e7091bb0548cd4653c9ff9e0afc3f4745d813fa6a90fda0297e5",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T19:05:21.044Z",
-  "lastAttemptAt": "2026-08-21T19:05:21.044Z",
-  "nextRetryAt": "2026-08-22T19:05:21.044Z",
-  "retryable": true,
-  "error": "AI risk result is invalid",
   "shadowMode": false
 }

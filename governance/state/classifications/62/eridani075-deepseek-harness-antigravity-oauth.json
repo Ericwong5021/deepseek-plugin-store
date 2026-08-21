@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "chat",
+    "cli",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an external LLM provider plugin that connects DeepSeek Harness to Gemini models through Google OAuth and Antigravity's non-public API; human review is warranted because it handles OAuth credentials and relies on an unofficial external service.",
+  "summaries": {
+    "zh": "将 Google Antigravity 账号中的 Gemini 模型通过 OAuth 接入 DeepSeek Harness，提供文本生成、流式响应和工具调用能力。",
+    "en": "Connects Gemini models from a Google Antigravity account to DeepSeek Harness through OAuth, with text generation, streaming responses, and tool-call support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Integrates Gemini models into DeepSeek Harness as an LLM provider",
+      "Performs Google OAuth login and stores refresh tokens locally",
+      "Runs local OAuth callback listeners for web and CLI authentication",
+      "Sends requests to Antigravity's non-public API with streaming and tool-call support",
+      "Automatically refreshes access tokens and retries failed requests",
+      "Provides UI controls for provider activation and credential deletion"
+    ],
+    "reasons": [
+      {
+        "code": "oauth_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "non_public_external_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_callback_server",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Integrates Gemini models into DeepSeek Harness as an LLM provider",
+      "Performs Google OAuth login and stores refresh tokens locally",
+      "Runs local OAuth callback listeners for web and CLI authentication",
+      "Sends requests to Antigravity's non-public API with streaming and tool-call support",
+      "Automatically refreshes access tokens and retries failed requests",
+      "Provides UI controls for provider activation and credential deletion"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:15:30.733Z",
+  "repositoryCommitSha": "6b2dc1bbda8a4891e141694773dfc9a0f2a14de9",
+  "evidenceHash": "dcb684892b84245ff020ad0700ee7c5c38b52d831f19d53260d8389f9e0e86bb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7bbc79d7bca060e71163f3309853d91de6fc5b0f67178ac9a8deabab636fea22",
+  "shadowMode": false
+}

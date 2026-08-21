@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "layout",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness Web sidebar plugin that retrieves and displays DeepSeek account balance data, refreshes it periodically, and provides navigation to the official top-up page.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web 侧边栏显示账户余额与相关额度信息，并提供定时刷新和官方充值页面入口。",
+    "en": "Displays DeepSeek account balance information in the DeepSeek Harness Web sidebar with periodic refresh and access to the official top-up page."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek account balance through the official /user/balance API",
+      "Displays balance and usage-related values in a sidebar panel",
+      "Refreshes balance data automatically and manually",
+      "Opens the official DeepSeek top-up page and displays its URL as a QR code",
+      "Reads the DEEPSEEK_API_KEY through the host credential service"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "payment_page_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek account balance through the official /user/balance API",
+      "Displays balance and usage-related values in a sidebar panel",
+      "Refreshes balance data automatically and manually",
+      "Opens the official DeepSeek top-up page and displays its URL as a QR code",
+      "Reads the DEEPSEEK_API_KEY through the host credential service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:07.673Z",
+  "repositoryCommitSha": "3c114fab228ddd076ece4f128850c38806e0013d",
+  "evidenceHash": "2a868f3fc0c37a61b3c845bde82f83fadee9e502608befe85cee191c991eef8f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9eafc45817a7a25f8aca84716f9736d95726895a558a38199fb975a255cfdc8f",
+  "shadowMode": false
+}

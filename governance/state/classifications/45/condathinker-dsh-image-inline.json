@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "image",
+    "ui",
+    "chat",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a show_image tool and web UI integration that renders referenced local images inline in the conversation flow while returning text-only tool results.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web 对话流中通过 show_image 工具将本地图片以内嵌卡片形式显示。",
+    "en": "Displays local images as inline cards in the DeepSeek Harness Web conversation flow through a show_image tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads image files from paths supplied to the show_image tool",
+      "Validates image format, size, and dimensions",
+      "Stores image bytes as attachments",
+      "Serves stored images through a plugin HTTP endpoint",
+      "Renders image cards inline in the web chat flow"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "attachment_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_image_serving",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_ui_rendering",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads image files from paths supplied to the show_image tool",
+      "Validates image format, size, and dimensions",
+      "Stores image bytes as attachments",
+      "Serves stored images through a plugin HTTP endpoint",
+      "Renders image cards inline in the web chat flow"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:26.401Z",
+  "repositoryCommitSha": "92c6a44ef6863b60347f2eb53a980058f14b9ed1",
+  "evidenceHash": "0f239321191686d17da6e05cdebfeb2f94072907da8d5b11bc0f4141a669de12",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4a8e5ea4d7f1c5f421d7cf6e66f9819b3ce29f9f7081fd59bd6c831a94c01b9d",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "api",
+    "integration",
+    "research",
+    "search",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh provider plugin that connects the built-in web_search capability to Tavily for external web searches and result retrieval.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的内置 web_search 工具连接到 Tavily，以执行外部网页搜索并返回搜索结果。",
+    "en": "Connects DeepSeek Harness's built-in web_search tool to Tavily for external web searches and result retrieval."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends web search queries to the Tavily API",
+      "Uses a configured Tavily API key for external service access",
+      "Returns Tavily search results and optional generated answers to the host web_search tool",
+      "Allows configuration of the Tavily endpoint and search parameters"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_key_required",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "search_result_ingestion",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends web search queries to the Tavily API",
+      "Uses a configured Tavily API key for external service access",
+      "Returns Tavily search results and optional generated answers to the host web_search tool",
+      "Allows configuration of the Tavily endpoint and search parameters"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:19.456Z",
+  "repositoryCommitSha": "e307834e4f59c61f5019e28403f4d01115b06b90",
+  "evidenceHash": "b25a0bc594b85a9b4c373f222d62247ca1317716aaf13516489d285999da53cb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b8be4814a186cceb1ca75139105a768c507d4d9d810caed3f861da4cf81dd2d4",
+  "shadowMode": false
+}

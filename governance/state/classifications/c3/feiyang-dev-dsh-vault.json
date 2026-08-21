@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "data",
+    "automation",
+    "desktop",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A data-vault plugin for DeepSeek Harness that monitors, backs up, restores, and deletes local chat, workspace, settings, credential, and profile data through a settings page and model tool.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供本地数据保险箱，可自动备份并检测清空情况，还能通过设置页面或工具恢复聊天记录、工作区及相关配置。",
+    "en": "A local data vault for DeepSeek Harness that automatically backs up and detects cleared data, with settings-page and tool-based restoration for chats, workspaces, and related configuration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatically backs up chat history, workspace data, settings, credentials, and profile configuration",
+      "Reads and writes files outside the application data directory",
+      "Restores selected or all backed-up data and may overwrite current files",
+      "Deletes selected backups after confirmation",
+      "Generates a PowerShell restore script"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive-data-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file-write-and-restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "backup-deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "script-generation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Automatically backs up chat history, workspace data, settings, credentials, and profile configuration",
+      "Reads and writes files outside the application data directory",
+      "Restores selected or all backed-up data and may overwrite current files",
+      "Deletes selected backups after confirmation",
+      "Generates a PowerShell restore script"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:15:57.004Z",
+  "repositoryCommitSha": "ee6c0592c6f4c9c81cbdc537fd87ecf8248bd7cc",
+  "evidenceHash": "82eb9c3003ebdec3800ef41a6a4005977007c25d8963e7ec745d9a36acc39516",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b44c721ab4c0dab3cccbaa29e5bfaf58f25b84f532631d436169e76f1a867340",
+  "shadowMode": false
+}

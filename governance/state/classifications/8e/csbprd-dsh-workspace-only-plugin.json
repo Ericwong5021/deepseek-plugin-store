@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "file",
+    "terminal",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a dsh plugin that intercepts file and shell operations outside the workspace, requests user approval, exposes a global setting, and patches host permission handling; its primary purpose is workspace-scoped file and terminal access control.",
+  "summaries": {
+    "zh": "为 dsh 提供工作区范围控制，在代理访问工作区外的文件或终端工具时请求用户确认。",
+    "en": "Adds workspace-scope controls to dsh by requesting user approval when agent file or terminal tools access paths outside the workspace."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts agent file and shell tool calls",
+      "Detects paths outside the workspace and requests per-call user approval",
+      "Modifies permission preset labeling and persists a global workspace-only setting",
+      "Patches host and related plugin files during installation or upgrades"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_and_shell_access_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "core_permission_patching",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "non_kernel_lexical_boundary",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Intercepts agent file and shell tool calls",
+      "Detects paths outside the workspace and requests per-call user approval",
+      "Modifies permission preset labeling and persists a global workspace-only setting",
+      "Patches host and related plugin files during installation or upgrades"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:50.067Z",
+  "repositoryCommitSha": "d97cd8035b697b135b1e95530ddbee7ac94b886d",
+  "evidenceHash": "d371b231dc62f1f14e023d357ee419b3986539cd58cff6c7b9a02522135981cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5a033d9aa2a9a9c268571c7e7edb4f3b517ae4105c408d7bde847a44ebd96602",
+  "shadowMode": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "image",
+    "integration",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin integrates configured vision and text-only LLM providers by converting chat image attachments into descriptions before forwarding requests to DeepSeek.",
+  "summaries": {
+    "zh": "该插件将聊天中的图片附件发送至配置的视觉模型生成描述，再交由文本模型继续处理对话。",
+    "en": "This plugin sends chat image attachments to a configured vision model for description before forwarding the resulting text to a text-only model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads image attachments from chat requests",
+      "Sends image content and prompts to a configured vision model endpoint",
+      "Replaces image blocks with generated text descriptions before forwarding requests to a fallback text model",
+      "Caches image descriptions and retries selected vision endpoint failures"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_request_rewriting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads image attachments from chat requests",
+      "Sends image content and prompts to a configured vision model endpoint",
+      "Replaces image blocks with generated text descriptions before forwarding requests to a fallback text model",
+      "Caches image descriptions and retries selected vision endpoint failures"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:15:05.855Z",
+  "repositoryCommitSha": "5a8e31788f4b2b11c4d2122ed5f138235d9ae55e",
+  "evidenceHash": "23205fc8e94402df8cf911a4c32e2a1ec64b716667990637fef10348e22d478e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "058a0df4b4c66cfee3da25abab64952f7a8aae0e9b855f359f848eec5508f5be",
+  "shadowMode": false
+}

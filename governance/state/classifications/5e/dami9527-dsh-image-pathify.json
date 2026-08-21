@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds image-path handling and an analyze_image tool so models without native vision support can obtain descriptions through a configured external vision API, while preserving native image handling for vision-capable models.",
+  "summaries": {
+    "zh": "该插件将聊天图片映射为本地附件路径，并通过配置的视觉 API 为不支持图像输入的模型提供识图工具。",
+    "en": "This plugin maps chat images to local attachment paths and provides a vision tool backed by a configured API for models without native image support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads image attachments from dsh-managed local paths",
+      "Sends selected images to a configured OpenAI-compatible vision API",
+      "Provides an analyze_image tool to eligible models",
+      "Uses configured model, endpoint, token limit, and credential reference settings"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_tool_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads image attachments from dsh-managed local paths",
+      "Sends selected images to a configured OpenAI-compatible vision API",
+      "Provides an analyze_image tool to eligible models",
+      "Uses configured model, endpoint, token limit, and credential reference settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:10.221Z",
+  "repositoryCommitSha": "d0a46de5d81326d8ebe00c1941b13caa26b2e9d4",
+  "evidenceHash": "d42291a5c91b9003873f946fb34793ce0ea6513015b2120e66b0facf44f971c4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3cab6c7ffe4f9b319be9dec89d64f5f55a163cb57fb51fe153f810551ed60469",
+  "shadowMode": false
+}

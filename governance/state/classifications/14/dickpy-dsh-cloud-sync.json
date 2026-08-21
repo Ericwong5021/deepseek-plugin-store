@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cloud synchronization plugin for backing up, restoring, and reconciling DSH configuration, plugin metadata, and selected local plugin source across WebDAV, object storage, and GitHub Gist.",
+  "summaries": {
+    "zh": "用于在 WebDAV、对象存储或 GitHub Gist 之间同步 DSH 配置、插件信息及选定的本地插件源码，并支持历史恢复与冲突处理。",
+    "en": "Synchronizes DSH configuration, plugin metadata, and selected local plugin source across WebDAV, object storage, or GitHub Gist with history recovery and conflict handling."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Synchronizes DSH configuration snapshots with WebDAV and object-storage services",
+      "Archives and restores selected local plugin source files",
+      "Reads and writes local DSH profile and plugin installation state",
+      "Connects to GitHub Gist using authorization or a token",
+      "Checks GitHub Releases and installs user-confirmed plugin updates",
+      "Maintains sync history and supports conflict resolution and rollback"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_oauth_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Synchronizes DSH configuration snapshots with WebDAV and object-storage services",
+      "Archives and restores selected local plugin source files",
+      "Reads and writes local DSH profile and plugin installation state",
+      "Connects to GitHub Gist using authorization or a token",
+      "Checks GitHub Releases and installs user-confirmed plugin updates",
+      "Maintains sync history and supports conflict resolution and rollback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:32.746Z",
+  "repositoryCommitSha": "609d8bd08eb02a9b6f1edbdbcc90cd99f8d78d80",
+  "evidenceHash": "1264a68f4f4bd522a8bc0256b7145933aecfcdcb2bd4ec92256eef618f8880e4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aa486189218d7c64e448541111e52159da856c26af20adbbe018a184dbde9e3d",
+  "shadowMode": false
+}

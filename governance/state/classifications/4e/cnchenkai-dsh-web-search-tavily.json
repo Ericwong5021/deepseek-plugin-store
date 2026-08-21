@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "agent",
+    "integration",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a Tavily-backed web search provider that replaces the DeepSeek Harness web_search route and optionally uses a Tavily API key.",
+  "summaries": {
+    "zh": "通过 Tavily 为 DeepSeek Harness 的 web_search 能力提供网页搜索，并支持可选的 API 密钥配置。",
+    "en": "Provides Tavily-backed web search for the DeepSeek Harness web_search capability with optional API key configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Performs web searches through Tavily for the DeepSeek Harness web_search capability",
+      "Can optionally read TAVILY_API_KEY from the environment or ~/.dsh/.credentials.yaml",
+      "Sends search requests to the Tavily search API"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_api_credential_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Performs web searches through Tavily for the DeepSeek Harness web_search capability",
+      "Can optionally read TAVILY_API_KEY from the environment or ~/.dsh/.credentials.yaml",
+      "Sends search requests to the Tavily search API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:15.364Z",
+  "repositoryCommitSha": "0645debb3b27157b1645bbd3b6645d99affed8d1",
+  "evidenceHash": "a204277b1f2d9621b9fd5b890795ed94b7eeb54ae56cc22f0316ecaa17fd4242",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4629f4bd9458b1c4352cb061a3a11a4016c9cc0de9f07f64df24a0a512663072",
+  "shadowMode": false
+}

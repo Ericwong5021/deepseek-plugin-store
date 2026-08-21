@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "automation",
+    "context",
+    "data",
+    "integration",
+    "memory",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "插件通过公开接口读取本机 Codex 与 Claude Code 的历史任务，并以只读、可预览和可增量同步的镜像形式导入 DSH，主要用于跨工具保留和管理会话上下文。",
+  "summaries": {
+    "zh": "将本机 Codex 与 Claude Code 的历史对话以只读镜像形式导入 DSH，并支持预览、增量同步和按工作目录分组。",
+    "en": "Imports local Codex and Claude Code conversation history into DSH as read-only mirrors with preview, incremental synchronization, and workspace grouping."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取本机 Codex 和 Claude Code 的公开历史接口",
+      "将历史对话以只读镜像导入 DSH",
+      "按配置执行定期增量同步并维护同步状态",
+      "在 DSH 中按原工作目录创建或复用 Workspace"
+    ],
+    "reasons": [
+      {
+        "code": "local_history_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_copy_to_dsh",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_incremental_sync",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "读取本机 Codex 和 Claude Code 的公开历史接口",
+      "将历史对话以只读镜像导入 DSH",
+      "按配置执行定期增量同步并维护同步状态",
+      "在 DSH 中按原工作目录创建或复用 Workspace"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:12:13.147Z",
+  "repositoryCommitSha": "07ddd8620a62c053011d45fea73943ea9c95f5ff",
+  "evidenceHash": "e73a20970f7bb71e5baf0f2d1c57f02ff965d675cb4c12a6a0ba6c63a7a4396d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f560925c5855aa46a9ea151e0d1c57437ad131814621606a91209847e0a9324f",
+  "shadowMode": false
+}

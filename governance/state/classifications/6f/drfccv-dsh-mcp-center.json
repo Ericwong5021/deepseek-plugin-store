@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "api",
+    "terminal",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "MCP Center is a settings-based integration manager that connects remote HTTP or local stdio MCP servers and exposes their tools to the DeepSeek Harness model; the README also documents local process execution and plaintext token storage.",
+  "summaries": {
+    "zh": "通过设置页面管理远程或本地MCP服务器，并将其工具连接到DeepSeek Harness供模型调用。",
+    "en": "Manage remote or local MCP servers from a settings page and expose their tools to the DeepSeek Harness model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers and manages remote Streamable HTTP MCP servers",
+      "Launches and manages local stdio child processes",
+      "Stores server configuration and authentication tokens locally",
+      "Exposes connected MCP tools to the model across sessions",
+      "Sends JSON-RPC requests to configured MCP endpoints and processes"
+    ],
+    "reasons": [
+      {
+        "code": "remote_service_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_tool_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Registers and manages remote Streamable HTTP MCP servers",
+      "Launches and manages local stdio child processes",
+      "Stores server configuration and authentication tokens locally",
+      "Exposes connected MCP tools to the model across sessions",
+      "Sends JSON-RPC requests to configured MCP endpoints and processes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:06.300Z",
+  "repositoryCommitSha": "74032937c80e5582eece0a56fd7be09a774f7853",
+  "evidenceHash": "22e1aa149e451b6712403953e6b73b4388d01ce3954e59df578631dbc5623d53",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ba4046558b22458ee1a0913130e7bcf1c9bb9f3b9318dc988777555ad260558",
+  "shadowMode": false
+}

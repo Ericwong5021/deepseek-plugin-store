@@ -4,7 +4,7 @@
     "fullName": "dyhyfjn/dsh-rollback-withdraw",
     "url": "https://github.com/dyhyfjn/dsh-rollback-withdraw"
   },
-  "summary": "Trae-style withdraw for DeepSeek Harness Web — one-click rollback of workspace code + conversation (git commits or hard-link snapshots). 会话撤回插件",
+  "summary": "Provides per-message rollback for DeepSeek Harness Web by restoring workspace files and reopening the conversation from an earlier completed turn.",
   "sources": [
     "github-topic"
   ],
@@ -41,5 +41,26 @@
     "lastPushAt": "2026-08-15T07:22:29Z",
     "latestReleaseAt": null,
     "capturedAt": "2026-08-17T11:45:38.036Z"
+  },
+  "classificationSuggestion": {
+    "group": "agents-workflows",
+    "category": "memory-context",
+    "tags": [
+      "chat",
+      "context",
+      "file",
+      "workflow",
+      "automation"
+    ],
+    "source": "llm-classification",
+    "confidence": "high",
+    "evidence": [
+      "llm:gpt-5.6-luna",
+      "sha256:dd2f13a456b774b54585876837d380f935e105c99b15e602b244fc5b23a42dd3",
+      "commit:183b98910532faf24eb415ef3e6514c25ff65490"
+    ],
+    "needsReview": true,
+    "classifiedAt": "2026-08-21T19:14:48.719Z",
+    "reason": "The plugin primarily provides conversation and workspace rollback: it records checkpoints after completed turns, restores files through Git or hard-link snapshots, and forks the session back to an earlier conversation state. Human review is warranted because rollback can reset repositories and delete untracked files, while its localhost RPC route is unauthenticated."
   }
 }

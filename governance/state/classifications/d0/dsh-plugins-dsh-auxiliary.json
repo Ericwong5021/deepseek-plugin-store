@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "context",
+    "image",
+    "workflow",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README describes a plugin whose primary purpose is orchestrating specialized auxiliary model routes for vision, context compaction, approval reviews, delegated agents, session titles, and image generation without replacing the main conversation model.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的视觉理解、上下文压缩、审批审查、子代理、会话标题和图片生成配置独立的辅助模型路由与工具。",
+    "en": "Configures dedicated auxiliary model routes and tools for vision, context compaction, approval reviews, subagents, session titles, and image generation in DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Routes vision, compaction, approval-review, subagent, session-title, and image-generation calls to separately configured models",
+      "Provides tools for inspecting local images and generating images through compatible model APIs",
+      "Reads configured image attachments or host-readable image paths for vision requests",
+      "Changes model selection for delegated agents and designated auxiliary call categories"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_image_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "delegated_agent_routing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_review_routing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes vision, compaction, approval-review, subagent, session-title, and image-generation calls to separately configured models",
+      "Provides tools for inspecting local images and generating images through compatible model APIs",
+      "Reads configured image attachments or host-readable image paths for vision requests",
+      "Changes model selection for delegated agents and designated auxiliary call categories"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:21.222Z",
+  "repositoryCommitSha": "27a04de87a69ad324e4db9bfbb0615f226f57f79",
+  "evidenceHash": "4c10e61ea87425b5002fc025603205ca779fc5dac01002e0e606f7dfdf3ea65a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "387e32d9026c1d6ebbd7ca5ff0bc8efda605f35d1b1e325a6b9025fecf8e716f",
+  "shadowMode": false
+}

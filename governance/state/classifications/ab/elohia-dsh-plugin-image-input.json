@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "chat",
+    "integration",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin intercepts image submission in a chat input, converts images to textual descriptions through a configured vision API, and inserts or sends the resulting context for text-only models; its external data transmission and privileged local execution warrant human review.",
+  "summaries": {
+    "zh": "将粘贴或拖拽的图片通过配置的视觉 API 转换为文字描述，并将描述插入或发送到聊天输入中。",
+    "en": "Converts pasted or dragged images into text descriptions through a configured vision API and inserts or sends those descriptions in the chat input."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads pasted or dragged image data from the browser input",
+      "Converts images to text using a configured OpenAI-compatible vision API",
+      "Sends image data to a user-configured external endpoint",
+      "Runs a Node subprocess with the documented danger-full-access policy",
+      "Reads API credentials from plugin settings, configuration files, or environment variables"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged_local_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads pasted or dragged image data from the browser input",
+      "Converts images to text using a configured OpenAI-compatible vision API",
+      "Sends image data to a user-configured external endpoint",
+      "Runs a Node subprocess with the documented danger-full-access policy",
+      "Reads API credentials from plugin settings, configuration files, or environment variables"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:15:18.285Z",
+  "repositoryCommitSha": "a96667f6b1445322892ae52d9c9e6c210300b0ec",
+  "evidenceHash": "de38ea289236f9fc77885691bb9a29cb574c86857eea822ed998db137a9819fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b64de64597b21d298bc6805fe437ed3935242bb268856d959e7bbb736d6e8401",
+  "shadowMode": false
+}

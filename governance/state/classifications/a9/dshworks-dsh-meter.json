@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "A user-facing DeepSeek usage meter that visualizes session cost, token breakdowns, time-of-use tariffs, cache savings, and account balance beneath the composer.",
+  "summaries": {
+    "zh": "在编辑器下方展示 DeepSeek 会话费用、令牌明细、分时费率、缓存节省和账户余额的用量计量插件。",
+    "en": "A usage meter that displays DeepSeek session costs, token details, time-of-use tariffs, cache savings, and account balance beneath the composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session token and model usage statistics",
+      "Computes estimated session costs from tariff data",
+      "Displays tariff timing, cache economics, and account balance",
+      "Requests parsed balance information through a host endpoint",
+      "Publishes a static pricing feed"
+    ],
+    "reasons": [
+      {
+        "code": "account_balance_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_usage_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_balance_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Reads session token and model usage statistics",
+      "Computes estimated session costs from tariff data",
+      "Displays tariff timing, cache economics, and account balance",
+      "Requests parsed balance information through a host endpoint",
+      "Publishes a static pricing feed"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:33.040Z",
+  "repositoryCommitSha": "c7a3c6cc076dd78d09f1f9defd24d14d0741949f",
+  "evidenceHash": "70f09408b7f0e2d55eed9658c6bdfd70d97550fed2751d72458cb355c3533fc6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2a479de2997ab10e0241b68225c42f4599227af13fdcdc3f8012ca4b0871a3b3",
+  "shadowMode": false
+}

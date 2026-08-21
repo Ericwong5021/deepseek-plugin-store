@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "integration",
+    "workflow",
+    "file",
+    "terminal",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an ACP bridge that adds DeepSeek as a Zed external agent, with streaming chat, project file operations, command execution, approval prompts, and session management; its primary purpose is agent orchestration and editor integration.",
+  "summaries": {
+    "zh": "将 DeepSeek 通过 ACP 接入 Zed，使用户能够在编辑器中对话并在审批后处理项目文件和执行命令。",
+    "en": "Connects DeepSeek to Zed through ACP for in-editor conversations, session management, and approval-based project file and command operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "connects Zed to DeepSeek through ACP",
+      "streams conversational responses",
+      "reads and writes project files",
+      "runs commands through the agent",
+      "requests user approval for potentially risky actions",
+      "persists and resumes sessions"
+    ],
+    "reasons": [
+      {
+        "code": "file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "connects Zed to DeepSeek through ACP",
+      "streams conversational responses",
+      "reads and writes project files",
+      "runs commands through the agent",
+      "requests user approval for potentially risky actions",
+      "persists and resumes sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:56.619Z",
+  "repositoryCommitSha": "983531ae357be4f795742901aefffe7267b5aa73",
+  "evidenceHash": "cb9cfd59b58cead360df0d2e07b43541b57b4bd4c8f009569fc2bb3e2676f5f0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "522db683df75509c7bfa1c38cd055d7da63e5d635058918e74bc5992c7119c05",
+  "shadowMode": false
+}

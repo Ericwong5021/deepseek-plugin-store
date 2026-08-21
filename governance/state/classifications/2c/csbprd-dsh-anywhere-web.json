@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "browser",
+    "integration",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A server-side dsh web access utility that polyfills crypto.randomUUID and rewrites allowlisted request origins to enable privileged APIs from LAN, tunnel, or other configured hosts; its ability to expose the service and bypass trust checks warrants human review.",
+  "summaries": {
+    "zh": "为 dsh Web 注入 crypto.randomUUID 兼容实现，并通过白名单主机改写支持局域网、隧道及其他入口访问特权 API。",
+    "en": "A server-side dsh Web utility that adds a crypto.randomUUID polyfill and rewrites allowlisted hosts to support privileged API access from LAN, tunnel, and other configured entry points."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Injects a crypto.randomUUID polyfill into served web pages",
+      "Rewrites allowlisted Host and Origin values before browser-trust checks",
+      "Enables privileged API access through configured non-loopback hosts",
+      "Optionally binds the web server to 0.0.0.0 for LAN access",
+      "Provides an optional HTTP and WebSocket tunnel pass-through proxy",
+      "Installs and restarts the service through shell commands"
+    ],
+    "reasons": [
+      {
+        "code": "privileged_api_trust_bypass",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_exposure_on_all_interfaces",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_code_execution_equivalent_access_warning",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_pipe_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Injects a crypto.randomUUID polyfill into served web pages",
+      "Rewrites allowlisted Host and Origin values before browser-trust checks",
+      "Enables privileged API access through configured non-loopback hosts",
+      "Optionally binds the web server to 0.0.0.0 for LAN access",
+      "Provides an optional HTTP and WebSocket tunnel pass-through proxy",
+      "Installs and restarts the service through shell commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:44.660Z",
+  "repositoryCommitSha": "eecfe0464f04aefcb1d73c86d8eb0cef7d8c7dc6",
+  "evidenceHash": "b6e80d5b66b5bc124f1a75058ddee6e9085729c79b89ac1fcbf645648a4df591",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "db4c0f60b9378751526da1489c26f1a3c8eabc107781d613d6a38156874f7df2",
+  "shadowMode": false
+}

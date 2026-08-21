@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "ui",
+    "file",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An AI image-generation workbench for text-to-image and image-to-image creation, with configurable OpenAI-compatible endpoints, image history, gallery management, and prompt templates.",
+  "summaries": {
+    "zh": "通过兼容 OpenAI 的图像接口提供文生图、图生图编辑、历史记录、画廊收藏和提示词模板管理。",
+    "en": "Provides text-to-image and image-to-image generation through OpenAI-compatible APIs, with history, gallery management, and prompt templates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generates images from text through OpenAI-compatible image APIs",
+      "Edits images using uploaded PNG, JPG, or WEBP references",
+      "Sends configured API requests through the host process",
+      "Stores generated images, history, gallery data, and cached template images on the host",
+      "Fetches prompt-template images and checks GitHub Releases for updates"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_provided_image_upload",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Generates images from text through OpenAI-compatible image APIs",
+      "Edits images using uploaded PNG, JPG, or WEBP references",
+      "Sends configured API requests through the host process",
+      "Stores generated images, history, gallery data, and cached template images on the host",
+      "Fetches prompt-template images and checks GitHub Releases for updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:31.498Z",
+  "repositoryCommitSha": "26e6520da8f788451338e7c31c2697fbc0c0935f",
+  "evidenceHash": "ccc54110914bf07056efc268d1bf39664adb7caf08544790c1f3ed29b765644e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "14f8543f49041c44a2527291858cbccd420e9de5a4d27e02e705d38a9329db1d",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "layout",
+    "document",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a Files tab to the conversation window with a VSCode-style workspace tree and read-only viewer for text, Markdown, code, JSON, and supported images, including refresh, copy, download, and system-app opening actions.",
+  "summaries": {
+    "zh": "在对话窗口中提供文件标签页，用于浏览工作区目录并以只读方式查看文本、Markdown、代码、JSON和常见图像文件。",
+    "en": "Adds a Files tab for browsing the workspace directory and viewing text, Markdown, code, JSON, and common image files in a read-only interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and displays workspace directory listings and file contents",
+      "Renders Markdown, text, code, JSON, and supported image files",
+      "Provides copy, download, refresh, and open-in-system-app actions",
+      "Serves workspace file data through plugin HTTP routes"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_content_exposure_in_ui",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_actions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Reads and displays workspace directory listings and file contents",
+      "Renders Markdown, text, code, JSON, and supported image files",
+      "Provides copy, download, refresh, and open-in-system-app actions",
+      "Serves workspace file data through plugin HTTP routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:13.653Z",
+  "repositoryCommitSha": "58a27ed525cd42937952f94aaa81704f3a1bcad5",
+  "evidenceHash": "7ebaddb983f4a0fb9d33cab6fc902d9402cddf312c26daae34d8b192cbbfdfd6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ae77d20a4def0dd8f08d6e8a830d059a5d3adc049358fae8a5aa6d08e96dc17",
+  "shadowMode": false
+}

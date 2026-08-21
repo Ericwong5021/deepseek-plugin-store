@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "browser",
+    "cli",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a dsh plugin and standalone CLI proxy that inject a crypto.randomUUID polyfill and make a local web UI accessible from phones over a LAN.",
+  "summaries": {
+    "zh": "通过注入 crypto.randomUUID 兼容补丁并提供局域网代理，让手机可以访问本地 dsh 网页界面。",
+    "en": "Provides a dsh plugin and optional CLI proxy that add a crypto.randomUUID polyfill and expose a local web interface to phones over a LAN."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Injects a crypto.randomUUID polyfill into a web UI",
+      "Binds the web server or proxy to a LAN-accessible address",
+      "Proxies HTTP and WebSocket traffic from a local web application"
+    ],
+    "reasons": [
+      {
+        "code": "lan_exposure_without_authentication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plain_http_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "websocket_and_http_proxying",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Injects a crypto.randomUUID polyfill into a web UI",
+      "Binds the web server or proxy to a LAN-accessible address",
+      "Proxies HTTP and WebSocket traffic from a local web application"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:12:52.632Z",
+  "repositoryCommitSha": "f665f8ccaf4cf69883387dea8ba095bd3b3cedd9",
+  "evidenceHash": "b67ad31eeb92b60c5201ec9cdec6fedc37de9fa153f61deba79a683ebbd48a68",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c7331dfbf7461b37321f0789977944af67a84169442ff1b6b8f27db13f3d7c56",
+  "shadowMode": false
+}

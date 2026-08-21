@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "desktop",
+    "monitoring",
+    "notification",
+    "integration",
+    "chat",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows desktop pet that monitors DeepSeek Harness sessions, displays status and message notifications, and supports two-way messaging plus DSH plugin-based lifecycle management.",
+  "summaries": {
+    "zh": "这是一个运行在 Windows 上的桌面宠物插件，可监控 DeepSeek Harness 会话并通过气泡和托盘通知提示任务状态，同时支持发送消息。",
+    "en": "A Windows desktop pet plugin that monitors DeepSeek Harness sessions, shows task and message notifications, and supports sending messages to the active session."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Monitors local DSH sessions through HTTP and WebSocket interfaces",
+      "Displays desktop, tray, sound, and bubble notifications",
+      "Sends user messages to the current DSH session",
+      "Launches and stops a Windows desktop process",
+      "Creates or repairs plugin links and profile registrations",
+      "Can configure Windows startup execution"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_plugin_registration_changes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "startup_persistence_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_service_communication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Monitors local DSH sessions through HTTP and WebSocket interfaces",
+      "Displays desktop, tray, sound, and bubble notifications",
+      "Sends user messages to the current DSH session",
+      "Launches and stops a Windows desktop process",
+      "Creates or repairs plugin links and profile registrations",
+      "Can configure Windows startup execution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:00.749Z",
+  "repositoryCommitSha": "6be258e8c9ebc304daf64e8397449885288ba032",
+  "evidenceHash": "4098b09dab051a9a807e39319fd0b0cfde23c178b435158a5d5b9d7c0f42feae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "33cc6d7091fefd5f1c6ae2a5426e199ad9153221cb5d115b2e113d211f0673ce",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "cli",
+    "terminal",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness bash executor plugin that routes eligible simple whitelisted commands through rtk to compress tool output, while passing through complex or unsupported commands unchanged.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 中符合条件的简单 Bash 命令路由至 rtk，以压缩工具输出并减少令牌消耗。",
+    "en": "Routes eligible simple Bash commands in DeepSeek Harness through rtk to compress tool output and reduce token usage."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Rewrites eligible simple shell commands before execution",
+      "Executes commands through the existing bash executor",
+      "Routes eligible command output through the externally installed rtk binary for compression",
+      "Preserves the configured executor workdir, timeout, environment, exit code, and sandbox behavior"
+    ],
+    "reasons": [
+      {
+        "code": "shell-command-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command-rewriting",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-binary-dependency",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Rewrites eligible simple shell commands before execution",
+      "Executes commands through the existing bash executor",
+      "Routes eligible command output through the externally installed rtk binary for compression",
+      "Preserves the configured executor workdir, timeout, environment, exit code, and sandbox behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:12:56.661Z",
+  "repositoryCommitSha": "ddf95382252c96bcaba983e8a1c71ff66b79fc6b",
+  "evidenceHash": "7b0bc37678d585724cf17141724929f6765f0728601c59194823896ba6da55bf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8a9135c332daddc8b75717989a9aa050c0f8a9417f1a8b5524aeeb286b85e873",
+  "shadowMode": false
+}
