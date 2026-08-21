@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "image",
+    "video",
+    "search",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates ClawRouters as a DSH provider and exposes chat, image generation, video generation, and structured web search through one configured API credential.",
+  "summaries": {
+    "zh": "通过一个 API 密钥将 ClawRouters 的聊天、图像生成、视频生成和网页搜索能力接入 DeepSeek Harness。",
+    "en": "Connects ClawRouters to DeepSeek Harness with one API key for chat, image generation, video generation, and web search."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends chat, image-generation, video-generation, and web-search requests to the ClawRouters API",
+      "Reads an API credential from DSH credential storage or the CLAWROUTERS_API_KEY environment variable",
+      "Persists generated images as DSH attachments and returns provider-hosted video URLs",
+      "Polls asynchronous video-generation tasks"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "attachment_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends chat, image-generation, video-generation, and web-search requests to the ClawRouters API",
+      "Reads an API credential from DSH credential storage or the CLAWROUTERS_API_KEY environment variable",
+      "Persists generated images as DSH attachments and returns provider-hosted video URLs",
+      "Polls asynchronous video-generation tasks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:19.301Z",
+  "repositoryCommitSha": "26a46473a74ff1fde53f5c7409a7f9b4d3acc73d",
+  "evidenceHash": "2356e8638ee9db07489d8089f8f78cff9b8dbbdfab9c339a397133faf5458576",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d2723dc681516287fca16e162b0ea8e8da800304c37f054c827816a69b63a851",
+  "shadowMode": false
+}

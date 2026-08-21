@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "workflow",
+    "planning",
+    "terminal",
+    "file",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A VS Code integration for DeepSeek Harness centered on agent chat, tool execution, planning, subagents, workspace context, and session workflow management, with documented workspace-write and Git rollback capabilities.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 智能体聊天、工具调用、规划、子代理和工作区会话管理集成到 VS Code 中。",
+    "en": "Integrates DeepSeek Harness agent chat, tool calls, planning, subagents, and workspace session management into VS Code."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects VS Code to a local DeepSeek Harness server",
+      "Provides agent chat with streamed replies, tool calls, approvals, plans, goals, and subagents",
+      "Can attach workspace files and folders as model context",
+      "Can run or display bash, PowerShell, and subagent jobs through the connected harness",
+      "Can modify workspace state through configured permissions and restore Git workspace checkpoints",
+      "Can read Git diffs to generate commit messages",
+      "Can manage model providers, credentials, settings, sessions, and workspaces"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_write_and_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_state_modification_and_rollback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_external_server_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Connects VS Code to a local DeepSeek Harness server",
+      "Provides agent chat with streamed replies, tool calls, approvals, plans, goals, and subagents",
+      "Can attach workspace files and folders as model context",
+      "Can run or display bash, PowerShell, and subagent jobs through the connected harness",
+      "Can modify workspace state through configured permissions and restore Git workspace checkpoints",
+      "Can read Git diffs to generate commit messages",
+      "Can manage model providers, credentials, settings, sessions, and workspaces"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:11.683Z",
+  "repositoryCommitSha": "6304bc5013ad91d0a5c582425d8f44f1c5a41a81",
+  "evidenceHash": "72df171a020f6f5f2c0729a43d906982bae95a5d73b3f5caef758ab62b7f75ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fbe039e46fe78a6441d7f5e5009359ca82dae7c0e8459d95fc0ee5e52e7f91de",
+  "shadowMode": false
+}

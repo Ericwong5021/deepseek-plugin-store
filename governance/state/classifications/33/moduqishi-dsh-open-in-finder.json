@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "desktop",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A macOS-only dsh web plugin adds a session-header control that opens the current session workspace in Finder via the host open command.",
+  "summaries": {
+    "zh": "这是一个适用于 macOS 的 dsh web 插件，可在会话标题栏中添加按钮，一键在 Finder 中打开当前会话的工作目录。",
+    "en": "A macOS dsh web plugin that adds a session-header button for opening the current session workspace in Finder."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a session-header button in the web interface",
+      "Resolves the current session's workspace path",
+      "Calls a host endpoint that executes the macOS open command to launch Finder"
+    ],
+    "reasons": [
+      {
+        "code": "executes_local_command",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "accesses_workspace_path",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a session-header button in the web interface",
+      "Resolves the current session's workspace path",
+      "Calls a host endpoint that executes the macOS open command to launch Finder"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:42:48.479Z",
+  "repositoryCommitSha": "e2f62692cb5eea50e280da63e8a80e2d00a53d67",
+  "evidenceHash": "87b789aee3f021dc313905362494bce32e8c27cbed6ae332ad6f8fcc89e28ece",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d33446bdc94ac2f916cd29eef3c78467d87ab28e219d10fdf92babaae1f7ba3",
+  "shadowMode": false
+}

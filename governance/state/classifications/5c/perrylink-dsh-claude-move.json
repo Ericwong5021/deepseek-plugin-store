@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "file",
+    "integration",
+    "workflow",
+    "memory",
+    "context",
+    "skill",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A migration and import plugin that scans local agent-tool data and copies sessions, memories, skills, instructions, and commands into DeepSeek Harness with resumable imports and approval-gated writes.",
+  "summaries": {
+    "zh": "将 Claude Code、Codex、OpenCode 和 Hermes 的会话及相关上下文扫描并复制到 DeepSeek Harness 中，支持可恢复导入、增量同步和审批控制。",
+    "en": "Scans and copies sessions and related context from Claude Code, Codex, OpenCode, and Hermes into DeepSeek Harness with resumable imports, incremental synchronization, and approval-gated writes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read local Claude Code, Codex, OpenCode, and Hermes data files",
+      "Parse and import session transcripts, memories, skills, instructions, and slash commands",
+      "Write migrated sessions, workspace data, cache state, and managed instruction sections",
+      "Probe project Git state when configured",
+      "Expose a web migration panel and API routes"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_subprocess_probe",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_panel_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Read local Claude Code, Codex, OpenCode, and Hermes data files",
+      "Parse and import session transcripts, memories, skills, instructions, and slash commands",
+      "Write migrated sessions, workspace data, cache state, and managed instruction sections",
+      "Probe project Git state when configured",
+      "Expose a web migration panel and API routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:30.009Z",
+  "repositoryCommitSha": "1d24c7c0c34394b7d9b19bea2a5aa61908bfceb6",
+  "evidenceHash": "ec43a8b05773805140d864822f59cb5c6ceaab9cd64e2530648f63584c6cebcb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "46d12f84dbbaf3842a9933a591dd939ca1e6eb370c3d7b2bb518941cf9c7c85e",
+  "shadowMode": false
+}

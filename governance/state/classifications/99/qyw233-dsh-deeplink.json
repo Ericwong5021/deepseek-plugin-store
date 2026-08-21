@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "browser",
+    "chat",
+    "context",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A WebUI navigation plugin that opens specified conversations or workspaces from URL deep links and optionally keeps the address bar synchronized with the current conversation.",
+  "summaries": {
+    "zh": "通过 URL 深链直接打开指定的对话或工作区，并可选择让地址栏跟随当前对话。",
+    "en": "Opens specified conversations or workspaces through URL deep links and can optionally keep the address bar synchronized with the current conversation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session and workspace identifiers from URL parameters",
+      "Switches the WebUI to a specified conversation or workspace",
+      "Updates the browser address bar using history.replaceState",
+      "Persists enablement settings in localStorage",
+      "Registers a model prompt section describing available deep links"
+    ],
+    "reasons": [
+      {
+        "code": "browser_url_and_local_storage_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Reads session and workspace identifiers from URL parameters",
+      "Switches the WebUI to a specified conversation or workspace",
+      "Updates the browser address bar using history.replaceState",
+      "Persists enablement settings in localStorage",
+      "Registers a model prompt section describing available deep links"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:07.767Z",
+  "repositoryCommitSha": "0ec5da351b246dfcbf9a91a3d0c7b7f2699370e6",
+  "evidenceHash": "4cbaad0ea7304fee9db263e4676a06fea16772aa6d41dd86c79b4e6b578da140",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f02c518a8f4d3a4de79f7fce4bb04d7b4ed93e45a08c6c71b3415fc415d0bde0",
+  "shadowMode": false
+}

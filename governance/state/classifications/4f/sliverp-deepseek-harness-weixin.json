@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "agent",
+    "api",
+    "file",
+    "image",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness channel plugin that connects private Weixin chats to persistent Harness agents, supporting QR authorization, text and media messaging, session commands, and approval-gated tool execution.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 智能体接入腾讯微信私聊，支持二维码授权、文本与媒体消息、持久会话及审批控制的工具调用。",
+    "en": "Connects DeepSeek Harness agents to private Weixin chats with QR authorization, text and media messaging, persistent sessions, and approval-controlled tool calls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Weixin through Tencent's iLink/ClawBot protocol",
+      "Performs QR-based account authorization and stores the resulting credential through the Harness credential provider",
+      "Receives and sends text, voice-transcription, image, and file messages",
+      "Maintains persistent conversations and session state",
+      "Dispatches Harness agent turns and structured tool-approval requests",
+      "Downloads and decrypts inbound media and uploads encrypted outbound media",
+      "Can permit approved agent tool calls with workspace-write or escalated filesystem access"
+    ],
+    "reasons": [
+      {
+        "code": "external_account_authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_and_file_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to Weixin through Tencent's iLink/ClawBot protocol",
+      "Performs QR-based account authorization and stores the resulting credential through the Harness credential provider",
+      "Receives and sends text, voice-transcription, image, and file messages",
+      "Maintains persistent conversations and session state",
+      "Dispatches Harness agent turns and structured tool-approval requests",
+      "Downloads and decrypts inbound media and uploads encrypted outbound media",
+      "Can permit approved agent tool calls with workspace-write or escalated filesystem access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:17.841Z",
+  "repositoryCommitSha": "361927d701f664074b1ea72096f8e61c121a602d",
+  "evidenceHash": "eb98e231f8954b6b928b398d9765b4564ea8d27edb9d507cf6643d5580a9ba3c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c715b178a9bd414d28264eb3e54aad37812c78f63049d6ae1fe0a690153de045",
+  "shadowMode": false
+}

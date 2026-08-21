@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "file",
+    "integration",
+    "terminal",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An SSH-based VPS management plugin that lets agents maintain server targets, test connections, execute remote commands, and transfer files, with an optional settings UI.",
+  "summaries": {
+    "zh": "通过 SSH 管理云服务器目标，支持连接测试、远程命令执行、文件上传下载和可选的设置页面。",
+    "en": "Manage cloud servers over SSH with connection testing, remote command execution, file transfer, and an optional settings page."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Stores SSH server connection targets and references to local key files",
+      "Imports and manages SSH configuration entries",
+      "Tests connectivity to configured servers",
+      "Executes shell commands on remote servers",
+      "Uploads and downloads files via SCP",
+      "Supports passwords, pasted private keys, ProxyJump, and ProxyCommand",
+      "Provides an optional settings-page user interface"
+    ],
+    "reasons": [
+      {
+        "code": "remote_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_proxy_command_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Stores SSH server connection targets and references to local key files",
+      "Imports and manages SSH configuration entries",
+      "Tests connectivity to configured servers",
+      "Executes shell commands on remote servers",
+      "Uploads and downloads files via SCP",
+      "Supports passwords, pasted private keys, ProxyJump, and ProxyCommand",
+      "Provides an optional settings-page user interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:37.082Z",
+  "repositoryCommitSha": "2bbaa313ec6d42da339ad49e6165cc5e3a0d51ec",
+  "evidenceHash": "fd54b2c2196ce48397ce936ed6b4390b9d4c6878fbe9dacfcc4ac27ed1e13402",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ad10112434b11640c176623a66cf368508b783e115deac9b89b69745601b1a0d",
+  "shadowMode": false
+}

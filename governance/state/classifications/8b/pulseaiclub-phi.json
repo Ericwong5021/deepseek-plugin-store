@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "code-generation",
+  "tags": [
+    "agent",
+    "cli",
+    "code-generation",
+    "terminal",
+    "file",
+    "api",
+    "mcp"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Go terminal coding agent that uses language models to inspect, modify, and test projects through file, shell, sub-agent, and configured MCP tools.",
+  "summaries": {
+    "zh": "一个基于 Go 的终端编码智能体，可通过模型和受控工具读取、修改及测试项目文件。",
+    "en": "A Go-based terminal coding agent that uses language models and gated tools to inspect, modify, and test project files."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads project files",
+      "Writes and edits project files",
+      "Executes local shell commands",
+      "Calls configured MCP servers",
+      "Uses configured OpenAI-compatible or Anthropic model APIs",
+      "Spawns isolated sub-agent jobs",
+      "Persists sessions and job logs"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_service_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_orchestration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Reads project files",
+      "Writes and edits project files",
+      "Executes local shell commands",
+      "Calls configured MCP servers",
+      "Uses configured OpenAI-compatible or Anthropic model APIs",
+      "Spawns isolated sub-agent jobs",
+      "Persists sessions and job logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:57.313Z",
+  "repositoryCommitSha": "f18c66719b5a094c30adbaebe90e5c62ba81bf53",
+  "evidenceHash": "c0512c8389c64d4237e3ed58ddfd0e4b4afa5b996f143f3c8e29499bdb1ba87d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f5e2184051b6eda5c318544698ceec1c3a2b3c33cd0e43496096511eb9ce786",
+  "shadowMode": false
+}

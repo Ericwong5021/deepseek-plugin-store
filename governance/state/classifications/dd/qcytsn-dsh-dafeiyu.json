@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "agent",
+    "desktop",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要用途是在 Windows 桌面上以始终置顶的伴侣窗口展示 DeepSeek Harness Agent 的真实工作状态、阶段和待办进度，并提供基础显示与互动设置。",
+  "summaries": {
+    "zh": "在 Windows 桌面上以始终置顶的伴侣窗口展示 DeepSeek Harness Agent 的实时工作状态和任务进度。",
+    "en": "Displays DeepSeek Harness Agent activity and task progress in an always-on-top desktop companion window on Windows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取 DeepSeek Harness 的 Agent 状态事件",
+      "在 Windows 桌面显示始终置顶的透明窗口",
+      "显示项目阶段、待办进度、等待、完成和错误状态",
+      "提供窗口拖动、交互和显示设置",
+      "随 DSH Host 生命周期启动和退出"
+    ],
+    "reasons": [
+      {
+        "code": "local_desktop_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_event_monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "companion_process_lifecycle",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "读取 DeepSeek Harness 的 Agent 状态事件",
+      "在 Windows 桌面显示始终置顶的透明窗口",
+      "显示项目阶段、待办进度、等待、完成和错误状态",
+      "提供窗口拖动、交互和显示设置",
+      "随 DSH Host 生命周期启动和退出"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:57.307Z",
+  "repositoryCommitSha": "fba5fd256509485dfb5807ca9dda69e205d8d89a",
+  "evidenceHash": "f2a9de59e282d7046ca08ea857048d81c761a446173f6c16cc8b335ec8265def",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f2342018d151ac3837a3fbc1c4fdd3713176bcf04279b006ea9120b65eaa15c6",
+  "shadowMode": false
+}

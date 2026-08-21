@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "file",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A conversation-management utility that provides confirmed deletion through the session menu and slash command, hides sessions immediately, and moves eligible logs to recoverable trash after restart.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供带确认的会话删除功能，支持会话菜单和命令操作，并在重启后将符合条件的日志移入可恢复回收目录。",
+    "en": "Provides confirmed conversation deletion for DeepSeek Harness through the session menu and slash command, with immediate hiding and recoverable log archiving after restart."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a session-menu action and slash command for deleting conversations",
+      "Immediately hides selected sessions from workspace projections",
+      "Queues validated conversation lifecycle requests",
+      "Moves eligible JSONL session directories to recoverable trash on the next cold start"
+    ],
+    "reasons": [
+      {
+        "code": "user_data_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_move",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Adds a session-menu action and slash command for deleting conversations",
+      "Immediately hides selected sessions from workspace projections",
+      "Queues validated conversation lifecycle requests",
+      "Moves eligible JSONL session directories to recoverable trash on the next cold start"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:31.709Z",
+  "repositoryCommitSha": "ea65978069bc925b45898ae186405d65c5e768cf",
+  "evidenceHash": "1524d928f7d5ddf9fbf3100a755382d3cf4df5cd72bb4496b735e9c03cb9c316",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "502ec9c009a352dbf6cf87db7905120017357d48cfc144f7dc4430958cab1e3a",
+  "shadowMode": false
+}

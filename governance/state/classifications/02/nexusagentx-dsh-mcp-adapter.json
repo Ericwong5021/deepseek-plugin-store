@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "api",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An MCP adapter for DeepSeek Harness that provides lazy server connections, on-demand tool discovery and invocation, authentication, and Web/CLI configuration for external MCP services.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 MCP 服务适配，通过代理工具按需发现、描述和调用已配置的外部 MCP 服务。",
+    "en": "An MCP adapter for DeepSeek Harness that enables on-demand discovery and invocation of configured external MCP services through a proxy tool."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to configured MCP servers",
+      "Searches, describes, and calls MCP tools on demand",
+      "Can launch configured local MCP server commands",
+      "Supports external service authentication including OAuth and bearer tokens",
+      "Writes or updates MCP configuration files through the Web interface and CLI"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_authentication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration_file_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Connects to configured MCP servers",
+      "Searches, describes, and calls MCP tools on demand",
+      "Can launch configured local MCP server commands",
+      "Supports external service authentication including OAuth and bearer tokens",
+      "Writes or updates MCP configuration files through the Web interface and CLI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:13.217Z",
+  "repositoryCommitSha": "39c5aab08d273b23ad61e7a1a75acdc768dbfefe",
+  "evidenceHash": "ed9ad65799d3ee7ee19bfb24d8b903be1dac3ce738daf40344d0cecdb0c439cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63425e0393e50489bc0ba00a171929142f1bcd8dc4dbf8195e46aacc092a65e5",
+  "shadowMode": false
+}

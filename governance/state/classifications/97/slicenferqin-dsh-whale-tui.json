@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "terminal",
+    "ui",
+    "api",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A Rust/ratatui terminal UI plugin for DeepSeek Harness that provides interactive agent session control, streaming events, approvals, task views, session recovery, and model/provider configuration through the DSH runtime.",
+  "summaries": {
+    "zh": "通过终端界面连接 DeepSeek Harness，支持智能体会话、流式响应、工具审批、任务查看、会话恢复以及模型和服务商配置。",
+    "en": "A terminal interface for DeepSeek Harness that supports agent sessions, streaming responses, tool approvals, task views, session recovery, and model or provider configuration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Communicates with the DSH runtime through a JSON-RPC channel",
+      "Starts and manages agent sessions, prompts, cancellation, shutdown, and streaming events",
+      "Presents tool-approval and user-question requests for interactive responses",
+      "Reads and restores session history from ~/.dsh/sessions",
+      "Manages model, provider, and API key configuration, including credential persistence",
+      "Supports permission modes including plan and always-approve"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_agent_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_file_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Communicates with the DSH runtime through a JSON-RPC channel",
+      "Starts and manages agent sessions, prompts, cancellation, shutdown, and streaming events",
+      "Presents tool-approval and user-question requests for interactive responses",
+      "Reads and restores session history from ~/.dsh/sessions",
+      "Manages model, provider, and API key configuration, including credential persistence",
+      "Supports permission modes including plan and always-approve"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:17.411Z",
+  "repositoryCommitSha": "03ce291e520fede590f0111c2584554e10595129",
+  "evidenceHash": "9a28288828b5458e52775af3c0d22f5508fc3f7f06089c6c2cacc1e48db39a9e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "df6070756fabd3ee8b07311ba0370e7908fb9a48944b88d8bddd10fe43302158",
+  "shadowMode": false
+}

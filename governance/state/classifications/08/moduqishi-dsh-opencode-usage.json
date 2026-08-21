@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "monitoring",
+    "ui",
+    "api",
+    "integration",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A chat-interface visualization plugin that monitors opencode.ai quota usage across 5-hour, weekly, and monthly windows, with provider filtering and reset countdowns.",
+  "summaries": {
+    "zh": "在聊天界面显示并监控 opencode.ai 的 5 小时、本周和本月额度使用进度及重置倒计时。",
+    "en": "Displays and monitors opencode.ai quota usage for 5-hour, weekly, and monthly windows with reset countdowns in the chat interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Displays 5-hour, weekly, and monthly usage progress in the chat interface",
+      "Fetches usage data from opencode.ai using a configured workspace ID and authentication cookie",
+      "Stores workspace configuration and authentication data in a local configuration file",
+      "Exposes local host routes for configuration and usage retrieval",
+      "Runs curl through a subprocess to retrieve the usage page"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive-credential-handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-service-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess-network-fetch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-api-routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays 5-hour, weekly, and monthly usage progress in the chat interface",
+      "Fetches usage data from opencode.ai using a configured workspace ID and authentication cookie",
+      "Stores workspace configuration and authentication data in a local configuration file",
+      "Exposes local host routes for configuration and usage retrieval",
+      "Runs curl through a subprocess to retrieve the usage page"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:42:48.600Z",
+  "repositoryCommitSha": "f3bb48afdd4d7213d4fc597a8dfc4f23bfb7aa4c",
+  "evidenceHash": "c0bd39fb4046e713b106bb2c40104b5ecc67446a85d22ae206c667774cc8b422",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "54c86e7b5bc867eb3c6bc341e76c1ab7c0bb8a2c917311c8bc67af96909dd93c",
+  "shadowMode": false
+}

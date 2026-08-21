@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "debugging",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness development utility that lets an agent reload one MCP or in-process plugin entry without restarting the host, with dry-run matching and failure rollback described in the README.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 reload_plugin 工具，可在不重启宿主的情况下重新加载单个 MCP 或进程内插件条目。",
+    "en": "Provides a reload_plugin tool for reloading a single MCP or in-process DeepSeek Harness plugin entry without restarting the host."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides an agent-facing reload_plugin tool",
+      "Matches a single non-group loader entry by id, module name, or MCP serverName",
+      "Respawns an MCP server child process and re-registers its tools",
+      "Hard-reloads an in-process plugin by clearing module caches and re-importing code",
+      "Supports dry-run inspection and rollback after failed re-import or re-apply"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_process_restart",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "in_process_code_reload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bounded_single_entry_scope",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides an agent-facing reload_plugin tool",
+      "Matches a single non-group loader entry by id, module name, or MCP serverName",
+      "Respawns an MCP server child process and re-registers its tools",
+      "Hard-reloads an in-process plugin by clearing module caches and re-importing code",
+      "Supports dry-run inspection and rollback after failed re-import or re-apply"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:17.081Z",
+  "repositoryCommitSha": "0727b6a45d5475af7799d0b1245482787c195739",
+  "evidenceHash": "61135eceb39d2c756bec371d167d082bf2a6f0e24deb3540698617cb2a41a802",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3d30e5b3859079de833508133e1ebedeac782c2ecb92531f43d05fc3973df067",
+  "shadowMode": false
+}

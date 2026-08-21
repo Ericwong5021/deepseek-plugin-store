@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "memory",
+    "planning",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A role-based orchestration plugin that delegates work to external Codex, Claude Code, and ACP subagents, with continuable sessions, role permissions, delegation limits, and provider management. The README explicitly states that configured CLIs may be spawned and that full mode can pass permission-bypass flags, warranting R2 risk.",
+  "summaries": {
+    "zh": "通过角色、权限和会话管理，将任务委派给可持续运行的 Codex、Claude Code 及 ACP 子智能体。",
+    "en": "Delegates tasks to continuable Codex, Claude Code, and ACP subagents with role-based permissions, session recovery, and provider management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Spawns configured external agent CLI processes",
+      "Delegates tasks to continuable subagents",
+      "Maintains durable remote-session state across restarts",
+      "Supports configurable remote permission modes including full bypass flags",
+      "Reconnects to ACP-compatible providers"
+    ],
+    "reasons": [
+      {
+        "code": "external_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_session_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "elevated_remote_permissions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Spawns configured external agent CLI processes",
+      "Delegates tasks to continuable subagents",
+      "Maintains durable remote-session state across restarts",
+      "Supports configurable remote permission modes including full bypass flags",
+      "Reconnects to ACP-compatible providers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:40.372Z",
+  "repositoryCommitSha": "9149aaa8b7b904273c999eff00aa6ca7e85b8720",
+  "evidenceHash": "e611fe66df979c8b3f428e1ea2b869f830a35417e3ef98427e19195b9fd03a4e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b28c3b343c754bace41187e7652a2d39d91dc0c88183430bec83be6e22e5e81e",
+  "shadowMode": false
+}

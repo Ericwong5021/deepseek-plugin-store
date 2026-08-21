@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "image",
+    "ui",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The plugin primarily integrates ChatGPT/Codex subscription models into dsh through OAuth authentication and an external undocumented backend; human review is appropriate because it handles account tokens and the README identifies service-terms and account-restriction risks.",
+  "summaries": {
+    "zh": "通过 OAuth 登录 ChatGPT/Codex 账号，并将订阅模型接入 dsh 的 codex-oauth 提供方，支持多轮对话和受支持的图片输入。",
+    "en": "Connects ChatGPT/Codex subscription models to dsh through OAuth, with support for multi-turn conversations and supported image inputs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "OAuth device-code login for ChatGPT/Codex accounts",
+      "Stores refresh and access tokens in the dsh credential store",
+      "Calls the undocumented chatgpt.com/backend-api service",
+      "Exposes a Codex model provider through dsh",
+      "Provides settings-page and HTTP routes for login, logout, and status",
+      "Forwards supported image inputs to the model provider"
+    ],
+    "reasons": [
+      {
+        "code": "account_oauth_and_token_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "undocumented_external_backend",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "potential_terms_of_service_and_account_restriction_risk",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "OAuth device-code login for ChatGPT/Codex accounts",
+      "Stores refresh and access tokens in the dsh credential store",
+      "Calls the undocumented chatgpt.com/backend-api service",
+      "Exposes a Codex model provider through dsh",
+      "Provides settings-page and HTTP routes for login, logout, and status",
+      "Forwards supported image inputs to the model provider"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:49.327Z",
+  "repositoryCommitSha": "4a680ba31ca9daf46a0527d6c1b7a1ada8731b46",
+  "evidenceHash": "b82152301d2ee13eefc10145560cf7477fd79054e7cd6a9f384ed10cb10e09a9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "42485d4307969306f050a962f742fbe8db5bb9f28303ddef5431b339701719df",
+  "shadowMode": false
+}

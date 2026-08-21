@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "mcp",
+    "ui",
+    "monitoring",
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An MCP management console providing a settings panel, server status and health diagnostics, server profile CRUD, connectivity probes, and trial calls through the official MCP tool pipeline.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 MCP 管理面板，用于查看服务器状态、诊断健康情况、管理服务器配置并试调用工具。",
+    "en": "An MCP management panel for DeepSeek Harness that displays server status, provides health diagnostics, manages server configurations, and supports tool trial calls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads MCP server status and tool metadata",
+      "Performs optional connectivity probes",
+      "Executes MCP tool trial calls through the official tool pipeline",
+      "Creates, edits, and disables MCP server profile entries via approval-gated patch writes",
+      "Creates backups of profile patch data"
+    ],
+    "reasons": [
+      {
+        "code": "network_outbound_and_mcp_interaction",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_gated_profile_writes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_execution_and_connectivity_probes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads MCP server status and tool metadata",
+      "Performs optional connectivity probes",
+      "Executes MCP tool trial calls through the official tool pipeline",
+      "Creates, edits, and disables MCP server profile entries via approval-gated patch writes",
+      "Creates backups of profile patch data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:31.919Z",
+  "repositoryCommitSha": "689d5dc5a55eacd3d1b8146a7d830396e39fa98f",
+  "evidenceHash": "1bed0efc95c41d7e1877315a7dd2aa5a300585af3076254c938f11f2257568ca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e94ed89ce386bc52a81d3a1d56b598070641b73150650612be641733d007aa11",
+  "shadowMode": false
+}

@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "image",
+    "integration",
+    "search",
+    "tool",
+    "cli",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Provides three external ChatGPT Codex-backed model tools for public web search, bitmap image generation, and workspace-local image analysis; the README clearly documents network access, credential use, and image transmission.",
+  "summaries": {
+    "zh": "通过现有的 ChatGPT/Codex 登录提供网页搜索、位图生成和工作区内图片分析工具。",
+    "en": "Provides web search, bitmap image generation, and workspace-local image analysis through an existing ChatGPT/Codex login."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches the public web and returns model-generated summaries with source URLs",
+      "Generates bitmap images through the ChatGPT Codex endpoint",
+      "Reads workspace-local image files and sends them to the ChatGPT Codex endpoint for descriptions or answers",
+      "Uses existing Codex or ChatGPT credentials and may refresh and persist authentication state",
+      "Requires network access to external authentication and model services"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use_and_refresh",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_image_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "internal_service_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Searches the public web and returns model-generated summaries with source URLs",
+      "Generates bitmap images through the ChatGPT Codex endpoint",
+      "Reads workspace-local image files and sends them to the ChatGPT Codex endpoint for descriptions or answers",
+      "Uses existing Codex or ChatGPT credentials and may refresh and persist authentication state",
+      "Requires network access to external authentication and model services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:40.949Z",
+  "repositoryCommitSha": "9519949dd340ff07a7ef8182692704d2487ce690",
+  "evidenceHash": "5b85fe00afa5a5e11e0e839760cea3490b5392adcc10b118f19d6d994d40eb9e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "76eb881f285b88015591b5679889f6badf8001a2cc11c0634a59773ac2fd2654",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Integrates Longbridge OpenAPI for Hong Kong and US market data, brokerage account and position access, and approval-gated order placement and cancellation; human review is appropriate because it can perform financial trading actions and handle brokerage credentials.",
+  "summaries": {
+    "zh": "接入长桥 OpenAPI，提供港美股行情、账户与持仓查询，以及经审批确认的下单和撤单工具，并配有凭据与功能开关设置页。",
+    "en": "Connects to the Longbridge OpenAPI to provide Hong Kong and US market data, account and position queries, and approval-gated order placement and cancellation with configurable credentials and feature settings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the Longbridge OpenAPI using App Key, App Secret, and Access Token credentials",
+      "Retrieves Hong Kong and US market quotes, candlesticks, indices, watchlists, and market status",
+      "Reads account summaries and positions when enabled",
+      "Places and cancels orders when enabled, with an approval step for each trade action",
+      "Provides a settings panel and optional right-side market data panel"
+    ],
+    "reasons": [
+      {
+        "code": "financial-trading-actions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "handles-broker-api-credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads-account-and-position-data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the Longbridge OpenAPI using App Key, App Secret, and Access Token credentials",
+      "Retrieves Hong Kong and US market quotes, candlesticks, indices, watchlists, and market status",
+      "Reads account summaries and positions when enabled",
+      "Places and cancels orders when enabled, with an approval step for each trade action",
+      "Provides a settings panel and optional right-side market data panel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:43.657Z",
+  "repositoryCommitSha": "a42cca78af14360c8d3e7f6a08f55ad3cf125654",
+  "evidenceHash": "41b9db7806d5a9010105d9de5c0ec43fff76a2c1eff1617b3e75e21c028a4d82",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9f76e56ae91184e2be92ebc05515826d7d49f6d43321aa788023c318e4d4aa9f",
+  "shadowMode": false
+}

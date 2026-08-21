@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "api",
+    "browser",
+    "integration",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin extends DeepSeek Harness web UI access to LAN devices by changing the server bind address and injecting a UUID polyfill; its documented lack of authentication creates a high-impact exposure requiring human review.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的 Web UI 暴露到局域网，并注入 crypto.randomUUID 兼容补丁以支持非安全上下文启动。",
+    "en": "Exposes the DeepSeek Harness Web UI to the local network and injects a crypto.randomUUID compatibility polyfill for startup in non-secure contexts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Binds the DeepSeek Harness web server to 0.0.0.0 through an overlay",
+      "Makes the DeepSeek Harness web UI accessible from LAN devices",
+      "Injects a crypto.randomUUID polyfill into the web page",
+      "Can expose remote code execution capabilities to the LAN because the web UI has no authentication layer"
+    ],
+    "reasons": [
+      {
+        "code": "unauthenticated_lan_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_code_execution_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "server_binding_change",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Binds the DeepSeek Harness web server to 0.0.0.0 through an overlay",
+      "Makes the DeepSeek Harness web UI accessible from LAN devices",
+      "Injects a crypto.randomUUID polyfill into the web page",
+      "Can expose remote code execution capabilities to the LAN because the web UI has no authentication layer"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:04.681Z",
+  "repositoryCommitSha": "df8ee2fa32ac8d9c22d44e3b43ce6a9a6324aaf9",
+  "evidenceHash": "60f00c1a2e9e418782a0910da098af568b2d54552c2a85e11f213572eb360c91",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "27bd1044a3cd6b786468eda01bc56e690f676295fa5a819514109f89889743c7",
+  "shadowMode": false
+}

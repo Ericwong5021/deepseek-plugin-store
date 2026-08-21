@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "cli",
+    "file",
+    "integration",
+    "skill",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README describes agent skills and Node scripts for integrating games with Paean services, publishing static frontends, downloading and remixing published games, and recording remix lineage; external platform integration is the primary user-facing purpose.",
+  "summaries": {
+    "zh": "为游戏项目提供 Paean 平台集成、静态发布、作品 remix 和云存档及排行榜能力的智能体技能集合。",
+    "en": "A set of agent skills for integrating games with Paean, publishing static frontends, remixing published games, and adding cloud saves and leaderboards."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads Paean authentication credentials from environment variables or local credential files",
+      "Publishes static frontend projects to Paean-hosted URLs and lists them in Apps Square",
+      "Downloads published game sources and creates remix manifests with parent lineage",
+      "Writes project files and executes Node.js scripts plus system zip/unzip commands",
+      "Integrates browser games with Paean cloud save and shared leaderboard services"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network-publish-download",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-and-command-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-service-integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads Paean authentication credentials from environment variables or local credential files",
+      "Publishes static frontend projects to Paean-hosted URLs and lists them in Apps Square",
+      "Downloads published game sources and creates remix manifests with parent lineage",
+      "Writes project files and executes Node.js scripts plus system zip/unzip commands",
+      "Integrates browser games with Paean cloud save and shared leaderboard services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:21.053Z",
+  "repositoryCommitSha": "5435c60fe08d984008006774ef68b3129a752f27",
+  "evidenceHash": "9c030ce16fad36963f2aea906074f1f6d9d8a8cb0fbc5fefc2363ca88cc0ce02",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac2c7c532aaeeffce8e8c82e8858095800ec1efb2ac114b823e978c30a9434c7",
+  "shadowMode": false
+}

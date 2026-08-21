@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "integration",
+    "ui",
+    "cli",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin adds a workspace menu action that launches VS Code or another configured editor CLI for the selected workspace directory; the README states it has no tools, model-facing surface, or file read/write behavior.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 工作区菜单中添加“在 VSCode 中打开”操作，并通过配置的编辑器命令启动所选工作区目录。",
+    "en": "This plugin adds an Open in VS Code action to DeepSeek Harness workspace menus and launches the selected directory with a configured editor command."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds an Open in VS Code menu action for workspace directories",
+      "Invokes a configured editor CLI on a user-selected workspace directory",
+      "Uses a host-client remote call to launch the editor process"
+    ],
+    "reasons": [
+      {
+        "code": "launches_configured_local_executable",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_initiated_workspace_action",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "does_not_read_or_write_files",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds an Open in VS Code menu action for workspace directories",
+      "Invokes a configured editor CLI on a user-selected workspace directory",
+      "Uses a host-client remote call to launch the editor process"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:48.423Z",
+  "repositoryCommitSha": "8aed144abdc158a332aa73bce42fc217d962f751",
+  "evidenceHash": "0863c2c201d6fa4b5d99f63487c833dca861f1d5861c79762c3e451abf46fba8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "76b4edbfc8da00f00812cc0d8405841607404d4d1e8df58544fc478a22c1154f",
+  "shadowMode": false
+}

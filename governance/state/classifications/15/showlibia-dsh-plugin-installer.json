@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "automation",
+    "desktop",
+    "file",
+    "integration",
+    "tool",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A WebUI utility for installing, uninstalling, validating, registering, activating, and hot-reloading DSH plugins from package, repository, archive, or local-directory sources.",
+  "summaries": {
+    "zh": "通过 WebUI 管理 DSH 插件，支持从 npm、Git、tarball 或本地目录安装、卸载、验证、激活和热重载插件。",
+    "en": "Manage DSH plugins from the WebUI by installing, uninstalling, validating, activating, and hot-reloading packages from npm, Git, tarballs, or local directories."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs and uninstalls DSH plugins from npm, Git, tarball URLs, or local directories",
+      "Executes native DSH plugin management commands and package installation workflows",
+      "Writes plugin registration and bundle configuration",
+      "Validates plugin loading in a subprocess",
+      "Hot-reloads plugins and may load native addons into the running process",
+      "Copies agent preset files into the DSH home directory"
+    ],
+    "reasons": [
+      {
+        "code": "installs_external_or_local_plugin_packages",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_runtime_and_plugin_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "supports_hot_reload_and_native_addon_loading",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Installs and uninstalls DSH plugins from npm, Git, tarball URLs, or local directories",
+      "Executes native DSH plugin management commands and package installation workflows",
+      "Writes plugin registration and bundle configuration",
+      "Validates plugin loading in a subprocess",
+      "Hot-reloads plugins and may load native addons into the running process",
+      "Copies agent preset files into the DSH home directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:54.479Z",
+  "repositoryCommitSha": "198074514c40f3addf78e9b6963bc92cb4573971",
+  "evidenceHash": "5db5e2d37fe4ec428fb4f52d495f253e6d67f9dde5fa4f1d7a0035655341209e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2b495d12f2581a1b943367c8acbdd2dec25591e140c8313121aafa22c132e315",
+  "shadowMode": false
+}

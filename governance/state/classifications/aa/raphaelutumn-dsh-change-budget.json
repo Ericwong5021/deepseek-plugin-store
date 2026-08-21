@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "file",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness guardrail plugin that enforces configurable per-turn limits on supported structured file mutations, mutation calls, and submitted UTF-8 bytes before tool execution.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Agent 对受支持的结构化文件修改设置每轮文件数、调用数和 UTF-8 字节数预算，并在超限前拒绝调用。",
+    "en": "A DeepSeek Harness guardrail that applies per-turn budgets for supported structured file mutations, mutation calls, and UTF-8 payload bytes, rejecting calls before they exceed the configured limits."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts supported structured file-mutation tool calls",
+      "Tracks per-turn distinct-file, mutation-call, and UTF-8 payload-byte budgets",
+      "Rejects calls that exceed configured limits before tool execution",
+      "Maintains in-memory budget reservations per agent turn"
+    ],
+    "reasons": [
+      {
+        "code": "file_mutation_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bounded_supported_tool_scope",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "in_memory_turn_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts supported structured file-mutation tool calls",
+      "Tracks per-turn distinct-file, mutation-call, and UTF-8 payload-byte budgets",
+      "Rejects calls that exceed configured limits before tool execution",
+      "Maintains in-memory budget reservations per agent turn"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:15.779Z",
+  "repositoryCommitSha": "e38a859ca811a49da2ec212002715241b82bd485",
+  "evidenceHash": "a62b7847c72aab33281b978971c3ff4d0f846ead2842960849120911ee1a967f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e6ad60b7cddf05272b188f0c44ad17f0c477b807969c762003d7bd9143160396",
+  "shadowMode": false
+}

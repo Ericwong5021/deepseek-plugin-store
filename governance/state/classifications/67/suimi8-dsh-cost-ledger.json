@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "monitoring",
+    "api",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cost and token-usage ledger for DeepSeek Harness that records model usage in SQLite and provides query, budget, and related host-local API tools.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 记录模型令牌用量与成本到 SQLite，并提供查询支出和管理预算的工具。",
+    "en": "Records DeepSeek Harness model token usage and costs in SQLite, with tools for querying spending and managing budgets."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures token-usage events from the host",
+      "Writes usage and budget data to a local SQLite database",
+      "Provides agent tools for recording, querying, and configuring cost budgets",
+      "Provides host-local HTTP endpoints for cost-ledger data and settings"
+    ],
+    "reasons": [
+      {
+        "code": "local_database_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_local_http_endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Captures token-usage events from the host",
+      "Writes usage and budget data to a local SQLite database",
+      "Provides agent tools for recording, querying, and configuring cost budgets",
+      "Provides host-local HTTP endpoints for cost-ledger data and settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:39.775Z",
+  "repositoryCommitSha": "62d6594926b18984b317d31ea069315f546fe540",
+  "evidenceHash": "a565c3b5e1b5102b64a099463d3783ffaa98e841ac74ed675d18aa669a02ff53",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "26b3f460f9bd644614f07f475c8b2bbc51e6b968d46bd921a730005ef1f95873",
+  "shadowMode": false
+}

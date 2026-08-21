@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "integration",
+    "mcp",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An external-service integration plugin that connects DeepSeek Harness to OAuth-protected Streamable HTTP MCP servers and exposes their discovered tools for agent use.",
+  "summaries": {
+    "zh": "通过 OAuth 2.1 和 Streamable HTTP 将 DeepSeek Harness 连接到 MCP 服务，并发现、注册和执行远程工具。",
+    "en": "Connects DeepSeek Harness to OAuth 2.1-protected Streamable HTTP MCP servers and enables discovery, registration, and execution of their remote tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "OAuth 2.1 authorization with PKCE and dynamic client registration",
+      "Browser-based login with a loopback callback",
+      "Persistent storage of OAuth tokens and client metadata through the DSH credential service",
+      "Streamable HTTP MCP connections with reconnect handling",
+      "Discovery, registration, and execution of tools exposed by remote MCP servers",
+      "Persistent configuration of MCP connections in a DSH Web profile"
+    ],
+    "reasons": [
+      {
+        "code": "oauth_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_connection_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "OAuth 2.1 authorization with PKCE and dynamic client registration",
+      "Browser-based login with a loopback callback",
+      "Persistent storage of OAuth tokens and client metadata through the DSH credential service",
+      "Streamable HTTP MCP connections with reconnect handling",
+      "Discovery, registration, and execution of tools exposed by remote MCP servers",
+      "Persistent configuration of MCP connections in a DSH Web profile"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:29.270Z",
+  "repositoryCommitSha": "796f415186c5f95326241008ea2181082fd205af",
+  "evidenceHash": "fd6da91dd04fc0a981f46cf2972a2fba5f17702df516f9cdf9ca62f93ec17bc0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ae512eac4b2b9c431c3c2f7b20fdcc674362c6acdfb69ede6dcdae9e423e23db",
+  "shadowMode": false
+}

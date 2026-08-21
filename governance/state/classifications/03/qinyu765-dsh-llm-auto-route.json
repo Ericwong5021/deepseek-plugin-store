@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "automation",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Cordis plugin that automatically selects configured LLM provider routes, explains routing decisions, performs optional health checks, and conservatively fails over before response output.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中根据环境、端点和模型提示选择已配置的 LLM 路由，并在输出前进行可选健康检查与故障转移。",
+    "en": "Selects among configured LLM routes in DeepSeek Harness using environment, endpoint, and model signals, with optional health checks and pre-output failover."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Discovers and selects among already registered LLM provider routes",
+      "Reads configured environment-variable presence as routing signals without logging credential values",
+      "Performs bounded health checks through the official adapter when available",
+      "Retries failed requests on alternate routes only before any visible output is emitted",
+      "Provides route-selection diagnostics and failover errors"
+    ],
+    "reasons": [
+      {
+        "code": "provider-routing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "health-checks-and-failover",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment-signal-detection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Discovers and selects among already registered LLM provider routes",
+      "Reads configured environment-variable presence as routing signals without logging credential values",
+      "Performs bounded health checks through the official adapter when available",
+      "Retries failed requests on alternate routes only before any visible output is emitted",
+      "Provides route-selection diagnostics and failover errors"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:01.323Z",
+  "repositoryCommitSha": "4f9bdfbf936cd0e18aa2704060ce44fe384d9c52",
+  "evidenceHash": "3f3b3ba58b5f209be4dea4fbefc58a36bf198c110e3ea1137473f0701cdf77ec",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eabe135ef453698db03425874b726aa822658a4cebd3668ce56998ca132617a7",
+  "shadowMode": false
+}

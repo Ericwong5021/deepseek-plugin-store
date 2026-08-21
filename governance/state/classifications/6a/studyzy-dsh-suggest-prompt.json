@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "chat",
+    "planning",
+    "ui",
+    "context",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that predicts one suggested next prompt after each completed agent turn, using a bounded auxiliary LLM call and presenting the result as ghost text in the web composer for optional draft insertion.",
+  "summaries": {
+    "zh": "在每轮智能体回复完成后生成一条建议的下一条提示词，并以输入框幽灵文字形式展示，支持通过快捷键采纳到草稿。",
+    "en": "Generates one suggested next prompt after each completed agent turn, displays it as ghost text in the web composer, and supports inserting it into the draft with a shortcut."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Makes a bounded auxiliary LLM request after completed agent turns",
+      "Reads recent user and assistant turn content for suggestion generation",
+      "Writes a suggested prompt to the session log and exposes it to the web interface",
+      "Displays the suggestion as composer ghost text and can place it into the draft via a configurable shortcut"
+    ],
+    "reasons": [
+      {
+        "code": "external_llm_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_content_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_log_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Makes a bounded auxiliary LLM request after completed agent turns",
+      "Reads recent user and assistant turn content for suggestion generation",
+      "Writes a suggested prompt to the session log and exposes it to the web interface",
+      "Displays the suggestion as composer ghost text and can place it into the draft via a configurable shortcut"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:39.396Z",
+  "repositoryCommitSha": "14d4f3abfb784812ce5fe63d55689f3f8ea6edb0",
+  "evidenceHash": "f4345bdd46f0692919997f91a56b908985b99f3f9667e44b2f2bbe35f4b26301",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ce3cea4a724717779592579a6cd0162a00a2af7a8efc890c20cfedd771a5a8c7",
+  "shadowMode": false
+}

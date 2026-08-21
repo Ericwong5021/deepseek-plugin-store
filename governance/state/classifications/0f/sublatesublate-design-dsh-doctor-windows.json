@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "desktop",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A human-invoked Windows diagnostics command for DeepSeek Harness that checks runtime, workspace, proxy configuration, PowerShell availability, and native folder-picker dependencies without network requests or settings changes.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供由用户手动运行的 Windows 环境诊断命令，检查运行时、工作区、代理设置、PowerShell 和原生文件夹选择器依赖。",
+    "en": "Provides a human-invoked Windows diagnostics command for DeepSeek Harness that checks runtime, workspace, proxy settings, PowerShell, and native folder-picker dependencies."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads Windows environment and runtime versions",
+      "Checks workspace readability and writability",
+      "Inspects proxy-related environment settings without printing credential values",
+      "Discovers and starts PowerShell processes non-interactively",
+      "Checks the Harness native folder picker dependency with a harmless process query"
+    ],
+    "reasons": [
+      {
+        "code": "local_environment_diagnostics",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_network_or_settings_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads Windows environment and runtime versions",
+      "Checks workspace readability and writability",
+      "Inspects proxy-related environment settings without printing credential values",
+      "Discovers and starts PowerShell processes non-interactively",
+      "Checks the Harness native folder picker dependency with a harmless process query"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:36.013Z",
+  "repositoryCommitSha": "7ed5bd36299c55059b386d11713d5b9ac758544b",
+  "evidenceHash": "cac0a6e97a9f8a3982fb350cae45d466440283b846f974d2b66dcea7c6814dea",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "559dc8d1718017602edf7ca198897d12f539d685f356fb6e5881aa210b03a718",
+  "shadowMode": false
+}

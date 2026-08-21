@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "agent",
+    "search",
+    "skill",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH skill for discovering candidate plugins on GitHub, comparing them, and installing and verifying a selected plugin after reporting relevant operational and trust indicators.",
+  "summaries": {
+    "zh": "帮助 DSH 从 GitHub 搜索、比较、安装并验证插件，并在安装前报告其脚本、网络、子进程及数据访问信息。",
+    "en": "Helps DSH search and compare GitHub plugins, then install and verify a selected plugin while reporting its scripts, network, subprocess, and data-access characteristics."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches public GitHub repositories with the dsh-plugin topic",
+      "Reads README, package.json, and repository files to classify installation methods",
+      "Installs and verifies a user-selected plugin",
+      "Inspects lifecycle scripts, network access, subprocesses, session data, credentials, and repository trust indicators"
+    ],
+    "reasons": [
+      {
+        "code": "plugin_installation_and_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_repository_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "potential_network_subprocess_and_credential_interactions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Searches public GitHub repositories with the dsh-plugin topic",
+      "Reads README, package.json, and repository files to classify installation methods",
+      "Installs and verifies a user-selected plugin",
+      "Inspects lifecycle scripts, network access, subprocesses, session data, credentials, and repository trust indicators"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:04.135Z",
+  "repositoryCommitSha": "61b30c697f12075ac1071418b7b7ca2300de37ac",
+  "evidenceHash": "236739eec91e103179b020939561c52dc27012410b104a49a1c541214546466d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "24ff7743baf7bdd0750563ce66276e8ce4a0fcf4509343a01f99f248350a0401",
+  "shadowMode": false
+}

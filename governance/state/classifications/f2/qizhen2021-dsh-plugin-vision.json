@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "tool",
+    "api",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a see tool for analyzing image files through OCR with positions, ASCII layout rendering, and optional semantic description from an external vision model, returning text suitable for text-only models.",
+  "summaries": {
+    "zh": "通过 OCR 坐标识别、ASCII 布局图和可选的视觉模型语义描述，将图片分析结果以纯文本形式输出。",
+    "en": "Analyzes image files with positional OCR, ASCII layout rendering, and optional vision-model descriptions, returning the results as plain text."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads image files from the session filesystem",
+      "Performs offline OCR using macOS Vision",
+      "Generates ASCII layout representations with Python and PIL",
+      "Sends image-derived data to a configured external vision-model gateway",
+      "Reads configured API credentials through the host credentials service or a YAML file",
+      "Runs local Swift and Python subprocesses with timeouts and cancellation"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads image files from the session filesystem",
+      "Performs offline OCR using macOS Vision",
+      "Generates ASCII layout representations with Python and PIL",
+      "Sends image-derived data to a configured external vision-model gateway",
+      "Reads configured API credentials through the host credentials service or a YAML file",
+      "Runs local Swift and Python subprocesses with timeouts and cancellation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:02.344Z",
+  "repositoryCommitSha": "39fe8c475630cc1565d6e11de6ee87bf2b505710",
+  "evidenceHash": "aafad3bd7a2574c2fc3638237f4d366ad6a6d7787aa85eed9eddd1c9e86d6f45",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a80b01ae6aaa1443cb4c2f2b90a9a8c81bbf182b0ac32d939319e0bbfdb1f8bc",
+  "shadowMode": false
+}

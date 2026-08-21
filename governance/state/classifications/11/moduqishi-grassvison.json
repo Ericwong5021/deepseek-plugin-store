@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "data",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes GrassVision as a server-side API proxy that adds image analysis, structured visual evidence, caching, and image-processing features to text-only language models through compatible chat protocols.",
+  "summaries": {
+    "zh": "GrassVision 是一个兼容 OpenAI、Anthropic 和 Responses 协议的视觉代理服务，可将图片分析结果、像素证据和缓存能力接入纯文本大模型。",
+    "en": "GrassVision is an API proxy compatible with OpenAI, Anthropic, and Responses protocols that adds image analysis, pixel evidence, and caching to text-only language models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Proxies OpenAI Chat, Anthropic Messages, and Responses API requests",
+      "Sends supplied images to configured vision providers for analysis",
+      "Stores image analysis results in a persistent cache",
+      "Provides an administrative interface for configuring providers, models, prompts, and settings",
+      "Performs local image processing including cropping, pixel analysis, OCR-related slicing, and SVG primitive detection"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_api_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_data_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_cache_and_admin_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Proxies OpenAI Chat, Anthropic Messages, and Responses API requests",
+      "Sends supplied images to configured vision providers for analysis",
+      "Stores image analysis results in a persistent cache",
+      "Provides an administrative interface for configuring providers, models, prompts, and settings",
+      "Performs local image processing including cropping, pixel analysis, OCR-related slicing, and SVG primitive detection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:42:49.590Z",
+  "repositoryCommitSha": "dbfb9ad14d13951a70bb50b77c4092d4987236f9",
+  "evidenceHash": "3a3b0c8fe3d0ea2e4712dd4fbdb0cd3b3286053aad0a0ae51fe781e9c363307a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "af46ce55b963b9826b96afc8a5b780079a0bf474e88ca1929508c63b1a590a47",
+  "shadowMode": false
+}
