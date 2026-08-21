@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a media-oriented plugin that reads images, uses OpenRouter vision models to generate descriptions, and integrates those descriptions into chat requests for text-only models.",
+  "summaries": {
+    "zh": "通过 OpenRouter 视觉模型为文本模型提供图片描述和图片理解能力的插件。",
+    "en": "A plugin that uses OpenRouter vision models to provide image descriptions and image understanding for text-only models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads image files from local disk for description",
+      "Sends image data to OpenRouter vision models",
+      "Converts images to text descriptions for models without image input support",
+      "Writes a default provider configuration to the DSH settings file"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "settings_file_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads image files from local disk for description",
+      "Sends image data to OpenRouter vision models",
+      "Converts images to text descriptions for models without image input support",
+      "Writes a default provider configuration to the DSH settings file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:03.428Z",
+  "repositoryCommitSha": "a4e6afc70f833330e42417a0e74df9f7374b8d17",
+  "evidenceHash": "627905a4fbb63b9b404ebb193da2d7f6963e41956377caed9d93d25b1694feeb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2c242790df4141d1bc7c7a8c8a66e222c6e1113b987a4aedb6152612c3fe5353",
+  "shadowMode": false
+}

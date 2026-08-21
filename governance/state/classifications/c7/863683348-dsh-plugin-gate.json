@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "agent",
+    "api",
+    "file",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only plugin safety utility that statically scans plugin sources and dependencies for risky patterns and evaluates destructive commands against workspace boundaries.",
+  "summaries": {
+    "zh": "用于在安装插件前静态扫描本地目录或 npm 包中的风险模式，并评估潜在破坏性命令的安全工具。",
+    "en": "A read-only utility that statically scans local directories or npm packages for risky patterns before installation and evaluates potentially destructive commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and statically scans local plugin directories and npm tarballs",
+      "Checks exact-version dependencies against Google OSV when enabled",
+      "Evaluates potentially destructive commands and file deletions",
+      "Injects prompt guidance for scan and guard usage"
+    ],
+    "reasons": [
+      {
+        "code": "local_source_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_vulnerability_query",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive_operation_analysis",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads and statically scans local plugin directories and npm tarballs",
+      "Checks exact-version dependencies against Google OSV when enabled",
+      "Evaluates potentially destructive commands and file deletions",
+      "Injects prompt guidance for scan and guard usage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:59.650Z",
+  "repositoryCommitSha": "d46f0cdb6be8c8c7a63a401ac5e73b55be40cacc",
+  "evidenceHash": "fe7c7a6667f38596e4c986ea36e4d9d660fa28a58bdbf140fd0e34dbd0226ae8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3261bd17715b664d62f63991b8b87f23986fa834c1cd23428e3f7a8a1cc76846",
+  "shadowMode": false
+}

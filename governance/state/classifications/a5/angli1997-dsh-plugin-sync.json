@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "collaboration",
+    "data",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A GitHub Gist integration that exports and imports DeepSeek Harness plugin manifests, updates local profile files, and automatically installs imported dependencies; publication warrants human review because it uses OAuth, remote storage, file writes, and package installation.",
+  "summaries": {
+    "zh": "通过 GitHub Gist 在不同环境间导出和导入 DeepSeek Harness 插件清单，并更新配置及安装依赖。",
+    "en": "Syncs DeepSeek Harness plugin manifests through GitHub Gists, updating local configuration and installing imported dependencies."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "GitHub OAuth device-flow authentication with gist permission",
+      "Creates private GitHub Gists when no destination is provided",
+      "Uploads and downloads plugin manifest data through GitHub Gists",
+      "Writes plugin dependencies and profile configuration files",
+      "Automatically runs pnpm install during import"
+    ],
+    "reasons": [
+      {
+        "code": "oauth_external_service_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_data_upload_download",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_package_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "GitHub OAuth device-flow authentication with gist permission",
+      "Creates private GitHub Gists when no destination is provided",
+      "Uploads and downloads plugin manifest data through GitHub Gists",
+      "Writes plugin dependencies and profile configuration files",
+      "Automatically runs pnpm install during import"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:17.455Z",
+  "repositoryCommitSha": "72bc86c77057193556d1099c088593bf9be0a2fd",
+  "evidenceHash": "d2b1f178ea12c300c4f12993b35b90fa02932ffa04a653e4dc3a32caf098d008",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3f0283f1e2f58d09aae53119c637cdbe5bc1e71c2251bad8e86af2556229d8ec",
+  "shadowMode": false
+}

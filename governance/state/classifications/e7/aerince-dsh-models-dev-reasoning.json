@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "api",
+    "automation",
+    "data",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automatically enriches unconfigured DeepSeek Harness llm-pi-ai models with reasoning levels sourced from models.dev, while preserving existing reasoningEfforts settings.",
+  "summaries": {
+    "zh": "从 models.dev 自动补齐 DeepSeek Harness 中尚未配置 reasoningEfforts 的 llm-pi-ai 模型推理档位，并保留已有配置。",
+    "en": "Automatically fills reasoning levels for DeepSeek Harness llm-pi-ai models lacking reasoningEfforts settings, while preserving existing configurations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads model metadata from models.dev over HTTPS",
+      "Falls back to a models.dev GitHub tarball when the API request fails",
+      "Writes missing reasoningEfforts settings under llm-pi-ai",
+      "Caches downloaded data in the system temporary directory"
+    ],
+    "reasons": [
+      {
+        "code": "network-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "temporary-file-cache",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads model metadata from models.dev over HTTPS",
+      "Falls back to a models.dev GitHub tarball when the API request fails",
+      "Writes missing reasoningEfforts settings under llm-pi-ai",
+      "Caches downloaded data in the system temporary directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:59.072Z",
+  "repositoryCommitSha": "c781d555bbe7f4343cb7750dd6e1f9e1b4876069",
+  "evidenceHash": "14db4e74e815e0efba64b5baeee60deda176531b4be0ae5b4f4b0e71dda6aed7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aaa62094eddf5de78fe055ebed0d3adb17a3356b1b05d8677c9f15e94e8aafb6",
+  "shadowMode": false
+}

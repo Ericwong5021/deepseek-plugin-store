@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "api",
+    "integration",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A notification plugin that manages multiple delivery channels and exposes push services for other plugins and local integrations; the README also documents external message delivery and plaintext local credential storage.",
+  "summaries": {
+    "zh": "管理多个消息推送渠道，并通过界面、进程内服务和本地 HTTP 接口向其他插件发送通知。",
+    "en": "Manages multiple message delivery channels and lets the interface, in-process service, and local HTTP API send notifications for other plugins."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends messages through configured external notification channels",
+      "Manages multiple notification channel configurations",
+      "Exposes an in-process pushNotifier service and a local HTTP API for other plugins",
+      "Stores channel credentials and tokens in a local JSON file"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext_credential_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Sends messages through configured external notification channels",
+      "Manages multiple notification channel configurations",
+      "Exposes an in-process pushNotifier service and a local HTTP API for other plugins",
+      "Stores channel credentials and tokens in a local JSON file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:31.173Z",
+  "repositoryCommitSha": "2aa2b8273183bc91f4cf6d12b1f7121bbee751da",
+  "evidenceHash": "642f4197fc2b5dfcb972f875793bfd94dd765ad8ac23ae45e9420fb0417f9589",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "03a180360dcbb1fa765d371c88ccaaa2e7bf79013b1d0d3980003d59bb259951",
+  "shadowMode": false
+}

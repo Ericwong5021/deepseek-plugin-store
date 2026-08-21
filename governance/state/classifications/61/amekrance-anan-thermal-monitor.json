@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "desktop",
+    "monitoring",
+    "visualization",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Windows desktop companion plugin that continuously monitors CPU, memory, GPU, and NVMe temperatures and presents hardware information in a floating panel.",
+  "summaries": {
+    "zh": "这是一款适用于 Windows 的桌面温度监控插件，可实时显示 CPU、内存、GPU 和 NVMe 温度及基本硬件信息。",
+    "en": "A Windows desktop monitoring plugin that displays real-time CPU, memory, GPU, and NVMe temperatures along with basic hardware information."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads CPU, memory, GPU, and NVMe temperature sensors",
+      "Displays a floating Windows desktop monitoring panel",
+      "Reads hardware and system information through WMI and Windows APIs",
+      "Requests administrator privileges for some sensor readings",
+      "Spawns and manages a PowerShell desktop process",
+      "Writes runtime data, status, position, and log files under the user temporary directory",
+      "Can register automatic startup through Windows Task Scheduler"
+    ],
+    "reasons": [
+      {
+        "code": "admin_privilege",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_information_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_spawn",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "startup_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Reads CPU, memory, GPU, and NVMe temperature sensors",
+      "Displays a floating Windows desktop monitoring panel",
+      "Reads hardware and system information through WMI and Windows APIs",
+      "Requests administrator privileges for some sensor readings",
+      "Spawns and manages a PowerShell desktop process",
+      "Writes runtime data, status, position, and log files under the user temporary directory",
+      "Can register automatic startup through Windows Task Scheduler"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:00.266Z",
+  "repositoryCommitSha": "13ed26da20da08eecc300fb9963bea3dd4634205",
+  "evidenceHash": "b5cc4d47c74f3e4d890f16451a1130c2a02041b23f58c8ef0a46b69b088ae795",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e8c188b9feeef395686c011823c4dd480ffac054e148abd35ea2b726a82fef81",
+  "shadowMode": false
+}

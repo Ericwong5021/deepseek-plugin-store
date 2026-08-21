@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "browser",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Provides LAN and remote access support for the DeepSeek Harness Web UI by binding the server broadly, widening API host trust, and injecting a UUID polyfill; human review is warranted because the README documents unauthenticated network exposure.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web UI 提供局域网和远程访问支持，包括服务绑定调整、API 主机信任扩展及 UUID polyfill 注入。",
+    "en": "Enables LAN and remote access to the DeepSeek Harness Web UI through server binding adjustments, expanded API host trust, and UUID polyfill injection."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Binds the web server to 0.0.0.0 for LAN and remote access",
+      "Injects a UUID polyfill into the served Web UI index page",
+      "Expands API trusted-host handling for non-internal IPv4 interfaces"
+    ],
+    "reasons": [
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated_remote_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_web_content_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Binds the web server to 0.0.0.0 for LAN and remote access",
+      "Injects a UUID polyfill into the served Web UI index page",
+      "Expands API trusted-host handling for non-internal IPv4 interfaces"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:40.191Z",
+  "repositoryCommitSha": "9e686b5b8a0c9d6dccdfe193f37d18e304d0a6af",
+  "evidenceHash": "44cc9a07a32ab67655b8cdd5c7705eef37a5f41d0d47f7b4726232a5d67e3b0f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3c17a7873506c8e1cd157babd0a24bda26629af3d1915d91f292ced16ed7f279",
+  "shadowMode": false
+}

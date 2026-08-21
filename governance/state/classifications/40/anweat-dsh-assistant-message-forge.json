@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "chat",
+    "context",
+    "data",
+    "file",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH testing and debugging plugin for inspecting, editing, injecting, importing, and conservatively repairing assistant conversation messages and session logs.",
+  "summaries": {
+    "zh": "用于 DSH 测试与调试会话消息的插件，支持解析上下文、编辑并应用消息、注入助手草稿以及导入和修复会话日志。",
+    "en": "A DSH plugin for testing and debugging session messages by parsing context, editing and applying message changes, injecting assistant drafts, and importing or repairing session logs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Parses and records conversation context and session logs",
+      "Persists draft messages and context overrides to local JSON files",
+      "Edits and applies replacements to user, assistant, and tool-result messages in sessions",
+      "Injects assistant messages into the current session",
+      "Imports JSONL and Zstandard-compressed session logs",
+      "Creates repaired sessions from damaged logs without overwriting the source log"
+    ],
+    "reasons": [
+      {
+        "code": "writes_local_session_records",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_active_conversation_content",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "injects_assistant_messages",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "imports_and_creates_session_data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Parses and records conversation context and session logs",
+      "Persists draft messages and context overrides to local JSON files",
+      "Edits and applies replacements to user, assistant, and tool-result messages in sessions",
+      "Injects assistant messages into the current session",
+      "Imports JSONL and Zstandard-compressed session logs",
+      "Creates repaired sessions from damaged logs without overwriting the source log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:36.811Z",
+  "repositoryCommitSha": "0f05362ef4cd62733a48efbe39907c11dc5122b1",
+  "evidenceHash": "1ae4a4ef5ee21cc45d6316b4d6930cba64261e43fb1c65a05ec44f699c74b9b6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0aa1bb9a4e4e10c8d9ba1aa81a38d4314a29b4d402988c51bc8c23da3ddb21dd",
+  "shadowMode": false
+}

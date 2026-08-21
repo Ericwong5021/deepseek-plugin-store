@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "monitoring",
+    "api",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh web sidebar dashboard that analyzes session token logs and visualizes usage, cache hit rates, estimated costs, balances, and historical details with CSV export.",
+  "summaries": {
+    "zh": "在 dsh web 侧栏中展示会话令牌用量、缓存命中率、估算成本、余额、图表、热力图和历史明细。",
+    "en": "A dsh web sidebar dashboard for viewing session token usage, cache hit rates, estimated costs, provider balances, charts, heatmaps, and usage history."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Parses active and persisted dsh session logs for token usage data",
+      "Displays token usage, cache hit rate, estimated costs, charts, heatmaps, and paginated history",
+      "Queries DeepSeek and OpenRouter balance information using configured credentials",
+      "Exports usage history as CSV",
+      "Synchronizes provider pricing data online and falls back to built-in prices"
+    ],
+    "reasons": [
+      {
+        "code": "reads_local_session_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "accesses_provider_credentials_for_balance_queries",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "performs_online_pricing_sync",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exports_usage_data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Parses active and persisted dsh session logs for token usage data",
+      "Displays token usage, cache hit rate, estimated costs, charts, heatmaps, and paginated history",
+      "Queries DeepSeek and OpenRouter balance information using configured credentials",
+      "Exports usage history as CSV",
+      "Synchronizes provider pricing data online and falls back to built-in prices"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:46.946Z",
+  "repositoryCommitSha": "cc414feb61512dad1086104dfd69631dad214683",
+  "evidenceHash": "9d04a0b73f394248c85ff45a019c4c12e629dc8237fa83b94fdfe4ed20208f75",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "267eb065cd067fa761bd97590d2abf32263cd25cc5ba7b22d2de9d9f7ee69a65",
+  "shadowMode": false
+}

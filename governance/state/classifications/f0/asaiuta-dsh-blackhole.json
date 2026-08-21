@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "api",
+    "agent",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH compaction plugin that reduces conversation context through a local deterministic compiler or configured remote Responses API compaction, with optional LLM fallback and per-session state persistence.",
+  "summaries": {
+    "zh": "为 DSH 提供对话上下文压缩，通过本地确定性编译器或配置的 Responses API 减少历史内容，并支持可选的 LLM 回退与会话状态持久化。",
+    "en": "Provides DSH conversation compaction using a deterministic local compiler or a configured Responses API, with optional LLM fallback and per-session state persistence."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Compacts conversation history using a deterministic local compiler",
+      "Can call configured Responses API endpoints for remote compaction",
+      "Can optionally invoke the native LLM summarizer as a fallback",
+      "Persists remote compaction state per session",
+      "Provides replay of persisted opaque compaction history for compatible requests"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_state_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_model_fallback",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Compacts conversation history using a deterministic local compiler",
+      "Can call configured Responses API endpoints for remote compaction",
+      "Can optionally invoke the native LLM summarizer as a fallback",
+      "Persists remote compaction state per session",
+      "Provides replay of persisted opaque compaction history for compatible requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:55.150Z",
+  "repositoryCommitSha": "1e22bea642c3550739f07e3949740d010502597c",
+  "evidenceHash": "11750935c17e219b3285ec68fe81bb33801d87a3106c330bf4ef57b3bb67284c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bf473318267ec024d104a969f7a2357cabd0e17d9f82f8ef728bc971991e793b",
+  "shadowMode": false
+}

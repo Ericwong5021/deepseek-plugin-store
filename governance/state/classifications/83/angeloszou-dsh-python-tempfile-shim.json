@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "automation",
+    "terminal",
+    "testing",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A Windows-focused compatibility utility that automatically enables Python and pytest temporary-directory use inside the DSH confined shell sandbox by injecting a scoped sitecustomize shim.",
+  "summaries": {
+    "zh": "该插件通过向受限 shell 命令注入 Python 路径 shim，修复 Windows DSH 沙箱中 Python 和 pytest 临时目录的使用问题。",
+    "en": "This plugin injects a Python path shim into confined shell commands to make Python and pytest temporary directories work in the Windows DSH sandbox."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Modifies the shell executor environment for confined commands",
+      "Injects a plugin-provided PYTHONPATH into workspace-write and read-only commands",
+      "Patches Python os.mkdir behavior through sitecustomize on Windows",
+      "Propagates the shim to child Python processes through PYTHONPATH"
+    ],
+    "reasons": [
+      {
+        "code": "executor_environment_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "python_runtime_behavior_change",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_scoped_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Modifies the shell executor environment for confined commands",
+      "Injects a plugin-provided PYTHONPATH into workspace-write and read-only commands",
+      "Patches Python os.mkdir behavior through sitecustomize on Windows",
+      "Propagates the shim to child Python processes through PYTHONPATH"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:16.046Z",
+  "repositoryCommitSha": "20b84cdc91516fbf51a782214ba8d88a3f083d34",
+  "evidenceHash": "ce50206be4cd625a8604a35cb6b2cbca25c8c54cf39580be25a7eaa85ee9ba98",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "af4d671e23edfd2755b1edd26fb3f36b9b2ee795f369b5c66f2865e3bbdd65fa",
+  "shadowMode": false
+}

@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness web plugin that monitors account balance and per-session token usage, presenting both in a dedicated Settings → Quota section.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的 Web 设置中展示账户额度和当前会话 Token 用量。",
+    "en": "Displays DeepSeek account quota and current-session token usage in the DeepSeek Harness web settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the DeepSeek balance endpoint using configured credentials",
+      "Displays account quota and current-session token usage in the web settings interface",
+      "Registers a read-only same-origin host route and a settings section"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_ui_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries the DeepSeek balance endpoint using configured credentials",
+      "Displays account quota and current-session token usage in the web settings interface",
+      "Registers a read-only same-origin host route and a settings section"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:53.785Z",
+  "repositoryCommitSha": "076df2560314c4bcbf683b66156754ff64555bc7",
+  "evidenceHash": "71364566f6d4c63db6f6a22cef8ba3247b4c97eb79198cdfdbd7c7f095c0d746",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4c6427d35b09d3d376cab4e3a765ada7c47bf9ddc3d97924facee70e44745500",
+  "shadowMode": false
+}

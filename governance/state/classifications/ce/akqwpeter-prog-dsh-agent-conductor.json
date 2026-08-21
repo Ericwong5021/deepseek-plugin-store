@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "integration",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness skill and optional host tool for dispatching tasks to 11 external agent CLIs and returning their results, making agent orchestration the primary user-facing purpose.",
+  "summaries": {
+    "zh": "通过无头命令行调用多个外部编程智能体，并将任务结果带回 DeepSeek Harness 会话。",
+    "en": "Dispatches tasks to multiple external coding-agent CLIs in headless mode and brings their results back into a DeepSeek Harness session."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Dispatches task text to external agent command-line interfaces",
+      "Executes configured local CLI commands in headless mode",
+      "Reads environment variables and local secret configuration files",
+      "Returns external CLI stdout as the agent response",
+      "May enable dispatched agents to write workspace files when configured"
+    ],
+    "reasons": [
+      {
+        "code": "external_agent_dispatch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_write_possible",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Dispatches task text to external agent command-line interfaces",
+      "Executes configured local CLI commands in headless mode",
+      "Reads environment variables and local secret configuration files",
+      "Returns external CLI stdout as the agent response",
+      "May enable dispatched agents to write workspace files when configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:27.963Z",
+  "repositoryCommitSha": "822ac74268d751d0a4aa1237f8c1505ac0473f7c",
+  "evidenceHash": "fe5c9971afe9a35dd62274533963f1fd7c93704c1bf69636b1775b78a52c6ca9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "85894b716589ca8608c136fa0a15ce4bb9957efa4496e96ffec87b8823dfe9a3",
+  "shadowMode": false
+}

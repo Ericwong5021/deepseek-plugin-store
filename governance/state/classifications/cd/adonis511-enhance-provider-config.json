@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin adds a DSH settings panel for configuring per-provider User-Agent and custom HTTP headers, sharing those settings with the official llm-pi-ai provider configuration; it also documents an optional local patch for User-Agent precedence.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 添加服务商配置面板，可按 LLM provider 设置 User-Agent 和自定义 HTTP 请求头，并写入官方 llm-pi-ai 配置。",
+    "en": "Adds a DeepSeek Harness provider configuration panel for setting per-provider User-Agent and custom HTTP headers in the official llm-pi-ai settings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a settings panel for per-provider HTTP header configuration",
+      "Writes configured headers to the official llm-pi-ai provider settings namespace",
+      "Can apply a local patch to the installed DSH llm-pi-ai module to change User-Agent precedence"
+    ],
+    "reasons": [
+      {
+        "code": "settings-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http-header-injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "installed-module-patching",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds a settings panel for per-provider HTTP header configuration",
+      "Writes configured headers to the official llm-pi-ai provider settings namespace",
+      "Can apply a local patch to the installed DSH llm-pi-ai module to change User-Agent precedence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:50.416Z",
+  "repositoryCommitSha": "b7d5edf2314eb006b6bc4f594bad168996597a67",
+  "evidenceHash": "e1af9ef8ebf4778c7894a1449160f086f6d42c2f67fbad4f4d343e5075f4a02c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "14b075821105f252d504e211e82c315346d80762435222744b4bcf500560f356",
+  "shadowMode": false
+}

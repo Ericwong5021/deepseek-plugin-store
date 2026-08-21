@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "collaboration",
+    "workflow",
+    "api",
+    "skill",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness extension suite primarily focused on plugin installation and runtime loading, subagent orchestration, model routing, skill management, and cross-session collaboration; human review is warranted because it executes installed plugins with host-process permissions and supports broad runtime and session capabilities.",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness 的插件编排套件，提供插件安装与运行时加载、子代理团队协作、模型路由、技能管理及跨会话通信功能。",
+    "en": "A DeepSeek Harness orchestration suite for plugin installation and runtime loading, subagent teamwork, model routing, skill management, and cross-session communication."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs, loads, reloads, stops, and removes plugins, including dynamically sourced plugins",
+      "Executes installed plugins with host-process permissions and no sandbox isolation",
+      "Routes tasks across models and providers and can spawn subagents with selected models and modes",
+      "Creates agent teams, assigns tasks, coordinates dependencies, and sends messages between sessions",
+      "Reads and sends messages across sessions and persists offline mailbox data",
+      "Manages persistent skills and injects runtime context or tools into sessions",
+      "Provides optional GitHub MCP integration using a user-supplied token"
+    ],
+    "reasons": [
+      {
+        "code": "host_process_plugin_execution_without_sandbox",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_injection_and_dynamic_loading",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "cross_session_read_send_capabilities",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subagent_and_model_delegation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_service_token_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Installs, loads, reloads, stops, and removes plugins, including dynamically sourced plugins",
+      "Executes installed plugins with host-process permissions and no sandbox isolation",
+      "Routes tasks across models and providers and can spawn subagents with selected models and modes",
+      "Creates agent teams, assigns tasks, coordinates dependencies, and sends messages between sessions",
+      "Reads and sends messages across sessions and persists offline mailbox data",
+      "Manages persistent skills and injects runtime context or tools into sessions",
+      "Provides optional GitHub MCP integration using a user-supplied token"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:49.794Z",
+  "repositoryCommitSha": "d224f025be2aeddff7961de5b5173e37a507e796",
+  "evidenceHash": "6e2a4d267b14dd6dfd62757da57da6bbb8f679e5437f246a3569516d7ef02ba9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4b6daaf8a2411e9415b968d341a43b959ffc4d3455ec25018754becce85b03c5",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily monitors and displays model-provider balances, usage, and quota windows in DSH through a live sidebar panel and settings section, using host-side provider API queries.",
+  "summaries": {
+    "zh": "在 DSH 网页界面中集中查看已配置模型供应商的余额、用量和额度窗口，并通过侧边栏面板与设置页进行刷新。",
+    "en": "View balances, usage, and quota windows for configured model providers in DSH through a live sidebar panel and settings page."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured model-provider credentials on the host",
+      "Calls provider balance endpoints",
+      "Displays normalized quota and usage data in the DSH web GUI",
+      "Automatically polls configured providers every 60 seconds",
+      "Adds sidebar and settings-page interface components through a bundle patch"
+    ],
+    "reasons": [
+      {
+        "code": "host_credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic_data_refresh",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_interface_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads configured model-provider credentials on the host",
+      "Calls provider balance endpoints",
+      "Displays normalized quota and usage data in the DSH web GUI",
+      "Automatically polls configured providers every 60 seconds",
+      "Adds sidebar and settings-page interface components through a bundle patch"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:43.301Z",
+  "repositoryCommitSha": "43290f85efc8eb45e000d36357274e71245a99e5",
+  "evidenceHash": "2876e7830c443761270645a1b6b9a70869f065bdc380fa95365dca3ab50fff30",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0d8a6c9fef226026fec43f3a7a57a7eb75aa18712884efdb205a9b995447633a",
+  "shadowMode": false
+}

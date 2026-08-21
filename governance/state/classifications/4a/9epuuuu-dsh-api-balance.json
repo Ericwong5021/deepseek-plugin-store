@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is primarily a monitoring utility that retrieves DeepSeek account balance data and displays account balance plus derived per-session spend in the DSH Web composer.",
+  "summaries": {
+    "zh": "在 DSH Web 编辑器中读取并显示 DeepSeek 账户余额及按会话估算的消费金额。",
+    "en": "Displays the DeepSeek account balance and an estimated per-session spend in the DSH Web composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a configured DeepSeek API credential reference through the host credential service",
+      "Fetches account balance data from the DeepSeek balance endpoint",
+      "Provides a loopback-only host route for balance retrieval",
+      "Caches balance results for a configured interval",
+      "Stores per-session starting balances in browser localStorage",
+      "Displays account balance and derived session spend in the composer UI"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-data-storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a configured DeepSeek API credential reference through the host credential service",
+      "Fetches account balance data from the DeepSeek balance endpoint",
+      "Provides a loopback-only host route for balance retrieval",
+      "Caches balance results for a configured interval",
+      "Stores per-session starting balances in browser localStorage",
+      "Displays account balance and derived session spend in the composer UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:58:11.295Z",
+  "repositoryCommitSha": "c9cdedac049e3c0e5789d8776baf294945aee34c",
+  "evidenceHash": "42f9e95ce60299c9117d569ea439fd45b8e9cc4aeb06230735c43cf3ad1615b7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "70ec6f9caf49b5ac6c5e7c8e1dfcb086b6e1e19bd2c5d04868620da57f3779c2",
+  "shadowMode": false
+}

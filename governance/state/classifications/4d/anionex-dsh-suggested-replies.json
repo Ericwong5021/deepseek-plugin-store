@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "context",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin uses an internal agent to generate likely next messages after an AI response and presents them above the chat input for optional insertion into the draft; it does not automatically send messages.",
+  "summaries": {
+    "zh": "在聊天输入框上方生成可点击的下一步回复建议，并将选中的建议填入草稿而不自动发送。",
+    "en": "Generates clickable next-message suggestions above the chat input and inserts a selected suggestion into the draft without sending it automatically."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generates suggested next messages using an internal agent and recent conversation context",
+      "Displays suggestions in the chat input area",
+      "Replaces the current draft with a selected suggestion without sending it",
+      "Stores suggestion UI state in plugin-owned session sidecar storage"
+    ],
+    "reasons": [
+      {
+        "code": "auxiliary_model_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "draft_replacement",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_sidecar_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Generates suggested next messages using an internal agent and recent conversation context",
+      "Displays suggestions in the chat input area",
+      "Replaces the current draft with a selected suggestion without sending it",
+      "Stores suggestion UI state in plugin-owned session sidecar storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:00:23.385Z",
+  "repositoryCommitSha": "eb7e41b82ae80d01ae09b6e2641156dc21fdd01e",
+  "evidenceHash": "bf4bc4659a3d352f2b0f3eb58fed3a7dbf085e6fd671dc059f9ba42d8b48f5f1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "772fd45ca2750d2e6f84ec076dc8878a7c54e80fec1635fff206015f27347d3b",
+  "shadowMode": false
+}

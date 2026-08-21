@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "image",
+    "chat",
+    "ui",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a chat interface plugin that detects existing local image paths in assistant responses and renders them inline with configurable sizing and lightbox viewing.",
+  "summaries": {
+    "zh": "在对话正文中自动渲染助手回复里的本地图片路径，并支持尺寸设置和点击放大查看。",
+    "en": "Automatically renders existing local image paths found in assistant replies as inline images with configurable dimensions and click-to-enlarge viewing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local image files after path detection",
+      "Serves detected images through a loopback plugin route",
+      "Rewrites assistant message content to render local images inline",
+      "Provides configurable image display dimensions and lightbox viewing"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_reading",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loopback_image_serving",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_rendering_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local image files after path detection",
+      "Serves detected images through a loopback plugin route",
+      "Rewrites assistant message content to render local images inline",
+      "Provides configurable image display dimensions and lightbox viewing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:57:21.272Z",
+  "repositoryCommitSha": "79f8ba778441c86738dedba574f5911fd2b5b2be",
+  "evidenceHash": "1c2be923920a23d0d602e3d51d9458a9a633aeebe8dad96d14cd3fd3f457db4d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "426241227c600b4fc6db1e2618e2d3702fca931103d80d035449531ccaad6d11",
+  "shadowMode": false
+}

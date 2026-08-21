@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "agent",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A notification plugin that monitors supported AI coding harness events and reads final replies, approval requests, and questions aloud through the host operating system's speech synthesis.",
+  "summaries": {
+    "zh": "通过系统语音合成功能播报 AI 编程助手的最终回复、审批请求和问题，帮助用户无需持续盯屏即可获知任务状态。",
+    "en": "Announces AI coding harness replies, approval requests, and questions through the host operating system's speech synthesis so users can stay informed without watching the screen."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads final assistant replies and selected approval or question events from supported harnesses",
+      "Converts text to speech using Windows SAPI or macOS say",
+      "Installs or registers local harness hooks and configuration files",
+      "Provides configurable speech rate, volume, text limits, and voice selection"
+    ],
+    "reasons": [
+      {
+        "code": "local_text_to_speech",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "harness_hook_registration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "filesystem.write",
+      "binary.execute",
+      "Reads final assistant replies and selected approval or question events from supported harnesses",
+      "Converts text to speech using Windows SAPI or macOS say",
+      "Installs or registers local harness hooks and configuration files",
+      "Provides configurable speech rate, volume, text limits, and voice selection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:42.708Z",
+  "repositoryCommitSha": "24393a8e37b2539a9cdc79cefe9126569bdd5dfb",
+  "evidenceHash": "fc6d3612efe7f1b4599178f7af6e25e5581ee13f15bee2fdf40447972de6e1aa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a453cc956f8d36ae2ef7e8faf8e2c1ea091c6fca374157ab0a468c52e8cdb13b",
+  "shadowMode": false
+}

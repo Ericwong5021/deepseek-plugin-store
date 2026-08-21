@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "browser",
+    "api",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Cloudflare Tunnel integration that publishes the DeepSeek Harness Web GUI behind a shared-password gate, with optional authenticated remote settings and credential updates.",
+  "summaries": {
+    "zh": "通过带共享密码保护的 Cloudflare Tunnel 将 DeepSeek Harness Web GUI 发布到公网，并提供可选的远程设置管理。",
+    "en": "Publishes the DeepSeek Harness Web GUI through a shared-password-protected Cloudflare Tunnel with optional authenticated remote settings management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes the DeepSeek Harness Web GUI through a Cloudflare Tunnel",
+      "Runs the cloudflared executable as a child process",
+      "Protects public access with a shared password and session cookie",
+      "Proxies authenticated HTTP and WebSocket traffic to the local Web GUI",
+      "Can update configured credentials and settings through authenticated remote endpoints when enabled"
+    ],
+    "reasons": [
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_configuration_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes the DeepSeek Harness Web GUI through a Cloudflare Tunnel",
+      "Runs the cloudflared executable as a child process",
+      "Protects public access with a shared password and session cookie",
+      "Proxies authenticated HTTP and WebSocket traffic to the local Web GUI",
+      "Can update configured credentials and settings through authenticated remote endpoints when enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:59:10.154Z",
+  "repositoryCommitSha": "3490502cb8178c5436816063529939423197dae6",
+  "evidenceHash": "ecd000c4588db700e45dd0288e25dd7c9fa3e1e8cde72657f2d9329a2455a3b3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "85430abc159fb858bb843e9977ab160581b8ec10e8b6d92548ea3b0c63de0d77",
+  "shadowMode": false
+}
