@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "chat",
+    "cli",
+    "desktop",
+    "file",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A voice interaction plugin for terminal agents that provides speech-to-text input, text-to-speech output, optional reply narration, and audio-card rendering with local-first storage and explicitly configured cloud backends.",
+  "summaries": {
+    "zh": "为终端智能体提供语音转文字、文字转语音、回复朗读和音频卡片展示功能，并优先将音频存储在本地。",
+    "en": "Provides terminal agents with speech-to-text input, text-to-speech output, optional reply narration, and audio-card rendering with local-first audio storage."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Transcribes existing audio files or microphone recordings into user messages",
+      "Synthesizes spoken audio from text and plays it asynchronously",
+      "Optionally narrates assistant replies through a per-session voice toggle",
+      "Stores audio artifacts as local files and renders audio cards in the web client",
+      "Can use explicitly configured cloud speech backends"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_recording",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "audio_playback_and_file_creation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_cloud_speech_backends",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_invocation_for_local_backends",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Transcribes existing audio files or microphone recordings into user messages",
+      "Synthesizes spoken audio from text and plays it asynchronously",
+      "Optionally narrates assistant replies through a per-session voice toggle",
+      "Stores audio artifacts as local files and renders audio cards in the web client",
+      "Can use explicitly configured cloud speech backends"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:09.669Z",
+  "repositoryCommitSha": "37164b11690ae9f3f33d6de91ce52a755b3eef64",
+  "evidenceHash": "e2e47ad3bfaf53f9b4d7dbe15e3050087562363233bbc1b8db77c1c2748036af",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63e066bab53196a81570e4c659fd644c3efbd2864e430ee7d1eb35df576ae3b6",
+  "shadowMode": false
+}

@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "agent",
+    "collaboration",
+    "chat",
+    "context",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides same-machine, same-user messaging and presence discovery between DSH sessions using a local registry and inbox files, with peer messages injected as labeled turns.",
+  "summaries": {
+    "zh": "在同一台机器上为同一用户运行的 DSH 会话提供在线发现、状态查看和带来源标记的跨会话消息传递。",
+    "en": "Enables same-user DSH sessions on one machine to discover each other and exchange source-labeled messages through a local file-based registry and inbox."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Discovers live DSH sessions on the same machine",
+      "Publishes local session heartbeats and metadata",
+      "Sends messages between same-user sessions through local inbox files",
+      "Injects accepted peer messages into active sessions as labeled turns"
+    ],
+    "reasons": [
+      {
+        "code": "local_inter_session_messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_registry_and_inbox",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "peer_message_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Discovers live DSH sessions on the same machine",
+      "Publishes local session heartbeats and metadata",
+      "Sends messages between same-user sessions through local inbox files",
+      "Injects accepted peer messages into active sessions as labeled turns"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:00.830Z",
+  "repositoryCommitSha": "7b513104085dd48f9e3c4b94de5d60ceb20d6e94",
+  "evidenceHash": "deefb24b1fd94f883909ab620f5ad5c80500079f1cd0bc345e54e0ccdb1172ea",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bf4516c5608a654f24b29453eb2e70f01826a99cadf38015958805f345eebde6",
+  "shadowMode": false
+}

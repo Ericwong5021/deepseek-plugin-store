@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "cli",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A registry discovery library that searches and merges plugin metadata from an awesome-list, GitHub, and npm, with deduplication, resolution, version lookup, and offline cache fallback.",
+  "summaries": {
+    "zh": "一个从 awesome-list、GitHub 和 npm 搜索并合并插件信息的注册表发现工具，支持去重、解析、版本查询和离线缓存回退。",
+    "en": "A plugin registry discovery tool that searches and merges metadata from an awesome list, GitHub, and npm with deduplication, resolution, version lookup, and offline cache fallback."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Searches GitHub repositories and npm packages through CLI or HTTPS APIs",
+      "Parses an external awesome-list README",
+      "Reads and writes local JSON cache files",
+      "Merges, deduplicates, sorts, and resolves plugin registry entries"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_cli_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_cache_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Searches GitHub repositories and npm packages through CLI or HTTPS APIs",
+      "Parses an external awesome-list README",
+      "Reads and writes local JSON cache files",
+      "Merges, deduplicates, sorts, and resolves plugin registry entries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:06.966Z",
+  "repositoryCommitSha": "32dfc3fa93e327ad861d0965d1fab3654ac5929b",
+  "evidenceHash": "e006b35d450a383babf9664fee775ae53aeb29baad2e9b51577e06d51fb82459",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "44cc82dd493bd6592513dbab208f2123a1f3c8b37b7b49c6114bcfb01e85ceed",
+  "shadowMode": false
+}

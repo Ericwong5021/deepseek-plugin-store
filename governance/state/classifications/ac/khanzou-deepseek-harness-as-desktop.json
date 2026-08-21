@@ -1,0 +1,96 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "file",
+    "terminal",
+    "notification",
+    "theme",
+    "visualization",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows desktop shell and plugin suite for DeepSeek Harness, providing native windowing, tray and notification integration, configurable skins, panels, file and Git browsing, terminal access, and desktop-oriented conversation features.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 Windows 原生桌面外壳及插件套件，包含托盘与通知、桌面设置、主题中心、文件和 Git 面板以及终端功能。",
+    "en": "A Windows desktop shell and plugin suite for DeepSeek Harness with tray and notification support, desktop settings, skin selection, file and Git panels, and terminal access."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs as a native Windows WebView2 desktop application",
+      "Starts and manages a local DeepSeek Harness backend process",
+      "Registers optional Windows logon auto-start",
+      "Sends Windows toast notifications and handles interactive replies",
+      "Reads files and displays text, images, videos, PDFs, web pages, and 3D models",
+      "Executes shell commands in the harness directory",
+      "Reads and mutates Git repository state, including checkout, staging, unstaging, and discarding changes",
+      "Exposes a local HTTP configuration and filesystem API"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "auto_start_registration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs as a native Windows WebView2 desktop application",
+      "Starts and manages a local DeepSeek Harness backend process",
+      "Registers optional Windows logon auto-start",
+      "Sends Windows toast notifications and handles interactive replies",
+      "Reads files and displays text, images, videos, PDFs, web pages, and 3D models",
+      "Executes shell commands in the harness directory",
+      "Reads and mutates Git repository state, including checkout, staging, unstaging, and discarding changes",
+      "Exposes a local HTTP configuration and filesystem API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:31.157Z",
+  "repositoryCommitSha": "f2de60062f9bf653abfc5bf4ce9436697c1b50d6",
+  "evidenceHash": "589fa1ab1993562d53f5d9b866551588c309dc75be9a930eaebae00f16811d48",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "87ff48fc7cec2956f6076b291c22ceb0667d9f4f029ab52e0ddc49c5c93fe49f",
+  "shadowMode": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "ui",
+    "monitoring",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A browser-side DSH Web UI plugin that visualizes session execution status through a docked progress bar, including todo progress, timing, estimated token rate, completion, interruption, and pending-interaction states.",
+  "summaries": {
+    "zh": "在 DSH Web 界面输入框停靠区显示会话进度、耗时、估算生成速率以及完成、中断和待处理交互状态。",
+    "en": "Displays session progress, elapsed time, estimated generation rate, and completion, interruption, and pending-interaction states in the DSH Web UI input dock."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DSH session snapshots and todo state in the browser",
+      "Renders a persistent session progress bar in the Web UI",
+      "Displays elapsed time, optional ETA, estimated token generation rate, completion, interruption, and pending-interaction states"
+    ],
+    "reasons": [
+      {
+        "code": "browser_ui_rendering",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_state_observation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_model_input_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads DSH session snapshots and todo state in the browser",
+      "Renders a persistent session progress bar in the Web UI",
+      "Displays elapsed time, optional ETA, estimated token generation rate, completion, interruption, and pending-interaction states"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:10.876Z",
+  "repositoryCommitSha": "31f6cb97f4224f5e44b0cdd0a06c1a3c91bac211",
+  "evidenceHash": "5549fb4a741c832299b974da0af144fb1f800398a3f46c3429d0a4039c1679b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ff58cb97fb198437228764d184f475418108210f52aa7da46319b3bdda5c087",
+  "shadowMode": false
+}

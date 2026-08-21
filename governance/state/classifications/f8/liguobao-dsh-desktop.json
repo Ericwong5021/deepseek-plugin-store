@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "agent",
+    "file",
+    "terminal",
+    "integration",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-platform Electron desktop wrapper for DeepSeek Harness that manages a local agent service, workspaces, plugins, files, and application updates.",
+  "summaries": {
+    "zh": "一个跨平台 Electron 桌面应用，用于运行 DeepSeek Harness、本地管理工作区和插件，并打开相关文件。",
+    "en": "A cross-platform Electron desktop app for running DeepSeek Harness, managing local workspaces and plugins, and opening related files."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs a local DeepSeek Harness service",
+      "Installs plugins from npm and GitHub repositories",
+      "Executes Harness and plugin code with granted local permissions",
+      "Reads and modifies selected workspace files",
+      "Opens files and directories in local applications",
+      "Downloads and verifies application and runtime updates"
+    ],
+    "reasons": [
+      {
+        "code": "local_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_downloads",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Runs a local DeepSeek Harness service",
+      "Installs plugins from npm and GitHub repositories",
+      "Executes Harness and plugin code with granted local permissions",
+      "Reads and modifies selected workspace files",
+      "Opens files and directories in local applications",
+      "Downloads and verifies application and runtime updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:26.485Z",
+  "repositoryCommitSha": "1956698e3e08fc535747b2f831b6699e7fd79e79",
+  "evidenceHash": "49fa8c9a02fb769ac49862ffde3ce0811789d1742df0bbf92ba8ea3c9ea5eaa6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d9746e0d467a65c8dc44e3526192e1bf28b282d4ab69d7f30f8bd9f3533f9878",
+  "shadowMode": false
+}

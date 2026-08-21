@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "automation",
+    "api",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web-based DSH plugin manager for runtime plugin enable, disable, restart, bundle hot-mounting, and persistence of plugin states; its lifecycle-control HTTP endpoints create elevated operational risk.",
+  "summaries": {
+    "zh": "通过 Web 界面管理 DSH 插件的运行时启用、停用、重启、热挂载及持久化状态。",
+    "en": "Manage DSH plugins through a web interface with runtime enable, disable, restart, hot-mounting, and persistent state controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runtime enable, disable, and restart of plugins",
+      "Automatic hot-mounting and unloading of bundles based on profile package.json changes",
+      "Persistence of plugin disabled states in cordis.patch.yml",
+      "Same-origin HTTP endpoints for plugin lifecycle control"
+    ],
+    "reasons": [
+      {
+        "code": "controls_plugin_runtime_lifecycle",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_unauthenticated_same_origin_control_endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_persistent_plugin_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runtime enable, disable, and restart of plugins",
+      "Automatic hot-mounting and unloading of bundles based on profile package.json changes",
+      "Persistence of plugin disabled states in cordis.patch.yml",
+      "Same-origin HTTP endpoints for plugin lifecycle control"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:56.909Z",
+  "repositoryCommitSha": "86b17d39f36979aeb80e745349ebeeeca5ff6e0a",
+  "evidenceHash": "61fb27b28b62764a949a6977f67e5cee0703fa6bb824dae1d40c634cde08df48",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c865fceb80b8910f3f69142615350cb51ba25ca60c67b381bfc8313ccdc582ba",
+  "shadowMode": false
+}

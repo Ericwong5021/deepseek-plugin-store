@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "search",
+    "tool",
+    "mcp",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness plugin that reduces tool-schema context overhead by progressively hiding long-tail tools and exposing search, description, and real-tool invocation on demand.",
+  "summaries": {
+    "zh": "通过渐进式披露按需搜索、加载和调用工具，减少 DeepSeek Harness 中大型工具目录占用的模型上下文。",
+    "en": "Reduces model context usage in DeepSeek Harness by progressively disclosing tools and enabling on-demand search, schema loading, and invocation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reduces the model-visible tool catalog using tiered disclosure",
+      "Searches and ranks deferred tools with an optional rerank API and keyword fallback",
+      "Loads deferred tool schemas into the active context",
+      "Invokes deferred tools by their real names through the host tool executor",
+      "Reads and hot-reloads user or project configuration"
+    ],
+    "reasons": [
+      {
+        "code": "executes_deferred_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_configured_external_rerank_endpoint",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads_user_or_project_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Reduces the model-visible tool catalog using tiered disclosure",
+      "Searches and ranks deferred tools with an optional rerank API and keyword fallback",
+      "Loads deferred tool schemas into the active context",
+      "Invokes deferred tools by their real names through the host tool executor",
+      "Reads and hot-reloads user or project configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:10.065Z",
+  "repositoryCommitSha": "009ffb13f4c90654c590741594571569efb083c1",
+  "evidenceHash": "235e0cbf1766f9a77150d4ed025b2b6b3f6689d6514bd4b699a2adee22535c9e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8e4b99d20625817bd80a0eecd6c9af72d2bd55b3695c236dae06dc3a8fa49bd3",
+  "shadowMode": false
+}

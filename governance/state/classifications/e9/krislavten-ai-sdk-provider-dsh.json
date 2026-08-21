@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "memory",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an AI SDK provider that orchestrates a DeepSeek Harness agent runtime, including streaming model calls, session continuity, and harness-managed shell and filesystem tools.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 智能体运行时封装为 AI SDK LanguageModel，以支持文本生成、流式响应、会话管理及运行时工具调用。",
+    "en": "Wraps the DeepSeek Harness agent runtime as an AI SDK LanguageModel for text generation, streaming responses, session management, and harness-managed tool execution."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "spawns and communicates with a DeepSeek Harness subprocess over stdio JSON-RPC",
+      "drives agent sessions through AI SDK generateText and streamText",
+      "enables harness-internal bash, file, subagent, and todo tools",
+      "persists and resumes multi-turn session context",
+      "uses API credentials and configurable environment, working directory, and runtime composition"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_shell_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "spawns and communicates with a DeepSeek Harness subprocess over stdio JSON-RPC",
+      "drives agent sessions through AI SDK generateText and streamText",
+      "enables harness-internal bash, file, subagent, and todo tools",
+      "persists and resumes multi-turn session context",
+      "uses API credentials and configurable environment, working directory, and runtime composition"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:35.734Z",
+  "repositoryCommitSha": "d10d96fc813741f5d05e6ef58f821027b81f2f79",
+  "evidenceHash": "73f650c929cf4d95a321f7cfef46fc1bbfab6d75ca8d208d8066cab9639258dc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "14cd7531d94ff9cf74edbb76cec5ead4f40b2d55dd945ead1f0189428c338efa",
+  "shadowMode": false
+}

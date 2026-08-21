@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "context",
+    "skill",
+    "planning",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only DSH plugin that analyzes recent session text and visible skills to recommend which skill should be loaded next, making orchestration the primary purpose.",
+  "summaries": {
+    "zh": "根据当前会话的近期文本和可用技能目录，为用户返回按相关性排序的技能加载建议。",
+    "en": "Analyzes recent session text and the available skill catalog to return a relevance-ranked recommendation of which skill to load next."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads recent session message text",
+      "Reads the session skill catalog",
+      "Scores skill relevance using local text analysis",
+      "Returns a ranked list of recommended skills"
+    ],
+    "reasons": [
+      {
+        "code": "session_context_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "read_only_local_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads recent session message text",
+      "Reads the session skill catalog",
+      "Scores skill relevance using local text analysis",
+      "Returns a ranked list of recommended skills"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:41.085Z",
+  "repositoryCommitSha": "bb96fce5457a3186322caa664e1daef7a04c4e2f",
+  "evidenceHash": "e800825b370e88ce24784a0f17fb503683a5e53219e7dd5360858ff7c0290de9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "930fa4cdc45b84a6d43ffbf544d422eee6b13be3f134456254fa768fbb0814b9",
+  "shadowMode": false
+}

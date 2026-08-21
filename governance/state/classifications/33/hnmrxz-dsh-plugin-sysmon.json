@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "desktop",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH status-bar plugin that monitors local CPU, memory, disk, load, and uptime, with periodic refresh and on-demand updates.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 底部状态栏实时显示本机 CPU、内存、磁盘、负载和运行时间信息。",
+    "en": "Displays real-time local CPU, memory, disk, load, and uptime metrics in the DeepSeek Harness bottom status bar."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local CPU, memory, disk, load, and uptime metrics using Node os and fs modules",
+      "Serves sampled metrics through a local /dsh-sysmon route",
+      "Displays and periodically refreshes resource metrics in the DSH status bar"
+    ],
+    "reasons": [
+      {
+        "code": "local-system-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-metrics-endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads local CPU, memory, disk, load, and uptime metrics using Node os and fs modules",
+      "Serves sampled metrics through a local /dsh-sysmon route",
+      "Displays and periodically refreshes resource metrics in the DSH status bar"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:53.219Z",
+  "repositoryCommitSha": "d9f64880bcc01787ca322ca0aaabacc902319ad1",
+  "evidenceHash": "988ec0b22d2466a3639f7792df7fc185e65d8996632d7ca6271a47d704fe5511",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dbf0bd2cf2dd74a09f7490a531cbf5695506f856230a7832903ff49696789f14",
+  "shadowMode": false
+}

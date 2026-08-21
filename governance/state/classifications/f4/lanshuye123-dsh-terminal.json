@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "file",
+    "ui",
+    "desktop",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH WebUI plugin providing browser-based host terminal sessions and workspace file browsing; human review is appropriate because it can execute commands, read files, and control processes on the host.",
+  "summaries": {
+    "zh": "在 DSH WebUI 中提供可交互的本机终端模拟器、多会话管理和工作区文件浏览功能。",
+    "en": "Provides an interactive local terminal emulator with multi-session management and workspace file browsing in the DSH WebUI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts real host PTY sessions using the user’s shell",
+      "Accepts and sends arbitrary terminal input to host processes",
+      "Reads workspace directory listings and text file contents",
+      "Resizes, signals, and terminates terminal sessions",
+      "Provides a browser-based terminal and file manager interface"
+    ],
+    "reasons": [
+      {
+        "code": "host_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_control",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Starts real host PTY sessions using the user’s shell",
+      "Accepts and sends arbitrary terminal input to host processes",
+      "Reads workspace directory listings and text file contents",
+      "Resizes, signals, and terminates terminal sessions",
+      "Provides a browser-based terminal and file manager interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:46.041Z",
+  "repositoryCommitSha": "a424f1da381dc302959cc2a38d45b0d433309f01",
+  "evidenceHash": "9bd08052ee29f9ab9d90c3824dbaf8c81c91556619208c1270482165e5897214",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7eec0a7507b2b3e74cde53660e14aaf7f6a1ed141194635fe1dea4dae07779a5",
+  "shadowMode": false
+}

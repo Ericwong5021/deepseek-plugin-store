@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "context",
+    "workflow",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh plugin that uses a configured LLM agent to polish, expand, iterate, version, and optionally send prompts from the chat input interface.",
+  "summaries": {
+    "zh": "在发送前调用提示词工程智能体补全、消歧、扩写并迭代优化草稿，支持版本回溯和直接应用到输入框。",
+    "en": "Uses a configured prompt-engineering agent to complete, clarify, expand, and iteratively rewrite drafts before sending, with version history and direct application to the input field."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends draft prompts to a configured LLM agent for rewriting",
+      "Rewrites and expands prompts using multiple iterations",
+      "Writes generated text into the chat input field",
+      "Maintains prompt version history and supports undo",
+      "Can apply a rewritten prompt and send it directly",
+      "Exposes same-origin HTTP endpoints for polishing and diagnostic logs"
+    ],
+    "reasons": [
+      {
+        "code": "llm_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "input_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "direct_send",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Sends draft prompts to a configured LLM agent for rewriting",
+      "Rewrites and expands prompts using multiple iterations",
+      "Writes generated text into the chat input field",
+      "Maintains prompt version history and supports undo",
+      "Can apply a rewritten prompt and send it directly",
+      "Exposes same-origin HTTP endpoints for polishing and diagnostic logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:59.667Z",
+  "repositoryCommitSha": "59f613da0e41d577552decfe3233c8d82b1ad854",
+  "evidenceHash": "c58d6d293a40d507349e244f3b68f865b5786a3ea1637bd119e098444e619b40",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "beaed86640e9115298a3853110f9eb00060726c2631f01ceb80992db1c324927",
+  "shadowMode": false
+}

@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "data",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Routes agent tasks across configured model tiers using observed task outcomes and error counts, with optional automatic model overrides and persistent routing statistics.",
+  "summaries": {
+    "zh": "根据任务历史结果和错误记录，在配置的模型档位之间为智能体选择更合适的模型，并可选地自动覆盖模型路由。",
+    "en": "Routes agent tasks across configured model tiers using historical outcomes and error records, with optional automatic model-selection overrides."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes agent tasks, selected models, tool results, and errors within the agent scope",
+      "Persists aggregated routing statistics to eco_router.json",
+      "Provides an eco_route tool that recommends a lower-cost model based on historical error records",
+      "Optionally overrides model selection during agent requests",
+      "Provides runtime settings for model tiers and automatic routing"
+    ],
+    "reasons": [
+      {
+        "code": "local_state_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_selection_override",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Observes agent tasks, selected models, tool results, and errors within the agent scope",
+      "Persists aggregated routing statistics to eco_router.json",
+      "Provides an eco_route tool that recommends a lower-cost model based on historical error records",
+      "Optionally overrides model selection during agent requests",
+      "Provides runtime settings for model tiers and automatic routing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:02.060Z",
+  "repositoryCommitSha": "0abbfd11d8b106dc1da12c0d5211f53b0d911ec4",
+  "evidenceHash": "e82b317218c68a44f9b4e8d9c04545c3b1fbb8df2ba990affe3de56e831a46c5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4e01fea33a2e48fdb60fffb06f5c85f9da508dba4460c09988dd9eff985262c0",
+  "shadowMode": false
+}

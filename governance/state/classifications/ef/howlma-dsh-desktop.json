@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "automation",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows Electron desktop client that manages a local Harness gateway and presents its official web UI with tray residency, configuration, logging, and optional login startup.",
+  "summaries": {
+    "zh": "一个通过托盘和可选开机自启管理本地 Harness 网关，并在 Electron 窗口中嵌入官方 Web 界面的桌面客户端。",
+    "en": "A desktop client that manages a local Harness gateway through tray controls and optional login startup while embedding the official web interface in an Electron window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts or reuses a local Harness gateway process",
+      "Embeds the Harness web interface in an Electron window",
+      "Runs in the system tray after the window is closed",
+      "Supports optional launch at user login",
+      "Writes gateway logs and settings to the local userData directory"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "login_autostart",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_logging_and_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Starts or reuses a local Harness gateway process",
+      "Embeds the Harness web interface in an Electron window",
+      "Runs in the system tray after the window is closed",
+      "Supports optional launch at user login",
+      "Writes gateway logs and settings to the local userData directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:02.781Z",
+  "repositoryCommitSha": "6d8fe7b450ba07aafa4713753c58b14b3a602fbc",
+  "evidenceHash": "8c73e100440118b7f47a07911f84fe2617ebb070806644da0d1ccb8b65b1682d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4850b9a8e5d9c6a3869e77be3c429927346e434ad4c34dc302bb36cf3623abf6",
+  "shadowMode": false
+}

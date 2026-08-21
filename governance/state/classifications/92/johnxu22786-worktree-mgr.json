@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "file",
+    "terminal",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates the full lifecycle of task-isolated Git worktrees, including creation, status checks, synchronization, merging, cleanup, and batch finishing through DSH tools and a CLI.",
+  "summaries": {
+    "zh": "为 DSH 自动创建和管理隔离的 Git 工作区，支持任务状态查看、同步合并、收尾清理和批量处理。",
+    "en": "Automates isolated Git worktree management for DSH, including task creation, status inspection, synchronization, merging, cleanup, and batch operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates and manages isolated Git worktrees and branches",
+      "Commits and merges task changes into a base branch",
+      "Deletes task workspaces and branches during cleanup",
+      "Executes repository-configured shell triggers",
+      "Persists task, branch, and workspace mappings in a ledger"
+    ],
+    "reasons": [
+      {
+        "code": "git_write_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_and_branch_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_trigger_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Creates and manages isolated Git worktrees and branches",
+      "Commits and merges task changes into a base branch",
+      "Deletes task workspaces and branches during cleanup",
+      "Executes repository-configured shell triggers",
+      "Persists task, branch, and workspace mappings in a ledger"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:58.523Z",
+  "repositoryCommitSha": "63a457e23eb367cd629f21a65eee5d539d571ca0",
+  "evidenceHash": "9cabb3ed09dac0b51d612998041156aa12a0e1584370d6b5a9633a3aa8a5919d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ea54008342b42a0bd1ca4eaace658a0670c8d9f85e51ae97161686872b5a84ed",
+  "shadowMode": false
+}

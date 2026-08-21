@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "testing",
+    "cli",
+    "api",
+    "tool",
+    "project-analysis"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a read-only adversarial multi-perspective code review plugin with static scanning, model-assisted findings, severity grading, history, reports, a dsh tool, and a standalone CLI.",
+  "summaries": {
+    "zh": "用于对代码变更或指定文件执行多视角审查，结合静态规则与模型分析生成带严重度、证据和修复建议的报告。",
+    "en": "Performs multi-perspective reviews of code changes or selected files using deterministic rules and model-assisted analysis to produce reports with severity, evidence, and fix suggestions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads unified diffs or specified files for code review",
+      "Performs deterministic static rule scanning and model-assisted review",
+      "Calls a configured model service through an API",
+      "Writes review reports, history records, and suppression rules",
+      "Registers a gavel_review tool in dsh and provides a standalone CLI"
+    ],
+    "reasons": [
+      {
+        "code": "read-only-code-review",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-model-api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes-local-review-state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads unified diffs or specified files for code review",
+      "Performs deterministic static rule scanning and model-assisted review",
+      "Calls a configured model service through an API",
+      "Writes review reports, history records, and suppression rules",
+      "Registers a gavel_review tool in dsh and provides a standalone CLI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:30.132Z",
+  "repositoryCommitSha": "2d2e5cbc234650c60250b932204d1e5e7f662ac0",
+  "evidenceHash": "76d9967e555c0278b3fe7a772d3624000c15d7417bfb7894b3114630729bd15a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "88a74bf535a538751374239bc9ee358b370c8a5e04cb7149e67292c73fc5cb8d",
+  "shadowMode": false
+}

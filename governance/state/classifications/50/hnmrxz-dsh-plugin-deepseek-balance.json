@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "integration",
+    "monitoring",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that periodically retrieves and displays DeepSeek account balance details in the web interface status bar using the configured DeepSeek API endpoint.",
+  "summaries": {
+    "zh": "在 DSH Web 界面底部状态栏定时获取并显示 DeepSeek 账户余额、赠送额度和充值余额。",
+    "en": "Periodically retrieves and displays DeepSeek account balance, bonus, and top-up information in the DSH web interface status bar."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Calls the DeepSeek balance endpoint",
+      "Polls and displays account balance information in the DSH status bar"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic-monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Calls the DeepSeek balance endpoint",
+      "Polls and displays account balance information in the DSH status bar"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:55.704Z",
+  "repositoryCommitSha": "a01507989d4592165b0481cefdb65aadbe583767",
+  "evidenceHash": "b2aa4ed63fbe51d89ef9fc5f49a6fcb4c5c7cdf9457b9a45eb49dbf1dd22a507",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "556980aa1ee167d4b5bbb92c768050e988bbd0bbbfd10aa528c8dc63e406fdd5",
+  "shadowMode": false
+}

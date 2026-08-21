@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "agent",
+    "chat",
+    "integration",
+    "memory",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A bridge that connects WeCom private-chat bots to a local DeepSeek Harness agent, relaying messages, agent responses, and multi-turn session history.",
+  "summaries": {
+    "zh": "将企业微信智能机器人私聊消息接入本地 DeepSeek Harness agent，并把生成的回复发送回企业微信。",
+    "en": "Connects WeCom intelligent bot private chats to a local DeepSeek Harness agent and sends generated responses back through WeCom."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the WeCom intelligent bot long-connection API",
+      "Receives private chat messages from WeCom users",
+      "Sends received messages to a local DSH agent for responses and tool calls",
+      "Replies to users through WeCom",
+      "Stores multi-turn session history in SQLite",
+      "Uses configured WeCom bot credentials and DSH model credentials"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_relay_and_response",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_session_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the WeCom intelligent bot long-connection API",
+      "Receives private chat messages from WeCom users",
+      "Sends received messages to a local DSH agent for responses and tool calls",
+      "Replies to users through WeCom",
+      "Stores multi-turn session history in SQLite",
+      "Uses configured WeCom bot credentials and DSH model credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:35.446Z",
+  "repositoryCommitSha": "cf6eb72c24aca3b24ca9d3fa1dfc3cfad47b724c",
+  "evidenceHash": "2df1e10a3ca838f9c5c9aa075e0d91a0ad14de7141a482aa56b421ce3c6bfcc7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9a101fdb120bc7ed88b703e44605783fc4f537b8057c96c048c9cc92f41ebb01",
+  "shadowMode": false
+}

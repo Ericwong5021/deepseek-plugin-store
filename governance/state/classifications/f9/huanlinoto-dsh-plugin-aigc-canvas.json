@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "video",
+    "visualization",
+    "api",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README documents a media-generation plugin centered on image, video, and audio creation with a node-link canvas for organizing prompts, references, and outputs; its default backend is a local stub, with configurable external backend support described but not implemented.",
+  "summaries": {
+    "zh": "一个通过节点连线画布组织文生图、文生视频、参考生视频和文本生成音频任务的媒体工具插件。",
+    "en": "A media tool plugin that organizes text-to-image, text-to-video, reference-based video, and text-to-audio generation through a node-linked canvas."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides tools for text-to-image, text-to-video, reference-based video, and text-to-audio generation",
+      "Persists canvas metadata and media files under the current working directory",
+      "Provides an HTTP/WebSocket canvas interface and an optional sidebar visualization",
+      "Supports a configurable AIGC backend endpoint, while the documented default is a local stub backend"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_http_backend",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "media_generation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides tools for text-to-image, text-to-video, reference-based video, and text-to-audio generation",
+      "Persists canvas metadata and media files under the current working directory",
+      "Provides an HTTP/WebSocket canvas interface and an optional sidebar visualization",
+      "Supports a configurable AIGC backend endpoint, while the documented default is a local stub backend"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:08.147Z",
+  "repositoryCommitSha": "33463eed57e0a5b56f0bd15440a82dcfba9ec216",
+  "evidenceHash": "9c718a1c98ba3c3355a3814bfebfe4469c3688e4ce38e3eb10bb1a22a2d60fa3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8ae0d585b109d9fd52c7707b00f8c3e9c3920fc0e5d9a5fb4b44eac77a84d9a5",
+  "shadowMode": false
+}

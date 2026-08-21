@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "automation",
+    "chat",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "dsh-polyglot is an LLM provider router for DSH that adapts to OpenAI-compatible endpoints, supports configurable provider presets and automatic fallback, and reports usage by provider.",
+  "summaries": {
+    "zh": "为 DSH 提供兼容 OpenAI API 的大语言模型适配、提供商链路切换、限流故障转移和用量统计。",
+    "en": "Routes DSH language-model requests through configurable OpenAI-compatible providers with presets, rate-limit fallback, and usage tracking."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends chat-completion requests to configured OpenAI-compatible provider endpoints",
+      "Uses configured API keys or credential references for provider access",
+      "Automatically retries eligible failures on alternate configured providers",
+      "Records provider, token, success, failure, and estimated cost information in session logs"
+    ],
+    "reasons": [
+      {
+        "code": "network_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_failover",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_logging",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Sends chat-completion requests to configured OpenAI-compatible provider endpoints",
+      "Uses configured API keys or credential references for provider access",
+      "Automatically retries eligible failures on alternate configured providers",
+      "Records provider, token, success, failure, and estimated cost information in session logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:08.160Z",
+  "repositoryCommitSha": "127ceefb1532afc887bd0969f4d99fbc670ac8b1",
+  "evidenceHash": "7e6c3c6ff9528b006e9b147f128bbdd8e8088a7cde20831d0007c044433aa725",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7cd316fc96e87a24eeeb3fec6bb52aaab79b0acff1d83940dd601be1c02de9cc",
+  "shadowMode": false
+}

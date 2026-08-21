@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "browser",
+    "cli",
+    "mcp",
+    "search",
+    "api",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes a WebSocket browser bridge that lets CLI and MCP clients automate real browser tabs, interact with page elements, execute JavaScript, scrape content, and perform web searches.",
+  "summaries": {
+    "zh": "通过 WebSocket 将本地 CLI 或 MCP 工具连接到真实浏览器，以执行标签页管理、页面交互、内容抓取和网页搜索。",
+    "en": "Connects local CLI or MCP tools to a real browser over WebSocket for tab management, page interaction, content scraping, and web searches."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Controls browser tabs and navigation",
+      "Clicks, types, selects, checks, and scrolls page elements",
+      "Executes arbitrary JavaScript in web pages",
+      "Scrapes structured page data and page content",
+      "Reads accessibility trees and element values",
+      "Exposes browser commands through a CLI and MCP server",
+      "Performs searches and retrieves data from external websites"
+    ],
+    "reasons": [
+      {
+        "code": "browser_control_with_external_side_effects",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "arbitrary_javascript_execution_in_pages",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_web_data_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Controls browser tabs and navigation",
+      "Clicks, types, selects, checks, and scrolls page elements",
+      "Executes arbitrary JavaScript in web pages",
+      "Scrapes structured page data and page content",
+      "Reads accessibility trees and element values",
+      "Exposes browser commands through a CLI and MCP server",
+      "Performs searches and retrieves data from external websites"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:35.999Z",
+  "repositoryCommitSha": "b08fd6b583f308389935369e8512187235b8daa9",
+  "evidenceHash": "2f9b766fc9d9a9b7b4ef8337b93e0dbe76097bc1f3cbb9a916ca0745bef53ffb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "755d76d5accf6c7a96e155fe2bf1182dbec7b3d8aef642a07e88b7a141d28c16",
+  "shadowMode": false
+}

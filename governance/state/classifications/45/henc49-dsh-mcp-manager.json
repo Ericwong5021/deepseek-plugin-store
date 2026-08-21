@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "agent",
+    "api",
+    "automation",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH plugin for adding, removing, enabling, disabling, reconnecting, and inspecting MCP servers through agent tools and a Web UI, making external MCP integration management its primary purpose.",
+  "summaries": {
+    "zh": "通过智能体工具和 Web 界面在运行时管理 MCP 服务器连接、配置、状态及其桥接工具。",
+    "en": "Manage MCP server connections, configurations, status, and bridged tools at runtime through agent tools and a Web UI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Manages MCP server registrations and lifecycle at runtime",
+      "Spawns configured local stdio commands",
+      "Connects to configured remote streamable-HTTP endpoints",
+      "Reads and persists server environment variables, headers, and host environment substitutions",
+      "Exposes managed MCP tools to the agent and Web UI"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_service_connections",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_environment_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Manages MCP server registrations and lifecycle at runtime",
+      "Spawns configured local stdio commands",
+      "Connects to configured remote streamable-HTTP endpoints",
+      "Reads and persists server environment variables, headers, and host environment substitutions",
+      "Exposes managed MCP tools to the agent and Web UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:44.821Z",
+  "repositoryCommitSha": "4a1fc8069dc083451fe7a34ba5c175a5c2966bfb",
+  "evidenceHash": "9125191f12b8c536acc00fd7ed5cfbeecb4a9cd5e8d099f7f392c24e12cde8eb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "42dddce46dd59e6b147031b667108f48a5c02636209485194cac79ecab81b2cc",
+  "shadowMode": false
+}
