@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "data",
+    "api",
+    "integration",
+    "visualization",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件面向用户的主要用途是“在 DSH Web 侧栏持续展示编码配额余额/剩余额度并提供弹窗明细”，因此归为导航面板类；同时它依赖外部配额接口与可视化进度条展示。",
+  "summaries": {
+    "zh": "该插件在 DSH Web 侧栏展示多源额度剩余额度徽章，点击后弹出详情卡片，并支持自定义套餐与定时刷新。",
+    "en": "This plugin displays remaining quota for multiple sources in the DSH Web sidebar as a badge, opens a details card on click, and supports custom plans with periodic refresh."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "显示多服务额度数据并在侧栏提供快速入口与弹窗详情",
+      "周期性从外部服务和本机来源抓取用量数据并刷新",
+      "支持配置和读取 API Token 以访问外部接口",
+      "支持自定义额度服务与窗口格式进行扩展查询"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明插件在侧栏底部常驻徽章并可点击弹出详情卡片，用于展示各套餐剩余额度。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指明调用 OpenCode Go、火山引擎 CodingPlan、DeepSeek 官方接口及可选自定义额度 API，并有 5h/周/月等窗口。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提到支持在设置中配置 API Token，并涉及本机路径存储与局域请求路由（含同源/loopback 防护）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明每 60 秒和 30 秒自动刷新，属于持续联网读取状态的行为。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "显示多服务额度数据并在侧栏提供快速入口与弹窗详情",
+      "周期性从外部服务和本机来源抓取用量数据并刷新",
+      "支持配置和读取 API Token 以访问外部接口",
+      "支持自定义额度服务与窗口格式进行扩展查询"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:15.745Z",
+  "repositoryCommitSha": "f50d84210f4f927628b7afdb7e07ac547c3bcce0",
+  "evidenceHash": "a911a0b938886dca6f19fffa7808c4189587803374701c4afd671acdcb51001d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9f32cf46a36a6220c889b4d7c0217f40b21b64fb0348c0e00f77a345656d71ca",
+  "shadowMode": false
+}

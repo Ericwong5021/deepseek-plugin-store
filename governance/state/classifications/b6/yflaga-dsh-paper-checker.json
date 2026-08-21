@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "notification",
+    "data",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "根据 README 和仓库描述，该插件的主要用户功能是定时监控学术投稿状态：按配置周期抓取投稿系统并按分区汇总稿件阶段，生成报告并支持通知推送，属于自动化工作流而非代码生成或开发工具。",
+  "summaries": {
+    "zh": "该插件按设置周期自动检查学术期刊投稿状态，按分区汇总稿件进展并生成报告，可选配微信推送给你及时更新。",
+    "en": "This plugin automatically checks academic journal submission statuses on a schedule, groups results by workflow stages into reports, and can send updates through WeChat notifications."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "定时抓取并汇总已配置期刊的投稿状态与决策信息",
+      "使用浏览器自动化（Playwright/Edge）访问投稿系统并解析页面数据",
+      "生成本地报告文件并通过微信推送服务同步汇报"
+    ],
+    "reasons": [
+      {
+        "code": "仓库描述直接写明为“期刊投稿状态定时检查插件”。",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "README 说明支持“每天到点自动检查 → 写报告 → 推微信（Server酱）”，并可在设置面板配置时间、时区、期刊列表与自动识别。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提到需配置 username/password 并使用内置 Playwright 抓取 Editorial Manager，同时包含 `serverchanKey` 推送配置。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "定时抓取并汇总已配置期刊的投稿状态与决策信息",
+      "使用浏览器自动化（Playwright/Edge）访问投稿系统并解析页面数据",
+      "生成本地报告文件并通过微信推送服务同步汇报"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:22.617Z",
+  "repositoryCommitSha": "863602bb7977d29b77cda6da4b39ec3321b8850e",
+  "evidenceHash": "913ee8278dc02b7f5ef54bc3a46368e753b9c979e689e5fe744622683b41a14c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d7619e5806e8ad2b331a03ede12c7970bc197111ecb026e144601a0ea62a52e6",
+  "shadowMode": false
+}

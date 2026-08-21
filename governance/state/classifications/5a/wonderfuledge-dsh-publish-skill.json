@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "skill",
+    "automation",
+    "cli",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "README 证据清楚表明该插件是一个面向用户命令触发的发布自动化技能，用于在 DeepSeek Harness 中按顺序发布 modules 并管理版本参数，未体现搜索、知识管理或界面可视化等其他核心用途。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness 中提供 `/publish-skill` 命令，按顺序执行模块转译与发布流程，可设置版本并支持续发或单模块发布。",
+    "en": "This plugin adds a `/publish-skill` command in DeepSeek Harness to run sequential package transpile-and-publish flows, with options to specify version, resume from a module, or publish one module."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "自动执行多模块顺序发布流程（包括 transpile 与 npm publish）",
+      "支持按版本发布、从指定模块继续发布或只发布单一模块",
+      "在用户显式触发 `/publish-skill` 后更新目标模块的 package.json 版本并执行发布"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确说明这是 XDSP 前端顺序发版插件，并通过 `/publish-skill` 触发，面向发布流程自动化。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 列出全量发布、START_PACKAGE 续发和 PACKAGE 单模块发布三种运行模式。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 提及严格串行执行 yarn transpile 与 npm publish，并说明不会自动提交 Git 或修改 lockfile。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "自动执行多模块顺序发布流程（包括 transpile 与 npm publish）",
+      "支持按版本发布、从指定模块继续发布或只发布单一模块",
+      "在用户显式触发 `/publish-skill` 后更新目标模块的 package.json 版本并执行发布"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:53.794Z",
+  "repositoryCommitSha": "e26f1ad46ff68be7c1e0fcbe4ac40c524daf1b42",
+  "evidenceHash": "62da3bf1db91b6eeb943441557077f55d79b4a90ac8582ee750ffe3922b0b4a4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ad527e8544a9ae07791d8a4726f0bc2915b5687ba39213d4607c050b7d121a0b",
+  "shadowMode": false
+}

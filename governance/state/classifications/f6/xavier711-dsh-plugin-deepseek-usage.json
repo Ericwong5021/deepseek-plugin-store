@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "data",
+    "visualization",
+    "api",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README clearly indicates the plugin’s primary purpose is a DeepSeek Harness web interface add-on that adds a sidebar usage panel for account balance and token/cost usage monitoring, making the core category a navigation panel with data visualization.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 网页端新增「用量」侧边栏入口与面板，供用户查看账户余额、会话用量统计与费用相关信息。",
+    "en": "This plugin adds a Usage entry and panel to the DeepSeek Harness web interface so users can view account balance, token usage, and related cost statistics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays account balance information in a web GUI panel",
+      "Reads and summarizes local session usage records by day, week, model, and session",
+      "Renders usage charts and token/composition views in a sidebar panel",
+      "Serves usage and period/billing-related data via host HTTP routes",
+      "Supports optional API-key-based balance lookup"
+    ],
+    "reasons": [
+      {
+        "code": "The plugin is documented as a DeepSeek Harness web GUI usage panel that adds a sidebar \"Usage / 用量\" entry and provides live balance plus usage views.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It exposes balance and local usage endpoints (`/dsh-usage/balance`, `/dsh-usage/local`, `/dsh-usage/period`) and notes optional `DEEPSEEK_API_KEY` configuration for balance retrieval.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Displays account balance information in a web GUI panel",
+      "Reads and summarizes local session usage records by day, week, model, and session",
+      "Renders usage charts and token/composition views in a sidebar panel",
+      "Serves usage and period/billing-related data via host HTTP routes",
+      "Supports optional API-key-based balance lookup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:48.903Z",
+  "repositoryCommitSha": "8300e696d0d11975ac0859241022f6e495f44ceb",
+  "evidenceHash": "67a2b44ad9f6298e659b86b21699dcf776755e24adfea4c488586424c7aa6047",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3d7dbf84bc6bd1e2037a478505b33f17203a3978d2e37ab39e2e503f57d77d98",
+  "shadowMode": false
+}

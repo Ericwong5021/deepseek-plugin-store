@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "api",
+    "file",
+    "tool",
+    "terminal",
+    "theme",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README provides sufficient evidence that the plugin’s primary purpose is a user-facing Git workbench embedded in the DSH web UI, focused on session-header navigation into a right-side panel for repository workflows (file tree, diffs, history, compare, staging/commit/sync), with additional project/worktree management and appearance controls.",
+  "summaries": {
+    "zh": "该插件在 DSH Web 会话界面中新增 Git 工作台抽屉，提供文件树、逐文件差异、提交历史、分支比较、暂存提交与同步操作，并支持工作树与界面主题相关设置。",
+    "en": "This plugin adds a Git workbench drawer to the DSH web UI session experience, providing file tree, per-file diff, history, branch comparison, staging/commit/sync actions, plus worktree and theme-related settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Exposes host-side git-related RPC endpoints and binds them to UI actions.",
+      "Displays git session context in the conversation header and opens a persistent right-side panel.",
+      "Allows staging/restoring files, committing, fetching/pulling/pushing, and worktree management from the UI."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a DSH web UI Git workbench that opens from a session-header chip and shows branch status, diffs, history, compare, staging, commit, and sync.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README details TypertRemoteService RPC methods and agent tools (worktree_enter/exit/status), and describes git command-driven operations via subprocess integration.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description explicitly identifies this as an out-of-tree DSH web UI plugin providing a Git workbench with file tree, per-file diff, history, compare, staging, commit, and sync.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Exposes host-side git-related RPC endpoints and binds them to UI actions.",
+      "Displays git session context in the conversation header and opens a persistent right-side panel.",
+      "Allows staging/restoring files, committing, fetching/pulling/pushing, and worktree management from the UI."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:31.949Z",
+  "repositoryCommitSha": "955abf5a819bb9471e1eac20cb4c3dfe68eac757",
+  "evidenceHash": "10c9aa35d6b40683eaa982ec5d05bb419afda54d3a8bfa43f60bb36841dda05f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4eb18af1b297e72af1f96f85b4c93ef83e26cd12e6d4731ee3e3cee9a46025bd",
+  "shadowMode": false
+}

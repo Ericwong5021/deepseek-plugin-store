@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "automation",
+    "agent",
+    "context",
+    "chat",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin’s user-facing purpose is to transfer context from an ongoing DSH conversation into a fresh session, enabling continuation without replaying full history. README evidence shows it is centered on a `/handoff` command that summarizes chat, creates a new workspace-bound session/agent, injects a structured summary as the first message, and auto-opens that new session.",
+  "summaries": {
+    "zh": "该插件通过 /handoff 命令将近期对话自动总结为交接文档，创建同一工作区内的全新会话与智能体并自动打开，帮助用户在更清洁的上下文中继续对话。",
+    "en": "This plugin uses a /handoff command to summarize recent conversation into a handoff note, create a new session and agent in the same workspace, and open it automatically so you can continue from a clean context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Summarizes recent user/assistant messages into a structured handoff note via LLM.",
+      "Creates a new DSH session and agent in the same workspace using inherited settings.",
+      "Auto-opens the newly created session after handoff generation."
+    ],
+    "reasons": [
+      {
+        "code": "README: '/handoff summarizes the conversation with an LLM, creates a brand-new session + agent in the same workspace ... injects a structured handoff document as its first message, and auto-opens it.'",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: 'Privacy: the recent conversation text ... is sent to the configured model to produce the summary.'",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description: 'Hand your long DSH session over to a clean one: /handoff summarizes the conversation with an LLM, creates a new session+agent in the same workspace, injects the handoff document, and auto-opens it.'",
+        "evidenceRef": "repository"
+      },
+      {
+        "code": "Features: '/handoff [<N>|all]' and defaults/limits (turns, maxInputChars, maxTokens) indicate configurable handoff control.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Summarizes recent user/assistant messages into a structured handoff note via LLM.",
+      "Creates a new DSH session and agent in the same workspace using inherited settings.",
+      "Auto-opens the newly created session after handoff generation."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:42.554Z",
+  "repositoryCommitSha": "4196434b730f8e66849ec76e76a1172085188f58",
+  "evidenceHash": "43e990827bd2491de896c9d6f2482caeb4381c8925e1f42c4cf1e04a3d713a8b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6ec41581bb732dddfa48d62c9f6d2c71b1b65d88efb738c9956c54bc15a524af",
+  "shadowMode": false
+}

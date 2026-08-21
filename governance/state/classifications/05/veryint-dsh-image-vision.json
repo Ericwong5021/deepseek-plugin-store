@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "chat",
+    "tool",
+    "document",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The plugin’s primary purpose is to add image understanding to DeepSeek Harness conversations by describing images as text for text-only models, including pasted chat images and Feishu/Lark document images, which is a user-facing image-capability enhancement rather than code editing or generic plugin tooling. It is conservatively categorized as a media tools plugin with tags reflecting image handling, chat integration, external model API usage, and document image flow.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的插件，用可配置的视觉模型为纯文本模型补充图像理解能力，可将聊天图片和飞书/飞书文档中的图片转写为文本描述。",
+    "en": "This is a DeepSeek Harness plugin that adds image understanding to text-only model flows by using a configurable vision model to convert chat images and Feishu/Lark document images into text descriptions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Interprets pasted/dropped images in chat and injected image tokens by converting them to text via a vision model",
+      "Routes image understanding through configurable external model providers such as ModelScope or SiliconFlow",
+      "Processes image attachments from Feishu/Lark tool outputs and supplies generated descriptions back into the tool flow"
+    ],
+    "reasons": [
+      {
+        "code": "README describes plugin behavior of letting text-only models read pasted/dropped images by transcribing them to text before model request through a pre-step hook.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states vision backends are configured via OpenAI-compatible endpoints with provider API keys in settings/credentials.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents handling of Feishu/Lark `<image token=\"...\"/>` images downloaded through lark-cli and injected as tool output.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Interprets pasted/dropped images in chat and injected image tokens by converting them to text via a vision model",
+      "Routes image understanding through configurable external model providers such as ModelScope or SiliconFlow",
+      "Processes image attachments from Feishu/Lark tool outputs and supplies generated descriptions back into the tool flow"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:23.227Z",
+  "repositoryCommitSha": "fbd52a4536f4a21c1b8d8e8b7c56dd4a93039f12",
+  "evidenceHash": "4d73e064f36c3bb01f5e2ce6ee643b5ec7eca8dd8429a904f094a3d6eae2ad44",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "680eee0f1403be6a2837e136c5618d26c5ad6eea4ffb39631ddd5b94842e13ef",
+  "shadowMode": false
+}

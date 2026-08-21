@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "file",
+    "terminal",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README clearly describes this as a DeepSeek Harness service-management plugin focused on connecting to and managing remote services (SSH/FTP, multiple databases, Docker, and S3-compatible storage), with session-level @server references and remote terminal/file transfer capabilities, so the primary user-facing purpose is external service integration and operations.",
+  "summaries": {
+    "zh": "该插件在 DeepSeek 会话中提供远程服务管理入口，可连接 SSH/FTP、数据库、Docker 和对象存储服务，并支持 SFTP 文件传输与远程终端等会话化操作。",
+    "en": "This plugin adds a DeepSeek Harness interface for managing remote services such as SSH/FTP, databases, Docker, and S3-like storage, including session-time @server references plus SFTP file transfer and remote terminal operations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "manage remote services over SSH, databases, Docker, and object storage",
+      "transfer files and open remote terminal sessions",
+      "reference and invoke remote servers inside conversations via @server"
+    ],
+    "reasons": [
+      {
+        "code": "README feature list includes FTP, SSH, Redis, MySQL, MariaDB, PostgreSQL, SQL Server, Elasticsearch, Docker, MongoDB, Cassandra, and S3/MinIO/R2.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states SSH SFTP 文件上传下载和远程终端.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description states the plugin is a service manager for SSH, FTP, databases, Docker and S3 with @server references.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "manage remote services over SSH, databases, Docker, and object storage",
+      "transfer files and open remote terminal sessions",
+      "reference and invoke remote servers inside conversations via @server"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:09.792Z",
+  "repositoryCommitSha": "91f1299c1a16aebaf2d345c56d53e6323f247b62",
+  "evidenceHash": "8d59edba433003e58a01005afb31019b41447535fc724f7d9818713c5c5eb8db",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "67af13a5c6d446f1f0c29eabb1e42c2568067ee9d00b18097e77de1a64205f7a",
+  "shadowMode": false
+}

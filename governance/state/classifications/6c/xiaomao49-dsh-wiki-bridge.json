@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "knowledge",
+    "context",
+    "search",
+    "file",
+    "automation",
+    "tool",
+    "workflow",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README clearly describes the plugin as a DSH ↔ Obsidian wiki bridge focused on recording, searching, and reusing knowledge from a vault, plus lifecycle management (inbox → archive/check/decay), so its primary user-facing purpose is knowledge management.",
+  "summaries": {
+    "zh": "WikiBridge 是一个面向会话场景的 Obsidian 与 DSH 之间知识库桥接插件，支持检索与写入笔记、自动注入相关上下文，并提供归档与体检等知识管理流程。",
+    "en": "WikiBridge is a knowledge-bridge plugin for DSH and Obsidian that supports searching and writing notes, auto-injecting relevant context into conversations, and managing vault workflows such as archiving and checks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and writes Markdown notes in a configured Obsidian vault through host tools.",
+      "Indexes vault content and supports relevance-ranked search for reusable conclusions.",
+      "Injects matched note summaries into model conversations as contextual input.",
+      "Runs maintenance workflows such as check/validation and archive/decay-based lifecycle actions."
+    ],
+    "reasons": [
+      {
+        "code": "README exposes tools wiki_search/wiki_read/wiki_write/wiki_check/wiki_archive that operate directly on vault notes, indicating local knowledge-base data access and mutation.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states it automatically injects top-3 relevant note summaries into conversation context when matches are detected in titles/tags/keywords.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes constrained write/archiving behavior including default inbox writes, frontmatter enforcement, duplicate checks, and archive/forgotten transitions.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and writes Markdown notes in a configured Obsidian vault through host tools.",
+      "Indexes vault content and supports relevance-ranked search for reusable conclusions.",
+      "Injects matched note summaries into model conversations as contextual input.",
+      "Runs maintenance workflows such as check/validation and archive/decay-based lifecycle actions."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:52.134Z",
+  "repositoryCommitSha": "c5a93004e68f40de649ab2ed72007470d1cff3ba",
+  "evidenceHash": "ae77a58c009507ba7c851c746dea917dd8b65d31d64bab8ce87fff6a071758f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e43d941a8a95549c6adca9539ce51266709f8aaff62a6e4985f83df06f7033cb",
+  "shadowMode": false
+}

@@ -1,16 +1,63 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes this as a number-formatting plugin with a single exposed `format_number` tool, aimed at formatting numeric values into readable monetary, percentage, and decimal/thousands-separated forms for session use.",
+  "summaries": {
+    "zh": "该插件是一个数字格式化工具，通过 `format_number` 提供千分位、指定小数位、货币符号和百分比等数值输出处理。",
+    "en": "This plugin is a number-formatting utility that provides a `format_number` tool for formatting numeric output with thousands separators, decimal places, currency symbols, and percentages."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Provides a numeric formatting utility exposed as `format_number`.",
+      "Supports formatting styles including thousands separators, decimal places, currency symbols, and percentages."
+    ],
+    "reasons": [
+      {
+        "code": "README states plugin purpose: 数字格式化（千分位、小数位、货币符号、百分比） and lists `format_number` as the provided tool.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Usage example shows calling `format_number(value=1234567.891, currency=\"¥\", decimals=2)` for currency output.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides a numeric formatting utility exposed as `format_number`.",
+      "Supports formatting styles including thousands separators, decimal places, currency symbols, and percentages."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "161eaf0068f68c2e7094ed3c186ffee54bcc11db",
-  "cacheKey": "b9649fee22e74f49af5cb628e4fef0042ac045a4e9b8bd2834d1453e4c68fbdd",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:27:23.334Z",
-  "lastAttemptAt": "2026-08-18T18:27:23.334Z",
-  "nextRetryAt": "2026-08-20T08:20:20.000Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"type\":\"usage_limit_reached\",\"message\":\"The usage limit has been reached\",\"plan_type\":\"pro\",\"resets_at\":1787214020,\"eligible_promo\":null,\"resets_in_seconds\":136377}}",
+  "classifiedAt": "2026-08-20T09:16:58.184Z",
+  "repositoryCommitSha": "efc48e58616c26b9cda2b0e5bf1250bb73795695",
+  "evidenceHash": "46993ee26c16664b6180e5e80b7d6c720578eb0057198a32eadd85a6fad71c71",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aa35babf5845da999e38725423a738727541cdbee60727e4fb4331146587e3c1",
   "shadowMode": false
 }

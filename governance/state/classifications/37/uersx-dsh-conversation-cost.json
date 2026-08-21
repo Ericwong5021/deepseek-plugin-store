@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "data",
+    "ui",
+    "tool",
+    "chat",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要用户价值是展示与查询当前会话的实际消耗成本，核心在于会话成本的实时监控、时段分摊计费和汇总查询，故归类为监测类插件。",
+  "summaries": {
+    "zh": "该插件按每次调用真实 token 用量和时段价格实时估算当前会话成本，并在侧边栏持续显示金额，同时提供会话费用查询工具与技能返回逐次明细。",
+    "en": "This plugin estimates current conversation cost from real per-call token usage and time-of-day pricing in real time, shows the amount in the sidebar, and provides a tool and skill to return per-call and summary billing details."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "从会话日志读取 assistant/message 的真实 usage 并累计统计",
+      "按每次调用事件时间划分高峰/空闲时段计费",
+      "在侧边栏底部每5秒刷新展示当前会话金额",
+      "提供 conversation_cost 工具与技能用于模型端按需查询费用汇总",
+      "暴露 GET /dsh-conversation-cost/summary 路由用于客户端轮询取数"
+    ],
+    "reasons": [
+      {
+        "code": "README 指出插件基于会话日志中的 assistant/message usage（input/output/cache/reasoning）计算并展示费用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明侧边栏底部常驻显示“¥X.XX · N 次”，并“每5秒自动刷新”。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明按每条调用实际 event.time 区分高峰/空闲价，并提供 conversation_cost 工具与 conversation-cost 技能。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "从会话日志读取 assistant/message 的真实 usage 并累计统计",
+      "按每次调用事件时间划分高峰/空闲时段计费",
+      "在侧边栏底部每5秒刷新展示当前会话金额",
+      "提供 conversation_cost 工具与技能用于模型端按需查询费用汇总",
+      "暴露 GET /dsh-conversation-cost/summary 路由用于客户端轮询取数"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:18.431Z",
+  "repositoryCommitSha": "781ac6b859d329c4ea7a3e9ed99449e1c92fbf02",
+  "evidenceHash": "673f69892d3afa6567635db6f7ef3b7a918da41252aec2fa0737b5a3dc25aa75",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "12d343cefcbc027e627c44c10f8c04f751dc19bf6c3ccb3696cfeccf4b67eb09",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "visualization",
+    "mcp",
+    "skill",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要面向用户用途是提供一个可视化的 DSH 设置能力面板，用于集中管理 MCP 服务器、技能和规则，因此归类为“导航与面板”方向。",
+  "summaries": {
+    "zh": "该插件在 DSH 设置中提供基础能力面板，用于查看与管理 MCP 服务器、技能和规则，支持按范围分组、搜索过滤及配置编辑。",
+    "en": "This plugin provides a DSH settings basics panel to view and manage MCP servers, skills, and rules, with scoped grouping, search and filtering, and editable configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在设置界面集中展示并管理 MCP 服务器、技能与规则",
+      "支持按作用域查看状态、搜索过滤与开关/编辑配置",
+      "可读写本地配置与规则文件并触发热重载或新会话生效"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确该插件是“在 DSH 设置中可视化并管理 MCP 服务器、技能与规则”的原生面板。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "功能说明包含按作用域分组展示、搜索过滤、逐台开关 MCP、以及编辑技能与规则并写入文件生效。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "安全说明提到写操作采用白名单路径与原子写，并带有 mtime 冲突拒绝。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "在设置界面集中展示并管理 MCP 服务器、技能与规则",
+      "支持按作用域查看状态、搜索过滤与开关/编辑配置",
+      "可读写本地配置与规则文件并触发热重载或新会话生效"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:45.510Z",
+  "repositoryCommitSha": "a58d0e4b9e234c23da71a080749938659cf56ea9",
+  "evidenceHash": "8587c940094f399b3c0e67bd91804275043a7b47cd46a55dba3d15f72ea8609f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bf38b99ef644260622ae3ccbc37ce88d91c58579a4d10b3577f5eb1757556feb",
+  "shadowMode": false
+}

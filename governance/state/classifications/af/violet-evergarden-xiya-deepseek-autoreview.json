@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "tool",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README clearly defines a DeepSeek Harness plugin focused on automating permission-review of tool actions by adding a new “替我审核” preset and routing workspace-command approvals through policy/model checks, with human fallback and logging; this aligns most closely with automation of workflow/approval control rather than code generation, research, UI changes, or direct data/document processing.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 提供“替我审核”权限模式，通过规则与模型判断自动分流工具和终端操作审批，在不确定时转交人工确认。",
+    "en": "This plugin adds a \"review on my behalf\" permission mode for DeepSeek Harness that automates tool/action approval routing with rule and model checks, while falling back to human confirmation when uncertain."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a new permission preset to automate approval handling for session tool requests",
+      "Applies a three-stage decision funnel (whitelist, blocklist, reviewer model) before execution escalation",
+      "Supports zero-token auto-approval and zero-token interception paths for certain command patterns",
+      "Lets users configure reviewer model/provider and fallback behavior for judgment routing",
+      "Emits structured verdict logs and concise in-session decision notices"
+    ],
+    "reasons": [
+      {
+        "code": "README describes a fourth permission preset \"review\" with workspace-write + ask semantics and an escalation funnel for asks.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README specifies whitelist and blocklist command handling, plus a reviewer model layer for gray-zone decisions.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents reviewer model selection in Settings (follow session model or fixed model) and route fallback behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists safety-related limits and controls such as max auto-approvals, preflight/interception, deny behavior, and concurrent/timeout settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README states audit output as review/verdict records with decision/source/route metadata.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a new permission preset to automate approval handling for session tool requests",
+      "Applies a three-stage decision funnel (whitelist, blocklist, reviewer model) before execution escalation",
+      "Supports zero-token auto-approval and zero-token interception paths for certain command patterns",
+      "Lets users configure reviewer model/provider and fallback behavior for judgment routing",
+      "Emits structured verdict logs and concise in-session decision notices"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:25.691Z",
+  "repositoryCommitSha": "af0fb5daa628fde4e2e6436191e326a29e97ad7c",
+  "evidenceHash": "b2809c33c13ed6604cfb7b461b6599d2d7df178f3e4c977d45aeb6a012d875d2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cfdfd9b3003bcf9f7ba6d6b1e1f544cca824bdae9e084c7900160ec6d7f187de",
+  "shadowMode": false
+}

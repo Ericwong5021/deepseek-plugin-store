@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "file",
+    "skill",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "该插件的用户可见核心是提供 DSH 技能管理入口，通过界面完成技能包安装范围选择、上传 zip 安装、已装列表查看与删除，并在后端将其写入本地技能目录，因此归类为面向文件化管理的通用工具插件。",
+  "summaries": {
+    "zh": "该插件在 DSH 的设置页中提供技能管理页面，用于按全局或项目范围上传 .zip 技能包、查看已安装技能并进行删除。",
+    "en": "This plugin provides a Skills management page in DSH settings to upload .zip skill packages, select global or project scope, and view or remove installed skills."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Install uploaded .zip skill packages into configured skill directories",
+      "List installed skills and their metadata/path in the web interface",
+      "Uninstall skills from the interface and delete corresponding files"
+    ],
+    "reasons": [
+      {
+        "code": "README说明插件在“设置”中新增“技能（Skills）”页面，支持选择全局/项目范围、上传 zip 安装、查看已安装技能并删除。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文件说明指出 host 端注册 `/api/dsh-skill-manager/*` 路由并负责解压 zip、写入技能目录（含全局和项目路径）。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文档明确支持按 `.zip` 技能包安装、解析目录/扁平结构并处理文件名与垃圾条目，属于文件内容管理流程。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Install uploaded .zip skill packages into configured skill directories",
+      "List installed skills and their metadata/path in the web interface",
+      "Uninstall skills from the interface and delete corresponding files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:23.986Z",
+  "repositoryCommitSha": "428027ce6f2cbdcb9677c9d63dc22250af3b1f14",
+  "evidenceHash": "d366f805c8d066023b25e311877cd6e7bd21d1c8f709903c2231f4b3303f2465",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ef541ef01f3cf0bbd69c111a2575ffc3b6bbcd5cda19cb6ad56232d2e12e08bf",
+  "shadowMode": false
+}

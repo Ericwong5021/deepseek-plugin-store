@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "memory",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly defines the plugin as a DSH conversation undo utility, focused on in-place rollback of model-visible chat turns in the current session via `/undo` commands. Its primary function is managing session context, with UI folding behavior for undone turns, so it is best classified under memory-context.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 会话提供撤回功能，允许用户在当前会话中通过 `/undo` 指令原地回退最近若干轮对话并继续聊天。",
+    "en": "This plugin adds an in-session conversation undo feature for DeepSeek Harness, letting users roll back the last turns with `/undo` commands and continue in the same chat session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Rewinds recent conversation turns in the current session through `/undo` commands",
+      "Manipulates model-visible context without creating a new session or forking history",
+      "Updates the web UI to collapse expanded undone turns after rollback"
+    ],
+    "reasons": [
+      {
+        "code": "The README describes `/undo`/`/undo n`/`/undo all` for undoing the last n completed turns in-place in the current session.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "It explicitly states no fork and no new session are used for undo; the same session ID is kept and only visible context is replaced.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "The plugin is a DeepSeek Harness session undo utility with command-based operation and no external integration requirements.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Rewinds recent conversation turns in the current session through `/undo` commands",
+      "Manipulates model-visible context without creating a new session or forking history",
+      "Updates the web UI to collapse expanded undone turns after rollback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:28.875Z",
+  "repositoryCommitSha": "31228d7493f28d824d2fb127628f6b78cfdc24ef",
+  "evidenceHash": "6a0f1c658a419e08786bb9eaedd2a2fceb90c039ff454429b66b8fdd284d05a1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e911bb2cb004d1a6b222b895e95e54aa4600853212a76ebee48514b7dae48671",
+  "shadowMode": false
+}

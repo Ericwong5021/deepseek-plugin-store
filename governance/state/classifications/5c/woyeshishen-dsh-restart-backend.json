@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README provides direct, sufficient evidence that the plugin’s main user-facing function is a one-click UI action to restart the DSH web backend, including backend-process restart logic and a loopback-safe default for restart triggers.",
+  "summaries": {
+    "zh": "该插件在 DSH Web 侧边栏左下角添加“重启后端”按钮，用户可从界面直接触发 `dsh web` 后端进程重启。",
+    "en": "This plugin adds a Restart Backend button to the DSH web sidebar so users can trigger a `dsh web` backend restart directly from the interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a one-click interface control to restart the DeepSeek Harness web backend process.",
+      "Spawns/uses a detached watchdog flow to wait for backend exit before launching a fresh process with the same startup arguments.",
+      "Supports a configurable option to allow restart requests from non-loopback sources.",
+      "Auto-loads with DSH startup and persists across restarts.",
+      "Installs via DSH plugin command or package scripts."
+    ],
+    "reasons": [
+      {
+        "code": "README explicitly states: \"Adds a Restart Backend button to the bottom-left of the DeepSeek Harness (DSH) Web sidebar\" and describes one-step restart behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains that the Host side spawns a detached watchdog that waits for `dsh web` to exit and then starts a fresh `dsh web` process.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Metadata description states the plugin adds a \"重启后端\" button for one-click restart of dsh backend process.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adds a one-click interface control to restart the DeepSeek Harness web backend process.",
+      "Spawns/uses a detached watchdog flow to wait for backend exit before launching a fresh process with the same startup arguments.",
+      "Supports a configurable option to allow restart requests from non-loopback sources.",
+      "Auto-loads with DSH startup and persists across restarts.",
+      "Installs via DSH plugin command or package scripts."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:56.331Z",
+  "repositoryCommitSha": "a9bbff8c5ad5bb2569e0b74cb7dfda0be9b58b30",
+  "evidenceHash": "f1646e1500c515bc7aff99fa0e8a21257792a1f540a18ad1ca8bfdc08c5b77f8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ee1882277d8c8c9123c76e1bb0fa6401c081820c21c5164dc517013e8461d00d",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "tool",
+    "ui",
+    "automation",
+    "file",
+    "integration",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该仓库的 README 清晰表明其主要面向 Harness/DSh 的插件商店体验与运维改造，核心价值是图形化地浏览、搜索、安装与管理插件，并在安装流程中加入目录配置、冲突检测与行为修复，因此分类为插件开发类插件。",
+  "summaries": {
+    "zh": "这是一个用于 DSh 的优化版插件商店插件，提供图形化的插件浏览、搜索、一键安装与管理体验，并增加安装目录配置、依赖冲突拦截等增强能力。",
+    "en": "This is an optimized DSh plugin store plugin that provides graphical plugin browsing, search, one-click install, and management, with enhancements such as configurable install paths and install-time conflict checks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在 Harness Web UI 中提供插件商店浏览、搜索与一键安装/卸载功能",
+      "支持可配置插件下载目录并将插件源码目录落盘与卸载清理",
+      "安装前进行 bundle 入口 ID 冲突检测以避免加载树崩溃",
+      "在安装与启用流程中自动发现/回退 pnpm 路径并返回真实错误原因"
+    ],
+    "reasons": [
+      {
+        "code": "README 明确写明“图形化插件商店——浏览 / 搜索 / 一键安装”等用户功能。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明新增“可配置插件下载目录”与插件源码文件夹落盘、卸载同步删除目录的能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明新增 bundle 层冲突检测，安装前比对 insert 入口 id 并拦截重复，防止启动崩溃。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明 pnpm 自动寻路与真实错误透传，并记录为回归测试与安装链路验证。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "在 Harness Web UI 中提供插件商店浏览、搜索与一键安装/卸载功能",
+      "支持可配置插件下载目录并将插件源码目录落盘与卸载清理",
+      "安装前进行 bundle 入口 ID 冲突检测以避免加载树崩溃",
+      "在安装与启用流程中自动发现/回退 pnpm 路径并返回真实错误原因"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:28.631Z",
+  "repositoryCommitSha": "940978581a930b726d0b68828f0a6f77100e175c",
+  "evidenceHash": "21d0f35e39ab7a531dfca38fa6d6215f627b873d846219bab5b23083225924de",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "45c4b211dc7cd00124ee90997e11638ddeeab266f46fbaed543e5c477f75ea5e",
+  "shadowMode": false
+}

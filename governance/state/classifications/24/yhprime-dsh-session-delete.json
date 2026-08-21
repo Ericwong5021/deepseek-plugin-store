@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "tool",
+    "chat",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "基于仓库描述与 README，插件的用户面向功能是增强 DeepSeek Harness Web 会话界面，提供可见度可控的会话删除入口并在确认后归档当前会话，因此归为通用工具类 UI 会话管理功能。",
+  "summaries": {
+    "zh": "该插件在 DeepSeek Harness Web 的会话头部新增悬停显示的红色删除按钮，用户确认后可将当前会话归档并从会话列表移除。",
+    "en": "This plugin adds a hover-revealed red trash button to the DeepSeek Harness Web session header so users can confirm and archive the current session, removing it from the conversation list."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "在会话头部右侧注入红色垃圾桶按钮用于会话操作入口",
+      "点击按钮后进行二次确认并调用会话归档 API",
+      "确认后更新会话列表与当前会话状态（含删除中与错误提示）"
+    ],
+    "reasons": [
+      {
+        "code": "README 说明该插件是“在会话头部右侧添加红色垃圾桶按钮”并用于删除当前会话。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 指明删除通过官方 workspaces.archiveSession API 执行，并影响侧边栏会话列表与当前会话视图。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "在会话头部右侧注入红色垃圾桶按钮用于会话操作入口",
+      "点击按钮后进行二次确认并调用会话归档 API",
+      "确认后更新会话列表与当前会话状态（含删除中与错误提示）"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:22.477Z",
+  "repositoryCommitSha": "229ba10d4157647d4a443863d1255733bdeec747",
+  "evidenceHash": "d5bb402f6a1960a2f4b50e913bfa4c326b5ef7c6b5c2ef2316f5e8f9319198f8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f937913738f624d22a7166119a10acc07f18cae567cc87aefa77a7254136489a",
+  "shadowMode": false
+}

@@ -1,16 +1,71 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The plugin’s README explicitly states its purpose is text redaction of sensitive information, with a single tool `mask_text` that replaces PII-like fields and secrets and returns masked output plus hit counts; it also specifies a Node-only local implementation without network or external services. This is sufficient to classify it as a data-processing utility.",
+  "summaries": {
+    "zh": "该插件提供 `mask_text` 工具，可将文本中的邮箱、手机号、身份证号、银行卡号、IP 和密钥等敏感信息替换为掩码并返回脱敏后的文本。",
+    "en": "This plugin provides a `mask_text` tool that masks sensitive information in text, such as emails, phone numbers, IDs, bank cards, IPs, and keys/tokens."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Provides a `mask_text` tool to anonymize/mask sensitive values in text",
+      "Supports masking for email, phone number, ID, bank card, IP, and key/token patterns",
+      "Returns masked text plus match/hit count",
+      "Runs as a local Node utility without external service integration"
+    ],
+    "reasons": [
+      {
+        "code": "README: \"把文本中的敏感信息（邮箱、手机号、身份证号、银行卡号、IP、密钥/令牌）替换为掩码，返回脱敏文本与命中计数。\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README: \"纯 Node 实现，无网络、无外部服务。\"",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README tool list: `mask_text` 用于脱敏文本中的 PII 与密钥",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Provides a `mask_text` tool to anonymize/mask sensitive values in text",
+      "Supports masking for email, phone number, ID, bank card, IP, and key/token patterns",
+      "Returns masked text plus match/hit count",
+      "Runs as a local Node utility without external service integration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.3-codex-spark",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "186fecef7b04bfd75e2fb34a72ac66877221cf48",
-  "cacheKey": "3e0987c1e1fdac53a8478df8483a20a3e70099e518aa36bc110adaba42b508bd",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-18T18:27:26.243Z",
-  "lastAttemptAt": "2026-08-18T18:27:26.243Z",
-  "nextRetryAt": "2026-08-20T08:20:02.243Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":136356,\"reset_time\":\"37h52m35s\"}}",
+  "classifiedAt": "2026-08-20T09:17:10.411Z",
+  "repositoryCommitSha": "f6129693c236d1f05071d1c1b0e13b06dfc86451",
+  "evidenceHash": "386547cac2b66f34e365a32e34ef3a3907af653f655dd473b63135633057964a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d799149fc41d41f45d68ca54e7e4a824c9376e50a40a1b52833c8a1f8a5886ba",
   "shadowMode": false
 }

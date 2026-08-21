@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "chat",
+    "browser",
+    "tool",
+    "automation",
+    "context",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.93,
+  "reason": "该插件的核心用途是为 DeepSeek Harness 提供可配置的陪伴式聊天代理：在会话内配置人设与语音、自动朗读回复并支持按时问候与快捷命令，属于用户可见的会话自动化能力；README 未提供高风险外部服务或敏感数据处理细节，仅涉及本地音频服务调用与会话状态持久化。",
+  "summaries": {
+    "zh": "这是一个在 dsh 会话中可配置人设与语音的陪伴插件，支持每个会话独立设置角色并自动朗读回复、触发朗读与打气操作。",
+    "en": "This is a dsh companion plugin that lets users configure persona and voice per chat session, with session-specific behavior for automatic reply speech and on-demand cheer/speech actions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Per-session persona/voice configuration and greeting schedule storage",
+      "Automatic speech output for assistant replies",
+      "Slash-command actions for immediate speech and cheering",
+      "Browser-side audio playback via local TTS HTTP service"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述为“完全可自定义的陪伴 Agent”，支持在对话中配置名字/性格/声音并按会话保存。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README 说明“自动朗读每一句回复”，并提供 `/speak on|off`、`/speak <text>`、`/cheer [text]` 命令。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "架构图与说明指明浏览器 fetch WAV 后播放，并经由本地服务 `/dsh-companion/tts` 调用 127.0.0.1 的本地 TTS。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "人设/声音/问候时间按会话读写于 `$DSH_HOME/state/.../<sessionId>.json`，并有每个会话独立定时问候。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Per-session persona/voice configuration and greeting schedule storage",
+      "Automatic speech output for assistant replies",
+      "Slash-command actions for immediate speech and cheering",
+      "Browser-side audio playback via local TTS HTTP service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.93,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:31.860Z",
+  "repositoryCommitSha": "50c084adb81c13f919c38e7e9929befae66809d6",
+  "evidenceHash": "08c6fe818e163861fd12a265abafa0c5e4944b80452d4609ad84add01004aea8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8a80bd627406e7f73fa8e89f8f7d32abf802d54d38b61e1a6e13009c77960003",
+  "shadowMode": false
+}

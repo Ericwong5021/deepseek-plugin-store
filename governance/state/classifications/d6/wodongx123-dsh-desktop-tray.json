@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要面向用户用途是为 DSH Desktop 提供系统托盘能力，包括托盘图标、最小化/关闭入托盘、托盘菜单显隐窗口与退出，并通过启动时自愈补丁在应用更新后恢复该能力，故归入桌面端交互体验类。",
+  "summaries": {
+    "zh": "该插件为 DSH Desktop 增加系统托盘支持，可在最小化或关闭时切换为托盘运行，并通过托盘图标实现窗口显示与退出等快捷操作。",
+    "en": "This plugin adds system tray support for DSH Desktop, enabling minimize/close-to-tray behavior and tray icon actions to show the window or exit."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a system tray icon and tray menu interactions for the host app.",
+      "Supports minimizing and closing behavior changes to hide the main window into the system tray.",
+      "Performs startup-time patching and reinjection of host app files to keep tray support active after updates."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is for “系统托盘支持：常驻托盘图标 + 设置里开关最小化到托盘 / 关闭时隐藏到托盘”.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README lists direct file patching targets: resources/app/out/main/index.js, resources/app/out/preload/index.cjs, resources/app/package.json, and added out/main/tray-boot.js, indicating modification of installed app files.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README describes self-healing/update recovery behavior: on restart, the plugin re-injects patches and restores launcher/main entry after app updates.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description summarizes “System tray support for DSH Desktop: tray icon plus settings... with self-healing boot-time injection.”",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Provides a system tray icon and tray menu interactions for the host app.",
+      "Supports minimizing and closing behavior changes to hide the main window into the system tray.",
+      "Performs startup-time patching and reinjection of host app files to keep tray support active after updates."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:52.270Z",
+  "repositoryCommitSha": "c8c03d44453f0e7d75b3fd942b185250f90f257d",
+  "evidenceHash": "ed2dcc98bd30d77d8f4d94ae55aaa8154047497f49445ae59a7275b1d04dacfc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "105287df0a1f45cc445abf48b914ac6c12974bf428de87dbe4ba8ceea8c9229e",
+  "shadowMode": false
+}

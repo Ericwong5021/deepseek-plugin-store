@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "tool",
+    "chat",
+    "automation",
+    "api",
+    "desktop",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Primary user-facing purpose is to act as a prompt-optimization utility inside the DSH composer: users can trigger model-based polishing of a draft prompt and review/insert the result. The README provides clear evidence of the optimization flow, streaming preview behavior, session/model integration, and optional custom LLM endpoint configuration, so the plugin is classified as a general utility for prompt text enhancement.",
+  "summaries": {
+    "zh": "本插件为 DSH 输入框提供一键提示词优化功能，用户可在输入草稿后点击 ✨ 或按 Alt+O 即时生成更清晰、更结构化的提示词预览并进行替换或复制。",
+    "en": "This plugin adds one-click prompt optimization to the DSH composer, allowing users to generate and preview a clearer, structured rewrite of a draft prompt and then insert or copy it."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Optimizes user-entered prompt text through an LLM call and returns rewritten results for insertion into the composer",
+      "Streams optimization progress and output to a preview interface in real time",
+      "Supports both session-default model routing and a configurable OpenAI-compatible custom endpoint",
+      "Persists plugin configuration, including custom endpoint settings, in a local config file"
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin rewrites a typed draft into a clearer prompt with one-click/Alt+O flow in the DSH composer and provides preview actions such as replace/copy/re-optimize.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README documents host APIs and SSE streaming flow (`optimize.stream`, `text/event-stream`, `delta`, `done`) that live-renders reasoning and token-by-token output.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes custom endpoint mode using an OpenAI-compatible `/chat/completions` target, plus local config storage of API key and endpoint settings.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "Repository description identifies this as a DSH Desktop/Electron plugin, indicating a UI-integrated desktop utility.",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Optimizes user-entered prompt text through an LLM call and returns rewritten results for insertion into the composer",
+      "Streams optimization progress and output to a preview interface in real time",
+      "Supports both session-default model routing and a configurable OpenAI-compatible custom endpoint",
+      "Persists plugin configuration, including custom endpoint settings, in a local config file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:47.070Z",
+  "repositoryCommitSha": "6e73478416af00cc158bbc2e70522e62379cafac",
+  "evidenceHash": "64bcbf0cd27e9e9e01cb3e01348cad17976bfbafdc699e9532c5b47683a8c28e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "40b93b9011a68f6bcb1ef2beaa9e76a501b31232e0c9f0df4732336d402524c1",
+  "shadowMode": false
+}

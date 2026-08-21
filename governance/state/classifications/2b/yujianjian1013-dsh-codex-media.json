@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "file",
+    "api",
+    "cli",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "README 明确说明该插件的主要目标是为 DeepSeek Harness 补齐图片能力：在聊天里可直接粘贴图片、进行识图，并支持“生图/改图”能力。其核心机制是粘贴桥接上传图片到本地附件并以引用文本发送给模型，同时通过 MCP 工具调用 Codex 执行图像处理，因此可归类为媒体工具类插件。",
+  "summaries": {
+    "zh": "该插件用于在 DeepSeek Harness 中增强图片能力，支持在输入框直接粘贴图片并调用本机 Codex 实现识图、生成图像和改图。",
+    "en": "This plugin adds image capabilities to DeepSeek Harness, enabling pasted-image input plus Codex-based image recognition, image generation, and image editing support in chat workflows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "拦截网页输入框的图片粘贴并上传到本地附件库",
+      "将粘贴图片转换为文本引用在消息中发送",
+      "通过 MCP 提供图像识别/生成/改图/剪贴板导出工具",
+      "调用本机 Codex CLI 处理图像相关任务"
+    ],
+    "reasons": [
+      {
+        "code": "README 描述插件提供 Host 插件与 MCP server，两者协同实现识图、生图、改图与剪贴板图片落盘。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文档列明在粘贴时调用 POST /codex-media/upload，将图片转为官方附件并插入 [图片] sha256: 引用。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MCP 工具清单中包含 identify_image、generate_image、edit_image 与 clipboard_to_image。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "依赖说明要求本机安装并登录 Codex CLI，并在 Windows 使用 pwsh -STA 处理剪贴板。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "拦截网页输入框的图片粘贴并上传到本地附件库",
+      "将粘贴图片转换为文本引用在消息中发送",
+      "通过 MCP 提供图像识别/生成/改图/剪贴板导出工具",
+      "调用本机 Codex CLI 处理图像相关任务"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:21:41.537Z",
+  "repositoryCommitSha": "478243a1747909d4f2a9a7a917663473d7e0e8f4",
+  "evidenceHash": "a70017fcfff4f92039a3c17fd8f9ec376825048e4a7ecafe642c1e043d8a17c8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e6c8d719bd6283f943a67e654e2335f74b088a2f354dadc8da13b8bd5aa76a0f",
+  "shadowMode": false
+}

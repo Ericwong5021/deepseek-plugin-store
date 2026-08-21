@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "ui",
+    "chat",
+    "file",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin is a media capture utility for DSH Web: it adds a screenshot button to the composer, lets users capture and crop screen regions (including optional window-hiding), and places the result as a message-attached image card for sending. Evidence in the README clearly defines this as the core user-facing function, with PowerShell capture/crop scripts and dedicated screenshot API routes.",
+  "summaries": {
+    "zh": "该插件为 DSH Web 对话框提供微信风格截图功能，可在界面中拖拽选择区域、裁剪后将截图卡片放入输入区并发送。",
+    "en": "This plugin adds a WeChat-style screenshot feature to the DSH web composer, allowing users to select and crop a screen region and send it as an image card in the chat input."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures full-screen screenshots on Windows via local PowerShell scripts and optional window hiding",
+      "Provides browser-side screen-region selection and server-side coordinate-based PNG cropping",
+      "Injects screenshot path references into the chat composer message flow and exposes local API routes for capture/preview/crop/delete"
+    ],
+    "reasons": [
+      {
+        "code": "README describes POST /api/screenshot/capture and /api/screenshot/crop endpoints backed by screenshot.ps1 and crop.ps1 with local PNG generation and image card injection.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explicitly states image cards are attached in the DSH composer input area and send as a screenshot path for model vision tools to read.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README includes local-file lifecycle behavior (temporary screenshot IDs, cleanup on cancel/restart, and local upload directory usage) and loopback + same-origin route constraints.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Captures full-screen screenshots on Windows via local PowerShell scripts and optional window hiding",
+      "Provides browser-side screen-region selection and server-side coordinate-based PNG cropping",
+      "Injects screenshot path references into the chat composer message flow and exposes local API routes for capture/preview/crop/delete"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:54.996Z",
+  "repositoryCommitSha": "c2b757b31c23e80e5fe60c7c29830dc6ecf49943",
+  "evidenceHash": "9c9f395a7eb5f3d391a34f9b40c4f31fa0712c68341e8b573514f2cde5ad99fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9e24d21a80da45fa07c52de9e873cc23de10ba25c57f82e063841708bde8ff23",
+  "shadowMode": false
+}

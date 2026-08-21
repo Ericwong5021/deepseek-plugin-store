@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "api",
+    "integration",
+    "search",
+    "tool",
+    "ui",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "该插件的主要面向用途是作为 DeepSeek Harness 的永久插件市场，面向用户提供第三方插件的检索、安装、更新与启用/卸载管理，并通过 UI 与工具接口把插件生命周期自动化。",
+  "summaries": {
+    "zh": "这是一个 DeepSeek Harness 的插件市场插件，支持按主题搜索第三方插件，并提供安装、更新、检查与已安装插件管理的设置页与工具化操作。",
+    "en": "This is a DeepSeek Harness plugin marketplace plugin that lets users search third-party plugins by topic and manage installation, updates, and installed plugin state through its settings UI and automation tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "检索 GitHub topic 中的插件并按分页展示",
+      "执行插件安装/更新/卸载/启用状态管理等生命周期操作",
+      "在 host 侧提供 `/api/market/*` 接口并在客户端触发异步安装会话",
+      "在安装流程中调用 `dsh plugin` 与 pnpm/git 进行真实执行",
+      "支持从 npm 与 GitHub 仓库进行远程安装来源选择"
+    ],
+    "reasons": [
+      {
+        "code": "README 指出该插件是 DeepSeek Harness 的“插件市场”，提供搜索、浏览、一键安装、检查更新等核心能力。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "文档列出 Agent 工具与 host API：`market_search`、`market_install`、`market_installed`、`market_update`，以及 `/api/market/install`、`/api/market/update`、`/api/market/uninstall` 等接口。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "说明安装流程会触发 `dsh plugin --profile web add/remove`、pnpm 重建与重试、以及 GitHub/npm/jsDelivr 回退逻辑，涉及远程获取与系统依赖修改。",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "功能中提到“让 agent 安装”会在专属安装工作区新建会话并读取仓库 README 决策安装方式，属于可执行的外部插件部署与执行链路。",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "检索 GitHub topic 中的插件并按分页展示",
+      "执行插件安装/更新/卸载/启用状态管理等生命周期操作",
+      "在 host 侧提供 `/api/market/*` 接口并在客户端触发异步安装会话",
+      "在安装流程中调用 `dsh plugin` 与 pnpm/git 进行真实执行",
+      "支持从 npm 与 GitHub 仓库进行远程安装来源选择"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T09:17:50.114Z",
+  "repositoryCommitSha": "56016ddecb2bad1ec0edcf6a739a89a82b5b6ada",
+  "evidenceHash": "2f8caea15287bdbc8e47c36d8450b6f5f5d80572059f92cabd931c7ac90a3cb5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4128ec7ca1255cba141959b3713007cb21e90bb90b2afefe68726cffec491aaf",
+  "shadowMode": false
+}

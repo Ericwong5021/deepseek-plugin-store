@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "layout",
+    "ui",
+    "chat",
+    "tool",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin is a UI/layout enhancement for DeepSeek Harness: it adds a draggable handle to shift the conversation column left so right-side plugin panels get more room, supports reset, and preserves the offset across session updates using DOM observers.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的浏览器端界面插件，通过可拖拽把手把会话列整体向左平移，为右侧面板腾出更多显示空间，并支持重置与会话切换时保留偏移。",
+    "en": "This is a DeepSeek Harness web client plugin that adds a draggable handle to shift the conversation column left, creating more space for right-side panels, with reset support and persisted offset across session switches."
+  },
+  "risk": {
+    "level": "R0",
+    "capabilities": [
+      "Adjusts the DeepSeek Harness conversation column position through a draggable UI handle.",
+      "Adds client-side persistence of the column offset when conversation nodes are rebuilt during session switches."
+    ],
+    "reasons": [
+      {
+        "code": "README states the plugin is a client-side `dsh.client` plugin on platform web and does not provide host-side behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README explains dragging applies a `translateX()` transform to the entire conversation column and composer to shift chat left and free right-side space, with clamp limits and reset behavior.",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README notes offset survival across session switches via `MutationObserver` and `ResizeObserver` reapplication.",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Adjusts the DeepSeek Harness conversation column position through a draggable UI handle.",
+      "Adds client-side persistence of the column offset when conversation nodes are rebuilt during session switches."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.3-codex-spark",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-20T14:20:56.357Z",
+  "repositoryCommitSha": "a922deeb1fe712a5053656d45a482c0c519ad555",
+  "evidenceHash": "6164e5bf6d309369dcc3ca3958d7660a4aa6f349bbc1757e7dba1b4b7bbdc271",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "958e0ade9de6fd69228430ff77513eb5db402217c887914fd9769fae08dbe7c7",
+  "shadowMode": false
+}
