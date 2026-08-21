@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "browser",
+    "api",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that exposes the local Web UI through a LAN gateway with device approval, token and cookie binding, rate limiting, reverse proxying, and mobile layout adaptation.",
+  "summaries": {
+    "zh": "通过局域网网关让手机和平板访问本机 DSH Web UI，并提供设备审批、令牌管理、限流和移动端布局适配。",
+    "en": "Provides LAN access to the local DSH Web UI for phones and tablets with device approval, token management, rate limiting, and mobile layout adaptation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs an independent local gateway subprocess",
+      "Listens on a configurable network address and port",
+      "Reverse-proxies approved browser requests to the local DSH Web UI",
+      "Provides local device approval, denial, revocation, and access-mode management",
+      "Issues device tokens bound to browser cookies",
+      "Applies per-IP request rate limiting",
+      "Injects mobile-oriented HTML markers, CSS, and a browser API polyfill"
+    ],
+    "reasons": [
+      {
+        "code": "network_listener_and_reverse_proxy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "device_access_control_and_token_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs an independent local gateway subprocess",
+      "Listens on a configurable network address and port",
+      "Reverse-proxies approved browser requests to the local DSH Web UI",
+      "Provides local device approval, denial, revocation, and access-mode management",
+      "Issues device tokens bound to browser cookies",
+      "Applies per-IP request rate limiting",
+      "Injects mobile-oriented HTML markers, CSS, and a browser API polyfill"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:52.600Z",
+  "repositoryCommitSha": "06e0ea87101d1330c573cb01acecd67e36764413",
+  "evidenceHash": "3fd016b134936a78778da8db4dd084bd3a430aa396e0964a3ad804f7c6cab04e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a47b43c3860e953cecc617c75653380aa08c72e2bc692c234ddfa1f0610844fc",
+  "shadowMode": false
+}

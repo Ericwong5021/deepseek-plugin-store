@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "agent",
+    "image",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DeepSeek Harness channel integration that bridges DSH sessions with Feishu bots for bidirectional chat, streaming cards, model controls, image handling, and file or image delivery.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 会话连接到飞书机器人，支持双向消息、流式卡片、模型控制以及图片和文件传输。",
+    "en": "Connects DeepSeek Harness sessions to Feishu bots with bidirectional messaging, streaming cards, model controls, and image or file transfer."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives messages from Feishu chats over a WebSocket connection",
+      "Sends text, cards, images, files, and reactions to Feishu chats",
+      "Bridges Feishu messages to DSH agent sessions and returns agent responses",
+      "Persists Feishu-to-session bindings and session-related metadata locally",
+      "Uses Feishu app credentials and exposes local Feishu management endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_and_image_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives messages from Feishu chats over a WebSocket connection",
+      "Sends text, cards, images, files, and reactions to Feishu chats",
+      "Bridges Feishu messages to DSH agent sessions and returns agent responses",
+      "Persists Feishu-to-session bindings and session-related metadata locally",
+      "Uses Feishu app credentials and exposes local Feishu management endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:28.463Z",
+  "repositoryCommitSha": "28c96496841ba86727c5021cc2a17d23d8f43419",
+  "evidenceHash": "b271d247a63a7ec22a2b923970242d9eafdba8cc9f2b0e990cd813a7e6dae4e3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "014d4b853d8b2344a5bced671f550d30b00ba6dc571743855248fdd27cda945a",
+  "shadowMode": false
+}

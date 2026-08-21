@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "image",
+    "document",
+    "ui",
+    "browser",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A web UI attachment plugin that adds categorized image and file uploads, storing non-image attachments in the conversation workspace for model-assisted file access.",
+  "summaries": {
+    "zh": "为对话输入框增加图片、文档和其他文件的分类上传功能，并将非图片附件保存到会话工作区。",
+    "en": "Adds categorized image, document, and file uploads to the conversation input, saving non-image attachments into the session workspace."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds categorized image, document, and file upload controls to a web conversation input",
+      "Uses a host API to write uploaded non-image files into the session workspace uploads directory",
+      "Invokes a host shell operation to create the upload directory and write decoded file contents"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_api_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_execution_for_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds categorized image, document, and file upload controls to a web conversation input",
+      "Uses a host API to write uploaded non-image files into the session workspace uploads directory",
+      "Invokes a host shell operation to create the upload directory and write decoded file contents"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:19.022Z",
+  "repositoryCommitSha": "ae5e21b60a484972416bf2da3efd56367089fc0e",
+  "evidenceHash": "b9ffb161c44b4a4122ea56f3c270c78150396bbcda327c22ed316c5711868084",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "70cbd3e606b58048ffe947b865f8f94b86a03a0af7e5e80b02a7542eb41e3687",
+  "shadowMode": false
+}

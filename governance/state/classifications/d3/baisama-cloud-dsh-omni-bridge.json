@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A multi-channel external-service bridge that connects WeChat, QQ, and Feishu messaging with DeepSeek Harness agents, including inbound routing, outbound replies, channel configuration, and persistent sessions.",
+  "summaries": {
+    "zh": "将微信、QQ和飞书消息接入 DeepSeek Harness 智能体，并把智能体回复发送回对应聊天频道的多通道桥接插件。",
+    "en": "A multi-channel bridge that routes WeChat, QQ, and Feishu messages to DeepSeek Harness agents and relays their replies back to the originating chats."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives chat messages from WeChat, QQ, and Feishu",
+      "Routes incoming messages to a DeepSeek Harness agent",
+      "Sends agent replies back through connected chat channels",
+      "Maintains separate persistent sessions per channel",
+      "Stores and uses channel authentication credentials",
+      "Provides configuration through a web settings interface"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_ingress_and_egress",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_remote_control_via_chat_channels",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "stores_third_party_channel_credentials",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives chat messages from WeChat, QQ, and Feishu",
+      "Routes incoming messages to a DeepSeek Harness agent",
+      "Sends agent replies back through connected chat channels",
+      "Maintains separate persistent sessions per channel",
+      "Stores and uses channel authentication credentials",
+      "Provides configuration through a web settings interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:22.548Z",
+  "repositoryCommitSha": "cdb51787173ba9b46e0e8ee4ebfc38b9ae0f2dcd",
+  "evidenceHash": "78c9bdfd7072706aa8b92eee5f988191718b74b04fd3a06c3caacd24d7c7086e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fc2a3c66da93f939ca95d9facc587c323104b876084d8f4166d5a7d7d01782bc",
+  "shadowMode": false
+}

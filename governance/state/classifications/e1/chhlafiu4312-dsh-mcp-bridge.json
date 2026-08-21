@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "mcp",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an MCP bridge whose primary purpose is to connect local or remote MCP servers to DeepSeek Harness and expose their tools for agent orchestration.",
+  "summaries": {
+    "zh": "将本地或远程 MCP 服务器连接到 DeepSeek Harness，并自动把其工具注册为智能体可调用的工具。",
+    "en": "Connects local or remote MCP servers to DeepSeek Harness and automatically registers their tools for agent use."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "spawns and manages configured local child processes",
+      "connects to remote MCP servers over HTTP/SSE",
+      "registers and forwards MCP tools to the DSH agent",
+      "passes configured environment variables to MCP servers",
+      "enables connected tools to access external services, files, databases, or other resources according to their permissions"
+    ],
+    "reasons": [
+      {
+        "code": "child_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_server_connections",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "delegated_tool_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "spawns and manages configured local child processes",
+      "connects to remote MCP servers over HTTP/SSE",
+      "registers and forwards MCP tools to the DSH agent",
+      "passes configured environment variables to MCP servers",
+      "enables connected tools to access external services, files, databases, or other resources according to their permissions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:28.466Z",
+  "repositoryCommitSha": "0e04cd340031f3c46c3bd889e5eac90aa2afd013",
+  "evidenceHash": "e953b591c762fd8bbb8d3e1883f96503b8e3d8b61f457dcfd22a92c3660a9b4f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bc08eff026211138f1c57c14444b18a2ceea3a8cd626c792ac883d2d22590851",
+  "shadowMode": false
+}

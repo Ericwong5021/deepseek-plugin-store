@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "api",
+    "agent",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A file-change management center for capturing agent modifications, reviewing diffs, editing hunks, and rolling workspace changes back or restoring them, with optional review, verification, history, and Git operations.",
+  "summaries": {
+    "zh": "用于捕获和管理智能体产生的文件变更，提供差异审查、块级编辑、回滚与恢复，并保留变更历史。",
+    "en": "A change-management center that captures agent file modifications and provides diff review, hunk editing, rollback, restoration, and change history."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures agent-produced file and shell-command changes",
+      "Writes, edits, rolls back, and restores workspace files",
+      "Persists change records and snapshots under DSH_HOME",
+      "Exposes REST and SSE endpoints for change and job management",
+      "Can invoke explicit Git add, commit, and push operations",
+      "Runs verification, review, risk analysis, and repair jobs"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_write_and_restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_change_and_snapshot_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_write_operations_available_on_explicit_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_api_and_sse_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Captures agent-produced file and shell-command changes",
+      "Writes, edits, rolls back, and restores workspace files",
+      "Persists change records and snapshots under DSH_HOME",
+      "Exposes REST and SSE endpoints for change and job management",
+      "Can invoke explicit Git add, commit, and push operations",
+      "Runs verification, review, risk analysis, and repair jobs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:44.938Z",
+  "repositoryCommitSha": "01a6210c7d29d31f02d133a51781d4344b4dad3c",
+  "evidenceHash": "ec2a0a8d680e76c0414698197115ddfffd7ef4688516e974177c569ddc5b73a1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0cf33f728a0f98bd58cec29c9b44418ebb1fe73514cf7d2f36f2f42f59a09bdc",
+  "shadowMode": false
+}

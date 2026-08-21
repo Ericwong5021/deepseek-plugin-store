@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "image",
+    "browser",
+    "api",
+    "integration",
+    "cli",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides image recognition for text-only DeepSeek models by sending local images through a browser-automated DeepSeek web vision CLI; human review is warranted because it executes a local subprocess, handles a session token, and transfers images to an external service.",
+  "summaries": {
+    "zh": "通过浏览器自动化调用 DeepSeek 网页视觉模式，将本地图片发送给外部服务并返回图像描述。",
+    "en": "Uses browser automation to send local images to DeepSeek’s web vision mode and return textual image descriptions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local image files from supplied paths",
+      "Invokes a local Python CLI through a subprocess service",
+      "Uses browser automation to access DeepSeek web vision",
+      "Uploads image content to DeepSeek's web endpoint",
+      "Uses a locally stored DeepSeek session token"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "non_official_web_interface",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Reads local image files from supplied paths",
+      "Invokes a local Python CLI through a subprocess service",
+      "Uses browser automation to access DeepSeek web vision",
+      "Uploads image content to DeepSeek's web endpoint",
+      "Uses a locally stored DeepSeek session token"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:03.655Z",
+  "repositoryCommitSha": "fa30547ea033c1bc1fe70b41484f1f46cf2a44fb",
+  "evidenceHash": "3472c14cc340b7c0ebff5d2ad33f6ffc7b9baca611aaf34a0e2d7401749ac2a9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "39f8ba893953765e0a314eea88b81937c03a08bed5441538e404c2e1db2a871f",
+  "shadowMode": false
+}

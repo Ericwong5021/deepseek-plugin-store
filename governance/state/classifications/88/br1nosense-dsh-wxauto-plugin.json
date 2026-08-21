@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "automation",
+    "chat",
+    "collaboration",
+    "integration",
+    "monitoring",
+    "notification",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "README明确说明该插件通过wxauto4连接Windows微信，用于DSH任务进度推送、消息监听、自动回复，以及通过微信反向控制DSH任务，因此主要属于通知与监控；其具备外发消息和执行任务等高影响能力，建议人工审核。",
+  "summaries": {
+    "zh": "通过Windows微信向指定聊天推送DSH任务进度、监听消息并支持从微信控制DSH会话与任务。",
+    "en": "Connects Windows WeChat with DSH to send task updates, monitor selected chats, and control DSH sessions and tasks from WeChat."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "向指定微信聊天发送文本、文件和进度截图",
+      "轮询并记录微信聊天消息",
+      "按关键词自动回复微信消息",
+      "通过微信消息驱动DSH会话、任务执行和取消操作",
+      "调用本地DSH Web API并写入JSONL日志和PNG截图"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_sending",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_monitoring_and_auto_reply",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_task_control_via_chat",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_process_automation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "向指定微信聊天发送文本、文件和进度截图",
+      "轮询并记录微信聊天消息",
+      "按关键词自动回复微信消息",
+      "通过微信消息驱动DSH会话、任务执行和取消操作",
+      "调用本地DSH Web API并写入JSONL日志和PNG截图"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:05:27.635Z",
+  "repositoryCommitSha": "52e1b6e319b372289edcd3c79be66b7937b33481",
+  "evidenceHash": "96b1ead8cba184d5bf34b3a895134bb52863c7cf13e2c89e1194720b3a9e4c0a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e058cb8f16b51b669304ea789709a77b825cd6803b66eb5e5092d411a64e3829",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README documents three user-facing tools for image recognition, image generation or transformation, and listing configured vision providers through external APIs, with generated images saved locally and optionally served over a local HTTP endpoint.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于外部模型 API 的图像识别、图像生成与图像变换工具，并支持保存和展示生成的图片。",
+    "en": "Provides DeepSeek Harness tools for image recognition, image generation, and image transformation through configured external model APIs, with support for saving and displaying generated images."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Calls configured external vision and image-generation APIs",
+      "Reads local image files or remote image URLs for recognition",
+      "Writes generated images to the configured filesystem location",
+      "Serves generated images through an optional local HTTP server"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_serving",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls configured external vision and image-generation APIs",
+      "Reads local image files or remote image URLs for recognition",
+      "Writes generated images to the configured filesystem location",
+      "Serves generated images through an optional local HTTP server"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:12.658Z",
+  "repositoryCommitSha": "2f8d16ac5b3edff1552b81e53749fef1c9f191da",
+  "evidenceHash": "949536e085b7dd6ec0fe59f2cedbcefbc545a92a8875fe44d9391e6cb10d02bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ddef6220f8f48e42706e66ecd57802779fe9d5be0ab2621feadecd97ce49c0f",
+  "shadowMode": false
+}

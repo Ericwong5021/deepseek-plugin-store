@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "data",
+    "file",
+    "integration",
+    "skill",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Imports local sessions, chat histories, and agent prompts from four coding-agent sources into resumable DeepSeek Harness sessions and skills, with synchronization commands and workspace attachment.",
+  "summaries": {
+    "zh": "将 pi、opencode、codex 和 claude-code 的本地会话、聊天历史及代理提示导入 DeepSeek Harness，以便恢复会话并作为技能使用。",
+    "en": "Imports local sessions, chat histories, and agent prompts from pi, opencode, codex, and claude-code into resumable DeepSeek Harness sessions and skills."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local session histories and agent configuration data from pi, opencode, codex, and claude-code paths",
+      "Converts and writes imported sessions into DeepSeek Harness persistence",
+      "Writes converted agent and prompt bundles as dsh skills",
+      "Adds slash commands, a Sync control, and a session-start migration prompt"
+    ],
+    "reasons": [
+      {
+        "code": "local_data_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_ui_and_commands",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Reads local session histories and agent configuration data from pi, opencode, codex, and claude-code paths",
+      "Converts and writes imported sessions into DeepSeek Harness persistence",
+      "Writes converted agent and prompt bundles as dsh skills",
+      "Adds slash commands, a Sync control, and a session-start migration prompt"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:42.064Z",
+  "repositoryCommitSha": "603b2affbb6c083efa44655977d4ae768c4904b7",
+  "evidenceHash": "416acad0b3afc71bc7db985f69e2223f145eb192c6e6120e252034faacbac623",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8487f5552a3176a595f6cbb14c1ff60afcae656f35e95bd08a56bdb7f1d1e8b2",
+  "shadowMode": false
+}

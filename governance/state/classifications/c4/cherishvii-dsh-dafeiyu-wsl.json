@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "agent",
+    "desktop",
+    "visualization",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that displays a configurable desktop pet and status card reflecting real DeepSeek Harness agent activity across thinking, working, waiting, completion, and error states.",
+  "summaries": {
+    "zh": "大肥鱼是一个由 DSH Agent 事件驱动的 Windows 桌面伴侣，用于在桌面上显示任务阶段、待办进度及等待、完成或错误状态。",
+    "en": "Dafeiyu is a DSH-driven Windows desktop companion that displays agent task stages, available todo progress, and waiting, completion, or error states."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays a native always-on-top desktop window",
+      "Launches a bundled Windows helper process through Windows or WSL2 interop",
+      "Receives DSH agent events to show task states and progress",
+      "Stores desktop layout and plugin settings locally"
+    ],
+    "reasons": [
+      {
+        "code": "native_desktop_process",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_event_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Displays a native always-on-top desktop window",
+      "Launches a bundled Windows helper process through Windows or WSL2 interop",
+      "Receives DSH agent events to show task states and progress",
+      "Stores desktop layout and plugin settings locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "ACTIVE_REPOSITORY"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:21.621Z",
+  "repositoryCommitSha": "338fe5195ee1f0591f2f8e462ae688c3f113c1b5",
+  "evidenceHash": "37b5e8e7fcaa2bcf3648bfe70072014265f611f26c9a47577d361ac585d0aaa6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b90e1cb617b7163f69c4ebad0f97a86d36242fe4366f38fd833f8810356bbad5",
+  "shadowMode": false
+}

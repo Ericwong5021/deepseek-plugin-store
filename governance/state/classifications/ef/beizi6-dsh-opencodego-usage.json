@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "visualization",
+    "api",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web GUI plugin that monitors OpenCodeGo rolling, weekly, and monthly quota usage, presenting color-coded status and progress details with periodic refresh.",
+  "summaries": {
+    "zh": "在 DSH Web GUI 中监控 OpenCodeGo 的滚动、每周和每月额度，并通过状态指示灯与进度面板显示剩余额度及重置时间。",
+    "en": "Monitors OpenCodeGo rolling, weekly, and monthly quota usage in the DSH Web GUI with a status indicator and progress panel showing remaining amounts and reset times."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads an API key from DSH credentials, process environment, or a local state file",
+      "Stores a manually entered API key in a state file under DSH_HOME unless overridden by OCG_STATE_PATH",
+      "Makes authenticated HTTPS requests to the OpenCodeGo quota endpoint",
+      "Registers a same-origin web route and renders a quota indicator and progress panel in the DSH web interface",
+      "Automatically refreshes quota data every two minutes"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_ui_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Reads an API key from DSH credentials, process environment, or a local state file",
+      "Stores a manually entered API key in a state file under DSH_HOME unless overridden by OCG_STATE_PATH",
+      "Makes authenticated HTTPS requests to the OpenCodeGo quota endpoint",
+      "Registers a same-origin web route and renders a quota indicator and progress panel in the DSH web interface",
+      "Automatically refreshes quota data every two minutes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:50.190Z",
+  "repositoryCommitSha": "0990d71ccb0965c758b86a048a8a2614d082a14f",
+  "evidenceHash": "87505c8c80c9c3b85ef27a46a93574563fd1729aabe55191f892bb19b9ad3da7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dc66e83ceab82fcdb825cada5061978955d5d26d3ca9d597c645fcae66bc5898",
+  "shadowMode": false
+}

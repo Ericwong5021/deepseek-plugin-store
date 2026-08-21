@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "visualization",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH sidebar widget for monitoring DeepSeek balance, spending, token usage, request counts, and recent consumption through periodic API polling and local usage tracking.",
+  "summaries": {
+    "zh": "在 DSH 网页侧边栏中实时展示 DeepSeek 余额、消费、Token 用量、请求次数及近 24 小时消费趋势。",
+    "en": "A DSH sidebar widget that displays DeepSeek balance, spending, token usage, request counts, and recent 24-hour spending trends."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the DeepSeek balance endpoint using the existing DEEPSEEK_API_KEY credential",
+      "Collects model usage totals such as tokens and request counts",
+      "Persists usage and balance state in a local file",
+      "Serves a usage snapshot through a loopback-only route",
+      "Opens the DeepSeek top-up page in a browser window"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_reuse",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Queries the DeepSeek balance endpoint using the existing DEEPSEEK_API_KEY credential",
+      "Collects model usage totals such as tokens and request counts",
+      "Persists usage and balance state in a local file",
+      "Serves a usage snapshot through a loopback-only route",
+      "Opens the DeepSeek top-up page in a browser window"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:08:22.672Z",
+  "repositoryCommitSha": "a5255570ee3d19895f3f2eba4940bef2d1e131ab",
+  "evidenceHash": "6b0bf3e0642abefa3f2b2dd32556e5b3ec9275ccb7356f653f4007040ff65f55",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ffb14c5a22b84fbb959da787ed4c215b2e75adb84222a75d16c2bc818078c688",
+  "shadowMode": false
+}

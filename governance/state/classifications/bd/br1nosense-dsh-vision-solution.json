@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "document",
+    "skill",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DSH plugin that patches text-only model image handling and routes image, OCR, and PDF interpretation through configured visual APIs or local fallbacks.",
+  "summaries": {
+    "zh": "为 DSH 纯文本模型提供图片、OCR 和 PDF 识别能力，并通过宿主补丁与可配置的视觉服务完成处理。",
+    "en": "Enables image, OCR, and PDF understanding for text-only DSH models through a host patch and configurable vision services."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "modifies DSH host behavior to allow image attachments for text-only models",
+      "routes images, screenshots, PDFs, and OCR tasks to configured visual, OCR, or document-processing services",
+      "calls external OpenAI-compatible APIs using user-provided credentials",
+      "writes vision service configuration to user-level environment variables"
+    ],
+    "reasons": [
+      {
+        "code": "host_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "modifies DSH host behavior to allow image attachments for text-only models",
+      "routes images, screenshots, PDFs, and OCR tasks to configured visual, OCR, or document-processing services",
+      "calls external OpenAI-compatible APIs using user-provided credentials",
+      "writes vision service configuration to user-level environment variables"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:05:24.579Z",
+  "repositoryCommitSha": "6a2056ab24862a1144ab6b551c9887195079972d",
+  "evidenceHash": "9923ed696332920e7a9b341bbaa20161b7f06de2e51d2cc6fb09a18c1304585f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4aaaa79bf954a9b378c4aeb3dbb4eed0a0ee80f1972760c31e6fd8b9a1de8cbb",
+  "shadowMode": false
+}

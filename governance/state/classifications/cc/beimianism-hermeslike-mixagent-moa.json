@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "chat",
+    "context",
+    "integration",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An LLM orchestration plugin that aggregates router, parallel advisor, and final model calls with provider failover, streaming, credential configuration, privacy filtering, and cost controls.",
+  "summaries": {
+    "zh": "通过路由器、并行参考顾问和聚合器编排多次大模型调用，并提供流式输出、故障切换、隐私过滤与费用控制。",
+    "en": "Orchestrates router, parallel advisor, and aggregator LLM calls with streaming output, provider failover, privacy filtering, and cost controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Routes LLM requests through a multi-stage router, parallel reference-advisor, and aggregator pipeline",
+      "Sends request content to DeepSeek and optionally OpenCode Go endpoints",
+      "Reads and uses configured API keys or environment-variable credentials",
+      "Streams aggregated model responses",
+      "Tracks usage and applies budget, frequency, and interval limits",
+      "Provides provider failover and configurable privacy filtering"
+    ],
+    "reasons": [
+      {
+        "code": "external_llm_network_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "multi_call_cost_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes LLM requests through a multi-stage router, parallel reference-advisor, and aggregator pipeline",
+      "Sends request content to DeepSeek and optionally OpenCode Go endpoints",
+      "Reads and uses configured API keys or environment-variable credentials",
+      "Streams aggregated model responses",
+      "Tracks usage and applies budget, frequency, and interval limits",
+      "Provides provider failover and configurable privacy filtering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:46.674Z",
+  "repositoryCommitSha": "eab47d1c98a04ee0af96f460e311e48bb226c574",
+  "evidenceHash": "11dfd0530446d7093bc3df480897d4511760ee97e2e7f6b659738a17b0a1ac3f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d3fa0b4e477db2497ffcf9690f02541ffef94b74e2ad00db83c09bfffc15a5db",
+  "shadowMode": false
+}

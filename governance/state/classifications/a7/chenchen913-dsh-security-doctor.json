@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "monitoring",
+    "file",
+    "data",
+    "ui",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A read-only DSH security checkup plugin that scans local configuration, plugins, permissions, instruction files, and policy settings, then presents severity-graded reports with an optional local monitoring mode.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供只读安全体检，扫描本地配置、插件、权限和策略并生成分级报告，另含可选的本地运行监控。",
+    "en": "Provides read-only security checkups for DeepSeek Harness by scanning local configuration, plugins, permissions, and policies, with graded reports and optional local runtime monitoring."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans local DSH configuration, plugin metadata, source code, instruction files, and security policy values",
+      "Reads credential-file permission metadata and Windows ACL account names without reading credential contents",
+      "Optionally monitors outbound request metadata and local file fingerprints in memory",
+      "Stores report history, preferences, and baselines in browser localStorage",
+      "Can perform a manual read-only GitHub update check"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_local_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_runtime_monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "limited_external_query",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Scans local DSH configuration, plugin metadata, source code, instruction files, and security policy values",
+      "Reads credential-file permission metadata and Windows ACL account names without reading credential contents",
+      "Optionally monitors outbound request metadata and local file fingerprints in memory",
+      "Stores report history, preferences, and baselines in browser localStorage",
+      "Can perform a manual read-only GitHub update check"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:00.360Z",
+  "repositoryCommitSha": "f2c272acd74ad179d06b7bb2d5aa8a3147c5c779",
+  "evidenceHash": "f1ce8b36d051dffdd1b9159539823b102e682422361e4f7cf5f344f72e7ca37a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fd141d4cd208326df266c60c126134bff45a261ae11c735719ce610fa71407c2",
+  "shadowMode": false
+}

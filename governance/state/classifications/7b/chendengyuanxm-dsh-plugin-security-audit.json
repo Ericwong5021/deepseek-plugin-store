@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "agent",
+    "debugging",
+    "monitoring",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that statically analyzes dynamic Cordis plugin source, reports matched risk patterns, and requests user approval before activating packages with high- or critical-severity findings.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中对动态 Cordis 插件源码进行规则化静态审查，报告风险发现并在高危或严重发现时请求用户审批。",
+    "en": "A DeepSeek Harness plugin that statically scans dynamic Cordis plugin source, reports detected risk patterns, and requests user approval for high- or critical-severity findings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Scans dynamic Cordis plugin source code with static rules",
+      "Appends risk reports to tool results",
+      "Escalates high- and critical-severity findings to user approval",
+      "Intercepts cordis_define and cordis_run tool-pipeline events",
+      "Maintains an in-process LRU report cache",
+      "Logs internal scan errors while allowing audited calls to proceed"
+    ],
+    "reasons": [
+      {
+        "code": "tool_pipeline_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_escalation_can_influence_plugin_activation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scans_plugin_source_for_sensitive_capabilities",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Scans dynamic Cordis plugin source code with static rules",
+      "Appends risk reports to tool results",
+      "Escalates high- and critical-severity findings to user approval",
+      "Intercepts cordis_define and cordis_run tool-pipeline events",
+      "Maintains an in-process LRU report cache",
+      "Logs internal scan errors while allowing audited calls to proceed"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:02.728Z",
+  "repositoryCommitSha": "b80b3e28bbecd11e3f19ca2c77aaba1b7f09a823",
+  "evidenceHash": "a61226414ca8dbcb48f0d6249421d4ecdd6511cd9356fa1ce144cb66ce99f1ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ec17d9cd813c26dd0b04955e7b527a9431fd6f6104bceb227db5d339d89fc2a7",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "image",
+    "document",
+    "api",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An OCR plugin that reads local images, sends them to configured OpenAI- or Anthropic-compatible vision APIs, and returns recognized text with confidence scores and bounding boxes.",
+  "summaries": {
+    "zh": "通过配置的 OpenAI 或 Anthropic 兼容视觉 API 识别本地图片中的文字，并返回置信度与文本框坐标。",
+    "en": "Recognizes text in local images through configured OpenAI- or Anthropic-compatible vision APIs and returns confidence scores with bounding-box coordinates."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads PNG, JPEG, GIF, and WebP images from absolute or workspace-relative paths",
+      "Sends image data to configured OpenAI-compatible or Anthropic-compatible vision APIs",
+      "Stores API configuration including an API key in local settings",
+      "Invokes the local curl process for HTTP requests",
+      "Provides OCR text, confidence values, and pixel or percentage bounding boxes"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_network_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Reads PNG, JPEG, GIF, and WebP images from absolute or workspace-relative paths",
+      "Sends image data to configured OpenAI-compatible or Anthropic-compatible vision APIs",
+      "Stores API configuration including an API key in local settings",
+      "Invokes the local curl process for HTTP requests",
+      "Provides OCR text, confidence values, and pixel or percentage bounding boxes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:19.852Z",
+  "repositoryCommitSha": "bc9b3fdf53549e8f11e937cd27830c207a482dcd",
+  "evidenceHash": "5c1ce40f96733716d966612916c827ce3338565d7ab4997cc06b1de56520bbc3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "af531344032a2616de0b31d5220da7d057a7fc9bc6009d547a755d6d4c0ecfb5",
+  "shadowMode": false
+}

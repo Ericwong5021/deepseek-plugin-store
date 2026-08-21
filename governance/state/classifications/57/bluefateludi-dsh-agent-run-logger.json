@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "monitoring",
+    "data",
+    "visualization",
+    "file",
+    "cli",
+    "debugging"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local agent observability plugin that records session execution traces and provides a loopback-only viewer for timings, events, failures, token usage, and related diagnostics.",
+  "summaries": {
+    "zh": "记录智能体会话、模型步骤和工具调用的本地 JSONL 追踪数据，并通过仅限本机访问的查看器展示执行时序与诊断信息。",
+    "en": "Records local JSONL traces for agent sessions, model steps, and tool calls, then presents timing and diagnostic details in a loopback-only viewer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Records agent session, model, tool, timing, outcome, and token usage events to local JSONL files",
+      "Provides a local read-only trace viewer over loopback HTTP",
+      "Can optionally capture prompts, replies, tool arguments, and tool results with redaction and truncation",
+      "Can delete old regular trace files when retention is explicitly configured"
+    ],
+    "reasons": [
+      {
+        "code": "local_trace_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_content_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_viewer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "retention_deletion",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Records agent session, model, tool, timing, outcome, and token usage events to local JSONL files",
+      "Provides a local read-only trace viewer over loopback HTTP",
+      "Can optionally capture prompts, replies, tool arguments, and tool results with redaction and truncation",
+      "Can delete old regular trace files when retention is explicitly configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:05:10.190Z",
+  "repositoryCommitSha": "7c94a077fcfb8b4fbf86768fa7aad2533b627d22",
+  "evidenceHash": "8d15b3372163725a4237a9efb47a965470cbbc2b7691ee32e6835d197d4d789e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7618e679cfb33341797c0448d6d9ecf6d617f175df631a9a9d4c7876087bf8df",
+  "shadowMode": false
+}

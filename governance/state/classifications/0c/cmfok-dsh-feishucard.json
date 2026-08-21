@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Feishu/Lark integration bridge that connects chats to dedicated DeepSeek Harness agent sessions, supports streaming reply cards and tool-call approvals, and manages persistent sessions and long-lived connections.",
+  "summaries": {
+    "zh": "将飞书聊天接入 DeepSeek Harness 智能体会话，并提供流式回复卡片、工具调用审批及会话管理。",
+    "en": "Connects Feishu chats to dedicated DeepSeek Harness agent sessions with streaming reply cards, tool-call approvals, and session management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Feishu via an official WebSocket SDK",
+      "Receives Feishu messages and routes them to DeepSeek Harness agent sessions",
+      "Sends streaming cards, text replies, reactions, and proactive agent messages to Feishu",
+      "Persists per-chat session state and configuration on the local filesystem",
+      "Runs helper subprocesses with automatic restart and reconnect behavior",
+      "Presents approval cards that submit allow or reject decisions for tool calls"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_session_routing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "interactive_tool_approval",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to Feishu via an official WebSocket SDK",
+      "Receives Feishu messages and routes them to DeepSeek Harness agent sessions",
+      "Sends streaming cards, text replies, reactions, and proactive agent messages to Feishu",
+      "Persists per-chat session state and configuration on the local filesystem",
+      "Runs helper subprocesses with automatic restart and reconnect behavior",
+      "Presents approval cards that submit allow or reject decisions for tool calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:08:35.513Z",
+  "repositoryCommitSha": "5c800e5ac65909a24e6e1690105cf4e392d79ac4",
+  "evidenceHash": "caaa38aa3e417bc05245f06f9920ab5218d726a3c7b25f9f890ebedcb405da9a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "12bab9eedee65c006902ac562c605f0eee0cacfe995c34b47c690afccce845fe",
+  "shadowMode": false
+}

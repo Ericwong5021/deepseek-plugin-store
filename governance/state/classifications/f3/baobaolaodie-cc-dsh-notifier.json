@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "desktop",
+    "agent",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Windows notification plugin that alerts users when Claude Code or DeepSeek Harness sessions need attention and supports click-to-return window activation.",
+  "summaries": {
+    "zh": "为 Claude Code 和 DeepSeek Harness 会话提供 Windows 原生通知，并在点击通知时返回对应会话窗口。",
+    "en": "Provides native Windows notifications for Claude Code and DeepSeek Harness sessions, with click-to-return activation for the associated session window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays native Windows toast notifications for session events",
+      "Receives Claude Code hook and DeepSeek Harness session events",
+      "Suppresses notifications based on session window focus",
+      "Activates the associated session window when a notification is clicked",
+      "Runs a local daemon and communicates over localhost HTTP",
+      "Writes local configuration and injects Claude Code hooks during installation"
+    ],
+    "reasons": [
+      {
+        "code": "local_desktop_notification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "hook_event_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "window_activation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_daemon_http",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_and_hook_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Displays native Windows toast notifications for session events",
+      "Receives Claude Code hook and DeepSeek Harness session events",
+      "Suppresses notifications based on session window focus",
+      "Activates the associated session window when a notification is clicked",
+      "Runs a local daemon and communicates over localhost HTTP",
+      "Writes local configuration and injects Claude Code hooks during installation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:35.153Z",
+  "repositoryCommitSha": "20909f1a3d842ae89d78e237d96d561ca708625d",
+  "evidenceHash": "f56f1636d326ab417625cb4a5705ca918b798b6f16f6bdf5f3e22d14965ac08b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1250ce3e209577feb75d6ef376a12b814fb3e7d12642c6b339495b2c41aee619",
+  "shadowMode": false
+}

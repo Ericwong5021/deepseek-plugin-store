@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "chat",
+    "context",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates workspace session organization by reading visible session content, classifying sessions, renaming titles into Category｜Topic format, and reporting archive suggestions without archiving, deleting, or editing content.",
+  "summaries": {
+    "zh": "通过读取会话内容对工作区会话进行分类，将可见会话重命名为“类别｜主题”格式，并报告归档建议。",
+    "en": "Organizes workspace sessions by reading their content, classifying them, renaming visible sessions as Category｜Topic, and reporting archive suggestions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Lists visible workspaces and sessions through a local RPC interface",
+      "Reads session history to classify sessions",
+      "Renames visible session titles",
+      "Reports archive, rename, and judgment suggestions",
+      "Uses helper shell and Python scripts for session processing"
+    ],
+    "reasons": [
+      {
+        "code": "local_rpc_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_title_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_content_reading",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Lists visible workspaces and sessions through a local RPC interface",
+      "Reads session history to classify sessions",
+      "Renames visible session titles",
+      "Reports archive, rename, and judgment suggestions",
+      "Uses helper shell and Python scripts for session processing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:03.109Z",
+  "repositoryCommitSha": "b99ccf2b74293ba20c1c9215e74710673fa815de",
+  "evidenceHash": "215549fbc8e0b449a7f75775124f3425bbd4e8383b02a892805434f34d5bd914",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8b794b15202a68a4134c4bea18973ed91645382fc519c26ed5a1d1425e739516",
+  "shadowMode": false
+}

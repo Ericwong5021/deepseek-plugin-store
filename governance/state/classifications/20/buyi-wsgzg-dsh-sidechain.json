@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "context",
+    "workflow",
+    "ui",
+    "layout",
+    "image",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH plugin for creating isolated one-shot or persistent forked subagent conversations, with inherited context, tool execution, persistent logs, and an integrated side panel; its primary user-facing purpose is agent orchestration.",
+  "summaries": {
+    "zh": "在不中断主会话的情况下创建一次性或可持续的隔离侧会话，并通过侧栏查看其对话、上下文和工具活动。",
+    "en": "Create isolated one-shot or persistent side sessions without interrupting the main conversation, and view their messages, context, and tool activity in a side panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates one-shot and persistent forked subagent sessions",
+      "Inherits completed parent-session turns as reference context",
+      "Displays subagent messages, reasoning, tool activity, and results in a side panel",
+      "Persists child-session history across DSH restarts",
+      "Can forward image attachments to side sessions",
+      "May invoke configured subagent tools, with an optional read-only tool allow-list"
+    ],
+    "reasons": [
+      {
+        "code": "subagent_orchestration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_invocation_in_child_sessions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_session_logs",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates one-shot and persistent forked subagent sessions",
+      "Inherits completed parent-session turns as reference context",
+      "Displays subagent messages, reasoning, tool activity, and results in a side panel",
+      "Persists child-session history across DSH restarts",
+      "Can forward image attachments to side sessions",
+      "May invoke configured subagent tools, with an optional read-only tool allow-list"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:05:52.124Z",
+  "repositoryCommitSha": "b7fcacf9d45167c3b30dca294ef00440db2f364e",
+  "evidenceHash": "37cb4474eeeb362e89108f75116ff0e21764566a438a2598725e7f9c1db6772e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1e348dea176bf3b8f4f85e689fdc8df70f755aa5d9b4b478e21237efbcb512d0",
+  "shadowMode": false
+}

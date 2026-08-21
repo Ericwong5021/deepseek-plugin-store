@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "context",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An orchestration plugin that uses a separately configured reviewer model to inspect primary agent turns and inject severity-ranked advisory notes into web or terminal sessions.",
+  "summaries": {
+    "zh": "为对话会话接入独立的审查模型，观察主代理每轮内容并注入分级建议。",
+    "en": "Adds an independently configured reviewer model that observes each primary agent turn and injects severity-ranked advisory notes into the session."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Makes independent model calls using a configured provider and model",
+      "Reads primary conversation transcript deltas for review",
+      "Injects advisory messages and steer events into the active session",
+      "Provides web and terminal configuration and session controls"
+    ],
+    "reasons": [
+      {
+        "code": "transcript_to_external_model",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_message_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configured_provider_model_dependency",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Makes independent model calls using a configured provider and model",
+      "Reads primary conversation transcript deltas for review",
+      "Injects advisory messages and steer events into the active session",
+      "Provides web and terminal configuration and session controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:05:43.038Z",
+  "repositoryCommitSha": "82d04b625b05e7aff2b94586623924577b231e35",
+  "evidenceHash": "b477f0394f77fcf89d2d2fd9f6cf721dcd989bac14dc4c2c51f71bf16d018946",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ad0303b7047d669a5e1a400b9c312f3b7628dff25911816554d4bfa8a36b00e5",
+  "shadowMode": false
+}

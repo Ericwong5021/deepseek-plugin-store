@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that monitors DeepSeek account balance and calculates current-session usage costs using the official balance API and session logs, then displays the results in the web interface.",
+  "summaries": {
+    "zh": "在 DSH Web 界面中实时显示 DeepSeek 账户余额，并根据会话用量计算和展示本次会话消费金额。",
+    "en": "Displays the DeepSeek account balance in the DSH web interface and calculates and shows the current session’s estimated cost from session usage."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Resolves the DEEPSEEK_API_KEY credential from the host credential sources",
+      "Calls the DeepSeek balance API through a host subprocess",
+      "Reads session logs to aggregate model token usage",
+      "Exposes balance and usage data through a local web endpoint",
+      "Displays and refreshes account balance and session cost data in the web interface"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session-data-read",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Resolves the DEEPSEEK_API_KEY credential from the host credential sources",
+      "Calls the DeepSeek balance API through a host subprocess",
+      "Reads session logs to aggregate model token usage",
+      "Exposes balance and usage data through a local web endpoint",
+      "Displays and refreshes account balance and session cost data in the web interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:08:32.872Z",
+  "repositoryCommitSha": "0f15218466ee61cbfab831b6eda0bfcf6f5514a1",
+  "evidenceHash": "2745d21dbcc01d3c00cff1a3870b6a1251ad1fe7950c7b44e8bc1613549cf7d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5f91a5786327bb23b5284885da57b537b60486bc28675047b36f509a983387d7",
+  "shadowMode": false
+}

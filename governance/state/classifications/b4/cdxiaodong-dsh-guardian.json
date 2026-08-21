@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "tool",
+    "terminal",
+    "file",
+    "monitoring",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Runtime guard for DeepSeek Harness agents that reviews tool calls and file paths, detects several hazardous patterns, blocks or logs risky operations, and supports human approval for selected actions.",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness 智能体的运行时安全护栏，在工具调用和文件访问前检测危险命令、敏感信息、网络目标及提示注入，并按规则拦截、记录或请求人工确认。",
+    "en": "A runtime safety guard for DeepSeek Harness agents that checks tool calls and file access for hazardous commands, sensitive data, network targets, and prompt injection before allowing, logging, blocking, or requesting approval."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts agent tool calls before execution",
+      "Detects dangerous commands, credential access, secrets, SSRF targets, prompt injection, and tool poisoning patterns",
+      "Validates file paths against configured allowed roots",
+      "Blocks or logs risky operations and can request external human approval",
+      "Provides an audit log of reviewed operations"
+    ],
+    "reasons": [
+      {
+        "code": "agent_tool_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sensitive_data_and_network_detection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_path_sandboxing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Intercepts agent tool calls before execution",
+      "Detects dangerous commands, credential access, secrets, SSRF targets, prompt injection, and tool poisoning patterns",
+      "Validates file paths against configured allowed roots",
+      "Blocks or logs risky operations and can request external human approval",
+      "Provides an audit log of reviewed operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:30.695Z",
+  "repositoryCommitSha": "c667e06686a7ef67ed79df6502e18aedf8a8319d",
+  "evidenceHash": "e48df591ab94101cc3633f785d0519a19c58af01a03dcb29563a09c7d66a0638",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e50561319a4e8f197e65119fb67b667613035fb291e5e038614ad0b1dbae508a",
+  "shadowMode": false
+}

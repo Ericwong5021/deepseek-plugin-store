@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "monitoring",
+    "tool",
+    "api",
+    "cli",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "PromptWall is a local DeepSeek Harness policy plugin that inspects tool output for prompt-injection patterns and controls credential-like data sent to network-capable tools.",
+  "summaries": {
+    "zh": "PromptWall 是一个用于 DeepSeek Harness 的本地策略插件，可检查工具输出中的提示注入内容，并控制疑似凭据发送到具备网络能力的工具。",
+    "en": "PromptWall is a local DeepSeek Harness policy plugin that checks tool outputs for suspected prompt injection and controls credential-like data sent to network-capable tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Inspects tool outputs before they are presented to the model",
+      "Detects and quarantines suspected prompt-injection content",
+      "Scans and redacts credential-like values",
+      "Requests approval or denies secret-like arguments sent to network-capable tools",
+      "Provides a model-callable scan tool, CLI, and TypeScript API"
+    ],
+    "reasons": [
+      {
+        "code": "agent_boundary_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_egress_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "untrusted_content_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Inspects tool outputs before they are presented to the model",
+      "Detects and quarantines suspected prompt-injection content",
+      "Scans and redacts credential-like values",
+      "Requests approval or denies secret-like arguments sent to network-capable tools",
+      "Provides a model-callable scan tool, CLI, and TypeScript API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:33.413Z",
+  "repositoryCommitSha": "a6f114c782f006933d94b8bcce85fd3c6903a347",
+  "evidenceHash": "bfd5f3122972fdbca91d51c8aabc118bda053fcb3b6d9db5b2016566849c1885",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a7850509cc0044b57df28a6d79d72dca4bdb3f2a0f06abc57ac4dcbb2e075de3",
+  "shadowMode": false
+}

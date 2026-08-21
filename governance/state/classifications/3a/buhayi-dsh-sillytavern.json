@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "file",
+    "chat",
+    "cli",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A SillyTavern integration that manages character cards, lorebook entries, and generation presets, then applies them as persistent agent context and request settings through slash commands.",
+  "summaries": {
+    "zh": "将 SillyTavern 的角色卡、世界书和生成预设导入 DeepSeek Harness，并通过斜杠命令管理其提示词上下文与请求参数。",
+    "en": "Imports SillyTavern character cards, lorebooks, and generation presets into DeepSeek Harness, managing their prompt context and request parameters through slash commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads character card and lorebook JSON or PNG files from user-specified paths",
+      "Persists plugin state containing character cards, lorebook entries, and presets to a local JSON file",
+      "Injects character and lorebook content into agent prompts and runtime context",
+      "Overrides selected agent request sampling parameters from loaded presets",
+      "Provides slash commands for loading, clearing, adding, and removing configuration data"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_parameter_override",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads character card and lorebook JSON or PNG files from user-specified paths",
+      "Persists plugin state containing character cards, lorebook entries, and presets to a local JSON file",
+      "Injects character and lorebook content into agent prompts and runtime context",
+      "Overrides selected agent request sampling parameters from loaded presets",
+      "Provides slash commands for loading, clearing, adding, and removing configuration data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:05:46.534Z",
+  "repositoryCommitSha": "ec53571e30e019fb70aed5618aed96e3ddb2d5c7",
+  "evidenceHash": "dbf4587b4881b96cb6a51e0d7cae85393233328828d6ecc1f3d270162d863ee4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f8eed252241d0d914ebfea7f2eaeb711faa834f4439432008674bb48a019334e",
+  "shadowMode": false
+}

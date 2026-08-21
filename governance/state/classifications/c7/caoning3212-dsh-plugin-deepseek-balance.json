@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a web plugin that retrieves and displays the configured DeepSeek account balance, with user-triggered refresh and automatic hiding when unsupported or unavailable.",
+  "summaries": {
+    "zh": "在 DSH Web 会话统计栏显示 DeepSeek 官方账户余额，并支持点击刷新。",
+    "en": "Displays the DeepSeek official account balance in the DSH Web conversation statistics bar with click-to-refresh support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the configured DeepSeek API key through the platform credential service",
+      "Calls the DeepSeek official /user/balance endpoint",
+      "Displays the returned account balance in the web interface",
+      "Provides a user-triggered balance refresh"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_balance_display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DeepSeek API key through the platform credential service",
+      "Calls the DeepSeek official /user/balance endpoint",
+      "Displays the returned account balance in the web interface",
+      "Provides a user-triggered balance refresh"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:05:57.443Z",
+  "repositoryCommitSha": "1d77c5c320a4ae490a04a38af33024ead0091c52",
+  "evidenceHash": "3be40122b2dbbeb319871f21e1c0b4fac6f2f3664b0a48ce0f7dc6611e35eb5b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6c164ad47e56a6478411520199441c62a1215d88b71d2da879c260f191752e32",
+  "shadowMode": false
+}

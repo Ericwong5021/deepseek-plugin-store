@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "chat",
+    "ui",
+    "layout",
+    "workflow",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness web-interface plugin that adds in-place prompt editing, answer regeneration, conversation version paging, tree forking, sidebar organization, and session deletion; the README states that two host source patches are required for full functionality.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 网页界面提供原位编辑提问、重新生成回复、对话版本翻页、整棵对话树分支及会话管理功能。",
+    "en": "Adds in-place prompt editing, answer regeneration, conversation version paging, whole-tree branching, and session management to the DeepSeek Harness web interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Edits user messages and resends them",
+      "Regenerates assistant replies through session forks",
+      "Creates and navigates conversation-version forks",
+      "Copies conversation trees into independent sessions",
+      "Stores version metadata in localStorage",
+      "Deletes conversation sessions and their on-disk logs",
+      "Applies source patches to the host application"
+    ],
+    "reasons": [
+      {
+        "code": "destructive_session_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_source_modification_required",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_forking_and_local_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Edits user messages and resends them",
+      "Regenerates assistant replies through session forks",
+      "Creates and navigates conversation-version forks",
+      "Copies conversation trees into independent sessions",
+      "Stores version metadata in localStorage",
+      "Deletes conversation sessions and their on-disk logs",
+      "Applies source patches to the host application"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:08:31.186Z",
+  "repositoryCommitSha": "365c7077b2c0125c9bbd8691ec7fbb5b8e8aa268",
+  "evidenceHash": "cc1e45c3915041402bcb76cc4340c9b912b6e8c66375f89bcef297c6d048fee7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0ae9f5ded1b840d77b49ede255e5a5c8993047f522c436e2f192d99658c438de",
+  "shadowMode": false
+}
