@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "data",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a plugin that reduces model context usage by curating long successful tool outputs and optionally spilling complete results to local files for later retrieval.",
+  "summaries": {
+    "zh": "在工具结果进入模型上下文前筛选长文本，保留关键行并可将完整输出写入本地文件供后续查看。",
+    "en": "Curates long text results from tools before they enter the model context, preserving key lines and optionally saving the complete output locally for later inspection."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "intercepts successful text-producing tool results",
+      "curates long tool output by retaining head, tail, and matching lines",
+      "writes complete output to local spill files when enabled",
+      "replaces model-facing tool content with the curated result"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_result_transformation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "intercepts successful text-producing tool results",
+      "curates long tool output by retaining head, tail, and matching lines",
+      "writes complete output to local spill files when enabled",
+      "replaces model-facing tool content with the curated result"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:57.380Z",
+  "repositoryCommitSha": "596361966226a89c2361ac0250b41f6541ce9ea5",
+  "evidenceHash": "c7b17b4ead8d306d309100a31fef0a8d1ddd67fc583c20fee896440c5198a726",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7688a96852c5508f0712b00b729e47cdda9604e118fa746de7b04e435fee2465",
+  "shadowMode": false
+}

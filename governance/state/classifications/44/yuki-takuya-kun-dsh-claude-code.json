@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "context",
+    "integration",
+    "memory",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH integration that registers Claude Code as an alternate agent engine, routes sessions to it, streams execution trajectories, persists sessions, and bridges tool permissions and user prompts.",
+  "summaries": {
+    "zh": "将 Claude Code 接入 DSH 作为可选智能体引擎，并实时展示执行轨迹、上下文用量及工具交互。",
+    "en": "Integrates Claude Code into DSH as an optional agent engine with live execution traces, context usage, and tool interactions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers a Claude Code engine for DSH session routing",
+      "Invokes the Claude Code executable or SDK for agent turns",
+      "Streams assistant, thinking, tool-call, and tool-result events into DSH",
+      "Persists Claude session identifiers for conversation continuation",
+      "Bridges workspace permissions and user questions to DSH approval and selection interfaces",
+      "Reports token usage and context-window information",
+      "Can trace Claude Code subagents as read-only DSH child sessions"
+    ],
+    "reasons": [
+      {
+        "code": "external_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_write_and_permission_bridge",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Registers a Claude Code engine for DSH session routing",
+      "Invokes the Claude Code executable or SDK for agent turns",
+      "Streams assistant, thinking, tool-call, and tool-result events into DSH",
+      "Persists Claude session identifiers for conversation continuation",
+      "Bridges workspace permissions and user questions to DSH approval and selection interfaces",
+      "Reports token usage and context-window information",
+      "Can trace Claude Code subagents as read-only DSH child sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:04.199Z",
+  "repositoryCommitSha": "8cf20f928b1ce881fad95e78049fccb84d60bda8",
+  "evidenceHash": "0642fd82b89957eab58965e8b63127a44b228c40ea46841ca48637cba0e4d597",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f1bd217e80d9ee4db0bbfe20f099234e9c74d3b0f0562baa6ebe37755378dd1d",
+  "shadowMode": false
+}

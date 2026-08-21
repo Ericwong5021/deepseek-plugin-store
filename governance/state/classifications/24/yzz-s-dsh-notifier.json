@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "desktop",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness host plugin that notifies users when top-level tasks finish or when approval or manual input is required, without changing the approval flow.",
+  "summaries": {
+    "zh": "当 DeepSeek Harness 任务完成或需要人工确认、输入时发送跨平台原生系统通知的主机插件。",
+    "en": "A DeepSeek Harness host plugin that sends cross-platform native system notifications when tasks finish or manual approval or input is required."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "sends native operating-system notifications",
+      "monitors task completion and approval-request events",
+      "invokes platform notification commands through subprocess",
+      "fetches a public CDN icon on Windows notifications",
+      "registers a Windows per-user AppUserModelID"
+    ],
+    "reasons": [
+      {
+        "code": "os_notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "public_cdn_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "windows_user_registry_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "sends native operating-system notifications",
+      "monitors task completion and approval-request events",
+      "invokes platform notification commands through subprocess",
+      "fetches a public CDN icon on Windows notifications",
+      "registers a Windows per-user AppUserModelID"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:32.465Z",
+  "repositoryCommitSha": "1979ea18ed4ac20591db1852f7c1a6e198f79cf2",
+  "evidenceHash": "cca3e010fcf32e94aca0fb2eb3864a990a675de57df7d507f699afa24dbb30f5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "71116fe44bb6cf973b066d61fb7867c2576626e30548fb428264b6c4b141e05e",
+  "shadowMode": false
+}

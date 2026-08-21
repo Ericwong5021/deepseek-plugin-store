@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A memory and context plugin that probes the local Windows environment, persists environment and session summaries across sessions, and injects a bounded profile into system prompts.",
+  "summaries": {
+    "zh": "该插件探测本地环境并持久化跨会话的环境与会话摘要，再将有限摘要注入系统提示以提供上下文。",
+    "en": "This plugin probes the local environment, persists environment and session summaries across sessions, and injects a bounded profile into system prompts for added context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Probes selected local tools, paths, network connectivity, and disk I/O",
+      "Persists environment and session statistics in local JSON storage",
+      "Collects tool-call and session timing, error, and token metadata",
+      "Injects a bounded environment summary into each system prompt",
+      "Provides an env_profile query tool for stored profile data"
+    ],
+    "reasons": [
+      {
+        "code": "local_environment_probing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_session_and_environment_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_prompt_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Probes selected local tools, paths, network connectivity, and disk I/O",
+      "Persists environment and session statistics in local JSON storage",
+      "Collects tool-call and session timing, error, and token metadata",
+      "Injects a bounded environment summary into each system prompt",
+      "Provides an env_profile query tool for stored profile data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:25.441Z",
+  "repositoryCommitSha": "a3b589208906e97701b1fa111d5080bb8e1463d3",
+  "evidenceHash": "4d57ae3cbf9bd9460736c71967ba62da0f2a75a5c7d90040a572e16503fe2f4c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9169c000ff402612549cff2925da22dfdd44e70425ac351d19bccc71c8317636",
+  "shadowMode": false
+}

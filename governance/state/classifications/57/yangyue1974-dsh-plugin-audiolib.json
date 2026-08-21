@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "api",
+    "desktop",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "An ambient soundtrack plugin that requests tracks from AudioLib.ai and controls local audio playback according to agent session state, with explicit model tools for play, stop, and status.",
+  "summaries": {
+    "zh": "根据智能体会话状态从 AudioLib.ai 获取环境音乐，并通过本地播放器进行播放控制。",
+    "en": "Provides ambient soundtrack playback from AudioLib.ai, adapting local audio to the agent’s session state with controls for play, stop, and status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls the AudioLib.ai API to request audio tracks",
+      "Plays audio through a configured local player such as mpv, ffplay, or afplay",
+      "Responds to session turn events to select ambient or working-state playback",
+      "Exposes music_play, music_stop, and music_status model tools",
+      "Uses a configured API credential and may download tracks to temporary files for file-only players"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_audio_playback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_tool_registration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "temporary_audio_file_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls the AudioLib.ai API to request audio tracks",
+      "Plays audio through a configured local player such as mpv, ffplay, or afplay",
+      "Responds to session turn events to select ambient or working-state playback",
+      "Exposes music_play, music_stop, and music_status model tools",
+      "Uses a configured API credential and may download tracks to temporary files for file-only players"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:45.216Z",
+  "repositoryCommitSha": "bb9a037bd8c5c7706214a8cc4359dbd219642657",
+  "evidenceHash": "024c369af29d3e5b9c4caf9247bb66212cedd34d7e96106c66ee7bbb5dbe27b7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "200fd3dea4042c5a096696b7e91619ded012a2bf10feeee8fc31bda6b657c55a",
+  "shadowMode": false
+}

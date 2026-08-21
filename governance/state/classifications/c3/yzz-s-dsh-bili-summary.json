@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "api",
+    "data",
+    "file",
+    "image",
+    "integration",
+    "tool",
+    "video"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly describes a model tool that retrieves Bilibili video metadata and subtitles, optionally extracts representative images, stores related files locally, and returns structured material for agent-generated summaries.",
+  "summaries": {
+    "zh": "从哔哩哔哩视频获取元数据和字幕时间轴，并可选提取封面与代表帧供智能体生成带时间点的结构化总结。",
+    "en": "Fetches Bilibili video metadata and subtitle timelines, with optional cover and representative frame extraction for agent-generated summaries with timestamp links."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Fetches Bilibili video metadata and subtitle data over the network",
+      "Accepts an optional Bilibili cookie for authenticated or risk-controlled requests",
+      "Extracts optional video frames and cover images",
+      "Writes metadata, subtitles, cached data, and images to a configured local output directory",
+      "Registers the bili_summary model tool for agent use"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_cookie_header",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_write_outside_session_sandbox",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_decoding_and_frame_extraction",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Fetches Bilibili video metadata and subtitle data over the network",
+      "Accepts an optional Bilibili cookie for authenticated or risk-controlled requests",
+      "Extracts optional video frames and cover images",
+      "Writes metadata, subtitles, cached data, and images to a configured local output directory",
+      "Registers the bili_summary model tool for agent use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:33.949Z",
+  "repositoryCommitSha": "81b7a0e2991e311b74de22b5414dcdbdac5648aa",
+  "evidenceHash": "2d500d4099f0f459121b4b402ea4d367c7c392143f80e16e7f43054a406ab86f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ef16bbad447ffa43c0491965b920630bd72be2dba66684fef8cc8886ba750bb0",
+  "shadowMode": false
+}

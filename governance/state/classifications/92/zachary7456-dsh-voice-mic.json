@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "browser",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a voice-input plugin that records microphone audio, performs speech-to-text through browser, local, or cloud engines, and inserts the transcription into the input field without automatically sending it.",
+  "summaries": {
+    "zh": "通过麦克风录音并使用浏览器、本地离线模型或兼容 OpenAI 的云端 ASR 服务将语音实时转写到输入框。",
+    "en": "Records microphone audio and transcribes it into the input field in real time using browser speech recognition, local offline models, or an OpenAI-compatible cloud ASR service."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures microphone audio in the browser",
+      "Transcribes speech using Web Speech API, local offline models, or an OpenAI-compatible cloud ASR API",
+      "Writes interim and final transcription into the application input field",
+      "Installs dependencies, downloads models, and manages a local ASR backend process",
+      "Sends recorded audio to a configured external transcription service when cloud mode is selected"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_audio_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_dependency_model_download_and_process_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_audio_transmission_and_api_key_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures microphone audio in the browser",
+      "Transcribes speech using Web Speech API, local offline models, or an OpenAI-compatible cloud ASR API",
+      "Writes interim and final transcription into the application input field",
+      "Installs dependencies, downloads models, and manages a local ASR backend process",
+      "Sends recorded audio to a configured external transcription service when cloud mode is selected"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:48.046Z",
+  "repositoryCommitSha": "7ccba7da25d0d482c3bbf2b9106dc8e2110c568c",
+  "evidenceHash": "217ddafcc4d4a491cb8316a015fd31a402d5517c82d1e214d5169ecf25d63bfe",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f7dff2e2eac29512e2fc6bfe1e4969c1e744ae50a43ab6e5548e313a8844c54e",
+  "shadowMode": false
+}

@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "automation",
+    "desktop",
+    "file",
+    "terminal",
+    "browser",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-focused settings plugin that creates desktop shortcuts for local server commands, generates launchers, opens the browser when the URL is ready, and attempts taskbar pinning.",
+  "summaries": {
+    "zh": "这是一个 Windows 桌面快捷方式插件，可从设置页为本地服务生成启动器、创建桌面图标并自动打开浏览器。",
+    "en": "A Windows desktop shortcut plugin that generates launchers for local services, creates desktop icons, and automatically opens the browser from the settings page."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs PowerShell on Windows",
+      "Generates .cmd launcher files",
+      "Creates desktop .lnk shortcuts",
+      "Starts local server commands",
+      "Opens the default browser",
+      "Attempts to pin shortcuts to the taskbar"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "taskbar_pin_attempt",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs PowerShell on Windows",
+      "Generates .cmd launcher files",
+      "Creates desktop .lnk shortcuts",
+      "Starts local server commands",
+      "Opens the default browser",
+      "Attempts to pin shortcuts to the taskbar"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:23.030Z",
+  "repositoryCommitSha": "9f2a98a819bc3809351f4591815794e8285f1283",
+  "evidenceHash": "8173f617c37daa1d82f5cc440acc4093971c1fc3e9579ad1c8ef88678e373d88",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ff55dc06722af20964642202cd71b9d1abb9170def4a2d653d2e071ebc1e547",
+  "shadowMode": false
+}

@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is locally aggregating and visualizing token usage through a persistent sidebar and Token Usage settings page.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中本地记录并可视化今日、昨日、累计及按提供商和模型划分的令牌使用量。",
+    "en": "A DeepSeek Harness plugin that locally records and visualizes token usage by time range, provider, and model."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads provider- and runtime-reported token usage records",
+      "Stores token accounting metadata locally in a plugin-owned SQLite database",
+      "Displays aggregated usage summaries and provider/model breakdowns in a sidebar and settings page",
+      "Performs local deduplication, historical recovery, and ledger migration"
+    ],
+    "reasons": [
+      {
+        "code": "local-data-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-persistent-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage-visualization",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads provider- and runtime-reported token usage records",
+      "Stores token accounting metadata locally in a plugin-owned SQLite database",
+      "Displays aggregated usage summaries and provider/model breakdowns in a sidebar and settings page",
+      "Performs local deduplication, historical recovery, and ledger migration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:30.785Z",
+  "repositoryCommitSha": "bcebd95cc494a0fa6aa59a71ed6bc6f621557c82",
+  "evidenceHash": "1e39122dd3dbe93b840f5fbebb375959011d584d6fe3e2670400c77c5a6ecd30",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b62461778026a501efff17a7e2f39066dd7b319d0a82bd7b30459ca579112c72",
+  "shadowMode": false
+}

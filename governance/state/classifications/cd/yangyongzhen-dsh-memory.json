@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "agent",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A long-term memory plugin that stores categorized global or project-scoped records locally, exposes memory management tools, and injects relevant memories into new agent sessions.",
+  "summaries": {
+    "zh": "用于将用户偏好、项目事实、会话摘要和可复用知识持久化到本地，并在新会话开始时注入相关记忆的长期记忆插件。",
+    "en": "A long-term memory plugin that persists preferences, project facts, session summaries, and reusable knowledge locally and injects relevant memories at the start of new sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persists user preferences, project facts, summaries, and reusable knowledge to local JSON files",
+      "Provides tools to read, search, write, and delete stored memories",
+      "Injects selected stored memories into the first agent step of new sessions"
+    ],
+    "reasons": [
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "memory_mutation_tools",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Persists user preferences, project facts, summaries, and reusable knowledge to local JSON files",
+      "Provides tools to read, search, write, and delete stored memories",
+      "Injects selected stored memories into the first agent step of new sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:40.814Z",
+  "repositoryCommitSha": "79d5bfa060c89df3e9a61d6d17472771d1336988",
+  "evidenceHash": "7935b3365271ace9346b3bd7054c5e7cdcd06b20fbaf300692ffa52553797a89",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "68b2f3ecd92459858a18d2a52483666d3b16a9b9355e32afff5c12488a8aeca1",
+  "shadowMode": false
+}

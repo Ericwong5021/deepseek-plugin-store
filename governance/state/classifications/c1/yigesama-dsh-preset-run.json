@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "workflow",
+    "planning",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README documents a host-plane preset_run tool that creates independent agent sessions, applies configured presets, executes supplied tasks, and returns the final response, making agent orchestration its primary purpose.",
+  "summaries": {
+    "zh": "通过指定的 Agent 预设创建一次性子会话，执行任务并返回最终文本结果。",
+    "en": "Creates a one-shot child agent session with a selected preset, runs a supplied task, and returns the final text result."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates one-shot child agent sessions using a selected preset",
+      "Executes caller-provided tasks through the child agent",
+      "Applies the deployment's configured model and available tools",
+      "Supports timeout and cancellation before disposing the child session"
+    ],
+    "reasons": [
+      {
+        "code": "child_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "inherited_permissions_and_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "caller_provided_task_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Creates one-shot child agent sessions using a selected preset",
+      "Executes caller-provided tasks through the child agent",
+      "Applies the deployment's configured model and available tools",
+      "Supports timeout and cancellation before disposing the child session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:17.749Z",
+  "repositoryCommitSha": "f866532128d2935a0ade72e6ad609a53ba0c38f6",
+  "evidenceHash": "50ce7c01ad7d63ac927f12ca786e60cd3e4dfa6936c1a8fe5f9c3e3ec0dc548f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6e2eaef443812a437b4e4ea2eb8c50143e501a180927a728aa396704d70192b2",
+  "shadowMode": false
+}

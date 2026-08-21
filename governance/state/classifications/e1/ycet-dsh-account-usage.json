@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "visualization",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "在 DSH 设置中提供账户页面，通过官方接口查看 DeepSeek 余额与用量及 OpenCode Go 配额，并以图表和进度信息呈现。",
+  "summaries": {
+    "zh": "在 DSH 设置面板中查看 DeepSeek 余额与用量统计以及 OpenCode Go 配额，并通过图表、明细表和进度条展示数据。",
+    "en": "Adds a DSH settings account page that retrieves DeepSeek balance and usage statistics and OpenCode Go quotas, presenting them with charts, detail tables, and progress indicators."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取本地凭据以访问 DeepSeek 和 OpenCode Go 用量接口",
+      "向 DeepSeek 和 OpenCode 官方端点发起账户余额、用量和配额请求",
+      "聚合并展示账户用量数据、图表和配额进度",
+      "在页面挂载期间定时刷新数据",
+      "提供打开本地 DSH 凭据文件和外部官网的入口"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-file-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "读取本地凭据以访问 DeepSeek 和 OpenCode Go 用量接口",
+      "向 DeepSeek 和 OpenCode 官方端点发起账户余额、用量和配额请求",
+      "聚合并展示账户用量数据、图表和配额进度",
+      "在页面挂载期间定时刷新数据",
+      "提供打开本地 DSH 凭据文件和外部官网的入口"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:59.673Z",
+  "repositoryCommitSha": "d22a5bdcb26a9dca961510d80eea43167244323b",
+  "evidenceHash": "201ede12d121b30de683c92c5c9369f99e23017d9192c571cc22c3355b290432",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "38079ddbba5cd4281ed401a2ec965e2f84562299cdf7c37554f20a549de01d19",
+  "shadowMode": false
+}

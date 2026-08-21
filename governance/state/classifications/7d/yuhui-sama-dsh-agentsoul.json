@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "chat",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "AgentSoul is primarily a local memory and context layer for DeepSeek Harness, providing persistent personality files, cross-session conversation memory, context injection, and optional LLM-based memory distillation.",
+  "summaries": {
+    "zh": "AgentSoul 为 DeepSeek Harness 提供本地人格文件、跨会话记忆、状态管理与上下文注入，并支持可选的记忆蒸馏。",
+    "en": "AgentSoul adds local personality files, cross-session memory, state management, context injection, and optional LLM-based memory distillation to DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores user and assistant text in local SQLite or JSON memory files",
+      "Injects configured personality, state, and memory into model context",
+      "Registers tools to inspect, search, distill, clear memory, and reload personality files",
+      "May call the Harness LLM or an optionally configured OpenAI-compatible HTTP endpoint for memory distillation"
+    ],
+    "reasons": [
+      {
+        "code": "local_persistent_conversation_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_and_optional_http_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_visible_memory_management_tools",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Stores user and assistant text in local SQLite or JSON memory files",
+      "Injects configured personality, state, and memory into model context",
+      "Registers tools to inspect, search, distill, clear memory, and reload personality files",
+      "May call the Harness LLM or an optionally configured OpenAI-compatible HTTP endpoint for memory distillation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:02.727Z",
+  "repositoryCommitSha": "9cea3cfabeb9bfe2d9595c72020deadf8d77cfea",
+  "evidenceHash": "f78cd838be5f93cb2bc0756dc2131b000998b360037ce2bdbeb0ac3fb7ac3d93",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1db1eb52b2c4a2c81cf70464c9b3202cc584bfa1ca01d9359361f9e1245c15bc",
+  "shadowMode": false
+}

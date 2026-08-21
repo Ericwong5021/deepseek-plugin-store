@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "memory",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH continuity plugin that resumes interrupted turns and restores sessions or subagents that were running at shutdown, with local state tracking and guarded runtime compatibility patches.",
+  "summaries": {
+    "zh": "为 DSH 提供中断对话续接，并在重启后恢复关机时仍在运行的会话和子智能体。",
+    "en": "Adds DSH continuity features for continuing interrupted conversations and restoring sessions and subagents that were running when the process stopped."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Resumes interrupted conversations from empty submissions",
+      "Tracks active sessions and subagents in local state files",
+      "Automatically restores recorded sessions and subagents after startup",
+      "Applies compatibility patches to DSH runtime packages",
+      "Writes local recovery diagnostics",
+      "Can issue new model requests during automatic restoration"
+    ],
+    "reasons": [
+      {
+        "code": "automatic_session_restoration_can_trigger_provider_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_compatibility_patching_modifies_installed_packages",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_session_identifiers_and_recovery_diagnostics_locally",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Resumes interrupted conversations from empty submissions",
+      "Tracks active sessions and subagents in local state files",
+      "Automatically restores recorded sessions and subagents after startup",
+      "Applies compatibility patches to DSH runtime packages",
+      "Writes local recovery diagnostics",
+      "Can issue new model requests during automatic restoration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:13.441Z",
+  "repositoryCommitSha": "bafcdd75a3ed648c2e71446d7a6585fe3727bb7a",
+  "evidenceHash": "851591ccb3b89438095d7b592ed3543b032af06f942717084a894a0e12462e15",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "59b6727eb4e17c7f83a02cf30182fe1f49afc05afa372e775545ba5eda3b8a16",
+  "shadowMode": false
+}

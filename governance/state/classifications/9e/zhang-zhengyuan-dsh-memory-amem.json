@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "api",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin for long-term agent memory that captures user messages, analyzes and retrieves notes, persists them locally, and reinjects relevant memories into future prompts.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供长期智能体记忆，自动记录、分析、检索并在后续对话中注入相关记忆。",
+    "en": "Provides DeepSeek Harness with long-term agent memory by recording, analyzing, retrieving, and reinserting relevant notes across conversations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures user messages from session events",
+      "Uses an LLM to extract keywords, context, and tags",
+      "Retrieves and injects stored memories into the system prompt",
+      "Persists memory notes as local JSON files",
+      "Exposes memory search, add, recent, and stats tools",
+      "Provides a memory service for other plugins"
+    ],
+    "reasons": [
+      {
+        "code": "user_content_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "llm_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Captures user messages from session events",
+      "Uses an LLM to extract keywords, context, and tags",
+      "Retrieves and injects stored memories into the system prompt",
+      "Persists memory notes as local JSON files",
+      "Exposes memory search, add, recent, and stats tools",
+      "Provides a memory service for other plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:15:14.641Z",
+  "repositoryCommitSha": "7ff37a6a23bb6ce27e87c7e6fb6d35bdf6d2a8f6",
+  "evidenceHash": "b3e0490530863477af752cf68328292c1d7b59898d4f6a1b7cff03c35e167486",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7eb8c2eee0970b1e08a1f4321df33fcfc2e30f9a302e63cd64d77b6c6edd054c",
+  "shadowMode": false
+}

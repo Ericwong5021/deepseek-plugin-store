@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "data",
+    "file",
+    "terminal",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin statically inspects existing AMDGPU code-object and ISA artifacts, exposing bounded metadata and instruction queries for debugging without compiling source or executing GPU code.",
+  "summaries": {
+    "zh": "该插件读取现有的 AMDGPU HSACO 或 ELF 文件，并以有界 JSON 提供代码对象元数据和指令集查询结果。",
+    "en": "This plugin reads existing AMDGPU HSACO or ELF artifacts and provides bounded JSON queries for code-object metadata and instruction information."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads regular HSACO or AMDGPU ELF files from the host",
+      "Invokes llvm-readelf and llvm-objdump as child processes",
+      "Extracts and returns normalized AMDGPU metadata and instruction information as bounded JSON"
+    ],
+    "reasons": [
+      {
+        "code": "host_local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "static_artifact_inspection_only",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads regular HSACO or AMDGPU ELF files from the host",
+      "Invokes llvm-readelf and llvm-objdump as child processes",
+      "Extracts and returns normalized AMDGPU metadata and instruction information as bounded JSON"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:58.439Z",
+  "repositoryCommitSha": "f0b504171367883a0338788e8e4937384d0913a5",
+  "evidenceHash": "3c57c11ecd3c0484176632f80405cfcf9f4fc3b4f1a26b2046063005c2ea3b23",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7f9bde3f9a11953d14f752bb6eda8eebd1c87e2cde6b0e58ab8749fae4f56062",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "api",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a browser-configured FTP server that shares a selected directory for network file listing and modification, with documented plaintext FTP and filesystem access risks.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中运行可配置的 FTP 文件服务器，通过浏览器面板管理共享目录、账户和服务状态。",
+    "en": "Runs a configurable FTP file server in DeepSeek Harness with a browser panel for managing shared directories, credentials, and service status."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts and manages a child-process FTP server",
+      "Exposes a configured directory for network file browsing, upload, download, rename, and deletion",
+      "Provides browser-based configuration and server status controls",
+      "Supports username/password or anonymous FTP access over unencrypted connections"
+    ],
+    "reasons": [
+      {
+        "code": "network_file_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_read_write_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext_credentials_and_data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Starts and manages a child-process FTP server",
+      "Exposes a configured directory for network file browsing, upload, download, rename, and deletion",
+      "Provides browser-based configuration and server status controls",
+      "Supports username/password or anonymous FTP access over unencrypted connections"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:23.580Z",
+  "repositoryCommitSha": "498a522f91dc18297e7f2084b498f5167d15a807",
+  "evidenceHash": "a2398d416ebc312d2fa6f749499ca3752195ecd6492fa5a1a6091f41dbf7bc3f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35d2d2cfebe501d3db5400b7f6212538d39414ca28f93f6921881085261537da",
+  "shadowMode": false
+}

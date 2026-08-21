@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness plugin that redacts credentials and other sensitive material from model-visible input, output, tool-call arguments, and related session surfaces using built-in and configurable replacement rules.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 的模型输入、输出、工具调用参数和相关会话内容中按规则替换敏感信息的插件。",
+    "en": "A DeepSeek Harness plugin that replaces sensitive information in model inputs, outputs, tool-call arguments, and related session content according to configured rules."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Redacts sensitive values from agent input streams",
+      "Redacts sensitive values from model output and tool-call argument streams",
+      "Applies built-in and configurable custom regex and exact-word replacement rules",
+      "Rewrites session-visible content while preserving original append-origin events in the durable log"
+    ],
+    "reasons": [
+      {
+        "code": "content_transformation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_pattern_matching",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_log_rewriting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Redacts sensitive values from agent input streams",
+      "Redacts sensitive values from model output and tool-call argument streams",
+      "Applies built-in and configurable custom regex and exact-word replacement rules",
+      "Rewrites session-visible content while preserving original append-origin events in the durable log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:15:08.939Z",
+  "repositoryCommitSha": "90af9464c980ce96e746f860c0e964121c74d1a2",
+  "evidenceHash": "1ecfb58ea51b8b78902c281dacaef6041fb68409444a6209630d5e96fb89f14a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f15a3ad817cd5bd80e9e731d9573130aa8f28cf724c257611661395a9b1a0198",
+  "shadowMode": false
+}

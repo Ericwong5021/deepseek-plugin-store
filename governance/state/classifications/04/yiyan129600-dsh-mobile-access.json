@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "api",
+    "integration",
+    "desktop",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A mobile access setup plugin for DeepSeek Harness that detects local and Tailscale connectivity, supports QR-based pairing, offers direct or HTTP/2 access modes, and provides an insecure-origin compatibility patch.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供移动端接入设置，包括局域网与 Tailscale 检测、离线二维码配对、直连或 HTTP/2 连接切换及兼容补丁。",
+    "en": "Provides DeepSeek Harness mobile access setup with LAN and Tailscale detection, offline QR pairing, direct or HTTP/2 connection switching, and a compatibility patch."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Detects Tailscale and LAN network information",
+      "Generates offline QR codes for mobile pairing",
+      "Creates, expires, registers, and revokes pairing tokens",
+      "Toggles Tailscale Serve HTTP/2 mode and probes reachability",
+      "Can inject a crypto.randomUUID compatibility polyfill into index.html",
+      "Provides firewall command guidance and may invoke Tailscale operations requiring user elevation"
+    ],
+    "reasons": [
+      {
+        "code": "network_access_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "pairing_token_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "elevated_system_command_guidance",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_asset_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Detects Tailscale and LAN network information",
+      "Generates offline QR codes for mobile pairing",
+      "Creates, expires, registers, and revokes pairing tokens",
+      "Toggles Tailscale Serve HTTP/2 mode and probes reachability",
+      "Can inject a crypto.randomUUID compatibility polyfill into index.html",
+      "Provides firewall command guidance and may invoke Tailscale operations requiring user elevation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:31.244Z",
+  "repositoryCommitSha": "6daac11eb5d24505370a07f48942d10b91c96a6b",
+  "evidenceHash": "b4bdf4a77bde2730991016f377b5031eeab76996b456819854940e1ebb8fb75f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "873c570b64bf5f02335706339baed1561356ddf0f981306e4fe2d805a01e5492",
+  "shadowMode": false
+}

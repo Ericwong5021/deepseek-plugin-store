@@ -1,16 +1,76 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "skill",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates DeepSeek Harness with DolphinDB by providing WebSocket connectivity, read-only query tools, approval-gated write execution, and bundled DolphinDB skills.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 集成到 DolphinDB，提供 WebSocket 连接、只读查询、经审批的写入执行以及一组 DolphinDB 技能。",
+    "en": "Integrates DeepSeek Harness with DolphinDB through WebSocket connectivity, read-only queries, approval-gated writes, and bundled DolphinDB skills."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to DolphinDB over WebSocket",
+      "Runs read-only DolphinDB scripts and SQL queries",
+      "Runs write and mutation scripts after an approval step",
+      "Provides bundled DolphinDB skills for data operations and domain workflows"
+    ],
+    "reasons": [
+      {
+        "code": "external_database_connection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "write_mutation_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to DolphinDB over WebSocket",
+      "Runs read-only DolphinDB scripts and SQL queries",
+      "Runs write and mutation scripts after an approval step",
+      "Provides bundled DolphinDB skills for data operations and domain workflows"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:10.183Z",
   "repositoryCommitSha": "86f7790e263e08ee5c226eca4427701d61e74280",
+  "evidenceHash": "0a6c4716c4ad287c5dff7f6ba9613fb6d5a95a437f0f79137a628557ae0dd574",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "6d3d46357bf3a3fcf930ac6d247b1ef9b02e5cc4e01fa9958f24b10c0c0d17a3",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T20:03:52.729Z",
-  "lastAttemptAt": "2026-08-21T20:03:52.729Z",
-  "nextRetryAt": "2026-08-22T20:03:52.729Z",
-  "retryable": true,
-  "error": "/chat/completions: 400 {\n  \"error\": {\n    \"message\": \"Invalid schema for response_format 'governance_classify_v2': In context=('properties', 'schemaVersion'), schema must have a 'type' key.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"text.format.schema\",\n    \"code\": \"invalid_json_schema\"\n  }\n}",
   "shadowMode": false
 }

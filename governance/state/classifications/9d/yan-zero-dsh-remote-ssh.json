@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "file",
+    "integration",
+    "api",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Provides transparent SSH-backed workspaces for DeepSeek Harness, routing filesystem, search, shell, terminal, subprocess, and background-task operations to configured POSIX remote hosts.",
+  "summaries": {
+    "zh": "通过 SSH 将远程 POSIX 主机连接为 DeepSeek Harness 工作区，并将文件、搜索、终端及命令执行操作路由到活动工作区。",
+    "en": "Connects POSIX hosts over SSH as transparent DeepSeek Harness workspaces and routes file, search, terminal, and command operations to the active workspace."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to configured SSH hosts",
+      "Routes file, search, shell, subprocess, terminal, and background-task operations to remote workspaces",
+      "Executes remote commands with the SSH account's permissions",
+      "Forwards a remote Harness backend over a persistent SSH connection",
+      "Writes and stores tool results in private runtime paths on the remote host",
+      "Opens remote files through compatible VS Code-based editors or local snapshots"
+    ],
+    "reasons": [
+      {
+        "code": "remote_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ssh_remote_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "broad_account_permissions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_backend_forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to configured SSH hosts",
+      "Routes file, search, shell, subprocess, terminal, and background-task operations to remote workspaces",
+      "Executes remote commands with the SSH account's permissions",
+      "Forwards a remote Harness backend over a persistent SSH connection",
+      "Writes and stores tool results in private runtime paths on the remote host",
+      "Opens remote files through compatible VS Code-based editors or local snapshots"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:34.841Z",
+  "repositoryCommitSha": "21d727cbe24fbae283196e5101adb3de2bdd9157",
+  "evidenceHash": "a16926e782e87fcbeee93bff8af713c0bf5c645a42b96d9f6c64f61066bab4da",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4b4a17da4097dcab8c675c3adf7207b7aba8e04bda4e0cc44ca6f59d8a3918a0",
+  "shadowMode": false
+}

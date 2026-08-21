@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "mcp",
+    "integration",
+    "automation",
+    "agent",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "An MCP-based integration that lets an agent inspect and edit open Synthesizer V Studio Pro projects through the official scripting API, with tuning tools, status controls, a panel, and bridge-script installation.",
+  "summaries": {
+    "zh": "通过官方脚本 API 和 MCP 将智能体连接到 Synthesizer V Studio Pro，用于检查工程并编辑音符、歌词、调音曲线及相关参数。",
+    "en": "Connects an agent to Synthesizer V Studio Pro through its official scripting API and MCP tools to inspect projects and edit notes, lyrics, tuning curves, and related parameters."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Synthesizer V Studio Pro through its official scripting API",
+      "Reads and edits open Synthesizer V projects, including notes, lyrics, automation curves, tuning attributes, selections, and playback state",
+      "Installs or removes bridge Lua scripts in Synthesizer V script directories",
+      "Uses local temporary-directory file IPC between the MCP runtime and Synthesizer V"
+    ],
+    "reasons": [
+      {
+        "code": "external_application_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_ipc_without_authentication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to Synthesizer V Studio Pro through its official scripting API",
+      "Reads and edits open Synthesizer V projects, including notes, lyrics, automation curves, tuning attributes, selections, and playback state",
+      "Installs or removes bridge Lua scripts in Synthesizer V script directories",
+      "Uses local temporary-directory file IPC between the MCP runtime and Synthesizer V"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:56.125Z",
+  "repositoryCommitSha": "e5e0b2d84394e9bcc0083220a781bcec9a027df6",
+  "evidenceHash": "5c954426558d2c388162b58aaa240f282ee7c17b43ea308a8d37e06b7777742e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7847fa004e47d5d8185b580564bf0a608c36292917ca189997f79b2be474a22d",
+  "shadowMode": false
+}
