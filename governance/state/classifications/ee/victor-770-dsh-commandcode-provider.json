@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "context",
+    "image",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh provider integration that connects chat and model selection to Command Code through its streaming endpoint, with API-key authentication, model discovery caching, reasoning options, and supported image input.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 连接到 Command Code，为聊天提供模型注册、流式生成、模型发现、推理选项和受支持的图像输入。",
+    "en": "Connects DeepSeek Harness to Command Code for chat with provider registration, streaming generation, model discovery, reasoning options, and supported image input."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Command Code streaming and model-catalog HTTP endpoints",
+      "Authenticates requests using a user-provided API key or configured local credential sources",
+      "Caches discovered model metadata on the local host",
+      "Forwards supported image inputs to the external model service",
+      "Registers a Command Code LLM provider and exposes related chat commands"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_cache_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_data_forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to Command Code streaming and model-catalog HTTP endpoints",
+      "Authenticates requests using a user-provided API key or configured local credential sources",
+      "Caches discovered model metadata on the local host",
+      "Forwards supported image inputs to the external model service",
+      "Registers a Command Code LLM provider and exposes related chat commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:43.387Z",
+  "repositoryCommitSha": "ab7ea8de054391c7bba9920e68d03dfaf8a40f21",
+  "evidenceHash": "7893aa8a2095c9c40cd1dace3c2c68883e28034656d3573dbed0115bd313d46c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2ec6e94506784af1271421e5c1d4492ed58e3af0803f5ed9389125525d19d285",
+  "shadowMode": false
+}

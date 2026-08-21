@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "terminal",
+    "notification",
+    "ui",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web-managed cron scheduler that persists task state, executes configured host shell commands, records logs, and emits in-application notifications; human review is warranted because shell execution is enabled by default without command confirmation or an allowlist.",
+  "summaries": {
+    "zh": "通过 Web 侧边栏管理基于 cron 的定时任务，支持执行主机 shell 命令、站内通知、任务持久化和执行日志。",
+    "en": "A web sidebar plugin for managing cron-scheduled tasks with host shell execution, in-app notifications, persistent task storage, and execution logs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Schedules tasks using five-field cron expressions",
+      "Executes configured shell commands on the host machine",
+      "Creates in-application notifications and execution logs",
+      "Provides a web sidebar for task management",
+      "Persists task definitions and logs in local storage"
+    ],
+    "reasons": [
+      {
+        "code": "host_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_task_and_log_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_automated_actions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Schedules tasks using five-field cron expressions",
+      "Executes configured shell commands on the host machine",
+      "Creates in-application notifications and execution logs",
+      "Provides a web sidebar for task management",
+      "Persists task definitions and logs in local storage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:19.022Z",
+  "repositoryCommitSha": "14ffb7ce101e84192c4994d852ef99283a24f6b0",
+  "evidenceHash": "a022b2b49a468c7d776ed535180065d04d25b96a848ffb938281a4c117956c77",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "450ad461ac61e28c334a45ff7587c74c99e7f1b9b19032aaf5184e67ca81e764",
+  "shadowMode": false
+}

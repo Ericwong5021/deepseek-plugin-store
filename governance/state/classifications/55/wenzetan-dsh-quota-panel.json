@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A web overlay widget that monitors configured AI-provider balances and quota usage through periodic API requests, with per-provider display settings and proxy configuration.",
+  "summaries": {
+    "zh": "在 DSH 网页界面中展示已配置 AI 服务商的余额、配额和使用窗口，并支持自动刷新及按服务商调整显示设置。",
+    "en": "A DSH web overlay that displays balances, quotas, and usage windows for configured AI providers with automatic refresh and per-provider display settings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads configured provider credentials on the host",
+      "Queries external provider quota and balance endpoints",
+      "Displays normalized quota and balance data in a web overlay",
+      "Stores display and refresh settings in browser localStorage",
+      "Supports user-configured HTTP or HTTPS proxy requests",
+      "Communicates between host and browser through a loopback RPC channel"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_settings_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured provider credentials on the host",
+      "Queries external provider quota and balance endpoints",
+      "Displays normalized quota and balance data in a web overlay",
+      "Stores display and refresh settings in browser localStorage",
+      "Supports user-configured HTTP or HTTPS proxy requests",
+      "Communicates between host and browser through a loopback RPC channel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:53.043Z",
+  "repositoryCommitSha": "bb79fe22eb24db4be05a3bb55bc864ed9fc899e6",
+  "evidenceHash": "7f89075b498986fe78ce9a051176531332504695be624bd041bb6bddfb040a24",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a0541c4f2a5b6bf7a667eeea07ef7bb69b01787a6c7084241802265427992e4c",
+  "shadowMode": false
+}

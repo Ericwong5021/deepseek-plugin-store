@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "memory",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DingTalk Stream channel plugin that exposes DeepSeek Harness agent sessions through private and group chats, including persistent sessions, access controls, approvals, and host-level tools.",
+  "summaries": {
+    "zh": "通过钉钉 Stream 长连接将私聊和群聊接入 DeepSeek Harness agent，并提供会话管理、访问控制与审批交互。",
+    "en": "Connects DingTalk private and group chats to DeepSeek Harness agent sessions through Stream mode with session management, access controls, and in-chat approvals."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to DingTalk through the official Stream WebSocket mode",
+      "Routes private and group chat messages to persistent host agent sessions",
+      "Supports sender and group allowlists plus in-chat approval responses",
+      "Allows the connected agent to use bash, read, write, edit, git, network, and skills according to host permissions",
+      "Maintains sessions across restarts and automatically reconnects after disconnection"
+    ],
+    "reasons": [
+      {
+        "code": "external_messaging_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_permission_passthrough",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_command_and_file_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to DingTalk through the official Stream WebSocket mode",
+      "Routes private and group chat messages to persistent host agent sessions",
+      "Supports sender and group allowlists plus in-chat approval responses",
+      "Allows the connected agent to use bash, read, write, edit, git, network, and skills according to host permissions",
+      "Maintains sessions across restarts and automatically reconnects after disconnection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:17.586Z",
+  "repositoryCommitSha": "ee4a098c6086241bca8a4f393d122f377f9f04a6",
+  "evidenceHash": "1cf3b35b42ed6b30b5b4326650802e19b67cdda917fc4bf51b98f3fac60ed4e1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7c814da6cc690c357daca8540f97780cb1e5585cf1f7c5c34b051e827156355a",
+  "shadowMode": false
+}

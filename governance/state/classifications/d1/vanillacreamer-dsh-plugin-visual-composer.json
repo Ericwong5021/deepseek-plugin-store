@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "ui",
+    "layout",
+    "api",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A local Web UI plugin that visualizes the active Cordis plugin tree and lets users review, edit, persist, and roll back plugin configuration changes.",
+  "summaries": {
+    "zh": "一个运行在 DeepSeek Harness Web 界面中的本地可视化工具，用于查看 Cordis 插件树、编排插件配置并预览、保存或回滚变更。",
+    "en": "A local Web UI tool for visualizing the Cordis plugin tree, composing plugin configuration changes, and previewing, saving, or rolling them back."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取当前 Profile 的 Cordis 插件树",
+      "在本机 Web 界面中创建和调整插件或 Group 草稿",
+      "编辑插件禁用状态与配置覆盖",
+      "写入和回滚当前 Profile 的 cordis.patch.yml",
+      "触发可用的 HMR 更新并创建配置备份"
+    ],
+    "reasons": [
+      {
+        "code": "modifies_runtime_plugin_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_and_rolls_back_profile_patch_file",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "high_privilege_local_configuration_interface",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "读取当前 Profile 的 Cordis 插件树",
+      "在本机 Web 界面中创建和调整插件或 Group 草稿",
+      "编辑插件禁用状态与配置覆盖",
+      "写入和回滚当前 Profile 的 cordis.patch.yml",
+      "触发可用的 HMR 更新并创建配置备份"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:33.357Z",
+  "repositoryCommitSha": "78ce825c5f5da264c709c4979b70654b1a3dac7d",
+  "evidenceHash": "2bf46a86be94bb8185e770ceeaf4db9fd640474efa0d63e1cd4ca9f6cc49c2e8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "34eef8436c973a8796d26f3b7a21ce6472411e85e5da5be93455493e8ba0cf52",
+  "shadowMode": false
+}

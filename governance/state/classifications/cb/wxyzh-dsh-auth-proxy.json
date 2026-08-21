@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A dsh web authentication reverse proxy that gates HTTP and WebSocket access with a static token, optional IP allowlisting, and configurable local or private-network listening.",
+  "summaries": {
+    "zh": "为 dsh web 提供带静态令牌登录页、会话 Cookie、IP 白名单和 HTTP/WebSocket 转发的鉴权反向代理。",
+    "en": "An authentication reverse proxy for dsh web that provides static-token login, session cookies, IP allowlisting, and HTTP/WebSocket forwarding."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Listens on a configurable local or private-network HTTP socket",
+      "Validates a static access token through a built-in login page",
+      "Issues and validates signed session cookies",
+      "Proxies HTTP and WebSocket traffic to a loopback dsh webserver",
+      "Supports IP allowlisting and per-IP failed-login lockouts",
+      "Reads and persists plugin settings through the host settings scope"
+    ],
+    "reasons": [
+      {
+        "code": "network_listener_and_proxy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "token_authentication_and_session_cookies",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext_http_supported",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Listens on a configurable local or private-network HTTP socket",
+      "Validates a static access token through a built-in login page",
+      "Issues and validates signed session cookies",
+      "Proxies HTTP and WebSocket traffic to a loopback dsh webserver",
+      "Supports IP allowlisting and per-IP failed-login lockouts",
+      "Reads and persists plugin settings through the host settings scope"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:06:59.507Z",
+  "repositoryCommitSha": "8b03293d5783fbb1909302abd51843039e0c4cd5",
+  "evidenceHash": "5041ed6f45bc13164f14a8dcea17f2343bbf1c7d4f16975f5f03f414555f9409",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4d2cb596dd8a13c07694e7a3cbe76192987a4d21bf93bbe39d9d632caef7eb69",
+  "shadowMode": false
+}

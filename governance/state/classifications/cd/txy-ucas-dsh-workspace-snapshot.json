@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only DeepSeek Harness tool that reports Git branch tracking and bounded staged, unstaged, conflicted, and untracked path status without providing repository mutation operations.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供只读的 Git 工作区快照，显示分支跟踪信息以及暂存、未暂存、冲突和未跟踪路径状态。",
+    "en": "Provides DeepSeek Harness with a read-only Git workspace snapshot covering branch tracking and staged, unstaged, conflicted, and untracked path status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads Git repository branch tracking and path status",
+      "Invokes a bounded Git status subprocess",
+      "Returns structured workspace metadata to the model"
+    ],
+    "reasons": [
+      {
+        "code": "repository_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "filesystem.write",
+      "network.access",
+      "Reads Git repository branch tracking and path status",
+      "Invokes a bounded Git status subprocess",
+      "Returns structured workspace metadata to the model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:34.949Z",
+  "repositoryCommitSha": "99bc94a9cf5293f90dc8f043746a7a6ce7fe86a0",
+  "evidenceHash": "ea4562f7e940d05a68421c2e08665d82df5fe029961218a5ab5bf054884e425b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aaf26c7ed0ddc905428b437aeb08218efa896c94bee0e22da5341583bdcd176f",
+  "shadowMode": false
+}

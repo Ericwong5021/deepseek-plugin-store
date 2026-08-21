@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "cli",
+    "monitoring",
+    "ui",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A web plugin that monitors and displays DeepSeek account balance information in a floating overlay, with manual refresh and local DSH exit controls.",
+  "summaries": {
+    "zh": "在网页悬浮窗中显示 DeepSeek 账户余额并支持手动刷新和一键退出本地 DSH 服务。",
+    "en": "Displays DeepSeek account balance in a web overlay with manual refresh and one-click exit controls for the local DSH service."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a DeepSeek API key from documented environment or credential files",
+      "Queries and displays DeepSeek account balance data through a local HTTP service",
+      "Provides a local control to gracefully stop the DSH service and associated webpage"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_query",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_control",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a DeepSeek API key from documented environment or credential files",
+      "Queries and displays DeepSeek account balance data through a local HTTP service",
+      "Provides a local control to gracefully stop the DSH service and associated webpage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:07:02.618Z",
+  "repositoryCommitSha": "fd0521b15f012afd0bef9fb5e17adebac6036ef8",
+  "evidenceHash": "aba1f2da02c7d9ccdd99a7cf396fbb05d84271672e02f87dc4041438deaca242",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "11924ccd54ece677ab5dca7bdd0876ca26652afabbb9b17ae703c5caaddc368d",
+  "shadowMode": false
+}

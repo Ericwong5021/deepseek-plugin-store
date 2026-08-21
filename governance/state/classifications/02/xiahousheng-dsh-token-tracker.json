@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "data",
+    "monitoring",
+    "visualization",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Tracks provider token usage from dsh session events, estimates or records costs with configurable pricing, and presents aggregates through local web UI and JSON endpoints.",
+  "summaries": {
+    "zh": "在 dsh 中汇总会话和回合的提供商 Token 使用量，按可配置的高峰与非高峰价格计算费用，并通过网页界面和 JSON API 展示结果。",
+    "en": "Aggregates provider token usage by dsh session and turn, calculates costs with configurable peak and off-peak pricing, and displays the results through a web interface and JSON API."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads provider usage events from durable session logs",
+      "aggregates token usage by session and turn",
+      "calculates costs using configurable peak and off-peak pricing",
+      "serves a local overview page and JSON API",
+      "adds token usage indicators and a Token tab to the dsh web GUI"
+    ],
+    "reasons": [
+      {
+        "code": "session-log-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-api-and-ui",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable-pricing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "reads provider usage events from durable session logs",
+      "aggregates token usage by session and turn",
+      "calculates costs using configurable peak and off-peak pricing",
+      "serves a local overview page and JSON API",
+      "adds token usage indicators and a Token tab to the dsh web GUI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:07:32.381Z",
+  "repositoryCommitSha": "ff0e50b5fd67785936740535ec9795e4194a91b0",
+  "evidenceHash": "3bc57ba4745905b2878df0fe85231a04e9cb05ec5edf32a0015c0415cea1b983",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0457132597a7b274eea155f8fc6a0419bc5d772bea26649f2030551aa9839877",
+  "shadowMode": false
+}

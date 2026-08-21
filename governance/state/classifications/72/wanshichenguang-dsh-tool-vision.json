@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "file",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README documents a model-facing image_describe tool that reads local images and uses the DashScope vision API to generate descriptions or answer image questions, with a web paste bridge for text-only models.",
+  "summaries": {
+    "zh": "通过 DashScope 视觉 API 分析本地图片，并为智能体提供图片描述或针对图片的问题回答。",
+    "en": "Analyzes local images through the DashScope vision API and provides agents with image descriptions or answers to focused image questions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads a local image file from an absolute path or workspace-relative path",
+      "Encodes image data and sends it to a configured DashScope-compatible vision API",
+      "Returns generated image descriptions or answers to focused image questions",
+      "Uploads pasted or dropped images to the host media route for text-only model sessions"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_image_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_credential_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a local image file from an absolute path or workspace-relative path",
+      "Encodes image data and sends it to a configured DashScope-compatible vision API",
+      "Returns generated image descriptions or answers to focused image questions",
+      "Uploads pasted or dropped images to the host media route for text-only model sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:19.462Z",
+  "repositoryCommitSha": "bb8f60f67285a6293615d3c75c413ed797620e5e",
+  "evidenceHash": "e59fc2a8d79f207ef3f1bfc2531995e4560a29ce745b998a1a239d7551f8343b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9799c69a89f5504974b10f5a4511ad667f517ee14be339da6064d3e296a36e76",
+  "shadowMode": false
+}

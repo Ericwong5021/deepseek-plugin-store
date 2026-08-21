@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "api",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web settings panel for viewing installed plugins and changing their enabled state with runtime updates and profile persistence.",
+  "summaries": {
+    "zh": "在 DSH Web 设置页查看已安装插件并直接启用或停用，同时将选择保存到用户配置中。",
+    "en": "Manage installed plugins from the DSH Web settings page by viewing their status, enabling or disabling them, and saving the selections to the user profile."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Lists installed plugin entries and their runtime states",
+      "Enables or disables installed plugins at runtime",
+      "Persists enablement changes in the user profile patch file",
+      "Exposes local HTTP routes for listing, updating, and health checking plugin entries"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_state_changes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_configuration_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_control_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Lists installed plugin entries and their runtime states",
+      "Enables or disables installed plugins at runtime",
+      "Persists enablement changes in the user profile patch file",
+      "Exposes local HTTP routes for listing, updating, and health checking plugin entries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:06:46.578Z",
+  "repositoryCommitSha": "835c206aceb8ab9dc40bdb064799ea2e416d12de",
+  "evidenceHash": "312d643a324dcb05c9d7bd091728ff54a9eaad55f194940f0ee013a209c06b78",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "88f83b32c8931cc0b8cec16ab6590bf12c070933217969d727e62d63110638db",
+  "shadowMode": false
+}

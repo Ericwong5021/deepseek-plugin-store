@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "image",
+    "video",
+    "search",
+    "integration",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH bridge to MiniMax services, centered on API-backed multimodal understanding and media generation with supplementary search, quota, CLI environment management, and local output caching.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 连接到 MiniMax，为对话提供图片理解、图像与视频生成、语音和音乐生成、搜索及用量查询能力。",
+    "en": "Connects DeepSeek Harness to MiniMax to provide image understanding, image and video generation, speech and music generation, search, and quota queries."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Calls the MiniMax service through mmx-cli for image understanding and generation, video generation, speech synthesis, music generation, audio cover generation, web search, and quota queries",
+      "Reads image attachments and writes generated media and image-recognition cache files to a temporary output directory",
+      "Can execute mmx-cli environment operations including discovery, global installation, API-key login, authentication status checks, and path configuration"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution_and_global_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_key_authentication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls the MiniMax service through mmx-cli for image understanding and generation, video generation, speech synthesis, music generation, audio cover generation, web search, and quota queries",
+      "Reads image attachments and writes generated media and image-recognition cache files to a temporary output directory",
+      "Can execute mmx-cli environment operations including discovery, global installation, API-key login, authentication status checks, and path configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:50.712Z",
+  "repositoryCommitSha": "86a7cf86570dca489bdd60174b549dc31c9be572",
+  "evidenceHash": "aeb8f870aeb87ca119fbe7e9bea096ec5ea817273536a3d28d4ede6374ee8dfb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3ae9c7dd07b6bf10d22a2e1bb311c0d8c45fb55ae4168ed01ea28b5679f3ddba",
+  "shadowMode": false
+}

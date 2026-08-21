@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "tool",
+    "api",
+    "ui",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README describes a DeepSeek Harness plugin that intercepts tool and escalation approval requests, applies deterministic rules and LLM review, supports auto and auto-ask modes, and displays in-memory approval trails; its primary purpose is workflow automation for agent permissions.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的工具调用提供基于规则和 LLM 审查的自动审批、人工兜底与审批轨迹界面。",
+    "en": "Provides DeepSeek Harness tool-call approval using deterministic rules, LLM review, optional human fallback, and an approval trail interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts agent tool and sandbox escalation requests",
+      "Applies deterministic allow and deny rules to operations",
+      "Uses an LLM classifier for semantic approval decisions",
+      "Supports automatic approval and human fallback modes",
+      "Can approve one-time requests for wider sandbox execution",
+      "Provides an in-memory approval trail UI and settings interface"
+    ],
+    "reasons": [
+      {
+        "code": "tool_call_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "llm_based_approval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_escalation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_operation_approval",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts agent tool and sandbox escalation requests",
+      "Applies deterministic allow and deny rules to operations",
+      "Uses an LLM classifier for semantic approval decisions",
+      "Supports automatic approval and human fallback modes",
+      "Can approve one-time requests for wider sandbox execution",
+      "Provides an in-memory approval trail UI and settings interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:24.908Z",
+  "repositoryCommitSha": "8592b5d331bd260171eace4b62b6bbcea247558a",
+  "evidenceHash": "bdcc108d3f25b7d74337e5bfdf88a82a690aeac29cf78bc23687513711a490ab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cc059eedf2f52f76b0d2c1f27a8fb69a83ead3cd86c9a609053f71b4b5f7ccdf",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides Langfuse-based observability for DeepSeek Harness sessions by exporting OpenTelemetry trace trees, feedback scores, and optional generation inputs to an external endpoint.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的智能体会话、模型生成、工具调用和反馈以 OpenTelemetry 追踪形式导出到 Langfuse 进行可观测性分析。",
+    "en": "Exports DeepSeek Harness agent sessions, model generations, tool calls, and feedback as OpenTelemetry traces to Langfuse for observability."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exports agent session telemetry to Langfuse via OpenTelemetry traces",
+      "Records model generations, tool calls, token usage, timing, errors, and feedback scores",
+      "Can optionally export generation inputs including prompts and tool schemas",
+      "Uses configured Langfuse credentials and sends data to a configured external endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_telemetry_export",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_prompt_and_tool_schema_export",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_credentials_and_network_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Exports agent session telemetry to Langfuse via OpenTelemetry traces",
+      "Records model generations, tool calls, token usage, timing, errors, and feedback scores",
+      "Can optionally export generation inputs including prompts and tool schemas",
+      "Uses configured Langfuse credentials and sends data to a configured external endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:18.133Z",
+  "repositoryCommitSha": "a7b1812162e38fdb188b557071e47b11797af547",
+  "evidenceHash": "21b039f7f30be234ff4450683f294b0d69ce929f715bd4f62cddc0cf99b5982f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6c3ba0d0b47695c4f8987ce1ae26178691077c7b80cc9adef4f59b2e0f425c0f",
+  "shadowMode": false
+}

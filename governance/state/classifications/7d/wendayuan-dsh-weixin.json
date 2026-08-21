@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "chat",
+    "integration",
+    "api",
+    "context",
+    "terminal",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A WeChat channel integration for DeepSeek Harness that forwards messages to a DSH agent, preserves conversation sessions, and returns responses through WeChat; the README explicitly documents file-reading and shell-command capabilities.",
+  "summaries": {
+    "zh": "通过微信连接 DeepSeek Harness，让用户在手机微信中与 DSH agent 对话并使用其工作区能力。",
+    "en": "Connects WeChat to DeepSeek Harness so users can chat with a DSH agent and use its workspace capabilities from the WeChat app."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects WeChat messages to a DSH agent through the iLink channel",
+      "Maintains a persistent session context for each WeChat conversation",
+      "Relays agent interactions that may read files and run shell commands in the configured workspace",
+      "Uses external WeChat and model credential services"
+    ],
+    "reasons": [
+      {
+        "code": "external_messaging_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_file_and_terminal_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_conversation_context",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects WeChat messages to a DSH agent through the iLink channel",
+      "Maintains a persistent session context for each WeChat conversation",
+      "Relays agent interactions that may read files and run shell commands in the configured workspace",
+      "Uses external WeChat and model credential services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:05:46.415Z",
+  "repositoryCommitSha": "02e9ab2da91a9cac20e51abf619759052843a3df",
+  "evidenceHash": "8fb33cdabc8208d12f57b1153c456c7a92c651475523ef41b943eec38ca762ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "56318f67428305993951e01d488f410afa0f986f876387003379231f2830474d",
+  "shadowMode": false
+}

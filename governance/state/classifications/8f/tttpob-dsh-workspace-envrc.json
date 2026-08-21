@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "automation",
+    "agent",
+    "mcp",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A workspace integration plugin that applies native direnv environments to agent-scoped Bash execution and local stdio MCP processes, while delegating .envrc evaluation and authorization to the installed direnv executable.",
+  "summaries": {
+    "zh": "将本机原生 direnv 环境应用到归属于工作区的 Bash 命令和本地 stdio MCP 进程。",
+    "en": "Applies the host system's native direnv environments to workspace-scoped Bash commands and local stdio MCP processes."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes direnv for workspace-scoped Bash commands",
+      "Wraps workspace-local stdio MCP process commands with direnv",
+      "Applies environment changes produced by user-authorized .envrc files",
+      "Invokes external executables through process spawning"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_envrc_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_permission_mcp_processes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_process_invocation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Executes direnv for workspace-scoped Bash commands",
+      "Wraps workspace-local stdio MCP process commands with direnv",
+      "Applies environment changes produced by user-authorized .envrc files",
+      "Invokes external executables through process spawning"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:03:18.788Z",
+  "repositoryCommitSha": "e534ae7a42186fddaf58b8ce39fe68a788b087c8",
+  "evidenceHash": "6f8143914d4eaaa0dd33716b10fe3f660527ec19b51eed744418d39ae073098e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "62b9f0cc7a93927ef91430b44f2a336c64a57c141e6bfca0f57926544c5cc73d",
+  "shadowMode": false
+}

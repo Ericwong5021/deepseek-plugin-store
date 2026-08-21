@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "ui",
+    "file",
+    "terminal",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README明确该插件提供Git状态浮窗和commit DAG可视化，并支持查看diff、管理分支与stash、执行提交及多种历史操作，以及远程fetch/push；因此主要归类为可视化工具，且因包含破坏性仓库操作和远程写入而评为R2。",
+  "summaries": {
+    "zh": "在DSH中以浮窗展示Git提交图、工作区改动、stash和diff，并提供分支、历史、提交及远程仓库操作。",
+    "en": "A DSH floating panel that visualizes Git history, working-tree changes, stashes, and diffs while providing branch, history, commit, and remote repository operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取 Git 提交历史、分支、标签、stash、工作区改动和文件 diff",
+      "在本地 Git 仓库中执行暂存、提交、stash、分支、合并、变基、重置、cherry-pick、revert 和标签操作",
+      "通过 Git fetch 和 push 与远程仓库交互",
+      "通过 SSE 和轮询刷新 Git 状态"
+    ],
+    "reasons": [
+      {
+        "code": "destructive_repository_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_repository_write_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_workspace_file_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "读取 Git 提交历史、分支、标签、stash、工作区改动和文件 diff",
+      "在本地 Git 仓库中执行暂存、提交、stash、分支、合并、变基、重置、cherry-pick、revert 和标签操作",
+      "通过 Git fetch 和 push 与远程仓库交互",
+      "通过 SSE 和轮询刷新 Git 状态"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:06:37.879Z",
+  "repositoryCommitSha": "0507ea8f975f09f1b60ec230817816bd4ba0b787",
+  "evidenceHash": "4bbc968fe1c0ae7d6e368f9577ecc1f332d2e5f6bd316d82d293570598397cab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7c72fc9d27d84e109a861387dd05a27dbf6ff843426fd9f6bc4a8b376f45c5b0",
+  "shadowMode": false
+}

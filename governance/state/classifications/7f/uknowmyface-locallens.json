@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "chat",
+    "cli",
+    "desktop",
+    "document",
+    "file",
+    "image",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "LocalLens is a macOS-only OCR plugin that extracts text from screenshots, clipboard images, and image files using Apple's local Vision framework, then returns the text to the agent context.",
+  "summaries": {
+    "zh": "LocalLens 使用 macOS 内置 Vision OCR 从屏幕截图、剪贴板图片和图像文件中提取文字并返回给智能体。",
+    "en": "LocalLens uses macOS's built-in Vision OCR to extract text from screenshots, clipboard images, and image files for use by the agent."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures the main macOS display when requested",
+      "Reads clipboard images and user-specified image files",
+      "Processes images locally with Apple's Vision OCR",
+      "Returns recognized text to the model context",
+      "Compiles and executes a local Swift OCR helper"
+    ],
+    "reasons": [
+      {
+        "code": "screen_capture_can_include_sensitive_content",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_path_access_is_not_sandboxed",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ocr_text_enters_model_context",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures the main macOS display when requested",
+      "Reads clipboard images and user-specified image files",
+      "Processes images locally with Apple's Vision OCR",
+      "Returns recognized text to the model context",
+      "Compiles and executes a local Swift OCR helper"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:17.596Z",
+  "repositoryCommitSha": "22099c5ccee08c002e8c55e771e9e87632ba5222",
+  "evidenceHash": "394f2565acca640be6b165efd625e863cf7b5871056bf70159337fabfe9cb232",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2dbe4696a189517f4097724763c7508d55836a23a64570597c3f5f82582d80be",
+  "shadowMode": false
+}

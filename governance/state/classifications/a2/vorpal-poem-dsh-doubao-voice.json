@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "chat",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides DeepSeek Harness voice input by capturing microphone audio, sending it to Volcengine Doubao streaming ASR, and incrementally inserting editable transcripts into the active input field.",
+  "summaries": {
+    "zh": "通过火山引擎豆包流式语音识别，将麦克风语音实时转写并回填到 DeepSeek Harness 输入框。",
+    "en": "Adds voice input to DeepSeek Harness by streaming microphone audio to Volcengine Doubao ASR and incrementally filling the input field with editable transcripts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures microphone audio in the browser",
+      "Streams audio to Volcengine Doubao ASR through a host WebSocket relay",
+      "Streams recognized text into editable input fields",
+      "Stores and uses Volcengine authentication credentials",
+      "Provides recording controls, hotwords, language, shortcut, and duration settings"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_input",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_audio_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage_and_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures microphone audio in the browser",
+      "Streams audio to Volcengine Doubao ASR through a host WebSocket relay",
+      "Streams recognized text into editable input fields",
+      "Stores and uses Volcengine authentication credentials",
+      "Provides recording controls, hotwords, language, shortcut, and duration settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:04:59.351Z",
+  "repositoryCommitSha": "6fc9b21249944c46b9cc237c3001fbebfd860b1c",
+  "evidenceHash": "68f227c687c3a54193082609a49db618e3dd7b4f401ac66218a6fa23dffa9838",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8951bdd9b67a759c4e75fdcba5f60feadcda680bf8d777d9128f6281301946be",
+  "shadowMode": false
+}
