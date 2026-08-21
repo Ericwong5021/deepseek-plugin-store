@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "visualization",
+    "notification",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "用于统计和计费 DeepSeek Harness 的模型调用，处理本地会话日志与用量数据，提供图表、预算告警、余额查询及 CSV/JSON 导出。",
+  "summaries": {
+    "zh": "统计 DeepSeek Harness 的模型调用与 token 费用，并通过面板、图表、预算告警和数据导出帮助用户查看用量。",
+    "en": "Tracks DeepSeek Harness model usage and token costs with dashboards, charts, budget alerts, balance lookup, and data export."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "监听模型调用并统计输入、输出及缓存 token",
+      "扫描本机会话日志并回填历史用量",
+      "将统计数据持久化到本地文件",
+      "导出 CSV 或 JSON 数据",
+      "在配置 API Key 时拉取 DeepSeek 账户余额",
+      "显示图表、预算进度和用量明细",
+      "触发桌面预算告警通知"
+    ],
+    "reasons": [
+      {
+        "code": "local-session-data-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-balance-api-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop-notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "监听模型调用并统计输入、输出及缓存 token",
+      "扫描本机会话日志并回填历史用量",
+      "将统计数据持久化到本地文件",
+      "导出 CSV 或 JSON 数据",
+      "在配置 API Key 时拉取 DeepSeek 账户余额",
+      "显示图表、预算进度和用量明细",
+      "触发桌面预算告警通知"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:53.840Z",
+  "repositoryCommitSha": "5c6ef5b0d3d10653429bbba67dcf98877125bb92",
+  "evidenceHash": "dfc6b7ae8bfc6a5e897bd25eae86028e25f5dc30c279835304296daf2e235d3a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1f1f04e42e6b2e44b123588fb5ac3d8f319e723c3229c50da80a3c69ef282633",
+  "shadowMode": false
+}

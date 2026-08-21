@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh Web UI plugin that monitors OpenCode Go quota windows, reset times, and refresh status using an external API.",
+  "summaries": {
+    "zh": "在 dsh Web UI 中显示 OpenCode Go 的滚动、每周和每月额度使用情况及重置时间，并支持手动和定时刷新。",
+    "en": "Displays OpenCode Go rolling, weekly, and monthly quota usage with reset times in the dsh Web UI, with manual and scheduled refreshes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads OPENCODE_GO_API_KEY through the credentials service",
+      "Fetches OpenCode Go quota data from an external API",
+      "Displays rolling, weekly, and monthly quota usage and reset times in the dsh Web UI",
+      "Refreshes quota data manually and every five minutes"
+    ],
+    "reasons": [
+      {
+        "code": "external-api-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic-refresh",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads OPENCODE_GO_API_KEY through the credentials service",
+      "Fetches OpenCode Go quota data from an external API",
+      "Displays rolling, weekly, and monthly quota usage and reset times in the dsh Web UI",
+      "Refreshes quota data manually and every five minutes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:17.087Z",
+  "repositoryCommitSha": "d9f87058597f35a9189fa5ca3dafbb7a47ee954e",
+  "evidenceHash": "4002e1752cd3413c53b30e1640593d30851fd54425829c57d237e44c332c0ea7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1d0b4210e4ae7fc862843091e317873d138c82f660b2f16f532dab2ce369e554",
+  "shadowMode": false
+}

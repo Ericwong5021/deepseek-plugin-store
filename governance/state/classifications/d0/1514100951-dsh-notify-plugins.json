@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "browser",
+    "desktop",
+    "monitoring",
+    "notification",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that monitors task and agent states and alerts users through browser notifications and optional native Windows toasts.",
+  "summaries": {
+    "zh": "用于监控任务完成、错误、后台作业和 Agent 阻塞状态，并通过浏览器或 Windows 原生通知提醒用户的 DSH 插件。",
+    "en": "A DSH plugin that monitors task completion, errors, background jobs, and blocked agent states and alerts users through browser or native Windows notifications."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors task completion, errors, blocking approval/question/plan-review states, and background job settlement",
+      "Displays browser notifications using the Notification API",
+      "Sends Windows native toast notifications through a local PowerShell-backed HTTP endpoint",
+      "Provides notification settings and opens the related conversation when a notification is clicked"
+    ],
+    "reasons": [
+      {
+        "code": "local_native_notification_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "task_and_agent_state_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Monitors task completion, errors, blocking approval/question/plan-review states, and background job settlement",
+      "Displays browser notifications using the Notification API",
+      "Sends Windows native toast notifications through a local PowerShell-backed HTTP endpoint",
+      "Provides notification settings and opens the related conversation when a notification is clicked"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:36.540Z",
+  "repositoryCommitSha": "280f3cef6ad1308c237bcca276a6fdf8d5475bfd",
+  "evidenceHash": "c1b278e118fc9140f29fd8557a150e77bf9f6367eb7eb01503c6da65c2340c66",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cb7034e4f09febe1646333a901a3abb2c7ac36fbae5dab5e40b36b5c54cdd6a1",
+  "shadowMode": false
+}

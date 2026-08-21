@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "automation",
+    "file",
+    "integration",
+    "terminal",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH plugin installer that adds a settings page for installing, hot-loading, persisting, updating, and removing dynamic plugins from uploaded packages or Git repositories.",
+  "summaries": {
+    "zh": "为DSH提供插件安装页面，可从上传的清单文件或Git仓库安装、热加载、持久化管理和移除动态插件。",
+    "en": "Adds a DSH settings page for installing, hot-loading, persisting, updating, and removing dynamic plugins from uploaded manifests or Git repositories."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs dynamic plugins from uploaded manifest files or Git repository URLs",
+      "Executes plugin host and client code supplied by installed packages",
+      "Writes persistent plugin manifests and deployment changes under DSH_HOME",
+      "Can stop, restart, hot-load, update, and remove plugins and the installer"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_plugin_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_deployment_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "service_restart_capability",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_repository_fetch",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Installs dynamic plugins from uploaded manifest files or Git repository URLs",
+      "Executes plugin host and client code supplied by installed packages",
+      "Writes persistent plugin manifests and deployment changes under DSH_HOME",
+      "Can stop, restart, hot-load, update, and remove plugins and the installer"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:22:28.118Z",
+  "repositoryCommitSha": "68f4137b417015833d6d3408975039b7bf4d67ec",
+  "evidenceHash": "2e4e09ac9c66b12f4d56d7f1517eb46552b2342dafe74658c7a18b9e941cfe2c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d66b525621e15c708bd30dd0783ca432bfc557cd0e83cc99c90413b404a2b2e7",
+  "shadowMode": false
+}

@@ -1,16 +1,77 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "chat",
+    "integration",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a chat image-attachment bridge and view_image tool that forwards images to configurable vision-language model endpoints and returns textual analysis.",
+  "summaries": {
+    "zh": "在聊天中接收粘贴或拖拽的图片，并通过可配置的视觉模型端点为纯文本模型提供图像理解能力。",
+    "en": "Accepts pasted or dropped chat images and uses a configurable vision-model endpoint to provide image understanding for text-only models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts pasted or dropped image attachments in chat",
+      "Persists image attachments and bridge files locally",
+      "Sends images and user questions to a configured OpenAI-compatible vision model endpoint",
+      "Provides a view_image tool that returns textual image analysis"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_image_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_stream_interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts pasted or dropped image attachments in chat",
+      "Persists image attachments and bridge files locally",
+      "Sends images and user questions to a configured OpenAI-compatible vision model endpoint",
+      "Provides a view_image tool that returns textual image analysis"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:18:45.591Z",
   "repositoryCommitSha": "dbe64b429289ab8da1ed6940fefd8395bdc167f0",
+  "evidenceHash": "a9e5bb435dea11efc7588d3fb8053b864f7097df3983c9b79969bcff3d8a96a4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "85959ef0053554c7e15ab1ca934ad8ede39231f7a4bc8112de17c2ccec9c5317",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T20:12:13.758Z",
-  "lastAttemptAt": "2026-08-21T20:12:13.758Z",
-  "nextRetryAt": "2026-08-22T20:12:13.758Z",
-  "retryable": true,
-  "error": "completions: response did not contain text",
   "shadowMode": false
 }

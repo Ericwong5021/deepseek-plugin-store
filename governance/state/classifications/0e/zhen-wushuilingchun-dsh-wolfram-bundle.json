@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "integration",
+    "mcp",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH integration bundle that connects the official Wolfram AgentTools MCP server, discovers and supervises a local Wolfram kernel, exposes Wolfram tools, and routes side-effecting calls through DSH approval policies.",
+  "summaries": {
+    "zh": "将官方 Wolfram AgentTools MCP Server 接入 DeepSeek Harness，提供内核发现、进程监督、Wolfram 工具注册及 DSH 原生审批策略。",
+    "en": "Connects the official Wolfram AgentTools MCP server to DeepSeek Harness with local kernel discovery, process supervision, tool registration, and DSH-native approval policies."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects DSH to the Wolfram AgentTools MCP server",
+      "Discovers and launches a local Wolfram kernel process",
+      "Exposes Wolfram tools for arbitrary code evaluation, testing, notebook reading and writing, code inspection, and symbol metadata",
+      "Applies approval decisions to tool calls through DSH policies",
+      "Manages and terminates the Wolfram process tree started by the plugin"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_code_execution_with_filesystem_process_and_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "launches_and_manages_local_child_processes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads_and_writes_user_selected_notebook_paths",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Connects DSH to the Wolfram AgentTools MCP server",
+      "Discovers and launches a local Wolfram kernel process",
+      "Exposes Wolfram tools for arbitrary code evaluation, testing, notebook reading and writing, code inspection, and symbol metadata",
+      "Applies approval decisions to tool calls through DSH policies",
+      "Manages and terminates the Wolfram process tree started by the plugin"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:18:58.242Z",
+  "repositoryCommitSha": "d2914c0ff8b5f3999bd8786092f43b67884679eb",
+  "evidenceHash": "897359ae64ab79c633c1c7f9e8e19fd27afc17739d90789adfc7180b15d15c24",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1f3b96d64623b40d37c85ae09f7654f159ae506e8c69b8e0429099c4492d2661",
+  "shadowMode": false
+}

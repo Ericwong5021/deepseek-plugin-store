@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "browser",
+    "notification",
+    "file",
+    "integration",
+    "desktop",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH mobile companion that provides remote browser access over Tailscale, mobile-oriented status and notifications, remote workspace registration, and connection-based Windows wakefulness.",
+  "summaries": {
+    "zh": "通过 Tailscale 将 DSH Web 界面提供给手机浏览器，并在移动布局中显示会话状态、通知及远程工作区操作。",
+    "en": "Provides mobile browser access to a DSH Web profile over Tailscale with session status, in-page notifications, and remote workspace actions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a mobile browser interface for DSH",
+      "Exposes the local DSH web profile through Tailscale Serve",
+      "Displays session and operation status",
+      "Shows in-page task and action notifications",
+      "Registers and opens local workspaces from entered paths",
+      "Sends heartbeat requests and prevents Windows sleep while connected"
+    ],
+    "reasons": [
+      {
+        "code": "remote_network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_workspace_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_power_state_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_and_service_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Provides a mobile browser interface for DSH",
+      "Exposes the local DSH web profile through Tailscale Serve",
+      "Displays session and operation status",
+      "Shows in-page task and action notifications",
+      "Registers and opens local workspaces from entered paths",
+      "Sends heartbeat requests and prevents Windows sleep while connected"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:14.572Z",
+  "repositoryCommitSha": "1695106ad0f6012f6bd2e5abfa5ccc4d0b99c044",
+  "evidenceHash": "2287e319ba5eb5c28359137806e02b64c95aea89c064a022f8b294e691fde3c5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "824fbb5811ca9b9b8bd2377b1a5be6a58fe5a3e6a1391f791f1f4ab52ca345e9",
+  "shadowMode": false
+}

@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "collaboration",
+    "browser",
+    "api",
+    "ui",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily enables users to share frozen, read-only DeepSeek Harness session snapshots with other devices on the same LAN through tokenized browser URLs.",
+  "summaries": {
+    "zh": "通过局域网令牌链接分享 DeepSeek Harness 会话的只读快照，包括对话内容和会话统计。",
+    "en": "Share read-only snapshots of DeepSeek Harness sessions, including conversation content and session statistics, through tokenized LAN URLs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a Share button and dialog to session headers",
+      "Creates frozen read-only HTML snapshots of conversations and session statistics",
+      "Serves snapshots through a separate LAN HTTP server using tokenized URLs",
+      "Persists share records and supports token revocation and optional expiry"
+    ],
+    "reasons": [
+      {
+        "code": "lan_network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_content_sharing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds a Share button and dialog to session headers",
+      "Creates frozen read-only HTML snapshots of conversations and session statistics",
+      "Serves snapshots through a separate LAN HTTP server using tokenized URLs",
+      "Persists share records and supports token revocation and optional expiry"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:19:43.067Z",
+  "repositoryCommitSha": "c3f21ece2f6c511c20d469a0252717f8e9cc2cfb",
+  "evidenceHash": "82910ac989d9dd20e4c8cf10e97a188a0d89eceec655e9a6fadeadc107012b3f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "25d612214e4730e646a390424318515aff5160e76d8dcfea7a4f51f3575eaf05",
+  "shadowMode": false
+}

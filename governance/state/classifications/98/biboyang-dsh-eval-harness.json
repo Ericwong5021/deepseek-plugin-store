@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "agent",
+    "automation",
+    "cli",
+    "data",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A regression evaluation harness for DSH plugins and skills that runs YAML-defined cases against real headless agents, asserts session traces and outputs, compares baselines, and produces CI gate results.",
+  "summaries": {
+    "zh": "用于为 DSH 插件和技能运行 YAML 用例回归评测、检查会话轨迹与输出、对比基线并生成 CI 门禁结果。",
+    "en": "Runs YAML-defined regression evaluations for DSH plugins and skills, checks session traces and outputs, compares baselines, and produces CI gate results."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs headless DSH agent subprocesses for evaluation cases",
+      "Reads and parses session trace files, including zstd-compressed traces",
+      "Writes evaluation reports and baseline comparison results",
+      "Can call an OpenAI-compatible chat completions API for optional semantic judging",
+      "Returns CI-oriented pass, warn, fail, and exit-code results"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_trace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ci_gate_output",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs headless DSH agent subprocesses for evaluation cases",
+      "Reads and parses session trace files, including zstd-compressed traces",
+      "Writes evaluation reports and baseline comparison results",
+      "Can call an OpenAI-compatible chat completions API for optional semantic judging",
+      "Returns CI-oriented pass, warn, fail, and exit-code results"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:22:32.226Z",
+  "repositoryCommitSha": "035d1c6e1ebf918bbb7bc2a83fd3173af15ea693",
+  "evidenceHash": "ef315b3cf59cad78573bf8112d336043cb8af1d02cd8f4457e3d35e4c6228e94",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e9d55f6217b5e9267a4d29b5b675a54ccac8ca577b4572ab559e5033eaa3f0d3",
+  "shadowMode": false
+}

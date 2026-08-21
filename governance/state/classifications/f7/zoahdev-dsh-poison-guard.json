@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "cli",
+    "project-analysis",
+    "testing",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A command-line project-analysis tool that statically scans DeepSeek Harness plugins for suspicious imports, code execution, data exfiltration patterns, obfuscation, credentials, URLs, shell commands, and install-time scripts using AST analysis, deobfuscation, and regex heuristics.",
+  "summaries": {
+    "zh": "一个通过 AST 分析、反混淆和正则启发式方法，对 DeepSeek Harness 插件源代码及安装脚本进行安装前静态扫描的命令行工具。",
+    "en": "A command-line tool that statically scans DeepSeek Harness plugin source files and install scripts before installation using AST analysis, deobfuscation, and regex heuristics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans plugin source files and package manifests",
+      "Performs static AST analysis of JavaScript",
+      "Decodes selected obfuscated string forms for secondary scanning",
+      "Applies regex heuristics to code and non-code files",
+      "Returns human-readable findings, JSON output, and exit codes for CI gating"
+    ],
+    "reasons": [
+      {
+        "code": "local-file-analysis",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "static-code-inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ci-integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Scans plugin source files and package manifests",
+      "Performs static AST analysis of JavaScript",
+      "Decodes selected obfuscated string forms for secondary scanning",
+      "Applies regex heuristics to code and non-code files",
+      "Returns human-readable findings, JSON output, and exit codes for CI gating"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:19:59.059Z",
+  "repositoryCommitSha": "9d98a4a8e4679769b6ea82e783611b2d09a37ba8",
+  "evidenceHash": "3685e6b3c3a9c451f45f6919904cb7231b679b8bea9abc2b6212e343876763eb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b4892ef60c5e73467f9d24e38aba4c9c01e3da23dd6d6c680d9cd3173a742ae6",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "code-generation",
+    "context",
+    "memory",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH plugin whose primary purpose is orchestrating self-contained coding tasks delegated to a local Claude Code worker, with resumable sessions, background execution, tool permissions, and usage monitoring.",
+  "summaries": {
+    "zh": "将自包含的编码子任务委派给本机 Claude Code 执行，并向 DSH 返回结果、会话状态和任务进度。",
+    "en": "Delegates self-contained coding tasks to a local Claude Code process and returns results, session state, and task progress to DSH."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "delegates coding tasks to a local Claude Code CLI through the official Agent SDK",
+      "can allow Claude Code to use configured tools and modify files in a selected working directory",
+      "supports resumable sessions and background asynchronous jobs",
+      "reads local Claude subscription usage and authentication status through CLI data and cached usage files",
+      "supports configurable permission modes including an explicitly enabled bypass-permissions mode"
+    ],
+    "reasons": [
+      {
+        "code": "local_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_modification_capability",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_task_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_cli_subscription_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "delegates coding tasks to a local Claude Code CLI through the official Agent SDK",
+      "can allow Claude Code to use configured tools and modify files in a selected working directory",
+      "supports resumable sessions and background asynchronous jobs",
+      "reads local Claude subscription usage and authentication status through CLI data and cached usage files",
+      "supports configurable permission modes including an explicitly enabled bypass-permissions mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:18:48.281Z",
+  "repositoryCommitSha": "6aff192e2c2a72f83cac9824ec6f1e3d65d05f23",
+  "evidenceHash": "ffe99d89469a58c5781046256c72c20a2de841937c2523a0e99fd34ac39f48b9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cd2711a24c564f88f51624a326ed243bc38358042eca137cf67154163c6d56ca",
+  "shadowMode": false
+}

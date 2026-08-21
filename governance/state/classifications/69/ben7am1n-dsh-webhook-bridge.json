@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "agent",
+    "automation",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An HTTP webhook bridge that receives messages from CI, monitoring, bots, and other services, forwards them to DeepSeek Harness agent sessions, and optionally posts responses to a callback URL.",
+  "summaries": {
+    "zh": "通过受认证的HTTP webhook接收外部服务消息，将其转发到DeepSeek Harness智能体会话，并可选地回传智能体响应。",
+    "en": "Receives authenticated HTTP webhooks from external services, forwards messages to DeepSeek Harness agent sessions, and optionally sends responses back to a callback URL."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runs a local HTTP server",
+      "Accepts authenticated webhook messages",
+      "Creates and follows up agent sessions by channel",
+      "Sends optional agent responses to caller-supplied HTTP callback URLs"
+    ],
+    "reasons": [
+      {
+        "code": "network_listener",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_http_callback",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs a local HTTP server",
+      "Accepts authenticated webhook messages",
+      "Creates and follows up agent sessions by channel",
+      "Sends optional agent responses to caller-supplied HTTP callback URLs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:22:23.678Z",
+  "repositoryCommitSha": "2f9b730fb03b2356a1b88629d43a518a96bb4cb4",
+  "evidenceHash": "65404a3a5903d11dba2dc834a1739b04b26cd0c09411ec1cbfa99cc2870fe34f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a8cb5e511f1b7f64eb521fd749b4bab8a72b2254f10c664cbb9eb277af959fe7",
+  "shadowMode": false
+}

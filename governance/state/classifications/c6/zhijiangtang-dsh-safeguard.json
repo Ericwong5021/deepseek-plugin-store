@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "terminal",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH pre-execution safeguard that blocks regex-matched dangerous shell and SQL commands and secret-like strings in tool arguments, with configurable rules and diagnostic checks; it does not execute commands or provide sandbox isolation.",
+  "summaries": {
+    "zh": "在工具执行前基于可配置的正则规则拦截危险命令和疑似密钥泄漏，并提供规则查看与自检工具。",
+    "en": "A DSH pre-execution safeguard that uses configurable regular expressions to block dangerous commands and suspected secret leakage while providing rule inspection and self-check tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts and denies selected tool executions before execution",
+      "Scans serialized tool arguments for configured secret-like patterns",
+      "Applies configurable dangerous-command patterns and exact allowlists",
+      "Provides rule-listing and non-blocking diagnostic checks"
+    ],
+    "reasons": [
+      {
+        "code": "execution-interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "secret-pattern-scanning",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "heuristic-only-detection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Intercepts and denies selected tool executions before execution",
+      "Scans serialized tool arguments for configured secret-like patterns",
+      "Applies configurable dangerous-command patterns and exact allowlists",
+      "Provides rule-listing and non-blocking diagnostic checks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:19:15.985Z",
+  "repositoryCommitSha": "3ff8b38d5ad38878ca55ac758194f3859b55cd2b",
+  "evidenceHash": "6628f97eb47651955439b2d1f9573f21ad681ccd6c74e65edb828880f0f2a288",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f19b2ae72471676248f9fc47c1c664936a8b45a222697b5ab8ed19ffa4c8e994",
+  "shadowMode": false
+}

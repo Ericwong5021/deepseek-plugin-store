@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "chat",
+    "collaboration",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Feishu integration that forwards allowlisted one-to-one messages to a local DeepSeek Harness agent and posts the resulting responses, with documented local workspace and agent-tool access.",
+  "summaries": {
+    "zh": "通过飞书单聊消息驱动本机 DeepSeek Harness Agent，并将处理进度与回复返回飞书。",
+    "en": "A Feishu bridge that sends one-to-one messages to a local DeepSeek Harness agent and returns progress updates and responses."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives Feishu one-to-one text messages over a long-lived connection",
+      "Sends processing updates and agent responses back to Feishu",
+      "Invokes a local DeepSeek Harness agent from remote messages",
+      "May access the configured local workspace through agent tools",
+      "Supports status and cancellation commands for active agent tasks"
+    ],
+    "reasons": [
+      {
+        "code": "remote_message_drives_local_agent",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_workspace_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "potential_dangerous_tool_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives Feishu one-to-one text messages over a long-lived connection",
+      "Sends processing updates and agent responses back to Feishu",
+      "Invokes a local DeepSeek Harness agent from remote messages",
+      "May access the configured local workspace through agent tools",
+      "Supports status and cancellation commands for active agent tasks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:18:46.227Z",
+  "repositoryCommitSha": "cacff49122d50d61e9b15a630bce0de8b5617929",
+  "evidenceHash": "53c22ad0222134629e16c95d82f659ea0aedfe42dbf7680c5ad45983b066de8d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d6c22406bfe1644092dab42becedcdc3641b05df53b5eae35249c90be946f3a5",
+  "shadowMode": false
+}

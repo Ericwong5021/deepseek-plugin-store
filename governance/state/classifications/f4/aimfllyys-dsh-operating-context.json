@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness settings plugin that lets users choose a working context window and conservatively clamps model settings to known local capacity limits.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供工作窗口设置页，帮助用户选择上下文窗口并按本地已知模型容量限制配置值。",
+    "en": "Adds a DeepSeek Harness settings page for choosing a working context window and clamping model configuration to known local capacity limits."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a DeepSeek Harness settings page for selecting a shared context window",
+      "Updates model and route context-window settings through settings.mutate",
+      "Reads installed local model catalog ceilings to clamp configured values"
+    ],
+    "reasons": [
+      {
+        "code": "writes_user_settings",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads_local_model_catalog",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Adds a DeepSeek Harness settings page for selecting a shared context window",
+      "Updates model and route context-window settings through settings.mutate",
+      "Reads installed local model catalog ceilings to clamp configured values"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:07.037Z",
+  "repositoryCommitSha": "9a78b912cf1f3c98031bd4a6aa77006e4b778b54",
+  "evidenceHash": "a549cec13e6271e08957fde4b6772921e806a890520bd83b0812504cca7235bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1bab40164b73ca2e655ab042c533f673f2aeeccdc9d010e013451c44c7a6fdc4",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "collaboration",
+    "file",
+    "integration",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A server-side deployment gateway for DeepSeek Harness that provides multi-user browser access, per-user isolated instances and API keys, and workspace file transfer; its documented root and sudo integrations warrant human review.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供面向多用户的服务器端网页登录门户、独立实例与 API Key 管理，以及工作区文件上传下载功能。",
+    "en": "A server-side deployment gateway for DeepSeek Harness that provides multi-user browser access, isolated instances, API key setup, and workspace file transfers."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a browser-accessible multi-user gateway for DeepSeek Harness",
+      "Creates and manages per-user operating-system accounts and service instances",
+      "Stores and routes per-user API credentials",
+      "Performs server-side file listing, upload, download, and read operations through sudo-configured helpers",
+      "Configures reverse proxy, systemd services, and network isolation rules"
+    ],
+    "reasons": [
+      {
+        "code": "privileged_server_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "cross_user_isolation_requirements",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Provides a browser-accessible multi-user gateway for DeepSeek Harness",
+      "Creates and manages per-user operating-system accounts and service instances",
+      "Stores and routes per-user API credentials",
+      "Performs server-side file listing, upload, download, and read operations through sudo-configured helpers",
+      "Configures reverse proxy, systemd services, and network isolation rules"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:40.205Z",
+  "repositoryCommitSha": "fd00a16150620909e255803208f608e002d267c4",
+  "evidenceHash": "aedba0e8625927abd02b022e1db2e2b6664020c6b53ebd007db574facdf9509a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5b8b5efc171b8beb7aedaf9262c33ec8460df3bf002a3850b9f421c3af9a8b5c",
+  "shadowMode": false
+}

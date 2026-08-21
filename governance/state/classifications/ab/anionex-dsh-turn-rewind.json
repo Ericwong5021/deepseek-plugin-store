@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "agent",
+    "context",
+    "workflow",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin for reviewing and explicitly restoring Git worktree files to message-anchored checkpoints, optionally restarting from the restored request.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于消息锚点的工作区文件预览、恢复点管理和经确认的文件回退功能，并可选择从恢复后的请求重新开始会话。",
+    "en": "Provides DeepSeek Harness with message-anchored workspace file previews, restore points, and explicitly confirmed file rollback, with an option to restart from the restored request."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads Git worktree state and file contents",
+      "Creates durable restore points and rescue points",
+      "Previews and selectively restores workspace files after explicit confirmation",
+      "Can create or fork a DSH session after restoring files",
+      "Exposes a change-ledger service API to other plugins"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "durable_snapshot_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_creation_or_fork",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads Git worktree state and file contents",
+      "Creates durable restore points and rescue points",
+      "Previews and selectively restores workspace files after explicit confirmation",
+      "Can create or fork a DSH session after restoring files",
+      "Exposes a change-ledger service API to other plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:52.081Z",
+  "repositoryCommitSha": "b1b85f18aaaaf71d76c84613429ce04d71f69620",
+  "evidenceHash": "656dffc4dfd98584ad70399a788fcf51481c0d726753463731f6c37b7fe3d6b4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "88d8c2cd6e00d603ac2d598830d3fff9d12e3e327ec7c7c04c12d03742cab777",
+  "shadowMode": false
+}

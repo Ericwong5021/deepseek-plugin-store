@@ -1,16 +1,75 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "automation",
+    "monitoring",
+    "ui",
+    "api",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An embedded administration utility for monitoring the DeepSeek Harness version and manually or automatically updating and restarting its web service; human review is appropriate because it performs global package installation and service control.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 网页界面中查看版本状态、检查更新、更新程序并重启 Web 服务的管理插件。",
+    "en": "An administration plugin for viewing DeepSeek Harness version status, checking for updates, updating the package, and restarting the web service from the embedded interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Displays service and package version status in an embedded web interface",
+      "Checks the npm latest version of @deepseek-ai/dsh",
+      "Installs the latest @deepseek-ai/dsh package globally",
+      "Schedules and executes service restart commands through systemd or fallback restart mechanisms"
+    ],
+    "reasons": [
+      {
+        "code": "executes_system_service_restart",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "performs_global_package_update",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_mutating_api_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Displays service and package version status in an embedded web interface",
+      "Checks the npm latest version of @deepseek-ai/dsh",
+      "Installs the latest @deepseek-ai/dsh package globally",
+      "Schedules and executes service restart commands through systemd or fallback restart mechanisms"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:18:45.049Z",
   "repositoryCommitSha": "f78cef405cfdfb7f9f44c481490c2aa9d1c8b818",
+  "evidenceHash": "48c25469549fb7329e1dd58de5af06750a989fb0b137031398825ceacd721cbf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "979de1f8eaa0d703b772e20202a68b470788c6deb6d9146273cfb40def46d2d2",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T20:12:01.510Z",
-  "lastAttemptAt": "2026-08-21T20:12:01.510Z",
-  "nextRetryAt": "2026-08-22T20:12:01.510Z",
-  "retryable": true,
-  "error": "/chat/completions: 400 {\n  \"error\": {\n    \"message\": \"Invalid schema for response_format 'governance_classify_v2': In context=('properties', 'schemaVersion'), schema must have a 'type' key.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"text.format.schema\",\n    \"code\": \"invalid_json_schema\"\n  }\n}",
   "shadowMode": false
 }
