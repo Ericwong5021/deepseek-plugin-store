@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "visualization",
+    "monitoring",
+    "notification",
+    "agent",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a macOS menu bar and popover interface that visualizes DSH agent sessions, tool calls, subagents, and status, while allowing approval decisions to be sent back to DSH; the primary purpose is a desktop monitoring and control panel.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的会话、工具调用、代理状态和审批请求展示在 macOS 菜单栏面板中，并支持在面板内处理审批。",
+    "en": "Displays DeepSeek Harness sessions, tool calls, agent status, and approval requests in a macOS menu bar panel with in-panel approval handling."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Spawns a native macOS menu bar panel process",
+      "Observes DSH session, tool, subagent, approval, and status events",
+      "Communicates with the panel over a local Unix socket",
+      "Sends approval or rejection decisions from the panel back to DSH",
+      "Provides controls to enable or disable runtime plugins"
+    ],
+    "reasons": [
+      {
+        "code": "native_process_spawn",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_event_observation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_decision_writeback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_runtime_controls",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Spawns a native macOS menu bar panel process",
+      "Observes DSH session, tool, subagent, approval, and status events",
+      "Communicates with the panel over a local Unix socket",
+      "Sends approval or rejection decisions from the panel back to DSH",
+      "Provides controls to enable or disable runtime plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:24.128Z",
+  "repositoryCommitSha": "62699999e0ccc46b191d5c46b5f0679a463ac097",
+  "evidenceHash": "ee3b6b165982f51eb43042ed7d759b691a8f799b7f57608d9741d7fa1e26e0ad",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5684a301c2c875e69beaee2e91e161dbb599e625b0ff887bb73b1a92dec3a648",
+  "shadowMode": false
+}

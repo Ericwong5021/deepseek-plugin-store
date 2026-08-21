@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "desktop",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily integrates DSH web/API access with remote exposure, authentication gating, privileged endpoint access, and local native folder selection; its remote-access and passwordless-default behavior warrants human review.",
+  "summaries": {
+    "zh": "为 DSH Web/API 提供远程访问认证门禁、特权接口放行以及本机原生工作区目录选择功能。",
+    "en": "Adds remote access authentication, enables authenticated access to privileged DSH Web/API endpoints, and provides native local workspace folder selection."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes the DSH web server for remote access",
+      "Adds password-based authentication for non-loopback HTTP/API requests",
+      "Enables access to loopback-restricted and privileged DSH endpoints after authentication",
+      "Patches server behavior and restores it on plugin removal",
+      "Invokes native operating-system folder pickers for local workspace selection"
+    ],
+    "reasons": [
+      {
+        "code": "remote_access_and_privileged_api_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "passwordless_by_default",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "native_filesystem_picker_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes the DSH web server for remote access",
+      "Adds password-based authentication for non-loopback HTTP/API requests",
+      "Enables access to loopback-restricted and privileged DSH endpoints after authentication",
+      "Patches server behavior and restores it on plugin removal",
+      "Invokes native operating-system folder pickers for local workspace selection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:37.970Z",
+  "repositoryCommitSha": "8c8c52b593ba8ec275b2e57b02de36f0f8f63a78",
+  "evidenceHash": "f4663d0abb092c33467e83777d72425e49659c10cf5eec791800d2b738635c05",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "39fbe102b9782f7cf5b39403f18de4f82373eda58e2106ab221159a7e3585d38",
+  "shadowMode": false
+}

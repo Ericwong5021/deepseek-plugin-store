@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "chat",
+    "api",
+    "ui",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A context-aware composer assistant that generates and cycles through language-model suggestions based on bounded conversation context and local interaction history, while requiring the user to review and send messages manually.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 撰写框中根据有限的对话上下文和本地互动记录生成可循环选择的下一条消息建议。",
+    "en": "Generates and cycles through next-message suggestions in the DeepSeek Harness composer using bounded conversation context and local interaction history."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generates next-message suggestions using the current draft, bounded conversation history, prior-session prompts, and local suggestion outcomes",
+      "Calls the selected Harness language-model provider through ctx.llm",
+      "Stores up to 50 suggestion outcomes in browser localStorage",
+      "Places a selected suggestion into the composer draft without sending it automatically"
+    ],
+    "reasons": [
+      {
+        "code": "model_data_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_browser_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "composer_draft_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Generates next-message suggestions using the current draft, bounded conversation history, prior-session prompts, and local suggestion outcomes",
+      "Calls the selected Harness language-model provider through ctx.llm",
+      "Stores up to 50 suggestion outcomes in browser localStorage",
+      "Places a selected suggestion into the composer draft without sending it automatically"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:08:03.971Z",
+  "repositoryCommitSha": "fed9aa42bf9a80aad1d239ffa632e1de9d8f93a9",
+  "evidenceHash": "4332bc57e0a1f20a05ffb8cbfb9e8e4751d6ea5687d50e04212debb57be14a78",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0f369992d43bbc89c7598cce1ff74c18b2b6ede178d454f2d0ea3e86c6224837",
+  "shadowMode": false
+}

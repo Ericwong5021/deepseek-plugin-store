@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "automation",
+    "api",
+    "ui",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a Windows watchdog plugin whose primary purpose is monitoring the dsh web GUI, recording crashes, automatically restarting the host, and exposing status and restart controls through a panel and local API.",
+  "summaries": {
+    "zh": "用于监控 dsh Web GUI、记录崩溃信息、按退避策略自动重启宿主进程，并提供状态查看与计划重启控制。",
+    "en": "Monitors the dsh web GUI, records crash information, automatically restarts the host with backoff, and provides status and planned-restart controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Monitors the dsh web host process",
+      "Records crash details and recent logs",
+      "Automatically restarts the host with exponential backoff",
+      "Supports planned restarts through a panel and HTTP API",
+      "Runs an independent PowerShell supervisor process",
+      "Writes configuration and log files to a local data directory"
+    ],
+    "reasons": [
+      {
+        "code": "process_supervision_and_restart",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_log_and_configuration_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Monitors the dsh web host process",
+      "Records crash details and recent logs",
+      "Automatically restarts the host with exponential backoff",
+      "Supports planned restarts through a panel and HTTP API",
+      "Runs an independent PowerShell supervisor process",
+      "Writes configuration and log files to a local data directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:11.530Z",
+  "repositoryCommitSha": "271c1970cfe63eb18e30e944a05aa93c3a87efaa",
+  "evidenceHash": "cfd7f6596b1944c32b0656ffe44f12db9e644d3ef5f04775448e41e44aa65d3a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "21deca49cf8d2349a06a69bdd4df71b59a5a2be93a64b7232f70b1be85f33a60",
+  "shadowMode": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The plugin configures DeepSeek Harness on Windows to expose Git Bash as the sole terminal, disable PowerShell, and install bash-only presets. Human review is warranted because the README states that Windows defaults to danger-full-access with approvals set to never.",
+  "summaries": {
+    "zh": "将 Windows 上的 DeepSeek Harness 配置为仅使用 Git Bash 终端，并安装 bash-only 会话预设。",
+    "en": "Configures DeepSeek Harness on Windows to use Git Bash as its only terminal and installs bash-only session presets."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Forces DeepSeek Harness to use Git Bash as the only terminal on Windows",
+      "Disables PowerShell tools and executors",
+      "Installs derived agent presets through junctions",
+      "Enables Windows sandbox danger-full-access with approvals disabled by default"
+    ],
+    "reasons": [
+      {
+        "code": "shell_execution_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "elevated_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_bypass_default",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Forces DeepSeek Harness to use Git Bash as the only terminal on Windows",
+      "Disables PowerShell tools and executors",
+      "Installs derived agent presets through junctions",
+      "Enables Windows sandbox danger-full-access with approvals disabled by default"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:22.059Z",
+  "repositoryCommitSha": "c6d1ce19cae7ae5aff15aea640228f6a3c952a0d",
+  "evidenceHash": "1d9819b82456b2e557969f53a39626dfdfeaafddfdd81368c177f78ebadda5b5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f25d050fd10729480ce6464747107776d3cdaf2a96800da3547f4c1a89ae4142",
+  "shadowMode": false
+}

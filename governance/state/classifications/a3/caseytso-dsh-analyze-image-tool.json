@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "file",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides an analyze_image tool that reads images and forwards them with user prompts to a configured OpenAI-compatible vision endpoint, including support for pasted attachments and WebUI configuration.",
+  "summaries": {
+    "zh": "为纯文本模型提供 analyze_image 工具，可读取本地或粘贴的图片并转发至用户配置的兼容 OpenAI 的视觉端点进行分析。",
+    "en": "Adds an analyze_image tool that reads local or pasted images and forwards them to a user-configured OpenAI-compatible vision endpoint for analysis."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local image files, HTTP(S) image URLs, data URLs, and in-session image attachments",
+      "Sends image data and prompts to a user-configured OpenAI-compatible vision endpoint",
+      "Stores and manages endpoint settings and API key configuration through a WebUI panel",
+      "Rewrites pasted image messages for text-only models and invokes the analyze_image tool"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_attachment_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local image files, HTTP(S) image URLs, data URLs, and in-session image attachments",
+      "Sends image data and prompts to a user-configured OpenAI-compatible vision endpoint",
+      "Stores and manages endpoint settings and API key configuration through a WebUI panel",
+      "Rewrites pasted image messages for text-only models and invokes the analyze_image tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:08.608Z",
+  "repositoryCommitSha": "8e2f431616e4a5adbf8bb54c54d016df883d4c70",
+  "evidenceHash": "c9ddc318a510ef31dc50e1081930fbdcfda51b6e28ac5751457d00f2758cd316",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e718ce653d3e855914fc8020a25b99e49f8654ee002f231e208259d54715b7a7",
+  "shadowMode": false
+}

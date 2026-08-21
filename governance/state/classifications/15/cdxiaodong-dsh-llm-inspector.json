@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "monitoring",
+    "data",
+    "file",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "An LLM request/response inspection plugin for debugging and monitoring that controls reasoning settings, analyzes streaming traffic, captures thinking data, and optionally persists session audits; human review is warranted because it can intercept and store sensitive model content.",
+  "summaries": {
+    "zh": "用于调试和监控 LLM 请求与响应的 DeepSeek Harness 插件，支持推理控制、流式流量分析、思考内容捕获及会话审计落盘。",
+    "en": "A DeepSeek Harness plugin for debugging and monitoring LLM requests and responses through reasoning control, stream analysis, thinking capture, and optional session audit persistence."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts and modifies LLM request configuration",
+      "Intercepts streaming LLM responses for token, reasoning, and tool-call analysis",
+      "Captures and exports model reasoning through a registered think tool",
+      "Persists session events and selected request/response content to audit.jsonl",
+      "Provides traffic statistics and audit services to other plugins"
+    ],
+    "reasons": [
+      {
+        "code": "intercepts_model_requests_and_responses",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "may_persist_sensitive_content_including_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_reasoning_configuration_and_system_prompt",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Intercepts and modifies LLM request configuration",
+      "Intercepts streaming LLM responses for token, reasoning, and tool-call analysis",
+      "Captures and exports model reasoning through a registered think tool",
+      "Persists session events and selected request/response content to audit.jsonl",
+      "Provides traffic statistics and audit services to other plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:24.148Z",
+  "repositoryCommitSha": "08f752f196e65e95d085779b680c4a44f7f71f8d",
+  "evidenceHash": "5ce3bf54999b3780cfac905b7164ee9184627641195cc00cd148d267c6d09587",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4b1302aeedefb7fb5462bd9365ea5b74becaf3efb40a17bed5513682d3b8664f",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-side monitoring and telemetry integration that converts DeepSeek Harness session activity to OCSF records, stores it locally, and optionally forwards it to Splunk or OTLP collectors without modifying session events.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 会话活动规范化为 OCSF 记录，写入本地队列并可选转发到 Splunk 或 OTLP 收集器。",
+    "en": "Normalizes DeepSeek Harness session activity into OCSF records, stores them in a local spool, and optionally forwards them to Splunk or OTLP collectors."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes DeepSeek Harness session events",
+      "Normalizes events into OCSF 1.9.0 records",
+      "Writes telemetry to a local spool file",
+      "Optionally sends records to Splunk HEC or an OTLP/HTTP collector",
+      "Uses keyed digests and value classifications to reduce raw-value exposure",
+      "Correlates tool calls and approval events and emits heartbeat records"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_observation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_session_mutation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Observes DeepSeek Harness session events",
+      "Normalizes events into OCSF 1.9.0 records",
+      "Writes telemetry to a local spool file",
+      "Optionally sends records to Splunk HEC or an OTLP/HTTP collector",
+      "Uses keyed digests and value classifications to reduce raw-value exposure",
+      "Correlates tool calls and approval events and emits heartbeat records"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:06:56.820Z",
+  "repositoryCommitSha": "d60acd034a6547b1dc90e114a2e5bfc210be42f8",
+  "evidenceHash": "9e2cb1fce6eb6924d7929777fa3875b393da4cf91fb05b97568b1e254d4603be",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7ed43de441450d95240b48291768697b679a6881a6a9dc210968d62e85349b44",
+  "shadowMode": false
+}

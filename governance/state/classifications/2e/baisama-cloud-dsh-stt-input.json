@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A voice-input plugin that records speech in the browser and inserts transcribed text into the DSH conversation composer using browser recognition or configurable OpenAI-compatible transcription APIs.",
+  "summaries": {
+    "zh": "在 DSH 对话输入框中通过浏览器语音识别或可配置的 OpenAI 兼容转写接口将语音转换为文字。",
+    "en": "Adds voice input to the DSH conversation composer by converting speech to text with browser recognition or configurable OpenAI-compatible transcription APIs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures microphone audio through browser APIs",
+      "Transcribes audio using browser speech recognition or OpenAI-compatible external APIs",
+      "Sends recorded audio to a configured transcription endpoint",
+      "Stores non-secret configuration in browser localStorage",
+      "Keeps the API key in page memory according to the README"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_audio_transcription",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_configured_api_key",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures microphone audio through browser APIs",
+      "Transcribes audio using browser speech recognition or OpenAI-compatible external APIs",
+      "Sends recorded audio to a configured transcription endpoint",
+      "Stores non-secret configuration in browser localStorage",
+      "Keeps the API key in page memory according to the README"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:27.751Z",
+  "repositoryCommitSha": "a10ef172b60e26c3e9c2319620f2d5b2101caf76",
+  "evidenceHash": "83fb05759e74de60589d8da1a597b8b6925692b30b08dd96bf180b27af8cd43e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6c11c326e1eeb04ae7eca0fe4d2fcf1d0e40ecff9c54fb7c11dfc83432aa8a32",
+  "shadowMode": false
+}

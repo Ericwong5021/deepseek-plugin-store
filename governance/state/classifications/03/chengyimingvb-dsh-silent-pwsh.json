@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows DeepSeek Harness plugin that patches sandbox and related process spawns so PowerShell and bash console windows remain hidden during confined commands.",
+  "summaries": {
+    "zh": "用于 Windows 版 DeepSeek Harness，在沙箱命令执行期间隐藏 PowerShell 和 bash 控制台窗口，避免黑色窗口闪烁。",
+    "en": "A Windows DeepSeek Harness plugin that hides PowerShell and bash console windows during sandboxed command execution to prevent flashing black windows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Modifies specific DeepSeek Harness package files under node_modules",
+      "Changes Windows child-process window visibility and spawn behavior",
+      "Runs an idempotent patch check on host startup"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process-spawn-configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "Modifies specific DeepSeek Harness package files under node_modules",
+      "Changes Windows child-process window visibility and spawn behavior",
+      "Runs an idempotent patch check on host startup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:08.930Z",
+  "repositoryCommitSha": "ab483999637bf19a5d476ba6c76084a27c05ffbc",
+  "evidenceHash": "33953bc974eb8e67d01a1b068744b473cbd3f1b00f54ead680ed26817bb4a0b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "08cc19097538d608eea0a6d3cf8c1687804cfa05e3291318a295ba1315a198c5",
+  "shadowMode": false
+}

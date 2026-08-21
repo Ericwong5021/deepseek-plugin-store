@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "ui",
+    "browser",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a mobile interface plugin that adds LAN reverse-proxy access, iOS PWA support, touch-oriented styling, and QR-based connection setup for the DeepSeek Harness Web GUI; it carries R2 risk because LAN clients may fully drive the Harness, including code-execution tools.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web GUI 提供局域网手机访问、iOS PWA 外壳、触屏适配和二维码连接页面。",
+    "en": "Adds LAN mobile access, an iOS PWA shell, touch-friendly styling, and a QR-code connection page to the DeepSeek Harness Web GUI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Binds a LAN-facing reverse proxy on 0.0.0.0",
+      "Forwards HTTP and WebSocket traffic to the local Harness service",
+      "Rewrites Host and Origin headers for trusted API access",
+      "Injects iOS PWA metadata, icons, and mobile touch CSS",
+      "Provides a QR-code page for mobile access",
+      "Optionally restricts clients by IP address"
+    ],
+    "reasons": [
+      {
+        "code": "lan_access_exposes_harness",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "proxied_service_can_drive_code_execution_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "binds_listener_to_all_interfaces",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Binds a LAN-facing reverse proxy on 0.0.0.0",
+      "Forwards HTTP and WebSocket traffic to the local Harness service",
+      "Rewrites Host and Origin headers for trusted API access",
+      "Injects iOS PWA metadata, icons, and mobile touch CSS",
+      "Provides a QR-code page for mobile access",
+      "Optionally restricts clients by IP address"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:08:07.998Z",
+  "repositoryCommitSha": "33415c77045cbf47d85256b60f4d3fa8802cdd90",
+  "evidenceHash": "25d01e13d49850d7942850c59eeb50255fcafa597f12eee00f94664872e082f8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "241ca475c2277da321155efe6eb9f4b3ee775c12cde9b8d610fe4c069bdc0a65",
+  "shadowMode": false
+}

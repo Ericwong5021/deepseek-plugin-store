@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "tool",
+    "file",
+    "terminal",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "An out-of-repo DeepSeek Harness plugin focused on agent tool-call governance: it denies selected credential and secret flows, redacts outputs and telemetry, prompts on risky configuration changes, and records audit decisions. The README explicitly documents pattern-based detection and in-process bypass limitations.",
+  "summaries": {
+    "zh": "用于 DeepSeek Harness 的数据防泄漏插件，可拦截部分凭据和秘密相关工具调用、清理结果与遥测内容，并记录决策审计信息。",
+    "en": "A DeepSeek Harness data-loss-prevention plugin that intercepts selected credential and secret-related tool calls, redacts results and telemetry, and records audit decisions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts agent tool calls and denies credential-file or secret-bearing requests",
+      "Redacts detected secrets from tool results, session logs, and exported telemetry",
+      "Prompts before behavior-changing file writes or attempts to suppress approval",
+      "Strips invisible instruction characters and terminal control sequences from selected outputs",
+      "Neutralizes remote markdown images in assistant output",
+      "Writes keyed-hash audit records for denials, redactions, rewrites, and prompts"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive-data-interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool-call-control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-write-prompts",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "audit-and-telemetry-handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "in-process-bypass-limitations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Intercepts agent tool calls and denies credential-file or secret-bearing requests",
+      "Redacts detected secrets from tool results, session logs, and exported telemetry",
+      "Prompts before behavior-changing file writes or attempts to suppress approval",
+      "Strips invisible instruction characters and terminal control sequences from selected outputs",
+      "Neutralizes remote markdown images in assistant output",
+      "Writes keyed-hash audit records for denials, redactions, rewrites, and prompts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:07:06.612Z",
+  "repositoryCommitSha": "c8e2a2e4672205653b675af2f82f0b7fa370a7c9",
+  "evidenceHash": "d44c0d696836d5719390ad38a8315b3e20e9dd9eabb447164c799ecd3cc49b25",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fbf22fb483cbd4b6bfe5eed2df8a330b1ebcda2cb603f0d656f2e0d6f5419f5b",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "api",
+    "file",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Adds an About panel that displays DSH environment details and checks npm registry versions, persists the last result locally, and does not perform upgrades.",
+  "summaries": {
+    "zh": "在 DSH 设置页新增关于面板，展示本地环境信息并通过 npm 检查版本更新，同时保存上次检测结果。",
+    "en": "Adds an About panel to display local DSH environment details, check npm for available versions, and persist the last check result."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays local version and runtime information",
+      "Queries npm registry version tags through a same-origin host endpoint",
+      "Reads and writes the persisted last-check result in a local JSON file",
+      "Provides an interface for copying upgrade commands and opening the npm page"
+    ],
+    "reasons": [
+      {
+        "code": "external_registry_query",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_result_file_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays local version and runtime information",
+      "Queries npm registry version tags through a same-origin host endpoint",
+      "Reads and writes the persisted last-check result in a local JSON file",
+      "Provides an interface for copying upgrade commands and opening the npm page"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:03:56.668Z",
+  "repositoryCommitSha": "ce0e97441d19bba952ee0f7febb6c0daf96b9fcb",
+  "evidenceHash": "e4c770d561d49a31fac519ab3cdd47fd60f20ddc17b608fee06891aa2c0c0e6f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "21c4bc0b89811019ec3f1ed22f532b8e3353e8d8c3e379c17a59bca6871af036",
+  "shadowMode": false
+}

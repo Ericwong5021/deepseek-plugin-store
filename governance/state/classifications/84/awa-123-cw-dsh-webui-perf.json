@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "desktop",
+    "automation",
+    "tool",
+    "debugging"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README describes a DeepSeek Harness WebUI performance utility that adds toggleable rendering, loading, caching, and memory optimizations through source/runtime patches; human review is warranted because it can modify installed packages and invoke system-level cleanup affecting Edge processes.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness WebUI 提供可开关的渲染、历史加载、缓存和内存优化，并配套官方包补丁管理与健康检测。",
+    "en": "Provides toggleable rendering, history-loading, caching, and memory optimizations for the DeepSeek Harness WebUI, with package patch management and health checks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Applies source and runtime patches to DeepSeek Harness packages",
+      "Modifies installed web application bundles and allowlists",
+      "Provides browser WebUI performance optimizations with persistent settings",
+      "Can invoke host PowerShell memory cleanup for the application and Edge processes",
+      "Can clear all Edge renderer working sets and refresh the page after confirmation",
+      "Runs patch health checks and can automatically reapply a runtime allowlist patch"
+    ],
+    "reasons": [
+      {
+        "code": "system_level_memory_cleanup",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_installed_packages_and_runtime_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "affects_all_edge_renderer_processes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Applies source and runtime patches to DeepSeek Harness packages",
+      "Modifies installed web application bundles and allowlists",
+      "Provides browser WebUI performance optimizations with persistent settings",
+      "Can invoke host PowerShell memory cleanup for the application and Edge processes",
+      "Can clear all Edge renderer working sets and refresh the page after confirmation",
+      "Runs patch health checks and can automatically reapply a runtime allowlist patch"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:04:00.465Z",
+  "repositoryCommitSha": "303ad7a983cda6f493f23952a6b6e0b047c1f2cb",
+  "evidenceHash": "dde1e91b00d4d12f681476e6ded7ae83ab9bb00f7b23c0b48e8cb4f8a73719fc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3a8d30bc74f4daf91f3d37d6ef6399ad30eefb2b8546353646739c0a9314368f",
+  "shadowMode": false
+}
