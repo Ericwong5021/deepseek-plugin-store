@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "memory",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web plugin that recalls commands and messages from the current session in the composer, allowing users to navigate, edit, and resubmit them with the Up and Down keys.",
+  "summaries": {
+    "zh": "在 DSH Web 编辑器中按上下键浏览当前会话的命令和消息历史，支持编辑后重新提交。",
+    "en": "Browse current-session commands and messages in the DSH Web composer with the Up and Down keys, then edit and resubmit them."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads current-session command and message history from the session log",
+      "Stores up to 100 recalled entries in in-memory per-session state",
+      "Intercepts eligible Up and Down key presses in the web composer",
+      "Writes recalled or edited text into the composer draft for user submission"
+    ],
+    "reasons": [
+      {
+        "code": "session-history-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "composer-input-interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads current-session command and message history from the session log",
+      "Stores up to 100 recalled entries in in-memory per-session state",
+      "Intercepts eligible Up and Down key presses in the web composer",
+      "Writes recalled or edited text into the composer draft for user submission"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:42.704Z",
+  "repositoryCommitSha": "9062803dbe268d02189ca2f1174cc153c76861f9",
+  "evidenceHash": "74cef53f82c0afb6f1f33bbe4d54daa8e37f0fd7d3216c284f9e64353c3793cc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2a2addc8f2e7d6d0e634c345f72656fc2d106cd7eb727447d8582df2365bcb34",
+  "shadowMode": false
+}

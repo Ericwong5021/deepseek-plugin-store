@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "desktop",
+    "layout",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README documents a workspace file browser centered on directory navigation, file preview and editing, and user-invoked filesystem management operations. It directly uses Node filesystem APIs for writes and states that these operations are not constrained by DSH read-only or workspace-write policies, warranting R2 risk.",
+  "summaries": {
+    "zh": "在聊天界面中浏览工作区文件夹、预览和编辑文本文件，并通过面板执行常见文件管理操作。",
+    "en": "Browse workspace folders, preview and edit text files, and perform common file-management actions from a panel within the chat interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Lists and reads workspace files",
+      "Previews text files and detects binary or truncated content",
+      "Edits and saves text files",
+      "Creates, renames, copies, moves, and deletes files and directories",
+      "Uses system or fallback trash handling",
+      "Tracks the active workspace and provides docked or floating UI panels"
+    ],
+    "reasons": [
+      {
+        "code": "direct_filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_operations_bypass_read_only_workspace_policy",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Lists and reads workspace files",
+      "Previews text files and detects binary or truncated content",
+      "Edits and saves text files",
+      "Creates, renames, copies, moves, and deletes files and directories",
+      "Uses system or fallback trash handling",
+      "Tracks the active workspace and provides docked or floating UI panels"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:46.221Z",
+  "repositoryCommitSha": "0180eefb0b3a963aa1f579f4ed83683add090325",
+  "evidenceHash": "eb6cb834071e0e1ce0dba6c29439b58efed8d3e5cbe3b6ef72d3dac3deff2558",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d7b602aab7dac16e486a36cdc002535bf601f0ad164ec24e5e8bd3a1f7ce833d",
+  "shadowMode": false
+}

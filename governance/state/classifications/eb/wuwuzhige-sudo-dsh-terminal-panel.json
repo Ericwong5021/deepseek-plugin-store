@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "file",
+    "api",
+    "ui",
+    "theme",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Provides browser-integrated terminal and SFTP panels for executing host or SSH commands and managing files; human review is warranted because it supports arbitrary commands, sudo, remote access, and file mutation without built-in authentication.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页会话中提供终端和 SFTP 面板，用于执行本机或 SSH 主机命令并浏览、上传、下载和管理文件。",
+    "en": "Adds Terminal and SFTP panels to DeepSeek Harness conversations for running local or SSH-host commands and browsing, uploading, downloading, and managing files."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes arbitrary commands on the local harness host",
+      "Executes commands on configured SSH targets",
+      "Supports sudo command execution",
+      "Uploads, downloads, creates, and deletes files through SFTP",
+      "Exposes same-origin terminal and SFTP RPC endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_host_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sudo_support",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_mutation_and_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_builtin_authentication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Executes arbitrary commands on the local harness host",
+      "Executes commands on configured SSH targets",
+      "Supports sudo command execution",
+      "Uploads, downloads, creates, and deletes files through SFTP",
+      "Exposes same-origin terminal and SFTP RPC endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:11.481Z",
+  "repositoryCommitSha": "fc69b3825162f87a17390102e93065520ab19b8d",
+  "evidenceHash": "4356c3495db921ea95f725b295beac69e0c13d71e8839a35470958afff1e4f0c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3e821996b8a0b1fae6618b172cbce4450670ddbeef18105f579cc653eb6504f9",
+  "shadowMode": false
+}

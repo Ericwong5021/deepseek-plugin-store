@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "agent",
+    "terminal",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DSH compatibility workaround that prevents redundant same-mode sandbox escalation requests from being rejected before supported tool calls execute.",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness 提供兼容处理的插件，用于移除非升级沙箱请求中的冗余字段，避免 bash、pwsh、write 和 edit 调用被错误拒绝。",
+    "en": "A DeepSeek Harness compatibility plugin that removes redundant fields from non-escalating sandbox requests so supported bash, pwsh, write, and edit calls are not incorrectly rejected."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Wraps DSH tool execution and agent-loop preparation methods",
+      "Removes redundant sandbox_permissions and justification fields for bash, pwsh, write, and edit calls when the requested mode is not wider than the session mode",
+      "Leaves genuinely wider, malformed, unrelated, and field-free calls unchanged",
+      "Restores the original runtime methods when disposed"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_tool_argument_patch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_policy_validation_workaround",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Wraps DSH tool execution and agent-loop preparation methods",
+      "Removes redundant sandbox_permissions and justification fields for bash, pwsh, write, and edit calls when the requested mode is not wider than the session mode",
+      "Leaves genuinely wider, malformed, unrelated, and field-free calls unchanged",
+      "Restores the original runtime methods when disposed"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:16.179Z",
+  "repositoryCommitSha": "d6f43662a5f8dbe3bbbc36a443fab29a4cbbb22a",
+  "evidenceHash": "777a5288b7333f9fea01980077c2bae377e19fa9208ca3b7c3f3667d889284d4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7be0290f2d27e3c425717a0a141f9bcf27cb945410baea2a961e61d3f426bcba",
+  "shadowMode": false
+}

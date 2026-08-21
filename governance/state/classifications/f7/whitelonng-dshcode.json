@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "agent",
+    "desktop",
+    "chat",
+    "api",
+    "browser",
+    "file",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "DSHCode is primarily a cross-platform desktop interface for an extensible AI agent harness, combining chat, workflow orchestration, plugins, and local system tools.",
+  "summaries": {
+    "zh": "DSHCode 是一款适用于 macOS 和 Windows 的桌面 AI Agent 应用，提供对话界面、插件管理、工作流编排以及文件、终端和网页工具。",
+    "en": "DSHCode is a macOS and Windows desktop AI agent application offering a conversational interface, plugin management, workflow orchestration, and file, terminal, and web tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs a desktop Electron application on macOS and Windows",
+      "Provides an AI agent interface with bash, filesystem, terminal, web search/fetch, LSP, and subprocess tools",
+      "Supports plugin installation from npm or Git repositories",
+      "Uses DeepSeek models through an API key",
+      "Supports subagent delegation, workflows, plans, and persistent goals",
+      "Displays system notifications and starts a localhost HTTP service"
+    ],
+    "reasons": [
+      {
+        "code": "local_command_and_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_and_external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_installation_and_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs a desktop Electron application on macOS and Windows",
+      "Provides an AI agent interface with bash, filesystem, terminal, web search/fetch, LSP, and subprocess tools",
+      "Supports plugin installation from npm or Git repositories",
+      "Uses DeepSeek models through an API key",
+      "Supports subagent delegation, workflows, plans, and persistent goals",
+      "Displays system notifications and starts a localhost HTTP service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:55.711Z",
+  "repositoryCommitSha": "56a749c5914161362c328c4f76247ec4b460d617",
+  "evidenceHash": "af40fda8eb2c9a626424e6ce184c5529668cf91341be9aadd253747e65d530b0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dedb8db280e75b8a8ca99ff6631fc6f8cc244b027824ac2fa98a761eb7915a99",
+  "shadowMode": false
+}

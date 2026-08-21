@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "browser",
+    "desktop",
+    "monitoring",
+    "automation",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A VS Code integration for embedding the DSH WebUI, monitoring its availability, managing its service process, and displaying controls and logs within the editor.",
+  "summaries": {
+    "zh": "将 DSH WebUI 嵌入 VS Code，并提供服务状态监控、进程启停、配置控制和日志查看功能。",
+    "en": "Embeds the DSH WebUI in VS Code with service monitoring, process controls, configuration options, and log viewing."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Embeds a configurable DSH WebUI URL in a VS Code webview",
+      "Monitors service availability through periodic HTTP requests",
+      "Starts and stops a configurable background command as a child process",
+      "Captures child-process stdout and stderr in VS Code output channels",
+      "Opens the configured service URL in the system browser",
+      "Persists extension settings globally"
+    ],
+    "reasons": [
+      {
+        "code": "executes_configurable_shell_command",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loads_configurable_external_webui",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "manages_background_process_lifecycle",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Embeds a configurable DSH WebUI URL in a VS Code webview",
+      "Monitors service availability through periodic HTTP requests",
+      "Starts and stops a configurable background command as a child process",
+      "Captures child-process stdout and stderr in VS Code output channels",
+      "Opens the configured service URL in the system browser",
+      "Persists extension settings globally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:56.908Z",
+  "repositoryCommitSha": "c608acde14925c0db0aa8adbf179847f8e9ab137",
+  "evidenceHash": "f6d490cc82a644c6812a82488e5f8e9e064a688d2a3ff53b7e4cc8e2720fe41e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e5587ff526e0ccadc80045c02e44ccd732de7fcfc549f01079cbbaa94e3a944d",
+  "shadowMode": false
+}

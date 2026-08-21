@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh integration plugin that configures, hot-switches, and observes HTTP proxy routing for the host application's LLM requests, with status and connectivity-test endpoints.",
+  "summaries": {
+    "zh": "为 dsh 的 LLM 请求配置并动态切换 HTTP(S) 代理路由，并提供状态查看与连通性测试接口。",
+    "en": "Configures and hot-switches HTTP(S) proxy routing for dsh LLM requests and provides status and connectivity-testing endpoints."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes the host application's LLM HTTP requests through a configured HTTP(S) proxy",
+      "Changes the global undici dispatcher and restores the baseline dispatcher when disabled",
+      "Reads proxy settings and environment variables",
+      "Exposes status and connectivity-test HTTP endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "network_routing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "global_runtime_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_api_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Routes the host application's LLM HTTP requests through a configured HTTP(S) proxy",
+      "Changes the global undici dispatcher and restores the baseline dispatcher when disabled",
+      "Reads proxy settings and environment variables",
+      "Exposes status and connectivity-test HTTP endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:57.763Z",
+  "repositoryCommitSha": "2679d6ccd2375b4c9ac85d8a8a806a18cf906779",
+  "evidenceHash": "83a8a105b66dfa6c1ffeb7fc27b992c298906b73195d51d501e5deef5d1f462f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f8dbd0a47ed58f3f80abd8168e54deb481f8255cd0f537508814cc8361c0b51",
+  "shadowMode": false
+}

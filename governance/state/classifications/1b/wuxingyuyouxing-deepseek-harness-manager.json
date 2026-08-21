@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "monitoring",
+    "cli",
+    "theme",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README明确说明这是一个Windows桌面管理器，用于启停、重启和监控本机DeepSeek Harness服务，支持多实例、日志查看、诊断、托盘运行及可选命令行操作。",
+  "summaries": {
+    "zh": "用于在Windows桌面上管理本机DeepSeek Harness服务的工具，支持多实例启停、状态监控、日志查看和诊断。",
+    "en": "A Windows desktop tool for managing local DeepSeek Harness services with multi-instance control, status monitoring, log viewing, and diagnostics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "启动、停止和重启本机 DeepSeek Harness 服务",
+      "管理多个本地服务实例及端口配置",
+      "读取并显示服务日志、进程状态和资源信息",
+      "检测本地 Node.js、dsh 和相关路径",
+      "可选执行 dsh 安装并创建开机自启动设置",
+      "打开本地服务浏览器地址"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_log_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_networked_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "启动、停止和重启本机 DeepSeek Harness 服务",
+      "管理多个本地服务实例及端口配置",
+      "读取并显示服务日志、进程状态和资源信息",
+      "检测本地 Node.js、dsh 和相关路径",
+      "可选执行 dsh 安装并创建开机自启动设置",
+      "打开本地服务浏览器地址"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:17.743Z",
+  "repositoryCommitSha": "f499a0392823f37d4b9655aa84c3931835c02454",
+  "evidenceHash": "edb0245045e491cc5d9b70651ec8a538751aa693af525c299191e5a553889515",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2cd7f58949573b6eca9de4579044a933582d91364fae8ee0389c7541d26454a3",
+  "shadowMode": false
+}

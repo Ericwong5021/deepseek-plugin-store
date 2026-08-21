@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "automation",
+    "cli",
+    "integration",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a shell-based setup utility that patches dsh, installs Caddy and a systemd service, and integrates Tailscale for password-protected remote access; it explicitly states that the project is not a plugin.",
+  "summaries": {
+    "zh": "通过配置 Caddy、systemd 和 Tailscale，为 dsh Web UI 提供带密码保护的远程访问。",
+    "en": "A command-line setup utility that configures Caddy, systemd, and Tailscale to provide password-protected remote access to the dsh web UI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Patches the dsh client connection code",
+      "Installs and configures Caddy as a reverse proxy",
+      "Creates a password-authenticated remote access endpoint",
+      "Installs a systemd user service",
+      "Integrates with Tailscale Serve",
+      "Enables remote access to dsh privileged methods that can execute host commands"
+    ],
+    "reasons": [
+      {
+        "code": "host_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_process_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Patches the dsh client connection code",
+      "Installs and configures Caddy as a reverse proxy",
+      "Creates a password-authenticated remote access endpoint",
+      "Installs a systemd user service",
+      "Integrates with Tailscale Serve",
+      "Enables remote access to dsh privileged methods that can execute host commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "reject",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:14.993Z",
+  "repositoryCommitSha": "859373f95d61415acc647cce28032501bfad3db1",
+  "evidenceHash": "5b3aeafc336156a44b226e7d84167b7b44a1ffb38c87c3f942c70acd487355b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f1c9e4aefa0b70c33d70c0bff636d913eb27b948881694dc3b20f82eda32432f",
+  "shadowMode": false
+}

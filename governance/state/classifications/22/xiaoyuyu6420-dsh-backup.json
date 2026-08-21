@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "automation",
+    "data",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A file and terminal utility for backing up and restoring DeepSeek Harness data, with scheduling, archive verification, retention, deletion, and optional GitHub synchronization documented in the README.",
+  "summaries": {
+    "zh": "用于备份和恢复 DeepSeek Harness 数据的文件工具，支持定时备份、归档校验、保留策略、删除以及可选的 GitHub 同步。",
+    "en": "A file utility for backing up and restoring DeepSeek Harness data with scheduled backups, archive verification, retention, deletion, and optional GitHub synchronization."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads and archives DSH data from ~/.dsh",
+      "Restores archived DSH data and can reinstall plugin dependencies",
+      "Creates scheduled backups across restarts",
+      "Lists, verifies, retains, and deletes backup archives",
+      "Optionally synchronizes backups with GitHub",
+      "Redacts credentials from archives as documented"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_write_restore_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_automation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_github_sync",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and archives DSH data from ~/.dsh",
+      "Restores archived DSH data and can reinstall plugin dependencies",
+      "Creates scheduled backups across restarts",
+      "Lists, verifies, retains, and deletes backup archives",
+      "Optionally synchronizes backups with GitHub",
+      "Redacts credentials from archives as documented"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:30.727Z",
+  "repositoryCommitSha": "cc2c7166812c6b31c3c48ca76dba17200548034f",
+  "evidenceHash": "8a5927a7d34befcb83f3a77202f6219f29383418616d301abae9ccbec964aa0b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "71142b658aea70f3bed74db02b3c632986a22a0c7886fe2906672667c59b718b",
+  "shadowMode": false
+}

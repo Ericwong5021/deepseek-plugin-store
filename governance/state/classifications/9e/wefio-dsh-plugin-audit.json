@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "skill",
+    "project-analysis",
+    "file",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "该插件的主要用途是安装第三方 DSH 插件前进行源码静态预筛、语义审查和证据化报告，因此归类为项目分析。README 明确说明其通过可复用 skill 和独立脚本检查插件入口、危险模块、生命周期脚本及动态求值等信号。",
+  "summaries": {
+    "zh": "用于在安装第三方 DSH 插件前扫描其源码与配置，定位潜在风险信号并生成带证据的审计报告。",
+    "en": "Audits third-party DSH plugins before installation by scanning source and configuration for risk signals and producing an evidence-based report."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "静态扫描插件目录中的源码和配置文件",
+      "定位潜在危险模块、脚本和动态求值信号",
+      "生成带文件与行号证据的审计报告"
+    ],
+    "reasons": [
+      {
+        "code": "source-inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "deterministic-local-scan",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "audit-report-generation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "静态扫描插件目录中的源码和配置文件",
+      "定位潜在危险模块、脚本和动态求值信号",
+      "生成带文件与行号证据的审计报告"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:47.004Z",
+  "repositoryCommitSha": "5ca7f2b016d5978bcd4ef6436eb0bcb7bc19cf96",
+  "evidenceHash": "69de12b94c0114afaace76ea4808ab2e72b5633b6feea617f79303a7c3b5f5c2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "19a1e3b930b48e39f4d60650f4fb2c4d99b4e68f2f9e7f342c2e0a8906994c6b",
+  "shadowMode": false
+}

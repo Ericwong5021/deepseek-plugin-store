@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "agent",
+    "chat",
+    "ui",
+    "terminal",
+    "file",
+    "api",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A web chat interface for DeepSeek Harness agents, with streaming conversations, session management, file browsing, and an embedded terminal.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 智能体提供支持流式输出、会话管理、文件浏览和内置终端的 Web 聊天界面。",
+    "en": "A web chat interface for DeepSeek Harness agents with streaming output, session management, file browsing, and an embedded terminal."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs a DeepSeek Harness agent in a child process",
+      "Streams agent events to a browser over WebSocket",
+      "Provides file upload and file browsing",
+      "Provides an embedded terminal using node-pty",
+      "Stores and manages chat sessions",
+      "Connects to the DeepSeek API using an API key"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "terminal_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs a DeepSeek Harness agent in a child process",
+      "Streams agent events to a browser over WebSocket",
+      "Provides file upload and file browsing",
+      "Provides an embedded terminal using node-pty",
+      "Stores and manages chat sessions",
+      "Connects to the DeepSeek API using an API key"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:30.744Z",
+  "repositoryCommitSha": "c40800d47baf22323c073d6271d96089d994793b",
+  "evidenceHash": "f8f659bcef4d4fa5e91be5c88d215ac27d658171101b378154579363340c4149",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ba0c0a8733e67c54fe8c7e686d2aabde5a8d97dc946635e6e40cd4a83ba55d91",
+  "shadowMode": false
+}

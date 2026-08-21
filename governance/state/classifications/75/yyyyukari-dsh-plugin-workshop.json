@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "browser",
+    "search",
+    "api",
+    "automation",
+    "file",
+    "terminal",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web UI plugin browser that searches GitHub for plugins, presents translated metadata, and manages local plugin installation, updates, and removal.",
+  "summaries": {
+    "zh": "在 DSH Web UI 中浏览和搜索 GitHub 插件，并查看翻译信息及管理本地插件的安装、更新与卸载。",
+    "en": "A DSH Web UI plugin browser for searching GitHub repositories, viewing translated information, and managing local plugin installation, updates, and removal."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches GitHub repositories through the GitHub API",
+      "Fetches repository metadata and README content from raw GitHub URLs",
+      "Translates descriptions and README content through a Google translation endpoint",
+      "Stores an optional GitHub token in browser local storage",
+      "Installs, updates, and uninstalls local DSH plugins using git, pnpm, or DSH plugin commands",
+      "Registers same-origin host routes for plugin installation, update, and uninstallation"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Searches GitHub repositories through the GitHub API",
+      "Fetches repository metadata and README content from raw GitHub URLs",
+      "Translates descriptions and README content through a Google translation endpoint",
+      "Stores an optional GitHub token in browser local storage",
+      "Installs, updates, and uninstalls local DSH plugins using git, pnpm, or DSH plugin commands",
+      "Registers same-origin host routes for plugin installation, update, and uninstallation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:45.642Z",
+  "repositoryCommitSha": "f53a7e466948a6c5636f2079b2382976a1eea4c8",
+  "evidenceHash": "6d85d99be9a34057b86883b7df0fcc22f17607ace9117b8f71770e4e5ebd16a4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "31313db86c49ef60103c4b92cc2bd379c04c09200377e2ad24c598be33083e5c",
+  "shadowMode": false
+}

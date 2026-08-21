@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An in-process OpenAI-compatible proxy for dsh that forwards selected requests to OpenCode Zen while rewriting client identity headers to support the provider's intended quota path.",
+  "summaries": {
+    "zh": "这是一个供 dsh 使用的进程内 OpenAI 兼容代理，将聊天和模型请求转发到 OpenCode Zen 并重写客户端身份请求头。",
+    "en": "An in-process OpenAI-compatible proxy for dsh that forwards chat and model requests to OpenCode Zen while rewriting client identity headers."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs an in-process local HTTP proxy",
+      "Forwards OpenAI-compatible chat completion and model requests to an external upstream service",
+      "Rewrites upstream client identity headers",
+      "Passes authorization headers and request bodies through to the upstream service",
+      "Relays streaming responses"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_passthrough",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "client_identity_header_rewrite",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs an in-process local HTTP proxy",
+      "Forwards OpenAI-compatible chat completion and model requests to an external upstream service",
+      "Rewrites upstream client identity headers",
+      "Passes authorization headers and request bodies through to the upstream service",
+      "Relays streaming responses"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:56.304Z",
+  "repositoryCommitSha": "2cfc4e172bfe3165773e1e137c5f5da3ebcc0046",
+  "evidenceHash": "fe817dadec8274f8392c18cb45c44a6006f6bc8086686b0fdbe0ddc8d5d89e16",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5e4b4a7c07ed2402d00b68b909220ba0992943a2fbe2f9262864818171dbc498",
+  "shadowMode": false
+}

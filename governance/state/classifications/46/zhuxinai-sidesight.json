@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "api",
+    "cli",
+    "image",
+    "video",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "SideSight is a CLI-first media analysis tool for text-only coding agents, providing image, diagram, chart, UI diff, video, and OCR analysis through configured multimodal providers or explicit local macOS OCR.",
+  "summaries": {
+    "zh": "SideSight 为文本型编码智能体提供命令行媒体分析，可处理截图、图表、界面差异、视频和 OCR，并支持配置多模态服务或在 macOS 上执行本地 OCR。",
+    "en": "SideSight provides CLI-based media analysis for text-only coding agents, covering screenshots, diagrams, charts, UI differences, videos, and OCR through configured multimodal services or explicit local macOS OCR."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads specified local image and video files for analysis",
+      "Sends media to a configured multimodal provider for cloud-backed analysis",
+      "Performs explicit local OCR on macOS using Apple Vision",
+      "Exposes CLI and optional MCP interfaces"
+    ],
+    "reasons": [
+      {
+        "code": "local_media_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_provider_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_ocr",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Reads specified local image and video files for analysis",
+      "Sends media to a configured multimodal provider for cloud-backed analysis",
+      "Performs explicit local OCR on macOS using Apple Vision",
+      "Exposes CLI and optional MCP interfaces"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:14.341Z",
+  "repositoryCommitSha": "7537348c7d2341359b834b3e176c10eedaf3ae64",
+  "evidenceHash": "23f3897cc35011f45209d4c259a9de596d788dff30428fdfaf638a94339acbac",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ae5d64c221e010cfb1ec9c90519d4673fd559b8134f6bd7a1d72c90221f9c759",
+  "shadowMode": false
+}

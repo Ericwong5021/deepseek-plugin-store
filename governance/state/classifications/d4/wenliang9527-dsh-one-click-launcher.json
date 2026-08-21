@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "desktop",
+    "file",
+    "terminal",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-focused launcher plugin that adds a DSH sidebar button and generates files to install dependencies and start DeepSeek Harness with one click.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 Windows 一键启动器，并可在 DSH 侧边栏添加按钮以生成启动文件。",
+    "en": "Provides a Windows one-click launcher for DeepSeek Harness and can add a DSH sidebar button that generates the required startup files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates Windows batch and executable launcher files",
+      "Installs dsh dependencies with npm on first run",
+      "Starts a local DeepSeek Harness process",
+      "Adds a sidebar launcher button to the DSH Web interface"
+    ],
+    "reasons": [
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_dependency_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates Windows batch and executable launcher files",
+      "Installs dsh dependencies with npm on first run",
+      "Starts a local DeepSeek Harness process",
+      "Adds a sidebar launcher button to the DSH Web interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:51.426Z",
+  "repositoryCommitSha": "2b503625909d14f1ee359827d72d0e0e7619549f",
+  "evidenceHash": "02050c6fa97f2b0f6f9a6e5d9ad76e8dc3c6db772516cca024369d000898e8af",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "427dd72b6371cf154ef619e2e7881b5b4f140a4b73c0ad51da0f5d785fb1cb36",
+  "shadowMode": false
+}

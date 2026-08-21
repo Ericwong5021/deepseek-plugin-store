@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin for monitoring OpenCode GO quota usage through a sidebar widget and the /opencode-go chat command, using an authenticated usage API proxy.",
+  "summaries": {
+    "zh": "通过侧边栏组件和 /opencode-go 聊天命令显示 OpenCode GO 的滚动、每周和每月配额使用情况。",
+    "en": "Displays OpenCode GO rolling, weekly, and monthly quota usage through a sidebar widget and the /opencode-go chat command."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads an OpenCode GO API credential through DSH credentials",
+      "Makes authenticated outbound requests to the OpenCode GO usage API",
+      "Displays rolling, weekly, and monthly quota usage in a sidebar widget and chat command",
+      "Provides a same-origin HTTP proxy route for usage data"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads an OpenCode GO API credential through DSH credentials",
+      "Makes authenticated outbound requests to the OpenCode GO usage API",
+      "Displays rolling, weekly, and monthly quota usage in a sidebar widget and chat command",
+      "Provides a same-origin HTTP proxy route for usage data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:32.298Z",
+  "repositoryCommitSha": "ee314339abe3a98125d5b685a47ea397ccdbe131",
+  "evidenceHash": "c19942788fedb55b0f8bdefabb2f67295d5bb3d2241992b721a8359c2b416baa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "20aa9f11979f1b5724f0e566f7b151c4df6e5328b6673842410ce8523add7e29",
+  "shadowMode": false
+}

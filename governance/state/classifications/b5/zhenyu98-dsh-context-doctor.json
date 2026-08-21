@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "project-analysis",
+    "tool",
+    "ui",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only DSH plugin audits injected instructions, skill catalogs, tool schemas, and MCP tools, presenting token estimates, duplication or shadowing conflicts, and optimization suggestions through a model tool and web panel.",
+  "summaries": {
+    "zh": "这是一个只读的 DSH 上下文审计插件，用于统计指令、技能和工具 schema 的 token 成本并发现重复或冲突。",
+    "en": "A read-only DSH context-auditing plugin that estimates token costs across instructions, skills, and tool schemas and identifies duplication or shadowing conflicts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "read-only filesystem inspection of instruction files, skill catalogs, and tool schemas",
+      "token-cost estimation and duplicate or conflict detection",
+      "exposes an HTTP audit endpoint and a context_audit model tool",
+      "renders audit summaries in a web UI"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reports_paths_and_duplicate_snippets",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "provides_model_tool_and_http_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "read-only filesystem inspection of instruction files, skill catalogs, and tool schemas",
+      "token-cost estimation and duplicate or conflict detection",
+      "exposes an HTTP audit endpoint and a context_audit model tool",
+      "renders audit summaries in a web UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:09.243Z",
+  "repositoryCommitSha": "957d5de09402f882a18e556cae37076ee420b868",
+  "evidenceHash": "2874bde0eec4a6a62c56ce93f50b7abe86ff08ce162fa9268d22b522f4a977bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "31daed47c7e6b4c374917c5ae289a652a4b8797954cb9703a7b7ca57d96c9951",
+  "shadowMode": false
+}

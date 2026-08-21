@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "data",
+    "api",
+    "agent",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for visualizing session spending and daily token usage, with estimate and session-cost tools backed by configurable pricing sources.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供会话费用预览、每日用量图表以及价格估算和会话成本工具。",
+    "en": "Provides DeepSeek Harness with session cost previews, daily usage charts, and price-estimate and session-cost tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays live session cost estimates and currency conversion",
+      "Provides today-usage charts and per-model breakdowns",
+      "Reads local session logs to compute usage and costs",
+      "Fetches pricing data from the official DeepSeek pricing page and repository-hosted price data",
+      "Exposes pricing HTTP endpoints and price_estimate and session_cost agent tools",
+      "Supports workspace-level price-table overrides"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_log_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_pricing_fetch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_registers_routes_and_tools",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Displays live session cost estimates and currency conversion",
+      "Provides today-usage charts and per-model breakdowns",
+      "Reads local session logs to compute usage and costs",
+      "Fetches pricing data from the official DeepSeek pricing page and repository-hosted price data",
+      "Exposes pricing HTTP endpoints and price_estimate and session_cost agent tools",
+      "Supports workspace-level price-table overrides"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:43.793Z",
+  "repositoryCommitSha": "a99147b4a616b688dcdee1b6f062de1b94c7de67",
+  "evidenceHash": "91e8bee52242ca80f8473bf3dfcd86ed7ecf46435c0786401ac727c9fe39f8cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5d0b49ee840053a402e170797d8eb42a1e6324d35511a8d8431358bf28709e15",
+  "shadowMode": false
+}

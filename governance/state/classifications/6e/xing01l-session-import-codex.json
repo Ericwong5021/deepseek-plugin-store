@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "cli",
+    "data",
+    "chat",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A CLI and chat-command importer that reads Codex App Server conversation history, converts it into DeepSeek Harness sessions, and attaches eligible historical workspaces.",
+  "summaries": {
+    "zh": "通过 Codex App Server 读取对话历史，将其转换为 DeepSeek Harness 会话，并为符合条件的历史工作目录创建或复用工作区关联。",
+    "en": "Imports conversation history through the Codex App Server, converts it into DeepSeek Harness sessions, and creates or reuses workspace attachments for eligible historical working directories."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads Codex conversation history through the Codex App Server",
+      "Converts completed, interrupted, and failed turns into Harness session events",
+      "Writes imported sessions and workspace attachments through Harness public services",
+      "Starts and manages a local Codex App Server subprocess"
+    ],
+    "reasons": [
+      {
+        "code": "reads_external_conversation_history",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_local_session_and_workspace_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "starts_local_subprocess",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads Codex conversation history through the Codex App Server",
+      "Converts completed, interrupted, and failed turns into Harness session events",
+      "Writes imported sessions and workspace attachments through Harness public services",
+      "Starts and manages a local Codex App Server subprocess"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:34.875Z",
+  "repositoryCommitSha": "5dcc2196becb8be8e983addc5340c95c90af5a8e",
+  "evidenceHash": "406845b7b616bfad6f969badb5bb78b5f206f9ba003c37dfee87a3f2043b3377",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "44e5522ac79e208327941ed5bf533bc2830c9d2e2d378f85b29b79cb8757a2ef",
+  "shadowMode": false
+}

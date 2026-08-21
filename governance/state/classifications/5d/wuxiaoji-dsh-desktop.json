@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "cli",
+    "tool",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A Windows Tauri desktop host that installs, launches, updates, and displays the locally installed DeepSeek Harness web UI while managing its local service process.",
+  "summaries": {
+    "zh": "这是一个基于 Tauri 的 Windows 桌面应用，用于安装、启动、更新并显示本地 DeepSeek Harness 网页界面。",
+    "en": "A Tauri-based Windows desktop app for installing, launching, updating, and displaying the locally installed DeepSeek Harness web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Checks for WebView2, Node.js, and the dsh CLI",
+      "Installs or updates the dsh npm package",
+      "Starts and manages a local dsh web-service process",
+      "Displays the locally hosted dsh web UI in a Windows desktop window"
+    ],
+    "reasons": [
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_package_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Checks for WebView2, Node.js, and the dsh CLI",
+      "Installs or updates the dsh npm package",
+      "Starts and manages a local dsh web-service process",
+      "Displays the locally hosted dsh web UI in a Windows desktop window"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:14.742Z",
+  "repositoryCommitSha": "6040f876432638e2ef6df3431e0719aa5425fa83",
+  "evidenceHash": "8f39a020c6c725808db634cd33b3770f16e7dd3f11ae12465cd1d81fd4b76460",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "319015a4433ac4bbb1dfc75659d186f61ebd0b0449045c74a964df7965c1b8aa",
+  "shadowMode": false
+}

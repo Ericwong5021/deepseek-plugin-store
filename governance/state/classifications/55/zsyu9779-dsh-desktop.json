@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "mobile",
+    "ui",
+    "automation",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-platform desktop container for DeepSeek Harness that launches and manages its local web UI, provides logs and configuration, and optionally enables paired browser control over the local network.",
+  "summaries": {
+    "zh": "一款面向 macOS、Windows 和 Linux 的 DeepSeek Harness 桌面容器，负责启动和管理本地 Web UI，并提供日志、配置及局域网手机控制功能。",
+    "en": "A cross-platform desktop container for DeepSeek Harness that launches and manages its local web UI with logging, configuration, and optional paired phone control over the local network."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches a local DeepSeek Harness web UI through npm, pnpm, Node.js, and a child process tree",
+      "Manages and terminates local application processes",
+      "Downloads and runs a fixed version of an npm package",
+      "Provides optional same-LAN browser control through a local HTTPS proxy and device pairing",
+      "Writes application logs and manages local workspace and profile configuration",
+      "Installs and tracks four bundled DeepSeek Harness plugins"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_service_and_lan_remote_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_download_and_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_configuration_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Launches a local DeepSeek Harness web UI through npm, pnpm, Node.js, and a child process tree",
+      "Manages and terminates local application processes",
+      "Downloads and runs a fixed version of an npm package",
+      "Provides optional same-LAN browser control through a local HTTPS proxy and device pairing",
+      "Writes application logs and manages local workspace and profile configuration",
+      "Installs and tracks four bundled DeepSeek Harness plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:30.488Z",
+  "repositoryCommitSha": "f27fbd5ebdd8321754c02302e714e779016de75f",
+  "evidenceHash": "3d8134bf9567360b14c68051c14c0c1bf5d8416147be749195f176b191a3ecd0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e5519c0b1905f3dbf9fd51eb248396982f3de0a208e43e16e7a9827ef6578a29",
+  "shadowMode": false
+}

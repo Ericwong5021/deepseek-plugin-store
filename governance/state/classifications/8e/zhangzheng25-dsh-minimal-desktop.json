@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "browser",
+    "monitoring",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows system-tray launcher for starting, opening, restarting, and exiting a local DeepSeek Harness web service, with local process control, browser launching, notifications, and logging.",
+  "summaries": {
+    "zh": "用于在 Windows 托盘中一键启动、打开、重启和退出本地 DeepSeek Harness Web 服务的轻量启动器。",
+    "en": "A lightweight Windows tray launcher for starting, opening, restarting, and exiting a local DeepSeek Harness web service."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runs and restarts a local DSh web service",
+      "Terminates the process occupying local port 3080",
+      "Opens the local DSh service in an Edge app window",
+      "Displays tray notifications and writes local logs"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_port_termination",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_window_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_logging_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Runs and restarts a local DSh web service",
+      "Terminates the process occupying local port 3080",
+      "Opens the local DSh service in an Edge app window",
+      "Displays tray notifications and writes local logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:02.978Z",
+  "repositoryCommitSha": "d0e4ba3b49abf0fb279d9cbd020a424d8dbe1db9",
+  "evidenceHash": "878fbb1c00123c8cd949c1246d7bf22f891f4e950864fc1be406d1195f26a155",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ff1dd9e41bef44e8c25547fb1365489e9c29c69d8332ef2fdee6a3ee9ac6c01d",
+  "shadowMode": false
+}

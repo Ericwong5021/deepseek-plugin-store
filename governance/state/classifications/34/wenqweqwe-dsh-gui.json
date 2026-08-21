@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "automation",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Linux Electron desktop launcher that starts or reuses the local DeepSeek Harness Web service and presents it in a dedicated application window.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 网页服务封装为 Linux 桌面应用，自动管理本地服务并在独立窗口中打开界面。",
+    "en": "A Linux desktop application that manages a local DeepSeek Harness Web service and opens its interface in a dedicated Electron window."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches and manages a local DSH Web service process",
+      "Loads a local web interface in an Electron application window",
+      "Writes application files and desktop launcher files during installation",
+      "Reads configurable local host, port, command, and application directory settings"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_write_during_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "localhost_service_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Launches and manages a local DSH Web service process",
+      "Loads a local web interface in an Electron application window",
+      "Writes application files and desktop launcher files during installation",
+      "Reads configurable local host, port, command, and application directory settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:51.461Z",
+  "repositoryCommitSha": "e66b7227ae7cf82c3b7e26635d67c773f55e9f0f",
+  "evidenceHash": "135c5b31e64fecda7b7a6e6de50de601f5aae100c51bc94bc681748b7f9bfd63",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "04969aede6ed53385bcae4fd8fd7edd77e846f6d51d17b7ce810081240711446",
+  "shadowMode": false
+}
