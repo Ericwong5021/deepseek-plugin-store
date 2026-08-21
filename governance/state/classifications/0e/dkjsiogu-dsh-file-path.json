@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "ui",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A file-handling plugin that resolves dropped or pasted non-image files and folders to matching local workspace paths, inserts those paths into the composer, and optionally imports unresolved files into the workspace after explicit user action.",
+  "summaries": {
+    "zh": "将拖放或粘贴的非图片文件和文件夹解析为本地路径并插入聊天编辑器，必要时支持用户明确确认后导入工作区。",
+    "en": "Resolves dropped or pasted non-image files and folders to local paths for insertion into the composer, with optional user-confirmed import into the workspace."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads file names, sizes, and sampled content hashes from configured local search roots",
+      "Returns matching absolute file or folder paths to the composer",
+      "Explicitly writes imported file payloads into a configured workspace subdirectory"
+    ],
+    "reasons": [
+      {
+        "code": "local-filesystem-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-filesystem-write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Reads file names, sizes, and sampled content hashes from configured local search roots",
+      "Returns matching absolute file or folder paths to the composer",
+      "Explicitly writes imported file payloads into a configured workspace subdirectory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:44.137Z",
+  "repositoryCommitSha": "7f5a75777edf3878cd27e95b44df4a50ba8a2301",
+  "evidenceHash": "72d8c322e2847ce0fe97e7c4109467d5dd023779ab2e567f16eac4a59e42ed19",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4f97a8bd3d6e313fc228b3987c312e3d5fa667e285d78cbe10ff947a21d034e8",
+  "shadowMode": false
+}

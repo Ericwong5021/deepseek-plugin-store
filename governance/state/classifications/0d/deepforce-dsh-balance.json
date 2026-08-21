@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "ui",
+    "visualization",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates with DeepSeek to retrieve account balance data and present balance, estimated session cost, and historical spending through a slash command and web interface.",
+  "summaries": {
+    "zh": "通过 DeepSeek API 查询账户余额，并在命令和网页界面中展示余额、会话费用估算及历史支出。",
+    "en": "Queries the DeepSeek API and displays account balance, estimated session cost, and historical spending through a command and web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the DeepSeek user balance endpoint",
+      "Reads a configured credential reference or environment variable for API authentication",
+      "Provides a host route for balance and usage data to the web client",
+      "Displays balance, estimated session cost, and historical estimated spending in the interface",
+      "Adds a slash command and a top-up link"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_ui_data_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries the DeepSeek user balance endpoint",
+      "Reads a configured credential reference or environment variable for API authentication",
+      "Provides a host route for balance and usage data to the web client",
+      "Displays balance, estimated session cost, and historical estimated spending in the interface",
+      "Adds a slash command and a top-up link"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:12:45.822Z",
+  "repositoryCommitSha": "f1b5c06cef45cc19c6c6f4b1a3c8f1f175895906",
+  "evidenceHash": "42c76aac986037367215191c4513c2c7831daeb1302b5321fd19f9ecb150ff4d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6af6ed9f99d5ae3f39c2367fd6b23a14c19bd9e64328a5325099cc21e413b09b",
+  "shadowMode": false
+}

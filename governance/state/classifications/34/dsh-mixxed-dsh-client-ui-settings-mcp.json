@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "mcp",
+    "monitoring",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An MCP server management plugin for the DeepSeek Harness Web settings page, providing runtime server lifecycle controls, live status, tool inspection, reconnect behavior, and configuration synchronization; its stdio support can execute configured commands.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 设置页管理 MCP 服务器，支持运行时添加、编辑、启停、重连、删除、状态查看和工具检查。",
+    "en": "Manage MCP servers from the DeepSeek Harness settings page with runtime lifecycle controls, live status, reconnection, configuration synchronization, and tool inspection."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds, edits, enables, disables, reconnects, and deletes MCP server configurations",
+      "Opens runtime connections to streamable HTTP and stdio MCP servers",
+      "Executes configured stdio commands",
+      "Registers tools exposed by connected MCP servers for sessions",
+      "Watches and hot-syncs a local MCP configuration file",
+      "Provides a web settings interface and HTTP API"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary-command-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-connections",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime-configuration-management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds, edits, enables, disables, reconnects, and deletes MCP server configurations",
+      "Opens runtime connections to streamable HTTP and stdio MCP servers",
+      "Executes configured stdio commands",
+      "Registers tools exposed by connected MCP servers for sessions",
+      "Watches and hot-syncs a local MCP configuration file",
+      "Provides a web settings interface and HTTP API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:20.021Z",
+  "repositoryCommitSha": "57e8b870f4a9cad7bb6026726c24557d5d72d2f7",
+  "evidenceHash": "cc5f14122783cb4f9ac8c7ba0f9c450593a5540716a311761d37b228332ed434",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b5d151d10d95ee866a9d1daddacb3b410149ac9101300121412c1c4ab5232e8a",
+  "shadowMode": false
+}

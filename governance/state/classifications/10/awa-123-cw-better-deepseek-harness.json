@@ -1,16 +1,76 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "file",
+    "image",
+    "video",
+    "ui",
+    "automation",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A media hosting and playback plugin that serves local image, video, and audio files and integrates previews and playback controls into the WebUI.",
+  "summaries": {
+    "zh": "为 DSH 提供本地图片、视频和音频托管，并在 WebUI 中集成预览、播放与状态查看功能。",
+    "en": "Provides local image, video, and audio hosting for DSH with integrated preview, playback, and status controls in the WebUI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts and stops a local Python static file server",
+      "Serves local image, video, and audio files over HTTP with range requests",
+      "Registers a local /files/ route mapped to configured filesystem directories",
+      "Adds WebUI media playback, image preview, and status controls"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "webui_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Starts and stops a local Python static file server",
+      "Serves local image, video, and audio files over HTTP with range requests",
+      "Registers a local /files/ route mapped to configured filesystem directories",
+      "Adds WebUI media playback, image preview, and status controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:08.236Z",
   "repositoryCommitSha": "6d9ca526702a672348d83a572fd8c1c565af8086",
+  "evidenceHash": "c572eb2b740860c6035d9950df45c8f527800d3a1d1e9003f7e0b2f5018da72a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "50a7442bdd6590643f74099c7b4c8a2902f84b2cea9eb47bec59a7940defecc8",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T19:04:37.770Z",
-  "lastAttemptAt": "2026-08-21T19:04:37.770Z",
-  "nextRetryAt": "2026-08-22T19:04:37.770Z",
-  "retryable": true,
-  "error": "/responses: 400 {\n  \"error\": {\n    \"message\": \"Invalid schema for response_format 'governance_classify_v2': In context=('properties', 'schemaVersion'), schema must have a 'type' key.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"text.format.schema\",\n    \"code\": \"invalid_json_schema\"\n  }\n}",
   "shadowMode": false
 }

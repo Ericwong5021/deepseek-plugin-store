@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "chat",
+    "context",
+    "file",
+    "workflow",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily provides conversation and workspace rollback: it records checkpoints after completed turns, restores files through Git or hard-link snapshots, and forks the session back to an earlier conversation state. Human review is warranted because rollback can reset repositories and delete untracked files, while its localhost RPC route is unauthenticated.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web 提供按消息撤回功能，可将工作区文件和会话状态回滚到指定已完成回合。",
+    "en": "Provides per-message rollback for DeepSeek Harness Web by restoring workspace files and reopening the conversation from an earlier completed turn."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates per-turn rollback checkpoints using Git commits or hard-link file snapshots",
+      "Rewrites workspace state with git reset --hard and git clean",
+      "Deletes untracked non-ignored workspace files during Git rollback",
+      "Forks conversation sessions and rewinds model memory, trajectory, goals, and subagent lineage",
+      "Exposes an unauthenticated same-origin localhost HTTP route for rollback operations"
+    ],
+    "reasons": [
+      {
+        "code": "destructive_workspace_restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_state_rewind",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated_localhost_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Creates per-turn rollback checkpoints using Git commits or hard-link file snapshots",
+      "Rewrites workspace state with git reset --hard and git clean",
+      "Deletes untracked non-ignored workspace files during Git rollback",
+      "Forks conversation sessions and rewinds model memory, trajectory, goals, and subagent lineage",
+      "Exposes an unauthenticated same-origin localhost HTTP route for rollback operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:48.719Z",
+  "repositoryCommitSha": "183b98910532faf24eb415ef3e6514c25ff65490",
+  "evidenceHash": "dd2f13a456b774b54585876837d380f935e105c99b15e602b244fc5b23a42dd3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "76bfde380d4db07449baea0238d2555646904a87b442fb6239d73dda60e061b8",
+  "shadowMode": false
+}

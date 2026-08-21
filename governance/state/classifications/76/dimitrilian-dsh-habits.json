@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "document",
+    "file",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a Web settings editor for user habits, storing them in the user-global AGENTS.md file so the existing instruction loader can include them in sessions.",
+  "summaries": {
+    "zh": "在 Web 设置中编辑用户习惯，并将内容保存到全局 AGENTS.md 以供会话指令加载器使用。",
+    "en": "Adds a Web settings editor for user habits and saves them to the global AGENTS.md file for inclusion by the session instruction loader."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a Web settings editor for user habits",
+      "Reads and atomically updates the user-global AGENTS.md instruction document",
+      "Uses an existing loader to apply saved instructions to sessions"
+    ],
+    "reasons": [
+      {
+        "code": "writes_user_global_instruction_file",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "affects_future_session_context",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_local_rest_surface",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Adds a Web settings editor for user habits",
+      "Reads and atomically updates the user-global AGENTS.md instruction document",
+      "Uses an existing loader to apply saved instructions to sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:35.503Z",
+  "repositoryCommitSha": "f5e9c6f718fa5b34fcce0fcb432573bbde666303",
+  "evidenceHash": "9e3bb40a14d43e18f1cb1a10d62fcd9824d35c7bf5f0c8b142c74dd7b9cb4792",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "99044444d2c6e7f011abf98afa1ead8a4897549b6c4e928e34783a27584af3a8",
+  "shadowMode": false
+}

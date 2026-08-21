@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "browser",
+    "search",
+    "ui",
+    "data",
+    "integration",
+    "api",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH settings panel for browsing, searching, filtering, comparing, and tracking GitHub-hosted DSH plugins, with metadata refresh and install-entry bookkeeping.",
+  "summaries": {
+    "zh": "在 DSH 设置中提供可浏览、搜索、筛选和比较 GitHub 插件的目录面板，并记录插件管理条目与安装状态。",
+    "en": "Adds a DSH settings panel for browsing, searching, filtering, and comparing GitHub plugins while recording plugin management entries and installation status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays a searchable and filterable plugin directory in the DSH settings UI",
+      "Fetches plugin metadata from a bundled snapshot, GitHub CDN, and GitHub Search API",
+      "Records manually added or install-triggered plugin entries in a host-side data file",
+      "Reads plugin inventory status through the DSH plugin inventory remote"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_plugin_inventory_read",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Displays a searchable and filterable plugin directory in the DSH settings UI",
+      "Fetches plugin metadata from a bundled snapshot, GitHub CDN, and GitHub Search API",
+      "Records manually added or install-triggered plugin entries in a host-side data file",
+      "Reads plugin inventory status through the DSH plugin inventory remote"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:40.079Z",
+  "repositoryCommitSha": "1cf69e9a63f311309a17a34bace3c4e2cbd5928a",
+  "evidenceHash": "2ad18fa2322a286db816168e8af410cf4aa4cd8910610395a6ed3fafd98f537c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b2c6069d329fb75942d2be064efdba08ee939da249653f91a745ab96ad5b8100",
+  "shadowMode": false
+}

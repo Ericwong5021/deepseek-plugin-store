@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "file",
+    "data",
+    "browser",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A browser-panel utility for exporting and incrementally restoring DSH plugins, custom skills, and configuration files as JSON snapshots; review is warranted because snapshots may contain credentials and restoration writes files and reinstalls plugins.",
+  "summaries": {
+    "zh": "在浏览器设置面板中将 DSH 插件、技能和配置导出为 JSON 快照，并按需增量还原。",
+    "en": "A browser-panel utility that exports DSH plugins, skills, and configuration into JSON snapshots and incrementally restores them when needed."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exports installed plugin metadata, custom skills, and configuration files into JSON snapshots",
+      "May include API keys and other sensitive credentials in exported snapshots",
+      "Reads and writes files under the DSH configuration and skills directories",
+      "Reinstalls missing plugins and updates plugin configuration during restore",
+      "Downloads and imports snapshot files through a browser settings panel"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_credentials_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_write_and_plugin_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_file_export_import",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exports installed plugin metadata, custom skills, and configuration files into JSON snapshots",
+      "May include API keys and other sensitive credentials in exported snapshots",
+      "Reads and writes files under the DSH configuration and skills directories",
+      "Reinstalls missing plugins and updates plugin configuration during restore",
+      "Downloads and imports snapshot files through a browser settings panel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:15:03.383Z",
+  "repositoryCommitSha": "50897ddf90e01e8e31efd0422e3b167060f6c2b5",
+  "evidenceHash": "0f588d4d66cd304effda7a8ae1b1efaf51bb6b6dadb8646da3f7fee481c9c3d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "88fbbb9ae385132a449d3a1142e4cd66421810ec652ec9c802773fab8b289167",
+  "shadowMode": false
+}

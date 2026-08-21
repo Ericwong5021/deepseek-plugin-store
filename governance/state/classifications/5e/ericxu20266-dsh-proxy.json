@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "desktop",
+    "integration",
+    "ui",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A desktop settings plugin that provides graphical configuration and persistence for system or manually specified HTTP proxy settings, with documented API endpoints and launcher-based environment injection for host networking.",
+  "summaries": {
+    "zh": "在 DSH 设置页中图形化配置系统或手动 HTTP 代理，并将代理设置持久化供启动器使用。",
+    "en": "Provides a DSH settings interface for configuring and persisting system or manually specified HTTP proxy settings for use by the host launcher."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a settings UI for enabling and configuring a system or manual HTTP proxy",
+      "Reads the Windows Internet Settings proxy value when system proxy mode is selected",
+      "Persists proxy configuration to ~/.dsh/settings.yaml",
+      "Exposes GET and POST HTTP endpoints for reading and updating proxy settings",
+      "Supports host startup proxy environment configuration through the accompanying DSH-GUI launcher"
+    ],
+    "reasons": [
+      {
+        "code": "network-routing-configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system-settings-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-config-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http-api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Provides a settings UI for enabling and configuring a system or manual HTTP proxy",
+      "Reads the Windows Internet Settings proxy value when system proxy mode is selected",
+      "Persists proxy configuration to ~/.dsh/settings.yaml",
+      "Exposes GET and POST HTTP endpoints for reading and updating proxy settings",
+      "Supports host startup proxy environment configuration through the accompanying DSH-GUI launcher"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:15:26.611Z",
+  "repositoryCommitSha": "d0e7611af5e463f6948c500d2dab6adc5792c174",
+  "evidenceHash": "70b27871a23b151e8c95e11dca108a352938003a4621805e8944003e60b19679",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0a65a6406105078afe46cb7b74499ab509fbad6a977abe951270693b1c81d2f6",
+  "shadowMode": false
+}

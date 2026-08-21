@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "layout",
+    "theme",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin primarily improves the web interface for mobile devices through responsive layout and theming, with additional configured server file browsing and upload features; human review is warranted because uploads and file access use server-side routes without built-in authentication.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web 提供移动端响应式布局、可切换主题，以及可配置的服务器文件浏览和上传功能。",
+    "en": "Provides DeepSeek Harness Web with a responsive mobile layout, switchable themes, and configurable server-side file browsing and upload features."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "modifies responsive web layout and visual themes",
+      "browses configured server-side directories",
+      "previews and downloads configured files",
+      "uploads files to a configured server-side directory",
+      "adds abort-error retry behavior"
+    ],
+    "reasons": [
+      {
+        "code": "server_filesystem_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "server_filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "upload_route_without_builtin_authentication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "modifies responsive web layout and visual themes",
+      "browses configured server-side directories",
+      "previews and downloads configured files",
+      "uploads files to a configured server-side directory",
+      "adds abort-error retry behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:42.344Z",
+  "repositoryCommitSha": "99bb5cbbdf3f38f1347052e94e31d907bedb3963",
+  "evidenceHash": "2ccf58b6c01635429e0c479b5032b2719b715f8a8402832cc0828bd109a44218",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c597079ae532067308eb733d225c135ca699a341ee166b232a204af85704390f",
+  "shadowMode": false
+}

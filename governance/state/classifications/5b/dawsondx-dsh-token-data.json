@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "api",
+    "monitoring",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web plugin that aggregates token usage and presents provider balances and subscription quotas in a dashboard with charts and read-only API endpoints.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web 界面中汇总 Token 用量，并展示供应商余额、订阅配额和趋势图表。",
+    "en": "A DeepSeek Harness web plugin that summarizes token usage and displays provider balances, subscription quotas, and usage trends."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Aggregates token usage from session event logs",
+      "Displays provider balances and subscription quotas",
+      "Reads provider account data through configured credentials",
+      "Exposes read-only loopback GET endpoints",
+      "Renders a web dashboard with charts and summaries"
+    ],
+    "reasons": [
+      {
+        "code": "reads_session_usage_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "queries_external_provider_apis",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_configured_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "read_only_dashboard_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Aggregates token usage from session event logs",
+      "Displays provider balances and subscription quotas",
+      "Reads provider account data through configured credentials",
+      "Exposes read-only loopback GET endpoints",
+      "Renders a web dashboard with charts and summaries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:12:25.999Z",
+  "repositoryCommitSha": "c70c682332dd24720451b626308c765b1b654222",
+  "evidenceHash": "dce89fecd2bdb1c4aba33eb0ab1cee211a29467f3c353a6a3ac333402699552e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b073eec7c9b9dabe9cd0b3cf87f26507b148ac4d8e78d7826292120917ad6357",
+  "shadowMode": false
+}

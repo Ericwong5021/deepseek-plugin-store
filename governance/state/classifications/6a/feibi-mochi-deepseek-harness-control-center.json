@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "api",
+    "integration",
+    "layout",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily monitors DeepSeek account balances and session usage, provides low-balance and completion alerts, and adds related account, layout, recharge, and host-gated session controls; credential handling and optional deletion warrant human review.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中监控账户余额与会话用量，并提供低余额及完成提醒、账户切换、充值入口和可选的会话控制。",
+    "en": "Monitors DeepSeek Harness account balances and session usage while providing low-balance and completion alerts, account switching, a recharge link, and optional session controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads account balances and per-session token and cost usage",
+      "Stores and switches DeepSeek account API keys",
+      "Writes the selected account key to the host credentials seam",
+      "Sends completion and low-balance notifications",
+      "Opens the official recharge page",
+      "Can expose permanent session deletion when the host advertises that capability",
+      "Stores wallet settings and usage data locally"
+    ],
+    "reasons": [
+      {
+        "code": "credential_storage_and_billing_switch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_permanent_session_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_recharge_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Reads account balances and per-session token and cost usage",
+      "Stores and switches DeepSeek account API keys",
+      "Writes the selected account key to the host credentials seam",
+      "Sends completion and low-balance notifications",
+      "Opens the official recharge page",
+      "Can expose permanent session deletion when the host advertises that capability",
+      "Stores wallet settings and usage data locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:15:55.979Z",
+  "repositoryCommitSha": "0703abea8952efbd1c4b509fa2d21274f5338f1e",
+  "evidenceHash": "23f454f0e5f9b7c80278f0172d349a492e8d7139a968b7f72248850faa2de811",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8ae3a80e8644b9757bb3367903dfb41d1f8ae4269824892a4fb5c08f3c3019f8",
+  "shadowMode": false
+}

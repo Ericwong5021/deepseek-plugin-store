@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "chat",
+    "ui",
+    "document",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A file-attachment plugin for DeepSeek Harness that stages user-selected files in the workspace, displays attachment cards, and references them in subsequent conversation requests.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供文件选择、拖放和粘贴附件功能，并将文件暂存到工作区后关联到后续对话请求中。",
+    "en": "Adds file picker, drag-and-drop, and paste attachments to DeepSeek Harness, staging files in the workspace and associating them with subsequent conversation requests."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts files through picker, drag-and-drop, and paste",
+      "Writes staged files under the session workspace at .dsh/uploads/",
+      "Reads staged files for preview and attachment references",
+      "Deletes staged files when users remove attachments",
+      "Injects pending attachment references into the next model request"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_write_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "attachment_request_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Accepts files through picker, drag-and-drop, and paste",
+      "Writes staged files under the session workspace at .dsh/uploads/",
+      "Reads staged files for preview and attachment references",
+      "Deletes staged files when users remove attachments",
+      "Injects pending attachment references into the next model request"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:14.540Z",
+  "repositoryCommitSha": "70c0b7e81d7d6a2707e282457bd92f2577bd6629",
+  "evidenceHash": "648528ef434aa1b8616f810b8e53d3030936d7860d8c0b1c8f94f5624249452c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f20e44d2d35444f12669d643c56b98e27ba2257ad24698443a751271794e8244",
+  "shadowMode": false
+}

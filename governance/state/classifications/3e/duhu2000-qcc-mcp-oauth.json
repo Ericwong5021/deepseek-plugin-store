@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "browser",
+    "data",
+    "integration",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is connecting to Qichacha MCP services through OAuth and exposing authorized enterprise-data tools.",
+  "summaries": {
+    "zh": "通过 OAuth 将 DeepSeek Harness 连接到企查查 MCP 服务，并提供授权范围内的企业数据工具。",
+    "en": "Connects DeepSeek Harness to Qichacha MCP services through OAuth and exposes enterprise-data tools within the authorized scope."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Initiates an OAuth authorization flow with Qichacha using Authorization Code and PKCE",
+      "Opens a browser for authorization and receives a local loopback callback",
+      "Persists, refreshes, and revokes OAuth access and refresh tokens",
+      "Mounts authorized Qichacha MCP data services and sends bearer tokens to their resource URLs",
+      "Provides conversation tools for connection, status, and disconnection management"
+    ],
+    "reasons": [
+      {
+        "code": "oauth_external_service_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "token_persistence_and_refresh",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_business_data_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "Initiates an OAuth authorization flow with Qichacha using Authorization Code and PKCE",
+      "Opens a browser for authorization and receives a local loopback callback",
+      "Persists, refreshes, and revokes OAuth access and refresh tokens",
+      "Mounts authorized Qichacha MCP data services and sends bearer tokens to their resource URLs",
+      "Provides conversation tools for connection, status, and disconnection management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:34.505Z",
+  "repositoryCommitSha": "72a1ee50546b298c2d8a0e3f0d940e0758b8f338",
+  "evidenceHash": "4f772a65ae45608cabcd54cc948175d662f123b456045bf024f95d87f24fe947",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8af5c17231f400c88ef24b8440f633a23d9c96c2fce2b582a9b530042f596f7c",
+  "shadowMode": false
+}

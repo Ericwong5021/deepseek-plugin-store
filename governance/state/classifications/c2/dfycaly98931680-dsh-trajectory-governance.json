@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "monitoring",
+    "notification",
+    "visualization",
+    "api",
+    "data",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A trajectory monitoring plugin that reconstructs agent activity into a tree, detects temporal anomalies, presents diagnostic visualizations, and provides configurable alerts and intervention actions.",
+  "summaries": {
+    "zh": "用于监控智能体执行轨迹、检测循环死锁等异常、展示分支与诊断结果，并提供可配置告警及中断或分支操作的插件。",
+    "en": "A plugin for monitoring agent trajectories, detecting anomalies such as loop deadlocks, visualizing branches and diagnostics, and providing configurable alerts with interruption or branching actions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Consumes agent session and subagent events",
+      "Persists trajectory, snapshot, anomaly, and cost data in plugin-managed SQLite storage",
+      "Builds multi-branch trajectory visualizations and anomaly reports",
+      "Detects loop deadlock, invalid retry, and goal drift",
+      "Sends desktop, event-bus, and optional webhook alerts",
+      "Can invoke agent interruption and session branching actions when configured"
+    ],
+    "reasons": [
+      {
+        "code": "agent_event_observation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_webhook_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_control_actions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Consumes agent session and subagent events",
+      "Persists trajectory, snapshot, anomaly, and cost data in plugin-managed SQLite storage",
+      "Builds multi-branch trajectory visualizations and anomaly reports",
+      "Detects loop deadlock, invalid retry, and goal drift",
+      "Sends desktop, event-bus, and optional webhook alerts",
+      "Can invoke agent interruption and session branching actions when configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:15.467Z",
+  "repositoryCommitSha": "4fa614af844aff601c473ac31d7cb1dd8d786d9d",
+  "evidenceHash": "8cb3baf2d0db7ac8185bf3ed380be6397ef7d35bdf36e092bcb1cc4b39643149",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "013a8fb2852a9e995600e53ac14488bb5cabf18c4f80ddd6d41b53601a146142",
+  "shadowMode": false
+}

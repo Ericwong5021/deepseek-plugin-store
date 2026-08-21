@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "knowledge",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for workspace-scoped working memory that reads historical session logs, derives a cited command-success ledger, and injects it into the agent context.",
+  "summaries": {
+    "zh": "读取当前工作区的历史会话日志，生成带引用的命令结果记录，并将其作为有限上下文提供给智能体。",
+    "en": "Reads historical session logs for the current workspace, builds a cited command-outcome ledger, and provides it as bounded context to the agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads workspace-scoped session logs through the harness session-query interface",
+      "Aggregates command outcomes and citations from historical tool calls",
+      "Injects a bounded ledger section into the agent system prompt",
+      "Provides user-facing commands to display and rebuild the ledger",
+      "Keeps the derived ledger in memory without network calls or persistent writes"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_log_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_prompt_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_scoped_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads workspace-scoped session logs through the harness session-query interface",
+      "Aggregates command outcomes and citations from historical tool calls",
+      "Injects a bounded ledger section into the agent system prompt",
+      "Provides user-facing commands to display and rebuild the ledger",
+      "Keeps the derived ledger in memory without network calls or persistent writes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:28.029Z",
+  "repositoryCommitSha": "e09bb9f7a3d92da19772ab41fa4fa492855b481f",
+  "evidenceHash": "3e59f8b64c1521e2809af8b0ee2c0132422892cb334c72834a839d200a9ff313",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eacb4318cbd2d78d895496d0b1e66266c33982fbf406b90476fe8ad916bd197a",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "file",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Provides a bilingual panel for inspecting the active dsh instruction chain and skill roots, with allowlisted local Markdown file viewing and editing.",
+  "summaries": {
+    "zh": "在 dsh Web 界面中查看当前会话的指令链和技能目录，并管理相关本地 Markdown 文件。",
+    "en": "Inspect the active dsh instruction chain and skill directories in a web panel, and manage the related local Markdown files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads instruction-chain and skill Markdown files from configured local paths",
+      "Creates, edits, and deletes allowlisted local instruction and skill files",
+      "Displays local file metadata and skill-directory status in a web UI",
+      "Exposes local file operations through plugin RPC endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read_write_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_host_rpc",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Reads instruction-chain and skill Markdown files from configured local paths",
+      "Creates, edits, and deletes allowlisted local instruction and skill files",
+      "Displays local file metadata and skill-directory status in a web UI",
+      "Exposes local file operations through plugin RPC endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:11:09.762Z",
+  "repositoryCommitSha": "deef35863b9b152d637516e8bd235dc1de4fee11",
+  "evidenceHash": "2afece3b3c1915cd717e481ecb1c6978b16cad0a8449e08909ee8b17d2232e25",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "204149fbbe227aed859d1395ac608363a8ac37ff81baabfaae8f1bc92de9567b",
+  "shadowMode": false
+}

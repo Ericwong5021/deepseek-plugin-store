@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "file",
+    "layout",
+    "ui",
+    "tool",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A right-side VS Code-style workbench for the DSH Web GUI, centered on file browsing, multi-format previews, and interactive Git management with host-backed filesystem and Git services.",
+  "summaries": {
+    "zh": "为 DSH Web GUI 提供右侧 VS Code 风格工作台，支持文件浏览、多格式预览以及 Git 更改、分支、提交和同步操作。",
+    "en": "Adds a right-side VS Code-style workbench to the DSH Web GUI for file browsing, multi-format previews, and Git changes, branches, commits, and synchronization."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "reads workspace files through a host-side filesystem service",
+      "writes files when saving preview edits",
+      "stages, unstages, and discards Git changes",
+      "switches or creates branches and creates commits",
+      "pushes and pulls through the host-side Git service",
+      "streams filesystem and Git updates through HTTP and SSE"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git-repository-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote-git-operations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "reads workspace files through a host-side filesystem service",
+      "writes files when saving preview edits",
+      "stages, unstages, and discards Git changes",
+      "switches or creates branches and creates commits",
+      "pushes and pulls through the host-side Git service",
+      "streams filesystem and Git updates through HTTP and SSE"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:01.903Z",
+  "repositoryCommitSha": "7ef8fac1a7cb37a46ce14889512abda1b3bcaa47",
+  "evidenceHash": "7b09bd1b2b5ca2c75898098eed0d7f2b4c898523dc2282975f71e5f75fa95e3b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b661d86258d6c5d91a99ee854893edd47a38a34060db4e6e4ac8fdb3f3ea97d5",
+  "shadowMode": false
+}

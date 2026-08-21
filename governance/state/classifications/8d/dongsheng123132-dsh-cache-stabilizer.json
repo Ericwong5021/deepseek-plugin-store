@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "monitoring",
+    "tool",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DeepSeek Harness plugin that stabilizes prompt-cache prefixes by relocating working-directory context and canonicalizing tool-schema keys, while reporting provider cache metrics through /cache.",
+  "summaries": {
+    "zh": "通过稳定提示词缓存前缀、规范化工具架构键顺序并提供 /cache 指令，帮助 DeepSeek Harness 查看缓存指标。",
+    "en": "A DeepSeek Harness plugin that stabilizes prompt-cache prefixes, canonicalizes tool-schema keys, and reports provider cache metrics through /cache."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Relocates the working-directory value into the runtime-context snapshot to improve prompt-prefix reuse.",
+      "Canonicalizes object-key order within tool schemas.",
+      "Provides a human-only /cache command reporting provider cache token metrics."
+    ],
+    "reasons": [
+      {
+        "code": "modifies-model-context-structure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes-provider-cache-metrics",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Relocates the working-directory value into the runtime-context snapshot to improve prompt-prefix reuse.",
+      "Canonicalizes object-key order within tool schemas.",
+      "Provides a human-only /cache command reporting provider cache token metrics."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:53.116Z",
+  "repositoryCommitSha": "0ea2f599d0c3c5f92d8bd5ba3ae106d49892c0c9",
+  "evidenceHash": "2b31a664443e7900a6c11aa2622fbef73f60d56af9098a27b78c27f06a250c7c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8fafbbbe5cfa6c56022fc4001a452dd9809ab294289d3e6c4be87640d361804b",
+  "shadowMode": false
+}

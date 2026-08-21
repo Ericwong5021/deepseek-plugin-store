@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "cli",
+    "terminal",
+    "file",
+    "api",
+    "desktop",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A macOS-only dsh Cordis plugin that replaces the deprecated sandbox-exec command path with a native libsandbox loader for sandboxed command execution; the README states it is unpublished and not yet ready for production use.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 macOS Seatbelt 沙箱适配，通过原生 loader 调用 libsandbox 来限制目标命令的文件访问和执行环境。",
+    "en": "Provides a macOS Seatbelt sandbox adapter for DeepSeek Harness by using a native loader to apply libsandbox profiles to target commands."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes target commands through a native macOS loader",
+      "Applies macOS Seatbelt sandbox profiles to child processes",
+      "Generates and passes SBPL policy profiles",
+      "Detects loader availability and fails closed when unavailable",
+      "Uses a private macOS libsandbox API through a native binary"
+    ],
+    "reasons": [
+      {
+        "code": "native_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "operating_system_sandbox_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "private_platform_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unpublished_and_incomplete_platform_artifacts",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Executes target commands through a native macOS loader",
+      "Applies macOS Seatbelt sandbox profiles to child processes",
+      "Generates and passes SBPL policy profiles",
+      "Detects loader availability and fails closed when unavailable",
+      "Uses a private macOS libsandbox API through a native binary"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:16.098Z",
+  "repositoryCommitSha": "8d53e7ff5b075e69749671ccc3fc17c42320ada6",
+  "evidenceHash": "cc24ebadda55644c631b23e72598f8c72c7889406938e997760d7b8df4046b65",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0bc5ac879c47d5cb4ad9e691f3b4dc94a2f216ae23337f6799f3ffc093e5e34b",
+  "shadowMode": false
+}

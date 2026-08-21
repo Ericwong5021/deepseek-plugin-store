@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "terminal",
+    "automation",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Settings web plugin that monitors DeepSeek Harness versions, compares them with npm releases, notifies users about updates, and optionally runs the DSH update command.",
+  "summaries": {
+    "zh": "在设置页检查 DeepSeek Harness 版本、展示 npm 发布信息、发送更新通知，并支持用户一键运行更新命令。",
+    "en": "A Settings web plugin that checks DeepSeek Harness versions against npm releases, provides update notifications, and lets users run the update command."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the local DSH version by running dsh --version",
+      "Queries npm registry version information for @deepseek-ai/dsh",
+      "Runs npx to install the latest DSH version when initiated by the user",
+      "Writes check history to a file under ~/.dsh",
+      "Displays live update output in the web interface",
+      "Sends browser system notifications for detected updates"
+    ],
+    "reasons": [
+      {
+        "code": "executes_local_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "accesses_external_registry",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_local_history",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sends_browser_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads the local DSH version by running dsh --version",
+      "Queries npm registry version information for @deepseek-ai/dsh",
+      "Runs npx to install the latest DSH version when initiated by the user",
+      "Writes check history to a file under ~/.dsh",
+      "Displays live update output in the web interface",
+      "Sends browser system notifications for detected updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:14:40.672Z",
+  "repositoryCommitSha": "079cd3a827b9dd2b824de2b68b214f5433c10125",
+  "evidenceHash": "6b56e209704f88245f6b91900cc60cfd2d020e6920c88d164735df05f9ec3b03",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5374005e8abd2c87516253f56e8cc0b3f44ddcad4ffc7142ec7d0963cf2a6438",
+  "shadowMode": false
+}

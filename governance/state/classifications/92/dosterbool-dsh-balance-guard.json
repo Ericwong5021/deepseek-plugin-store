@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "notification",
+    "ui",
+    "data",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A balance monitoring and notification plugin that polls DeepSeek account balance, tracks session spending, displays status information, and can pause model output below a configured threshold.",
+  "summaries": {
+    "zh": "监控 DeepSeek API 余额并显示会话花费，在余额低于阈值时暂停模型输出并提供充值入口。",
+    "en": "Monitors DeepSeek API balance and session spending, pauses model output below a configured threshold, and provides a recharge link."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Polls an external API for account balance information",
+      "Displays balance and session spending in the user interface",
+      "Persists configuration and usage data locally",
+      "Intercepts model streaming calls when the configured threshold is reached",
+      "Opens a configured recharge URL",
+      "May store a manually entered API key in plaintext locally"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_call_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext_credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Polls an external API for account balance information",
+      "Displays balance and session spending in the user interface",
+      "Persists configuration and usage data locally",
+      "Intercepts model streaming calls when the configured threshold is reached",
+      "Opens a configured recharge URL",
+      "May store a manually entered API key in plaintext locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:13:59.291Z",
+  "repositoryCommitSha": "2b1d5892134731db06b0bda1beb2607a33f3d76b",
+  "evidenceHash": "4674ab30d85d21e8e7d30bc669db497fbf4da35b67acd60547ae1d8871774a92",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d59f1e88cbb932436ed633b6c70dba303fe8cd6c9f7b7b9704c84a98d9e218f1",
+  "shadowMode": false
+}
