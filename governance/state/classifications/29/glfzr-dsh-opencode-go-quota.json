@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "visualization",
+    "ui",
+    "api",
+    "integration",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web plugin that monitors OpenCode Go quota through the official usage API, visualizes multi-window usage in the input area, and provides threshold-based interface and agent prompt reminders.",
+  "summaries": {
+    "zh": "通过官方用量接口监控 OpenCode Go 的五小时、每周和每月额度，并在 DSH Web 中显示可切换的进度圆环与阈值提醒。",
+    "en": "Monitors OpenCode Go usage through its official usage API and shows switchable five-hour, weekly, and monthly quota rings with threshold reminders in DSH Web."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads an OpenCode Go API key from a local auth file or environment variable",
+      "Calls the OpenCode Go usage API with bearer authentication",
+      "Displays quota usage and reset information in the web interface",
+      "Injects quota status reminders into agent system prompts",
+      "Runs a host-side Node subprocess to read local authentication data"
+    ],
+    "reasons": [
+      {
+        "code": "local_credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_injection_behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_subprocess_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads an OpenCode Go API key from a local auth file or environment variable",
+      "Calls the OpenCode Go usage API with bearer authentication",
+      "Displays quota usage and reset information in the web interface",
+      "Injects quota status reminders into agent system prompts",
+      "Runs a host-side Node subprocess to read local authentication data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:23.572Z",
+  "repositoryCommitSha": "38ddb2a81166a6a08287896f601a3fa9915b1f6a",
+  "evidenceHash": "d15ad6ae7354fcf0e80a580964f40229aa891f1e3b90917a90170cde5c5ad959",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "12aa5f184e80641100a7824803f3cc995e63104177a1b3f79cc87a53f872ffbd",
+  "shadowMode": false
+}

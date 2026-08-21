@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "cli",
+    "collaboration",
+    "workflow",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an agent orchestration plugin that delegates bounded, read-only expert consultations to the Claude Code CLI through configurable roles and parallel panels, with runtime settings and status tracking.",
+  "summaries": {
+    "zh": "通过可配置的顾问、审查者和设计师角色调用 Claude Code CLI，为智能体提供受约束的外部专家咨询与并行会诊。",
+    "en": "Provides configurable advisor, reviewer, and designer roles that invoke the Claude Code CLI for bounded external expert consultations and parallel panels."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Invokes the Claude Code CLI headlessly for expert consultations",
+      "Sends structured questions and labeled evidence to configured consultation roles",
+      "Supports parallel consultation panels and configurable model, effort, timeout, and fallback settings",
+      "Provides a settings workspace, consultation status previews, and session-scoped usage controls"
+    ],
+    "reasons": [
+      {
+        "code": "external_cli_and_account_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_and_network_dependency",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bounded_read_only_consultation_tools",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Invokes the Claude Code CLI headlessly for expert consultations",
+      "Sends structured questions and labeled evidence to configured consultation roles",
+      "Supports parallel consultation panels and configurable model, effort, timeout, and fallback settings",
+      "Provides a settings workspace, consultation status previews, and session-scoped usage controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:42.448Z",
+  "repositoryCommitSha": "5022f2075fa584bae79f528d0259458e648860e1",
+  "evidenceHash": "92817007d6ba77d9d44e2df04ffca0e5bb69a8339343842f7db68a61b1265db2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c57dc7c5bd788911ea0dee39560292cba1d6c3fcb697f9514c487ae847d16552",
+  "shadowMode": false
+}

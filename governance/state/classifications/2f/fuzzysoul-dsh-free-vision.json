@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "agent",
+    "mcp",
+    "document",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH plugin that provides agent-accessible image understanding, OCR, UI analysis, debugging, and image description through configurable external vision model providers.",
+  "summaries": {
+    "zh": "为 DSH 提供可供智能体调用的图像理解工具，支持 OCR、界面分析、调试和图像描述，并可配置多个视觉模型提供商。",
+    "en": "Provides DSH agents with an image-understanding tool for OCR, UI analysis, debugging, and image description through configurable vision model providers."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers an image_understand tool for agent use",
+      "Accepts local image paths, HTTP(S) URLs, and data URIs",
+      "Preprocesses images with compression and multi-cropping",
+      "Sends image data and prompts to configured external vision model providers",
+      "Uses API keys and configurable provider endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers an image_understand tool for agent use",
+      "Accepts local image paths, HTTP(S) URLs, and data URIs",
+      "Preprocesses images with compression and multi-cropping",
+      "Sends image data and prompts to configured external vision model providers",
+      "Uses API keys and configurable provider endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:36.568Z",
+  "repositoryCommitSha": "9daa0dc4b42920c129bec5988765a585a0523843",
+  "evidenceHash": "0b772c45410ef51d021fec9ef0d9296a3eb650db66fd1eafad695a64e5b540d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "68df5757e65e2cc00ca7f81edf876b2d54584022584e51ee2a906e4ead47558b",
+  "shadowMode": false
+}

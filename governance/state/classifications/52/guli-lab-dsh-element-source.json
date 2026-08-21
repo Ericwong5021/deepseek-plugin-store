@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "browser",
+    "debugging",
+    "ui",
+    "agent",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A click-to-source inspector for local frontend development pages that identifies the corresponding Vue, React, Svelte, or Angular source location and places it in the DSH chat draft for optional follow-up.",
+  "summaries": {
+    "zh": "在本地前端开发页面中点击任意界面元素，定位其对应的 Vue、React、Svelte 或 Angular 源文件与行号，并将结果填入 DSH 聊天草稿。",
+    "en": "Click an element in a local frontend development page to locate its Vue, React, Svelte, or Angular source file and line, then place the result in the DSH chat draft."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Previews local development pages through a plugin-hosted proxy",
+      "Injects a probe to inspect clicked UI element metadata",
+      "Resolves clicked elements to source files and approximate lines within the session workspace",
+      "Reads source context for display and populates the DSH chat composer draft",
+      "Can optionally steer or wake the agent after a selection when configured"
+    ],
+    "reasons": [
+      {
+        "code": "local_dev_page_proxy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_dom_inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_source_resolution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "chat_draft_population",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Previews local development pages through a plugin-hosted proxy",
+      "Injects a probe to inspect clicked UI element metadata",
+      "Resolves clicked elements to source files and approximate lines within the session workspace",
+      "Reads source context for display and populates the DSH chat composer draft",
+      "Can optionally steer or wake the agent after a selection when configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:12.393Z",
+  "repositoryCommitSha": "19f316cc72af56877d775bd8a925d082ccf83af2",
+  "evidenceHash": "6ba30c940f5f0aef72d5be5b5fcd319d2da07d28ee262b03e66ad32fea3dc7ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3b9688c9958cc909a04f16a2ecbc53ab93357703486eb9540f769dc6ff515eab",
+  "shadowMode": false
+}

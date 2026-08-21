@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "file",
+    "document",
+    "agent",
+    "image",
+    "data",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily enables file attachment and document processing for an agent, including content detection, Markdown conversion, OCR, image explanation, and paged document reading.",
+  "summaries": {
+    "zh": "为智能体提供文件上传、附件引用、文档转Markdown、图片OCR及分页读取能力。",
+    "en": "Provides agent-oriented file uploads, attachment references, document-to-Markdown conversion, image OCR, and paged document reading."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts files and folders through picker, drag-and-drop, paste, and multi-file upload",
+      "Stores uploaded files in session-scoped local storage with size and lifetime limits",
+      "Detects file content and converts supported documents to Markdown",
+      "Performs image OCR and optionally requests image descriptions or audio transcription through configured model endpoints",
+      "Provides an agent-facing read_document tool with paging and caching"
+    ],
+    "reasons": [
+      {
+        "code": "file_upload_and_local_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "document_conversion_and_ocr",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_access_to_uploaded_documents",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_vision_or_model_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts files and folders through picker, drag-and-drop, paste, and multi-file upload",
+      "Stores uploaded files in session-scoped local storage with size and lifetime limits",
+      "Detects file content and converts supported documents to Markdown",
+      "Performs image OCR and optionally requests image descriptions or audio transcription through configured model endpoints",
+      "Provides an agent-facing read_document tool with paging and caching"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:58.618Z",
+  "repositoryCommitSha": "ce4ca943da592be36a784a5648d36a600aeda136",
+  "evidenceHash": "26c59054e6a2767286fae7fc3f914540a91e98631cf669da16ccddbfd75ea815",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c7cec5648914957ffccc5ca870d37a584bb7912b18f7927abe40c9279da5116e",
+  "shadowMode": false
+}

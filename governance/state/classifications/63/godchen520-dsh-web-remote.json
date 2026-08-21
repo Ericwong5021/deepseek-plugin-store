@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "mobile",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A remote-access integration for DeepSeek Harness that provides browser and WeChat access through LAN HTTPS or a Cloudflare tunnel, with session controls and notifications.",
+  "summaries": {
+    "zh": "通过局域网 HTTPS、Cloudflare 隧道或微信机器人远程访问和控制 DeepSeek Harness。",
+    "en": "Provides remote browser and WeChat access to DeepSeek Harness through LAN HTTPS or a Cloudflare tunnel, including session controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes DSH through a local HTTP/HTTPS server",
+      "Creates or uses a Cloudflare Quick Tunnel for public access",
+      "Generates and uses access tokens and cookies",
+      "Provides remote session and model controls through a WeChat bot",
+      "Can download and cache the cloudflared executable",
+      "Sends session completion notifications through WeChat"
+    ],
+    "reasons": [
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executable_download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes DSH through a local HTTP/HTTPS server",
+      "Creates or uses a Cloudflare Quick Tunnel for public access",
+      "Generates and uses access tokens and cookies",
+      "Provides remote session and model controls through a WeChat bot",
+      "Can download and cache the cloudflared executable",
+      "Sends session completion notifications through WeChat"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:30.784Z",
+  "repositoryCommitSha": "f7a6cf8b15a17486188c360e899739d83c299626",
+  "evidenceHash": "26e6e17676811c63edf074a300f220bb4099b18a3bbeeb4fc4d229da944268c4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3d6c228afe2e70c15b3bdfdf1b57232032a765734d36c28b0a9e2e063a589f47",
+  "shadowMode": false
+}

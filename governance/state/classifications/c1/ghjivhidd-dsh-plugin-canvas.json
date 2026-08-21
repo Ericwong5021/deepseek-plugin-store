@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "ui",
+    "browser",
+    "api",
+    "file",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness canvas plugin for rendering HTML prototypes, annotating previews, and reviewing visual designs in a dedicated interface tab.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供画布页签，用于渲染 HTML 设计稿并添加位置标注和文字备注。",
+    "en": "Adds a DeepSeek Harness canvas tab for rendering HTML prototypes and adding positional annotations and text notes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Renders HTML content in a canvas preview",
+      "Reads permitted local HTML files",
+      "Fetches remote HTTP or HTTPS pages for preview",
+      "Provides model and HTTP APIs for rendering, annotation, and clearing canvas state",
+      "Runs preview page scripts, forms, modals, and popups in a sandboxed iframe",
+      "Stores canvas state in host memory for the session"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_url_fetch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandboxed_content_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_api_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Renders HTML content in a canvas preview",
+      "Reads permitted local HTML files",
+      "Fetches remote HTTP or HTTPS pages for preview",
+      "Provides model and HTTP APIs for rendering, annotation, and clearing canvas state",
+      "Runs preview page scripts, forms, modals, and popups in a sandboxed iframe",
+      "Stores canvas state in host memory for the session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:56.909Z",
+  "repositoryCommitSha": "f6a7ae496dbe602fddb26bdfb161720f3cfea85a",
+  "evidenceHash": "b5ebdac707b532c8c41d5dac7945eeb8c695acd965472b494833674b1c7d55a7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4d932ef47fd2bbc3c9cc561d4fe7f7600d79cb298e6b761bad55ae82b24cea42",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "debugging",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness Web UI workspace plugin focused on browsing files, viewing code, reviewing agent edits, and selectively accepting or reverting tracked changes; the README documents its file access, persistence, and revert behavior.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web UI 提供工作区文件浏览、代码查看以及按变更块审阅、接受或撤回代理编辑的工作区面板。",
+    "en": "Adds a DeepSeek Harness Web UI workspace panel for browsing files, viewing code, and reviewing, accepting, or selectively reverting tracked agent edits."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "browses workspace files and displays file contents",
+      "tracks write and edit operations per session",
+      "renders line-level change diffs",
+      "persists edited-file snapshots and paths to profile storage",
+      "reverts individual hunks or whole-file changes",
+      "accepts or clears recorded change entries",
+      "deletes files created during the session when performing whole-file revert"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_delete_on_revert",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_change_content_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "browses workspace files and displays file contents",
+      "tracks write and edit operations per session",
+      "renders line-level change diffs",
+      "persists edited-file snapshots and paths to profile storage",
+      "reverts individual hunks or whole-file changes",
+      "accepts or clears recorded change entries",
+      "deletes files created during the session when performing whole-file revert"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:23:03.971Z",
+  "repositoryCommitSha": "4d7a29f076bb3f5a306a3806d16d3ae964d8a3bd",
+  "evidenceHash": "6dac5c01a0254a7797974f91376aedab493298ba08015c8f975cf4ada5c6e671",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6fc176a6d35de8bc3006b42bdd3c2e42e705f1a4e4ee4027e0a774748108a3e1",
+  "shadowMode": false
+}

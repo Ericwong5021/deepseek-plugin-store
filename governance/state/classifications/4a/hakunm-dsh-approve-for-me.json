@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an automation plugin that uses selectable language models to review DSH approval requests and optionally grant one-time authorization while displaying the result in the interface.",
+  "summaries": {
+    "zh": "通过可选的语言模型自动审查 DeepSeek Harness 的敏感操作审批请求，并在符合条件时授予一次性授权。",
+    "en": "Automatically reviews DeepSeek Harness approval requests with a selectable language model and can grant one-time authorization when the request passes its checks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatically evaluates DSH operations that require approval using a selected language model",
+      "Can grant one-time approval for an operation after model and local-rule checks",
+      "Sends limited operation context to the configured model provider for review",
+      "Displays approval decisions, reasons, model details, and failures in the DSH interface",
+      "Provides commands and UI controls to enable, disable, inspect, and select the approval model"
+    ],
+    "reasons": [
+      {
+        "code": "can_authorize_sensitive_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shares_limited_operation_context_with_model_provider",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "integrates_with_external_model_providers",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Automatically evaluates DSH operations that require approval using a selected language model",
+      "Can grant one-time approval for an operation after model and local-rule checks",
+      "Sends limited operation context to the configured model provider for review",
+      "Displays approval decisions, reasons, model details, and failures in the DSH interface",
+      "Provides commands and UI controls to enable, disable, inspect, and select the approval model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:48.649Z",
+  "repositoryCommitSha": "60784bfc53f41afb7befb12f7ce19211ed7b5a2e",
+  "evidenceHash": "3e0f2160ffc239b7510cfbf17d259e0931748b5706763d13f24a91f41d57cc58",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aa50d53c3e21cd1789d06ba60f38869a5d4865a4110fba99d0ad9b6c5b06bc39",
+  "shadowMode": false
+}

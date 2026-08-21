@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "api",
+    "agent",
+    "integration",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides SSH/SFTP remote workspaces in the sidebar with agent-assisted remote file browsing and read/write operations; human review is warranted because it performs remote writes and documents plaintext credential storage.",
+  "summaries": {
+    "zh": "通过 SSH/SFTP 将远程目录作为工作区加入侧边栏，并支持浏览及读写远程文件。",
+    "en": "Adds SSH/SFTP remote directories as sidebar workspaces and supports browsing, reading, and writing remote files."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Manages SSH/SFTP connection profiles",
+      "Connects to remote servers",
+      "Browses remote directories",
+      "Reads remote files",
+      "Writes, appends, and patches remote files",
+      "Creates remote directories",
+      "Stores authentication-related configuration locally"
+    ],
+    "reasons": [
+      {
+        "code": "remote_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext_credentials",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Manages SSH/SFTP connection profiles",
+      "Connects to remote servers",
+      "Browses remote directories",
+      "Reads remote files",
+      "Writes, appends, and patches remote files",
+      "Creates remote directories",
+      "Stores authentication-related configuration locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:25.577Z",
+  "repositoryCommitSha": "ae07df0bea8989914ce70e997d182d3fae3be953",
+  "evidenceHash": "f08d2acda9d8fddabcbf0b2223c3ac4e0dd719752dd2f00d39c5c4d8b307d82a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "513b68ffe6fa37fcde04cf6f0c2f23fc85931c7710850a9a5e1d45b18606cf51",
+  "shadowMode": false
+}

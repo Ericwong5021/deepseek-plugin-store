@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "automation",
+    "cli",
+    "context",
+    "data",
+    "desktop",
+    "file",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a local data synchronization plugin for merging or copying sessions, workspaces, caches, settings, credentials, and plugin data between DSH desktop and web instances; human review is warranted because it handles credentials and can overwrite local state.",
+  "summaries": {
+    "zh": "在 DSH 桌面版与网页版实例之间同步会话、工作区、缓存、设置、凭据及插件数据。",
+    "en": "Synchronizes sessions, workspaces, caches, settings, credentials, and plugin data between DSH desktop and web instances."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local data from web and desktop instance directories",
+      "Bidirectionally merges or overwrites sessions, workspaces, caches, settings, credentials, and plugin configurations",
+      "Synchronizes plugin contents between local instance directories",
+      "Registers /sync commands and accepts a manually specified target directory"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_data_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_content_synchronization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "overwrite_and_merge_operations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Reads local data from web and desktop instance directories",
+      "Bidirectionally merges or overwrites sessions, workspaces, caches, settings, credentials, and plugin configurations",
+      "Synchronizes plugin contents between local instance directories",
+      "Registers /sync commands and accepts a manually specified target directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:50.247Z",
+  "repositoryCommitSha": "678cf57085068d015c5468e648f84b4cc039c681",
+  "evidenceHash": "dac400f9f32576f8fc3014e6f360281f21a45e299d7ed9de983b531b1a6b562c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5d406c1c9b96341125453bd976708d406c7997ae4b2771715aab547b4d533315",
+  "shadowMode": false
+}

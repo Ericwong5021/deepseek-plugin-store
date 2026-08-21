@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "context",
+    "visualization",
+    "monitoring",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness side-panel plugin combining local directory browsing, read-only Git status and history visualization, injected-context inspection, file dragging into chat, and session-log download.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 增加集成目录浏览、只读 Git 状态与提交图、上下文文档查看及会话日志下载的侧边面板。",
+    "en": "Adds a DeepSeek Harness side panel for directory browsing, read-only Git status and history views, injected-context inspection, file dragging into chat, and session-log downloads."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local directory entries and bounded file contents through plugin routes",
+      "Invokes read-only local Git operations for repository status, history, and diffs",
+      "Displays injected context documents and session history in a browser panel",
+      "Downloads session logs and accepts dragged file paths for chat use"
+    ],
+    "reasons": [
+      {
+        "code": "local-filesystem-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-process-git-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session-context-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads local directory entries and bounded file contents through plugin routes",
+      "Invokes read-only local Git operations for repository status, history, and diffs",
+      "Displays injected context documents and session history in a browser panel",
+      "Downloads session logs and accepts dragged file paths for chat use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:14.316Z",
+  "repositoryCommitSha": "2676d15afb2b9d5a4a62715ea4c83fa7619081e0",
+  "evidenceHash": "4bb05934ba0f407c887489fd61d861caaff5c433123211015ba2e99817b748ba",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f3155cf163d6256d65acfa32fb3701d9fe8f0fb281383aadbc6cc5a8087ad0d",
+  "shadowMode": false
+}

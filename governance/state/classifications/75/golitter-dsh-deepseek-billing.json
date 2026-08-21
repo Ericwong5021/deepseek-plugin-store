@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "data",
+    "ui",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates with the DeepSeek API to retrieve and display account balance and billing information in DSH settings and through a slash command, with documented credential-store and interface behavior.",
+  "summaries": {
+    "zh": "在 DSH 中通过 DeepSeek API 查询并展示账户可用余额、充值余额和赠送余额。",
+    "en": "Queries and displays DeepSeek account balances, including available, recharge, and bonus balances, within DSH."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a DeepSeek API credential through the host credential store",
+      "Requests DeepSeek account balance and billing information",
+      "Displays balance information in a web settings page and via a slash command"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_data_display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a DeepSeek API credential through the host credential store",
+      "Requests DeepSeek account balance and billing information",
+      "Displays balance information in a web settings page and via a slash command"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:27.497Z",
+  "repositoryCommitSha": "b3600295dfbe34764e4bc06f534e8af600e43310",
+  "evidenceHash": "1c2b4eacc38d3e5d8cdbcae73162be1b7daec8f097ee4ff0f2b2d541af7da97a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "93cb7f38f08e77bab6f7612250d49c8a2ce850419ab434548733896b2c457ae5",
+  "shadowMode": false
+}

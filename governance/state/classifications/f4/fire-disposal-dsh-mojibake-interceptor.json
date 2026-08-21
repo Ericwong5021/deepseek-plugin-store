@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "debugging",
+    "monitoring",
+    "notification",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness plugin that detects mojibake and unsafe text encodings in file writes, shell commands, and selected outputs, then warns, blocks, or routes findings for review; its primary purpose is file and terminal protection against encoding corruption.",
+  "summaries": {
+    "zh": "在文件写入、编辑、Shell 命令及相关输出中检测乱码和不安全编码，并按配置进行警告、拦截或复查。",
+    "en": "Detects mojibake and unsafe encodings in file edits, writes, shell commands, and selected outputs, then warns, blocks, or routes findings for review according to configuration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Scans pending file-write, edit, and shell-command payloads before execution",
+      "Can deny or allow tool execution based on detected encoding and mojibake patterns",
+      "Scans command and read-tool outputs and injects warning notifications",
+      "Audits PowerShell write-command encoding declarations",
+      "Supports warn, block, and approval-based handling modes"
+    ],
+    "reasons": [
+      {
+        "code": "intercepts_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "can_block_file_and_shell_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "monitors_tool_outputs",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Scans pending file-write, edit, and shell-command payloads before execution",
+      "Can deny or allow tool execution based on detected encoding and mojibake patterns",
+      "Scans command and read-tool outputs and injects warning notifications",
+      "Audits PowerShell write-command encoding declarations",
+      "Supports warn, block, and approval-based handling modes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:18:56.355Z",
+  "repositoryCommitSha": "d8907a34569aeb84816540587db20832b5a1d2f4",
+  "evidenceHash": "fa25e63b5f37957cd1db5179540400e7d0807919515b552e753fe3d1efb23e95",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8355a70c1492362547d48d8bc097ff29e074e0ba70ab2dfbe8db7742cc674ee3",
+  "shadowMode": false
+}

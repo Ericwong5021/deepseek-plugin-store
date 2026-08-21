@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "image",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates a configured sub2api gateway with DeepSeek Harness, exposing multiple model-provider routes plus model discovery, usage lookup, streaming chat, and configured image tools.",
+  "summaries": {
+    "zh": "将配置好的 sub2api 网关接入 DeepSeek Harness，提供多平台模型路由、模型发现、用量查询、流式聊天以及图像分析和生成工具。",
+    "en": "Connects a configured sub2api gateway to DeepSeek Harness for multi-provider model routes, model discovery, usage lookup, streaming chat, and image analysis and generation tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects to a configured sub2api gateway as an LLM provider",
+      "Registers provider routes for OpenAI, Claude, Grok, and Gemini model groups",
+      "Fetches model catalogs and usage information from the gateway",
+      "Supports streaming chat, tool calls, reasoning effort, image analysis, and image generation through configured models",
+      "Stores and references provider credentials through the harness credential service"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_generation_and_analysis",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to a configured sub2api gateway as an LLM provider",
+      "Registers provider routes for OpenAI, Claude, Grok, and Gemini model groups",
+      "Fetches model catalogs and usage information from the gateway",
+      "Supports streaming chat, tool calls, reasoning effort, image analysis, and image generation through configured models",
+      "Stores and references provider credentials through the harness credential service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:34.385Z",
+  "repositoryCommitSha": "e4dd7dad0a710c8cde75d505e337f63c391102db",
+  "evidenceHash": "a8116b8765b43ae6bd42ac23b2db8b29c06c780d3612da39b79d17990ddb591a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e792a00068546b3de5a22bf01f52085e10d9c00c435f101962def3d420a8f67c",
+  "shadowMode": false
+}

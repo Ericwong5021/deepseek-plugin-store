@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "search",
+    "chat",
+    "browser",
+    "file",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes a workspace-scoped long-term memory plugin with approval-gated fact management, session-history search, citations, and profile recall as its primary user-facing purpose.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供按工作区管理的长期记忆，包括经审批的事实写入、跨会话搜索、引用溯源和配置文件召回。",
+    "en": "Provides workspace-scoped long-term memory for DeepSeek Harness with approval-gated fact management, cross-session search, provenance citations, and profile recall."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores and updates workspace-scoped memory facts",
+      "Reads and searches past session logs",
+      "Exports masked memory to a Markdown file",
+      "Displays memory in a read-only browser page",
+      "Optionally proposes session-end memory candidates using one LLM call"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_memory_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_llm_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Stores and updates workspace-scoped memory facts",
+      "Reads and searches past session logs",
+      "Exports masked memory to a Markdown file",
+      "Displays memory in a read-only browser page",
+      "Optionally proposes session-end memory candidates using one LLM call"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:46.641Z",
+  "repositoryCommitSha": "9acd2ca676fc58a8c8d7a17e59f2d39fcb4c9b58",
+  "evidenceHash": "b86e2ff2be075eb58c8056009f725e890827ebf1525f2d35fd60a834350f418f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fce8966b8c4f9f8e71366b28d1c0a516b79dc574164c150d017881045a38ec11",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "ui",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A browser voice-mode plugin that captures speech, performs host-side ASR, submits transcripts to the model, and streams synthesized audio responses with barge-in support.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供全双工语音交互，支持麦克风输入、本地语音识别、流式语音播放、实时字幕和语音打断。",
+    "en": "Adds full-duplex voice interaction to DeepSeek Harness with microphone input, host-side speech recognition, streamed spoken replies, live captions, and voice interruption."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures microphone audio in the browser",
+      "Sends raw PCM audio to a host-side ASR endpoint",
+      "Uses SenseVoice via sherpa-onnx for speech recognition",
+      "Streams LLM responses as synthesized audio with captions",
+      "Fetches and caches speech model files through a configurable proxy",
+      "Cancels playback and an active model turn when speech interruption is detected"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_asr_submission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_download",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "audio_playback_and_cancellation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Captures microphone audio in the browser",
+      "Sends raw PCM audio to a host-side ASR endpoint",
+      "Uses SenseVoice via sherpa-onnx for speech recognition",
+      "Streams LLM responses as synthesized audio with captions",
+      "Fetches and caches speech model files through a configurable proxy",
+      "Cancels playback and an active model turn when speech interruption is detected"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:06.649Z",
+  "repositoryCommitSha": "edccb0133766c3cde26ef5ee9b91c2388e8507e8",
+  "evidenceHash": "25ed50de17432f9c55899229ed0b71fbbab710308879262c4be45dee1d92c72f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6b37ae6d88ca35c104ebd73368f3a91d16cb06de3f5514278d1db1a08ad8c19e",
+  "shadowMode": false
+}

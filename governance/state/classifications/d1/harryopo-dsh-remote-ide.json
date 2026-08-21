@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "api",
+    "integration",
+    "desktop",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes a remote IDE whose primary purpose is browsing, editing, and managing files over SFTP and using interactive SSH terminals; its remote shell and file-write capabilities warrant human review.",
+  "summaries": {
+    "zh": "通过 SSH 和 SFTP 在远程服务器上浏览、编辑文件并使用交互式终端的远程 IDE 插件。",
+    "en": "A remote IDE plugin for browsing and editing server files over SFTP and using interactive SSH terminals."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "SSH connections to configured remote hosts",
+      "SFTP remote file browsing and CRUD operations",
+      "Remote file editing and saving",
+      "Interactive SSH PTY terminal access",
+      "SSH host credential storage and private-key or password authentication",
+      "ProxyJump connection support"
+    ],
+    "reasons": [
+      {
+        "code": "remote_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_host_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "SSH connections to configured remote hosts",
+      "SFTP remote file browsing and CRUD operations",
+      "Remote file editing and saving",
+      "Interactive SSH PTY terminal access",
+      "SSH host credential storage and private-key or password authentication",
+      "ProxyJump connection support"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:20.643Z",
+  "repositoryCommitSha": "053ff719311c8d36a744c5abdd852da5d53f9d57",
+  "evidenceHash": "80e2a788e0c2fdedf0d82c31e227232d1d599e5797181ad401ba1587be327e95",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d42f9dd091b61d2049add6f8ccd5d5d3bcfb8267e53eaba7fbc873260ad60be1",
+  "shadowMode": false
+}

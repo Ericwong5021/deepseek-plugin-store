@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "agent",
+    "api",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DeepSeek Harness plugin that provides cross-session memory by recalling scoped GoodMemory entries before model steps and writing completed exchanges back to GoodMemory.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供跨会话记忆，在模型步骤前召回相关 GoodMemory 内容，并在回合完成后写回选定的对话文本。",
+    "en": "Provides cross-session memory for DeepSeek Harness by recalling relevant GoodMemory entries before model steps and writing selected completed-turn text back afterward."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Recalls relevant durable memory before DeepSeek Harness model steps",
+      "Writes selected human and final assistant text to GoodMemory after completed turns",
+      "Stores memory in SQLite through a managed local sidecar or connects to an external HTTP bridge",
+      "Uses scoped identifiers and bearer-token authentication for external mode"
+    ],
+    "reasons": [
+      {
+        "code": "durable_memory_writeback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_http_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Recalls relevant durable memory before DeepSeek Harness model steps",
+      "Writes selected human and final assistant text to GoodMemory after completed turns",
+      "Stores memory in SQLite through a managed local sidecar or connects to an external HTTP bridge",
+      "Uses scoped identifiers and bearer-token authentication for external mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:47.914Z",
+  "repositoryCommitSha": "5b80ddd077eddc1bb164c563fdd2bfe2f94341d9",
+  "evidenceHash": "32b1b570117da5bf3c9ad5b1757b4cb6e2e96a9e5798edb04326a1dd15ef82e0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "876c95d8c2cbbbc7655366ff1bf15b891e7a367a5d99e4e01c82ea2270e0c4a2",
+  "shadowMode": false
+}

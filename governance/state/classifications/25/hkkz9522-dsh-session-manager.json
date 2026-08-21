@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "api",
+    "chat",
+    "data",
+    "file",
+    "layout",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DeepSeek Harness conversation-management plugin that adds a session manager panel, archive and unarchive controls, and confirmed irreversible deletion of sessions and their stored files.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供会话管理面板，并支持归档、取消归档以及经确认后删除会话及其存储文件。",
+    "en": "Adds a DeepSeek Harness session manager panel with archive, unarchive, and confirmation-based deletion of conversations and their stored files."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Deletes conversation sessions and their on-disk JSONL directories after confirmation",
+      "Archives and unarchives conversation sessions",
+      "Interrupts and disposes running agents during session deletion",
+      "Exposes host-side HTTP endpoints for deletion and unarchiving",
+      "Provides a session manager panel with filtering and per-session actions"
+    ],
+    "reasons": [
+      {
+        "code": "irreversible_file_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "interrupts_running_sessions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_internal_state_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Deletes conversation sessions and their on-disk JSONL directories after confirmation",
+      "Archives and unarchives conversation sessions",
+      "Interrupts and disposes running agents during session deletion",
+      "Exposes host-side HTTP endpoints for deletion and unarchiving",
+      "Provides a session manager panel with filtering and per-session actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:49.623Z",
+  "repositoryCommitSha": "424c7fb9d4a74622be19d8a21d22cd4d615c401d",
+  "evidenceHash": "29cbdda37e6cdab38583305906db101273d148adc73eddb0e863bc1f69dee698",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd172617707c80264ca3a882046c80b0472d753cfb28d119d1c444d059db7017",
+  "shadowMode": false
+}

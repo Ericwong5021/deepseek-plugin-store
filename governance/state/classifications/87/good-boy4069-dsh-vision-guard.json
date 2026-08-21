@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "document",
+    "video",
+    "tool",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README describes a vision guard and analysis tool whose primary purpose is converting images and other media or documents into text for text-only models while preventing image-related session failures.",
+  "summaries": {
+    "zh": "将图像及部分文档、视频内容转换为文本供文本模型使用，并在请求前处理图像块以避免会话因不支持图像而失败。",
+    "en": "Converts images and selected document or video content into text for text-only models while processing image blocks before requests to prevent unsupported-image session failures."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads workspace image, PDF, DOCX, PPTX, video, and text files for analysis",
+      "Uses local OCR or a configured vision model to convert media content into text",
+      "Rewrites image blocks in session input or replayed history before model requests",
+      "Stores OCR cache and budget state under the configured dsh home directory"
+    ],
+    "reasons": [
+      {
+        "code": "workspace-file-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configured-model-data-transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session-content-rewriting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads workspace image, PDF, DOCX, PPTX, video, and text files for analysis",
+      "Uses local OCR or a configured vision model to convert media content into text",
+      "Rewrites image blocks in session input or replayed history before model requests",
+      "Stores OCR cache and budget state under the configured dsh home directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:04.112Z",
+  "repositoryCommitSha": "54706cde2e2624f270c0beb1f4f339f932d14320",
+  "evidenceHash": "07299ff50f35ee0b1f1839fffabb59787709d9d989f881910720f300371f6a2b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "34f6304ced1adff48e27900d9b355101bd55df6e642be8737ee38edb72c436b8",
+  "shadowMode": false
+}

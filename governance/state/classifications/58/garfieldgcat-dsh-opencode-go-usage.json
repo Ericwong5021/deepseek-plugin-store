@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web plugin that monitors OpenCode Go quota usage by querying its usage endpoint and displaying remaining percentages and reset times in the chat composer.",
+  "summaries": {
+    "zh": "在聊天输入区域显示 OpenCode Go 的剩余配额、使用比例和重置时间，并支持缓存与定时刷新。",
+    "en": "Displays OpenCode Go quota remaining percentages, usage windows, and reset times in the chat composer with cached and throttled refreshes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the OpenCode Go usage endpoint using a configured API key",
+      "Reads OpenCode Go credentials from the DSH credentials seam, environment, or local auth file",
+      "Displays cached and refreshed quota percentages and reset times in the web interface"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_resolution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "quota_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries the OpenCode Go usage endpoint using a configured API key",
+      "Reads OpenCode Go credentials from the DSH credentials seam, environment, or local auth file",
+      "Displays cached and refreshed quota percentages and reset times in the web interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:49.005Z",
+  "repositoryCommitSha": "ea29a823645a5a36cea2f2cd9645a4269e1e5704",
+  "evidenceHash": "382869bae09adab46ea8d8e41eac545f2e7b5f1c959362cb8789f278fcaf0a3d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5600c94e9768e4d10e0d273a0a0183f662c0873a72d5a92a01076f9ce192c3a3",
+  "shadowMode": false
+}

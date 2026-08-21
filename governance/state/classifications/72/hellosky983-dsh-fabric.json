@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "tool",
+    "workflow",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Fabric is a plugin-development runtime that provides a declarative DSL, service API, model tools, and inspection UI for registering, querying, composing, and removing DSH extensions; the README states it has no file persistence or credential handling but supports executable extensions and a read-only census route.",
+  "summaries": {
+    "zh": "Fabric 为 DeepSeek Harness 提供统一的声明式 DSL、服务 API 和模型工具，用于注册、查询、组合与移除运行时插件扩展。",
+    "en": "Fabric provides DeepSeek Harness with a declarative DSL, service API, and model tools for registering, inspecting, composing, and removing runtime plugin extensions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers and manages runtime extensions through a declarative DSL and Fabric service",
+      "Allows plugin code to register executable tools, commands, event listeners, adapters, providers, routes, and other extension types",
+      "Allows model-facing tools to add non-executable prompt, skill, and variable declarations",
+      "Exposes runtime extension metadata through inspection tools and a read-only census route"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_extension_registration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executable_extension_support",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "read_only_network_route",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers and manages runtime extensions through a declarative DSL and Fabric service",
+      "Allows plugin code to register executable tools, commands, event listeners, adapters, providers, routes, and other extension types",
+      "Allows model-facing tools to add non-executable prompt, skill, and variable declarations",
+      "Exposes runtime extension metadata through inspection tools and a read-only census route"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:29.089Z",
+  "repositoryCommitSha": "683bc3a3dd750986a549c45a7ca696e96947d991",
+  "evidenceHash": "4a0a693610c475e6acb13773230a797801e8dbd9f955e9e099724a996136430f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c80bf17cbec559eee3caf5f3e6e8f652b5b8c995466631dae92733095f773965",
+  "shadowMode": false
+}

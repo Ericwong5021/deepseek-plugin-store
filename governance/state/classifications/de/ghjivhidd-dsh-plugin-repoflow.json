@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "api",
+    "cli",
+    "file",
+    "terminal",
+    "visualization",
+    "agent",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Git and GitHub repository management plugin with a visual settings interface, local Git operations, GitHub API integration, repository creation, and agent-callable tools.",
+  "summaries": {
+    "zh": "在 DSH 设置页中提供本地 Git 仓库可视化、分支与提交管理，以及通过 GitHub API 创建仓库和推送代码的功能。",
+    "en": "Provides DSH with visual local Git repository management, branch and commit operations, and GitHub API integration for repository creation and code pushing."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local Git repository status, branches, commits, and changed files",
+      "Executes local Git initialization, checkout, commit, and history operations",
+      "Uses a GitHub Personal Access Token to test connectivity, list repositories, create repositories, and push code",
+      "Provides agent-callable tools for Git and GitHub repository operations",
+      "Stores GitHub account configuration and token in a local configuration file"
+    ],
+    "reasons": [
+      {
+        "code": "local_repository_write_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_repository_creation_and_code_push",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "personal_access_token_and_github_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local Git repository status, branches, commits, and changed files",
+      "Executes local Git initialization, checkout, commit, and history operations",
+      "Uses a GitHub Personal Access Token to test connectivity, list repositories, create repositories, and push code",
+      "Provides agent-callable tools for Git and GitHub repository operations",
+      "Stores GitHub account configuration and token in a local configuration file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:01.992Z",
+  "repositoryCommitSha": "fa825996c5217838c1181b7252e8c5f88cbc4626",
+  "evidenceHash": "54654d024f1471ef0f2442aeb31abc419db072e5133f57aa39037040a47ea9bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "76283258d122653cb1516754951f057ed869c1d40b233b9c92154d932acc6bac",
+  "shadowMode": false
+}
