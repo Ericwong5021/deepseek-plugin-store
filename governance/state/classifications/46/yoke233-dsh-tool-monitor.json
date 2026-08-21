@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "agent",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin monitors existing streaming Bash and PowerShell background jobs, filters their output for configured patterns, and notifies the owning Agent without rerunning the original command.",
+  "summaries": {
+    "zh": "监控现有 Bash 或 PowerShell 后台任务的输出，按配置模式筛选匹配行并向所属智能体发送事件，而不会重复执行原命令。",
+    "en": "Monitor existing Bash or PowerShell background-job output, filter matching lines by configurable patterns, and notify the owning Agent without rerunning the original command."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Subscribes to existing Bash or PowerShell background jobs",
+      "Filters complete output lines using a JavaScript regular expression",
+      "Emits matching output as session events to the owning Agent",
+      "Preserves the original job output while maintaining an independent monitor lifecycle"
+    ],
+    "reasons": [
+      {
+        "code": "observes_background_job_output",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "injects_matching_session_events",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "does_not_start_duplicate_business_processes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "enforces_job_ownership_and_non_streaming_restrictions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Subscribes to existing Bash or PowerShell background jobs",
+      "Filters complete output lines using a JavaScript regular expression",
+      "Emits matching output as session events to the owning Agent",
+      "Preserves the original job output while maintaining an independent monitor lifecycle"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:25.755Z",
+  "repositoryCommitSha": "707b3f4ed8fc2301393dccdf537d531d128d449c",
+  "evidenceHash": "c59f66d6bdcc4b6fb212099180a77c48788177ad6dc7970ae6cd77ee1003a3ad",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "677ea21c11ef63d71474bb6206e7a531e098a4ed647abf6e9c4ce86afc0fdaf3",
+  "shadowMode": false
+}

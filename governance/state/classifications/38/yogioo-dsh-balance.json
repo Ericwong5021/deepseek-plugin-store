@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "layout",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh web plugin that periodically retrieves the DeepSeek account balance, displays it in the conversation interface, and exposes a check_balance model tool.",
+  "summaries": {
+    "zh": "在 dsh web 中定期获取并显示 DeepSeek API 账户余额，同时提供可供模型调用的余额查询工具。",
+    "en": "Periodically retrieves and displays the DeepSeek API account balance in dsh web while providing a balance-checking tool for models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Queries the DeepSeek balance endpoint periodically",
+      "Caches balance data and exposes it through a local web route",
+      "Displays the balance in the dsh web interface",
+      "Registers a check_balance tool for model use"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_route_and_ui_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Queries the DeepSeek balance endpoint periodically",
+      "Caches balance data and exposes it through a local web route",
+      "Displays the balance in the dsh web interface",
+      "Registers a check_balance tool for model use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:28.517Z",
+  "repositoryCommitSha": "0b35beea8950439ed4f0ebf4f709337f4e182fd5",
+  "evidenceHash": "19952df029b433933c8ddda2601b378e827c318baffb8a1583fac476966f8d84",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c4fa452a8b070fb129a9797b13dabcadc6cce1a9772e55b3ad254b460b32f359",
+  "shadowMode": false
+}

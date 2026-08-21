@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "terminal",
+    "cli",
+    "file",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows DeepSeek Harness agent preset that provides Git Bash, PowerShell, and string-replacement file editing tools, primarily for terminal and file operations; Git Bash runs outside the file sandbox with harness-process privileges.",
+  "summaries": {
+    "zh": "面向 Windows 的 DeepSeek Harness 极简 Agent 预设，提供 Git Bash、PowerShell 和字符串替换文件编辑工具。",
+    "en": "A minimal Windows DeepSeek Harness agent preset providing Git Bash, PowerShell, and string-replacement file editing tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Execute Git Bash commands through ctx.subprocess",
+      "Run PowerShell commands through the host shell",
+      "Edit files using str_replace_editor",
+      "Create truncated command-output spill files",
+      "Terminate commands after configured timeouts"
+    ],
+    "reasons": [
+      {
+        "code": "unsandboxed_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_process_privileges",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_editing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Execute Git Bash commands through ctx.subprocess",
+      "Run PowerShell commands through the host shell",
+      "Edit files using str_replace_editor",
+      "Create truncated command-output spill files",
+      "Terminate commands after configured timeouts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:59.044Z",
+  "repositoryCommitSha": "5e33b0f22c2696a5a66c993dc3a5007397658c81",
+  "evidenceHash": "0c572ce10e7581caa5bd579dc419e213da2c5b2eed710aa10dc800715cbb6f90",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d94c97dfd1f609f38b848b71adf6a92b570a43008bc96289a73eb741ee91121d",
+  "shadowMode": false
+}

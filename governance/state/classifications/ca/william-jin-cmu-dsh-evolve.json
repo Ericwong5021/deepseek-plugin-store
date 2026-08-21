@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "tool",
+    "memory",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an agent orchestration plugin that dynamically creates, persists, hot-mounts, removes, and restores Cordis plugins, including tools, event hooks, system prompt rules, and timers that can wake the agent; its documented unsandboxed host-level execution warrants human review.",
+  "summaries": {
+    "zh": "一个支持智能体动态创建、持久化、热加载和卸载工具及行为钩子的自进化编排插件。",
+    "en": "An agent-orchestration plugin that dynamically creates, persists, hot-loads, and removes tools and behavioral hooks across sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Dynamically persists and loads arbitrary ESM plugin source",
+      "Hot-mounts and removes agent tools and Cordis event hooks",
+      "Registers timers that can wake the agent and initiate turns",
+      "Persists plugin state across sessions and restarts",
+      "Executes evolution code with the host harness permissions and without a sandbox",
+      "Can perform filesystem and network operations through loaded plugins"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_runtime_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unsandboxed_host_permissions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "autonomous_wakeup",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Dynamically persists and loads arbitrary ESM plugin source",
+      "Hot-mounts and removes agent tools and Cordis event hooks",
+      "Registers timers that can wake the agent and initiate turns",
+      "Persists plugin state across sessions and restarts",
+      "Executes evolution code with the host harness permissions and without a sandbox",
+      "Can perform filesystem and network operations through loaded plugins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:04.571Z",
+  "repositoryCommitSha": "37462647f89612ab89b18fadb88299e550748200",
+  "evidenceHash": "50d66b7dd484155eec7a9998928f6349d5b567965fec8edc2ff372a335d9beb2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "01e0d1326d783af8d2e2c312f0407fc0173fc173d7aaac6d2413c9bf05434ddb",
+  "shadowMode": false
+}

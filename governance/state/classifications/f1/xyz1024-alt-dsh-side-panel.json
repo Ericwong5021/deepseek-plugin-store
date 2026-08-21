@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "chat",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness web plugin providing a right-side panel for browsing session files, viewing conversation history, and inspecting git status and diffs; human review is warranted because its documented routes read the filesystem and run git without authentication or sandboxing.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 网页界面提供右侧开发者面板，用于浏览会话文件、查看对话历史以及检查 Git 状态和差异。",
+    "en": "Adds a right-side developer panel to DeepSeek Harness for browsing session files, reviewing conversation history, and inspecting Git status and diffs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads files from the current session working directory",
+      "Displays conversation history in the web UI",
+      "Runs git status and reads diffs for the current directory",
+      "Adds browser and Node components to the DeepSeek Harness web profile"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem-read-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated-git-and-filesystem-routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads files from the current session working directory",
+      "Displays conversation history in the web UI",
+      "Runs git status and reads diffs for the current directory",
+      "Adds browser and Node components to the DeepSeek Harness web profile"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:45.433Z",
+  "repositoryCommitSha": "4714c7bf0e049abdd551686a7bdaf5cdb383570b",
+  "evidenceHash": "00cc213e0d7c5d725416124f3c0f3b7e98c53e9552d1e924d82e23eb84ade65b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d20cef7544e4ef58ed79434067213b8fc911d3af2a0a3eec4ac0d09d5944896a",
+  "shadowMode": false
+}

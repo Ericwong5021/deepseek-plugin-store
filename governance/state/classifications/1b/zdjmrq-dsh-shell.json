@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "layout",
+    "notification",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows desktop shell that embeds the local DeepSeek Harness web UI, manages its optional local service lifecycle, and adds native window controls with optional taskbar attention notifications.",
+  "summaries": {
+    "zh": "将本地 DeepSeek Harness Web UI 封装进原生 Windows 窗口，并提供窗口控制、可选服务启动管理和任务栏提醒。",
+    "en": "A native Windows shell for the local DeepSeek Harness web UI with window controls, optional service lifecycle management, and taskbar attention notifications."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Wraps a local web UI in a native desktop window",
+      "Can start a configured local DSH service and stop services started by the shell",
+      "Provides single-instance window behavior and native window controls",
+      "Can poll a local attention endpoint and trigger Windows taskbar notifications"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "native_window_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_endpoint_polling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Wraps a local web UI in a native desktop window",
+      "Can start a configured local DSH service and stop services started by the shell",
+      "Provides single-instance window behavior and native window controls",
+      "Can poll a local attention endpoint and trigger Windows taskbar notifications"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:50.440Z",
+  "repositoryCommitSha": "66f85361ced67b5ce51c5d6fdbb6fdfba13e7609",
+  "evidenceHash": "13bedab73ab9770443d9afa40fd8921da2f51ec7465b65b48c7f1f0a058a5fcb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bb426505b639a8297edd379c5af4bd6f18f06c3151ebcc78faeb5daf632ba7bd",
+  "shadowMode": false
+}

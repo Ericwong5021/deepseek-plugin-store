@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "image",
+    "video",
+    "search",
+    "agent",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "插件通过mmx_bridge和mmx_env调用MiniMax CLI及服务，主要为DSH提供图片理解与生成、视频、语音、音乐、搜索和额度查询等外部多模态能力，并包含命令执行、安装登录和临时文件写入。",
+  "summaries": {
+    "zh": "通过MiniMax CLI为DeepSeek Harness提供图片理解与生成、视频、语音、音乐、搜索和用量查询等多模态能力。",
+    "en": "Connects DeepSeek Harness to MiniMax CLI for image understanding and generation, video, speech, music, search, and usage queries."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "通过mmx-cli调用MiniMax多模态服务",
+      "图片理解与文生图",
+      "文生视频与图生视频",
+      "语音合成、音乐生成和音频翻唱",
+      "联网搜索与用量查询",
+      "将生成的图片、视频和音频写入临时输出目录",
+      "可执行全局安装mmx-cli及API Key登录操作",
+      "将图片识别缓存写回插件创建的图片副本"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "media_generation_and_file_output",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution_and_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_login_flow",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "通过mmx-cli调用MiniMax多模态服务",
+      "图片理解与文生图",
+      "文生视频与图生视频",
+      "语音合成、音乐生成和音频翻唱",
+      "联网搜索与用量查询",
+      "将生成的图片、视频和音频写入临时输出目录",
+      "可执行全局安装mmx-cli及API Key登录操作",
+      "将图片识别缓存写回插件创建的图片副本"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:48.040Z",
+  "repositoryCommitSha": "86a7cf86570dca489bdd60174b549dc31c9be572",
+  "evidenceHash": "aeb8f870aeb87ca119fbe7e9bea096ec5ea817273536a3d28d4ede6374ee8dfb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3ae9c7dd07b6bf10d22a2e1bb311c0d8c45fb55ae4168ed01ea28b5679f3ddba",
+  "shadowMode": false
+}

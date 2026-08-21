@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "search",
+    "skill",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DeepSeek Harness plugin store and install assistant that lets users browse a bundled catalog, confirm installation requests, and have the current agent complete the installation workflow.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供可搜索的插件商店界面，并在用户确认后由智能体协助完成插件安装流程。",
+    "en": "Provides a searchable plugin store for DeepSeek Harness and lets the agent assist with plugin installation after user confirmation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Displays and searches a bundled plugin catalog in a web GUI",
+      "Submits local plugin-install requests after user confirmation",
+      "Guides an agent through plugin source verification, installation, profile registration, and result verification",
+      "May cause the agent to read or write dsh profiles and plugin directories and access npm or GitHub during installation"
+    ],
+    "reasons": [
+      {
+        "code": "agent_executes_install_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_network_access_during_install",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_confirmation_before_install_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Displays and searches a bundled plugin catalog in a web GUI",
+      "Submits local plugin-install requests after user confirmation",
+      "Guides an agent through plugin source verification, installation, profile registration, and result verification",
+      "May cause the agent to read or write dsh profiles and plugin directories and access npm or GitHub during installation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:04.933Z",
+  "repositoryCommitSha": "3b24f5d5089a4edfe8f6ee6c908cf127297a695b",
+  "evidenceHash": "8a1d460227118a1c327b18b08e9fb09569c176e88ed14e83868d6ab0b640f9f4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "689fad8837cac23d42c8c61a89eed885b80dd7a3ff9b9cff4a1f9407139ab960",
+  "shadowMode": false
+}

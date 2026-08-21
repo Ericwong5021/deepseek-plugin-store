@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "chat",
+    "cli",
+    "image",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DeepSeek Harness plugin whose primary purpose is integrating a locally authenticated Codex App Server as a selectable model provider, including conversation, tool-context relay, and image input/output support.",
+  "summaries": {
+    "zh": "将本机已登录的 Codex App Server 接入 DeepSeek Harness，作为可选模型提供方处理对话、工具上下文和图片输入输出。",
+    "en": "Connects a locally authenticated Codex App Server to DeepSeek Harness as a selectable model provider for conversations, tool context, and image input and output."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers a local Codex App Server as a DeepSeek Harness model provider",
+      "Starts and manages a local Codex CLI subprocess through the host environment",
+      "Routes conversation requests, tool results, context, and image attachments between DeepSeek Harness and Codex",
+      "Can return Codex-native image generation results to DeepSeek Harness"
+    ],
+    "reasons": [
+      {
+        "code": "executes_local_subprocess",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_authenticated_local_codex_account",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "transfers_conversation_tool_and_image_data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers a local Codex App Server as a DeepSeek Harness model provider",
+      "Starts and manages a local Codex CLI subprocess through the host environment",
+      "Routes conversation requests, tool results, context, and image attachments between DeepSeek Harness and Codex",
+      "Can return Codex-native image generation results to DeepSeek Harness"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:08.237Z",
+  "repositoryCommitSha": "79fe7503390d641680bad8efade52782a3c31ced",
+  "evidenceHash": "0a8a292bb9ddb67d061e913c3af92720a08668827172f5f811c86e1c8713da49",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1836a572233540e5bf6b88717c1c8149c30caf2b0442d6f2664181c1d0a0060b",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh web-search provider that routes queries across free GitHub, arXiv, StackExchange, Hacker News, Tavily, and Sogou engines with fallback handling and normalized results.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供多源网页搜索，通过多个免费或可选密钥的搜索引擎检索并返回统一结果。",
+    "en": "Provides DeepSeek Harness with multi-source web search using several free or optionally keyed search engines and normalized results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Performs external web searches through multiple search and content APIs",
+      "Sends user queries to third-party search services",
+      "Optionally uses the TAVILY_API_KEY environment variable for Tavily requests",
+      "Replaces the default dsh web search provider with this provider"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "third_party_query_sharing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "provider_configuration_replacement",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Performs external web searches through multiple search and content APIs",
+      "Sends user queries to third-party search services",
+      "Optionally uses the TAVILY_API_KEY environment variable for Tavily requests",
+      "Replaces the default dsh web search provider with this provider"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:10.586Z",
+  "repositoryCommitSha": "2336dadd0c8ef593d6e8af2897327e4725b9c01e",
+  "evidenceHash": "5201430b8bfcb230f9316bb648ed6aae080d96a86f9ef356128c7effe3d768cc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "667dc592e8faf88ee7248fcf35601c230fd9b7f713ac63c9132f79ccc989b504",
+  "shadowMode": false
+}

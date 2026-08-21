@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "browser",
+    "terminal",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A native Windows desktop launcher for DeepSeek Harness that starts, stops, builds, updates, monitors, and opens the local service, with documented local process, filesystem, and Git operations.",
+  "summaries": {
+    "zh": "用于在 Windows 桌面上启动、停止、构建、更新并打开 DeepSeek Harness 本地服务的原生启动器。",
+    "en": "A native Windows desktop launcher for starting, stopping, building, updating, and opening a local DeepSeek Harness service."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "launches and monitors local service processes",
+      "terminates process trees, including confirmed externally started processes",
+      "executes local build and package-manager commands",
+      "fetches and updates a Git repository over the network",
+      "can perform git reset --hard and branch alignment for zip-based copies",
+      "opens a local web page in a browser",
+      "writes local configuration and log files"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_repository_update",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive_git_update",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "launches and monitors local service processes",
+      "terminates process trees, including confirmed externally started processes",
+      "executes local build and package-manager commands",
+      "fetches and updates a Git repository over the network",
+      "can perform git reset --hard and branch alignment for zip-based copies",
+      "opens a local web page in a browser",
+      "writes local configuration and log files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:54:45.179Z",
+  "repositoryCommitSha": "c1c240fada477c8094810f23075199151c141614",
+  "evidenceHash": "7935718c89328a16c95e0e954cf738a0f825df7526939d77da7c065d7aab7459",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cb36ea159a2b20482469c9e659f21210fdf7c2d96ba2db8f8fab876ca8c836d5",
+  "shadowMode": false
+}

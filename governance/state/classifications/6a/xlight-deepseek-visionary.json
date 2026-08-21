@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "mcp",
+    "agent",
+    "api",
+    "browser",
+    "cli",
+    "document",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a Rust-based CLI and MCP integration that lets AI agents use DeepSeek web vision and OCR capabilities, including multi-image analysis, text extraction, login management, and agent configuration. Its primary user-facing purpose is image understanding and OCR, with external network access, browser login automation, and local credential storage.",
+  "summaries": {
+    "zh": "通过 CLI、MCP 或 DeepSeek Harness 将 DeepSeek 网页版视觉模型和 OCR 能力提供给 AI 助手，用于图片分析与文字提取。",
+    "en": "Connects AI assistants to DeepSeek web vision and OCR capabilities through CLI, MCP, or DeepSeek Harness for image analysis and text extraction."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Analyzes images and extracts text through DeepSeek vision and OCR tools",
+      "Exposes functionality through CLI, MCP, and DeepSeek Harness integrations",
+      "Uploads image data to the DeepSeek web backend over HTTPS",
+      "Automates browser-based login and stores authentication tokens and session data locally",
+      "Writes agent integration configuration and skill files"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_automation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Analyzes images and extracts text through DeepSeek vision and OCR tools",
+      "Exposes functionality through CLI, MCP, and DeepSeek Harness integrations",
+      "Uploads image data to the DeepSeek web backend over HTTPS",
+      "Automates browser-based login and stores authentication tokens and session data locally",
+      "Writes agent integration configuration and skill files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:38.913Z",
+  "repositoryCommitSha": "93bd57780a5263d92c86c5d0f695a8c17fa9dd14",
+  "evidenceHash": "7ff8b6dc9b7eb952f158d71b0cf06eeb0351204bbb606c467bf7f7e6305f5d0b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "124aef13882041ec57856246ae9d000f8329f6cf84c262d5c5801973edb105fa",
+  "shadowMode": false
+}

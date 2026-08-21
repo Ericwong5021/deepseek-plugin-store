@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "api",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-platform Electron desktop application that packages and launches DeepSeek Harness with a bundled Node.js runtime and local backend, providing access to its web interface through an installed desktop app.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 打包为跨平台桌面应用，内置 Node.js 运行时并启动本地后端以提供其 Web 界面。",
+    "en": "Packages DeepSeek Harness as a cross-platform desktop application with a bundled Node.js runtime and local backend for its web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Packages a cross-platform Electron desktop application",
+      "Launches a bundled local Node.js backend",
+      "Opens an embedded DeepSeek Harness web interface",
+      "Uses a user-provided DeepSeek API key"
+    ],
+    "reasons": [
+      {
+        "code": "local_backend_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Packages a cross-platform Electron desktop application",
+      "Launches a bundled local Node.js backend",
+      "Opens an embedded DeepSeek Harness web interface",
+      "Uses a user-provided DeepSeek API key"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:53.470Z",
+  "repositoryCommitSha": "5f282defdda49b8a63cbc56458005d508943ba95",
+  "evidenceHash": "a7b1439ef380fcab3df1c03aa1343a897c86691ec899de03f7085ab7d976bdb5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "63da1ae9a8a29fde2179f899bd09c7da5b9d9ab2d5076e24671bbae12a1557f7",
+  "shadowMode": false
+}

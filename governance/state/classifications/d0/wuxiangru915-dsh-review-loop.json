@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "cli",
+    "collaboration",
+    "debugging",
+    "file",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An incremental Git diff review plugin for DeepSeek Harness that presents pending changes in a Web UI or /review command, records checkpoints, and sends review feedback back to the agent.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供增量 Git 差异审查面板和 /review 命令，记录审查检查点并将反馈发送回智能体。",
+    "en": "Provides DeepSeek Harness with incremental Git diff reviews through a Web UI and /review command, recording checkpoints and sending feedback back to the agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads Git working-tree status and diffs",
+      "Stores review checkpoints under $DSH_HOME",
+      "Provides Web UI and /review command interfaces",
+      "Injects approval feedback into the agent message channel"
+    ],
+    "reasons": [
+      {
+        "code": "git_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_checkpoint_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_message_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_ui_and_http_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "computer.control",
+      "network.access",
+      "Reads Git working-tree status and diffs",
+      "Stores review checkpoints under $DSH_HOME",
+      "Provides Web UI and /review command interfaces",
+      "Injects approval feedback into the agent message channel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:53:15.403Z",
+  "repositoryCommitSha": "eb4190498ef76daec21dfcf5c24c44f337a61ed3",
+  "evidenceHash": "d025a5f46268d429ae3022dd3aff98c4d155c257f039a2f375064349836cb8bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "427e7a4afcb5553f7f7ca8b924884ea22ce809a384739110e5586df8688c3a29",
+  "shadowMode": false
+}

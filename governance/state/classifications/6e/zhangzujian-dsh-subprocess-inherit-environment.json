@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that injects the full Harness process environment into subprocess calls, including potentially sensitive credentials; its primary purpose is terminal and process-environment integration, but the explicit security impact warrants human review.",
+  "summaries": {
+    "zh": "将 Harness 进程的完整环境变量传递给通过 ctx.subprocess 创建的子进程，以便子进程继承原有环境。",
+    "en": "Forwards the complete Harness process environment to child processes created through ctx.subprocess so they inherit the original environment."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Wraps ctx.subprocess operations",
+      "Forwards the complete Harness process environment to child processes",
+      "Allows child processes to receive API keys, tokens, passwords, secrets, cookies, and proxy credentials",
+      "Restores wrapped subprocess methods on disposal"
+    ],
+    "reasons": [
+      {
+        "code": "credential_isolation_disabled",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_secret_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Wraps ctx.subprocess operations",
+      "Forwards the complete Harness process environment to child processes",
+      "Allows child processes to receive API keys, tokens, passwords, secrets, cookies, and proxy credentials",
+      "Restores wrapped subprocess methods on disposal"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:55:09.104Z",
+  "repositoryCommitSha": "3f4884f3fb5f1de59fb639866368de3f7b4661bb",
+  "evidenceHash": "c844a6e23385cc0f87550f849c1447b613d63e0405f96a4315522e971842d61a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "08176b7450ce3360405f8cd037d7c93b50ef66380ae68802ce72a4d24ff14901",
+  "shadowMode": false
+}

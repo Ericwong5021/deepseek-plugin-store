@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "monitoring",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates with the DeepSeek API to query account balances and present them through a sidebar indicator and a model-callable tool.",
+  "summaries": {
+    "zh": "通过 DeepSeek API 查询账户余额，并在侧边栏和模型可调用工具中展示余额状态。",
+    "en": "Queries DeepSeek account balances through its API and presents the status in a sidebar indicator and a model-callable tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the DeepSeek API for account balance information",
+      "Reads an API key from plugin configuration, credentials, or an environment variable",
+      "Displays balance status in the sidebar and returns it through a model-callable tool",
+      "Refreshes balance data on a timer and on user request"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_interface_and_tool_output",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries the DeepSeek API for account balance information",
+      "Reads an API key from plugin configuration, credentials, or an environment variable",
+      "Displays balance status in the sidebar and returns it through a model-callable tool",
+      "Refreshes balance data on a timer and on user request"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:52:41.802Z",
+  "repositoryCommitSha": "22d4698ab098e25c2377156ea4b6780888dfea4a",
+  "evidenceHash": "7723af794b05f190979f4556d0c23efa78cccec47d0530102557286e67e513db",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d34be9c30ba6a15c79f795b2c21056048b769f705c5e12c7bafca6c499468de1",
+  "shadowMode": false
+}
