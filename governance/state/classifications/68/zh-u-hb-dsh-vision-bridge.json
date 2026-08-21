@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "chat",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Routes images from messages to a configured OpenAI-compatible vision endpoint when the active text model lacks image input support, then supplies the returned analysis as text.",
+  "summaries": {
+    "zh": "当当前文本模型不支持图像输入时，将消息中的图像发送到用户配置的 OpenAI 兼容视觉端点，并把分析结果作为文本返回。",
+    "en": "Routes images to a user-configured OpenAI-compatible vision endpoint when the active text model cannot accept image input, then returns the analysis as text."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Inspects image-bearing messages before model processing",
+      "Sends image data and prompts to a user-configured OpenAI-compatible vision endpoint",
+      "Replaces image blocks with returned vision text",
+      "Provides web settings for the endpoint, model, timeout, and API key"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_data_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_key_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Inspects image-bearing messages before model processing",
+      "Sends image data and prompts to a user-configured OpenAI-compatible vision endpoint",
+      "Replaces image blocks with returned vision text",
+      "Provides web settings for the endpoint, model, timeout, and API key"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:15:11.599Z",
+  "repositoryCommitSha": "efed2de961da4a2c4e229fe081edc8bfacf1f666",
+  "evidenceHash": "9fcb2d5c8c9fb43f0c7a1defc1c1ade124800375000352b168d908a6552afa30",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "59f55fd9275d9676bc4bf92bed7daaa131c5c1374bc8ddd2e86147ae4764f843",
+  "shadowMode": false
+}

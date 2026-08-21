@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "data",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a web UI status line that monitors DeepSeek session cost, token usage, burn rate, peak pricing status, current model, and account balance using local session data and configured API-backed requests.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中显示会话成本、令牌用量、消耗速率、峰谷时段、当前模型和账户余额状态。",
+    "en": "Displays DeepSeek session cost, token usage, burn rate, peak-period status, current model, and account balance in the Harness web interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the configured DEEPSEEK_API_KEY to request account balance data",
+      "Calls DeepSeek balance and external exchange-rate endpoints",
+      "Executes curl.exe through subprocess for network requests",
+      "Tracks session token usage and calculates displayed cost and burn rate",
+      "Serves usage data through a local web route and renders a status line in the web UI"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_tracking",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DEEPSEEK_API_KEY to request account balance data",
+      "Calls DeepSeek balance and external exchange-rate endpoints",
+      "Executes curl.exe through subprocess for network requests",
+      "Tracks session token usage and calculates displayed cost and burn rate",
+      "Serves usage data through a local web route and renders a status line in the web UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:15:01.885Z",
+  "repositoryCommitSha": "2d21ead90937e8b82f25d60a3f88567a23f64b87",
+  "evidenceHash": "d1a44e2fb4b2a498f4d3c0d47f7fd658fbe6b1988bccd37eeba3af15cd7634b4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ae77a483b3f26a8432ad7b9159c7d50850cefd60f60e0e75620bf4a5152587b",
+  "shadowMode": false
+}

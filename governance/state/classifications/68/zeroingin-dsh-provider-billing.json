@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness integration that retrieves configured provider account balances and displays them per route in the Models settings page.",
+  "summaries": {
+    "zh": "在模型设置页按提供商路由查询并显示账户余额。",
+    "en": "Queries and displays account balances for configured provider routes in the Models settings page."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads configured provider route credentials and endpoints through the host configuration and credential interfaces",
+      "Queries configured providers' /user/balance endpoints",
+      "Displays provider account balances in the Models settings page",
+      "Registers a loopback RPC channel between the browser and host plugin"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged-host-browser-rpc",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured provider route credentials and endpoints through the host configuration and credential interfaces",
+      "Queries configured providers' /user/balance endpoints",
+      "Displays provider account balances in the Models settings page",
+      "Registers a loopback RPC channel between the browser and host plugin"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:15:11.991Z",
+  "repositoryCommitSha": "8ff0d60b549fb4586ef1e23ed151bc19529e8eef",
+  "evidenceHash": "3ca26c70fcff8c1f88e3650ab489af1e9209161ddcde942b74d96047aa7c9e8e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c059b717424c9c18089cb6f8fc788853ec78d8dcaf85755f21f1f352d4f193f2",
+  "shadowMode": false
+}

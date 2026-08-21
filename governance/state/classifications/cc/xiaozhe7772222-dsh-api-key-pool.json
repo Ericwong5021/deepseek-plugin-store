@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "monitoring",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH plugin for managing provider API-key pools, rotating keys across LLM requests, retrying failures, tracking cooldowns, and providing Web UI and REST management.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中管理多供应商 API Key 池，并通过轮换、故障切换和冷却恢复提升请求连续性。",
+    "en": "Manages multi-provider API key pools in DeepSeek Harness with rotation, failover, cooldown recovery, and Web UI controls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Rotates multiple provider API keys for LLM requests",
+      "Retries failed requests with alternate keys after selected HTTP errors",
+      "Tracks key failure states with cooldown and recovery",
+      "Provides a Web UI and REST API to add, remove, inspect, and reset key pools",
+      "Persists configured keys to a local configuration file",
+      "Temporarily changes process environment variables to select active credentials"
+    ],
+    "reasons": [
+      {
+        "code": "handles_api_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_runtime_management_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_request_credential_selection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Rotates multiple provider API keys for LLM requests",
+      "Retries failed requests with alternate keys after selected HTTP errors",
+      "Tracks key failure states with cooldown and recovery",
+      "Provides a Web UI and REST API to add, remove, inspect, and reset key pools",
+      "Persists configured keys to a local configuration file",
+      "Temporarily changes process environment variables to select active credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:29.932Z",
+  "repositoryCommitSha": "ce5fbe534d0e7e95c960eddc29e527dd2fd5256c",
+  "evidenceHash": "f011cfc5b9381f70f6ec73f812643d308b704475c004dbb1cc532d9507ac4be7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "83db958f60b0adf7712ad15418955b3917be9c926f72e39ed7eae6874f37e60a",
+  "shadowMode": false
+}

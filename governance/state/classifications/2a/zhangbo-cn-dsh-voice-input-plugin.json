@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "browser",
+    "chat",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A browser voice-input and reply-reading plugin for the DeepSeek Harness chat composer, using Web Speech recognition and host or browser text-to-speech playback.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 聊天输入框提供语音转文字、按住说话发送以及助手回复朗读功能。",
+    "en": "Adds speech-to-text input, hold-to-talk message sending, and spoken assistant replies to the DeepSeek Harness chat composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accesses the browser microphone through Web Speech API",
+      "Converts speech to text and appends it to the chat composer",
+      "Submits hold-to-talk messages to the host chat interface",
+      "Requests host /api/tts audio for assistant reply playback",
+      "Falls back to browser speechSynthesis for reply playback"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "chat_submission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_tts_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accesses the browser microphone through Web Speech API",
+      "Converts speech to text and appends it to the chat composer",
+      "Submits hold-to-talk messages to the host chat interface",
+      "Requests host /api/tts audio for assistant reply playback",
+      "Falls back to browser speechSynthesis for reply playback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:15:27.822Z",
+  "repositoryCommitSha": "bee86bfa14cdb626327058ea43708b36c734a421",
+  "evidenceHash": "8ed18c9a7e1159927af8afcb3bd144e235853fdae73f105b90db750a3b6bc661",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e7bd1aecb4a78b340bc0b8a337b045135236e4f338036ee396b428e238a8a760",
+  "shadowMode": false
+}

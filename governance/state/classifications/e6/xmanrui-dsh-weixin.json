@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "chat",
+    "api",
+    "automation",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a Weixin-to-DeepSeek Harness messaging integration using QR authorization, Tencent iLink long polling, credential storage, outbound replies, and persistent sessions, but it explicitly states that the project is no longer maintained.",
+  "summaries": {
+    "zh": "通过微信扫码将微信机器人接入 DeepSeek Harness，支持接收和发送私聊文本消息及持续会话。",
+    "en": "Connects a Weixin bot to DeepSeek Harness through QR-code authorization, supporting direct text messaging and persistent conversations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects a Weixin bot account through QR-code authorization",
+      "Receives and sends Weixin direct text messages through Tencent iLink Bot API",
+      "Stores bot credentials through the Harness credential service",
+      "Maintains long-polling connections and maps users to persistent Harness sessions",
+      "Supports multiple independently configured Weixin accounts"
+    ],
+    "reasons": [
+      {
+        "code": "external_account_authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage_and_network_communication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_message_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_session_and_polling_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_declared_unmaintained",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects a Weixin bot account through QR-code authorization",
+      "Receives and sends Weixin direct text messages through Tencent iLink Bot API",
+      "Stores bot credentials through the Harness credential service",
+      "Maintains long-polling connections and maps users to persistent Harness sessions",
+      "Supports multiple independently configured Weixin accounts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "reject",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:06.672Z",
+  "repositoryCommitSha": "16ca866af80e8b95b2d73619579894e817095122",
+  "evidenceHash": "130d6eda1ecf97b68f8be0851f12a1d9683d221aeffd9670d9e99756b67b8040",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "82f34e8731d367628d3cafeb274139af8148bce9ab78b5ac4d845f9cc6c4d9b2",
+  "shadowMode": false
+}

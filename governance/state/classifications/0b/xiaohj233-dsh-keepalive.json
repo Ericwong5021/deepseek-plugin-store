@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "automation",
+    "agent",
+    "api",
+    "debugging",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An opt-in DSH Web watchdog that monitors process health, relaunches failed instances, and optionally performs snapshot-checked workspace repairs after repeated startup failures.",
+  "summaries": {
+    "zh": "一个可选启用的 DSH Web 进程看护插件，用于监控进程状态、自动重启并在需要时执行受快照保护的故障修复。",
+    "en": "An opt-in DSH Web process watchdog that monitors health, relaunches failed instances, and can perform snapshot-checked repairs when startup failures repeat."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Supervises and relaunches the DSH Web process",
+      "Can terminate the process listening on a configured port",
+      "Can modify plugin development workspaces through an optional repair agent",
+      "Reads startup diagnostics and inherited environment information",
+      "Exposes restart and status functionality through an HTTP API"
+    ],
+    "reasons": [
+      {
+        "code": "process-supervision-and-termination",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace-write-and-rollback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment-and-diagnostic-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http-control-and-status-endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Supervises and relaunches the DSH Web process",
+      "Can terminate the process listening on a configured port",
+      "Can modify plugin development workspaces through an optional repair agent",
+      "Reads startup diagnostics and inherited environment information",
+      "Exposes restart and status functionality through an HTTP API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:12.660Z",
+  "repositoryCommitSha": "64ce8013f1f01d5edb0010442ac5436b7e686178",
+  "evidenceHash": "5482f773e0f08c481ec353d277869ab8775a0534cce27af4005e66af15104ebb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "113ffe8a460579edca88a10e84093bf71b01277277ef1b2213016ac93aaef73f",
+  "shadowMode": false
+}

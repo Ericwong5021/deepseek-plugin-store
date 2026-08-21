@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "cli",
+    "code-generation",
+    "workflow",
+    "file",
+    "terminal",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is orchestrating delegated coding tasks through the local Google Antigravity CLI, with persistent follow-ups, background execution, workspace access, login, and cancellation; its external process and permission-handling capabilities warrant human review.",
+  "summaries": {
+    "zh": "通过本机 Google Antigravity CLI 将编码和文件任务委托给外部智能体，并支持后续对话、后台执行、任务管理与登录。",
+    "en": "Delegates coding and file-related tasks to the local Google Antigravity CLI agent with follow-up conversations, background execution, task management, and login support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "spawns the local Google Antigravity CLI process",
+      "delegates coding and file-related tasks to an external agent",
+      "supports persistent follow-up conversations and background jobs",
+      "can access added workspace directories and configured environment values",
+      "can open an interactive login window",
+      "can auto-approve delegated agent tool calls when skipPermissions is enabled",
+      "can terminate running process trees"
+    ],
+    "reasons": [
+      {
+        "code": "external_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_and_process_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_permission_approval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "interactive_authentication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "spawns the local Google Antigravity CLI process",
+      "delegates coding and file-related tasks to an external agent",
+      "supports persistent follow-up conversations and background jobs",
+      "can access added workspace directories and configured environment values",
+      "can open an interactive login window",
+      "can auto-approve delegated agent tool calls when skipPermissions is enabled",
+      "can terminate running process trees"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:58.371Z",
+  "repositoryCommitSha": "d520b9f690dbba9f8dafac09ebc79a5e1c5a8c8e",
+  "evidenceHash": "933607da0d9f4c183c6668d2930521a623ee79aa79e41084f65f163a1a9aac50",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aef38c84911b081c2a37178458c7574ce27e4afe76cdfe3d219746f491ba172c",
+  "shadowMode": false
+}

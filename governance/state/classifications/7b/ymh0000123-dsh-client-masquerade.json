@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "cli",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin configures and transmits spoofed Claude Code, Codex, or custom client-identity headers for llm-pi-ai providers, with persistent settings changes, adapter patching, and real upstream test calls; human review is appropriate.",
+  "summaries": {
+    "zh": "为 llm-pi-ai 自定义提供商配置并发送 Claude Code、Codex 或自定义客户端身份请求头，支持设置页、工具操作和测试调用。",
+    "en": "Configures and sends Claude Code, Codex, or custom client-identity headers for llm-pi-ai providers, with settings controls, tool actions, and test calls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Modifies llm-pi-ai provider request headers",
+      "Persists configuration changes in the profile settings",
+      "Applies and reverts a patch to the llm-pi-ai adapter files",
+      "Sends a real test request to an upstream gateway",
+      "Allows custom client-identity headers, including Claude Code and Codex presets"
+    ],
+    "reasons": [
+      {
+        "code": "identity-spoofing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent-configuration-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-patch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network-request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Modifies llm-pi-ai provider request headers",
+      "Persists configuration changes in the profile settings",
+      "Applies and reverts a patch to the llm-pi-ai adapter files",
+      "Sends a real test request to an upstream gateway",
+      "Allows custom client-identity headers, including Claude Code and Codex presets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:33.468Z",
+  "repositoryCommitSha": "2c212f994a7ef1abbe480abf8e844bc07eed7d62",
+  "evidenceHash": "173d3f3a9c0eb860c1a1e29a9a9c1f0f431fc6c1c37b17e34cc365de70bba3a0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "73e184077c93cf6170f674bd3f50d3c3af6568a90e9296124b58103747832925",
+  "shadowMode": false
+}

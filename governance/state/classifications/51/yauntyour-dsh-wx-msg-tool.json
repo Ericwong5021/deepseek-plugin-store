@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "automation",
+    "agent",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a WeChat ClawBot/iLink integration that authenticates users, sends and receives messages, and optionally automates polling and replies, so external-services is the primary category.",
+  "summaries": {
+    "zh": "通过微信 ClawBot/iLink API 提供扫码登录、状态查询、消息收取与发送，并可选启用后台轮询和自动回复。",
+    "en": "Connects to the WeChat ClawBot/iLink API for QR-code login, status checks, message polling and sending, with optional background polling and automated replies."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the WeChat ClawBot/iLink HTTP API",
+      "Supports QR-code login and stores an API token locally",
+      "Sends text messages and polls for incoming messages",
+      "Runs background polling and can trigger DSH sessions for automatic replies",
+      "Persists inbox and conversation state locally"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_communication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_message_sending",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_automation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the WeChat ClawBot/iLink HTTP API",
+      "Supports QR-code login and stores an API token locally",
+      "Sends text messages and polls for incoming messages",
+      "Runs background polling and can trigger DSH sessions for automatic replies",
+      "Persists inbox and conversation state locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:01.642Z",
+  "repositoryCommitSha": "067326d830af75ccbe2403c9b8783f62ca87ad54",
+  "evidenceHash": "2c4e0ac3c85ae0d32bf749811a6a1b7b0cb75925bb2e0e01c55c072312d7b68a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9c60044f3469321ab44cd70d32988520dd1a54fc8668f8f67ecedb1ff27cea02",
+  "shadowMode": false
+}

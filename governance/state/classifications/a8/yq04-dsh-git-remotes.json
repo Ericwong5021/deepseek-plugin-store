@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Adds a Git Remotes tab to a web sidebar for inspecting repository remotes and manually running fetch, fast-forward-only pull, and confirmed push operations.",
+  "summaries": {
+    "zh": "在 Web 侧边栏中增加 Git 远程标签页，用于查看分支与远程状态并手动执行 fetch、仅快进 pull 和确认后的 push。",
+    "en": "Adds a Git Remotes tab to a web sidebar for viewing branch and remote status and manually running fetch, fast-forward-only pull, and confirmed push operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Displays current Git branch, upstream, ahead/behind status, and remotes",
+      "Runs git fetch for all or a selected remote, with prune enabled by default",
+      "Runs git pull --ff-only",
+      "Runs git push after explicit panel confirmation",
+      "Uses the local Git credential helper or SSH agent for authentication"
+    ],
+    "reasons": [
+      {
+        "code": "executes_git_remote_operations_with_external_side_effects",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "push_requires_explicit_user_confirmation_and_force_push_is_not_supported",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays current Git branch, upstream, ahead/behind status, and remotes",
+      "Runs git fetch for all or a selected remote, with prune enabled by default",
+      "Runs git pull --ff-only",
+      "Runs git push after explicit panel confirmation",
+      "Uses the local Git credential helper or SSH agent for authentication"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:48.448Z",
+  "repositoryCommitSha": "a9f1729b96e42e38555ddf6042482df8d220453b",
+  "evidenceHash": "200f368ef09ee8eb87618b0ad5fd5338f1b0e89a6a6b8a223e64c3ad0f3e8010",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e0267e7e89b71e466d2b81f86f9f1c5ee1770ac22a4dbec394db33c1da1d05d2",
+  "shadowMode": false
+}

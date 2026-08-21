@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "file",
+    "ui",
+    "workflow",
+    "debugging"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A web sidebar plugin that lets users inspect the latest agent-turn diff and explicitly approve it or request changes for selected paths, with optional restoration to the turn-start workspace state.",
+  "summaries": {
+    "zh": "在 Web 侧边栏中查看智能体上一回合的文件差异，并按路径人工通过或请求修改，必要时恢复到回合开始时的工作区状态。",
+    "en": "A web sidebar plugin for reviewing the latest agent-turn file diff, approving it or requesting changes by path, and optionally restoring selected files to the turn-start workspace state."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "captures workspace state at the start of an agent turn",
+      "displays unified diffs for files changed during the turn",
+      "restores selected paths to their turn-start state after explicit user confirmation",
+      "injects review comments into the current agent session without waking it",
+      "uses system git for workspace inspection and recovery"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_snapshot_and_restore",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "captures workspace state at the start of an agent turn",
+      "displays unified diffs for files changed during the turn",
+      "restores selected paths to their turn-start state after explicit user confirmation",
+      "injects review comments into the current agent session without waking it",
+      "uses system git for workspace inspection and recovery"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:50.392Z",
+  "repositoryCommitSha": "d8b9eee879fa6709a12162521efb9d0fa302fe71",
+  "evidenceHash": "9e4550892bad3f667c341fd07faa49ea8827682925939f8b1dd33bf4dd85f8b6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "48f5a26209478cce40b9d9412bc86b6dc52cf703b4a3a740f3036d979072ecaa",
+  "shadowMode": false
+}

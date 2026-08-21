@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "cli",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin provides a local image-to-LaTeX OCR tool for converting screenshots, textbook formulas, and handwritten formula photos into LaTeX code.",
+  "summaries": {
+    "zh": "将公式截图、教材页面或手写公式照片识别为 LaTeX 代码的本地 OCR 插件。",
+    "en": "A local OCR plugin that converts formula screenshots, textbook pages, and handwritten formula photos into LaTeX code."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads an image from a user-provided local path",
+      "Invokes the local pix2tex command-line tool through execFile",
+      "Produces LaTeX text from mathematical formula images",
+      "May download model weights during first use"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_COMMAND_EXECUTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_IMAGE_INPUT",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MODEL_WEIGHT_DOWNLOAD",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads an image from a user-provided local path",
+      "Invokes the local pix2tex command-line tool through execFile",
+      "Produces LaTeX text from mathematical formula images",
+      "May download model weights during first use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:13.010Z",
+  "repositoryCommitSha": "cb6dcf305b59ac212b785910f8f667cba761c5ec",
+  "evidenceHash": "10b6bc229ab181dc47d34af9dfe356c5ffe4224824e8dc2e028945c5e9a525f4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f398aba6e6f50ddf569535257138a504fb943ddbd94668b90fcba7f52a87eb28",
+  "shadowMode": false
+}

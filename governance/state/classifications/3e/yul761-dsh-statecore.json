@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "agent",
+    "api",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a native DeepSeek Harness memory plugin that ingests session messages, stores auditable facts, recalls and injects project context, and exposes memory management tools and UI.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供可审计的项目记忆，自动 ingest 会话信息并在后续步骤中检索和注入相关上下文。",
+    "en": "Provides auditable project memory for DeepSeek Harness by ingesting session messages and retrieving relevant context for subsequent agent steps."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automatically ingests human and assistant session messages into project memory",
+      "Stores and retrieves memory using embedded SQLite or an optional self-hosted HTTP backend",
+      "Injects recalled project memory into model context during agent steps",
+      "Uses the host-configured language model for optional memory digestion",
+      "Provides native remember, recall, facts, why, and forget tools",
+      "Provides a web settings interface to browse evidence chains and retire facts"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_conversation_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_model_data_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_backend",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_initiated_fact_retirement",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automatically ingests human and assistant session messages into project memory",
+      "Stores and retrieves memory using embedded SQLite or an optional self-hosted HTTP backend",
+      "Injects recalled project memory into model context during agent steps",
+      "Uses the host-configured language model for optional memory digestion",
+      "Provides native remember, recall, facts, why, and forget tools",
+      "Provides a web settings interface to browse evidence chains and retire facts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:08.098Z",
+  "repositoryCommitSha": "5cabfee3f5b202b6a73026d103dfd1b6e9fdb9d3",
+  "evidenceHash": "86aeafb3e500fe4aaa7450142da478d96d96bf24d540eeb21e5f9f70b8e6573b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ec38aa535e0d2dbf515cf1effcd67d797a2bdacf02d173d3f65330121a3526db",
+  "shadowMode": false
+}

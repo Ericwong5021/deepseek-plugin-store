@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "integration",
+    "api",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a dsh plugin that detects sensitive values in model requests, replaces them with placeholders before transmission, and restores eligible streamed responses and tool arguments locally; it does not access user files or make its own network calls.",
+  "summaries": {
+    "zh": "该插件在 dsh 模型请求发送前检测并替换敏感值为占位符，并在本地流式恢复适用的响应内容和工具参数。",
+    "en": "This plugin detects sensitive values in dsh model requests, replaces them with placeholders before transmission, and locally restores eligible streamed responses and tool arguments."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts dsh model requests at the llm/stream layer",
+      "Detects and replaces configured sensitive data with placeholders",
+      "Transforms text, reasoning blocks, tool results, and tool-call arguments",
+      "Restores eligible response content and assembled tool arguments locally",
+      "Maintains placeholder mappings in process memory",
+      "Provides masking status and local verification commands"
+    ],
+    "reasons": [
+      {
+        "code": "handles_conversation_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_outbound_model_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "restores_tool_arguments_before_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_plugin_owned_files_or_network_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts dsh model requests at the llm/stream layer",
+      "Detects and replaces configured sensitive data with placeholders",
+      "Transforms text, reasoning blocks, tool results, and tool-call arguments",
+      "Restores eligible response content and assembled tool arguments locally",
+      "Maintains placeholder mappings in process memory",
+      "Provides masking status and local verification commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:37.446Z",
+  "repositoryCommitSha": "bcfdea357a5597b074f8e3a79322a002cf810556",
+  "evidenceHash": "3c0f831dc9abc39cab5536be9d740858021199fbda7f0165113f09145af27219",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3ff5094f7f3a2644ff5a72a1830bf17ef0a0249e7f85f09491f3f94926c7b501",
+  "shadowMode": false
+}

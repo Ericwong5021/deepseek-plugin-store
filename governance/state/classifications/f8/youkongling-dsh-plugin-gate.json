@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "cli",
+    "tool",
+    "file",
+    "testing",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A command-line pre-install gate that materializes and statically reviews npm, Git, and local DSH plugin sources, including archive, manifest, path, fingerprint, and optional policy checks.",
+  "summaries": {
+    "zh": "在安装 DSH 插件前，对 npm、Git 或本地插件源进行物化、静态检查并输出结构化门禁结果。",
+    "en": "A pre-install command-line gate that materializes and statically reviews npm, Git, or local DSH plugin sources before installation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads and snapshots local plugin sources",
+      "Fetches npm and Git plugin sources over HTTPS",
+      "Runs npm, Git, and Claude CLI subprocesses",
+      "Parses archives and validates paths and manifests",
+      "Computes content and tarball SHA-256 fingerprints",
+      "Returns structured gate findings and policy results"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_fetch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and snapshots local plugin sources",
+      "Fetches npm and Git plugin sources over HTTPS",
+      "Runs npm, Git, and Claude CLI subprocesses",
+      "Parses archives and validates paths and manifests",
+      "Computes content and tarball SHA-256 fingerprints",
+      "Returns structured gate findings and policy results"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:13:39.707Z",
+  "repositoryCommitSha": "ce061bb6466d8ed84fc8ac525475411c21ac9647",
+  "evidenceHash": "85cda41c66ea2647d72016bfabf5612a78ba52c389f1306baf89a6d0a9c36969",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f87b01a926d71713b2c8344ba1f1375b245ef02162859bb0e50dd9aef80028a3",
+  "shadowMode": false
+}

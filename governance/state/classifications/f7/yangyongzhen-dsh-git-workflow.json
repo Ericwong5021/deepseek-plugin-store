@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "terminal",
+    "workflow",
+    "collaboration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README 明确说明该插件通过纯 git CLI 自动执行状态检查、规范提交、changelog 和 PR 描述生成，以及分支推送，因此主要属于自动化工作流工具。",
+  "summaries": {
+    "zh": "通过 Git CLI 自动完成仓库状态检查、规范提交、变更日志与 PR 描述生成，并支持推送分支。",
+    "en": "Automates Git status checks, Conventional Commit creation, changelog and pull request description generation, and branch pushing through the Git CLI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取 Git 分支、上游状态、文件变更和最近提交",
+      "按 Conventional Commits 规范创建提交，可选暂存全部变更",
+      "根据提交和差异生成 Markdown changelog 及 PR 标题和描述模板",
+      "向远端推送分支并设置上游"
+    ],
+    "reasons": [
+      {
+        "code": "repository_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_push",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_repository_read",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "读取 Git 分支、上游状态、文件变更和最近提交",
+      "按 Conventional Commits 规范创建提交，可选暂存全部变更",
+      "根据提交和差异生成 Markdown changelog 及 PR 标题和描述模板",
+      "向远端推送分支并设置上游"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:40.057Z",
+  "repositoryCommitSha": "a7c2a9c7bdd65e0c89358cce1f6e38dc7e3d66d2",
+  "evidenceHash": "aaf1770d8aa66182625b5f0a5e86671da06af860e0b005c6671ed64554cb9d49",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c31f9a43787ce55a48812c8649d59703956b6cfddce518edcbe770a0b72328ae",
+  "shadowMode": false
+}

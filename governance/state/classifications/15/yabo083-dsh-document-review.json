@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "browser",
+    "ui",
+    "api",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local browser-based Markdown review plugin that lets users annotate documents with comments, replacement suggestions, and deletion suggestions, then exposes those annotations to the agent.",
+  "summaries": {
+    "zh": "在本地浏览器中逐段审阅 Markdown 文档，支持添加评论、替换建议和删除建议，并将批注提供给智能体处理。",
+    "en": "Review Markdown documents in a local browser with comments, replacement suggestions, and deletion suggestions that the agent can read and process."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads Markdown files and browses directories on the local machine",
+      "Runs a local HTTP review server and serves rendered documents",
+      "Creates, updates, and deletes review annotations and persists plugin configuration",
+      "Provides model-facing tools for starting sessions, listing annotations, updating statuses, and stopping sessions"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistent_write_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_server",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Reads Markdown files and browses directories on the local machine",
+      "Runs a local HTTP review server and serves rendered documents",
+      "Creates, updates, and deletes review annotations and persists plugin configuration",
+      "Provides model-facing tools for starting sessions, listing annotations, updating statuses, and stopping sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:12:31.759Z",
+  "repositoryCommitSha": "4395357ec119bdebf0f1f91502e36c11c43f2c81",
+  "evidenceHash": "0a3f77bfe114f1ae71b7ae52648052c763b7184b87c26b24a0e7da71679e179c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5506df76f863b0594978102f91ec9ee52af0620c4b2467ba38a3699b9f9abc76",
+  "shadowMode": false
+}

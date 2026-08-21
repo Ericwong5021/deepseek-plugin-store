@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "desktop",
+    "theme",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A sidebar interface plugin that visualizes session usage, estimated cost, and DeepSeek account balance with hover or persistent display modes.",
+  "summaries": {
+    "zh": "在侧边栏展示会话用量、估算金额和 DeepSeek 账户余额，并提供可悬停或常驻的详情卡。",
+    "en": "Adds a sidebar usage and balance display showing session tokens, estimated cost, and DeepSeek account balance with hover or persistent details."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays session token usage and estimated cost",
+      "Retrieves official account balance from the DeepSeek API using the configured API key",
+      "Caches balance data for 60 seconds",
+      "Uses Node fetch with curl fallback for the balance request",
+      "Adds an interactive usage and balance panel to the sidebar"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_key_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_usage_read",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays session token usage and estimated cost",
+      "Retrieves official account balance from the DeepSeek API using the configured API key",
+      "Caches balance data for 60 seconds",
+      "Uses Node fetch with curl fallback for the balance request",
+      "Adds an interactive usage and balance panel to the sidebar"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:47.576Z",
+  "repositoryCommitSha": "37d9e26309660a6d6088279efc363528e3835e1a",
+  "evidenceHash": "30634faabbac70ab1d6601c6026f6e67600e85453d94b12afeb47d9b2947598f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "154da7bfd808ae038f7079549cc6bbe2cda490ac0b680dc26feea3979b6693b9",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "插件通过配置的OpenAI兼容视觉模型将会话图片转换为文字描述，再提供给不支持图片输入的文本模型，主要用途是图片理解与媒体输入转换。",
+  "summaries": {
+    "zh": "将会话中的图片发送给配置的兼容视觉模型生成文字描述，以便纯文本模型继续处理图像内容。",
+    "en": "Sends conversation images to a configured compatible vision model and supplies the resulting descriptions to text-only models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取会话中的图片附件",
+      "将图片发送到配置的OpenAI兼容视觉模型接口",
+      "将视觉模型返回的图片描述注入发往文本模型的请求",
+      "在进程内缓存图片描述"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_transformation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "读取会话中的图片附件",
+      "将图片发送到配置的OpenAI兼容视觉模型接口",
+      "将视觉模型返回的图片描述注入发往文本模型的请求",
+      "在进程内缓存图片描述"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:42.823Z",
+  "repositoryCommitSha": "55bbd9bfc5889b8dc8a01bdbb18dc814cf983357",
+  "evidenceHash": "b869d573829bc610664e9011a9e94dd28a4a63d795c4b966b65d60fddd296f52",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "222c3f565129f04948c39cdba275036fc8f97d3567d8a42214ea032a814717f7",
+  "shadowMode": false
+}

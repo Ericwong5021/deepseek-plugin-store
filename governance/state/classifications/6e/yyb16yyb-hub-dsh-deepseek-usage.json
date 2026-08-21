@@ -1,0 +1,96 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "notification",
+    "ui",
+    "visualization",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek usage monitoring plugin that polls account balances and usage, records and visualizes statistics, estimates costs, sends low-balance notifications, optionally blocks requests, and exposes usage data through a model tool.",
+  "summaries": {
+    "zh": "用于实时查看 DeepSeek 余额、请求与令牌用量、成本估算及历史趋势，并提供低余额提醒、CSV 导出和模型查询工具。",
+    "en": "Monitors DeepSeek balance, requests, token usage, estimated costs, and history with low-balance alerts, CSV exports, and a model query tool."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Calls DeepSeek balance and usage API endpoints using configured API keys",
+      "Tracks token, request, model, session, and cost estimates",
+      "Persists non-secret usage history locally and exports CSV data",
+      "Displays web UI panels and sends browser notifications when balance thresholds are crossed",
+      "Can block LLM requests when configured balance thresholds are exceeded",
+      "Exposes a model tool for agent-accessible balance and usage queries",
+      "Writes validated non-secret configuration through a host endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_with_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_usage_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_blocking_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_query_tool",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_config_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls DeepSeek balance and usage API endpoints using configured API keys",
+      "Tracks token, request, model, session, and cost estimates",
+      "Persists non-secret usage history locally and exports CSV data",
+      "Displays web UI panels and sends browser notifications when balance thresholds are crossed",
+      "Can block LLM requests when configured balance thresholds are exceeded",
+      "Exposes a model tool for agent-accessible balance and usage queries",
+      "Writes validated non-secret configuration through a host endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:27.306Z",
+  "repositoryCommitSha": "ab8f76c04b1eeaae19e13a7545c601893716493d",
+  "evidenceHash": "29f920088f0cf5c512fb49f104df211d91bcef079da490e4f5d0b9b4a86d8ce0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0af5884d5fe7d78568a0de81311b110d04f18f5b2f46d987484c57c797140027",
+  "shadowMode": false
+}

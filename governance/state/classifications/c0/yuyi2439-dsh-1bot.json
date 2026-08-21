@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "memory",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh profile bundle that bridges OneBot 11 QQ chats to dsh agents through a forward WebSocket connection, with per-chat sessions, message tools, and controlled outbound replies.",
+  "summaries": {
+    "zh": "通过正向 WebSocket 将 OneBot 11 的 QQ 私聊和群聊接入 dsh 智能体，并提供会话持久化与消息处理工具。",
+    "en": "Connects OneBot 11 QQ private and group chats to dsh agents over a forward WebSocket, with persistent per-chat sessions and message tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to a OneBot 11 service over WebSocket",
+      "Receives QQ private and group messages",
+      "Sends agent replies and other messages to QQ",
+      "Persists per-chat sessions as JSONL and creates per-chat workspaces",
+      "Provides message history, content retrieval, status, and voice-to-text tools",
+      "Supports in-chat approval for non-whitelisted outbound messages"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_io",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_session_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_service_connection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to a OneBot 11 service over WebSocket",
+      "Receives QQ private and group messages",
+      "Sends agent replies and other messages to QQ",
+      "Persists per-chat sessions as JSONL and creates per-chat workspaces",
+      "Provides message history, content retrieval, status, and voice-to-text tools",
+      "Supports in-chat approval for non-whitelisted outbound messages"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:22.344Z",
+  "repositoryCommitSha": "783d132914b53913216849efbf9480abd5965771",
+  "evidenceHash": "5a93d56529c5cd1f79b67dca17a87d6669306219a22e2e4c5b1035985c498ddf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "405ac7c01632375e167341da575f64a019ebca5f00dcfefbb0ea9a58fb84d7a3",
+  "shadowMode": false
+}

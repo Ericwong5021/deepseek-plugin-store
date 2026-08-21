@@ -1,16 +1,91 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "search",
+    "browser",
+    "integration",
+    "file",
+    "mobile"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin centered on autonomous agent orchestration across multiple turns, with durable checkpoints and cancellation or round-limit controls; GitHub discovery, AI-assisted plugin installation, and workspace registration are secondary interface features.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供带轮次预算、检查点恢复和取消控制的自主智能体循环，并附带 GitHub 插件发现、AI 安装及工作区注册界面。",
+    "en": "Provides DeepSeek Harness with a bounded, checkpointed, and cancellable autonomous agent loop, plus interfaces for GitHub plugin discovery, AI-assisted installation, and workspace registration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs autonomous multi-turn agent loops until completion, cancellation, or a round limit",
+      "Persists and restores loop checkpoints using local JSON files",
+      "Searches GitHub repositories through a sidebar interface",
+      "Starts a new session that can perform AI-assisted plugin installation",
+      "Registers workspaces from user-provided filesystem paths",
+      "Provides responsive browser UI for search, installation, and workspace management"
+    ],
+    "reasons": [
+      {
+        "code": "autonomous_multi_turn_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_checkpoint_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_github_search_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ai_initiated_plugin_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_workspace_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Runs autonomous multi-turn agent loops until completion, cancellation, or a round limit",
+      "Persists and restores loop checkpoints using local JSON files",
+      "Searches GitHub repositories through a sidebar interface",
+      "Starts a new session that can perform AI-assisted plugin installation",
+      "Registers workspaces from user-provided filesystem paths",
+      "Provides responsive browser UI for search, installation, and workspace management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:15.388Z",
   "repositoryCommitSha": "711874d6bc6da1d4e246e058eb77de31207f0533",
+  "evidenceHash": "014ba71d1fe4fc8da9332fbd09418bb975d1cb27ad74273405f587ee17e8e716",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "b224d481207fe2f5a03b5548f55a41d7a93e94e45881a84be3c8af0cc6291cc3",
-  "failureClass": "invalid_response",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T20:03:54.093Z",
-  "lastAttemptAt": "2026-08-21T20:03:54.093Z",
-  "nextRetryAt": "2026-08-22T20:03:54.093Z",
-  "retryable": true,
-  "error": "/chat/completions: 400 {\n  \"error\": {\n    \"message\": \"Invalid schema for response_format 'governance_classify_v2': In context=('properties', 'schemaVersion'), schema must have a 'type' key.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"text.format.schema\",\n    \"code\": \"invalid_json_schema\"\n  }\n}",
   "shadowMode": false
 }

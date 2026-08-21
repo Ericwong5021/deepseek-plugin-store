@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "file",
+    "integration",
+    "notification",
+    "search",
+    "theme"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A music playback plugin for local files and NetEase Cloud Music, with Agent-controlled queues, playback, styling, and end-of-queue notifications.",
+  "summaries": {
+    "zh": "用于播放本地音乐和网易云音乐，并支持智能体控制播放队列、播放器样式与播放结束通知的音乐播放器插件。",
+    "en": "A music player plugin for local files and NetEase Cloud Music with Agent-controlled queues, playback, styling, and end-of-queue notifications."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "plays local audio files",
+      "searches and streams music from NetEase Cloud Music",
+      "reads local audio metadata and lyric files",
+      "uses a user-provided NetEase Cloud Music Cookie for VIP playback",
+      "provides Agent tools for queue and playback control",
+      "modifies player CSS and UI settings",
+      "sends an Agent notification when the playback queue ends"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_music_service_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_cookie_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_control_and_notification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "plays local audio files",
+      "searches and streams music from NetEase Cloud Music",
+      "reads local audio metadata and lyric files",
+      "uses a user-provided NetEase Cloud Music Cookie for VIP playback",
+      "provides Agent tools for queue and playback control",
+      "modifies player CSS and UI settings",
+      "sends an Agent notification when the playback queue ends"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:11:21.702Z",
+  "repositoryCommitSha": "6213deadd7323647dd32134d8fe67c520d1c171b",
+  "evidenceHash": "428efeb31bd42f6653bd17d51c3c00ddbfe2674c3cd8139509b8bba3e592e58e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b6afa79da45c76819ecea4113b91e362507a5fb910d2664955bb93255417577f",
+  "shadowMode": false
+}

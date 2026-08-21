@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "cli",
+    "file",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a media tool that generates and edits images through the local Codex CLI, returning generated image paths and optionally reading supplied image files.",
+  "summaries": {
+    "zh": "通过本机 Codex CLI 根据文字提示生成图片，或按描述编辑指定的现有图片。",
+    "en": "Generates images from text prompts or edits supplied images through the local Codex CLI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Generates images from text prompts",
+      "Edits supplied images according to text prompts",
+      "Invokes the local Codex CLI",
+      "Reads input image paths and writes generated image files",
+      "Uses the local Codex login and account quota"
+    ],
+    "reasons": [
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_quota_usage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Generates images from text prompts",
+      "Edits supplied images according to text prompts",
+      "Invokes the local Codex CLI",
+      "Reads input image paths and writes generated image files",
+      "Uses the local Codex login and account quota"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:14:55.357Z",
+  "repositoryCommitSha": "1a236d0d3231691af3a58e62bf06c5312f16987e",
+  "evidenceHash": "296f8c923eec13d3d5e82dbae0c9eeaedc4d8222db74065219123bc52b1ad3e5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "50128275fb2676a2271e7f53fd792548e312afb572960829b9a2e80976552bff",
+  "shadowMode": false
+}
