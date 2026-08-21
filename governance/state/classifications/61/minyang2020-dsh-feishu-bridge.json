@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Feishu/Lark integration that provides bidirectional chat with a locally running DeepSeek Harness agent, including session mapping, streamed replies, approval and question forwarding, and reconnect handling.",
+  "summaries": {
+    "zh": "通过飞书长连接将私聊或群聊消息双向桥接到本地运行的 DeepSeek Harness Agent，并转发回复、审批请求和提问。",
+    "en": "Bridges Feishu/Lark conversations with a locally running DeepSeek Harness agent, forwarding messages, replies, approval requests, and questions over a long-lived connection."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Feishu/Lark through a WebSocket long connection",
+      "Forwards user messages to a locally running DeepSeek Harness session",
+      "Sends agent replies, approval requests, and questions back to Feishu conversations",
+      "Maintains per-user session mappings in local state",
+      "Uses Feishu application credentials and a local DSH API endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_interaction_forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_local_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to Feishu/Lark through a WebSocket long connection",
+      "Forwards user messages to a locally running DeepSeek Harness session",
+      "Sends agent replies, approval requests, and questions back to Feishu conversations",
+      "Maintains per-user session mappings in local state",
+      "Uses Feishu application credentials and a local DSH API endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:27.217Z",
+  "repositoryCommitSha": "034f5f6f38b0780665690d5c1fc4bfc95c6308d2",
+  "evidenceHash": "73075f8dde86f38dcc65249f295e68ebffbc7ca3d79f418b8773bba51954cd0a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "016c1132ed49fc3b5b5fff77aaa72dc6ef5c2e88bd0f4c7039a12ad6a53ee832",
+  "shadowMode": false
+}

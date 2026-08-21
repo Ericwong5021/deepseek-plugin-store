@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "agent",
+    "api",
+    "mobile",
+    "chat",
+    "workflow",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH plugin, bridge, and mobile/web client whose primary user-facing purpose is remotely controlling DeepSeek Harness sessions from a phone, including pairing, session interaction, streaming output, and approvals.",
+  "summaries": {
+    "zh": "通过配对的手机或网页客户端远程查看并操作 DeepSeek Harness 会话。",
+    "en": "Remotely view and control DeepSeek Harness sessions from a paired mobile or web client."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Remote mobile control of DeepSeek Harness sessions",
+      "Pairing mobile devices with a local bridge using one-time codes and device tokens",
+      "Viewing sessions and streaming execution output",
+      "Creating sessions and sending prompts, including image attachments",
+      "Approving agent requests and responding to agent questions",
+      "Forwarding a limited API allowlist from the bridge to DeepSeek Harness"
+    ],
+    "reasons": [
+      {
+        "code": "remote_agent_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_and_file_operation_exposure_via_dsh",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_bridge_and_device_authentication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Remote mobile control of DeepSeek Harness sessions",
+      "Pairing mobile devices with a local bridge using one-time codes and device tokens",
+      "Viewing sessions and streaming execution output",
+      "Creating sessions and sending prompts, including image attachments",
+      "Approving agent requests and responding to agent questions",
+      "Forwarding a limited API allowlist from the bridge to DeepSeek Harness"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:57.185Z",
+  "repositoryCommitSha": "41ae6c156b733d3fd92ae3c57df01954e22251c1",
+  "evidenceHash": "c60cafddbf7da4a8e287c0cc7d0abb08a1211aae5ed2427a8effc6fd186468b5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b12939f92f77cdcfcadc5e64f079bf58ca39ce3afa16109dca602ed96f95620b",
+  "shadowMode": false
+}

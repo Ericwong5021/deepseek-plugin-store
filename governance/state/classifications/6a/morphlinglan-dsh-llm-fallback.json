@@ -1,0 +1,67 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds configurable provider and model fallback orchestration for agent-loop requests when eligible failures such as rate limits or quota errors occur.",
+  "summaries": {
+    "zh": "为智能体循环提供可配置的提供商和模型故障转移链，在符合条件的限流或配额错误发生时切换到备用模型。",
+    "en": "Adds a configurable provider and model fallback chain for the agent loop, switching to backup models when eligible errors such as rate limits or quota failures occur."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts eligible model request failures in the agent loop",
+      "Routes retries to an ordered chain of configured providers and models",
+      "Persists the selected fallback according to step, turn, or session scope"
+    ],
+    "reasons": [
+      {
+        "code": "routes_model_requests_across_configured_providers",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "changes_agent_retry_and_fallback_behavior",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts eligible model request failures in the agent loop",
+      "Routes retries to an ordered chain of configured providers and models",
+      "Persists the selected fallback according to step, turn, or session scope"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:06.627Z",
+  "repositoryCommitSha": "3693f2e62af3370efea90b3af5a7d63bc3ef55a9",
+  "evidenceHash": "1385e500c173e269601a9ef3ce6161ee694d32eb0b13985857f738b1f9d1d6b6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bf951854e2e198b674ec1cacf7246d0f665bd0ba3f88633fd25151f917f4ffdc",
+  "shadowMode": false
+}

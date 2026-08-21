@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh web GUI settings panel for listing installed plugins and enabling or disabling their runtime entries by updating profile patch configuration.",
+  "summaries": {
+    "zh": "在 dsh Web GUI 的设置页面中列出已安装插件，并通过修改配置补丁启用或禁用插件条目。",
+    "en": "Adds a dsh Web GUI settings panel that lists installed plugins and enables or disables their runtime entries through profile patch configuration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Lists installed plugins and runtime loader entries",
+      "Reads profile package and patch configuration files",
+      "Writes profile or home cordis.patch.yml files to enable or disable plugin entries",
+      "Exposes same-origin POST endpoints for plugin state changes",
+      "Triggers runtime patch reload through dsh HMR"
+    ],
+    "reasons": [
+      {
+        "code": "writes_runtime_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "changes_plugin_activation_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_host_api_route",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Lists installed plugins and runtime loader entries",
+      "Reads profile package and patch configuration files",
+      "Writes profile or home cordis.patch.yml files to enable or disable plugin entries",
+      "Exposes same-origin POST endpoints for plugin state changes",
+      "Triggers runtime patch reload through dsh HMR"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:57.974Z",
+  "repositoryCommitSha": "e268ca99c87c8b37458756947c3a43cd203c6ba6",
+  "evidenceHash": "e8621aacae493ede1fd604502ae0af5bce528049bf786a97021df591fe1b6def",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ce6a54bde775fe46f6bb1671eb64d2c94ede2d55fd8dedff57eabaa2ac3b8779",
+  "shadowMode": false
+}

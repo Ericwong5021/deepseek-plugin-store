@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web plugin that monitors MiniMax token-plan quotas and presents usage, reset timing, and model details in an adaptive dock.",
+  "summaries": {
+    "zh": "在 DSH 网页界面中显示 MiniMax 各模型的 5 小时与每周配额使用情况、重置倒计时及详细数据。",
+    "en": "Displays MiniMax model quota usage, reset countdowns, and detailed 5-hour and weekly statistics in the DSH web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads MiniMax token-plan quota data through an upstream API",
+      "Uses a user-provided MiniMax API key for authenticated requests",
+      "Periodically polls quota data and exposes local HTTP endpoints",
+      "Displays quota percentages, reset countdowns, and absolute usage values in the DSH web interface"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_required",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic_polling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Reads MiniMax token-plan quota data through an upstream API",
+      "Uses a user-provided MiniMax API key for authenticated requests",
+      "Periodically polls quota data and exposes local HTTP endpoints",
+      "Displays quota percentages, reset countdowns, and absolute usage values in the DSH web interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:26.393Z",
+  "repositoryCommitSha": "98cdac017137117a9396a440a44ab39b9fb37335",
+  "evidenceHash": "bbb618b78cdb3e79cb4f78b28407227f6ec5c76aa3c606e486ef5959b7b30d6d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1d5d176d254adc891cd5c564539f92db11d2adcff59527881d72606749ecc4b0",
+  "shadowMode": false
+}

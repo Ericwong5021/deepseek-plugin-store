@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily visualizes multi-provider account balances and quotas inside the DeepSeek Harness Web GUI, using configured provider billing APIs and optional provider console links.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web GUI 中显示多个模型供应商的账户余额或配额，并支持按模型和用量变化刷新数据。",
+    "en": "Displays account balances or quotas for multiple model providers in the DeepSeek Harness Web GUI and refreshes them as models or usage change."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries configured provider billing or quota APIs",
+      "Uses configured provider credentials through a host-side route",
+      "Displays account balances or quota status in the DeepSeek Harness Web GUI",
+      "Caches balance query results and refreshes them on model changes, conversation completion, polling, or user action",
+      "Can open provider consoles for services without a balance API"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_dependent_queries",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_interface_data_display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries configured provider billing or quota APIs",
+      "Uses configured provider credentials through a host-side route",
+      "Displays account balances or quota status in the DeepSeek Harness Web GUI",
+      "Caches balance query results and refreshes them on model changes, conversation completion, polling, or user action",
+      "Can open provider consoles for services without a balance API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:54.216Z",
+  "repositoryCommitSha": "53108ecc8035783804e2cf5e21b5e668d88dc237",
+  "evidenceHash": "2e099c6fd0d8201dbc13ea7ce42c74cc81e7082b36a469e335a8525bacab2bbf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f604943da882c03050bf9bc78504d0ad68598a43768862f7f09d495a54bf8714",
+  "shadowMode": false
+}

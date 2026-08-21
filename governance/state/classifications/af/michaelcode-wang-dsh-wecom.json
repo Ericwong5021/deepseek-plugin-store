@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "context",
+    "integration",
+    "memory",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A WeCom smart-robot bridge that provides bidirectional chat with configured DeepSeek Harness agents over a persistent WebSocket connection, including per-chat context, access control, and message handling.",
+  "summaries": {
+    "zh": "通过企业微信智能机器人 WebSocket 网关，将企业微信双向聊天连接到配置的 DeepSeek Harness 智能体。",
+    "en": "Connects WeCom smart-robot conversations to configured DeepSeek Harness agents through a bidirectional WebSocket gateway."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the WeCom aibot WebSocket gateway",
+      "Receives and sends WeCom chat messages",
+      "Maintains per-chat agent sessions and conversational context",
+      "Can invoke the configured agent, which may execute host tools",
+      "Supports user allowlisting and secret-based authentication",
+      "Automatically reconnects after WebSocket disconnections",
+      "Splits oversized outbound messages"
+    ],
+    "reasons": [
+      {
+        "code": "external-messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host-tool-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the WeCom aibot WebSocket gateway",
+      "Receives and sends WeCom chat messages",
+      "Maintains per-chat agent sessions and conversational context",
+      "Can invoke the configured agent, which may execute host tools",
+      "Supports user allowlisting and secret-based authentication",
+      "Automatically reconnects after WebSocket disconnections",
+      "Splits oversized outbound messages"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:03.256Z",
+  "repositoryCommitSha": "2ea09993e85bf52181510acb7868a30c5ec15a59",
+  "evidenceHash": "92ec70e29eef252bbdf4c2549665611a9670accd7ef6596ea357e15be9856947",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8027f77427097464e1d4219fb0ca88fa15690b0714b0089a0b6aab7a32cb49b7",
+  "shadowMode": false
+}

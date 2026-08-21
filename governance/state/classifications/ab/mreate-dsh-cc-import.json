@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "data",
+    "chat",
+    "file",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Imports Claude Code conversations into DSH sessions, loads CLAUDE.md and DSH.md context, and provides /init-based DSH.md generation; the README states that imported tool calls are not re-executed.",
+  "summaries": {
+    "zh": "将 Claude Code 的对话和记忆文件导入 DSH，会话可回溯，并提供 /init 命令生成或改进 DSH.md。",
+    "en": "Imports Claude Code conversations and memory files into DSH, preserving sessions for review while providing an /init command to create or improve DSH.md."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads CLAUDE.md and DSH.md memory files and referenced imports",
+      "Generates or updates DSH.md through the /init command within the current workspace",
+      "Parses Claude Code JSONL conversation and subagent files",
+      "Persists imported sessions and attaches them to a workspace",
+      "Provides UI and model-tool entry points for listing and importing conversations"
+    ],
+    "reasons": [
+      {
+        "code": "reads_workspace_memory_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_workspace_memory_file",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "parses_conversation_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_imported_sessions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_import_api_and_tools",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads CLAUDE.md and DSH.md memory files and referenced imports",
+      "Generates or updates DSH.md through the /init command within the current workspace",
+      "Parses Claude Code JSONL conversation and subagent files",
+      "Persists imported sessions and attaches them to a workspace",
+      "Provides UI and model-tool entry points for listing and importing conversations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:20.730Z",
+  "repositoryCommitSha": "db07df7599c4ac1594b801e56d9f605f52aabba6",
+  "evidenceHash": "2ebf907355dc96a1296ecd5b892ba1ad50d2712e2ba5c933a8f2e3ac138499c7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8a7cd13cd9bed8f622b597d29c7f9fc336d460c4d0614faede85786d495c8435",
+  "shadowMode": false
+}

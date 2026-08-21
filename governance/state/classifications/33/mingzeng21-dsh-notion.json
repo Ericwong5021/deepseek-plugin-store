@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "mcp",
+    "agent",
+    "browser",
+    "document",
+    "knowledge"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Connects DeepSeek Harness agents to Notion through the official Notion MCP server, including OAuth login, token refresh, search, reading, and writing of Notion content.",
+  "summaries": {
+    "zh": "通过官方 Notion MCP 将 DeepSeek Harness agent 连接到 Notion，支持 OAuth 授权以及页面、数据库和评论的搜索、读取与写入。",
+    "en": "Connects DeepSeek Harness agents to Notion through the official Notion MCP server with OAuth authorization and tools for searching, reading, and writing pages, databases, and comments."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the Notion MCP server over the network",
+      "Performs OAuth 2.0 authorization with PKCE and stores refreshable access credentials",
+      "Exposes Notion search, page, database, and comment tools to the dsh agent",
+      "Can write content to Notion pages, databases, and comments",
+      "Runs a local HTTP callback service on 127.0.0.1 for OAuth completion"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_write_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_callback_listener",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the Notion MCP server over the network",
+      "Performs OAuth 2.0 authorization with PKCE and stores refreshable access credentials",
+      "Exposes Notion search, page, database, and comment tools to the dsh agent",
+      "Can write content to Notion pages, databases, and comments",
+      "Runs a local HTTP callback service on 127.0.0.1 for OAuth completion"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:25.017Z",
+  "repositoryCommitSha": "02558aaa0629d48aed9018a5daa04f837df6bd71",
+  "evidenceHash": "edb5895e18f61beeca83c93bcbd970a5abbdccf65d82f081c67953b14714bdf6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "64f66bbca76e6b3e72e5479417c74cfac22db1a230fe8ca032e3dac89785f447",
+  "shadowMode": false
+}

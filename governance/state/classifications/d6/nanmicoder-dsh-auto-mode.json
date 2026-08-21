@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "file",
+    "terminal",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that automates approval decisions for routine agent operations while classifying, limiting, or denying risky shell, filesystem, network, and external-service actions.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供自动权限模式，在工作区沙箱内处理常规智能体操作，并对高风险命令、文件及外部操作进行分类或拒绝。",
+    "en": "Provides an automatic permission mode for DeepSeek Harness that handles routine agent work in the workspace sandbox while classifying or denying risky commands, file operations, and external effects."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatically evaluates and approves selected agent tool calls",
+      "Executes shell commands within the configured workspace sandbox",
+      "Tracks and permits selected session-created file cleanup",
+      "Requests narrowly scoped wider filesystem permissions for certain authorized actions",
+      "Reviews sensitive reads, network transmission, external writes, and destructive operations"
+    ],
+    "reasons": [
+      {
+        "code": "shell-and-tool-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-write-and-deletion-policy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox-widening",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network-and-external-side-effects-review",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automatically evaluates and approves selected agent tool calls",
+      "Executes shell commands within the configured workspace sandbox",
+      "Tracks and permits selected session-created file cleanup",
+      "Requests narrowly scoped wider filesystem permissions for certain authorized actions",
+      "Reviews sensitive reads, network transmission, external writes, and destructive operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:01.034Z",
+  "repositoryCommitSha": "a87533e638a88b1dec6eab2dc3a1d32815811a4a",
+  "evidenceHash": "9f0e00c52c4ee4d1636db72011efc793a8a0427f2342adc15c18cfe51a53a637",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a9aab493a4ea61885d5f604f0dc826abf4175f682958ce1e37d9c1af77cd1e69",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "automation",
+    "chat",
+    "desktop",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin adds persistent local voice input to a chat interface by integrating VocoType speech recognition, polling its log, and inserting recognized text into the chat draft; it also performs external software deployment and PowerShell execution, warranting human review.",
+  "summaries": {
+    "zh": "通过集成本地 VocoType 语音识别，在聊天输入框中提供麦克风控制并自动插入识别文字。",
+    "en": "Adds a microphone control to the chat input and inserts locally recognized speech using the VocoType engine."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "local speech-to-text input",
+      "reads a local VocoType log file",
+      "inserts recognized text into a chat draft",
+      "registers local HTTP routes",
+      "invokes PowerShell to detect, start, download, and silently install VocoType"
+    ],
+    "reasons": [
+      {
+        "code": "external_software_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "chat_input_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "local speech-to-text input",
+      "reads a local VocoType log file",
+      "inserts recognized text into a chat draft",
+      "registers local HTTP routes",
+      "invokes PowerShell to detect, start, download, and silently install VocoType"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:51.778Z",
+  "repositoryCommitSha": "8ffb18956266a8a167bcfa49acd73eb037d094f2",
+  "evidenceHash": "08b7a1458630d328e79fc11c9b68a97262a3c2ed151f3a05e2707e7302df39f5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8bf0b2051f8d37f334a29a2fe82a30902c503425aa9aa81cf6d025718c2c1a6a",
+  "shadowMode": false
+}

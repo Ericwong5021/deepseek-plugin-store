@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "ui",
+    "file",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for managing assistant presets, personality, local memory, experience settings, user profiles, avatars, and Hana assistant migration through a web interface.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中通过网页管理助手预设、人格、记忆、经验、用户资料和头像，并支持从本机 Hana 助手迁移数据。",
+    "en": "A DeepSeek Harness plugin for managing assistant presets, personalities, local memories, experience settings, user profiles, and avatars through a web interface, with local Hana assistant migration support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and writes local assistant presets and user profile files",
+      "Creates, edits, reorders, selects, and deletes assistant configurations",
+      "Manages assistant memory and experience settings and displays memory snapshots",
+      "Imports assistant identity, memory, experience, and avatar data from a local Hana directory",
+      "Uploads, crops, removes, and stores assistant and user avatars",
+      "Uses a configured model to compile memories"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_import",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_based_memory_compilation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads and writes local assistant presets and user profile files",
+      "Creates, edits, reorders, selects, and deletes assistant configurations",
+      "Manages assistant memory and experience settings and displays memory snapshots",
+      "Imports assistant identity, memory, experience, and avatar data from a local Hana directory",
+      "Uploads, crops, removes, and stores assistant and user avatars",
+      "Uses a configured model to compile memories"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:03.902Z",
+  "repositoryCommitSha": "d998f89f88f0666f04c9c1cae1a4792179f38990",
+  "evidenceHash": "a2e91dece278c76c88bbe97d73559c32f7afe76251378e122080e2a4ce9eff7b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "768b81ed0b8a44f9261dfcad0384eae447a342df57d9605fba272fa8ee122b06",
+  "shadowMode": false
+}

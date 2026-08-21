@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "ui",
+    "workflow",
+    "api",
+    "monitoring",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DSH plugin management utility that provides a settings interface for discovering installed plugins, analyzing overlaps and compatibility, checking failures and updates, and enabling or disabling entries.",
+  "summaries": {
+    "zh": "用于 DeepSeek Harness 的插件管理工具，可在设置界面中发现插件、分析重叠与兼容性、检查失效和更新状态，并执行插件启停与切换。",
+    "en": "A DeepSeek Harness plugin management utility that discovers installed plugins, analyzes overlaps and compatibility, checks failures and updates, and provides controls for enabling, disabling, and switching entries."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "discovers installed DSH plugins and reads their metadata",
+      "analyzes plugin status, overlaps, compatibility conflicts, and load failures",
+      "writes plugin enablement and disablement changes to cordis.patch.yml",
+      "provides UI and RPC actions for toggling, switching, and applying plugin fixes",
+      "checks npm and GitHub versions and retrieves GitHub-related metadata over the network",
+      "persists operation logs and plugin state under ~/.dsh"
+    ],
+    "reasons": [
+      {
+        "code": "PLUGIN_STATE_WRITE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PLUGIN_TOGGLE_CONTROL",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "EXTERNAL_NETWORK_ACCESS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "PERSISTENT_LOCAL_STATE",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "discovers installed DSH plugins and reads their metadata",
+      "analyzes plugin status, overlaps, compatibility conflicts, and load failures",
+      "writes plugin enablement and disablement changes to cordis.patch.yml",
+      "provides UI and RPC actions for toggling, switching, and applying plugin fixes",
+      "checks npm and GitHub versions and retrieves GitHub-related metadata over the network",
+      "persists operation logs and plugin state under ~/.dsh"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:40.003Z",
+  "repositoryCommitSha": "0f720b7e53c0633b77e48c04c8bb8e06d16b7a37",
+  "evidenceHash": "514c4751ded78a532197eaccf875c1bbe88aa33af65cd4837ee4f6c4f40223f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c792839ad8f73a07230e9c35ffd4fa91f727ebf636c1e81eda431b084b822fa4",
+  "shadowMode": false
+}

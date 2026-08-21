@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "browser",
+    "mobile",
+    "integration",
+    "desktop",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides remote browser and mobile access to the full DeepSeek Harness interface through a passcode-gated HTTP/WebSocket reverse proxy, with optional Cloudflare tunneling and access logging.",
+  "summaries": {
+    "zh": "通过密码保护的反向代理和可选 Cloudflare 隧道，让手机或浏览器远程访问完整的 DeepSeek Harness 会话与控制界面。",
+    "en": "Enables phone and browser access to the full DeepSeek Harness interface through a passcode-gated reverse proxy with optional Cloudflare tunneling."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "binds a second HTTP listener",
+      "reverse-proxies the full harness interface over HTTP and WebSocket",
+      "exposes the interface through a Cloudflare quick tunnel or configured public host",
+      "authenticates browsers with a passcode and session cookies",
+      "forwards access to loopback-fenced harness methods including settings, credentials, tool approvals, and shell functions",
+      "spawns the cloudflared child process",
+      "records sign-in and failed-access events"
+    ],
+    "reasons": [
+      {
+        "code": "full_remote_harness_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "public_network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "binary.execute",
+      "network.access",
+      "binds a second HTTP listener",
+      "reverse-proxies the full harness interface over HTTP and WebSocket",
+      "exposes the interface through a Cloudflare quick tunnel or configured public host",
+      "authenticates browsers with a passcode and session cookies",
+      "forwards access to loopback-fenced harness methods including settings, credentials, tool approvals, and shell functions",
+      "spawns the cloudflared child process",
+      "records sign-in and failed-access events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:45:11.410Z",
+  "repositoryCommitSha": "afcc0803c896b8cc05656b72c4238f182c5ddb54",
+  "evidenceHash": "dc2731faa9692b3ea60b28ecd0f3e7321dd40fb74addaa2449da350d692bef0c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8d168d45d029e741af932dc5a3cedad875ddc872fa190239d623b8a0ff943e3b",
+  "shadowMode": false
+}

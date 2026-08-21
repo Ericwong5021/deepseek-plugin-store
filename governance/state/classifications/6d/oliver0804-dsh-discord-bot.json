@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "collaboration",
+    "integration",
+    "monitoring",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Discord integration for remotely monitoring and controlling DeepSeek Harness workspaces, including session inspection, live updates, workspace management, and optional agent execution from Discord.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 工作区映射到 Discord 频道，用于查看会话轨迹、监控子智能体并可选地远程驱动智能体。",
+    "en": "Maps DeepSeek Harness workspaces to Discord channels for inspecting session activity, monitoring subagents, and optionally driving agents remotely."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads workspace sessions, trajectories, timelines, subagents, lineage, context, and todo data",
+      "Streams harness activity to Discord when mirroring is enabled",
+      "Registers workspaces and changes model, preset, and permission settings",
+      "Can send prompts to agents, run harness commands, stop or rewind sessions, and permit agent file and command execution when allowRun is enabled"
+    ],
+    "reasons": [
+      {
+        "code": "remote_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_data_export",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Reads workspace sessions, trajectories, timelines, subagents, lineage, context, and todo data",
+      "Streams harness activity to Discord when mirroring is enabled",
+      "Registers workspaces and changes model, preset, and permission settings",
+      "Can send prompts to agents, run harness commands, stop or rewind sessions, and permit agent file and command execution when allowRun is enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:58.146Z",
+  "repositoryCommitSha": "64bf82b1ea7aa96cf4ced5ad383a13d6b0967ddc",
+  "evidenceHash": "57a838afe50bbbc043b8542aa96c112fb48f3914c0d9fa9c830771de6b9b19da",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a2db0a31609bad8f505f37d11942f76b3874412abcefd241e4b4a4db17d392b7",
+  "shadowMode": false
+}

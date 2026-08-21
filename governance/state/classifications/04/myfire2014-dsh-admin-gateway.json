@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a network-facing administrator authentication gateway that reverse-proxies HTTP, WebSocket, and SSE traffic to a dsh web service, with configurable sessions and request controls.",
+  "summaries": {
+    "zh": "为 dsh Web 服务提供带管理员密码、会话管理和请求限制的本地认证反向代理网关。",
+    "en": "Provides dsh web with a local authentication reverse-proxy gateway supporting administrator login, sessions, and configurable request limits."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts a local HTTP authentication gateway",
+      "Proxies HTTP, WebSocket, and SSE traffic to a configured dsh web upstream",
+      "Handles administrator passwords, session cookies, and in-memory sessions",
+      "Applies configurable login and request rate limits, host checks, IP allowlists, and request body limits",
+      "Reads the administrator password from an environment variable or plugin configuration"
+    ],
+    "reasons": [
+      {
+        "code": "network_gateway",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_session_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reverse_proxy_to_configured_upstream",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Starts a local HTTP authentication gateway",
+      "Proxies HTTP, WebSocket, and SSE traffic to a configured dsh web upstream",
+      "Handles administrator passwords, session cookies, and in-memory sessions",
+      "Applies configurable login and request rate limits, host checks, IP allowlists, and request body limits",
+      "Reads the administrator password from an environment variable or plugin configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:44.875Z",
+  "repositoryCommitSha": "092a3bb3f96edfc20d9efa8ff27664e9dc9d8211",
+  "evidenceHash": "7557853df7e26cafae9e365a6d2476a2098bd08c9504572d573cf67369543294",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7e0f77dcf5f1f81064d3515bbaf7b2ccb1d4434aa95f3f563ad27adc6416b04a",
+  "shadowMode": false
+}

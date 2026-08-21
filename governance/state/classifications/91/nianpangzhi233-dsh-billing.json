@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "data",
+    "api",
+    "agent",
+    "ui",
+    "integration",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web GUI plugin for real-time billing monitoring, including local token and cost tracking, balance alerts, official DeepSeek balance and pricing synchronization, persistent ledger storage, and an agent query tool.",
+  "summaries": {
+    "zh": "用于 DSH Web GUI 的实时计费监控插件，可跟踪模型用量与估算费用、同步 DeepSeek 余额和价格，并提供余额告警与查询工具。",
+    "en": "A real-time billing monitor for the DSH Web GUI that tracks model usage and estimated costs, synchronizes DeepSeek balances and prices, and provides balance alerts and a query tool."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Monitors local DSH model usage and estimated costs",
+      "Persists billing configuration, usage counters, and transaction ledger to a workspace JSON file",
+      "Calls the DeepSeek balance and pricing endpoints when configured",
+      "Stores a DeepSeek API key in the local ledger file",
+      "Provides a billing_balance agent tool for querying balance and usage details"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sensitive_credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Monitors local DSH model usage and estimated costs",
+      "Persists billing configuration, usage counters, and transaction ledger to a workspace JSON file",
+      "Calls the DeepSeek balance and pricing endpoints when configured",
+      "Stores a DeepSeek API key in the local ledger file",
+      "Provides a billing_balance agent tool for querying balance and usage details"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:20.124Z",
+  "repositoryCommitSha": "88b0dc0851dedbf9eb4e138ed40bbda17cad4ded",
+  "evidenceHash": "d48089ca8ad64a6e9677b61fb2d8a6e532b479b58be546f833ebbc9fcac1ec8b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6d0951334ed0749417384797787e1c37bb3256b6538a50dee809d6403fe74dab",
+  "shadowMode": false
+}

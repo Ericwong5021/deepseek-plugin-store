@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "notification",
+    "theme",
+    "layout",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Tauri-based Windows desktop shell for DeepSeek Harness that integrates the dsh web UI with native windows, tray controls, theme synchronization, state persistence, side panels, and system notifications.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的 dsh Web UI 封装为 Windows 原生桌面应用，并提供托盘、主题同步、窗口状态记忆、侧栏和系统通知功能。",
+    "en": "Wraps the DeepSeek Harness dsh web UI in a native Windows desktop application with tray controls, theme synchronization, window-state persistence, side panels, and system notifications."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs a native Windows desktop shell using Tauri",
+      "Starts and manages a local dsh web process and private Node runtime",
+      "Persists window, theme, tray, session pin, and plugin configuration locally",
+      "Displays system tray items, native notifications, and notification sounds",
+      "Downloads runtime and package dependencies during installation"
+    ],
+    "reasons": [
+      {
+        "code": "native_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_dependency_download",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Runs a native Windows desktop shell using Tauri",
+      "Starts and manages a local dsh web process and private Node runtime",
+      "Persists window, theme, tray, session pin, and plugin configuration locally",
+      "Displays system tray items, native notifications, and notification sounds",
+      "Downloads runtime and package dependencies during installation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:05.556Z",
+  "repositoryCommitSha": "edd0c7ce84c0c3ad1014d22df082da4162bf81d8",
+  "evidenceHash": "b2667ddab7fcbf2dd63a159584470b529e509ecfb67e6f3dc428b39b264964bb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e30de04d4273f6721e4f18a62c25489e5f162ea071578517d927e0bf4cac22b7",
+  "shadowMode": false
+}

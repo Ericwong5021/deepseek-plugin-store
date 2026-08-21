@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "ui",
+    "visualization",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A persistent OpenCode Go usage dashboard that visualizes account quotas, token consumption, and estimated spending from official usage data and local DeepSeek Harness session logs.",
+  "summaries": {
+    "zh": "在聊天输入框下方常驻显示 OpenCode Go 配额、Token 消耗和花费统计，并支持按范围与模型查看明细。",
+    "en": "A persistent OpenCode Go usage dashboard showing quota, token consumption, and spending details by scope and model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local DeepSeek Harness session logs to aggregate token usage and spending",
+      "Fetches OpenCode Go quota and official pricing data over HTTP",
+      "Displays a masked account API key and provides a local copy action",
+      "Exposes local HTTP endpoints and a usage query tool"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access_and_copy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local DeepSeek Harness session logs to aggregate token usage and spending",
+      "Fetches OpenCode Go quota and official pricing data over HTTP",
+      "Displays a masked account API key and provides a local copy action",
+      "Exposes local HTTP endpoints and a usage query tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:52.067Z",
+  "repositoryCommitSha": "96314bcd7966c88b6907fe5797719793a9b014e9",
+  "evidenceHash": "146c81f9d58f3d145e2fc4995d4fed8aecc54d7d0327d384cc8ae27e797b44e0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac0b6382003e84f1c55123b096138d239256d6030f5c8bd7ee6bbbc5d8799e4c",
+  "shadowMode": false
+}

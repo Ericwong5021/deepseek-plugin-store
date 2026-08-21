@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "mcp",
+    "automation",
+    "context",
+    "integration",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A workspace-scoped orchestration plugin that loads, manages, and isolates MCP servers per session workspace, including process launching, remote connections, tool registration, configuration reloads, and reconnection.",
+  "summaries": {
+    "zh": "按会话工作区加载和管理 MCP server，将项目配置的工具隔离注册到对应 agent，并支持配置重载与断线重连。",
+    "en": "Loads and manages MCP servers per session workspace, registering project-specific tools for the corresponding agent with configuration reloads and reconnection support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Loads MCP server definitions from a workspace configuration file",
+      "Spawns configured stdio MCP server processes",
+      "Connects to configured streamable HTTP MCP servers",
+      "Registers and refreshes MCP tools within agent scope",
+      "Watches configuration changes and reloads servers",
+      "Automatically retries failed MCP connections with backoff"
+    ],
+    "reasons": [
+      {
+        "code": "executes_configured_processes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "connects_to_remote_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "registers_agent_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "monitors_workspace_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Loads MCP server definitions from a workspace configuration file",
+      "Spawns configured stdio MCP server processes",
+      "Connects to configured streamable HTTP MCP servers",
+      "Registers and refreshes MCP tools within agent scope",
+      "Watches configuration changes and reloads servers",
+      "Automatically retries failed MCP connections with backoff"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:59.106Z",
+  "repositoryCommitSha": "b45b0edce91bb4bc85d81950e17dff2f23d11224",
+  "evidenceHash": "a63a35abb0f2153e1241d721507951964deb39b6cd3b5c8e655bcc9675a7d200",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "426ffdca706cb498fbe0490c5c7e8ba15b1d66d5faba6508da0e142c66209dad",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "chat",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a Command Code LLM provider route to DeepSeek Harness, including external API requests, streaming text and tool calls, and browser-assisted API-key setup.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 添加 Command Code 大语言模型提供商，支持通过其 API 进行流式文本生成和工具调用。",
+    "en": "Adds a Command Code large-language-model provider to DeepSeek Harness with streaming text generation and tool-call support through the provider API."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends text and tool-call requests to Command Code's /alpha/generate API",
+      "Supports streaming responses, cancellation, retries, usage reporting, and reasoning deltas",
+      "Retrieves and stores a Command Code API key through a browser-assisted OAuth flow and DSH credentials service",
+      "Runs a temporary localhost callback server for OAuth completion"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_callback_server",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends text and tool-call requests to Command Code's /alpha/generate API",
+      "Supports streaming responses, cancellation, retries, usage reporting, and reasoning deltas",
+      "Retrieves and stores a Command Code API key through a browser-assisted OAuth flow and DSH credentials service",
+      "Runs a temporary localhost callback server for OAuth completion"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:28.124Z",
+  "repositoryCommitSha": "4e3d8a8d2d9ed0f1bcdc477bf6d5319e78c7a396",
+  "evidenceHash": "6c8fc419c104fcd6e4f6350a54670994737afe1f6a09f98bcb905661f6675803",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b51345ddbe1739fddaeee03479454435cbc926c34f7fb4c58b3619afe8f5f5bc",
+  "shadowMode": false
+}

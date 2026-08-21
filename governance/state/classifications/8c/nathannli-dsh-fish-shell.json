@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "tool",
+    "automation",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The plugin replaces the DSH bash tool’s command executor with Fish, with optional Bash-assignment translation; rejection is appropriate because the README explicitly states that it should not be used and causes more retries.",
+  "summaries": {
+    "zh": "将 DSH 的 bash 工具命令改由 Fish 执行，并可选地转换部分 Bash 赋值语法。",
+    "en": "Runs commands submitted through DSH’s bash tool with Fish and optionally translates selected Bash assignment syntax."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes model-submitted shell commands through Fish",
+      "Changes foreground and background shell command execution",
+      "Optionally translates selected Bash assignments into Fish syntax",
+      "Uses the host shell executor and may access its permitted processes and files"
+    ],
+    "reasons": [
+      {
+        "code": "shell-command-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "server-side-executor-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "documented-instability",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Executes model-submitted shell commands through Fish",
+      "Changes foreground and background shell command execution",
+      "Optionally translates selected Bash assignments into Fish syntax",
+      "Uses the host shell executor and may access its permitted processes and files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "ACTIVE_REPOSITORY"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "reject",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:10.476Z",
+  "repositoryCommitSha": "812779f782f377af74d6c0036bc430306623a5ac",
+  "evidenceHash": "cf8670d8e74f2cf59f69f0658d1d8b5e125f1a2278c28a1dcd376c3b4ddbd265",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "472474874e4cbbc1844f4acf4719e46da9601206d040b989f5a575c3a7ff6a87",
+  "shadowMode": false
+}

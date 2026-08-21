@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "ui",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A web access-control utility for DeepSeek Harness that exposes the service on LAN interfaces while gating UI and API access with a password, CIDR allowlist, and forwarding-header policy.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web 提供局域网访问控制，通过密码、CIDR 白名单和转发请求头策略限制 UI 与 API 的访问。",
+    "en": "Provides LAN access control for DeepSeek Harness Web using password authentication, CIDR allowlisting, and forwarding-header policies for the UI and API."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Changes the web server binding to listen on all interfaces",
+      "Enforces password authentication for the web UI and API",
+      "Restricts inbound IPv4 clients using configurable CIDR allowlists",
+      "Rejects requests containing selected forwarding headers",
+      "Stores access policy and session verification data locally"
+    ],
+    "reasons": [
+      {
+        "code": "network-exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "authentication-and-session-control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-policy-storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Changes the web server binding to listen on all interfaces",
+      "Enforces password authentication for the web UI and API",
+      "Restricts inbound IPv4 clients using configurable CIDR allowlists",
+      "Rejects requests containing selected forwarding headers",
+      "Stores access policy and session verification data locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:33.927Z",
+  "repositoryCommitSha": "ec3cc4b0389cf3e9dbcb14626b645a693d56b54d",
+  "evidenceHash": "06ba27ca6d485b6ef40c0fce397edc11026fb5908ae595947788b49ddff94dc5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9bf0cff1fa9b1870147b12458ce945d2e792793441a5c59e5749fe1d4ebc5495",
+  "shadowMode": false
+}

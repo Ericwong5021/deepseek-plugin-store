@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "mcp",
+    "testing",
+    "debugging",
+    "desktop",
+    "automation",
+    "terminal",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Bridges Xcode's headless MCP interface into DSH, primarily enabling agents to build, test, debug, inspect, and interact with Apple projects and simulators.",
+  "summaries": {
+    "zh": "将 Xcode 的无界面 MCP 能力接入 DSH，使智能体能够构建、测试、调试和检查 Apple 项目并与模拟器交互。",
+    "en": "Connects Xcode’s headless MCP capabilities to DSH so agents can build, test, debug, inspect Apple projects, and interact with simulators."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Spawns the Xcode mcpbridge subprocess through xcrun",
+      "Exposes Xcode headless tools for project creation, opening, building, and testing",
+      "Controls simulators with tap, typing, and swipe interactions",
+      "Reads screenshots, accessibility hierarchies, and OSLog output",
+      "Forwards tool calls and results between DSH and Xcode over MCP JSON-RPC"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_modification_and_build",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "simulator_interaction",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_project_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Spawns the Xcode mcpbridge subprocess through xcrun",
+      "Exposes Xcode headless tools for project creation, opening, building, and testing",
+      "Controls simulators with tap, typing, and swipe interactions",
+      "Reads screenshots, accessibility hierarchies, and OSLog output",
+      "Forwards tool calls and results between DSH and Xcode over MCP JSON-RPC"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:07.564Z",
+  "repositoryCommitSha": "6cc39aae09e49179f2768111666e221178d27586",
+  "evidenceHash": "c7c5fe4406678d34e28bb490adb52a9320539ac9f5445c01ea227e7e15b22d4c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a0756d5ee79e7b93a96d704c8f11ee013abdc2bb5537bc0e29ecbf10249f4e75",
+  "shadowMode": false
+}

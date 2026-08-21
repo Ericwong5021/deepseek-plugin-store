@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "workflow",
+    "planning",
+    "api",
+    "notification",
+    "integration",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly presents dsh-cron as a persistent cron scheduler that automates prompt delivery into DeepSeek Harness agent sessions, with optional cold-session execution and outbound callbacks.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供支持时区和持久化存储的定时任务调度，并将到期提示投递到智能体会话。",
+    "en": "Provides persistent, timezone-aware scheduled tasks for DeepSeek Harness and delivers due prompts to agent sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates and manages recurring and one-shot scheduled jobs",
+      "Persists jobs across restarts in the Harness home",
+      "Delivers scheduled prompts into live or queued agent sessions",
+      "Can resume a persisted cold session for unattended model execution when enabled",
+      "Provides a local RPC and sidebar interface for job management",
+      "Can forward settled run events to optional HTTP or macOS notification integrations"
+    ],
+    "reasons": [
+      {
+        "code": "scheduled_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_job_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "cold_session_wake_unattended_turns",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_outbound_callbacks",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Creates and manages recurring and one-shot scheduled jobs",
+      "Persists jobs across restarts in the Harness home",
+      "Delivers scheduled prompts into live or queued agent sessions",
+      "Can resume a persisted cold session for unattended model execution when enabled",
+      "Provides a local RPC and sidebar interface for job management",
+      "Can forward settled run events to optional HTTP or macOS notification integrations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:57.880Z",
+  "repositoryCommitSha": "365bfde6f90edaeb0ba88b25d14e5b0dce5ec130",
+  "evidenceHash": "8289ae8e7292135b49da206295f33d1ac0f508e649f8decadcbaac58f23eab73",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0b6764f7addce5ca31f30863882fc3c3e85950be04640e60afec6fb2157cfce8",
+  "shadowMode": false
+}

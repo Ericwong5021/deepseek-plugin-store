@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows pwsh integration that reads the current workspace .env file and injects its variables into shell subprocesses, providing workspace-specific environment isolation.",
+  "summaries": {
+    "zh": "该插件在每次 Windows pwsh 调用时读取当前工作区的 .env 文件，并将其中的环境变量注入子进程。",
+    "en": "This plugin reads the current workspace’s .env file for each Windows pwsh invocation and injects its variables into the child process environment."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a workspace-level .env file on each pwsh invocation",
+      "Parses variable assignments and expands references from the parent environment and earlier entries",
+      "Injects parsed values into child pwsh process environments",
+      "Allows workspace .env values to override same-named inherited environment variables except DSH_* keys"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_environment_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_override",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads a workspace-level .env file on each pwsh invocation",
+      "Parses variable assignments and expands references from the parent environment and earlier entries",
+      "Injects parsed values into child pwsh process environments",
+      "Allows workspace .env values to override same-named inherited environment variables except DSH_* keys"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:58.767Z",
+  "repositoryCommitSha": "cebca2c62ab95928844993fda737a94f66c8050c",
+  "evidenceHash": "54d95f91a6270990e8818a5fe57691b2c425a2e13162ac06aca0f874029b9d3c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b339645844e2690f43e61765732522e42005b4382545832d1bfc79eb6ad6382b",
+  "shadowMode": false
+}

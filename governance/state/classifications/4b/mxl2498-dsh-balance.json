@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "integration",
+    "monitoring",
+    "notification",
+    "ui",
+    "browser",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web plugin that monitors a DeepSeek account balance through a server proxy, displays balance details in a movable floating widget, refreshes periodically, and provides low-balance alerts and a top-up link.",
+  "summaries": {
+    "zh": "通过服务端代理获取并定时刷新 DeepSeek 账户余额，在可拖动的悬浮组件中显示余额、低余额提醒和充值入口。",
+    "en": "Monitors and periodically refreshes a DeepSeek account balance through a server proxy, displaying it in a movable widget with low-balance alerts and a top-up link."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "reads a configured DeepSeek API credential through the server credential system",
+      "sends authenticated requests to the DeepSeek balance API",
+      "displays and periodically refreshes account balance information",
+      "stores the chosen widget position in localStorage",
+      "links users to the DeepSeek top-up page"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_balance_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "reads a configured DeepSeek API credential through the server credential system",
+      "sends authenticated requests to the DeepSeek balance API",
+      "displays and periodically refreshes account balance information",
+      "stores the chosen widget position in localStorage",
+      "links users to the DeepSeek top-up page"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:42.722Z",
+  "repositoryCommitSha": "aeb9018cf9b44e12fe7c793a680efd340f3dd96c",
+  "evidenceHash": "a78defe6afbafc858659671528fdcbc780aabe5fe4aafb82d60f10c0a3748980",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1f07f3bae87fc304309bdb6268f83f4b9232288314edad97c87bbf7d1d321770",
+  "shadowMode": false
+}

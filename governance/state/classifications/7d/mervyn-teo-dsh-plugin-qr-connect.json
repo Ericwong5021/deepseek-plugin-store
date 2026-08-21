@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "ui",
+    "browser",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a sidebar QR-code interface for connecting phones or other devices to the DSH web UI through an auth-gated reverse proxy; human review is warranted because the proxy can expose the full agent shell over a reachable network port.",
+  "summaries": {
+    "zh": "通过侧边栏二维码和带认证的反向代理，将手机等设备连接到 DeepSeek Harness Web UI。",
+    "en": "Adds a sidebar QR-code interface and authenticated reverse proxy for connecting phones and other devices to the DeepSeek Harness web UI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a QR-code connection button and settings card to the web UI",
+      "Runs a child Node.js reverse proxy bound to a network-accessible address",
+      "Exposes the web UI and WebSocket traffic to connected devices",
+      "Uses rotating secrets and session cookies for access control",
+      "Queries an external public-IP service"
+    ],
+    "reasons": [
+      {
+        "code": "network_exposure_full_agent_shell",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "binds_proxy_to_all_interfaces",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_public_ip_lookup",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Adds a QR-code connection button and settings card to the web UI",
+      "Runs a child Node.js reverse proxy bound to a network-accessible address",
+      "Exposes the web UI and WebSocket traffic to connected devices",
+      "Uses rotating secrets and session cookies for access control",
+      "Queries an external public-IP service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:54.989Z",
+  "repositoryCommitSha": "938b32a13fb2634c3bc671ae1f95da1b61e62a17",
+  "evidenceHash": "3f748f1af62dffa77a734d6ce2ed4d42d8bcb1afaf20aab3b175ddbf9f6d3c33",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bac57bac7500c07294a764e43a611bd74cba886fd086bc895b1a238abc49cd06",
+  "shadowMode": false
+}

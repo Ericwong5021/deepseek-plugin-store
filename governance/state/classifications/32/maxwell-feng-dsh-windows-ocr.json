@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "desktop",
+    "document",
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows dsh plugin that performs local OCR on attached images and converts them to text for text-only models, with optional vision-model passthrough.",
+  "summaries": {
+    "zh": "在 Windows 上使用系统 OCR 将 dsh 会话中的图片附件转换为文本，供仅支持文本的模型使用。",
+    "en": "Uses Windows OCR to convert image attachments in dsh sessions into text for text-only models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads attached image files from the local dsh attachment store",
+      "Runs Windows OCR through a PowerShell script",
+      "Rewrites image content blocks into OCR text before model requests",
+      "Can optionally forward original image bytes when passthrough is enabled"
+    ],
+    "reasons": [
+      {
+        "code": "local-image-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "powershell-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request-rewrite",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional-image-forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Reads attached image files from the local dsh attachment store",
+      "Runs Windows OCR through a PowerShell script",
+      "Rewrites image content blocks into OCR text before model requests",
+      "Can optionally forward original image bytes when passthrough is enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:30.703Z",
+  "repositoryCommitSha": "71ce320facf0c566aabc0ac19ab2198090c06c01",
+  "evidenceHash": "20557fbb00337e88a8c1c8f7546e58ef43aeb18bea7d4554f9dac6da0d9ffa01",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7fb43ab61e420818673c1b389c69e2873a9bb5ed854fa39b021ba657749636c4",
+  "shadowMode": false
+}

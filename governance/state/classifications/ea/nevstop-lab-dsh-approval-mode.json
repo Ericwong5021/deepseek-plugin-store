@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin adds a DSH approval-mode control whose bypass option automatically approves all tool calls, including file modifications and external commands, making automation the primary purpose and warranting human review.",
+  "summaries": {
+    "zh": "为 DSH 添加审批模式按钮，可在默认审批与自动批准工具调用之间切换。",
+    "en": "Adds a DSH approval-mode control for switching between normal confirmation prompts and automatic approval of tool calls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a UI control for selecting default or bypass approval mode",
+      "Automatically approves all tool calls when bypass mode is enabled",
+      "Allows automatically approved file modifications and external commands while retaining Workspace Write sandbox restrictions",
+      "Persists the selected mode across restarts and notifies the current session agent"
+    ],
+    "reasons": [
+      {
+        "code": "automatic_approval_of_sensitive_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_commands_can_run_without_confirmation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_modifications_can_run_without_confirmation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Adds a UI control for selecting default or bypass approval mode",
+      "Automatically approves all tool calls when bypass mode is enabled",
+      "Allows automatically approved file modifications and external commands while retaining Workspace Write sandbox restrictions",
+      "Persists the selected mode across restarts and notifies the current session agent"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:12.662Z",
+  "repositoryCommitSha": "a2b92a69912f36409a8f5bfc878b784c0e20c762",
+  "evidenceHash": "b1935eb9217fcc3aaec8b72450412e5fbc72475d4d5aa3d5189ec9200ffb09a1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a09260e85b439fc28d5b3485684402b56b2618d9362e8711e3d8d4092eea2338",
+  "shadowMode": false
+}

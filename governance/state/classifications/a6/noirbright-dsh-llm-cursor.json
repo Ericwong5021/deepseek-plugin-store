@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Unofficial external-service integration that signs into Cursor, retrieves model and usage data, and routes chat through private Cursor endpoints; the README explicitly warns of Terms of Service violations and possible account bans, requiring human review.",
+  "summaries": {
+    "zh": "通过非官方 Cursor 登录、模型目录和聊天接口，将 Cursor 服务接入 DeepSeek Harness。",
+    "en": "Connects DeepSeek Harness to Cursor through unofficial sign-in, model catalog, usage, and chat endpoints."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "initiates browser-based PKCE sign-in",
+      "stores a local Cursor session credential",
+      "accesses private Cursor service endpoints over HTTP/2",
+      "retrieves available models and usage information",
+      "sends chat requests through Cursor AgentService",
+      "retries eligible model-request failures"
+    ],
+    "reasons": [
+      {
+        "code": "private_service_endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "terms_of_service_and_account_ban_risk",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "initiates browser-based PKCE sign-in",
+      "stores a local Cursor session credential",
+      "accesses private Cursor service endpoints over HTTP/2",
+      "retrieves available models and usage information",
+      "sends chat requests through Cursor AgentService",
+      "retries eligible model-request failures"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:37.791Z",
+  "repositoryCommitSha": "a10ddacd9914944579e0dc4103e552ae75d0adbf",
+  "evidenceHash": "bc90c6c0db2d875f5cd9c8a66afbd19d7a9527153160ba69c933eb1252a342bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bad44df4571f57915a180fea5fa1df1843859a17064ccd7167696150d4ec962e",
+  "shadowMode": false
+}
