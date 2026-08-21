@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "monitoring",
+    "data",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local diagnostic plugin that snapshots DSH profile and plugin state, records detected configuration changes, and exposes recent history for troubleshooting environment drift.",
+  "summaries": {
+    "zh": "记录 DSH 配置与插件状态快照及变更历史，帮助用户排查环境何时发生了变化。",
+    "en": "Tracks snapshots of DSH configuration and plugin state and exposes their change history to help troubleshoot environment drift."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads profile key files and plugin lists to create snapshots",
+      "Computes and stores hashes and filenames for local change history",
+      "Writes local state under ~/.dsh/config-watch/",
+      "Provides recent configuration changes through the config_changes tool"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "diagnostic_history",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads profile key files and plugin lists to create snapshots",
+      "Computes and stores hashes and filenames for local change history",
+      "Writes local state under ~/.dsh/config-watch/",
+      "Provides recent configuration changes through the config_changes tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:35.218Z",
+  "repositoryCommitSha": "9ebb374308a5073f12db57e36746a0e44a798394",
+  "evidenceHash": "a2cba687024c6d9f7a9f87f05e61a06bc86707309456a20aa80c72804a703a01",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3a0fc827b32369a6ec1484bd72ed56f82e5efd15274e2c934069f70541886772",
+  "shadowMode": false
+}

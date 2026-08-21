@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Connects DeepSeek Harness to a local agentmemory REST server, providing memory tools, automatic activity capture, and optional recalled-context injection; the primary purpose is persistent agent memory and context management.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 连接到本地 agentmemory REST 服务，提供记忆工具、活动自动采集和可选的上下文注入。",
+    "en": "Connects DeepSeek Harness to a local agentmemory REST service for memory tools, automatic activity capture, and optional recalled-context injection."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to a local agentmemory REST server",
+      "Registers memory management and retrieval tools",
+      "Captures session, prompt, tool-use, subagent, workflow, and approval observations",
+      "Optionally injects recalled context into system prompts",
+      "Can expose destructive or expensive memory operations when explicitly enabled",
+      "Provides a generic HTTP endpoint for agentmemory API calls"
+    ],
+    "reasons": [
+      {
+        "code": "local_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "activity_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive_operations_available",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to a local agentmemory REST server",
+      "Registers memory management and retrieval tools",
+      "Captures session, prompt, tool-use, subagent, workflow, and approval observations",
+      "Optionally injects recalled context into system prompts",
+      "Can expose destructive or expensive memory operations when explicitly enabled",
+      "Provides a generic HTTP endpoint for agentmemory API calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:34.162Z",
+  "repositoryCommitSha": "c91ec7fa45ca3a2dd0b06c723d896f6265270e45",
+  "evidenceHash": "7db4c88f3b913e92376746b5f84d174faf855451337f25ee4727410024341555",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7f50a2cc8cad80adea5fc2758853a8ee1a78958c922d7f8500f171557ba5a4a6",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "agent",
+    "terminal",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows Electron desktop wrapper for DeepSeek Harness that starts its local web service, loads it in a native window, and provides tray, workspace, session, and logging integration.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness Web UI 封装为 Windows 原生桌面应用，并提供本地服务启动、托盘驻留、工作区配置和会话复用功能。",
+    "en": "A Windows desktop wrapper for DeepSeek Harness that launches the local web service and provides a native window, tray controls, workspace configuration, and session reuse."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs a bundled local DSH web subprocess",
+      "Reuses local DSH profiles, sessions, credentials, and settings",
+      "Loads a localhost web interface in an Electron desktop window",
+      "Stores application and service logs locally",
+      "Provides tray-resident background operation and process cleanup"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_credential_and_session_reuse",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_background_operation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs a bundled local DSH web subprocess",
+      "Reuses local DSH profiles, sessions, credentials, and settings",
+      "Loads a localhost web interface in an Electron desktop window",
+      "Stores application and service logs locally",
+      "Provides tray-resident background operation and process cleanup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:40.694Z",
+  "repositoryCommitSha": "742653bf3762715c5ab0867d8f0109494b4fc3e8",
+  "evidenceHash": "30e7d514a6ce6327c6bcca9582f6c921604a963cbe1a71ac8984067b9684746d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c2337fa47e44411715d55c34026eb79014f73ba428ef93359904e3cae4997cfd",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "testing",
+    "data",
+    "file",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Exports secret-scrubbed session logs, failed command details, and optional git diffs as replayable problem bundles for debugging and issue reproduction.",
+  "summaries": {
+    "zh": "将会话日志、失败命令和可用的 Git 差异进行脱敏并导出为可重放的问题复现包。",
+    "en": "Exports secret-scrubbed session logs, failed commands, and available Git diffs as replayable bundles for debugging and issue reproduction."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the current session's canonical log",
+      "Redacts credential-like values from exported data",
+      "Collects failed command details",
+      "Collects git diff output when available",
+      "Writes a replayable JSON problem bundle to a user-specified output path"
+    ],
+    "reasons": [
+      {
+        "code": "session-log-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem-write-bypasses-sandbox",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional-subprocess-git-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Reads the current session's canonical log",
+      "Redacts credential-like values from exported data",
+      "Collects failed command details",
+      "Collects git diff output when available",
+      "Writes a replayable JSON problem bundle to a user-specified output path"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:45.608Z",
+  "repositoryCommitSha": "e51736ba583830462e0cca4d808ec3e0b7001bcd",
+  "evidenceHash": "4a46e80d2109f30445455d1c9bdf0be52575121bb8ffbc6937166cb9a5034f3e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "33f6f1f1e3ac12acec7af523d9b920f1a3fa58344957f009586e66f274b35063",
+  "shadowMode": false
+}

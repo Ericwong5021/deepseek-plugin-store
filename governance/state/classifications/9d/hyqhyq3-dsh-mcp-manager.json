@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "api",
+    "browser",
+    "terminal",
+    "file",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness integration plugin that manages remote HTTP and local stdio MCP servers, authentication, workspace configuration, and MCP tool registration through a Settings page.",
+  "summaries": {
+    "zh": "通过设置页面管理远程 HTTP 和本地 stdio MCP 服务器、认证、工作区配置及工具注册。",
+    "en": "Manage remote HTTP and local stdio MCP servers, authentication, workspace configuration, and tool registration from a DeepSeek Harness settings page."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to remote MCP servers over HTTP",
+      "Performs OAuth authorization with PKCE and stores refreshable OAuth state",
+      "Reads bearer tokens and custom header values from environment variables",
+      "Launches and manages local stdio child processes",
+      "Reads and writes global and workspace MCP configuration files",
+      "Registers and dispatches MCP tools to DSH sessions"
+    ],
+    "reasons": [
+      {
+        "code": "remote_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "oauth_and_token_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Connects to remote MCP servers over HTTP",
+      "Performs OAuth authorization with PKCE and stores refreshable OAuth state",
+      "Reads bearer tokens and custom header values from environment variables",
+      "Launches and manages local stdio child processes",
+      "Reads and writes global and workspace MCP configuration files",
+      "Registers and dispatches MCP tools to DSH sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:00.157Z",
+  "repositoryCommitSha": "69d5cbc76e21606867f6dbef05025e2e2dfdbd04",
+  "evidenceHash": "6db086792bffa9e566fd7e950538aa36c25079acc230d2d6cc255787d2d9e6ce",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7cca6c34aac8b0204b2738b82a44ddaaf5fea1b625f4eb91345699651344c086",
+  "shadowMode": false
+}

@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "chat",
+    "agent",
+    "context",
+    "memory",
+    "image",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A QQ C2C integration plugin that bridges private messages, attachments, persistent per-user agent sessions, and agent replies through the QQ official bot gateway.",
+  "summaries": {
+    "zh": "将 QQ 官方机器人私聊消息、图片附件和智能体会话连接起来，并把智能体回复发送回 QQ 用户。",
+    "en": "Bridges QQ official bot private messages and image attachments to persistent per-user agent sessions, then sends agent replies back to QQ users."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives QQ private messages through the QQ gateway",
+      "Maps each QQ user to a persistent agent session",
+      "Downloads image attachments to a local agent workspace",
+      "Sends agent text replies back to QQ users",
+      "Uploads and sends local images to QQ users",
+      "Stores session mappings and message-summary logs locally",
+      "Uses QQ bot credentials and maintains WebSocket connections with automatic reconnection"
+    ],
+    "reasons": [
+      {
+        "code": "external-messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent-user-context",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-file-transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed-external-service",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives QQ private messages through the QQ gateway",
+      "Maps each QQ user to a persistent agent session",
+      "Downloads image attachments to a local agent workspace",
+      "Sends agent text replies back to QQ users",
+      "Uploads and sends local images to QQ users",
+      "Stores session mappings and message-summary logs locally",
+      "Uses QQ bot credentials and maintains WebSocket connections with automatic reconnection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:03.280Z",
+  "repositoryCommitSha": "2025f9ab12fee8d6f43c4bd8f0bb1723e6708fe3",
+  "evidenceHash": "30a99a4d96f5137772df88a59e673988d7ea7d4b0901af624532e0364b2e052e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eedd4575ded8250d5476c1d13fd9cd69035ddd8f2529d417d50eb7c1e6f58fa2",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "integration",
+    "monitoring",
+    "ui",
+    "visualization",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that monitors Volcengine Ark Coding Plan or Agent Plan quota through an authenticated API and displays usage and remaining amounts in a sidebar widget.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 侧边栏显示火山方舟 Coding Plan 或 Agent Plan 的订阅额度使用与剩余情况。",
+    "en": "Displays Volcengine Ark Coding Plan or Agent Plan subscription usage and remaining quota in the DeepSeek Harness sidebar."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads Volcengine AccessKey ID and Secret Access Key configuration",
+      "Signs authenticated Volcengine control-plane API requests",
+      "Makes outbound requests to retrieve subscription quota data",
+      "Serves localhost HTTP routes for quota retrieval and credential updates",
+      "Stores credentials in the DSH settings or patch configuration",
+      "Displays quota usage and remaining amounts in a sidebar widget"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_authenticated_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "localhost_credential_write_route",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads Volcengine AccessKey ID and Secret Access Key configuration",
+      "Signs authenticated Volcengine control-plane API requests",
+      "Makes outbound requests to retrieve subscription quota data",
+      "Serves localhost HTTP routes for quota retrieval and credential updates",
+      "Stores credentials in the DSH settings or patch configuration",
+      "Displays quota usage and remaining amounts in a sidebar widget"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:38.508Z",
+  "repositoryCommitSha": "43b302f3760975c5d383b88ec8f5fc6b69eae7e6",
+  "evidenceHash": "5af02fd0d887ee06cb537317d9f4a0be2b5227a467c6c06b758fe9b2d8ed2364",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "484203fd321d9858d28e42b3db5832b51bbe94305f5a667383a60d42d63a54f2",
+  "shadowMode": false
+}

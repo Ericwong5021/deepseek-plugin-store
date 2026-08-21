@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "data",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "FOCAL is a local task-memory plugin that filters session activity into bounded task-isolated memories and optionally injects the active task context into subsequent model requests.",
+  "summaries": {
+    "zh": "FOCAL 是一个本地任务记忆插件，可将会话活动筛选为按任务隔离的有限记忆，并按配置将当前任务上下文注入后续模型请求。",
+    "en": "FOCAL is a local task-memory plugin that filters session activity into bounded task-isolated memories and optionally injects active-task context into later model requests."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes committed session and event records",
+      "Creates task-isolated local memory documents",
+      "Stores selected user text, tool metadata, and path-like arguments with configured bounds",
+      "Provides read-only status and recall tools",
+      "Injects filtered active-task context into later model requests when enabled",
+      "Supports human-triggered deletion of task or all stored memories"
+    ],
+    "reasons": [
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_content_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Observes committed session and event records",
+      "Creates task-isolated local memory documents",
+      "Stores selected user text, tool metadata, and path-like arguments with configured bounds",
+      "Provides read-only status and recall tools",
+      "Injects filtered active-task context into later model requests when enabled",
+      "Supports human-triggered deletion of task or all stored memories"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:25.217Z",
+  "repositoryCommitSha": "8828a8df4386cad5d60f02a8ea8d0ada596dd31c",
+  "evidenceHash": "3c6079e69a1d783ff3933feeeeb8a38b77fd177cfca2ba2e301dac00c7b2ef5f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "585f8514420d7c22fcf981d2ccc7c57ef38102053b8e302f983698f59e011382",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "automation",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An update-monitoring plugin that periodically or manually checks the npm registry for DSH versions, presents results in Settings, and emits notifications without executing updates.",
+  "summaries": {
+    "zh": "在设置页面显示 DSH 当前与最新版本，支持手动或定时检查并发送检查事件，但不会执行更新。",
+    "en": "Displays current and latest DSH versions in Settings, supports manual or scheduled checks, and emits check events without executing updates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the npm registry for the latest DSH version",
+      "Runs scheduled and manual update checks",
+      "Exposes same-origin status and check routes",
+      "Displays update status in a settings interface and emits check events"
+    ],
+    "reasons": [
+      {
+        "code": "network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_background_activity",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_update_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Queries the npm registry for the latest DSH version",
+      "Runs scheduled and manual update checks",
+      "Exposes same-origin status and check routes",
+      "Displays update status in a settings interface and emits check events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:37.158Z",
+  "repositoryCommitSha": "b9f3863b9f57d9144ab19c117ff57ad328c83056",
+  "evidenceHash": "ccc50425c47a6cc3f6dc6a6014c672adabda37d3154f3aa0340c71b2cb595974",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7ef89bb5128e412a9aa48bbbe46d66c317ef9124d2a7a6770f0bda506e5f6b75",
+  "shadowMode": false
+}

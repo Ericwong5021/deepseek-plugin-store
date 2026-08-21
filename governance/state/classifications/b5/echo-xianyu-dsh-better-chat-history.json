@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "chat",
+    "data",
+    "file",
+    "memory",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DSH plugin that improves chat-session loading by caching reads, prewarming recent sessions, invalidating changed entries, and coalescing writes to selected projection-cache storage.",
+  "summaries": {
+    "zh": "通过缓存会话读取、预热最近会话、精确失效和合并投影缓存写入来提升 DSH 聊天记录加载效率的插件。",
+    "en": "A DSH plugin that improves chat history loading through session-read caching, recent-session prewarming, precise invalidation, and coalesced projection-cache writes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Caches session inspection results and session lists in memory",
+      "Reads local session storage for inspection and prewarming",
+      "Batches writes to designated fail-soft projection cache storage",
+      "Patches existing DSH service methods and configuration"
+    ],
+    "reasons": [
+      {
+        "code": "local_storage_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_method_patching",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "batched_cache_writes_may_delay_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Caches session inspection results and session lists in memory",
+      "Reads local session storage for inspection and prewarming",
+      "Batches writes to designated fail-soft projection cache storage",
+      "Patches existing DSH service methods and configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:33.642Z",
+  "repositoryCommitSha": "86b95abedb820b44be6501f38a8fc04f010aeb01",
+  "evidenceHash": "f2aca32619ab3ec22b86434e826542cc28be405d52b0031eb98b57771a412236",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a62586529d3b86ceb15cd810128950707aa69cd0417fe040c8fd05d58348d20",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "mobile",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Enables access to the DSH Web GUI from other LAN devices by binding the server to 0.0.0.0 and injecting a crypto.randomUUID polyfill; the README states that access is unauthenticated and can expose command-execution capability, warranting human review.",
+  "summaries": {
+    "zh": "将 DSH Web GUI 绑定到局域网地址，并为明文 HTTP 访问注入 crypto.randomUUID 兼容实现。",
+    "en": "Binds the DSH Web GUI for LAN access and injects a crypto.randomUUID compatibility implementation for plaintext HTTP contexts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Binds the Web GUI server to 0.0.0.0 for LAN access",
+      "Injects a crypto.randomUUID polyfill into served index.html responses",
+      "Allows remote devices on the same network to access supported DSH GUI functions"
+    ],
+    "reasons": [
+      {
+        "code": "unauthenticated_lan_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "server_bind_all_interfaces",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "client_html_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Binds the Web GUI server to 0.0.0.0 for LAN access",
+      "Injects a crypto.randomUUID polyfill into served index.html responses",
+      "Allows remote devices on the same network to access supported DSH GUI functions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:06.080Z",
+  "repositoryCommitSha": "279efda4ee782099b8f1eed90ed6d824839e0088",
+  "evidenceHash": "1c52f0f84343e79c2b76ed5d980a56d52d1a9892901729b084edec3065960eb7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8da07f0cb2ba4c53a7a93b7ab0286d3fb8d077b97469cad68b67990d03492887",
+  "shadowMode": false
+}

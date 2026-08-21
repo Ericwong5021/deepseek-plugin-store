@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A local DSH model-request preflight utility that scans assembled requests for likely credentials and unscannable content, blocking downstream dispatch according to configurable fail-closed policies without sending request content to another service.",
+  "summaries": {
+    "zh": "这是一个在 DSH 模型请求出站前本地扫描疑似凭据和不可扫描内容，并按配置阻止下游模型调用的预检插件。",
+    "en": "A local DSH preflight plugin that scans assembled model requests for likely credentials and unscannable content, then blocks downstream dispatch according to configurable policies."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "inspects assembled model request data locally",
+      "detects configured credential patterns",
+      "blocks downstream model dispatch when policy conditions match",
+      "supports audit-mode metadata logging",
+      "can bypass checks for configured providers or request purposes"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_request_inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dispatch_blocking",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_audit_metadata",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "inspects assembled model request data locally",
+      "detects configured credential patterns",
+      "blocks downstream model dispatch when policy conditions match",
+      "supports audit-mode metadata logging",
+      "can bypass checks for configured providers or request purposes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:35.123Z",
+  "repositoryCommitSha": "565968fd385473026a07a1905ec0d905c8b91552",
+  "evidenceHash": "ce2ae31873e23e88d302cd05fa13581745fc6b8bbdae6e26d0210cd062989152",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e5be07f1ffb6f69d4efcd43014aad0b0262bf48484d26e716abf8000390a239b",
+  "shadowMode": false
+}

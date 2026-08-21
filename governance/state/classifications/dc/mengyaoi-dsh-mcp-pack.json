@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "api",
+    "file",
+    "search",
+    "data",
+    "memory",
+    "collaboration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A collection of Cordis YAML configuration snippets that connects DeepSeek Harness to multiple MCP servers for filesystem, web, database, search, memory, GitHub, and Slack capabilities.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供可直接接入多个 MCP server 的 Cordis YAML 配置片段，覆盖文件、网页、数据库、搜索、记忆及协作服务。",
+    "en": "Provides ready-to-use Cordis YAML snippets for connecting DeepSeek Harness to MCP servers for files, web access, databases, search, memory, and collaboration services."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Configures MCP servers for local filesystem access, web fetching, memory storage, SQLite and PostgreSQL queries, web search, GitHub repository and issue/PR access, and Slack message reading or sending.",
+      "Injects service credentials and configuration through environment variables.",
+      "May download and launch MCP server packages through npx."
+    ],
+    "reasons": [
+      {
+        "code": "local-filesystem-write-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed-external-service-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-message-sending",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime-package-download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Configures MCP servers for local filesystem access, web fetching, memory storage, SQLite and PostgreSQL queries, web search, GitHub repository and issue/PR access, and Slack message reading or sending.",
+      "Injects service credentials and configuration through environment variables.",
+      "May download and launch MCP server packages through npx."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:40:04.634Z",
+  "repositoryCommitSha": "f59c967dec4773273d45d24bcbbf84082ab63da6",
+  "evidenceHash": "d027583c922c594c7d79f9707f85d952c994857ff783ceee0ef8a6659a5fb566",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5316a480cdf3d555c3dbba451797d698baf92f36d293eab3da90566874c4a07a",
+  "shadowMode": false
+}

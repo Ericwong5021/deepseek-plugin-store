@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web plugin that adds a sidebar system menu for checking service status and requesting restart or shutdown through loopback-restricted RPC.",
+  "summaries": {
+    "zh": "在 DSH Web 侧边栏添加系统菜单，用于查看退出通道状态并请求重启或关闭服务。",
+    "en": "Adds a DSH Web sidebar system menu for checking exit-channel status and requesting service restart or shutdown."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds sidebar controls for restarting or shutting down the DSH web service",
+      "Invokes the host application's exit hook with exit codes 42 or 0",
+      "Exposes loopback-restricted RPC endpoints for status, restart, and shutdown"
+    ],
+    "reasons": [
+      {
+        "code": "service_restart_shutdown",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_exit_hook",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loopback_rpc",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds sidebar controls for restarting or shutting down the DSH web service",
+      "Invokes the host application's exit hook with exit codes 42 or 0",
+      "Exposes loopback-restricted RPC endpoints for status, restart, and shutdown"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:01.238Z",
+  "repositoryCommitSha": "bcd7be04197b16f11847eb0701d619cfc206a4a6",
+  "evidenceHash": "4310d05048acd203705a702d8feada2b548525a71e8cb4a1db277dcfa244908e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1216ae1db7625b631efe4b5ced08794f3f6ddb90399528a277b1c92f5ae6af19",
+  "shadowMode": false
+}

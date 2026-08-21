@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "chat",
+    "agent",
+    "api",
+    "memory",
+    "file",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Node.js bridge that connects local DSH agents to WeChat through Tencent’s iLink Bot API, supporting persistent per-contact sessions, local task execution, file exchange, and media handling.",
+  "summaries": {
+    "zh": "通过腾讯 iLink Bot API 将本机 DSH 智能体连接到微信，支持消息往返、持久会话、文件交换和媒体处理。",
+    "en": "Connects local DSH agents to WeChat through Tencent’s iLink Bot API with message exchange, persistent sessions, file transfer, and media handling."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Tencent iLink and WeChat for login and message exchange",
+      "Receives WeChat messages and invokes local DSH tasks",
+      "Reads and writes local conversation history, workspaces, credentials, and media files",
+      "Uploads and downloads media through Tencent endpoints",
+      "Maintains per-contact sessions, memory, and working directories"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_and_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_task_execution_from_messages",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_media_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to Tencent iLink and WeChat for login and message exchange",
+      "Receives WeChat messages and invokes local DSH tasks",
+      "Reads and writes local conversation history, workspaces, credentials, and media files",
+      "Uploads and downloads media through Tencent endpoints",
+      "Maintains per-contact sessions, memory, and working directories"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:20.864Z",
+  "repositoryCommitSha": "425f5d221065f953eba75190d935576bdfb6e55d",
+  "evidenceHash": "ed3a2e134272f0912dc46d551f817592dfd081cf2c317198c3b8ba1e7cf03d40",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "89c2a3c9bcbb290391ede5d3ddbccbae6d33e6cb72490acccde01ec557ea3264",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "planning",
+    "tool",
+    "terminal",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "Provides DSH tools and an execution guard for hash-sealed delegation of bounded work between AI agents, using a vendored adapter and subprocess boundary.",
+  "summaries": {
+    "zh": "为 DSH 提供基于 Underseal 适配器的智能体委派工具与执行守卫，用于协调受约束的代理工作流程。",
+    "en": "Provides DSH delegation tools and an execution guard built around the Underseal adapter for coordinating bounded work between AI agents."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "registers eight model-facing tools and one execution guard",
+      "spawns a vendored Python adapter through a subprocess provider",
+      "blocks configured mutation tools until READY evidence is available",
+      "loads a DSH delegation skill and reference files",
+      "performs byte-level hash checks before registering tools"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "mutation_tool_gating",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "install_time_code_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "registers eight model-facing tools and one execution guard",
+      "spawns a vendored Python adapter through a subprocess provider",
+      "blocks configured mutation tools until READY evidence is available",
+      "loads a DSH delegation skill and reference files",
+      "performs byte-level hash checks before registering tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:04.945Z",
+  "repositoryCommitSha": "11076603a692718c437c2eb0432e1b2a9a0cc2c5",
+  "evidenceHash": "95df91bdab58a04109a8d9cf8eb5bcc7a8d2c7776ba50e1c6c6e5fb82d8ed232",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5208d77f79429de78b0a5627ed93c5e5dbeb067416efb2f059601e673de909cd",
+  "shadowMode": false
+}

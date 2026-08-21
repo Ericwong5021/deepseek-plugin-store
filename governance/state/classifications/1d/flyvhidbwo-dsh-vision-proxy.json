@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin adds image understanding to DeepSeek conversations by translating attached images through configured VLM endpoints, with optional local Ollama support and image preprocessing.",
+  "summaries": {
+    "zh": "将对话中的图片通过配置的视觉语言模型转换为文字，再交由 DeepSeek 生成回答。",
+    "en": "Translates images attached to conversations through a configured vision-language model and passes the resulting text to DeepSeek for responses."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Translates attached images into text using configured vision-language model endpoints",
+      "Routes translated image descriptions to DeepSeek for conversational responses",
+      "Supports configurable OpenAI-compatible remote endpoints and local Ollama",
+      "Reads configured API keys or environment variables for vision services",
+      "Caches image translation results in process memory and can resize large images before translation"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_credential_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_service_network_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Translates attached images into text using configured vision-language model endpoints",
+      "Routes translated image descriptions to DeepSeek for conversational responses",
+      "Supports configurable OpenAI-compatible remote endpoints and local Ollama",
+      "Reads configured API keys or environment variables for vision services",
+      "Caches image translation results in process memory and can resize large images before translation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:03.208Z",
+  "repositoryCommitSha": "d246d8511822b2441eb4841ec854981dc3e055e4",
+  "evidenceHash": "ddb0cae2cb59581dd30bc4469b439073e9fb5aa1847bd6d2def50a0c4d884568",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5db6f8af7147766ba65ba5ad3059e392d94ee8dd789f95c7d12c01199dac5d78",
+  "shadowMode": false
+}

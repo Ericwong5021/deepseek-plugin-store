@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "terminal",
+    "monitoring",
+    "agent",
+    "workflow",
+    "testing",
+    "debugging"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes an operations toolkit whose primary purpose is automated local service recovery, supervised snapshot upgrades with rollback, session recovery, and terminal-based diagnosis and repair.",
+  "summaries": {
+    "zh": "用于本地 DSH 服务的自动守护、会话恢复、A/B 版本轮换、验收回滚以及终端故障诊断与修复。",
+    "en": "An operations toolkit for local DSH service monitoring, session recovery, validated A/B version rotation with rollback, and terminal-based diagnosis and repair."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs and updates local skills and a plugin bundle",
+      "Builds and validates isolated A/B snapshots before switching versions",
+      "Restarts and monitors a local web service",
+      "Automatically resumes interrupted agent sessions",
+      "Diagnoses and repairs local configuration, plugin, launcher, and session issues",
+      "Can invoke an LLM agent to analyze logs and perform repairs"
+    ],
+    "reasons": [
+      {
+        "code": "modifies_local_files_and_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "controls_service_lifecycle_and_restarts",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "performs_automated_repairs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executes_builds_and_acceptance_tests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Installs and updates local skills and a plugin bundle",
+      "Builds and validates isolated A/B snapshots before switching versions",
+      "Restarts and monitors a local web service",
+      "Automatically resumes interrupted agent sessions",
+      "Diagnoses and repairs local configuration, plugin, launcher, and session issues",
+      "Can invoke an LLM agent to analyze logs and perform repairs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:46.908Z",
+  "repositoryCommitSha": "58c04e333630108aa39f1b10bcc2de992b70e58e",
+  "evidenceHash": "ffccd269ae8b52a06f784305b3fd63fc99467af9e91deb5c36cba88725a67f32",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "92b701e674c17a43489222e51fe9ded22f5f8a833dfbee0bb9a4ea9931386b6e",
+  "shadowMode": false
+}

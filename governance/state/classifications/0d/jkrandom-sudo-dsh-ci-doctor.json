@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "monitoring",
+    "api",
+    "cli",
+    "agent",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a read-only GitHub Actions monitoring and CI failure diagnosis plugin that normalizes logs, categorizes failures, identifies suspect files, and tracks recurring signatures.",
+  "summaries": {
+    "zh": "监视 GitHub Actions 失败运行，将作业日志整理为结构化诊断，并记录重复出现的失败签名。",
+    "en": "Monitors GitHub Actions failures, converts job logs into structured diagnoses, and records recurring failure signatures."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads GitHub Actions workflow and job state through the GitHub CLI",
+      "Polls for new failed workflow runs in a background job",
+      "Parses job logs into structured failure diagnoses",
+      "Persists normalized failure signatures in a local ledger"
+    ],
+    "reasons": [
+      {
+        "code": "external_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_polling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistent_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads GitHub Actions workflow and job state through the GitHub CLI",
+      "Polls for new failed workflow runs in a background job",
+      "Parses job logs into structured failure diagnoses",
+      "Persists normalized failure signatures in a local ledger"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:16.705Z",
+  "repositoryCommitSha": "c5b8376b4dc509eefe9ce5f8f06bbe83723415d0",
+  "evidenceHash": "a8ee8b38edfb66501a78a056f84cad30a2819b023105a7f9707749aa77ddea57",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "90cdc262450ed546f5d3d1cb4692d91c121e04cd35a13be1a29e1d79cc21125b",
+  "shadowMode": false
+}

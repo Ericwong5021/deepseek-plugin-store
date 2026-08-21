@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "monitoring",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README describes a model control plane that inspects registered provider routes, updates the default model for new sessions, and probes external provider /models endpoints; external-services is the best primary category.",
+  "summaries": {
+    "zh": "用于检查已注册的模型提供商路由、为新会话设置默认模型，并探测兼容 OpenAI 的模型接口可达性。",
+    "en": "A model control plane for inspecting registered provider routes, setting the default model for new sessions, and probing OpenAI-compatible model endpoints."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Inspects registered provider routes and model metadata",
+      "Validates and saves the default provider/model for new sessions",
+      "Sends GET requests to configured OpenAI-compatible /models endpoints",
+      "Reports endpoint reachability, HTTP status, latency, model count, and credential configuration state"
+    ],
+    "reasons": [
+      {
+        "code": "network-probes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration-mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-state-disclosure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Inspects registered provider routes and model metadata",
+      "Validates and saves the default provider/model for new sessions",
+      "Sends GET requests to configured OpenAI-compatible /models endpoints",
+      "Reports endpoint reachability, HTTP status, latency, model count, and credential configuration state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:10.977Z",
+  "repositoryCommitSha": "b37a63cae2654044942a5dd44b6f2bc8591f5ec6",
+  "evidenceHash": "bafd82fe4a8789d71248c6d76331fd65bd03183eec06aaba8e429619695c9b09",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c0b48d179cb40e4d6849c23594c36214961cda90b0aa7bd1bb9f39aa0ba3b53e",
+  "shadowMode": false
+}

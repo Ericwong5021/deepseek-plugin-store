@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "monitoring",
+    "file",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a plugin centered on a Web UI dashboard for visualizing persisted model token usage, trends, per-model statistics, and pricing, with local history synchronization and configurable pricing feeds.",
+  "summaries": {
+    "zh": "在 Web 设置页面中记录并可视化模型请求的 Token 用量、趋势、模型明细和估算费用。",
+    "en": "Records and visualizes model request token usage, trends, per-model details, and estimated costs in a Web settings page."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Records per-request model token usage and session metadata locally",
+      "Displays token totals, trends, model breakdowns, and calculated costs in a web settings page",
+      "Synchronizes historical request records on startup",
+      "Fetches model pricing data from a configured remote mirror",
+      "Writes, migrates, and removes files within the configured token-usage data directory"
+    ],
+    "reasons": [
+      {
+        "code": "local-data-write-and-migration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote-pricing-feed-fetch",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Records per-request model token usage and session metadata locally",
+      "Displays token totals, trends, model breakdowns, and calculated costs in a web settings page",
+      "Synchronizes historical request records on startup",
+      "Fetches model pricing data from a configured remote mirror",
+      "Writes, migrates, and removes files within the configured token-usage data directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:00.851Z",
+  "repositoryCommitSha": "7e460955f16a266540063fd2de793870fafedd8d",
+  "evidenceHash": "1aa72259b454ac64b2e513f75d5450840a9ab2202400689663daa619d6a6a41c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9d2fa0e7b61fbdc6aa855b6cbad28ecfe2d77f41b6187f08d74a8034370af140",
+  "shadowMode": false
+}

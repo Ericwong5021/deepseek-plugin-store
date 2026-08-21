@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "api",
+    "ui",
+    "data",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web GUI monitoring plugin that reads DeepSeek CNY balance data, estimates consumption and remaining duration, and provides threshold-based visual and browser notifications.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中显示人民币余额、当日消耗和预计可用时长，并提供低余额与低余量告警。",
+    "en": "Displays DeepSeek CNY balance, daily consumption, and estimated remaining usage time in the web interface with low-balance and low-duration alerts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the official DeepSeek balance endpoint",
+      "Tracks balance changes to estimate daily consumption",
+      "Projects approximate remaining usage duration from recent consumption",
+      "Displays balance and usage information in a web interface",
+      "Shows low-balance and low-duration status indicators",
+      "Can trigger browser notifications when configured thresholds are reached"
+    ],
+    "reasons": [
+      {
+        "code": "external_read_only_balance_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_notification_capability",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "derived_usage_forecasting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the official DeepSeek balance endpoint",
+      "Tracks balance changes to estimate daily consumption",
+      "Projects approximate remaining usage duration from recent consumption",
+      "Displays balance and usage information in a web interface",
+      "Shows low-balance and low-duration status indicators",
+      "Can trigger browser notifications when configured thresholds are reached"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:10.371Z",
+  "repositoryCommitSha": "c2d8ed73a3d2ecc96901220bb06744d348f441f4",
+  "evidenceHash": "ec653a9d4fca8fde2636534d7ae13f459d2755d055dbdab2609adcc5f4691676",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37cd6fda129caab40cf5f2e4cdaa633989b510118d0d1f925ec8d86573f0ac84",
+  "shadowMode": false
+}

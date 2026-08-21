@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH outbound network routing plugin that globally manages direct and proxy paths for fetch and optionally Node.js HTTP(S) requests using configurable rules, fallback behavior, health memory, and protected proxy credentials.",
+  "summaries": {
+    "zh": "为 DSH 统一管理出站 HTTP(S) 与 SOCKS 网络路由，支持按主机和调用上下文选择直连、代理、回退或阻断策略。",
+    "en": "A DSH plugin that manages outbound HTTP(S) and SOCKS routing with configurable host and caller-context rules for direct, proxy, fallback, or blocked connections."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts and routes process-wide fetch and optionally Node.js HTTP(S) requests",
+      "Supports HTTP(S) and SOCKS proxy connections with named proxy rules",
+      "Applies host, provider, and plugin routing actions including direct, proxy, fallback, and block",
+      "Stores per-target latency and failure health state for routing decisions",
+      "Integrates with environment and operating-system proxy settings",
+      "Uses credential references for proxy authentication",
+      "Provides configuration and sanitized status surfaces"
+    ],
+    "reasons": [
+      {
+        "code": "process_global_network_patch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "proxy_credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_routing_and_blocking",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts and routes process-wide fetch and optionally Node.js HTTP(S) requests",
+      "Supports HTTP(S) and SOCKS proxy connections with named proxy rules",
+      "Applies host, provider, and plugin routing actions including direct, proxy, fallback, and block",
+      "Stores per-target latency and failure health state for routing decisions",
+      "Integrates with environment and operating-system proxy settings",
+      "Uses credential references for proxy authentication",
+      "Provides configuration and sanitized status surfaces"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:45.762Z",
+  "repositoryCommitSha": "35c4915241fc03cdcc7657e120a79eff6a3b72e9",
+  "evidenceHash": "dcc1d25e8c90084f96389b3544719aa02f3e391bbd42c0c8f534d0db478c6b7e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1d22cc00a63e2c5b249a300aa522c4b71b0dd8f01884e5773d35836922b968e7",
+  "shadowMode": false
+}

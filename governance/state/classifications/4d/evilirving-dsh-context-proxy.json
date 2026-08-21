@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "search",
+    "agent",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides on-demand retrieval of persisted session history through query, slice, and grep tools, with bounded results and citations; it primarily supports agent context access.",
+  "summaries": {
+    "zh": "为智能体提供按需查询、截取和搜索已持久化会话历史的工具，并返回带引用的有限结果。",
+    "en": "Provides agent-facing tools to query, slice, and grep persisted session history with bounded results and citations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers context_query, context_slice, and context_grep tools for retrieving persisted session history",
+      "Reads stored session events and spill content through optional backends",
+      "May invoke the packaged ripgrep binary for bounded text search",
+      "Returns citations and bounded result windows to the model"
+    ],
+    "reasons": [
+      {
+        "code": "reads_persisted_session_history",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "invokes_packaged_ripgrep_for_search",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bounded_model_facing_context_retrieval",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Registers context_query, context_slice, and context_grep tools for retrieving persisted session history",
+      "Reads stored session events and spill content through optional backends",
+      "May invoke the packaged ripgrep binary for bounded text search",
+      "Returns citations and bounded result windows to the model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:39.492Z",
+  "repositoryCommitSha": "1e1965f51ace195272697ff55b9dc8d43798e6a6",
+  "evidenceHash": "cd03934eaffa6b210d624d9fe657b5accf5b385dfa732866aa42ee4cf81f81f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4061ed4cf0a4c46eb7609a3690a29f8e94397936b325b23e213cd97a0466d6be",
+  "shadowMode": false
+}

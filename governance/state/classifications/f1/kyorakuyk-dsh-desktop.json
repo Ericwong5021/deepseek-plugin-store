@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "chat",
+    "api",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-platform Tauri desktop client that packages and launches the DeepSeek Harness web interface with a bundled Node.js runtime, local persistence, model configuration, and inherited harness features.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness Web GUI 封装为支持 Windows、macOS 和 Linux 的原生桌面客户端。",
+    "en": "A cross-platform Tauri desktop client that packages and runs the DeepSeek Harness web interface on Windows, macOS, and Linux."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "launches a bundled Node.js sidecar process",
+      "hosts a local web interface on localhost",
+      "reads and persists session, settings, and profile data under ~/.dsh",
+      "connects to configured model APIs using user-provided credentials"
+    ],
+    "reasons": [
+      {
+        "code": "bundled_runtime_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_api_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "launches a bundled Node.js sidecar process",
+      "hosts a local web interface on localhost",
+      "reads and persists session, settings, and profile data under ~/.dsh",
+      "connects to configured model APIs using user-provided credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:52.394Z",
+  "repositoryCommitSha": "fcbed01e9d19f30200d3a60fefcba361690ce63b",
+  "evidenceHash": "99d486c6caa134d8800763b753dae4848aca36a1d7422f93d5f79efd1fa0308b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "50cec4b0c340ce4e12103296a600026214d735213da898f7f846669e329e0bc7",
+  "shadowMode": false
+}

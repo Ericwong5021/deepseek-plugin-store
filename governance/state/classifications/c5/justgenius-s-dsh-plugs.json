@@ -1,0 +1,92 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "ui",
+    "file",
+    "terminal",
+    "memory",
+    "integration",
+    "desktop",
+    "chat",
+    "tool"
+  ],
+  "confidence": "medium",
+  "confidenceScore": 0.86,
+  "reason": "The README describes a monorepo containing several DSH plugins spanning UI panels, debugging, memory, GitHub/Gist synchronization, desktop updates, chat, and desktop overlays; plugin-development is the closest repository-level category, but the collection has no single user-facing purpose and merits human review.",
+  "summaries": {
+    "zh": "DSH-Plugs 是一个面向 DeepSeek Harness 的插件集合，提供界面增强、调试、记忆管理、配置同步、桌面集成和聊天体验等功能。",
+    "en": "DSH-Plugs is a collection of DeepSeek Harness plugins providing interface enhancements, debugging, memory management, configuration sync, desktop integration, and chat experiences."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Mounts multiple browser and host-side plugins into DSH profiles",
+      "Provides a real login-shell PTY terminal panel",
+      "Reads and writes local memory, settings, and sync state files",
+      "Synchronizes configuration through GitHub Device Flow and secret Gists",
+      "Installs DSH runtime updates in place through a desktop bridge",
+      "Creates desktop overlays through a DSH-Desktop integration"
+    ],
+    "reasons": [
+      {
+        "code": "real_shell_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_account_and_sync",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "in_place_runtime_updates",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_overlay_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "Mounts multiple browser and host-side plugins into DSH profiles",
+      "Provides a real login-shell PTY terminal panel",
+      "Reads and writes local memory, settings, and sync state files",
+      "Synchronizes configuration through GitHub Device Flow and secret Gists",
+      "Installs DSH runtime updates in place through a desktop bridge",
+      "Creates desktop overlays through a DSH-Desktop integration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.86,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:36.843Z",
+  "repositoryCommitSha": "4dca1896f8f908ad0edc78cba721b1cf9f67f6c5",
+  "evidenceHash": "5af5b56f9977f7f064d5c0c931a4eb461aa0ae2a64e0101653b9df7b910ec3a8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "effd87fafb7a5f1d74fb78e3e4c6977dd5ad4a89371655d14784ba94aeaa7cba",
+  "shadowMode": false
+}
