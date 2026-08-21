@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A cross-platform Tauri desktop wrapper that launches and displays the DeepSeek Harness Web UI, reuses existing local dsh data, supports tray operation, and performs background core updates.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness Web UI 封装为支持 Windows、macOS 和 Linux 的原生桌面应用，提供托盘运行、本地数据复用和后台核心更新。",
+    "en": "A cross-platform native desktop wrapper for the DeepSeek Harness Web UI with tray operation, existing local data reuse, and background core updates."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches a bundled Node runtime and DeepSeek Harness web service",
+      "Renders a local web UI in a native Tauri window",
+      "Reads and reuses user data from ~/.dsh, including API keys, sessions, and plugin configuration",
+      "Checks an npm registry for updates and downloads updated dsh dependencies",
+      "Runs persistently in the system tray and enforces a single application instance"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_update_download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Launches a bundled Node runtime and DeepSeek Harness web service",
+      "Renders a local web UI in a native Tauri window",
+      "Reads and reuses user data from ~/.dsh, including API keys, sessions, and plugin configuration",
+      "Checks an npm registry for updates and downloads updated dsh dependencies",
+      "Runs persistently in the system tray and enforces a single application instance"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:25.824Z",
+  "repositoryCommitSha": "335dfac86cb6ffda65b0873c82d544cd2afe1a82",
+  "evidenceHash": "f78893f06d827473c1a478d8c102ffa3dd636a1f5054fe523b4b50b03875a0b5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4219228e163aba4219548d0ae892d0384cb76fe2a05742be6a47c96fc93c18f6",
+  "shadowMode": false
+}

@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "api",
+    "integration",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness WebSearchProvider that routes the host web_search tool to Tavily, with configurable API credentials, endpoint, result count, search depth, and answer inclusion.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的 web_search 工具接入 Tavily，以执行可配置的网页搜索并返回搜索结果。",
+    "en": "Connects DeepSeek Harness's web_search tool to Tavily for configurable web searches and returned search results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends web search requests to the Tavily API",
+      "Reads a Tavily API credential through the configured credential provider",
+      "Returns Tavily search results and optionally its generated answer to the host web-search tool"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends web search requests to the Tavily API",
+      "Reads a Tavily API credential through the configured credential provider",
+      "Returns Tavily search results and optionally its generated answer to the host web-search tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:25.932Z",
+  "repositoryCommitSha": "99a0bfb861298fd4c06728f14d32e472230bd762",
+  "evidenceHash": "dc3fed5641716039ac7575af45d495424654e0cdbddadf8ffc18ff10310e0407",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "49c457474ad59977c64633e9ab46668c851e58152c2ca00ab4877b0aaddeaa49",
+  "shadowMode": false
+}

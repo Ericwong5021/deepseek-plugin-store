@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "api",
+    "automation",
+    "context",
+    "workflow",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An orchestration plugin that classifies LLM request complexity and routes each request through configured provider chains, with context-aware classification, fallback behavior, caching, and logging.",
+  "summaries": {
+    "zh": "根据请求复杂度将 DeepSeek Harness 的 LLM 请求自动分级，并通过配置的提供商链路进行路由。",
+    "en": "Classifies DeepSeek Harness LLM requests by complexity and routes them through configured provider chains."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Classifies each LLM request using a configured external model",
+      "Routes requests across configured provider chains with fallback behavior",
+      "Reads classifier and routing configuration plus referenced credentials",
+      "Sends a rolling session-goal summary and recent turns to the classifier",
+      "Writes routing decisions to a local plugin log and caches decisions for 120 seconds"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_routing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Classifies each LLM request using a configured external model",
+      "Routes requests across configured provider chains with fallback behavior",
+      "Reads classifier and routing configuration plus referenced credentials",
+      "Sends a rolling session-goal summary and recent turns to the classifier",
+      "Writes routing decisions to a local plugin log and caches decisions for 120 seconds"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:00.134Z",
+  "repositoryCommitSha": "305be1c75d094c2bfcee014b768906e2b5558b9f",
+  "evidenceHash": "661bc4d64ab1c179d4a3ec1f00b75886f5e5d61e805008064d94ee122c203318",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6da5ae2602b072b3ebc1076198c8c2869abf5709f080ddddb209f4ae5e55582a",
+  "shadowMode": false
+}

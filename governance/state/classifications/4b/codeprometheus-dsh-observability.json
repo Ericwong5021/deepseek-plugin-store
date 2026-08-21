@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "integration",
+    "data",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin observes DeepSeek Harness sessions and exports structured OpenTelemetry traces to an OTLP/HTTP collector, making monitoring and telemetry its primary user-facing purpose; uploading can include session content and is disabled by default.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 会话转换为 OpenTelemetry traces，并通过 OTLP/HTTP 导出到指定观测性收集器。",
+    "en": "Converts DeepSeek Harness sessions into OpenTelemetry traces and exports them to a configured observability collector over OTLP/HTTP."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exports DeepSeek Harness session traces via OTLP/HTTP",
+      "Transmits user and assistant messages, tool arguments and results, model metadata, usage data, and session paths when uploading is enabled",
+      "Supports configurable batching and shutdown behavior",
+      "Provides live and feedback-triggered telemetry modes"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_content_included_in_spans",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "default_disabled_but_configurable_upload",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Exports DeepSeek Harness session traces via OTLP/HTTP",
+      "Transmits user and assistant messages, tool arguments and results, model metadata, usage data, and session paths when uploading is enabled",
+      "Supports configurable batching and shutdown behavior",
+      "Provides live and feedback-triggered telemetry modes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:25.261Z",
+  "repositoryCommitSha": "5cbd025f184a7410eb78f9f6ec81a283bfef6c03",
+  "evidenceHash": "d3ee6e62a3f684a9f645fae59e7317fdcee9cc61cbb6291886fbda55a3336e06",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7e21caa4790f7b029e38766ce7b05eb70b55b2a1c63b9cfe34f4df2a8fd7ac15",
+  "shadowMode": false
+}

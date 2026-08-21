@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "automation",
+    "browser",
+    "desktop",
+    "ui",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a desktop integration plugin for dsh web that launches the local service, opens it in the default browser, and adds Windows tray, shortcut, and console-management features.",
+  "summaries": {
+    "zh": "为 dsh web 提供自动启动服务、打开默认浏览器以及 Windows 系统托盘和桌面快捷方式等桌面集成功能。",
+    "en": "Provides desktop integration for dsh web by launching the service, opening the default browser, and adding Windows tray and desktop shortcut features."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts the dsh web service and selects an available port",
+      "Automatically opens the default browser to the local web service",
+      "Creates and manages a Windows desktop shortcut",
+      "Runs a Windows system-tray helper and PowerShell process",
+      "Can hide the service console window",
+      "Modifies cordis.patch.yml during installation or repair"
+    ],
+    "reasons": [
+      {
+        "code": "process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_configuration_changes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "cross_platform_system_commands",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Starts the dsh web service and selects an available port",
+      "Automatically opens the default browser to the local web service",
+      "Creates and manages a Windows desktop shortcut",
+      "Runs a Windows system-tray helper and PowerShell process",
+      "Can hide the service console window",
+      "Modifies cordis.patch.yml during installation or repair"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:14.786Z",
+  "repositoryCommitSha": "d13d87e8362be4f03c3439540b09256ed9065499",
+  "evidenceHash": "b1308f862764ce19d1e7fc37494d5246198834c98e5fe81ba32f443bd4b03e80",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d2c790a3338d465a86cc1595693088bb1bbf83d51d22174e4e7cd526ee6ff8fa",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "desktop",
+    "tool",
+    "testing"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-specific terminal support plugin that adds process inspection and signal handling for persistent PTY shells, including process-tree termination and reversible runtime integration.",
+  "summaries": {
+    "zh": "为 Windows 上的持久化 PTY 终端提供进程监视、信号处理和进程树控制能力。",
+    "en": "Adds Windows process inspection, signal handling, and process-tree control for persistent PTY terminals."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Inspects Windows process trees and process identities through PowerShell CIM queries",
+      "Attaches to persistent PTY terminals and sends interrupt input",
+      "Terminates terminal process trees or individual processes using Windows process controls",
+      "Wraps and restores the runtime terminal-spawn function"
+    ],
+    "reasons": [
+      {
+        "code": "process_inspection_and_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "forceful_process_termination",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "powershell_system_queries",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "Inspects Windows process trees and process identities through PowerShell CIM queries",
+      "Attaches to persistent PTY terminals and sends interrupt input",
+      "Terminates terminal process trees or individual processes using Windows process controls",
+      "Wraps and restores the runtime terminal-spawn function"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:15.703Z",
+  "repositoryCommitSha": "c8c5e5afb50a7fd04aa0db8c313eb150cb7bc5b6",
+  "evidenceHash": "f84c1a00b484df44a285f696ab5e750bcef70c0068d4267eb87a881981daaf95",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8c2b79e81dc06cfafcaf8486220368805374d6569fbe5cb2bae40cfea7b20df0",
+  "shadowMode": false
+}

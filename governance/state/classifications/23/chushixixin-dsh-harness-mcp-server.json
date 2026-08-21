@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "mcp",
+    "planning",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an MCP server for orchestrating Harness agents and tools through synchronous or queued coding tasks, including shell and filesystem access; its documented unauthenticated remote code execution capability warrants human review.",
+  "summaries": {
+    "zh": "通过 MCP 将外部客户端连接到 Harness 智能体，以委派、排队并获取可执行的编码任务结果。",
+    "en": "Connects external MCP clients to Harness agents so they can delegate, queue, and retrieve executable coding tasks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts a StreamableHTTP MCP server",
+      "Bridges external MCP clients to Harness agents and tools",
+      "Executes synchronous and asynchronous coding tasks",
+      "Can invoke Harness tools including bash, filesystem, todo, and web capabilities",
+      "Returns structured task results including tool calls, changes, and verification"
+    ],
+    "reasons": [
+      {
+        "code": "remote_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated_http_endpoint",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_shell_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Starts a StreamableHTTP MCP server",
+      "Bridges external MCP clients to Harness agents and tools",
+      "Executes synchronous and asynchronous coding tasks",
+      "Can invoke Harness tools including bash, filesystem, todo, and web capabilities",
+      "Returns structured task results including tool calls, changes, and verification"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:13.450Z",
+  "repositoryCommitSha": "d174cea870aaa9f6dd67f2e9c3f3e3fa0f0e041e",
+  "evidenceHash": "bb70504a1b890bf9974bafa1caecdadd80515f151a04c67a3b0e48858ea53cdc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b5f3b3eb40bd23109464a5bb33c909aaa74730cbd7656f291975d35fc3bc24e9",
+  "shadowMode": false
+}

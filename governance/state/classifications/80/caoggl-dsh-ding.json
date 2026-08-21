@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "desktop",
+    "ui",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH host plugin that monitors agent conversation states and alerts users with configurable local audio and Windows notifications, including web controls and links back to conversations.",
+  "summaries": {
+    "zh": "一个在 DSH 对话完成或需要用户关注时播放提示音并显示 Windows 通知的宿主插件，支持网页端配置和通知跳转。",
+    "en": "A DSH host plugin that plays configurable sound alerts and shows Windows notifications when conversations finish or require attention, with web-based settings and conversation links."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "plays local audio alerts",
+      "displays Windows native notifications",
+      "monitors conversation completion and waiting states",
+      "provides web-based notification and sound settings",
+      "persists and imports or exports local configuration",
+      "opens browser links to related conversations"
+    ],
+    "reasons": [
+      {
+        "code": "local_desktop_notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_audio_playback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_deep_link_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "plays local audio alerts",
+      "displays Windows native notifications",
+      "monitors conversation completion and waiting states",
+      "provides web-based notification and sound settings",
+      "persists and imports or exports local configuration",
+      "opens browser links to related conversations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:39.338Z",
+  "repositoryCommitSha": "92a862a4b842b4a3142e43e067443760b0f00f54",
+  "evidenceHash": "52025f29a133e915f8834d56591ed897cd7b05a9c33047f2e22ec7602c1f21a8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e837271aec5fd09f7ce374c22c0759aafe18fffe5763f4e9cfca9c180a7c8889",
+  "shadowMode": false
+}

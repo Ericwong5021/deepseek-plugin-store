@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "agent",
+    "data",
+    "file",
+    "terminal",
+    "api",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness runtime plugin that detects and redacts secrets and PII before model and session-log access, with optional reversible vault storage and token substitution for file, shell, and HTTP operations.",
+  "summaries": {
+    "zh": "这是一个用于 DeepSeek Harness 的运行时敏感信息处理插件，可在数据进入模型和会话日志前遮盖密钥与个人信息，并支持通过 Vault 令牌执行文件、命令和 HTTP 操作。",
+    "en": "A DeepSeek Harness runtime plugin that redacts secrets and PII before they reach the model or session logs, with optional vault-backed token substitution for file, shell, and HTTP operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Detects and masks secrets and personally identifiable information in messages, tool outputs, and telemetry",
+      "Stores reversible secret values in memory or a file-based vault",
+      "Resolves vault tokens for file writes, shell commands, and HTTP requests",
+      "Performs shell execution and outbound HTTP requests through execution-time substitution tools"
+    ],
+    "reasons": [
+      {
+        "code": "secret-redaction-and-vault-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell-and-network-side-effects",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reversible-secret-handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Detects and masks secrets and personally identifiable information in messages, tool outputs, and telemetry",
+      "Stores reversible secret values in memory or a file-based vault",
+      "Resolves vault tokens for file writes, shell commands, and HTTP requests",
+      "Performs shell execution and outbound HTTP requests through execution-time substitution tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:15.737Z",
+  "repositoryCommitSha": "1a6591dbe30ca693c30b754af02b7defe645283e",
+  "evidenceHash": "50fb228a665b3eb5e5af9d19db7da135d080827651886caac7844da5ee30a999",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f5b495f19c38eedba2a55f23bf918c499f3d2b1de325aafb293abb56013cb734",
+  "shadowMode": false
+}

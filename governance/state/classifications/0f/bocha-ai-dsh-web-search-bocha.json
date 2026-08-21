@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "api",
+    "search",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DeepSeek Harness WebSearchProvider that queries Bocha's web search API and maps bounded results into the Harness web_search contract.",
+  "summaries": {
+    "zh": "通过博查 Web Search API 为 DeepSeek Harness 提供网页搜索结果的搜索提供插件。",
+    "en": "A DeepSeek Harness search provider that retrieves web results from the Bocha Web Search API."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Makes outbound HTTPS requests to the Bocha Web Search API",
+      "Uses a configured Bocha API key or credential reference",
+      "Returns web search sources including URLs, titles, snippets, and publication dates"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_usage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Makes outbound HTTPS requests to the Bocha Web Search API",
+      "Uses a configured Bocha API key or credential reference",
+      "Returns web search sources including URLs, titles, snippets, and publication dates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:11.185Z",
+  "repositoryCommitSha": "9aa7f25d253b657f6e4d3f858d8f9a7d22fb95ee",
+  "evidenceHash": "d2497280d03f54861e8f9c5be84433e5526a77ca412cd963b1dbeea1a06368d0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ddce171a6a7bd358fd2fb284aec143d67ccc1098435a3eff24a63e3f4f065367",
+  "shadowMode": false
+}

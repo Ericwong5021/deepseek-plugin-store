@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a dsh plugin that adjusts model reasoning effort between tool calls according to recent workload, making agent tool-chain execution the primary user-facing purpose.",
+  "summaries": {
+    "zh": "根据智能体最近的工具调用负载，自动调整后续请求的推理强度，以减少简单工具链的等待时间。",
+    "en": "Automatically adjusts reasoning effort for subsequent agent requests based on recent tool-call workload to reduce latency in simple tool chains."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes recent tool-call records in an agent session",
+      "Classifies tool-call workload by configured effort policy",
+      "Injects a reasoning_effort value into the next agent request configuration",
+      "Records per-tool duration telemetry in host logs"
+    ],
+    "reasons": [
+      {
+        "code": "modifies_agent_request_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "observes_tool_call_history",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_host_log_telemetry",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Observes recent tool-call records in an agent session",
+      "Classifies tool-call workload by configured effort policy",
+      "Injects a reasoning_effort value into the next agent request configuration",
+      "Records per-tool duration telemetry in host logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:09.399Z",
+  "repositoryCommitSha": "d29e7d9d73032516e37797ea69592ce18e0fe05f",
+  "evidenceHash": "cda5d3c865545be1bdddcae60ad64263e5ce9f94e567c6c75dc5338d33fa7440",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b2181d3ba4daad80d1fb3b34c6cd2879a032ccef806e64413479c00282f5a3e7",
+  "shadowMode": false
+}

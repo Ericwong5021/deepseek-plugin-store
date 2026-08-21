@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "cli",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin connects dsh sessions to BitFun as a delegated subagent through ACP v1 over stdio, exposing a configurable subagent tool and managing BitFun subprocesses for task execution.",
+  "summaries": {
+    "zh": "通过 ACP v1 将 dsh 会话连接到 BitFun，使模型能够调用可配置的 subagent_bitfun 工具委托任务执行。",
+    "en": "Connects dsh sessions to BitFun through ACP v1 so models can delegate tasks using a configurable subagent_bitfun tool."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers a subagent tool for delegating tasks from dsh sessions to BitFun",
+      "Spawns a BitFun ACP subprocess for each delegated task",
+      "Communicates with the subprocess over stdio JSON-RPC",
+      "Passes configured environment variables and permission behavior to the BitFun subprocess",
+      "Detects the BitFun CLI and terminates the subprocess after task completion"
+    ],
+    "reasons": [
+      {
+        "code": "process_spawn",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Registers a subagent tool for delegating tasks from dsh sessions to BitFun",
+      "Spawns a BitFun ACP subprocess for each delegated task",
+      "Communicates with the subprocess over stdio JSON-RPC",
+      "Passes configured environment variables and permission behavior to the BitFun subprocess",
+      "Detects the BitFun CLI and terminates the subprocess after task completion"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:13.410Z",
+  "repositoryCommitSha": "8dedce1ee1a463cfb21e2ac0d8518a8d3c67c5aa",
+  "evidenceHash": "6e071df7f4dfb0e5ae2d82b451555b6f85505ab422ff72354b74736f75c4db11",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "95902fa735dca15012dc5646f1768e1259a3f1ca865bf0d3f813d2e3fb6fe5b8",
+  "shadowMode": false
+}

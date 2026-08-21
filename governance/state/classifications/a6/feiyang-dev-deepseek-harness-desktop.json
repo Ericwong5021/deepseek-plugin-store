@@ -1,0 +1,93 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "automation",
+    "integration",
+    "search",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows Electron desktop client that embeds the DeepSeek Harness web UI and automates environment setup, local service startup, plugin installation, GitHub-based plugin discovery, settings, and application updates.",
+  "summaries": {
+    "zh": "一个面向 Windows 的 Electron 桌面客户端，用于嵌入 DeepSeek Harness Web UI 并管理环境安装、本地服务启动、插件安装和应用更新。",
+    "en": "A Windows Electron desktop client for embedding the DeepSeek Harness Web UI and managing environment setup, local service startup, plugin installation, and application updates."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Embeds and launches the DeepSeek Harness web UI in an Electron desktop application",
+      "Detects the local environment and installs Node.js-related dependencies and packages",
+      "Starts, stops, restarts, and manages local service processes",
+      "Installs and uninstalls npm-based plugins, including user-supplied install commands",
+      "Scans public GitHub repositories through the GitHub API to discover plugins",
+      "Downloads and installs application updates with SHA256 verification",
+      "Displays startup, installation, build, and command-line logs"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "arbitrary_plugin_install_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_access_and_downloads",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "github_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Embeds and launches the DeepSeek Harness web UI in an Electron desktop application",
+      "Detects the local environment and installs Node.js-related dependencies and packages",
+      "Starts, stops, restarts, and manages local service processes",
+      "Installs and uninstalls npm-based plugins, including user-supplied install commands",
+      "Scans public GitHub repositories through the GitHub API to discover plugins",
+      "Downloads and installs application updates with SHA256 verification",
+      "Displays startup, installation, build, and command-line logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:27.348Z",
+  "repositoryCommitSha": "529c24149393fb40f17f5d3cb14d602f7261554a",
+  "evidenceHash": "5e8d1ff91b83f80945aff5fd892e88aca6b112471ace5a6554375d7cfd9e75c1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d2e14a3d7612cda5c09e7f2e60ff59d57b54e35751eec8e9f1ce4c89b34f0385",
+  "shadowMode": false
+}

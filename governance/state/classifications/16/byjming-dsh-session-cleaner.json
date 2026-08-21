@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "data",
+    "ui",
+    "tool",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A local browser-based utility for inspecting and deleting DeepSeek Harness sessions, including related storage cleanup, optional backups, and post-deletion verification.",
+  "summaries": {
+    "zh": "通过本地网页界面查看并删除 DeepSeek Harness 会话，同时清理相关存储记录并支持删除前备份。",
+    "en": "A local web-based utility for viewing and deleting DeepSeek Harness sessions while cleaning related storage records and optionally creating backups."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Starts a local Node.js web service",
+      "Reads and displays DeepSeek Harness session metadata and storage files",
+      "Deletes selected session directories and related session records",
+      "Rewrites workspace and project-cache JSON storage files",
+      "Creates optional local backups and verifies deletion remnants",
+      "Checks whether the DeepSeek Harness process is running before deletion"
+    ],
+    "reasons": [
+      {
+        "code": "destructive-local-file-deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-storage-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-service-and-browser-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Starts a local Node.js web service",
+      "Reads and displays DeepSeek Harness session metadata and storage files",
+      "Deletes selected session directories and related session records",
+      "Rewrites workspace and project-cache JSON storage files",
+      "Creates optional local backups and verifies deletion remnants",
+      "Checks whether the DeepSeek Harness process is running before deletion"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:28.555Z",
+  "repositoryCommitSha": "1ad8143329ffe7a785910ec9943dd0bf7eadf94d",
+  "evidenceHash": "dfa891f8a6fe8cdd8b63733ba803dc81b5308dec122d28053103d005cb556dba",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bb33fda9853bf5d4eb182057b3ca452bca84d470e2e540f671806cfd8355826e",
+  "shadowMode": false
+}

@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "monitoring",
+    "workflow",
+    "planning"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A scheduling and monitoring plugin that runs Agent tasks on cron schedules, manages task state, enforces run timeouts, and displays local system and harness status.",
+  "summaries": {
+    "zh": "按 cron 时间表自动执行 Agent 任务，并通过命令和设置页仪表盘管理任务及查看系统与 Harness 状态。",
+    "en": "Schedules Agent tasks with cron timing and provides task management plus system and Harness status dashboards."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Schedules recurring cron-based tasks",
+      "Automatically launches Agent runs without user interaction at scheduled times",
+      "Executes task content using the current account permissions",
+      "Reads and writes task records and session logs on local storage",
+      "Provides process and harness status metrics through commands and a dashboard",
+      "Stops runs after a configurable timeout"
+    ],
+    "reasons": [
+      {
+        "code": "unattended_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "current_account_permissions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_write_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_status_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Schedules recurring cron-based tasks",
+      "Automatically launches Agent runs without user interaction at scheduled times",
+      "Executes task content using the current account permissions",
+      "Reads and writes task records and session logs on local storage",
+      "Provides process and harness status metrics through commands and a dashboard",
+      "Stops runs after a configurable timeout"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:37.424Z",
+  "repositoryCommitSha": "febeeb732f041ed4ce6485d2b64bd36e18d7e7c7",
+  "evidenceHash": "24676be89c4a858c4912f939775fbc96813225d73f69a0ec26f0bbaa27e44cdc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f17f2e8690a21f8b926c52ca8860c2faea4a5986c1df8d562556bfd6b0232a82",
+  "shadowMode": false
+}
