@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "workflow",
+    "notification",
+    "terminal",
+    "desktop",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A config-driven DeepSeek Harness plugin that automates lifecycle responses by matching events and running shell commands or sending desktop and webhook notifications, with CLI and web-based configuration and execution history.",
+  "summaries": {
+    "zh": "通过配置事件与命令或通知规则，自动响应 DeepSeek Harness 生命周期事件，并提供 CLI、Web 设置界面和执行历史记录。",
+    "en": "A config-driven DeepSeek Harness plugin that responds to lifecycle events with shell commands or desktop and webhook notifications, supported by CLI and web-based settings and execution history."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Triggers configured lifecycle hooks on DeepSeek Harness events",
+      "Executes configured commands through the platform shell",
+      "Sends desktop and webhook notifications",
+      "Writes hook execution history to a local JSONL file",
+      "Provides a web GUI and CLI for configuration, testing, and history inspection"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_notification_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Triggers configured lifecycle hooks on DeepSeek Harness events",
+      "Executes configured commands through the platform shell",
+      "Sends desktop and webhook notifications",
+      "Writes hook execution history to a local JSONL file",
+      "Provides a web GUI and CLI for configuration, testing, and history inspection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:31.108Z",
+  "repositoryCommitSha": "c2734002bbf0f9f2291d51d4204e27dfe7fd87e1",
+  "evidenceHash": "60b156fe0206b203d093d7abe82587e2e4877914dd96e1b04b824129dc2ec556",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "22eb922c05991a6ac08d9d00440419737ff6a275639361e57aeb7107806738ba",
+  "shadowMode": false
+}

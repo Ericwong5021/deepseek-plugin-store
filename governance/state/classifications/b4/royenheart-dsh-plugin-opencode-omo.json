@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "planning",
+    "terminal",
+    "file",
+    "search",
+    "context",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds an opencode and oh-my-openagent-compatible agent preset for DeepSeek Harness, centered on multi-role orchestration, delegated workflows, configurable model routing, and integrated shell, filesystem, search, and project-context tools.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供兼容 opencode 与 oh-my-openagent 的多角色智能体预设，支持任务编排、模型路由、文件与终端操作、搜索及项目上下文注入。",
+    "en": "Provides a DeepSeek Harness preset compatible with opencode and oh-my-openagent, supporting multi-role orchestration, model routing, filesystem and terminal tools, search, and project-context injection."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs shell commands through a persistent PTY",
+      "Reads, writes, edits, and patches local files",
+      "Delegates work to multiple subagents and workflows",
+      "Performs web search and HTTP fetching",
+      "Injects project rules and context files into prompts",
+      "Uses configurable primary and fallback models"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_and_shell_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "multi_agent_delegation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_web_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs shell commands through a persistent PTY",
+      "Reads, writes, edits, and patches local files",
+      "Delegates work to multiple subagents and workflows",
+      "Performs web search and HTTP fetching",
+      "Injects project rules and context files into prompts",
+      "Uses configurable primary and fallback models"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:33.329Z",
+  "repositoryCommitSha": "0e1abce3284e08d6100f189957e0b9de77282546",
+  "evidenceHash": "47c0061a7940d703c60918cdd02acdeab4e73f56c420e0c13846250dbb2dc345",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5b3c3627aa12807137362c81bdea299a56100f3b39b9914706bef5e9a2b99de5",
+  "shadowMode": false
+}

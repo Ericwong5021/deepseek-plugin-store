@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "agent",
+    "api",
+    "automation",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness Web UI plugin for organizing sessions by moving them between folders, permanently deleting them, and generating AI-based titles, with corresponding agent tools and HTTP endpoints.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 网页界面中移动、永久删除会话，并通过对话摘要生成会话标题的会话管理插件。",
+    "en": "A DeepSeek Harness session-management plugin for moving sessions between folders, permanently deleting them, and generating titles from conversation summaries."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Moves session logs and updates session workspace metadata",
+      "Permanently deletes session logs and related accounting data",
+      "Invokes an LLM to generate session titles",
+      "Exposes session operations through UI actions, agent tools, and HTTP endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "permanent_data_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_metadata_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_invocation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Moves session logs and updates session workspace metadata",
+      "Permanently deletes session logs and related accounting data",
+      "Invokes an LLM to generate session titles",
+      "Exposes session operations through UI actions, agent tools, and HTTP endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:05.615Z",
+  "repositoryCommitSha": "0acca8a4efcdd43487a3d38b2cbf57dd8df130fb",
+  "evidenceHash": "d480368cdb741942ab8fe196a0df5ff8f85ce201d85a0f97b1c9526d1dd9ce01",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "431aa7ce3d06f4303d9845a63b72e17f458eaebe949cfd5997d3356dbbe0dcc8",
+  "shadowMode": false
+}

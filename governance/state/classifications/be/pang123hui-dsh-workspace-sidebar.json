@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "layout",
+    "ui",
+    "file",
+    "terminal",
+    "api",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A right-side workspace panel for browsing files, viewing Git changes and history, previewing files, and inserting file references into chat; human review is required because the README states that file and Git writes bypass the shell sandbox and can affect arbitrary directories.",
+  "summaries": {
+    "zh": "为 DSH Web 提供右侧工作区侧边栏，用于浏览和预览文件、查看 Git 差异与提交历史，并将文件引用插入聊天输入框。",
+    "en": "Adds a DSH Web workspace sidebar for browsing and previewing files, inspecting Git diffs and history, and inserting file references into the chat input."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Browse directory trees and preview Markdown or code files",
+      "Read Git change lists, diffs, and commit history",
+      "Rename and delete files through the host process",
+      "Execute Git operations with danger-full-access, including staging and committing changes",
+      "Append relative file references to the chat input"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary-filesystem-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox-bypass",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive-file-operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git-write-operations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Browse directory trees and preview Markdown or code files",
+      "Read Git change lists, diffs, and commit history",
+      "Rename and delete files through the host process",
+      "Execute Git operations with danger-full-access, including staging and committing changes",
+      "Append relative file references to the chat input"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:02.265Z",
+  "repositoryCommitSha": "b4d9e048094bfa650adce159a7f308d72c877df9",
+  "evidenceHash": "af4cc5817492cea39a259be2ca5ee844732bf43dc5078e1760cf8158315b10c2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0848a45219929a8947ab80dde6c864a88db2789df2f544885bca93a4244adbb1",
+  "shadowMode": false
+}

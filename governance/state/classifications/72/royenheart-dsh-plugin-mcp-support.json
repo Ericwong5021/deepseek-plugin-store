@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "api",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a configuration and status wrapper for native dsh MCP clients, supporting local stdio processes and streamable HTTP MCP endpoints with layered settings and dynamic mounting.",
+  "summaries": {
+    "zh": "为 dsh 配置并管理 MCP 服务器，支持本地 stdio 进程和可流式 HTTP 端点，并提供挂载状态查看。",
+    "en": "Configures and manages MCP servers for dsh, supporting local stdio processes and streamable HTTP endpoints with mount-status visibility."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Configures and mounts native MCP clients for stdio and streamable HTTP servers",
+      "Can spawn configured local MCP server executables",
+      "Can connect to configured MCP endpoint URLs and send configured headers",
+      "Synchronizes MCP server settings and reports mount status in a UI tab"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_endpoint_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dynamic_service_mounting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Configures and mounts native MCP clients for stdio and streamable HTTP servers",
+      "Can spawn configured local MCP server executables",
+      "Can connect to configured MCP endpoint URLs and send configured headers",
+      "Synchronizes MCP server settings and reports mount status in a UI tab"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:32.948Z",
+  "repositoryCommitSha": "86b5f08d71d5340240292e5fcfaba0f5397763d3",
+  "evidenceHash": "e28fc0a94723317fcd9bc512a654bdcb94cb3cc4f9e21e505cb3424f3ab96154",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d3c5f88a7a5ae20f8981934b870daffa9835388f77385458972a3415673db4f9",
+  "shadowMode": false
+}

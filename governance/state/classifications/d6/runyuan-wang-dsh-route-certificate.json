@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "monitoring",
+    "data",
+    "workflow",
+    "file",
+    "testing"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "A DeepSeek Harness observer that creates separate structural RouteCertificate receipts for session terminal states and bounded evidence provenance without judging semantic correctness or modifying raw results.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 旁路生成绑定请求、终止事件和产物指纹的结构化回执，帮助核验多 Agent 任务交接的来源与终态完整性。",
+    "en": "A DeepSeek Harness observer that generates separate structural receipts linking requests, terminal events, and artifact fingerprints to verify multi-agent handoff provenance and completion state."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Observes durable session termination events",
+      "Reads bounded session and allowlisted artifact evidence",
+      "Writes separate receipt JSON files",
+      "Runs a bundled or operator-configured validator executable",
+      "Recomputes structural request, event, and artifact fingerprints"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "validator_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sensitive_session_artifact_visibility",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Observes durable session termination events",
+      "Reads bounded session and allowlisted artifact evidence",
+      "Writes separate receipt JSON files",
+      "Runs a bundled or operator-configured validator executable",
+      "Recomputes structural request, event, and artifact fingerprints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:43.810Z",
+  "repositoryCommitSha": "d25ac42fa76838a72cf5804ee42c52ee25634191",
+  "evidenceHash": "1f8bc7629d6157dcbf8afa16a1d48b1b3dfd33c8affc40e9331a1e66c4272562",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dcf915807e3d438dc45a2f067b862a876f4ab46cce08e432a7bf5ff905be9a12",
+  "shadowMode": false
+}

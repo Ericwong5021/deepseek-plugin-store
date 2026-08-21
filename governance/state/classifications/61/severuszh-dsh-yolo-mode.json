@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "workflow",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an automation plugin that intercepts sandbox escalation requests and uses configurable presets or an LLM to allow, deny, or delegate elevated access, including danger-full-access; the permission-granting capability warrants human review.",
+  "summaries": {
+    "zh": "通过预设或大模型裁决沙箱升权申请，并提供自定义权限层级、配置界面和审计日志的 DeepSeek Harness 审批自动化插件。",
+    "en": "An automation plugin for DeepSeek Harness that evaluates sandbox escalation requests with presets or an LLM and provides custom permission levels, configuration controls, and audit logging."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts sandbox privilege-escalation requests",
+      "Uses an LLM to decide whether escalation is allowed, denied, or delegated",
+      "Can automatically authorize workspace-write and danger-full-access modes under configurable presets",
+      "Supports per-tool permission policies and configurable fallback behavior",
+      "Writes JSONL audit logs of decisions and outcomes"
+    ],
+    "reasons": [
+      {
+        "code": "elevated-access-authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "llm-mediated-permission-decisions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "danger-full-access-allowance",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "audit-log-writing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Intercepts sandbox privilege-escalation requests",
+      "Uses an LLM to decide whether escalation is allowed, denied, or delegated",
+      "Can automatically authorize workspace-write and danger-full-access modes under configurable presets",
+      "Supports per-tool permission policies and configurable fallback behavior",
+      "Writes JSONL audit logs of decisions and outcomes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:52:41.845Z",
+  "repositoryCommitSha": "7edc724bacf576c701057cea2922b49f0a3774b4",
+  "evidenceHash": "8a218ac1e060ca0eae0fdb5cad9832586d6436e4e34a3204274e724126f9e1dd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ad4114782c86dd34fda4613e73aa094f1dec1ee2b11b6743a7d02faab6bb2a9",
+  "shadowMode": false
+}

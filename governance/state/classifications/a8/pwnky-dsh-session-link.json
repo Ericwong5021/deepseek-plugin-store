@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "memory",
+    "chat",
+    "browser",
+    "desktop",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for linking sessions and injecting bounded, read-only snapshots of referenced local conversations into new prompts, with optional browser deep-link handling.",
+  "summaries": {
+    "zh": "用于复制和解析会话深链，将本地会话的有界只读快照注入新对话上下文，并可选支持浏览器直接打开会话。",
+    "en": "A DeepSeek Harness plugin that links sessions, injects bounded read-only snapshots of local conversations into new prompts, and optionally opens sessions through browser deep links."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads referenced local session content to create bounded snapshots",
+      "Injects read-only session context into prompts",
+      "Adds web interface actions for copying and opening session links",
+      "Registers a Windows dsh:// URL protocol handler when explicitly installed"
+    ],
+    "reasons": [
+      {
+        "code": "local-session-data-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt-context-injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "url-protocol-registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads referenced local session content to create bounded snapshots",
+      "Injects read-only session context into prompts",
+      "Adds web interface actions for copying and opening session links",
+      "Registers a Windows dsh:// URL protocol handler when explicitly installed"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:58.470Z",
+  "repositoryCommitSha": "ef09612820ea4974e1d35f114480d2f48829b850",
+  "evidenceHash": "d4fe7c622d8860e92ab1d4553e790bf739f36170277506617732fa15a7824c51",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "96fcd9f85a401b9245d5e4c23414a73e5c2c0540a9a41add40b147938309d26d",
+  "shadowMode": false
+}

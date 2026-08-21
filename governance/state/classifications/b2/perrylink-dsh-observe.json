@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "integration",
+    "data",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An observability exporter that converts DeepSeek Harness session events into sanitized OpenTelemetry and Langfuse traces and metrics with batching, retries, and bounded offline buffering.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 会话事件转换为经清理的 OpenTelemetry 和 Langfuse 追踪与指标并导出到配置的后端。",
+    "en": "Exports sanitized DeepSeek Harness session events as OpenTelemetry and Langfuse traces and metrics to configured backends."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session event streams",
+      "Collects spans and token, cost, and context metrics",
+      "Sanitizes and truncates prompt, completion, and tool data",
+      "Transmits telemetry to configured OTLP or Langfuse endpoints",
+      "Writes sanitized records to a bounded durable offline buffer",
+      "Provides an optional runtime export enable/disable remote"
+    ],
+    "reasons": [
+      {
+        "code": "network-data-export",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session-read-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "durable-buffer-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "opt-in-export",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Reads session event streams",
+      "Collects spans and token, cost, and context metrics",
+      "Sanitizes and truncates prompt, completion, and tool data",
+      "Transmits telemetry to configured OTLP or Langfuse endpoints",
+      "Writes sanitized records to a bounded durable offline buffer",
+      "Provides an optional runtime export enable/disable remote"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:26.455Z",
+  "repositoryCommitSha": "818bf3ca6a3b2e0064608570180e5771dcb27c6f",
+  "evidenceHash": "1383896ac217218a4921817e258b6b1d85d6ddb180b8ab321df8e0b80987c156",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "884adbcc35927fe42b78c4b0477d66f6bfe8b41e6f126c6ba10af613c8458983",
+  "shadowMode": false
+}

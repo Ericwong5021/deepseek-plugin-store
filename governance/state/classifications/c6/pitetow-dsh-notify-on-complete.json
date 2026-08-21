@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "monitoring",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that monitors run and interaction events and delivers configurable desktop notifications and system sounds.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 在运行结束、模型提问或等待审批时发送可配置的桌面通知与系统提示音。",
+    "en": "Sends configurable desktop notifications and system sounds from DeepSeek Harness when runs finish or require questions and approvals."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Listens to DeepSeek Harness session and agent status events",
+      "Sends desktop notifications for run completion, questions, and approvals",
+      "Invokes platform notification and sound commands through detached child processes",
+      "Provides configurable notification behavior and quiet hours in the web GUI"
+    ],
+    "reasons": [
+      {
+        "code": "desktop_notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "event_listener",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Listens to DeepSeek Harness session and agent status events",
+      "Sends desktop notifications for run completion, questions, and approvals",
+      "Invokes platform notification and sound commands through detached child processes",
+      "Provides configurable notification behavior and quiet hours in the web GUI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:39.048Z",
+  "repositoryCommitSha": "21eefda31f414320b900557086f65c4a22ac13c8",
+  "evidenceHash": "322ecd4bc7ae7c4b321af06808b51206b41fdc74255ecd4cbdb673c22244f15e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5bf860019ae57f35cd1c7c41614f95dd125348bd905cf8185f2d91493f866c38",
+  "shadowMode": false
+}

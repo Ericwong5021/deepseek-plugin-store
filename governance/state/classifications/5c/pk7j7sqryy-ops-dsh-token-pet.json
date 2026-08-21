@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "monitoring",
+    "data",
+    "ui",
+    "theme",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DSH header widget that visualizes session token usage alongside date, weather forecasts, and severe-weather indicators, with documented external weather requests.",
+  "summaries": {
+    "zh": "在 DSH 会话头部显示 Token 用量、上下文构成、日期、实时天气、未来三天预报和天气预警的可视化小部件。",
+    "en": "A DSH session-header widget that visualizes token usage and context details alongside the date, current weather, three-day forecasts, and severe-weather indicators."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays current-session token usage and context breakdown",
+      "Displays the date, current weather, three-day forecast, and severe-weather indicators",
+      "Fetches geolocation and weather data from ipwho.is and Open-Meteo",
+      "Uses host RPC for weather requests and may fall back to shell curl"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_fallback_for_weather_fetch",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays current-session token usage and context breakdown",
+      "Displays the date, current weather, three-day forecast, and severe-weather indicators",
+      "Fetches geolocation and weather data from ipwho.is and Open-Meteo",
+      "Uses host RPC for weather requests and may fall back to shell curl"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:45.005Z",
+  "repositoryCommitSha": "b498347e3c74aaced411c0ead13db3fc15222b57",
+  "evidenceHash": "4ef684d492aedec52b4948ece032e6f225e3d5f9f9bc9fdf55a30c5cb7412a07",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c238ee8ecaf9e92dc7d17b6a0ff6033ee66e7efe606e9fe1aa8ab0c58868e9f8",
+  "shadowMode": false
+}

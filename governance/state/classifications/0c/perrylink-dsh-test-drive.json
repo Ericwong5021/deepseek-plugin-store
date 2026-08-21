@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "cli",
+    "automation",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A testing and debugging plugin for DeepSeek Harness that installs candidate plugins in temporary profiles, runs smoke and optional capability tests, and produces structured pass/fail reports.",
+  "summaries": {
+    "zh": "用于在临时 DeepSeek Harness 配置中安装插件、执行启动与能力测试并生成结构化结果报告的测试工具。",
+    "en": "A DeepSeek Harness testing tool that installs plugins in temporary profiles, runs boot and optional capability checks, and generates structured result reports."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs and executes repository, package, or tarball targets through dsh and pnpm child processes",
+      "Runs headless boot smoke tests and optional tool or command capability assertions",
+      "Creates, renames, deletes, and quarantines temporary test directories",
+      "Can access network services required by child installation and test processes",
+      "Can forward explicitly selected environment variable names to child processes",
+      "Stores structured test reports in a plugin storage domain when available"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_target_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_process_and_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "temporary_filesystem_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "explicit_environment_forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Installs and executes repository, package, or tarball targets through dsh and pnpm child processes",
+      "Runs headless boot smoke tests and optional tool or command capability assertions",
+      "Creates, renames, deletes, and quarantines temporary test directories",
+      "Can access network services required by child installation and test processes",
+      "Can forward explicitly selected environment variable names to child processes",
+      "Stores structured test reports in a plugin storage domain when available"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:27.799Z",
+  "repositoryCommitSha": "b36c12d34abf70cab501992b698d88c5fb188f0e",
+  "evidenceHash": "54dd90e1da974775d77d3f75c7546ba604a76f4388208cf2620f12c9accde5ca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "113272cde9133f56feab92a86df463fe59593505a50dcd61e98eaedcbb69be52",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "data",
+    "debugging",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH performance utility focused on reducing fork, projection, materialization, and cold-session memory costs for very large sessions through internal runtime patches, cache management, chunked persistence, and a local configuration API.",
+  "summaries": {
+    "zh": "面向 DSH 超大会话的性能优化插件，通过内部方法补丁、分片预热、分片持久化和冷会话缓存裁剪来降低部分操作的阻塞与内存开销。",
+    "en": "A DSH performance optimization plugin that reduces selected large-session fork, projection, persistence, and memory costs through internal patches, chunked processing, and cold-session cache trimming."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Monkey-patches internal DSH session, persistence, projection, and preparation methods",
+      "Optimizes large-session forks through shared immutable event data",
+      "Warms projection caches incrementally and backfills fork caches",
+      "Materializes session data into chunked zstd frames",
+      "Trims the cold-session LRU cache and checks the V8 heap limit",
+      "Exposes a local HTTP API for statistics and runtime configuration",
+      "Persists runtime configuration changes and probes DSH version compatibility"
+    ],
+    "reasons": [
+      {
+        "code": "internal-runtime-patching",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-api-and-persistent-configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "large-session-memory-and-persistence-modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Monkey-patches internal DSH session, persistence, projection, and preparation methods",
+      "Optimizes large-session forks through shared immutable event data",
+      "Warms projection caches incrementally and backfills fork caches",
+      "Materializes session data into chunked zstd frames",
+      "Trims the cold-session LRU cache and checks the V8 heap limit",
+      "Exposes a local HTTP API for statistics and runtime configuration",
+      "Persists runtime configuration changes and probes DSH version compatibility"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:37.758Z",
+  "repositoryCommitSha": "4e48b278b0d071b89a645bfc08fa45f90cfd8f4f",
+  "evidenceHash": "45290da03f7fb4dab87feb8d90d81723fb46aff14ed8a15e99eddad6d19718aa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "113c3a343d88d797e369ee3b5520bd448a663890133d18cde0c0e384b9e1f55d",
+  "shadowMode": false
+}

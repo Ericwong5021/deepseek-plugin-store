@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "context",
+    "monitoring",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness runtime guard that tracks untrusted tool-result provenance, gates configured privileged calls, and refuses detected credential or canary material in configured egress arguments.",
+  "summaries": {
+    "zh": "用于 DeepSeek Harness 的运行时防护插件，可根据不可信工具结果追踪污染状态、拦截特权调用，并拒绝向指定外发工具传递检测到的凭据或金丝雀内容。",
+    "en": "A DeepSeek Harness runtime guard that tracks taint from untrusted tool results, gates configured privileged calls, and refuses detected credentials or canaries in selected egress arguments."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Marks agent state after configured untrusted tool results",
+      "Gates configured privileged tool calls based on provenance and detected signals",
+      "Scans configured egress tool arguments for credential patterns and can refuse matching calls",
+      "Annotates selected untrusted tool results as quoted data",
+      "Observes tool names, arguments, and text results passing through the harness"
+    ],
+    "reasons": [
+      {
+        "code": "privileged-call-gating",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-egress-blocking",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool-interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Marks agent state after configured untrusted tool results",
+      "Gates configured privileged tool calls based on provenance and detected signals",
+      "Scans configured egress tool arguments for credential patterns and can refuse matching calls",
+      "Annotates selected untrusted tool results as quoted data",
+      "Observes tool names, arguments, and text results passing through the harness"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:52:11.325Z",
+  "repositoryCommitSha": "421e6726d9d0865e36fbe00a12a263409390dc11",
+  "evidenceHash": "99687d4ab29b3eab0d92075f72fe3742b374a1aea2a20e7ac4c969d10cc6c4ea",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ef301be3138682a4975f49b4c77fe9a07644b428b1b40b8cebfc5d12c9b9996c",
+  "shadowMode": false
+}

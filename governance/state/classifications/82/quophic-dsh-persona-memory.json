@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "knowledge",
+    "search",
+    "agent",
+    "automation",
+    "data",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A persistent memory and context plugin for DeepSeek Harness that manages user and project memory files, exposes memory tools and search, injects selected memories into requests, and optionally performs LLM-based learning and consolidation.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供跨会话的用户、项目和失败记忆存储、检索及请求上下文注入，并配有记忆管理界面。",
+    "en": "Provides DeepSeek Harness with persistent user, project, and failure memory storage, search, request-context injection, and a memory management interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores persistent user, project, preference, and failure memories in local files",
+      "Reads, adds, updates, deletes, and rewrites memory entries through plugin tools",
+      "Injects selected memory and standing-instruction content into request context",
+      "Searches memory using optional SQLite full-text and vector indexes",
+      "Uses session LLM calls for optional background learning and memory consolidation",
+      "Provides a WebUI page for memory and plugin configuration management",
+      "Can optionally access remote embedding APIs or download local embedding models"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_local_file_writes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_llm_and_external_embedding_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Stores persistent user, project, preference, and failure memories in local files",
+      "Reads, adds, updates, deletes, and rewrites memory entries through plugin tools",
+      "Injects selected memory and standing-instruction content into request context",
+      "Searches memory using optional SQLite full-text and vector indexes",
+      "Uses session LLM calls for optional background learning and memory consolidation",
+      "Provides a WebUI page for memory and plugin configuration management",
+      "Can optionally access remote embedding APIs or download local embedding models"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:49.542Z",
+  "repositoryCommitSha": "22e6d4cef2fdc1dc23ab4439a047e09cc4ca8b3e",
+  "evidenceHash": "e257a7a4b8eade5be5c526e0a27dc4ab320dc0608fe6fa489a9f0e7ff4681d5c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b92465ec503a16fc35817735a984d897b90be9dad08d5f665602736f4cce23bd",
+  "shadowMode": false
+}

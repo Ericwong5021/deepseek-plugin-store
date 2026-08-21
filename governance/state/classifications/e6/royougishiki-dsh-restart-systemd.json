@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "api",
+    "agent",
+    "ui",
+    "workflow",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A WebUI plugin for scheduling dsh-web restarts through a sidebar button, /restart command, and local API, with systemd process control, reconnect handling, and best-effort resumption of interrupted agents.",
+  "summaries": {
+    "zh": "通过侧栏按钮、/restart 命令和本地 API 调度 dsh-web 重启，并在服务恢复后自动重连和尝试续接中断的智能体会话。",
+    "en": "Schedules dsh-web restarts through a sidebar button, the /restart command, or a local API, then reconnects the browser and attempts to resume interrupted agent sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a WebUI restart button and /restart command",
+      "Exposes a local restart API endpoint",
+      "Schedules systemd user-service restart via process spawning",
+      "Writes and consumes restart and resume state files",
+      "Attempts to resume interrupted agent sessions after restart",
+      "Automatically reconnects the browser after service restart"
+    ],
+    "reasons": [
+      {
+        "code": "system_service_restart",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_spawn",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "state_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_resume",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds a WebUI restart button and /restart command",
+      "Exposes a local restart API endpoint",
+      "Schedules systemd user-service restart via process spawning",
+      "Writes and consumes restart and resume state files",
+      "Attempts to resume interrupted agent sessions after restart",
+      "Automatically reconnects the browser after service restart"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:37.652Z",
+  "repositoryCommitSha": "5911c43e1e6f4519be72144965d5bb369c00fc00",
+  "evidenceHash": "2b2231e31cff379b58e2e81521b4a349f3c9018536f19cf81b9b4a113c8c45da",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac9f894d38a5bb9e57e8d263b50b71c7e1dfc4c80ec66eb2bc7a50f50837dbb2",
+  "shadowMode": false
+}

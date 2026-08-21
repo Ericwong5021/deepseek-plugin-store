@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "document",
+    "knowledge",
+    "search",
+    "context",
+    "agent",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local document knowledge base that imports md/txt files, indexes them with embeddings, supports hybrid retrieval and citation checks, and can inject search results into the calling agent.",
+  "summaries": {
+    "zh": "用于将本地 Markdown 或纯文本文档建立为可检索知识库，并提供混合搜索、引用核验和结果注入功能。",
+    "en": "Builds a local knowledge base from Markdown or text files with hybrid search, citation checking, and optional result injection into the calling agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads user-selected md/txt files through the harness filesystem service",
+      "Stores document chunks, embeddings, and metadata in the host storage backend",
+      "Provides hybrid semantic and keyword search with optional agent-context injection",
+      "Runs an optionally configured external embedding command through a subprocess interface"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_subprocess",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Reads user-selected md/txt files through the harness filesystem service",
+      "Stores document chunks, embeddings, and metadata in the host storage backend",
+      "Provides hybrid semantic and keyword search with optional agent-context injection",
+      "Runs an optionally configured external embedding command through a subprocess interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:23.801Z",
+  "repositoryCommitSha": "0240061f56dc4b4dab875d628778c3ed29f03f3f",
+  "evidenceHash": "8aef68fd72bbfe28a998ae24eadaef21a2e8f3c11ad11cc5e8c039a311313f18",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d96beecb883b5c97736203423aff2b0c950820f1c1edb97c3c93f751eaecfa09",
+  "shadowMode": false
+}

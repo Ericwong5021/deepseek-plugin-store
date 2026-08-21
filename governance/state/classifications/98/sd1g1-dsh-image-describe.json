@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "file",
+    "integration",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a plugin whose primary purpose is enabling text-only models to obtain descriptions of images through a describe_image tool, using local files or session attachments and a configured vision model.",
+  "summaries": {
+    "zh": "为纯文本模型提供 describe_image 工具，通过本地图片文件或会话附件调用视觉模型生成图片描述。",
+    "en": "Provides a describe_image tool that lets text-only models generate image descriptions from local image files or session attachments through a configured vision model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local image files through the host filesystem service",
+      "Retrieves image attachments from session messages and event logs",
+      "Sends image references to a configured vision model for description",
+      "Resizes or re-encodes images before vision-model processing"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_history_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Reads local image files through the host filesystem service",
+      "Retrieves image attachments from session messages and event logs",
+      "Sends image references to a configured vision model for description",
+      "Resizes or re-encodes images before vision-model processing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:52:15.677Z",
+  "repositoryCommitSha": "396c2efc3c8c02c2eece63215365d52c83c02451",
+  "evidenceHash": "285ee9da9a0f50cb84c71ea50220347fcacc43ebbdda6162aab49ebffbbf3417",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3e80abc08ebf04d17869d9bc15317b7aefee80e034860f93db89b41408e2f4b6",
+  "shadowMode": false
+}

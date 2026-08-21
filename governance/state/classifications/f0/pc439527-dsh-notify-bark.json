@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "integration",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that monitors session events and sends configurable completion, failure, approval, and waiting-state notifications to an iPhone through a Bark Server, with Host-side configuration and a browser settings panel.",
+  "summaries": {
+    "zh": "监听 DSH 会话事件，并通过用户配置的 Bark Server 向 iPhone 推送任务完成、失败、审批和等待状态通知。",
+    "en": "Monitors DSH session events and sends configurable completion, failure, approval, and waiting-state notifications to an iPhone through a user-configured Bark Server."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "listens for DSH session events",
+      "sends HTTP push notifications to a configured Bark URL",
+      "provides a browser settings page using loopback RPC",
+      "stores the Bark URL in Host-side settings"
+    ],
+    "reasons": [
+      {
+        "code": "external_http_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "secret_configuration_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "listens for DSH session events",
+      "sends HTTP push notifications to a configured Bark URL",
+      "provides a browser settings page using loopback RPC",
+      "stores the Bark URL in Host-side settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:08.668Z",
+  "repositoryCommitSha": "26e229876312b18cc46b7a7ba04daa73e0226603",
+  "evidenceHash": "980eb3cf9335cbb768b9fa715c889efff75a222dddc6f35c6a81c2b64271f93d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e0171d4e26d028368514808bf21c0c2b1ea43f7f5d920e6b57aa0609ca07ceeb",
+  "shadowMode": false
+}

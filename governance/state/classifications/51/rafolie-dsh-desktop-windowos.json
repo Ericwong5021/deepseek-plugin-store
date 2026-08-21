@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "chat",
+    "notification",
+    "automation",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows desktop shell for DeepSeek Harness that embeds its local webchat, manages the DSH service, provides tray and diagnostic features, and supports updates and notifications.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供集成本地 Web 聊天、服务管理、系统托盘、日志诊断与任务通知的 Windows 桌面壳。",
+    "en": "A Windows desktop shell for DeepSeek Harness that embeds local webchat and provides service management, tray controls, diagnostics, updates, and task notifications."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches and supervises a local DSH web service",
+      "Embeds a localhost webchat interface in a Windows desktop shell",
+      "Reads and writes local settings, logs, diagnostic bundles, and application data",
+      "Can install or update DSH packages and the desktop plugin with user interaction",
+      "Displays system-tray controls and Windows task-completion notifications",
+      "Supports file-based image attachments through the embedded chat interface"
+    ],
+    "reasons": [
+      {
+        "code": "process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_installation_and_updates",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Launches and supervises a local DSH web service",
+      "Embeds a localhost webchat interface in a Windows desktop shell",
+      "Reads and writes local settings, logs, diagnostic bundles, and application data",
+      "Can install or update DSH packages and the desktop plugin with user interaction",
+      "Displays system-tray controls and Windows task-completion notifications",
+      "Supports file-based image attachments through the embedded chat interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:56.317Z",
+  "repositoryCommitSha": "9e6b3af188f4c12bd3d267556dd816ab033883ae",
+  "evidenceHash": "8a9e12070ceb87c7ebfe49e609e05bd59c53e259dbf1cdbed0621b3116a669eb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "03aee8e98de9ff301c89542ed8ce954a1c0283f67939bc95ed5c4627fb348a9d",
+  "shadowMode": false
+}

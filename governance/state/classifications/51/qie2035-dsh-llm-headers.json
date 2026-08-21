@@ -1,0 +1,67 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "插件通过包装全局 fetch，按 URL 模式为 LLM API 请求注入或覆盖配置的 HTTP Headers，并提供 Web UI 与配置文件设置，因此主要属于外部服务集成。",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的匹配 LLM API 请求注入或覆盖自定义 HTTP Headers，并支持通过 Web UI 或配置文件实时配置。",
+    "en": "Injects or overrides custom HTTP headers on matching DeepSeek Harness LLM API requests, with configuration available through the Web UI or configuration files."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "配置匹配 URL 的出站 LLM API 请求 HTTP Headers",
+      "覆盖同名请求头并通过全局 fetch 代理生效",
+      "通过 Web UI 或配置文件实时更新请求头配置"
+    ],
+    "reasons": [
+      {
+        "code": "outbound_request_header_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "global_fetch_wrapping",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "配置匹配 URL 的出站 LLM API 请求 HTTP Headers",
+      "覆盖同名请求头并通过全局 fetch 代理生效",
+      "通过 Web UI 或配置文件实时更新请求头配置"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:09.401Z",
+  "repositoryCommitSha": "9565595b15ec864eb3e523c567798ebd940dad4a",
+  "evidenceHash": "2937581ce55cab59f05646969b23cd2f830e6c6903fd8c7eb01155e88b1849a7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b3aad807f843e0c3609d671584b7879cbc661e32c541644cfbe8eb2f161650da",
+  "shadowMode": false
+}

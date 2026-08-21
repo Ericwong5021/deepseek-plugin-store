@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "automation",
+    "browser",
+    "debugging",
+    "file",
+    "monitoring",
+    "notification",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "用于监控插件健康状态：预检并自动禁用导入失败的插件，持久显示浏览器告警，并为告警动作启动无头修复会话。",
+  "summaries": {
+    "zh": "监控 DSH 插件健康状态，在发现导入失败时自动禁用问题插件、持久显示告警并启动对应的无头修复会话。",
+    "en": "Monitors DSH plugin health by disabling import-failing plugins, displaying persistent browser alerts, and starting corresponding headless repair sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "预检插件入口并检测导入失败",
+      "自动禁用无法导入的插件并写入告警文件",
+      "在浏览器中显示可持久化的插件故障告警",
+      "通过主机端点清除告警状态",
+      "为告警动作启动无头修复会话",
+      "使用文件锁避免并发重复启动修复会话"
+    ],
+    "reasons": [
+      {
+        "code": "modifies_plugin_profile_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "starts_headless_repair_sessions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_and_clears_local_alert_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "预检插件入口并检测导入失败",
+      "自动禁用无法导入的插件并写入告警文件",
+      "在浏览器中显示可持久化的插件故障告警",
+      "通过主机端点清除告警状态",
+      "为告警动作启动无头修复会话",
+      "使用文件锁避免并发重复启动修复会话"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:52:33.642Z",
+  "repositoryCommitSha": "459f0c32c721333e2e1312b13ea5645c03ff021f",
+  "evidenceHash": "df4cb8d20557483a42aceee1cf0acf66c8f83b70bfccd59ae36f60efd58a482c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3fe60b2deb46d4825d2e633d21c0b206a947f97742dfdbb0bec70eaf82f2b155",
+  "shadowMode": false
+}

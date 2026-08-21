@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides image recognition for text-based DSH conversations by sending uploaded or local images to configured OpenAI-compatible vision models, with persistent history and multi-turn vision_ask follow-ups.",
+  "summaries": {
+    "zh": "为文本模型提供图片识别能力，将上传或本地图片发送至配置的兼容 OpenAI 接口视觉模型，并支持多轮追问。",
+    "en": "Adds image recognition to text-based conversations by sending uploaded or local images to a configured OpenAI-compatible vision model with support for multi-turn follow-up queries."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Accepts pasted, dragged, imported, and locally referenced images for visual recognition",
+      "Sends image data to a configured OpenAI-compatible vision model endpoint",
+      "Stores images, recognition history, provider configuration, and API keys on local disk",
+      "Registers a vision_ask tool for multi-turn image follow-up queries"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_sensitive_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts pasted, dragged, imported, and locally referenced images for visual recognition",
+      "Sends image data to a configured OpenAI-compatible vision model endpoint",
+      "Stores images, recognition history, provider configuration, and API keys on local disk",
+      "Registers a vision_ask tool for multi-turn image follow-up queries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:19.975Z",
+  "repositoryCommitSha": "d02f59ff9c98470b703512255fd5b8c73c2c66cd",
+  "evidenceHash": "9b455330fdbbedbb32ea31e68ecac9f2dd75cd43134d46662ba8e2b0148699cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "721c0da74fac36482f17d7163a1539d8ec18eec4a190993b8686fb52dfd0e189",
+  "shadowMode": false
+}

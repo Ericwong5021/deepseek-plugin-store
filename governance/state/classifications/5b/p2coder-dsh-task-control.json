@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "chat",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides explicit controls for pausing, resuming, and cancelling active DSH conversation tasks, including configurable interruption modes, persisted state, UI controls, commands, and a plugin API.",
+  "summaries": {
+    "zh": "为 DSH Web 中正在运行的对话任务提供可配置的暂停、恢复和取消控制，并支持通过界面、斜杠命令及插件 API 调用。",
+    "en": "Provides configurable pause, resume, and cancel controls for running DSH Web conversation tasks through UI buttons, slash commands, and a plugin API."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Pauses, resumes, and cancels running conversation tasks",
+      "Interrupts reasoning and in-flight tools depending on the selected pause mode",
+      "Persists task-control state across restarts",
+      "Exposes task-control operations to other plugins through an API"
+    ],
+    "reasons": [
+      {
+        "code": "interrupts_in_flight_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "may_leave_partial_tool_side_effects",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_task_state_on_disk",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Pauses, resumes, and cancels running conversation tasks",
+      "Interrupts reasoning and in-flight tools depending on the selected pause mode",
+      "Persists task-control state across restarts",
+      "Exposes task-control operations to other plugins through an API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:45.051Z",
+  "repositoryCommitSha": "7369ba718550299cc98834664318c830de81db80",
+  "evidenceHash": "bb94c252a3431b4d5df15d93c68349ddf9ff731947ff7619dd722f74150fa379",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7e8aba667124c9e1dac2bf2d261196e2210a4ff03606709ef924a0a347822ead",
+  "shadowMode": false
+}

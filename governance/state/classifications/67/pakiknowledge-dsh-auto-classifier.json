@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "workflow",
+    "tool",
+    "terminal",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is automating permission classification for tool calls, including blocking dangerous operations, deciding sandbox escalations, and optionally consulting an LLM judge.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供自动权限分类，在工具执行前拦截危险操作并处理沙箱权限升级请求。",
+    "en": "Automates permission classification in DeepSeek Harness by screening tool calls before execution and handling sandbox escalation requests."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts tool pre-execution requests and classifies them",
+      "Blocks configured dangerous commands and protected-path operations",
+      "Automatically allows or rejects sandbox permission escalations in auto sessions",
+      "Optionally sends projected operation context to a configured LLM provider over HTTPS",
+      "Creates git snapshots before allowed high-risk escalations",
+      "Persists classifier configuration and denial logs"
+    ],
+    "reasons": [
+      {
+        "code": "AUTOMATED_TOOL_AUTHORIZATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "EXTERNAL_PROVIDER_REQUESTS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "WORKSPACE_STATE_MODIFICATION",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts tool pre-execution requests and classifies them",
+      "Blocks configured dangerous commands and protected-path operations",
+      "Automatically allows or rejects sandbox permission escalations in auto sessions",
+      "Optionally sends projected operation context to a configured LLM provider over HTTPS",
+      "Creates git snapshots before allowed high-risk escalations",
+      "Persists classifier configuration and denial logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:54.085Z",
+  "repositoryCommitSha": "44550f8c38c857b7e05f0440af988fdba486523c",
+  "evidenceHash": "15caee90014dfabbe1bc61e8819cca70877b077f42304b323030ffcebfdd4d95",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "473f4d4f0b400bd62c4cdb233fc850a890f5de5ba5a3f668425cd0eecf8bb302",
+  "shadowMode": false
+}

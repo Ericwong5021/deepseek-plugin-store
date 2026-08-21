@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "data",
+    "file",
+    "workflow",
+    "tool",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A session trace and context-management plugin that records immutable execution versions, supports timeline replay, and resumes eligible sessions from Git-backed worktrees.",
+  "summaries": {
+    "zh": "记录会话消息与工具执行的不可变版本，提供时间线回放以及从历史版本恢复执行功能。",
+    "en": "Records immutable versions of session messages and tool executions, with timeline replay and execution resumption from historical versions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Subscribes to session events and records completed assistant messages, reasoning, user inputs, and tool calls/results",
+      "Stores immutable JSON trace versions with model, provider, token usage, inputs, outputs, and session metadata",
+      "Creates a dedicated Git repository with commits and materialized worktrees for trace versions",
+      "Provides commands to list, inspect, replay, and resume sessions from eligible trace versions",
+      "Reconstructs context and starts a new execution session in a corresponding worktree",
+      "Coordinates pause and resume state with a task-control service"
+    ],
+    "reasons": [
+      {
+        "code": "session_data_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_git_writes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "resumed_tool_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Subscribes to session events and records completed assistant messages, reasoning, user inputs, and tool calls/results",
+      "Stores immutable JSON trace versions with model, provider, token usage, inputs, outputs, and session metadata",
+      "Creates a dedicated Git repository with commits and materialized worktrees for trace versions",
+      "Provides commands to list, inspect, replay, and resume sessions from eligible trace versions",
+      "Reconstructs context and starts a new execution session in a corresponding worktree",
+      "Coordinates pause and resume state with a task-control service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:52.438Z",
+  "repositoryCommitSha": "2c54101fe5d17a6cc17242ad4545ce9d5bda38d1",
+  "evidenceHash": "46886f476a0c6d6e8a1138024f953a165a30d815297fd069a5600a7774c38361",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "709083a5e8dd2d7e87fc78b4ea8f3fefe74736fd2bbd141cd17d4a241bccaf8a",
+  "shadowMode": false
+}
