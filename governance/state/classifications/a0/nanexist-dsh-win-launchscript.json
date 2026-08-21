@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "desktop",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Windows launcher scripts automate starting the local DSH web service, opening a supported browser, and cleaning up the service when the browser closes.",
+  "summaries": {
+    "zh": "用于在 Windows 上启动本地 DSH Web 服务、打开浏览器并在退出时清理由脚本启动的服务。",
+    "en": "A Windows launcher that starts the local DSH web service, opens it in a supported browser, and cleans up the service on exit."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Starts a local DSH web service on 127.0.0.1:3080",
+      "Opens a Chrome or Edge browser window",
+      "Stops the service started by the script when the browser window closes",
+      "Stores DSH local data in a repository-relative data directory"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Starts a local DSH web service on 127.0.0.1:3080",
+      "Opens a Chrome or Edge browser window",
+      "Stops the service started by the script when the browser window closes",
+      "Stores DSH local data in a repository-relative data directory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:12.132Z",
+  "repositoryCommitSha": "0f708ea17d20d72e1ccf7c655d58ba7df4ed70c4",
+  "evidenceHash": "4fb66bdc0e5e80032bd21a90bd4e36fd1900c01778e8719b6cefac60199482c9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ee2606c108cec0f1a6982319731038763767f79bbe51c0c3eaeda65d3b152bf6",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "automation",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows Electron desktop shell for launching, monitoring, and controlling the local DeepSeek Harness web host, with tray controls, configuration, logs, and browser access.",
+  "summaries": {
+    "zh": "这是一个 Windows 桌面外壳，用于启动、监控和控制本地 DeepSeek Harness Web 主机，并提供托盘、配置、日志和浏览器访问功能。",
+    "en": "A Windows desktop shell for launching, monitoring, and controlling a local DeepSeek Harness web host with tray controls, configuration, logs, and browser access."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Launches the local dsh web host process",
+      "Manages and terminates the spawned process tree",
+      "Reads and writes local configuration and log files",
+      "Opens the hosted application in an Electron window or external browser"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_tree_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Launches the local dsh web host process",
+      "Manages and terminates the spawned process tree",
+      "Reads and writes local configuration and log files",
+      "Opens the hosted application in an Electron window or external browser"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:37.861Z",
+  "repositoryCommitSha": "b23f5d6870ca619d9aedbfc2bd07951dec2de547",
+  "evidenceHash": "1706716b9b4241ce9723bdf0a189252b94cf280b63c848062339ae319ab17293",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6f920e4eefd4a9c7ff276d23bfe811eaae06c5f3782bc3f2a24d678553944a29",
+  "shadowMode": false
+}

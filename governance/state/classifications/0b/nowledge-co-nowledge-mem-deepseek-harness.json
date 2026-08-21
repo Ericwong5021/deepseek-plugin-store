@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "mcp",
+    "api",
+    "cli",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that provides persistent cross-tool memory through startup context, prompt-time recall, MCP tools, and end-of-turn transcript capture.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供持久化跨工具记忆，包括会话启动上下文、提示词召回、MCP 记忆工具和回合结束时的线程记录。",
+    "en": "Provides DeepSeek Harness with persistent cross-tool memory through startup context, prompt-time recall, MCP memory tools, and end-of-turn thread capture."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects a memory context bundle at session startup",
+      "Performs prompt-time memory recall through the nmem CLI",
+      "Exposes Nowledge Mem tools through an MCP bridge",
+      "Imports completed conversation transcripts into the memory service",
+      "Supports local or remote memory endpoints configured with environment variables"
+    ],
+    "reasons": [
+      {
+        "code": "conversation-memory-transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-mcp-service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-cli-execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Injects a memory context bundle at session startup",
+      "Performs prompt-time memory recall through the nmem CLI",
+      "Exposes Nowledge Mem tools through an MCP bridge",
+      "Imports completed conversation transcripts into the memory service",
+      "Supports local or remote memory endpoints configured with environment variables"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:30.145Z",
+  "repositoryCommitSha": "b75629b10823aca8cf7cc268868c550542ab2580",
+  "evidenceHash": "d8d0c7620f80b1f0c80a97559665b6ad470f8f746c50f5829a2e341b2012bf33",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "afe1a08ea4dd564ba08feee8a67066c45898b02ad05c9d5a460c6b52ee300db3",
+  "shadowMode": false
+}

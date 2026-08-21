@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "browser",
+    "api",
+    "ui",
+    "tool",
+    "integration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web plugin for microphone-based speech-to-text input, primarily using local FunASR ONNX inference with browser fallback and optional LLM text polishing before composer submission.",
+  "summaries": {
+    "zh": "通过浏览器麦克风将语音转换为文本，优先使用本地 FunASR ONNX 引擎，并支持浏览器回退和可选的 LLM 润色后发送。",
+    "en": "Converts microphone speech into text for the DSH web composer using local FunASR ONNX inference, with browser fallback and optional LLM polishing before sending."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures microphone audio in the browser",
+      "Runs local FunASR ONNX speech recognition through a Python sidecar process",
+      "Uses the browser Web Speech API as a fallback",
+      "Optionally sends transcribed text to a user-configured LLM endpoint for polishing",
+      "Automatically inserts and sends recognized text in the DSH composer"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_audio_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_subprocess_and_model_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_llm_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_message_submission",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Captures microphone audio in the browser",
+      "Runs local FunASR ONNX speech recognition through a Python sidecar process",
+      "Uses the browser Web Speech API as a fallback",
+      "Optionally sends transcribed text to a user-configured LLM endpoint for polishing",
+      "Automatically inserts and sends recognized text in the DSH composer"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:42:39.478Z",
+  "repositoryCommitSha": "d77762c835455a19329da39de97d727e9a37e8af",
+  "evidenceHash": "8446d1503ae67ed5b1f0d662a509e6047c9a1578841115b86dcc30b6b084b6a9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ad4e812667a1ceef8b6cbd4bd1b0870e32f8dbe87e685cb9cf573466999306a3",
+  "shadowMode": false
+}

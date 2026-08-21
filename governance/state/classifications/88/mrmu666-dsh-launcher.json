@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "terminal",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Tauri desktop launcher for starting and managing a local DSH web service, viewing its logs, and opening local or remote DSH addresses in an embedded WebView.",
+  "summaries": {
+    "zh": "用于在桌面端一键启动和管理本机 DSH Web 服务，并在内嵌窗口中打开本机或远程 DSH 地址。",
+    "en": "A desktop launcher for starting and managing a local DSH web service and opening local or remote DSH addresses in an embedded window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Launches the local @deepseek-ai/dsh web service through npx",
+      "Displays local or user-specified remote DSH web pages in an embedded WebView",
+      "Streams child-process stdout and stderr to an in-app terminal",
+      "Stores user-selected service addresses locally",
+      "Runs as a system-tray application and manages the launched child process"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_webview_navigation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Launches the local @deepseek-ai/dsh web service through npx",
+      "Displays local or user-specified remote DSH web pages in an embedded WebView",
+      "Streams child-process stdout and stderr to an in-app terminal",
+      "Stores user-selected service addresses locally",
+      "Runs as a system-tray application and manages the launched child process"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:05.305Z",
+  "repositoryCommitSha": "cc3a8d39e537b135e1d4c6e39ac770165a529398",
+  "evidenceHash": "c24f2ab7206e5268c82c77fbb86f2674e1d3fabe3b951716c1f76737613b0e94",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9574c1352aa01059eec7e4bd12c62b071fa7de950ab4b4456def09ea9131d74a",
+  "shadowMode": false
+}

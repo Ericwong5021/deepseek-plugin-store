@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "tool",
+    "integration",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates consistent Git author and committer identity selection for DSH sessions by resolving identity from configuration, gh CLI, environment variables, or global Git settings and applying it to subprocesses and Git configuration.",
+  "summaries": {
+    "zh": "为 DSH 自动解析并固定 Git 提交作者身份，将身份应用于子进程环境并在需要时同步到全局 Git 配置。",
+    "en": "Automatically resolves and applies a consistent Git author identity for DSH subprocesses and synchronizes it with the global Git configuration when needed."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured identity, environment variables, Git global configuration, and the gh CLI account",
+      "Injects Git author and committer environment variables into DSH subprocesses",
+      "Synchronizes resolved identity values to Git global configuration"
+    ],
+    "reasons": [
+      {
+        "code": "reads_external_cli_identity",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_git_global_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "alters_subprocess_environment",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads configured identity, environment variables, Git global configuration, and the gh CLI account",
+      "Injects Git author and committer environment variables into DSH subprocesses",
+      "Synchronizes resolved identity values to Git global configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:42.391Z",
+  "repositoryCommitSha": "39c608ca8e0779c93c66648ad457decffdf61903",
+  "evidenceHash": "88204a818a883e172d08171bc3925bee9afb3ebe227072d03f999d074ee244f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "197c93d24c7c55ff8def8b819773504aa8c52c6c915909b28c23e709abd19701",
+  "shadowMode": false
+}

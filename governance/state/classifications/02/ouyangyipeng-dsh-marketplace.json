@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "integration",
+    "search",
+    "tool",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness marketplace that integrates with GitHub to discover, search, validate, install, update, and remove DSH plugins through a settings interface.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 设置界面中连接 GitHub 插件目录，用于发现、搜索、检查、安装、更新和卸载 DSH 插件。",
+    "en": "A DeepSeek Harness marketplace that connects to GitHub to discover, search, validate, install, update, and remove DSH plugins from the settings interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads a GitHub topic-based public plugin catalog",
+      "Searches and sorts marketplace entries locally",
+      "Stages and installs or updates plugin packages using pnpm",
+      "Validates package manifests, exports, paths, and bundle declarations",
+      "Writes and atomically updates the DSH profile manifest",
+      "Removes installed plugins and restores prior state on failure",
+      "Provides loopback HTTP endpoints protected by a process nonce"
+    ],
+    "reasons": [
+      {
+        "code": "network-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "installs-third-party-code",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes-profile-state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "spawns-package-manager",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads a GitHub topic-based public plugin catalog",
+      "Searches and sorts marketplace entries locally",
+      "Stages and installs or updates plugin packages using pnpm",
+      "Validates package manifests, exports, paths, and bundle declarations",
+      "Writes and atomically updates the DSH profile manifest",
+      "Removes installed plugins and restores prior state on failure",
+      "Provides loopback HTTP endpoints protected by a process nonce"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:43:03.628Z",
+  "repositoryCommitSha": "a319950489f8007351fe0eb772a763f5f18192c9",
+  "evidenceHash": "7acc72e201bd5030a43e4345a85d512292ea3b73ddbd174d5fbca7f4cb6c0fe1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9b93ff017355c9bd1ba3d7c6f685c0d1f3aefd045c052e701739e7a7042b6f2d",
+  "shadowMode": false
+}

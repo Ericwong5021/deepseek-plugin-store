@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "cli",
+    "data",
+    "integration",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates cc-switch with DSH by importing supported provider profiles into DSH model routes through CLI, startup synchronization, slash commands, or an agent tool.",
+  "summaries": {
+    "zh": "将 cc-switch 中受支持的供应商配置同步为 DSH 模型路由，支持命令行、启动同步、斜杠命令和智能体工具。",
+    "en": "Syncs supported cc-switch provider profiles into DSH model routes through the CLI, startup synchronization, slash command, or agent tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the local cc-switch SQLite database in read-only mode",
+      "Synchronizes supported provider profiles into DSH model routes",
+      "Writes route configuration through the DSH settings interface",
+      "Stores credential references for imported API keys",
+      "Exposes synchronization through a CLI, startup hook, slash command, and agent tool"
+    ],
+    "reasons": [
+      {
+        "code": "local_database_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_reference_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the local cc-switch SQLite database in read-only mode",
+      "Synchronizes supported provider profiles into DSH model routes",
+      "Writes route configuration through the DSH settings interface",
+      "Stores credential references for imported API keys",
+      "Exposes synchronization through a CLI, startup hook, slash command, and agent tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:21.023Z",
+  "repositoryCommitSha": "af4b73e9b46c122c4dc7f14691ef0d2b0064f993",
+  "evidenceHash": "5e65651599bca62321c117e0728d417c89a7b2319af8c549d4294caecceda226",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "78c6d41827994b78a1465774814b9d12091cd31dcc7d03ca6fd5ebf7efff5026",
+  "shadowMode": false
+}

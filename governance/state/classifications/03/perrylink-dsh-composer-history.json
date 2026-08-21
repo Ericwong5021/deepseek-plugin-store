@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "chat",
+    "browser",
+    "search",
+    "ui",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web composer enhancement that provides persistent local input history, draft and caret restoration, reverse search, snippets, templates, and compaction-aware recall.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 网页编辑器提供浏览器本地输入历史、草稿恢复、反向搜索、片段与模板管理及压缩上下文提示。",
+    "en": "Adds browser-local input history, draft restoration, reverse search, snippets, templates, and compaction-aware recall to the DeepSeek Harness web composer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores sent messages, snippets, templates, and usage statistics in browser-local storage",
+      "Adds configurable keyboard shortcuts and a reverse-search overlay to the web composer",
+      "Reads session and workspace values to populate template variables and scope history",
+      "Imports and exports templates through explicit user actions"
+    ],
+    "reasons": [
+      {
+        "code": "local_user_content_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "composer_keyboard_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_workspace_context_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Stores sent messages, snippets, templates, and usage statistics in browser-local storage",
+      "Adds configurable keyboard shortcuts and a reverse-search overlay to the web composer",
+      "Reads session and workspace values to populate template variables and scope history",
+      "Imports and exports templates through explicit user actions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:43:21.975Z",
+  "repositoryCommitSha": "6035b38414504814661fd9406462c3a556c7a61e",
+  "evidenceHash": "52db145d56c5bf50746cd59b76d9273831caf21300e30bd61a6667b8339dad8b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c61dbbd3363619d880a3b54b85a41dcb02d5596c6d96d947b04a566f8c529cfe",
+  "shadowMode": false
+}

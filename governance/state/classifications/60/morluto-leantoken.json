@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "agent",
+    "context",
+    "mcp",
+    "project-analysis",
+    "search",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "LeanToken is an MCP-based code search and retrieval layer that helps agents locate relevant repository evidence within explicit token budgets; the README describes local indexing and read-only discovery rather than code editing or execution.",
+  "summaries": {
+    "zh": "LeanToken 是一个面向智能体的 MCP 代码搜索与检索工具，可通过本地索引、结构分析和受限读取帮助定位相关代码并控制上下文令牌使用量。",
+    "en": "LeanToken is an agent-focused MCP code search and retrieval tool that uses local indexing, structural analysis, and bounded reads to locate relevant code while managing context token usage."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Indexes repository source locally",
+      "Searches and retrieves relevant files, symbols, ranges, history, and bounded JSON data",
+      "Provides MCP tools for agent-oriented codebase discovery",
+      "Installs or updates selected client configuration during setup"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_repository_retrieval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_indexing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "client_configuration_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Indexes repository source locally",
+      "Searches and retrieves relevant files, symbols, ranges, history, and bounded JSON data",
+      "Provides MCP tools for agent-oriented codebase discovery",
+      "Installs or updates selected client configuration during setup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:56.066Z",
+  "repositoryCommitSha": "910ed8a34fbdd60e1c25c916e9ded12c8bf439e3",
+  "evidenceHash": "662592ebff9d9f777edb39040a418c62fde3df2056491ab0f52a9a96a8509e76",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8a1dd4702630658f98b40e5db0a6e28a72e290e282fee6880810e89ae04d890e",
+  "shadowMode": false
+}

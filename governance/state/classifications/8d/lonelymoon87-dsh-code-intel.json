@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "search",
+    "data",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A code intelligence plugin that indexes supported source files, provides symbol outlines, and offers lexical or optional embedding-assisted code search with a rebuildable workspace cache.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供支持多种语言的代码索引、符号大纲以及词法或可选嵌入辅助的代码搜索。",
+    "en": "Provides DeepSeek Harness with source indexing, symbol outlines, and lexical or optionally embedding-assisted code search across supported programming languages."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads supported source files from the workspace",
+      "Builds and updates a persistent SQLite code index under the workspace",
+      "Watches local workspace changes",
+      "Performs lexical code search and symbol outlines",
+      "Optionally sends extracted code chunks and queries to a configured OpenAI-compatible embedding endpoint",
+      "Resolves a named credential reference for embedding operations"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_source_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_cache_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_watch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_code_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_reference_resolution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads supported source files from the workspace",
+      "Builds and updates a persistent SQLite code index under the workspace",
+      "Watches local workspace changes",
+      "Performs lexical code search and symbol outlines",
+      "Optionally sends extracted code chunks and queries to a configured OpenAI-compatible embedding endpoint",
+      "Resolves a named credential reference for embedding operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:29.728Z",
+  "repositoryCommitSha": "cab10fd16c60dfc7c3c6e7f7b011a434f0132853",
+  "evidenceHash": "41a833ea73f7b7fbfd985ed60585bb4f2a542e746b80d2a2dbdac9fd13b2d00b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f54d22bde203941bb4ee08d3a64a6eca62d34ef3ba46ae1e168678f7d8c0c113",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "search",
+    "ui",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a web-interface plugin that indexes workspace paths, provides an @ path picker, and inserts validated file or directory references into prompts without opening referenced files or listing directory contents.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的编辑器中通过 @ 搜索工作区文件和目录，并将经过验证的路径引用插入提示词。",
+    "en": "Search workspace files and directories with @ in the DeepSeek Harness composer and insert validated path references into prompts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Indexes workspace file, directory, and symbolic-link paths",
+      "Searches indexed workspace paths from the composer",
+      "Creates workspace-relative path references in prompts",
+      "Validates that referenced paths exist inside the active workspace",
+      "Opens referenced paths through the Harness host endpoint",
+      "Stores file-mention settings through the plugin Host connection"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_metadata_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_path_opening",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_reference_insertion",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Indexes workspace file, directory, and symbolic-link paths",
+      "Searches indexed workspace paths from the composer",
+      "Creates workspace-relative path references in prompts",
+      "Validates that referenced paths exist inside the active workspace",
+      "Opens referenced paths through the Harness host endpoint",
+      "Stores file-mention settings through the plugin Host connection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:43.546Z",
+  "repositoryCommitSha": "c57849b27e378cf6b41d082b17c8a8750cee370f",
+  "evidenceHash": "543993101d26e072bdc13610ae8e5202eb774d83ed865709f37a8d36707eea97",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "314bc97c87290c38c1ce5c998a3ab89ad218302fa8e4e359d2e2632624f2d907",
+  "shadowMode": false
+}

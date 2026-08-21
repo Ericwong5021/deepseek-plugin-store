@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "ui",
+    "automation",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-focused DSH plugin that monitors agent task states and presents configurable Toast notifications, with optional local GUI-session activation when a notification is clicked.",
+  "summaries": {
+    "zh": "一个面向 Windows 的 DSH 插件，用于在代理任务完成、出错或等待交互时发送可配置的桌面通知，并支持点击通知切回相关 GUI 会话。",
+    "en": "A Windows-focused DSH plugin that sends configurable desktop notifications for agent completion, errors, and interaction waits, with optional click-through to the related GUI session."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Monitors host agent status and task lifecycle events",
+      "Displays Windows Toast or notification-area notifications with configurable sounds",
+      "Invokes Windows PowerShell to create and display notifications",
+      "Creates or updates a local Windows shortcut, icon, and helper executable for notification identity",
+      "Opens or focuses a local GUI session through a custom protocol or HTTP deep link",
+      "Uses local browser and Windows UI automation to bring an existing GUI tab to the foreground"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_and_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_notification_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_and_window_focus_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Monitors host agent status and task lifecycle events",
+      "Displays Windows Toast or notification-area notifications with configurable sounds",
+      "Invokes Windows PowerShell to create and display notifications",
+      "Creates or updates a local Windows shortcut, icon, and helper executable for notification identity",
+      "Opens or focuses a local GUI session through a custom protocol or HTTP deep link",
+      "Uses local browser and Windows UI automation to bring an existing GUI tab to the foreground"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:07.033Z",
+  "repositoryCommitSha": "8f2ec74406b4cd5f59b7d98f2ed949641326ce3c",
+  "evidenceHash": "f625bc662bc3e54e17d5f3f3fa7e5544292639eeaf2f50524820e2f29a3a5b0a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ca3bdd08ffd1212c991dc547ca7f4cd5d5db9cabb51b6f090b8f20e1c0aa0ec6",
+  "shadowMode": false
+}

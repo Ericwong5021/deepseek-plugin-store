@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "research",
+    "automation",
+    "api",
+    "data",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Oh-My-DSH is an automated discovery and cataloging engine that scans multiple public sources, validates DeepSeek Harness plugin candidates, categorizes them, and periodically updates its README index.",
+  "summaries": {
+    "zh": "Oh-My-DSH 是一个自动扫描多个公开来源、验证并分类 DeepSeek Harness 插件候选项目的生态发现与目录更新工具。",
+    "en": "Oh-My-DSH is an automated ecosystem discovery tool that scans public sources, validates and categorizes DeepSeek Harness plugin candidates, and updates an indexed catalog."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Scans multiple external sources for DeepSeek Harness plugin candidates",
+      "Optionally uses a GitHub token for repository discovery",
+      "Validates and categorizes plugin metadata",
+      "Runs on an hourly schedule and updates the repository README",
+      "Uses repository-side locking and rollback procedures for automated updates"
+    ],
+    "reasons": [
+      {
+        "code": "external_source_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_repository_updates",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "binary.execute",
+      "network.access",
+      "Scans multiple external sources for DeepSeek Harness plugin candidates",
+      "Optionally uses a GitHub token for repository discovery",
+      "Validates and categorizes plugin metadata",
+      "Runs on an hourly schedule and updates the repository README",
+      "Uses repository-side locking and rollback procedures for automated updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:28.337Z",
+  "repositoryCommitSha": "154c95ebcdfbfd7b2a7877ccfae8c4870f30a863",
+  "evidenceHash": "d53b086bab288d4cb566cff1e7813124d117f5099f99dbac11c82d6ea5f23667",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5844f68a924547e22448509eecf5dfa7cf53c0e8283a74fadd8a661057d70eb2",
+  "shadowMode": false
+}

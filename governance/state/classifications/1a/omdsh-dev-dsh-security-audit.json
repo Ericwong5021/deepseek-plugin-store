@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "file",
+    "monitoring",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only local DSH security auditing plugin that analyzes configuration, credential metadata, installed plugins, sessions, and network exposure to produce redacted risk reports.",
+  "summaries": {
+    "zh": "以只读方式审计本机 DSH 配置、凭据元数据、已安装插件、会话结构和网络暴露面，并生成脱敏风险报告。",
+    "en": "A read-only DSH security auditing plugin that examines local configuration, credential metadata, installed plugins, session structures, and network exposure to produce redacted risk reports."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Read local DSH configuration and credential metadata",
+      "Inspect installed plugin sources and statically scan for risky capabilities",
+      "Read session file metadata and structures within configured path boundaries",
+      "Analyze configured network exposure without making network connections",
+      "Generate redacted risk and coverage reports"
+    ],
+    "reasons": [
+      {
+        "code": "reads-local-sensitive-metadata",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "static-plugin-capability-analysis",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no-write-no-network-no-subprocess",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Read local DSH configuration and credential metadata",
+      "Inspect installed plugin sources and statically scan for risky capabilities",
+      "Read session file metadata and structures within configured path boundaries",
+      "Analyze configured network exposure without making network connections",
+      "Generate redacted risk and coverage reports"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:42:16.532Z",
+  "repositoryCommitSha": "ae927be8c92e483a8c8739b32831c0a237c0ed01",
+  "evidenceHash": "f84ee971f5257aac8423e2568d54ee76728b4a16031ce724570ee6a9b2a54d69",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1bdc41fe9fa75ab94da9cdff67981a9b8862388ffcd2f0ab444b30916115b646",
+  "shadowMode": false
+}

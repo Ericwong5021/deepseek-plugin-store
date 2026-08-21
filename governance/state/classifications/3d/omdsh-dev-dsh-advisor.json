@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "context",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A dsh plugin that runs an independent reviewer model per session, observes the primary transcript, and injects bounded advisory notes without taking primary-agent actions.",
+  "summaries": {
+    "zh": "为 dsh 会话配置独立的审查模型，观察主模型对话并以分级建议形式注入反馈。",
+    "en": "Configures an independent reviewer model for dsh sessions to observe the primary transcript and inject severity-ranked advisory feedback."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the primary session transcript for review",
+      "Calls a separately configured reviewer model",
+      "Injects severity-ranked advisory messages into the session",
+      "Provides session-scoped advisor controls and persistent configuration"
+    ],
+    "reasons": [
+      {
+        "code": "transcript_review",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "advisory_message_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the primary session transcript for review",
+      "Calls a separately configured reviewer model",
+      "Injects severity-ranked advisory messages into the session",
+      "Provides session-scoped advisor controls and persistent configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:41.461Z",
+  "repositoryCommitSha": "82d04b625b05e7aff2b94586623924577b231e35",
+  "evidenceHash": "b477f0394f77fcf89d2d2fd9f6cf721dcd989bac14dc4c2c51f71bf16d018946",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ad0303b7047d669a5e1a400b9c312f3b7628dff25911816554d4bfa8a36b00e5",
+  "shadowMode": false
+}

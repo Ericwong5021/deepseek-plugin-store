@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "mcp",
+    "monitoring",
+    "planning",
+    "workflow",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH plugin for observing and directing multiple local Agents, including sending instructions, tracking progress, and exposing orchestration tools through MCP; human review is appropriate because commands can start work that may read or modify files, execute commands, and consume APIs.",
+  "summaries": {
+    "zh": "用于在 DSH 中统一观测多个本机 Agent 的会话与状态，并发送指令、跟踪进度和编排任务。",
+    "en": "A DSH plugin for monitoring multiple local Agent sessions, sending instructions, tracking progress, and coordinating tasks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "observes local Agent sessions and activity",
+      "searches session metadata by title, working directory, or identifier",
+      "sends instructions to local Agent sessions",
+      "starts or resumes Agent processes through CLI or in-process mechanisms",
+      "reports task progress and incremental output",
+      "reads compressed local session files for text summaries",
+      "exposes orchestration tools through an MCP server"
+    ],
+    "reasons": [
+      {
+        "code": "executes_agent_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "may_enable_file_changes_command_execution_and_api_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads_local_session_data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "observes local Agent sessions and activity",
+      "searches session metadata by title, working directory, or identifier",
+      "sends instructions to local Agent sessions",
+      "starts or resumes Agent processes through CLI or in-process mechanisms",
+      "reports task progress and incremental output",
+      "reads compressed local session files for text summaries",
+      "exposes orchestration tools through an MCP server"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:55.965Z",
+  "repositoryCommitSha": "88c2c32ad04a757899a9fd11c3fed7bd94e691ee",
+  "evidenceHash": "8442efb79f3019d7101149f3133d6eb742470ae29300d646ed79551e1d59d40f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "042c3f79a8daf8f81a4786074b957b99404940f518913d827e7bcbf35c2dbc04",
+  "shadowMode": false
+}

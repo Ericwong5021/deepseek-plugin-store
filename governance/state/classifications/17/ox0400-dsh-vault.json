@@ -1,0 +1,92 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "data",
+    "file",
+    "browser",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes a credential-vault plugin whose primary purpose is managing encrypted passwords, tokens, keys, TOTP secrets, imported password-manager records, and browser session cookies; human review is warranted because it can access and export highly sensitive authentication material.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中管理密码、令牌、密钥、TOTP 信息及浏览器会话数据的凭据保管库插件。",
+    "en": "A DeepSeek Harness credential vault for managing passwords, tokens, keys, TOTP data, and browser session information."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Stores encrypted credentials and authentication secrets",
+      "Reads and returns full credential records on explicit request",
+      "Generates passwords and TOTP codes",
+      "Imports and exports password-manager data and encrypted backups",
+      "Captures, stores, and exports browser session cookies",
+      "Performs credential health and breach checks using an external service",
+      "Deletes, restores, purges, and modifies vault entries"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive-credential-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "secret-retrieval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser-session-cookie-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-breach-check",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive-vault-operations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Stores encrypted credentials and authentication secrets",
+      "Reads and returns full credential records on explicit request",
+      "Generates passwords and TOTP codes",
+      "Imports and exports password-manager data and encrypted backups",
+      "Captures, stores, and exports browser session cookies",
+      "Performs credential health and breach checks using an external service",
+      "Deletes, restores, purges, and modifies vault entries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:43:02.294Z",
+  "repositoryCommitSha": "555fdddda0b4517e0540d66a66f772bb84dc0b82",
+  "evidenceHash": "f3126732d06c1cc2f6bab38cfbb3e5a3cb644632fa3c33f7fb7648392db31675",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f77d19de28c9ef8a7a2de1b3d3cb406c1f415dd64e5a535ddc3f710823c72504",
+  "shadowMode": false
+}

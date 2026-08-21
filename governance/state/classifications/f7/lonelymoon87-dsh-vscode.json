@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "file",
+    "terminal",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A VS Code client for DeepSeek Harness that orchestrates agent sessions, streams tool activity, and presents workspace file changes as native diffs.",
+  "summaries": {
+    "zh": "在 VS Code 中连接 DeepSeek Harness，发起智能体会话、查看流式工具活动，并以原生差异编辑器查看文件变更。",
+    "en": "Connects DeepSeek Harness to VS Code for agent sessions, streamed tool activity, and native diff views of workspace file changes."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the DeepSeek Harness SDK runtime",
+      "Streams assistant session messages and tool activity in a VS Code sidebar",
+      "Runs a bundled or configured external Node-based runtime subprocess",
+      "Allows workspace-write operations through the runtime",
+      "Displays file-tool results in native VS Code diff editors",
+      "Sends prompts to a configured DeepSeek provider and model using an environment API key"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_write_and_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_subprocess_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the DeepSeek Harness SDK runtime",
+      "Streams assistant session messages and tool activity in a VS Code sidebar",
+      "Runs a bundled or configured external Node-based runtime subprocess",
+      "Allows workspace-write operations through the runtime",
+      "Displays file-tool results in native VS Code diff editors",
+      "Sends prompts to a configured DeepSeek provider and model using an environment API key"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:35.142Z",
+  "repositoryCommitSha": "15539b8df97cba932050baa9ba108c8bf1bf654c",
+  "evidenceHash": "d2e39e3a082923bf38973f35736c3255453a6468ccc2bccceb85a8263e3b5414",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e1b89b10dca468e7902276d4a6e609effa349c5e725086b51a0144a2015cf3b5",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "memory",
+    "agent",
+    "chat",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily combines selected conversation histories into a new durable, continuable session, with optional agent-based pruning, topic grouping, and ordering; source sessions remain unchanged.",
+  "summaries": {
+    "zh": "将多个对话按时间或来源合并为一个可继续的持久化会话，并可选择使用智能体进行剪枝、分组和排序。",
+    "en": "Fuses multiple conversations into a new durable, continuable session with optional agent-assisted pruning, topic grouping, and ordering."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads selected conversation sessions within the caller's workspace by default",
+      "Creates and persists a new fused conversation",
+      "Projects, deduplicates, orders, groups, and prunes conversation text",
+      "Optionally invokes a temporary tool-free planning agent",
+      "Does not modify source conversations"
+    ],
+    "reasons": [
+      {
+        "code": "reads_conversation_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "creates_persistent_session",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_model_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_scoped_by_default",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads selected conversation sessions within the caller's workspace by default",
+      "Creates and persists a new fused conversation",
+      "Projects, deduplicates, orders, groups, and prunes conversation text",
+      "Optionally invokes a temporary tool-free planning agent",
+      "Does not modify source conversations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:58.802Z",
+  "repositoryCommitSha": "5c2863934552fc5bcaa69d039a4a53d0a0edbec0",
+  "evidenceHash": "9761438f39b94128ddd15795143c7fe43b500f5c0e7418f69f02700389f19e5b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "791145aed9408bcc9e820df04f25d24c5b996ad0cf282a3d7ffacc184f33317b",
+  "shadowMode": false
+}

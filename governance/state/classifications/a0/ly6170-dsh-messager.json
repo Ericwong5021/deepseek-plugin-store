@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "integration",
+    "browser",
+    "desktop",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a DSH plugin whose primary purpose is notifying users about interaction requests, task completion, and errors through local, browser, and configured third-party messaging channels.",
+  "summaries": {
+    "zh": "在任务需要交互、完成或出错时，通过系统、浏览器及飞书、企业微信、钉钉、Telegram和Discord发送通知提醒。",
+    "en": "Sends notifications through system and browser alerts plus configured Feishu, WeCom, DingTalk, Telegram, and Discord channels when tasks need interaction, complete, or fail."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends task status, interaction, completion, and error notifications through OS and browser notifications",
+      "Sends notification payloads to configured Feishu, WeCom, Discord, DingTalk, and Telegram endpoints",
+      "Stores and uses configured webhook URLs, bot tokens, chat IDs, and signing secrets",
+      "Provides configurable notification triggers, throttling, deduplication, and message verbosity"
+    ],
+    "reasons": [
+      {
+        "code": "external_notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_webhooks_and_bot_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends task status, interaction, completion, and error notifications through OS and browser notifications",
+      "Sends notification payloads to configured Feishu, WeCom, Discord, DingTalk, and Telegram endpoints",
+      "Stores and uses configured webhook URLs, bot tokens, chat IDs, and signing secrets",
+      "Provides configurable notification triggers, throttling, deduplication, and message verbosity"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:01.919Z",
+  "repositoryCommitSha": "8442ba78545359b2791c212a0c4b728f02a961a3",
+  "evidenceHash": "77ec58d112e8261e31fb9f97d8de9b61c1cbb4ad9b7c7166be8429aaf2a16e12",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aec931c6e10d7a0a33a2921e792ec7264f2f6236bd113992ef1f9ec28d18a14e",
+  "shadowMode": false
+}
