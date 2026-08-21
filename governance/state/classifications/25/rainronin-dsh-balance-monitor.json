@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "data",
+    "ui",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A monitoring plugin that reads DeepSeek account balance data, optionally exposes it to the agent, and presents balance, pricing status, and estimated session cost in a configurable sidebar badge.",
+  "summaries": {
+    "zh": "监测 DeepSeek 账户余额并在侧边栏显示余额、峰谷计价状态和当前会话估算费用，同时提供会话内查询工具。",
+    "en": "Monitors a DeepSeek account balance and displays balance, peak/off-peak pricing status, and estimated session cost in a configurable sidebar badge with an in-session query tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the DeepSeek account balance through the official balance API",
+      "Provides an in-session balance query tool",
+      "Displays balance, pricing status, and estimated session cost in a sidebar badge",
+      "Optionally injects cached balance information into model context",
+      "Polls the balance API periodically with caching and request serialization"
+    ],
+    "reasons": [
+      {
+        "code": "external_read_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_reference",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context_injection_optional",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the DeepSeek account balance through the official balance API",
+      "Provides an in-session balance query tool",
+      "Displays balance, pricing status, and estimated session cost in a sidebar badge",
+      "Optionally injects cached balance information into model context",
+      "Polls the balance API periodically with caching and request serialization"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:55.122Z",
+  "repositoryCommitSha": "46f8f7d0579b46becefc077e52d8d7d16b9827a0",
+  "evidenceHash": "f6afc11dca0ae83221e7ecc0620b16e37e83ddf61ebce5592f29aaec93f161c9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6e40fb1410f78df491cc32943168f6dd94f84c815bac7fb8ffe2349a865b9428",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "workflow",
+    "planning",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README documents a plugin whose primary purpose is routing heterogeneous tasks across language models and executing assignments in parallel through subagents, with feedback-based ranking and usage tracking.",
+  "summaries": {
+    "zh": "一个将异构任务路由到合适语言模型并通过并行子智能体执行的任务编排插件，支持反馈排名和用量统计。",
+    "en": "A task-orchestration plugin that routes heterogeneous tasks to suitable language models and executes them through parallel subagents with feedback rankings and usage statistics."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Routes heterogeneous tasks to selected language models",
+      "Dispatches tasks in parallel through in-process subagents or direct model calls",
+      "Integrates OpenRouter-like and cfgpu.com model routes",
+      "Persists model feedback, rankings, and token-usage statistics"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "parallel_subagent_dispatch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_external_routes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_usage_and_feedback_data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes heterogeneous tasks to selected language models",
+      "Dispatches tasks in parallel through in-process subagents or direct model calls",
+      "Integrates OpenRouter-like and cfgpu.com model routes",
+      "Persists model feedback, rankings, and token-usage statistics"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:52.384Z",
+  "repositoryCommitSha": "fc051ea2ad05fc27ad7271630b7e0bd7ebb24bb9",
+  "evidenceHash": "9b134b177606715bcb3649bab6144705eacdf52b58c60403f57601b484b23a84",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ed0db8bc12f339fd94d25cbe5908db74843e78b3e09c34019fb61b6ef7cf02b9",
+  "shadowMode": false
+}

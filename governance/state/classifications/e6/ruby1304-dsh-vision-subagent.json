@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "image",
+    "api",
+    "context",
+    "workflow",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides image understanding for text-only agents by routing pasted or workspace images to a one-shot vision subagent and returning its textual analysis, with optional workspace materialization of originals.",
+  "summaries": {
+    "zh": "为文本型智能体提供图像理解能力，将粘贴或工作区中的图片交由配置好的视觉子智能体分析并返回文字结果。",
+    "en": "Adds image understanding for text-only agents by sending pasted or workspace images to a configured one-shot vision subagent and returning textual analysis."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Accepts pasted or local workspace images for analysis",
+      "Delegates image understanding to a configured vision-model subagent",
+      "Sends image data to configured external vision providers",
+      "Stores durable image attachments and can materialize originals under the workspace .dsh-vision directory",
+      "Returns vision analysis text to the main session"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subagent_delegation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts pasted or local workspace images for analysis",
+      "Delegates image understanding to a configured vision-model subagent",
+      "Sends image data to configured external vision providers",
+      "Stores durable image attachments and can materialize originals under the workspace .dsh-vision directory",
+      "Returns vision analysis text to the main session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:40.710Z",
+  "repositoryCommitSha": "0e55e84bde9d3cb9b64c2e8bc7b5bfaa3123c437",
+  "evidenceHash": "d712a84742c830a160d82ed83fca3a38017f79dc0058a41e2fa98a6c8b496a65",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b9ff3398ccc67f63b316cc7f128dbb8b2507a1b473a81a91c9d5422139a91bf4",
+  "shadowMode": false
+}

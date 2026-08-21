@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "visualization",
+    "document",
+    "monitoring",
+    "cli",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "DeepTrace primarily processes local DSH session logs into deterministic usage, cost, risk, activity, and collaboration reports with visual and document exports; the README states that analysis is read-only and does not automatically modify configurations.",
+  "summaries": {
+    "zh": "深迹将本地 DSH 会话事件日志聚合为包含成本、调用、风险、活动和改进线索的可视化报告，并支持多种格式导出。",
+    "en": "DeepTrace aggregates local DSH session event logs into visual reports covering cost, calls, risks, activity, and improvement signals, with exports in multiple formats."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local DSH session event logs",
+      "Aggregates session, token, cost, model, tool-call, retry, risk, and activity data",
+      "Generates deterministic reports in web, Markdown, HTML, PDF, PNG, and CLI formats",
+      "Inspects logs for common secret-pattern presence and dangerous-operation indicators",
+      "Can query supported provider balance information when configured"
+    ],
+    "reasons": [
+      {
+        "code": "reads_local_session_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "processes_potentially_sensitive_usage_and_cost_metrics",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "provides_read_only_analysis_and_exports",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local DSH session event logs",
+      "Aggregates session, token, cost, model, tool-call, retry, risk, and activity data",
+      "Generates deterministic reports in web, Markdown, HTML, PDF, PNG, and CLI formats",
+      "Inspects logs for common secret-pattern presence and dangerous-operation indicators",
+      "Can query supported provider balance information when configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:52:34.719Z",
+  "repositoryCommitSha": "5fccde44b1e06f927c651ed6418ffd28ea638132",
+  "evidenceHash": "b43a68e7b6b820584c4f858163062050c3064e8b4970e730b896dd629ac34990",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "43dfca80f00d57ad403f2acb9a6812885638e1c6779504babc3c9a14ba1bf288",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "desktop",
+    "terminal",
+    "ui",
+    "api",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that automates switching between concurrently running Windows and WSL2 DSH environments through web UI controls and local server start/check operations.",
+  "summaries": {
+    "zh": "通过网页界面在并行运行的 Windows 与 WSL2 DSH 环境之间切换，并在需要时检查或启动目标本地服务。",
+    "en": "Switches between concurrently running Windows and WSL2 DSH environments from the web UI while checking or starting the selected local server when needed."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds web UI controls for switching between Windows and WSL2 DSH instances",
+      "Exposes local HTTP endpoints for environment state and switching",
+      "Checks and starts local DSH servers using powershell.exe and wsl.exe",
+      "Navigates the current browser tab to the selected local environment"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_server_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_navigation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "binary.execute",
+      "network.access",
+      "Adds web UI controls for switching between Windows and WSL2 DSH instances",
+      "Exposes local HTTP endpoints for environment state and switching",
+      "Checks and starts local DSH servers using powershell.exe and wsl.exe",
+      "Navigates the current browser tab to the selected local environment"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:45.631Z",
+  "repositoryCommitSha": "96f8a189d2bb18250d2c9837bea38c914463561d",
+  "evidenceHash": "81f16583812727a7bd633d09556d535c0be0eec76127ca21e79f999c9e656465",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "382845dbc8f31b9844d7e78f81c8212c4b5bc4b3f94197ea851c453f0bdb968a",
+  "shadowMode": false
+}

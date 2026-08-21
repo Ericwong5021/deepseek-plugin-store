@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "document",
+    "image",
+    "ui",
+    "api",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web GUI attachment utility that accepts pasted, dragged, or browsed files, stores them locally, displays reference chips, and appends valid file paths to sent messages.",
+  "summaries": {
+    "zh": "为 DSH Web GUI 提供截图和文件粘贴板，支持粘贴、拖拽或浏览上传文件并在发送消息时附加文件路径。",
+    "en": "A DSH Web GUI attachment board that accepts pasted, dragged, or browsed files, stores them locally, and appends their paths to sent messages."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "accepts user-selected files",
+      "writes uploaded files to a local directory",
+      "moves files when the save directory changes",
+      "serves file listings through a local API",
+      "appends referenced file paths to outgoing messages"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write_and_migration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loopback_file_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_path_injection_by_design",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "accepts user-selected files",
+      "writes uploaded files to a local directory",
+      "moves files when the save directory changes",
+      "serves file listings through a local API",
+      "appends referenced file paths to outgoing messages"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:12.893Z",
+  "repositoryCommitSha": "7c02a2e799dae050f5a70192b8289934dc5ffb27",
+  "evidenceHash": "30304055fab4ea54b77778bda3a77d4d28ee601c11b4214536241170eb82c652",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5fef1ddfc9e839b6767454af26ad3acf6e0f566354d4432c036c510f14c02641",
+  "shadowMode": false
+}

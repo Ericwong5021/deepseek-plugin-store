@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "monitoring",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an agent-integrated Nexterm operations plugin whose primary purpose is automating SSH fleet administration through remote command execution, batch maintenance, health checks, and monitoring.",
+  "summaries": {
+    "zh": "通过 Nexterm REST API 将 SSH 机群接入智能体会话，以自然语言执行单机或批量运维、健康检查和监控查看。",
+    "en": "Connects an SSH fleet managed by Nexterm to agent sessions for natural-language command execution, batch maintenance, health checks, and monitoring."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Authenticates to a Nexterm server using account credentials, TOTP, device authorization codes, or session tokens",
+      "Lists managed SSH hosts and filters them by identifiers, keywords, protocols, or status",
+      "Executes shell commands on individual remote hosts through Nexterm",
+      "Executes commands concurrently across multiple remote hosts",
+      "Performs batch health checks and retrieves CPU, memory, and disk monitoring snapshots",
+      "Stores Nexterm server configuration and session credentials in a local config file",
+      "Provides a settings interface for configuring the Nexterm server URL and token"
+    ],
+    "reasons": [
+      {
+        "code": "remote_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "batch_operations_on_multiple_hosts",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_authentication_and_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_service_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Authenticates to a Nexterm server using account credentials, TOTP, device authorization codes, or session tokens",
+      "Lists managed SSH hosts and filters them by identifiers, keywords, protocols, or status",
+      "Executes shell commands on individual remote hosts through Nexterm",
+      "Executes commands concurrently across multiple remote hosts",
+      "Performs batch health checks and retrieves CPU, memory, and disk monitoring snapshots",
+      "Stores Nexterm server configuration and session credentials in a local config file",
+      "Provides a settings interface for configuring the Nexterm server URL and token"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:52:00.865Z",
+  "repositoryCommitSha": "f219b9e4ada0a9058dfc7f56f394efb5994ef68f",
+  "evidenceHash": "af215f506dded7be0e907a12e7b144095a266b73386cd2b3aa0d93f567254fbc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a3566d9c1ff41444c431eb3eb4de13bc2a7effe15e6cddd1bba5fdfd692dcd25",
+  "shadowMode": false
+}

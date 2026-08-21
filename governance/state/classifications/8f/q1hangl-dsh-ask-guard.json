@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "debugging",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A runtime guard for DeepSeek Harness that prevents unanswered ask_user_question calls from hanging indefinitely by applying cooperative timeouts and returning structured timeout errors.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的 ask_user_question 调用提供协作式超时保护，避免未响应的问题使对话回合无限挂起。",
+    "en": "Adds cooperative timeout protection for DeepSeek Harness ask_user_question calls so unanswered questions do not block a turn indefinitely."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Wraps ask_user_question tool dispatches",
+      "Enforces a cooperative timeout",
+      "Cancels stalled question handling",
+      "Returns structured ASK_TIMEOUT errors"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_tool_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "execution_timeout_and_cancellation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Wraps ask_user_question tool dispatches",
+      "Enforces a cooperative timeout",
+      "Cancels stalled question handling",
+      "Returns structured ASK_TIMEOUT errors"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:06.352Z",
+  "repositoryCommitSha": "a45f230320edd3b2ca20fd4f4d0ccdf9ff186114",
+  "evidenceHash": "0875bc68c413e3b8f02bfd3ea29c7103a3c9ef2cd612dfbf3659cd0308fd2af3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7a47b9d49c55325533cc540d0f9ab1dc0a7f114dabd406a97216486e59decd51",
+  "shadowMode": false
+}

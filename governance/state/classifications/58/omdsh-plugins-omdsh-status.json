@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "ui",
+    "project-analysis",
+    "monitoring",
+    "api",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web GUI status plugin that visualizes the active workspace name, Git branch, and selected Git change counts in the conversation header, with a local endpoint supplying polled status data.",
+  "summaries": {
+    "zh": "在网页工作区会话标题中显示当前项目、Git 分支及变更计数，帮助用户快速查看项目状态。",
+    "en": "Displays the current project, Git branch, and selected change counts in the web workspace conversation header for quick status checks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays the current workspace project name and Git branch in the web GUI",
+      "Runs git status in the host workspace and parses branch and change counts",
+      "Provides a local web endpoint returning Git status counts",
+      "Polls and updates the displayed status at a fixed cadence"
+    ],
+    "reasons": [
+      {
+        "code": "host_git_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_status_endpoint",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui_injection_and_polling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Displays the current workspace project name and Git branch in the web GUI",
+      "Runs git status in the host workspace and parses branch and change counts",
+      "Provides a local web endpoint returning Git status counts",
+      "Polls and updates the displayed status at a fixed cadence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:21.335Z",
+  "repositoryCommitSha": "c88dd2be4c6e151b1e81a942033e0366e10a85a2",
+  "evidenceHash": "2712a99b37120b173f5c0768ea75f18dcbd6f85b35808ca3b0dc89d7f1605812",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ce2b51393cfbcf184acbf853801900f7879c65748996e507eabf8bbbc300061",
+  "shadowMode": false
+}

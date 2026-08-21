@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "data",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin queries the DeepSeek account balance API and presents account status and currency details through a tool and persistent web UI widget.",
+  "summaries": {
+    "zh": "通过 DeepSeek API 查询账户状态与余额明细，并在工具和 Web 界面中展示结果。",
+    "en": "Queries DeepSeek account status and balance details through its API and displays the results in a tool and web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls the DeepSeek balance API",
+      "Reads a configured DeepSeek API credential",
+      "Exposes a balance query tool and web UI display",
+      "Serves balance data through a local plugin endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_data_display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls the DeepSeek balance API",
+      "Reads a configured DeepSeek API credential",
+      "Exposes a balance query tool and web UI display",
+      "Serves balance data through a local plugin endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:29.942Z",
+  "repositoryCommitSha": "61b6600b8ec1413fba213ca8cf2f306730c13c0d",
+  "evidenceHash": "706c8e97c1f9ae7b0b3effa554d1fabab9254d2eb451377606c83d0b0e40423b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "80b4523dd80f31d48eff2af71c9a2036fd5175c3c9871448b05801253b424a90",
+  "shadowMode": false
+}

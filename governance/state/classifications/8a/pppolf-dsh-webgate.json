@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "browser",
+    "desktop",
+    "integration",
+    "mobile",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web access plugin that enables LAN or tunneled remote access, with QR-code connection details and an optional login portal for externally reachable deployments.",
+  "summaries": {
+    "zh": "为 DSH Web 界面提供局域网、cloudflared 或 frp 远程访问，并可显示二维码及启用登录门户。",
+    "en": "Provides LAN, cloudflared, or frp remote access to the DSH web interface, with QR-code connection details and an optional login portal."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes the DSH web interface to devices on the local network",
+      "Manages optional cloudflared and frpc tunnel processes for external access",
+      "Modifies host and trust settings to allow remote browser access",
+      "Provides an optional password-based login portal and reverse proxy",
+      "Displays QR codes and URLs for connecting mobile or other devices"
+    ],
+    "reasons": [
+      {
+        "code": "remote_access_and_network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tunnel_process_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "authentication_boundary_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Exposes the DSH web interface to devices on the local network",
+      "Manages optional cloudflared and frpc tunnel processes for external access",
+      "Modifies host and trust settings to allow remote browser access",
+      "Provides an optional password-based login portal and reverse proxy",
+      "Displays QR codes and URLs for connecting mobile or other devices"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:52.042Z",
+  "repositoryCommitSha": "4d69e43b7e1f9073c9c11ce068a24e330cb46a1c",
+  "evidenceHash": "02545f0504f8f46d75094d4082a6e07e3d0bc0c1270a802cc2a2ab30c1c62fcb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dc0510da05a86a0319336b88657ea2028140a1e81cd54a279c256f06687d1787",
+  "shadowMode": false
+}

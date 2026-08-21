@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "search",
+    "knowledge",
+    "skill",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness integration that exposes YouMind API discovery, personal knowledge-base search, public web search, and arbitrary API invocation; the latter may perform publishing, moving, deletion, or paid actions, so human review is appropriate.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 YouMind OpenAPI 探索与调用、个人知识库搜索及公开网络搜索工具。",
+    "en": "Provides DeepSeek Harness with YouMind OpenAPI discovery and invocation tools, personal knowledge-base search, and public web search."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers a YouMind skill and five tools with DeepSeek Harness",
+      "Searches YouMind OpenAPI and retrieves API request information",
+      "Searches a personal YouMind knowledge base or Board",
+      "Searches the public internet through YouMind",
+      "Calls arbitrary confirmed YouMind APIs, which may publish, move, delete, or incur charges"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_external_api_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "potential_destructive_or_paid_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "personal_knowledge_base_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Registers a YouMind skill and five tools with DeepSeek Harness",
+      "Searches YouMind OpenAPI and retrieves API request information",
+      "Searches a personal YouMind knowledge base or Board",
+      "Searches the public internet through YouMind",
+      "Calls arbitrary confirmed YouMind APIs, which may publish, move, delete, or incur charges"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:52:28.484Z",
+  "repositoryCommitSha": "d70df4302679c595482011f23b739883fa2e5742",
+  "evidenceHash": "c12608dc68a77ca972b4ba395d2a88ff31257e9628534a2d04e8e6b67ff44b15",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "07a026c549aa512a625f56149b043267a43bb51613791c03dc02a7b1ed93ce02",
+  "shadowMode": false
+}

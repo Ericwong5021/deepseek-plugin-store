@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "file",
+    "image",
+    "integration",
+    "planning",
+    "search",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH integration shim that conditionally adapts Codex-style prompts, tools, planning, search, file operations, and WebUI presentation for selected model routes while relying on existing DSH providers.",
+  "summaries": {
+    "zh": "该插件为选定的模型路由提供 Codex 风格的提示词、工具适配、计划管理、搜索和 WebUI 展示，并复用 DSH 现有能力。",
+    "en": "This plugin adapts prompts, tools, planning, search, and WebUI presentation to a Codex-style interface for selected model routes using existing DSH capabilities."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adapts prompts, tool vocabulary, tool results, and WebUI presentation for selected model routes",
+      "Runs shell commands through existing DSH shell capabilities",
+      "Applies file patches including add, delete, update, and move operations",
+      "Reads supported image files when filesystem and attachment capabilities are available",
+      "Performs search-only web queries through the existing DSH web capability",
+      "Stores and updates plan steps through durable session events",
+      "Masks overlapping host tools from active prompt advertisements on matching routes"
+    ],
+    "reasons": [
+      {
+        "code": "shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_search",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "route_and_ui_reconfiguration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Adapts prompts, tool vocabulary, tool results, and WebUI presentation for selected model routes",
+      "Runs shell commands through existing DSH shell capabilities",
+      "Applies file patches including add, delete, update, and move operations",
+      "Reads supported image files when filesystem and attachment capabilities are available",
+      "Performs search-only web queries through the existing DSH web capability",
+      "Stores and updates plan steps through durable session events",
+      "Masks overlapping host tools from active prompt advertisements on matching routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:37.608Z",
+  "repositoryCommitSha": "a35d66378542e97cc862c8dee08007f08d586781",
+  "evidenceHash": "5cadad3406b733dfabe236ccf3c6a8d77171368f4561e08267b7787a8e3665a5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ea198268cae189403abf2debdc522efe3cfc13b04ae08edaf74d5a0580d4ae7a",
+  "shadowMode": false
+}

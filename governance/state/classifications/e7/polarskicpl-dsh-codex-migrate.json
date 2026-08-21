@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "file",
+    "document",
+    "memory",
+    "mcp",
+    "integration",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Migrates Codex CLI conversations, MCP configurations, memories, and optional project files into DeepSeek Harness artifacts and sessions, with documented local filesystem access and MCP registration output.",
+  "summaries": {
+    "zh": "将 Codex CLI 的对话、MCP 配置、记忆和可选项目文件迁移为 DeepSeek Harness 会话及相关产物。",
+    "en": "Migrates Codex CLI conversations, MCP configurations, memories, and optional project files into DeepSeek Harness sessions and related artifacts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads Codex data directories",
+      "Writes migrated artifacts within a configured output directory",
+      "Converts conversations into DSH sessions or Markdown",
+      "Copies memories, AGENTS.md, and optional project files",
+      "Generates MCP registration rows and registration prompts"
+    ],
+    "reasons": [
+      {
+        "code": "unsandboxed_host_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "mcp_tools_may_become_session_visible_after_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads Codex data directories",
+      "Writes migrated artifacts within a configured output directory",
+      "Converts conversations into DSH sessions or Markdown",
+      "Copies memories, AGENTS.md, and optional project files",
+      "Generates MCP registration rows and registration prompts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:49:47.960Z",
+  "repositoryCommitSha": "487c46cc6ddc2cdfce13322c858bdf0d0f6e5ea1",
+  "evidenceHash": "6e97674ca8aeddb5b39fa4116c3385c7285a39d787da34f3b9bea7d5d86e7728",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dc7b623ae83b35679c5cd14a3e26f1ebbeae2d27ad2d9eda5777a51f261d029c",
+  "shadowMode": false
+}

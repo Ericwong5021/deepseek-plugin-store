@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "agent",
+    "collaboration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Feishu/Lark integration that provides bidirectional chat between Feishu and DSH agents, including workspace routing and outbound agent messaging; human review is warranted because it handles bot credentials, external network communication, and relaxed TLS verification.",
+  "summaries": {
+    "zh": "通过飞书机器人与 DSH 智能体进行双向聊天，并提供凭据配置、工作区路由和主动发送消息功能。",
+    "en": "Connects Feishu bots with DSH agents for two-way chat, credential configuration, workspace routing, and agent-initiated messages."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Stores Feishu App ID and App Secret in a local configuration file",
+      "Maintains a Feishu WebSocket connection for inbound messages",
+      "Routes inbound Feishu messages to agents associated with a selected workspace",
+      "Sends agent-generated messages to Feishu chats",
+      "Provides settings for credentials and workspace routing"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_communication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_triggered_external_messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "relaxed_tls_verification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Stores Feishu App ID and App Secret in a local configuration file",
+      "Maintains a Feishu WebSocket connection for inbound messages",
+      "Routes inbound Feishu messages to agents associated with a selected workspace",
+      "Sends agent-generated messages to Feishu chats",
+      "Provides settings for credentials and workspace routing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:22.785Z",
+  "repositoryCommitSha": "80e65bde3c9aa799272beafcf4ee958f08534f71",
+  "evidenceHash": "809bf011c335bb2826d33265e8ef9ae933b42251e9cc2277a36ec95be9cfd6d7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "056499684fc469a0e1b4566be2e56ba35a573de48c28e09be44811b73d7c88e4",
+  "shadowMode": false
+}

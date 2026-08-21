@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "integration",
+    "ui",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness web integration plugin that fixes privileged API access through configured reverse-proxy trusted hosts and enables persistent browser settings, while exposing settings, credential, host, model-discovery, and agent-preset operations.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web 提供反向代理可信主机下的特权 API 访问修复，并让浏览器设置持久化保存。",
+    "en": "Fixes privileged DeepSeek Harness Web API access through configured reverse-proxy trusted hosts and enables persistent browser settings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "exposes privileged DSH web API methods to configured trusted hosts",
+      "reads and modifies settings and credentials",
+      "initiates model discovery requests using caller-supplied credentials",
+      "opens native directory dialogs and host paths",
+      "manages agent presets",
+      "persists browser settings to the DSH settings document"
+    ],
+    "reasons": [
+      {
+        "code": "privileged_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_settings_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_side_effects",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "exposes privileged DSH web API methods to configured trusted hosts",
+      "reads and modifies settings and credentials",
+      "initiates model discovery requests using caller-supplied credentials",
+      "opens native directory dialogs and host paths",
+      "manages agent presets",
+      "persists browser settings to the DSH settings document"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:28.410Z",
+  "repositoryCommitSha": "f79d4e653b23554371b4687021bffa9047432002",
+  "evidenceHash": "2da5e871d83a66846a5db32d1853d52acc11c1b12829e8bed54431a8c7e646fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "64ac9dcc22ac5a5835e90c57008b459ea7d4c9b02375be8a2633fbd0cf7373a7",
+  "shadowMode": false
+}

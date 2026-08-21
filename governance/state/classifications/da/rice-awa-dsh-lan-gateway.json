@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "cli",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A configurable reverse-proxy gateway that exposes the DeepSeek Harness web GUI to LAN or external clients, with optional password authentication, TLS, and a browser UUID compatibility shim.",
+  "summaries": {
+    "zh": "这是一个将 DeepSeek Harness Web GUI 通过可配置反向代理开放到局域网或公网的网关插件，并提供密码鉴权、TLS 和浏览器 UUID 兼容支持。",
+    "en": "A configurable reverse-proxy gateway plugin that exposes the DeepSeek Harness Web GUI to LAN or external clients with password authentication, TLS options, and a browser UUID compatibility shim."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "listens on a configurable network address and port",
+      "reverse-proxies HTTP and WebSocket traffic to a local web interface",
+      "provides password-based login and HMAC session cookies",
+      "generates or loads TLS certificates and private keys",
+      "modifies client-side behavior with a UUID compatibility shim"
+    ],
+    "reasons": [
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reverse_proxy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_key_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tls_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "listens on a configurable network address and port",
+      "reverse-proxies HTTP and WebSocket traffic to a local web interface",
+      "provides password-based login and HMAC session cookies",
+      "generates or loads TLS certificates and private keys",
+      "modifies client-side behavior with a UUID compatibility shim"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:13.217Z",
+  "repositoryCommitSha": "6414013fb50c88a2e887d972015cedc478fcd72c",
+  "evidenceHash": "a06d2812e85240598132f64e69820c4173f1c71e84b3f8c46d7fc2594c13a96c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8ab1717e2e4362866eaa164d52d4ce6600303a61df075e2f6f38010e058d44a3",
+  "shadowMode": false
+}

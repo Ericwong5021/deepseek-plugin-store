@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "data",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin monitors OpenCode Go quota usage by fetching external usage data and presenting rolling, weekly, and monthly limits in the web interface, with an agent query tool.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web 中监控 OpenCode Go 的五小时、每周和每月用量，并通过圆环、展开卡片和智能体工具展示重置信息。",
+    "en": "Monitors OpenCode Go five-hour, weekly, and monthly usage in DeepSeek Harness Web through a usage ring, expandable card, and agent query tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries an external usage endpoint using a configured API key",
+      "Displays rolling, weekly, and monthly quota percentages and reset times in the web UI",
+      "Registers an agent tool for querying usage information",
+      "Refreshes usage data periodically through a host-side proxy route"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries an external usage endpoint using a configured API key",
+      "Displays rolling, weekly, and monthly quota percentages and reset times in the web UI",
+      "Registers an agent tool for querying usage information",
+      "Refreshes usage data periodically through a host-side proxy route"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:34.769Z",
+  "repositoryCommitSha": "8a1107c9536ecee8a4a56d63f8eace86e1cee4e1",
+  "evidenceHash": "a3e92ea81b7cd0bda24617c0c70424de80aea2fe0b73ac4c9d38f8a9f9b70b20",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3194c22fb4bac9d2c3137260b61c5d3099ef35abadc2deefa7d42bb9d297114c",
+  "shadowMode": false
+}

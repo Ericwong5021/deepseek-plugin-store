@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "ui",
+    "layout",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a web GUI terminal dock for local shell and TUI sessions, with resizable layout integration, a WebSocket bridge, and an extension API for plugin views.",
+  "summaries": {
+    "zh": "在 DSH Web 图形界面中提供可隐藏、可调整大小并支持 TUI 插件的本地终端停靠面板。",
+    "en": "Provides a hideable, resizable local terminal dock for the DSH web GUI with TUI plugin integration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides an embedded browser terminal dock",
+      "Creates and manages local Windows PTY sessions through node-pty",
+      "Executes shell commands, including registered TUI plugin commands",
+      "Bridges terminal input and output over a loopback-fenced WebSocket",
+      "Allows plugins to register terminal and DOM views"
+    ],
+    "reasons": [
+      {
+        "code": "local_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "pty_process_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "websocket_terminal_bridge",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_view_registration_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Provides an embedded browser terminal dock",
+      "Creates and manages local Windows PTY sessions through node-pty",
+      "Executes shell commands, including registered TUI plugin commands",
+      "Bridges terminal input and output over a loopback-fenced WebSocket",
+      "Allows plugins to register terminal and DOM views"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:10.973Z",
+  "repositoryCommitSha": "cc25ba2bc7049dd7ffe026468dcead30064d5007",
+  "evidenceHash": "7446ecdd1e205f0bf884fcf890d0580120310af8446eab623a809d783274dc69",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e7fa8519e712014be43589db6debe8f36960df83dee14588f999fa036948be2f",
+  "shadowMode": false
+}

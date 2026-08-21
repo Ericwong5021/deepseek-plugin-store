@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "code-generation",
+    "terminal",
+    "file",
+    "desktop",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-focused DSH coding-agent preset that combines a persistent PowerShell 7 terminal with a file-editing tool for coding tasks; the README states that it is deprecated because equivalent functionality is now built into DSH minimal mode.",
+  "summaries": {
+    "zh": "为 Windows 上的 DSH 编码智能体提供持久 PowerShell 7 终端和文件编辑工具的编码模式预设。",
+    "en": "A Windows-focused DSH coding-agent preset that provides a persistent PowerShell 7 terminal and file-editing tool for coding tasks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs PowerShell 7 commands through a persistent Windows PTY",
+      "Edits files through str_replace_editor",
+      "Maintains shell state across calls",
+      "Supports one-time sandbox permission escalation"
+    ],
+    "reasons": [
+      {
+        "code": "shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_process_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_escalation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Runs PowerShell 7 commands through a persistent Windows PTY",
+      "Edits files through str_replace_editor",
+      "Maintains shell state across calls",
+      "Supports one-time sandbox permission escalation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "ACTIVE_REPOSITORY"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_changes",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:51:58.294Z",
+  "repositoryCommitSha": "a8e6c7d50fa9c27173acd95987d046241f5386f7",
+  "evidenceHash": "c075cdaaa618c697c1c921a0646a517438a9e4f1e985f4f94e65ecb328e86aa2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e6c9f3d5d0fd1d90729baca947f54b051088b06123a55a2596fdc5cd9a2ce9e6",
+  "shadowMode": false
+}

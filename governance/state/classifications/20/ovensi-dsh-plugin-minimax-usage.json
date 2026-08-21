@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "visualization",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness sidebar plugin that monitors MiniMax Coding Plan five-hour and weekly quota usage, reset times, and refresh status through the MiniMax API.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 侧边栏显示 MiniMax Coding Plan 的五小时与每周配额使用量、重置时间和自动刷新的监控插件。",
+    "en": "A DeepSeek Harness sidebar plugin that displays MiniMax Coding Plan five-hour and weekly quota usage, reset times, and periodically refreshed status."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the MINIMAX_API_KEY environment secret",
+      "Calls the MiniMax REST API to retrieve quota usage",
+      "Exposes a local quota endpoint for the client",
+      "Displays five-hour and weekly quota progress in the sidebar",
+      "Refreshes quota data every 60 seconds using server-side caching"
+    ],
+    "reasons": [
+      {
+        "code": "secret_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sidebar_ui_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the MINIMAX_API_KEY environment secret",
+      "Calls the MiniMax REST API to retrieve quota usage",
+      "Exposes a local quota endpoint for the client",
+      "Displays five-hour and weekly quota progress in the sidebar",
+      "Refreshes quota data every 60 seconds using server-side caching"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:48:42.393Z",
+  "repositoryCommitSha": "16af76b37a2c17293b0e0cff996ab75962296380",
+  "evidenceHash": "5433b882d8b3176c7d268857d9dce803084b9cd5188beb28f9164aa29cfe3ca9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "590bcdd7aa9601484954e906c76a3b68080f7632c5c46ddc377fb88c76425a47",
+  "shadowMode": false
+}

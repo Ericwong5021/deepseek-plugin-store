@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "visualization",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily provides an ambient live dashboard for DeepSeek Harness sessions and alerts users through ntfy notifications or a local alarm when turns finish, errors occur, or approvals await action.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供实时会话状态网格，并在回合完成、出错或等待审批时通过 ntfy 或本机警报提醒用户。",
+    "en": "Provides a live DeepSeek Harness session-status grid and alerts users through ntfy or a local alarm when turns finish, errors occur, or approvals are waiting."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Serves a live session-status dashboard through harness web routes",
+      "Reads and aggregates session telemetry and event logs",
+      "Sends configured notifications to an ntfy endpoint",
+      "Executes a user-configured alarm shell command with a bounded subprocess",
+      "Reads and writes user notification configuration under $DSH_HOME"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_notification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configured_shell_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_file_io",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Serves a live session-status dashboard through harness web routes",
+      "Reads and aggregates session telemetry and event logs",
+      "Sends configured notifications to an ntfy endpoint",
+      "Executes a user-configured alarm shell command with a bounded subprocess",
+      "Reads and writes user notification configuration under $DSH_HOME"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:58.554Z",
+  "repositoryCommitSha": "c09aead64987bf2ed73dea44e7581028196b5dea",
+  "evidenceHash": "32bd278a58e1386225c7f65754efc89dcd2d2d6d42348f27337c58610ea130a7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cb2a1344ada899546a27e6ef8fd281040381ca5e4eecabe5bcd6c25cf1b7777d",
+  "shadowMode": false
+}

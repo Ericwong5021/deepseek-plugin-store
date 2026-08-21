@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "integration",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Provides a remote WebSocket connection between local DeepSeek Harness instances and a community website, enabling remote plugin installation, device status viewing, and cached registry browsing; its remote instruction execution and plugin build-script behavior warrant human review.",
+  "summaries": {
+    "zh": "将本机 DeepSeek Harness 连接到社区网站，以便远程查看设备与插件注册表并在本机执行插件安装。",
+    "en": "Connects a local DeepSeek Harness instance to a community website for remote device and plugin-registry viewing and local plugin installation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "connects to a remote WebSocket service",
+      "persists a device token and device identifier locally",
+      "receives remote plugin-install instructions",
+      "executes dsh plugin add locally",
+      "caches a remote plugin registry for offline browsing"
+    ],
+    "reasons": [
+      {
+        "code": "remote_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_install_runs_build_scripts",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_authentication_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "connects to a remote WebSocket service",
+      "persists a device token and device identifier locally",
+      "receives remote plugin-install instructions",
+      "executes dsh plugin add locally",
+      "caches a remote plugin registry for offline browsing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:50:47.985Z",
+  "repositoryCommitSha": "49ed1bc5ebbe90fdb36730ba4a18e111f8920763",
+  "evidenceHash": "b025bd665e2911fb6b5951b2b4fb87086fd630d5b6acdeb26c3b84d1b7051470",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9fdee0d1a290ea6180d7e427003dde2d2b76af803f3032234248b71cb57acd6e",
+  "shadowMode": false
+}
