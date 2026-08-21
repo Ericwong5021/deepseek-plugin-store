@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "visualization",
+    "ui",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Web client plugin that retrieves live API balance and optional platform usage data, stores related credentials locally, and presents historical and daily usage visualizations.",
+  "summaries": {
+    "zh": "用于在 Harness Web 设置中查看 DeepSeek 实时 API 余额、余额趋势及可选的每日费用和 Token 用量图表。",
+    "en": "A Harness Web settings plugin for viewing DeepSeek API balance, balance trends, and optional daily cost and token usage charts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads DeepSeek API balance data using a bearer API key",
+      "Stores an API key and a full Platform session token in browser localStorage",
+      "Sends the Platform session token to a same-origin host proxy that forwards it to private DeepSeek usage endpoints",
+      "Records local balance history and renders balance and usage charts"
+    ],
+    "reasons": [
+      {
+        "code": "credential_storage_and_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "private_external_endpoint_proxy",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek API balance data using a bearer API key",
+      "Stores an API key and a full Platform session token in browser localStorage",
+      "Sends the Platform session token to a same-origin host proxy that forwards it to private DeepSeek usage endpoints",
+      "Records local balance history and renders balance and usage charts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:59.585Z",
+  "repositoryCommitSha": "0a1c211ad3e0ec8266ceaa4e957f58569498d243",
+  "evidenceHash": "6a08ca61d2fad7f6bbf522b1fb6a925d17f35788a5a56377dbe2b35fbba822d8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b45df8031cd186c2c743065c238f4ecc5eafb94b6f08323638c8f5693250421f",
+  "shadowMode": false
+}

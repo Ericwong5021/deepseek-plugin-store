@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "file",
+    "agent",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that converts image message blocks into text placeholders and uses a local Qwen-based script with DashScope to provide image descriptions to text-only models; human review is warranted because installation requires upstream package patches and external API credentials.",
+  "summaries": {
+    "zh": "为仅支持文本的 DeepSeek Harness 模型将图片消息转换为包含本地路径的文本占位，并通过视觉脚本生成图片描述。",
+    "en": "Bridges image messages to text-only DeepSeek Harness models by replacing image blocks with local-path placeholders and obtaining descriptions through a vision script."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Rewrites image message blocks into text placeholders containing local attachment paths",
+      "Invokes a local vision script to describe images",
+      "Sends image content to the DashScope vision API through the provided script",
+      "Requires configuration of an external API key",
+      "Requires patches to official DeepSeek Harness packages to permit image messages"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_and_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_path_and_script_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "required_high_risk_upstream_patches",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Rewrites image message blocks into text placeholders containing local attachment paths",
+      "Invokes a local vision script to describe images",
+      "Sends image content to the DashScope vision API through the provided script",
+      "Requires configuration of an external API key",
+      "Requires patches to official DeepSeek Harness packages to permit image messages"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:03.373Z",
+  "repositoryCommitSha": "94f1c95ad70b562fca952b1fb97709baeac77764",
+  "evidenceHash": "a1610b7aee14872c333400afac5b3ab15d520f63d2b9a968124486a18d3f2a94",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9a9069c51f01b309c09ed14e94b268347093e684c93a8250bc4a2ece26a52aa8",
+  "shadowMode": false
+}

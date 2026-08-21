@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Telegram Bot API bridge that relays authorized private-chat text messages to per-chat agent sessions and sends formatted responses back through Telegram using long polling.",
+  "summaries": {
+    "zh": "通过 Telegram Bot API 长轮询将获授权的私聊文本消息接入智能体会话，并把智能体回复格式化后发送回 Telegram。",
+    "en": "Bridges authorized private-chat text messages to per-chat agent sessions through the Telegram Bot API and sends formatted agent responses back to Telegram."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the Telegram Bot API using a bot token",
+      "Long-polls and receives authorized text messages from Telegram chats",
+      "Creates or reuses per-chat agent sessions and forwards user messages",
+      "Sends agent responses back to Telegram chats with HTML formatting and message splitting"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_required",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_relay_and_external_side_effects",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to the Telegram Bot API using a bot token",
+      "Long-polls and receives authorized text messages from Telegram chats",
+      "Creates or reuses per-chat agent sessions and forwards user messages",
+      "Sends agent responses back to Telegram chats with HTML formatting and message splitting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:41.872Z",
+  "repositoryCommitSha": "a0a9ca11e427b62217250e2e561f6ad3c49d13f2",
+  "evidenceHash": "3d3d150fe571d7744dda2c52e349d8121dabc26751683845188181995ee7ac79",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3b843d792cb6f79e8e4f106730382915caceee136604c78d1d21a22d4a9100f1",
+  "shadowMode": false
+}

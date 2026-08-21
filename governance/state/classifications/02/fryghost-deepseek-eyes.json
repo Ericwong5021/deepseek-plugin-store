@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a bridge plugin that accepts chat images, sends them to a configured OpenAI-compatible vision endpoint for description, and forwards the resulting text to a text-only model.",
+  "summaries": {
+    "zh": "该插件将聊天中粘贴或拖入的图片发送到配置的兼容 OpenAI API 的视觉服务，生成文字描述后转交给文本模型处理。",
+    "en": "This plugin sends images pasted or dragged into chat to a configured OpenAI-compatible vision service, then forwards the resulting descriptions to a text-only model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Accepts pasted or dragged images in chat messages",
+      "Sends image content to a configured OpenAI-compatible vision API",
+      "Replaces image blocks with generated text descriptions before forwarding requests to a target text model",
+      "Stores and resolves an API credential through the host credentials mechanism",
+      "Caches image descriptions in memory"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_transformation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts pasted or dragged images in chat messages",
+      "Sends image content to a configured OpenAI-compatible vision API",
+      "Replaces image blocks with generated text descriptions before forwarding requests to a target text model",
+      "Stores and resolves an API credential through the host credentials mechanism",
+      "Caches image descriptions in memory"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:09.437Z",
+  "repositoryCommitSha": "a0abfaad1401a3ee83ec53db272ed98cde3f2531",
+  "evidenceHash": "38077fe63dc55e57d8b24334eaab28edc590c7d84597a5a811f4d0608d8fbe86",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4c7fcd5fdab0318e5f6bb37f38ec7a896d6d026c2a6e545aaba2baa9f51c25ed",
+  "shadowMode": false
+}

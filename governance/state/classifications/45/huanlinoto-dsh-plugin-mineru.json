@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "api",
+    "data",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides DSH tools for sending local documents to a configured MinerU service and retrieving structured Markdown or JSON parsing results, with asynchronous job management and health checks.",
+  "summaries": {
+    "zh": "通过配置的 MinerU 服务将 PDF、图片、DOCX、PPTX 和 XLSX 等本地文档解析为结构化 Markdown 或 JSON。",
+    "en": "Uses a configured MinerU service to parse local PDFs, images, DOCX, PPTX, and XLSX files into structured Markdown or JSON."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Parses local PDF, image, DOCX, PPTX, and XLSX files through a configured MinerU HTTP service",
+      "Submits asynchronous parsing jobs and polls their status",
+      "Returns structured Markdown and JSON results, with oversized output written to a temporary file",
+      "Checks the configured MinerU server health, version, queue depth, and concurrency capacity"
+    ],
+    "reasons": [
+      {
+        "code": "external_http_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_document_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "temporary_file_output",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Parses local PDF, image, DOCX, PPTX, and XLSX files through a configured MinerU HTTP service",
+      "Submits asynchronous parsing jobs and polls their status",
+      "Returns structured Markdown and JSON results, with oversized output written to a temporary file",
+      "Checks the configured MinerU server health, version, queue depth, and concurrency capacity"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:53.083Z",
+  "repositoryCommitSha": "79809aa57bd19be0ca548be52b76161514d02e11",
+  "evidenceHash": "731d8b0afd66c68b35ad3548f3c6ebcff2b7d3e843828e29ba56ee50846fbc62",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aa122ed923b5bdae5400b203dfe674d9c19795095c929eb756eac6add971dffd",
+  "shadowMode": false
+}

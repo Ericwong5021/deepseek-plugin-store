@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "memory",
+    "search",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for deterministic, near-lossless conversation compaction with session-log recall and search features; the README states it performs local text processing without model calls or network access.",
+  "summaries": {
+    "zh": "用于 DeepSeek Harness 的确定性上下文压缩插件，可在保留原始内容指针的同时提供会话日志召回、搜索和人工 /recall 命令。",
+    "en": "A deterministic DeepSeek Harness context-compaction plugin that preserves pointers to original content while providing session-log recall, search, and a human-facing /recall command."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Deterministic conversation-history compaction",
+      "Reading the durable session log for recall and keyword or regex search",
+      "Providing model-facing recall and search tools",
+      "Providing a human-facing /recall command that appends matching log content to the session",
+      "Optionally writing compilation diagnostics to a local debug log"
+    ],
+    "reasons": [
+      {
+        "code": "reads_durable_session_history",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_recall_messages_and_optional_debug_log",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "does_not_invoke_models_or_network_services",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Deterministic conversation-history compaction",
+      "Reading the durable session log for recall and keyword or regex search",
+      "Providing model-facing recall and search tools",
+      "Providing a human-facing /recall command that appends matching log content to the session",
+      "Optionally writing compilation diagnostics to a local debug log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:49.424Z",
+  "repositoryCommitSha": "03a53466b1d7eaef18e5b35f9f0d8be4f5ff41f0",
+  "evidenceHash": "f8989413d1fdbfe02a5245e40a9a59ed7ca1d60292b07709c7d883e8242c8855",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c3e5c2d054843f8cc85f81e751cd2464673148dcd397d1c104886aab4c6566ed",
+  "shadowMode": false
+}

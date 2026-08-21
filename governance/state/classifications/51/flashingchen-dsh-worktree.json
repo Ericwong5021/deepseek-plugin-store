@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "file",
+    "terminal",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH plugin for creating, listing, opening, and removing persistent Git worktrees through agent tools and a chat command, with repository-local manifests and workspace registration; its primary purpose is repository file and terminal workspace management.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供持久化 Git worktree 的创建、列表、打开和删除工具及工作区注册功能。",
+    "en": "Provides DeepSeek Harness with tools and commands to create, list, open, and remove persistent Git worktrees while registering them as workspaces."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes git worktree commands through the host subprocess service",
+      "Creates detached permanent worktrees inside repository directories",
+      "Lists worktree state and records metadata in per-repository manifests",
+      "Registers and unregisters worktrees as DSH workspaces",
+      "Removes worktrees, optionally forcing deletion of uncommitted changes",
+      "Provides agent tools and a /worktree chat command"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive_force_removal",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Executes git worktree commands through the host subprocess service",
+      "Creates detached permanent worktrees inside repository directories",
+      "Lists worktree state and records metadata in per-repository manifests",
+      "Registers and unregisters worktrees as DSH workspaces",
+      "Removes worktrees, optionally forcing deletion of uncommitted changes",
+      "Provides agent tools and a /worktree chat command"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:01.644Z",
+  "repositoryCommitSha": "d61ce0f6c2498c94e996c63459c0dfb7c376c514",
+  "evidenceHash": "9295b62aec3d9518ee03e298646922891c7053d4ae343d6ebaa5a5b91f7e28fc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9c16c39ef5e1b18763db16c7db241addb308c6ff6a1383f2490a51e0526c7ee8",
+  "shadowMode": false
+}

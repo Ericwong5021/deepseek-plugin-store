@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "file",
+    "data",
+    "api",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README明确说明该插件用于解析并验证DSH导出的ZIP或JSONL会话日志，将其导入新的会话并按需同步模型、预设、权限和沙箱等状态，同时提供浏览器界面、本机HTTP接口及删除导入产物的能力，因此主要归类为数据处理。",
+  "summaries": {
+    "zh": "将DSH导出的ZIP或JSONL会话日志进行结构与SHA-256校验，并导入为新会话，支持状态同步、浏览器操作和导入产物删除。",
+    "en": "Validates DSH-exported ZIP or JSONL session logs and imports them as new sessions with optional state synchronization, browser controls, and removal of imported artifacts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取用户上传的ZIP或JSONL会话日志",
+      "解析并校验会话结构",
+      "计算并比对SHA-256指纹",
+      "将会话及选定状态写入DSH会话存储和工作区记录",
+      "通过本机HTTP接口删除插件导入的会话产物",
+      "在浏览器界面提供导入、预览、恢复和删除操作"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_data_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_storage_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "imported_session_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "state_synchronization",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "读取用户上传的ZIP或JSONL会话日志",
+      "解析并校验会话结构",
+      "计算并比对SHA-256指纹",
+      "将会话及选定状态写入DSH会话存储和工作区记录",
+      "通过本机HTTP接口删除插件导入的会话产物",
+      "在浏览器界面提供导入、预览、恢复和删除操作"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:53.346Z",
+  "repositoryCommitSha": "aef1947395aa61e8b4cb9b8bda343f5733b96a0c",
+  "evidenceHash": "5628c8b93e4cbc5139c1af89154f071c605e1bb1729c149eeba146bec1664554",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "822de45911a7dc9ac3059e4253dd9655b78017f1e9a0b5825d1b34bc0f91f042",
+  "shadowMode": false
+}

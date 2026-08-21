@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "agent",
+    "cli",
+    "file",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides an image_gen tool that uses the Codex CLI to generate images, saves them in the session workspace, and optionally renders them inline in the Web UI.",
+  "summaries": {
+    "zh": "通过 Codex CLI 为智能体提供 image_gen 图片生成工具，并将生成的图片保存到会话工作区及可选地在 Web UI 中预览。",
+    "en": "Provides agents with an image_gen tool backed by the Codex CLI, saving generated images to the session workspace and optionally previewing them in the Web UI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Invokes the Codex CLI through a subprocess to generate images",
+      "Writes generated image files into the session workspace",
+      "Runs image generation as a background job and exposes job results",
+      "Provides a web UI preview through a plugin connection RPC"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_image_generation_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_rpc_artifact_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Invokes the Codex CLI through a subprocess to generate images",
+      "Writes generated image files into the session workspace",
+      "Runs image generation as a background job and exposes job results",
+      "Provides a web UI preview through a plugin connection RPC"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:40:06.567Z",
+  "repositoryCommitSha": "81ebc007824f4a19d89bd982ba75e511a564b630",
+  "evidenceHash": "b6540f2b7a124cf0cbc54004222cc7cf7155041ffc2c159db21bfdbd6c812b92",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b0196ff2aee8de1ea1c48dca1560e4dd3136b52d268c94ad4bd2378349723902",
+  "shadowMode": false
+}

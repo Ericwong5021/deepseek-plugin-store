@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "integration",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A WeChat integration for chatting with, monitoring, and approving DeepSeek Harness agent sessions through an unofficial iLink gateway, with allowlisting, session commands, digests, and in-chat permission responses.",
+  "summaries": {
+    "zh": "通过非官方 iLink 网关将 DeepSeek Harness 智能体连接到微信，支持消息交互、会话管理、状态摘要和权限审批。",
+    "en": "Connects DeepSeek Harness agents to WeChat through the unofficial iLink gateway for messaging, session management, status digests, and permission approvals."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects a DeepSeek Harness agent profile to a WeChat personal account through the iLink gateway",
+      "Receives allowlisted WeChat text messages and routes them to active or newly created agent sessions",
+      "Sends agent responses, status updates, digests, errors, and stop notifications to WeChat",
+      "Displays agent permission requests in WeChat and relays user approvals or denials",
+      "Performs QR login, authenticated polling, reconnect handling, message retries, and rate limiting through the gateway"
+    ],
+    "reasons": [
+      {
+        "code": "external_account_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_action_approval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unofficial_gateway_dependency",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects a DeepSeek Harness agent profile to a WeChat personal account through the iLink gateway",
+      "Receives allowlisted WeChat text messages and routes them to active or newly created agent sessions",
+      "Sends agent responses, status updates, digests, errors, and stop notifications to WeChat",
+      "Displays agent permission requests in WeChat and relays user approvals or denials",
+      "Performs QR login, authenticated polling, reconnect handling, message retries, and rate limiting through the gateway"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:22.963Z",
+  "repositoryCommitSha": "a724da34b5c78a9b9ab4a5de79f5d2a05fac1745",
+  "evidenceHash": "b6c3c53c485eb94574b199bc0ba9ce31bf74763c27c79566947e7300f59d17f3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8760c539603259f777b592dd8e0f32a61941c9d2d0149214faaabdc444bf86a7",
+  "shadowMode": false
+}

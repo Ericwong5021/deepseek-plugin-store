@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "image",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A source-level DeepSeek Harness skin system that adds 21 built-in themes and generates custom color schemes from local images, with selectable UI styling and an update check.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 21 套内置皮肤，并支持从本地图片生成可切换的自定义界面配色。",
+    "en": "Adds 21 built-in skins to DeepSeek Harness and generates selectable custom interface color schemes from local images."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Modifies DeepSeek Harness source files during installation",
+      "Adds selectable built-in and image-derived UI themes",
+      "Processes selected images locally and stores compressed WebP files under the user home directory",
+      "Checks GitHub Releases for updates through the DSH Host proxy"
+    ],
+    "reasons": [
+      {
+        "code": "source_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_update_check",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Modifies DeepSeek Harness source files during installation",
+      "Adds selectable built-in and image-derived UI themes",
+      "Processes selected images locally and stores compressed WebP files under the user home directory",
+      "Checks GitHub Releases for updates through the DSH Host proxy"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:35.810Z",
+  "repositoryCommitSha": "238d114d1e5bf7358c4cb101b36ae129e70a55fe",
+  "evidenceHash": "4b4680a0795196ac8d141a07601f8eb458dbcc11c66f1693152d01f0767c4df8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ce7208e2321be547d4d33deea1893d8d4c11904bb5f66481a3dc6e353994be56",
+  "shadowMode": false
+}

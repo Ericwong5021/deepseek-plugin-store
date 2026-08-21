@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "agent",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A QQ Bot integration that exposes a message-sending tool and optionally drives agent sessions from inbound QQ messages over the QQ Bot WebSocket gateway.",
+  "summaries": {
+    "zh": "通过 QQ Bot API 向用户或群组发送文本和 Markdown 消息，并可选地处理入站消息以驱动智能体会话。",
+    "en": "Sends text and Markdown messages to QQ users or groups through the QQ Bot API and optionally drives agent sessions from inbound QQ messages."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends text or Markdown messages to QQ users and groups through the QQ Bot API",
+      "Receives inbound QQ messages through a WebSocket gateway when enabled",
+      "Creates or drives agent sessions in response to inbound QQ messages",
+      "Uses configured QQ Bot AppID and AppSecret to authenticate with the QQ Bot service"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_sending",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "inbound_event_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_driving",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Sends text or Markdown messages to QQ users and groups through the QQ Bot API",
+      "Receives inbound QQ messages through a WebSocket gateway when enabled",
+      "Creates or drives agent sessions in response to inbound QQ messages",
+      "Uses configured QQ Bot AppID and AppSecret to authenticate with the QQ Bot service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:21.442Z",
+  "repositoryCommitSha": "e8e2d4c508357b28c11e01a10180d7e2039a9a37",
+  "evidenceHash": "43b559e0005b531b3421df83ad82208e514cb71d162f2e42ea3450c9436ed280",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ecf921d7fef2545105f7520d52fe539a22e297945c0d817d626b664c5ab39d09",
+  "shadowMode": false
+}

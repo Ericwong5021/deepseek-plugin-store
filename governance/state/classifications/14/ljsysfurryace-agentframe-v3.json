@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "api",
+    "cli",
+    "context",
+    "memory",
+    "tool",
+    "data",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README明确将AgentFrame定位为面向智能体的四层上下文保持框架，提供记忆摄入、检索、遗忘、持久化、压缩和工具循环，因此主要归类为记忆与上下文；其外部LLM调用、持久化状态、REST接口和工具执行使风险评估为R2。",
+  "summaries": {
+    "zh": "面向智能体提供上下文摄入、检索、遗忘、持久化与KV缓存压缩，并通过CLI、REST API和LLM支持问答及工具循环。",
+    "en": "An agent context framework for ingesting, retrieving, forgetting, persisting, and compressing memory, with CLI, REST API, LLM-backed queries, and tool loops."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "持久化和检索多会话上下文",
+      "对上下文进行语义筛选与KV缓存压缩",
+      "通过DeepSeek等LLM提供商生成回答",
+      "提供CLI和REST API接口",
+      "支持工具循环并执行代码验证请求"
+    ],
+    "reasons": [
+      {
+        "code": "external_llm_provider",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_context_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_api_surface",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "持久化和检索多会话上下文",
+      "对上下文进行语义筛选与KV缓存压缩",
+      "通过DeepSeek等LLM提供商生成回答",
+      "提供CLI和REST API接口",
+      "支持工具循环并执行代码验证请求"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:31.984Z",
+  "repositoryCommitSha": "246e0116442ddc3f04fa9e4772724a4f46bee226",
+  "evidenceHash": "9fe107c6c757f69bad55be58ab664385e7f095d02429fdb0c8faa5c9aa020dfb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2a1bfddc0658fe59d8569a04fa3ade9b14e590b207f479e2ec36844348e8bc1a",
+  "shadowMode": false
+}

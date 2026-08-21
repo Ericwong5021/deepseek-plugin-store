@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "api",
+    "cli",
+    "automation",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness tool that orchestrates authorized garak baseline red-team scans against configured LLM REST endpoints and produces auditable findings and evidence reports.",
+  "summaries": {
+    "zh": "通过授权门禁和预算限制调用 garak 对配置的 LLM REST 端点执行基线安全扫描，并生成可审计的证据报告。",
+    "en": "Runs budget-limited, authorization-gated garak baseline security scans against configured LLM REST endpoints and generates auditable evidence reports."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs the external garak CLI process",
+      "Sends configured probe requests to a target LLM REST endpoint",
+      "Parses scan output and calculates per-probe metrics",
+      "Writes Markdown evidence reports and raw-report references",
+      "Records scan results in the DeepSeek Harness session log"
+    ],
+    "reasons": [
+      {
+        "code": "executes_external_scan_tool",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_requests_to_configured_target",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_reports_and_session_events",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs the external garak CLI process",
+      "Sends configured probe requests to a target LLM REST endpoint",
+      "Parses scan output and calculates per-probe metrics",
+      "Writes Markdown evidence reports and raw-report references",
+      "Records scan results in the DeepSeek Harness session log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:44.198Z",
+  "repositoryCommitSha": "c6c7259d52aae82241b0deea8bf583a5eb2fd1e9",
+  "evidenceHash": "05a98561623f808e68d6f49aa4c43c2b01cc5fff689e2b4be1f0f7695ae6f94e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "14c62bb948220c8bb2a3f3519449086fdf79e5e823e084fb1a44b3e5dc7c09f3",
+  "shadowMode": false
+}

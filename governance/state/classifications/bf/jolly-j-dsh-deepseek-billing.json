@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH WebUI sidebar visualization that retrieves DeepSeek account balance and combines recorded token usage with built-in rates to estimate the current session cost.",
+  "summaries": {
+    "zh": "在 DSH 网页版侧边栏显示 DeepSeek 账户余额、令牌用量和当前会话费用估算。",
+    "en": "Displays DeepSeek account balance, token usage, and an estimate of the current session cost in the DSH web interface sidebar."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the active DeepSeek API key from DSH memory or configuration to request account balance data",
+      "Calls the official DeepSeek balance endpoint",
+      "Reads DSH-recorded token usage and calculates estimated per-session costs",
+      "Displays balance and estimated session cost in a persistent sidebar card",
+      "Refreshes balance data periodically or on demand"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_data_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the active DeepSeek API key from DSH memory or configuration to request account balance data",
+      "Calls the official DeepSeek balance endpoint",
+      "Reads DSH-recorded token usage and calculates estimated per-session costs",
+      "Displays balance and estimated session cost in a persistent sidebar card",
+      "Refreshes balance data periodically or on demand"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:22.947Z",
+  "repositoryCommitSha": "f37e07844ac39c40594e26417c2029325d915202",
+  "evidenceHash": "78e348c817277b7bdbe6bde3b590192b03d3fce4135c34a4747a0c9c82f3ad49",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7fa805b2bf7c4a9e244d752ca1be905cb697efc32153467f293ffa6085fc434a",
+  "shadowMode": false
+}

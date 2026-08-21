@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "terminal",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An Electron desktop wrapper for DeepSeek Harness that provides a standalone window, automatically detects or starts the local web service, can install the service through npx, and records configuration and logs.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 本地 Web 界面封装为 Electron 桌面应用，并提供服务检测、启动、安装、日志记录与窗口管理功能。",
+    "en": "An Electron desktop wrapper for the local DeepSeek Harness web interface with service detection, startup, installation, logging, and window management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches and manages a local DeepSeek Harness web service",
+      "Automatically downloads and installs DeepSeek Harness with npx when configured",
+      "Detects Node.js and local service availability",
+      "Terminates services started by the application on exit when configured",
+      "Writes service logs and configuration files to the user data directory",
+      "Opens a local web interface in an Electron desktop window"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "software_download_and_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Launches and manages a local DeepSeek Harness web service",
+      "Automatically downloads and installs DeepSeek Harness with npx when configured",
+      "Detects Node.js and local service availability",
+      "Terminates services started by the application on exit when configured",
+      "Writes service logs and configuration files to the user data directory",
+      "Opens a local web interface in an Electron desktop window"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:06.127Z",
+  "repositoryCommitSha": "d0bf19aff1b5a468a891c4dc90da810f2481748d",
+  "evidenceHash": "42d619365291b9688efdd1af39d6b01a7f59a7599458e74545aac04af8000a95",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3162e6cbe9ab7783ff0ff8eab7e3bfc3c9d294dbc565c6ab6f4d37f540d61001",
+  "shadowMode": false
+}

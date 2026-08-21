@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "context",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A realtime agent collaboration mesh providing project presence, peer messaging, message history, commands, and optional WebSocket hub connectivity; human review is warranted because the README documents unauthenticated endpoints and inbound session injection.",
+  "summaries": {
+    "zh": "为多个智能体提供基于项目的实时在线状态、点对点或广播消息、消息历史以及可选的 WebSocket 集线器连接。",
+    "en": "Provides project-scoped realtime agent presence, direct or broadcast messaging, message history, and optional WebSocket hub connectivity."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs an optional local hub server with HTTP and WebSocket endpoints",
+      "Maintains project-scoped agent presence and append-only message history",
+      "Sends direct or broadcast messages with optional file attachments",
+      "Injects inbound messages into agent sessions",
+      "Can persist connection settings and automatically reconnect"
+    ],
+    "reasons": [
+      {
+        "code": "unauthenticated_network_endpoints",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "inbound_message_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_attachment_materialization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_connection_settings",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs an optional local hub server with HTTP and WebSocket endpoints",
+      "Maintains project-scoped agent presence and append-only message history",
+      "Sends direct or broadcast messages with optional file attachments",
+      "Injects inbound messages into agent sessions",
+      "Can persist connection settings and automatically reconnect"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:21.540Z",
+  "repositoryCommitSha": "1618e5519681d11cd159e396c2defbd203ab60be",
+  "evidenceHash": "2b8d038ce99ddd7af90a45cf93d92a1a6afafe7fd358b23d0842cc27d76adafa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "755b6dc7730b10aeffe3756f62cf94b6a035f8cdbab70cb62b905733890ab994",
+  "shadowMode": false
+}

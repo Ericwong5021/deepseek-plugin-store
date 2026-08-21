@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "desktop",
+    "monitoring",
+    "notification",
+    "api",
+    "visualization",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-platform desktop whale companion that monitors DSH status through read-only HTTP/SSE connections and presents visual and audio notifications with tray and configuration controls.",
+  "summaries": {
+    "zh": "一款跨平台桌面鲸鱼伴侣，通过只读 HTTP/SSE 连接监控 DSH 状态，并提供悬浮显示、托盘控制和提示音通知。",
+    "en": "A cross-platform desktop whale companion that monitors DSH status through read-only HTTP/SSE connections and provides floating visuals, tray controls, and sound notifications."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DSH status through HTTP polling and SSE connections",
+      "Displays status changes in a transparent always-on-top desktop window",
+      "Plays configurable status notification sounds",
+      "Opens the DSH GUI in a browser on user interaction",
+      "Stores local display, sound, endpoint, and window-position settings"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_and_media",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads DSH status through HTTP polling and SSE connections",
+      "Displays status changes in a transparent always-on-top desktop window",
+      "Plays configurable status notification sounds",
+      "Opens the DSH GUI in a browser on user interaction",
+      "Stores local display, sound, endpoint, and window-position settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:55.881Z",
+  "repositoryCommitSha": "81605ef83947c28799369a4456605c4a17513430",
+  "evidenceHash": "a646744214ca77e5f1741eac8510cb29db47485439eb4b702c2ef482938f8856",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "289a19ea298ae9478bd9f07eb64811db7301cdd61b23fae26bf22e65cbe8c3b3",
+  "shadowMode": false
+}

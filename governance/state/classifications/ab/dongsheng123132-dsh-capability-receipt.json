@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "cli",
+    "data",
+    "file",
+    "mcp",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A utility plugin for observing loaded DeepSeek Harness capabilities, comparing their hashes with supplied expectations or pack locks, and issuing or verifying content-addressed receipts without executing the target capability.",
+  "summaries": {
+    "zh": "用于观察 DeepSeek Harness 实际加载的能力、比对内容哈希并生成或离线验证内容寻址收据的工具插件。",
+    "en": "A utility plugin that observes capabilities loaded by DeepSeek Harness, compares content hashes with supplied expectations, and issues or verifies content-addressed receipts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes loaded DSH skill definitions and computes content hashes",
+      "Reads bounded local resource directories when explicitly configured",
+      "Compares runtime observations with supplied expectations or pack-agent locks",
+      "Writes content-addressed receipt artifacts beneath an explicit workspace-relative directory",
+      "Provides offline CLI and in-memory MCP verification tools"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "artifact_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_observation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Observes loaded DSH skill definitions and computes content hashes",
+      "Reads bounded local resource directories when explicitly configured",
+      "Compares runtime observations with supplied expectations or pack-agent locks",
+      "Writes content-addressed receipt artifacts beneath an explicit workspace-relative directory",
+      "Provides offline CLI and in-memory MCP verification tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:12.156Z",
+  "repositoryCommitSha": "53fe2a117909c17be7996c7eadfea330897398c2",
+  "evidenceHash": "64778d700956cc19ac682b9bf1e1742d0a27785621b915a5eb8e3547722d0a0d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9894dd5681d2d67fc3349af3c67b5e12790f0d916586f79f8e9728ee0d2c8d9e",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DeepSeek Harness plugin that queries API balance and calculates estimated session costs, displaying both in the composer statistics line with refresh and pricing configuration support.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 的输入框统计栏中显示 API 余额和基于 token 用量估算的本次会话费用，并支持刷新与自定义网关。",
+    "en": "Displays the DeepSeek API balance and an estimated per-session cost from token usage in the DeepSeek Harness composer statistics line, with refresh and custom gateway support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the configured DeepSeek API credential at request time",
+      "Calls a configurable balance endpoint over HTTP",
+      "Displays account balance and estimated per-session costs in the composer statistics area",
+      "Calculates cost estimates from token usage and configured pricing"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "financial-information-display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DeepSeek API credential at request time",
+      "Calls a configurable balance endpoint over HTTP",
+      "Displays account balance and estimated per-session costs in the composer statistics area",
+      "Calculates cost estimates from token usage and configured pricing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:34.407Z",
+  "repositoryCommitSha": "aacf42ce3fbdcd613a05f89f0b3b1a6679bc4421",
+  "evidenceHash": "0f7d6e4a8ca2256dd3dca7ee91f6737b9e326d05b3d50c27b5991bf41a84885f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "148ce007d1f6401b12244f1dbdc017184ae8c762a6b5da4fb3f19eaec2eacae2",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "tool",
+    "data",
+    "debugging"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH shell provider that executes bash commands while preserving raw output bytes and automatically decoding mixed or non-UTF-8 encodings, primarily to prevent Chinese-character garbling in Windows and WSL environments.",
+  "summaries": {
+    "zh": "为 DSH 提供支持原始字节采集和自动编码识别的 bash 执行器，减少 Windows 与 WSL 环境中的中文输出乱码。",
+    "en": "Provides DSH with a bash executor that collects raw output bytes and detects common encodings to reduce garbled text in Windows and WSL environments."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Replaces the DSH shell provider",
+      "Spawns bash subprocesses",
+      "Collects raw stdout and stderr bytes",
+      "Automatically detects and decodes UTF-16LE, UTF-8, GBK, and related encodings",
+      "Manages command timeouts, stdin, output limits, and background process lifecycles",
+      "Filters selected inherited environment variables"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell-provider-replacement",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background-process-management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Replaces the DSH shell provider",
+      "Spawns bash subprocesses",
+      "Collects raw stdout and stderr bytes",
+      "Automatically detects and decodes UTF-16LE, UTF-8, GBK, and related encodings",
+      "Manages command timeouts, stdin, output limits, and background process lifecycles",
+      "Filters selected inherited environment variables"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:36.971Z",
+  "repositoryCommitSha": "2e9c7f104eeef9c6f4a49af460607b7e61475fcd",
+  "evidenceHash": "ce4bfab203ed91d1ba8e5791e8b6d30e545ddc962eaf5122fb0157bd24ba5b78",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f48eb870db78add742b5d143b074b51e9cd58878c2a84a64fc535edb8895832a",
+  "shadowMode": false
+}

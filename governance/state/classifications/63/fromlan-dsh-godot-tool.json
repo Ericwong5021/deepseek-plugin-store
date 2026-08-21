@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "debugging",
+    "project-analysis",
+    "testing",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An agent integration that exposes Godot editor control, inspection, debugging, project analysis, linting, and export operations through a loopback RPC bridge.",
+  "summaries": {
+    "zh": "通过回环 RPC 桥让 AI agent 控制 Godot 4.x 编辑器，执行场景操作、项目检查、调试、代码 lint 和导出等开发任务。",
+    "en": "Enables an AI agent to control the Godot 4.x editor through a loopback RPC bridge for scene operations, project inspection, debugging, linting, and export tasks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Communicates with the local Godot 4.x editor through a loopback TCP JSON-lines bridge",
+      "Opens and reloads scenes and starts or stops scene execution",
+      "Reads editor state, scene trees, node properties, debugger state, project files, scripts, and playback errors",
+      "Sets selected Godot project settings",
+      "Runs linting, resource inspection, and export operations"
+    ],
+    "reasons": [
+      {
+        "code": "local_editor_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "build_export",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Communicates with the local Godot 4.x editor through a loopback TCP JSON-lines bridge",
+      "Opens and reloads scenes and starts or stops scene execution",
+      "Reads editor state, scene trees, node properties, debugger state, project files, scripts, and playback errors",
+      "Sets selected Godot project settings",
+      "Runs linting, resource inspection, and export operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:06.430Z",
+  "repositoryCommitSha": "8e559223b95eda5542d5f2586ac7bcd5dea01823",
+  "evidenceHash": "815ad93298602cede6578ccbd6f8fcb44fc6940d06688fa1b1a90ad0b936ef8f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b220e39a06daaa9a2a578907a6bfe3cab656d972d47340c36182ad055e02555a",
+  "shadowMode": false
+}

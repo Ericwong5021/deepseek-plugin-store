@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "search",
+    "memory",
+    "chat",
+    "agent",
+    "api",
+    "automation",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web UI panel for browsing, searching, tagging, viewing, downloading, and restoring archived sessions, with an embedded agent assistant and host shutdown control.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 网页界面中浏览、搜索、标记、查看、下载和恢复归档会话的管理面板，并提供嵌入式 AI 助手与关闭主机功能。",
+    "en": "A DeepSeek Harness web UI panel for browsing, searching, tagging, viewing, downloading, and restoring archived sessions, with an embedded AI assistant and host shutdown control."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads archived session metadata and conversation logs",
+      "Searches and filters archived sessions",
+      "Adds and removes persistent session tags through a local HTTP API",
+      "Restores archived sessions to their original workspace groups",
+      "Downloads session logs as ZIP files",
+      "Invokes a DSH agent to search and organize sessions",
+      "Creates and deletes helper sessions used by the AI assistant",
+      "Requests graceful shutdown of the DSH host"
+    ],
+    "reasons": [
+      {
+        "code": "session_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_session_metadata_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_shutdown_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_invocation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads archived session metadata and conversation logs",
+      "Searches and filters archived sessions",
+      "Adds and removes persistent session tags through a local HTTP API",
+      "Restores archived sessions to their original workspace groups",
+      "Downloads session logs as ZIP files",
+      "Invokes a DSH agent to search and organize sessions",
+      "Creates and deletes helper sessions used by the AI assistant",
+      "Requests graceful shutdown of the DSH host"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:35.959Z",
+  "repositoryCommitSha": "715f33ad09425c0efcd4db1b405e0ca7b0e2d2de",
+  "evidenceHash": "c1ec001fa6dac9e51051a2d93269b60423727dc916f5e044f3f57702f951509c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "239a7c01c192745269fed1d489b16df103416264023d400f62ead9c061185199",
+  "shadowMode": false
+}

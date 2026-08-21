@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "browser",
+    "notification",
+    "monitoring",
+    "ui",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A browser-focused notification plugin that monitors user-visible session states and alerts users about completed runs or required interactions with configurable notifications and sounds.",
+  "summaries": {
+    "zh": "这是一个在浏览器中监测运行状态并通过通知和可配置提示音提醒用户任务完成或需要交互的插件。",
+    "en": "A browser plugin that monitors session states and alerts users with configurable notifications and sounds when runs finish or interaction is needed."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Monitors client-side session state transitions",
+      "Displays browser notifications for completed runs and pending interactions",
+      "Plays configurable notification sounds using Web Audio",
+      "Stores notification preferences in browser localStorage",
+      "Optionally mirrors settings to the host settings file when the host namespace is enabled"
+    ],
+    "reasons": [
+      {
+        "code": "browser_notifications_and_audio",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "client_side_session_monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_preference_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_host_settings_mirror",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Monitors client-side session state transitions",
+      "Displays browser notifications for completed runs and pending interactions",
+      "Plays configurable notification sounds using Web Audio",
+      "Stores notification preferences in browser localStorage",
+      "Optionally mirrors settings to the host settings file when the host namespace is enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:23.236Z",
+  "repositoryCommitSha": "50c36dc969c7c0ef28b5b98f5fbc873669be3496",
+  "evidenceHash": "04829cc82daabede4d68f64141ebfa9cbd29e187aeb7488d9e46bccece3f35af",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cf463868d792639fabea45e7b24a656ad176ccfb26342d7c9001c71c26b39620",
+  "shadowMode": false
+}

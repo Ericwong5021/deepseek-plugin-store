@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "desktop",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An on-device macOS vision plugin that performs OCR and selected Apple Vision image detections on local images, clipboard content, screens, and application windows.",
+  "summaries": {
+    "zh": "一款基于 macOS Apple Vision 的本地视觉插件，可对图片、剪贴板、屏幕和应用窗口执行 OCR 及图像检测。",
+    "en": "A macOS plugin using Apple Vision to perform on-device OCR and image detection on local files, clipboard images, screens, and application windows."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local image files and clipboard images",
+      "Captures the screen, foreground window, or selected application windows when authorized",
+      "Performs on-device OCR and Apple Vision image detection",
+      "Returns structured text, confidence, coordinates, candidate results, and detection status",
+      "Builds and caches a native Swift helper on first visual task"
+    ],
+    "reasons": [
+      {
+        "code": "local-media-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "screen-window-capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "native-helper-build",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local image files and clipboard images",
+      "Captures the screen, foreground window, or selected application windows when authorized",
+      "Performs on-device OCR and Apple Vision image detection",
+      "Returns structured text, confidence, coordinates, candidate results, and detection status",
+      "Builds and caches a native Swift helper on first visual task"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:41.489Z",
+  "repositoryCommitSha": "15081be44ba7c22ba0253fa5dd62ef08dbeebe8a",
+  "evidenceHash": "4ad9750a2c9c6437cb67b3548943ab77e23ae60a6de9517301e894353dcbd50a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6272fbe7e28d930ec469bf256bb486dc574ce8a7f7e62a8de62d2393b18f0490",
+  "shadowMode": false
+}

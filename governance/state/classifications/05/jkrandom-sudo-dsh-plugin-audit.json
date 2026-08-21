@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "monitoring",
+    "debugging",
+    "file",
+    "terminal",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A plugin-audit utility that statically profiles third-party plugin capabilities and uses a runtime sentinel to request approval or deny selected credential and unknown-host egress operations.",
+  "summaries": {
+    "zh": "用于静态分析第三方插件的文件、进程、网络和凭证访问迹象，并在运行时对匹配风险规则的工具调用请求批准或拒绝。",
+    "en": "Audits third-party plugins for observed permissions and uses a runtime sentinel to request approval or deny tool calls involving configured credential or unknown-host egress risks."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads plugin source files for static analysis",
+      "Reports observed filesystem, process, network, host, environment-variable, and credential-path references",
+      "Inspects tool call names and arguments before execution",
+      "Requests approval or denies calls matching configured risk rules",
+      "Writes only to the host profile's dependency metadata during installation or removal"
+    ],
+    "reasons": [
+      {
+        "code": "source-read-analysis",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool-call-monitoring-and-gating",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no-plugin-owned-network-or-telemetry",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads plugin source files for static analysis",
+      "Reports observed filesystem, process, network, host, environment-variable, and credential-path references",
+      "Inspects tool call names and arguments before execution",
+      "Requests approval or denies calls matching configured risk rules",
+      "Writes only to the host profile's dependency metadata during installation or removal"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:38:25.357Z",
+  "repositoryCommitSha": "d83ae9a0516533490ff9a93ef686cf19db9fac5d",
+  "evidenceHash": "6726905e383d2e4cb420b74b5f07341f20a454c27be086015bfef696c4daee27",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1fa501c3c157eab2842f66e3f61512e9740cff7aff46ee127a64f98a363337ee",
+  "shadowMode": false
+}

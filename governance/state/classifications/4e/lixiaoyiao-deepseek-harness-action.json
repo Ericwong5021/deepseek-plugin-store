@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "code-generation",
+    "debugging",
+    "testing",
+    "project-analysis",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A GitHub Action that automates AI-assisted pull request review, CI diagnosis, code fixes, and issue-to-pull-request workflows using DeepSeek Harness.",
+  "summaries": {
+    "zh": "通过 GitHub 事件调用 DeepSeek Harness，自动执行拉取请求审查、CI 故障诊断、代码修复和 Issue 转拉取请求等开发工作流。",
+    "en": "Uses GitHub events to run DeepSeek Harness for automated pull request reviews, CI diagnosis, code fixes, and issue-to-pull-request development workflows."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads pull request diffs, repository context, issues, and failed CI logs",
+      "Posts review summaries and inline comments to pull requests",
+      "Can edit code and run maintainer-configured validation commands when write access is explicitly enabled",
+      "Can create branches, commits, and pull requests for authorized tasks",
+      "Uses the DeepSeek API through a configured secret"
+    ],
+    "reasons": [
+      {
+        "code": "workflow-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "repository-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads pull request diffs, repository context, issues, and failed CI logs",
+      "Posts review summaries and inline comments to pull requests",
+      "Can edit code and run maintainer-configured validation commands when write access is explicitly enabled",
+      "Can create branches, commits, and pull requests for authorized tasks",
+      "Uses the DeepSeek API through a configured secret"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:39:31.459Z",
+  "repositoryCommitSha": "b407288e0555b0733222051da249c85a22ba0aeb",
+  "evidenceHash": "0b4bfb300efbf26f1ef07aed7d2c6c487cbb75ad404bec7d6fc7b52e09f0d43b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f4ef17f262bdef8f43d1b7cec2c2f4c2aa9ecdc25fa110311955bafd94880692",
+  "shadowMode": false
+}

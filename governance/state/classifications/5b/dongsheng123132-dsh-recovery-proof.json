@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "cli",
+    "file",
+    "data",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A testing and debugging plugin that verifies read-only recovery-drill evidence, validates recovery phases and object hashes, and produces an evidence report without executing recovery actions.",
+  "summaries": {
+    "zh": "用于验证恢复演练证据的测试调试插件，可检查清单、事件序列和对象哈希并生成验证报告。",
+    "en": "A testing and debugging plugin for validating recovery-drill manifests, event sequences, and object hashes while generating an evidence report."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured workspace files to inspect manifests, events, and referenced objects",
+      "Validates JSON and JSONL recovery evidence including phases, rollback status, stale plans, revisions, and SHA-256 references",
+      "Writes a content-addressed verification report to an explicit workspace-relative artifact directory",
+      "Provides CLI and proof-only MCP inspection and verification tools"
+    ],
+    "reasons": [
+      {
+        "code": "local_workspace_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "artifact_output_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "recovery_evidence_validation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured workspace files to inspect manifests, events, and referenced objects",
+      "Validates JSON and JSONL recovery evidence including phases, rollback status, stale plans, revisions, and SHA-256 references",
+      "Writes a content-addressed verification report to an explicit workspace-relative artifact directory",
+      "Provides CLI and proof-only MCP inspection and verification tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:36:11.574Z",
+  "repositoryCommitSha": "7ecd2bc72663507b9f3d71bfd28378d0c9145d61",
+  "evidenceHash": "f823799c1f524661637dbd1d62f6c9718c103b433a7e09eb88fb042f7b747f6e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e9e2271bcdd50f566f3e2067e8d63ee13e5143a1ce1614b2ef7927e4dcde4bc2",
+  "shadowMode": false
+}

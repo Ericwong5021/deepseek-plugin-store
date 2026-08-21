@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "cli",
+    "file",
+    "terminal",
+    "integration",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily provides SSH/SFTP-backed remote workspaces with agent-accessible file operations, remote command execution, synchronization, and port forwarding; these capabilities can affect remote systems and require human review.",
+  "summaries": {
+    "zh": "通过 SSH 和 SFTP 管理远程工作区，支持远程文件操作、命令执行、镜像同步及端口转发。",
+    "en": "Manage remote workspaces over SSH and SFTP with remote file operations, command execution, mirror synchronization, and port forwarding."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "SSH connection to configured remote machines",
+      "SFTP listing, reading, writing, editing, uploading, downloading, moving, and removing files",
+      "Remote shell command execution with environment and PTY support",
+      "Bidirectional synchronization between remote directories and local mirrors",
+      "SSH local and reverse port forwarding",
+      "Local storage of machine connection settings and optional passwords",
+      "Command and file-operation audit logging"
+    ],
+    "reasons": [
+      {
+        "code": "remote_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_filesystem_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ssh_port_forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "SSH connection to configured remote machines",
+      "SFTP listing, reading, writing, editing, uploading, downloading, moving, and removing files",
+      "Remote shell command execution with environment and PTY support",
+      "Bidirectional synchronization between remote directories and local mirrors",
+      "SSH local and reverse port forwarding",
+      "Local storage of machine connection settings and optional passwords",
+      "Command and file-operation audit logging"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:37:01.724Z",
+  "repositoryCommitSha": "90d3cd2544661bf056abf08f9987b8d3b612d410",
+  "evidenceHash": "5775e1807f618128ee878e29dc374acf58309e00c3a8866a159cce92a724b096",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8aee230bbcc84138672c404635bf1af58f513fa16b368b9d959103174db11e37",
+  "shadowMode": false
+}

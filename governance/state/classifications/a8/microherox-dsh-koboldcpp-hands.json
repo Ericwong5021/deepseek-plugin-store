@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "image",
+    "integration",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness tool plugin that delegates text processing, image analysis, OCR, and image comparison to a locally managed KoboldCpp server.",
+  "summaries": {
+    "zh": "将文本处理、图像分析、OCR 和图像比较任务委托给本地 KoboldCpp 服务的 DeepSeek Harness 工具插件。",
+    "en": "A DeepSeek Harness tool plugin that delegates text processing, image analysis, OCR, and image comparison to a locally managed KoboldCpp server."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Spawns and manages a local KoboldCpp process",
+      "Sends text prompts and images to a local model server",
+      "Reads specified local image paths",
+      "Fetches images from data or HTTP(S) URLs",
+      "Registers text and vision tools with the harness"
+    ],
+    "reasons": [
+      {
+        "code": "process-spawn",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-file-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network-request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Spawns and manages a local KoboldCpp process",
+      "Sends text prompts and images to a local model server",
+      "Reads specified local image paths",
+      "Fetches images from data or HTTP(S) URLs",
+      "Registers text and vision tools with the harness"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:40:05.656Z",
+  "repositoryCommitSha": "0e75b2366ee21c35bf6178920cb7690e467f2322",
+  "evidenceHash": "219e67cb5d58f98b242ae9b5efed7481e13e8526e43c4ca537d6aa8ad2935d1a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "695ebe6641de8adc99543c2a36e5d3c3161c34ab5555e9933e7330404a109f0d",
+  "shadowMode": false
+}
