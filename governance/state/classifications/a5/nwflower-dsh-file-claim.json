@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "collaboration",
+    "file",
+    "workflow",
+    "tool",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Host plugin for coordinating concurrent agent sessions through file claims, write protection, pending edits, and git three-way merging.",
+  "summaries": {
+    "zh": "用于协调并行 DSH 会话的文件声明、写入保护、待处理编辑和 Git 三方合并的主机插件。",
+    "en": "A DSH Host plugin that coordinates concurrent sessions through file claims, write protection, pending edits, and Git three-way merges."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "claims and releases workspace file paths for concurrent sessions",
+      "blocks selected writes to files claimed by another session",
+      "stores pending edits and applies git three-way merges",
+      "tracks session heartbeats, stale claims, and audit records in the workspace"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "concurrent_session_coordination",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_merge_operations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "claims and releases workspace file paths for concurrent sessions",
+      "blocks selected writes to files claimed by another session",
+      "stores pending edits and applies git three-way merges",
+      "tracks session heartbeats, stale claims, and audit records in the workspace"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:30.851Z",
+  "repositoryCommitSha": "50f60f3b02485af99c5425574b5fd94b370b793f",
+  "evidenceHash": "1b3cf2c1f286c54c3c6dbe4e9a842a2b57bbcbcd03725a61fabd3741ba1bafbf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1ae8faf2f71943362f8a778bdc2b98c2c1f353e4fbe946f7d2b260c36c8a3be",
+  "shadowMode": false
+}

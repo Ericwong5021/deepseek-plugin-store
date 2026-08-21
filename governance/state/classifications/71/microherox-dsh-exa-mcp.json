@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "api",
+    "mcp",
+    "research",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A configuration-only DeepSeek Harness plugin that connects to Exa’s hosted MCP service and exposes web search and fetch capabilities, with optional API-key authentication for expanded tools.",
+  "summaries": {
+    "zh": "将 Exa 托管式 MCP 搜索服务接入 DeepSeek Harness，为智能体提供网页搜索和内容抓取工具。",
+    "en": "Connects Exa’s hosted MCP search service to DeepSeek Harness, providing agents with web search and content-fetching tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Connects to Exa’s hosted MCP endpoint over Streamable HTTP",
+      "Exposes Exa web search and web fetch tools to DeepSeek Harness agents",
+      "Optionally sends EXA_API_KEY to Exa as an x-api-key header",
+      "Dynamically discovers and registers tools advertised by the Exa endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_secret_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "dynamic_remote_tool_discovery",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to Exa’s hosted MCP endpoint over Streamable HTTP",
+      "Exposes Exa web search and web fetch tools to DeepSeek Harness agents",
+      "Optionally sends EXA_API_KEY to Exa as an x-api-key header",
+      "Dynamically discovers and registers tools advertised by the Exa endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:27.752Z",
+  "repositoryCommitSha": "be2fe2afddc729ff9417f947d654838f513fb8ef",
+  "evidenceHash": "aec17a28fb2748a3bb84edb5ebe4a1ccfd456310837719c513ac759546fb87b1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c9426537eca94d1756ee311a7ec595f81b4f67499be3156a05d2dc39f11a733e",
+  "shadowMode": false
+}

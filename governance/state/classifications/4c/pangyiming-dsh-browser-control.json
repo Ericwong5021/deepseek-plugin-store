@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "cli",
+    "debugging",
+    "mobile",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an agent-facing browser automation plugin that controls Chrome through CDP for navigation, screenshots, diagnostics, JavaScript evaluation, and mobile emulation; its login-state reuse and arbitrary page scripting justify elevated risk.",
+  "summaries": {
+    "zh": "通过 Chrome DevTools Protocol 驱动浏览器，支持导航、截图、页面错误采集、移动端仿真和页面 JavaScript 执行。",
+    "en": "Controls Chrome through the Chrome DevTools Protocol for navigation, screenshots, page diagnostics, mobile emulation, and in-page JavaScript evaluation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches and controls a Chrome instance through CDP",
+      "Navigates to URLs and captures screenshots",
+      "Collects console, page, and network errors",
+      "Executes arbitrary JavaScript expressions in web pages",
+      "Copies browser login-state data into an isolated profile for reuse",
+      "Supports mobile viewport and user-agent emulation",
+      "Can terminate the controlled browser instance"
+    ],
+    "reasons": [
+      {
+        "code": "browser_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "arbitrary_javascript_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "login_state_reuse",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_process_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Launches and controls a Chrome instance through CDP",
+      "Navigates to URLs and captures screenshots",
+      "Collects console, page, and network errors",
+      "Executes arbitrary JavaScript expressions in web pages",
+      "Copies browser login-state data into an isolated profile for reuse",
+      "Supports mobile viewport and user-agent emulation",
+      "Can terminate the controlled browser instance"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:43:08.238Z",
+  "repositoryCommitSha": "5a4359c0ae4632d02b37cfb2e920a71a7642b15b",
+  "evidenceHash": "3d7e74ec20dd60e47a9a3694a0d4c6a1f0285e1a8b62b0a1e3f7d5d176c3982f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "02a95c6b1244b5fa0e2b019ac87f7e018a5d7b695c343eb2dda26d4a93c070da",
+  "shadowMode": false
+}

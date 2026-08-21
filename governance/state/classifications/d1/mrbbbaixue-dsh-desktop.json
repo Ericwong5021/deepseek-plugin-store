@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "tool",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows WPF/WebView2 desktop launcher for DeepSeek Harness that manages the dsh service lifecycle, provides tray controls and autostart, and displays the service interface.",
+  "summaries": {
+    "zh": "用于在 Windows 桌面上启动、管理和显示 DeepSeek Harness dsh 服务的 WPF/WebView2 启动器，支持托盘控制、自动重启和开机自启。",
+    "en": "A Windows WPF/WebView2 launcher for starting, managing, and displaying the DeepSeek Harness dsh service with system-tray controls, automatic restart, and autostart."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Launches and manages the dsh child process",
+      "Automatically restarts dsh after unexpected exit",
+      "Provides system-tray start, restart, and stop controls",
+      "Can configure current-user autostart",
+      "Can invoke npx to download and run dsh when it is not installed",
+      "Loads the dsh service interface through WebView2",
+      "Writes operational logs to the user profile"
+    ],
+    "reasons": [
+      {
+        "code": "process-management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "networked-package-bootstrap",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user-autostart",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Launches and manages the dsh child process",
+      "Automatically restarts dsh after unexpected exit",
+      "Provides system-tray start, restart, and stop controls",
+      "Can configure current-user autostart",
+      "Can invoke npx to download and run dsh when it is not installed",
+      "Loads the dsh service interface through WebView2",
+      "Writes operational logs to the user profile"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:03.361Z",
+  "repositoryCommitSha": "b80cc9fffcb258ef19356c4749c0ef2bdcd438f3",
+  "evidenceHash": "ef2a7315c158b654f63fb8ff12363c710c8be6c5a56b8b3ae9a42bb1c7cdbd74",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f09f73374e077b9f4a5b317129d041c29fc826d77cc87a8cd5ef85d86f8ed915",
+  "shadowMode": false
+}

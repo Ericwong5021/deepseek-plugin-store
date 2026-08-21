@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "agent",
+    "automation",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "A Rust SDK that integrates with DeepSeek Harness by launching its runtime as a subprocess and controlling it through JSON-RPC, with optional runtime downloading and support for research-oriented tools.",
+  "summaries": {
+    "zh": "通过子进程和 JSON-RPC 驱动 DeepSeek Harness 运行时的 Rust SDK，支持运行任务、管理运行时并使用其研究工具。",
+    "en": "A Rust SDK for driving the DeepSeek Harness runtime as a subprocess over JSON-RPC, with task execution, runtime management, and research-tool support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches and manages a subprocess runtime",
+      "Communicates with the runtime over line-delimited JSON-RPC",
+      "Downloads, verifies, and caches a platform runtime executable",
+      "Supports web search, web fetch, and subagent operations through the driven runtime"
+    ],
+    "reasons": [
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_download_and_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_runtime_integration",
+        "evidenceRef": "repository"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Launches and manages a subprocess runtime",
+      "Communicates with the runtime over line-delimited JSON-RPC",
+      "Downloads, verifies, and caches a platform runtime executable",
+      "Supports web search, web fetch, and subagent operations through the driven runtime"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:33.245Z",
+  "repositoryCommitSha": "e2fd10f88c2d683bae76182933c6ff2fedde7070",
+  "evidenceHash": "b6b681d335f75f852de66adb17dd64eb03d16e9e964f6b6d109652c865a30ba0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "625984efaf5f4aa85433e1a3e9078ea1ef97af61819e4719c6e18a16ef4dcfcf",
+  "shadowMode": false
+}

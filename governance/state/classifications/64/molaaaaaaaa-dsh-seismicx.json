@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "agent",
+    "tool",
+    "workflow",
+    "visualization",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Provides typed model-facing tools for seismic waveform inventory, earthquake phase picking, and map generation by wrapping the SeismicX catalog skill, with optional background execution.",
+  "summaries": {
+    "zh": "通过类型化工具封装 SeismicX 地震目录技能，为智能体提供波形扫描、地震震相拾取和地震地图生成能力。",
+    "en": "Wraps the SeismicX earthquake-catalog skill with typed tools for waveform scanning, seismic phase picking, and earthquake map generation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs a configured Python interpreter through a subprocess interface",
+      "Scans waveform archives and performs seismic phase picking",
+      "Generates earthquake map outputs and returns output paths",
+      "Supports long-running background jobs that can be monitored or cancelled",
+      "Uses the configured interpreter with ambient filesystem and network access"
+    ],
+    "reasons": [
+      {
+        "code": "unconfined_subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "long_running_background_jobs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_network_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Runs a configured Python interpreter through a subprocess interface",
+      "Scans waveform archives and performs seismic phase picking",
+      "Generates earthquake map outputs and returns output paths",
+      "Supports long-running background jobs that can be monitored or cancelled",
+      "Uses the configured interpreter with ambient filesystem and network access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:43.716Z",
+  "repositoryCommitSha": "6175b7cfffff38f85c00775658fd7041148c83be",
+  "evidenceHash": "a6d6db42ce1407ab8ad3a85f13f5bedad2d2c257bb8da2d1ca93807e7ac8dfbb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eec3700c76d0a967499133ac7c3a5ef89cf1d16b2f95f1ccbf70b7d069b3a76a",
+  "shadowMode": false
+}

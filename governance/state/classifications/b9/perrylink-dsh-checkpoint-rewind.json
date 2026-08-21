@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "file",
+    "memory",
+    "workflow",
+    "tool",
+    "terminal",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A checkpoint and rewind utility for DeepSeek Harness that snapshots workspace, session, and plugin configuration state before mutations and restores selected states through commands and a settings timeline.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供工作区、会话和插件配置的检查点快照、差异查看及回滚功能。",
+    "en": "Provides DeepSeek Harness with workspace, session, and plugin configuration checkpoints, diffs, and rollback commands."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures workspace snapshots using Git objects or incremental copies",
+      "Restores selected workspace files from a checkpoint",
+      "Creates child sessions by replaying events to a checkpoint boundary",
+      "Snapshots and restores plugin configuration",
+      "Provides checkpoint, rewind, preview, diff, and clear commands",
+      "Runs pre-mutation listeners and host Git commands",
+      "Displays checkpoint timelines and pairwise diffs in a settings page"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_replay_and_fork",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_git_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration_restore",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Captures workspace snapshots using Git objects or incremental copies",
+      "Restores selected workspace files from a checkpoint",
+      "Creates child sessions by replaying events to a checkpoint boundary",
+      "Snapshots and restores plugin configuration",
+      "Provides checkpoint, rewind, preview, diff, and clear commands",
+      "Runs pre-mutation listeners and host Git commands",
+      "Displays checkpoint timelines and pairwise diffs in a settings page"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:43:22.683Z",
+  "repositoryCommitSha": "99d7459532c4828e799edfe0067826003c230234",
+  "evidenceHash": "037d85b9d1994af2462bb9b0134b228a1447375d2a6d73dc9ae7a5628848f6ba",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "60fd89bab153c178d147edb33c8625b9ae1a69c4c1f74a0f92345ef4a450cde8",
+  "shadowMode": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "agent",
+    "cli",
+    "context",
+    "file",
+    "project-analysis",
+    "search",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that connects the local tokensave semantic graph engine through its CLI, automatically indexes project directories, and exposes semantic code exploration tools to the agent.",
+  "summaries": {
+    "zh": "通过 tokensave CLI 为 DSH 智能体提供本地项目语义索引和代码关系查询工具。",
+    "en": "Connects the tokensave CLI to DSH to provide local semantic project indexing and code relationship queries for the agent."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes the configured tokensave command-line binary",
+      "Indexes and reads project files into a local semantic graph",
+      "Runs semantic code exploration tools such as search, callers, callees, and body",
+      "May create or synchronize a .tokensave index",
+      "May modify .gitignore to include .tokensave/",
+      "Checks crates.io for tokensave updates at startup"
+    ],
+    "reasons": [
+      {
+        "code": "external_cli_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_file_indexing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_update_check",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Executes the configured tokensave command-line binary",
+      "Indexes and reads project files into a local semantic graph",
+      "Runs semantic code exploration tools such as search, callers, callees, and body",
+      "May create or synchronize a .tokensave index",
+      "May modify .gitignore to include .tokensave/",
+      "Checks crates.io for tokensave updates at startup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:31.188Z",
+  "repositoryCommitSha": "50a8973a3b8e44b9f90f385c86230ea4b395a9c1",
+  "evidenceHash": "0b56d17c1a279c03930e5537f7bc363fb37e0094160a0c01403e1ef5c556254a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5515699eb0c093aa5c15bcb8332bf077cec1027c068a0e898d25a43baa83c202",
+  "shadowMode": false
+}

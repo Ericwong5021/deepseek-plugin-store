@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "api",
+    "image",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Linux Electron desktop client that embeds the DeepSeek Harness Web UI, manages its local CLI lifecycle and updates, and adds optional vision assistance through a configurable OpenAI-compatible API.",
+  "summaries": {
+    "zh": "这是一个 Linux Electron 桌面客户端，用于内嵌 DeepSeek Harness Web UI、管理本地引擎更新，并通过可配置的兼容 OpenAI 接口提供可选的图片描述功能。",
+    "en": "A Linux Electron desktop client that embeds the DeepSeek Harness Web UI, manages the local engine and updates, and optionally provides image descriptions through a configurable OpenAI-compatible API."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a Linux Electron desktop shell for the DeepSeek Harness Web UI",
+      "Spawns and restarts the locally installed DeepSeek Harness CLI",
+      "Checks for and installs DeepSeek Harness updates with rollback on failure",
+      "Stores pasted images locally and exposes them to a vision tool",
+      "Sends image data or paths to a user-configured OpenAI-compatible vision API"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_dependency_updates",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides a Linux Electron desktop shell for the DeepSeek Harness Web UI",
+      "Spawns and restarts the locally installed DeepSeek Harness CLI",
+      "Checks for and installs DeepSeek Harness updates with rollback on failure",
+      "Stores pasted images locally and exposes them to a vision tool",
+      "Sends image data or paths to a user-configured OpenAI-compatible vision API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:44.190Z",
+  "repositoryCommitSha": "94b6e86ba9e9e6a5d41cad3e3e7144496268b4fe",
+  "evidenceHash": "b71a5d01f77ab94d1a48db7408d1503023d485730ff312fc894315bfaa33393c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "64ab46eaba4238c21b588dade96ccc8ccb24ac00beca502895891fd54a9e337c",
+  "shadowMode": false
+}

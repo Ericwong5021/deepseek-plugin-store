@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "desktop",
+    "terminal",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "A containerized DeepSeek Harness runtime and development environment distributed with Compose and Podman Quadlet examples, persistent state, reverse-proxy access, supervision, and optional auto-updates.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供开箱即用的容器化运行环境，包含开发工具链、持久化用户目录、Caddy 反向代理以及 Docker Compose 和 Podman Quadlet 部署示例。",
+    "en": "A containerized DeepSeek Harness environment with a development toolchain, persistent user state, Caddy reverse proxy, supervision, and Docker Compose or Podman Quadlet deployment examples."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs DeepSeek Harness web UI and agent service in a container",
+      "Provides a development toolchain including Node.js, pnpm, uv, Rust, Git, Caddy, Podman, and GitHub CLI",
+      "Exposes the service through a Caddy reverse proxy with optional basic authentication",
+      "Supports persistent user state, supervised restarts, and optional startup auto-updates",
+      "Enables remote access that may expose agent control and settings or credentials to reachable clients"
+    ],
+    "reasons": [
+      {
+        "code": "network_exposes_agent_and_settings_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "includes_passwordless_sudo_and_nested_container_tooling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "supports_runtime_dependency_auto_update",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs DeepSeek Harness web UI and agent service in a container",
+      "Provides a development toolchain including Node.js, pnpm, uv, Rust, Git, Caddy, Podman, and GitHub CLI",
+      "Exposes the service through a Caddy reverse proxy with optional basic authentication",
+      "Supports persistent user state, supervised restarts, and optional startup auto-updates",
+      "Enables remote access that may expose agent control and settings or credentials to reachable clients"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:27.263Z",
+  "repositoryCommitSha": "d20c4743f6db7704626e9e4050a1caa5f0341ef6",
+  "evidenceHash": "7f102946a225756c3f42a478c799458563f12e2d0c6b9151f5d443e44778bbff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9b4f586ce21145534fdc06cb2645cfebee09c4a60522e6016d54350356cba69f",
+  "shadowMode": false
+}

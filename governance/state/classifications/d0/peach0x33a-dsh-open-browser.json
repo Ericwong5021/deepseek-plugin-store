@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "desktop",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates opening the system default browser to the local DSH Web UI when dsh web finishes starting, with platform-specific handling and configurable opt-out.",
+  "summaries": {
+    "zh": "在 dsh web 启动完成后自动使用系统默认浏览器打开本地 Web UI，并支持按配置关闭。",
+    "en": "Automatically opens the local DSH Web UI in the system default browser when dsh web is ready, with a configuration option to disable it."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automatically launches the system default browser when the DSH web server is ready",
+      "Spawns platform-specific local opener commands such as open, xdg-open, or PowerShell Start-Process",
+      "Reads the local web server port and environment variables to determine whether browser launching is available"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_detection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Automatically launches the system default browser when the DSH web server is ready",
+      "Spawns platform-specific local opener commands such as open, xdg-open, or PowerShell Start-Process",
+      "Reads the local web server port and environment variables to determine whether browser launching is available"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:43:14.591Z",
+  "repositoryCommitSha": "7e78ddafe155f08c0cae48edfd782f1e60cafab8",
+  "evidenceHash": "0eb303a1857e5b0dc09019bdbf0194b82be93c2b9ead5ee68376780b0670aa4f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c275a777fd516308c229d09ef45914ca5994958187c6c0193b2ddbd9d07ead32",
+  "shadowMode": false
+}

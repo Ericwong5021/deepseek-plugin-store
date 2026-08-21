@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "terminal",
+    "workflow",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A host-lifecycle automation plugin that intercepts selected bash self-termination commands and provides confirmed graceful exit or restart workflows, while explicitly operating as a UX layer rather than a security boundary.",
+  "summaries": {
+    "zh": "用于防止智能体意外终止 DeepSeek Harness 主机进程，并通过确认令牌提供受控的优雅退出与重启流程。",
+    "en": "Prevents accidental DeepSeek Harness host termination by intercepting selected bash commands and providing token-confirmed graceful exit and restart workflows."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts selected bash commands that could terminate the host process",
+      "Denies matched host-kill commands",
+      "Provides token-confirmed graceful host exit and restart tools",
+      "Injects guidance after intercepted commands and records an audit trail"
+    ],
+    "reasons": [
+      {
+        "code": "host_process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bash_command_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "documented_bypass_paths",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Intercepts selected bash commands that could terminate the host process",
+      "Denies matched host-kill commands",
+      "Provides token-confirmed graceful host exit and restart tools",
+      "Injects guidance after intercepted commands and records an audit trail"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:43:05.182Z",
+  "repositoryCommitSha": "652800ef31c7e352021c6d6683b6ba5204c8ac5a",
+  "evidenceHash": "8913da687c2c2d4d658533d8a5bc39b89f90cc797d74af8393b4206b0ee54493",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b3aaebf93bc5b6fe190dfffe9f8bbd6bd5ab899a26e56db38f4a4c68ffa0dd1d",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "ui",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a plugin for understanding local images through external vision APIs, with paste, drag-and-drop, and file-selection entry points; media-tools is the best primary category.",
+  "summaries": {
+    "zh": "通过粘贴、拖拽或选择文件上传图片，并调用可配置的视觉模型 API 进行图像描述、文字识别和问题回答。",
+    "en": "Upload images by pasting, dragging, or selecting files, then use configurable vision model APIs for image description, text recognition, and question answering."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends local images as base64 to configurable external vision model APIs",
+      "Stores pasted images under $DSH_HOME/pasted-images/",
+      "Reads API credentials from vision.env or workspace configuration",
+      "Registers a vision_understand tool and exposes image-upload UI entry points"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_image_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_key_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_tool_and_web_route_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends local images as base64 to configurable external vision model APIs",
+      "Stores pasted images under $DSH_HOME/pasted-images/",
+      "Reads API credentials from vision.env or workspace configuration",
+      "Registers a vision_understand tool and exposes image-upload UI entry points"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:54.222Z",
+  "repositoryCommitSha": "fd4a8227c0cd0a01576be93658f856afcbd63fc9",
+  "evidenceHash": "edede4d2cb0e4778e97a19ee23cea8e09301a2e0337a1747b68e735f8b553539",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "456aeb16aa689da2b22bb79b7071dfa9d80709f8055932dbbe1784fdb740254e",
+  "shadowMode": false
+}

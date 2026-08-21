@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "api",
+    "integration",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README describes a protocol and reference integrations that let agent harnesses and gateways submit LLM events to a runtime and enforce returned safety or security verdicts, so plugin development is the closest primary category.",
+  "summaries": {
+    "zh": "为智能体和模型网关提供统一的安全评估协议与集成钩子，以提交模型事件并根据运行时判定执行策略。",
+    "en": "Provides a protocol and integration hooks for agent harnesses and model gateways to submit LLM events and enforce runtime safety or security verdicts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Observes and forwards raw LLM request and response bodies to an evaluation runtime",
+      "Receives safety or security verdicts for agent events",
+      "Can block model requests or agent actions based on returned verdicts",
+      "Integrates with agent harnesses and LLM gateways"
+    ],
+    "reasons": [
+      {
+        "code": "raw_model_payload_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_execution_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "verdict_based_blocking",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Observes and forwards raw LLM request and response bodies to an evaluation runtime",
+      "Receives safety or security verdicts for agent events",
+      "Can block model requests or agent actions based on returned verdicts",
+      "Integrates with agent harnesses and LLM gateways"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:42:49.822Z",
+  "repositoryCommitSha": "b51bef1157a5c7595c99a4500499cb91bb143269",
+  "evidenceHash": "f3125bdf71b045cbfc5929f2d112bb222613c4689b6f1248ede8194de4753c6f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a2d1f8335bd4adc8b0e8ac0fdb025ac34d353c5858d11cff14de88f2d9864c6f",
+  "shadowMode": false
+}

@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "tool",
+    "agent",
+    "code-generation",
+    "ui",
+    "api",
+    "automation",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin primarily provides a settings UI and Monaco editor for authoring, persisting, registering, and executing custom JavaScript tools that extend the agent.",
+  "summaries": {
+    "zh": "通过设置界面和 Monaco 编辑器创建、管理并执行可扩展智能体能力的自定义 JavaScript 工具。",
+    "en": "Provides a settings UI and Monaco editor for creating, managing, registering, and executing custom JavaScript tools that extend the agent."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates and manages user-authored JavaScript tools",
+      "Executes custom code in worker threads",
+      "Optionally accesses network APIs through fetch",
+      "Optionally reads, writes, and lists files within the session workspace",
+      "Allows the model to create, list, and remove model-created tools"
+    ],
+    "reasons": [
+      {
+        "code": "executes_user_authored_code",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_managed_tool_lifecycle",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Creates and manages user-authored JavaScript tools",
+      "Executes custom code in worker threads",
+      "Optionally accesses network APIs through fetch",
+      "Optionally reads, writes, and lists files within the session workspace",
+      "Allows the model to create, list, and remove model-created tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:50.058Z",
+  "repositoryCommitSha": "7cb95649dca9b380c9a30af96bdbef87a76a2259",
+  "evidenceHash": "bba3f750c4f054407edeeb99e1b783416bff4cc1768085cab18343191cc4dd9f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cad0ffb4200ad12009155ffdae8ff78df4fa5eb8878c16f42db76e0b45028ea9",
+  "shadowMode": false
+}

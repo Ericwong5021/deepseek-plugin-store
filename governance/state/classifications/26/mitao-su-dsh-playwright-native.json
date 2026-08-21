@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "automation",
+    "browser",
+    "cli",
+    "terminal",
+    "testing",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH plugin that exposes the native Playwright CLI to agents for browser testing and related automation; its shell passthrough and possible sandbox permission expansion warrant human review.",
+  "summaries": {
+    "zh": "将本机原生 Playwright CLI 注册为 DSH 工具，供智能体执行浏览器测试、报告查看、截图和浏览器安装等命令。",
+    "en": "Registers the local native Playwright CLI as a DSH tool for agent-driven browser testing, report viewing, screenshots, and browser installation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers a Playwright CLI tool for agent use",
+      "Executes configurable native commands through a shell",
+      "Forwards arbitrary command-line arguments and working directories",
+      "Runs browser tests, reports, screenshots, code generation, and browser installation",
+      "May request broader sandbox permissions for file access or downloads"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_shell_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_installation_and_filesystem_side_effects",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_permission_escalation_path",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "Registers a Playwright CLI tool for agent use",
+      "Executes configurable native commands through a shell",
+      "Forwards arbitrary command-line arguments and working directories",
+      "Runs browser tests, reports, screenshots, code generation, and browser installation",
+      "May request broader sandbox permissions for file access or downloads"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:40:43.312Z",
+  "repositoryCommitSha": "d893c845cd2c32c1e55d1639cbd344cd35f71683",
+  "evidenceHash": "97b47a6974206d8565244ed09f38b44d00a0f7e1b73b2daad1a7c0ddd5987091",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "967a1bae63d37bd733533e57fe2f67096b56f01c8916e9ce969665beadf45acb",
+  "shadowMode": false
+}

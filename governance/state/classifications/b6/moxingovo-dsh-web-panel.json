@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "desktop",
+    "automation",
+    "terminal",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A VS Code extension that embeds the DeepSeek Harness web GUI and manages its local server lifecycle, primarily providing an integrated navigation panel.",
+  "summaries": {
+    "zh": "在 VS Code 的侧栏或编辑器标签页中嵌入 DeepSeek Harness 网页界面，并自动连接或管理本地服务。",
+    "en": "Embeds the DeepSeek Harness web interface in a VS Code sidebar or editor tab and automatically attaches to or manages its local server."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Embeds the DeepSeek Harness web interface in a VS Code sidebar or editor tab",
+      "Attaches to an existing local DSH server or starts one automatically",
+      "Spawns and stops local processes, including optional npx-based CLI download and shell commands",
+      "Restarts self-started servers when the workspace changes or a process fails"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_command_and_on_demand_download",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_server_restart",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Embeds the DeepSeek Harness web interface in a VS Code sidebar or editor tab",
+      "Attaches to an existing local DSH server or starts one automatically",
+      "Spawns and stops local processes, including optional npx-based CLI download and shell commands",
+      "Restarts self-started servers when the workspace changes or a process fails"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:02.554Z",
+  "repositoryCommitSha": "e6b5ca1ea125e16fd827b58a14ddf0cbd058defa",
+  "evidenceHash": "234439453b8870d5e3e59ce809a4ad991e87999349f08405a170c1c70be3c22d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "75d02b528e9c56ed0514eeb687893349f422040b6a6c2e5383853f172246ab97",
+  "shadowMode": false
+}

@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "notification",
+    "ui",
+    "visualization",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web GUI widget for monitoring DeepSeek account balance, token usage, and estimated session or daily costs, with sidebar indicators, threshold alerts, and billing queries.",
+  "summaries": {
+    "zh": "在 DSH Web GUI 侧边栏显示 DeepSeek 余额、Token 用量及会话和每日成本估算，并提供余额状态提示与账单查询。",
+    "en": "A DSH web GUI widget that displays DeepSeek balance, token usage, and session or daily cost estimates with status indicators and billing queries."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the DeepSeek balance API through a host-side route",
+      "Reads token usage from local DSH session files to estimate costs",
+      "Displays balance, token usage, cost estimates, and threshold-based status indicators",
+      "Provides a model-accessible billing query tool",
+      "Refreshes displayed balance and cost information periodically"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_session_data_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_service_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_web_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries the DeepSeek balance API through a host-side route",
+      "Reads token usage from local DSH session files to estimate costs",
+      "Displays balance, token usage, cost estimates, and threshold-based status indicators",
+      "Provides a model-accessible billing query tool",
+      "Refreshes displayed balance and cost information periodically"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:29.471Z",
+  "repositoryCommitSha": "ea2db425f35605660c9d1ac043802251393c47f6",
+  "evidenceHash": "12806fa72972b5979ce8ec6a273268508be24872df189a6f1ab31b141dedda4b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "393f6ee775e484fbd2ad6a5f30a58923f06c8f74fff0094ae14954ade00a785f",
+  "shadowMode": false
+}

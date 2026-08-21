@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "desktop",
+    "search",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Web UI plugin that resolves dragged local files or folders to native absolute paths and inserts those paths into the conversation input without uploading, copying, moving, modifying, or deleting the items.",
+  "summaries": {
+    "zh": "将本地文件或文件夹拖入 DSH Web UI 后解析为原生绝对路径，并插入当前对话输入框。",
+    "en": "Resolves dragged local files or folders to native absolute paths and inserts them into the current DSH conversation input."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local file and folder metadata to resolve dropped paths",
+      "Searches configured workspaces and local filesystem indexes for matching paths",
+      "May read sampled or full file content to disambiguate duplicate candidates",
+      "Writes resolved filesystem paths into the current conversation input"
+    ],
+    "reasons": [
+      {
+        "code": "local-filesystem-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation-input-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no-file-modification-or-upload-described",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Reads local file and folder metadata to resolve dropped paths",
+      "Searches configured workspaces and local filesystem indexes for matching paths",
+      "May read sampled or full file content to disambiguate duplicate candidates",
+      "Writes resolved filesystem paths into the current conversation input"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:53.790Z",
+  "repositoryCommitSha": "3b70ec46926a37d96d08d396f4948e4509126ecd",
+  "evidenceHash": "3824af3cbfa6921e36a2bc6b7ca485cca01c1b8548a80c2d754081503bef6a7a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5cfaa928b0cd653f0d6e545ddfb526ee40632f2e7ed93068ef7cbca0334f39e9",
+  "shadowMode": false
+}

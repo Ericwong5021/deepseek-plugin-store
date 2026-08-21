@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README identifies dsh-vision as an image-understanding plugin that forwards images to configured vision models or local OCR and injects observations into the current DeepSeek Harness request.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供图像理解能力，通过配置的视觉模型或本地 OCR 分析图片并辅助生成回答。",
+    "en": "Adds image understanding to DeepSeek Harness by analyzing attachments with configured vision models or local OCR to support response generation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Analyzes image attachments with configured cloud vision services",
+      "Uses local macOS Vision OCR or Tesseract as fallback",
+      "Routes vision observations into the current model request",
+      "Stores provider credentials through the host application's credential service"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_ocr_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Analyzes image attachments with configured cloud vision services",
+      "Uses local macOS Vision OCR or Tesseract as fallback",
+      "Routes vision observations into the current model request",
+      "Stores provider credentials through the host application's credential service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:38.074Z",
+  "repositoryCommitSha": "9446a41dc96bd9fc96a7cc3b3a11365e125c9bd7",
+  "evidenceHash": "b3c5b30700aeb4df0a0f75b23195e412d4769b44b390a4a9872b61a8ea062839",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a6db63928ff527052ce3df7593ea6e56a9bad5f1228dfe7369a740ddecf450d3",
+  "shadowMode": false
+}

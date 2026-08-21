@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "search",
+    "data",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A session-memory plugin that incrementally indexes conversation and tool activity, stores a local derived index, and exposes cross-session search and index statistics.",
+  "summaries": {
+    "zh": "索引会话消息、助手回复和工具活动，并通过本地持久化索引提供跨会话搜索与统计工具。",
+    "en": "Indexes session messages, assistant replies, and tool activity, then provides cross-session search and index statistics through a locally persisted index."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "listens to session event streams",
+      "indexes user messages, assistant replies, tool calls, tool results, and session titles",
+      "persists derived index documents as JSONL files",
+      "provides session_search and session_index_stats tools",
+      "combines in-memory search with SQLite FTS5 when enabled",
+      "renders grouped search-result cards in the web UI",
+      "removes its derived index data when a session is disposed"
+    ],
+    "reasons": [
+      {
+        "code": "conversation-content-indexing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-persistent-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model-accessible-search-tools",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "listens to session event streams",
+      "indexes user messages, assistant replies, tool calls, tool results, and session titles",
+      "persists derived index documents as JSONL files",
+      "provides session_search and session_index_stats tools",
+      "combines in-memory search with SQLite FTS5 when enabled",
+      "renders grouped search-result cards in the web UI",
+      "removes its derived index data when a session is disposed"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:39:40.154Z",
+  "repositoryCommitSha": "cc24204b10d56af4a5589fb530003620c1567868",
+  "evidenceHash": "4b0b1ee7a771d0d626aa042c7ec13709cda3381488f04e5b80b164c19b05cee1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "58f7705a8809a59d71b11f1cba29c3d0ee630bc6d8a71403cedbbd5b6aa513e4",
+  "shadowMode": false
+}

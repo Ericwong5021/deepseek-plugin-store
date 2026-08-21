@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "api",
+    "cli",
+    "desktop",
+    "mobile",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides shell scripts and source patches that modify DeepSeek Harness to bind its Web UI to a specific LAN IP, preserve rejection of 0.0.0.0, and enable trusted-host access; this materially expands network access to an agent capable of arbitrary command execution, requiring human review.",
+  "summaries": {
+    "zh": "通过应用和撤销补丁的脚本，将指定版本的 DeepSeek Harness Web UI 配置为从局域网指定 IP 访问。",
+    "en": "Applies and reverts patches that configure a specified DeepSeek Harness version to serve its Web UI from a selected LAN IP."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "modifies another project's source files",
+      "applies and reverts patches through shell scripts",
+      "rebuilds and configures a web UI",
+      "binds the UI to a specified LAN IP",
+      "enables access to an agent capable of executing arbitrary commands from other LAN devices"
+    ],
+    "reasons": [
+      {
+        "code": "source_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "arbitrary_command_execution_surface",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "modifies another project's source files",
+      "applies and reverts patches through shell scripts",
+      "rebuilds and configures a web UI",
+      "binds the UI to a specified LAN IP",
+      "enables access to an agent capable of executing arbitrary commands from other LAN devices"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:41:53.989Z",
+  "repositoryCommitSha": "511e59ad9735f10c11fd79b1bbd729ef29947305",
+  "evidenceHash": "de195b07ee815f18fef319a57efff0c52b08a7d3a78215085e12a9ed64e7d8b9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d404e0a0a2474ecbe7b26a23b54c2e3f3de0f38cefa3e055aa18aea9f42c8386",
+  "shadowMode": false
+}
