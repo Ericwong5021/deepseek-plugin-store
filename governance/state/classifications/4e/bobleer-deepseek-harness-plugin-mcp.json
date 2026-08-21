@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "mcp",
+    "search",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "An MCP bridge for discovering, inspecting, optionally installing, and running DeepSeek Harness plugins, with installation and runtime execution explicitly opt-in.",
+  "summaries": {
+    "zh": "通过 MCP 搜索、检查并可选安装 DeepSeek Harness 插件，并在启用运行时后调用其工具。",
+    "en": "An MCP bridge for searching and inspecting DeepSeek Harness plugins, optionally installing them, and calling their tools when runtime access is enabled."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches and inspects public GitHub dsh-plugin repositories",
+      "Installs and uninstalls DSH plugins in a configured profile when enabled",
+      "Starts and stops a DSH runtime and exposes its composition tools through MCP",
+      "Invokes installed plugin code when runtime access is enabled",
+      "Provides stdio or Streamable HTTP MCP endpoints"
+    ],
+    "reasons": [
+      {
+        "code": "plugin_installation_modifies_profile",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_executes_plugin_code",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_github_catalog_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Searches and inspects public GitHub dsh-plugin repositories",
+      "Installs and uninstalls DSH plugins in a configured profile when enabled",
+      "Starts and stops a DSH runtime and exposes its composition tools through MCP",
+      "Invokes installed plugin code when runtime access is enabled",
+      "Provides stdio or Streamable HTTP MCP endpoints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:55.854Z",
+  "repositoryCommitSha": "8b292eb2e423efcbc8ed173015cfd0daafc482ca",
+  "evidenceHash": "d6da91c0b140554e98cc2f5cb11c472249248e4f68f160d79a774755a15341f9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cd769329d60217428d1512f8da3b68ff246dca41ef16b0a601a99d0fc7ea7a10",
+  "shadowMode": false
+}

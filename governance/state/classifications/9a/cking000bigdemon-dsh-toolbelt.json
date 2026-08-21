@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "context",
+    "image",
+    "memory",
+    "skill",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "A multi-plugin DeepSeek Harness toolkit primarily extends and orchestrates agent behavior through prompt controls, memory context, execution guards, skill command execution, vision fallback, and image-generation tools; human review is warranted because it can execute installation and skill commands and read home-directory files.",
+  "summaries": {
+    "zh": "一套为 DeepSeek Harness 扩展智能体编排能力的插件集合，提供提示词与语言控制、跨智能体记忆、视觉回退、执行守卫、生图工具及技能命令处理。",
+    "en": "A DeepSeek Harness plugin suite that extends agent orchestration with prompt and language controls, cross-agent memory, vision fallback, execution guards, image-generation tools, and skill command processing."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Modifies agent prompts and response-language behavior",
+      "Intercepts and conditionally blocks tool, file, and shell execution",
+      "Reads files from the user's home directory and injects them as model context",
+      "Registers image-generation tools that call external providers",
+      "Executes shell commands embedded in trusted skill files",
+      "Runs package build code during installation when explicitly authorized"
+    ],
+    "reasons": [
+      {
+        "code": "install_executes_code",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads_home_directory_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executes_embedded_shell_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "intercepts_file_and_tool_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_image_provider_requests_untested",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Modifies agent prompts and response-language behavior",
+      "Intercepts and conditionally blocks tool, file, and shell execution",
+      "Reads files from the user's home directory and injects them as model context",
+      "Registers image-generation tools that call external providers",
+      "Executes shell commands embedded in trusted skill files",
+      "Runs package build code during installation when explicitly authorized"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:36.465Z",
+  "repositoryCommitSha": "6a2467eb705cf11bb56fa2c8b022abd509194ceb",
+  "evidenceHash": "2626e95dd50d61fef231994437083998840a9f15d01ecb4e514a3928104af766",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "44e02fde5a8665502a8f2d2874662ad41acc9be641b8fd40fc0d3b4982c1c9c5",
+  "shadowMode": false
+}

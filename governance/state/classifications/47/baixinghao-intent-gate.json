@@ -1,16 +1,84 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "mcp",
+    "planning",
+    "workflow",
+    "document",
+    "project-analysis",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README presents intent-gate primarily as a requirements-planning workflow that analyzes PRDs, resolves ambiguities with human input, produces Mermaid-based technical contracts, persists review state, and lints the result before coding begins.",
+  "summaries": {
+    "zh": "一个通过分析需求文档、澄清歧义并生成经过检查的 Mermaid 技术契约来帮助编码代理在编程前完成意图对齐的 MCP 插件。",
+    "en": "An MCP plugin that helps coding agents align with requirements before implementation by analyzing PRDs, resolving ambiguities, and generating linted Mermaid-based technical contracts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads UTF-8 text files and DOCX requirement documents",
+      "Asks structured human questions to resolve requirement gaps",
+      "Generates Mermaid state machines, sequence diagrams, and decision tables",
+      "Persists review artifacts and question resolutions to project files",
+      "Runs mechanical lint checks on generated requirement contracts",
+      "Provides an MCP server for compatible coding-agent clients"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_workflow_gating",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "document_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Reads UTF-8 text files and DOCX requirement documents",
+      "Asks structured human questions to resolve requirement gaps",
+      "Generates Mermaid state machines, sequence diagrams, and decision tables",
+      "Persists review artifacts and question resolutions to project files",
+      "Runs mechanical lint checks on generated requirement contracts",
+      "Provides an MCP server for compatible coding-agent clients"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:23.019Z",
   "repositoryCommitSha": "e75876e887222f0ef40e31a8b4b3962f3ac1508f",
-  "cacheKey": "cd88e91c7495ece8837f439ffacd2c8b011dee563cc84ed2244d38799b723812",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:31.771Z",
-  "lastAttemptAt": "2026-08-20T14:22:31.771Z",
-  "nextRetryAt": "2026-08-20T19:20:43.771Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17892,\"reset_time\":\"4h58m12s\"}}",
+  "evidenceHash": "a2035d9e26ebd4bf7525c7eae0fd295be5331b7d8b4a6a121e102d875eb75de0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8c99b72e955228e19b4be1166b33f655738f27688ec33c56414a5ef005fb637e",
   "shadowMode": false
 }

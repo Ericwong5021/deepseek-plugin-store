@@ -1,16 +1,79 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "terminal",
+    "workflow",
+    "planning",
+    "context",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-native DeepSeek Harness agent preset that adapts routing and selectively exposes tools while supporting file operations, PowerShell, Git Bash, workflows, jobs, and subagents; its documented unsandboxed shell execution warrants human review.",
+  "summaries": {
+    "zh": "面向 Windows 原生 DeepSeek Harness 的自适应 Agent Preset，可按任务路由并按需启用文件、PowerShell、Git Bash、工作流、后台任务和子代理能力。",
+    "en": "A Windows-native DeepSeek Harness agent preset that adapts task routing and selectively enables file tools, PowerShell, Git Bash, workflows, background jobs, and subagents."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adaptive agent routing and persona configuration",
+      "On-demand discovery and unlocking of tools",
+      "Windows PowerShell and Git Bash command execution",
+      "File operations through read, write, edit, glob, and grep tools",
+      "Background jobs, workflows, goals, and subagent support"
+    ],
+    "reasons": [
+      {
+        "code": "shell_exec_current_user_privileges",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_os_sandbox_or_per_command_approval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_unlocking_expands_capabilities",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adaptive agent routing and persona configuration",
+      "On-demand discovery and unlocking of tools",
+      "Windows PowerShell and Git Bash command execution",
+      "File operations through read, write, edit, glob, and grep tools",
+      "Background jobs, workflows, goals, and subagent support"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:45.517Z",
   "repositoryCommitSha": "cfec9e44c56c68f3d5a0893b8fa98c5955efe850",
-  "cacheKey": "1f0767f84f704bfb681cd89dba4d82b9e13d1a7de54adb0062df1c475746bffc",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:29.542Z",
-  "lastAttemptAt": "2026-08-20T14:22:02.809Z",
-  "nextRetryAt": "2026-08-20T19:20:43.809Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17921,\"reset_time\":\"4h58m41s\"}}",
+  "evidenceHash": "3f520474a98d0d0431512bc02a9cc8c94eab0c17f29eae85fc7357e9ad81efc6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ffb70ecbc0e34c962f2e337414987b9fc97d9bfc3c0716d67425372509cbe0d8",
   "shadowMode": false
 }

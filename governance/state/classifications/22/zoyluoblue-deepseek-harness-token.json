@@ -1,16 +1,69 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local, read-only DeepSeek Harness plugin that aggregates session logs and presents token usage statistics through totals, heatmaps, streaks, and per-model breakdowns.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 设置页中汇总本机会话日志并展示令牌用量、时间热力图、连续记录和模型明细。",
+    "en": "A DeepSeek Harness plugin that aggregates local session logs and displays token usage totals, activity heatmaps, streaks, and per-model details."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local DeepSeek Harness session logs from configured directories",
+      "Aggregates token usage statistics by time period and model",
+      "Displays statistics in a Settings page and serves a loopback JSON view model",
+      "Includes working-directory paths in the local payload"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_path_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local DeepSeek Harness session logs from configured directories",
+      "Aggregates token usage statistics by time period and model",
+      "Displays statistics in a Settings page and serves a loopback JSON view model",
+      "Includes working-directory paths in the local payload"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:08.093Z",
   "repositoryCommitSha": "8b75452985fc47bdc00b914053cf4c5c1cbe4898",
-  "cacheKey": "67e72f4f7138a2c045abc90f0a0000788d6164160e976d94b4c8bbe7470a38a6",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:07.530Z",
-  "lastAttemptAt": "2026-08-20T14:22:07.530Z",
-  "nextRetryAt": "2026-08-20T19:20:43.530Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17916,\"reset_time\":\"4h58m36s\"}}",
+  "evidenceHash": "8f97d1c8a8ae5aa735e161ff2ea5b70a6e21a8e211240d91dba5fc07a9a3cc6c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a806d01773b64dee6896375546e38b830a9b93a24f399fa17a1978ddc7438dfb",
   "shadowMode": false
 }

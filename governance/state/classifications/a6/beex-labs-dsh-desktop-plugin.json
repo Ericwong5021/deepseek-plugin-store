@@ -1,16 +1,82 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "theme",
+    "integration",
+    "automation",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows desktop shell for launching and embedding an installed DeepSeek Harness, with theme synchronization, tray behavior, and local process lifecycle management.",
+  "summaries": {
+    "zh": "为已安装的 DeepSeek Harness 提供 Windows 桌面外壳，支持嵌入式界面、主题同步、系统托盘行为和本地进程管理。",
+    "en": "A Windows desktop shell for an installed DeepSeek Harness, providing an embedded interface, theme synchronization, tray behavior, and local process management."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Launches an installed DeepSeek Harness CLI process",
+      "Reuses an existing local Harness server when available",
+      "Embeds the Harness web interface in a WebView2 desktop shell",
+      "Injects theme and close-behavior scripts into the embedded web interface",
+      "Provides tray and close behavior controls",
+      "Terminates spawned server process trees on exit",
+      "Writes its own local configuration and logs"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "webview_script_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_and_logging",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Launches an installed DeepSeek Harness CLI process",
+      "Reuses an existing local Harness server when available",
+      "Embeds the Harness web interface in a WebView2 desktop shell",
+      "Injects theme and close-behavior scripts into the embedded web interface",
+      "Provides tray and close behavior controls",
+      "Terminates spawned server process trees on exit",
+      "Writes its own local configuration and logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:32.210Z",
   "repositoryCommitSha": "e2ca3ba45eceb3edf6e030f10bc51b330ff81089",
-  "cacheKey": "1c18842ca98765bf77c250d5216673244ec8b14d38f5d190836d80d0829e4a1c",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:33.643Z",
-  "lastAttemptAt": "2026-08-20T14:22:33.643Z",
-  "nextRetryAt": "2026-08-20T19:20:43.643Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17890,\"reset_time\":\"4h58m10s\"}}",
+  "evidenceHash": "72c4838b1b7c7fcc6b61ec95da9a218b0cf5ee0d26bed0f38b8742039449c518",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "79eacdfa01cc2536525f2add9b001aece479d8d61f5f910f4096f392c0bb3ef0",
   "shadowMode": false
 }

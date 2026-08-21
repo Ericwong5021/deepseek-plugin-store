@@ -1,16 +1,75 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "context",
+    "debugging",
+    "visualization",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A debugging and learning plugin that makes DeepSeek Harness logical model-call context inspectable through categorized views, usage evidence, and sanitized retained captures.",
+  "summaries": {
+    "zh": "用于调试和学习 DeepSeek Harness 的插件，可在专用界面中检查模型调用的提示词、消息、工具、选项及上下文组成。",
+    "en": "A debugging and learning plugin for DeepSeek Harness that provides an inspectable view of model-call prompts, messages, tools, options, and context composition."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Inspects logical agent-call context including prompts, conversation messages, tools, options, and reported usage",
+      "Displays categorized and estimated context composition in a dedicated UI tab",
+      "Stores sanitized per-session logical call captures locally with retention limits"
+    ],
+    "reasons": [
+      {
+        "code": "captures_prompt_and_tool_context",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_sanitized_local_sidecar_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "does_not_capture_provider_transport_payloads",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Inspects logical agent-call context including prompts, conversation messages, tools, options, and reported usage",
+      "Displays categorized and estimated context composition in a dedicated UI tab",
+      "Stores sanitized per-session logical call captures locally with retention limits"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:16.961Z",
   "repositoryCommitSha": "79af981e0eee13df7ae4287ffa5d8e7e71999111",
-  "cacheKey": "607a307ff543dbd9d5fbdde922dceefa25396ec1e5a623aba047f8299514aca7",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:28.893Z",
-  "lastAttemptAt": "2026-08-20T14:22:28.893Z",
-  "nextRetryAt": "2026-08-20T19:20:43.893Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17895,\"reset_time\":\"4h58m15s\"}}",
+  "evidenceHash": "f8e44548a7f6c3c52bd4136d15c461bbd2bb9429f6c3746b913703051dd59d79",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cc511f8925b12111a3b19f52f79c93aff856f08e6dd9328d6a3103393f777ca2",
   "shadowMode": false
 }

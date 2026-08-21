@@ -1,16 +1,73 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily automates restarting the DeepSeek Harness process, with agent and UI triggers, configurable continuation behavior, and an optional watchdog for relaunching it.",
+  "summaries": {
+    "zh": "用于通过智能体工具或界面命令重启 DeepSeek Harness，并配置重启后的继续提示与可选看门狗拉起功能。",
+    "en": "Restarts the DeepSeek Harness through an agent tool or UI command and configures continuation prompts and an optional process watchdog."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Restart the DeepSeek Harness process on agent request or through a slash command",
+      "Persist restart and continuation settings to settings.yaml",
+      "Optionally relaunch the process after a crash or shutdown using a watchdog",
+      "Support a legacy PowerShell/WMI/taskkill restart method"
+    ],
+    "reasons": [
+      {
+        "code": "process-control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic-relaunch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration-write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Restart the DeepSeek Harness process on agent request or through a slash command",
+      "Persist restart and continuation settings to settings.yaml",
+      "Optionally relaunch the process after a crash or shutdown using a watchdog",
+      "Support a legacy PowerShell/WMI/taskkill restart method"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:12.939Z",
   "repositoryCommitSha": "8d9f4947530a08e9a2967a7847ae2f906c2d7b5b",
-  "cacheKey": "32b47da6938dfbc9014fa902e90dc97cbc7202238743d044cfd97127512d9bbe",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:26.201Z",
-  "lastAttemptAt": "2026-08-20T14:22:26.201Z",
-  "nextRetryAt": "2026-08-20T19:20:44.201Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17898,\"reset_time\":\"4h58m17s\"}}",
+  "evidenceHash": "73064699bd3c7061adaf35c58e1a33f54569a567393689d9856919db4e31d689",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9029600d8edb5b98abfe2204fe4b7081058cb736cf810c23642cf85f3a074c83",
   "shadowMode": false
 }

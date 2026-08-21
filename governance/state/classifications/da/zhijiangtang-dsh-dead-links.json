@@ -1,16 +1,74 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "file",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "插件只读扫描工作区中的 Markdown 文档，提取并通过受限并发的 HEAD/GET 请求检查链接状态，返回带文件和行号的结构化死链结果。",
+  "summaries": {
+    "zh": "一个只读检查 Markdown 文档中 HTTP(S) 链接状态并报告死链位置的工具。",
+    "en": "A read-only tool that checks HTTP(S) links in Markdown documents and reports dead links with their file locations."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "递归读取工作区目录中的 Markdown 文件",
+      "提取并检查 HTTP(S) 链接",
+      "向外部 URL 发起 HEAD 或 GET 请求",
+      "返回结构化死链检测结果"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "read_only_behavior",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "递归读取工作区目录中的 Markdown 文件",
+      "提取并检查 HTTP(S) 链接",
+      "向外部 URL 发起 HEAD 或 GET 请求",
+      "返回结构化死链检测结果"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:44.075Z",
   "repositoryCommitSha": "935c8d4664a8a97bb19efe3aacab95d091962c46",
-  "cacheKey": "611f49cee66d961fb85dcd27c3887b15545b1678fd33195132b15a8fdd23f5c0",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:28.962Z",
-  "lastAttemptAt": "2026-08-20T14:22:00.830Z",
-  "nextRetryAt": "2026-08-20T19:20:43.830Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17923,\"reset_time\":\"4h58m43s\"}}",
+  "evidenceHash": "9685c589a429e5ef249148a2fc30cc2438e334c5e8938b2af1230394777c39ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "56a8a9d999216ead5d65579cfff4183e6ccaeaab8bd9ef97f8abb4d6b2932bff",
   "shadowMode": false
 }

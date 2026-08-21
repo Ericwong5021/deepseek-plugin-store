@@ -1,16 +1,72 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DeepSeek Harness plugin that provides persistent local diary memory through per-turn context injection, note-taking, and recall tools.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 智能体提供基于本地 Markdown 日记的持久记忆、逐轮上下文注入、记录和召回功能。",
+    "en": "Provides DeepSeek Harness agents with persistent local Markdown diary memory, per-turn context injection, note-taking, and recall tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads diary entries from a configured local memory directory",
+      "Appends user- or agent-provided notes to local Markdown diary files",
+      "Injects recent diary content into the agent context each turn",
+      "Provides diary search through a brain_recall tool"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads diary entries from a configured local memory directory",
+      "Appends user- or agent-provided notes to local Markdown diary files",
+      "Injects recent diary content into the agent context each turn",
+      "Provides diary search through a brain_recall tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:40.068Z",
   "repositoryCommitSha": "a0319f6fab563309ad9912b75cb12f73909537a9",
-  "cacheKey": "9dd2d4543fc30ad6fe43c07fb6b54c633813ed9eb045aa40586d8354b27a6a40",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:15.640Z",
-  "lastAttemptAt": "2026-08-20T14:22:15.640Z",
-  "nextRetryAt": "2026-08-20T19:20:43.640Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17908,\"reset_time\":\"4h58m28s\"}}",
+  "evidenceHash": "f4fd72bef68be7435503ea19ae86695070d3f188a589b1331c9f0be123d5b362",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "230d06f7701081453a1a4e826d3571613979b3147d3071c5585508306b7e9430",
   "shadowMode": false
 }

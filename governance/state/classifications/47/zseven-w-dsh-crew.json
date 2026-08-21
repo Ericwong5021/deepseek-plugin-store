@@ -1,16 +1,82 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "mcp",
+    "integration",
+    "monitoring",
+    "image",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "DSH Crew primarily orchestrates DSH worker agents from Claude Code and Codex, with synchronous or asynchronous dispatch, progress tracking, cancellation, tier policies, and optional multimodal provider integration.",
+  "summaries": {
+    "zh": "DSH Crew 将任务从 Claude Code 或 Codex 分发给具备独立会话、工具和进度反馈的 DSH 智能体。",
+    "en": "DSH Crew dispatches tasks from Claude Code or Codex to DSH agents with independent sessions, configurable tiers, and progress tracking."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "dispatches synchronous and asynchronous tasks to DSH worker agents",
+      "launches or terminates worker runtime processes",
+      "calls configured DeepSeek and other external model providers",
+      "reads and writes local plugin, status, and host integration configuration",
+      "installs or updates Claude Code and Codex integration files"
+    ],
+    "reasons": [
+      {
+        "code": "agent_orchestration_and_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_and_provider_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "dispatches synchronous and asynchronous tasks to DSH worker agents",
+      "launches or terminates worker runtime processes",
+      "calls configured DeepSeek and other external model providers",
+      "reads and writes local plugin, status, and host integration configuration",
+      "installs or updates Claude Code and Codex integration files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "5ffa12681ce59d8cd480e8f206557f0c89a5e5b6",
-  "cacheKey": "ec81cd2e89d9ac2d228c3b127efcb696b69b5da658cab388c68c15bf81c24367",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:08.825Z",
-  "lastAttemptAt": "2026-08-20T14:22:08.825Z",
-  "nextRetryAt": "2026-08-20T19:20:43.825Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17915,\"reset_time\":\"4h58m35s\"}}",
+  "classifiedAt": "2026-08-21T18:30:12.575Z",
+  "repositoryCommitSha": "b1cb3667dcc595e233796126a0c4427784fd9fd3",
+  "evidenceHash": "995f04b38da209f71cb853d15a54f1f4c02a53997d288d145abdcd3a37d91f8b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "931a3993aead1acc6eecc7d0123ac121ba85a052ac5894d505734c4e82757688",
   "shadowMode": false
 }

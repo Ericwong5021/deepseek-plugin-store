@@ -1,16 +1,83 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "build-development",
+  "category": "code-generation",
+  "tags": [
+    "agent",
+    "automation",
+    "code-generation",
+    "debugging",
+    "testing",
+    "planning",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for autonomous code generation and test-driven error repair using a capped Reflect-Assess-Learn-Plan-Handle loop, with sandbox-mediated test execution and lifecycle events.",
+  "summaries": {
+    "zh": "这是一个接入 DeepSeek Harness 的自主代码生成与错误修复插件，通过带硬循环上限的 RALPH 状态机规划、修改代码并运行测试。",
+    "en": "A DeepSeek Harness plugin that uses a capped RALPH state machine to plan, generate or repair code, and run tests in an integrated execution loop."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Generates and modifies code based on a task",
+      "Runs user-specified test shell commands through Harness subprocess and sandbox services",
+      "Uses an LLM for planning, reflection, learning, and code generation",
+      "Writes and cleans up files in per-execution temporary workspaces",
+      "Emits lifecycle events and exposes a callable execution service and tool"
+    ],
+    "reasons": [
+      {
+        "code": "executes_user_supplied_shell_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_files_and_manages_temporary_workspaces",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "invokes_llm_and_can_consume_compute_or_provider_quota",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_scope_does_not_cover_network_credentials_or_full_system_isolation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Generates and modifies code based on a task",
+      "Runs user-specified test shell commands through Harness subprocess and sandbox services",
+      "Uses an LLM for planning, reflection, learning, and code generation",
+      "Writes and cleans up files in per-execution temporary workspaces",
+      "Emits lifecycle events and exposes a callable execution service and tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "1b9b85db797188a640059705692db646b7c3a017",
-  "cacheKey": "920a1995c545e9eec828e30d444b556418b48c598003279864d7fd28a4dabf9e",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:24.321Z",
-  "lastAttemptAt": "2026-08-20T14:21:54.733Z",
-  "nextRetryAt": "2026-08-20T19:20:43.733Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17929,\"reset_time\":\"4h58m49s\"}}",
+  "classifiedAt": "2026-08-21T18:29:23.499Z",
+  "repositoryCommitSha": "686fa4a0f9132e9f31c5964ebb47d0f007326f39",
+  "evidenceHash": "6aaae735ee0517b2cb11c03ee67c569a756597ed2a63fd3416ad204bb7b3175f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3519a1f156ef9af7f38a008b41d9ccf1949ffddcf59fab41d6f968e7b1e5db4f",
   "shadowMode": false
 }

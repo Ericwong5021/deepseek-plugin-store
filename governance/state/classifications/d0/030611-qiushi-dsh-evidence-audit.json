@@ -1,16 +1,79 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "data",
+    "agent",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an observe-only DeepSeek Harness bundle that monitors tool and session events and records hashed, hash-chained JSONL evidence receipts locally without registering tools or modifying prompts, results, or session publications.",
+  "summaries": {
+    "zh": "一个用于观察 DeepSeek Harness 工具和会话事件并将哈希链式证据收据写入本地 JSONL 文件的审计插件。",
+    "en": "An audit plugin that observes DeepSeek Harness tool and session events and writes hash-chained evidence receipts to a local JSONL file."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes DeepSeek Harness tools/result and session/event publications",
+      "Hashes selected event identifiers and payload-derived values",
+      "Appends hash-chained JSONL evidence receipts to a local file",
+      "Verifies the existing receipt chain at startup",
+      "Performs synchronous local file writes"
+    ],
+    "reasons": [
+      {
+        "code": "observes-runtime-events",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes-local-receipt-file",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "processes-potentially-sensitive-pseudonymous-data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Observes DeepSeek Harness tools/result and session/event publications",
+      "Hashes selected event identifiers and payload-derived values",
+      "Appends hash-chained JSONL evidence receipts to a local file",
+      "Verifies the existing receipt chain at startup",
+      "Performs synchronous local file writes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:34.471Z",
   "repositoryCommitSha": "94fae130b2845309e1dcabac14696fddb18f8f3a",
-  "cacheKey": "a8a2d852093ef17886d3dca0501942f73bef7900d9671ba170bfa1c44c28b06b",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:12.448Z",
-  "lastAttemptAt": "2026-08-20T14:22:12.448Z",
-  "nextRetryAt": "2026-08-20T19:20:44.448Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17912,\"reset_time\":\"4h58m31s\"}}",
+  "evidenceHash": "42cbd285861f6f947b784a0b9fe19c839eba5b4a1bff6902fc9c48b14dc8b9ca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "84dd282388db00d8ed5c50874f8789a7436d499d20c5dfce868a320320e9c2ff",
   "shadowMode": false
 }

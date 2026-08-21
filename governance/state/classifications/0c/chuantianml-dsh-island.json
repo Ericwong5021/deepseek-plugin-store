@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "api",
+    "desktop",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A native macOS companion that monitors DeepSeek Harness sessions through the DSH Web API and presents their status, attention signals, and connectivity in an always-visible interface.",
+  "summaries": {
+    "zh": "一款面向 macOS 的原生状态岛，通过 DSH Web API 显示 DeepSeek Harness 会话的运行状态、关注信号和连接情况。",
+    "en": "A native macOS status island that uses the DSH Web API to display DeepSeek Harness session states, attention signals, and connectivity."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session state from the DSH Web API",
+      "Displays live attention, failure, running, completed, idle, and offline states",
+      "Shows pending approval and question indicators without their contents in the collapsed view",
+      "Opens session links in the DSH Web UI",
+      "Stores endpoint, appearance, privacy, and panel-position preferences",
+      "Can register the app to launch at macOS login"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_session_monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_api_connection_with_optional_remote_endpoint",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "macos_login_item_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Reads session state from the DSH Web API",
+      "Displays live attention, failure, running, completed, idle, and offline states",
+      "Shows pending approval and question indicators without their contents in the collapsed view",
+      "Opens session links in the DSH Web UI",
+      "Stores endpoint, appearance, privacy, and panel-position preferences",
+      "Can register the app to launch at macOS login"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:30.463Z",
+  "repositoryCommitSha": "8bdfefc3724cb73337da6a66016f0904a7741135",
+  "evidenceHash": "603c86a13be69919a67f674ee57552649c5f5c2c7dfec47bf76923638c7c3487",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8ab41e0b4cd333b00983e74b5c4f48a84dad3b8260d1f58f84d94472704a46bb",
+  "shadowMode": false
+}

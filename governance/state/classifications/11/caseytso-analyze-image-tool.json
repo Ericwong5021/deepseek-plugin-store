@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "tool",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides an analyze_image tool that reads image paths, URLs, or pasted-image attachments and forwards them to a user-configured OpenAI-compatible vision endpoint for visual questions and text extraction.",
+  "summaries": {
+    "zh": "为文本模型提供图片分析能力，可读取本地或粘贴的图片并通过用户配置的兼容视觉端点回答问题。",
+    "en": "Adds image analysis for text-only models by reading local or pasted images and querying a user-configured OpenAI-compatible vision endpoint."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Analyzes images through an OpenAI-compatible vision endpoint",
+      "Reads local image files, HTTP(S) URLs, data URLs, and session attachments",
+      "Sends image content as base64 to the configured endpoint",
+      "Stores plugin settings and configuration presets in the host settings layer",
+      "Provides a WebUI configuration panel and connectivity test endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_attachment_reading",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_key_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_settings_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Analyzes images through an OpenAI-compatible vision endpoint",
+      "Reads local image files, HTTP(S) URLs, data URLs, and session attachments",
+      "Sends image content as base64 to the configured endpoint",
+      "Stores plugin settings and configuration presets in the host settings layer",
+      "Provides a WebUI configuration panel and connectivity test endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:13.001Z",
+  "repositoryCommitSha": "8e2f431616e4a5adbf8bb54c54d016df883d4c70",
+  "evidenceHash": "c9ddc318a510ef31dc50e1081930fbdcfda51b6e28ac5751457d00f2758cd316",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e718ce653d3e855914fc8020a25b99e49f8654ee002f231e208259d54715b7a7",
+  "shadowMode": false
+}

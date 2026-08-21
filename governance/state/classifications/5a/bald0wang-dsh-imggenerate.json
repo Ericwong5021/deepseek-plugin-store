@@ -1,16 +1,76 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "api",
+    "image",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes an agent-facing image generation tool that calls configured Qwen and Volcano Ark providers and returns generated image URLs.",
+  "summaries": {
+    "zh": "为智能体提供调用阿里云通义千问或火山方舟服务生成图片的 image_generate 工具，支持文生图及部分图生图参数。",
+    "en": "Provides an image_generate tool for agents to create images through configured Qwen or Volcano Ark providers, with text-to-image and limited reference-image support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers an image_generate tool for agent use",
+      "Sends image-generation requests to configured Qwen or Volcano Ark APIs",
+      "Supports text-to-image generation and, for Volcano, reference-image generation",
+      "Returns temporary provider image URLs"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "handles_configured_api_keys",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "temporary_external_image_urls",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Registers an image_generate tool for agent use",
+      "Sends image-generation requests to configured Qwen or Volcano Ark APIs",
+      "Supports text-to-image generation and, for Volcano, reference-image generation",
+      "Returns temporary provider image URLs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:23.224Z",
   "repositoryCommitSha": "dcf79bcf591294e4d737095dc283529070439728",
-  "cacheKey": "1c57ce919f449b30f1d3d30cc47469364748872decf30a4e5ec00da3ac514a2f",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:29.039Z",
-  "lastAttemptAt": "2026-08-20T14:22:29.039Z",
-  "nextRetryAt": "2026-08-20T19:20:44.039Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17895,\"reset_time\":\"4h58m14s\"}}",
+  "evidenceHash": "e771eb47248c0ef4a083259576dbba8ddc044a998f3ca28d36b69d0eeb0d0dde",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2cfd9798747b73542f99e83a8e78531b6d40ca6fe1c23fd83c94dc31b31d5a50",
   "shadowMode": false
 }

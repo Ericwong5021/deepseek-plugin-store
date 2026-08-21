@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "ui",
+    "integration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A dsh web-surface monitoring plugin that retrieves configured provider balance or usage data through server-side proxy routes and displays it in a refreshable status panel.",
+  "summaries": {
+    "zh": "在 dsh 网页界面中通过服务端代理获取配置提供商的余额或用量，并以可刷新状态面板展示。",
+    "en": "Displays configured provider balance or usage data in a refreshable dsh web-surface status panel through server-side proxy routes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured provider credentials through the host credential seam",
+      "Makes authenticated server-side requests to configured provider quota endpoints",
+      "Registers server-side proxy routes for quota data",
+      "Injects a status widget into the dsh web surface",
+      "Refreshes quota and usage data periodically"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui-injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured provider credentials through the host credential seam",
+      "Makes authenticated server-side requests to configured provider quota endpoints",
+      "Registers server-side proxy routes for quota data",
+      "Injects a status widget into the dsh web surface",
+      "Refreshes quota and usage data periodically"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:00.711Z",
+  "repositoryCommitSha": "18cfc7f5b52bd1dfa2a6571376fa106b3973bacd",
+  "evidenceHash": "eb3e944998a5507cd3bc6827309f8155e7d3a08d4faa6fd8172d3af3355d88bc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3e5a9cab2013cd64a539bdf8f9e2f267236c373fc61afcc311529fd1bbd0f977",
+  "shadowMode": false
+}

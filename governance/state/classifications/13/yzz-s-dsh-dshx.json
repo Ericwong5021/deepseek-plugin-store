@@ -1,16 +1,88 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "mcp",
+    "agent",
+    "api",
+    "memory",
+    "skill",
+    "workflow",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An orchestration extension for DeepSeek Harness that manages MCP server connections and exposes tools, while also providing web-based management of skills, commands, memory, and prompts.",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness 的智能体编排扩展，用于管理 MCP 服务器及其工具，并通过 Web 管理台维护技能、命令、记忆和提示词。",
+    "en": "An orchestration extension for DeepSeek Harness that manages MCP servers and their tools through a web console, alongside skills, commands, memory, and prompt management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to MCP servers over stdio, Streamable HTTP, and SSE",
+      "Exposes discovered MCP tools to the model",
+      "Reads and writes global and project memory files",
+      "Creates, edits, and deletes skill bundles",
+      "Defines user and project slash commands",
+      "Manages prompt sections and persona content",
+      "Serves a local web management console and JSON API"
+    ],
+    "reasons": [
+      {
+        "code": "external_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_service_connections",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_write_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_tool_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to MCP servers over stdio, Streamable HTTP, and SSE",
+      "Exposes discovered MCP tools to the model",
+      "Reads and writes global and project memory files",
+      "Creates, edits, and deletes skill bundles",
+      "Defines user and project slash commands",
+      "Manages prompt sections and persona content",
+      "Serves a local web management console and JSON API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:08.433Z",
   "repositoryCommitSha": "a2ecfb16196af01ce9996019e45638e8c1a0d10f",
-  "cacheKey": "edf2e3f882f6623af2be498e01ad230f41c102a7f41cb0d0f7cf4ea2e6224a82",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:19.741Z",
-  "lastAttemptAt": "2026-08-20T14:21:47.697Z",
-  "nextRetryAt": "2026-08-20T19:20:43.697Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17936,\"reset_time\":\"4h58m56s\"}}",
+  "evidenceHash": "3f90b8493fd9a5af3b52bea79120f0e7bfc4c822c58bd1af64e3f256c933cee9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a411c32c79fd3349feb2093a2fe5a448418b0551bc6caf91a944116e1e50492",
   "shadowMode": false
 }

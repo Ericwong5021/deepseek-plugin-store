@@ -1,16 +1,78 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "planning",
+    "workflow",
+    "project-analysis",
+    "context",
+    "document",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Amber Protocol is a repository-local governance CLI for planning, gating, verifying, documenting, and handing off AI-assisted engineering work without executing project workflows.",
+  "summaries": {
+    "zh": "Amber Protocol 是一个面向 AI 辅助工程的仓库本地治理工具，用于规划、审批、验证、记录和交接开发工作。",
+    "en": "Amber Protocol is a repository-local governance tool for planning, approving, verifying, documenting, and handing off AI-assisted engineering work."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads repository state and governance files",
+      "Creates local governance, planning, approval, verification, and handoff artifacts",
+      "Produces dry-run plans, reports, and recommended next commands",
+      "Does not execute project commands, dynamic workflows, live subagents, or external systems according to the README"
+    ],
+    "reasons": [
+      {
+        "code": "repository_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_workflow_governance",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "explicit_non_execution_boundary",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads repository state and governance files",
+      "Creates local governance, planning, approval, verification, and handoff artifacts",
+      "Produces dry-run plans, reports, and recommended next commands",
+      "Does not execute project commands, dynamic workflows, live subagents, or external systems according to the README"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:24.094Z",
   "repositoryCommitSha": "928ac5335462709100022ca2ef2057683a40ed30",
-  "cacheKey": "1b5ad37ace05a155ba0c8415b2c6589a824b7b281745c19c16c80a9abd1c2b10",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:30.851Z",
-  "lastAttemptAt": "2026-08-20T14:22:30.851Z",
-  "nextRetryAt": "2026-08-20T19:20:43.851Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17893,\"reset_time\":\"4h58m13s\"}}",
+  "evidenceHash": "80772dc74d6ab5430364e035dde6425916f799ff69ee14d33fd1db0399465c04",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "22de53e2c4e11381dd7cb00333e6c32061e78165365ce0f08b8e174777f43acd",
   "shadowMode": false
 }

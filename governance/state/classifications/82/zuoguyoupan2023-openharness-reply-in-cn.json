@@ -1,16 +1,66 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "context",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README clearly describes a DSH plugin that requests simplified Chinese responses through a system-prompt section and exposes a related settings-sidebar item; it does not access external services or perform file operations.",
+  "summaries": {
+    "zh": "通过系统提示词请求模型使用简体中文回复，并在 DSH 设置侧边栏提供中文回复项。",
+    "en": "Requests that the model reply in Simplified Chinese through a system-prompt section and adds a Chinese-reply item to the DSH settings sidebar."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "injects a system-prompt instruction requesting simplified Chinese replies",
+      "adds a Chinese-reply item to the DSH settings sidebar",
+      "supports disabling the prompt injection through configuration"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_prompt_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "settings_ui_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "injects a system-prompt instruction requesting simplified Chinese replies",
+      "adds a Chinese-reply item to the DSH settings sidebar",
+      "supports disabling the prompt injection through configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:19.268Z",
   "repositoryCommitSha": "febf995f26f1ed014f4d0eda8a070be08d75a78d",
-  "cacheKey": "f236c1aff61d00fbba6d30c897c8388f90e627316e8b239ad98455c7515a985f",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:10.129Z",
-  "lastAttemptAt": "2026-08-20T14:22:10.129Z",
-  "nextRetryAt": "2026-08-20T19:20:44.129Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17914,\"reset_time\":\"4h58m33s\"}}",
+  "evidenceHash": "a1375e94cc7db8aa09fbd786955c894814cc1ee82d7fe994bde6ad48e91db67f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "91c570ecf91858540ed355fe86d879566871fd6ca9700f33c1764c7db0d87ab7",
   "shadowMode": false
 }

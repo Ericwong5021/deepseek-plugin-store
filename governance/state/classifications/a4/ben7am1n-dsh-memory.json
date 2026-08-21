@@ -1,16 +1,69 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A local SQLite-backed memory plugin that persists cross-session facts, exposes write/search/delete tools, and recalls selected memories in the prompt.",
+  "summaries": {
+    "zh": "通过本地SQLite数据库保存跨会话记忆，并提供记忆写入、搜索、删除及提示词召回功能。",
+    "en": "Provides durable cross-session memory through a local SQLite database with tools for writing, searching, deleting, and recalling stored facts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores durable memories in a local SQLite database",
+      "Provides tools to write, search, and delete memories",
+      "Adds recalled memories to the model prompt"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_local_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Stores durable memories in a local SQLite database",
+      "Provides tools to write, search, and delete memories",
+      "Adds recalled memories to the model prompt"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:33.338Z",
   "repositoryCommitSha": "def7c6acae966614132a9c56c8516183820acfa4",
-  "cacheKey": "9a59e7017444b7e89bf799878e708bdbcb285ce771db4193da539d955bbf2111",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:35.156Z",
-  "lastAttemptAt": "2026-08-20T14:22:35.156Z",
-  "nextRetryAt": "2026-08-20T19:20:44.156Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17889,\"reset_time\":\"4h58m8s\"}}",
+  "evidenceHash": "028aed7ced39489fad59e6cbaadc5a05dad16a2467f1d2fdaffc0bb4abc6dc14",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1ba527f661325c29ca6ab14c88310f3a5129d494ed74c2989e9fb09806ccf137",
   "shadowMode": false
 }

@@ -1,16 +1,81 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "notification",
+    "ui",
+    "data",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web plugin that monitors DeepSeek API balance, displays current balance and spending trends, warns when funds are low, and links to the usage page for recharge.",
+  "summaries": {
+    "zh": "用于在 DSH 界面显示 DeepSeek API 余额与消耗趋势，并提供低余额提醒和充值入口。",
+    "en": "Displays DeepSeek API balance and spending trends in DSH with low-balance alerts and a recharge link."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads API credentials through the host credential service",
+      "Queries the DeepSeek balance endpoint",
+      "Displays balance and usage trends in the web interface",
+      "Stores balance history and preferences in browser localStorage",
+      "Can request browser notification permission",
+      "Opens the DeepSeek usage page for recharge"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_notifications",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads API credentials through the host credential service",
+      "Queries the DeepSeek balance endpoint",
+      "Displays balance and usage trends in the web interface",
+      "Stores balance history and preferences in browser localStorage",
+      "Can request browser notification permission",
+      "Opens the DeepSeek usage page for recharge"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:37.093Z",
   "repositoryCommitSha": "4bed5c26de59636ffc2a2e976d200de8115c9b64",
-  "cacheKey": "5936604b4c5c0721d2ff17a12b2e2da7bc1a6013c39cb0134330246a8097f0c5",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:24.364Z",
-  "lastAttemptAt": "2026-08-20T14:21:54.706Z",
-  "nextRetryAt": "2026-08-20T19:20:43.706Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17929,\"reset_time\":\"4h58m49s\"}}",
+  "evidenceHash": "270d18c589870c5a75b0f5fd8a678d70c89be51ab968409bc060bf03d9d4f6ea",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5ba1bb8618c8d4370baf6fd77ec9a1c578bddc0feefa2665e5f675f3e31ffe98",
   "shadowMode": false
 }

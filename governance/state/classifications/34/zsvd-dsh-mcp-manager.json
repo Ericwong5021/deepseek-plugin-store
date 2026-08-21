@@ -1,16 +1,78 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "api",
+    "integration",
+    "monitoring",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An administrator-facing DSH settings plugin for managing MCP server configurations, including CRUD operations, connection-status checks, and hot-reloaded profile updates.",
+  "summaries": {
+    "zh": "在 DSH Web 设置面板中增删改 MCP 服务器配置，并显示连接状态与已注册工具数量。",
+    "en": "Manage MCP server configurations from the DSH Web settings panel with CRUD controls, connection status, and registered tool counts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads and rewrites MCP server configuration in a profile cordis.patch.yml file",
+      "Provides an HTTP API for listing, creating, updating, and deleting configured MCP servers",
+      "Configures stdio and streamable HTTP MCP transports, including commands, arguments, environment variables, URLs, and headers",
+      "Probes MCP connection status by inspecting registered tools",
+      "Applies configuration changes through host hot reload and reconnects MCP clients"
+    ],
+    "reasons": [
+      {
+        "code": "config_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_process_and_service_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads and rewrites MCP server configuration in a profile cordis.patch.yml file",
+      "Provides an HTTP API for listing, creating, updating, and deleting configured MCP servers",
+      "Configures stdio and streamable HTTP MCP transports, including commands, arguments, environment variables, URLs, and headers",
+      "Probes MCP connection status by inspecting registered tools",
+      "Applies configuration changes through host hot reload and reconnects MCP clients"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:12.532Z",
   "repositoryCommitSha": "14829e850e80284fc03571632df9300363e6a480",
-  "cacheKey": "10b84b92530f3c2c4eb9d7c0a909a3563f2c4aa539db00a2d472052e3464136f",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:08.533Z",
-  "lastAttemptAt": "2026-08-20T14:22:08.533Z",
-  "nextRetryAt": "2026-08-20T19:20:43.533Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17915,\"reset_time\":\"4h58m35s\"}}",
+  "evidenceHash": "572ccb09a5335149e7dc3312ea171abda80465c5997c12b6735c374a6ca2f6ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "08a88f205af69325f660cb3e67baa0d2c0d54d72a6268dd7531cfbb045722c31",
   "shadowMode": false
 }

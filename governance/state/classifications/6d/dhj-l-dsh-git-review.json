@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "file",
+    "terminal",
+    "ui",
+    "visualization",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "README 明确说明该插件用于查看当前工作区的 Git 变更文件，并在会话侧栏展示带语法高亮的 diff；其核心用途是项目变更分析，能力限于读取 Git 状态、差异和未跟踪文件内容。",
+  "summaries": {
+    "zh": "在会话界面查看工作区 Git 变更文件，并通过带语法高亮的侧栏 diff 进行代码变更审查。",
+    "en": "Review workspace Git changes in the session interface with a syntax-highlighted side-panel diff viewer."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "执行只读 Git 命令以获取工作区变更",
+      "读取未跟踪文件内容以构造新增文件 diff",
+      "在会话界面展示变更文件列表和语法高亮 diff"
+    ],
+    "reasons": [
+      {
+        "code": "shell_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_change_visibility",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "执行只读 Git 命令以获取工作区变更",
+      "读取未跟踪文件内容以构造新增文件 diff",
+      "在会话界面展示变更文件列表和语法高亮 diff"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:33:10.734Z",
+  "repositoryCommitSha": "8a4db911c312621e1971ec1f590a51f608079306",
+  "evidenceHash": "1218b87fe0af7fdcab6ddd49a377b106e9cd63c34123392e6eaddf1c1df09294",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d276c4d770f41494e7eeacda22d58cb7fc15e72c5f0d68cea5e25f377a6a5c4b",
+  "shadowMode": false
+}

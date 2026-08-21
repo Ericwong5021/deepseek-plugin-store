@@ -1,16 +1,75 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates responses to already-created DSH approval requests by obtaining a bounded LLM assessment and mapping it to allow, deny, or review outcomes, with fail-closed handling and runtime controls.",
+  "summaries": {
+    "zh": "通过配置的LLM评估已创建的DSH审批请求，并自动返回允许、拒绝或转人工复核结果。",
+    "en": "Uses a configured LLM to assess existing DSH approval requests and automatically return allow, deny, or human-review outcomes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Receives existing DSH approval requests",
+      "Sends bounded approval request data and configured context to a selected LLM route",
+      "Returns allow, deny, or review assessments",
+      "Provides runtime settings and a slash command for approval behavior"
+    ],
+    "reasons": [
+      {
+        "code": "approval_decision_influence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_llm_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "fail_closed_and_bounded_inputs",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Receives existing DSH approval requests",
+      "Sends bounded approval request data and configured context to a selected LLM route",
+      "Returns allow, deny, or review assessments",
+      "Provides runtime settings and a slash command for approval behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:08.355Z",
   "repositoryCommitSha": "ad7c84d5f3598771ce5fd320b6dd4b0f04b5053e",
-  "cacheKey": "596fec513e6e907a1fb21af5112dc18d57a898476dae46dffe6bd9a1b09b4c57",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:25.922Z",
-  "lastAttemptAt": "2026-08-20T14:22:25.922Z",
-  "nextRetryAt": "2026-08-20T19:20:43.922Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17898,\"reset_time\":\"4h58m18s\"}}",
+  "evidenceHash": "b03be14eb0e524c91a4c11e2971cb5a0b316f64d91d81a20cb61f67c778308db",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5af385fd5a536aa7e04892c6b0323d582a7952366e804a99586323dcf79e6b26",
   "shadowMode": false
 }

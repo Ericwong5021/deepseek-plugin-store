@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "cli",
+    "terminal",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A diagnostic and troubleshooting plugin for DeepSeek Harness that checks installation and harness health, reports findings, and applies limited local fixes such as settings recovery and interactive credential entry.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供安装环境与运行状态诊断、结构化报告及有限的本地修复功能。",
+    "en": "Diagnoses DeepSeek Harness installation and runtime health, produces structured reports, and applies a limited set of local fixes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Inspect installation, runtime, plugin, session, settings, credential-chain, and log state",
+      "Generate diagnostic reports in human-readable or JSON formats",
+      "Back up and restore settings files during supported fixes",
+      "Interactively write a supplied API key to a local environment file",
+      "Provide manual remediation commands for permissions, PATH, staging, and hooks issues"
+    ],
+    "reasons": [
+      {
+        "code": "local-state-inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-file-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Inspect installation, runtime, plugin, session, settings, credential-chain, and log state",
+      "Generate diagnostic reports in human-readable or JSON formats",
+      "Back up and restore settings files during supported fixes",
+      "Interactively write a supplied API key to a local environment file",
+      "Provide manual remediation commands for permissions, PATH, staging, and hooks issues"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:45.680Z",
+  "repositoryCommitSha": "34069198bd0316bb04a32a2216ebad18f9b84575",
+  "evidenceHash": "a102df026840783387e438c7c68372e1849cce08bc6c8f8e5272399c3ce33846",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "464a15be7c06c74077de9815906e5c4b6ad761eb1c9d54c1cb1f62b46a1e476d",
+  "shadowMode": false
+}

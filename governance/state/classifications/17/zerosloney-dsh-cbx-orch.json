@@ -1,16 +1,91 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "planning",
+    "workflow",
+    "testing",
+    "api",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for durable orchestration of external coding-agent CLIs, including queued execution, testing, review, persistence, recovery, artifacts, and an authenticated web dashboard.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中编排多个外部编码代理 CLI，提供持久化任务队列、测试审查、日志产物、恢复重试和 Web 仪表盘。",
+    "en": "Orchestrates multiple external coding-agent CLIs in DeepSeek Harness with persistent queues, testing, review, logs, artifacts, recovery, retries, and a web dashboard."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches external coding-agent CLI subprocesses",
+      "Creates, queues, retries, cancels, and resumes persistent coding jobs",
+      "Runs tests and independent reviews and records logs, diffs, and artifacts",
+      "Reads and writes workspace files and may create isolated Git worktrees",
+      "Exposes authenticated Web dashboard, REST endpoints, and SSE events",
+      "May inherit host environment variables, including credentials, for child processes"
+    ],
+    "reasons": [
+      {
+        "code": "external_subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_and_git_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_job_orchestration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_api_and_event_stream",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_environment_inheritance",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Launches external coding-agent CLI subprocesses",
+      "Creates, queues, retries, cancels, and resumes persistent coding jobs",
+      "Runs tests and independent reviews and records logs, diffs, and artifacts",
+      "Reads and writes workspace files and may create isolated Git worktrees",
+      "Exposes authenticated Web dashboard, REST endpoints, and SSE events",
+      "May inherit host environment variables, including credentials, for child processes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "d70447b50e4e0f7b24280d17f4dc1137fd9e026a",
-  "cacheKey": "edb7d166f634babd67b0cacc214bf38dfd6fde17df056181a6ed3cf04bce246d",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:23.478Z",
-  "lastAttemptAt": "2026-08-20T14:21:54.760Z",
-  "nextRetryAt": "2026-08-20T19:20:43.760Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17929,\"reset_time\":\"4h58m49s\"}}",
+  "classifiedAt": "2026-08-21T18:29:20.453Z",
+  "repositoryCommitSha": "425dc494a0c703dfa88383fdd107b506379626ff",
+  "evidenceHash": "9857e8f00dfa35b357a1ddf62b2e04a004c27fc99adaa2a4d006353c4b8110ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "95edc925e7017836fc04f9ff06fef29c476456a786e12b28f0c6b88e8ac68b24",
   "shadowMode": false
 }

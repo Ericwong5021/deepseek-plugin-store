@@ -1,16 +1,71 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "browser",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides Web UI sound notifications for selected DeepSeek Harness events, including message receipt, thinking, tool invocation, and turn completion, using a host event queue and browser-side Web Audio playback.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web UI 中的消息接收、思考、工具调用和回合结束等事件播放不同提示音。",
+    "en": "Plays distinct synthesized sound alerts in the DeepSeek Harness Web UI for message receipt, thinking, tool invocation, and turn completion events."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Listens to selected DeepSeek Harness agent and tool events",
+      "Queues recent events for browser polling through a GET endpoint",
+      "Plays synthesized notification sounds in the Web UI",
+      "Uses sessionStorage to avoid replaying events after refresh"
+    ],
+    "reasons": [
+      {
+        "code": "ui_notification_audio",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_event_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Listens to selected DeepSeek Harness agent and tool events",
+      "Queues recent events for browser polling through a GET endpoint",
+      "Plays synthesized notification sounds in the Web UI",
+      "Uses sessionStorage to avoid replaying events after refresh"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:36.818Z",
   "repositoryCommitSha": "72e53dfb78fb6c8fb2ee9155d912420c5f4fdeb8",
-  "cacheKey": "c614b66214b5ef04b67fede05486f70cd1002143b22a42f0b6774729eea34fc9",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:27.118Z",
-  "lastAttemptAt": "2026-08-20T14:21:58.214Z",
-  "nextRetryAt": "2026-08-20T19:20:44.214Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17926,\"reset_time\":\"4h58m45s\"}}",
+  "evidenceHash": "69071f3f8c4f7021606f76c748830f06e86f1ea3e189d03525a0e5dd259b0dbb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0cbe31fab2f1bf100410c1cba388021e7845dd05ab98958a19a4e3e2d6903a15",
   "shadowMode": false
 }

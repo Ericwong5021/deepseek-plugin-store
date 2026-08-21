@@ -1,16 +1,79 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "planning",
+    "automation",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an agent orchestration plugin that performs multi-sampled model calls with internal voting and coordinates plan, execute, and review phases through dsh lifecycle hooks.",
+  "summaries": {
+    "zh": "通过多次采样、内部投票以及计划、执行和审查阶段来编排 dsh 智能体工作流。",
+    "en": "Orchestrates dsh agent workflows by combining multi-sampled model outputs, internal voting, and plan, execute, and review phases."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "repeats language-model sampling requests",
+      "scores and selects candidate reasoning chains",
+      "injects selected plans into agent execution",
+      "runs plan, execute, and review phases",
+      "records requests, usage, decisions, and phase state in session events"
+    ],
+    "reasons": [
+      {
+        "code": "agent-lifecycle-hooks",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "multiple-model-requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workflow-state-and-prompt-modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "repeats language-model sampling requests",
+      "scores and selects candidate reasoning chains",
+      "injects selected plans into agent execution",
+      "runs plan, execute, and review phases",
+      "records requests, usage, decisions, and phase state in session events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:13.694Z",
   "repositoryCommitSha": "1a7ca2407db07cd8297829a0f539a0394e04a6fe",
-  "cacheKey": "8d7a502f1e0a71da5c314d9578f1f31f273812d4122434777490d532ee95e01c",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:28.546Z",
-  "lastAttemptAt": "2026-08-20T14:22:28.546Z",
-  "nextRetryAt": "2026-08-20T19:20:43.546Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17895,\"reset_time\":\"4h58m15s\"}}",
+  "evidenceHash": "e825a954c283e1b43697b8e42bda9a902d2a0405d661a8212f1e438fae1018fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "250a01e346daeedf7bbce653de3835edfc606f0f813e0acce4c27eeef44559d0",
   "shadowMode": false
 }

@@ -1,16 +1,77 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "cli",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A native integration bundle that connects DeepSeek Harness to OpenClaw via ACP and routes configured messaging conversations, including WeChat through an external channel plugin.",
+  "summaries": {
+    "zh": "通过官方 ACP 将 DeepSeek Harness 智能体配置接入 OpenClaw，并把已配置消息渠道中的对话转发到 Harness。",
+    "en": "Connects a DeepSeek Harness agent profile to OpenClaw through the official ACP transport and routes conversations from configured messaging channels to Harness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Exposes a DeepSeek Harness profile to OpenClaw through the Agent Client Protocol",
+      "Routes prompts and assistant responses between configured OpenClaw channels and DeepSeek Harness",
+      "Launches the configured Harness ACP process through OpenClaw ACPX",
+      "Supports messaging-channel integration such as WeChat through a separate OpenClaw channel plugin"
+    ],
+    "reasons": [
+      {
+        "code": "external_agent_process_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "message_routing_between_openclaw_and_harness",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_and_tool_access_owned_by_harness",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes a DeepSeek Harness profile to OpenClaw through the Agent Client Protocol",
+      "Routes prompts and assistant responses between configured OpenClaw channels and DeepSeek Harness",
+      "Launches the configured Harness ACP process through OpenClaw ACPX",
+      "Supports messaging-channel integration such as WeChat through a separate OpenClaw channel plugin"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:26.666Z",
   "repositoryCommitSha": "ac475fa1c81e350eda53edce9fdf1a3126c5b7b5",
-  "cacheKey": "3facb2c42c7c272bf0d619341350f282a4eb6d975034861797e99247e042dc14",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:31.052Z",
-  "lastAttemptAt": "2026-08-20T14:22:31.052Z",
-  "nextRetryAt": "2026-08-20T19:20:44.052Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17893,\"reset_time\":\"4h58m12s\"}}",
+  "evidenceHash": "090f5acf66425db05599ebe99d31a43b740fd2e96461e6dfb86afec92acc8114",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "441555ad09bf87e2b59fb9d0210d7703befb9564d72bb4c90d81067af95e5019",
   "shadowMode": false
 }
