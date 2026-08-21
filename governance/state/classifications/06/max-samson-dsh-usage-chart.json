@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "data",
+    "api",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web dashboard plugin that visualizes session token usage, context pressure, estimated costs, per-round metrics, and optional DeepSeek account balance information.",
+  "summaries": {
+    "zh": "为 DSH Web 提供实时 Token 用量、上下文压力、成本估算、逐轮图表和可选 DeepSeek 账户余额展示。",
+    "en": "A DSH Web dashboard that displays real-time token usage, context pressure, estimated costs, per-round charts, and optional DeepSeek account balance information."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays real-time token usage and context metrics",
+      "Calculates estimated model costs in CNY and USD",
+      "Renders per-round usage and cost charts",
+      "Queries DeepSeek account balance through a host-side API proxy",
+      "Reads configured pricing and currency settings"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_dependent_balance_query",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_and_pricing_file_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays real-time token usage and context metrics",
+      "Calculates estimated model costs in CNY and USD",
+      "Renders per-round usage and cost charts",
+      "Queries DeepSeek account balance through a host-side API proxy",
+      "Reads configured pricing and currency settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:27.199Z",
+  "repositoryCommitSha": "8efd6ec4bd2f1662fd95b51e8a4bb9653e1ef84f",
+  "evidenceHash": "5f4f1bce0bd52e8959cde6a8d50185f53f6761939c2f5fcc1c2efde926a96058",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5673e4d98dd218d1cd682641da534411e01d93e49f5b05c28f0ec1f7d1968f79",
+  "shadowMode": false
+}

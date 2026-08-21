@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "theme",
+    "ui",
+    "video",
+    "visualization",
+    "monitoring",
+    "api",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web GUI theme plugin focused on visual customization, with configurable media backgrounds, animated visual effects, LLM activity indicators, and optional OpenCode Go quota display using user-provided credentials.",
+  "summaries": {
+    "zh": "为 DSH Web GUI 提供受《云图计划》风格启发的可配置视觉主题、动态背景、LLM 活跃度指示和可选 OpenCode Go 配额显示。",
+    "en": "A configurable DSH Web GUI theme inspired by Neural Cloud, featuring animated backgrounds, LLM activity indicators, and optional OpenCode Go quota display."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Injects CSS and JavaScript into the DSH Web GUI",
+      "Renders configurable video, image, contour-line, and Conway's Game of Life backgrounds",
+      "Reads session and event activity to calculate an LLM activity score",
+      "Reads and writes local configuration including cookie, workspace ID, limits, and visual settings",
+      "Sends configured cookie data to opencode.ai to retrieve quota information",
+      "Provides local endpoints for quota data, activity data, and custom media upload and retrieval"
+    ],
+    "reasons": [
+      {
+        "code": "WEB_GUI_INJECTION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_CREDENTIAL_STORAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "AUTHENTICATED_EXTERNAL_REQUEST",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "MEDIA_UPLOAD_ENDPOINTS",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Injects CSS and JavaScript into the DSH Web GUI",
+      "Renders configurable video, image, contour-line, and Conway's Game of Life backgrounds",
+      "Reads session and event activity to calculate an LLM activity score",
+      "Reads and writes local configuration including cookie, workspace ID, limits, and visual settings",
+      "Sends configured cookie data to opencode.ai to retrieve quota information",
+      "Provides local endpoints for quota data, activity data, and custom media upload and retrieval"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:09.757Z",
+  "repositoryCommitSha": "07e2e0ebfd2fce33ca9737cdfe42acd6cb512377",
+  "evidenceHash": "4a6b9401ec31eb3415ed7e3bb10650e3c804fe8a59e8d9d8b38d569647306970",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1731889fd3dc3004734b867e90a9bafe77abeb847a119a0f6d4ad58e847ba70a",
+  "shadowMode": false
+}

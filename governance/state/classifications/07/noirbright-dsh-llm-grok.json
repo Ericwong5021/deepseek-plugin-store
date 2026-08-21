@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "image",
+    "integration",
+    "search",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness provider plugin that connects Grok subscription accounts through Host-managed OAuth, exposes Grok chat and search capabilities, and optionally generates workspace images.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 接入 Grok 订阅账户，提供 OAuth 登录、聊天、搜索以及可选的图像生成功能。",
+    "en": "Connects Grok subscription accounts to DeepSeek Harness with OAuth sign-in, chat, search, and optional image generation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Integrates DeepSeek Harness with the xAI Grok subscription service",
+      "Performs Host-owned OAuth PKCE sign-in and stores a session file",
+      "Sends chat requests with function tools and server-side web and X search",
+      "Retrieves model catalogs and subscription usage from xAI-related endpoints",
+      "Optionally generates images and saves them to the workspace attachment store",
+      "Retries eligible model-request failures"
+    ],
+    "reasons": [
+      {
+        "code": "oauth_session_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Integrates DeepSeek Harness with the xAI Grok subscription service",
+      "Performs Host-owned OAuth PKCE sign-in and stores a session file",
+      "Sends chat requests with function tools and server-side web and X search",
+      "Retrieves model catalogs and subscription usage from xAI-related endpoints",
+      "Optionally generates images and saves them to the workspace attachment store",
+      "Retries eligible model-request failures"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:37.482Z",
+  "repositoryCommitSha": "c8970fea7bf3fb96156ec000042dcab2d894d4b0",
+  "evidenceHash": "7fe8a78b25f5511dc02c93d09dccb13dd605fb2b83b51fceb122d998e49a8a45",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5a5533757f0ff1b374c40c40e692075fa90b432805aa42702d41d3ce5c009cce",
+  "shadowMode": false
+}

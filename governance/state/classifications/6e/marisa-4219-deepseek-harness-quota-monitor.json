@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "visualization",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A quota monitoring plugin that queries configured provider APIs, measures local LLM usage, persists usage records, and presents quota and rate-limit status through sidebar cards and settings views.",
+  "summaries": {
+    "zh": "监控多个 LLM 供应商的余额和限额，统计本地用量，并在侧边栏和设置页展示配额、成本与限流状态。",
+    "en": "Monitors balances and usage limits across configured LLM providers, tracks local usage, and displays quota, cost, and rate-limit status in the sidebar and settings page."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Queries configured external provider APIs for balance or usage data",
+      "Uses configured API key references and request headers",
+      "Collects and persists local token usage statistics",
+      "Executes user-configured JavaScript parsers or parser files",
+      "Displays quota, usage, cost, and rate-limit information in sidebar and settings UI"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_usage_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_code_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries configured external provider APIs for balance or usage data",
+      "Uses configured API key references and request headers",
+      "Collects and persists local token usage statistics",
+      "Executes user-configured JavaScript parsers or parser files",
+      "Displays quota, usage, cost, and rate-limit information in sidebar and settings UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:08.792Z",
+  "repositoryCommitSha": "c620b6eac361c9bf9d0eb0cb8e8b3d3947677bea",
+  "evidenceHash": "69fbd7c9df608be1b9174a67c7cb9047cc210b466f166b858e2ca98f06fdd1f8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "70a08a150770e78d028decb51e5fab037f6052b19de1071c8477279c36dc7c3f",
+  "shadowMode": false
+}

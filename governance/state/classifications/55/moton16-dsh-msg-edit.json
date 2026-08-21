@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "ui",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "A chat utility plugin that adds UI controls and HTTP RPCs for reading, editing, rewriting, and regenerating conversation messages; human review is warranted because edits can truncate later nodes and the README documents a compatibility issue that can make compaction fail.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web 提供消息读取、编辑、改写和重新生成能力，并在助手消息操作条中加入相应的编辑界面。",
+    "en": "Adds DeepSeek Harness Web controls and HTTP RPCs for reading, editing, rewriting, and regenerating conversation messages."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads assistant message text through an HTTP API",
+      "Rewrites assistant message content including reasoning and body",
+      "Edits user messages and truncates subsequent conversation nodes",
+      "Regenerates assistant replies",
+      "Injects chat message action controls and an inline editor into the web UI"
+    ],
+    "reasons": [
+      {
+        "code": "conversation_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "destructive_truncation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "replay_compatibility_failure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads assistant message text through an HTTP API",
+      "Rewrites assistant message content including reasoning and body",
+      "Edits user messages and truncates subsequent conversation nodes",
+      "Regenerates assistant replies",
+      "Injects chat message action controls and an inline editor into the web UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:12.414Z",
+  "repositoryCommitSha": "b2af7c9c2b62a2713de2499f9869a79054e6771d",
+  "evidenceHash": "280992c95ca6de4d848d34bb5673342b8fdd4fcfa561cd4d587be868019b56ab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1b493b84c5ed74fc91a01e71e0e9ccf654702ba3e9b2c9c25d8ad557647d003",
+  "shadowMode": false
+}

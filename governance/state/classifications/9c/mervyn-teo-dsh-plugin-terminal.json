@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "ui",
+    "layout",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Adds a persistent VS Code-style web terminal panel that runs a configurable interactive shell in a PTY and streams it to the browser; human review is warranted because it enables shell and filesystem operations.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中提供可配置的交互式 PTY 终端面板，支持 shell 会话、实时输出和终端显示设置。",
+    "en": "Adds a configurable interactive PTY terminal panel to the DeepSeek Harness web interface with shell sessions, live output, and terminal display settings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "spawns an interactive shell process in a PTY",
+      "streams terminal input and output through a WebSocket",
+      "allows configuring the shell executable and working directory",
+      "loads xterm.js from a CDN for terminal rendering"
+    ],
+    "reasons": [
+      {
+        "code": "shell_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_access_via_working_directory",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "websocket_terminal_bridge",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_cdn_dependency",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "computer.control",
+      "network.access",
+      "spawns an interactive shell process in a PTY",
+      "streams terminal input and output through a WebSocket",
+      "allows configuring the shell executable and working directory",
+      "loads xterm.js from a CDN for terminal rendering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:51.862Z",
+  "repositoryCommitSha": "b542655664c236a7d28582d79c5a5f0e5258318c",
+  "evidenceHash": "b1786c028106725a3b55a27794f395000a183f2c990735cd1ddfecb14cba5606",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7d27d39191c7a24dab683ed81cee3b16afc690cf38aa473b2fa272585cfec5d8",
+  "shadowMode": false
+}

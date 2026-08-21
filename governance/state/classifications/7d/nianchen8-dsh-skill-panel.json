@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "skill",
+    "ui",
+    "file",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness interface panel for browsing, filtering, inspecting, configuring, uninstalling, and grouping agent skills, with documented filesystem mutations and persistent group management.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供用于浏览、筛选、查看、启用或禁用、卸载及分组管理智能体技能的设置与侧边栏面板。",
+    "en": "A DeepSeek Harness settings and sidebar panel for browsing, filtering, inspecting, enabling or disabling, uninstalling, and grouping agent skills."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Browse and search session-scoped agent skills",
+      "Filter skills by source",
+      "View skill metadata and SKILL.md contents",
+      "Rewrite skill invocation and disabled-state frontmatter",
+      "Delete non-bundled skill directories",
+      "Create, rename, delete, and manage membership of persisted skill groups",
+      "Register settings, sidebar, and overlay user-interface entries"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_group_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Browse and search session-scoped agent skills",
+      "Filter skills by source",
+      "View skill metadata and SKILL.md contents",
+      "Rewrite skill invocation and disabled-state frontmatter",
+      "Delete non-bundled skill directories",
+      "Create, rename, delete, and manage membership of persisted skill groups",
+      "Register settings, sidebar, and overlay user-interface entries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:17.848Z",
+  "repositoryCommitSha": "dd30a0417741548502e4c08b19c2aa2270062edc",
+  "evidenceHash": "65dbd1569fe232d0567f7c1f83e089f9d9da68ff4c9ae2f6b0890fd561a8cf48",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5dc837574a8e0dacbfdfe716cd1361d38b1f44d4725bc31ab4abac92e5a2ef28",
+  "shadowMode": false
+}

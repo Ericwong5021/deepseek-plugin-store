@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A usage analytics dashboard that visualizes session activity, token and cache statistics, account balance, and workspace usage with configurable aliases.",
+  "summaries": {
+    "zh": "通过热力图和统计卡片展示会话使用次数、Token、缓存命中率、账户余额及工作区别名。",
+    "en": "A usage analytics dashboard that presents session activity, token usage, cache-hit rates, account balance, and workspace aliases."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and aggregates persistent session logs",
+      "Displays token usage and cache-hit statistics",
+      "Queries the DeepSeek balance API using configured credentials",
+      "Persists workspace aliases",
+      "Provides local HTTP endpoints for usage data and alias management"
+    ],
+    "reasons": [
+      {
+        "code": "reads_persistent_session_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_balance_api_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_workspace_aliases",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "registers_http_data_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and aggregates persistent session logs",
+      "Displays token usage and cache-hit statistics",
+      "Queries the DeepSeek balance API using configured credentials",
+      "Persists workspace aliases",
+      "Provides local HTTP endpoints for usage data and alias management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:41:01.760Z",
+  "repositoryCommitSha": "8992d306cdca8857b4362868d591fde3689765b0",
+  "evidenceHash": "023fe3eea09c95a18bc0f158f0f2138992431824e22a132ebb5eec59f6a5e327",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fdb51895aa2cbda951684e52399629587d260d2d667d19f0b79fce0e426d8e70",
+  "shadowMode": false
+}

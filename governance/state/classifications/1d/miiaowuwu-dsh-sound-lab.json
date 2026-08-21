@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "api",
+    "desktop",
+    "file",
+    "integration",
+    "notification",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH sound customization plugin that configures event-triggered playback, manages a local audio library, and optionally generates voice clips through Alibaba Cloud Bailian TTS.",
+  "summaries": {
+    "zh": "为 DSH 界面事件配置提示音、管理本地音频库，并可使用用户提供的阿里云百炼凭证生成语音片段。",
+    "en": "Configure sounds for DSH interface events, manage a local audio library, and optionally generate voice clips with user-provided Alibaba Cloud Bailian credentials."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "plays configurable audio for four DSH interface events",
+      "reads and writes plugin-local audio files and configuration",
+      "uploads, deletes, renames, and restores local sound-library entries",
+      "calls Alibaba Cloud Bailian text-to-speech using a user-provided API key and voice ID"
+    ],
+    "reasons": [
+      {
+        "code": "external_tts_service_and_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_audio_file_upload_and_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_side_config_and_audio_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "plays configurable audio for four DSH interface events",
+      "reads and writes plugin-local audio files and configuration",
+      "uploads, deletes, renames, and restores local sound-library entries",
+      "calls Alibaba Cloud Bailian text-to-speech using a user-provided API key and voice ID"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:15.587Z",
+  "repositoryCommitSha": "480a54e25ca2c579025d3df280573e94c584f7aa",
+  "evidenceHash": "d44642ee80b87c8c7a7ac451b31a404fb9489e9c3f28d056198eeaba49dd213a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f2582338b7b55db26939b255592016b5d2d514862dae0405e69f944293452c14",
+  "shadowMode": false
+}

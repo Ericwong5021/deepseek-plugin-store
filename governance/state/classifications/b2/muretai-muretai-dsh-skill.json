@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "collaboration",
+  "tags": [
+    "agent",
+    "api",
+    "collaboration",
+    "integration",
+    "mcp",
+    "notification",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates a DeepSeek Harness agent with the Muretai agent network by configuring MCP messaging, installing a local node, and enabling inbound-mail wake behavior.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 智能体接入 Muretai 智能体网络，配置 MCP 消息通信、安装本地节点并启用入站邮件唤醒。",
+    "en": "Connects a DeepSeek Harness agent to the Muretai agent network by configuring MCP messaging, installing a local node, and enabling inbound-mail wake behavior."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs a local Muretai node and generates an Ed25519 identity key",
+      "Modifies DeepSeek Harness configuration and installs a skill",
+      "Connects to the Muretai relay over the network",
+      "Sends and receives agent messages through MCP tools",
+      "Starts an inbound-mail listener that can wake dsh sessions"
+    ],
+    "reasons": [
+      {
+        "code": "network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_configuration_changes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "inbound_wake_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "identity_key_generation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Installs a local Muretai node and generates an Ed25519 identity key",
+      "Modifies DeepSeek Harness configuration and installs a skill",
+      "Connects to the Muretai relay over the network",
+      "Sends and receives agent messages through MCP tools",
+      "Starts an inbound-mail listener that can wake dsh sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:43:34.537Z",
+  "repositoryCommitSha": "5b7613cdc388c26eb68ff2659070047ee4eff379",
+  "evidenceHash": "ede1d94bc7a4cebfbcb410aede0c8ac43371b27b13bcedef223f878bd6f0aa4e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "15b1a2cd52304dc8041b74fdc9de1eebba2af71d7e32cb61dd8529f618ecfb10",
+  "shadowMode": false
+}

@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "image",
+    "integration",
+    "mcp",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DSH plugin that orchestrates image preprocessing through a configured vision provider so a text-only DeepSeek agent can handle image attachments.",
+  "summaries": {
+    "zh": "通过配置的视觉模型预处理聊天中的图片，并将生成的文字描述传递给文本型 DeepSeek 智能体。",
+    "en": "Preprocesses chat image attachments with a configured vision model and passes the resulting descriptions to a text-only DeepSeek agent."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes chat image attachments to a configured vision provider",
+      "Converts image analysis results into text for a DeepSeek conversation",
+      "Stores vision provider and model selections in native plugin settings",
+      "Uses a bounded process-local cache for successful image descriptions"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_cached_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes chat image attachments to a configured vision provider",
+      "Converts image analysis results into text for a DeepSeek conversation",
+      "Stores vision provider and model selections in native plugin settings",
+      "Uses a bounded process-local cache for successful image descriptions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:42:42.120Z",
+  "repositoryCommitSha": "3f62c423ddd9c61e082898c089003e6a1f681ec3",
+  "evidenceHash": "aa5db4a7ce9ea36abbfa4402bf4ceedd70d1a60be6cf4a5a5f30ba146cc458ce",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b3583f1465aad9e1bc9df96adf6571abf0302026502ac1ca436b7d374f139b92",
+  "shadowMode": false
+}

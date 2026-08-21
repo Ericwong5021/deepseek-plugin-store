@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "image",
+    "integration",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "Adds an image-input declaration checkbox to DSH's model catalog UI and optionally provides a configurable external vision relay for endpoints that lack native image support.",
+  "summaries": {
+    "zh": "为 DSH 模型目录添加“图片输入”声明勾选框，并可选通过用户配置的兼容端点提供视觉中继。",
+    "en": "Adds an image-input declaration checkbox to the DSH model catalog and optionally provides a vision relay through a user-configured compatible endpoint."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Patches the DSH model settings UI at startup to add an image-input checkbox",
+      "Persists the selected model input modality through DSH settings",
+      "Optionally sends image data to a user-configured OpenAI-compatible endpoint",
+      "Provides status, connectivity-test, and runtime-configuration tools for the optional vision relay"
+    ],
+    "reasons": [
+      {
+        "code": "modifies_local_ui_artifact",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_model_settings",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_network_requests_and_api_key_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Patches the DSH model settings UI at startup to add an image-input checkbox",
+      "Persists the selected model input modality through DSH settings",
+      "Optionally sends image data to a user-configured OpenAI-compatible endpoint",
+      "Provides status, connectivity-test, and runtime-configuration tools for the optional vision relay"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:18.487Z",
+  "repositoryCommitSha": "a9c3f557500614a735217453e2dbfc6a794dff53",
+  "evidenceHash": "33709d760f5bf041d189967865f0be57765e93b4840f7869992fe8481614fe32",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cb757b80485d9bb325be959bafb83b42a5639dd346812ba785b5c6ca481fcd04",
+  "shadowMode": false
+}

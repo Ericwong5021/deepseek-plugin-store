@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "skill",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only visualization plugin that analyzes historical and live session logs to present skill invocation counts, timelines, session usage, and deleted-skill status through a statistics API and web dashboard.",
+  "summaries": {
+    "zh": "只读统计技能调用次数、会话使用情况和调用时间，并通过 API 与网页面板提供趋势和明细视图。",
+    "en": "A read-only plugin that tracks skill invocation counts, session usage, and call times, presenting trends and details through an API and web dashboard."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads persisted session logs to count skill tool invocations",
+      "Subscribes to live tool-call events for incremental statistics",
+      "Provides read-only statistics through an HTTP API and web interface",
+      "Maintains an incremental local cache based on log file size and modification time",
+      "Scans workspace and global skill roots to mark deleted skills"
+    ],
+    "reasons": [
+      {
+        "code": "reads_session_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "observes_live_tool_events",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_local_statistics_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads persisted session logs to count skill tool invocations",
+      "Subscribes to live tool-call events for incremental statistics",
+      "Provides read-only statistics through an HTTP API and web interface",
+      "Maintains an incremental local cache based on log file size and modification time",
+      "Scans workspace and global skill roots to mark deleted skills"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:45:02.178Z",
+  "repositoryCommitSha": "dad71d1b838f99eb93b918d9858732f8ecd0914d",
+  "evidenceHash": "ac335596f3a045a5ae8c64171ab2a7257d299cf7e28c095cec6b42f6f39f9704",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dec2a9ff6a26fe7baa7ac66d3c08ff6b0bdf073bf216fad966e2a70d899a6137",
+  "shadowMode": false
+}

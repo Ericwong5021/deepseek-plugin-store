@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "image",
+    "workflow",
+    "api",
+    "browser",
+    "file",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is orchestrating a vision-capable subagent so text-only sessions can process pasted images or image paths.",
+  "summaries": {
+    "zh": "为文本模型会话提供视觉子代理编排，将粘贴的图片或图片路径交给可配置的视觉模型处理并返回文字结果。",
+    "en": "Orchestrates a configurable vision subagent for text-only sessions, converting pasted images to paths when needed and returning the child model’s textual interpretation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Delegates image-reading tasks to a configured vision-capable subagent",
+      "Uploads pasted images to temporary files for text-only sessions",
+      "Adds a vision-model setting and synchronizes delegated tool configuration",
+      "Provides HTTP routes for image modality checks and image-to-path conversion"
+    ],
+    "reasons": [
+      {
+        "code": "delegated_model_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_upload_and_temp_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "settings_and_tool_configuration_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Delegates image-reading tasks to a configured vision-capable subagent",
+      "Uploads pasted images to temporary files for text-only sessions",
+      "Adds a vision-model setting and synchronizes delegated tool configuration",
+      "Provides HTTP routes for image modality checks and image-to-path conversion"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:44:26.638Z",
+  "repositoryCommitSha": "3026a48514a62ddb88684498e055ee38f8f619d4",
+  "evidenceHash": "a60089f23e4ee222483b07d8c0220bcfacf7457b6375ba2db863d7c3c3c0319f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8a95294447a8227caae014795dc9e6cf1c3b5a780b94261be98e2d0f6d409d35",
+  "shadowMode": false
+}
