@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "desktop",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness Web UI plugin for dragging local files or folders into the composer, resolving their local paths, and sending those paths without uploading or modifying the files.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中拖入本地文件或文件夹，将解析出的本机路径以可移除标签加入消息并支持直接发送。",
+    "en": "A DeepSeek Harness web UI plugin that accepts dragged local files or folders, resolves their filesystem paths, and adds them as removable chips for sending."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts dragged local files and folders in a web UI",
+      "Resolves and inserts local absolute filesystem paths",
+      "Reads local filesystem metadata and may sample or hash file contents to distinguish candidates",
+      "Invokes bounded operating-system file-index or directory-search commands",
+      "Writes resolved paths into the conversation draft and supports sending them",
+      "Preserves native image attachment behavior for image-only drops"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "os_search_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_input_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Accepts dragged local files and folders in a web UI",
+      "Resolves and inserts local absolute filesystem paths",
+      "Reads local filesystem metadata and may sample or hash file contents to distinguish candidates",
+      "Invokes bounded operating-system file-index or directory-search commands",
+      "Writes resolved paths into the conversation draft and supports sending them",
+      "Preserves native image attachment behavior for image-only drops"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:13.083Z",
+  "repositoryCommitSha": "c20646ad6d4ee4c4a0ef12163a074716e17a7ba5",
+  "evidenceHash": "9f7d4ca29a59e355cc49d5a36a6532d517a5974018acb1c542b1109c0a0205aa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "99c52cb5b50793aab2f863ba4784118e62b3bd2f6669ae95c01962fa78b23baf",
+  "shadowMode": false
+}

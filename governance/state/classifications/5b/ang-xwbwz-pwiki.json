@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "knowledge",
+    "search",
+    "data",
+    "document",
+    "cli",
+    "mcp",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a local-first knowledge base that indexes note directories and provides keyword, semantic, hybrid, and MCP-accessible retrieval with entry management, so knowledge-management is the primary category.",
+  "summaries": {
+    "zh": "一个本地优先的知识库工具，可索引笔记目录并通过关键词、语义和混合搜索检索内容，同时提供 CLI 与 MCP 接入。",
+    "en": "A local-first knowledge base tool that indexes note directories and supports keyword, semantic, and hybrid retrieval through a CLI and MCP interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and indexes local note directories",
+      "Performs keyword, semantic, hybrid, and reranked searches",
+      "Stores local indexes, embeddings, and compiled metadata",
+      "Creates, reads, modifies, renames, moves, and removes indexed entries through CLI or MCP",
+      "Can optionally call a configured LLM API for document compilation",
+      "Can download and cache local ONNX models"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "entry_crud_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_llm_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads and indexes local note directories",
+      "Performs keyword, semantic, hybrid, and reranked searches",
+      "Stores local indexes, embeddings, and compiled metadata",
+      "Creates, reads, modifies, renames, moves, and removes indexed entries through CLI or MCP",
+      "Can optionally call a configured LLM API for document compilation",
+      "Can download and cache local ONNX models"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:30.311Z",
+  "repositoryCommitSha": "eb023757396404cb5763dfb5e3730f0afecad217",
+  "evidenceHash": "96e24b5bb45446351424d330e7e18b6ba65ac8b7fb6c7b0740ea1be0c87c2ba4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7932c310afdd17418fc21f7ceb0d6bd9d8598cb77c10ec15cc3439f190d2c5e5",
+  "shadowMode": false
+}

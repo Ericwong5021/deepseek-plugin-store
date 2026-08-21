@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "memory",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds hosted visual perception to DeepSeek Harness by sending images to configurable OpenAI-compatible vision APIs, recording the resulting descriptions in durable sessions, and forwarding text to the configured reasoning model.",
+  "summaries": {
+    "zh": "通过可配置的 OpenAI 兼容视觉 API 将图片转换为文本描述并持久化到 DeepSeek Harness 会话中，供文本推理模型使用。",
+    "en": "Adds hosted image understanding to DeepSeek Harness by converting images through configurable OpenAI-compatible vision APIs and persisting the descriptions for text-based reasoning."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends user-provided images to configured remote vision APIs",
+      "Uses configured API endpoints and optional credentials",
+      "Stores generated visual descriptions and attachment identifiers in durable sessions",
+      "Replaces image inputs with textual descriptions for a reasoning model"
+    ],
+    "reasons": [
+      {
+        "code": "remote_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "durable_session_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends user-provided images to configured remote vision APIs",
+      "Uses configured API endpoints and optional credentials",
+      "Stores generated visual descriptions and attachment identifiers in durable sessions",
+      "Replaces image inputs with textual descriptions for a reasoning model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:35.439Z",
+  "repositoryCommitSha": "bf020d8acfb9bea251f9ab9f5a8978d395d41805",
+  "evidenceHash": "8bd54a6fa8ee8e8e612f9b53515a97a0e2d55c499e6012b863ace2da4890b03b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "394fb45acd6332515df0ae57fbc0b91cdf7c62d10feca4aa7bcd90b284ecf6b8",
+  "shadowMode": false
+}

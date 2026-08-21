@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A structured HTTP request plugin for model or Code Mode use, supporting arbitrary HTTP/HTTPS methods, authentication, JSON handling, and response metadata; human review is warranted because it lacks SSRF restrictions and can reach internal or cloud metadata endpoints.",
+  "summaries": {
+    "zh": "用于执行结构化 HTTP/HTTPS 请求的插件，支持常用请求方法、自定义请求头、JSON 数据、认证参数、超时控制及响应解析。",
+    "en": "A structured HTTP/HTTPS request plugin supporting common methods, custom headers, JSON payloads, authentication helpers, timeouts, and response parsing."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends arbitrary HTTP and HTTPS requests using multiple methods",
+      "Supports custom headers, raw or JSON request bodies, and Bearer or Basic authentication",
+      "Parses and truncates response bodies while reporting status, timing, size, and selected headers",
+      "Can access localhost, loopback, private-network, link-local, and cloud metadata endpoints without SSRF filtering"
+    ],
+    "reasons": [
+      {
+        "code": "unrestricted_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "internal_network_and_metadata_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_outbound_requests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Sends arbitrary HTTP and HTTPS requests using multiple methods",
+      "Supports custom headers, raw or JSON request bodies, and Bearer or Basic authentication",
+      "Parses and truncates response bodies while reporting status, timing, size, and selected headers",
+      "Can access localhost, loopback, private-network, link-local, and cloud metadata endpoints without SSRF filtering"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:19:12.121Z",
+  "repositoryCommitSha": "66a159064837a81a84cebbe7e986df7dbb260af7",
+  "evidenceHash": "a402849eb941ada3b14146c151beae84e6c8307cebeaf8870b26b2c3cf1b22d2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c87510ba3184da26b513b38acdf48b6357505ffe99d103ab81ce610aa7e3d382",
+  "shadowMode": false
+}

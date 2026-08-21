@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "browser",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows portable launcher that downloads required runtime components, installs DeepSeek Harness locally, and starts its local Web UI with progress, retry, resume, and browser-opening support.",
+  "summaries": {
+    "zh": "这是一个面向 Windows 的便携式启动器，可自动准备 Node.js 和 DeepSeek Harness，并启动本地 Web UI。",
+    "en": "A portable Windows launcher that prepares Node.js and DeepSeek Harness locally, then starts the local Web UI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Downloads portable Node.js from configured mirrors",
+      "Installs the @deepseek-ai/dsh npm package locally",
+      "Launches a local DeepSeek Harness Web UI service",
+      "Opens a browser to the local Web UI",
+      "Writes local startup logs and setup state files"
+    ],
+    "reasons": [
+      {
+        "code": "downloads-and-executes-runtime-and-package",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "starts-local-web-service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes-local-files",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Downloads portable Node.js from configured mirrors",
+      "Installs the @deepseek-ai/dsh npm package locally",
+      "Launches a local DeepSeek Harness Web UI service",
+      "Opens a browser to the local Web UI",
+      "Writes local startup logs and setup state files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:38.944Z",
+  "repositoryCommitSha": "da805db1f201d2dd731ca291f97862cd43c75d4a",
+  "evidenceHash": "9865e4463bbb15a490dacaf5d8b0e967204090142681071e4fc3914aa65a8593",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "44d5b0c8ad1ab51fafdfe95035f100e7701214ca8b7e76e0ce5da68f16a5f153",
+  "shadowMode": false
+}

@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "chat",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows one-click launcher that bundles the runtime for DeepSeek Harness, starts its local web interface, opens it in the default browser, and manages the process from the system tray.",
+  "summaries": {
+    "zh": "一个面向 Windows 的免安装启动器，用于打包运行环境、启动本地 DeepSeek Harness Web 界面并通过系统托盘管理服务。",
+    "en": "A portable Windows launcher that bundles the runtime, starts a local DeepSeek Harness web interface, opens it in the default browser, and provides system-tray process management."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "bundles and extracts a Node.js-based runtime locally",
+      "starts a local DeepSeek Harness web service",
+      "opens the default web browser",
+      "runs a background tray process",
+      "selects an available local port",
+      "stores application data, sessions, configuration, and logs in the user profile",
+      "requires a user-provided DeepSeek API key for online use"
+    ],
+    "reasons": [
+      {
+        "code": "local_runtime_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_service_and_background_process",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_launch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_key_and_network_dependency",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "bundles and extracts a Node.js-based runtime locally",
+      "starts a local DeepSeek Harness web service",
+      "opens the default web browser",
+      "runs a background tray process",
+      "selects an available local port",
+      "stores application data, sessions, configuration, and logs in the user profile",
+      "requires a user-provided DeepSeek API key for online use"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:22:28.525Z",
+  "repositoryCommitSha": "377869700f97535775397c3086d0323445a9d59c",
+  "evidenceHash": "36d65847dd731b8d9db40e35d949254b998be20bc9a411b855c1e786a905a351",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "222e888eedfb521e57bbc5742d125e7388b035b776fa0ec85d7b2427c2695da4",
+  "shadowMode": false
+}

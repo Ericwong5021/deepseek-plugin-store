@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "debugging",
+    "agent",
+    "automation",
+    "desktop",
+    "terminal",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A plugin testing and debugging sandbox that runs isolated DeepSeek Harness web instances, mounts and builds local plugins, and exposes GUI and agent controls for lifecycle management and logs.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 插件开发者提供隔离测试沙盒，可构建并挂载本地插件，并通过面板或智能体工具管理测试实例。",
+    "en": "Provides isolated DeepSeek Harness test sandboxes for building and mounting local plugins, with GUI and agent controls for instance lifecycle and logs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Spawns isolated local web processes with separate ports and data directories",
+      "Mounts and optionally builds a locally specified plugin",
+      "Provides GUI and agent tools to start, stop, restart, inspect logs, and destroy sandboxes",
+      "Can inject host API credentials and copy host model settings when enabled",
+      "Can delete an entire sandbox directory during destruction"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_plugin_build_and_mount",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_directory_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_host_credential_inheritance",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Spawns isolated local web processes with separate ports and data directories",
+      "Mounts and optionally builds a locally specified plugin",
+      "Provides GUI and agent tools to start, stop, restart, inspect logs, and destroy sandboxes",
+      "Can inject host API credentials and copy host model settings when enabled",
+      "Can delete an entire sandbox directory during destruction"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:02.487Z",
+  "repositoryCommitSha": "34b7632f4133b2013fa1c53409bc956b97f34627",
+  "evidenceHash": "ed0691f6a70a5334f2fd1ed9b72fcae8304ed7e373952af370f8f52a2a09ab97",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5ca79c1471dfba3189ec2a653fd0cfeceaac1228fac21c90c6a61074ad444845",
+  "shadowMode": false
+}

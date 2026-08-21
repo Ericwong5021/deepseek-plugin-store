@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "file",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A long-term memory plugin that stores Markdown memories, manages them through a memory tool, and injects relevant user and workspace memory into prompts across sessions.",
+  "summaries": {
+    "zh": "为 dsh 提供跨会话长期记忆，通过 Markdown 文件保存和管理用户级及工作区级记忆，并在会话启动时注入记忆上下文。",
+    "en": "Provides cross-session long-term memory for dsh by storing and managing user- and workspace-level Markdown memories and injecting memory context at session start."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and writes local Markdown memory files",
+      "Injects selected memory index and recent memory content into system prompts",
+      "Provides memory add, update, delete, list, read, and Claude Code import actions",
+      "Reads existing Claude Code memory files for fallback or import"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "memory_import",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads and writes local Markdown memory files",
+      "Injects selected memory index and recent memory content into system prompts",
+      "Provides memory add, update, delete, list, read, and Claude Code import actions",
+      "Reads existing Claude Code memory files for fallback or import"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:45.542Z",
+  "repositoryCommitSha": "3d1abb4860eb2ddfd2695e770b5b90fa6ce43168",
+  "evidenceHash": "e87a2a812dbc22708920837e6ece02f2a0596355a5f34b08b47f50f8edfa9ca4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "775cc5f8c317caf9b6c76236e3b778c2b136d2a2f126dfd37c50c9ff62803f9c",
+  "shadowMode": false
+}

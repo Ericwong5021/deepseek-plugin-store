@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "desktop",
+    "browser",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-only DeepSeek Harness plugin that notifies users of task completions while the Harness page is unfocused by displaying a configurable taskbar badge.",
+  "summaries": {
+    "zh": "这是一个面向 Windows 的 DeepSeek Harness 失焦任务完成提醒插件，会在页面失去焦点时通过可配置的任务栏数字徽章提示已完成的任务。",
+    "en": "A Windows plugin for DeepSeek Harness that shows a configurable taskbar count badge when tasks finish while the Harness page is unfocused."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Detects DeepSeek Harness task completion and browser focus state",
+      "Displays and updates a Windows taskbar badge using PowerShell and WPF",
+      "Scans Windows taskbar UI elements to locate the Harness icon",
+      "Starts and cleans up badge-related processes"
+    ],
+    "reasons": [
+      {
+        "code": "powershell-process-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "windows-ui-automation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process-cleanup-by-command-line-match",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "Detects DeepSeek Harness task completion and browser focus state",
+      "Displays and updates a Windows taskbar badge using PowerShell and WPF",
+      "Scans Windows taskbar UI elements to locate the Harness icon",
+      "Starts and cleans up badge-related processes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:56.660Z",
+  "repositoryCommitSha": "bf104372fb300770df959a20d1311213ce9a1ecf",
+  "evidenceHash": "9b48c0c8576ca25c60779f8a92f23ceed8f1ec1ed9d9777f1e09804385b9ad16",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8f9aebbf1d15111c5b1f53da264c990ec83e68264b060a833eed93343211929b",
+  "shadowMode": false
+}

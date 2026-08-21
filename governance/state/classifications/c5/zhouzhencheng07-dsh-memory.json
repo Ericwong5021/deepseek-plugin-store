@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "agent",
+    "search",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-session memory plugin that prompts the main agent to save durable notes, provides memory_search and memory_write tools, and optionally combines substring retrieval with embeddings.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供跨会话记忆，通过自动提醒及 memory_search、memory_write 工具保存和检索按日期组织的工作区笔记。",
+    "en": "Provides cross-session memory for DeepSeek Harness by prompting note capture and offering memory_search and memory_write tools for dated workspace notes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and searches stored Markdown memory files",
+      "Writes or updates daily Markdown memory files",
+      "Injects memory reminders into model system prompts",
+      "Optionally connects to an Ollama-compatible embedding service for vector retrieval"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_prompt_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_embedding_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads and searches stored Markdown memory files",
+      "Writes or updates daily Markdown memory files",
+      "Injects memory reminders into model system prompts",
+      "Optionally connects to an Ollama-compatible embedding service for vector retrieval"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:19:27.163Z",
+  "repositoryCommitSha": "674372f1aeedd5ae3952615676ca4d35ffa3db68",
+  "evidenceHash": "007a74514601afed48b47ffb63a9406d71f40e0052dc3510068d3d4a64396ffd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c92693b06a17df5cc4aff21ee3e29c8dcf6b102565ccbccd0e98004f1888630a",
+  "shadowMode": false
+}

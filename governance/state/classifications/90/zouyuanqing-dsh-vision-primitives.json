@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "agent",
+    "api",
+    "desktop",
+    "file",
+    "image",
+    "integration",
+    "tool",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a native visual-reasoning plugin for capturing and analyzing screens or images, providing coordinate-grounded visualization tools, OCR, image processing, and optional MiMo multimodal API integration; it explicitly states that it does not provide desktop mouse or keyboard control.",
+  "summaries": {
+    "zh": "为智能体提供屏幕和图片的精确视觉分析、标注、测量、OCR及坐标定位工具，并可选接入MiMo多模态后端。",
+    "en": "Provides agents with precise screen and image analysis, annotation, measurement, OCR, and coordinate-grounding tools, with optional MiMo multimodal backend integration."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures screen regions or reads workspace PNG images",
+      "Performs deterministic image operations including grids, zoom, annotation, measurement, difference detection, color finding, and coordinate mapping",
+      "Performs Windows-native OCR and returns text locations",
+      "Stores incoming images and generated visual artifacts in the workspace",
+      "Optionally sends image data to the MiMo V2.5 external multimodal API",
+      "Uses Windows PowerShell subprocess services for screen capture and OCR"
+    ],
+    "reasons": [
+      {
+        "code": "screen_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_multimodal_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "native_subprocess_usage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures screen regions or reads workspace PNG images",
+      "Performs deterministic image operations including grids, zoom, annotation, measurement, difference detection, color finding, and coordinate mapping",
+      "Performs Windows-native OCR and returns text locations",
+      "Stores incoming images and generated visual artifacts in the workspace",
+      "Optionally sends image data to the MiMo V2.5 external multimodal API",
+      "Uses Windows PowerShell subprocess services for screen capture and OCR"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:06.487Z",
+  "repositoryCommitSha": "dfcfbc2b2d22ac34ea723dc9b34aae57d7e6a663",
+  "evidenceHash": "699cff75e98bc2bd8fe174208495c38a5b9161bc7f96cd75524beb3aec931e60",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "afe3a9123a3036f6825528408e52a06c9d0839a75dbf33bc3af59edfa04352e1",
+  "shadowMode": false
+}

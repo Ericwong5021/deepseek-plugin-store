@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "agent",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes a plugin that exposes an image_generate tool for calling compatible image-generation APIs and saving generated images in the workspace.",
+  "summaries": {
+    "zh": "通过兼容 Gemini 和 OpenAI Images 的接口生成图像，并将结果保存到当前工作区。",
+    "en": "Generates images through Gemini-compatible and OpenAI Images-compatible APIs and saves the results in the current workspace."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generates images through Gemini-compatible and OpenAI Images-compatible APIs",
+      "Sends prompts and configured generation parameters to an external image service",
+      "Writes generated image files to workspace-confined output paths",
+      "Reads API credentials from plugin settings, environment variables, or an optional local runtime file"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Generates images through Gemini-compatible and OpenAI Images-compatible APIs",
+      "Sends prompts and configured generation parameters to an external image service",
+      "Writes generated image files to workspace-confined output paths",
+      "Reads API credentials from plugin settings, environment variables, or an optional local runtime file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:18:45.061Z",
+  "repositoryCommitSha": "b83ae4c6e9beabb5fb44b86945907d80a3a3a420",
+  "evidenceHash": "9fff6caf7840c4f84b3d04b37069d46238c48789e6f8064022b9d6b3cd9413ce",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "96dbded10604734109391a9b5b20316ed48897056e478cfffa7342aef13402d5",
+  "shadowMode": false
+}

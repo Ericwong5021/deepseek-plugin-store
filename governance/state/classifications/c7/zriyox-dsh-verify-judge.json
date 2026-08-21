@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "testing",
+    "automation",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DeepSeek Harness plugin that gates goal completion and turn termination on successful workspace verification commands, primarily providing automated testing-based completion checks for agents.",
+  "summaries": {
+    "zh": "该插件在智能体结束目标或回合前运行配置或自动检测的验证命令，并在验证失败时阻止完成。",
+    "en": "This plugin runs configured or auto-detected workspace verification commands before an agent completes a goal or turn and blocks completion when verification fails."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts goal-completion actions in DeepSeek Harness",
+      "Runs configured or auto-detected test and verification commands in the session workspace",
+      "Rejects goal completion and can trigger continued agent work when verification fails",
+      "Feeds command failures, exit codes, and output tails back to the agent"
+    ],
+    "reasons": [
+      {
+        "code": "executes_workspace_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "intercepts_and_rejects_agent_actions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts goal-completion actions in DeepSeek Harness",
+      "Runs configured or auto-detected test and verification commands in the session workspace",
+      "Rejects goal completion and can trigger continued agent work when verification fails",
+      "Feeds command failures, exit codes, and output tails back to the agent"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:12.202Z",
+  "repositoryCommitSha": "7471508302b62be3a6d2411ac33bcffc5211251c",
+  "evidenceHash": "75febb65f9cbb53e87281556f2c666ea776538850d110070eb0aaf0fb8c2e1f1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3768797a541392d3f2b42b05efd7f703ed1dd9e2e468c980f4ec2bd1b9b4fa39",
+  "shadowMode": false
+}

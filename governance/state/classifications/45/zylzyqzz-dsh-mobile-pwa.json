@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "browser",
+    "ui",
+    "api",
+    "notification",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A mobile-focused PWA plugin that provides installable, offline-capable access to a local DeepSeek Harness Web UI through a separate approval and reverse-proxy gateway; human review is appropriate because it exposes a configurable network service and handles remote access.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供可安装、支持离线和触控手势的移动端 PWA，并通过独立网关远程访问本地 Web UI。",
+    "en": "Provides an installable, offline-capable mobile PWA for DeepSeek Harness with touch gestures and remote access to the local Web UI through a separate gateway."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs an independent Node gateway subprocess",
+      "Listens on a configurable network address and port",
+      "Reverse-proxies requests to a local DSH Web UI",
+      "Injects PWA assets and mobile interaction behavior into served HTML",
+      "Caches static assets for offline use",
+      "Sends optional Web Push task-completion notifications",
+      "Applies device approval, token cookies, and per-IP rate limiting"
+    ],
+    "reasons": [
+      {
+        "code": "network_gateway_and_reverse_proxy",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "push_notification_delivery",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs an independent Node gateway subprocess",
+      "Listens on a configurable network address and port",
+      "Reverse-proxies requests to a local DSH Web UI",
+      "Injects PWA assets and mobile interaction behavior into served HTML",
+      "Caches static assets for offline use",
+      "Sends optional Web Push task-completion notifications",
+      "Applies device approval, token cookies, and per-IP rate limiting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:20:27.974Z",
+  "repositoryCommitSha": "258607721a76cd54c8297c3fe74511c5cc7c485c",
+  "evidenceHash": "454881bd09d55f39027f99c909164c829ab79d35ecfed48594cf2b5b540f1a22",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d951cbcb7677fd9ef21fbedf195f7d0a3426950fe9b75c1c486eab3a458280de",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "cli",
+    "testing",
+    "debugging",
+    "project-analysis",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local CLI for static and optional temporary-runtime checks of ordered DSH bundle stacks, focused on detecting Cordis patch ownership conflicts and malformed bundle contracts.",
+  "summaries": {
+    "zh": "用于检查有序 DSH 配置包堆栈中的 Cordis 补丁归属冲突，并可在临时环境中运行有限运行时验证的本地命令行工具。",
+    "en": "A local CLI that checks ordered DSH bundle stacks for Cordis patch ownership conflicts and can run limited runtime validation in a temporary environment."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local stack files and bundle metadata",
+      "Performs static checks for Cordis patch ownership conflicts",
+      "Optionally creates a temporary DSH_HOME and invokes local DSH commands",
+      "Outputs text or JSON findings and exit statuses"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "temporary_filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_network_or_model_calls",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local stack files and bundle metadata",
+      "Performs static checks for Cordis patch ownership conflicts",
+      "Optionally creates a temporary DSH_HOME and invokes local DSH commands",
+      "Outputs text or JSON findings and exit statuses"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:53.001Z",
+  "repositoryCommitSha": "292d76cad3f2d677fde2e019b53b1557901aa7b6",
+  "evidenceHash": "99cb379748b469c5714c6fce893df839e453c06850a8e4878810e790cea411cd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "120d8f543d77cb9a2c760f5226e905dbdb5a60f5ba3bc73312639444f79481e6",
+  "shadowMode": false
+}

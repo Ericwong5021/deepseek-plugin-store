@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only filesystem tool that scans configured workspace paths for leaked secrets and dangerous credential-bearing files, then reports redacted findings.",
+  "summaries": {
+    "zh": "一个只读文件扫描插件，用于在配置的工作区路径中检测疑似泄露的密钥、令牌、私钥和危险凭据文件，并以脱敏形式报告结果。",
+    "en": "A read-only file-scanning plugin that detects suspected leaked keys, tokens, private keys, and credential-bearing files in configured workspace paths and reports redacted findings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads files under configured local paths",
+      "Scans file contents for secret-like and dangerous patterns",
+      "Reports matched findings with redacted values"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "secret_pattern_detection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "redacted_reporting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads files under configured local paths",
+      "Scans file contents for secret-like and dangerous patterns",
+      "Reports matched findings with redacted values"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:22:17.997Z",
+  "repositoryCommitSha": "b212b9af646b2c4417172d712cab46d3ea851a9c",
+  "evidenceHash": "ce35e09b6449580960d6671b56c029775c34eab33401ef2802c4076aa125924a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "af67bb30f23cce7a76cbc916d05c2096a5152cd93de2a16ef1248996423b3779",
+  "shadowMode": false
+}

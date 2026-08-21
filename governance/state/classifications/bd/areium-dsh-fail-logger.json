@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "debugging",
+    "memory",
+    "skill",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is recording and analyzing tool failures to support debugging and reduce recurring agent errors through skill and prompt guidance.",
+  "summaries": {
+    "zh": "记录并整理 DeepSeek Harness 中的工具失败，去重统计后写入技能日志并提供针对常见错误的预防提示。",
+    "en": "Records and organizes DeepSeek Harness tool failures, deduplicates and summarizes them in a skill log, and provides prevention guidance for recurring errors."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "observes session tool-call and tool-result events",
+      "records, deduplicates, counts, ranks, and expires tool failure data",
+      "writes failure state and maintains a marked section in a skill file",
+      "redacts configured credential-like patterns from recorded messages",
+      "injects prevention and recurring-error guidance into the system prompt"
+    ],
+    "reasons": [
+      {
+        "code": "local_state_and_skill_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_prompt_guidance_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "observes session tool-call and tool-result events",
+      "records, deduplicates, counts, ranks, and expires tool failure data",
+      "writes failure state and maintains a marked section in a skill file",
+      "redacts configured credential-like patterns from recorded messages",
+      "injects prevention and recurring-error guidance into the system prompt"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:43.381Z",
+  "repositoryCommitSha": "ab09e90f35d74cabf5af510e4c8bcf4bd6f2ddc5",
+  "evidenceHash": "c3921d95bc56441a85a42d3566c471c1b9c687da3844ad0794f9869b23cc0328",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4c4d440b3658301a077b359d0786e4a54b66574d3f005fbf041147b3b6ce4b0d",
+  "shadowMode": false
+}

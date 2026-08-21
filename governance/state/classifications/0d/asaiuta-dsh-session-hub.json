@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "context",
+    "data",
+    "file",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly describes a session hub that aggregates and routes remote DSH sessions and selectively imports local coding-agent histories into the official Web UI; it also documents SSH networking and optional credential synchronization, warranting R2 risk.",
+  "summaries": {
+    "zh": "会话枢纽将配置的远程 DSH 会话和经授权导入的本地编码助手历史聚合到官方 Web UI 中，并支持跨服务器会话操作。",
+    "en": "A session hub that aggregates configured remote DSH sessions and authorized local coding-agent histories in the official Web UI, with cross-server session operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Aggregates sessions from configured remote DSH servers through API connections",
+      "Routes remote session operations such as creation, messaging, cancellation, renaming, archiving, and deletion",
+      "Optionally maintains SSH tunnels and reconnects to configured servers",
+      "Reads selected local Codex CLI, Claude Code, opencode, and Pi session logs when explicitly imported",
+      "Stores imported-session metadata and plugin configuration locally",
+      "Optionally reads local model credential references and writes missing model credentials to configured remote servers",
+      "Displays remote and imported session histories and live events in the host Web UI"
+    ],
+    "reasons": [
+      {
+        "code": "remote_session_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_and_ssh_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_session_log_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_read_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Aggregates sessions from configured remote DSH servers through API connections",
+      "Routes remote session operations such as creation, messaging, cancellation, renaming, archiving, and deletion",
+      "Optionally maintains SSH tunnels and reconnects to configured servers",
+      "Reads selected local Codex CLI, Claude Code, opencode, and Pi session logs when explicitly imported",
+      "Stores imported-session metadata and plugin configuration locally",
+      "Optionally reads local model credential references and writes missing model credentials to configured remote servers",
+      "Displays remote and imported session histories and live events in the host Web UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:21:57.735Z",
+  "repositoryCommitSha": "fef18684e2112c2546f6098fd8aaf6e289126b95",
+  "evidenceHash": "fde72f644863a561806cdbd7c6d6dd54bc8fd211dd3533eaf7d6e229d7809ada",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e81b5d6eaa1ab9da7905a7293b2b8aa1f4f43444787b448ca8ad708711db9d9e",
+  "shadowMode": false
+}

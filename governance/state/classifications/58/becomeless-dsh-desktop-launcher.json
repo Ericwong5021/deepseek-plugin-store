@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "automation",
+    "chat",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Windows and macOS desktop launcher that starts DeepSeek Harness locally, opens it in an isolated Chrome or Edge application window, persists local sessions, and stops the service when the window closes.",
+  "summaries": {
+    "zh": "用于在 Windows 和 macOS 上双击启动 DeepSeek Harness、本地运行服务并通过独立的 Chrome 或 Edge 应用窗口访问。",
+    "en": "A Windows and macOS desktop launcher that starts DeepSeek Harness locally and opens it in an isolated Chrome or Edge application window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs and removes launcher files",
+      "Downloads DeepSeek Harness dependencies through npx",
+      "Starts and stops a local background service",
+      "Opens a Chrome or Edge application window",
+      "Uses local session data and configurable local ports"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_installation_and_uninstallation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_download_of_runtime_dependencies",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_and_port_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Installs and removes launcher files",
+      "Downloads DeepSeek Harness dependencies through npx",
+      "Starts and stops a local background service",
+      "Opens a Chrome or Edge application window",
+      "Uses local session data and configurable local ports"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:22:17.505Z",
+  "repositoryCommitSha": "5791aa43fa0061c0ad9d628cc6f07f8c4be12d38",
+  "evidenceHash": "980380382950cdb952999900b259711c7efd75c6e9c278f01b3a0d20a18ea305",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e3e7ad048eb99fea1c1119ab69070128148f0e1f7a58777261e2be47cddd689e",
+  "shadowMode": false
+}
