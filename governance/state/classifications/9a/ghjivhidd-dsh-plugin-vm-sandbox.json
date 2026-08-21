@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "desktop",
+    "automation",
+    "monitoring",
+    "collaboration",
+    "file",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin for managing per-session OrbStack Debian or Alpine virtual machines, including terminal command execution, file transfer, networking, scheduling, monitoring, collaboration, and lifecycle controls.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 会话提供基于 OrbStack 的虚拟机沙箱管理、终端操作、文件传输、监控与生命周期控制。",
+    "en": "Provides DeepSeek Harness sessions with OrbStack virtual machine sandboxes, terminal operations, file transfer, monitoring, and lifecycle management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates, starts, stops, restarts, resizes, snapshots, imports, exports, and deletes OrbStack virtual machines",
+      "Executes commands and interactive shell sessions inside virtual machines",
+      "Transfers files and manages VM jobs, scheduled tasks, ports, networks, and shared access",
+      "Stores and injects configured secrets into VM initialization scripts",
+      "Collects VM metrics, logs, audit records, and threshold alerts"
+    ],
+    "reasons": [
+      {
+        "code": "vm_lifecycle_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_file_and_secret_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "monitoring_and_audit",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Creates, starts, stops, restarts, resizes, snapshots, imports, exports, and deletes OrbStack virtual machines",
+      "Executes commands and interactive shell sessions inside virtual machines",
+      "Transfers files and manages VM jobs, scheduled tasks, ports, networks, and shared access",
+      "Stores and injects configured secrets into VM initialization scripts",
+      "Collects VM metrics, logs, audit records, and threshold alerts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:03.084Z",
+  "repositoryCommitSha": "778a895ccbe7326f8b3f3857a783492b1f2a9a58",
+  "evidenceHash": "7a793bba58b6a4860eb52279c5b69b16a9d21aa613765dc5e4023af6a971e34d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37f43afe485506f0a08cfab8bbb16fce0deffac1f8b69540b32eb135f72a7fc5",
+  "shadowMode": false
+}

@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "file",
+    "integration",
+    "mobile",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A WeChat integration that remotely controls a dsh agent, supports session management, file transfer, and proactive notifications; human review is appropriate because full-permission execution is enabled by default and messages traverse an external service.",
+  "summaries": {
+    "zh": "通过微信远程控制 dsh 智能体，支持会话切换、双向文件传输和任务完成通知。",
+    "en": "Control a dsh agent remotely through WeChat with session switching, two-way file transfer, and task completion notifications."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Remote control of an agent through WeChat messages",
+      "Execution of agent tasks with full-permission mode by default",
+      "Two-way file transfer between WeChat and workspace directories",
+      "Proactive text and file notifications to WeChat",
+      "Storage and use of WeChat gateway credentials",
+      "Transmission of messages through Tencent iLink servers"
+    ],
+    "reasons": [
+      {
+        "code": "remote_agent_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "full_permission_default",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_message_transport",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Remote control of an agent through WeChat messages",
+      "Execution of agent tasks with full-permission mode by default",
+      "Two-way file transfer between WeChat and workspace directories",
+      "Proactive text and file notifications to WeChat",
+      "Storage and use of WeChat gateway credentials",
+      "Transmission of messages through Tencent iLink servers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:05.245Z",
+  "repositoryCommitSha": "f0ce76aeac09896835f3ca482d78d7854185ad82",
+  "evidenceHash": "7074bce4347f91442b7a1650c68a04017dbb9dcd39aed3258ec9cf9431a94bf8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "631477618070721cb1568a6bf2094f8285a34bfae0c41010ac0574f6f2a54038",
+  "shadowMode": false
+}

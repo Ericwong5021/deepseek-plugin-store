@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "data",
+    "automation",
+    "ui",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin restores titles for persisted cold sessions and writes them to the projection cache so the session sidebar shows meaningful titles instead of workspace directory names.",
+  "summaries": {
+    "zh": "该插件通过回填持久化冷会话的标题投影缓存，让会话侧边栏显示真实标题而不是工作区目录名。",
+    "en": "This plugin backfills titles for persisted cold sessions so the session sidebar shows meaningful titles instead of workspace directory names."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads persisted session event data",
+      "Folds session projection events into title state",
+      "Writes session titles to a local projection cache",
+      "Runs background and periodic incremental refreshes"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_data_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_projection_cache_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_periodic_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Reads persisted session event data",
+      "Folds session projection events into title state",
+      "Writes session titles to a local projection cache",
+      "Runs background and periodic incremental refreshes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:18:37.315Z",
+  "repositoryCommitSha": "e844ca7bfd886f5a569150c6766759fddbd57c07",
+  "evidenceHash": "01a228b6998da075507e0a844791649561adf8be81a568e45cad5d6b45e8fdbc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c77a622bd12c6830decbe1858073ba65db43aa20961b4795b0361f85fca8b034",
+  "shadowMode": false
+}

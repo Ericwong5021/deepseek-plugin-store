@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "cli",
+    "file",
+    "integration",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a Neo-MoFox integration bridge for calling and managing a local DeepSeek Harness instance through CLI, RPC, HTTP, persistent processes, SSE events, chat commands, and LLM actions; its ability to run headless tasks and arbitrary configured operations warrants human review.",
+  "summaries": {
+    "zh": "将 Neo-MoFox 连接到本机 DeepSeek Harness，提供会话管理、RPC/CLI 操作、事件流以及可由 LLM 调用的任务执行能力。",
+    "en": "Connects Neo-MoFox to a local DeepSeek Harness and exposes session management, RPC and CLI operations, event streams, and LLM-invokable task execution."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Invokes the configured local DeepSeek Harness executable with pass-through arguments, environment variables, patches, and stdin",
+      "Calls DeepSeek Harness RPC and same-origin HTTP operations",
+      "Delegates headless agent tasks that may modify files in a specified workspace",
+      "Starts, monitors, and stops long-lived DeepSeek Harness processes",
+      "Streams session events through HTTP SSE and exposes them as chat sessions",
+      "Reads DeepSeek Harness session, output, event, and data resources subject to configuration",
+      "Exposes owner management commands, LLM tools, actions, and an HTTP API"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_modifying_agent_tasks",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "broad_rpc_and_http_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sensitive_data_and_remote_exposure_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Invokes the configured local DeepSeek Harness executable with pass-through arguments, environment variables, patches, and stdin",
+      "Calls DeepSeek Harness RPC and same-origin HTTP operations",
+      "Delegates headless agent tasks that may modify files in a specified workspace",
+      "Starts, monitors, and stops long-lived DeepSeek Harness processes",
+      "Streams session events through HTTP SSE and exposes them as chat sessions",
+      "Reads DeepSeek Harness session, output, event, and data resources subject to configuration",
+      "Exposes owner management commands, LLM tools, actions, and an HTTP API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:29.410Z",
+  "repositoryCommitSha": "32f29c9ffa5c76b02ce8093909769c98c2b8d5b7",
+  "evidenceHash": "e48fdd8d04f7c9df3f51903527127b20e8a42b24b823f26c304da97105ffc7f4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "05756d42b16c8a217903001d279f8c4abdfe592e48240f4c5014916c3a6e2931",
+  "shadowMode": false
+}

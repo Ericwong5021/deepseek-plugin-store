@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "agent",
+    "image"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH integration adapter for OneBot v11 that connects through HTTP or WebSocket, routes eligible messages into agent interactions, and sends text or image replies with configurable access controls.",
+  "summaries": {
+    "zh": "通过 HTTP 或 WebSocket 连接 OneBot v11，将符合条件的消息接入 DSH Agent，并发送文本或图片回复。",
+    "en": "Connects DSH to OneBot v11 over HTTP or WebSocket, routes eligible messages to DSH agents, and sends text or image replies."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to OneBot v11 through HTTP and forward or reverse WebSocket transports",
+      "Receives OneBot message, notice, request, and meta-event payloads",
+      "Creates DSH agent interactions from eligible message events",
+      "Sends text and image replies through OneBot",
+      "Accepts inbound webhook connections and applies access controls",
+      "Downloads permitted inbound images to DSH attachment storage",
+      "Uses referenced access tokens and webhook secrets"
+    ],
+    "reasons": [
+      {
+        "code": "network_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_message_side_effects",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "inbound_webhook",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "attachment_download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to OneBot v11 through HTTP and forward or reverse WebSocket transports",
+      "Receives OneBot message, notice, request, and meta-event payloads",
+      "Creates DSH agent interactions from eligible message events",
+      "Sends text and image replies through OneBot",
+      "Accepts inbound webhook connections and applies access controls",
+      "Downloads permitted inbound images to DSH attachment storage",
+      "Uses referenced access tokens and webhook secrets"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:23:00.711Z",
+  "repositoryCommitSha": "deff851a7eb3284282bfeb14233add663ba03b57",
+  "evidenceHash": "b3f6017d265e8b528b167474f2a03c9fff1e3ada59a102bb3e6070917232eb74",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f643c00e6e5f31dff827c72ae230a9fea9d6c9756a80cda094b5d8cdea00fac3",
+  "shadowMode": false
+}

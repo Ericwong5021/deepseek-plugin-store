@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "file",
+    "api",
+    "data",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A TIFF media-processing tool that decodes local files or HTTP(S) URLs into PNGs, reports metadata, and optionally obtains descriptions from a configured vision endpoint.",
+  "summaries": {
+    "zh": "用于读取和解码 TIFF/TIF 图像、转换为 PNG、提供页面与头部元数据，并可选调用配置的视觉模型生成文字描述。",
+    "en": "Reads and decodes TIFF/TIF images, converts pages to PNG, reports header and page metadata, and optionally uses a configured vision model to generate text descriptions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local TIFF/TIF files",
+      "Downloads TIFF/TIF files from HTTP(S) URLs",
+      "Decodes TIFF pages and writes converted PNG files",
+      "Reports TIFF header and page metadata",
+      "Optionally sends decoded PNG content to a configured OpenAI-compatible vision endpoint for text description"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_FILE_ACCESS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "NETWORK_DOWNLOAD",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "EXTERNAL_API_REQUEST",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "FILE_OUTPUT",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local TIFF/TIF files",
+      "Downloads TIFF/TIF files from HTTP(S) URLs",
+      "Decodes TIFF pages and writes converted PNG files",
+      "Reports TIFF header and page metadata",
+      "Optionally sends decoded PNG content to a configured OpenAI-compatible vision endpoint for text description"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:19.592Z",
+  "repositoryCommitSha": "386a6468380ad9a5cf27a4472ed4b57bd5fc47c7",
+  "evidenceHash": "b390629c6a3b35ff835ac7224a4e4f4db1ccf9a34f97594b633ac30d96c92ce5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9dbe70c8b6989baf2fb8a48d152044fe0fffaa0f90254351ccfb4b502b1ae4a3",
+  "shadowMode": false
+}

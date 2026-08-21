@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "video",
+    "browser",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A Windows desktop companion plugin that opens configured media or livestream sites during background AI work, preserves per-site browser sessions, and controls playback by showing, hiding, suspending, or resuming Chromium process trees.",
+  "summaries": {
+    "zh": "一个仅支持 Windows 的编程陪伴插件，可在 AI 后台工作时播放配置的网站视频或直播，并按对话状态控制窗口显示与暂停。",
+    "en": "A Windows-only coding companion plugin that plays configured video or livestream sites during background AI work and controls the window and playback state according to conversation activity."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches and controls Chromium app windows on Windows",
+      "Loads user-configured video or live-stream URLs",
+      "Persists site-specific cookies and login data in separate user-data directories",
+      "Injects a browser extension with a callback to the host plugin",
+      "Suspends and resumes entire Chromium process trees using Windows APIs and PowerShell",
+      "Terminates the managed process tree when the host exits"
+    ],
+    "reasons": [
+      {
+        "code": "process_tree_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_authenticated_browser_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "arbitrary_external_media_urls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "powershell_native_api_invocation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Launches and controls Chromium app windows on Windows",
+      "Loads user-configured video or live-stream URLs",
+      "Persists site-specific cookies and login data in separate user-data directories",
+      "Injects a browser extension with a callback to the host plugin",
+      "Suspends and resumes entire Chromium process trees using Windows APIs and PowerShell",
+      "Terminates the managed process tree when the host exits"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:37.800Z",
+  "repositoryCommitSha": "ae403b2f9df670b1ef35b33816d3a8b534b79766",
+  "evidenceHash": "01c8195fc04cf974661e8faf8fad630c42d0273030d620e5db025ef32716316b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "62db62a9446bd8ab2bfc49c20b55e02687f4101776655c0e2e3ddd51cbdb5de9",
+  "shadowMode": false
+}

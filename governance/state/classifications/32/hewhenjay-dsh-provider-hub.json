@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "automation",
+    "monitoring",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provider Hub is a local external-service integration that unifies API-key and official-account model providers behind an OpenAI-compatible relay with routing, failover, model discovery, and usage logging.",
+  "summaries": {
+    "zh": "Provider Hub 将 API Key 渠道和官方账号模型服务统一到本地兼容 OpenAI 的中继中，并提供模型发现、路由故障切换与请求日志。",
+    "en": "Provider Hub unifies API-key and official-account model services behind a local OpenAI-compatible relay with model discovery, routing failover, and request logging."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Aggregates and routes requests to configured API-compatible model providers",
+      "Manages provider API keys and official-account OAuth credentials through DSH credentials",
+      "Downloads, verifies, starts, and stops a locally managed account-service sidecar",
+      "Exposes authenticated local OpenAI-compatible relay endpoints",
+      "Collects request, token, performance, failover, and cost logs"
+    ],
+    "reasons": [
+      {
+        "code": "credential_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "oauth_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_access_and_proxying",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_subprocess_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Aggregates and routes requests to configured API-compatible model providers",
+      "Manages provider API keys and official-account OAuth credentials through DSH credentials",
+      "Downloads, verifies, starts, and stops a locally managed account-service sidecar",
+      "Exposes authenticated local OpenAI-compatible relay endpoints",
+      "Collects request, token, performance, failover, and cost logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:37.796Z",
+  "repositoryCommitSha": "94a45b8ebd3b9efdaca60d3b2517d351f6f758fa",
+  "evidenceHash": "582d3cadaf9737003f696f20622936c56f942b4d8f9fb6453d9093cb499638d7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8f4e865a0b69b7dd3b9a881e781cf7ee1977c7316dd19249dd230adb51e55450",
+  "shadowMode": false
+}

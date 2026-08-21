@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "agent",
+    "api",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH web plugin for accepting arbitrary files by drag-and-drop, storing or referencing them locally, inserting file references for agents, and managing the local upload directory.",
+  "summaries": {
+    "zh": "通过拖拽接收任意文件，将其上传或引用到本机并以文件引用插入 DSH 输入框，同时提供本地上传目录清理功能。",
+    "en": "Accepts arbitrary files by drag-and-drop, uploads or references them locally for agent access, inserts file references into DSH, and provides local upload-directory cleanup."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Accepts arbitrary files through browser drag-and-drop",
+      "Uploads file data to a local host directory when direct path access is unavailable",
+      "References local file paths for agent access",
+      "Writes manifests and uploaded file data to the local filesystem",
+      "Deletes selected files or clears the local upload directory through cleanup controls",
+      "Exposes local HTTP routes for upload, listing, cleanup, and session management"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "arbitrary_file_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Accepts arbitrary files through browser drag-and-drop",
+      "Uploads file data to a local host directory when direct path access is unavailable",
+      "References local file paths for agent access",
+      "Writes manifests and uploaded file data to the local filesystem",
+      "Deletes selected files or clears the local upload directory through cleanup controls",
+      "Exposes local HTTP routes for upload, listing, cleanup, and session management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:22.549Z",
+  "repositoryCommitSha": "baa569938c03404b4eac6c6740c27afb49b60ba8",
+  "evidenceHash": "4eafce2601252a5ce73fee6bde05680a1e3058cbd760172d71db33a54c3018ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f998fc3473ef9f3b545be5e479613443ed01f18a24485058852d086e226a32b8",
+  "shadowMode": false
+}

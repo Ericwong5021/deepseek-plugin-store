@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "integration",
+    "api",
+    "agent",
+    "context",
+    "notification",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A Feishu/Lark integration plugin that bridges bot conversations to DeepSeek Harness sessions and streams agent responses back through interactive cards, with optional outbound text and file delivery.",
+  "summaries": {
+    "zh": "通过飞书机器人接收消息并转发至 DeepSeek Harness 会话，再以流式交互卡片返回回复的桥接插件。",
+    "en": "A Feishu bot bridge that forwards messages to DeepSeek Harness sessions and returns responses through streaming interactive cards."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "receives Feishu bot messages through a long connection",
+      "forwards messages to DeepSeek Harness agent sessions",
+      "maintains chat-to-session mappings for multi-turn context",
+      "updates Feishu interactive cards with streamed responses",
+      "sends text, images, and files to Feishu chats",
+      "invokes the lark-cli subprocess and Feishu APIs"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_ingress",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_message_egress",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_session_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_and_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "receives Feishu bot messages through a long connection",
+      "forwards messages to DeepSeek Harness agent sessions",
+      "maintains chat-to-session mappings for multi-turn context",
+      "updates Feishu interactive cards with streamed responses",
+      "sends text, images, and files to Feishu chats",
+      "invokes the lark-cli subprocess and Feishu APIs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:18:43.307Z",
+  "repositoryCommitSha": "e5b96b4f114a7d5aaa37f8f9cfda398d4f6b79a9",
+  "evidenceHash": "5266ba5fcd03b3fc4efe5db5f6ce22552fe1765b407a54f21d58e04da907422b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "491b81bc6779b03f76a889f3685ba2f963f620d9a40145d857236ba8b09c9f1e",
+  "shadowMode": false
+}

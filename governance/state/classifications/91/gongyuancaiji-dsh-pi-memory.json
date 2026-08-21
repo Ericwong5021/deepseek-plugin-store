@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "file",
+    "search",
+    "agent",
+    "planning"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A persistent memory and context plugin for DeepSeek Harness that stores facts, daily logs, and scratchpad tasks in Markdown, restores deleted entries, injects relevant context, and optionally searches memories with qmd.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于 Markdown 文件的跨会话持久记忆、每日日志、待办清单、记忆恢复与可选搜索能力。",
+    "en": "Provides DeepSeek Harness with cross-session Markdown memory, daily logs, scratchpad tasks, recoverable deletions, context injection, and optional memory search."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persists long-term facts, daily logs, and checklist items to local Markdown files",
+      "Reads and injects stored memory and pending tasks into agent context",
+      "Deletes and restores memory entries using recovery records",
+      "Optionally searches memory with qmd keyword, semantic, or hybrid search",
+      "May generate session exit summaries using the configured language model"
+    ],
+    "reasons": [
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_search_dependency",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_based_exit_summary",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Persists long-term facts, daily logs, and checklist items to local Markdown files",
+      "Reads and injects stored memory and pending tasks into agent context",
+      "Deletes and restores memory entries using recovery records",
+      "Optionally searches memory with qmd keyword, semantic, or hybrid search",
+      "May generate session exit summaries using the configured language model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:52.778Z",
+  "repositoryCommitSha": "ab33a3986249c0acbdf7231d010addc80ba7dbfc",
+  "evidenceHash": "a0c794acb6fd28ead7779e3fe4a7ef8160bb1cdf47e67157fb777d13286f1dcd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0444fb263bdefe9a930e7866fe27e22875334a5c187b4b8c5d278ada36957bb3",
+  "shadowMode": false
+}

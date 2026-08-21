@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "ui",
+    "monitoring",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README明确说明该插件在会话视图中以只读方式实时展示当前会话的 bash 命令、状态、输出与耗时，不执行命令、不修改会话且不新增网络接口，因此归类为文件与终端工具。",
+  "summaries": {
+    "zh": "在会话视图中以只读时间线实时查看当前会话的 bash 命令、状态、输出和耗时。",
+    "en": "View the current session’s bash commands, statuses, outputs, and durations in a read-only real-time timeline."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "读取当前会话运行时中的 bash 调用记录",
+      "展示命令、工作目录、状态、输出和耗时",
+      "在浏览器本地保存当前会话的清除标记"
+    ],
+    "reasons": [
+      {
+        "code": "session-data-read-only-display",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no-command-execution-or-network-interface",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "读取当前会话运行时中的 bash 调用记录",
+      "展示命令、工作目录、状态、输出和耗时",
+      "在浏览器本地保存当前会话的清除标记"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:03.036Z",
+  "repositoryCommitSha": "d22004e129df8606d05c8021e497fe567aa85c04",
+  "evidenceHash": "6096b3f4306116f188e4cd734755550483d9e1d2747893282457c58ea891473a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cf4df2e0469d701bcd1b7f8f32479d095dfa3b6e95d776f802304790c2c535fa",
+  "shadowMode": false
+}

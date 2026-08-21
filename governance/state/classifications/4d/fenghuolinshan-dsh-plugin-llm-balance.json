@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "visualization",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH web plugin whose primary purpose is monitoring and displaying recent LLM provider balances, quotas, usage windows, and reset times in a draggable, periodically refreshed floating card.",
+  "summaries": {
+    "zh": "在 DSH 网页界面中以可拖动悬浮卡片展示多个 LLM 服务商的余额、配额和重置时间，并支持定时刷新。",
+    "en": "Displays balances, quotas, and reset times for multiple LLM providers in a draggable floating card within the DSH web interface, with periodic refreshes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured provider credentials through the DSH credential mechanisms",
+      "Queries external provider balance and quota endpoints",
+      "Displays and periodically refreshes balance, quota, and reset-time data in a draggable web interface",
+      "Stores the floating card position in the client"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic_data_refresh",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured provider credentials through the DSH credential mechanisms",
+      "Queries external provider balance and quota endpoints",
+      "Displays and periodically refreshes balance, quota, and reset-time data in a draggable web interface",
+      "Stores the floating card position in the client"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:18:42.367Z",
+  "repositoryCommitSha": "b4f6cba0e93dd216f83591e0dcffbf3a2be4c848",
+  "evidenceHash": "1c17ed56e168b8561e08d0913ad24c6eb0d42fcb9ccdc362496c65bde1d1a774",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "31b3bfa0c95d8e1191dc68418d506d5eabe88ea2d5cd1d8c54f8a9199eccecdb",
+  "shadowMode": false
+}

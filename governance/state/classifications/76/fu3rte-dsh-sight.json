@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "file",
+    "ui",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A vision utility for text-only DeepSeek Harness models that converts pasted or referenced images into descriptions through configurable VLM backends, with batch processing and web settings.",
+  "summaries": {
+    "zh": "为文本模型提供图像理解能力，可处理粘贴、本地路径或网络地址中的图片，并通过可配置的视觉模型生成描述。",
+    "en": "Adds image understanding for text-only models by processing pasted images, local paths, or URLs through a configurable vision model backend."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local image files and fetches images from HTTP(S) URLs",
+      "Stores pasted images in a temporary plugin-managed directory",
+      "Sends image bytes to a configured OpenAI-compatible vision model endpoint",
+      "Supports API key configuration and live settings updates",
+      "Processes batches of up to 10 images per request"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_image_fetch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "secret_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local image files and fetches images from HTTP(S) URLs",
+      "Stores pasted images in a temporary plugin-managed directory",
+      "Sends image bytes to a configured OpenAI-compatible vision model endpoint",
+      "Supports API key configuration and live settings updates",
+      "Processes batches of up to 10 images per request"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:18.180Z",
+  "repositoryCommitSha": "ed49f0888a96b922fefc855a00d3565c21393e93",
+  "evidenceHash": "7c809d229aa63e66bad796d70fadd8576c4879dfbe82d3e9b386cfade135163a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7ca6fff413bd052159f4c235806312ee4ba374e6d0befc939a9654442695b61c",
+  "shadowMode": false
+}

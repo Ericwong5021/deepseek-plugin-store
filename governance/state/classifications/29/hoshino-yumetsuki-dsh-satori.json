@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH integration adapter that receives Satori messaging events over WebSocket and sends agent text replies through the Satori HTTP API, with configurable access controls and inbound image handling.",
+  "summaries": {
+    "zh": "通过 Satori WebSocket 接收消息事件，并通过其 HTTP API 将 DSH Agent 的文本回复发送回私聊或群聊。",
+    "en": "Receives Satori messaging events over WebSocket and sends DSH agent text replies back to private or group chats through the Satori HTTP API."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Receives Satori events over WebSocket",
+      "Sends text replies through the Satori HTTP API",
+      "Uses a configured access-token credential reference",
+      "Downloads supported inbound images and stores them as DSH attachment references",
+      "Maintains or restores DSH session persistence"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_communication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_reference_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "inbound_media_download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives Satori events over WebSocket",
+      "Sends text replies through the Satori HTTP API",
+      "Uses a configured access-token credential reference",
+      "Downloads supported inbound images and stores them as DSH attachment references",
+      "Maintains or restores DSH session persistence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:59.214Z",
+  "repositoryCommitSha": "7997609374851f3d1a201693cdc867b35a5414f1",
+  "evidenceHash": "41cb8b5e85b7edbbc0e3dc3bff6f75419e088d3815988459f2af5c267d4f49b4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0b1227f62183a669da5d300880541ef77492e669e4b14846279674b407f2f19b",
+  "shadowMode": false
+}

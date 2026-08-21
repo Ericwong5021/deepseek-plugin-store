@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes an opt-in local memory plugin that persists governed records, retrieves eligible promoted records, and injects them into the agent context through a pre-step listener.",
+  "summaries": {
+    "zh": "一个为 DeepSeek Harness 提供本地受控长期记忆存储、检索和上下文注入的插件。",
+    "en": "A DeepSeek Harness plugin that provides local governed long-term memory storage, retrieval, and context injection."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores candidate and promoted memory records in a local JSON registry",
+      "Injects selected promoted records into agent user messages",
+      "Exposes trusted in-process capture, promotion, and revocation operations"
+    ],
+    "reasons": [
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "trusted_host_registry_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Stores candidate and promoted memory records in a local JSON registry",
+      "Injects selected promoted records into agent user messages",
+      "Exposes trusted in-process capture, promotion, and revocation operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:02.574Z",
+  "repositoryCommitSha": "48fb0fabce27bbfacd986f872ad35ff7fcd606bd",
+  "evidenceHash": "f7296bc41c928fdb41c5f4fd51cce5c34696f0cdb40ee8da6b37c0e971808050",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bb915fa3ba4f2cca19c3a29c8d53f16a794f30fd4c3018f1bb0a931a1821ac76",
+  "shadowMode": false
+}

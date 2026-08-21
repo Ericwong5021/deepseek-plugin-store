@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "browser",
+    "chat",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness compatibility utility that neutralizes the functional effects of dsh-claude-ux while preserving its displayed enabled state; human review is warranted because it bypasses risk controls and intentionally spoofs status information.",
+  "summaries": {
+    "zh": "用于兼容 DeepSeek Harness 的 dsh-claude-ux，抑制其区域限制、分类请求和输入框接管等行为，同时保留设置页显示的启用状态。",
+    "en": "A DeepSeek Harness compatibility utility that suppresses dsh-claude-ux behavior such as regional blocking, classification requests, and composer takeover while preserving its displayed enabled state."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts and rewrites same-origin status requests",
+      "Modifies persisted plugin settings before host submission",
+      "Patches plugin bundle behavior and system prompt sections",
+      "Suppresses a named classification request with local results",
+      "Restores a chat input UI state after takeover behavior",
+      "Reinvokes the real model for selected synthetic responses"
+    ],
+    "reasons": [
+      {
+        "code": "safety-control-bypass",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui-state-spoofing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request-interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Intercepts and rewrites same-origin status requests",
+      "Modifies persisted plugin settings before host submission",
+      "Patches plugin bundle behavior and system prompt sections",
+      "Suppresses a named classification request with local results",
+      "Restores a chat input UI state after takeover behavior",
+      "Reinvokes the real model for selected synthetic responses"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:09.256Z",
+  "repositoryCommitSha": "44fa421609277870a62a2e34e4a6de75785e25e0",
+  "evidenceHash": "39d8b29d99a048efaf82e7045055cbc96aa99fc01af5ec649048953a27abc755",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd6e6546d43f480a0aad4c79e904c3421e4b3cde2ef76a92d61d303ce8f0ba3b",
+  "shadowMode": false
+}

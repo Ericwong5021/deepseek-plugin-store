@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "browser",
+    "ui",
+    "api",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A file-handling plugin for DSH that accepts arbitrary files by drag-and-drop, stores or references them locally, inserts file references into the composer, and provides upload-directory cleanup controls.",
+  "summaries": {
+    "zh": "在 DSH 网页界面中拖放任意文件，将其上传或引用为本地文件，并把文件引用插入输入框供智能体读取。",
+    "en": "Accept arbitrary files by dragging them into the DSH web interface, store or reference them locally, and insert file references into the composer for agent access."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Accepts local files through browser drag-and-drop",
+      "Uploads file data in chunks to a host process when direct path access is unavailable",
+      "Writes uploaded files and a manifest to a local directory",
+      "References local file paths for agent access",
+      "Lists and deletes files in the plugin-managed upload directory",
+      "Provides HTTP endpoints for upload, listing, cleanup, and abort operations"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_path_reference",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_http_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Accepts local files through browser drag-and-drop",
+      "Uploads file data in chunks to a host process when direct path access is unavailable",
+      "Writes uploaded files and a manifest to a local directory",
+      "References local file paths for agent access",
+      "Lists and deletes files in the plugin-managed upload directory",
+      "Provides HTTP endpoints for upload, listing, cleanup, and abort operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:20:18.067Z",
+  "repositoryCommitSha": "baa569938c03404b4eac6c6740c27afb49b60ba8",
+  "evidenceHash": "4eafce2601252a5ce73fee6bde05680a1e3058cbd760172d71db33a54c3018ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f998fc3473ef9f3b545be5e479613443ed01f18a24485058852d086e226a32b8",
+  "shadowMode": false
+}

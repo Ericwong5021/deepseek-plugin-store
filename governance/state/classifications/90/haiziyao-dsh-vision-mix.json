@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "agent",
+    "context",
+    "integration",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a multimodal plugin that analyzes conversation and tool-result images and optionally generates or edits images through configured APIs, making media-tools the primary user-facing category.",
+  "summaries": {
+    "zh": "Vision Mix 为 DeepSeek Harness 增加图片理解、跨轮追问以及通过已配置 API 生成和编辑图片的能力。",
+    "en": "Vision Mix adds image understanding, follow-up analysis, and image generation or editing through configured APIs to DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes text and image inputs between configured language and vision models",
+      "Calls configured image generation and editing APIs",
+      "Reads and references image attachments from the current conversation and tool results",
+      "Registers agent tools for image generation, editing, and attachment queries",
+      "Stores vision and generation call records with attachment identifiers"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_and_image_api_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "current_session_attachment_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user-triggered_image_generation_may incur_provider_costs",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes text and image inputs between configured language and vision models",
+      "Calls configured image generation and editing APIs",
+      "Reads and references image attachments from the current conversation and tool results",
+      "Registers agent tools for image generation, editing, and attachment queries",
+      "Stores vision and generation call records with attachment identifiers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:52.425Z",
+  "repositoryCommitSha": "6188b630c0c3be8d770bb6ffd660be3ee671190e",
+  "evidenceHash": "29b22e509a54666d7a10af50105edf986bc7e7c78ce1c7de814c293f54b5eca2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "991ab2368e31c4fdeff88b2f10002dadd89c8e3a402475a29b013b4c05f00829",
+  "shadowMode": false
+}

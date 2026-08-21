@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "RelayLoom is an external DingTalk Stream chat relay for DeepSeek Harness agents, with allowlisted sessions, asynchronous ACK-first replies, deduplication, and bounded approval handling; live tenant transport remains unverified.",
+  "summaries": {
+    "zh": "RelayLoom 将钉钉 Stream 消息中继到 DeepSeek Harness 智能体，并支持白名单会话、ACK 优先回复和受约束的审批命令。",
+    "en": "RelayLoom relays DingTalk Stream messages to DeepSeek Harness agents with allowlisted sessions, ACK-first replies, and bounded approval commands."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives DingTalk Stream callbacks",
+      "Sends bounded DingTalk sessionWebhook replies",
+      "Creates and resumes DeepSeek Harness agent sessions",
+      "Processes sender- and conversation-bound approval commands",
+      "Reads DingTalk credentials from named environment variables",
+      "Makes opt-in external network requests to DingTalk"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_communication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_session_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives DingTalk Stream callbacks",
+      "Sends bounded DingTalk sessionWebhook replies",
+      "Creates and resumes DeepSeek Harness agent sessions",
+      "Processes sender- and conversation-bound approval commands",
+      "Reads DingTalk credentials from named environment variables",
+      "Makes opt-in external network requests to DingTalk"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:18:50.309Z",
+  "repositoryCommitSha": "a39720185b099081b5fd632e397c4f34e410aff3",
+  "evidenceHash": "10897d412761f42342389ada128be37ba5bbfa1454fd8d2092aad2678d936b03",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f8493c736406198e8abf4b492cc18cc754d2092508d2c3def553b38bde3386a9",
+  "shadowMode": false
+}

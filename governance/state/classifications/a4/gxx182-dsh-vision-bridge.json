@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "agent",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds an image-understanding bridge for text-first DeepSeek Harness models by sending selected session or workspace images to configurable external vision APIs and returning bounded text analysis.",
+  "summaries": {
+    "zh": "为文本优先的 DeepSeek Harness 模型提供图像理解桥接，将会话或工作区图像发送到可配置的视觉 API 并返回文本分析。",
+    "en": "Adds image understanding to text-first DeepSeek Harness models by sending selected session or workspace images to configurable vision APIs and returning text analysis."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends attached or workspace image bytes to a configured HTTPS vision provider",
+      "Calls Gemini-native, OpenAI-compatible, or Anthropic-compatible vision APIs",
+      "Reads explicitly selected workspace images through Harness attachment and filesystem services",
+      "Stores and manages provider credentials through Harness credential services",
+      "Adds a per-model vision toggle and provider configuration UI"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends attached or workspace image bytes to a configured HTTPS vision provider",
+      "Calls Gemini-native, OpenAI-compatible, or Anthropic-compatible vision APIs",
+      "Reads explicitly selected workspace images through Harness attachment and filesystem services",
+      "Stores and manages provider credentials through Harness credential services",
+      "Adds a per-model vision toggle and provider configuration UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:25.419Z",
+  "repositoryCommitSha": "339efab1b87d65cf86ce573329317de06b95b2e7",
+  "evidenceHash": "067f2571f3f78bd6c4b008966845c590d8dd16769f76b44860f9841161fd3441",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a35424f84148e7245cd055c2c67ec96203114298a72e725efb65c30d4466abdd",
+  "shadowMode": false
+}

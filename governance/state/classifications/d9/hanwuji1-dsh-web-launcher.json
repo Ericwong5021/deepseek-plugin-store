@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "desktop",
+    "tool",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-focused launcher that automates starting DeepSeek Harness Web, checking its local status, opening it in the default browser, and maintaining a desktop shortcut.",
+  "summaries": {
+    "zh": "用于一键启动 DeepSeek Harness Web、检查本地服务状态并在默认浏览器中打开界面的桌面启动插件。",
+    "en": "A desktop launcher plugin that starts DeepSeek Harness Web, checks its local service status, and opens the UI in the default browser."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates a launcher script and desktop shortcut",
+      "Starts the dsh web process under the user account",
+      "Checks a local loopback port for server status",
+      "Opens the local Web UI in the default browser",
+      "Provides install, open, and status actions through the web_launcher tool"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loopback_network_probe",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_launch",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Creates a launcher script and desktop shortcut",
+      "Starts the dsh web process under the user account",
+      "Checks a local loopback port for server status",
+      "Opens the local Web UI in the default browser",
+      "Provides install, open, and status actions through the web_launcher tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:00.049Z",
+  "repositoryCommitSha": "7b2c49694f16225a84f6d88d7be0df6d15fa9fc5",
+  "evidenceHash": "0f700f49aaa3d660461e58a4c5b88ee0278a0a06ce97c995e494c96a8d86b1e7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e326e2f03480ad20cf2c44e792d0003a5e76477ebf37068c9e9cfee703800a1e",
+  "shadowMode": false
+}

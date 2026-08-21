@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness integration plugin that injects a configurable session-related HTTP header into scoped LLM provider requests while leaving unrelated fetches unchanged.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的 LLM 提供商请求注入可配置的会话 HTTP 请求头，并保持无关请求不受影响。",
+    "en": "Injects a configurable session-related HTTP header into DeepSeek Harness LLM provider requests while leaving unrelated fetches unchanged."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a configurable HTTP header to LLM provider fetch requests",
+      "Propagates the active harness session identifier per request",
+      "Temporarily patches globalThis.fetch and restores it when unloaded"
+    ],
+    "reasons": [
+      {
+        "code": "network_request_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_metadata_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "global_fetch_patch",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a configurable HTTP header to LLM provider fetch requests",
+      "Propagates the active harness session identifier per request",
+      "Temporarily patches globalThis.fetch and restores it when unloaded"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:22:49.166Z",
+  "repositoryCommitSha": "168fd2ce23e88ef391d2351e75cfd888ac167583",
+  "evidenceHash": "14fabf76b9c5ee566f8e519068b639342d1a6748474be1641d0d70cdecdafea0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4a08a1b9c03c75975c8c2254b91c30f014400ac86407da71ece9e817cac7a6ff",
+  "shadowMode": false
+}

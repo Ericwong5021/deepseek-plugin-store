@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "browser",
+    "visualization",
+    "api",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A browser-side DSH plugin that fetches location and weather data, then visualizes day/night conditions and weather effects as an animated interface overlay.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 界面中根据实时天气和昼夜状态显示太阳、月亮、云、雨、雪、雾及闪电动画。",
+    "en": "Adds a browser-side animated overlay to DeepSeek Harness that visualizes live weather and day/night conditions with sun, moon, clouds, rain, snow, fog, and lightning."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads browser geolocation when available",
+      "Falls back to IP-based location lookup",
+      "Fetches weather data from Open-Meteo",
+      "Renders a pointer-through weather and sky animation overlay in the web interface",
+      "Refreshes weather information periodically"
+    ],
+    "reasons": [
+      {
+        "code": "location_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui_overlay_rendering",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads browser geolocation when available",
+      "Falls back to IP-based location lookup",
+      "Fetches weather data from Open-Meteo",
+      "Renders a pointer-through weather and sky animation overlay in the web interface",
+      "Refreshes weather information periodically"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:17.347Z",
+  "repositoryCommitSha": "129d67c013d6677975d2fcac2070608ee7e31daf",
+  "evidenceHash": "496ac34d53bc4c120f54ef7aacb914f4385c93f640d7bb293091944c713971e7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "630e327ea161995bbbf96b06224b41c49b83d9254056fdeeac33ddb9b3cd5aba",
+  "shadowMode": false
+}

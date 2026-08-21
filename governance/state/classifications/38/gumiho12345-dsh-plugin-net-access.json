@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "terminal",
+    "desktop",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a Windows-only DSH permission mode that restores sandbox HTTPS access through a bundled OpenSSL curl while retaining workspace-write file protections; human review is appropriate because it changes sandbox network permissions and patches the engine.",
+  "summaries": {
+    "zh": "为 Windows 版 DeepSeek Harness 增加 Net Access 权限模式，在保留 workspace-write 文件写保护的同时通过内置 OpenSSL curl 恢复沙箱内的 HTTPS 访问。",
+    "en": "Adds a Windows-only Net Access mode to DeepSeek Harness that restores HTTPS access inside the sandbox through a bundled OpenSSL curl while retaining workspace-write file protections."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Adds a Net Access permission mode to a Windows sandbox",
+      "Enables HTTPS requests through a bundled OpenSSL-based curl executable",
+      "Patches the DSH engine and registers a permission preset",
+      "Downloads curl tools from curl.se during setup"
+    ],
+    "reasons": [
+      {
+        "code": "sandbox_permission_change",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "engine_patching",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Adds a Net Access permission mode to a Windows sandbox",
+      "Enables HTTPS requests through a bundled OpenSSL-based curl executable",
+      "Patches the DSH engine and registers a permission preset",
+      "Downloads curl tools from curl.se during setup"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:21:13.045Z",
+  "repositoryCommitSha": "bbd0458b79f0342587750686dfa35a2f65ccb541",
+  "evidenceHash": "dcb2cb2b7998df33a63ebcb62a47cbcde97d59b6f55df1a01b9e48134af1b42f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8481afb62c8a004b476e05703c8d642539b98ae5855716c8249f0acde1320076",
+  "shadowMode": false
+}

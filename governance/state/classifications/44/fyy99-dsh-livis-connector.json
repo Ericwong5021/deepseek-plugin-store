@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "api",
+    "agent",
+    "chat",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Cordis connector that authorizes Livis accounts, relays Livis messages to DeepSeek Harness agents, and supports bounded file uploads and connection recovery.",
+  "summaries": {
+    "zh": "将 Livis 账号与 DeepSeek Harness 连接起来，在 DSH 设置页管理授权、Agent 绑定、消息中继和受限文件上传。",
+    "en": "Connects Livis accounts to DeepSeek Harness and provides DSH-based authorization, agent binding, message relay, recovery, and bounded file uploads."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "connects Livis accounts to DeepSeek Harness",
+      "handles OAuth device authorization and refresh tokens",
+      "relays messages to a persistent DSH Agent",
+      "supports file uploads within a configured directory",
+      "stores task state for reconnection and idempotency"
+    ],
+    "reasons": [
+      {
+        "code": "external_account_authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "token_and_message_relay",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_upload_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_task_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "connects Livis accounts to DeepSeek Harness",
+      "handles OAuth device authorization and refresh tokens",
+      "relays messages to a persistent DSH Agent",
+      "supports file uploads within a configured directory",
+      "stores task state for reconnection and idempotency"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:19:42.572Z",
+  "repositoryCommitSha": "40df2eb3b7742d0905d93898baf20661e8c03f78",
+  "evidenceHash": "84228082a965b3463e3ea04c723eb5f05ca58d77dd8dbc315b497fbbd02ff0e9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c91b049a585861dfd4e833e10c37a265c76808fbd6252979731c08399a8ddb0e",
+  "shadowMode": false
+}
