@@ -1,16 +1,81 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "file",
+    "integration",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides image generation and reference-image upload through the ToAPIs asynchronous API, with polling and workspace output downloads.",
+  "summaries": {
+    "zh": "通过 ToAPIs 异步图像 API 生成图片、上传本地参考图，并将生成结果下载到工作区。",
+    "en": "Generates images through the asynchronous ToAPIs image API, uploads local reference images, and downloads generated results into the workspace."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Generates images through a third-party asynchronous API",
+      "Uploads local images to obtain public URLs",
+      "Downloads generated images into the workspace",
+      "Reads an API key from environment or local credentials configuration"
+    ],
+    "reasons": [
+      {
+        "code": "third_party_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Generates images through a third-party asynchronous API",
+      "Uploads local images to obtain public URLs",
+      "Downloads generated images into the workspace",
+      "Reads an API key from environment or local credentials configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:27.041Z",
   "repositoryCommitSha": "228f674a0915125490f5dfdeaf0369ced5164e21",
-  "cacheKey": "905fe855d475b73c05c1eb41a7e568cc3edb4f7e370a4f3bcef5f2d7c2b54e7b",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:26.236Z",
-  "lastAttemptAt": "2026-08-20T14:21:56.352Z",
-  "nextRetryAt": "2026-08-20T19:20:44.352Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17928,\"reset_time\":\"4h58m47s\"}}",
+  "evidenceHash": "6106b9b631c8072201037bc2d7d1e393a7cf831da3bbec62828ad2b3bc6b6d74",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "28253ab07a1cbdc40681d8ea25340d05b2256bee0aa004f0d21927ab721ebf6c",
   "shadowMode": false
 }

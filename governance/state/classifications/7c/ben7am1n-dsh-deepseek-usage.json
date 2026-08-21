@@ -1,16 +1,75 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "context",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README documents model-callable tools for querying DeepSeek account balances and monitoring token usage across live harness sessions, making notifications-monitoring the primary category.",
+  "summaries": {
+    "zh": "用于查询 DeepSeek 账户余额并汇总 DeepSeek Harness 活跃会话的令牌使用情况。",
+    "en": "Monitors DeepSeek account balances and summarizes token usage across active DeepSeek Harness sessions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the DeepSeek balance endpoint using a configured API key",
+      "Aggregates per-session token usage from the harness token meter",
+      "Reports a configurable low-balance warning"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_data_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries the DeepSeek balance endpoint using a configured API key",
+      "Aggregates per-session token usage from the harness token meter",
+      "Reports a configurable low-balance warning"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:35.998Z",
   "repositoryCommitSha": "244fb45d424cf313bb8f3fcd433039cea359674f",
-  "cacheKey": "beeeb2612846c71113e418d7ea15d4b341e59403064306a695ba791f8bc03678",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:33.565Z",
-  "lastAttemptAt": "2026-08-20T14:22:33.565Z",
-  "nextRetryAt": "2026-08-20T19:20:43.565Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17890,\"reset_time\":\"4h58m10s\"}}",
+  "evidenceHash": "74d552af4eb2be22a0470647288019bc76a3f39db31d99ac8760ce164be62db3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6961a05889a667355d06a8f08f07cc18b2a752244b1721d6359a1e92be8b7149",
   "shadowMode": false
 }

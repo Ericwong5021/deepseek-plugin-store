@@ -1,16 +1,82 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "api",
+    "integration",
+    "context",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Provides a lazy MCP proxy that exposes discovery and invocation of configured external MCP server tools while caching their catalog to reduce prompt context usage.",
+  "summaries": {
+    "zh": "这是一个面向 DeepSeek Harness 的惰性 MCP 代理，通过两个工具按需发现并调用已配置 MCP 服务器中的工具。",
+    "en": "A lazy MCP proxy for DeepSeek Harness that discovers and invokes tools from configured MCP servers through two fixed tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Discovers tools from configured MCP servers",
+      "Invokes tools on configured MCP servers with passed arguments",
+      "Launches configured stdio server commands",
+      "Connects to configured streamable HTTP MCP endpoints",
+      "Reads and writes a persistent tool catalog cache"
+    ],
+    "reasons": [
+      {
+        "code": "executes_configured_server_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "connects_to_external_mcp_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "invokes_external_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_catalog_cache",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Discovers tools from configured MCP servers",
+      "Invokes tools on configured MCP servers with passed arguments",
+      "Launches configured stdio server commands",
+      "Connects to configured streamable HTTP MCP endpoints",
+      "Reads and writes a persistent tool catalog cache"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:35.030Z",
   "repositoryCommitSha": "45274b29b6782b06be96bd15fbce18a7ead85642",
-  "cacheKey": "3e0037858fb45e8a8b138c0176af5e6a892ffe0d05b98c450136e51801b123e7",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:34.997Z",
-  "lastAttemptAt": "2026-08-20T14:22:34.997Z",
-  "nextRetryAt": "2026-08-20T19:20:43.997Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17889,\"reset_time\":\"4h58m8s\"}}",
+  "evidenceHash": "30b1fdc124e14000be0a94f2ddbdbfaab8d266cdec33dfcb6dbe0932c8fc662e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "33c1ac6266ca50c4492bba3c88bb06ca991cec074f1eebd3a150eacdc820298c",
   "shadowMode": false
 }

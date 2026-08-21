@@ -1,16 +1,86 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "workflow",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A WeCom intelligent robot integration that relays private or group chat messages to DSH agents and returns task results, with workspace/session controls and approval handling through chat.",
+  "summaries": {
+    "zh": "通过企业微信智能机器人接收私聊或群聊任务，交由 DSH agent 执行并将结果回传，同时支持会话、工作区和审批交互。",
+    "en": "Connects a WeCom intelligent robot to DSH agents so chat tasks can be executed and results, workspace controls, and approval interactions can be returned through WeCom."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Maintains a WebSocket connection to the WeCom intelligent robot service",
+      "Receives private and group chat messages and submits them as tasks to DSH agents",
+      "Returns agent responses to WeCom conversations, including streamed updates",
+      "Supports per-user agent sessions, workspace switching, and persistent working-directory selection",
+      "Forwards agent permission approval requests to WeCom and accepts approval or rejection replies",
+      "May enable DSH agent tools such as command execution and filesystem operations according to the configured preset"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_communication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_task_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_command_capabilities",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_control_channel",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Maintains a WebSocket connection to the WeCom intelligent robot service",
+      "Receives private and group chat messages and submits them as tasks to DSH agents",
+      "Returns agent responses to WeCom conversations, including streamed updates",
+      "Supports per-user agent sessions, workspace switching, and persistent working-directory selection",
+      "Forwards agent permission approval requests to WeCom and accepts approval or rejection replies",
+      "May enable DSH agent tools such as command execution and filesystem operations according to the configured preset"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:34.354Z",
   "repositoryCommitSha": "9ebbdaff038c78a31bf34c524f0a98ed551baf54",
-  "cacheKey": "efb3d33a7b3e1c3dc105fa3bba2a73705b0bdbc42366fffe36cce490b5308962",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:26.705Z",
-  "lastAttemptAt": "2026-08-20T14:21:57.784Z",
-  "nextRetryAt": "2026-08-20T19:20:43.784Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17926,\"reset_time\":\"4h58m46s\"}}",
+  "evidenceHash": "c71639c60b054cc1837033a1ac905bd9048bc7578cfc670193895914c0abbf64",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c28b810fa2a0e18d3776ecf73d9f6e38312f94fd9869a497435f9aa9eb0a603d",
   "shadowMode": false
 }

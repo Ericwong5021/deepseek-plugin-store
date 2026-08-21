@@ -1,16 +1,81 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "layout",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web plugin that visualizes DeepSeek account balance, usage, token counts, peak/off-peak periods, and estimated costs through a configurable floating panel.",
+  "summaries": {
+    "zh": "在 DSH Web 中以可开关的悬浮面板展示 DeepSeek 余额、用量、Token 统计、峰谷时段和费用估算。",
+    "en": "Adds a configurable floating panel to DSH Web for displaying DeepSeek balance, usage, token statistics, peak and off-peak periods, and cost estimates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries DeepSeek balance data through a host-registered API route",
+      "Displays account balance, usage, token statistics, and estimated costs in a floating web interface",
+      "Stores usage baselines and local daily token statistics",
+      "Reads configured DeepSeek credentials through the host credential service",
+      "Provides a user-controlled enable or disable setting"
+    ],
+    "reasons": [
+      {
+        "code": "external_account_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_usage_data_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_dependent_api_query",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Queries DeepSeek balance data through a host-registered API route",
+      "Displays account balance, usage, token statistics, and estimated costs in a floating web interface",
+      "Stores usage baselines and local daily token statistics",
+      "Reads configured DeepSeek credentials through the host credential service",
+      "Provides a user-controlled enable or disable setting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:33.080Z",
   "repositoryCommitSha": "74dd49ffe0163d05f6cddde124593ba162da05c1",
-  "cacheKey": "123b417ff1c106e8a05614b8c92efaf96ab6333dffc89166b2a8cc26d110a2de",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:15.009Z",
-  "lastAttemptAt": "2026-08-20T14:22:15.009Z",
-  "nextRetryAt": "2026-08-20T19:20:44.009Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17909,\"reset_time\":\"4h58m28s\"}}",
+  "evidenceHash": "5bf60562c2753bb7242f69f243138eaa3485185b8ec25556f16da6d0b6d54d6f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "30f4074ce8a60131deb23bdd5e0aa964c5c58342bf010eb83356ec1edb7d7e86",
   "shadowMode": false
 }

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is orchestrating agent tool execution through a model-based review gate for selected dangerous actions, with additional external model routing and usage billing features.",
+  "summaries": {
+    "zh": "该插件为 DeepSeek Harness 智能体的部分高风险工具调用增加模型审查、拒绝或升级流程，并提供外部模型路由与按请求计费功能。",
+    "en": "This plugin adds model-based review, denial, or escalation for selected high-risk tool calls in DeepSeek Harness agents, along with external model routing and per-request billing."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts selected potentially dangerous agent tool calls before execution",
+      "Sends flagged calls to an external reviewer model for allow, deny, or escalation decisions",
+      "Can deny or defer tool execution based on review results",
+      "Provides an external model-provider route with per-request USDC payment over x402",
+      "Reports spending by model and request usage"
+    ],
+    "reasons": [
+      {
+        "code": "execution_gate_affects_tool_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_and_payment_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "review_outcome_can_deny_or_escalate_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Intercepts selected potentially dangerous agent tool calls before execution",
+      "Sends flagged calls to an external reviewer model for allow, deny, or escalation decisions",
+      "Can deny or defer tool execution based on review results",
+      "Provides an external model-provider route with per-request USDC payment over x402",
+      "Reports spending by model and request usage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:57.038Z",
+  "repositoryCommitSha": "18fc2466cdea00d3854323b01756b51eec190029",
+  "evidenceHash": "e0ca1e268e4b8c25dc5127be41c9b21e7349f2de6f35ea5a44affe8a098b983f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "43a623b3a2cc934edf006706a8f6c45375707cf811ec8d83f8a21b6bf3376036",
+  "shadowMode": false
+}

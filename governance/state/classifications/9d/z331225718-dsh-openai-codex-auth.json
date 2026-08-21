@@ -1,16 +1,72 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes an installable plugin that adds OpenAI Codex device-login authentication, OAuth credential storage, and an authentication controller for DSH pi-ai routes.",
+  "summaries": {
+    "zh": "为 DSH pi-ai 路由提供 OpenAI Codex 设备登录、OAuth 凭据存储和认证控制器。",
+    "en": "Adds OpenAI Codex device-login authentication, OAuth credential storage, and an authentication controller for DSH pi-ai routes."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "initiates OpenAI Codex device authorization",
+      "stores OAuth credentials in a local file",
+      "registers an authentication controller for the openai-codex provider",
+      "performs OAuth requests from the DSH Node process"
+    ],
+    "reasons": [
+      {
+        "code": "oauth-credential-handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-authentication-network-requests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "initiates OpenAI Codex device authorization",
+      "stores OAuth credentials in a local file",
+      "registers an authentication controller for the openai-codex provider",
+      "performs OAuth requests from the DSH Node process"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:07.561Z",
   "repositoryCommitSha": "a3b7fa87a8cc8ef59ac71c635fded52a913f575f",
-  "cacheKey": "a3312b99bfb3400a9e6fdb9a5d20e000b61268db791d609ed017e38ddd0c2808",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:20.753Z",
-  "lastAttemptAt": "2026-08-20T14:21:46.877Z",
-  "nextRetryAt": "2026-08-20T19:20:43.877Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17937,\"reset_time\":\"4h58m57s\"}}",
+  "evidenceHash": "95a89bda16c582dd9e6a0f54b9687206a88fa78bb5eb845a2d871b3118eda33f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1300257d132e642f240623c4638becf2b86c7f19f683c380685faf16a7c0a11",
   "shadowMode": false
 }

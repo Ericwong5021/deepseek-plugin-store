@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "cli",
+    "context",
+    "planning",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a Claude Code bridge for DeepSeek Harness that orchestrates reviews, critiques, delegated tasks, writable task execution, and resumable sessions through slash commands.",
+  "summaries": {
+    "zh": "通过斜杠命令将 DeepSeek Harness 接入 Claude Code，用于代码审查、批评、任务委派和可恢复会话。",
+    "en": "Bridges DeepSeek Harness into Claude Code through slash commands for code reviews, critiques, delegated tasks, and resumable sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Invokes the DeepSeek Harness CLI and API using a configured API key",
+      "Reads local changes for review and critique",
+      "Executes delegated or one-shot tasks, including optional write operations",
+      "Maintains resumable sessions and imports conversation context",
+      "Runs background broker processes and can stop active runs"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_reading",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "task_execution_with_optional_writes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_and_background_process_management",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Invokes the DeepSeek Harness CLI and API using a configured API key",
+      "Reads local changes for review and critique",
+      "Executes delegated or one-shot tasks, including optional write operations",
+      "Maintains resumable sessions and imports conversation context",
+      "Runs background broker processes and can stop active runs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:48.198Z",
+  "repositoryCommitSha": "0f7db060b77e10445a119c357af3518f380c2903",
+  "evidenceHash": "6502ac1a18f825bb1abea5e58df1b3b0dc81e7763b8f6cffd360016699bed33e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "790bac431cefd5dacb02a1d3cdfdbc7f6340606bf9a6aec88cab21386ef80943",
+  "shadowMode": false
+}

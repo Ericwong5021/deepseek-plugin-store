@@ -1,16 +1,76 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "ui",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates with the DeepSeek billing API to read current account balances and present them through sidebar, Settings, and command interfaces; it does not report usage or perform model-facing actions.",
+  "summaries": {
+    "zh": "通过 DeepSeek API 读取账户余额，并在侧边栏、设置页面和 /balance 命令中展示余额信息。",
+    "en": "Reads the current DeepSeek API account balance and displays it in the sidebar, Settings page, and /balance command."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a DeepSeek API account balance from GET /user/balance",
+      "Resolves and uses a configured DeepSeek API credential",
+      "Displays balance data in the sidebar, Settings, and /balance command",
+      "Exposes account balance data through a local browser route"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_data_display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a DeepSeek API account balance from GET /user/balance",
+      "Resolves and uses a configured DeepSeek API credential",
+      "Displays balance data in the sidebar, Settings, and /balance command",
+      "Exposes account balance data through a local browser route"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:08.293Z",
   "repositoryCommitSha": "109d2c8700020601a9da361561bc9e7fa1ac88f7",
-  "cacheKey": "4d6db03ec7e1bcc37ef0a164bdf9cbefaf515b3268b9c25b7ea1d082e776be62",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:09.381Z",
-  "lastAttemptAt": "2026-08-20T14:22:09.381Z",
-  "nextRetryAt": "2026-08-20T19:20:44.381Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17915,\"reset_time\":\"4h58m34s\"}}",
+  "evidenceHash": "073d64381601c82ba06bbce798ec7b8179d62afc3fd3082ca085731b3a148b03",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "62da219dafb0eafc0af1f63a5cd98ee5bb92ae5c20860a50fb91f2a948acec38",
   "shadowMode": false
 }

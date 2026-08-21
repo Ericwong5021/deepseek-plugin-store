@@ -1,16 +1,74 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A telemetry data-processing plugin that redacts supported credential values from outbound session telemetry copies before configured backends receive them, while preserving canonical session logs.",
+  "summaries": {
+    "zh": "在会话遥测副本发送到已配置后端前，识别并替换支持的凭据和敏感值，而不改写规范会话日志。",
+    "en": "Redacts supported credentials and sensitive values from outbound session telemetry copies before configured backends receive them without rewriting canonical session logs."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts session telemetry export copies",
+      "Recursively redacts configured sensitive key values and recognized credential patterns",
+      "Applies a configurable replacement string to redacted values",
+      "Leaves canonical session logs unchanged according to the README"
+    ],
+    "reasons": [
+      {
+        "code": "telemetry_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_redaction",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "incomplete_secret_pattern_coverage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts session telemetry export copies",
+      "Recursively redacts configured sensitive key values and recognized credential patterns",
+      "Applies a configurable replacement string to redacted values",
+      "Leaves canonical session logs unchanged according to the README"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:26.554Z",
   "repositoryCommitSha": "811b0b1abf424e57045ab5a5eaa203660ca43908",
-  "cacheKey": "9f0174cce73235a645d883bf1e540a8f8a7a698922325d40946a9796e5633759",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:12.604Z",
-  "lastAttemptAt": "2026-08-20T14:22:12.604Z",
-  "nextRetryAt": "2026-08-20T19:20:43.604Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17911,\"reset_time\":\"4h58m31s\"}}",
+  "evidenceHash": "bc7669ee234c6c79783470bc7206d8269c13a9fcfb80b234eb4fa3e2059c114b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3263350128b937919b8664dfd0e9734f137280ab65f950ba0d9e1a4df25ed896",
   "shadowMode": false
 }

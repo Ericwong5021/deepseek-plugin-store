@@ -1,16 +1,79 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "agent",
+    "ui",
+    "api",
+    "file",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for managing persistent model prompts, inspecting their session-scoped assembly, and viewing related context and tool-schema size estimates through a browser panel.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中通过独立面板管理持久提示词，并检查其按会话代理作用域进行的系统提示词装配结果。",
+    "en": "A DeepSeek Harness plugin that provides a browser panel for managing persistent prompts and inspecting their session-scoped system-prompt assembly."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates, edits, reorders, enables, and disables persistent prompts",
+      "Injects managed prompts into the host system prompt registry for subsequent model assembly",
+      "Persists prompt data in a local JSON file under DSH_HOME",
+      "Provides a browser panel and local GET/POST routes for prompt management",
+      "Simulates prompt assembly and displays prompt, context, variable, and tool-schema size estimates"
+    ],
+    "reasons": [
+      {
+        "code": "local_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_prompt_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Creates, edits, reorders, enables, and disables persistent prompts",
+      "Injects managed prompts into the host system prompt registry for subsequent model assembly",
+      "Persists prompt data in a local JSON file under DSH_HOME",
+      "Provides a browser panel and local GET/POST routes for prompt management",
+      "Simulates prompt assembly and displays prompt, context, variable, and tool-schema size estimates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:01.399Z",
   "repositoryCommitSha": "bdc80994a405ba1e6999e80011369ae41e924feb",
-  "cacheKey": "2703be58594a35d9369d8069c8fe0a42316035cf5b2954ffbb0aaeef91124b8b",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:21.722Z",
-  "lastAttemptAt": "2026-08-20T14:22:21.722Z",
-  "nextRetryAt": "2026-08-20T19:20:43.722Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17902,\"reset_time\":\"4h58m22s\"}}",
+  "evidenceHash": "5dab2290aba8cc920f14729fcbb61cbb1586096e41cbe435cca8e739c709b4bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "217d0b117942851ab32ca193f69b9dabea54b61754144801d1ffdcd94a25c2c4",
   "shadowMode": false
 }

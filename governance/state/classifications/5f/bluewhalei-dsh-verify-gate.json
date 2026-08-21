@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "testing",
+    "automation",
+    "terminal",
+    "workflow",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A verification gate plugin that runs workspace tests or configured commands, records their results, and requires a fresh successful verification before work can be concluded.",
+  "summaries": {
+    "zh": "在结案前运行工作区验证命令并记录结果，且在发生修改后要求重新验证的插件。",
+    "en": "A plugin that runs workspace verification commands, records their results, and requires fresh successful verification before work can be concluded."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs configured or auto-detected workspace verification commands",
+      "Evaluates command success using process exit codes",
+      "Stores verification receipts and invalidates them after successful mutating tools",
+      "Prevents conclusion until verification is successful, current, and non-expired"
+    ],
+    "reasons": [
+      {
+        "code": "executes_workspace_commands",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_danger_full_access_by_default",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_workspace_receipt_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Runs configured or auto-detected workspace verification commands",
+      "Evaluates command success using process exit codes",
+      "Stores verification receipts and invalidates them after successful mutating tools",
+      "Prevents conclusion until verification is successful, current, and non-expired"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:49.928Z",
+  "repositoryCommitSha": "9a1fa32ce0205eafb1fd144465ab060a62f9fd62",
+  "evidenceHash": "e76271d36d252080b18e96c782557df6b0580516aedc135af84997ff5e7d1f89",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a3b89b7648599a8bdd83b7a7379a030f584193a79f6ba6b51c3d2efbc1231fcf",
+  "shadowMode": false
+}

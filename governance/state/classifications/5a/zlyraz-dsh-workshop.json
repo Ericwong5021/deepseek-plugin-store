@@ -1,16 +1,76 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "tool",
+    "api",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness settings panel for identifying installed plugin sources, displaying risk labels, and enabling or disabling plugins by updating the profile patch configuration.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 设置面板中识别插件来源、显示风险标签，并通过修改配置补丁启用或禁用插件。",
+    "en": "A DeepSeek Harness settings panel that identifies plugin sources, displays risk labels, and enables or disables plugins by updating the profile patch configuration."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Enumerates loaded plugin entries",
+      "Reads plugin source information from pnpm-lock.yaml",
+      "Displays identity and manually maintained risk labels",
+      "Writes plugin enablement changes to cordis.patch.yml",
+      "Provides a local web API and settings panel"
+    ],
+    "reasons": [
+      {
+        "code": "local_config_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_state_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Enumerates loaded plugin entries",
+      "Reads plugin source information from pnpm-lock.yaml",
+      "Displays identity and manually maintained risk labels",
+      "Writes plugin enablement changes to cordis.patch.yml",
+      "Provides a local web API and settings panel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:58.749Z",
   "repositoryCommitSha": "e10452e6883e0bff81997ea49298b33003a0037a",
-  "cacheKey": "53e2a3408f795944375ff4e69b5f291e7dcc4854fcb934bcbfa73af25edc47ed",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:31.701Z",
-  "lastAttemptAt": "2026-08-20T14:22:03.451Z",
-  "nextRetryAt": "2026-08-20T19:20:44.451Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17921,\"reset_time\":\"4h58m40s\"}}",
+  "evidenceHash": "397449637731607d10ef5f36a93fbdfa1ca1b870b7146ecc695a21519ed8e7ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd9201ef45d178939b1b2141590ac30420a79097f06aaf050490a23bf744b3f7",
   "shadowMode": false
 }

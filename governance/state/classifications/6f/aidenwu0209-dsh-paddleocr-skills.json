@@ -1,16 +1,81 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "image",
+    "api",
+    "data",
+    "integration",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides DeepSeek Harness tools and settings for PaddleOCR-based image/PDF text extraction and document layout parsing, with configurable external endpoints and credential-backed API access.",
+  "summaries": {
+    "zh": "通过可配置的 PaddleOCR 服务提取图片和 PDF 文本，并解析文档布局、表格及结构。",
+    "en": "Uses configurable PaddleOCR services to extract text from images and PDFs and parse document layouts, tables, and structure."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Extracts text from images and PDFs through PaddleOCR endpoints",
+      "Parses document layouts, tables, Markdown, and document structure",
+      "Sends selected local file bytes or HTTPS URLs to an externally configured OCR service",
+      "Uses a configured credential reference for PaddleOCR API access",
+      "Stores raw JSON operation results in the workspace by default"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Extracts text from images and PDFs through PaddleOCR endpoints",
+      "Parses document layouts, tables, Markdown, and document structure",
+      "Sends selected local file bytes or HTTPS URLs to an externally configured OCR service",
+      "Uses a configured credential reference for PaddleOCR API access",
+      "Stores raw JSON operation results in the workspace by default"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:56.493Z",
   "repositoryCommitSha": "15c692ae2ecf0ac9ff09de3ce7bb9820791dd57d",
-  "cacheKey": "2fd697e86574f6b8e5c1d22a23150dd5bc7c576163ced0b7e8a95c909000e3b6",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:21.674Z",
-  "lastAttemptAt": "2026-08-20T14:22:21.674Z",
-  "nextRetryAt": "2026-08-20T19:20:43.674Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17902,\"reset_time\":\"4h58m22s\"}}",
+  "evidenceHash": "275d5fdef1b864a2fedb47a1ac207fdf08041376005ff9d43023dd88d97d49ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fb1fbd226e86b12c3476e1805376f100424314f36077b082cf7c6eadda5d761c",
   "shadowMode": false
 }

@@ -1,16 +1,78 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness web plugin that monitors current-session token usage, estimates costs, and displays the account API balance in a sidebar dashboard with periodic refresh.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 侧边栏中展示当前会话的令牌用量、预估费用和 API 余额，并支持货币切换与定时刷新。",
+    "en": "A DeepSeek Harness sidebar dashboard for viewing current-session token usage, estimated costs, and API balance with currency selection and periodic refresh."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads current-session token usage",
+      "Estimates session costs from configured pricing",
+      "Queries the DeepSeek balance API using a stored API credential",
+      "Displays usage and balance information in a sidebar dashboard",
+      "Refreshes balance data manually or every 30 seconds"
+    ],
+    "reasons": [
+      {
+        "code": "reads_session_usage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "calls_external_balance_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_stored_api_credential",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads current-session token usage",
+      "Estimates session costs from configured pricing",
+      "Queries the DeepSeek balance API using a stored API credential",
+      "Displays usage and balance information in a sidebar dashboard",
+      "Refreshes balance data manually or every 30 seconds"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:21.688Z",
   "repositoryCommitSha": "825a095c26cc3123f8ea5d74ff8656079483569c",
-  "cacheKey": "509dfd34d7820b5673c3d0529a4e85ca347d9f0d476bbc7f53fb549152558e6b",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:30.053Z",
-  "lastAttemptAt": "2026-08-20T14:22:30.053Z",
-  "nextRetryAt": "2026-08-20T19:20:44.053Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17894,\"reset_time\":\"4h58m13s\"}}",
+  "evidenceHash": "ca0f8256bf5daeb95cf2ad3b54a00cd0dcc6cac627468a8d6c46592fb9d521c4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8c24c842a499113ebc6867fc3b121bf5550db07762181932513ed02a0b0e04f7",
   "shadowMode": false
 }

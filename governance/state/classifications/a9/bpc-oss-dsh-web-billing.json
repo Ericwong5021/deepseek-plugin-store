@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "visualization",
+    "api",
+    "browser",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily processes local DSH message events into token-usage and billing records, then presents dashboards, balances, budgets, and exports; it also queries the documented DeepSeek balance endpoint.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中按消息统计 token 使用与费用，管理本地账本、余额和预算，并通过浏览器页面查看或导出账单。",
+    "en": "Tracks per-message token usage and billing in DeepSeek Harness, manages a local ledger, balance, and budget, and provides browser views and exports for cost records."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads completed assistant/message events from the local DSH environment",
+      "Aggregates token usage and billing records into a local ledger",
+      "Persists billing data under the configured DSH storage path",
+      "Queries the DeepSeek account balance endpoint using a configured API key reference",
+      "Provides local billing endpoints and browser-based cost dashboards",
+      "Exports billing records as CSV or JSON",
+      "Accepts local settings changes for metering, budget, and balance display"
+    ],
+    "reasons": [
+      {
+        "code": "local_event_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_balance_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads completed assistant/message events from the local DSH environment",
+      "Aggregates token usage and billing records into a local ledger",
+      "Persists billing data under the configured DSH storage path",
+      "Queries the DeepSeek account balance endpoint using a configured API key reference",
+      "Provides local billing endpoints and browser-based cost dashboards",
+      "Exports billing records as CSV or JSON",
+      "Accepts local settings changes for metering, budget, and balance display"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:01.647Z",
+  "repositoryCommitSha": "16c8a5b1a31054730f0afa381450c4ede6092bbb",
+  "evidenceHash": "95c556f60259a381c953c284493c7326563eb8d7861a7203bd32962c1b704bde",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9a2eacf46264ee8e95ee97ea26967ef311e9acb99f174ba06bb1455bc557dc9d",
+  "shadowMode": false
+}

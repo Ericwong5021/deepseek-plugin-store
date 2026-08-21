@@ -1,16 +1,74 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "file",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only compatibility scanner that inventories local Codex configuration and instruction resources, classifies migration readiness, and reports structured findings without applying changes or executing hooks.",
+  "summaries": {
+    "zh": "这是一个只读的 Codex 配置兼容性扫描器，用于盘点本地配置、Hooks、Skills 和 AGENTS 指令并分类迁移准备状态。",
+    "en": "A read-only Codex compatibility scanner that inventories local configuration, hooks, skills, and AGENTS instructions and classifies their migration readiness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads size-limited local configuration files",
+      "discovers Codex configuration, hooks, skills, and instruction files",
+      "classifies compatibility findings into status categories",
+      "returns structured summaries without raw configuration contents"
+    ],
+    "reasons": [
+      {
+        "code": "local-file-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "read-only-operation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no-command-or-mcp-execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "reads size-limited local configuration files",
+      "discovers Codex configuration, hooks, skills, and instruction files",
+      "classifies compatibility findings into status categories",
+      "returns structured summaries without raw configuration contents"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:43.120Z",
   "repositoryCommitSha": "1160f44899b9c82716b3e3f7c9564bc878be16ee",
-  "cacheKey": "b11622c5d286588bed0262ff6f4dff699e7a15085faf2b8ea0d5e0523ba4bda9",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:17.812Z",
-  "lastAttemptAt": "2026-08-20T14:22:17.812Z",
-  "nextRetryAt": "2026-08-20T19:20:43.812Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17906,\"reset_time\":\"4h58m26s\"}}",
+  "evidenceHash": "5d5f18fab07c9daceecd7c91fbb438d89ea5858f77fba7bfa5b12dfc20ec3d51",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d700bf368d990198dd1c7faff4a678a10db582a9807b40c618ccba1b8fd91be3",
   "shadowMode": false
 }

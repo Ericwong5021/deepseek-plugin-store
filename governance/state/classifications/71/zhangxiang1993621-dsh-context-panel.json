@@ -1,16 +1,76 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "chat",
+    "layout",
+    "file",
+    "skill",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A context panel plugin that shows conversation-used skills, workspace rules, and touched file paths in the host layout.",
+  "summaries": {
+    "zh": "在界面侧栏展示当前对话使用的技能、工作区规则文件及涉及的文件路径。",
+    "en": "Displays the skills, workspace rule files, and file paths involved in the current conversation in a layout panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays skills, rules, and file paths used in the current conversation",
+      "Extracts context from session tool-call parameters",
+      "Scans workspace rule files up to three directory levels and 100 entries",
+      "Registers a panel in layout.left or layout.right slots"
+    ],
+    "reasons": [
+      {
+        "code": "reads_workspace_rule_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_conversation_context_in_ui",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "registers_host_route_and_layout_panel",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays skills, rules, and file paths used in the current conversation",
+      "Extracts context from session tool-call parameters",
+      "Scans workspace rule files up to three directory levels and 100 entries",
+      "Registers a panel in layout.left or layout.right slots"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:32.859Z",
   "repositoryCommitSha": "c76883f1cff0073dd309decd54a8ba1349bcf664",
-  "cacheKey": "883d707acf0305857d44c3fb62c8f7aed44a2bb61ea680326dba351136404dc4",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:26.685Z",
-  "lastAttemptAt": "2026-08-20T14:21:56.104Z",
-  "nextRetryAt": "2026-08-20T19:20:44.104Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17928,\"reset_time\":\"4h58m47s\"}}",
+  "evidenceHash": "3e3103387efaff5c2ebc9b8b2f5a295d71f2cca1639e77b1efec1fe10743a43d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c4d40c5951c049f54863d1ca6bb9ac3f98f2366f8aa9189207d02a0537b03ba7",
   "shadowMode": false
 }

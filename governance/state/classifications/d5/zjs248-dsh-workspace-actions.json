@@ -1,16 +1,74 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "desktop",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web UI workspace file-management plugin providing directory browsing, creation, deletion, path copying, file-manager opening, and workspace registration, with operations performed using the DSH process permissions.",
+  "summaries": {
+    "zh": "为 DSH Web UI 提供工作区文件管理面板，可浏览目录、创建或删除文件与文件夹、复制路径、打开系统文件管理器并注册子工作区。",
+    "en": "Adds a DSH Web UI workspace panel for browsing directories, creating or deleting files and folders, copying paths, opening the system file manager, and registering sub-workspaces."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "read directory contents",
+      "create files and directories",
+      "delete files and directories",
+      "copy paths to the clipboard",
+      "open files and directories with the system file manager",
+      "register selected directories as workspaces"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_path_file_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runs_with_dsh_process_permissions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "read directory contents",
+      "create files and directories",
+      "delete files and directories",
+      "copy paths to the clipboard",
+      "open files and directories with the system file manager",
+      "register selected directories as workspaces"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:53.526Z",
   "repositoryCommitSha": "d1d87177366752a4430866bff663c528bc1023e8",
-  "cacheKey": "b389e800c07bd8055065fab32bb60ccb10cf19f78570323b9564c920f0ec63f5",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:31.112Z",
-  "lastAttemptAt": "2026-08-20T14:22:02.437Z",
-  "nextRetryAt": "2026-08-20T19:20:44.437Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17922,\"reset_time\":\"4h58m41s\"}}",
+  "evidenceHash": "0c03bf59ad739b911339dc8b2726324cc87b1ad9c9dd3840f3c213aafa397490",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d776e0b73657bc2f959d69edd2e0bc1f0d716435cd0f6c0d7b85b9dc3d75659d",
   "shadowMode": false
 }

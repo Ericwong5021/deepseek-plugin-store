@@ -1,16 +1,78 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "desktop",
+    "chat",
+    "document",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds chat image upload and paste support, using either a configured DashScope vision model or Windows offline OCR to describe images and prepend the description to outgoing messages.",
+  "summaries": {
+    "zh": "在聊天输入框中上传或粘贴图片，并通过百炼视觉模型或 Windows 离线 OCR 将图片内容转述后注入发送消息。",
+    "en": "Upload or paste images in the chat input and use a configured DashScope vision model or Windows offline OCR to describe them before adding the description to the outgoing message."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts pasted or uploaded images in the chat interface",
+      "Sends images to a configured DashScope vision model for description",
+      "Runs Windows offline OCR through a PowerShell subprocess",
+      "Injects the resulting image description into outgoing chat messages"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_image_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_subprocess_ocr",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outgoing_message_transformation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts pasted or uploaded images in the chat interface",
+      "Sends images to a configured DashScope vision model for description",
+      "Runs Windows offline OCR through a PowerShell subprocess",
+      "Injects the resulting image description into outgoing chat messages"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:07.664Z",
   "repositoryCommitSha": "1daa08f2e42ad3aa2c9815b39d0c6a9e7f078333",
-  "cacheKey": "937cf833cf059ca575bb5b043523f64728b6d4e99f36a180f1356117e3bea0aa",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:21.310Z",
-  "lastAttemptAt": "2026-08-20T14:21:51.131Z",
-  "nextRetryAt": "2026-08-20T19:20:44.131Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17933,\"reset_time\":\"4h58m52s\"}}",
+  "evidenceHash": "3332deb807573f85f91d8b9465fcd5c0b998b33ca324a8396bd57d744e503b88",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0a0e7df107e1214d0cdfad3b48206736fedd48d0350011916210fb68b2205753",
   "shadowMode": false
 }

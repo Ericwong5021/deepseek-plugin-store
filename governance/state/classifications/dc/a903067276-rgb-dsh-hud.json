@@ -1,16 +1,77 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "visualization",
+    "file",
+    "api",
+    "mcp",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only floating HUD panel for DeepSeek Harness that presents Git, MCP, skills, model, usage, session, and balance status.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供只读浮动状态面板，集中显示 Git、MCP、技能、模型、用量、会话和账户余额信息。",
+    "en": "A read-only floating status panel for DeepSeek Harness that shows Git, MCP, skills, model, usage, session, and account balance information."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays local Git status, file diffs, and recent commits",
+      "Displays connected MCP servers and available skills",
+      "Displays model, token, session, and context usage information",
+      "Retrieves account balance through the official API using a host-held API credential"
+    ],
+    "reasons": [
+      {
+        "code": "reads_local_project_metadata",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "accesses_session_usage_information",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "makes_authenticated_external_api_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays local Git status, file diffs, and recent commits",
+      "Displays connected MCP servers and available skills",
+      "Displays model, token, session, and context usage information",
+      "Retrieves account balance through the official API using a host-held API credential"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "106dd9b02ef4bbff0bece8e352b0e58fe24c7d63",
-  "cacheKey": "4d72810a10d16d73b5be194e43833df5bae20a9f412c8bedb5a0108006ca2206",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:19.138Z",
-  "lastAttemptAt": "2026-08-20T14:22:19.138Z",
-  "nextRetryAt": "2026-08-20T19:20:44.138Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17905,\"reset_time\":\"4h58m24s\"}}",
+  "classifiedAt": "2026-08-21T18:30:46.896Z",
+  "repositoryCommitSha": "2b1be96611e7d2807dbd2e33cf0c8baf66059ce2",
+  "evidenceHash": "cacea96549ff54926ce0d645b60cf15e889fc003edb916e673207bd73fc22db9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6648676dfaab75fdab40160a6cde550ed21413d19d9869e66501f4130964204a",
   "shadowMode": false
 }

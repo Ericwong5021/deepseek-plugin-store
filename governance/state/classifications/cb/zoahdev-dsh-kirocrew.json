@@ -1,16 +1,75 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "cli",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A documented bridge that lets a DeepSeek Harness agent delegate turns to a persistent KiroCrew workspace through the kiro-cli ACP interface.",
+  "summaries": {
+    "zh": "通过 ACP 将 DeepSeek Harness 的智能体回合委托给持久化 KiroCrew 工作区，并返回其文本结果。",
+    "en": "Bridges DeepSeek Harness to a persistent KiroCrew workspace over ACP, forwarding agent prompts and returning the resulting text."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Spawns the external kiro-cli process",
+      "Sends prompts to a persistent KiroCrew workspace over ACP",
+      "Receives and returns agent text responses",
+      "May automatically approve ACP tool permissions by default"
+    ],
+    "reasons": [
+      {
+        "code": "external_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_delegation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_permission_approval",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Spawns the external kiro-cli process",
+      "Sends prompts to a persistent KiroCrew workspace over ACP",
+      "Receives and returns agent text responses",
+      "May automatically approve ACP tool permissions by default"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:02.706Z",
   "repositoryCommitSha": "2708681a4ceaf527670e79938130335382db0623",
-  "cacheKey": "a8bfd6c38204340eafc762ca0dd0960b04f4dc0413eceff4db83df17b0b8ef8d",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:05.846Z",
-  "lastAttemptAt": "2026-08-20T14:22:05.846Z",
-  "nextRetryAt": "2026-08-20T19:20:43.846Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17918,\"reset_time\":\"4h58m38s\"}}",
+  "evidenceHash": "c5a44a6144f2daae38be078328c3a54966e911458d1236a9fa75765bc5f8b7c1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a23b5f1325def1505ff9974619b68aa9ed2ff9bf9051be745b815604d3b865b6",
   "shadowMode": false
 }

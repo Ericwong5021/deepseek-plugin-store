@@ -1,16 +1,91 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "monitoring",
+    "planning",
+    "image",
+    "file",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness console centered on supervising sub-agents and workflows, with supporting image-gallery, file, vision-service, Git, and themed UI features.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中监督多智能体与工作流，并提供图片图库、视觉模型调用和开发状态面板。",
+    "en": "A DeepSeek Harness console for supervising multi-agent workflows with an image gallery, vision-model integrations, and development status panels."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Displays real-time status for primary and sub-agents, jobs, workflows, goals, logs, and errors",
+      "Sends messages to sub-agents and interrupts their current execution rounds",
+      "Requests termination of background jobs",
+      "Uploads, imports, previews, deletes, and stores image files",
+      "Reads local image paths subject to the host file sandbox",
+      "Calls configurable OpenAI-compatible vision services using user-provided API keys",
+      "Uses host shell services for Git status and commit operations"
+    ],
+    "reasons": [
+      {
+        "code": "agent_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_and_git_operations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays real-time status for primary and sub-agents, jobs, workflows, goals, logs, and errors",
+      "Sends messages to sub-agents and interrupts their current execution rounds",
+      "Requests termination of background jobs",
+      "Uploads, imports, previews, deletes, and stores image files",
+      "Reads local image paths subject to the host file sandbox",
+      "Calls configurable OpenAI-compatible vision services using user-provided API keys",
+      "Uses host shell services for Git status and commit operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:39.127Z",
   "repositoryCommitSha": "92cdd3bf2533c106e4da581a429d63cf57678bc6",
-  "cacheKey": "0f7b78a3ed34c2083b458fc849684efd142c70ff60338db4754c7205422b0090",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:16.137Z",
-  "lastAttemptAt": "2026-08-20T14:22:16.137Z",
-  "nextRetryAt": "2026-08-20T19:20:44.137Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17908,\"reset_time\":\"4h58m27s\"}}",
+  "evidenceHash": "f06b5c1908b4100c2c30c376e5fe4ffad903e8ce7d8e54aa0bc44f2d5c365fcc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3651315afb815a4e8c1d4ad12a57120f0f177eb3b7ea346be151902f235eab91",
   "shadowMode": false
 }

@@ -1,16 +1,78 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A dsh web GUI plugin that retrieves OpenCode Zen and Go usage data and presents rolling usage windows through a composer button and usage panel.",
+  "summaries": {
+    "zh": "在 dsh 网页界面中获取并展示 OpenCode Zen 与 Go 的 5 小时、每周和每月用量信息。",
+    "en": "Displays OpenCode Zen and Go usage for rolling 5-hour, weekly, and monthly windows in the dsh web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Fetches usage data from opencode.ai",
+      "Displays cached 5-hour, weekly, and monthly usage metrics in the dsh web GUI",
+      "Stores and updates an OpenCode session cookie and workspace identifier in a local configuration file",
+      "Provides same-origin JSON endpoints for usage retrieval, refresh, and configuration editing"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Fetches usage data from opencode.ai",
+      "Displays cached 5-hour, weekly, and monthly usage metrics in the dsh web GUI",
+      "Stores and updates an OpenCode session cookie and workspace identifier in a local configuration file",
+      "Provides same-origin JSON endpoints for usage retrieval, refresh, and configuration editing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:22.975Z",
   "repositoryCommitSha": "3550507811b95e1db1d8496a4a7bc345c7735d92",
-  "cacheKey": "9c7ea4b33e8c6befbc6c1622df302aed9947e26032a41ccde16f1adc2551a18a",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:13.306Z",
-  "lastAttemptAt": "2026-08-20T14:22:13.306Z",
-  "nextRetryAt": "2026-08-20T19:20:44.306Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17911,\"reset_time\":\"4h58m30s\"}}",
+  "evidenceHash": "3c0d176102bce910d3334d6fb27fa8c72c5dcec3bbc07b93540a3c3f65025a85",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5ae0e30a7778a0854e5b072bc8f69dca35fb6431eabad1879a44ae53e080f8c4",
   "shadowMode": false
 }

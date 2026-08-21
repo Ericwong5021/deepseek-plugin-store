@@ -1,16 +1,81 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "cli",
+    "debugging",
+    "tool",
+    "agent",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A diagnostic CLI and dsh plugin that compares composed and default DeepSeek Harness configurations to identify dead patches, dropped fields, plugin issues, and related configuration differences, with an optional targeted fix mode.",
+  "summaries": {
+    "zh": "用于检查 DeepSeek Harness 配置补丁和插件问题的诊断工具，可报告失效补丁、配置字段丢失及其他配置差异，并提供可选的定向修复。",
+    "en": "A diagnostic CLI and dsh plugin that detects dead patches, dropped configuration fields, plugin issues, and other differences in DeepSeek Harness profiles, with an optional targeted fix mode."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek Harness profile configuration and package metadata",
+      "Invokes dsh commands to compose and inspect configuration trees",
+      "Compares configured and default trees to report patch and plugin issues",
+      "Optionally edits flagged configuration blocks with --fix and creates a backup",
+      "Registers a config_doctor inspection tool when installed as a dsh plugin"
+    ],
+    "reasons": [
+      {
+        "code": "config_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Reads DeepSeek Harness profile configuration and package metadata",
+      "Invokes dsh commands to compose and inspect configuration trees",
+      "Compares configured and default trees to report patch and plugin issues",
+      "Optionally edits flagged configuration blocks with --fix and creates a backup",
+      "Registers a config_doctor inspection tool when installed as a dsh plugin"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:19.417Z",
   "repositoryCommitSha": "c359247810893501195c29115da9a1ad72170343",
-  "cacheKey": "d3a3f566da06a888ef8c575dce343825007e1b31b08b2b219eb4f1641551eda0",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:29.055Z",
-  "lastAttemptAt": "2026-08-20T14:22:29.055Z",
-  "nextRetryAt": "2026-08-20T19:20:44.055Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17895,\"reset_time\":\"4h58m14s\"}}",
+  "evidenceHash": "b0f1dc13862a968edcadc6ea4f69c5c6268a57429907a88a0b0e020549846453",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1ec7b967b287e0eb1dcb11c44e64f4f7a736506cb531a561e0d4288f09b04e8d",
   "shadowMode": false
 }

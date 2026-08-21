@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "layout",
+    "visualization",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A native DeepSeek Harness web plugin that adds a configurable animated whale companion, reflects structured session activity, displays current conversation progress, and optionally provides a floating desktop window.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 添加可拖动、可配置的像素鲸鱼伴侣，用于展示会话状态和对话进度，并支持可选的浮动桌面窗口。",
+    "en": "Adds a configurable draggable pixel whale to DeepSeek Harness that reflects session activity, shows conversation progress, and can optionally run in a floating desktop window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads structured Harness session signals to determine visual states",
+      "Displays the latest local prompt and Harness reply in an in-page pet card",
+      "Submits explicitly entered follow-up text to the current Harness session",
+      "Stores interface settings and pet position in browser localStorage",
+      "Optionally opens the pet in a Chromium Document Picture-in-Picture window"
+    ],
+    "reasons": [
+      {
+        "code": "session-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session-write-on-submit",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop-picture-in-picture",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Reads structured Harness session signals to determine visual states",
+      "Displays the latest local prompt and Harness reply in an in-page pet card",
+      "Submits explicitly entered follow-up text to the current Harness session",
+      "Stores interface settings and pet position in browser localStorage",
+      "Optionally opens the pet in a Chromium Document Picture-in-Picture window"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:32:14.490Z",
+  "repositoryCommitSha": "29bb8f0fbba5514b83300a103e2a1088a02b433a",
+  "evidenceHash": "a6b38ef26c0003cd66096b2418d8e1214c528ce568efd5a8037f0af91a48986b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "80dcd4dfd407b9622fdcaf302be151b865316a1d32eeea512d051d19fe690e7f",
+  "shadowMode": false
+}

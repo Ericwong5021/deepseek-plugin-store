@@ -1,16 +1,77 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "skill",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly presents this plugin as a media toolkit for image understanding, screenshot review, and image generation through configurable external AI providers.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供图像理解、截图审查和图像生成功能，并通过用户配置的外部模型服务进行处理。",
+    "en": "Provides DeepSeek Harness with image understanding, screenshot review, and image generation through user-configured external model providers."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Analyzes user-provided images and screenshots through configured vision providers",
+      "Generates images through configured image-generation providers",
+      "Sends image-related requests to external AI service providers",
+      "Reads locally configured API credentials for provider access"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_upload_and_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_usage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Analyzes user-provided images and screenshots through configured vision providers",
+      "Generates images through configured image-generation providers",
+      "Sends image-related requests to external AI service providers",
+      "Reads locally configured API credentials for provider access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": "ba14421767784f79a7f75539cb83b054daf0dc71",
-  "cacheKey": "d44d241e29846cec113f46bfccca3f49c3cd3508553fb2afabd02c78f1fba64b",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:22.469Z",
-  "lastAttemptAt": "2026-08-20T14:22:22.469Z",
-  "nextRetryAt": "2026-08-20T19:20:44.469Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17902,\"reset_time\":\"4h58m21s\"}}",
+  "classifiedAt": "2026-08-21T18:30:56.476Z",
+  "repositoryCommitSha": "9a8e50c11720fb0a1a44c8bbf39793273890b2cd",
+  "evidenceHash": "f6cf599a5b250e1d50bbd9d294b3033e7e842b10185d124a76d1be341d2e7413",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d6c78fb0e2455d86374ee2cca41180f166f1488c6fa9969bafb70fbcacfb5bb7",
   "shadowMode": false
 }

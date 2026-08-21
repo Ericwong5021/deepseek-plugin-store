@@ -1,16 +1,80 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "workflow",
+    "research",
+    "project-analysis",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a dsh subagent provider whose primary purpose is orchestrating delegated tasks through Qoder Cloud Agents, including automatic agent and environment discovery or creation, prompt routing, streamed execution, research, and repository analysis.",
+  "summaries": {
+    "zh": "将任务委派给 Qoder Cloud Agents，并根据提示自动路由到研究或仓库分析代理后返回执行结果。",
+    "en": "Delegates tasks to Qoder Cloud Agents, automatically routing prompts to research or repository-analysis agents and returning their execution results."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Delegates prompts to Qoder Cloud Agents",
+      "Authenticates to Qoder Cloud using a personal access token from an environment variable",
+      "Finds or creates cloud agents and execution environments",
+      "Streams session events and returns agent results",
+      "Enables delegated web research, repository analysis, file access, and code editing through configured cloud-agent tools"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_authentication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "delegated_execution_with_file_and_code_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_resource_creation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Delegates prompts to Qoder Cloud Agents",
+      "Authenticates to Qoder Cloud using a personal access token from an environment variable",
+      "Finds or creates cloud agents and execution environments",
+      "Streams session events and returns agent results",
+      "Enables delegated web research, repository analysis, file access, and code editing through configured cloud-agent tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:52.622Z",
   "repositoryCommitSha": "398e3643d04242266240e33d5832b18b860940d1",
-  "cacheKey": "215bda6c414780543715e24b32ca3c16ce07e8e9610671930e47ad75250cccf5",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:22.330Z",
-  "lastAttemptAt": "2026-08-20T14:22:22.330Z",
-  "nextRetryAt": "2026-08-20T19:20:44.330Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17902,\"reset_time\":\"4h58m21s\"}}",
+  "evidenceHash": "b0a3980d606b709c745b2a3e8d3add6b52b7bb7d878797b735f1ef75d34acd16",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "17694ba33cac1a9dfade4dd8d6d34301027f499f36f615eddcf8e1b3f2b5cc44",
   "shadowMode": false
 }

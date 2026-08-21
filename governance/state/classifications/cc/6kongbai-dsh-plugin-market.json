@@ -1,16 +1,80 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "cli",
+    "search",
+    "api",
+    "integration",
+    "file",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A GitHub-backed dsh plugin marketplace that provides CLI and web-panel browsing, metadata inspection, pinned installation, uninstallation, profile reconciliation, and audit logging for community bundles.",
+  "summaries": {
+    "zh": "通过 GitHub 主题浏览 dsh 社区插件，并在 CLI 或网页面板中查看、安装和卸载插件。",
+    "en": "A GitHub-backed marketplace for browsing, inspecting, installing, and uninstalling community dsh plugins through a CLI or web panel."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches and reads plugin metadata from the GitHub dsh-plugin topic",
+      "Installs community plugins into a selected dsh profile with pnpm",
+      "Uninstalls plugins from a selected dsh profile",
+      "Updates dsh bundle configuration and writes an installation audit log",
+      "Runs downloaded community plugin code with the current user's privileges"
+    ],
+    "reasons": [
+      {
+        "code": "downloads_and_runs_arbitrary_third_party_code",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_profile_dependencies_and_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_github_api_and_repository_metadata",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Searches and reads plugin metadata from the GitHub dsh-plugin topic",
+      "Installs community plugins into a selected dsh profile with pnpm",
+      "Uninstalls plugins from a selected dsh profile",
+      "Updates dsh bundle configuration and writes an installation audit log",
+      "Runs downloaded community plugin code with the current user's privileges"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:45.111Z",
   "repositoryCommitSha": "2db26a93d9875abb6fdf9ec5d950bd80b4b156b3",
-  "cacheKey": "a3e4b4f926852578858d780a7afa5877a75ff8f81236c666788a5aa81a29ea9e",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:16.157Z",
-  "lastAttemptAt": "2026-08-20T14:22:16.157Z",
-  "nextRetryAt": "2026-08-20T19:20:44.157Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17908,\"reset_time\":\"4h58m27s\"}}",
+  "evidenceHash": "6664559c42180f096a683e586a27326ed9c8e76bf17fa7f513ea50f4b951750a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d69f2f38ac97e615a367b301e420bb9419dd9752f9c8eb1f99036b6786613c03",
   "shadowMode": false
 }

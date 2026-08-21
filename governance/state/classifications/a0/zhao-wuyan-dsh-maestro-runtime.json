@@ -1,16 +1,79 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "collaboration",
+    "context",
+    "file",
+    "notification",
+    "planning",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH host plugin that integrates the Maestro Flow runtime through workflow context injection, command and state guards, background knowledge-graph synchronization, delegation notifications, team heartbeats, and coordinator bridge files.",
+  "summaries": {
+    "zh": "将 Maestro Flow 工作流运行时接入 DSH 会话，提供上下文注入、命令与状态保护、知识图谱同步、委派通知及团队协作桥接功能。",
+    "en": "Integrates the Maestro Flow runtime with DSH sessions by providing context injection, command and state guards, knowledge-graph synchronization, delegate notifications, and team coordination bridges."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Blocks specified dangerous shell commands and protected Maestro state writes",
+      "Injects workflow context and onboarding guidance into DSH prompts and skill invocations",
+      "Runs background Maestro knowledge-graph initialization and incremental synchronization",
+      "Scans temporary session directories for delegate notifications and marks them read",
+      "Writes team heartbeat and coordinator bridge files to workflow-related locations"
+    ],
+    "reasons": [
+      {
+        "code": "command_execution_and_filesystem_writes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workflow_context_and_notification_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_cli_and_session_directory_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Blocks specified dangerous shell commands and protected Maestro state writes",
+      "Injects workflow context and onboarding guidance into DSH prompts and skill invocations",
+      "Runs background Maestro knowledge-graph initialization and incremental synchronization",
+      "Scans temporary session directories for delegate notifications and marks them read",
+      "Writes team heartbeat and coordinator bridge files to workflow-related locations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:32.607Z",
   "repositoryCommitSha": "e8442bd285bc8920096f7627e66b793c1a1ed647",
-  "cacheKey": "f0159b20bba3d519cce0df216a315b2b84ccb45a65984047786bb687c3451331",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:26.741Z",
-  "lastAttemptAt": "2026-08-20T14:21:57.778Z",
-  "nextRetryAt": "2026-08-20T19:20:43.778Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17926,\"reset_time\":\"4h58m46s\"}}",
+  "evidenceHash": "46e2f4cffc22a9ec3e16921f8e5ffacc6facfb1a3ece188088b32d0093215934",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f61cd1368c7095f6bcd41dfdc4fdeb2b5b51364b7b7402bf7fcc4e15279db21f",
   "shadowMode": false
 }

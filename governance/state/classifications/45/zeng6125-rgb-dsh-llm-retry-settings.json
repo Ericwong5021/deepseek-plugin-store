@@ -1,16 +1,67 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "ui",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DSH settings plugin that lets users enable and configure LLM request retry counts, backoff limits, and jitter through Settings → General, with changes applied to the retry policy.",
+  "summaries": {
+    "zh": "在 DSH 设置中配置 LLM 请求的自动重试次数、退避时间和抖动参数，并实时应用覆盖设置。",
+    "en": "Configure LLM request retry counts, backoff timing, and jitter in DSH Settings, with the resulting retry-policy overrides applied live."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides a settings card for configuring LLM retry behavior",
+      "Overrides retry count and backoff timing for request-error recovery",
+      "Persists settings and applies changes through live synchronization"
+    ],
+    "reasons": [
+      {
+        "code": "modifies_runtime_behavior",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_user_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Provides a settings card for configuring LLM retry behavior",
+      "Overrides retry count and backoff timing for request-error recovery",
+      "Persists settings and applies changes through live synchronization"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:15.367Z",
   "repositoryCommitSha": "f989aeebd6debc8a1d260a837d92747f436f910d",
-  "cacheKey": "b3e1f2cdd5932fa5f36060c51269df6389c85a367370db711276de57200a6690",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:22.092Z",
-  "lastAttemptAt": "2026-08-20T14:21:52.555Z",
-  "nextRetryAt": "2026-08-20T19:20:43.555Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17931,\"reset_time\":\"4h58m51s\"}}",
+  "evidenceHash": "95ebd98ef12dce9bcbcb6e7daed181f933cc1fab16863e505d3ce51fc01ac1e2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "05eed6a06b2f73722f6b3b9e1f469d58b35400481a05079227fa93fd3ad3380f",
   "shadowMode": false
 }

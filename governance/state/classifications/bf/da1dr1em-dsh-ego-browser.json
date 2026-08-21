@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "browser",
+    "api",
+    "cli",
+    "desktop",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A host-only DSH plugin for agent-driven browser automation using JavaScript in a locally connected Edge or Chrome runtime, with persistent task spaces, API help, and host diagnostics.",
+  "summaries": {
+    "zh": "通过本机 Edge 或 Chrome 浏览器运行 JavaScript，帮助智能体完成网页导航、交互、数据提取和任务空间管理。",
+    "en": "Runs JavaScript in a locally connected Edge or Chrome browser to help agents navigate webpages, interact with sites, extract data, and manage task spaces."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes agent-supplied JavaScript in the local ego-browser Node.js runtime",
+      "Controls locally installed Edge or Chrome through CDP",
+      "Navigates webpages and performs browser interactions, searches, screenshots, form actions, and data extraction",
+      "Reuses persistent browser profiles, login sessions, and task spaces across calls",
+      "Spawns the ego-browser host process and can write browser state outside the session workspace",
+      "Provides API guidance and browser host diagnostics"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_script_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_browser_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_authenticated_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_process_and_filesystem_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Executes agent-supplied JavaScript in the local ego-browser Node.js runtime",
+      "Controls locally installed Edge or Chrome through CDP",
+      "Navigates webpages and performs browser interactions, searches, screenshots, form actions, and data extraction",
+      "Reuses persistent browser profiles, login sessions, and task spaces across calls",
+      "Spawns the ego-browser host process and can write browser state outside the session workspace",
+      "Provides API guidance and browser host diagnostics"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:33:06.381Z",
+  "repositoryCommitSha": "25ab028307072e2745fbab3764b234aa893a71c5",
+  "evidenceHash": "802e2915d39f25fe4c594e0d6e724461fc257c0fe571ae1922d3519166e0c468",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "979b65da707c73a67aca7921c0487b3b5b064630f67c93f761f0dd4dbd4d8f34",
+  "shadowMode": false
+}

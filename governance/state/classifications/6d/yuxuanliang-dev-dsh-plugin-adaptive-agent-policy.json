@@ -1,16 +1,74 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "context",
+    "planning",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes an agent-policy plugin that deterministically routes tasks, controls loop budgets, selects bounded checks, and progressively prunes tool results to manage execution and context usage.",
+  "summaries": {
+    "zh": "一个通过任务路由、循环预算、风险检查和渐进式工具结果裁剪来管理 DeepSeek Harness 智能体执行过程的插件。",
+    "en": "A DeepSeek Harness plugin that manages agent execution through task routing, loop budgets, bounded risk checks, and progressive tool-result pruning."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes tasks into predefined profiles",
+      "Adjusts prompt sections and output token limits",
+      "Applies step and context-pressure budgets",
+      "Prunes selected tool results while preserving recent results",
+      "Selects bounded risk checks without making LLM requests"
+    ],
+    "reasons": [
+      {
+        "code": "agent-behavior-control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context-and-tool-result-modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Routes tasks into predefined profiles",
+      "Adjusts prompt sections and output token limits",
+      "Applies step and context-pressure budgets",
+      "Prunes selected tool results while preserving recent results",
+      "Selects bounded risk checks without making LLM requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:29:07.797Z",
   "repositoryCommitSha": "387fc3606beddbd7aaaed5a2021537d1131d2d18",
-  "cacheKey": "16ba5f20a5b1808ab139327ed389350126636a6a6c182bb5f205b477fe7302d3",
-  "failureClass": "rate_limited",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-20T09:18:18.631Z",
-  "lastAttemptAt": "2026-08-20T14:21:45.106Z",
-  "nextRetryAt": "2026-08-20T19:20:44.106Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17939,\"reset_time\":\"4h58m58s\"}}",
+  "evidenceHash": "621d31ee8197c5d55b988bd975bf4eca06717ef73d5028798eb4ccbf5fad976f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e98a92be809fef98d6eff088de734330ba548ba3d460c4947e3875dea73156ad",
   "shadowMode": false
 }

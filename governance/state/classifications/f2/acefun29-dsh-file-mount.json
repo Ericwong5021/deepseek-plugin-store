@@ -1,16 +1,75 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "file",
+    "memory",
+    "data",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is tracking mounted file content in model context and reducing repeated file reads through incremental updates and deduplication, with a supporting dashboard.",
+  "summaries": {
+    "zh": "通过记录已挂载的文件行范围并对读取结果进行增量去重，减少文件内容在模型上下文中的重复传输。",
+    "en": "Tracks mounted file ranges and deduplicates or incrementally updates read results to reduce repeated file content in the model context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Tracks file line ranges already included in model context",
+      "Intercepts read, write, and edit tool results to provide deduplicated or incremental file content",
+      "Maintains mounted-file state and optionally persists usage statistics locally",
+      "Provides a mounted-files dashboard and a tool to force file remounting"
+    ],
+    "reasons": [
+      {
+        "code": "context-manipulation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-file-state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-statistics-persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Tracks file line ranges already included in model context",
+      "Intercepts read, write, and edit tool results to provide deduplicated or incremental file content",
+      "Maintains mounted-file state and optionally persists usage statistics locally",
+      "Provides a mounted-files dashboard and a tool to force file remounting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:45.560Z",
   "repositoryCommitSha": "27ac71d7a5d834e01198596ce1dcdfbe79d41ebe",
-  "cacheKey": "c61db439fb8c7f67458dc4e5649d6aac1eb70bdf4ccc4ae6041b8ede84a5b0e9",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:19.063Z",
-  "lastAttemptAt": "2026-08-20T14:22:19.063Z",
-  "nextRetryAt": "2026-08-20T19:20:44.063Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17905,\"reset_time\":\"4h58m24s\"}}",
+  "evidenceHash": "a5b631719fe4117e57a4c11b8d3f76f52975a64f9f9376306ffe30127ae519a7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a94bd91325c876e037c61d87aee7344546a5d3dbeb678885697561b834d545a8",
   "shadowMode": false
 }

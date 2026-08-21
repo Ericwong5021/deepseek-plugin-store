@@ -1,16 +1,80 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "api",
+    "image",
+    "mcp",
+    "document",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local stdio MCP server primarily providing text-only agents with external image understanding, with experimental image generation and editing capabilities.",
+  "summaries": {
+    "zh": "通过本地 stdio MCP 服务器调用外部视觉服务，为文本智能体提供图像理解，并支持实验性的图像生成与编辑。",
+    "en": "A local stdio MCP server that gives text-only agents external image understanding, with experimental image generation and editing capabilities."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Understands images, screenshots, documents, charts, diagrams, and visible text through an external vision API",
+      "Sends user-provided images to the configured Agnes API for inference",
+      "Generates and edits images experimentally through the external provider",
+      "Writes generated or downloaded image results to a local output directory",
+      "Uses an API key for direct BYOK authentication"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_key_required",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_output",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Understands images, screenshots, documents, charts, diagrams, and visible text through an external vision API",
+      "Sends user-provided images to the configured Agnes API for inference",
+      "Generates and edits images experimentally through the external provider",
+      "Writes generated or downloaded image results to a local output directory",
+      "Uses an API key for direct BYOK authentication"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:14.263Z",
   "repositoryCommitSha": "ac834d1674f0abae665a5dd2ec3ad603ea9e37bb",
-  "cacheKey": "43e33e8ae191c88669cf411d3d092d9d98ac8e19b54cfc0b9311b68a0f5a8a2b",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:27.371Z",
-  "lastAttemptAt": "2026-08-20T14:22:27.371Z",
-  "nextRetryAt": "2026-08-20T19:20:44.371Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17897,\"reset_time\":\"4h58m16s\"}}",
+  "evidenceHash": "a29cd4ad44dffd1f368e4b1e9d00f7893618cca2a0921ef20038cb587d77fd95",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f8e316253de1983421183eba8b830a2276766426875f7ce3e8fe15fa8d08034a",
   "shadowMode": false
 }

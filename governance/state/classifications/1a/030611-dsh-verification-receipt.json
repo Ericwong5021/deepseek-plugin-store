@@ -1,16 +1,71 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "data",
+    "file",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A passive DSH plugin that monitors completed turns, records tool-call counts and heuristic verification signals, and persists privacy-minimal summaries locally without executing or validating tests.",
+  "summaries": {
+    "zh": "一个被动监控 DSH 回合执行情况的插件，将工具调用计数和启发式验证信号以隐私最小化摘要写入本地 JSONL 文件。",
+    "en": "A passive DSH monitoring plugin that writes privacy-minimal per-turn summaries of tool-call counts and heuristic verification signals to a local JSONL file."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads durable turn events and temporarily inspects tool names, arguments, and result statuses",
+      "Computes heuristic verification signals and hashed session identifiers",
+      "Appends privacy-minimal per-turn summaries to a local JSONL file"
+    ],
+    "reasons": [
+      {
+        "code": "local_event_observation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "heuristic_only_no_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads durable turn events and temporarily inspects tool names, arguments, and result statuses",
+      "Computes heuristic verification signals and hashed session identifiers",
+      "Appends privacy-minimal per-turn summaries to a local JSONL file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:30:25.969Z",
   "repositoryCommitSha": "92f63a9022e1840b147152ae340276ad5ff5d98b",
-  "cacheKey": "95f96e9b465e2d3798e9c8864c45b76743331f71b5d33765aec74a24164e6d3f",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:16.054Z",
-  "lastAttemptAt": "2026-08-20T14:22:16.054Z",
-  "nextRetryAt": "2026-08-20T19:20:44.054Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17908,\"reset_time\":\"4h58m27s\"}}",
+  "evidenceHash": "098cae8b25649271fc2335d987af56d6321ceb8739b4953a3b87b7be49f46dca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ed3b898ed561715a0fe4b33345b63e2f9406ea75de46c5bdbaf20090bbf3df38",
   "shadowMode": false
 }

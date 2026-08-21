@@ -1,16 +1,89 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "cli",
+    "terminal",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.95,
+  "reason": "The README describes Docker images and Compose deployment for DeepSeek Harness, an agent runtime with web and headless task execution over mounted workspaces, so orchestration is the primary user-facing purpose.",
+  "summaries": {
+    "zh": "通过 Docker 镜像和 Compose 部署 DeepSeek Harness，提供 Web 与无头任务执行，并允许智能体操作挂载的工作区。",
+    "en": "Deploys DeepSeek Harness through Docker images or Compose, providing web and headless task execution with access to mounted workspaces."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs DeepSeek Harness as a Docker container with web and headless interfaces",
+      "Allows the agent to execute commands in the mounted workspace",
+      "Reads and modifies files in mounted directories",
+      "Uses a DeepSeek API key or compatible API endpoint",
+      "Can access permitted container network resources"
+    ],
+    "reasons": [
+      {
+        "code": "command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated_web_service",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Runs DeepSeek Harness as a Docker container with web and headless interfaces",
+      "Allows the agent to execute commands in the mounted workspace",
+      "Reads and modifies files in mounted directories",
+      "Uses a DeepSeek API key or compatible API endpoint",
+      "Can access permitted container network resources"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.95,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:08.114Z",
   "repositoryCommitSha": "841e93a53a627413cdd875db0e9aee86928109f6",
-  "cacheKey": "19def1c8405ee65fd7da14c391fc246c89d1a4bb8072c5b9938456292ca168cc",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:24.729Z",
-  "lastAttemptAt": "2026-08-20T14:22:24.729Z",
-  "nextRetryAt": "2026-08-20T19:20:43.729Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17899,\"reset_time\":\"4h58m19s\"}}",
+  "evidenceHash": "4a1e98d03503a35ff2818fecf80854c84f0c1719c9ed0c29a12d13103177b6b3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd79bfbf541c459d7f5dc2986a6e9c72c657e0d9d6bf96a15adb72a87a849e4f",
   "shadowMode": false
 }

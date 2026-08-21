@@ -1,16 +1,74 @@
 {
-  "status": "failed",
-  "model": "gpt-5.3-codex-spark",
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "testing",
+    "tool",
+    "terminal",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Post-edit diagnostics plugin that runs configured linters or type checkers for edited files and attaches their findings to the same tool result without vetoing or rewriting the edit.",
+  "summaries": {
+    "zh": "在文件编辑成功后运行用户配置的类型检查器或代码检查器，并将诊断结果附加到同一工具结果中。",
+    "en": "Runs user-configured linters or type checkers after successful file edits and attaches their diagnostics to the same tool result."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Runs user-configured checker subprocesses after successful file-edit tool calls",
+      "Collects checker output and attaches diagnostic context to tool results",
+      "Enforces checker timeouts and terminates timed-out process trees",
+      "Reads edited file paths and configured workspace-relative execution settings"
+    ],
+    "reasons": [
+      {
+        "code": "configured_subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "diagnostic_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_path_and_workspace_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Runs user-configured checker subprocesses after successful file-edit tool calls",
+      "Collects checker output and attaches diagnostic context to tool results",
+      "Enforces checker timeouts and terminates timed-out process trees",
+      "Reads edited file paths and configured workspace-relative execution settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:31:33.372Z",
   "repositoryCommitSha": "b4bfe25c7e8fce3701b8fd84dda0f14de8fab447",
-  "cacheKey": "24899f55aafbbc2a6e60226478b4e54876bf20dc9e377e7bfbebaba3b8a05227",
-  "failureClass": "rate_limited",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-20T14:22:33.495Z",
-  "lastAttemptAt": "2026-08-20T14:22:33.495Z",
-  "nextRetryAt": "2026-08-20T19:20:43.495Z",
-  "retryable": true,
-  "error": "/completions: 429 {\"error\":{\"code\":\"model_cooldown\",\"message\":\"All credentials for model gpt-5.3-codex-spark are cooling down\",\"model\":\"gpt-5.3-codex-spark\",\"reset_seconds\":17890,\"reset_time\":\"4h58m10s\"}}",
+  "evidenceHash": "d43d91443935d4b00b50373fbfd98cfd3acd3630e464f57391f7b9b26829864e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4b1ea15de9833e869189ff1915d5677d2dab323785f0325535825ad8de9e12ee",
   "shadowMode": false
 }
