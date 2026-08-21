@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "collaboration",
+    "context",
+    "debugging",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is coordinating external AI models for second-opinion and adversarial code review, task delegation, and background job handling.",
+  "summaries": {
+    "zh": "通过配置的外部 AI 模型提供代码第二意见审查、对抗性审查、任务委托和后台任务管理。",
+    "en": "Uses configured external AI models for second-opinion and adversarial code reviews, task delegation, and background job management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends selected code, files, and optionally conversation history to configured external AI endpoints",
+      "Performs read-only code and adversarial reviews",
+      "Delegates tasks to external AI models and can inject returned results into the session",
+      "Runs background jobs with status, result, and cancellation controls",
+      "Reads workspace-relative files and persists rescue threads locally",
+      "Uses configured API keys and environment variables for external model access"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_history_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_task_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends selected code, files, and optionally conversation history to configured external AI endpoints",
+      "Performs read-only code and adversarial reviews",
+      "Delegates tasks to external AI models and can inject returned results into the session",
+      "Runs background jobs with status, result, and cancellation controls",
+      "Reads workspace-relative files and persists rescue threads locally",
+      "Uses configured API keys and environment variables for external model access"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:21.841Z",
+  "repositoryCommitSha": "ead24a215f76ab51313092401a8e2d0ea2979ba9",
+  "evidenceHash": "61450f87a7c1fbcf7bb89bdb42394c82a3a65cd99735ba2145b64e435b2d94c8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac21b82c1236673c4ec367d151da243a905645579b18965b43e16aa6b1f2c77e",
+  "shadowMode": false
+}

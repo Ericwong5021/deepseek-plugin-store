@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "file",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness utility plugin that prevents concurrent servers from sharing one DSH_HOME by acquiring a lock at startup and rejecting live conflicts.",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness 提供 DSH_HOME 单实例锁的插件，用于阻止多个服务器同时使用同一数据目录。",
+    "en": "A DeepSeek Harness plugin that enforces one live server per DSH_HOME data directory by acquiring a startup lock and rejecting active conflicts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Creates and exclusively locks a file under DSH_HOME",
+      "Checks the liveness of the process recorded in an existing lock file",
+      "Removes stale lock files and retries acquisition once",
+      "Aborts startup when another live server uses the same DSH_HOME"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_locking",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_liveness_check",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "startup_abort",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Creates and exclusively locks a file under DSH_HOME",
+      "Checks the liveness of the process recorded in an existing lock file",
+      "Removes stale lock files and retries acquisition once",
+      "Aborts startup when another live server uses the same DSH_HOME"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:36.370Z",
+  "repositoryCommitSha": "666bad9ddedeb21d496ba96368bdbeb9d1752704",
+  "evidenceHash": "d34f55b6b44cca79b66f7745cd866cb7b013b6e40e1baa4bda4a4af1ef305ad4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "11774580391299662aa2ff47e9be76e600bd3ff4829a31b947089ae79942eb66",
+  "shadowMode": false
+}

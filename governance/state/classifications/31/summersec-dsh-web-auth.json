@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "browser",
+    "cli",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a transport-level authentication gateway for the DeepSeek Harness Web GUI that protects HTTP, API, SSE, and WebSocket traffic with password-based sessions.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web GUI 提供传输层身份验证，保护 HTTP、API、SSE 和 WebSocket 请求并提供登录会话管理。",
+    "en": "Adds transport-level authentication to the DeepSeek Harness Web GUI, protecting HTTP, API, SSE, and WebSocket traffic with password-based sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Replaces the default DSH web server service",
+      "Authenticates HTTP requests and WebSocket upgrade traffic",
+      "Handles password hashes or temporary plaintext passwords from configuration",
+      "Creates and manages in-memory session cookies",
+      "Provides login, logout, and authentication status endpoints",
+      "Applies per-client-IP login attempt limiting"
+    ],
+    "reasons": [
+      {
+        "code": "network_authentication_gateway",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_session_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "webserver_replacement",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Replaces the default DSH web server service",
+      "Authenticates HTTP requests and WebSocket upgrade traffic",
+      "Handles password hashes or temporary plaintext passwords from configuration",
+      "Creates and manages in-memory session cookies",
+      "Provides login, logout, and authentication status endpoints",
+      "Applies per-client-IP login attempt limiting"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:49.267Z",
+  "repositoryCommitSha": "b722e44a881d71fc3eb943627d654a6e293876f8",
+  "evidenceHash": "62b31b333d518fab224bab94fd49f852bedef78fadc4776120e74efcda17ea29",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "14f274518d99dc980535d65c032751375eb0333d8fe4f45693842c0e23e44553",
+  "shadowMode": false
+}

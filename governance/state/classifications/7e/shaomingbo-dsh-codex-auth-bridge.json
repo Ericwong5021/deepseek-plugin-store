@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "cli",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates Codex CLI ChatGPT OAuth authentication with DeepSeek Harness by refreshing tokens, synchronizing credentials, and configuring the provider route.",
+  "summaries": {
+    "zh": "将 Codex CLI 的 ChatGPT OAuth 登录凭据同步到 DeepSeek Harness，并配置其 openai-codex 模型路由。",
+    "en": "Bridges Codex CLI ChatGPT OAuth authentication into DeepSeek Harness by synchronizing credentials and configuring the openai-codex model route."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads Codex OAuth credentials from auth.json",
+      "Refreshes OAuth access tokens",
+      "Writes rotated tokens back to the Codex authentication file",
+      "Synchronizes access tokens with the DSH credential service",
+      "Configures the openai-codex provider route",
+      "Performs periodic background credential synchronization"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive-credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-credential-file-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background-token-refresh",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Reads Codex OAuth credentials from auth.json",
+      "Refreshes OAuth access tokens",
+      "Writes rotated tokens back to the Codex authentication file",
+      "Synchronizes access tokens with the DSH credential service",
+      "Configures the openai-codex provider route",
+      "Performs periodic background credential synchronization"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:34.746Z",
+  "repositoryCommitSha": "9b41daf7b590ac40bb4362a26ebd6320ef1d882e",
+  "evidenceHash": "ed2e3318a6245556c05c168f93e7945fdab0c936cda7d9427e72a1d9b5e95826",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4a67fc62d56b5fd9cb6b688d830c9807de14ca2aa3811f696c8597a364eb037f",
+  "shadowMode": false
+}

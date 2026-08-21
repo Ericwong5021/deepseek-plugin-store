@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "desktop",
+    "automation",
+    "integration",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A macOS DSH plugin that captures the current foreground window with a global shortcut and attaches the resulting image to the active Composer session. The README clearly documents its screenshot, permission, staging, and client-integration behavior.",
+  "summaries": {
+    "zh": "在 macOS 上通过全局快捷键截取当前前台窗口，并将截图自动挂载到 DeepSeek Harness 的 Composer 会话中。",
+    "en": "A macOS plugin that captures the current foreground window with a global shortcut and attaches the image to the active DeepSeek Harness Composer session."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures the frontmost macOS window after a global double-Command shortcut",
+      "Requires macOS Screen Recording and Accessibility permissions",
+      "Stores the captured image temporarily and attaches it to the active DSH Composer session",
+      "Uses an SSE channel to notify the DSH client and can raise the DSH desktop window",
+      "Sends system notifications when capture fails or permissions are missing"
+    ],
+    "reasons": [
+      {
+        "code": "screen_capture",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "accessibility_permission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_staging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "composer_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Captures the frontmost macOS window after a global double-Command shortcut",
+      "Requires macOS Screen Recording and Accessibility permissions",
+      "Stores the captured image temporarily and attaches it to the active DSH Composer session",
+      "Uses an SSE channel to notify the DSH client and can raise the DSH desktop window",
+      "Sends system notifications when capture fails or permissions are missing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:45.246Z",
+  "repositoryCommitSha": "88579c71fe26ca36201a33ba12abda4dacf8ede0",
+  "evidenceHash": "f64239d0d9345513be58cb68be963f537a3fbe068cc6d82569fd38e8f624c601",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3ab58cb92f62b7b644fb63676f6ae1fe68b66c2ebeb221e700aff29c972f8e60",
+  "shadowMode": false
+}

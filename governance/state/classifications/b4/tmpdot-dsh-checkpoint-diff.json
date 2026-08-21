@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "visualization",
+    "file",
+    "api",
+    "cli",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Provides read-oriented timeline and file-diff visualization for checkpoint snapshots and session logs, with explicit user-triggered workspace rollback and undo operations.",
+  "summaries": {
+    "zh": "将检查点和会话日志转换为时间线及逐文件逐行差异视图，并提供可预览的工作区回滚与撤销功能。",
+    "en": "Turns checkpoint snapshots and session logs into timeline and per-file line-diff views, with previewable workspace rollback and undo operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads checkpoint snapshots and session logs",
+      "Displays timeline and per-file line diffs",
+      "Provides GUI, command, and JSON HTTP interfaces",
+      "Writes workspace files during user-triggered rollback",
+      "Removes files created by its own rollback during user-triggered undo"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_write_and_rollback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "checkpoint_and_session_log_reading",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "http_api_exposes_read_and_write_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads checkpoint snapshots and session logs",
+      "Displays timeline and per-file line diffs",
+      "Provides GUI, command, and JSON HTTP interfaces",
+      "Writes workspace files during user-triggered rollback",
+      "Removes files created by its own rollback during user-triggered undo"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:59:29.288Z",
+  "repositoryCommitSha": "96157e7d27deb9a1b944372b4ce47caa9eae60f0",
+  "evidenceHash": "60aaf31cc06728b429701f4138eb838a1cf57dc9173224cf72f4bac09582cfee",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b999a8040126894571193614550ad9feb6c759f84ac7059ad7d80a085168c546",
+  "shadowMode": false
+}

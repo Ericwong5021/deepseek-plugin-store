@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "cli",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README clearly describes a DeepSeek Harness integration whose primary purpose is persistent project memory: loading checkpoint context, saving sessions through MemoryHub, providing memory tools, and exposing a Memory web UI.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于 MemoryHub 的项目记忆加载、保存、查询工具和记忆可视化标签页。",
+    "en": "Provides DeepSeek Harness with MemoryHub-based project memory loading, saving, querying tools, and a visual Memory tab."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Loads project memory into session context",
+      "Saves session transcripts and summaries to MemoryHub checkpoints",
+      "Exposes memory management tools and a runtime skill",
+      "Executes the external mh CLI",
+      "Spawns a local MemoryHub web UI process and embeds it in a web tab"
+    ],
+    "reasons": [
+      {
+        "code": "external_cli_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "checkpoint_write_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_ui_process_spawn",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Loads project memory into session context",
+      "Saves session transcripts and summaries to MemoryHub checkpoints",
+      "Exposes memory management tools and a runtime skill",
+      "Executes the external mh CLI",
+      "Spawns a local MemoryHub web UI process and embeds it in a web tab"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:37.071Z",
+  "repositoryCommitSha": "08696910725e0fdeb88a72a392a90ee1a836a378",
+  "evidenceHash": "871517e2db989507ddb66da08f9c97f2d2b8b7d044391102f3cd6fa5092804d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1cad661662411bea93c656ccbdd362ebdf3bc83d1bcffef25155f924cca3e4da",
+  "shadowMode": false
+}

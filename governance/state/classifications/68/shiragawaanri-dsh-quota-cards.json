@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "chat",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A chat-interface monitoring plugin that displays DeepSeek balance and OpenCode Go usage quotas, with configured manual and automatic refreshes via authenticated provider APIs.",
+  "summaries": {
+    "zh": "在聊天输入框中显示 DeepSeek 余额和 OpenCode Go 用量，并支持手动及定时刷新。",
+    "en": "Displays DeepSeek balance and OpenCode Go usage in the chat composer with manual and scheduled refreshes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured DeepSeek and OpenCode Go credentials host-side",
+      "Makes authenticated read-only requests to provider quota endpoints",
+      "Displays account balance and token-usage information in the chat composer",
+      "Stores and applies refresh interval and credential-reference settings",
+      "Performs debounced manual and interval-based automatic refreshes"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "account_usage_display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured DeepSeek and OpenCode Go credentials host-side",
+      "Makes authenticated read-only requests to provider quota endpoints",
+      "Displays account balance and token-usage information in the chat composer",
+      "Stores and applies refresh interval and credential-reference settings",
+      "Performs debounced manual and interval-based automatic refreshes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:48.608Z",
+  "repositoryCommitSha": "65d388b6fed7cfb19dd29c5c9f87343a33c59047",
+  "evidenceHash": "67446904ae03360bd63ba423a886e86c6131efb60e93098599e77e4975fdeb08",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5ba06a1248939f5746c29e75564d48c22d69b5765ae52ebde0551e70055f69aa",
+  "shadowMode": false
+}

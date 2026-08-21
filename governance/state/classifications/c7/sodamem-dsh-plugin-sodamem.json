@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "api",
+    "automation",
+    "agent",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DeepSeek Harness plugin that automatically recalls evidence-grounded long-term memory into prompts and ingests closed-turn messages through a SodaMem daemon.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 自动检索 SodaMem 长期记忆并将已结束对话写回记忆存储。",
+    "en": "Automatically retrieves SodaMem long-term memory for DeepSeek Harness prompts and stores messages from completed turns."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatically retrieves memory context for each turn from a SodaMem daemon over HTTP",
+      "Ingests closed-turn messages into persistent memory storage",
+      "Sends configured user-scoped conversation data to an external daemon",
+      "Uses configurable API URL, API key, user ID, and token budget"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_conversation_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automatically retrieves memory context for each turn from a SodaMem daemon over HTTP",
+      "Ingests closed-turn messages into persistent memory storage",
+      "Sends configured user-scoped conversation data to an external daemon",
+      "Uses configurable API URL, API key, user ID, and token budget"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:33.733Z",
+  "repositoryCommitSha": "290fb6bf4bce47d0f3fb0c738f1fe1d8c2dd389e",
+  "evidenceHash": "500d6ea60fb67b9f5f4ee89056f2b824e34bf35e92af896111d775b880966900",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f82214fc2e44c3e66fd5bcc1c976180fa8f732aa77d8803c25e397f10b40390a",
+  "shadowMode": false
+}

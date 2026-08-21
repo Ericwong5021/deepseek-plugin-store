@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "data",
+    "file",
+    "document",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Imports historical Claude and ChatGPT memories and conversations into a local DeepSeek Harness memory store, with verbatim evidence checks and configurable human review.",
+  "summaries": {
+    "zh": "将 Claude 和 ChatGPT 的历史记忆与对话导入 DeepSeek Harness 本地记忆库，并通过原文证据核对和可配置审核进行管理。",
+    "en": "Imports historical Claude and ChatGPT memories and conversations into a local DeepSeek Harness memory store with verbatim evidence checks and configurable review."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local Claude Code conversation records and user-provided Claude or ChatGPT exports",
+      "Extracts memory items from conversation content using the configured model service",
+      "Sends conversation text to the configured model service for processing",
+      "Stores imported memories and evidence locally as JSONL",
+      "Supports review and approval of extracted memory items"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_conversation_data_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local Claude Code conversation records and user-provided Claude or ChatGPT exports",
+      "Extracts memory items from conversation content using the configured model service",
+      "Sends conversation text to the configured model service for processing",
+      "Stores imported memories and evidence locally as JSONL",
+      "Supports review and approval of extracted memory items"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:52.315Z",
+  "repositoryCommitSha": "6fe3c519c325d817f198e8918103e0d2b1c2b9a2",
+  "evidenceHash": "44ac160111d377f583aef6144420a3a0626c11ed16cb2a4a983e14af8982298c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "45e38c91afaddd9e27eeb235ff2c20515033cf5c507e8fb97b36ee3e6257001d",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "memory",
+    "chat",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that models agent state from conversation and tool events, persists situation-based memory, and feeds reflective context back into the system prompt.",
+  "summaries": {
+    "zh": "一个根据对话与工具事件建模智能体状态、持久化情境记忆并将反思上下文写入系统提示词的 DeepSeek Harness 插件。",
+    "en": "A DeepSeek Harness plugin that models agent state from conversation and tool events, persists situation-based memories, and feeds reflective context into the system prompt."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "observes conversation and harness tool-result events",
+      "stores durable interaction-derived seeds and state",
+      "writes a self-model section into the agent system prompt",
+      "provides self_reflect, self_appraise, self_recall, and self_transform tools"
+    ],
+    "reasons": [
+      {
+        "code": "prompt-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "durable-state-storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation-and-tool-observation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "observes conversation and harness tool-result events",
+      "stores durable interaction-derived seeds and state",
+      "writes a self-model section into the agent system prompt",
+      "provides self_reflect, self_appraise, self_recall, and self_transform tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:35.666Z",
+  "repositoryCommitSha": "0ab998f2baf5356a6e3d66d46df0fb7efafb89ce",
+  "evidenceHash": "37ca2fb8628cf2c16c3f7ff27c0c7f9392c2fadc5eb7d5c4257bf960ff372d87",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "638051d4da2144d47848c04b4b852f186a8d9f0a69c1dfa8333197691ad9130d",
+  "shadowMode": false
+}

@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "file",
+    "document",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A chat utility that lets users attach arbitrary dragged files and quote selected conversation text, storing sent attachments in a system temporary directory for model access.",
+  "summaries": {
+    "zh": "为对话界面提供文件拖拽附件和选中文本引用功能，并在发送时将附件暂存到系统临时目录。",
+    "en": "Adds drag-and-drop file attachments and selected-text quoting to the chat interface, temporarily storing sent files for model access."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures files dragged into the chat interface",
+      "Uploads file bytes to a local host endpoint or host handler",
+      "Writes uploaded files to a system temporary directory",
+      "Captures selected conversation text for inclusion in a message",
+      "Intercepts chat submission actions to combine attachments and quoted text"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_write_to_temporary_directory",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_upload_endpoint",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "chat_input_event_interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Captures files dragged into the chat interface",
+      "Uploads file bytes to a local host endpoint or host handler",
+      "Writes uploaded files to a system temporary directory",
+      "Captures selected conversation text for inclusion in a message",
+      "Intercepts chat submission actions to combine attachments and quoted text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:26.992Z",
+  "repositoryCommitSha": "d8ee3a77aed2c5446942073470faaa9de9ecd98a",
+  "evidenceHash": "760f42c31b934d5e4444623d476e3685b23534aaad9b2790b3a2fe58d5ce85d7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b3b3f10feaaa19e7119b5b98d4d34eb465a41ded97b3d3a3327e51afc646ee0f",
+  "shadowMode": false
+}

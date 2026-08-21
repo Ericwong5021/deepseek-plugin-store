@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a DeepSeek Harness code-runtime backend that executes TypeScript programs in disposable containers with configurable resource limits and optional workspace mounts.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于容器的 TypeScript 代码运行后端，并支持配置网络、文件系统及资源限制。",
+    "en": "Provides a container-based TypeScript code-runtime backend for DeepSeek Harness with configurable network, filesystem, and resource limits."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes TypeScript programs in fresh containers",
+      "Invokes a host container engine through a CLI",
+      "Applies configurable network, filesystem, CPU, memory, process, timeout, and output limits",
+      "Optionally mounts a host workspace into the container"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_container_engine_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_host_workspace_mount",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_isolation_escape_hatch",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Executes TypeScript programs in fresh containers",
+      "Invokes a host container engine through a CLI",
+      "Applies configurable network, filesystem, CPU, memory, process, timeout, and output limits",
+      "Optionally mounts a host workspace into the container"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:32.226Z",
+  "repositoryCommitSha": "635a7ccd10f74010c4d249170a82cb4366203e1d",
+  "evidenceHash": "413774387fc7b4b1162d23eef63d8482fbde97d065f7125ecacf727ba039d935",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ef74757aa0fc07fc054d88746f4e07da584f205f1650fe926dabeef57fa7ab76",
+  "shadowMode": false
+}

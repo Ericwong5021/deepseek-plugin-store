@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "monitoring",
+    "tool",
+    "file",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that locally audits agent tool calls, scores selected risks, reports operation history, and blocks specified irreversible commands.",
+  "summaries": {
+    "zh": "用于 DeepSeek Harness 的本地风险审计插件，可记录工具调用、评估风险、生成操作报告并拦截指定的不可逆命令。",
+    "en": "A DeepSeek Harness plugin that locally audits tool calls, evaluates selected risks, generates operation reports, and blocks specified irreversible commands."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Records tool-call metadata, redacted arguments, outcomes, risk tags, and scores in local JSONL files",
+      "Applies deterministic risk scoring to selected destructive, credential-related, network, workspace, dependency, and build operations",
+      "Blocks specified irreversible filesystem, disk, protected-branch force-push, and credential-related network commands before execution",
+      "Provides session, turn, and history operation reports through the /risk-guard command"
+    ],
+    "reasons": [
+      {
+        "code": "local_audit_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution_blocking",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "risk_scoring_and_reporting",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Records tool-call metadata, redacted arguments, outcomes, risk tags, and scores in local JSONL files",
+      "Applies deterministic risk scoring to selected destructive, credential-related, network, workspace, dependency, and build operations",
+      "Blocks specified irreversible filesystem, disk, protected-branch force-push, and credential-related network commands before execution",
+      "Provides session, turn, and history operation reports through the /risk-guard command"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:02.844Z",
+  "repositoryCommitSha": "790bda59aae6ca75fac0683b3651309cf4b146d6",
+  "evidenceHash": "a7c75cbc9bf61047450d0726daf1a9ee183de182906680417846471bc29b4266",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ad0137be250cb14ee9873b8cb751b17b49823299d40198ec343c7b5fb2b26db6",
+  "shadowMode": false
+}

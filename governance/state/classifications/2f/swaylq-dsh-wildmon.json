@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin that adds a Pokémon-style collection game driven by work-session events, with slash commands, local persistence, and no network access described in the README.",
+  "summaries": {
+    "zh": "这是一个将工作流事件转化为随机遭遇、捕捉、图鉴和队伍管理玩法的 DSH 本地收集游戏插件。",
+    "en": "A local DSH collection-game plugin that turns workflow events into random encounters, capturing, a Pokédex, and team management."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Registers slash commands for a local collection game",
+      "Listens to agent lifecycle, message, tool-result, and error events by event type",
+      "Reads and writes its own local state file at $DSH_HOME/wildmon/state.json",
+      "Does not use network access or expose model-visible tools according to the README"
+    ],
+    "reasons": [
+      {
+        "code": "local_state_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "event_listener_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Registers slash commands for a local collection game",
+      "Listens to agent lifecycle, message, tool-result, and error events by event type",
+      "Reads and writes its own local state file at $DSH_HOME/wildmon/state.json",
+      "Does not use network access or expose model-visible tools according to the README"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:20.166Z",
+  "repositoryCommitSha": "a2c7df00b27c2de9f2b0915d3bd5f1acc4d02c68",
+  "evidenceHash": "5fb80317f937e3cf825c133172777d4b841aaa7e032a75768418366c57f9b7d1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b0b76c1c4f5d529d71cfafa186d5f4918bcb73aa0173c3f2dbfc9afb5c3bd45a",
+  "shadowMode": false
+}

@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "image",
+    "integration",
+    "search",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes an external-service integration that uses a user-authorized ChatGPT/Codex OAuth session to provide Codex models, optional search, and gpt-image-2 image generation and editing within DeepSeek Harness.",
+  "summaries": {
+    "zh": "通过用户授权的 ChatGPT/Codex OAuth 会话，在 DeepSeek Harness 中提供 Codex 模型、可选搜索以及 gpt-image-2 图像生成和编辑功能。",
+    "en": "Uses a user-authorized ChatGPT/Codex OAuth session to provide Codex models, optional search, and gpt-image-2 image generation and editing in DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "ChatGPT/Codex OAuth sign-in and token refresh through the host credential store",
+      "Access to Codex models through an external provider",
+      "Optional Codex search provider",
+      "Image generation and editing through gpt-image-2",
+      "Read local image references and write generated image files and attachments"
+    ],
+    "reasons": [
+      {
+        "code": "oauth_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_image_generation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "ChatGPT/Codex OAuth sign-in and token refresh through the host credential store",
+      "Access to Codex models through an external provider",
+      "Optional Codex search provider",
+      "Image generation and editing through gpt-image-2",
+      "Read local image references and write generated image files and attachments"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:34.500Z",
+  "repositoryCommitSha": "44f1c686bf4ddd715c395992a3cd8bcb9f83c7aa",
+  "evidenceHash": "ff0c1fe583757c928f9ab0b26d0fa44bc11d370d8b61c857e5528c7da27fc503",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b2d0e7484ed24c7c7006b93490f9596ef3c346d0452d8644354b8b717077950e",
+  "shadowMode": false
+}

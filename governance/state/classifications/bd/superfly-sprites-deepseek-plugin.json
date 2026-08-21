@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "mcp",
+    "terminal",
+    "testing",
+    "automation",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Integrates DeepSeek Harness with the hosted Sprites MCP service to manage persistent isolated Linux environments for remote builds, tests, experiments, and services.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 连接到 Sprites MCP 服务，以管理用于构建、测试、实验和运行服务的持久隔离 Linux 环境。",
+    "en": "Connects DeepSeek Harness to the Sprites MCP service for managing persistent isolated Linux environments used for builds, tests, experiments, and long-running services."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the hosted Sprites MCP service using OAuth",
+      "Creates and manages isolated persistent Linux environments",
+      "Runs builds, tests, experiments, and long-running services remotely",
+      "Performs filesystem changes and can create checkpoints or destroy environments",
+      "Exposes service URLs that may be internet-accessible"
+    ],
+    "reasons": [
+      {
+        "code": "oauth_external_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_environment_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "irreversible_resource_deletion",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "potentially_public_service_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the hosted Sprites MCP service using OAuth",
+      "Creates and manages isolated persistent Linux environments",
+      "Runs builds, tests, experiments, and long-running services remotely",
+      "Performs filesystem changes and can create checkpoints or destroy environments",
+      "Exposes service URLs that may be internet-accessible"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:10.029Z",
+  "repositoryCommitSha": "2d6795231a270d6ca231bbe8dda12aeeb2007deb",
+  "evidenceHash": "16a32a45bc8378d9aa7637657b20e39441c6ea4228287db0b08a43f5145bace5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6abf006d9d36bef9ffe64b35b4e76630904b66db3869b5ef5f8869d64feb6c8e",
+  "shadowMode": false
+}

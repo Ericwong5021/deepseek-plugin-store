@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "tool",
+    "agent",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a vision tool for DeepSeek Harness that converts local images or URLs into text descriptions through configured multimodal APIs with automatic fallback.",
+  "summaries": {
+    "zh": "为不具备原生视觉能力的 DeepSeek Harness 模型提供图片理解工具，可从本地路径或网络 URL 获取图片并返回中文描述。",
+    "en": "Provides DeepSeek Harness with an image-understanding tool that accepts local paths or URLs and returns Chinese descriptions through configured multimodal models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads images from local paths or network URLs",
+      "Encodes image data as base64 data URLs",
+      "Sends images to configured external multimodal model APIs",
+      "Automatically retries with a configured fallback model"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "api_secret_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads images from local paths or network URLs",
+      "Encodes image data as base64 data URLs",
+      "Sends images to configured external multimodal model APIs",
+      "Automatically retries with a configured fallback model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:55.398Z",
+  "repositoryCommitSha": "a9bbce894547398fe65dc02448a3c3a22d395fbc",
+  "evidenceHash": "da410b90a2195ffd988702e00314a66aa55c0b6515624e12c5b53efd5eedc10b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "79e6f9de88668b2ab97355e9af4a4aa1b70ada2c9971823b840923b7c41a0cdc",
+  "shadowMode": false
+}

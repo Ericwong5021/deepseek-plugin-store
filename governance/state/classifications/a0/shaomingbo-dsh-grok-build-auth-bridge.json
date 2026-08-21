@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "chat",
+    "cli",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH integration bundle that reuses a locally authenticated Grok Build CLI session, refreshes it through the official CLI, synchronizes an access token, and exposes a Grok subscription model route.",
+  "summaries": {
+    "zh": "将本地 Grok Build CLI 的订阅登录接入 DeepSeek Harness，并同步访问令牌以提供 Grok 模型路由。",
+    "en": "Connects a locally authenticated Grok Build CLI subscription to DeepSeek Harness and provisions a Grok model route using a synchronized access token."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the local Grok Build authentication session",
+      "Invokes the official Grok CLI to refresh authentication",
+      "Stores a short-lived access token in the DSH credential service",
+      "Configures a DSH provider route for the Grok Build subscription proxy",
+      "Sends requests to an external Grok service"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive-credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-network-service",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Reads the local Grok Build authentication session",
+      "Invokes the official Grok CLI to refresh authentication",
+      "Stores a short-lived access token in the DSH credential service",
+      "Configures a DSH provider route for the Grok Build subscription proxy",
+      "Sends requests to an external Grok service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:28.869Z",
+  "repositoryCommitSha": "b9b249b3cca64eec04cffc1c37301a41654207bd",
+  "evidenceHash": "0f6b97637245f6e614f63c919e82848007c789981039d5d5db81f9498b358bbc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "67d73c97f89327c17e2145ce52a6b953ebbba7393c9361b774dd252a3fbf1fa3",
+  "shadowMode": false
+}

@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "desktop",
+    "ui",
+    "integration",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a native Windows plugin that notifies users about completed tasks and pending decisions through toasts, sounds, and taskbar badges, with configurable quiet hours and local settings.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 Windows 系统 Toast、提示音和任务栏角标，用于提醒任务完成及待处理的用户决策。",
+    "en": "Provides DeepSeek Harness with Windows toasts, notification sounds, and taskbar badges for completed tasks and pending user decisions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays Windows toast notifications and taskbar badges for task completion and user decisions",
+      "Plays locally configured notification sounds",
+      "Reads and writes plugin settings through local HTTP routes",
+      "Writes local notification state and logs",
+      "Installs or removes the plugin by modifying DSH profile bundle and dependency entries",
+      "May access the npm registry during legacy patch restoration"
+    ],
+    "reasons": [
+      {
+        "code": "local_system_notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_settings_and_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "profile_manifest_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_package_download",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Displays Windows toast notifications and taskbar badges for task completion and user decisions",
+      "Plays locally configured notification sounds",
+      "Reads and writes plugin settings through local HTTP routes",
+      "Writes local notification state and logs",
+      "Installs or removes the plugin by modifying DSH profile bundle and dependency entries",
+      "May access the npm registry during legacy patch restoration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:10.121Z",
+  "repositoryCommitSha": "42c3ae80e1beac7516e8678b3dd449c2f0f55e25",
+  "evidenceHash": "dde08e55255903389e961ddd194c7bb3bb0f0c6397ffd8321e4f4adfe1ae1bee",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "25a1ec63d5e0a3e504589cd80edb5b65dbc7897ee267ad690449701d93919888",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "ui",
+    "agent",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that previews file edits as line-level diffs and requires approval before selected write, edit, or replace-editor tools execute.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中预览文件编辑的逐行差异，并在指定写入工具执行前请求用户批准或拒绝。",
+    "en": "Previews line-level diffs for file edits in DeepSeek Harness and requests approval before selected write-family tools execute."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads target file contents to compute proposed edit diffs",
+      "Intercepts write-family tool calls before execution",
+      "Presents approval controls and can allow or reject an edit",
+      "Provides settings and a host command to enable or disable edit approval"
+    ],
+    "reasons": [
+      {
+        "code": "file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_control",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Reads target file contents to compute proposed edit diffs",
+      "Intercepts write-family tool calls before execution",
+      "Presents approval controls and can allow or reject an edit",
+      "Provides settings and a host command to enable or disable edit approval"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:10.585Z",
+  "repositoryCommitSha": "c509fe3c5dc8029457f5217d30d46b7d365d6b6b",
+  "evidenceHash": "66d038baa4e19eb505dc48c832291370c96b920aa8bab1b27bdde5b4094c3212",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c74fd8d01f8b4ed7ec5b956d4335171bde2ebfb6d292346e5a9a70130f4e3b5a",
+  "shadowMode": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.94,
+  "reason": "The plugin replaces DeepSeek Harness connection handling and requires an external authorizer before HTTP, RPC, WebSocket, and privileged API access, making it a security-sensitive external integration.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的 HTTP、RPC 和 WebSocket 连接接入外部请求授权，并控制特权 API 的访问入口。",
+    "en": "Adds external request authorization to DeepSeek Harness HTTP, RPC, and WebSocket connections and gates privileged API entry points."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Replaces the built-in DeepSeek Harness connection module",
+      "Mediates authorization for HTTP, RPC, and WebSocket remote entry points",
+      "Handles privileged API authority decisions for settings, credentials, and host file operations",
+      "Applies host, origin, DNS-rebinding, loopback, and external authorizer checks"
+    ],
+    "reasons": [
+      {
+        "code": "remote-access-authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged-api-gating",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network-protocol-interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Replaces the built-in DeepSeek Harness connection module",
+      "Mediates authorization for HTTP, RPC, and WebSocket remote entry points",
+      "Handles privileged API authority decisions for settings, credentials, and host file operations",
+      "Applies host, origin, DNS-rebinding, loopback, and external authorizer checks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.94,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:51.699Z",
+  "repositoryCommitSha": "873c465f140310e5ecc54ff797932e27bccb8f0e",
+  "evidenceHash": "9d8b878b38be00f61b378f803220201f69622ba38536bdaab3182d1806754871",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "532c07446f2fc1b3535662ab911fd0acbef400cb9007b4f65e9313b870feaaad",
+  "shadowMode": false
+}

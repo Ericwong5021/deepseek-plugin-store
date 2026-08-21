@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "context",
+    "data",
+    "file",
+    "memory",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH Web plugin focused on navigating, recording, and restoring sent input history, with durable local-file persistence and support for associated attachments.",
+  "summaries": {
+    "zh": "为 DSH Web 输入框提供上下键历史导航，并记录、恢复和持久化已发送的文本及相关附件引用。",
+    "en": "Provides DSH Web input-history navigation with up and down keys, recording, restoring, and persisting sent text and related attachment references."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Captures sent prompts and associated image or file references",
+      "Navigates previously sent input with up and down arrow keys",
+      "Persists input history in a user-directory JSON file through a host API",
+      "Uses localStorage as a synchronization cache"
+    ],
+    "reasons": [
+      {
+        "code": "USER_INPUT_CAPTURE_AND_PERSISTENCE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_FILE_WRITE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "HOST_API_ACCESS",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Captures sent prompts and associated image or file references",
+      "Navigates previously sent input with up and down arrow keys",
+      "Persists input history in a user-directory JSON file through a host API",
+      "Uses localStorage as a synchronization cache"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:01.495Z",
+  "repositoryCommitSha": "9b5b7a494a5ce00197d23f98f0ff828d97a95565",
+  "evidenceHash": "9cc0be0621c807da4469c4ac81665dec43d9a14f1c86ac453c9173e61d46ccc3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5dfbb551d03477582b71dc6e2327b43fbcb676c46359eb3568d3d0d541d63e3f",
+  "shadowMode": false
+}

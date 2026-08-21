@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "context",
+    "integration",
+    "skill",
+    "workflow",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A compatibility bridge that reuses Claude Code rules, skills, agents, and command hooks in DeepSeek Harness without copying source assets; its documented hook execution and explicit external references warrant R2 risk.",
+  "summaries": {
+    "zh": "将 Claude Code 的规则、技能、代理定义和命令钩子以只读方式接入 DeepSeek Harness，并通过项目配置提供可选适配。",
+    "en": "A read-only compatibility bridge that exposes Claude Code rules, skills, agent definitions, and command hooks to DeepSeek Harness with optional project-specific adaptations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads project and user Claude configuration files",
+      "Loads rules into sessions",
+      "Registers and invokes skills and agent definitions",
+      "Bridges lifecycle command hooks to DSH events",
+      "Executes shell commands defined by project or user hooks",
+      "Follows explicit skill and agent symlinks and rule imports"
+    ],
+    "reasons": [
+      {
+        "code": "shell_command_execution_from_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "explicit_external_file_references_via_symlinks_and_imports",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Reads project and user Claude configuration files",
+      "Loads rules into sessions",
+      "Registers and invokes skills and agent definitions",
+      "Bridges lifecycle command hooks to DSH events",
+      "Executes shell commands defined by project or user hooks",
+      "Follows explicit skill and agent symlinks and rule imports"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:40.714Z",
+  "repositoryCommitSha": "ded28e4abc14e5841f3c24b39a94fa4923ab1e53",
+  "evidenceHash": "a83d14009f503e0e7470751a8dd0ab16a8694bf4d19f09d406e081cf1ce22592",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4027c45a0416e32845d128840ba6f69d9605cb36057fa5688b229dfeefbfbcdf",
+  "shadowMode": false
+}

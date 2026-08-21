@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "chat",
+    "file",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin for in-place conversation rewind within the same session, with an optional user-selected restore of workspace files changed by tracked editing tools.",
+  "summaries": {
+    "zh": "用于在同一会话内将 DeepSeek Harness 对话回退到较早的用户消息，并可选恢复受支持编辑工具修改的工作区文件。",
+    "en": "Rewinds a DeepSeek Harness conversation to an earlier user message in the same session and optionally restores workspace files changed by supported editing tools."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Rewinds the model-visible conversation to an earlier user message within the same session",
+      "Stops an active model turn before rewinding",
+      "Creates and persists before-state backups for selected file-editing tool operations",
+      "Optionally restores modified files or deletes files created after the rewind target"
+    ],
+    "reasons": [
+      {
+        "code": "conversation_surface_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_workspace_file_restore",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_backups",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Rewinds the model-visible conversation to an earlier user message within the same session",
+      "Stops an active model turn before rewinding",
+      "Creates and persists before-state backups for selected file-editing tool operations",
+      "Optionally restores modified files or deletes files created after the rewind target"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:12.481Z",
+  "repositoryCommitSha": "7aeb7b4b393df2aa1aa7643cae05c52b4c7c5663",
+  "evidenceHash": "0240def82b9ed3541f185f64edf962d37192ccb030c20f3901ade03d7305bbed",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0bdc3bdad78d91f9013d27ba025d23107ec869088efbc7083770d35daf353b74",
+  "shadowMode": false
+}

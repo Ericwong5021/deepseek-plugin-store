@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "tool",
+    "ui",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A chat-composer utility that uses the host language model to rewrite draft prompts for clarity and executability, then lets the user review and replace the draft.",
+  "summaries": {
+    "zh": "在聊天输入框中调用宿主语言模型优化草稿提示词，并支持预览后将改写结果写回输入框。",
+    "en": "Optimizes draft prompts in the chat composer with the host language model and lets users review and replace the draft with the rewrite."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the current chat composer text when activated",
+      "Sends the draft to the host language model for rewriting",
+      "Displays a before-and-after rewrite dialog",
+      "Writes the selected rewrite back into the chat composer"
+    ],
+    "reasons": [
+      {
+        "code": "processes_user_draft_with_host_model",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_composer_only_after_user_action",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the current chat composer text when activated",
+      "Sends the draft to the host language model for rewriting",
+      "Displays a before-and-after rewrite dialog",
+      "Writes the selected rewrite back into the chat composer"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:45.779Z",
+  "repositoryCommitSha": "4e304b82f5fbf508346cd460c349f730f3b4ca6f",
+  "evidenceHash": "817f98d77abad46cc8462f3de25e576e8f0d8c6f9c2e3102bed6e95985724880",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "648d10abffd48db89128f213a86b70cf04abac0449894a5858ae0e8dbbd1e01e",
+  "shadowMode": false
+}

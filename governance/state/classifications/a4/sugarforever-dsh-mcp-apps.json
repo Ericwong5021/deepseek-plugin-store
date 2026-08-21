@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "api",
+    "ui",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness integration plugin that connects to MCP servers, exposes their tools, and embeds MCP App interfaces in the conversation UI.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 连接到 MCP 服务器，提供工具调用并在对话界面中嵌入 MCP 应用界面。",
+    "en": "Connects DeepSeek Harness to MCP servers, exposes their tools, and embeds MCP App interfaces in the conversation UI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to MCP servers over Streamable HTTP",
+      "Launches MCP servers over stdio",
+      "Registers MCP tools for model and app use",
+      "Renders MCP App HTML resources in sandboxed iframes",
+      "Supports tool calls and resource reads through an RPC bridge",
+      "Can pass configured headers and environment variables to MCP server connections"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_forwarding_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "embedded_remote_ui",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to MCP servers over Streamable HTTP",
+      "Launches MCP servers over stdio",
+      "Registers MCP tools for model and app use",
+      "Renders MCP App HTML resources in sandboxed iframes",
+      "Supports tool calls and resource reads through an RPC bridge",
+      "Can pass configured headers and environment variables to MCP server connections"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:46.131Z",
+  "repositoryCommitSha": "5b444876f7bfb0b99909c73fd2cc2a863f7463fe",
+  "evidenceHash": "a7ed74d92b98053d1f68463388574caf8296a97cf339963ef4802a2a24920770",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "568dde682f9fddcd185496abe8bf201bc9d45f161f441adfbf065fe0d951e959",
+  "shadowMode": false
+}

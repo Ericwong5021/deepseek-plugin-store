@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "agent",
+    "terminal",
+    "workflow",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates rule-gated, one-time approval of selected DeepSeek Harness Shell and PowerShell sandbox escalations, with fixed risk checks, optional LLM review, and human fallback for uncertain requests.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中根据命令规则和可选的 LLM 审查，对符合条件的 Shell 与 PowerShell 沙箱升级请求进行一次性自动批准。",
+    "en": "Automates one-time approval of selected Shell and PowerShell sandbox escalations in DeepSeek Harness using command rules, fixed checks, optional LLM review, and human fallback."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Evaluates correlated Shell and PowerShell sandbox escalation requests",
+      "Automatically grants one-time approval for requests matching configured command-prefix rules",
+      "Optionally sends bounded approval context to a configured LLM reviewer",
+      "Provides loopback settings configuration through the Harness settings service"
+    ],
+    "reasons": [
+      {
+        "code": "authorizes-command-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads-approval-context-and-transcript",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses-configured-provider-route",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Evaluates correlated Shell and PowerShell sandbox escalation requests",
+      "Automatically grants one-time approval for requests matching configured command-prefix rules",
+      "Optionally sends bounded approval context to a configured LLM reviewer",
+      "Provides loopback settings configuration through the Harness settings service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:59:16.340Z",
+  "repositoryCommitSha": "a72c8d24dd64f59644b2b0bdb5985edc9bf3c66b",
+  "evidenceHash": "a3185a0d088c454b75de3509c4f61cc313e2acd87dde79559ca4c4b4e0a51eb7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "33daf6ef09b3941e1413637b31b82e2c01a1bf1523ad9fea95daa34834812b4d",
+  "shadowMode": false
+}

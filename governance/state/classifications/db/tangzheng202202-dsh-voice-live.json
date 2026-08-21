@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "chat",
+    "integration",
+    "ui",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH voice interaction plugin that captures browser microphone input, uses a host WebSocket route, integrates Volcengine streaming speech recognition and synthesis, and presents voice controls in the composer and settings.",
+  "summaries": {
+    "zh": "为 DSH 提供实时语音交互，通过浏览器麦克风输入、Volcengine 语音识别与语音合成实现语音对话。",
+    "en": "Provides real-time voice interaction for DSH using browser microphone input together with Volcengine streaming speech recognition and speech synthesis."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Captures microphone audio in the browser",
+      "Streams audio and control messages over a host WebSocket route",
+      "Sends microphone audio to Volcengine streaming ASR",
+      "Sends assistant reply text to Volcengine streaming TTS",
+      "Plays synthesized audio in the browser",
+      "Reads VOLCENGINE_API_KEY from the host environment",
+      "Can cancel an in-flight DSH agent turn"
+    ],
+    "reasons": [
+      {
+        "code": "microphone_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_environment_secret_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_turn_cancellation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Captures microphone audio in the browser",
+      "Streams audio and control messages over a host WebSocket route",
+      "Sends microphone audio to Volcengine streaming ASR",
+      "Sends assistant reply text to Volcengine streaming TTS",
+      "Plays synthesized audio in the browser",
+      "Reads VOLCENGINE_API_KEY from the host environment",
+      "Can cancel an in-flight DSH agent turn"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:48.652Z",
+  "repositoryCommitSha": "118f56353378421123481121228b8b4a78c05462",
+  "evidenceHash": "83be777080182b0dad44eddab53ee30b19422a017c26951fb9437380c231b4b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f0bbbca69aa01e616a53ce6dd08f4878185efa90e2abdeffd727b09cbfb68ab4",
+  "shadowMode": false
+}

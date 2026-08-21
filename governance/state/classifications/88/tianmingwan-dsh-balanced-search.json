@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "api",
+    "mcp",
+    "research",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "Provides web search and URL fetching through multiple external providers, with normalized results, round-robin selection, and automatic failover.",
+  "summaries": {
+    "zh": "通过 Keenable、Exa 和 Tavily 提供统一的网页搜索与指定网址内容抓取工具，并支持轮询和故障切换。",
+    "en": "Provides unified web search and specified-URL content fetching through Keenable, Exa, and Tavily with round-robin routing and failover."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Searches the web through Keenable, Exa, and Tavily APIs",
+      "Fetches and returns content from specified URLs",
+      "Reads provider API keys from environment variables or a local .env file",
+      "Exposes search and fetch tools through a native plugin or stdio MCP server"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "url_content_fetching",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Searches the web through Keenable, Exa, and Tavily APIs",
+      "Fetches and returns content from specified URLs",
+      "Reads provider API keys from environment variables or a local .env file",
+      "Exposes search and fetch tools through a native plugin or stdio MCP server"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:59:06.995Z",
+  "repositoryCommitSha": "7c7f5ce441f99c412ef88072b12984d6efa1fd38",
+  "evidenceHash": "be5a9a07b642077b357a7adcbd5918df9ce3d3f6fdd3bb972c81ce83abbd87d1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9769247ee5a3ba7515da638277585db1166e1e301fbc78b173a2f90f3baf0e56",
+  "shadowMode": false
+}
