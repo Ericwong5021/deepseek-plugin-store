@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An Electron desktop shell that installs and runs the DeepSeek Harness web interface locally, with bundled Node and pnpm runtime management.",
+  "summaries": {
+    "zh": "这是一个基于 Electron 的桌面应用，用于安装并在本地运行 DeepSeek Harness 网页界面。",
+    "en": "An Electron desktop application for installing and running the DeepSeek Harness web interface locally."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs the @deepseek-ai/dsh runtime into the user home directory",
+      "Spawns a local dsh web server on 127.0.0.1",
+      "Displays the DSH web interface in an Electron desktop window",
+      "Checks for and supports runtime updates"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_process_and_server",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_window_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Installs the @deepseek-ai/dsh runtime into the user home directory",
+      "Spawns a local dsh web server on 127.0.0.1",
+      "Displays the DSH web interface in an Electron desktop window",
+      "Checks for and supports runtime updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:08.627Z",
+  "repositoryCommitSha": "9e035aa23ea545976da2d3dd9caaa69383e05823",
+  "evidenceHash": "057714e1858ac12538750cfd81c26becf9339cee1cb637967bd64394fc77cfd4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "28f9774f3dc5117635e1b74de1dc31766b75ad2a662ef0a24a914574b6b119d9",
+  "shadowMode": false
+}

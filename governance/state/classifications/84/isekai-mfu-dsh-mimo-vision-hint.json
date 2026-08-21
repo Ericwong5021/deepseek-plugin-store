@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "workflow",
+    "image",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A prompt-only DSH plugin that guides agents to route image-recognition tasks to a configured mimo-v2.5 workflow subagent, with read_image as fallback.",
+  "summaries": {
+    "zh": "通过注入系统提示词，引导 DSH 智能体将图像识别任务路由到配置的 mimo-v2.5 子智能体，并在不可用时回退到 read_image。",
+    "en": "A prompt-only DSH plugin that guides agents to route image-recognition tasks to a configured mimo-v2.5 subagent and fall back to read_image when unavailable."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Injects system-prompt guidance for image-recognition task routing",
+      "Can guide an agent to dispatch a workflow subagent when the workflow tool and configured model are available",
+      "Falls back to the host read_image capability when subagent dispatch is unavailable"
+    ],
+    "reasons": [
+      {
+        "code": "prompt_injection_only",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workflow_dispatch_guidance",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_tools_or_services_registered",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Injects system-prompt guidance for image-recognition task routing",
+      "Can guide an agent to dispatch a workflow subagent when the workflow tool and configured model are available",
+      "Falls back to the host read_image capability when subagent dispatch is unavailable"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:46.969Z",
+  "repositoryCommitSha": "b851a236ae83851e773c38e24623b43303d3743a",
+  "evidenceHash": "5184b19780d0ffdbc2a037ad3cc5c88ac181460f871ecfe418eee39e9795c4a6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bd0079443c463e4cf213e0cc9c09cc6f90309f8d0ac3384d0e6d313d870c7cbd",
+  "shadowMode": false
+}

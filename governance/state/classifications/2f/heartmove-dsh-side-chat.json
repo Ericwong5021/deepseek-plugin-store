@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "agent",
+    "chat",
+    "context",
+    "layout",
+    "ui",
+    "workflow",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a resizable right-side panel that provides isolated agentic chats, transfers selected conversation context and question-dialog options, and can return replies to the main conversation; it may also access the workspace under configured permissions.",
+  "summaries": {
+    "zh": "为 DSH 提供与主会话隔离的右侧智能体聊天面板，可基于选中文本或问题弹框进行分析，并将回复带回主会话。",
+    "en": "Adds an isolated right-side agent chat panel for DSH that can analyze selected text or question-dialog options and bring responses back to the main conversation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "creates isolated side-chat agent sessions",
+      "inherits the parent conversation's model, tools, working directory, and permission preset",
+      "may read workspace and parent-conversation records when enabled",
+      "inserts or summarizes side-chat replies into the main conversation",
+      "handles selected message text and question-dialog options"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_access_and_agent_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context_injection_into_main_conversation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_side_panel_sessions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "creates isolated side-chat agent sessions",
+      "inherits the parent conversation's model, tools, working directory, and permission preset",
+      "may read workspace and parent-conversation records when enabled",
+      "inserts or summarizes side-chat replies into the main conversation",
+      "handles selected message text and question-dialog options"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:43.896Z",
+  "repositoryCommitSha": "9dda48d72d3b51589096e8b130d3dd83740531f7",
+  "evidenceHash": "d4c6b33c626e27310515e0649513238f69101201985e9ed2cd5e848f3e2639c3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "73cc21273ad22d77a71b44ff184c24d39bdd6144ea696112306312b47aaa1b89",
+  "shadowMode": false
+}

@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "cli",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a dsh plugin whose primary purpose is discovering model metadata from configured API hosts, normalizing pricing and capabilities, and generating catalogs and dsh configuration fragments.",
+  "summaries": {
+    "zh": "从配置的 OpenAI 兼容 API 主机发现模型列表、价格和能力信息，生成标准化目录、dsh 配置片段及报告。",
+    "en": "Discovers model listings, pricing, and capabilities from configured OpenAI-compatible API hosts and generates normalized catalogs, dsh configuration fragments, and reports."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "connects to configured OpenAI-compatible API hosts",
+      "reads model listings, pricing, and capability metadata",
+      "optionally sends live capability probe requests",
+      "uses API keys supplied through environment variables",
+      "writes normalized catalogs, configuration fragments, reports, and cache files"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_output_and_cache",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "connects to configured OpenAI-compatible API hosts",
+      "reads model listings, pricing, and capability metadata",
+      "optionally sends live capability probe requests",
+      "uses API keys supplied through environment variables",
+      "writes normalized catalogs, configuration fragments, reports, and cache files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:43.804Z",
+  "repositoryCommitSha": "f9ec6c7810e32686719c192679d7a27d4cfaf1ac",
+  "evidenceHash": "f05af0153088feeb4c95e7c687434faec47ed857f3f433108f919aeb1aa867d2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "97f00ff434b79902ad4c810b5a34bd4ed9720752aab594c5eadad2e204ad2ba8",
+  "shadowMode": false
+}

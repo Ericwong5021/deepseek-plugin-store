@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "browser",
+    "api",
+    "agent",
+    "mcp",
+    "collaboration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A multi-module DSH plugin primarily focused on persistent browser and repository workflow automation, with MCP exposure, GitHub/GitLab webhook integrations, automated reviews, and optional issue-fix execution.",
+  "summaries": {
+    "zh": "面向 DSH 的自动化插件套件，提供共享浏览器控制、MCP 服务以及 GitHub 和 GitLab 评审与问题修复工作流集成。",
+    "en": "An automation suite for DSH that provides shared browser control, an MCP server, and GitHub and GitLab review and issue-fixing workflow integrations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automates browser sessions including navigation, form input, file upload and download, JavaScript evaluation, cookies, and persistent profiles",
+      "Exposes local DSH sessions and agent execution through an MCP HTTP server with bearer-token or OAuth authentication",
+      "Integrates with GitHub and GitLab APIs and webhooks for pull or merge request reviews",
+      "Can automatically create local issue-fix branches, run tests, push changes, and open pull requests when configured",
+      "Injects an in-app status and configuration panel"
+    ],
+    "reasons": [
+      {
+        "code": "browser_control_and_local_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_service_and_external_integrations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automated_agent_execution_and_repository_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Automates browser sessions including navigation, form input, file upload and download, JavaScript evaluation, cookies, and persistent profiles",
+      "Exposes local DSH sessions and agent execution through an MCP HTTP server with bearer-token or OAuth authentication",
+      "Integrates with GitHub and GitLab APIs and webhooks for pull or merge request reviews",
+      "Can automatically create local issue-fix branches, run tests, push changes, and open pull requests when configured",
+      "Injects an in-app status and configuration panel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:21.243Z",
+  "repositoryCommitSha": "5d5ade9af01e134a3f64dc9619eb1881993d4a76",
+  "evidenceHash": "1e9afad3069530e376ab3c220cf6eda33f9df5fa7d24c89002dd3f34cfa123e2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4db3bef733a9daaaf632d148da3f9513f22195561691f448b29f0f6ac54aee1d",
+  "shadowMode": false
+}

@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "image",
+    "file",
+    "api",
+    "agent",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin primarily provides agent-facing web search, with additional vision analysis, image capture, and session file staging features documented in the README.",
+  "summaries": {
+    "zh": "提供优先使用 DuckDuckGo 并可回退 Bing 的网络搜索工具，同时支持通过配置的视觉模型分析图片及在会话中暂存文件。",
+    "en": "Provides agent-facing web search with DuckDuckGo and Bing fallback, plus image analysis through configured vision models and file staging within sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "performs web searches through DuckDuckGo with Bing fallback",
+      "sends image sources to configured vision-capable models for analysis",
+      "reads and writes user-selected files in session workspaces",
+      "modifies plugin settings and model input modality declarations",
+      "adds conversation input controls and file or image capture flows"
+    ],
+    "reasons": [
+      {
+        "code": "network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_model_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "settings_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_ui_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "performs web searches through DuckDuckGo with Bing fallback",
+      "sends image sources to configured vision-capable models for analysis",
+      "reads and writes user-selected files in session workspaces",
+      "modifies plugin settings and model input modality declarations",
+      "adds conversation input controls and file or image capture flows"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:34.719Z",
+  "repositoryCommitSha": "28b4a0009ee6c2c3853a2541471ee6dbb8ca14bb",
+  "evidenceHash": "be99a6fb8cf983fa97ed8e29e938c1f8acd33509ea55d4d7bcfa5931b953a77d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dfe0f3e932b03b3ca3dac739a2cd71cba3f4622e695e93642e74a8d1455331a8",
+  "shadowMode": false
+}

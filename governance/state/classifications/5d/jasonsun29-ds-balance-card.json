@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "notification",
+    "visualization",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README明确说明该插件通过DSH凭证库查询多个模型平台的余额和Coding Plan额度，并以常驻浮动卡片、定时刷新和低额度预警进行展示，因此主要属于通知与监控类插件。",
+  "summaries": {
+    "zh": "在常驻浮动卡片中查询并展示多个模型平台的账户余额与套餐额度，并提供定时刷新和低额度预警。",
+    "en": "Displays account balances and plan quotas from multiple model providers in a persistent floating card with periodic refresh and low-quota alerts."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取 DSH 凭证库中已配置的平台 API Key",
+      "调用多个模型平台的余额或套餐额度接口",
+      "在常驻界面中展示余额、配额和状态预警",
+      "按固定间隔自动刷新并在异常或低额度时加速刷新",
+      "提供可拖拽、收起和阈值设置的浮动卡片界面"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic-monitoring",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent-overlay-ui",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "读取 DSH 凭证库中已配置的平台 API Key",
+      "调用多个模型平台的余额或套餐额度接口",
+      "在常驻界面中展示余额、配额和状态预警",
+      "按固定间隔自动刷新并在异常或低额度时加速刷新",
+      "提供可拖拽、收起和阈值设置的浮动卡片界面"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:59.580Z",
+  "repositoryCommitSha": "acc2d63371fd1314259839c093c318e42006ffbc",
+  "evidenceHash": "708168ec619e974346ee3f2dbf04f76422326a7d7a0d0455fa043177f8ee5de2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7c9a6e701873f6e44166a572562b9189a6461b9adf75f147341e0c7997df7b7f",
+  "shadowMode": false
+}

@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "tool",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A cross-platform desktop shell for installing and launching the DeepSeek Harness workspace through a native WebView, with first-run dependency downloads and dsh update support.",
+  "summaries": {
+    "zh": "用于在 macOS、Windows 和实验性 Linux 环境中安装并运行 DeepSeek Harness 工作台的轻量原生桌面应用。",
+    "en": "A lightweight native desktop application for installing and running the DeepSeek Harness workspace on macOS, Windows, and experimentally on Linux."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Loads the DeepSeek Harness workspace in a native WebView",
+      "Downloads and installs a private Node.js runtime and dsh in the user directory",
+      "Checks for and upgrades dsh versions",
+      "Requires internet access during first launch and update checks"
+    ],
+    "reasons": [
+      {
+        "code": "network_download_install",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_update",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_user_directory_write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "Loads the DeepSeek Harness workspace in a native WebView",
+      "Downloads and installs a private Node.js runtime and dsh in the user directory",
+      "Checks for and upgrades dsh versions",
+      "Requires internet access during first launch and update checks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:51.116Z",
+  "repositoryCommitSha": "3c3e0a47bca9b34853a22601b416fa59d465a9a7",
+  "evidenceHash": "aedf0b0b3a4ba7622b904f7345ce4ca8ee339f0d8cd592100cf3f178e859754d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2f816f8c3e700d28ab03a23e53b54e5ded9f785d979f9e9b76143d01115bc941",
+  "shadowMode": false
+}

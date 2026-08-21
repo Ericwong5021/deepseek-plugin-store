@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "browser",
+    "data",
+    "integration",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Displays DeepSeek account balance, remaining-ratio status, and estimated daily spend in the dsh sidebar, with periodic refresh and persisted daily baseline data.",
+  "summaries": {
+    "zh": "在 dsh 侧边栏底部显示 DeepSeek 账户余额、余额剩余比例和当天估算花费，并定期刷新数据。",
+    "en": "Displays DeepSeek account balance, remaining ratio, and estimated daily spend in the dsh sidebar with periodic refreshes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the DeepSeek API key from the configured server-side credentials or environment variable",
+      "Calls the DeepSeek balance API over the network",
+      "Persists daily balance baseline and latest balance data locally",
+      "Exposes balance data through a local RPC channel and displays it in the dsh sidebar"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sidebar_ui_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the DeepSeek API key from the configured server-side credentials or environment variable",
+      "Calls the DeepSeek balance API over the network",
+      "Persists daily balance baseline and latest balance data locally",
+      "Exposes balance data through a local RPC channel and displays it in the dsh sidebar"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:59.439Z",
+  "repositoryCommitSha": "fb9eb8d981c05ee55e8d7934e4688c9bef023b21",
+  "evidenceHash": "4d538344bed4f9b945d2a166da99142fcd23de2f7af18594165359d1225e5af3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3e00460679138040e77c55043839fceb92695f1eeb7ad8e4f0250069d50cfc74",
+  "shadowMode": false
+}

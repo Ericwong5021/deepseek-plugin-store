@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "chat",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Configures multiple OpenAI-compatible LLM gateway providers, discovers available models, manages route credentials, and supports ChatGPT OAuth through a DSH web settings panel.",
+  "summaries": {
+    "zh": "通过 DSH 网页设置面板配置 OpenAI 兼容的 LLM 网关、发现模型并管理路由凭据。",
+    "en": "Configure OpenAI-compatible LLM gateways, discover models, and manage route credentials through a DSH web settings panel."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Configures OpenAI-compatible LLM gateway providers",
+      "Discovers models through gateway GET /models endpoints",
+      "Stores and reuses managed API credentials per route",
+      "Initiates ChatGPT OAuth for the openai-codex provider",
+      "Maps per-model reasoning and media input capabilities"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "oauth_authentication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Configures OpenAI-compatible LLM gateway providers",
+      "Discovers models through gateway GET /models endpoints",
+      "Stores and reuses managed API credentials per route",
+      "Initiates ChatGPT OAuth for the openai-codex provider",
+      "Maps per-model reasoning and media input capabilities"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:43.007Z",
+  "repositoryCommitSha": "0345fa582e640c7b5044c9207cefef3d67a094b5",
+  "evidenceHash": "7c4e1da09885523ad7a8598f3d150b53927c05b538ac003076c4eed4bafba750",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c8c2495479c87535c42ec26b876f2235f0524dea1f18acebc29c00719a65bbb2",
+  "shadowMode": false
+}

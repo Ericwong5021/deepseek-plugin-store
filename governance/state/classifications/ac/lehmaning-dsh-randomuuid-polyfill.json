@@ -1,0 +1,67 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "browser",
+    "api",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A client plugin that restores crypto.randomUUID on insecure HTTP origins using crypto.getRandomValues so the web UI can continue issuing RPC requests.",
+  "summaries": {
+    "zh": "在不安全的 HTTP 页面中使用 crypto.getRandomValues 补充 crypto.randomUUID，以兼容 DeepSeek Harness 网页界面的客户端请求。",
+    "en": "A client plugin that polyfills crypto.randomUUID with crypto.getRandomValues for DeepSeek Harness web interfaces served from insecure HTTP origins."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Installs a client-side crypto.randomUUID polyfill at application boot",
+      "Uses crypto.getRandomValues to generate UUIDs on insecure origins"
+    ],
+    "reasons": [
+      {
+        "code": "client_runtime_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "insecure_origin_compatibility",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Installs a client-side crypto.randomUUID polyfill at application boot",
+      "Uses crypto.getRandomValues to generate UUIDs on insecure origins"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:01.554Z",
+  "repositoryCommitSha": "6c5ddaa15921dcb22882005da2a22669068a63fc",
+  "evidenceHash": "b2e9c4095eae4408a7a58e3c12600ef3f7dfbf990e9b0153d0a46deaaadf3102",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d680b237bfeefbd6727f0fe8f3b1e5d3ad157ffb3258a6bc47249341b093b152",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "agent",
+    "terminal",
+    "file",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An Android mobile shell for DeepSeek Harness that embeds a Termux-based runtime, presents a WebView agent UI, provides a bash console, bridges file access, and manages the engine lifecycle and runtime updates.",
+  "summaries": {
+    "zh": "为 Android 提供 DeepSeek Harness 移动端壳应用，内嵌 Termux 运行时并通过 WebView 提供智能体界面、Bash 终端和文件访问桥接。",
+    "en": "An Android shell for DeepSeek Harness that embeds a Termux runtime and provides a WebView agent interface, Bash terminal, and file-access bridge."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs an embedded web agent with bash, Node.js, coreutils, and plugins",
+      "Provides a built-in terminal console",
+      "Accesses selected directories through the Android Storage Access Framework",
+      "Can request broad external-storage access",
+      "Downloads and replaces runtime snapshots from an online manifest",
+      "Maintains and restarts a background engine service"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "broad_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "online_runtime_update",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_background_service",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs an embedded web agent with bash, Node.js, coreutils, and plugins",
+      "Provides a built-in terminal console",
+      "Accesses selected directories through the Android Storage Access Framework",
+      "Can request broad external-storage access",
+      "Downloads and replaces runtime snapshots from an online manifest",
+      "Maintains and restarts a background engine service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:22.058Z",
+  "repositoryCommitSha": "e388e1f24d932ad42c613a3fcdbd688093d5f66d",
+  "evidenceHash": "6ed727b0d7d4eafa6e3110511b37882e462ab1eb299910f9161e668a5d2f9be5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8135007725f613d29e0ecb9a667e7aec5e1b21a712c4f2a81a55956f9522e757",
+  "shadowMode": false
+}

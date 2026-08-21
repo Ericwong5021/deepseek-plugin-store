@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates multiple local coding-platform API keys and OAuth logins into DeepSeek Harness by reading credential stores and environment variables, with documented token-refresh side effects.",
+  "summaries": {
+    "zh": "将本地 Claude、Codex、Grok、Gemini、OpenCode 等平台的 API 密钥和 OAuth 登录信息导入 DeepSeek Harness。",
+    "en": "Imports local API keys and OAuth logins from Claude, Codex, Grok, Gemini, OpenCode, and related tools into DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local credential files, environment variables, and macOS Keychain entries",
+      "Imports API keys and OAuth credentials into DeepSeek Harness",
+      "May refresh OAuth tokens and affect sign-in state of source CLI tools"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "oauth_token_refresh_side_effect",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Reads local credential files, environment variables, and macOS Keychain entries",
+      "Imports API keys and OAuth credentials into DeepSeek Harness",
+      "May refresh OAuth tokens and affect sign-in state of source CLI tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:10.541Z",
+  "repositoryCommitSha": "fe7b691f52bc1acd433095f4abc47fa0e577dd89",
+  "evidenceHash": "debdf851e4aaed5917cd015358a7657283efbf9bf8f611d9d696ba00df07ee4f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1fbd3f0403a2ced1b70aede03c7977c0a72eb30a5705909aff7b5a1c7c3bde4",
+  "shadowMode": false
+}

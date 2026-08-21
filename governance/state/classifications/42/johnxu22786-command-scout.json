@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "project-analysis",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin scans declared project build commands and exposes them as agent tools that can execute those commands through the shell, making automation its primary user-facing purpose.",
+  "summaries": {
+    "zh": "扫描项目中已声明的构建、测试和开发命令，并将其注册为可供智能体执行的工具。",
+    "en": "Scans project-declared build, test, and development commands and registers them as tools the agent can execute."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Scans Makefiles, package.json scripts, justfiles, and Deno task files",
+      "Registers one agent tool for each discovered project command",
+      "Executes registered commands through the platform shell",
+      "Accepts additional shell arguments verbatim",
+      "Captures command output and enforces execution timeouts"
+    ],
+    "reasons": [
+      {
+        "code": "shell_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "verbatim_argument_forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Scans Makefiles, package.json scripts, justfiles, and Deno task files",
+      "Registers one agent tool for each discovered project command",
+      "Executes registered commands through the platform shell",
+      "Accepts additional shell arguments verbatim",
+      "Captures command output and enforces execution timeouts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:31.066Z",
+  "repositoryCommitSha": "f529f52ac9c70ba404d5ae008ae2519c662ca68b",
+  "evidenceHash": "62534c6f53f45f7f2b6ccb433ea74991185899b9ffc3208f46272c70994004bb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2152f0709e857c9183fc0c91934d913c98023ea17f19b2a688e70737466d6b18",
+  "shadowMode": false
+}

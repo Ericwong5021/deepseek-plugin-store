@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "data",
+    "file",
+    "integration",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness integration for managing authorized JumpServer assets and operating on them through KoKo, including SSH commands, SFTP file access, database sessions, and optional administrative write operations.",
+  "summaries": {
+    "zh": "通过 JumpServer Core API 和 KoKo 管理授权资产，并支持 SSH 命令执行、SFTP 文件读写及数据库会话操作。",
+    "en": "Manage authorized JumpServer assets through the Core API and KoKo, with support for SSH commands, SFTP file access, and database sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to JumpServer through its Core REST API and KoKo",
+      "Lists authorized assets, accounts, nodes, and sessions",
+      "Executes commands on SSH host assets",
+      "Reads and writes files through SFTP host sessions",
+      "Runs database, Redis, MongoDB, and related queries through database sessions",
+      "Optionally creates, updates, and deletes host assets when asset administration is enabled",
+      "Optionally permits database write statements when database write access is enabled"
+    ],
+    "reasons": [
+      {
+        "code": "remote_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "database_write_capability_optional",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "asset_create_update_delete_optional",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to JumpServer through its Core REST API and KoKo",
+      "Lists authorized assets, accounts, nodes, and sessions",
+      "Executes commands on SSH host assets",
+      "Reads and writes files through SFTP host sessions",
+      "Runs database, Redis, MongoDB, and related queries through database sessions",
+      "Optionally creates, updates, and deletes host assets when asset administration is enabled",
+      "Optionally permits database write statements when database write access is enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:07.789Z",
+  "repositoryCommitSha": "444369413dc68d852134c765b46fd156961211a0",
+  "evidenceHash": "04999d48d7a7f71a85a334940f837e9324405f739280864da8dc413de9e03019",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "601eb635bc0a37c3b2f9cc11526db8ed1b433f1a611ca7f46e805f99c6116a81",
+  "shadowMode": false
+}

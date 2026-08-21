@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "api",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds an Auto permission preset for DeepSeek Harness that automatically approves selected routine sandbox escalations while routing dangerous, uncertain, failed, or timed-out cases to human approval.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 增加 Auto 权限档，对部分例行沙箱升级进行自动审批，并将危险或不确定请求交由人工确认。",
+    "en": "Adds an Auto permission preset to DeepSeek Harness that automatically approves selected routine sandbox escalations and sends dangerous or uncertain requests for human review."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatically approves selected one-time sandbox permission escalations",
+      "Uses a configured classification model to evaluate approval requests",
+      "Applies deterministic danger patterns and routes uncertain or blocked requests to human approval",
+      "Records in-memory approval decision reports and emits audit-related logs"
+    ],
+    "reasons": [
+      {
+        "code": "auto_approval_of_agent_actions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_based_permission_classification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_and_system_change_filtering",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Automatically approves selected one-time sandbox permission escalations",
+      "Uses a configured classification model to evaluate approval requests",
+      "Applies deterministic danger patterns and routes uncertain or blocked requests to human approval",
+      "Records in-memory approval decision reports and emits audit-related logs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:13.821Z",
+  "repositoryCommitSha": "a8c2d7e6ccacaa15c18c4d1d56b0ba4d75cb6a39",
+  "evidenceHash": "627ed1f8b67728d20a7620b1f55f2a68137eff487de795dc230edd7eefd0fb25",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b74fd8eee9d56e4cf42d6d7c7d9a77bac3215b11e0e1e0f9b8ddc4bc703ad6c0",
+  "shadowMode": false
+}

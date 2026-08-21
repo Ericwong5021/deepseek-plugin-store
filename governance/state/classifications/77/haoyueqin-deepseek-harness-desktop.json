@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "integration",
+    "automation",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A cross-platform desktop shell that wraps the DeepSeek Harness web UI, manages its local dsh backend, and adds tray, auto-start, settings, and update features.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的 dsh Web 界面封装为支持托盘常驻、自动启动和更新管理的跨平台桌面应用。",
+    "en": "A cross-platform desktop app that wraps the DeepSeek Harness dsh web interface with system-tray persistence, auto-start, settings, and update management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs the locally installed dsh CLI as a child process",
+      "Loads a localhost web interface in a desktop shell",
+      "Can install or upgrade the dsh CLI through npm",
+      "Supports system tray persistence and login auto-start",
+      "Can perform application self-updates on supported platforms",
+      "Stores dsh profiles, sessions, and settings locally"
+    ],
+    "reasons": [
+      {
+        "code": "process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "software_installation_and_updates",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "autostart_and_background_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Runs the locally installed dsh CLI as a child process",
+      "Loads a localhost web interface in a desktop shell",
+      "Can install or upgrade the dsh CLI through npm",
+      "Supports system tray persistence and login auto-start",
+      "Can perform application self-updates on supported platforms",
+      "Stores dsh profiles, sessions, and settings locally"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:32.597Z",
+  "repositoryCommitSha": "e747e0c16a8a9002036d88643e8f381ad402bdb5",
+  "evidenceHash": "9941dd47f9f0069ffb618bf6f2f8a483e095e21dda968ac3081efe295c7c41c0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "321704d9ae06ce7326ed1cf1ba0ad3566711da6abe45326686c96a1eb1ec4241",
+  "shadowMode": false
+}

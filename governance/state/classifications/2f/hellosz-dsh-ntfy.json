@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "notification",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH host-plane plugin that notifies a configured ntfy topic when approval is needed or a top-level agent task finishes, with filtering, cooldowns, and configurable notification content.",
+  "summaries": {
+    "zh": "当 DSH 智能体需要审批或完成顶层任务时，通过配置的 ntfy 主题发送通知。",
+    "en": "Sends notifications to a configured ntfy topic when a DSH agent needs approval or completes a top-level task."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Listens for approval-request and top-level task-completion events",
+      "Sends notifications to a configured ntfy server using curl",
+      "Includes session and recent user-message context in notification content",
+      "Applies configurable cooldowns and notification toggles"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_notification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_context_transmission",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Listens for approval-request and top-level task-completion events",
+      "Sends notifications to a configured ntfy server using curl",
+      "Includes session and recent user-message context in notification content",
+      "Applies configurable cooldowns and notification toggles"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:32:43.137Z",
+  "repositoryCommitSha": "688173bf8eed0612d5ad0c4afc1a0d704e5ca1fa",
+  "evidenceHash": "5409908266eb790b400977aa556d9e2464fd051fc7ff9c3d83778e63d317b918",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "803b9a07d66d5326f30a97b1151eae6d4f58df4f9d7e41a2e8cd98f5b8861202",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "chat",
+    "context",
+    "planning",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates post-turn generation of three critical follow-up prompts and presents them as clickable suggestions that submit through the conversation input.",
+  "summaries": {
+    "zh": "模型回合结束后，本插件将最近三条消息发送给 LLM 生成三个批判性跟进建议，并以可点击气泡显示在输入框上方。",
+    "en": "After each model turn, this plugin sends the latest three messages to an LLM to generate three critical follow-up suggestions and displays them as clickable chips above the input box."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Sends the last three conversation messages to an LLM after a model turn",
+      "Generates three follow-up suggestions",
+      "Displays suggestions in the conversation composer",
+      "Submits a selected suggestion as a user message when clicked",
+      "Stores suggestions in a session projection for UI display"
+    ],
+    "reasons": [
+      {
+        "code": "conversation-data-to-llm",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user-triggered-message-submit",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Sends the last three conversation messages to an LLM after a model turn",
+      "Generates three follow-up suggestions",
+      "Displays suggestions in the conversation composer",
+      "Submits a selected suggestion as a user message when clicked",
+      "Stores suggestions in a session projection for UI display"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:10.107Z",
+  "repositoryCommitSha": "d8ce7d58715c0eb4678cc261e4b5bd84ee28b8da",
+  "evidenceHash": "a32ef84c78c7f454a906f086cb34a8f47f1caa9d84da0761f78b7cdbacc43c22",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "365392f190c37110c781e5924330e4756837f10006bae325857f0054004ab580",
+  "shadowMode": false
+}

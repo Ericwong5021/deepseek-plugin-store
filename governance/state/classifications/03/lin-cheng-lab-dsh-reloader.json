@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "cli",
+    "terminal",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates restarting the DSH web process after plugin installation or updates by locating and terminating the port-3080 DSH process, then launching it again in the background.",
+  "summaries": {
+    "zh": "在插件安装或更新后，通过定位并重启 DSH Web 进程来自动使插件生效。",
+    "en": "Automatically restarts the DSH web process after plugin installation or updates so changes take effect."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Uses shell execution to perform a delayed background restart",
+      "Locates the process listening on TCP port 3080 and verifies its command line",
+      "Terminates the matching DSH web process",
+      "Starts a detached dsh web process with nohup",
+      "Writes restart logs to ~/.dsh/web.log"
+    ],
+    "reasons": [
+      {
+        "code": "process_termination",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Uses shell execution to perform a delayed background restart",
+      "Locates the process listening on TCP port 3080 and verifies its command line",
+      "Terminates the matching DSH web process",
+      "Starts a detached dsh web process with nohup",
+      "Writes restart logs to ~/.dsh/web.log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:34.742Z",
+  "repositoryCommitSha": "c85693d8754ebec18092c2b162cb36e49e5266e5",
+  "evidenceHash": "ad23ebc6110cd128b4c875ca968327a7938592c7727ae6f24e9caebc940e9cab",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5d5a94f3a047b04dde2f81c756c9948b28b7d82855b6ba1767a1e72e4c39c852",
+  "shadowMode": false
+}

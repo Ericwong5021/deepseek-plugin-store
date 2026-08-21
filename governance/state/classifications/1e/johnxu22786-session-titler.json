@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "chat",
+    "context",
+    "api",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that automatically captions sessions immediately from keywords, then refines titles and adds one-line summaries with a budget model after inactivity.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 自动生成会话标题，并在会话空闲后使用预算模型完善标题和添加单行摘要。",
+    "en": "Automatically captions DeepSeek Harness sessions from keywords, then refines titles and adds one-line summaries with a budget model when sessions become idle."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Automatically generates session titles from user messages",
+      "Calls a configured language model during idle refinement",
+      "Writes refined titles and one-line summaries to session metadata and logs",
+      "Listens to session and model-directory events"
+    ],
+    "reasons": [
+      {
+        "code": "model_inference",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_metadata_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "background_event_listeners",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Automatically generates session titles from user messages",
+      "Calls a configured language model during idle refinement",
+      "Writes refined titles and one-line summaries to session metadata and logs",
+      "Listens to session and model-directory events"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:34:49.057Z",
+  "repositoryCommitSha": "cfd39f3946e7ebf31e6ddf21a14c4423be1de7c9",
+  "evidenceHash": "7a7c41f222f4a0fba4bb97b1b0305ac24d183ca9925e2f91b7d8a91c8df16f0f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35f168afb04c9c21c7a0517bc4729859bfc44520686379c5f090189c51847286",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A configuration-based DeepSeek Harness bridge that integrates OpenAI-compatible vision models, sends image-bearing messages for visual analysis, and forwards the resulting description to DeepSeek for reasoning and final responses.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 接入可选的 OpenAI 兼容视觉模型，并将图像分析结果转交 DeepSeek 生成最终回答。",
+    "en": "Connects selectable OpenAI-compatible vision models to DeepSeek Harness and forwards image analysis results to DeepSeek for reasoning and final responses."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Routes image-bearing messages to a configured OpenAI-compatible vision endpoint",
+      "Uses configured provider credentials or environment variables for vision requests",
+      "Transforms vision analysis into text for DeepSeek to generate the final response",
+      "Discovers image-capable models from configured Harness providers"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "handles_images_and_text",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "uses_api_credentials",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes image-bearing messages to a configured OpenAI-compatible vision endpoint",
+      "Uses configured provider credentials or environment variables for vision requests",
+      "Transforms vision analysis into text for DeepSeek to generate the final response",
+      "Discovers image-capable models from configured Harness providers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:25.881Z",
+  "repositoryCommitSha": "c4c76c2a2a69313b91728dcde2827e014aad7c72",
+  "evidenceHash": "593b84e6788a430f8e8609cd4d437240ed0a096d7e6efa7b894b81c7248a6f5e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "dbcd08a5ceb02e5b4944c906e0c503bda01690286d738723acc8925e0aed77c0",
+  "shadowMode": false
+}

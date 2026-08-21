@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "api",
+    "data",
+    "ui",
+    "visualization",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web plugin that monitors configured model-provider quotas and balances, periodically refreshes read-only usage data, and presents compact indicators with detailed status panels.",
+  "summaries": {
+    "zh": "在 DSH Web 侧边栏显示并定期刷新多个模型 Provider 的订阅额度、限流窗口和账户余额详情。",
+    "en": "Displays and periodically refreshes subscription quotas, rate-limit windows, and account balance details for configured model providers in the DSH Web sidebar."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured provider credential references through the DSH credentials service",
+      "Queries supported provider quota and balance endpoints using HTTP GET requests",
+      "Displays normalized quota, usage, balance, reset, and error information in the DSH Web interface",
+      "Exposes quota data through a local HTTP endpoint",
+      "Refreshes provider data periodically and after conversation turns"
+    ],
+    "reasons": [
+      {
+        "code": "credential-reference-use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-read-only-api-requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-http-data-endpoint",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic-background-refresh",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured provider credential references through the DSH credentials service",
+      "Queries supported provider quota and balance endpoints using HTTP GET requests",
+      "Displays normalized quota, usage, balance, reset, and error information in the DSH Web interface",
+      "Exposes quota data through a local HTTP endpoint",
+      "Refreshes provider data periodically and after conversation turns"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:33:58.547Z",
+  "repositoryCommitSha": "757affff17bae5dabd4a434e51d2bf0ef0345c4a",
+  "evidenceHash": "84ede525a8a17ea52195f105509ebfabf49898c28dc3dc9832ab4aefdf4f4ec1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bb2ae71ef202dd035fb7b1dafd532bf5c4d5e28e9eee232b9c6d9622a090e7ab",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates narrowly matched DeepSeek Harness sandbox escalation approvals by routing bounded context and tool arguments to a tool-less reviewer that returns allow or deny, with configurable failure handling.",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness 自动审核沙箱升级请求的插件，通过一次性无工具审查代理对匹配的请求返回允许或拒绝决定。",
+    "en": "A DeepSeek Harness plugin that automates matched sandbox escalation approvals through a one-shot tool-less reviewer returning an allow or deny decision."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts strict sandbox escalation approval requests",
+      "Sends bounded session context and planned tool arguments to a configured model route",
+      "Spawns a one-shot tool-less reviewer subagent",
+      "Applies structured allow or deny decisions to sandbox escalation requests",
+      "Reads the in-memory parent transcript and current sandbox policy",
+      "Uses the normal model-provider network route"
+    ],
+    "reasons": [
+      {
+        "code": "automated_sandbox_authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context_sent_to_model_reviewer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subagent_spawn",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts strict sandbox escalation approval requests",
+      "Sends bounded session context and planned tool arguments to a configured model route",
+      "Spawns a one-shot tool-less reviewer subagent",
+      "Applies structured allow or deny decisions to sandbox escalation requests",
+      "Reads the in-memory parent transcript and current sandbox policy",
+      "Uses the normal model-provider network route"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:35:14.618Z",
+  "repositoryCommitSha": "5cef6e92569222d438d39da317b5b86f4c0ccdbb",
+  "evidenceHash": "e31aebafc1d75015611fdc7bebd537a623d4bea1b1af4e2aa81819a2efcf111e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1f19d466b6ab0168143faa9a5cc4037c900fae94fd89f079f5fd447dba798888",
+  "shadowMode": false
+}

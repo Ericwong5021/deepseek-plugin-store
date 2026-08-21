@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "api",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a model-based approval workflow for DeepSeek Harness permission requests, combining deterministic routing with a separate reviewer model and human escalation.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于独立评审模型的工具权限审批流程，并支持规则路由、拒绝熔断和人工升级。",
+    "en": "Adds a DeepSeek Harness permission workflow that uses a separate reviewer model with rule-based routing, denial circuit breaking, and human escalation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts permission approval requests in DeepSeek Harness",
+      "Routes requests through allowlists, denylists, human-only rules, and a circuit breaker",
+      "Invokes a separate reviewer model to allow, deny, or escalate tool requests",
+      "Reads tool arguments from the session log for review",
+      "Appends model approval or denial decisions to the session"
+    ],
+    "reasons": [
+      {
+        "code": "autonomous_permission_decisions_can_allow_tool_actions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "integrates_with_external_reviewer_model_provider",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "processes_session_tool_arguments_and_request_context",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Intercepts permission approval requests in DeepSeek Harness",
+      "Routes requests through allowlists, denylists, human-only rules, and a circuit breaker",
+      "Invokes a separate reviewer model to allow, deny, or escalate tool requests",
+      "Reads tool arguments from the session log for review",
+      "Appends model approval or denial decisions to the session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:36:14.108Z",
+  "repositoryCommitSha": "cd84622eb9308c295e6c5073bfae7792704c9194",
+  "evidenceHash": "8285f01a2467bff8235d99c8018b114edb16921f86b01ae9e394f4b9957cb23d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f534e155b60c4f7470984e3b013e44789a8e9776c4cb075fcf558b3e7894a188",
+  "shadowMode": false
+}
