@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "visualization",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A web UI plugin for monitoring DeepSeek token usage, estimating costs from configurable pricing, and displaying account balance information in dashboards and composer statistics.",
+  "summaries": {
+    "zh": "用于在 Web 界面统计 DeepSeek 每日 Token 用量、按可配置价格估算费用并监控账户余额的仪表盘插件。",
+    "en": "A web dashboard plugin that tracks daily DeepSeek token usage, estimates costs from configurable pricing, and monitors account balance."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek usage data from session logs",
+      "Stores usage records in a local SQLite database",
+      "Calls the fixed DeepSeek balance endpoint from the host process using configured credentials",
+      "Provides local host HTTP endpoints for statistics and balance refresh",
+      "Adds dashboard and composer usage views to the web UI"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_data_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_interface",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek usage data from session logs",
+      "Stores usage records in a local SQLite database",
+      "Calls the fixed DeepSeek balance endpoint from the host process using configured credentials",
+      "Provides local host HTTP endpoints for statistics and balance refresh",
+      "Adds dashboard and composer usage views to the web UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:27.093Z",
+  "repositoryCommitSha": "dd648b720dc528fb44486d518d3192509ca8a7f5",
+  "evidenceHash": "e000c1053ca9c45f90dc2cb68c6eb1bbb68318e44070a22191d91b4d758b67c9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bf6d059e50ba41521e3a94209f63a83936c8c407326bbd81117efb4adabb2fb8",
+  "shadowMode": false
+}

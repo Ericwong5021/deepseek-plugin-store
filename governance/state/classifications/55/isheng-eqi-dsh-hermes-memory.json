@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "memory",
+    "file",
+    "search",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH plugin for bounded, persistent agent and user memory with local storage, memory-management tools, deterministic search, and session-start context injection.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于本地存储的持久化智能体笔记与用户画像管理，并在会话开始时注入记忆快照。",
+    "en": "Provides DeepSeek Harness with bounded persistent agent notes and user-profile memory, local memory-management tools, and a session-start snapshot injected into context."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Persists agent notes and user-profile entries in local DSH storage",
+      "Provides tools to add, replace, remove, batch, search, list, inspect, and measure stored memory",
+      "Injects a frozen memory snapshot at the start of each session",
+      "Displays stored memory content to the model within the session context"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_local_user_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_context_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_storage_only",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Persists agent notes and user-profile entries in local DSH storage",
+      "Provides tools to add, replace, remove, batch, search, list, inspect, and measure stored memory",
+      "Injects a frozen memory snapshot at the start of each session",
+      "Displays stored memory content to the model within the session context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:11.804Z",
+  "repositoryCommitSha": "8d32188753774817203e1a4867a83030f6a5db28",
+  "evidenceHash": "ce4819b03331b2fb7393706227fc2647f9e57e9bf6bd31bedbcc6cc716a60c3d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1f8533c16c629662f9bf977bcedaa0a6f875914879dadf31849afd703becd0a2",
+  "shadowMode": false
+}

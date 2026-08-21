@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "api",
+    "ui",
+    "theme",
+    "layout"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web plugin that monitors DeepSeek account balance, displays it in a floating UI bubble, and alerts users when the balance is low.",
+  "summaries": {
+    "zh": "在 DSH Web 界面中显示并定时刷新 DeepSeek 账户余额，并在余额较低时提供悬浮提示。",
+    "en": "Displays and periodically refreshes the DeepSeek account balance in the DSH web interface with a floating low-balance alert."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Calls the official DeepSeek balance endpoint",
+      "Exposes a local balance route to the DSH web interface",
+      "Displays a draggable balance indicator and low-balance alert in the UI"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui-injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DeepSeek API credential through the host credentials service",
+      "Calls the official DeepSeek balance endpoint",
+      "Exposes a local balance route to the DSH web interface",
+      "Displays a draggable balance indicator and low-balance alert in the UI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:01.556Z",
+  "repositoryCommitSha": "b5b6558f879474177a95dd5b8781a2f07437beb0",
+  "evidenceHash": "b8fd05a92f968374c162ba4be50f4f1a25d032feb31a2d7537f6754b94f2c28e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "28c345ce70ead35a82fb6804f7b8021029c632e0a5de43f585b160dc23ae51a1",
+  "shadowMode": false
+}

@@ -1,0 +1,92 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "collaboration",
+    "integration",
+    "search",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness bridge for discovering verified agent roles, creating role-scoped child Sessions, and optionally attaching them to Agent Team Rooms, making agent orchestration the primary purpose.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中发现并验证 RoleHub 角色、启动独立的角色会话，并可选地将其附加到 Agent Team Room。",
+    "en": "A DeepSeek Harness bridge for discovering and verifying RoleHub roles, starting independent role-scoped Sessions, and optionally attaching them to Agent Team Rooms."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Discovers and fetches role catalogs from configured HTTPS hubs",
+      "Downloads and verifies role bundles using manifest, archive, and bundle digests",
+      "Stores validated role deployments and policy receipts in a private local directory",
+      "Creates continuable role-scoped child Sessions in DeepSeek Harness",
+      "Optionally attaches created Sessions to Agent Team Rooms",
+      "Adds native UI actions, read-only snapshots, and the /rolehub command"
+    ],
+    "reasons": [
+      {
+        "code": "network_fetch_and_bounded_downloads",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistent_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child_session_creation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_room_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shared_host_process_policy_boundary",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Discovers and fetches role catalogs from configured HTTPS hubs",
+      "Downloads and verifies role bundles using manifest, archive, and bundle digests",
+      "Stores validated role deployments and policy receipts in a private local directory",
+      "Creates continuable role-scoped child Sessions in DeepSeek Harness",
+      "Optionally attaches created Sessions to Agent Team Rooms",
+      "Adds native UI actions, read-only snapshots, and the /rolehub command"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:14.101Z",
+  "repositoryCommitSha": "a0444e4effc017c3683894beddbacf2058d2e47d",
+  "evidenceHash": "ac28c8aa6c247a307357f8d8d457979edc2455ba8a0679a73b5e9200e1f085f6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8e58fae7255066bea685db7d199cadbdde10310740da48f580b57e33853799b3",
+  "shadowMode": false
+}

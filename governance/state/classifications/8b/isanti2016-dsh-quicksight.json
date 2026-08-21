@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "tool",
+    "cli",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a quicksight_ocr tool that extracts text from images with local OCR and optionally falls back to configured vision models for broader image understanding.",
+  "summaries": {
+    "zh": "通过本地 OCR 识别图片文字，并可在需要时调用用户配置的视觉模型进行补充分析。",
+    "en": "Extracts text from images with local OCR and can optionally use a configured vision model for additional image analysis."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Processes local image files or image URLs for OCR and visual analysis",
+      "Invokes a local Python OCR process and the modlens CLI",
+      "May send images to a user-configured external vision service for fallback analysis"
+    ],
+    "reasons": [
+      {
+        "code": "local_subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "potential_external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configured_external_service_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Processes local image files or image URLs for OCR and visual analysis",
+      "Invokes a local Python OCR process and the modlens CLI",
+      "May send images to a user-configured external vision service for fallback analysis"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:12.534Z",
+  "repositoryCommitSha": "648123d4a605e53bf74c0e6189462004ba4bc9b7",
+  "evidenceHash": "6ae86fba03abda50ef24bb61d2c6852fcfc996388b4a3dc673344057830279b1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "33e357731c74d091420ffe92849157e245c38e9befd905fb414cd06dc9162262",
+  "shadowMode": false
+}

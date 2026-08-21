@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "context",
+    "chat",
+    "desktop",
+    "workflow",
+    "terminal",
+    "file",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a plugin for launching temporary, isolated child-agent conversations through a floating interface, with broad tool access and temporary workspace cleanup; its primary purpose is agent orchestration.",
+  "summaries": {
+    "zh": "通过可拖动的浮窗创建与父会话隔离的临时子 Agent 会话，并在关闭时清理其临时工作目录。",
+    "en": "Creates temporary child-agent sessions in a draggable floating window, isolated from the parent conversation and cleaned up on close."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates temporary child-agent sessions isolated from the parent conversation",
+      "Provides the child agent with shell, file, background-task, workflow, subagent, and web-fetch tools",
+      "Creates and removes dedicated temporary session directories",
+      "Adds a draggable floating-window interface and RPC endpoints for opening, sending, polling, and closing sessions"
+    ],
+    "reasons": [
+      {
+        "code": "agent_forking",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "broad_tool_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Creates temporary child-agent sessions isolated from the parent conversation",
+      "Provides the child agent with shell, file, background-task, workflow, subagent, and web-fetch tools",
+      "Creates and removes dedicated temporary session directories",
+      "Adds a draggable floating-window interface and RPC endpoints for opening, sending, polling, and closing sessions"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:14.975Z",
+  "repositoryCommitSha": "e3d66a71fd665a66d610bedf8f8524e915b90f12",
+  "evidenceHash": "45edad703d3f3fa51accfb603ed3cc7212158a827c557c611415a91ce8e310ae",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a13fe8addad9680ce1e1e7eac04394bd8258ccc6133720ab1e80437509950701",
+  "shadowMode": false
+}

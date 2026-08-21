@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "desktop",
+    "mobile",
+    "integration",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "An authenticated reverse-proxy plugin for remotely accessing the DeepSeek Harness Web UI, including privileged APIs, device sessions, audit logging, and optional temporary Cloudflare tunneling; human review is warranted because it enables remote access to sensitive capabilities.",
+  "summaries": {
+    "zh": "通过带有令牌和设备会话控制的反向代理，将 DeepSeek Harness Web UI 及其部分特权 API 暴露给局域网或远程设备使用。",
+    "en": "Provides authenticated reverse-proxy access to the DeepSeek Harness Web UI and selected privileged APIs from local or remote devices."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes the DeepSeek Harness Web UI through an authenticated reverse proxy",
+      "Forwards HTTP, SSE, and WebSocket traffic to the Harness Web server",
+      "Rewrites Host and Origin headers before forwarding requests",
+      "Provides access to privileged settings, credentials, directory, and model APIs",
+      "Manages access tokens, device sessions, invitations, approvals, and revocations",
+      "Can optionally start a temporary Cloudflare quick tunnel",
+      "Records authentication and proxy lifecycle events in an audit log"
+    ],
+    "reasons": [
+      {
+        "code": "public_remote_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "privileged_api_forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_session_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_tunnel_startup",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "computer.control",
+      "network.access",
+      "Exposes the DeepSeek Harness Web UI through an authenticated reverse proxy",
+      "Forwards HTTP, SSE, and WebSocket traffic to the Harness Web server",
+      "Rewrites Host and Origin headers before forwarding requests",
+      "Provides access to privileged settings, credentials, directory, and model APIs",
+      "Manages access tokens, device sessions, invitations, approvals, and revocations",
+      "Can optionally start a temporary Cloudflare quick tunnel",
+      "Records authentication and proxy lifecycle events in an audit log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:29:01.399Z",
+  "repositoryCommitSha": "83d3957c9f2f1b61a51621af0ff4d82707155eb1",
+  "evidenceHash": "67d7ef262aeef31e2e90c146f7200a5b4d77bfbf53ec9b78b50fdd37f725f031",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "95d5987e9a7ca3f19706557a77eb2041ff6f526030eca8339b70d9d5bbf72edf",
+  "shadowMode": false
+}

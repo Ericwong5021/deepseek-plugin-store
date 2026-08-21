@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "automation",
+    "integration",
+    "monitoring",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Jenkins integration plugin that configures multiple servers, triggers parameterized jobs from workspace or model tools, polls build status, and maintains run history.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中配置多个 Jenkins 服务器、执行带参数的 Job 构建并查看运行状态与历史记录。",
+    "en": "Configures multiple Jenkins servers in DeepSeek Harness, triggers parameterized jobs, and displays build status and run history."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Configures multiple Jenkins servers with usernames and tokens",
+      "Connects to Jenkins through the host shell using curl",
+      "Triggers Jenkins jobs with workspace-defined parameters",
+      "Polls queued and running job status and records run history",
+      "Optionally skips TLS certificate verification when configured"
+    ],
+    "reasons": [
+      {
+        "code": "external_service_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tls_verification_bypass",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Configures multiple Jenkins servers with usernames and tokens",
+      "Connects to Jenkins through the host shell using curl",
+      "Triggers Jenkins jobs with workspace-defined parameters",
+      "Polls queued and running job status and records run history",
+      "Optionally skips TLS certificate verification when configured"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:57.740Z",
+  "repositoryCommitSha": "3067b26d00862749b9ced1ae2a5ee292d9eaf24b",
+  "evidenceHash": "2767e11c67161b350cb0936f98a66f70fc940ce39ddcc6f8738034045dafa3c2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "85d50d8dec956712c51232778d926885b379a74390bf786c31b0a082b8c133b5",
+  "shadowMode": false
+}

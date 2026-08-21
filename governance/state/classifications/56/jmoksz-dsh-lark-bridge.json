@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "chat",
+    "agent",
+    "collaboration",
+    "api",
+    "document",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A Feishu/Lark integration plugin that exposes a local DSH agent through bot conversations, with streaming cards, interactive approvals, proactive messages, attachments, and per-chat sessions.",
+  "summaries": {
+    "zh": "通过飞书机器人远程使用本机 DSH 智能体，支持流式卡片、交互问答与审批、主动推送、附件处理和多会话管理。",
+    "en": "Use a local DSH agent through a Feishu bot with streaming cards, interactive questions and approvals, proactive messages, attachment handling, and separate chat sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to Feishu/Lark through a WebSocket long connection",
+      "Receives chat messages and forwards them to a local DSH agent",
+      "Streams agent progress and tool-call status through Feishu cards",
+      "Provides interactive question and tool-approval buttons",
+      "Sends proactive text or card messages to Feishu chats",
+      "Downloads image, file, video, and audio attachments",
+      "Maintains separate sessions per Feishu chat and restores context across restarts"
+    ],
+    "reasons": [
+      {
+        "code": "remote_agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_messaging_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "attachment_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to Feishu/Lark through a WebSocket long connection",
+      "Receives chat messages and forwards them to a local DSH agent",
+      "Streams agent progress and tool-call status through Feishu cards",
+      "Provides interactive question and tool-approval buttons",
+      "Sends proactive text or card messages to Feishu chats",
+      "Downloads image, file, video, and audio attachments",
+      "Maintains separate sessions per Feishu chat and restores context across restarts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:45.018Z",
+  "repositoryCommitSha": "e1cfe700c1e839e48ec81bc04fbd5997f33d770d",
+  "evidenceHash": "220f482c4d629a57e4987d514c4cbdf53e16f4a8eb624b94ff692f8877fd2d29",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "946cdbb65790e0500c75edecd27c65cdb6a0432993ba62a32a72cb9753c9d219",
+  "shadowMode": false
+}

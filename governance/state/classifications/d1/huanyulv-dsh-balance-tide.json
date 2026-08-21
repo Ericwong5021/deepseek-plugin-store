@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web plugin that monitors DeepSeek balance and estimated usage costs while displaying peak/off-peak pricing status and countdowns.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中显示账户余额、会话与本地每日费用估算，以及峰谷价格状态和切换倒计时。",
+    "en": "Displays DeepSeek account balance, session and browser-local daily cost estimates, plus peak/off-peak pricing status and countdowns in the web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek account balance through the official /user/balance endpoint",
+      "Estimates current-session and browser-local daily usage costs",
+      "Stores daily cost estimates in browser localStorage",
+      "Displays pricing periods and countdowns based on Beijing time",
+      "Opens the official DeepSeek pricing page"
+    ],
+    "reasons": [
+      {
+        "code": "external_account_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_usage_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek account balance through the official /user/balance endpoint",
+      "Estimates current-session and browser-local daily usage costs",
+      "Stores daily cost estimates in browser localStorage",
+      "Displays pricing periods and countdowns based on Beijing time",
+      "Opens the official DeepSeek pricing page"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:02.388Z",
+  "repositoryCommitSha": "c4dab71a858dbc1f5f6ef74183a1d1781a205f2e",
+  "evidenceHash": "acc0a7a7b2e1ce3340b0a0e74ed775cc8cd8576185970f3386c0f4e00502f854",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9b14b70937c60e3e9637dc3ec40955aed55408172e7ff23cef1ef997a62cc766",
+  "shadowMode": false
+}

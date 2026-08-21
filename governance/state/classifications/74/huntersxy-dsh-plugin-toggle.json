@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "file",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web settings-page plugin that provides a panel for viewing and enabling or disabling third-party plugins by updating profile patch configuration files.",
+  "summaries": {
+    "zh": "在 DSH Web 设置页中提供第三方插件列表，并支持通过修改配置文件启用或禁用插件。",
+    "en": "Adds a DSH Web settings tab for viewing third-party plugins and enabling or disabling them through profile configuration changes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a settings-page tab for listing third-party plugins",
+      "Reads profile bundle stacks and patch files",
+      "Writes disabled flags to profile cordis.patch.yml files",
+      "Exposes same-origin custom routes for listing and changing plugin state",
+      "Triggers client-side page reloads and relies on DSH hot reload for configuration changes"
+    ],
+    "reasons": [
+      {
+        "code": "local_configuration_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "custom_local_api_route",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "limited_scope_to_third_party_plugin_settings",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a settings-page tab for listing third-party plugins",
+      "Reads profile bundle stacks and patch files",
+      "Writes disabled flags to profile cordis.patch.yml files",
+      "Exposes same-origin custom routes for listing and changing plugin state",
+      "Triggers client-side page reloads and relies on DSH hot reload for configuration changes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:23.881Z",
+  "repositoryCommitSha": "e11d57cedaf2dfd2a126106f8df86dec9fecf0ea",
+  "evidenceHash": "7db526602e4cee553f500bbd7f1e1f6e1aad819659a9e681fdbcb8ec1725d78a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0eea77f8f96b2ebedcba1cb8bd4e73011052094740deff8277879e707416cf68",
+  "shadowMode": false
+}

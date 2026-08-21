@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "context",
+    "file",
+    "integration",
+    "mcp",
+    "skill",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "该插件的主要用途是将 Claude 的技能、规则、指令和 MCP 配置自动迁移并接入 DSH，按工作区管理智能体能力并提供配置状态看板；README 明确说明其会读取配置文件并动态连接 MCP 服务器。",
+  "summaries": {
+    "zh": "将用户级和项目级 Claude 技能、规则、指令及 MCP 配置自动加载到 DSH，并提供按工作区隔离的能力注册与状态看板。",
+    "en": "Automatically loads user- and project-level Claude skills, rules, instructions, and MCP configurations into DSH with workspace-aware registration and a status dashboard."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取用户主目录和项目目录中的技能、规则及配置文件",
+      "将技能和规则注册为 DSH 能力并按工作区隔离激活",
+      "从 .mcp.json 动态注册并连接 MCP 服务器",
+      "展开环境变量占位符并启动或重连 MCP 进程",
+      "提供 Skills、Rules 和 MCP 状态看板"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-process-and-connection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment-variable-expansion",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "读取用户主目录和项目目录中的技能、规则及配置文件",
+      "将技能和规则注册为 DSH 能力并按工作区隔离激活",
+      "从 .mcp.json 动态注册并连接 MCP 服务器",
+      "展开环境变量占位符并启动或重连 MCP 进程",
+      "提供 Skills、Rules 和 MCP 状态看板"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:26:04.363Z",
+  "repositoryCommitSha": "2c0a274edc534b87e9fb52a4ff21623e08d46596",
+  "evidenceHash": "13158b65d6975b8f88a27cc6284460edcd53e339ea2c3b2edeb0cc8972f473bd",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "472ed828f5d4ad531957c73aa10489383ce2e3b5017b22e65228c19373bf1a47",
+  "shadowMode": false
+}

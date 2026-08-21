@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin monitors OpenCode Go subscription usage by querying the usage API through a host route and displaying calculated quota details in a refreshable web floating panel.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web 会话窗口中显示 OpenCode Go 滚动、每周和每月订阅额度的已用量、剩余量、百分比及重置时间。",
+    "en": "Displays OpenCode Go rolling, weekly, and monthly subscription usage, including used amounts, remaining balances, percentages, and reset times, in a refreshable floating panel for the DeepSeek Harness Web interface."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a configured OpenCode Go API credential through the host credential resolver",
+      "Calls the OpenCode usage API to retrieve rolling, weekly, and monthly usage percentages and reset times",
+      "Provides a web HTTP route for usage data",
+      "Renders a floating usage panel with periodic refresh and calculated used and remaining amounts"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_interface_overlay",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a configured OpenCode Go API credential through the host credential resolver",
+      "Calls the OpenCode usage API to retrieve rolling, weekly, and monthly usage percentages and reset times",
+      "Provides a web HTTP route for usage data",
+      "Renders a floating usage panel with periodic refresh and calculated used and remaining amounts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:24.222Z",
+  "repositoryCommitSha": "4dbddcd3fa60ff8f7f855361ffc8ee3673c69b54",
+  "evidenceHash": "fcff1997a2123137d49283f20e09b3aafd865b205d979960c184daad70033987",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "aec79cdc030f5d6b5508d0ca41b96006cc6f28c8034cdb771216b5407d614a6a",
+  "shadowMode": false
+}

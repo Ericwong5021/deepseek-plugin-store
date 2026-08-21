@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "chat",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds chat tools for text-to-image generation and image editing through a configured third-party OpenAI Images-compatible API, with local reference-image input and generated-image saving.",
+  "summaries": {
+    "zh": "通过配置的第三方 OpenAI Images 兼容接口，在聊天中生成和编辑图片，并支持使用本地参考图及保存生成结果。",
+    "en": "Generates and edits images in chat through a configured third-party OpenAI Images-compatible API, with support for local reference images and saving generated results."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Calls a configured third-party OpenAI Images-compatible API for text-to-image generation and image editing",
+      "Accepts local PNG, JPEG, and WebP reference images for editing",
+      "Writes generated images to the conversation and the session outputs/image2 directory",
+      "Stores and uses a configured API key for upstream requests"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_usage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Calls a configured third-party OpenAI Images-compatible API for text-to-image generation and image editing",
+      "Accepts local PNG, JPEG, and WebP reference images for editing",
+      "Writes generated images to the conversation and the session outputs/image2 directory",
+      "Stores and uses a configured API key for upstream requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:29:03.468Z",
+  "repositoryCommitSha": "78972d05d604a73fed32323cd3ec3e5506e2fdfe",
+  "evidenceHash": "dfa4de1adb3fc0f278b7c76e5b3a1523fd77eb0275acdf124d9a9032603c81df",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c4907c9cbfe236cdef4c4657b59c09dc01feba1818b40460c95915f38eeb2be4",
+  "shadowMode": false
+}

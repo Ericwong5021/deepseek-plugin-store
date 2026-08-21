@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "agent",
+    "cli",
+    "file",
+    "monitoring",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes observability plugins that attribute external subagent runs to session artifacts and journal the results, with an additional CLI-based cursor delegation tool; monitoring is the primary user-facing purpose.",
+  "summaries": {
+    "zh": "用于跟踪外部子代理运行对应的会话文件，并将归因信息写入日志，同时提供通过 cursor-agent CLI 委派任务的工具。",
+    "en": "Tracks external subagent runs against session artifacts, records attribution data in a journal, and provides a tool for delegating tasks through the cursor-agent CLI."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Fingerprints configured external subagent session roots before and after tracked tool calls",
+      "Writes session attribution envelopes to a JSONL journal file",
+      "Invokes the official cursor-agent CLI through a delegation tool",
+      "Reads configured session metadata paths",
+      "Supports proposed edit mode without applying changes by default",
+      "Runs wrapped CLI commands with first-event, idle, and total timeouts"
+    ],
+    "reasons": [
+      {
+        "code": "external_cli_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subagent_delegation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Fingerprints configured external subagent session roots before and after tracked tool calls",
+      "Writes session attribution envelopes to a JSONL journal file",
+      "Invokes the official cursor-agent CLI through a delegation tool",
+      "Reads configured session metadata paths",
+      "Supports proposed edit mode without applying changes by default",
+      "Runs wrapped CLI commands with first-event, idle, and total timeouts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:27:56.333Z",
+  "repositoryCommitSha": "f5bdac556c0f4e6b61bd89201ec0e2401fb45c8e",
+  "evidenceHash": "518b066e71fe99941ee5bde71089f69fc68ad03eabcea9fbd8177018e44ddc88",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8f4e31b0e7d9a0de5a029ff84f1283153147701d0789801229b326b7df9e957a",
+  "shadowMode": false
+}

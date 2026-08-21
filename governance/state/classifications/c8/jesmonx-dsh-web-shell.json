@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "ui",
+    "layout",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A docked Web Shell plugin for DeepSeek Harness that exposes host-side bash or zsh sessions through a browser terminal, with resizable layout and profile-based state persistence.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供可停靠的浏览器 Web Shell，通过 WebSocket 连接宿主 PTY，支持 bash、zsh 以及可调整和记忆的面板布局。",
+    "en": "Provides a dockable browser-based Web Shell for DeepSeek Harness, connecting to host PTYs over WebSocket with bash and zsh support plus resizable, profile-persisted panel layout."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a docked browser-based shell terminal",
+      "Bridges a WebSocket connection to a host-side PTY",
+      "Runs bash or zsh processes with the dsh process operating-system permissions",
+      "Stores per-profile dock width and folded-state settings"
+    ],
+    "reasons": [
+      {
+        "code": "arbitrary_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_process_and_pty_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "websocket_api_bridge",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Provides a docked browser-based shell terminal",
+      "Bridges a WebSocket connection to a host-side PTY",
+      "Runs bash or zsh processes with the dsh process operating-system permissions",
+      "Stores per-profile dock width and folded-state settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:28:02.117Z",
+  "repositoryCommitSha": "97f9ce4dc3c4c836bab0b8c30afed10a1160b520",
+  "evidenceHash": "8316b57baef2a99ec8296cdf93da5a85b50ce986a9c55f8b1d09fe274106bdf0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b7beb81130e66a55f7b757439099962e645b4cfe25c44834524fea2eaf7ebdec",
+  "shadowMode": false
+}
