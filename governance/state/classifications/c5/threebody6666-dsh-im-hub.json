@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "context",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A multi-platform IM gateway that connects DeepSeek Harness agents to Feishu, Lark, WeCom, and Telegram while maintaining per-chat sessions and relaying messages.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 智能体连接到飞书、Lark、企业微信和 Telegram，并为每个聊天维护会话上下文的多平台即时通信网关。",
+    "en": "A multi-platform instant messaging gateway that connects DeepSeek Harness agents to Feishu, Lark, WeCom, and Telegram with per-chat conversation sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects DeepSeek Harness agents to Feishu, Lark, WeCom, and Telegram",
+      "Receives and sends chat messages through long polling, WebSocket, webhook, or HTTP callback adapters",
+      "Maintains serialized per-chat agent sessions and conversation context",
+      "Accepts external chat input that may cause the connected agent to execute host tools",
+      "Stores and uses messaging-platform credentials and access-control settings"
+    ],
+    "reasons": [
+      {
+        "code": "external_chat_input_can_drive_agent_actions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_integrations_and_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "webhook_and_callback_endpoints",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects DeepSeek Harness agents to Feishu, Lark, WeCom, and Telegram",
+      "Receives and sends chat messages through long polling, WebSocket, webhook, or HTTP callback adapters",
+      "Maintains serialized per-chat agent sessions and conversation context",
+      "Accepts external chat input that may cause the connected agent to execute host tools",
+      "Stores and uses messaging-platform credentials and access-control settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:59:02.308Z",
+  "repositoryCommitSha": "46d9059d874ac3df646de8fcaa20836c1a135053",
+  "evidenceHash": "108416a469b3f8ac96f0cd55a62aeff8e88887dd97e9732ad940da827e8b96c2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5157c0a5503b95318a8b3170f466ac3ab3943d33d16be47def458ffe1c21f71a",
+  "shadowMode": false
+}

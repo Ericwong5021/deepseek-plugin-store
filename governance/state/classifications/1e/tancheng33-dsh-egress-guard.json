@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "file",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A DeepSeek Harness runtime utility that evaluates tool-call destinations, optionally denies disallowed egress, redacts credential-like values from results, and records decisions in a local audit log.",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness 工具调用的运行时防护插件，可按主机 allowlist 控制出站访问、从工具结果中脱敏凭据并记录审计日志。",
+    "en": "A DeepSeek Harness runtime guard that filters tool-call destinations by host allowlists, redacts credential-like values from results, and records decisions in an audit log."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts tool calls before and after execution",
+      "Evaluates network destinations against allow and deny host lists",
+      "Can deny or request approval for disallowed destinations",
+      "Redacts configured credential patterns from tool results",
+      "Writes decisions to a local JSONL audit log"
+    ],
+    "reasons": [
+      {
+        "code": "controls_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "handles_and_rewrites_potential_secrets",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_local_audit_log",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts tool calls before and after execution",
+      "Evaluates network destinations against allow and deny host lists",
+      "Can deny or request approval for disallowed destinations",
+      "Redacts configured credential patterns from tool results",
+      "Writes decisions to a local JSONL audit log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:34.181Z",
+  "repositoryCommitSha": "c34b9ca4b874b61c881d7e8172fffb9d294d2abe",
+  "evidenceHash": "b4ecdb13eb4ad0d73c93002bda90ce125acdfa90262001a2049aae158dacebd7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4ec3a0e1b9d356e52becd0b68ffe71d3c80e2f5ce5bf5ecdec2f00f40d9593b5",
+  "shadowMode": false
+}

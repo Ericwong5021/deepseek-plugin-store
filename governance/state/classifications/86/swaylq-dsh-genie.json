@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "agent",
+    "automation",
+    "code-generation",
+    "file",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "dsh-genie provides a DeepSeek Harness workflow for promoting dynamic or directly generated plugins into persistent local plugins, including file creation, profile modification, listing, and revocation; its persistent code-loading behavior warrants human review.",
+  "summaries": {
+    "zh": "dsh-genie 将 DeepSeek Harness 中生成或动态加载的插件保存为可在后续重启中继续使用的本地插件，并提供查看与撤销工具。",
+    "en": "dsh-genie turns generated or dynamically loaded DeepSeek Harness plugins into locally persisted plugins that remain available after restart, with tools for listing and revoking them."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Writes plugin source files under the DSH home directory",
+      "Creates symlinks and modifies profile bundle configuration",
+      "Persists generated code for loading on subsequent harness restarts",
+      "Lists and revokes persisted plugin wishes"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_generated_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_profile_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loads_code_with_harness_context_after_restart",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "Writes plugin source files under the DSH home directory",
+      "Creates symlinks and modifies profile bundle configuration",
+      "Persists generated code for loading on subsequent harness restarts",
+      "Lists and revokes persisted plugin wishes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:20.509Z",
+  "repositoryCommitSha": "d917d28c7d903de8247771cbf6ad09c6b1a0bae7",
+  "evidenceHash": "9c90dfe6bbc3f5f0d29f69ccf1fa99c781e535150e3caf2cca2fa43279ee2bb9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d8ea573e5bea4db939a699248c6ddfdc4fdca8da956cc1042b50dc06ecbfc859",
+  "shadowMode": false
+}

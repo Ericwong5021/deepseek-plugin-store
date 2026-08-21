@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "context",
+    "file",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin automates approval decisions in DeepSeek Harness by using an LLM guardian to assess requested operations, optionally inspect local read-only state, and silently allow low-risk actions while routing uncertain cases to the normal prompt.",
+  "summaries": {
+    "zh": "该插件使用具备会话上下文和只读本地检查能力的LLM裁判，为DeepSeek Harness自动评估并处理工具操作审批。",
+    "en": "This plugin uses an LLM guardian with session context and read-only local inspection to evaluate and automate tool-operation approvals in DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Automatically approves operations that would normally require user confirmation based on an LLM verdict",
+      "Provides the judging agent with session transcript context",
+      "Allows the judging agent to inspect local files, directories, and path metadata through read-only tools",
+      "Records approval decisions and related rationale in the plugin panel"
+    ],
+    "reasons": [
+      {
+        "code": "automatic_operation_approval",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_context_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Automatically approves operations that would normally require user confirmation based on an LLM verdict",
+      "Provides the judging agent with session transcript context",
+      "Allows the judging agent to inspect local files, directories, and path metadata through read-only tools",
+      "Records approval decisions and related rationale in the plugin panel"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:09.362Z",
+  "repositoryCommitSha": "f7894a1f8bb2f3fca3f36ef5ef575e83742fdd9c",
+  "evidenceHash": "9ae0e4bde4f2ba5a3d4c91c698f068750d86d9e1c85ac28fa111484cd535a51e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "35921177f2644c125696ff5b22759a048bd1b96c5ba84be5b7ea2665c2dfc8bb",
+  "shadowMode": false
+}

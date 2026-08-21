@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "knowledge",
+    "search",
+    "document",
+    "data",
+    "file",
+    "api",
+    "ui",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A knowledge-management plugin that imports and processes documents, builds local searchable knowledge bases with hybrid retrieval, and provides model tools plus a management panel.",
+  "summaries": {
+    "zh": "用于创建和管理知识库、导入并处理文档、构建混合检索索引，并通过模型工具和管理面板访问知识内容。",
+    "en": "A knowledge-management plugin for importing and processing documents, building hybrid-search knowledge bases, and accessing their content through model tools and an administration panel."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates, updates, deletes, and organizes local knowledge bases and documents",
+      "Reads and processes imported files, directories, URLs, and text content",
+      "Stores document chunks and metadata in local JSON and SQLite storage",
+      "Performs local embedding, reranking, OCR, and document processing in worker threads",
+      "Can connect to configured external embedding, reranking, MinerU, Ollama, and model-download services",
+      "Exposes model-facing tools for knowledge search, document management, import, reading, statistics, and reindexing"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_tool_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_model_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Creates, updates, deletes, and organizes local knowledge bases and documents",
+      "Reads and processes imported files, directories, URLs, and text content",
+      "Stores document chunks and metadata in local JSON and SQLite storage",
+      "Performs local embedding, reranking, OCR, and document processing in worker threads",
+      "Can connect to configured external embedding, reranking, MinerU, Ollama, and model-download services",
+      "Exposes model-facing tools for knowledge search, document management, import, reading, statistics, and reindexing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:50.190Z",
+  "repositoryCommitSha": "60d80a6f8f6af2f6c749b6a7cfbbf9f12bb26670",
+  "evidenceHash": "9601296f4111415b5936b904ebd8f33e69b98256a7e010fa6ccd3e72ab3d016c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6e40d432b06f2536f987440f5d0e360e7bab9dcaa829be10a5e376f7bab7dddb",
+  "shadowMode": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "ui",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An external-service integration that reads the configured DeepSeek account credential, queries the DeepSeek balance API, and presents the balance in the web interface and to agents.",
+  "summaries": {
+    "zh": "通过已配置的 DeepSeek 凭据查询账户 API 余额，并在网页侧边栏及工具中提供余额查看功能。",
+    "en": "Queries the configured DeepSeek account balance and makes it available in the web sidebar and through an agent tool."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the configured DEEPSEEK_API_KEY credential through the harness credentials service",
+      "Calls the DeepSeek balance API",
+      "Displays the account balance in a web GUI sidebar popover",
+      "Provides a deepseek_balance tool for agent balance queries"
+    ],
+    "reasons": [
+      {
+        "code": "credential-read-and-external-api-call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "read-only-account-balance-display",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DEEPSEEK_API_KEY credential through the harness credentials service",
+      "Calls the DeepSeek balance API",
+      "Displays the account balance in a web GUI sidebar popover",
+      "Provides a deepseek_balance tool for agent balance queries"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:59.472Z",
+  "repositoryCommitSha": "c7d936f2632527371e07bdf73e2c0629191b7ec8",
+  "evidenceHash": "87c94e7b295a313a516fc6216cf5bc3b435430e05f375f67b80870c98cbb8b01",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ecc9fd7400dbda9cecb378a166da172a8351e3ea1a0379acaaa7757da1ccfecf",
+  "shadowMode": false
+}

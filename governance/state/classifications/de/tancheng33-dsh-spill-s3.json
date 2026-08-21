@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "data",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An external-service integration that replaces local spill storage with uploads of oversized DeepSeek Harness tool output to AWS S3, MinIO, Cloudflare R2, or another S3-compatible backend.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的超大工具输出上传到配置的 S3 兼容对象存储，以替代本地溢出存储。",
+    "en": "Stores oversized DeepSeek Harness tool output in a configured S3-compatible object-storage backend instead of local spill storage."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Uploads oversized tool-output text to a configured S3-compatible object-storage bucket",
+      "Resolves configured credential references for each upload",
+      "Provides CLI, presigned-URL, or locator-only retrieval guidance"
+    ],
+    "reasons": [
+      {
+        "code": "external_object_storage_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_reference_resolution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_presigned_retrieval",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Uploads oversized tool-output text to a configured S3-compatible object-storage bucket",
+      "Resolves configured credential references for each upload",
+      "Provides CLI, presigned-URL, or locator-only retrieval guidance"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:34.541Z",
+  "repositoryCommitSha": "9125bbb93e97c5535d9c0953c125dbf08acb2f94",
+  "evidenceHash": "354e7c9c867cb24e77eea766f1f818262329b4ff8072f2458fa6bfc9925acf79",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "defd9171d05ac4f6dc4539af746d1fe006f0316a928dcb91565a9dd60e58adfa",
+  "shadowMode": false
+}

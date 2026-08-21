@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "tool",
+    "debugging",
+    "automation",
+    "file",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness development plugin that watches dependency lockfile changes and live-reloads upgraded plugins with rollback on failures, while reporting outcomes through logs, terminal messages, and optional web notifications.",
+  "summaries": {
+    "zh": "通过监视配置文件中的 pnpm-lock.yaml 变化，在不重启 DeepSeek Harness 的情况下热重载已升级的插件，并在失败时回滚到可用版本。",
+    "en": "Hot-reloads upgraded DeepSeek Harness plugins when dependency versions change, rolling back failed reloads without restarting the application."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Watches a profile pnpm lockfile for plugin version changes",
+      "Reads installed package versions and plugin metadata",
+      "Invalidates module caches and reloads running plugins in place",
+      "Reinstantiates and rolls back plugin fibers when initialization fails",
+      "Writes persistent state to a profile file using an atomic rename",
+      "Serves an unauthenticated web event endpoint for reload notifications",
+      "Displays reload outcomes in the terminal and dsh web app"
+    ],
+    "reasons": [
+      {
+        "code": "runtime_code_reload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_watch_and_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated_event_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Watches a profile pnpm lockfile for plugin version changes",
+      "Reads installed package versions and plugin metadata",
+      "Invalidates module caches and reloads running plugins in place",
+      "Reinstantiates and rolls back plugin fibers when initialization fails",
+      "Writes persistent state to a profile file using an atomic rename",
+      "Serves an unauthenticated web event endpoint for reload notifications",
+      "Displays reload outcomes in the terminal and dsh web app"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:40.848Z",
+  "repositoryCommitSha": "ff36308f211c769256cfebc634e85c46666a9466",
+  "evidenceHash": "0e797148b16beffaa3018386de86d4269a48773553d7dfff34e6ff530cd257f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8bf336d7fa2e3bdbf7c8c4a1949ff1f3996dea4f22cca977c69219a65c86f8b9",
+  "shadowMode": false
+}

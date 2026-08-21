@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "browser",
+    "cli",
+    "integration",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an authentication proxy plugin that protects and forwards access to the DeepSeek Harness Web server, with account, session, CAPTCHA, and IP/CIDR allowlist management.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web 提供带账号、会话、验证码和 IP/CIDR 白名单管理的认证代理，并将认证后的请求转发到本机 Harness 服务。",
+    "en": "Provides an authentication proxy for DeepSeek Harness Web with account, session, CAPTCHA, and IP/CIDR allowlist management, forwarding authenticated requests to the local Harness service."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Binds a configurable public HTTP or HTTPS authentication proxy",
+      "Stores password hashes, sessions, CAPTCHA settings, and IP/CIDR allowlists",
+      "Forwards authenticated HTTP, SPA, RPC, SSE, and WebSocket traffic to a loopback Harness server",
+      "Provides CLI and web interfaces for account, session, password, and allowlist management"
+    ],
+    "reasons": [
+      {
+        "code": "network_proxy_and_authentication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_session_state_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "authenticated_request_forwarding",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Binds a configurable public HTTP or HTTPS authentication proxy",
+      "Stores password hashes, sessions, CAPTCHA settings, and IP/CIDR allowlists",
+      "Forwards authenticated HTTP, SPA, RPC, SSE, and WebSocket traffic to a loopback Harness server",
+      "Provides CLI and web interfaces for account, session, password, and allowlist management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:31.287Z",
+  "repositoryCommitSha": "4464052fc1dcae45622cfcef6f9cbbbaaa6004a6",
+  "evidenceHash": "b65a420c1450a9a779dd9f3887b5e9c38ce7746d57b8e18fcaa860a5a4b42e11",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "832f69599b9e8c4608b7480fc4b177744083c1dc40e7abebf0503d37518d9851",
+  "shadowMode": false
+}

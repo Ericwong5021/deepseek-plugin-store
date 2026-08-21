@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "browser",
+    "data",
+    "file",
+    "layout",
+    "monitoring",
+    "ui",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web sidebar plugin that displays DeepSeek account balance and aggregated token usage from the official API and local dsh session logs, with today/all-time filtering and theme adaptation.",
+  "summaries": {
+    "zh": "在 dsh 网页侧边栏中显示 DeepSeek 账户余额和按时间范围汇总的令牌用量。",
+    "en": "Displays DeepSeek account balance and aggregated token usage in the dsh web sidebar with today and all-time views."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the dsh credential used for the DeepSeek API",
+      "Calls the DeepSeek official balance endpoint",
+      "Reads and decompresses local dsh session logs",
+      "Aggregates provider-specific token usage",
+      "Serves usage data through a local HTTP route",
+      "Adds a balance and usage panel to the web sidebar"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-session-log-access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Reads the dsh credential used for the DeepSeek API",
+      "Calls the DeepSeek official balance endpoint",
+      "Reads and decompresses local dsh session logs",
+      "Aggregates provider-specific token usage",
+      "Serves usage data through a local HTTP route",
+      "Adds a balance and usage panel to the web sidebar"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:33.118Z",
+  "repositoryCommitSha": "9067ed33ac83f986b54096bcd21c2c1db0583bb4",
+  "evidenceHash": "124d0ec51e4ccac9f0a3f7f5300b87fd59b90b49703a13f27ed148f2df16c91c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "80bc0b6d11fb65be29910fb365c003ff948625cd1f883521bfa6dd454b3f938f",
+  "shadowMode": false
+}

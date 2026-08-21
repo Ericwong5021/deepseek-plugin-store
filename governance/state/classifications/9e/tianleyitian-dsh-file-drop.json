@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "desktop",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A file interaction utility that accepts desktop file or folder drops and native file selections, then inserts paths into the DSH input with a documented local fallback for content uploads.",
+  "summaries": {
+    "zh": "支持将文件或文件夹拖入 DSH 窗口，或通过原生文件选择器选取文件，并把路径填入对话输入框。",
+    "en": "Accepts desktop file or folder drops and native file selections, then inserts the resulting paths into the DSH conversation input."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads file and folder paths from desktop drag-and-drop operations",
+      "Provides a native file picker with multi-selection",
+      "Writes selected paths into the DSH conversation input",
+      "May write fallback upload data to a workspace directory",
+      "Runs a local PowerShell helper process for drag-and-drop handling"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_helper_process",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_writes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads file and folder paths from desktop drag-and-drop operations",
+      "Provides a native file picker with multi-selection",
+      "Writes selected paths into the DSH conversation input",
+      "May write fallback upload data to a workspace directory",
+      "Runs a local PowerShell helper process for drag-and-drop handling"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:59:06.863Z",
+  "repositoryCommitSha": "e00e3f0236fcabd2f5ad395657b103335b927d8f",
+  "evidenceHash": "42d05b0fa9717aa5bf01f4b27c31777f784d2a0546ecfa623886f2d601ee6bcb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4fa133a4d2c625444e72d765dba11bec0bf2df86661dc13b6d74d5665bb0f08a",
+  "shadowMode": false
+}

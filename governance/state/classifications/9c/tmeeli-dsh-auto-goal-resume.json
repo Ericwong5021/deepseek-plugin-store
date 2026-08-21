@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates recovery of active goal-driven sessions after a DSH restart by restoring agents, reauthorizing eligible goals, and continuing remaining execution rounds while skipping paused, blocked, and completed goals.",
+  "summaries": {
+    "zh": "这是一个在 DSH 重启后自动恢复智能体并续跑活跃目标会话的自动化插件。",
+    "en": "An automation plugin that restores agents and resumes active goal-driven sessions after a DSH restart."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Scans persisted sessions for active goals after startup",
+      "Resumes agents and re-arms active goals automatically",
+      "Continues goal-driven agent execution without a new user instruction",
+      "May allow resumed tasks to write files or call external APIs"
+    ],
+    "reasons": [
+      {
+        "code": "automatic_execution_resume",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "potential_side_effects_from_resumed_tasks",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Scans persisted sessions for active goals after startup",
+      "Resumes agents and re-arms active goals automatically",
+      "Continues goal-driven agent execution without a new user instruction",
+      "May allow resumed tasks to write files or call external APIs"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:59:20.144Z",
+  "repositoryCommitSha": "ad241a36db29ae6d0cebc05b116e9ad5f5fe9306",
+  "evidenceHash": "4734eb11d71cc10628e57a0f02cb59c8da76f06a86360b9bb7676c5b52699b87",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cf15e313d064bc60ab775642e3508c98604c9d52ae5412f7c45bc150c55574ab",
+  "shadowMode": false
+}

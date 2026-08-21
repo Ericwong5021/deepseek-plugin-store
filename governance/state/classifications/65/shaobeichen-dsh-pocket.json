@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "desktop",
+    "browser",
+    "api",
+    "integration",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A mobile-access plugin for DeepSeek Harness that provides QR-based LAN or cloudflared public access, real-time interface synchronization, and bidirectional control through a local proxy.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供二维码访问、局域网或公网连接，以及适配手机端的实时界面同步与交互控制。",
+    "en": "Provides QR-based LAN or public access to DeepSeek Harness with mobile-optimized, real-time interface synchronization and interaction."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides LAN and public-network access to the DeepSeek Harness web interface",
+      "Creates QR codes and access URLs for mobile clients",
+      "Relays HTTP and WebSocket traffic through a local reverse proxy",
+      "Can launch and recover a cloudflared public tunnel",
+      "Supports bidirectional interaction with a DeepSeek Harness instance that may execute computer code",
+      "Stores access tokens and settings on the local filesystem"
+    ],
+    "reasons": [
+      {
+        "code": "remote_access_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "public_tunnel",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bidirectional_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_code_execution_context",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Provides LAN and public-network access to the DeepSeek Harness web interface",
+      "Creates QR codes and access URLs for mobile clients",
+      "Relays HTTP and WebSocket traffic through a local reverse proxy",
+      "Can launch and recover a cloudflared public tunnel",
+      "Supports bidirectional interaction with a DeepSeek Harness instance that may execute computer code",
+      "Stores access tokens and settings on the local filesystem"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:29.340Z",
+  "repositoryCommitSha": "4cdd3ec04ab8943c0264c344ad4779c4727402ef",
+  "evidenceHash": "abc8dbfe76cff4d8f96ceb0ddc50c13ab1da0fa57fb4660220206789afc19da4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5107e91c9615e630a771dd8664ee331362d698ba64c014f442fe0229b500b99d",
+  "shadowMode": false
+}

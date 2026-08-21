@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "cli",
+    "collaboration",
+    "file",
+    "integration",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH settings plugin for managing GitHub CLI installation, authentication, Git configuration, and common GitHub repository operations through local gh and git commands.",
+  "summaries": {
+    "zh": "这是一个在 DSH 设置页中集成 GitHub CLI 的插件，用于管理 gh 安装、账户认证、Git 配置及常见仓库操作。",
+    "en": "A DSH settings plugin that integrates GitHub CLI to manage gh installation, account authentication, Git configuration, and common repository operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "detects, installs, updates, and locates the GitHub CLI and Git executable",
+      "authenticates, switches, logs out, and refreshes GitHub CLI accounts using tokens",
+      "reads and writes global Git identity settings",
+      "clones, pushes, pulls, forks, creates repositories, creates pull requests, and opens remote repository pages",
+      "reads and writes Git proxy configuration and may modify user PATH settings",
+      "executes local gh and git subprocesses"
+    ],
+    "reasons": [
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "repository_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_configuration_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "detects, installs, updates, and locates the GitHub CLI and Git executable",
+      "authenticates, switches, logs out, and refreshes GitHub CLI accounts using tokens",
+      "reads and writes global Git identity settings",
+      "clones, pushes, pulls, forks, creates repositories, creates pull requests, and opens remote repository pages",
+      "reads and writes Git proxy configuration and may modify user PATH settings",
+      "executes local gh and git subprocesses"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:21.908Z",
+  "repositoryCommitSha": "e30e22145b0c832a942a01eced8f7522d2c57b0f",
+  "evidenceHash": "79e5b84fade38716765b0777b90773f0c3c497af3b8148be01f6ac073f172118",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d06dbad7c97fb27ebaef5988c9649998fa084d704940c11733e667efd8bba2f0",
+  "shadowMode": false
+}

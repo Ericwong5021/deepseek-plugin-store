@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "terminal",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DSH control-plane plugin for observing and driving Herdr terminal workspaces used by AI coding agents, with session-scoped UI and workspace lifecycle management.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 会话中观察和控制 Herdr AI 编程代理终端工作区，并提供按会话隔离的标签页与侧栏界面。",
+    "en": "Observe and control Herdr terminal workspaces for AI coding agents from DeepSeek Harness sessions, with session-scoped tabs and side panels."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Observes Herdr workspace, agent, pane, layout, and notification state",
+      "Controls Herdr workspaces and terminal panes through a local Unix-domain socket",
+      "Provides session-scoped Herdr tabs and side panels in DSH",
+      "Can create Herdr-mode sessions and may start the Herdr server from PATH"
+    ],
+    "reasons": [
+      {
+        "code": "controls_local_workspace_manager",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "communicates_over_unix_socket",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "starts_server_from_path_if_needed",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Observes Herdr workspace, agent, pane, layout, and notification state",
+      "Controls Herdr workspaces and terminal panes through a local Unix-domain socket",
+      "Provides session-scoped Herdr tabs and side panels in DSH",
+      "Can create Herdr-mode sessions and may start the Herdr server from PATH"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:59.077Z",
+  "repositoryCommitSha": "6f131db3eebdc8d82925ac3ea82bf8b44d6b807e",
+  "evidenceHash": "608e7ed8f2d4454e99a8bddbda15ec1f2b6645b17e3e1d5844c22d9312593ff6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e5f0a4def9da5d09126c33a3aa6d0eaeeb0ab622e03626d58ddd5ece16824814",
+  "shadowMode": false
+}

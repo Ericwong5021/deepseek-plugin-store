@@ -1,0 +1,94 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "plugin-development",
+  "tags": [
+    "api",
+    "automation",
+    "browser",
+    "cli",
+    "file",
+    "mcp",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness Web UI extension centered on managing skills and plugins, with additional file, terminal, Git, MCP, search, GitHub, vision, notification, and rescue-mode features.",
+  "summaries": {
+    "zh": "这是一个为 DeepSeek Harness Web UI 提供技能与插件管理，并集成文件树、终端、Git、MCP 和外部服务工具的扩展。",
+    "en": "A DeepSeek Harness Web UI extension for managing skills and plugins, with integrated file browsing, terminals, Git, MCP, and external-service tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs, enables, disables, and uninstalls skills and plugins from npm, URLs, local paths, and Git repositories",
+      "Reads and edits files within a configured tree root",
+      "Creates and manages CMD or PowerShell terminal sessions and executes user-provided commands",
+      "Performs Git operations including fetch, push, staging, committing, and discarding changes",
+      "Connects to configured MCP servers and exposes their tools to the model",
+      "Calls Tavily, GitHub, and configurable OpenAI-compatible vision endpoints",
+      "Sends Windows desktop notifications"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_write_delete",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "terminal_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_remote_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_and_mcp_installation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Installs, enables, disables, and uninstalls skills and plugins from npm, URLs, local paths, and Git repositories",
+      "Reads and edits files within a configured tree root",
+      "Creates and manages CMD or PowerShell terminal sessions and executes user-provided commands",
+      "Performs Git operations including fetch, push, staging, committing, and discarding changes",
+      "Connects to configured MCP servers and exposes their tools to the model",
+      "Calls Tavily, GitHub, and configurable OpenAI-compatible vision endpoints",
+      "Sends Windows desktop notifications"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:05.988Z",
+  "repositoryCommitSha": "224dcb49620f59c2e64c00edf915732b05d50a1e",
+  "evidenceHash": "3435242b4b58397226bae415183df332801b7e776ac6c0fa3d7daeaa91b46e0b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e277ea19ed8b8a1bec1f2e3307cffe41b4753508e58b150d4c6f5c20bf8cfd49",
+  "shadowMode": false
+}

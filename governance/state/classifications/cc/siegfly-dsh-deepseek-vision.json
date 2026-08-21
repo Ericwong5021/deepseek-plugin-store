@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "image",
+    "integration",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness gateway plugin that enables image-aware chat by sending user images to a configured vision-language endpoint, converting them to text, and routing the result through DeepSeek.",
+  "summaries": {
+    "zh": "通过可配置的视觉语言模型将聊天中的图片转换为文字，并经由 DeepSeek Harness 的独立路由继续处理。",
+    "en": "Converts chat images into text through a configurable vision-language model and routes the result through a dedicated DeepSeek Harness provider."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts image attachments from chat, screenshots, tool results, MCP results, and ACP clients",
+      "Sends image data to a user-configured OpenAI-compatible vision-language endpoint",
+      "Uses configured DeepSeek and vision-model API credentials",
+      "Converts image content into text before forwarding it to DeepSeek",
+      "Caches image descriptions in process memory using an LRU cache",
+      "Registers a DeepSeek vision provider route and plugin settings interface"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_content_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "provider_and_settings_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts image attachments from chat, screenshots, tool results, MCP results, and ACP clients",
+      "Sends image data to a user-configured OpenAI-compatible vision-language endpoint",
+      "Uses configured DeepSeek and vision-model API credentials",
+      "Converts image content into text before forwarding it to DeepSeek",
+      "Caches image descriptions in process memory using an LRU cache",
+      "Registers a DeepSeek vision provider route and plugin settings interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:56:04.091Z",
+  "repositoryCommitSha": "3527812e8a47807ef60da65a9eb32c4359dd76cf",
+  "evidenceHash": "b09737c845e1fd8c4fead9cb657537904d63d472290a1a9ca1c9ed249fa662b8",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9cc566fe266024b3e0cc68d6640cd488b0daa8cd9ccb85f11bbadeb29aeda9e0",
+  "shadowMode": false
+}

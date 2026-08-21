@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "tool",
+    "agent",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that checkpoints pre-images from successful write/edit results and restores recent file mutations through a model tool or /rollback command.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 捕获文件写入或编辑前的内容，并通过模型工具或 /rollback 命令恢复最近的文件变更。",
+    "en": "A DeepSeek Harness plugin that captures pre-mutation contents from successful file writes or edits and restores recent changes through a model tool or the /rollback command."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Observes successful write/edit results and stores file pre-images",
+      "Writes restored file contents directly to the workspace",
+      "Deletes files when restoring records for previously absent paths",
+      "Persists rollback manifests and snapshots",
+      "Invokes the git executable for checkpointing and restoration"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "direct_restore_writes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_checkpoint_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_process_invocation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "filesystem.write",
+      "Observes successful write/edit results and stores file pre-images",
+      "Writes restored file contents directly to the workspace",
+      "Deletes files when restoring records for previously absent paths",
+      "Persists rollback manifests and snapshots",
+      "Invokes the git executable for checkpointing and restoration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:58:33.416Z",
+  "repositoryCommitSha": "3deb80df973913da93197a3a1cf006dfc3629333",
+  "evidenceHash": "61341d898ab8c846366cf6031cdf214899bcbe4aeb3d0adff09c17393db8f725",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0e63bb0ebc1c06ec4e0835931ebe3b5fe7d145ff99a69f4db8a404c4d2a499a0",
+  "shadowMode": false
+}

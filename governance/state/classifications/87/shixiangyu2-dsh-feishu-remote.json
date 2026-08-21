@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "chat",
+    "cli",
+    "file",
+    "image",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Feishu/Lark integration that remotely orchestrates DeepSeek Harness agents by receiving chat tasks, running them, and returning text or image results.",
+  "summaries": {
+    "zh": "通过飞书或 Lark 接收聊天任务、运行 DeepSeek Harness 智能体，并将文本或图片结果返回聊天会话。",
+    "en": "Remotely orchestrate DeepSeek Harness agents through Feishu or Lark by receiving chat tasks and returning text or image results."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives Feishu/Lark direct-message events over a WebSocket long connection",
+      "Creates and runs DeepSeek Harness agent tasks from incoming messages",
+      "Sends text messages and local images to Feishu users or chats",
+      "Downloads URLs and Feishu image resources to local files",
+      "Uses a vision model to analyze received images",
+      "Runs a detached, unsandboxed resident listener process"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_ingress_and_reply",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_task_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_download_and_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unsandboxed_background_process",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives Feishu/Lark direct-message events over a WebSocket long connection",
+      "Creates and runs DeepSeek Harness agent tasks from incoming messages",
+      "Sends text messages and local images to Feishu users or chats",
+      "Downloads URLs and Feishu image resources to local files",
+      "Uses a vision model to analyze received images",
+      "Runs a detached, unsandboxed resident listener process"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:54.141Z",
+  "repositoryCommitSha": "0f8a1e00099be107fd66533048c5ff8999c26c4d",
+  "evidenceHash": "f7d6aabb44ee73db6fa28d0478c2de785db6b77cb37364f82bcc72fbc63975e7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5fc7695871791a9f2ea271b36c5cacae165d60b917be1d96052a7b0825264be9",
+  "shadowMode": false
+}

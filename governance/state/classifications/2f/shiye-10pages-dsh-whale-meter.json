@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "monitoring",
+    "api",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local DeepSeek Harness usage and cost dashboard that visualizes token consumption, estimated billing, pricing changes, model breakdowns, trends, budgets, and shareable billing cards.",
+  "summaries": {
+    "zh": "用于在本机统计和可视化 DeepSeek Harness 的 token 用量、模型费用、价格变化、趋势与预算信息。",
+    "en": "A local dashboard for tracking and visualizing DeepSeek Harness token usage, estimated model costs, pricing changes, trends, and budgets."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local dsh session logs for token usage records",
+      "Calculates token usage and estimated costs from configured pricing data",
+      "Stores usage records locally in JSONL files",
+      "Optionally queries the DeepSeek API for account balance when an API key is configured",
+      "Optionally fetches a remote pricing table when enabled"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_SESSION_LOG_ACCESS",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "LOCAL_USAGE_STORAGE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "OPTIONAL_EXTERNAL_API_REQUEST",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "OPTIONAL_REMOTE_PRICING_FETCH",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local dsh session logs for token usage records",
+      "Calculates token usage and estimated costs from configured pricing data",
+      "Stores usage records locally in JSONL files",
+      "Optionally queries the DeepSeek API for account balance when an API key is configured",
+      "Optionally fetches a remote pricing table when enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:55:54.719Z",
+  "repositoryCommitSha": "c484500e6a00d26317dc71ee854ced26df6f2aaa",
+  "evidenceHash": "6e5a2f9a0e0addd00323e055d77dbaf8643e8029777d4fb8d2403c88f185bb9c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "419f79e64b399aa430649d3d54c09ffe397ad1f39a564fe327fb8e26c1ac8ff4",
+  "shadowMode": false
+}

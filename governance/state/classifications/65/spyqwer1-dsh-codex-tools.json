@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "research",
+    "image",
+    "api",
+    "integration",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a Harness plugin that provides public web search as its primary research tool, with additional image generation and local-image vision capabilities through the ChatGPT Codex transport.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于 ChatGPT Codex 传输的网页搜索、图像生成和本地图片理解工具。",
+    "en": "Provides DeepSeek Harness with web search, image generation, and local-image understanding tools backed by the ChatGPT Codex transport."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches the public web and returns model-generated summaries with source URLs",
+      "Generates bitmap images through the ChatGPT Codex endpoint",
+      "Reads workspace-local image files and sends them for vision analysis",
+      "Uses ChatGPT/Codex credentials, refreshes OAuth tokens, and may persist refreshed login state",
+      "Performs network requests to auth.openai.com and chatgpt.com"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_oauth_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_read_and_upload",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "metered_external_service_usage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Searches the public web and returns model-generated summaries with source URLs",
+      "Generates bitmap images through the ChatGPT Codex endpoint",
+      "Reads workspace-local image files and sends them for vision analysis",
+      "Uses ChatGPT/Codex credentials, refreshes OAuth tokens, and may persist refreshed login state",
+      "Performs network requests to auth.openai.com and chatgpt.com"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:57:05.000Z",
+  "repositoryCommitSha": "9519949dd340ff07a7ef8182692704d2487ce690",
+  "evidenceHash": "e74f67f1fb1e40f46a6b89d96a13464584400c071194fa76a76f211038e378bf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "76eb881f285b88015591b5679889f6badf8001a2cc11c0634a59773ac2fd2654",
+  "shadowMode": false
+}
