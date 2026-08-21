@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "layout",
+    "monitoring",
+    "visualization",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness web overlay for visualizing provider balances, session costs, daily spend, token buckets, pricing status, and local spending history, with periodic provider queries and ledger persistence.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中以可拖动的玻璃拟态面板展示提供商余额、会话费用、每日支出、令牌用量和本地账本统计。",
+    "en": "A DeepSeek Harness web overlay that displays provider balances, session costs, daily spending, token usage, pricing status, and local ledger statistics."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays provider balances, session costs, daily spend, token usage, and pricing information in a web overlay",
+      "Polls provider endpoints and performs manual balance and pricing refresh requests",
+      "Reads configured provider credentials through the host environment for supported usage queries",
+      "Writes and maintains a local JSONL spending ledger and optional pricing snapshot",
+      "Exposes read-only state and ledger routes plus side-effecting refresh routes"
+    ],
+    "reasons": [
+      {
+        "code": "external_provider_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_dependent_usage_query",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_ledger_and_snapshot_writes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "web_api_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Displays provider balances, session costs, daily spend, token usage, and pricing information in a web overlay",
+      "Polls provider endpoints and performs manual balance and pricing refresh requests",
+      "Reads configured provider credentials through the host environment for supported usage queries",
+      "Writes and maintains a local JSONL spending ledger and optional pricing snapshot",
+      "Exposes read-only state and ledger routes plus side-effecting refresh routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:09.025Z",
+  "repositoryCommitSha": "7a5b6a60e6748f011d5822d99c65b0a736b367ff",
+  "evidenceHash": "bb1d65f0f7e24e70caaa39b04e0f23a436df7de2374e289d71be4992d02d649e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1c2e0159ef4eaf6e68f08b9c8bf35430ac6f00d500aae55e18f62dd8392807e5",
+  "shadowMode": false
+}

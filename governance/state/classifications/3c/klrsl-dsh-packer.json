@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "data",
+    "cli",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A local configuration file packer for DeepSeek Harness that creates and manages ZIP packages of agent assets, scans pack contents, and restores files with manifest validation, diff reporting, and conflict strategies.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 打包、扫描、管理和恢复本地智能体配置、技能、会话及记忆等文件资产。",
+    "en": "A DeepSeek Harness plugin for packing, scanning, managing, and restoring local agent configurations, skills, sessions, and memory assets."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads selected local agent asset files and directories",
+      "Creates ZIP archives containing selected configuration and session data",
+      "Scans text files for paths and suspected sensitive strings",
+      "Reads imported ZIP archives and validates manifests and SHA-256 fingerprints",
+      "Writes restored files with overwrite, skip, or merge strategies",
+      "Lists, renames, and deletes generated package files"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "archive_creation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sensitive_content_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "Reads selected local agent asset files and directories",
+      "Creates ZIP archives containing selected configuration and session data",
+      "Scans text files for paths and suspected sensitive strings",
+      "Reads imported ZIP archives and validates manifests and SHA-256 fingerprints",
+      "Writes restored files with overwrite, skip, or merge strategies",
+      "Lists, renames, and deletes generated package files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:33:56.796Z",
+  "repositoryCommitSha": "a4e0e97d5e74808b3f6e513b975ee66b5840bd1a",
+  "evidenceHash": "751158ac219b23e52454381a32539f06b3106da6e40e180fa6bbea71c8598b06",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2954157156e58f13420ed6c5e317517015aab2cb8273970f3e655a88e8ff0cb8",
+  "shadowMode": false
+}

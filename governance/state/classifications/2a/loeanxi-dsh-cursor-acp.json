@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "cli",
+    "integration",
+    "workflow",
+    "planning"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that orchestrates standalone workspace tasks through the locally installed Cursor CLI, with configuration and diagnostic support.",
+  "summaries": {
+    "zh": "通过本机已安装的 Cursor CLI 将独立任务委托到当前工作区执行，并提供模型配置与诊断功能。",
+    "en": "Delegates standalone tasks in the current workspace to the locally installed Cursor CLI and provides model configuration and diagnostics."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Delegates standalone tasks to the locally installed Cursor CLI",
+      "Runs the delegated job in the current workspace",
+      "Uses the user's Cursor authentication or API key and subscription",
+      "Forwards configured proxy environment variables to the Cursor child process",
+      "Reports Cursor CLI availability, login status, and proxy configuration"
+    ],
+    "reasons": [
+      {
+        "code": "external_cli_execution_in_workspace",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "delegates_tasks_to_external_authenticated_service",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Delegates standalone tasks to the locally installed Cursor CLI",
+      "Runs the delegated job in the current workspace",
+      "Uses the user's Cursor authentication or API key and subscription",
+      "Forwards configured proxy environment variables to the Cursor child process",
+      "Reports Cursor CLI availability, login status, and proxy configuration"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:41.159Z",
+  "repositoryCommitSha": "c3ee311b7be9bdea85e8bf079619122a371286f6",
+  "evidenceHash": "3969a36da2ab2c4d92fc221521f94d27335a03ff540ffbe864506effc93d3808",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9042381c1c9fd98163edb57816eece5ff76ee20cf9e7ed825d60f3eacf8a2b3e",
+  "shadowMode": false
+}

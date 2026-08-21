@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "data",
+    "desktop",
+    "tool",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin providing structured, read-only Windows device and host information through 12 win_* tools, including hardware, networking, power, processes, and peripherals.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供结构化的只读 Windows 设备信息查询工具，涵盖硬件、网络、电源、进程及外设。",
+    "en": "Provides DeepSeek Harness with structured, read-only Windows device information tools covering hardware, networking, power, processes, and peripherals."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads Windows system, hardware, network, battery, process, USB, audio, and printer information",
+      "Executes read-only PowerShell, WMI/CIM, netsh, and powercfg queries",
+      "Reports potentially sensitive host details including hostname, user, BIOS serial, Wi-Fi SSID, and running processes"
+    ],
+    "reasons": [
+      {
+        "code": "read_only_host_inspection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sensitive_system_metadata",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Reads Windows system, hardware, network, battery, process, USB, audio, and printer information",
+      "Executes read-only PowerShell, WMI/CIM, netsh, and powercfg queries",
+      "Reports potentially sensitive host details including hostname, user, BIOS serial, Wi-Fi SSID, and running processes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:58.883Z",
+  "repositoryCommitSha": "cca8aec573c99f1ff78df6d0214bd22232fb958c",
+  "evidenceHash": "f1233db0c2c3312f26edaf5a4c6ad3c662002b52098e1d0d483c63a89c4352d5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e7085150252c15b315301a174d19ebad72542625a26b026437862d1b206975e7",
+  "shadowMode": false
+}

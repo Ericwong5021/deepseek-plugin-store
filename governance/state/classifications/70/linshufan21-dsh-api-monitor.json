@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin adds a settings-panel monitor for DeepSeek account balance, availability, and token usage from local session logs, with read-only API and local data access described in the README.",
+  "summaries": {
+    "zh": "在 DSH 设置面板中显示 DeepSeek 账户余额、可用状态及基于本地会话日志统计的 Token 用量，并支持手动刷新。",
+    "en": "Adds a DSH settings panel that displays DeepSeek account balance, availability, and token usage aggregated from local session logs, with manual refresh support."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads the configured DeepSeek API credential through the host credential resolver",
+      "Calls the configured DeepSeek balance endpoint",
+      "Reads local session logs to aggregate token usage",
+      "Provides local loopback routes and a settings panel for balance and usage display",
+      "Supports manual data refresh"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external-api-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-log-read",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads the configured DeepSeek API credential through the host credential resolver",
+      "Calls the configured DeepSeek balance endpoint",
+      "Reads local session logs to aggregate token usage",
+      "Provides local loopback routes and a settings panel for balance and usage display",
+      "Supports manual data refresh"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:06.584Z",
+  "repositoryCommitSha": "e6865a1a36cbfb0eba93eb32dd880257840d20a3",
+  "evidenceHash": "2f7f181be42c6c3443b1fed2760e9697481bff69c283e9a8d895e32c945a418a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3dd3bd6840324fa2e86fd094fa4bda20314d27e60d0e2ed86ebf6e2e13c67f04",
+  "shadowMode": false
+}

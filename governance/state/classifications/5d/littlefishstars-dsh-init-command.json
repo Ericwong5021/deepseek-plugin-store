@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "code-generation",
+    "automation",
+    "file",
+    "terminal",
+    "api",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin provides a /init command that analyzes a project and generates an AGENTS.md guide, with optional filesystem writes, Git initialization, external template download, and initial commit operations.",
+  "summaries": {
+    "zh": "通过 /init 分析当前项目并生成或更新 AGENTS.md 指南，支持可选的 Git 初始化、模板下载和初始提交。",
+    "en": "Adds an /init command that analyzes the current project and generates or updates an AGENTS.md guide, with optional Git initialization, template download, and initial commit actions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Analyzes a project's directory structure and infers its language, framework, and build tools using a model",
+      "Generates and writes or replaces an AGENTS.md project guide",
+      "Can initialize a Git repository, rename the default branch, download a matching .gitignore template, and create an initial commit when explicitly requested",
+      "Sends project structure and prompts to a configured model service"
+    ],
+    "reasons": [
+      {
+        "code": "writes_or_overwrites_project_file",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "executes_git_initialization_and_commit_options",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "downloads_external_gitignore_template",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "calls_configured_model_service",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Analyzes a project's directory structure and infers its language, framework, and build tools using a model",
+      "Generates and writes or replaces an AGENTS.md project guide",
+      "Can initialize a Git repository, rename the default branch, download a matching .gitignore template, and create an initial commit when explicitly requested",
+      "Sends project structure and prompts to a configured model service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:18.951Z",
+  "repositoryCommitSha": "f82894fbb3d6c52c085d48f5af887ac6984caf6f",
+  "evidenceHash": "b565bd0b918d5fffe13e044acc6ca10ae8e7a3388b7636df7f50f61d314e3b8f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5cd4754531554fb406b30f59df015584a8bd873434496de770d31f23ac9ff07e",
+  "shadowMode": false
+}

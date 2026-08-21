@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "chat",
+    "api",
+    "integration",
+    "ui",
+    "layout",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A host-integrated DeepSeek chat plugin that adds an independent draggable and resizable conversation panel, supports quoting selected text, model switching, and streamed responses through the host's configured LLM service.",
+  "summaries": {
+    "zh": "在 dsh Web UI 中提供独立的 DeepSeek 悬浮聊天面板，支持引用主会话文本、切换模型和流式查看回复。",
+    "en": "Adds an independent floating DeepSeek chat panel to the dsh Web UI with selected-text quoting, model switching, and streamed responses."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Provides an independent DeepSeek chat panel inside the host web UI",
+      "Sends prompts and optionally selected conversation text through the host's configured LLM route",
+      "Supports streaming responses and reasoning display",
+      "Stores the selected model preference in localStorage",
+      "Registers local HTTP routes for chat, model selection, and plugin uninstall operations"
+    ],
+    "reasons": [
+      {
+        "code": "external_llm_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "selected_text_forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_preference_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_http_routes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides an independent DeepSeek chat panel inside the host web UI",
+      "Sends prompts and optionally selected conversation text through the host's configured LLM route",
+      "Supports streaming responses and reasoning display",
+      "Stores the selected model preference in localStorage",
+      "Registers local HTTP routes for chat, model selection, and plugin uninstall operations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:31.801Z",
+  "repositoryCommitSha": "1b50e4f6944d89e7b8728579b4c18fc3652ef693",
+  "evidenceHash": "5c420a08d371473469770a1e8a828e8cd039bf05543e91b184549731259797a4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b1544d27d66463fd0d1148a2b3eb1baccba37bad8ca86c7c7caa7527c46d0618",
+  "shadowMode": false
+}

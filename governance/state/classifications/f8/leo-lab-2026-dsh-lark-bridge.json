@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "notification",
+    "monitoring",
+    "integration",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is monitoring session stop conditions and delivering Feishu/Lark notifications, with optional workspace routing and process-death watchdog monitoring.",
+  "summaries": {
+    "zh": "监控 DeepSeek Harness 会话的停顿、完成、错误和进程状态，并通过 lark-cli 将通知发送到飞书或 Lark。",
+    "en": "Monitors DeepSeek Harness session pauses, completions, errors, and process status, then sends notifications to Feishu or Lark through lark-cli."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Observes DeepSeek Harness session and agent lifecycle events",
+      "Sends Feishu/Lark notifications through lark-cli",
+      "Supports workspace-specific notification routing",
+      "Can monitor process heartbeats with an external watchdog script",
+      "Provides setup, status, test, and routing commands"
+    ],
+    "reasons": [
+      {
+        "code": "external_notification_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_event_observation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "process_heartbeat_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Observes DeepSeek Harness session and agent lifecycle events",
+      "Sends Feishu/Lark notifications through lark-cli",
+      "Supports workspace-specific notification routing",
+      "Can monitor process heartbeats with an external watchdog script",
+      "Provides setup, status, test, and routing commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:14.038Z",
+  "repositoryCommitSha": "c67f17ffb71916a024b63754e857e432085be9b3",
+  "evidenceHash": "52bc8c3d6d1513cea1a8b341e5d71f232ec167abdfb77bbc42b2d8795e6804f1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d82a6d30b0a584f846d1a552a11c8771f170434fdec512f5324867f77e9892a0",
+  "shadowMode": false
+}

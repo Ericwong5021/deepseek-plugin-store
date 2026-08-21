@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "planning-execution",
+  "tags": [
+    "agent",
+    "planning",
+    "workflow",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness guard that maintains agent task-plan freshness by reminding the model to update unfinished todos and temporarily blocking ordinary tools when the plan remains stale.",
+  "summaries": {
+    "zh": "通过提醒并在待办状态过期时暂时阻止普通工具调用，帮助 DeepSeek Harness 智能体保持任务计划与实际进度一致。",
+    "en": "Helps DeepSeek Harness agents keep task plans aligned with actual progress by reminding them to update stale todos and temporarily blocking ordinary tool calls when needed."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Tracks non-bookkeeping tool attempts within a session",
+      "Injects a reminder to reconcile unfinished todo items",
+      "Blocks ordinary tools when the todo list remains stale",
+      "Keeps todo_write and the outer run_code recovery path available"
+    ],
+    "reasons": [
+      {
+        "code": "agent_tool_gating",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_state_tracking",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "Tracks non-bookkeeping tool attempts within a session",
+      "Injects a reminder to reconcile unfinished todo items",
+      "Blocks ordinary tools when the todo list remains stale",
+      "Keeps todo_write and the outer run_code recovery path available"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:22.379Z",
+  "repositoryCommitSha": "ea0866eaddf33973ff756d7ab1dcb90d3fe2f4bf",
+  "evidenceHash": "86b795a78f6f69004dc2af114b811fbc91c75c0c28cf4c0c17c2b837d5ceb6d1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ceb1f50337ae84aecc64e3d75460cac6fae0aeddc466a7d28d66b0a80bd5ceb8",
+  "shadowMode": false
+}

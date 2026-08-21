@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "integration",
+    "memory"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides durable, normalized CI execution metadata to an agent by reading an allowlist of environment variables and injecting changed snapshots; it does not control pipelines, read logs, or write repositories.",
+  "summaries": {
+    "zh": "将来自 GitHub Actions、GitLab CI 或通用 CI 环境的规范化执行元数据注入智能体上下文，并对未变化的快照去重。",
+    "en": "Injects normalized execution metadata from GitHub Actions, GitLab CI, or generic CI environments into agent context while deduplicating unchanged snapshots."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads an allowlist of CI environment metadata",
+      "Detects GitHub Actions and GitLab CI execution context",
+      "Injects normalized CI metadata into agent context",
+      "Deduplicates unchanged context snapshots"
+    ],
+    "reasons": [
+      {
+        "code": "reads_allowlisted_environment_metadata",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "injects_ci_snapshot_into_agent_context",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads an allowlist of CI environment metadata",
+      "Detects GitHub Actions and GitLab CI execution context",
+      "Injects normalized CI metadata into agent context",
+      "Deduplicates unchanged context snapshots"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:37:00.452Z",
+  "repositoryCommitSha": "7d814e3def47e257de0aa4b12e2d57572eb63d6a",
+  "evidenceHash": "bb62c855bb5aaf2e8fbe262b0938c6f39a20ca5d32cb3ad681afec40f4ae1102",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac27579b507b57b8f3ee3dde1ded451ba04ff3412be63d5dfc10da23701a1d05",
+  "shadowMode": false
+}

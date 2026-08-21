@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "mcp",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A project-scoped MCP client bridge that loads configured servers, exposes their tools to agent sessions, and hot-reloads configuration changes.",
+  "summaries": {
+    "zh": "按项目读取 .dsh/mcp.json，连接配置的 MCP 服务器并将其工具动态提供给该项目的智能体会话。",
+    "en": "Loads project-defined MCP servers from .dsh/mcp.json and dynamically exposes their tools to agent sessions with live configuration reload."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads project-level .dsh/mcp.json configuration",
+      "Spawns configured MCP server child processes over stdio",
+      "Connects to configured streamable HTTP MCP endpoints",
+      "Registers MCP tools in project agent sessions",
+      "Hot-reloads MCP configuration and reconnects servers on demand"
+    ],
+    "reasons": [
+      {
+        "code": "executes_configured_processes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "connects_to_external_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "project_configuration_is_executable_content",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads project-level .dsh/mcp.json configuration",
+      "Spawns configured MCP server child processes over stdio",
+      "Connects to configured streamable HTTP MCP endpoints",
+      "Registers MCP tools in project agent sessions",
+      "Hot-reloads MCP configuration and reconnects servers on demand"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:17.075Z",
+  "repositoryCommitSha": "c565d1f63c5fade9421b62e9aacc5acb8e294edc",
+  "evidenceHash": "2ee4e95b4e3c9c55b8a10e5cd8a52c84bd2416b9aaabb51e46549a19e0c35c56",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6ab34b2bb4d2c4460819bd581f4840ef332f333fc04e9e62147e0adccbde07cf",
+  "shadowMode": false
+}

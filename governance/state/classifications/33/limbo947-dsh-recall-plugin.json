@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "chat",
+    "context",
+    "file",
+    "memory",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH plugin that snapshots workspace files and conversation history per user message, then lets users confirmably roll both back to an earlier state using an independent Git-based store and session forking.",
+  "summaries": {
+    "zh": "一个为 DSH 保存工作区文件与对话快照并支持将二者回退到指定消息之前状态的插件。",
+    "en": "A DSH plugin that snapshots workspace files and conversation history and lets users roll both back to the state before a selected message."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Snapshots workspace files and conversation state when messages are sent",
+      "Restores or removes workspace files during confirmed rollback",
+      "Forks conversation sessions to an earlier message",
+      "Executes Git CLI and platform shell commands for snapshot storage and restoration",
+      "Deletes stored snapshots through session cleanup or user-managed snapshot controls"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "conversation_state_rollback",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_and_git_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "snapshot_deletion",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Snapshots workspace files and conversation state when messages are sent",
+      "Restores or removes workspace files during confirmed rollback",
+      "Forks conversation sessions to an earlier message",
+      "Executes Git CLI and platform shell commands for snapshot storage and restoration",
+      "Deletes stored snapshots through session cleanup or user-managed snapshot controls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:54.616Z",
+  "repositoryCommitSha": "198f57982ce4d6ebc402b7ccd1180592b27e778b",
+  "evidenceHash": "1728d14b29513267ce1dde1420d55664b4e51f6197e925509bf6e2be611c0192",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4d941a26ec8be95176ba9d97ee1bbb36b04257b750f9bccf51c99a76a72e5afd",
+  "shadowMode": false
+}

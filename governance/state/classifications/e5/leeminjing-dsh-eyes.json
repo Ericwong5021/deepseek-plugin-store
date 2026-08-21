@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "tool",
+    "chat",
+    "document"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a plugin that lets text-only DeepSeek sessions inspect uploaded images through a view_image tool backed by configurable OpenAI-compatible vision APIs, including image description and OCR.",
+  "summaries": {
+    "zh": "为纯文本模型提供按需查看已上传图片的能力，并通过兼容 OpenAI 的视觉接口返回图像描述和 OCR 文本。",
+    "en": "Enables text-only models to inspect uploaded images on demand through a view_image tool backed by configurable OpenAI-compatible vision APIs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Accepts and persists image attachments for later tool access",
+      "Sends image data to a configured OpenAI-compatible vision endpoint",
+      "Registers a view_image tool that returns image descriptions and OCR text"
+    ],
+    "reasons": [
+      {
+        "code": "external-data-transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed-api-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "attachment-persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts and persists image attachments for later tool access",
+      "Sends image data to a configured OpenAI-compatible vision endpoint",
+      "Registers a view_image tool that returns image descriptions and OCR text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:10.349Z",
+  "repositoryCommitSha": "b645e41dd6afeba06c58414914a77a150d49fe1a",
+  "evidenceHash": "6e50e417d38faa1fbef94cb503bd15b7e949b7bec3f23d838706a2edd556fd07",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "11c0960666b51f5b68f430a96b2dcd8960a3cdd2e20576fc4d0ab28ef33aa103",
+  "shadowMode": false
+}

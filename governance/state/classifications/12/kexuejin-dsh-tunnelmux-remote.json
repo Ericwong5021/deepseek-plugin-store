@@ -1,16 +1,82 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "mobile",
+    "api",
+    "chat",
+    "integration",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A mobile remote-control plugin for the DeepSeek Harness web GUI that provides QR pairing, device session management, mobile chat and session operations, and TunnelMux-backed connectivity.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 网页界面提供移动端远程控制、二维码配对、设备会话管理以及基于 TunnelMux 的连接能力。",
+    "en": "Provides mobile remote control for the DeepSeek Harness web GUI with QR pairing, device session management, chat and session operations, and TunnelMux connectivity."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a mobile web interface for remote session management and chat",
+      "Pairs mobile devices using QR codes and one-time tokens",
+      "Maintains, limits, and revokes device sessions",
+      "Communicates with a local TunnelMux control API and public tunnel endpoint",
+      "Streams live pairing and status updates using server-sent events",
+      "Proxies an allowlisted set of host API methods to mobile clients"
+    ],
+    "reasons": [
+      {
+        "code": "remote_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_credentials",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Provides a mobile web interface for remote session management and chat",
+      "Pairs mobile devices using QR codes and one-time tokens",
+      "Maintains, limits, and revokes device sessions",
+      "Communicates with a local TunnelMux control API and public tunnel endpoint",
+      "Streams live pairing and status updates using server-sent events",
+      "Proxies an allowlisted set of host API methods to mobile clients"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:33:29.303Z",
   "repositoryCommitSha": "296e695cc658bf9116e6c56c206e445a49112031",
+  "evidenceHash": "1bc8a0b3b73fb755cacdd358db3f96f4b77e3cfa926711d89e6d0ab92fb87a1d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "ad10595f6320eb89b34f5dbf03d5a83288f393fd9bab3256a14eebbd39de398d",
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-21T19:30:49.619Z",
-  "lastAttemptAt": "2026-08-21T19:30:49.619Z",
-  "nextRetryAt": "2026-08-22T01:30:49.619Z",
-  "retryable": true,
-  "error": "The operation was aborted due to timeout",
   "shadowMode": false
 }

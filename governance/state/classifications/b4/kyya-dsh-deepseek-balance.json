@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "integration",
+    "monitoring",
+    "ui",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin periodically retrieves DeepSeek account balance information and presents its availability and details in the web sidebar, making monitoring the primary user-facing purpose.",
+  "summaries": {
+    "zh": "在 Web 侧边栏中定时获取并展示 DeepSeek API 账户余额、可用状态及更新时间。",
+    "en": "Periodically retrieves and displays DeepSeek API account balance, availability status, and update time in the web sidebar."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads a configured DeepSeek API credential reference",
+      "Makes authenticated GET requests to the configured DeepSeek balance endpoint",
+      "Exposes cached balance data through a local web endpoint",
+      "Displays balance status and details in the web sidebar"
+    ],
+    "reasons": [
+      {
+        "code": "external_authenticated_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_endpoint_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads a configured DeepSeek API credential reference",
+      "Makes authenticated GET requests to the configured DeepSeek balance endpoint",
+      "Exposes cached balance data through a local web endpoint",
+      "Displays balance status and details in the web sidebar"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:19.532Z",
+  "repositoryCommitSha": "01a58986094fd37fd5b173a60ec80ed0fcd40da9",
+  "evidenceHash": "054107794ad4ebb514a6b1a270fa0b290b30cf6ef06f416a141f8be50e0d9a1e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5c0d10ce7b8ed32dde1713fbe284f54d53bef56564a88ffd3be7b121fed2041c",
+  "shadowMode": false
+}
