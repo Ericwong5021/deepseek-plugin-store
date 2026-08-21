@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness web GUI plugin that visualizes estimated remaining task time, token usage, and model-based costs in the session header, with optional LLM-powered estimates and configurable local settings.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 会话标题栏中展示任务剩余时间、Token 用量和按模型花费估算，并支持可选的 LLM 智能估算。",
+    "en": "Displays estimated remaining task time, token usage, and per-model costs in the DeepSeek Harness session header, with optional LLM-powered estimates."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session statistics, token usage, goals, and session logs",
+      "Computes heuristic, per-round, PERT, and cost estimates",
+      "Displays estimates and details in the session header UI",
+      "Optionally invokes the configured model for an LLM-powered estimate",
+      "Allows local editing and persistence of pricing and refresh settings"
+    ],
+    "reasons": [
+      {
+        "code": "optional_configured_model_call",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "ui_injection_and_local_settings",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads session statistics, token usage, goals, and session logs",
+      "Computes heuristic, per-round, PERT, and cost estimates",
+      "Displays estimates and details in the session header UI",
+      "Optionally invokes the configured model for an LLM-powered estimate",
+      "Allows local editing and persistence of pricing and refresh settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:32.664Z",
+  "repositoryCommitSha": "afc8fb46382269ccb88501eee95fe21752d1a29b",
+  "evidenceHash": "35cd02cb5dc57e9fdc66192d1b6318f032d0c5d64df3a845ba654be3c3241bb5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4a574ec80d0880194a06fba020f8046dd0618d16368ac716f28a2ceb7b276555",
+  "shadowMode": false
+}

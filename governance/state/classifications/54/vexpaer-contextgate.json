@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "memory",
+    "agent",
+    "automation",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "ContextGate is a Cordis/DSH plugin that manages oversized LLM conversation history by selecting relevant messages and folding older context into summaries, with token estimation, gatekeeper decisions, fallback rules, and runtime status reporting.",
+  "summaries": {
+    "zh": "ContextGate 是一个用于 DSH/Cordis 的上下文管理插件，可在对话历史超出阈值时筛选相关消息并将其余历史折叠为摘要。",
+    "en": "ContextGate is a DSH/Cordis context-management plugin that selects relevant conversation history and folds excess messages into a summary when token usage exceeds a threshold."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts LLM request streams",
+      "Estimates conversation token usage",
+      "Folds oversized conversation history into summaries",
+      "Invokes a gatekeeper LLM to assess message relevance",
+      "May request user confirmation through the UI",
+      "Registers a status query tool"
+    ],
+    "reasons": [
+      {
+        "code": "context_interception_and_transformation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "secondary_llm_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "runtime_status_tool_registration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts LLM request streams",
+      "Estimates conversation token usage",
+      "Folds oversized conversation history into summaries",
+      "Invokes a gatekeeper LLM to assess message relevance",
+      "May request user confirmation through the UI",
+      "Registers a status query tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:25.214Z",
+  "repositoryCommitSha": "f1715a39dd4a1291149f5ccfa188b70c0abf954b",
+  "evidenceHash": "f82f54af5c96f38f39cebd95027b72d6e538293ecf6e5e9686c562d2b30a1ec6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "bfdab6721d75222ba01c103b3efa47e461c286fc2df177b0704898d4765bb6ce",
+  "shadowMode": false
+}

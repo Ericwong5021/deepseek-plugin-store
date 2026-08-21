@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "document",
+    "api",
+    "integration",
+    "data",
+    "tool",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is converting chat images into OCR text and vision-model descriptions so text-only language models can process them, using configurable local or external backends.",
+  "summaries": {
+    "zh": "将聊天中的图片转换为 OCR 文本和视觉模型描述，帮助纯文本模型理解截图、文档、照片和图表。",
+    "en": "Converts chat images into OCR text and vision-model descriptions so text-only language models can process screenshots, documents, photos, and diagrams."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts image blocks in LLM requests",
+      "Performs OCR on images using local or HTTP engines",
+      "Sends images to configured vision-model backends for descriptions",
+      "Supports multiple external and local vision providers with fallback",
+      "Caches converted image text across sessions",
+      "Reads configured model credentials through the host credentials service"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_provider_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "request_interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Intercepts image blocks in LLM requests",
+      "Performs OCR on images using local or HTTP engines",
+      "Sends images to configured vision-model backends for descriptions",
+      "Supports multiple external and local vision providers with fallback",
+      "Caches converted image text across sessions",
+      "Reads configured model credentials through the host credentials service"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:07.721Z",
+  "repositoryCommitSha": "f7c654f9f5b726ec0f2a5cb5225b04e50adec55f",
+  "evidenceHash": "594158a6af8bfb5a59bedabc2cc71d68a925fbf01a6378dff9a2a73abc98bdd7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a730a8d1f1f7ed6f22d12ae779459b7e0ed084bc035994ea13461af3284621f",
+  "shadowMode": false
+}

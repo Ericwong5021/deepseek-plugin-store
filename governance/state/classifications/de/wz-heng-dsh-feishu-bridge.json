@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "collaboration",
+    "integration",
+    "workflow",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Feishu/Lark bridge that lets users chat with a DeepSeek Harness agent, manage sessions, and optionally approve bash tool calls through Feishu cards.",
+  "summaries": {
+    "zh": "将飞书或 Lark 聊天连接到 DeepSeek Harness 智能体，支持会话管理、用户配对以及可选的 bash 操作审批。",
+    "en": "Connects Feishu or Lark chats to a DeepSeek Harness agent with session management, user pairing, and optional approval of bash operations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives and sends Feishu or Lark chat messages",
+      "Invokes DeepSeek Harness agent turns through its Python SDK",
+      "Maintains chat sessions and pairing or allowlist state",
+      "Can request and execute bash tool calls when approval mode is enabled",
+      "Uses configured API credentials and external service credentials"
+    ],
+    "reasons": [
+      {
+        "code": "external_chat_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bash_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_external_services",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Receives and sends Feishu or Lark chat messages",
+      "Invokes DeepSeek Harness agent turns through its Python SDK",
+      "Maintains chat sessions and pairing or allowlist state",
+      "Can request and execute bash tool calls when approval mode is enabled",
+      "Uses configured API credentials and external service credentials"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:27.072Z",
+  "repositoryCommitSha": "7cb392ee508ecd5e74d3a57c60fc06e9ca6cdb01",
+  "evidenceHash": "76aa25d480046425e8f964b6d15faa6d7b5c47c50d01e5eeba6a4d5377064978",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4814e688c45d268f911a659cb2d928ee32d13bcafb603c49eb7aba4f9954f963",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "skill",
+    "ui",
+    "file",
+    "chat",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A sidebar panel for managing DeepSeek Harness skills, including enablement, default loading, categorization, conversation loading, and SKILL.md authoring through documented host RPCs.",
+  "summaries": {
+    "zh": "这是一个用于在 DeepSeek Harness 侧边栏中管理技能的面板，支持启用、默认加载、分类、当前对话加载以及 SKILL.md 的创建和编辑。",
+    "en": "A sidebar panel for managing DeepSeek Harness skills with controls for enablement, default loading, categorization, conversation loading, and SKILL.md authoring."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads and displays available skills",
+      "Enables or disables skills",
+      "Stores skill preferences and categories",
+      "Creates, edits, and deletes user-owned SKILL.md files",
+      "Copies a skill invocation to the clipboard",
+      "Opens the skills folder in the host file manager",
+      "Uses host RPCs to manage skill data"
+    ],
+    "reasons": [
+      {
+        "code": "filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "clipboard_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_rpc_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Reads and displays available skills",
+      "Enables or disables skills",
+      "Stores skill preferences and categories",
+      "Creates, edits, and deletes user-owned SKILL.md files",
+      "Copies a skill invocation to the clipboard",
+      "Opens the skills folder in the host file manager",
+      "Uses host RPCs to manage skill data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:50.075Z",
+  "repositoryCommitSha": "7e75120bb3b007d4c4de469bdae955e154cd8c80",
+  "evidenceHash": "d24e88c4e16d638ee02393215ba47f914db81d32f4a3eac1cd84c17c7c3229a4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1155df07ef760c2ace52c873d01e84f12525f9e53061462c407c84ae2feb4fd4",
+  "shadowMode": false
+}

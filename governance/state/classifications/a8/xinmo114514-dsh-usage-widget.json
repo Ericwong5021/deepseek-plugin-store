@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "monitoring",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH web plugin that locally aggregates session token usage and presents it in a persistent draggable widget with totals, time-series charts, and heatmaps.",
+  "summaries": {
+    "zh": "在 DSH 网页中本地统计会话 Token 用量，并通过可拖动悬浮窗展示总量、趋势曲线和热力图。",
+    "en": "A DSH web plugin that locally aggregates session token usage and displays totals, trend charts, and heatmaps in a draggable floating widget."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local DSH session usage logs",
+      "Aggregates token usage in process memory",
+      "Serves aggregated snapshots through a same-origin local HTTP API",
+      "Displays an interactive draggable browser overlay with charts",
+      "Stores widget position and display state in browser localStorage"
+    ],
+    "reasons": [
+      {
+        "code": "local_session_log_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_overlay_and_local_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local DSH session usage logs",
+      "Aggregates token usage in process memory",
+      "Serves aggregated snapshots through a same-origin local HTTP API",
+      "Displays an interactive draggable browser overlay with charts",
+      "Stores widget position and display state in browser localStorage"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:52.063Z",
+  "repositoryCommitSha": "efe81179b4a9d01baf346cbf1ab6b48ef70b044e",
+  "evidenceHash": "bc06260d895658da82f8d07040cdd7d2521777574c4a5bd06e707b92290653fc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9e456092a3b91383a538e15d9b86c3ed42615c775d5c034aaa8357bb92f5e407",
+  "shadowMode": false
+}

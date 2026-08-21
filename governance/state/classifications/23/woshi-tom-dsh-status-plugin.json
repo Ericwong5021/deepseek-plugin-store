@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "notification",
+    "ui",
+    "visualization",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A host and harness monitoring plugin that exposes runtime metrics and status endpoints, streams alert events, and provides web UI dashboards, notifications, and configurable thresholds.",
+  "summaries": {
+    "zh": "用于查看 DeepSeek Harness 宿主机运行状态的监控插件，提供状态接口、实时事件、告警提示和网页端详情面板。",
+    "en": "A DeepSeek Harness monitoring plugin that provides host status APIs, real-time alert events, web dashboards, notifications, and configurable thresholds."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Exposes host runtime health, resource, server, API-key-presence, and plugin-inventory data through HTTP endpoints",
+      "Streams status snapshots and alert transitions over Server-Sent Events",
+      "Displays monitoring badges, charts, details, and alert toasts in the web UI",
+      "Allows live tuning of monitoring thresholds and intervals through a settings page",
+      "Can send alert-transition notifications to a configured webhook",
+      "Can optionally expose LAN IPv4 addresses in status snapshots"
+    ],
+    "reasons": [
+      {
+        "code": "host_telemetry_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_endpoints_and_streaming",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_webhook_notifications",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "live_runtime_settings",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes host runtime health, resource, server, API-key-presence, and plugin-inventory data through HTTP endpoints",
+      "Streams status snapshots and alert transitions over Server-Sent Events",
+      "Displays monitoring badges, charts, details, and alert toasts in the web UI",
+      "Allows live tuning of monitoring thresholds and intervals through a settings page",
+      "Can send alert-transition notifications to a configured webhook",
+      "Can optionally expose LAN IPv4 addresses in status snapshots"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:18.790Z",
+  "repositoryCommitSha": "672e7b17e19477c425e9eb0fd02b144e1eeafe20",
+  "evidenceHash": "9fea4b0ce4de095e56a909bda0ee96553b14b411e09fb2a98e3e435dbc3c40b2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7b254893fd051acac323ad613e73efa15d33f9956719f53d709e81404dcdacc6",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "agent",
+    "image",
+    "api",
+    "file",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Provides a model-facing read_image tool that sends workspace images to a configured OpenAI-compatible vision endpoint and returns answers about their contents.",
+  "summaries": {
+    "zh": "为智能体提供 read_image 工具，将工作区中的图片发送到配置的 OpenAI 兼容视觉接口并返回图像内容问答。",
+    "en": "Provides agents with a read_image tool that sends workspace images to a configured OpenAI-compatible vision endpoint for image-content questions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "reads image files from the workspace or configured allowed directories",
+      "uploads image data to a configured OpenAI-compatible vision endpoint",
+      "uses an API key from an environment variable for each request"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_data_upload",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "reads image files from the workspace or configured allowed directories",
+      "uploads image data to a configured OpenAI-compatible vision endpoint",
+      "uses an API key from an environment variable for each request"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:50.582Z",
+  "repositoryCommitSha": "49cd812c71d4b9656ff326954039d9b553ad99b2",
+  "evidenceHash": "c7857f206144905ad998aa0cecd8995b3c14cba999d2d227003d8babfae2bff3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e75c1b678d496807bd1084730c7be183f5e02ec3dc3ad0c19b2ffed48f378c8c",
+  "shadowMode": false
+}

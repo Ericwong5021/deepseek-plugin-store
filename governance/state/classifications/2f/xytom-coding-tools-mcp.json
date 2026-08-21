@@ -1,0 +1,94 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "mcp",
+    "file",
+    "terminal",
+    "testing",
+    "debugging",
+    "api",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An MCP coding runtime that gives AI clients workspace-scoped file inspection, search, patching, command execution, interactive sessions, and Git inspection tools; its primary user-facing purpose is operating on codebases through files and terminals.",
+  "summaries": {
+    "zh": "通过模型上下文协议为 AI 客户端提供工作区文件读取、搜索、补丁应用、命令执行、交互式会话和 Git 检查工具。",
+    "en": "An MCP coding runtime that provides AI clients with workspace file access, repository search, patch application, command execution, interactive sessions, and Git inspection tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "read workspace files and directories",
+      "search repository text",
+      "apply multi-file patches",
+      "execute shell commands",
+      "manage interactive command sessions",
+      "inspect git history and changes",
+      "serve MCP over stdio or HTTP",
+      "support authenticated remote access and sandbox control"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_repository_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_http_and_sandbox_features",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "read workspace files and directories",
+      "search repository text",
+      "apply multi-file patches",
+      "execute shell commands",
+      "manage interactive command sessions",
+      "inspect git history and changes",
+      "serve MCP over stdio or HTTP",
+      "support authenticated remote access and sandbox control"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:06.945Z",
+  "repositoryCommitSha": "ed85e41999b0cf840d6e45f2bed11ac7f52eab3f",
+  "evidenceHash": "4f46509ee48bed317a532e4759bd9ca3e987476a0d1c81498226189855104514",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0aa265790ffb28c1ffd50304061d3f4e46a816a936b77af03a9f71b738bc4773",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "chat",
+    "api",
+    "automation",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness integration that connects Tencent Weixin bots through QR-code authorization, relays supported messages using the iLink Bot API, and maintains per-account Harness sessions.",
+  "summaries": {
+    "zh": "通过二维码授权将腾讯微信机器人接入 DeepSeek Harness，接收支持的微信消息并将 Harness 回复发回微信。",
+    "en": "Connects Tencent Weixin bots to DeepSeek Harness through QR-code authorization and relays supported messages and Harness responses."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects Tencent Weixin accounts through QR-code authorization",
+      "Stores bot credentials through the Harness credential service",
+      "Receives Weixin messages via long polling and sends Harness responses back to Weixin",
+      "Maintains per-account sessions, cursors, and message deduplication state"
+    ],
+    "reasons": [
+      {
+        "code": "external_account_authorization",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "bidirectional_message_transport",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects Tencent Weixin accounts through QR-code authorization",
+      "Stores bot credentials through the Harness credential service",
+      "Receives Weixin messages via long polling and sends Harness responses back to Weixin",
+      "Maintains per-account sessions, cursors, and message deduplication state"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:56.879Z",
+  "repositoryCommitSha": "19f0b1f01b8da11f4bbd0dc5d4d6a01650cb728f",
+  "evidenceHash": "9ab7da6286ca62ca7b23987fce42a9cbe8b047f8f3aa525c64a10eb2685367e2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f60f81934c0def9233e1f369704ea52e2a0c5030cd4b15ea2b56d5d33eecf4a9",
+  "shadowMode": false
+}

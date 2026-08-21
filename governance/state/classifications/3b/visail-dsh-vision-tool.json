@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "integration",
+    "tool",
+    "file",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Routes pasted or local images through an analyze_image tool to a configured vision model and rewrites prompts so text-only DSH models can use image descriptions.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的文本模型提供图像路由，通过分析附件或本地图像并返回视觉模型生成的文本描述来支持图像理解。",
+    "en": "Provides image routing for DeepSeek Harness text models by analyzing pasted attachments or local image files through a configured vision model and returning textual descriptions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Persists pasted images as harness attachments",
+      "Rewrites prompts for text-only models when images are present",
+      "Reads referenced attachments or local image files",
+      "Sends image data to a configured vision-model API",
+      "Reads the configured KIMI_CODE_API_KEY credential",
+      "Writes diagnostic information to a local trace log"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_data_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Persists pasted images as harness attachments",
+      "Rewrites prompts for text-only models when images are present",
+      "Reads referenced attachments or local image files",
+      "Sends image data to a configured vision-model API",
+      "Reads the configured KIMI_CODE_API_KEY credential",
+      "Writes diagnostic information to a local trace log"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:30.684Z",
+  "repositoryCommitSha": "eaf5f8bbfa6d0ba6b972195e57bd297f7d0b3b39",
+  "evidenceHash": "d4f5d4656b2e378c95af1a28bcc92562e211e96f616f754aeca6d3c07b6a0dcc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ba45b8bff23a040a3f7b92bd16992d46c63c32d503169d0caea02dc2b8337b07",
+  "shadowMode": false
+}

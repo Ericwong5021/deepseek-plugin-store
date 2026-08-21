@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "browser",
+    "integration",
+    "agent",
+    "automation",
+    "api",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Chrome extension that bridges allowlisted plaintext browser cookies to a local computer-use receiver so browser sessions can start authenticated; review is warranted because it handles sensitive authentication data and requests broad host permissions.",
+  "summaries": {
+    "zh": "一款 Chrome 扩展，可按允许列表读取明文 Cookie 并将其发送到本机接收器，以便计算机使用工具导入浏览器会话。",
+    "en": "A Chrome extension that reads allowlisted plaintext cookies and sends them to a localhost receiver for import into a computer-use browser session."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads plaintext browser cookies through the Chrome cookies API",
+      "Filters cookies by an allowlist",
+      "Sends selected cookie values to a localhost HTTP receiver",
+      "Polls a local request queue for cookie extraction requests"
+    ],
+    "reasons": [
+      {
+        "code": "handles_authentication_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "requires_broad_browser_host_permissions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "transfers_sensitive_data_to_local_receiver",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Reads plaintext browser cookies through the Chrome cookies API",
+      "Filters cookies by an allowlist",
+      "Sends selected cookie values to a localhost HTTP receiver",
+      "Polls a local request queue for cookie extraction requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:32.080Z",
+  "repositoryCommitSha": "c966c1ef0681953aaebcf099c254098bfef22dea",
+  "evidenceHash": "94e7ee977a3ba33389b4424e6d8657082d29bb2bd09131e33a60f07806320c84",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ac7c993eb3dafffe9345d4ca6941d3c326ee706ca03b00800f617b6e9d72bd23",
+  "shadowMode": false
+}

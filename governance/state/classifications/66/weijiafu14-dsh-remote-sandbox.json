@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "agent",
+    "terminal",
+    "file",
+    "integration",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness plugin that moves filesystem and subprocess execution into an E2B remote sandbox with workspace synchronization, heartbeat keep-alive, and recovery.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的文件系统和子进程执行迁移到支持保持、恢复及工作区同步的 E2B 远程沙箱中。",
+    "en": "Moves DeepSeek Harness filesystem and subprocess execution into an E2B remote sandbox with keep-alive, recovery, and workspace synchronization."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes subprocesses in an E2B remote sandbox",
+      "Provides remote filesystem operations for the DeepSeek Harness context",
+      "Synchronizes workspace data into and out of the remote sandbox",
+      "Maintains, resumes, or recreates sandbox sessions after connection failures",
+      "Uses an E2B API key to manage sandbox lifecycle"
+    ],
+    "reasons": [
+      {
+        "code": "remote_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_file_sync",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_service_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Executes subprocesses in an E2B remote sandbox",
+      "Provides remote filesystem operations for the DeepSeek Harness context",
+      "Synchronizes workspace data into and out of the remote sandbox",
+      "Maintains, resumes, or recreates sandbox sessions after connection failures",
+      "Uses an E2B API key to manage sandbox lifecycle"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:40.422Z",
+  "repositoryCommitSha": "4da3dfd7bde2309c335a6d1383ce037c5f6d8e3f",
+  "evidenceHash": "bfaf4941c8be774b92bbbd42dfb3b26216db33c99c48e9cde9838697371f0909",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8799dae08c1b4a969899f2fccd887f0577dbedb6cca44cbc2cff163f4c109a4b",
+  "shadowMode": false
+}

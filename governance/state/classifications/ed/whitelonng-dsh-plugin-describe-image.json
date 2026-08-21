@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "tool",
+    "agent",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Adds a DeepSeek Harness describe_image tool that accepts image inputs and uses a configured OpenAI-compatible vision-language endpoint to return textual descriptions.",
+  "summaries": {
+    "zh": "通过兼容 OpenAI 接口的视觉语言模型，将本地文件、网络图片或附件引用转换为图片文字描述。",
+    "en": "Uses an OpenAI-compatible vision-language model to turn local files, remote images, or attachment references into textual image descriptions."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Accepts a local image path, HTTP(S) image URL, or harness attachment reference",
+      "Reads and validates image data",
+      "Sends image data to a configured OpenAI-compatible vision-language model endpoint",
+      "Returns generated image description text to the conversation",
+      "Uses configured API credentials for the vision-language endpoint"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_and_remote_image_input",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Accepts a local image path, HTTP(S) image URL, or harness attachment reference",
+      "Reads and validates image data",
+      "Sends image data to a configured OpenAI-compatible vision-language model endpoint",
+      "Returns generated image description text to the conversation",
+      "Uses configured API credentials for the vision-language endpoint"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:00.648Z",
+  "repositoryCommitSha": "2223d9b713e6919213229374573e8e6f686948dc",
+  "evidenceHash": "49532adc25f8dacb16b31b5043eacb3666d727203e7d7022d411c484d939cc43",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "09a5bcfb65990fd3cdc1d8506f8598cef43d80b74dee77765470dbe3e1de6f8b",
+  "shadowMode": false
+}

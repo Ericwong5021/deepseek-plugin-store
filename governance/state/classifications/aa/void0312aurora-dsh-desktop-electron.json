@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An Electron desktop shell that launches an existing local dsh web server and presents its GUI in a standalone tray-resident window.",
+  "summaries": {
+    "zh": "将本机已有的 dsh Web GUI 封装为支持托盘驻留的跨平台 Electron 桌面窗口。",
+    "en": "A cross-platform Electron desktop shell that launches an existing local dsh web server and hosts its GUI in a tray-resident standalone window."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Launches a locally installed dsh web process",
+      "Hosts the dsh web GUI in a sandboxed Electron window",
+      "Maintains tray residency and controls the local server lifecycle",
+      "Opens permitted external http(s) links in the system browser"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_window_and_tray_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_link_handling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Launches a locally installed dsh web process",
+      "Hosts the dsh web GUI in a sandboxed Electron window",
+      "Maintains tray residency and controls the local server lifecycle",
+      "Opens permitted external http(s) links in the system browser"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:27.087Z",
+  "repositoryCommitSha": "71c904f57b3b80e553efd9bc02a9796f6a317c39",
+  "evidenceHash": "f5e74824a63948aa3104b8f2052d4e4956d4f523211100c971aad6b7e6b21f33",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5ead6b5c78b1b685ca8aab3b7b3c8f3c609c25a2994d4e68f215d6eb727546ca",
+  "shadowMode": false
+}

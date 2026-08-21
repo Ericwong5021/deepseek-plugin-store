@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "ui",
+    "layout",
+    "skill",
+    "tool",
+    "automation",
+    "notification"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A Windows Electron desktop wrapper for dsh that embeds its web interface and adds side panels for usage, skills, plugins, tools, and session controls; it also manages local configuration and automatic updates.",
+  "summaries": {
+    "zh": "一个将 dsh Web 界面封装为 Windows Electron 桌面应用并提供技能、插件及会话控制面板的工具。",
+    "en": "A Windows Electron desktop wrapper for dsh that embeds its web interface and provides panels for managing skills, plugins, tools, and sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches a local dsh web process inside an Electron window",
+      "Reads and writes dsh configuration, skill, plugin, and session statistics under ~/.dsh",
+      "Checks npm for updates and installs the latest dsh package before restarting",
+      "May request administrator approval to enable Windows Developer Mode"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "automatic_package_update",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "administrator_privilege_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Launches a local dsh web process inside an Electron window",
+      "Reads and writes dsh configuration, skill, plugin, and session statistics under ~/.dsh",
+      "Checks npm for updates and installs the latest dsh package before restarting",
+      "May request administrator approval to enable Windows Developer Mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:44.662Z",
+  "repositoryCommitSha": "13a02b190fa40185e0bb76ada5300adec399c959",
+  "evidenceHash": "2d7376c86b24920ff42df2599e697d045f521ff1c0a9bcb614e3eaf07b62970a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ebac2d52e9e78c36e831d3791d5cdf342d5267747df7775525776a790d339037",
+  "shadowMode": false
+}

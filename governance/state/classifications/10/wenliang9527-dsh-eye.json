@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "chat",
+    "integration",
+    "document",
+    "context",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a chat plugin that converts uploaded or referenced images into OCR text and optional vision-model descriptions so text-only models can understand them.",
+  "summaries": {
+    "zh": "将聊天中的图片通过本地 OCR 和可选的视觉语言模型转换为文本，并注入文本模型上下文以辅助理解。",
+    "en": "Converts chat images into text using local OCR and an optional vision-language model, then adds the results to the text model's context."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local image files or image URLs for processing",
+      "Performs local OCR on images",
+      "Sends image data and user questions to a configured external vision-language model API",
+      "Injects OCR and vision results into text-model context",
+      "Stores or caches image-analysis results and configuration data"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_and_url_input",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_vlm_api_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local image files or image URLs for processing",
+      "Performs local OCR on images",
+      "Sends image data and user questions to a configured external vision-language model API",
+      "Injects OCR and vision results into text-model context",
+      "Stores or caches image-analysis results and configuration data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:49.300Z",
+  "repositoryCommitSha": "8b4a6991a1701b6f38342077069f8c6f4baeeff7",
+  "evidenceHash": "0fabd21ec796875867da73a82babc3ac46a5c2303daf6e85f034cf690a7343f7",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ed7fdea9920d29779439d484be15e34f1e4bd960d096086fa4657acafbf26946",
+  "shadowMode": false
+}

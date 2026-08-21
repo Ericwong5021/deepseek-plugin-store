@@ -1,0 +1,72 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A terminal-management plugin that provides a command and session-header button to close persistent bash sessions so the sandbox mode can be switched.",
+  "summaries": {
+    "zh": "提供“退出 Bash”命令和会话头部按钮，用于关闭持久 Bash 终端并支持切换沙箱模式。",
+    "en": "Provides an /exit-bash command and session-header button to close persistent Bash terminals before switching sandbox modes."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Registers an /exit-bash command",
+      "Adds a session-header button to invoke the command",
+      "Sends exit to persistent bash shells",
+      "Kills terminal sessions and aborts pending terminal creation",
+      "Can terminate an active bash tool call"
+    ],
+    "reasons": [
+      {
+        "code": "terminates_terminal_sessions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "modifies_execution_environment",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Registers an /exit-bash command",
+      "Adds a session-header button to invoke the command",
+      "Sends exit to persistent bash shells",
+      "Kills terminal sessions and aborts pending terminal creation",
+      "Can terminate an active bash tool call"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:53:41.493Z",
+  "repositoryCommitSha": "6a6e423a2980d7445a1cbf64d3eda094b5aa4115",
+  "evidenceHash": "dfba3c81a9c961203e32b5b05bc29545ce72baeabe49ae133212553053337d58",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e89dfb3e80b21cfa9108d9a9d2a2060de85cfde0cfb09695fd7a36edc8effa47",
+  "shadowMode": false
+}

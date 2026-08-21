@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "automation",
+    "desktop",
+    "terminal",
+    "file",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README documents a Windows one-click launcher that installs the DeepSeek Harness dependency, starts the local web interface, and can generate launcher files, so automation is the primary user-facing purpose.",
+  "summaries": {
+    "zh": "这是一个面向 Windows 的一键启动插件，可安装依赖并启动本地 DeepSeek Harness 网页界面。",
+    "en": "A Windows one-click launcher plugin that installs the required dependency and starts a local DeepSeek Harness web interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Runs a Windows batch or executable launcher",
+      "Installs the @deepseek-ai/dsh npm dependency over the network on first run",
+      "Starts a local DeepSeek Harness web interface",
+      "Generates start-dsh.bat and DeepSeekHarness.exe files"
+    ],
+    "reasons": [
+      {
+        "code": "local_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_dependency_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_generation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Runs a Windows batch or executable launcher",
+      "Installs the @deepseek-ai/dsh npm dependency over the network on first run",
+      "Starts a local DeepSeek Harness web interface",
+      "Generates start-dsh.bat and DeepSeekHarness.exe files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:52.933Z",
+  "repositoryCommitSha": "8c0cdd658dc3dafc481b5406c6954703edbd18fe",
+  "evidenceHash": "fff3f8a8e2eeb0644200da4254905e4193d1502dacf4d4d8fc70f35930e8c533",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "815d39c5a66d9fedbfcd6960cd6b986e584796a680c88cec8069e7133435b85b",
+  "shadowMode": false
+}

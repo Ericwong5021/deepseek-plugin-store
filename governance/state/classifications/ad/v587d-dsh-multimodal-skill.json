@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "image",
+    "api",
+    "cli",
+    "file",
+    "data",
+    "skill"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH skill and Python CLI whose primary purpose is OCR, multimodal image understanding, and conversion of documents such as PDFs and Office files into Markdown; third-party API transmission of submitted content warrants human review.",
+  "summaries": {
+    "zh": "为纯文本模型提供图片理解、OCR 及 PDF、Office、表格和 HTML 文档解析，并将结果转换为可供模型使用的文本或 Markdown。",
+    "en": "Adds image understanding, OCR, and parsing for PDFs, Office files, tables, and HTML, converting results into text or Markdown for text-only models."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local text, image, PDF, Office, CSV, and HTML files",
+      "Performs local parsing and converts supported documents to Markdown",
+      "Sends document or image contents to configured third-party multimodal APIs for OCR, document parsing, or image question answering",
+      "Uses configured API keys and environment variables",
+      "Stores processed results in a local disk cache"
+    ],
+    "reasons": [
+      {
+        "code": "external_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local text, image, PDF, Office, CSV, and HTML files",
+      "Performs local parsing and converts supported documents to Markdown",
+      "Sends document or image contents to configured third-party multimodal APIs for OCR, document parsing, or image question answering",
+      "Uses configured API keys and environment variables",
+      "Stores processed results in a local disk cache"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:50:14.668Z",
+  "repositoryCommitSha": "6aee95a62628c4c8865f9557fe7af70ca3cb75d1",
+  "evidenceHash": "419894e90e41e79e67bc98d6e2ea2e95bfa008c4cb44cdc870eff684894aed9d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "51595f726a59fcfe262ff99b00c0acd04c8916ea6cfbd66f851d84b80e885c6f",
+  "shadowMode": false
+}

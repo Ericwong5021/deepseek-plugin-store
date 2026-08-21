@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "visualization",
+    "api",
+    "cli",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "TokenLedger primarily processes and presents DeepSeek Harness token-usage data, grouping it by relay site and project while providing balance or quota lookups, cost estimates, diagnostics, and exports. The README also documents authenticated external requests and configurable provider endpoints, supporting an R2 risk rating.",
+  "summaries": {
+    "zh": "TokenLedger 为 DeepSeek Harness 汇总并分析令牌用量，按中转站和项目展示余额、配额、费用估算、诊断信息及 CSV 或 JSON 导出。",
+    "en": "TokenLedger aggregates and analyzes DeepSeek Harness token usage, presenting relay- and project-level balances, quotas, cost estimates, diagnostics, and CSV or JSON exports."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Aggregates and indexes token usage from DeepSeek Harness sessions",
+      "Reads provider routing configuration and may read configured local credential sources",
+      "Sends authenticated GET requests to supported provider balance or quota endpoints",
+      "Provides a web panel, CLI commands, CSV/JSON export, diagnostics, and loopback GET APIs",
+      "Supports user-declared provider endpoints for quota or usage data"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access_and_external_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_usage_indexing_and_export",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_endpoint_requests",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Aggregates and indexes token usage from DeepSeek Harness sessions",
+      "Reads provider routing configuration and may read configured local credential sources",
+      "Sends authenticated GET requests to supported provider balance or quota endpoints",
+      "Provides a web panel, CLI commands, CSV/JSON export, diagnostics, and loopback GET APIs",
+      "Supports user-declared provider endpoints for quota or usage data"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:58.439Z",
+  "repositoryCommitSha": "63091bbf2ab093ae8f137d2f5310c5ba2c331f37",
+  "evidenceHash": "e3c94e4befa71a7dfea0b4dcf3e577d9f97f3255e30de1b43e42be01a0d10f75",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "694a4182ebda6a565a5fdb643bfaf5fa1c259d50826f77c32e58028ea26ab08a",
+  "shadowMode": false
+}

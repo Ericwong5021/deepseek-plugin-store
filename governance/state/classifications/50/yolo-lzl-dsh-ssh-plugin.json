@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "cli",
+    "file",
+    "integration",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin primarily provides an SSH-backed terminal tool for executing Bash commands on remote Linux servers, with persisted connection management and workspace defaults; its remote execution capability warrants human review.",
+  "summaries": {
+    "zh": "通过 SSH 在远程 Linux 服务器上执行 Bash 命令，并管理持久化连接和工作区默认设置。",
+    "en": "Executes Bash commands on remote Linux servers over SSH while managing persisted connections and workspace defaults."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes Bash commands on remote Linux servers over SSH",
+      "Stores SSH connection metadata and workspace-specific defaults",
+      "Reads and parses local OpenSSH configuration aliases",
+      "Provides a settings interface for managing saved connections"
+    ],
+    "reasons": [
+      {
+        "code": "remote_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_system_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_connection_metadata",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Executes Bash commands on remote Linux servers over SSH",
+      "Stores SSH connection metadata and workspace-specific defaults",
+      "Reads and parses local OpenSSH configuration aliases",
+      "Provides a settings interface for managing saved connections"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:19.423Z",
+  "repositoryCommitSha": "8f0391fb09ac06c7b572fab4b6e740d3cfd1a360",
+  "evidenceHash": "86156f0f269a04b822d25a30936eb9c9d15cfb419412875696202b0693811779",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ffdddcdebd1c14d8411f477c518101b670bc18c9179630d8aefb9a9377e7f332",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "browser",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is connecting OpenAI Codex subscriptions through OAuth, displaying usage, managing local credentials, and supplying credentials to the openai-codex provider.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中通过 OpenAI OAuth 登录并管理 Codex 凭据、查看用量及接入 openai-codex 模型提供方。",
+    "en": "Connects OpenAI Codex subscriptions to DeepSeek Harness through OAuth, manages local credentials, displays usage, and enables the openai-codex model provider."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "OpenAI OAuth login",
+      "OAuth token exchange and refresh",
+      "Local credential storage",
+      "OpenAI Codex usage retrieval",
+      "Injection of credentials into the openai-codex model provider",
+      "Settings-based login, logout, status, and usage management"
+    ],
+    "reasons": [
+      {
+        "code": "handles_access_and_refresh_tokens",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "connects_to_external_openai_services",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_credentials_to_local_files",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "OpenAI OAuth login",
+      "OAuth token exchange and refresh",
+      "Local credential storage",
+      "OpenAI Codex usage retrieval",
+      "Injection of credentials into the openai-codex model provider",
+      "Settings-based login, logout, status, and usage management"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:18.031Z",
+  "repositoryCommitSha": "44828c88dabfa90d2bd800a8019eec61abd260e2",
+  "evidenceHash": "e891231d7e115c45bc0b38a428e30518ceae6ecf4529d0c2907d6de99f2eecd5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "400daae3cd0a42b027a6effeff6d3a915874c80cc0e821ac7cc8373637f75fff",
+  "shadowMode": false
+}

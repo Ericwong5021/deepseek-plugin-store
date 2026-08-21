@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "ui",
+    "layout",
+    "file",
+    "desktop",
+    "terminal",
+    "memory",
+    "mcp",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Workspace and session management enhancement focused on sidebar navigation, file areas, previews, multi-folder workspaces, recycling, and session organization; human review is warranted because it modifies host bundles, writes workspace files, and can commit and push Git changes.",
+  "summaries": {
+    "zh": "面向 DeepSeek Harness 的工作区与会话管理增强插件，提供多文件夹、回收站、文件预览、拖拽上传及 Git 面板等界面与操作功能。",
+    "en": "A DeepSeek Harness workspace and session management enhancement plugin providing multi-folder workspaces, recycle-bin controls, file previews, drag-and-drop uploads, and a Git panel."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Modifies DeepSeek Harness bundles through overlay patches",
+      "Reads and writes files within workspace directories",
+      "Imports and previews user files",
+      "Creates, deletes, restores, and purges sessions and workspaces",
+      "Executes Git branch, pull, commit, and push operations",
+      "Integrates optional OpenViking MCP memory services"
+    ],
+    "reasons": [
+      {
+        "code": "overlay_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_push",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_mcp_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Modifies DeepSeek Harness bundles through overlay patches",
+      "Reads and writes files within workspace directories",
+      "Imports and previews user files",
+      "Creates, deletes, restores, and purges sessions and workspaces",
+      "Executes Git branch, pull, commit, and push operations",
+      "Integrates optional OpenViking MCP memory services"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:26.755Z",
+  "repositoryCommitSha": "955a232d612062a437fbfbfb87fef44831680b03",
+  "evidenceHash": "71ad33c6ad9074a5537e8a75edec0531c441d46f319cb12a9d7303dc301e828d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "573b8adeb9e53b84f875a52831b2976195c4cfd5be58d5ca97306403937cded5",
+  "shadowMode": false
+}

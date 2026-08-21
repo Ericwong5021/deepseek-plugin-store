@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "image",
+    "workflow",
+    "context",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The plugin enables a text-only primary model to handle image attachments by representing them as placeholders and delegating image reading to a session-scoped visual subagent.",
+  "summaries": {
+    "zh": "该插件将图片附件转换为带附件标识符的文本占位符，并委托会话中的视觉子代理读取图片内容。",
+    "en": "This plugin lets a text-only primary model handle image attachments by representing them as identifiers in text placeholders and delegating image reading to a visual subagent in the session."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Projects image attachments into text placeholders containing attachment identifiers",
+      "Delegates image reading to a visual subagent through read_attachment or read_image",
+      "Routes image-related requests within the current session"
+    ],
+    "reasons": [
+      {
+        "code": "image_attachment_handling",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subagent_delegation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Projects image attachments into text placeholders containing attachment identifiers",
+      "Delegates image reading to a visual subagent through read_attachment or read_image",
+      "Routes image-related requests within the current session"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:52:36.277Z",
+  "repositoryCommitSha": "91e62b5147763b832a3ee178851f0692765e5d8b",
+  "evidenceHash": "950ed6a362841579ad64557b8b6dafa8664492b3bea0de08e9195566d84aca63",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "039c27f5e08e67a93420196f4fbbf3b5bc3b976ffc7420ba681e1e0c6dd7d0ac",
+  "shadowMode": false
+}

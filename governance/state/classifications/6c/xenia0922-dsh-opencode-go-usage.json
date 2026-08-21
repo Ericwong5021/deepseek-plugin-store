@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "desktop",
+    "api",
+    "ui",
+    "monitoring",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A desktop floating dashboard for viewing, analyzing, and exporting OpenCode Go and DSH usage, costs, quotas, model distributions, and trends from local session data and opencode.ai usage records.",
+  "summaries": {
+    "zh": "用于在桌面悬浮面板中查看和分析 OpenCode Go 与 DSH 的用量、费用、配额、模型分布及趋势，并支持 CSV 导出。",
+    "en": "A desktop floating dashboard for viewing and analyzing OpenCode Go and DSH usage, costs, quotas, model distributions, and trends with CSV export support."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads OpenCode Go usage and quota data from opencode.ai using user-provided authentication credentials",
+      "Reads local DSH session events and local credential configuration for usage analysis",
+      "Aggregates usage, model, cost, quota, and trend data into a desktop floating dashboard",
+      "Persists plugin configuration, cached data, diagnostics, and panel layout locally",
+      "Exports the displayed data as CSV",
+      "Makes version-check requests to a public GitHub package.json file"
+    ],
+    "reasons": [
+      {
+        "code": "handles_authentication_credentials",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "accesses_external_usage_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "reads_local_session_and_credential_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_and_exports_usage_data",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads OpenCode Go usage and quota data from opencode.ai using user-provided authentication credentials",
+      "Reads local DSH session events and local credential configuration for usage analysis",
+      "Aggregates usage, model, cost, quota, and trend data into a desktop floating dashboard",
+      "Persists plugin configuration, cached data, diagnostics, and panel layout locally",
+      "Exports the displayed data as CSV",
+      "Makes version-check requests to a public GitHub package.json file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:51:30.881Z",
+  "repositoryCommitSha": "51600136ba798f2ca66e4ff79081b74088b5c824",
+  "evidenceHash": "3a785282c4849c05fac5c82be427efabf937bc467719c12b487849a8cb80967d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1cc34fbfeef759b040632b7296f51d5e0455dc87e862d77ff4a4b1be95003cd6",
+  "shadowMode": false
+}
