@@ -11,7 +11,7 @@ import { loadRegistryPlugins, readJson, sha256 } from './registry-lib.mjs'
 const apiKey = process.env.LLM_CLASSIFIER_API_KEY ?? ''
 const githubToken = process.env.GITHUB_TOKEN ?? ''
 const baseUrl = process.env.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1'
-const model = process.env.LLM_CLASSIFIER_MODEL || 'gpt-5.3-codex-spark'
+const model = process.env.LLM_CLASSIFIER_MODEL || 'gpt-5.6-luna'
 const limit = Math.min(250, Math.max(1, Number.parseInt(process.env.LLM_CLASSIFIER_LIMIT || '20', 10) || 20))
 const concurrency = Math.min(20, Math.max(1, Number.parseInt(process.env.LLM_CLASSIFIER_CONCURRENCY || '6', 10) || 6))
 const target = String(process.env.LLM_CLASSIFIER_PLUGIN || '').trim().toLowerCase()

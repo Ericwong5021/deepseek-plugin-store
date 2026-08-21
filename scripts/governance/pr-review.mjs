@@ -41,7 +41,7 @@ try {
   const adapter = new LLMAdapter({
     apiKey: process.env.LLM_CLASSIFIER_API_KEY || '',
     baseUrl: process.env.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1',
-    model: process.env.LLM_CLASSIFIER_MODEL || 'gpt-5.3-codex-spark',
+    model: process.env.LLM_CLASSIFIER_MODEL || 'gpt-5.6-luna',
     promptVersion: policy.prompts.pullRequestReview,
   })
   if (!adapter.apiKey) throw new Error('semantic review key is not configured')
