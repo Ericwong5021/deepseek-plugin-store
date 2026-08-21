@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "monitoring",
+    "notification",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A monitoring plugin that periodically detects likely stuck DSH sessions, reports them through a status tool, and injects quiet warning text without modifying events or restarting services.",
+  "summaries": {
+    "zh": "定期扫描 DSH 实时会话，识别可能长时间卡住的回合，并通过状态工具和提示警告提供监控信息。",
+    "en": "Monitors live DSH sessions for turns that appear stuck and reports them through a status tool and warning prompts."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "periodically scans live sessions for suspected stuck turns",
+      "reports sessions whose final event is not a completion event after an idle threshold",
+      "injects a warning prompt when suspected stuck sessions are found",
+      "provides a status query tool"
+    ],
+    "reasons": [
+      {
+        "code": "reads_live_session_state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "injects_warning_text",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "periodically scans live sessions for suspected stuck turns",
+      "reports sessions whose final event is not a completion event after an idle threshold",
+      "injects a warning prompt when suspected stuck sessions are found",
+      "provides a status query tool"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:11.414Z",
+  "repositoryCommitSha": "0cdadb019c95a4bf2227b01c9aa1f94931715f02",
+  "evidenceHash": "1cc521f342e5148de7872bb1b94c728c696c69a4bc4a56b285bb00e631dad6a2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "350055ab64af1ce66618b9909ea7940ce44dc0c8fcb7c147ad51b3e2ed10a5b6",
+  "shadowMode": false
+}

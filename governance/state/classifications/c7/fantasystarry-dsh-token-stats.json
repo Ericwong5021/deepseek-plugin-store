@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "data",
+    "visualization",
+    "monitoring",
+    "api",
+    "file",
+    "chat",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A monitoring and visualization plugin that aggregates LLM token usage by day, provider, model, session, and sub-agent, then presents dashboards, history, exports, and /usage results; it also optionally displays estimated costs and DeepSeek balance.",
+  "summaries": {
+    "zh": "按自然日统计并可视化 LLM token 用量，支持按提供商、模型、会话和子代理查看，并提供历史趋势、CSV 导出及 /usage 查询。",
+    "en": "Tracks and visualizes daily LLM token usage by provider, model, session, and sub-agent, with history views, CSV export, and /usage queries."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session event logs to collect model token usage",
+      "Aggregates and persists usage statistics on disk",
+      "Provides usage dashboards, history views, CSV export, and a chat command",
+      "Exposes same-origin HTTP endpoints for usage data",
+      "Optionally requests DeepSeek account balance using a configured API key"
+    ],
+    "reasons": [
+      {
+        "code": "reads_local_session_logs",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_usage_statistics",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_balance_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads session event logs to collect model token usage",
+      "Aggregates and persists usage statistics on disk",
+      "Provides usage dashboards, history views, CSV export, and a chat command",
+      "Exposes same-origin HTTP endpoints for usage data",
+      "Optionally requests DeepSeek account balance using a configured API key"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:30.681Z",
+  "repositoryCommitSha": "039770dd44741d6e6692a62f0dc73de3ba3b02fa",
+  "evidenceHash": "144f20d41edf77e9ec9a302134e60d3d5ce60a2305b0279b2ba9e038ac2505e0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "74551e2f2911a6f2d5c53400a9cbcfbf45bb88b0d6a51b590b2c1f60cfe9e17a",
+  "shadowMode": false
+}

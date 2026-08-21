@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "context",
+    "image",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness plugin for routing specialized tasks, delegated agents, reviews, context compaction, vision, titles, and image generation to separately configured auxiliary models without replacing the main conversation model.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供可独立配置的辅助模型路由，支持视觉理解、上下文压缩、审批审查、子代理、会话标题和图像生成等任务。",
+    "en": "Provides independently configured auxiliary model routes for DeepSeek Harness tasks including vision, context compaction, approval reviews, subagents, session titles, and image generation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Routes selected LLM calls to configured auxiliary models",
+      "Supports delegated subagent model routing",
+      "Provides local image inspection and image handoff through vision models",
+      "Provides image generation through an OpenAI-compatible images API",
+      "Provides context compaction, approval review, and session-title model routes"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_calls",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_image_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "delegated_agent_routing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "image_generation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Routes selected LLM calls to configured auxiliary models",
+      "Supports delegated subagent model routing",
+      "Provides local image inspection and image handoff through vision models",
+      "Provides image generation through an OpenAI-compatible images API",
+      "Provides context compaction, approval review, and session-title model routes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:29:07.722Z",
+  "repositoryCommitSha": "c612949112a75fef2fb0dc6974856bf1463a85cd",
+  "evidenceHash": "c5aa2239d3521f7a7fdec103d16280ffc3b11e8f32a4ae3199ee6b9fe3333843",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "604ad7e744d53ac9fda6db39ac65916a0c3c96a5cbb87d9497c09870c92a1e9e",
+  "shadowMode": false
+}

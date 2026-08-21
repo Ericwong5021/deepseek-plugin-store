@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "notification",
+    "agent",
+    "api",
+    "automation",
+    "file",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A third-party Electron desktop client for DSH focused on persistent local task execution, desktop notifications, runtime management, and plugin marketplace workflows; the README also documents agent command and file access, warranting R2 risk.",
+  "summaries": {
+    "zh": "一款面向 DSH 的第三方 Electron 桌面客户端，提供托盘常驻、后台任务、通知、运行时连接以及插件市场管理。",
+    "en": "A third-party Electron desktop client for DSH that provides tray persistence, background tasks, notifications, runtime connections, and plugin marketplace management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides an Electron desktop interface for the DSH web UI",
+      "Keeps local DSH tasks running in the background after the main window closes",
+      "Connects to or starts local DSH runtime processes",
+      "Supports system notifications and selected desktop integrations",
+      "Allows agents to execute commands and access user files through the DSH runtime",
+      "Provides a plugin marketplace with review prompts and plugin installation or removal workflows",
+      "Connects to DeepSeek APIs through the DSH runtime"
+    ],
+    "reasons": [
+      {
+        "code": "desktop_runtime_and_local_process_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_command_and_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_installation_workflow",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_and_network_connections",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Provides an Electron desktop interface for the DSH web UI",
+      "Keeps local DSH tasks running in the background after the main window closes",
+      "Connects to or starts local DSH runtime processes",
+      "Supports system notifications and selected desktop integrations",
+      "Allows agents to execute commands and access user files through the DSH runtime",
+      "Provides a plugin marketplace with review prompts and plugin installation or removal workflows",
+      "Connects to DeepSeek APIs through the DSH runtime"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:18.083Z",
+  "repositoryCommitSha": "95b39d2eefa565a1e7ccf98190a54cb28225c877",
+  "evidenceHash": "f45a122218b7525fdfe9d222df97cb8f15bbde8e96dff6bc6d361839dc9d22a9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9a435ae9f22ceda00667d7f26de4f654742ff151e8556c061bf20a7ef4847ace",
+  "shadowMode": false
+}

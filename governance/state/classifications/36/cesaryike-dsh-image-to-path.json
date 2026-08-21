@@ -1,0 +1,70 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "file",
+    "chat",
+    "tool",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a chat plugin that accepts dragged or pasted images, stores them in the session workspace, and supplies file paths to text-only models, making media-tools the primary category.",
+  "summaries": {
+    "zh": "将拖入或粘贴的图片保存到会话工作区，并在纯文本模型对话中插入图片文件路径。",
+    "en": "Saves dragged or pasted images to the session workspace and inserts their file paths into conversations with text-only models."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Intercepts dragged or pasted images in chat input",
+      "Validates and writes image files to the session workspace",
+      "Deduplicates stored images using SHA-256 content addressing",
+      "Inserts saved image paths into the model input"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_FILE_WRITE",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "CHAT_INPUT_INTERCEPTION",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Intercepts dragged or pasted images in chat input",
+      "Validates and writes image files to the session workspace",
+      "Deduplicates stored images using SHA-256 content addressing",
+      "Inserts saved image paths into the model input"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:41.012Z",
+  "repositoryCommitSha": "ec937c3bff4de193da1d105862336a8bc710fbcf",
+  "evidenceHash": "bc5ccca3cd9017969bf5cda0039023df15652c37e6f9e1aef69e647202d67e48",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ee11fd7102045d16c631c6aacf5546ef2a7937932bd7a52f58a60eb2f39a060a",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "layout",
+    "ui",
+    "chat",
+    "api",
+    "monitoring",
+    "data",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a chat UI plugin that places provider balances, session statistics, and session-log download controls in the title bar, with host-side balance queries and browser-side display logic.",
+  "summaries": {
+    "zh": "在聊天标题栏中显示 API 余额与会话统计，并提供会话日志下载功能。",
+    "en": "Adds API balance and session statistics to the chat title bar and provides session log downloads."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Modifies the chat title-bar interface",
+      "Reads session statistics and token usage for display",
+      "Reads configured provider credentials on the host to query supported API balance endpoints",
+      "Registers a local balance API route for the browser client",
+      "Uses a Node subprocess for outbound balance requests",
+      "Provides session log downloads through the official session export endpoint",
+      "Injects and removes plugin CSS in the document"
+    ],
+    "reasons": [
+      {
+        "code": "credential-access-and-external-requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session-data-display-and-export",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Modifies the chat title-bar interface",
+      "Reads session statistics and token usage for display",
+      "Reads configured provider credentials on the host to query supported API balance endpoints",
+      "Registers a local balance API route for the browser client",
+      "Uses a Node subprocess for outbound balance requests",
+      "Provides session log downloads through the official session export endpoint",
+      "Injects and removes plugin CSS in the document"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:39.548Z",
+  "repositoryCommitSha": "6bb96a7b1c07d8206bc60d03fa24250b47d4c3e5",
+  "evidenceHash": "faede1c00125f81848a7d51b81d993c68992d9663425593e20f55eb5a591f681",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c914e7182f63635aba92b515b9e00fc2081c96243468cd36fb5a0452a75247fc",
+  "shadowMode": false
+}

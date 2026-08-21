@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "browser",
+    "integration",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A browser extension bridge that gives agents tools to inspect and control Chromium tabs, including navigation, DOM interaction, screenshots, and page JavaScript evaluation; human review is warranted because the bridge is unauthenticated on localhost and provides broad browser control.",
+  "summaries": {
+    "zh": "通过本地 WebSocket 将 DeepSeek Harness 智能体连接到 Chromium 浏览器，以读取页面、操作标签页、执行交互并截取屏幕。",
+    "en": "Connects DeepSeek Harness agents to Chromium browsers over a local WebSocket for page reading, tab control, interaction, screenshots, and JavaScript evaluation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects a DeepSeek Harness agent to a Chromium browser through a localhost WebSocket",
+      "Lists, activates, navigates, reloads, and changes browser tabs",
+      "Reads visible page content and identifies interactive DOM elements",
+      "Clicks elements, types into fields, sends keyboard input, scrolls, and waits for page state",
+      "Captures browser screenshots and saves them to a local directory",
+      "Evaluates JavaScript expressions in page contexts",
+      "Uses all-URL browser host permissions",
+      "Exposes an unauthenticated local WebSocket bridge"
+    ],
+    "reasons": [
+      {
+        "code": "browser_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "arbitrary_page_javascript",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated_local_bridge",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "broad_host_permissions",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects a DeepSeek Harness agent to a Chromium browser through a localhost WebSocket",
+      "Lists, activates, navigates, reloads, and changes browser tabs",
+      "Reads visible page content and identifies interactive DOM elements",
+      "Clicks elements, types into fields, sends keyboard input, scrolls, and waits for page state",
+      "Captures browser screenshots and saves them to a local directory",
+      "Evaluates JavaScript expressions in page contexts",
+      "Uses all-URL browser host permissions",
+      "Exposes an unauthenticated local WebSocket bridge"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:10.687Z",
+  "repositoryCommitSha": "d47a0d764e79036ffce5071f7a69de182124c91f",
+  "evidenceHash": "00de06273a5b4902c24f421c2e7a806c6140b12cde86d3478fa059ea3e00a0de",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1f573893d70e5e1f0a4506aa61b522d7b5a87130353024b147be3e759e009f9f",
+  "shadowMode": false
+}

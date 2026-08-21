@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A utility plugin that estimates DeepSeek conversation costs and displays the DeepSeek account balance in the composer stats row, using the configured DeepSeek balance API.",
+  "summaries": {
+    "zh": "在编辑器统计栏中显示 DeepSeek 会话费用估算和账户余额，并支持定时刷新余额。",
+    "en": "Displays estimated DeepSeek conversation costs and account balance in the composer stats row with periodic balance refreshes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured DeepSeek API credentials through the credentials service",
+      "Sends authenticated requests to the DeepSeek balance endpoint",
+      "Displays estimated conversation token costs and account balance in the composer UI",
+      "Automatically refreshes balance data every 60 seconds"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "periodic_polling",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads configured DeepSeek API credentials through the credentials service",
+      "Sends authenticated requests to the DeepSeek balance endpoint",
+      "Displays estimated conversation token costs and account balance in the composer UI",
+      "Automatically refreshes balance data every 60 seconds"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:29:01.722Z",
+  "repositoryCommitSha": "108026869ed7ce0fca648418f732bc07b4b74dee",
+  "evidenceHash": "f0ea745a7159a619c06816e00ed246b83631eeb356425a5c7266a6411e605984",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "0eafce4b98beff3313a29be2feac823626e766b74c7528ab6f941f1a97b7dc2b",
+  "shadowMode": false
+}

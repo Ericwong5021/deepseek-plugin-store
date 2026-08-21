@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "debugging",
+    "testing",
+    "visualization",
+    "agent",
+    "api",
+    "data",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness workbench for inspecting, replaying, debugging, comparing, and selectively rerunning agent trajectories, with a browser visualization and performance analytics; testing-debugging is the primary user-facing purpose.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中可视化、回放、分析和调试智能体运行轨迹，并支持断点、分支比较及受控重运行。",
+    "en": "A DeepSeek Harness workbench for visualizing, replaying, analyzing, and debugging agent trajectories with breakpoints, variant comparison, and controlled reruns."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Visualizes event-sourced agent trajectories and performance metrics",
+      "Replays recorded steps without invoking models or tools",
+      "Sets breakpoints and resumes or inspects runs",
+      "Reruns tools through the host tool pipeline with record, sandbox, or ask modes",
+      "Forks sessions and compares trajectory variants",
+      "Exports OpenTelemetry GenAI traces",
+      "Persists sidecar data to memory or JSON files",
+      "Exposes a loopback HTTP RPC route and optional model tools for trajectory introspection"
+    ],
+    "reasons": [
+      {
+        "code": "executes_or_reruns_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "forks_and_resumes_sessions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_local_sidecar_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_http_rpc_endpoint",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Visualizes event-sourced agent trajectories and performance metrics",
+      "Replays recorded steps without invoking models or tools",
+      "Sets breakpoints and resumes or inspects runs",
+      "Reruns tools through the host tool pipeline with record, sandbox, or ask modes",
+      "Forks sessions and compares trajectory variants",
+      "Exports OpenTelemetry GenAI traces",
+      "Persists sidecar data to memory or JSON files",
+      "Exposes a loopback HTTP RPC route and optional model tools for trajectory introspection"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:11.511Z",
+  "repositoryCommitSha": "9c8a5d69bff6347c815202a7ca56b96db6aa0784",
+  "evidenceHash": "8e9558c51a6cd09bbd13e2b329dc1eb1ff1d5be516ffb25453b57e5149ae52b5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "358e028f68ca4c2780918266b88bb3a66f302762a370504ed49f368ef6d68a17",
+  "shadowMode": false
+}

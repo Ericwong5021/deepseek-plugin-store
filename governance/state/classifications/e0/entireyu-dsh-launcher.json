@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "automation",
+    "terminal",
+    "browser",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a Tauri desktop launcher that installs and manages Node.js and DeepSeek Harness, controls a local server, runs system commands, stays in the tray, and opens Harness in an embedded browser; these system-level capabilities warrant human review.",
+  "summaries": {
+    "zh": "鲸仔是一款面向普通用户的 DeepSeek Harness 桌面助手，可引导安装依赖、管理本地服务并在内置窗口中打开 Harness。",
+    "en": "Whalito is a desktop assistant for DeepSeek Harness that guides dependency installation, manages the local service, and opens Harness in an embedded window."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Detects and installs or upgrades Node.js and DeepSeek Harness dependencies",
+      "Downloads packages from npm sources and Node.js distribution sources",
+      "Starts, stops, restarts, and monitors a local Harness server process",
+      "Runs shell and system commands for installation, version checks, process control, and startup configuration",
+      "Creates user-level startup configuration and maintains a system tray application",
+      "Opens Harness in an embedded browser window and supports application updates"
+    ],
+    "reasons": [
+      {
+        "code": "dependency_installation_and_network_downloads",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "shell_process_and_startup_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "embedded_browser_and_self_update",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Detects and installs or upgrades Node.js and DeepSeek Harness dependencies",
+      "Downloads packages from npm sources and Node.js distribution sources",
+      "Starts, stops, restarts, and monitors a local Harness server process",
+      "Runs shell and system commands for installation, version checks, process control, and startup configuration",
+      "Creates user-level startup configuration and maintains a system tray application",
+      "Opens Harness in an embedded browser window and supports application updates"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:13.963Z",
+  "repositoryCommitSha": "8ecd7e79893e6bbc551a4f798494e23cc2d297b8",
+  "evidenceHash": "aea92313160741416e671b7f015a3e812df178252af2bbecf22ea1b3e446ced6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6a4fdfd9963b0626a40e34910537fd318ea8feeeaa90513846ac44b98961a9ae",
+  "shadowMode": false
+}

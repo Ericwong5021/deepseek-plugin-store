@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A local DeepSeek Harness plugin for managing reusable prompt templates with variable substitution and local persistence; the README states that preset data stays in the working directory and is not sent over the network.",
+  "summaries": {
+    "zh": "用于在 DeepSeek Harness 中本地保存、筛选、应用和删除可复用提示词模板，并支持变量替换。",
+    "en": "A DeepSeek Harness plugin for locally saving, listing, applying, and deleting reusable prompt templates with variable substitution."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores reusable prompt presets in a local JSON file",
+      "Saves, lists, applies, updates, and deletes prompt presets",
+      "Renders templates by substituting supplied variable values"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_transformation",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Stores reusable prompt presets in a local JSON file",
+      "Saves, lists, applies, updates, and deletes prompt presets",
+      "Renders templates by substituting supplied variable values"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:28.069Z",
+  "repositoryCommitSha": "52de4138e243db4666bd1f22e94c3a92f20ab59e",
+  "evidenceHash": "e9dab46f54ed20b82d601b1990abd9b35cef79b0b4e9bacecff565f3455e23e9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a157234756e8819586041379ae8e922e9fbe72f36165439de453a5b19ce1f258",
+  "shadowMode": false
+}

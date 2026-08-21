@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "mcp",
+    "file",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A local security-analysis plugin that scans MCP configurations and skill files for prompt injection, hidden Unicode, dangerous shell patterns, and credential exposure, with optional non-blocking runtime observation of tool calls.",
+  "summaries": {
+    "zh": "用于扫描 MCP 配置和技能文件中的提示注入、隐藏 Unicode、危险 Shell 模式及凭据泄露，并提供可选的非阻断式工具调用运行时观察。",
+    "en": "Scans MCP configurations and skill files for prompt injection, hidden Unicode, dangerous shell patterns, and credential exposure, with optional non-blocking runtime observation of tool calls."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans local MCP configuration files and skill directories",
+      "Scans a user-specified local path",
+      "Observes tool-call names, descriptions, and arguments at runtime",
+      "Produces findings with severity and redacted excerpts",
+      "Logs and reports observations without blocking, delaying, or rewriting tool calls"
+    ],
+    "reasons": [
+      {
+        "code": "LOCAL_FILE_SCANNING",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "RUNTIME_TOOL_OBSERVATION",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "NO_NETWORK_OR_BLOCKING",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Scans local MCP configuration files and skill directories",
+      "Scans a user-specified local path",
+      "Observes tool-call names, descriptions, and arguments at runtime",
+      "Produces findings with severity and redacted excerpts",
+      "Logs and reports observations without blocking, delaying, or rewriting tool calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:01.076Z",
+  "repositoryCommitSha": "b03d87eae8d20922201e49b38aa2d0df2f77cba1",
+  "evidenceHash": "acf4d1feaf1ab8ef330ce06ea79e1920a54c3719ebe560609616868e5c49a362",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b54bfdb31880f9f021ba2b5f808bca7c07dbeeb229727d74713c62ee7d46b789",
+  "shadowMode": false
+}

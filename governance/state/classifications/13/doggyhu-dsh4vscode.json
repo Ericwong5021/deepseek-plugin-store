@@ -1,0 +1,95 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "chat",
+    "api",
+    "context",
+    "file",
+    "terminal",
+    "search",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A VS Code interface for interacting with DSH agents through independent workspace chat windows, including session management, model selection, permission controls, file operations, command execution, web search, and delegated tasks.",
+  "summaries": {
+    "zh": "在 VS Code 中提供连接 DSH 实例的智能体聊天窗口，用于管理工作区会话并调用文件、终端、搜索和子任务等能力。",
+    "en": "Provides VS Code chat windows connected to a DSH instance for managing workspace sessions and using agent capabilities such as file access, terminal commands, search, and delegated tasks."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to a locally running DSH instance over HTTP and WebSocket APIs",
+      "Provides agent chat sessions scoped to the current workspace",
+      "Can expose DSH agent capabilities for reading, creating, and modifying workspace files",
+      "Can expose command execution through the DSH agent",
+      "Supports web search through the DSH agent",
+      "Supports parallel delegation to sub-agents",
+      "Persists and switches workspace conversation sessions",
+      "Allows selecting models and changing permission modes"
+    ],
+    "reasons": [
+      {
+        "code": "workspace_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_web_search",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_delegation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_service_api_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Connects to a locally running DSH instance over HTTP and WebSocket APIs",
+      "Provides agent chat sessions scoped to the current workspace",
+      "Can expose DSH agent capabilities for reading, creating, and modifying workspace files",
+      "Can expose command execution through the DSH agent",
+      "Supports web search through the DSH agent",
+      "Supports parallel delegation to sub-agents",
+      "Persists and switches workspace conversation sessions",
+      "Allows selecting models and changing permission modes"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:38.115Z",
+  "repositoryCommitSha": "5960b0a3e15021169350ded4fcce0830a38f2e89",
+  "evidenceHash": "7c96cc144fe7afc76809502baa70585a4f8370318ee74ce84544a19ce5a5af4e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5abbdf1d90bf6e1f21091d4e56bc4741509b69200f1d653c729ece98864ef3ae",
+  "shadowMode": false
+}

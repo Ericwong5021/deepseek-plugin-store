@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "browser",
+    "ui",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides a desktop-oriented standalone app window for the DeepSeek Harness Web UI, with automatic and manual opening, persisted settings, and browser-process lifecycle controls.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness Web UI 以独立桌面应用窗口打开，并提供自动开窗、手动切换和启动设置。",
+    "en": "Opens the DeepSeek Harness Web UI in a standalone desktop app window with automatic launch, manual toggling, and startup settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Launches Edge or Chrome in standalone app-window mode",
+      "Starts and manages a dedicated browser window process",
+      "Persists an auto-open setting under the DSH home directory",
+      "Provides same-origin HTTP routes for window control",
+      "Uses Windows process and PowerShell helpers for lifecycle and icon handling"
+    ],
+    "reasons": [
+      {
+        "code": "process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_window_control",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "binary.execute",
+      "network.access",
+      "Launches Edge or Chrome in standalone app-window mode",
+      "Starts and manages a dedicated browser window process",
+      "Persists an auto-open setting under the DSH home directory",
+      "Provides same-origin HTTP routes for window control",
+      "Uses Windows process and PowerShell helpers for lifecycle and icon handling"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:28.106Z",
+  "repositoryCommitSha": "12b67f9a61537f7031fdef70d978eee6bb00b960",
+  "evidenceHash": "78607c44df95a8f9edebbd27e27ebde7d45d48d311f160a7e889e359e4ef6db4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "212b2134dd7faa66500c293044fb8a8ce73f2cfaf4b647bb166acf9bdc228524",
+  "shadowMode": false
+}

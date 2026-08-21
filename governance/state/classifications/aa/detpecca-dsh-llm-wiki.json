@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "knowledge-management",
+  "tags": [
+    "knowledge",
+    "search",
+    "document",
+    "file",
+    "cli",
+    "agent",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides seven agent tools for searching, reading, inspecting, validating, repairing, recording errors in, and ingesting content into a local LLM-Wiki knowledge base through a Python CLI.",
+  "summaries": {
+    "zh": "通过七个代理工具检索、阅读、统计、校验、修复并向本地 LLM-Wiki 知识库导入内容。",
+    "en": "Provides seven agent tools to search, read, inspect, validate, repair, and ingest content into a local LLM-Wiki knowledge base."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads wiki pages and indexes from a configured local directory",
+      "Writes and repairs wiki files and indexes",
+      "Invokes the LLM-Wiki Python CLI through subprocesses",
+      "Optionally sends ingest and finalization requests to an OpenAI-compatible LLM API"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_external_llm_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads wiki pages and indexes from a configured local directory",
+      "Writes and repairs wiki files and indexes",
+      "Invokes the LLM-Wiki Python CLI through subprocesses",
+      "Optionally sends ingest and finalization requests to an OpenAI-compatible LLM API"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:02.877Z",
+  "repositoryCommitSha": "2e235e63da4d8f11137384754434039c03419518",
+  "evidenceHash": "9214c73a7864d8c41aaa631b12a15a25a3222848b8be3bfb9aac00a84bf3031e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3b16151924ae8b7a5275db0239694c8cd095442667351dd4d2630da5a60e7e58",
+  "shadowMode": false
+}

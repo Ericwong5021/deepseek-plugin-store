@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "desktop-mobile",
+  "tags": [
+    "desktop",
+    "terminal",
+    "visualization",
+    "data"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Dcode is a desktop application wrapper for DeepSeek Harness, primarily providing a graphical desktop experience with an integrated terminal and token-usage visualization.",
+  "summaries": {
+    "zh": "Dcode 是 DeepSeek Harness 的桌面端外壳，提供免终端启动、内置多标签终端和用量统计面板。",
+    "en": "Dcode is a desktop wrapper for DeepSeek Harness that provides one-click startup, an integrated multi-tab terminal, and token-usage analytics."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Launches a desktop application and its bundled DeepSeek Harness service",
+      "Provides an embedded multi-tab shell terminal capable of executing local commands",
+      "Reads and shares configuration and session data under ~/.dsh",
+      "Displays token usage statistics from local usage data",
+      "Checks for updates and downloads and installs them after user initiation"
+    ],
+    "reasons": [
+      {
+        "code": "local-shell-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-config-and-session-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user-initiated-update-download-and-install",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Launches a desktop application and its bundled DeepSeek Harness service",
+      "Provides an embedded multi-tab shell terminal capable of executing local commands",
+      "Reads and shares configuration and session data under ~/.dsh",
+      "Displays token usage statistics from local usage data",
+      "Checks for updates and downloads and installs them after user initiation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:02.046Z",
+  "repositoryCommitSha": "5d7c6e2c99fe3ed37369e7dc637ae0f56a52d572",
+  "evidenceHash": "5cb3e18b0a98d8937f857cfb9eebf14d63c77589498f645665ca145acb442172",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a1d16e503b7baea678260bff8beaeefaefa67afe2020a340e8166cd2a6105d61",
+  "shadowMode": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "desktop",
+    "file",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Provides LAN access to the DeepSeek Harness Web UI through a reverse proxy, with an in-app directory picker and UUID polyfill; the README explicitly states that the unauthenticated control plane exposes remote code execution to reachable LAN clients, requiring human security review.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness Web UI 提供局域网反向代理、应用内工作区目录选择器和 UUID 兼容补丁，但控制面板无认证，仅应在可信局域网中使用。",
+    "en": "Provides LAN reverse proxy access to the DeepSeek Harness Web UI with an in-app workspace directory picker and UUID compatibility polyfill, but the unauthenticated control plane should only be used on trusted LANs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Opens an HTTP listener on a LAN-facing address",
+      "Reverse-proxies the unauthenticated web control plane and WebSocket traffic",
+      "Rewrites Host and Origin headers for LAN clients",
+      "Provides an in-app directory browser for workspace selection",
+      "Injects a crypto.randomUUID polyfill into web pages"
+    ],
+    "reasons": [
+      {
+        "code": "unauthenticated_network_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_code_execution_exposure",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_directory_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Opens an HTTP listener on a LAN-facing address",
+      "Reverse-proxies the unauthenticated web control plane and WebSocket traffic",
+      "Rewrites Host and Origin headers for LAN clients",
+      "Provides an in-app directory browser for workspace selection",
+      "Injects a crypto.randomUUID polyfill into web pages"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:17.453Z",
+  "repositoryCommitSha": "40a09d5815c006e6cdc0eb9bf26ff1da83a2ef31",
+  "evidenceHash": "adcfe27be060d21e51c0abc80775afc44b874ced8acf864f8066ed11c85a0993",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7a8b5a4fc1f9780719a7656baa91d454f988e4987213b828f2db58e7aa626f27",
+  "shadowMode": false
+}

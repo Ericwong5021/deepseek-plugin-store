@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "desktop",
+    "monitoring",
+    "notification",
+    "integration",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A macOS Electron desktop companion that monitors local DeepSeek Harness session states and surfaces approval, completion, activity, idle, and offline notifications through a floating whale, sounds, and status bubbles.",
+  "summaries": {
+    "zh": "一款 macOS 桌面伴侣应用，通过本地 DSH 接口监测会话状态，并用悬浮鲸鱼、气泡和音效提示审批、运行、完成、空闲或离线状态。",
+    "en": "A macOS desktop companion that monitors local DSH session status and signals approval, active, completed, idle, or offline states with a floating whale, bubbles, and sounds."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads session status from a local DSH HTTP interface",
+      "Receives local DSH status and approval updates through WebSocket connections",
+      "Displays floating desktop status indicators and plays configurable alert sounds",
+      "Opens the DSH GUI in the system browser",
+      "Loads user-provided visual and audio customization files"
+    ],
+    "reasons": [
+      {
+        "code": "local_http_websocket_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "desktop_notifications_and_audio",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "browser_deep_linking",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "user_supplied_custom_assets",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads session status from a local DSH HTTP interface",
+      "Receives local DSH status and approval updates through WebSocket connections",
+      "Displays floating desktop status indicators and plays configurable alert sounds",
+      "Opens the DSH GUI in the system browser",
+      "Loads user-provided visual and audio customization files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:29:45.563Z",
+  "repositoryCommitSha": "2e2854e505a24e3bfa01e52f58fea83d8a8c4689",
+  "evidenceHash": "a35ab8e362172e0b78cf390559cc11eb07558b841b53f5fe223348148ed45967",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5c2b42adaa955b9154918fd17774ad65276aad17fbad37b586bd13ed6968da50",
+  "shadowMode": false
+}

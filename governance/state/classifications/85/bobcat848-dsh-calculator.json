@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "visualization",
+    "ui",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DSH web plugin whose primary purpose is monitoring estimated DeepSeek API spending and account balance through a floating interface.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中显示会话费用、每日累计支出和账户余额的监控插件。",
+    "en": "A DeepSeek Harness web plugin that displays session costs, daily spending, and account balance in a floating monitoring panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DSH session usage events to estimate API costs",
+      "Fetches DeepSeek account balance from the DeepSeek API using the configured credential",
+      "Displays session and daily spending information in a web overlay",
+      "Installs plugin files and adds a DSH profile loader entry"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_profile_modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DSH session usage events to estimate API costs",
+      "Fetches DeepSeek account balance from the DeepSeek API using the configured credential",
+      "Displays session and daily spending information in a web overlay",
+      "Installs plugin files and adds a DSH profile loader entry"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:12.760Z",
+  "repositoryCommitSha": "27881f23e3bf702ac785864493031799f7bd26ae",
+  "evidenceHash": "e34fe876ab4e5051384361a69ef6d4dbeddcbc865f0757100d79bf7f97a4d0a5",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8b0a44a30b523f88c462a709f761ba2c92fe2e8b0d78c42ba83b329648d6496e",
+  "shadowMode": false
+}

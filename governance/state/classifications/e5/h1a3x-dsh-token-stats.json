@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "visualization",
+  "tags": [
+    "data",
+    "visualization",
+    "ui",
+    "browser",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web-interface plugin that visualizes token usage, cache metrics, provider and model breakdowns, daily activity, and session-level request records in a draggable overlay panel.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 网页界面中提供可拖动的浮动面板，用于查看 Token 用量、缓存指标、提供商与模型明细、每日活动及会话记录。",
+    "en": "Adds a draggable overlay to the DeepSeek Harness web interface for viewing token usage, cache metrics, provider and model breakdowns, daily activity, and session records."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads token usage and session statistics from the host application",
+      "Aggregates provider, model, session, and request-level usage data",
+      "Serves aggregated data through a local HTTP route",
+      "Injects a draggable browser overlay panel into the host web interface",
+      "Writes plugin files and a plugin configuration entry during installation"
+    ],
+    "reasons": [
+      {
+        "code": "local_usage_data_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_configuration_changes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host_ui_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads token usage and session statistics from the host application",
+      "Aggregates provider, model, session, and request-level usage data",
+      "Serves aggregated data through a local HTTP route",
+      "Injects a draggable browser overlay panel into the host web interface",
+      "Writes plugin files and a plugin configuration entry during installation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:29:15.052Z",
+  "repositoryCommitSha": "189ddfc3f233bb7d8e3c6fc77201f2f54854de57",
+  "evidenceHash": "35706f3044fb71adfcfc439e20ef4f1c173e8d56b1e55507b2ea47efc9752ddc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fd3b69a52ee69d4d7c31c336818474ff13eb69a0da2f38cba85969047cf6c2ae",
+  "shadowMode": false
+}

@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "data",
+    "file",
+    "desktop",
+    "integration",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README documents a vision plugin whose primary user-facing purpose is image analysis, including description, OCR, visual question answering, UI layout analysis, and clipboard screenshot processing through configurable vision APIs.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供图片描述、OCR、视觉问答、UI 布局分析和剪贴板截图分析等视觉工具。",
+    "en": "Provides DeepSeek Harness with image description, OCR, visual question answering, UI layout analysis, and clipboard screenshot analysis tools."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Analyzes images from local paths, file URLs, HTTP(S) URLs, and data URIs",
+      "Reads screenshots from the system clipboard",
+      "Sends image data and prompts to configured OpenAI, Gemini, or OpenAI-compatible vision endpoints",
+      "Uses configured API keys and performs network requests with retries and timeouts",
+      "Transforms image attachments into text and intercepts compatible LLM stream requests"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_data_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_and_clipboard_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "llm_request_interception",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Analyzes images from local paths, file URLs, HTTP(S) URLs, and data URIs",
+      "Reads screenshots from the system clipboard",
+      "Sends image data and prompts to configured OpenAI, Gemini, or OpenAI-compatible vision endpoints",
+      "Uses configured API keys and performs network requests with retries and timeouts",
+      "Transforms image attachments into text and intercepts compatible LLM stream requests"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:30.796Z",
+  "repositoryCommitSha": "81c172c66e9cd4d9a8e62cc5d699372962169277",
+  "evidenceHash": "8ede71efbd606fdcfd0f680ec2b62b686ca2546fc257611c8c912b417cf0ef5b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9e43f7f38adc295103ba3334b035de31ad4fcfa2c50ea3c5b2166b15cff2c0bd",
+  "shadowMode": false
+}

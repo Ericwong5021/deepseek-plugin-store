@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "tool",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a DeepSeek Harness plugin that automates tiered approval of tool calls through static rules, LLM review, and human fallback; human review is warranted because it can automatically authorize operations and transmit call data to a model.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供结合静态规则、LLM 审查和人工确认的工具调用分级审批。",
+    "en": "Provides DeepSeek Harness with tiered tool-call approval using static rules, LLM review, and human confirmation."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts tool calls before execution",
+      "Applies configurable allow and deny rules",
+      "Uses an LLM to classify unresolved calls",
+      "Automatically approves some aligned calls",
+      "Requests human confirmation for uncertain calls",
+      "Logs approval decisions",
+      "Sends tool parameters and the latest user message to the review model"
+    ],
+    "reasons": [
+      {
+        "code": "authorizes_or_blocks_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "can_auto_approve_danger_full_access_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sends_tool_parameters_and_user_message_to_model",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "README_states_plugin_is_not_security_audited",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Intercepts tool calls before execution",
+      "Applies configurable allow and deny rules",
+      "Uses an LLM to classify unresolved calls",
+      "Automatically approves some aligned calls",
+      "Requests human confirmation for uncertain calls",
+      "Logs approval decisions",
+      "Sends tool parameters and the latest user message to the review model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:11.578Z",
+  "repositoryCommitSha": "096e3441a0709de1db7a4f72fdef16768ec51df5",
+  "evidenceHash": "c00fd8007d271ff9e84743f63e0ac221f5cb99fa866e31260db7647c6e40910e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e603936964776e98dcc9a1f35b78b2c5f889cda378fe7d339f4d3f16ab03e854",
+  "shadowMode": false
+}

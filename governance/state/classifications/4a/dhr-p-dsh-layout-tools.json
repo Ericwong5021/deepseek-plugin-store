@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "layout",
+    "ui",
+    "file",
+    "chat",
+    "visualization",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DSH Web interface enhancement focused on conversation layout, workspace file navigation, Git status display, session indicators, and conversation font controls.",
+  "summaries": {
+    "zh": "用于优化 DSH Web 对话布局并提供带 Git 状态的工作区文件树、会话状态显示和字号调节功能。",
+    "en": "Enhances the DSH Web interface with a cleaner conversation layout, a workspace file tree with Git status, session indicators, and adjustable conversation text size."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Modifies the DSH Web conversation layout and hides tool-call cards",
+      "Adds a workspace file tree with lazy loading and Git status indicators",
+      "Reads workspace filesystem contents and Git metadata through host-side routes",
+      "Opens selected files using the Windows system shell",
+      "Reads host credentials data to display model balance or usage information"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_metadata_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "system_shell_file_open",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_file_read",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Modifies the DSH Web conversation layout and hides tool-call cards",
+      "Adds a workspace file tree with lazy loading and Git status indicators",
+      "Reads workspace filesystem contents and Git metadata through host-side routes",
+      "Opens selected files using the Windows system shell",
+      "Reads host credentials data to display model balance or usage information"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:18.193Z",
+  "repositoryCommitSha": "5855232269ad73d23ec19f9c97e73a5a2615bce8",
+  "evidenceHash": "5e6e3034ec694323eeaeabbb4d9f735d12859fb9dd0a0ff37039ea4a2dfee56b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2a8a1baa4c068cf41489bc0c1ee1c6ffc574d107c2c488a24ee3d88972ebd05a",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "data",
+    "cli",
+    "file",
+    "mcp",
+    "tool",
+    "testing"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README clearly describes a verifier that processes pinned JSON evidence, checks declared controls and bindings, and generates a deterministic content-addressed audit index; its primary purpose is data processing rather than scanning, signing, logging, or policy enforcement.",
+  "summaries": {
+    "zh": "基于清单验证固定的 JSON 证据及控制覆盖情况，并生成内容寻址的审计索引。",
+    "en": "Verifies manifest-pinned JSON evidence and control coverage, then produces a content-addressed audit index."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads workspace-relative evidence files referenced by a manifest",
+      "Validates JSON structure, SHA-256 pins, subject and revision bindings, assertions, evidence types, and producer coverage",
+      "Writes a content-addressed JSON audit index under an explicit artifact directory",
+      "Exposes CLI, DeepSeek Harness, and stdio MCP inspection and verification tools"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "artifact_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "evidence_verification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads workspace-relative evidence files referenced by a manifest",
+      "Validates JSON structure, SHA-256 pins, subject and revision bindings, assertions, evidence types, and producer coverage",
+      "Writes a content-addressed JSON audit index under an explicit artifact directory",
+      "Exposes CLI, DeepSeek Harness, and stdio MCP inspection and verification tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:43.526Z",
+  "repositoryCommitSha": "e69b94060bca8e0f756f92455a7a046f12dbf523",
+  "evidenceHash": "20c263e381c49a5e85460c437481999dd1f0ef9169e68441a05201748a1fedfb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "1b0bc27f4d74203247b04f7bab03c25358b5d2fcdc6771cc04bb4a072c123aeb",
+  "shadowMode": false
+}

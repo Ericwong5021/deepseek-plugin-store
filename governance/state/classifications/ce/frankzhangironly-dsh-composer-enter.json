@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "themes-layout",
+  "tags": [
+    "ui",
+    "chat",
+    "browser",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A web UI customization plugin that lets users configure Enter-key combinations for sending messages, inserting newlines, and interjecting queued messages in the chat composer.",
+  "summaries": {
+    "zh": "用于自定义聊天输入框回车键行为的网页插件，可配置发送消息、换行和插入队列消息所使用的按键组合。",
+    "en": "A web plugin for customizing chat composer Enter-key behavior, including key combinations for sending messages, inserting newlines, and interjecting queued messages."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Adds a settings UI for configuring chat composer key combinations",
+      "Intercepts Enter key events in the browser chat composer",
+      "Persists configuration to the host settings.yaml file through a loopback RPC channel",
+      "Synthesizes keyboard events to trigger send, newline, and interject behavior"
+    ],
+    "reasons": [
+      {
+        "code": "browser_input_interception",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_settings_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "loopback_rpc",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Adds a settings UI for configuring chat composer key combinations",
+      "Intercepts Enter key events in the browser chat composer",
+      "Persists configuration to the host settings.yaml file through a loopback RPC channel",
+      "Synthesizes keyboard events to trigger send, newline, and interject behavior"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:48.595Z",
+  "repositoryCommitSha": "f5e6bf08dcd4d41876566b7c100f446d2e6ef5af",
+  "evidenceHash": "1aceb8448a1639ed9a95b00870a50fbb0e3cbfdbe5e8ca2917f391c081d502e6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "80fb52e1b13c3f1646afd517a345105f154a5f05c087280b87911c6ee3a4324f",
+  "shadowMode": false
+}

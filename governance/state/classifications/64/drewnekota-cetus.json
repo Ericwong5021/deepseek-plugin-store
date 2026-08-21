@@ -1,0 +1,88 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "browser",
+    "context",
+    "desktop",
+    "memory",
+    "planning",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "Cetus primarily orchestrates multiple agent runtimes through a macOS desktop assistant layer, combining quick launch, scheduled background runs, context capture, and review workflows; the README also documents sensitive screen/audio access and computer control.",
+  "summaries": {
+    "zh": "Cetus 是一款 macOS 桌面智能体编排应用，可统一启动和管理多个运行时、安排后台任务，并提供屏幕上下文与工作结果审阅功能。",
+    "en": "Cetus is a macOS desktop orchestration app that unifies multiple agent runtimes, schedules background tasks, and provides screen context and work-review features."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Orchestrates multiple agent runtimes and background conversations",
+      "Schedules one-off and recurring agent jobs",
+      "Captures screen context and performs on-device OCR",
+      "Transcribes microphone and system audio for meeting memory",
+      "Controls browsers and Mac applications with confirmation steps",
+      "Runs installed agent CLIs and supports isolated git worktrees"
+    ],
+    "reasons": [
+      {
+        "code": "sensitive_screen_and_audio_context",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "computer_and_browser_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_background_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_cli_and_workspace_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "computer.control",
+      "network.access",
+      "Orchestrates multiple agent runtimes and background conversations",
+      "Schedules one-off and recurring agent jobs",
+      "Captures screen context and performs on-device OCR",
+      "Transcribes microphone and system audio for meeting memory",
+      "Controls browsers and Mac applications with confirmation steps",
+      "Runs installed agent CLIs and supports isolated git worktrees"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:27:56.971Z",
+  "repositoryCommitSha": "29fc65c9669109e8bed62ec33354bbc692aaed73",
+  "evidenceHash": "7300365977dbf82584d570cc14e40d12f231ac8d2d246c6b60da9ef29236459e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "09ff46afe9f553c1f28524ebf42c05eccb1a1a9daf39faa65a868e6ad2df8799",
+  "shadowMode": false
+}

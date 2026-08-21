@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "ui",
+    "monitoring"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness Web GUI plugin that retrieves account balance data, estimates current-session costs from token usage and pricing, and presents the results in a composer-dock interface with official, proxy, and manual balance modes.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Web GUI 中显示账户余额、当前会话预估费用及按货币和用量桶划分的明细。",
+    "en": "Displays DeepSeek account balance, estimated current-session cost, and currency and usage-bucket breakdowns in the Harness Web GUI."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads DeepSeek account balance through configured official or proxy-compatible endpoints",
+      "Reads session token-usage projections to estimate spending",
+      "Fetches official pricing data periodically",
+      "Reads the configured DeepSeek credential reference for authenticated requests",
+      "Stores manual balance accounting data in the host settings provider",
+      "Displays balance and session-cost breakdowns in the web interface"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "usage_and_pricing_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads DeepSeek account balance through configured official or proxy-compatible endpoints",
+      "Reads session token-usage projections to estimate spending",
+      "Fetches official pricing data periodically",
+      "Reads the configured DeepSeek credential reference for authenticated requests",
+      "Stores manual balance accounting data in the host settings provider",
+      "Displays balance and session-cost breakdowns in the web interface"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:29:03.978Z",
+  "repositoryCommitSha": "1a277e8eb9ee5ebbf8589e6bbb96bfe9ac282c11",
+  "evidenceHash": "0a00b427d98c4bfab232f694f9e0b8e6e18b787e4ff91fe36ed8d56c724f172a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "6750743d1ddc1910490aabeec0f5a3e8b00e2da0c52f49195afaa953df947caf",
+  "shadowMode": false
+}

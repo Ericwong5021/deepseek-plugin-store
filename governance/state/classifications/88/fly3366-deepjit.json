@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "skill",
+    "data",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "DeepJIT primarily automates agent workflow optimization by mining repeated execution traces and compiling recurring multi-tool workflows into reusable skills and flow templates that hot-load into the harness.",
+  "summaries": {
+    "zh": "DeepJIT 通过分析智能体执行轨迹，将重复的多工具工作流编译为可复用的技能和流程模板并加载回运行中的 harness。",
+    "en": "DeepJIT analyzes agent execution traces to compile recurring multi-tool workflows into reusable skills and flow templates that load back into the running harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Records agent execution traces and message content in local SQLite storage",
+      "Uses an LLM through the host harness to compile recurring workflows into reusable skills and flows",
+      "Writes generated artifacts, logs, and counters under the user's local DeepJIT directory",
+      "Executes compiled flow steps through the host tool system and its existing permission gates",
+      "Reads session JSONL data for workflow compilation and performs artifact retention, promotion, and deoptimization"
+    ],
+    "reasons": [
+      {
+        "code": "local_trace_storage",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "llm_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_data_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Records agent execution traces and message content in local SQLite storage",
+      "Uses an LLM through the host harness to compile recurring workflows into reusable skills and flows",
+      "Writes generated artifacts, logs, and counters under the user's local DeepJIT directory",
+      "Executes compiled flow steps through the host tool system and its existing permission gates",
+      "Reads session JSONL data for workflow compilation and performs artifact retention, promotion, and deoptimization"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:40.771Z",
+  "repositoryCommitSha": "bd032a8cbef5e34b3d939646e3118d37cab1b8b4",
+  "evidenceHash": "7d549e70a936a84415b5c1aaafab829c6524308c6cc7f0abc6f5bd57bdc0a3ca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d83a3de73977160a6fb8d0f83ba261618c7ab40f50d7f010f2c9b044722c807a",
+  "shadowMode": false
+}

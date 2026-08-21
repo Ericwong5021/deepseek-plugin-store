@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "code-generation",
+    "debugging",
+    "testing",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly presents a testing plugin that generates unit tests, runs project test runners, parses failures, and fixes only its generated test files through a bounded loop.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 生成、运行并在有限迭代内修复项目单元测试。",
+    "en": "Generates, runs, and iteratively fixes project unit tests within a bounded loop for DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Generates unit-test files from project source targets",
+      "Runs the project's configured or detected test runner",
+      "Iteratively fixes failures in generated test files using an optional LLM",
+      "Writes generated test files while skipping existing tests",
+      "Provides a slash command and model tool for test generation"
+    ],
+    "reasons": [
+      {
+        "code": "executes_project_tests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "writes_test_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_llm_generation_and_fixing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Generates unit-test files from project source targets",
+      "Runs the project's configured or detected test runner",
+      "Iteratively fixes failures in generated test files using an optional LLM",
+      "Writes generated test files while skipping existing tests",
+      "Provides a slash command and model tool for test generation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:24.244Z",
+  "repositoryCommitSha": "1730f3927342dbbe75e981d81a0d64ae76a1f245",
+  "evidenceHash": "55208d34a2aacf480ba89cedde2e3b059a32a8918c9047f8207436c0088318c4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4f367ef6a41dd46e58d728b06c275d2b32c19480ada10610e112493f6b7fc414",
+  "shadowMode": false
+}

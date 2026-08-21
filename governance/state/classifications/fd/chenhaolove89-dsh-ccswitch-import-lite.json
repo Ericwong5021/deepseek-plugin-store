@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "data",
+    "file",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Imports model providers from the local CCSWITCH database into DSH settings and credentials through AI tools and a GUI.",
+  "summaries": {
+    "zh": "从本地 CCSWITCH 数据库读取模型供应商，并通过工具或设置页批量导入到 DSH。",
+    "en": "Reads model providers from the local CCSWITCH database and batch-imports them into DSH through tools or a settings interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the local CCSWITCH SQLite database through a subprocess",
+      "Lists saved model providers and their import eligibility",
+      "Writes imported provider settings to DSH",
+      "Writes provider credentials to DSH credential storage",
+      "Provides AI tools and a GUI for selecting and importing providers"
+    ],
+    "reasons": [
+      {
+        "code": "local_database_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Reads the local CCSWITCH SQLite database through a subprocess",
+      "Lists saved model providers and their import eligibility",
+      "Writes imported provider settings to DSH",
+      "Writes provider credentials to DSH credential storage",
+      "Provides AI tools and a GUI for selecting and importing providers"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:25:51.388Z",
+  "repositoryCommitSha": "dd6105e63d78b553dc27d011e3e3e728c724b375",
+  "evidenceHash": "355a951328e76526a64c68f370a5e48f212e10062df60aa989900d173974fae3",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8fee87f40cc9da00d91d33eb6ea6870af45ac74cac6157db04d8e75120ed124a",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "monitoring",
+    "ui",
+    "integration",
+    "api",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Windows-focused Docker management sidebar that provides container listing, resource monitoring, and container file browsing and transfer through a WebUI panel; the README documents full-access shell execution and unauthenticated local HTTP endpoints, warranting R2 risk.",
+  "summaries": {
+    "zh": "通过 WebUI 侧边栏管理 Docker 容器，提供容器列表、资源监控以及容器内文件浏览、查看、上传和下载功能。",
+    "en": "Manage Docker containers from a WebUI sidebar with container listing, resource monitoring, and in-container file browsing, viewing, uploading, and downloading."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes Docker commands through a full-access shell",
+      "Lists containers and retrieves container resource statistics",
+      "Browses and reads files inside containers",
+      "Downloads files from and uploads files to containers",
+      "Copies container files to a temporary directory and opens them with the system default application",
+      "Exposes local HTTP endpoints without authentication"
+    ],
+    "reasons": [
+      {
+        "code": "full_access_shell",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "container_file_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "unauthenticated_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Executes Docker commands through a full-access shell",
+      "Lists containers and retrieves container resource statistics",
+      "Browses and reads files inside containers",
+      "Downloads files from and uploads files to containers",
+      "Copies container files to a temporary directory and opens them with the system default application",
+      "Exposes local HTTP endpoints without authentication"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:28:26.473Z",
+  "repositoryCommitSha": "cc7a09c355d2b13c6a6c6ec5f554e04829342245",
+  "evidenceHash": "935a42106c06db4d152c8c1a8df8a8478c66683886f7f3883833425246b5b900",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c74d2f8c2335f4ce8da6b9e628a777e4e85840cfad5e77a17e9f1435ca198f19",
+  "shadowMode": false
+}

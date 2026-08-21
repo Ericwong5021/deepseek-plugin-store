@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "mobile",
+    "agent",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Telegram integration that provides an allowlisted mobile chat entry point to DeepSeek Harness, preserving per-chat sessions and returning agent responses through Telegram.",
+  "summaries": {
+    "zh": "通过 Telegram Bot API 将授权私聊消息转发给 DeepSeek Harness Agent，并将回答返回 Telegram，同时保留会话上下文。",
+    "en": "Connects allowlisted Telegram private chats to a DeepSeek Harness Agent and returns responses while preserving per-chat conversation context."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives private Telegram messages through the Telegram Bot API",
+      "Forwards allowlisted messages to a DeepSeek Harness Agent that may use configured models and tools",
+      "Persists Telegram session context and update offsets",
+      "Sends agent responses back to Telegram chats"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_triggers_agent_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "integrates_with_telegram_bot_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persists_session_and_update_state",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Receives private Telegram messages through the Telegram Bot API",
+      "Forwards allowlisted messages to a DeepSeek Harness Agent that may use configured models and tools",
+      "Persists Telegram session context and update offsets",
+      "Sends agent responses back to Telegram chats"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T20:26:25.933Z",
+  "repositoryCommitSha": "9bf342f3ea407ceedd99b5342dfd0edc07958797",
+  "evidenceHash": "9001693edcf15c5951233c79d06c9adb45183acecc1248c9ec20c3f9a1e623e2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9eebb3be3d631ee76b7b76de1af208b669e9c80deb622fcf5b5a06f88f0136c0",
+  "shadowMode": false
+}
