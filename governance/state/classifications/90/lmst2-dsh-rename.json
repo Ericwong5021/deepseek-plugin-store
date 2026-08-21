@@ -1,0 +1,74 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "chat",
+    "context",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness slash-command plugin for manually renaming the current conversation or generating a concise session title from selected conversation content.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供 /rename 斜杠命令，可直接设置当前会话标题，或根据对话内容生成标题。",
+    "en": "Adds a /rename slash command to DeepSeek Harness for setting the current session title directly or generating one from the conversation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "registers a /rename slash command",
+      "renames the current session title from explicit user input",
+      "reads selected conversation messages to generate a title when no name is provided",
+      "sends an auxiliary session-title request to the configured language model"
+    ],
+    "reasons": [
+      {
+        "code": "session-conversation-read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "language-model-request",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session-title-write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "registers a /rename slash command",
+      "renames the current session title from explicit user input",
+      "reads selected conversation messages to generate a title when no name is provided",
+      "sends an auxiliary session-title request to the configured language model"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:39.989Z",
+  "repositoryCommitSha": "b48a75dbb8d51ed7adca348ac8bd9b83baf85e34",
+  "evidenceHash": "7dad83607d9094124fe076d4ca8baa69412f953d142f0ae460130b7d966a52ca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "68b58fd9cc6a36df3ded3ef8cf942b0b16dd401e12ba21771001ffff2c695555",
+  "shadowMode": false
+}

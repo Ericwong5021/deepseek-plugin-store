@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "data",
+    "monitoring",
+    "ui",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Integrates with the DeepSeek Open Platform to display account balance and estimate current-session spending from local token usage, with configurable UI refresh and pricing settings.",
+  "summaries": {
+    "zh": "通过 DeepSeek Open Platform 查询账户余额，并根据当前会话的令牌用量估算消费，同时提供可配置的刷新和价格设置。",
+    "en": "Queries the DeepSeek Open Platform account balance and estimates current-session spending from token usage with configurable refresh and pricing settings."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Queries the DeepSeek account balance endpoint using the host-provided API credential",
+      "Reads session token usage from local session logs to estimate spending",
+      "Displays balance and estimated session cost in the interface",
+      "Provides configurable auto-refresh, commands, and a model tool",
+      "Persists refresh, language, and pricing settings"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_use",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_session_data_processing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Queries the DeepSeek account balance endpoint using the host-provided API credential",
+      "Reads session token usage from local session logs to estimate spending",
+      "Displays balance and estimated session cost in the interface",
+      "Provides configurable auto-refresh, commands, and a model tool",
+      "Persists refresh, language, and pricing settings"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:09.820Z",
+  "repositoryCommitSha": "04686d592ad52762f235eb129518869bea7c55cc",
+  "evidenceHash": "a030fd505748515cc527d46ad112496f959536d9941d28b69f28edbfaa31b0ca",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "7d1e3ab58fe180a8b5fd3444fb34b64abca99eb7671d1bd8b71f80cd50fcb40f",
+  "shadowMode": false
+}

@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "mcp",
+    "skill",
+    "ui",
+    "api",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH web settings panel for managing MCP server and Skill visibility, activation, persistence, and optional on-demand MCP mediation; the README provides clear evidence for these capabilities.",
+  "summaries": {
+    "zh": "用于在 DSH 设置页查看并启停 MCP 服务器与 Skill，并可选按需管理 MCP 工具调用的管理面板。",
+    "en": "A DSH settings panel for viewing and toggling MCP servers and Skills, with optional on-demand management of MCP tool calls."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides a settings panel for listing and toggling MCP servers and skills",
+      "Changes MCP loader state and skill invocation metadata",
+      "Optionally enables AI-mediated MCP discovery and tool execution",
+      "Exposes local HTTP endpoints for state, configuration, toggles, and diagnostics",
+      "Persists management state and catalog snapshots to local files"
+    ],
+    "reasons": [
+      {
+        "code": "mcp_loader_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "skill_metadata_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "tool_execution посредник",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_http_control_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_state_persistence",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Provides a settings panel for listing and toggling MCP servers and skills",
+      "Changes MCP loader state and skill invocation metadata",
+      "Optionally enables AI-mediated MCP discovery and tool execution",
+      "Exposes local HTTP endpoints for state, configuration, toggles, and diagnostics",
+      "Persists management state and catalog snapshots to local files"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:55.401Z",
+  "repositoryCommitSha": "fd30bf9dccad401639cd742478c696af93b1bf80",
+  "evidenceHash": "243a2b3515b9d845781ceb2ef685916d6f3f48f3853fb8bbacfb19a1d56e7f20",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4bde765a3bfb0ee4396220980e1d09813443a217b98ad7fb98e5561aeeb8d811",
+  "shadowMode": false
+}

@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "collaboration",
+    "context",
+    "memory",
+    "planning",
+    "workflow",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "插件通过本地持久化任务队列和交接摘要，在不同会话及子代理之间共享任务状态与工作上下文，主要用途属于记忆与上下文管理。",
+  "summaries": {
+    "zh": "在不同会话和子代理之间共享持久化任务队列，并记录和读取工作交接摘要。",
+    "en": "Share a persistent task queue across sessions and subagents while recording and retrieving handoff summaries."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "持久化跨会话任务队列",
+      "创建、查询、认领、完成和取消任务",
+      "写入和读取会话交接摘要",
+      "在用户主目录下读写JSON存储文件"
+    ],
+    "reasons": [
+      {
+        "code": "local-persistent-state",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "task-state-mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no-network-or-external-command",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "持久化跨会话任务队列",
+      "创建、查询、认领、完成和取消任务",
+      "写入和读取会话交接摘要",
+      "在用户主目录下读写JSON存储文件"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:25.111Z",
+  "repositoryCommitSha": "de69deeee9071dd8fe7eb9e24deffe8adf668b20",
+  "evidenceHash": "aa1b67c5708504a093e4537a08d886d59fc7d37acc52d043e993d6bd60d15e7c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d47d3d23a2d6e5194ad86b1213038bd1f5c17021e31de8d4f6dd04b2a3ac8942",
+  "shadowMode": false
+}

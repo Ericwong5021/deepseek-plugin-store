@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "integration",
+    "automation",
+    "context"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A Telegram Bot API bridge that lets allowlisted private chats interact with DSH agent sessions, with per-chat context, queuing, and command handling.",
+  "summaries": {
+    "zh": "通过 Telegram Bot API 将允许名单中的私聊消息接入 DSH 智能体会话，并提供按聊天维持上下文、排队处理和会话管理功能。",
+    "en": "Connects allowlisted Telegram private chats to DSH agent sessions with per-chat context, queued message handling, and session management."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Receives Telegram private-chat messages through the Bot API",
+      "Maps chats to persistent in-memory agent sessions",
+      "Sends user messages to DSH agents and returns final assistant responses",
+      "Queues messages per chat and supports session reset commands"
+    ],
+    "reasons": [
+      {
+        "code": "external_message_drives_agent",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "inherits_host_agent_permissions",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "requires_bot_token_and_allowlist_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Receives Telegram private-chat messages through the Bot API",
+      "Maps chats to persistent in-memory agent sessions",
+      "Sends user messages to DSH agents and returns final assistant responses",
+      "Queues messages per chat and supports session reset commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:47.623Z",
+  "repositoryCommitSha": "9f8cb15c903bbf1ac09d843b66092da041a7a58a",
+  "evidenceHash": "6ce03af50f2d3bb99d32bd165393ada959fe46f28cdde5eb55755ab76cbf7044",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "a27868b4482bf62b60a8d8702f551bc4c0d44610fb02a79f24ade24ddefcd37d",
+  "shadowMode": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "data-processing",
+  "tags": [
+    "automation",
+    "cli",
+    "data",
+    "file",
+    "terminal",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH maintenance plugin and CLI that repackages fragmented zstd session logs into a compact two-frame format while preserving decompressed content.",
+  "summaries": {
+    "zh": "将 DSH 会话日志中的多个 zstd 帧重打包为紧凑的两帧格式，并支持周期维护和命令行处理。",
+    "en": "Repackages fragmented zstd frames in DSH session logs into a compact two-frame format with scheduled maintenance and command-line processing."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Scans local .jsonl.zstd session files",
+      "Reads and decompresses session log data",
+      "Recompresses and atomically replaces eligible session files",
+      "Runs periodic maintenance when installed as a DSH plugin",
+      "Provides a command-line dry-run and targeted file processing mode"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scheduled_maintenance",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Scans local .jsonl.zstd session files",
+      "Reads and decompresses session log data",
+      "Recompresses and atomically replaces eligible session files",
+      "Runs periodic maintenance when installed as a DSH plugin",
+      "Provides a command-line dry-run and targeted file processing mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:33:49.572Z",
+  "repositoryCommitSha": "f5afcec1ed5cb2753781cbecd8df6df05a823174",
+  "evidenceHash": "486476c7ace422919c53aa277a7fed641111d92199ff7d5a789f2f1494605e95",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "de2104f9cd2cd4b4a0e89a0aa6305d0c3eb0d03aa371c72a9058a10a252ce7ac",
+  "shadowMode": false
+}

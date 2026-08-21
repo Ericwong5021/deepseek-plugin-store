@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "mcp",
+    "search",
+    "context",
+    "tool",
+    "agent",
+    "api",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "MCP Lens is an orchestration plugin that reduces large MCP catalogs to search and call interfaces, retrieves selected tool schemas, and routes permitted calls to configured MCP servers.",
+  "summaries": {
+    "zh": "MCP Lens 通过搜索大型 MCP 工具目录并按允许规则调用选定工具，帮助 DeepSeek Harness 管理多服务器和长尾工具。",
+    "en": "MCP Lens helps DeepSeek Harness manage large MCP catalogs by searching for relevant tools, exposing selected schemas, and routing permitted calls to configured MCP servers."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Searches configured MCP tool catalogs",
+      "Retrieves exact schemas for selected MCP tools",
+      "Invokes configured remote MCP tools through mcp_call",
+      "Supports allow and deny patterns for tool exposure",
+      "Maintains a local catalog cache and supports lazy server connections",
+      "Provides a local calculator for measuring tool-schema size"
+    ],
+    "reasons": [
+      {
+        "code": "remote_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_tool_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_server_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Searches configured MCP tool catalogs",
+      "Retrieves exact schemas for selected MCP tools",
+      "Invokes configured remote MCP tools through mcp_call",
+      "Supports allow and deny patterns for tool exposure",
+      "Maintains a local catalog cache and supports lazy server connections",
+      "Provides a local calculator for measuring tool-schema size"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:25.262Z",
+  "repositoryCommitSha": "d6ff88b976ad2898786049bbeb1f29f85ee492e3",
+  "evidenceHash": "8ed78c891873ee32f532b5fd7b16c59ddcc2b9495e2632c2014662708d95b000",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eefe1074522808434523519b6776a118cd3371a18fe62ac37516969bc916587d",
+  "shadowMode": false
+}

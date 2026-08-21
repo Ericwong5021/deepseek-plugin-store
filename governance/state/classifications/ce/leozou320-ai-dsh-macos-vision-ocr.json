@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "image",
+    "document",
+    "desktop",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An offline macOS plugin that exposes an OCR tool for extracting text from screenshots, scans, and document images using Apple Vision, with local filesystem access and a compiled native helper.",
+  "summaries": {
+    "zh": "这是一个基于 macOS Apple Vision 的离线 OCR 插件，可从截图、扫描件和文档图片中提取文字并提供给模型。",
+    "en": "An offline macOS OCR plugin that uses Apple Vision to extract text from screenshots, scans, and document images for model use."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Extracts text from user-specified image files using macOS Vision OCR",
+      "Reads image paths through the host filesystem service",
+      "Compiles and executes a local Swift helper through the host subprocess service",
+      "Places recognized text into the session transcript and model context"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "native_subprocess_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_context_data_flow",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Extracts text from user-specified image files using macOS Vision OCR",
+      "Reads image paths through the host filesystem service",
+      "Compiles and executes a local Swift helper through the host subprocess service",
+      "Places recognized text into the session transcript and model context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:21.854Z",
+  "repositoryCommitSha": "a89e9b5736d6d2adedeb18b2c5d4b1f23864fedd",
+  "evidenceHash": "337be01c93ce028f406880fd673bc4fa3177bc4e0e9ee7d727f6e2dec46cc537",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "b6926747c065c25fae2ae93e392cc93a0d6cca4032cbcf0e2fa9f6ecd6022609",
+  "shadowMode": false
+}

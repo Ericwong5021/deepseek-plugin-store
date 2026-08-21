@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "chat",
+    "ui",
+    "integration",
+    "file",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes a DSH plugin whose primary user-facing purpose is interpreting uploaded, local, or URL-based images through configured vision models and presenting the results in chat, with GUI configuration and host integration.",
+  "summaries": {
+    "zh": "为 DSH 添加图片理解能力，可通过配置的视觉模型描述聊天中的本地图片、图片 URL，并支持后续细节解析。",
+    "en": "Adds image understanding to DSH by using configured vision models to describe local images, image URLs, and follow-up visual details in chat."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads local image files and accepts image URLs",
+      "Sends image data or URLs to configured vision model APIs",
+      "Automatically generates and refines image descriptions during chat",
+      "Stores configured model endpoints and credentials",
+      "Modifies host files through installation and patch scripts"
+    ],
+    "reasons": [
+      {
+        "code": "external-network-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-file-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "host-file-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential-configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads local image files and accepts image URLs",
+      "Sends image data or URLs to configured vision model APIs",
+      "Automatically generates and refines image descriptions during chat",
+      "Stores configured model endpoints and credentials",
+      "Modifies host files through installation and patch scripts"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:43.578Z",
+  "repositoryCommitSha": "71969198a0095b1c659530b581e38ca4b39cdd46",
+  "evidenceHash": "791cbee92830c7bfc900c881a74b58e83679b80707aabd0dd9dda202ebb5915d",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c33600a9e9e2ff18c6349688957cfdba5a5699562322af4b24704cab80b91f43",
+  "shadowMode": false
+}

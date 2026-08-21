@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "mcp",
+    "integration",
+    "search",
+    "ui",
+    "api",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a DeepSeek Harness MCP marketplace for browsing, configuring, installing, and managing local or remote MCP servers; human review is warranted because installation can execute third-party local processes and store environment configuration in plaintext.",
+  "summaries": {
+    "zh": "在 DeepSeek Harness 中浏览、搜索、配置并即时安装本地或远程 MCP 服务器。",
+    "en": "Browse, configure, and install local or remote MCP servers directly within DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Browse, search, and filter an MCP server catalog",
+      "Install, configure, enable, disable, edit, and uninstall MCP servers",
+      "Spawn locally configured stdio server processes",
+      "Connect to remotely configured streamable HTTP servers",
+      "Persist MCP configuration across restarts",
+      "Fetch a remote registry with bundled offline fallback"
+    ],
+    "reasons": [
+      {
+        "code": "third_party_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_child_process_spawn",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_service_connection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plaintext_environment_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Browse, search, and filter an MCP server catalog",
+      "Install, configure, enable, disable, edit, and uninstall MCP servers",
+      "Spawn locally configured stdio server processes",
+      "Connect to remotely configured streamable HTTP servers",
+      "Persist MCP configuration across restarts",
+      "Fetch a remote registry with bundled offline fallback"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:39.689Z",
+  "repositoryCommitSha": "21155c9a48a6320155d7d0e6de8706cddcc2eae4",
+  "evidenceHash": "d18a6e906e3df0a8282e1095c7d34622eb4133aada282548f264a82779017ad0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "17fd97f85644082bd5e60048bba136d42c692dd3917ab64304e836b40d49ccd4",
+  "shadowMode": false
+}

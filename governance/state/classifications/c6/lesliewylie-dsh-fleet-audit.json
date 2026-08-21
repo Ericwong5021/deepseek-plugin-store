@@ -1,0 +1,71 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "file",
+    "terminal",
+    "monitoring",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A read-only local audit utility that checks credential-file permissions, detects embedded Git remote credentials, and counts selected provider token prefixes with bounded scanning and masked output.",
+  "summaries": {
+    "zh": "一个只读的本地凭据卫生审计插件，用于检查凭据文件权限、识别 Git 远程地址中的嵌入式凭据，并统计常见令牌前缀。",
+    "en": "A read-only local credential-hygiene audit plugin that checks credential-file permissions, detects embedded Git remote credentials, and counts common token prefixes."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local credential-related files and file permissions",
+      "Recursively scans bounded Git configuration files",
+      "Detects credential-like URL contents and token prefixes",
+      "Masks suspected credential values in reported output"
+    ],
+    "reasons": [
+      {
+        "code": "reads_sensitive_local_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "scans_credentials_and_tokens",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "Reads local credential-related files and file permissions",
+      "Recursively scans bounded Git configuration files",
+      "Detects credential-like URL contents and token prefixes",
+      "Masks suspected credential values in reported output"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:20.318Z",
+  "repositoryCommitSha": "ea36c49c33798a460478f07d11654149e59a7b1c",
+  "evidenceHash": "e359d2143f8bb036146d521d6eee8d160b3f0d498084cce1eb385f203caa60a6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "820a571b144067d92a6892455cfe976eb6f2a450a45938886eefd4e65712a2b1",
+  "shadowMode": false
+}

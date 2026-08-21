@@ -1,0 +1,87 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "integration",
+    "data",
+    "file",
+    "memory",
+    "skill",
+    "automation",
+    "context",
+    "cli"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Claude2DSH is a migration and synchronization integration that converts Claude Code sessions and related assets into DSH-native data and can export or mirror DSH sessions back to Claude Code JSONL copies.",
+  "summaries": {
+    "zh": "Claude2DSH 在 Claude Code 与 DeepSeek Harness 之间迁移、导出和同步会话、技能及相关上下文资产。",
+    "en": "Claude2DSH migrates, exports, and synchronizes Claude Code sessions, skills, and related context assets with DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads Claude Code conversation and configuration files from local directories",
+      "Imports sessions, skills, global context, project memory, and plugin asset metadata into DSH",
+      "Exports DSH sessions as Claude Code JSONL copies",
+      "Synchronizes and merges session data between DSH and Claude Code copies",
+      "Monitors for new turns for optional automatic mirroring",
+      "Writes migrated data and safe copies under DSH-managed paths"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_data_transformation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_background_monitoring",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads Claude Code conversation and configuration files from local directories",
+      "Imports sessions, skills, global context, project memory, and plugin asset metadata into DSH",
+      "Exports DSH sessions as Claude Code JSONL copies",
+      "Synchronizes and merges session data between DSH and Claude Code copies",
+      "Monitors for new turns for optional automatic mirroring",
+      "Writes migrated data and safe copies under DSH-managed paths"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:33:43.355Z",
+  "repositoryCommitSha": "1233b097ecb7651eafb7ed7d4b379c572e510960",
+  "evidenceHash": "0e2be8f4e8cfa54617c10fd6769983a3540a42e3189fc4c27e6f89fc4918a382",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "37c184bcd49db06b298c3db025282c42ff50c2e1ed95d7b7304349dae35fe627",
+  "shadowMode": false
+}

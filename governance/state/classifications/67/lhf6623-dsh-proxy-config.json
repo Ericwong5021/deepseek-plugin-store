@@ -1,0 +1,73 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "general-utilities",
+  "tags": [
+    "tool",
+    "cli",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A general utility plugin that configures and persists HTTP/SOCKS proxy settings, injecting them into process.env so spawned installation commands inherit the proxy.",
+  "summaries": {
+    "zh": "用于配置并持久化 HTTP、HTTPS 和 SOCKS 代理，并将代理环境变量注入插件安装所启动的子进程。",
+    "en": "Configures and persists HTTP, HTTPS, and SOCKS proxy settings and injects the proxy environment variables into child processes started for plugin installation."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Configures HTTP, HTTPS, and SOCKS proxy environment variables",
+      "Persists proxy settings to a file under $DSH_HOME",
+      "Provides a settings page for enabling, editing, and clearing proxy configuration",
+      "Automatically removes in-process proxy variables when stopped"
+    ],
+    "reasons": [
+      {
+        "code": "process-environment-modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent-local-configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network-routing-configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Configures HTTP, HTTPS, and SOCKS proxy environment variables",
+      "Persists proxy settings to a file under $DSH_HOME",
+      "Provides a settings page for enabling, editing, and clearing proxy configuration",
+      "Automatically removes in-process proxy variables when stopped"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:35:33.677Z",
+  "repositoryCommitSha": "e3d5934d62884170af6fe36fdac8cb1ebb1cd5e3",
+  "evidenceHash": "6d9d841a1659a19e362c78b3f8248f7d864a2c8ffb98f37c03c1cb7e7df983b0",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ed99efcc55ecfc939f051ba00246fae59fed6dd52ec2aa10864d92f3b9ec2eee",
+  "shadowMode": false
+}

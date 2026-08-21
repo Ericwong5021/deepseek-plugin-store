@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "agent",
+    "chat",
+    "collaboration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "An HTTP API gateway plugin that lets third-party clients authenticate to a running Harness, create or adopt agent sessions, exchange messages, stream responses, and access session history.",
+  "summaries": {
+    "zh": "通过 REST 和 SSE 接口让第三方客户端认证并操作运行中的 Harness 智能体会话。",
+    "en": "Exposes a REST and SSE interface for authenticated third-party clients to operate agent sessions in a running Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes the running Harness through REST and SSE endpoints",
+      "Creates sessions and sends messages to agent sessions",
+      "Streams agent responses and reads session histories",
+      "Discovers and adopts existing GUI sessions",
+      "Cancels active agent turns",
+      "Provides API-key and admin-key controls for runtime enablement and key rotation"
+    ],
+    "reasons": [
+      {
+        "code": "external_http_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_read_and_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "admin_runtime_controls",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes the running Harness through REST and SSE endpoints",
+      "Creates sessions and sends messages to agent sessions",
+      "Streams agent responses and reads session histories",
+      "Discovers and adopts existing GUI sessions",
+      "Cancels active agent turns",
+      "Provides API-key and admin-key controls for runtime enablement and key rotation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:19.192Z",
+  "repositoryCommitSha": "3b1213203d77c3fd1474fd3ef71cbea3372a02e8",
+  "evidenceHash": "19a2829b3019c13d8da0a7ef84e252323e66feb962f096212905bdea1831f50a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "38e588b6628f021bdaee7f0a2c9e5115dfa465477926dc12d5d5bd922a19d7f9",
+  "shadowMode": false
+}

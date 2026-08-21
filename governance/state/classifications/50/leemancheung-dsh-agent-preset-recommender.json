@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "agent",
+    "project-analysis",
+    "data",
+    "file",
+    "automation",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The plugin conservatively scans local Codex, Claude Code, WorkBuddy, and CodeBuddy metadata, aggregates activity, and recommends DSH agent presets without network requests, LLM calls, preset changes, or discovered-command execution.",
+  "summaries": {
+    "zh": "扫描本地编码智能体的会话、项目和工作流元数据，并根据确定性规则生成持久化的 DSH 智能体预设建议。",
+    "en": "Scans local coding-agent session, project, and workflow metadata to produce persistent DSH agent preset recommendations using deterministic rules."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Bounded local scanning of supported coding-agent session, project, and workflow metadata",
+      "Aggregate persistence of counts, dates, recommendations, and keyed project identifiers",
+      "Deterministic recommendations for DSH capability presets and optional capabilities",
+      "Agent-facing tools for refreshing scans and retrieving saved recommendations"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_scan",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_local_report",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_network_or_command_execution",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "filesystem.write",
+      "network.access",
+      "Bounded local scanning of supported coding-agent session, project, and workflow metadata",
+      "Aggregate persistence of counts, dates, recommendations, and keyed project identifiers",
+      "Deterministic recommendations for DSH capability presets and optional capabilities",
+      "Agent-facing tools for refreshing scans and retrieving saved recommendations"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:57.699Z",
+  "repositoryCommitSha": "409a3218cf139838a5c4189a5e3c9c048cb0b68e",
+  "evidenceHash": "eaf6b363e75fa2a982e9651fcf1883dbc3155d0fd34992bd6aebf4681bc13119",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ffc460d4b8bf7a8f5ebfd019e664ca7535b960b620db6c8c32163412dccd2a80",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "monitoring",
+    "ui",
+    "layout",
+    "integration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH Web GUI plugin that monitors OpenCode Go subscription usage through an external API and presents rolling, weekly, and monthly usage with reset countdowns in a floating overlay.",
+  "summaries": {
+    "zh": "在 DSH Web GUI 中通过 OpenCode API 显示 OpenCode Go 滚动、周度和月度订阅用量百分比及重置倒计时的悬浮小部件。",
+    "en": "A DSH Web GUI floating widget that displays OpenCode Go rolling, weekly, and monthly subscription usage percentages with reset countdowns via the OpenCode API."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Displays rolling, weekly, and monthly OpenCode Go usage percentages and reset countdowns in a DSH Web GUI overlay",
+      "Periodically requests usage data from the OpenCode API through a server-side proxy",
+      "Uses a configured API key resolved by the DSH credential service",
+      "Caches usage responses for 60 seconds and refreshes on a timer or when the window regains focus"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_ui_overlay",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Displays rolling, weekly, and monthly OpenCode Go usage percentages and reset countdowns in a DSH Web GUI overlay",
+      "Periodically requests usage data from the OpenCode API through a server-side proxy",
+      "Uses a configured API key resolved by the DSH credential service",
+      "Caches usage responses for 60 seconds and refreshes on a timer or when the window regains focus"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:33:47.813Z",
+  "repositoryCommitSha": "7a5ed86ffa51d760e9fe867f798d0c649c977026",
+  "evidenceHash": "0c54e5276ddb57b715a9681c53ae8a24d84730e7afbd3ec69fe88b284e558327",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "91756d77ba025444419fb955433641c2beae1e06b325641e5615fbd48d82eed2",
+  "shadowMode": false
+}

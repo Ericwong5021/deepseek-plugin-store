@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "browser",
+    "collaboration",
+    "file",
+    "integration",
+    "tool",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "README 明确说明该插件将 GitHub 仓库绑定到 Harness Workspace，提供 Issues、Pull requests 和 Changes 视图，并支持本地 Git 操作、GitHub API 访问、推送分支和创建 Pull Request，因此主要属于外部服务集成。",
+  "summaries": {
+    "zh": "在 DeepSeek Harness Workspace 中连接 GitHub 仓库，查看 Issues 和 Pull requests，并管理本地更改、提交、推送与 Pull Request。",
+    "en": "Connects a GitHub repository to a DeepSeek Harness Workspace to view issues and pull requests and manage local changes, commits, pushes, and pull requests."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "读取 GitHub Issues 和 Pull requests",
+      "读取本地 Git 状态与差异",
+      "暂存文件、创建提交、推送分支并创建 Pull Request",
+      "通过 GitHub OAuth 或 GitHub App 认证访问仓库",
+      "将 Issue 内容带入新的 Harness 对话"
+    ],
+    "reasons": [
+      {
+        "code": "external_write_operations",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_repository_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "untrusted_external_content_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "读取 GitHub Issues 和 Pull requests",
+      "读取本地 Git 状态与差异",
+      "暂存文件、创建提交、推送分支并创建 Pull Request",
+      "通过 GitHub OAuth 或 GitHub App 认证访问仓库",
+      "将 Issue 内容带入新的 Harness 对话"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:07.161Z",
+  "repositoryCommitSha": "bfe73651bfb27f75eb1fc3c6d69d2d12620d492b",
+  "evidenceHash": "0b29fcaf11f5c5b47f9f2bf31c7678e90911883b698f56042410731785678c8c",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "eed9ff66e8de8a7735a02fc33fe0d3b905ee551ce32ce303983b80f249a90f0f",
+  "shadowMode": false
+}

@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "notifications-monitoring",
+  "tags": [
+    "api",
+    "data",
+    "integration",
+    "monitoring",
+    "notification",
+    "visualization",
+    "chat"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek account monitoring plugin that embeds a balance badge, usage charts, estimated costs, historical backfill, low-balance warnings, and a recharge entry point in the session interface; human review is warranted because it accesses credentials, usage data, external APIs, payment flow, and elevated shell execution.",
+  "summaries": {
+    "zh": "在会话界面中显示 DeepSeek 余额、用量统计、历史数据、消费估算和低余额提醒，并提供官方充值入口。",
+    "en": "Embeds DeepSeek balance and usage monitoring in the session interface with historical statistics, estimated costs, low-balance alerts, and an official recharge entry point."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads the DEEPSEEK_API_KEY from the DSH credential store",
+      "Queries the DeepSeek balance API",
+      "Listens to session usage events and aggregates token, request, model, and cost data",
+      "Retains and backfills usage history for up to 90 days",
+      "Displays low-balance warnings and automatic refresh status",
+      "Opens a DeepSeek official checkout flow for recharge",
+      "Runs a fixed curl command with danger-full-access according to the README"
+    ],
+    "reasons": [
+      {
+        "code": "credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sensitive_usage_tracking",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "elevated_shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "payment_flow_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads the DEEPSEEK_API_KEY from the DSH credential store",
+      "Queries the DeepSeek balance API",
+      "Listens to session usage events and aggregates token, request, model, and cost data",
+      "Retains and backfills usage history for up to 90 days",
+      "Displays low-balance warnings and automatic refresh status",
+      "Opens a DeepSeek official checkout flow for recharge",
+      "Runs a fixed curl command with danger-full-access according to the README"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:34:42.953Z",
+  "repositoryCommitSha": "ac688a7a36c1376d0d205310c5fa2731c4641e92",
+  "evidenceHash": "ec364534bb3f6692889b88613097ccc1fca77d5dab197354a67033d4ac10202f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "9ea738b5b4850d8f0187c0c3311fc20eddabbffba66f4bcc2d239b2908210239",
+  "shadowMode": false
+}

@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "image",
+    "integration",
+    "tool",
+    "automation"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The README describes a DSH integration that forwards images to a configured vision API and exposes image descriptions to a non-vision primary model, with installation scripts and adapter patches.",
+  "summaries": {
+    "zh": "通过配置的视觉模型接口将会话图片转换为文字描述，并为 DSH 主模型提供 view_image 看图工具。",
+    "en": "Connects DSH to a configured vision model API to turn session images into text descriptions and provide a view_image tool to the primary model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends user-provided images to a configured external vision API for text descriptions",
+      "Provides a view_image tool that accepts local paths, URLs, and data URLs",
+      "Installs plugin files and modifies DSH settings and adapter behavior",
+      "Reads an API key from a configured environment variable or local configuration file"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_configuration_and_adapter_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Sends user-provided images to a configured external vision API for text descriptions",
+      "Provides a view_image tool that accepts local paths, URLs, and data URLs",
+      "Installs plugin files and modifies DSH settings and adapter behavior",
+      "Reads an API key from a configured environment variable or local configuration file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T19:36:24.185Z",
+  "repositoryCommitSha": "5bdf772608d98c012507bf686f14dd15a886c657",
+  "evidenceHash": "289529b14838871a746445abb795369bef4b6a899bae10fc1aedd6603d5afd20",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "070628c11c63d73c4dc7e467e93a48d5e8c38ede2718b19cb03877bd335a8e22",
+  "shadowMode": false
+}
