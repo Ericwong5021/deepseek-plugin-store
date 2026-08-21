@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "integration",
+    "agent",
+    "chat",
+    "file",
+    "image",
+    "video",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a gateway integration that exposes DeepSeek Harness sessions through SlashX request and response protocols, handling authenticated HTTP transport, media exchange, asynchronous callbacks, structured rich responses, artifact delivery, and token metering.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 会话通过兼容 SlashX 协议的 HTTP 网关对外提供，并支持媒体传输、异步回调、富响应和制品交付。",
+    "en": "Exposes DeepSeek Harness sessions through a SlashX-compatible HTTP gateway with media transfer, asynchronous callbacks, rich responses, and artifact delivery."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Exposes a SlashX-compatible HTTP gateway for DeepSeek Harness sessions",
+      "Accepts authenticated text and media requests, including images, files, audio, and video",
+      "Downloads and validates remote media, stores files in session workspaces, and publishes local artifacts through signed URLs",
+      "Supports structured responses, asynchronous callbacks, polling, cancellation, and token metering",
+      "Maintains persistent run and session state on the filesystem"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "authenticated_callback_and_artifact_delivery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_session_orchestration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Exposes a SlashX-compatible HTTP gateway for DeepSeek Harness sessions",
+      "Accepts authenticated text and media requests, including images, files, audio, and video",
+      "Downloads and validates remote media, stores files in session workspaces, and publishes local artifacts through signed URLs",
+      "Supports structured responses, asynchronous callbacks, polling, cancellation, and token metering",
+      "Maintains persistent run and session state on the filesystem"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:51.046Z",
+  "repositoryCommitSha": "abef58579573b35ccc85b304c3665a515cb3405b",
+  "evidenceHash": "3eec3e62b6147ef989933a1f8d8901f58f3f1285636bd4bc93ba9f8d32bb8a3b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "cc108d03646933711850d6238952ff41dd288f9baaa09df336b34aac0338cbf4",
+  "shadowMode": false
+}

@@ -1,0 +1,68 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "file",
+    "tool",
+    "agent"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides explicitly enabled model-facing tools for executing commands and managing files inside a microsandbox microVM, with no fallback to unconfined host execution described.",
+  "summaries": {
+    "zh": "为模型提供在 microsandbox microVM 中执行命令以及读取、写入和列出访客文件的工具。",
+    "en": "Provides model-facing tools to execute commands and read, write, and list files inside a microsandbox microVM."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Executes exact argv commands in a microsandbox guest environment",
+      "Reads, writes, and lists files in the guest environment",
+      "Captures command output, exit codes, streams, and timeout or abort status"
+    ],
+    "reasons": [
+      {
+        "code": "code-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "guest-file-write",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Executes exact argv commands in a microsandbox guest environment",
+      "Reads, writes, and lists files in the guest environment",
+      "Captures command output, exit codes, streams, and timeout or abort status"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:59.333Z",
+  "repositoryCommitSha": "ebc8be539a4ed4e66157d1f8255c58a4db4e4dc4",
+  "evidenceHash": "dbb447717d6768d82fe946873a7d28eff91a61fa794ddc1b8eeef89e6f4d401f",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "da5425155710dd27413bfe6dd7bd3c2c39a09714b36d72f119e39ca251a45ddc",
+  "shadowMode": false
+}

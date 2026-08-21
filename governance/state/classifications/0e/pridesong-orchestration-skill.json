@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "file",
+    "planning",
+    "skill",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a Python-based engine whose primary purpose is orchestrating long-running, multi-step agent tasks through disk-backed state, mechanical validation gates, structured dispatch, routing, retries, and audits.",
+  "summaries": {
+    "zh": "用于通过磁盘状态、机械校验、结构化调度、路由和审计来编排可恢复的长流程智能体任务。",
+    "en": "Orchestrates resumable long-running agent workflows using disk-backed state, mechanical validation, structured dispatch, routing, retries, and audits."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Creates and manages task state and artifacts in user project directories",
+      "Executes local Python standard-library scripts for validation, orchestration, comparison, and task progression",
+      "Builds and routes multi-step agent workflows with retries and audits",
+      "Dispatches structured prompts to subagents or model tools"
+    ],
+    "reasons": [
+      {
+        "code": "local-filesystem-write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local-script-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "multi-agent-orchestration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Creates and manages task state and artifacts in user project directories",
+      "Executes local Python standard-library scripts for validation, orchestration, comparison, and task progression",
+      "Builds and routes multi-step agent workflows with retries and audits",
+      "Dispatches structured prompts to subagents or model tools"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "PACKAGE_JSON_VALID",
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:49.954Z",
+  "repositoryCommitSha": "ab50edb3a0857d9fdc0e62fcbda70a3802d4a873",
+  "evidenceHash": "dc7faa50726e7e66bd97774cbe46bfa8ffdc2dc25e0a54045b00612eee116367",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fc4a7cbfa3d437133b3c537b963859dd81d2edd99295db3a94f510ea64e7f16e",
+  "shadowMode": false
+}

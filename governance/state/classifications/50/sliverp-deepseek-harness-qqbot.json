@@ -1,0 +1,91 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "integration",
+    "agent",
+    "file",
+    "image",
+    "collaboration"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DeepSeek Harness channel plugin that connects QQ Bot Gateway conversations to persistent Harness agents, supporting text, media, approvals, agent tools, and controlled workspace file delivery.",
+  "summaries": {
+    "zh": "将腾讯官方 QQ Bot Gateway 接入 DeepSeek Harness，使 QQ 私聊和群聊能够使用持久化智能体会话、文本与媒体消息、审批交互及受控工作区文件发送。",
+    "en": "Connects the official QQ Bot Gateway to persistent DeepSeek Harness agent sessions with text and media messaging, approval interactions, and controlled workspace file delivery."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the official Tencent QQ Bot Gateway",
+      "Receives C2C and group text messages, images, voice transcripts, and attachment metadata",
+      "Sends assistant text, images, and workspace files to QQ conversations",
+      "Maintains persistent Harness sessions per QQ conversation",
+      "Invokes Harness agent tools and handles requester-bound approval prompts",
+      "Reads local workspace files subject to configured containment and size checks"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_messages_and_files",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_workspace_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_based_authentication",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "computer.control",
+      "network.access",
+      "Connects to the official Tencent QQ Bot Gateway",
+      "Receives C2C and group text messages, images, voice transcripts, and attachment metadata",
+      "Sends assistant text, images, and workspace files to QQ conversations",
+      "Maintains persistent Harness sessions per QQ conversation",
+      "Invokes Harness agent tools and handles requester-bound approval prompts",
+      "Reads local workspace files subject to configured containment and size checks"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:20.976Z",
+  "repositoryCommitSha": "691af8ca2ffc9a1d67784d49744565b08d936f5e",
+  "evidenceHash": "6c0847572e86968c8fdf91c0eeada7b0240fe8f9de142ca58ec507f5512cfa17",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c5b5aeee27905f4bf0392fdadbab97a7e644f43f7a57241218abd499ced5427e",
+  "shadowMode": false
+}

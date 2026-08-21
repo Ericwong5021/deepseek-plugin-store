@@ -1,0 +1,90 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "memory",
+    "context",
+    "automation",
+    "cli",
+    "file",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A provider-neutral agent memory plugin that recalls durable context before model turns and reflects completed sessions into structured local memory, with workspace import, CLI hooks, and an optional web panel.",
+  "summaries": {
+    "zh": "为智能体提供本地持久记忆，在模型响应前召回相关上下文，并在会话结束后整理保存新的结构化记忆。",
+    "en": "Provides local persistent memory for agents by recalling relevant context before model turns and structuring new memories after completed sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "recalls stored memory into agent prompts",
+      "distills completed sessions into structured memory using a configured model",
+      "stores memory in a local SQLite database",
+      "reads and imports workspace instruction and skill files",
+      "runs through Claude Code and Codex hooks",
+      "provides a web settings panel for memory management",
+      "modifies user hook configuration when installed via the provided installer"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_invocation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "cli_hook_automation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "binary.execute",
+      "network.access",
+      "recalls stored memory into agent prompts",
+      "distills completed sessions into structured memory using a configured model",
+      "stores memory in a local SQLite database",
+      "reads and imports workspace instruction and skill files",
+      "runs through Claude Code and Codex hooks",
+      "provides a web settings panel for memory management",
+      "modifies user hook configuration when installed via the provided installer"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:47:09.497Z",
+  "repositoryCommitSha": "56d2c81133174ddf88d69b86390baba9591b9911",
+  "evidenceHash": "e9c6c60dd5ead4176bbc9f8f14612251dcab34506181203ab21cfea713d01ad1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "ee4cfbbaa1369ee5c1fcdb3619f83ebee0cfcccdc758a3352ee2d4f4adf8ae41",
+  "shadowMode": false
+}

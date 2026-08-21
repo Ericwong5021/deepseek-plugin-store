@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "api",
+    "chat",
+    "cli",
+    "image",
+    "integration",
+    "search",
+    "tool",
+    "browser"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "A DeepSeek Harness integration that reuses local Codex CLI authentication to provide an OpenAI Codex model route, remote search, image generation and editing, usage status, and related settings.",
+  "summaries": {
+    "zh": "通过复用本地 Codex CLI 登录状态，为 DeepSeek Harness 提供 Codex 模型路由、远程搜索、图像生成与编辑及 GPT Auth 设置。",
+    "en": "Reuses local Codex CLI login state to provide DeepSeek Harness with a Codex model route, remote search, image generation and editing, and GPT Auth settings."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads and refreshes local Codex authentication state",
+      "Initiates Codex CLI browser or device-code login",
+      "Sends authenticated requests to ChatGPT Codex backend endpoints",
+      "Provides web search through the Codex service",
+      "Generates and edits images using remote Codex image endpoints",
+      "Persists generated and referenced images as conversation attachments"
+    ],
+    "reasons": [
+      {
+        "code": "local_auth_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "external_authenticated_network_requests",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_image_generation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "oauth_login_flow",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Reads and refreshes local Codex authentication state",
+      "Initiates Codex CLI browser or device-code login",
+      "Sends authenticated requests to ChatGPT Codex backend endpoints",
+      "Provides web search through the Codex service",
+      "Generates and edits images using remote Codex image endpoints",
+      "Persists generated and referenced images as conversation attachments"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:47:01.487Z",
+  "repositoryCommitSha": "0376f981dd2e7fe2e3b9bdd1ebc8147f757c0e9e",
+  "evidenceHash": "a38defbe4c5157324ea1f00eca43119a04879a01a74f037bbed0108ab8b397d2",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "73b71d28b06cd53b54571f5ac31faec148d5d1d0e88ec4793eb24246e5b53080",
+  "shadowMode": false
+}

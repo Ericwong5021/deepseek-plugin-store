@@ -1,0 +1,79 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "integration",
+    "monitoring",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A governance plugin for agent workflows that evaluates every pre-execution tool call through TapPass and can allow, deny, or route calls for approval, with an observe mode for recording decisions.",
+  "summaries": {
+    "zh": "通过 TapPass 策略服务评估智能体的每次工具调用，并支持放行、拒绝或转交人工审批。",
+    "en": "Evaluates each agent tool call through the TapPass policy service and supports allowing, denying, or routing calls for human approval."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "intercepts agent tool calls before execution",
+      "sends tool-call data to the TapPass /v1/govern API",
+      "allows or denies tool execution based on policy verdicts",
+      "routes approval-required calls to a human approval flow",
+      "records observed policy decisions and tool-call activity"
+    ],
+    "reasons": [
+      {
+        "code": "controls_agent_tool_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sends_calls_to_external_policy_service",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "supports_human_approval_routing",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "intercepts agent tool calls before execution",
+      "sends tool-call data to the TapPass /v1/govern API",
+      "allows or denies tool execution based on policy verdicts",
+      "routes approval-required calls to a human approval flow",
+      "records observed policy decisions and tool-call activity"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:52.340Z",
+  "repositoryCommitSha": "ac9ccbc16ed2dd5359619a6c87899106a3eecd65",
+  "evidenceHash": "283b426375c38e53f2f36f813d9200af5c18f86a74911628ca8919bec1bff259",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "4fa43054413f8e597e7c6cd042502a473ebc104b1c3df171f693b5c9ee7badec",
+  "shadowMode": false
+}

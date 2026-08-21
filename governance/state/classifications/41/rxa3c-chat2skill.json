@@ -1,0 +1,89 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "api",
+    "automation",
+    "context",
+    "memory",
+    "skill",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Chat2Skill primarily learns reusable skills and project memory from assistant conversations, stores them locally, retrieves them for future prompts, and optionally uses a remote extraction API and response guard.",
+  "summaries": {
+    "zh": "Chat2Skill 从助手对话中提取可复用技能与项目记忆，保存到本地并在后续会话中检索注入。",
+    "en": "Chat2Skill extracts reusable skills and project memory from assistant conversations, stores them locally, and retrieves them for future sessions."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads recent assistant and user conversation messages through lifecycle hooks",
+      "Extracts and stores project memory and reusable skills locally in SQLite and Markdown files",
+      "Retrieves stored memory and skills and injects them into future assistant prompts",
+      "Sends conversation-derived data to a remote extraction API using a configured LLM credential",
+      "Can apply a local response guard that continues responses violating explicit learned constraints"
+    ],
+    "reasons": [
+      {
+        "code": "conversation_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "prompt_injection",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "remote_api_transfer",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "lifecycle_hooks",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "binary.execute",
+      "network.access",
+      "Reads recent assistant and user conversation messages through lifecycle hooks",
+      "Extracts and stores project memory and reusable skills locally in SQLite and Markdown files",
+      "Retrieves stored memory and skills and injects them into future assistant prompts",
+      "Sends conversation-derived data to a remote extraction API using a configured LLM credential",
+      "Can apply a local response guard that continues responses violating explicit learned constraints"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:25.028Z",
+  "repositoryCommitSha": "5ba57d78e2c781a242cde6663e60ce354fab547e",
+  "evidenceHash": "53ec0b57439bce53b4beb46a05d522bc37821d2b2602673e6d81717d0ceb037a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "65b3ac0d6815a0a177107f3bcf2605f358f302cb2175267d811616f89f74a12a",
+  "shadowMode": false
+}

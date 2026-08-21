@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "context",
+    "chat",
+    "data",
+    "file",
+    "api",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Imports Claude Code and Codex CLI conversation histories into native DSH sessions, placing them in matching workspaces with an idempotent settings-page workflow.",
+  "summaries": {
+    "zh": "将 Claude Code 和 Codex CLI 的历史对话解析并导入为 DSH 原生会话，支持在设置页查看状态并按工作区整理。",
+    "en": "Import Claude Code and Codex CLI conversation histories as native DSH sessions, with an idempotent settings workflow and workspace organization."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads Claude Code and Codex CLI conversation history from configured local JSONL directories",
+      "Parses and cleans imported conversation records",
+      "Creates and persists corresponding DSH sessions and workspaces",
+      "Provides a settings-page interface and same-origin API for importing and viewing import status"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_session_persistence",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_api_and_ui",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads Claude Code and Codex CLI conversation history from configured local JSONL directories",
+      "Parses and cleans imported conversation records",
+      "Creates and persists corresponding DSH sessions and workspaces",
+      "Provides a settings-page interface and same-origin API for importing and viewing import status"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:17.484Z",
+  "repositoryCommitSha": "0cfcc39713507a8def41c4be50020ee078ef298a",
+  "evidenceHash": "bff2511c6e022590a8e5ac9edce43f30574a2b8363e2933ba6d553097eb97bd1",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3484477b53f4e7b1cc9641e0408e128111bdf7676a72a78656a8308518f62ca4",
+  "shadowMode": false
+}

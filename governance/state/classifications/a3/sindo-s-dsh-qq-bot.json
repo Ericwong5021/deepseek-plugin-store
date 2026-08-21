@@ -1,0 +1,81 @@
+{
+  "status": "classified",
+  "group": "integrations-communication",
+  "category": "external-services",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "integration",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Bridges QQ group and private chats with DeepSeek Harness agents through the official QQ WebSocket gateway and REST API, with session management, access controls, and configurable host-tool allowlisting.",
+  "summaries": {
+    "zh": "通过 QQ 官方机器人 WebSocket 网关和 REST API，将群聊与私聊消息连接到独立的 DeepSeek Harness Agent 会话。",
+    "en": "Connects QQ group and private messages to independent DeepSeek Harness agent sessions through the official QQ Bot WebSocket gateway and REST API."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects to the QQ official Bot API over WebSocket and REST",
+      "Routes QQ group and private messages to separate agent sessions",
+      "Sends agent responses and explicitly authorized tool messages back to QQ",
+      "Supports configurable access allowlists and public access mode"
+    ],
+    "reasons": [
+      {
+        "code": "external_network_communication",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_message_routing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "outbound_user_messaging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_tool_exposure",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects to the QQ official Bot API over WebSocket and REST",
+      "Routes QQ group and private messages to separate agent sessions",
+      "Sends agent responses and explicitly authorized tool messages back to QQ",
+      "Supports configurable access allowlists and public access mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:01.586Z",
+  "repositoryCommitSha": "a493a3a327532e1bdaa3fa226b1446b32ec133fb",
+  "evidenceHash": "4fd9e9684f0ea749f234d3e901bc4ca0649e6309f87a700b2fc2da955cda4c8a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "25593dc1f8fad149c981eddccb4820592021436a3e8cd777744a84a838636bf1",
+  "shadowMode": false
+}

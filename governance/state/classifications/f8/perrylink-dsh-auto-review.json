@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "automation",
+    "workflow",
+    "monitoring",
+    "tool",
+    "ui"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README clearly describes an orchestration plugin that adds a second-model reviewer to tool approval requests, applies configurable allow, deny, delegate, and never policies, and records review outcomes in the session log.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 的工具审批链增加只读的第二模型审查器，根据配置返回允许、拒绝或委托结果并记录审查事件。",
+    "en": "Adds a read-only second-model reviewer to DeepSeek Harness tool approvals, applying configurable allow, deny, delegate, and never policies with logged review outcomes."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Intercepts approval requests in the DeepSeek Harness answerer chain",
+      "Uses a reviewer subagent with read, glob, and grep tools to assess requests",
+      "Can allow, deny, delegate, or reject configured tool requests",
+      "Injects reviewer decisions and reasons into tool results",
+      "Writes auditable auto-review verdict and rejection events to the session log",
+      "Provides session commands and an optional web review panel for review state and overrides"
+    ],
+    "reasons": [
+      {
+        "code": "approval_control",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "workspace_read_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_event_logging",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_tool_policy",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Intercepts approval requests in the DeepSeek Harness answerer chain",
+      "Uses a reviewer subagent with read, glob, and grep tools to assess requests",
+      "Can allow, deny, delegate, or reject configured tool requests",
+      "Injects reviewer decisions and reasons into tool results",
+      "Writes auditable auto-review verdict and rejection events to the session log",
+      "Provides session commands and an optional web review panel for review state and overrides"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:32.684Z",
+  "repositoryCommitSha": "252e5b098db2b501e1055c4b882c3b2c6b6db31f",
+  "evidenceHash": "50b19839380918c116edca7520b4b2830c3caa2d1087289204aea07f227e2fb6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "41003230b03a06b2948659e2ec43d3e41048b65b5e291f691d3186081fb13080",
+  "shadowMode": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "cli",
+    "debugging",
+    "testing",
+    "file",
+    "project-analysis",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "The README documents a DeepSeek Harness adapter that runs Falsify lint, review, and gate commands on files or pull requests and returns adjudication receipts, making testing and debugging the primary user-facing purpose.",
+  "summaries": {
+    "zh": "通过运行公共 Falsify CLI，对文件或拉取请求执行静态检查、文档审查和门禁评估，并返回结果回执。",
+    "en": "Runs the public Falsify CLI to perform static checks, document reviews, and gate evaluations on files or pull requests, returning a result receipt."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "spawns a local Python process to run the public Falsify CLI",
+      "reads subject files or inline text via temporary copies",
+      "writes a temporary JSON file for gate operations",
+      "forwards configured provider API keys to the child CLI",
+      "may invoke a configured model provider through the public CLI"
+    ],
+    "reasons": [
+      {
+        "code": "local_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "file_read_and_temp_file_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "provider_api_key_forwarding",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "possible_external_model_provider_call",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "spawns a local Python process to run the public Falsify CLI",
+      "reads subject files or inline text via temporary copies",
+      "writes a temporary JSON file for gate operations",
+      "forwards configured provider API keys to the child CLI",
+      "may invoke a configured model provider through the public CLI"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:52.557Z",
+  "repositoryCommitSha": "596a86f1a4b0d59ca08cf52d2778e8b27d776e47",
+  "evidenceHash": "46bb3c8be790af51a1e647eb5398e9846b7ef8f98a0e3145471dedac5f9db515",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "f7618fc7d6cb8f2c02f03b0004b169651d391e2e1b4da3da49d9b4887c09441b",
+  "shadowMode": false
+}

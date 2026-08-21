@@ -1,0 +1,75 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "automation",
+  "tags": [
+    "agent",
+    "automation",
+    "cli",
+    "file",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Automates Git commit attribution by temporarily installing a prepare-commit-msg hook that adds model and dsh trailers, while preserving existing hooks and restoring them after the session.",
+  "summaries": {
+    "zh": "在智能体提交代码时自动通过 Git 钩子添加模型署名和 dsh 生成标记，并在会话结束后恢复原有钩子。",
+    "en": "Automatically adds model attribution and dsh generation trailers to agent-created Git commits through a temporary hook that restores existing hooks when the session ends."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Installs and removes a prepare-commit-msg Git hook during agent sessions",
+      "Adds Co-Authored-By and Generated-By trailers to Git commits",
+      "Backs up, chains, and restores existing repository hooks",
+      "May request a sandbox permission upgrade when a commit is blocked in read-only mode"
+    ],
+    "reasons": [
+      {
+        "code": "repository_hook_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "commit_metadata_modification",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "sandbox_upgrade_request",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Installs and removes a prepare-commit-msg Git hook during agent sessions",
+      "Adds Co-Authored-By and Generated-By trailers to Git commits",
+      "Backs up, chains, and restores existing repository hooks",
+      "May request a sandbox permission upgrade when a commit is blocked in read-only mode"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:42.253Z",
+  "repositoryCommitSha": "94f2083df65d0e1f0ecc1be79a16c6daa576bf59",
+  "evidenceHash": "5b7844e24f2b95717904bf1d6c1e70263a59f13792eeac1540cb5bb785135daa",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "180f98bc9ea8dc2ba0fa7c46f938f6458252caf600d26895b06bedc7a1104b73",
+  "shadowMode": false
+}

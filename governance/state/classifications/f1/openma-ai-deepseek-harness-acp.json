@@ -1,0 +1,80 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "api",
+    "chat",
+    "cli",
+    "integration",
+    "planning",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "An ACP adapter and server that exposes DeepSeek Harness agent sessions, tools, plans, commands, authentication, and persistence to clients such as Zed and Backchat.",
+  "summaries": {
+    "zh": "将 DeepSeek Harness 的智能体会话、工具、计划、命令和持久化能力通过 Agent Client Protocol 提供给 Zed 等客户端。",
+    "en": "Exposes DeepSeek Harness agent sessions, tools, plans, commands, authentication, and persistence to clients such as Zed through the Agent Client Protocol."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Connects ACP clients to DeepSeek Harness sessions",
+      "Streams model responses and reasoning",
+      "Exposes agent tools, plans, commands, skills, and session persistence",
+      "Handles API credentials through the harness credential store or environment",
+      "Can surface file diffs and terminal output from tool calls"
+    ],
+    "reasons": [
+      {
+        "code": "external_model_and_credential_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "agent_tool_and_terminal_interaction",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "session_and_file_operation_projection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Connects ACP clients to DeepSeek Harness sessions",
+      "Streams model responses and reasoning",
+      "Exposes agent tools, plans, commands, skills, and session persistence",
+      "Handles API credentials through the harness credential store or environment",
+      "Can surface file diffs and terminal output from tool calls"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:16.197Z",
+  "repositoryCommitSha": "91707d61a032b882ca7cbf0b627b1e6da4e12431",
+  "evidenceHash": "82f18be79b14438d675f2c0078ce37fa8ec2690bf3def12b5f903363e7e75dee",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8f8dde3b4da4697cf9081407db9f530cbcd2a7153a6eb8e11b358b6332a490ab",
+  "shadowMode": false
+}

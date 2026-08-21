@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "mcp",
+    "skill",
+    "integration",
+    "video",
+    "image",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "An explicit DSH profile bundle that fetches Qwen-MM capabilities, launches their MCP servers, and exposes the resulting tools and skills, with optional browser rendering for image outputs.",
+  "summaries": {
+    "zh": "一个将 Qwen-MM 能力以 DSH 配置包形式接入的插件，用于获取能力源、启动 MCP 服务并向模型提供对应工具与技能。",
+    "en": "A DSH profile bundle that fetches Qwen-MM capabilities, starts their MCP servers, and exposes the resulting tools and skills to the model."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Fetches selected upstream capability sources with Git at a pinned reference",
+      "Starts external MCP processes using configurable commands, arguments, environment, and working directory",
+      "Registers discovered MCP tools and paired agent skills with DSH",
+      "Provides browser rendering for image-related result references"
+    ],
+    "reasons": [
+      {
+        "code": "external_process_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_fetch",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configurable_execution_parameters",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Fetches selected upstream capability sources with Git at a pinned reference",
+      "Starts external MCP processes using configurable commands, arguments, environment, and working directory",
+      "Registers discovered MCP tools and paired agent skills with DSH",
+      "Provides browser rendering for image-related result references"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:59.252Z",
+  "repositoryCommitSha": "762cc29e5b9adfa1668633db83b3453a0919b935",
+  "evidenceHash": "7e42b37da7e409942f6659948778b20fd2cfe4e456ea0472e341b05e8b05d9fb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "d78e64e49152b130848f686dc4da9663adb9624fc6fb58500558ef2298f358c0",
+  "shadowMode": false
+}

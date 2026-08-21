@@ -1,0 +1,85 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "search",
+    "browser",
+    "api",
+    "integration",
+    "cli",
+    "automation",
+    "ui",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH settings marketplace for searching GitHub-hosted community plugins and skills and installing selected repositories through the dsh CLI; human review is warranted because installation launches child processes and may modify build-script approval configuration.",
+  "summaries": {
+    "zh": "在 DSH 设置中提供社区插件和技能市场，用于搜索 GitHub 仓库并安装选定项目。",
+    "en": "Adds a DSH settings marketplace for searching GitHub repositories and installing selected community plugins and skills."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Fetches GitHub repository search results, metadata, manifests, and Git trees",
+      "Provides a settings marketplace tab with search, repository listings, and install controls",
+      "Spawns dsh plugin add as a child process to install selected repositories",
+      "Installs detected DSH skills into the user's DSH skills directory",
+      "Can update pnpm-workspace.yaml allowBuilds entries after explicit user approval and retry an installation"
+    ],
+    "reasons": [
+      {
+        "code": "network-access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "child-process-execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "repository-installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "configuration-modification",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "network.access",
+      "Fetches GitHub repository search results, metadata, manifests, and Git trees",
+      "Provides a settings marketplace tab with search, repository listings, and install controls",
+      "Spawns dsh plugin add as a child process to install selected repositories",
+      "Installs detected DSH skills into the user's DSH skills directory",
+      "Can update pnpm-workspace.yaml allowBuilds entries after explicit user approval and retry an installation"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "needs_human",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:17.304Z",
+  "repositoryCommitSha": "aaa201b7afbf896c683f1fe379ab235942e9f4b3",
+  "evidenceHash": "c1739bc86ded3f465625d5a5fda06bb446ba90208bbeee6639ae65c03293c8cc",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "5771313d37ec32672e82fc92357002b7ed04a3734e97cd25b4aaec4aec3cfbdd",
+  "shadowMode": false
+}

@@ -1,0 +1,69 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "agent",
+    "context",
+    "file",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Provides configurable path-based and global rule injection into DeepSeek Harness model context, including project rule discovery, deduplication, and byte limits; it does not execute rule content.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于文件路径和全局规则的模型上下文注入，并支持项目规则发现、去重和大小限制。",
+    "en": "Adds path-based and global rule injection to the DeepSeek Harness model context with project rule discovery, deduplication, and size limits."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads configured rule files and project rule directories",
+      "Matches file paths against rule globs",
+      "Injects rule text into the model context through DSH lifecycle hooks",
+      "Deduplicates and size-limits injected context"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_read",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "model_context_injection",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R1",
+    "capabilities": [
+      "Reads configured rule files and project rule directories",
+      "Matches file paths against rule globs",
+      "Injects rule text into the model context through DSH lifecycle hooks",
+      "Deduplicates and size-limits injected context"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "UNVERIFIED_MAINTAINER"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:55.900Z",
+  "repositoryCommitSha": "bb0409a4aeb711c880d0d8d6b51f3ffc4c44880f",
+  "evidenceHash": "17d215ca1aea3409a34f6e7ef4b25910002513f3ccefcd56f48fff84d348859b",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e7d1cfc3290ad70e2fbd37fbed00a39fe16432cc59b600917196e9bbc094af14",
+  "shadowMode": false
+}

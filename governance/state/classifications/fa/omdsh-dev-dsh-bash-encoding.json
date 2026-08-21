@@ -1,0 +1,77 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "files-terminal",
+  "tags": [
+    "terminal",
+    "debugging",
+    "tool",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A DSH shell-provider plugin that replaces the local bash executor to preserve raw subprocess output and automatically decode mixed or non-UTF-8 encodings, primarily addressing Windows/WSL terminal乱码.",
+  "summaries": {
+    "zh": "通过替换 DSH 的 bash 执行器，保留子进程原始输出并自动识别 UTF-16LE、UTF-8、GBK 等编码，以减少 Windows/WSL 终端乱码。",
+    "en": "Replaces the DSH bash executor to preserve raw subprocess output and detect encodings such as UTF-16LE, UTF-8, and GBK for more reliable Windows and WSL terminal text."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Replaces the DSH shell provider",
+      "Spawns bash subprocesses and captures raw stdout and stderr bytes",
+      "Automatically detects and decodes UTF-16LE, UTF-8, GBK, and GB18030 output",
+      "Supports command timeouts, output limits, stdin, and background process lifecycles",
+      "Reads selected environment and sandbox configuration for subprocess execution"
+    ],
+    "reasons": [
+      {
+        "code": "shell_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_management",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "environment_and_sandbox_integration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "Replaces the DSH shell provider",
+      "Spawns bash subprocesses and captures raw stdout and stderr bytes",
+      "Automatically detects and decodes UTF-16LE, UTF-8, GBK, and GB18030 output",
+      "Supports command timeouts, output limits, stdin, and background process lifecycles",
+      "Reads selected environment and sandbox configuration for subprocess execution"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:30.966Z",
+  "repositoryCommitSha": "71a4f159b951e95d0d045568d3207f4b43d717c3",
+  "evidenceHash": "613b656013949ff23b9018c636fa6e02957a3a448eab116225f698a81451c8f4",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "3784ffa0980df76e3420c5f5634819a2a50064b328515db809b29c72911a1839",
+  "shadowMode": false
+}

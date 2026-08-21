@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "search-browsing",
+  "tags": [
+    "browser",
+    "api",
+    "automation",
+    "search",
+    "research",
+    "agent",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.97,
+  "reason": "The plugin performs one-time reconnaissance of web applications by inspecting accessibility trees and network APIs, then stores playbooks for later endpoint replay through a dedicated browser.",
+  "summaries": {
+    "zh": "通过专用浏览器侦察网页应用的可访问性树和真实接口，并将结果保存为可复用的接口操作手册。",
+    "en": "Reconnaissance plugin that inspects a web application's accessibility tree and network APIs, then saves reusable playbooks for later endpoint replay."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Uses a dedicated browser through the Chrome DevTools Protocol",
+      "Inspects web pages, accessibility trees, and network endpoints",
+      "Stores reusable endpoint playbooks as local JSON files",
+      "Replays discovered HTTP endpoints using the browser session",
+      "Can interact with signed-in sessions and state-changing requests when explicitly enabled"
+    ],
+    "reasons": [
+      {
+        "code": "authenticated_browser_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "network_endpoint_replay",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "state_changing_requests_possible",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_playbook_storage",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Uses a dedicated browser through the Chrome DevTools Protocol",
+      "Inspects web pages, accessibility trees, and network endpoints",
+      "Stores reusable endpoint playbooks as local JSON files",
+      "Replays discovered HTTP endpoints using the browser session",
+      "Can interact with signed-in sessions and state-changing requests when explicitly enabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.97,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:45:50.444Z",
+  "repositoryCommitSha": "27a0a3ac201fe127bc7533fa0d928e45c48077f7",
+  "evidenceHash": "950d36bff7cd53168f19f07d2b4035969ca44f0c6d84c2b6328bf0ab49ef19ff",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "c215f03e8498f5486c2b998132d6e37982b1f257f511bfb5ed1eb25eeaa833c2",
+  "shadowMode": false
+}

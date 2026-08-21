@@ -1,0 +1,82 @@
+{
+  "status": "classified",
+  "group": "research-knowledge",
+  "category": "document-processing",
+  "tags": [
+    "document",
+    "api",
+    "file",
+    "image",
+    "integration",
+    "data",
+    "ui",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A document-processing plugin that sends PDFs and images to PaddleOCR-VL, tracks asynchronous parsing jobs, and exports layout-aware Markdown with extracted images.",
+  "summaries": {
+    "zh": "通过 PaddleOCR-VL 解析 PDF 和图片的文档布局，支持异步任务进度跟踪，并将结果导出为 Markdown 和图片文件。",
+    "en": "Process PDF and image document layouts with PaddleOCR-VL, track asynchronous jobs, and export results as Markdown with extracted images."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Sends PDF and image files to the PaddleOCR external API for layout parsing",
+      "Creates Markdown files and extracted image files in a specified output directory",
+      "Runs asynchronous OCR jobs with polling, progress tracking, retries, and queue handling",
+      "Provides a browser settings card and task panel for file submission and result export",
+      "Uses an API token supplied through plugin settings or the PADDLE_OCR_TOKEN environment variable",
+      "Splits oversized PDFs into smaller parts before processing"
+    ],
+    "reasons": [
+      {
+        "code": "external_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_file_read_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "network.access",
+      "Sends PDF and image files to the PaddleOCR external API for layout parsing",
+      "Creates Markdown files and extracted image files in a specified output directory",
+      "Runs asynchronous OCR jobs with polling, progress tracking, retries, and queue handling",
+      "Provides a browser settings card and task panel for file submission and result export",
+      "Uses an API token supplied through plugin settings or the PADDLE_OCR_TOKEN environment variable",
+      "Splits oversized PDFs into smaller parts before processing"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:43:52.818Z",
+  "repositoryCommitSha": "1b814c30ff8f0b317c2dad060f7282fa47401cfb",
+  "evidenceHash": "60b82b748ddbfa3c6ae838edacfa8096625b2903e580393c99d447ae965537d9",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "50efc5e4013256c6eec2c3acba36a9be3ae50607f47a2f7cf9890e9e5d24d0d8",
+  "shadowMode": false
+}

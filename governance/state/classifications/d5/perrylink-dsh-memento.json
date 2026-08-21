@@ -1,0 +1,84 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "agent",
+    "data",
+    "tool",
+    "file"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A DSH plugin for bounded, approval-gated, auditable cross-session memory using a local SQLite provider, memory tools, commands, and frozen session-context injection; the README states it uses no network or subprocesses.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于本地 SQLite 的有界、需审批且可审计的跨会话记忆，并通过工具、命令和会话快照访问记忆。",
+    "en": "Provides DeepSeek Harness with bounded, approval-gated, auditable cross-session memory backed by local SQLite and exposed through tools, commands, and session snapshots."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Stores bounded cross-session memory in a local SQLite database",
+      "Reads and writes local memory and audit data",
+      "Provides memory query, recall, modification, import, and export tools",
+      "Injects a frozen memory snapshot into the system prompt",
+      "Provides a read-only web panel and memory commands"
+    ],
+    "reasons": [
+      {
+        "code": "local_filesystem_write",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "harness_tool_and_prompt_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "approval_gated_memory_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "no_network_or_subprocess",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "filesystem.write",
+      "network.access",
+      "Stores bounded cross-session memory in a local SQLite database",
+      "Reads and writes local memory and audit data",
+      "Provides memory query, recall, modification, import, and export tools",
+      "Injects a frozen memory snapshot into the system prompt",
+      "Provides a read-only web panel and memory commands"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:31.686Z",
+  "repositoryCommitSha": "6a87b7e67ac5487598c591b5f17204aa30496dc5",
+  "evidenceHash": "a5b4299db8da10a36d5d788c0c07757859b032eed05d54351a57b93560bb7eaf",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "88723a8334bf62ab130f75164dd235ff1994999b6b36e3e00055bf6027a9438a",
+  "shadowMode": false
+}

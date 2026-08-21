@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "agent",
+    "api",
+    "integration",
+    "ui",
+    "desktop"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.96,
+  "reason": "A media utility plugin that adds agent tools and a settings panel for recognizing, describing, and OCR-processing local images or clipboard screenshots through a locally hosted LM Studio vision model.",
+  "summaries": {
+    "zh": "通过本地 LM Studio 视觉模型识别、描述和 OCR 处理本地图片或剪贴板截图，并提供智能体工具与设置面板。",
+    "en": "Uses a locally hosted LM Studio vision model to recognize, describe, and OCR local images or clipboard screenshots through agent tools and a settings panel."
+  },
+  "risk": {
+    "level": "R1",
+    "capabilities": [
+      "Reads local image files by absolute path",
+      "Reads the current clipboard image on Windows",
+      "Sends image data to a locally configured LM Studio server for vision recognition and OCR",
+      "Provides agent tools and a settings panel",
+      "Stores configuration in a user config file"
+    ],
+    "reasons": [
+      {
+        "code": "local_file_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "clipboard_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_service_integration",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "persistent_configuration",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R1",
+    "capabilities": [
+      "network.access",
+      "Reads local image files by absolute path",
+      "Reads the current clipboard image on Windows",
+      "Sends image data to a locally configured LM Studio server for vision recognition and OCR",
+      "Provides agent tools and a settings panel",
+      "Stores configuration in a user config file"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.96,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:47:04.323Z",
+  "repositoryCommitSha": "5e4144af026a1f864da5e741469110a9c8ce9d48",
+  "evidenceHash": "080ec97960a639ce67502a748974f3d57130260bcc0535114ecbbc4c88252ceb",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "8d70fcb0168866a186a971864e82a3f5b04b1111ce79657b3e923fa75dea2e55",
+  "shadowMode": false
+}

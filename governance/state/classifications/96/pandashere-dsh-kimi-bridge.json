@@ -1,0 +1,83 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "orchestration",
+  "tags": [
+    "agent",
+    "cli",
+    "integration",
+    "workflow",
+    "ui",
+    "terminal"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "Bridges the Kimi CLI into DeepSeek Harness as an external coding-agent tool, supporting session orchestration, continuation, cancellation, and live activity display.",
+  "summaries": {
+    "zh": "将 Kimi CLI 集成到 DeepSeek Harness 中，用于调用、继续、取消并在会话界面中查看外部编码智能体任务。",
+    "en": "Integrates the Kimi CLI with DeepSeek Harness to invoke, continue, abort, and monitor external coding-agent sessions in the conversation interface."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Invokes the Kimi CLI with prompts in the session working directory",
+      "Runs asynchronous or blocking external agent sessions with concurrency and timeout limits",
+      "Continues and aborts Kimi sessions",
+      "Displays agent activity, transcripts, and tool output in a web conversation tab",
+      "Can use an unrestricted user Kimi home when reviewOnly is disabled"
+    ],
+    "reasons": [
+      {
+        "code": "executes_external_cli",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "can_enable_unrestricted_agent_tools",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "controls_process_lifecycle",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "exposes_agent_outputs_in_ui",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Invokes the Kimi CLI with prompts in the session working directory",
+      "Runs asynchronous or blocking external agent sessions with concurrency and timeout limits",
+      "Continues and aborts Kimi sessions",
+      "Displays agent activity, transcripts, and tool output in a web conversation tab",
+      "Can use an unrestricted user Kimi home when reviewOnly is disabled"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:20.797Z",
+  "repositoryCommitSha": "7ae6e68e8b87276c659a2f823fe24787c2e1ceae",
+  "evidenceHash": "a9934c7fdd24b4db7c06c95da4aafb11e66877439833a5255568fd2f50322c5e",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "565de9de51f23068ddf75d45bfe1f88f9057ce7c466f038bea6a176bb028f9d0",
+  "shadowMode": false
+}

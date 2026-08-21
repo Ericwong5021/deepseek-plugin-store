@@ -1,0 +1,86 @@
+{
+  "status": "classified",
+  "group": "agents-workflows",
+  "category": "memory-context",
+  "tags": [
+    "memory",
+    "context",
+    "data",
+    "api",
+    "collaboration",
+    "cli",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "A PostgreSQL-backed DeepSeek Harness plugin for persistent multi-device session storage, single-writer handoff, session migration, and authenticated observation and management APIs.",
+  "summaries": {
+    "zh": "为 DeepSeek Harness 提供基于 PostgreSQL 的多设备 Session 持久化、单写入者接力、迁移及受认证的管理接口。",
+    "en": "A DeepSeek Harness plugin that provides PostgreSQL-backed multi-device session persistence, single-writer handoff, migration, and authenticated management APIs."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Stores and retrieves session event data in PostgreSQL",
+      "Enforces single-writer session handoff and fencing",
+      "Exposes authenticated HTTP and SSE session endpoints",
+      "Creates handoff credentials and supports administrator recovery",
+      "Imports and rolls back existing session data",
+      "Installs, upgrades, and uninstalls the DSH profile adapter"
+    ],
+    "reasons": [
+      {
+        "code": "persistent_session_data",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "authenticated_mutating_api",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credential_and_writer_recovery",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "profile_lifecycle_changes",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Stores and retrieves session event data in PostgreSQL",
+      "Enforces single-writer session handoff and fencing",
+      "Exposes authenticated HTTP and SSE session endpoints",
+      "Creates handoff credentials and supports administrator recovery",
+      "Imports and rolls back existing session data",
+      "Installs, upgrades, and uninstalls the DSH profile adapter"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:44:03.998Z",
+  "repositoryCommitSha": "0640ca9ccd1b9ac12709b74aecf2a0e75c8bb4b1",
+  "evidenceHash": "b4dd1c355e4efa2ae962d333908e828ff571a02452221c66c9da75e60c8dfe7a",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "2d81ff2e10adc8437030c95d50cdc453ea824c43d72e1e9c076a1a5a553f04ec",
+  "shadowMode": false
+}

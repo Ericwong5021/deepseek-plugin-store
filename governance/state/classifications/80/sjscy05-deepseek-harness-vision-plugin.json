@@ -1,0 +1,76 @@
+{
+  "status": "classified",
+  "group": "tools-data",
+  "category": "media-tools",
+  "tags": [
+    "image",
+    "api",
+    "agent",
+    "integration",
+    "skill",
+    "tool"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README documents a DeepSeek Harness plugin that registers vision_read to forward images and questions to configurable vision providers and return textual answers, making image understanding its primary user-facing purpose.",
+  "summaries": {
+    "zh": "通过 vision_read 工具将本地或远程图片发送给配置的视觉模型，并把图像分析结果以文本返回给 DeepSeek Harness。",
+    "en": "Uses the vision_read tool to send local or remote images to a configured vision model and return the image analysis as text to DeepSeek Harness."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Reads images from local paths, HTTP(S) URLs, or data URIs",
+      "Sends image data and user questions to a configured external vision API",
+      "Uses configured provider API keys and returns vision-model responses as text"
+    ],
+    "reasons": [
+      {
+        "code": "external_image_transmission",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "credentialed_api_access",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "local_and_remote_image_input",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_changes",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Reads images from local paths, HTTP(S) URLs, or data URIs",
+      "Sends image data and user questions to a configured external vision API",
+      "Uses configured provider API keys and returns vision-model responses as text"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "DSH_BUNDLE_PRESENT",
+      "MANIFEST_REFERENCES_VALID"
+    ],
+    "trace": {
+      "rulesPassed": false,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:46:07.809Z",
+  "repositoryCommitSha": "f798389a84c3ac7876282d9b945830f9109e1679",
+  "evidenceHash": "032c02eabdd84647c281d8a77450badd75080e6205d0002f791a7c78df20f235",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "55fe21d8c56da9c6d3d8cf52cae9ae8d0a2cf84f9f67ea8bd9e3ca57b4dfa8d8",
+  "shadowMode": false
+}

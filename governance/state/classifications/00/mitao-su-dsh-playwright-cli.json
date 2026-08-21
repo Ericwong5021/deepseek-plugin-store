@@ -1,0 +1,78 @@
+{
+  "status": "classified",
+  "group": "build-development",
+  "category": "testing-debugging",
+  "tags": [
+    "agent",
+    "automation",
+    "browser",
+    "cli",
+    "terminal",
+    "testing",
+    "visualization"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A host-only DSH plugin that wraps Playwright CLI operations for version checks, browser installation, test execution, and HTML report access.",
+  "summaries": {
+    "zh": "通过宿主 shell 封装 Playwright CLI，支持检测版本、安装浏览器、运行测试并访问 HTML 报告。",
+    "en": "A host-side wrapper for the Playwright CLI that checks versions, installs browsers, runs tests, and provides access to HTML reports."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Detects the locally available Playwright CLI version",
+      "Installs Playwright browsers and may install @playwright/test when configured",
+      "Executes Playwright test commands through the host shell executor",
+      "Serves or exposes generated HTML test reports through a loopback route",
+      "Can request broader sandbox permissions after a sandbox denial"
+    ],
+    "reasons": [
+      {
+        "code": "shell_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "package_and_browser_installation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "subprocess_and_file_system_access",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "Detects the locally available Playwright CLI version",
+      "Installs Playwright browsers and may install @playwright/test when configured",
+      "Executes Playwright test commands through the host shell executor",
+      "Serves or exposes generated HTML test reports through a loopback route",
+      "Can request broader sandbox permissions after a sandbox denial"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "promptVersion": "classify-v2",
+  "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-21T18:42:47.948Z",
+  "repositoryCommitSha": "a4e1933a55b332c036c40382c342719b7658dabc",
+  "evidenceHash": "a11de52120341be94466eb59ca816a7aa5959819f758c258ed596f273f0fdd67",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "e872dbfc4816a82769b49a8fb5c95d14150b3b8b7be4688e454293a7ab7e0b30",
+  "shadowMode": false
+}
