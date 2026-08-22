@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-21T23:00:40.918Z",
+  "updatedAt": "2026-08-22T00:04:48.595Z",
   "classifications": {
     "01virex-dsh-foxy-jumpscare": {
       "status": "classified",
@@ -50611,86 +50611,19 @@
       "shadowMode": false
     },
     "ccch1mneyyy-dsh-tui": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "navigation-panels",
-      "tags": [
-        "terminal",
-        "ui",
-        "visualization",
-        "theme",
-        "agent",
-        "chat",
-        "context",
-        "workflow"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.97,
-      "reason": "A terminal-native TUI plugin for DSH agent sessions, primarily focused on interactive conversation, session navigation, status visualization, and access to existing DSH tools and workflows.",
-      "summaries": {
-        "zh": "为 DSH 智能体会话提供终端原生交互界面、状态可视化、会话管理和工具操作支持。",
-        "en": "Provides a terminal-native interface for DSH agent sessions with status visualization, session management, and access to configured tools and workflows."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Provides an interactive terminal user interface for DSH agent sessions",
-          "Displays streaming messages, agent status, context usage, TPS, tokens, and tool details",
-          "Supports session resume, creation, export, compaction, rewind, and model switching through DSH services",
-          "Supports file and command completion, file references, image attachments, and history search",
-          "Connects to configured DSH capabilities including presets, skills, MCP, goals, todos, subagents, and approval prompts",
-          "Can invoke the documented DSH update command to update the profile runtime and restart the session"
-        ],
-        "reasons": [
-          {
-            "code": "terminal_agent_interface",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "session_and_tool_controls",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "external_model_and_mcp_integration",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "filesystem.write",
-          "network.access",
-          "Provides an interactive terminal user interface for DSH agent sessions",
-          "Displays streaming messages, agent status, context usage, TPS, tokens, and tool details",
-          "Supports session resume, creation, export, compaction, rewind, and model switching through DSH services",
-          "Supports file and command completion, file references, image attachments, and history search",
-          "Connects to configured DSH capabilities including presets, skills, MCP, goals, todos, subagents, and approval prompts",
-          "Can invoke the documented DSH update command to update the profile runtime and restart the session"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.97,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T23:00:40.918Z",
-      "repositoryCommitSha": "7349b9668693ffbb8a2b655ed70949a5af2299fa",
-      "evidenceHash": "7d860020d0f09f9fd473d30ad196ca94eff97715886036c5eaddf212d0c0d387",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "4dc63bd9558ca32bdbc06ff2e4807345a9bd188d9e4e246fe7fb2122f9dc8d1e",
+      "repositoryCommitSha": "52ae21c4b27dcdea1db5f3f6a655bea77891fe99",
+      "cacheKey": "e52189ad1fab09d134ae22e84341b274d54e34ecc4d0d8e25e3a184f29cf78d2",
+      "failureClass": "invalid_response",
+      "attemptCount": 2,
+      "firstFailedAt": "2026-08-22T00:02:23.199Z",
+      "lastAttemptAt": "2026-08-22T00:04:48.595Z",
+      "nextRetryAt": "2026-08-23T00:04:48.595Z",
+      "retryable": true,
+      "error": "/responses: 400 {\n  \"error\": {\n    \"message\": \"Invalid schema for response_format 'governance_classify_v2': In context=('properties', 'schemaVersion'), schema must have a 'type' key.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"text.format.schema\",\n    \"code\": \"invalid_json_schema\"\n  }\n}",
       "shadowMode": false
     },
     "ccch1mneyyy-dsh-working-activity": {
@@ -234799,44 +234732,47 @@
         "file",
         "terminal",
         "browser",
-        "api",
+        "chat",
         "agent",
-        "chat"
+        "api"
       ],
       "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A sidebar and bottom-panel workbench for DSH that combines file management and previews, a real terminal, Git controls, embedded browsing, task and conversation views, and extension APIs for registering tabs and file viewers.",
+      "confidenceScore": 0.99,
+      "reason": "A sidebar and bottom-panel workspace framework is the primary purpose, with integrated file tools, browser, terminal, Git, task, chat, and third-party tab/viewer extension APIs documented in the README.",
       "summaries": {
-        "zh": "为 DSH 提供集文件管理、编辑预览、真实终端、Git、内嵌浏览器、任务与侧边对话于一体的侧边栏和底部面板工作台，并支持插件注册新页面和文件预览器。",
-        "en": "A DSH sidebar and bottom-panel workbench that combines file management and previews, a real terminal, Git, embedded browsing, task and chat views, and APIs for plugins to register tabs and file viewers."
+        "zh": "提供可扩展的侧边栏与底部面板工作台，集成文件管理编辑、终端、浏览器、Git、任务和侧边对话等功能。",
+        "en": "An extensible sidebar and bottom-panel workspace that integrates file management and editing, a terminal, browser, Git, tasks, and side conversations."
       },
       "risk": {
         "level": "R2",
         "capabilities": [
-          "Provides a sidebar and bottom-panel workbench",
-          "Displays, edits, uploads, and previews files",
-          "Runs a real shell through node-pty",
-          "Provides Git staging, commit, revert, history, and diff views",
-          "Embeds sandboxed web pages",
-          "Displays sub-agent and background-task status, output, and termination controls",
-          "Provides sidebar conversation threads",
-          "Exposes APIs for third-party sidebar tabs and file viewers"
+          "Provides right-sidebar and bottom-panel workspaces with tabs, split panes, and session-persisted layouts.",
+          "Provides file browsing, uploading, editing, and previews for images, Markdown, HTML, and PDF files.",
+          "Provides an embedded browser using sandboxed iframes with configurable external-link handling.",
+          "Provides a real shell through xterm.js and node-pty, including reconnect replay and optional model-invoked terminal tools.",
+          "Provides Git staging, commits, reverts, history, and diff views.",
+          "Provides background task and sub-agent status views, plus side conversation threads.",
+          "Exposes APIs for third-party plugins to register sidebar tabs and file viewers."
         ],
         "reasons": [
           {
-            "code": "filesystem_editing_and_upload",
+            "code": "real_terminal_and_command_execution",
             "evidenceRef": "readme"
           },
           {
-            "code": "real_shell_execution",
+            "code": "filesystem_editing_and_uploads",
             "evidenceRef": "readme"
           },
           {
-            "code": "embedded_web_browsing",
+            "code": "git_state_changes",
             "evidenceRef": "readme"
           },
           {
-            "code": "task_and_subagent_controls",
+            "code": "embedded_browser_and_external_links",
+            "evidenceRef": "readme"
+          },
+          {
+            "code": "plugin_extension_api",
             "evidenceRef": "readme"
           }
         ]
@@ -234850,14 +234786,13 @@
           "shell.execute",
           "credential.read",
           "network.access",
-          "Provides a sidebar and bottom-panel workbench",
-          "Displays, edits, uploads, and previews files",
-          "Runs a real shell through node-pty",
-          "Provides Git staging, commit, revert, history, and diff views",
-          "Embeds sandboxed web pages",
-          "Displays sub-agent and background-task status, output, and termination controls",
-          "Provides sidebar conversation threads",
-          "Exposes APIs for third-party sidebar tabs and file viewers"
+          "Provides right-sidebar and bottom-panel workspaces with tabs, split panes, and session-persisted layouts.",
+          "Provides file browsing, uploading, editing, and previews for images, Markdown, HTML, and PDF files.",
+          "Provides an embedded browser using sandboxed iframes with configurable external-link handling.",
+          "Provides a real shell through xterm.js and node-pty, including reconnect replay and optional model-invoked terminal tools.",
+          "Provides Git staging, commits, reverts, history, and diff views.",
+          "Provides background task and sub-agent status views, plus side conversation threads.",
+          "Exposes APIs for third-party plugins to register sidebar tabs and file viewers."
         ],
         "autoMerge": false,
         "shadowMode": false,
@@ -234867,14 +234802,14 @@
         "trace": {
           "rulesPassed": true,
           "aiDecision": "approve",
-          "aiConfidence": 0.98,
+          "aiConfidence": 0.99,
           "maintainerVerified": false
         }
       },
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:43:30.171Z",
+      "classifiedAt": "2026-08-22T00:04:04.863Z",
       "repositoryCommitSha": "646c91cf70883e9a6cd343d176b0c4939c42bc2c",
       "evidenceHash": "3b3c93e7566849ba0666479622689a0038680b6519811a312616613149991dc6",
       "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
@@ -287328,38 +287263,39 @@
     "sjh9714-dsh-what-changed": {
       "status": "classified",
       "group": "interface-experience",
-      "category": "navigation-panels",
+      "category": "visualization",
       "tags": [
         "agent",
+        "visualization",
         "file",
-        "ui",
-        "visualization"
+        "project-analysis",
+        "ui"
       ],
       "confidence": "high",
-      "confidenceScore": 0.97,
-      "reason": "A web UI plugin that reviews files changed by an agent during a session and compares the workspace with HEAD, with explicit handling for incomplete tool-level change information.",
+      "confidenceScore": 0.98,
+      "reason": "A web-panel plugin that visualizes files and edits made by an agent during a session, with a separate read-only comparison between the workspace and HEAD.",
       "summaries": {
-        "zh": "在会话面板中集中展示 Agent 的文件改动，并提供工作区与 HEAD 的只读对照视图。",
-        "en": "Adds a session panel that summarizes an agent’s file changes and provides a read-only comparison between the workspace and HEAD."
+        "zh": "在会话面板中集中展示 Agent 修改过的文件与编辑内容，并提供工作区与 HEAD 的只读对照。",
+        "en": "Displays an agent’s session file changes and edits in a review panel, with a separate read-only comparison between the workspace and HEAD."
       },
       "risk": {
         "level": "R1",
         "capabilities": [
-          "Reads session projection data about agent file-writing tool calls",
-          "Displays session file changes and edit counts in a web interface",
-          "Compares the workspace with HEAD using a read-only git operation through a loopback POST endpoint"
+          "Reads session projection data about agent file edits",
+          "Displays file-change summaries and diffs in a web panel",
+          "Compares the workspace with HEAD using read-only local git operations"
         ],
         "reasons": [
           {
-            "code": "reads_agent_session_changes",
+            "code": "session_change_visibility",
             "evidenceRef": "readme"
           },
           {
-            "code": "reads_workspace_and_git_state",
+            "code": "read_only_workspace_comparison",
             "evidenceRef": "readme"
           },
           {
-            "code": "invokes_read_only_git_via_loopback_endpoint",
+            "code": "local_http_endpoint",
             "evidenceRef": "readme"
           }
         ]
@@ -287370,9 +287306,9 @@
         "finalDecision": "needs_human",
         "riskLevel": "R1",
         "capabilities": [
-          "Reads session projection data about agent file-writing tool calls",
-          "Displays session file changes and edit counts in a web interface",
-          "Compares the workspace with HEAD using a read-only git operation through a loopback POST endpoint"
+          "Reads session projection data about agent file edits",
+          "Displays file-change summaries and diffs in a web panel",
+          "Compares the workspace with HEAD using read-only local git operations"
         ],
         "autoMerge": false,
         "shadowMode": false,
@@ -287382,14 +287318,14 @@
         "trace": {
           "rulesPassed": true,
           "aiDecision": "approve",
-          "aiConfidence": 0.97,
+          "aiConfidence": 0.98,
           "maintainerVerified": false
         }
       },
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T20:48:20.802Z",
+      "classifiedAt": "2026-08-22T00:04:04.533Z",
       "repositoryCommitSha": "d668b8097be1e77bb3694224378e62a23fcd2ccc",
       "evidenceHash": "d5b9f5373db864ab9f6d9f4022650114188f9f1d57621e05449d75995e67f92d",
       "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
@@ -289540,23 +289476,22 @@
       "category": "themes-layout",
       "tags": [
         "theme",
-        "ui",
-        "layout"
+        "layout",
+        "ui"
       ],
       "confidence": "high",
-      "confidenceScore": 0.99,
-      "reason": "The README describes a DeepSeek Harness Web GUI skin series with multiple visual themes and a skin manager for discovery, switching, and configuration.",
+      "confidenceScore": 0.98,
+      "reason": "A DeepSeek Harness Web GUI plugin collection providing whale-themed skins and a skin management panel for discovering, switching, and configuring themes.",
       "summaries": {
-        "zh": "为 DeepSeek Harness Web GUI 提供鲸鱼娘风格主题皮肤及用于发现、切换和配置皮肤的管理面板。",
-        "en": "Provides Whale Girl-themed skins for the DeepSeek Harness Web GUI along with a manager for discovering, switching, and configuring skins."
+        "zh": "为 DeepSeek Harness Web GUI 提供鲸鱼娘主题皮肤，以及用于发现、切换和配置皮肤的管理面板。",
+        "en": "Provides whale-themed skins for the DeepSeek Harness Web GUI along with a panel for discovering, switching, and configuring skins."
       },
       "risk": {
         "level": "R1",
         "capabilities": [
-          "Provides DeepSeek Harness Web GUI themes",
-          "Supports switching among installed skins",
-          "Provides a skin discovery and configuration panel",
-          "Stores display settings in the current browser"
+          "Applies visual themes to the DeepSeek Harness Web GUI",
+          "Provides a skin discovery and switching panel",
+          "Stores display configuration in the current browser"
         ],
         "reasons": [
           {
@@ -289564,7 +289499,7 @@
             "evidenceRef": "readme"
           },
           {
-            "code": "plugin-registration",
+            "code": "browser-local-configuration",
             "evidenceRef": "readme"
           }
         ]
@@ -289575,10 +289510,9 @@
         "finalDecision": "needs_changes",
         "riskLevel": "R1",
         "capabilities": [
-          "Provides DeepSeek Harness Web GUI themes",
-          "Supports switching among installed skins",
-          "Provides a skin discovery and configuration panel",
-          "Stores display settings in the current browser"
+          "Applies visual themes to the DeepSeek Harness Web GUI",
+          "Provides a skin discovery and switching panel",
+          "Stores display configuration in the current browser"
         ],
         "autoMerge": false,
         "shadowMode": false,
@@ -289590,14 +289524,14 @@
         "trace": {
           "rulesPassed": false,
           "aiDecision": "approve",
-          "aiConfidence": 0.99,
+          "aiConfidence": 0.98,
           "maintainerVerified": false
         }
       },
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T20:48:27.779Z",
+      "classifiedAt": "2026-08-22T00:04:02.498Z",
       "repositoryCommitSha": "51ff7b80ee163596672b98194d8877e196ac460b",
       "evidenceHash": "c5bb099e7f6707248351276fb0f71f56038e682178f8fa1f6b2e00a246f6639f",
       "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
@@ -387406,47 +387340,45 @@
     "zhu1090093659-dsh-web-ui": {
       "status": "classified",
       "group": "interface-experience",
-      "category": "themes-layout",
+      "category": "navigation-panels",
       "tags": [
         "ui",
         "theme",
-        "layout",
-        "visualization",
+        "workflow",
+        "planning",
+        "automation",
         "mobile",
         "terminal",
-        "automation",
-        "agent"
+        "visualization"
       ],
       "confidence": "high",
       "confidenceScore": 0.98,
-      "reason": "A DSH Web UI plugin suite primarily focused on interface enhancements, including skins, panels, visualizations, mobile access, task automation, SSH operations, and image understanding.",
+      "reason": "A modular DSH Web UI extension suite focused on navigation panels and interface customization, with additional task automation, Git visualization, remote access, SSH operations, image understanding, and skins.",
       "summaries": {
-        "zh": "为 DeepSeek Harness Web UI 提供可插拔的主题皮肤、任务看板、Git 图谱、侧边面板、移动端远程和 SSH 等界面与工作流扩展。",
-        "en": "A pluggable DeepSeek Harness Web UI suite providing themes, task boards, Git visualizations, side panels, mobile access, SSH operations, and related workflow extensions."
+        "zh": "为 DSH Web UI 提供可插拔的导航面板、任务看板、Git 可视化、远程访问、SSH 运维、图像理解工具和主题皮肤。",
+        "en": "A modular DSH Web UI suite providing navigation panels, task boards, Git visualization, remote access, SSH operations, image understanding, and customizable skins."
       },
       "risk": {
         "level": "R2",
         "capabilities": [
-          "modifies the DSH Web UI with panels, task boards, Git visualizations, skins, and mobile interfaces",
-          "can schedule and execute tasks through DSH agent sessions",
-          "can connect to remote hosts over SSH, execute commands, transfer files, and create tunnels",
-          "can send images to configured OpenAI-compatible vision endpoints for analysis"
+          "Adds configurable Web UI panels and skins",
+          "Provides a multi-column task board with scheduled agent execution",
+          "Displays Git branches and commit history visually",
+          "Supports paired remote access from mobile and PC browsers",
+          "Provides SSH terminals, file transfer, port forwarding, and clustered command execution",
+          "Sends images to configured OpenAI-compatible vision endpoints for description"
         ],
         "reasons": [
           {
-            "code": "ui_extension_and_theming",
+            "code": "remote_operations",
             "evidenceRef": "readme"
           },
           {
-            "code": "scheduled_agent_execution",
+            "code": "scheduled_execution",
             "evidenceRef": "readme"
           },
           {
-            "code": "remote_ssh_operations",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "external_vision_endpoint",
+            "code": "external_endpoint_integration",
             "evidenceRef": "readme"
           }
         ]
@@ -387458,10 +387390,12 @@
         "riskLevel": "R2",
         "capabilities": [
           "network.access",
-          "modifies the DSH Web UI with panels, task boards, Git visualizations, skins, and mobile interfaces",
-          "can schedule and execute tasks through DSH agent sessions",
-          "can connect to remote hosts over SSH, execute commands, transfer files, and create tunnels",
-          "can send images to configured OpenAI-compatible vision endpoints for analysis"
+          "Adds configurable Web UI panels and skins",
+          "Provides a multi-column task board with scheduled agent execution",
+          "Displays Git branches and commit history visually",
+          "Supports paired remote access from mobile and PC browsers",
+          "Provides SSH terminals, file transfer, port forwarding, and clustered command execution",
+          "Sends images to configured OpenAI-compatible vision endpoints for description"
         ],
         "autoMerge": false,
         "shadowMode": false,
@@ -387479,11 +387413,11 @@
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:53:08.922Z",
-      "repositoryCommitSha": "15659b16fbb0071409e41c71d2a5b7be6beab62d",
-      "evidenceHash": "31e6bdd5468d70c50a6485b402bdc0bb152f222d89632f71f5f65c16ada012d3",
+      "classifiedAt": "2026-08-22T00:04:08.017Z",
+      "repositoryCommitSha": "f6b5628ee71288e595ff8baec52941246426b049",
+      "evidenceHash": "5fc86d6677d3f2ae21243f8d3a68e0ab8870bf0bdbf86be70993d1dc174821cb",
       "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "a7b67bcae74e1a9eff1bc9c4337f8225ce0331a965f1f72c2cb728770be86acf",
+      "cacheKey": "6fe5a6b705f0bcd56139a400f585b1b13012cd0bb0be188b22de1708767b3652",
       "shadowMode": false
     },
     "zhuiyueya-dsh-im-gateway": {
