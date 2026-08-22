@@ -1,16 +1,94 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "interface-experience",
+  "category": "navigation-panels",
+  "tags": [
+    "layout",
+    "ui",
+    "file",
+    "terminal",
+    "browser",
+    "chat",
+    "agent",
+    "api"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.99,
+  "reason": "A sidebar and bottom-panel workspace framework is the primary purpose, with integrated file tools, browser, terminal, Git, task, chat, and third-party tab/viewer extension APIs documented in the README.",
+  "summaries": {
+    "zh": "提供可扩展的侧边栏与底部面板工作台，集成文件管理编辑、终端、浏览器、Git、任务和侧边对话等功能。",
+    "en": "An extensible sidebar and bottom-panel workspace that integrates file management and editing, a terminal, browser, Git, tasks, and side conversations."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Provides right-sidebar and bottom-panel workspaces with tabs, split panes, and session-persisted layouts.",
+      "Provides file browsing, uploading, editing, and previews for images, Markdown, HTML, and PDF files.",
+      "Provides an embedded browser using sandboxed iframes with configurable external-link handling.",
+      "Provides a real shell through xterm.js and node-pty, including reconnect replay and optional model-invoked terminal tools.",
+      "Provides Git staging, commits, reverts, history, and diff views.",
+      "Provides background task and sub-agent status views, plus side conversation threads.",
+      "Exposes APIs for third-party plugins to register sidebar tabs and file viewers."
+    ],
+    "reasons": [
+      {
+        "code": "real_terminal_and_command_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_editing_and_uploads",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "git_state_changes",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "embedded_browser_and_external_links",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_extension_api",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "shell.execute",
+      "credential.read",
+      "network.access",
+      "Provides right-sidebar and bottom-panel workspaces with tabs, split panes, and session-persisted layouts.",
+      "Provides file browsing, uploading, editing, and previews for images, Markdown, HTML, and PDF files.",
+      "Provides an embedded browser using sandboxed iframes with configurable external-link handling.",
+      "Provides a real shell through xterm.js and node-pty, including reconnect replay and optional model-invoked terminal tools.",
+      "Provides Git staging, commits, reverts, history, and diff views.",
+      "Provides background task and sub-agent status views, plus side conversation threads.",
+      "Exposes APIs for third-party plugins to register sidebar tabs and file viewers."
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.99,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "repositoryCommitSha": null,
-  "cacheKey": null,
-  "failureClass": "network_error",
-  "attemptCount": 1,
-  "firstFailedAt": "2026-08-22T00:02:23.199Z",
-  "lastAttemptAt": "2026-08-22T00:02:23.199Z",
-  "nextRetryAt": "2026-08-22T06:02:23.199Z",
-  "retryable": true,
-  "error": "graphql: 504 {\"message\": \"We couldn't respond to your request in time. Sorry about that. Please try resubmitting your request and contact us if the problem persists.\"}\r\n",
+  "classifiedAt": "2026-08-22T00:04:04.863Z",
+  "repositoryCommitSha": "646c91cf70883e9a6cd343d176b0c4939c42bc2c",
+  "evidenceHash": "3b3c93e7566849ba0666479622689a0038680b6519811a312616613149991dc6",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
+  "cacheKey": "fcda1a661ba6119567fcfed9a14a5216dbd8d15db2164fa029f74ec7aacc9958",
   "shadowMode": false
 }
