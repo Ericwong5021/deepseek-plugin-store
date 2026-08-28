@@ -41,15 +41,13 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - name: Check pending batch
-        id: pending
+      - name: Reject pending batch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          count=$(gh pr list --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("automation/governance-classification-"))] | length')
-          echo "skip=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          pending=$(gh pr list --state open --json number,headRefName,url --jq '.[] | select(.headRefName | startswith("automation/governance-classification-")) | "#\(.number) \(.url)"')
+          if [ -n "$pending" ]; then echo "::error::an earlier governance classification batch is still open"; echo "$pending"; exit 1; fi
       - name: Classify governance state
-        if: ${{ steps.pending.outputs.skip != 'true' }}
         id: classify
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -64,10 +62,8 @@ jobs:
           GOVERNANCE_SHADOW_MODE: '0'
         run: node scripts/classify-plugins.mjs
       - name: Validate state
-        if: ${{ steps.pending.outputs.skip != 'true' }}
         run: node scripts/validate-registry.mjs
       - name: Open state batch
-        if: ${{ steps.pending.outputs.skip != 'true' }}
         id: batch
         env:
           GH_TOKEN: ${{ github.token }}
@@ -116,7 +112,7 @@ jobs:
             gh workflow run governance-publish.yml --ref main
           fi
       - name: Publish completed drain
-        if: ${{ (github.event_name == 'schedule' || inputs.drain) && steps.classify.outputs.paused != 'true' && steps.pending.outputs.skip != 'true' && steps.batch.outputs.number == '' }}
+        if: ${{ (github.event_name == 'schedule' || inputs.drain) && steps.classify.outputs.paused != 'true' && steps.batch.outputs.number == '' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run governance-publish.yml --ref main
