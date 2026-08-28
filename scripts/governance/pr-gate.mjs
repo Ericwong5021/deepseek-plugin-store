@@ -19,7 +19,10 @@ const changes = diff.map((line) => {
 const registryFiles = changes.filter((change) => /^registry\/plugins\/[a-z0-9-]+\.json$/.test(change.file))
 const stateFiles = changes.filter((change) => /^governance\/state\/(candidates|observations|classifications)\/[a-f0-9]{2}\/[a-z0-9-]+\.json$/.test(change.file))
 const stateMetaFiles = changes.filter((change) => /^governance\/state\/meta\/[a-z0-9-]+\.json$/.test(change.file))
+const readmePaths = ['README.en.md', 'README.md', 'README.zh.md']
+const readmeFiles = changes.filter((change) => readmePaths.includes(change.file))
 const stateBatch = stateFiles.length + stateMetaFiles.length === changes.length && stateFiles.length > 0
+const readmeBatch = readmeFiles.length === readmePaths.length && changes.length === readmePaths.length && readmePaths.every((file) => readmeFiles.some((change) => change.file === file))
 
 const pullRequest = async () => {
   if (event.pull_request) return event.pull_request
@@ -37,7 +40,7 @@ if (mode === 'registry-schema') {
   process.env.REGISTRY_SOURCE_ONLY = stateBatch ? '0' : '1'
   console.log(await validateRegistry())
 } else if (mode === 'identity-uniqueness') {
-  if (!registryFiles.length && !stateBatch) throw new Error('pull request does not change governance source records')
+  if (!registryFiles.length && !stateBatch && !readmeBatch) throw new Error('pull request does not change governance source records')
   for (const change of registryFiles.filter((item) => item.status !== 'D')) {
     const record = await readJson(change.file)
     if (change.file !== `registry/plugins/${record.id}.json` || record.id !== pluginId(record.repository?.fullName || '')) throw new Error(`registry identity mismatch: ${change.file}`)
@@ -53,8 +56,8 @@ if (mode === 'registry-schema') {
   console.log(await validateRegistry())
 } else if (mode === 'path-scope') {
   const registryBatch = registryFiles.length === 1 && changes.length === 1
-  if (!registryBatch && !stateBatch) throw new Error(`invalid governance path scope: ${changes.map((item) => item.file).join(', ')}`)
-  console.log(registryBatch ? registryFiles[0].file : `${stateFiles.length} state records`)
+  if (!registryBatch && !stateBatch && !readmeBatch) throw new Error(`invalid governance path scope: ${changes.map((item) => item.file).join(', ')}`)
+  console.log(registryBatch ? registryFiles[0].file : stateBatch ? `${stateFiles.length} state records` : 'bilingual README publication')
 } else if (mode === 'immutable-evidence') {
   const token = process.env.GITHUB_TOKEN || ''
   for (const change of registryFiles.filter((item) => item.status !== 'D')) {
@@ -82,6 +85,11 @@ if (mode === 'registry-schema') {
     console.log(`policy gate accepted state batch ${headRef}`)
     process.exit(0)
   }
+  if (readmeBatch) {
+    if (!headRef.startsWith('automation/governance-readme-') || !body.includes('Governance README publication')) throw new Error('README publication provenance is invalid')
+    console.log(`policy gate accepted README publication ${headRef}`)
+    process.exit(0)
+  }
   const issues = [...body.matchAll(/(?:closes|fixes|resolves)\s+#(\d+)/gi)].map((match) => match[1])
   if (new Set(issues).size !== 1) throw new Error('pull request must close exactly one source issue')
   for (const change of registryFiles.filter((item) => item.status !== 'D')) {
@@ -95,6 +103,7 @@ if (mode === 'registry-schema') {
   await generateCatalog()
   const second = await Promise.all(['data/catalog-v2.json', 'data/catalog.json', 'data/plugins.json', 'data/editor-picks.json'].map((file) => fs.readFile(file, 'utf8')))
   if (JSON.stringify(first) !== JSON.stringify(second)) throw new Error('catalog generation is not deterministic')
+  if (readmeBatch) execFileSync(process.execPath, ['scripts/render-readme.mjs', '--check'], { stdio: 'inherit' })
   console.log('catalog generation is deterministic')
 } else {
   throw new Error(`unknown PR gate mode: ${mode}`)

@@ -13,7 +13,9 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
+  pull-requests: write
 
 concurrency:
   group: governance-publisher
@@ -24,9 +26,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - uses: actions/create-github-app-token@v2
+        if: ${{ vars.GOVERNANCE_APP_ID != '' }}
+        id: app-token
+        with:
+          app-id: ${{ vars.GOVERNANCE_APP_ID }}
+          private-key: ${{ secrets.GOVERNANCE_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token || github.token }}
       - uses: actions/setup-node@v6
         with:
           node-version: 22
@@ -40,8 +49,10 @@ jobs:
           node scripts/generate-catalog.mjs --check
           node scripts/validate.mjs
           node scripts/render-readme.mjs --check
-      - name: Publish README to main
+      - name: Open README publication PR
         id: readme
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
         run: |
           git add README.md README.en.md README.zh.md
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
@@ -50,11 +61,40 @@ jobs:
           git fetch origin main
           actual=$(git rev-parse origin/main)
           if [ "$expected" != "$actual" ]; then echo "::error::main advanced during README publication: expected $expected, found $actual"; exit 1; fi
+          pending=$(gh pr list --state open --json number,headRefName,url --jq '.[] | select(.headRefName | startswith("automation/governance-readme-")) | "#\(.number) \(.url)"')
+          if [ -n "$pending" ]; then echo "::error::an earlier README publication is still open"; echo "$pending"; exit 1; fi
+          base=$(git rev-parse origin/main)
+          branch="automation/governance-readme-${GITHUB_RUN_ID}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
           git commit -m "docs: refresh catalog data and rankings"
-          git push origin HEAD:main
+          git push origin "HEAD:$branch"
+          url=$(gh pr create --base main --head "$branch" --title "docs: refresh catalog data and rankings" --body "Governance README publication")
+          number=$(gh pr view "$url" --json number --jq .number)
+          head=$(git rev-parse HEAD)
           echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "head=$head" >> "$GITHUB_OUTPUT"
+          gh workflow run governance-pr-ci.yml --ref "$branch" -f base_sha="$base" -f head_sha="$head" -f pr_number="$number"
+      - name: Merge validated README publication
+        if: ${{ steps.readme.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
+          PR_NUMBER: ${{ steps.readme.outputs.number }}
+          HEAD_SHA: ${{ steps.readme.outputs.head }}
+        run: |
+          ready=false
+          for attempt in $(seq 1 90); do
+            state=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/status" --jq .state)
+            passed=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/status" --jq '[.statuses[] | select(.state == "success") | .context] | unique | length')
+            if [ "$state" = "success" ] && [ "$passed" -ge 6 ]; then ready=true; break; fi
+            if [ "$state" = "failure" ] || [ "$state" = "error" ]; then exit 1; fi
+            sleep 5
+          done
+          if [ "$ready" != "true" ]; then echo "::error::README publication checks did not complete"; exit 1; fi
+          merged=$(gh api --method PUT "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/merge" -f merge_method=squash -f sha="$HEAD_SHA" -f commit_title="docs: refresh catalog data and rankings (#${PR_NUMBER})" --jq .merged)
+          if [ "$merged" != "true" ]; then echo "::error::README publication PR was not merged"; exit 1; fi
       - name: Publish catalog branch
         id: publish
         run: |
