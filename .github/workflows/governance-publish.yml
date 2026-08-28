@@ -7,6 +7,7 @@ on:
       - governance/state/**
       - registry/**
       - scripts/generate-catalog.mjs
+      - scripts/render-readme.mjs
       - scripts/governance/publisher.mjs
       - scripts/governance/state.mjs
   workflow_dispatch:
@@ -29,13 +30,31 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - name: Materialize catalog
-        run: node scripts/governance/publisher.mjs
+      - name: Materialize catalog and README
+        run: |
+          node scripts/governance/publisher.mjs
+          node scripts/render-readme.mjs
       - name: Validate publication
         run: |
           node scripts/validate-registry.mjs
           node scripts/generate-catalog.mjs --check
           node scripts/validate.mjs
+          node scripts/render-readme.mjs --check
+      - name: Publish README to main
+        id: readme
+        run: |
+          git add README.md README.en.md README.zh.md
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git diff --cached --check
+          expected=$(git rev-parse HEAD)
+          git fetch origin main
+          actual=$(git rev-parse origin/main)
+          if [ "$expected" != "$actual" ]; then echo "::error::main advanced during README publication: expected $expected, found $actual"; exit 1; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "docs: refresh catalog data and rankings"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Publish catalog branch
         id: publish
         run: |

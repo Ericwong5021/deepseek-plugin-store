@@ -33,25 +33,22 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - name: Check pending batch
-        id: pending
+      - name: Reject pending batch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          count=$(gh pr list --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("automation/governance-discovery-"))] | length')
-          echo "skip=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          pending=$(gh pr list --state open --json number,headRefName,url --jq '.[] | select(.headRefName | startswith("automation/governance-discovery-")) | "#\(.number) \(.url)"')
+          if [ -n "$pending" ]; then echo "::error::an earlier governance discovery batch is still open"; echo "$pending"; exit 1; fi
       - name: Discover governance state
-        if: ${{ steps.pending.outputs.skip != 'true' }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
           DISCOVERY_MODE: ${{ inputs.mode || (github.event.schedule == '17 4 * * 0' && 'reconcile') || (github.event.schedule == '11 3 * * *' && 'daily') || 'incremental' }}
           DISCOVERY_VERIFY_LIMIT: '250'
         run: node scripts/update.mjs
       - name: Validate state
-        if: ${{ steps.pending.outputs.skip != 'true' }}
         run: node scripts/validate-registry.mjs
       - name: Open state batch
-        if: ${{ steps.pending.outputs.skip != 'true' }}
+        id: batch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -69,4 +66,25 @@ jobs:
           url=$(gh pr create --base main --head "$branch" --title "chore: update governance discovery state" --body "Governance state batch")
           number=$(gh pr view "$url" --json number --jq .number)
           head=$(git rev-parse HEAD)
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "head=$head" >> "$GITHUB_OUTPUT"
           gh workflow run governance-pr-ci.yml --ref "$branch" -f base_sha="$base" -f head_sha="$head" -f pr_number="$number"
+      - name: Merge validated batch and publish
+        if: ${{ steps.batch.outputs.number != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.batch.outputs.number }}
+          HEAD_SHA: ${{ steps.batch.outputs.head }}
+        run: |
+          ready=false
+          for attempt in $(seq 1 90); do
+            state=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/status" --jq .state)
+            passed=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/status" --jq '[.statuses[] | select(.state == "success") | .context] | unique | length')
+            if [ "$state" = "success" ] && [ "$passed" -ge 6 ]; then ready=true; break; fi
+            if [ "$state" = "failure" ] || [ "$state" = "error" ]; then exit 1; fi
+            sleep 5
+          done
+          if [ "$ready" != "true" ]; then echo "::error::governance PR checks did not complete"; exit 1; fi
+          merged=$(gh api --method PUT "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/merge" -f merge_method=squash -f sha="$HEAD_SHA" -f commit_title="chore: publish governance discovery (#${PR_NUMBER})" --jq .merged)
+          if [ "$merged" != "true" ]; then echo "::error::governance discovery PR was not merged"; exit 1; fi
+          gh workflow run governance-publish.yml --ref main
