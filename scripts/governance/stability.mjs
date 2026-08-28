@@ -110,7 +110,7 @@ export const createFailureRecord = ({ previous, error, now, model, promptVersion
   }
 }
 
-export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = null, force = false) => {
+export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = null, force = false, repositoryObservedAt = null) => {
   if (force || !entry) return true
   if (entry.status === 'failed') {
     if (entry.failureClass === 'insufficient_evidence') return Boolean(repositoryCommitSha && entry.repositoryCommitSha && repositoryCommitSha !== entry.repositoryCommitSha)
@@ -122,6 +122,9 @@ export const shouldClassify = (entry, now = Date.now(), repositoryCommitSha = nu
   if (entry.status !== 'classified') return true
   if (!entry.summaries?.zh?.trim() || !entry.summaries?.en?.trim()) return true
   if (!repositoryCommitSha || !entry.repositoryCommitSha) return false
+  const classifiedAt = Date.parse(entry.classifiedAt || 0)
+  const observedAt = Date.parse(repositoryObservedAt || 0)
+  if (entry.repositoryCommitSha !== repositoryCommitSha && Number.isFinite(classifiedAt) && Number.isFinite(observedAt) && observedAt <= classifiedAt) return false
   return entry.repositoryCommitSha !== repositoryCommitSha
 }
 

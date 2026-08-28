@@ -56,6 +56,7 @@ const registryItems = registryFiles.map(({ value }) => ({
   type: 'registry',
   classification: value.classification,
   repositoryCommitSha: observations.repositories[value.id]?.compatibility?.repositoryCommitSha || null,
+  repositoryObservedAt: observations.repositories[value.id]?.compatibility?.checkedAt || null,
 }))
 const candidateItems = Object.values(candidateData.candidates).filter((candidate) => candidate.checks?.admissionReady === true).map((candidate) => ({
   id: candidate.id,
@@ -64,6 +65,7 @@ const candidateItems = Object.values(candidateData.candidates).filter((candidate
   type: 'candidate',
   classification: candidate.classificationSuggestion,
   repositoryCommitSha: candidate.checks?.repositoryCommitSha || null,
+  repositoryObservedAt: candidate.checks?.checkedAt || null,
 }))
 const itemsById = new Map(registryItems.map((item) => [item.id, item]))
 for (const item of candidateItems) if (!itemsById.has(item.id)) itemsById.set(item.id, item)
@@ -84,7 +86,7 @@ const pauseCandidates = [process.env.LLM_CLASSIFIER_PAUSED_UNTIL, ...Object.valu
 const pausedUntil = pauseCandidates.at(-1) || null
 const paused = !target && pausedUntil && Date.parse(pausedUntil) > Date.now()
 const queue = (paused ? [] : matched)
-  .filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, force))
+  .filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, force, item.repositoryObservedAt))
   .sort((a, b) => Number(Boolean(b.classification?.needsReview)) - Number(Boolean(a.classification?.needsReview)) || Number(b.type === 'candidate') - Number(a.type === 'candidate') || a.id.localeCompare(b.id))
   .slice(0, limit)
 
@@ -224,7 +226,7 @@ if (changed) {
 
 const recognized = Object.values(cache.classifications).filter((entry) => entry.status === 'classified').length
 const unavailable = Object.values(cache.classifications).filter((entry) => entry.status === 'failed').length
-const remaining = eligible.filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, false)).length
+const remaining = eligible.filter((item) => shouldClassify(cache.classifications[item.id], Date.now(), item.repositoryCommitSha, false, item.repositoryObservedAt)).length
 const result = { selected: queue.length, classified, failed, unchanged, recognized, unavailable, remaining, total: eligible.length, target: target || null, force, shadowMode, concurrency, paused, pausedUntil, adapter: adapter.capability }
 console.log(JSON.stringify(result, null, 2))
 if (process.env.GITHUB_OUTPUT) await fs.appendFile(process.env.GITHUB_OUTPUT, `remaining=${remaining}\nunavailable=${unavailable}\nrecognized=${recognized}\npaused=${paused}\npaused_until=${pausedUntil || ''}\n`)
