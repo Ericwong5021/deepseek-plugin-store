@@ -21,7 +21,7 @@
 
 本目录从 [`dsh-plugin`](https://github.com/topics/dsh-plugin) Topic、编辑精选和提交 Issue 中发现候选。发现不等于收录；公开项目以 Registry 为准，新准入必须具备固定提交证据并声明 `package.json:dsh.bundle`。历史迁移记录可能保持 `legacy-pending`，但不会被当作已验证插件。
 
-> **1711 个已收录插件** · **5194 个隐藏候选** · **3456 个通过结构预检** · 上次治理数据：2026-08-28 15:20 UTC
+> **1711 个已收录插件** · **5194 个隐藏候选** · **3456 个通过结构预检** · 上次治理数据：2026-08-28 18:51 UTC
 
 Topic 中发现但尚未进入 Registry 的项目保持隐藏候选状态，不会获得 DSH 直接安装入口。
 
@@ -122,10 +122,10 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 ### 编辑精选
 
 - [zhu1090093659/dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) ★5278 · `dsh-web-ui` — dsh-web is a DeepSeek Harness Web GUI plugin bundle that provides pluggable interface extensions including a task board, remote control, SSH panel, Git visualization, image understanding, and themes.
-- [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★3062 · `dsh-better-sidebar` — An extensible DSH sidebar and bottom-panel workbench with file viewing and editing, terminal, Git, browser, chat, and background task pages.
-- [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) ★2654 · `@deepseek-harness-tui/dsh-tui` — An interactive terminal interface for DeepSeek Harness with themes, live status visualization, context metrics, and session navigation.
-- [Small-tailqwq/dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) ★1787 — Provides whale-themed skins for the DeepSeek Harness web GUI along with a manager for discovering, switching, and customizing skins.
-- [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) ★582 · `@dsh-external/dsh-ads` — An entertainment theme that transforms the DSH web interface with fictional advertisements, popups, and plugin recommendation placements in a 2005 portal style.
+- [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★3067 · `dsh-better-sidebar` — An extensible DSH sidebar and bottom-panel workbench with file viewing and editing, terminal, Git, browser, chat, and background task pages.
+- [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) ★2660 · `@deepseek-harness-tui/dsh-tui` — An interactive terminal interface for DeepSeek Harness with themes, live status visualization, context metrics, and session navigation.
+- [Small-tailqwq/dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) ★1788 — Provides whale-themed skins for the DeepSeek Harness web GUI along with a manager for discovering, switching, and customizing skins.
+- [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) ★581 · `@dsh-external/dsh-ads` — An entertainment theme that transforms the DSH web interface with fictional advertisements, popups, and plugin recommendation placements in a 2005 portal style.
 - [omdsh-dev/dsh-gomoku](https://github.com/omdsh-dev/dsh-gomoku) ★16 · `@yejiming/dsh-gomoku` — Adds an interactive 15×15 Gomoku board to DSH for human-versus-AI or AI-versus-AI matches, with editable player prompts and displayed reasoning.
 - [Small-tailqwq/dsh-deepcel](https://github.com/Small-tailqwq/dsh-deepcel) ★15 — A DeepSeek Harness Web GUI skin that reorganizes sessions, tools, settings, and navigation into an interactive spreadsheet-like workspace.
 - [SailingLoong/loongport-dsh](https://github.com/SailingLoong/loongport-dsh) ★2 · `loongport` — LoongPort configures verified or manually supplied OpenAI-compatible service endpoints and credentials for DeepSeek Harness.
