@@ -21,7 +21,7 @@
 
 本目录从 [`dsh-plugin`](https://github.com/topics/dsh-plugin) Topic、编辑精选和提交 Issue 中发现候选。发现不等于收录；公开项目以 Registry 为准，新准入必须具备固定提交证据并声明 `package.json:dsh.bundle`。历史迁移记录可能保持 `legacy-pending`，但不会被当作已验证插件。
 
-> **1711 个已收录插件** · **5194 个隐藏候选** · **3456 个通过结构预检** · 上次治理数据：2026-08-28 05:29 UTC
+> **1711 个已收录插件** · **5194 个隐藏候选** · **3456 个通过结构预检** · 上次治理数据：2026-08-28 06:22 UTC
 
 Topic 中发现但尚未进入 Registry 的项目保持隐藏候选状态，不会获得 DSH 直接安装入口。
 
@@ -120,11 +120,11 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 ### 编辑精选
 
-- [zhu1090093659/dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) ★5278 · `dsh-web-ui` — A pluggable DSH Web UI suite that adds skins, task boards, Git visualization, side panels, mobile remote access, SSH operations, and related workspace features.
-- [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★3036 · `dsh-better-sidebar` — A DSH sidebar and bottom-panel workbench that integrates files, terminal, Git, browser, task, and chat features while allowing third-party tabs and file viewers to be registered.
-- [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) ★2639 · `@deepseek-harness-tui/dsh-tui` — 解决DSH 官方尚无终端 TUI 痛点的补位之作，献给偏爱cli的各位极客：Claude Code 风格全屏交互终端插件——像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条 + TPS 仪表。npm 一键安装。
-- [Small-tailqwq/dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) ★1776 — Provides whale-themed skins for the DeepSeek Harness Web GUI along with a panel for discovering, switching, and configuring skins.
-- [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) ★576 · `@dsh-external/dsh-ads` — An entertainment-focused interface plugin that adds fictional ads, popups, plugin recommendations, and retro-themed interactive effects to the DSH web UI.
+- [zhu1090093659/dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) ★5278 · `dsh-web-ui` — dsh-web is a DeepSeek Harness Web GUI plugin bundle that provides pluggable interface extensions including a task board, remote control, SSH panel, Git visualization, image understanding, and themes.
+- [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★3036 · `dsh-better-sidebar` — An extensible DSH sidebar and bottom-panel workbench with file viewing and editing, terminal, Git, browser, chat, and background task pages.
+- [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) ★2639 · `@deepseek-harness-tui/dsh-tui` — An interactive terminal interface for DeepSeek Harness with themes, live status visualization, context metrics, and session navigation.
+- [Small-tailqwq/dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) ★1776 — Provides whale-themed skins for the DeepSeek Harness web GUI along with a manager for discovering, switching, and customizing skins.
+- [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) ★576 · `@dsh-external/dsh-ads` — An entertainment theme that transforms the DSH web interface with fictional advertisements, popups, and plugin recommendation placements in a 2005 portal style.
 - [omdsh-dev/dsh-gomoku](https://github.com/omdsh-dev/dsh-gomoku) ★15 · `@yejiming/dsh-gomoku` — Adds an interactive 15×15 Gomoku board to DSH for human-versus-AI or AI-versus-AI matches, with editable player prompts and displayed reasoning.
 - [Small-tailqwq/dsh-deepcel](https://github.com/Small-tailqwq/dsh-deepcel) ★15 — A DeepSeek Harness Web GUI skin that reorganizes sessions, tools, settings, and navigation into an interactive spreadsheet-like workspace.
 - [SailingLoong/loongport-dsh](https://github.com/SailingLoong/loongport-dsh) ★2 · `loongport` — LoongPort configures verified or manually supplied OpenAI-compatible service endpoints and credentials for DeepSeek Harness.
@@ -173,7 +173,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [JustGenius-s/DSH-Desktop](https://github.com/JustGenius-s/DSH-Desktop) ★21 · `dsh-desktop` — An Electron desktop application for installing and running the DeepSeek Harness web interface locally.
 - [01Virex/dsh-status-rotator](https://github.com/01Virex/dsh-status-rotator) ★20 · `dsh-status-rotator` — This plugin for DSH Web replaces the turn-status label with configurable Chinese/English phrases, rotates them by phase with optional typewriter and gradient effects, and provides a settings page to edit phrase banks and timing options.
 - [iuikj/dsh-desktop](https://github.com/iuikj/dsh-desktop) ★19 · `dsh-desktop` — An Electron desktop wrapper for the local DeepSeek Harness web interface with service detection, startup, installation, logging, and window management.
-- [Blank-not-black/dsh-Remote](https://github.com/Blank-not-black/dsh-Remote) ★18 · `dsh-remote` — DSH Remote provides mobile and desktop remote consoles for viewing sessions, handling approvals and questions, transferring files, and monitoring gateway and host status.
+- [Blank-not-black/dsh-Remote](https://github.com/Blank-not-black/dsh-Remote) ★18 · `dsh-remote` — DSH Remote provides mobile and desktop consoles for viewing and continuing DSH sessions, handling approvals and questions, transferring files, and monitoring host and gateway status.
 - [KinGao294/dsh-skin](https://github.com/KinGao294/dsh-skin) ★18 · `dsh-skin` — Adds selectable skins, configurable wallpapers, and a draggable desktop pet to DeepSeek Harness while storing related preferences locally in the browser.
 - [weinibuliu/deepseek-harness-vsc-extension](https://github.com/weinibuliu/deepseek-harness-vsc-extension) ★18 · `dsh-vsc` — A VS Code extension for DeepSeek Harness that adds an integrated interface with file selection, editor problem and context display, and agent preset selection.
 - [lehhair/dsh-diff-viewer](https://github.com/lehhair/dsh-diff-viewer) ★17 · `@dsh-external/dsh-diff-viewer` — An enhanced diff viewer for DSH Web GUI write and edit tool calls with highlighting, folding, virtualized rendering, copying, and nested-call support.
@@ -360,7 +360,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [schhaohao/dsh-file-explorer](https://github.com/schhaohao/dsh-file-explorer) ★2 · `dsh-file-explorer` — Provides a DSH GUI panel for browsing workspace files and previewing text and Markdown content.
 - [shiningsprk-arch/dsh-context-viewer](https://github.com/shiningsprk-arch/dsh-context-viewer) ★2 · `dsh-context-viewer` — A desktop application for inspecting DeepSeek Harness sessions with event timelines, tool calls, statistics, raw logs, realtime updates, search, and export.
 - [Shmilyol/galgame-skin](https://github.com/Shmilyol/galgame-skin) ★2
-- [sjh9714/dsh-what-changed](https://github.com/sjh9714/dsh-what-changed) ★2 · `dsh-what-changed` — Displays an agent’s session file changes and edits in a review panel, with a separate read-only comparison between the workspace and HEAD.
+- [sjh9714/dsh-what-changed](https://github.com/sjh9714/dsh-what-changed) ★2 · `dsh-what-changed` — Per-call diff cards already render in DSH Web, so what is missing is the session-wide answer you want before committing, which files ended up changed. This puts a button in the session header carrying the file and edit counts, and opens to a per-file review with the hunks.
 - [smanx/dsh-conversation-indicator](https://github.com/smanx/dsh-conversation-indicator) ★2 · `dsh-conversation-indicator` — Adds a compact browser-side conversation indicator beside the scrollbar for viewing summaries and quickly jumping through long DeepSeek Harness conversations.
 - [stushansusu/dsh-miku-skin](https://github.com/stushansusu/dsh-miku-skin) ★2 · `@deepseek-ai/dsh-client-ui-skin-miku` — 初音未来主题皮肤，用于 DeepSeek Harness (DSH) Web GUI —— 蓝紫洋红渐变、毛玻璃面板、可自定义背景图、亮暗双主题
 - [TableRogue/dsh-message-navigator](https://github.com/TableRogue/dsh-message-navigator) ★2 · `dsh-message-navigator` — Adds a message navigation strip to the DeepSeek Harness web chat interface for jumping between messages and highlighting the current reading position.
@@ -375,7 +375,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [xing-shuyin/ds-web-ui](https://github.com/xing-shuyin/ds-web-ui) ★2 · `ds-web-ui` — A web chat interface for DeepSeek Harness agents with streaming output, session management, file browsing, and an embedded terminal.
 - [xinmo114514/dsh-usage-widget](https://github.com/xinmo114514/dsh-usage-widget) ★2 · `dsh-usage-widget` — A DSH web plugin that locally aggregates session token usage and displays totals, trend charts, and heatmaps in a draggable floating widget.
 - [XYZ1024-alt/dsh-side-panel](https://github.com/XYZ1024-alt/dsh-side-panel) ★2 · `dsh-side-panel` — Adds a right-side developer panel to DeepSeek Harness for browsing session files, reviewing conversation history, and inspecting Git status and diffs.
-- [ymh0000123/dsh-theme-endfield](https://github.com/ymh0000123/dsh-theme-endfield) ★2 · `dsh-theme-endfield` — An Endfield-inspired DSH Web theme offering industrial editorial styling, square UI components, accent-color switching, and optional background effects.
+- [ymh0000123/dsh-theme-endfield](https://github.com/ymh0000123/dsh-theme-endfield) ★2 · `dsh-theme-endfield` — A client-side DSH Web theme inspired by Endfield’s official site style, with configurable colors, corner shapes, background effects, watermarks, and animations.
 - [yumimanji/dsh-ui-spec](https://github.com/yumimanji/dsh-ui-spec) ★2 · `dsh-ui-spec` — Converts user interface screenshots into structured specifications covering layout, visual details, and interaction constraints for responsive web recreation.
 - [Yummyxl/dsh-eyecare](https://github.com/Yummyxl/dsh-eyecare) ★2 · `dsh-eyecare` — Adds a switchable eye-care color theme to the DSH Web interface with light, dark, system-following modes, and persistent toggle state.
 - [Zalpha263/dsh-ui-beautify](https://github.com/Zalpha263/dsh-ui-beautify) ★2 · `dsh-ui-beautify` — Customizes the DSH Web UI with color themes, local background images, draggable dockable card layouts, and plugin panel management.
@@ -537,7 +537,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [btspoony/mstar-harness](https://github.com/btspoony/mstar-harness) ★49 · `morning-star` — Morning Star is an agent workflow plugin for coordinating software delivery through planning, dispatch, iteration, review, QA, and codebase-audit workflows.
 - [LayneChai/superpowers-dsh](https://github.com/LayneChai/superpowers-dsh) ★49 · `superpowers-dsh` — Provides DeepSeek Harness with loadable skills for planning and execution, test-driven development, debugging, code review, and collaboration.
 - [titanwings/dsh-automation](https://github.com/titanwings/dsh-automation) ★49 · `@dsh-external/dsh-automation` — Schedules and manages one-shot or recurring coding tasks, runs them in fresh Agent sessions within a specified workspace, and provides execution history.
-- [toolclub/dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) ★43 · `dsh-agent-team-gui` — A DeepSeek Harness plugin for reusable multi-model agent teams that plan and execute bounded workflows while managing roles, tool policies, runs, and token usage.
+- [toolclub/dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) ★43 · `dsh-agent-team-gui` — A DeepSeek Harness plugin for creating reusable multi-model agent teams, executing bounded workflows, and inspecting run states and token usage.
 - [whiteguo233/dsh-openbiliclaw](https://github.com/whiteguo233/dsh-openbiliclaw) ★40 · `@openbiliclaw/dsh-plugin` — A DeepSeek Harness client plugin that integrates OpenBiliClaw recommendations, saved content, dialogue, and profiles while exposing bridge tools for DSH agents.
 - [hanelalo/browser-bridge](https://github.com/hanelalo/browser-bridge) ★37 — Connects local CLI or MCP tools to a real browser over WebSocket for tab management, page interaction, content scraping, and web searches.
 - [openma-ai/deepseek-harness-tui](https://github.com/openma-ai/deepseek-harness-tui) ★36 — Run DeepSeek Harness or compatible ACP agents in a terminal with streaming sessions, tool-call views, persistent conversations, image prompts, and extensible UI contributions.
