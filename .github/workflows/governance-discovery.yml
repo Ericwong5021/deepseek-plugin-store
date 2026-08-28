@@ -12,6 +12,11 @@ on:
         default: incremental
         type: choice
         options: [incremental, daily, reconcile]
+      reconcile_partition:
+        required: false
+        default: '0'
+        type: choice
+        options: ['0', '1', '2', '3']
 
 permissions:
   actions: write
@@ -43,6 +48,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           DISCOVERY_MODE: ${{ inputs.mode || (github.event.schedule == '17 4 * * 0' && 'reconcile') || (github.event.schedule == '11 3 * * *' && 'daily') || 'incremental' }}
+          DISCOVERY_RECONCILE_PARTITION: ${{ inputs.reconcile_partition || (github.event_name == 'schedule' && github.event.schedule == '17 4 * * 0' && '0') || '' }}
           DISCOVERY_VERIFY_LIMIT: '250'
         run: node scripts/update.mjs
       - name: Validate state
@@ -88,3 +94,12 @@ jobs:
           merged=$(gh api --method PUT "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/merge" -f merge_method=squash -f sha="$HEAD_SHA" -f commit_title="chore: publish governance discovery (#${PR_NUMBER})" --jq .merged)
           if [ "$merged" != "true" ]; then echo "::error::governance discovery PR was not merged"; exit 1; fi
           gh workflow run governance-publish.yml --ref main
+      - name: Continue full reconciliation
+        if: ${{ (inputs.mode == 'reconcile' || github.event.schedule == '17 4 * * 0') && (inputs.reconcile_partition || '0') != '3' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RECONCILE_PARTITION: ${{ inputs.reconcile_partition || (github.event_name == 'schedule' && github.event.schedule == '17 4 * * 0' && '0') || '0' }}
+        run: |
+          next_partition=$((RECONCILE_PARTITION + 1))
+          echo "::notice::continuing full reconciliation with partition $next_partition"
+          gh workflow run governance-discovery.yml --ref main -f mode=reconcile -f reconcile_partition="$next_partition"

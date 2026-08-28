@@ -90,6 +90,7 @@ const fetchEvidence = async (fullName, state) => {
 export const discover = async () => {
   const now = new Date().toISOString()
   const mode = process.env.DISCOVERY_MODE || 'incremental'
+  const requestedReconcilePartition = process.env.DISCOVERY_RECONCILE_PARTITION || ''
   const staleBefore = Date.parse(now) - 7 * 86400000
   const retryBefore = Date.parse(now) - 6 * 3600000
   const taxonomy = await readJson('registry/taxonomy.json')
@@ -145,10 +146,13 @@ export const discover = async () => {
   try {
     if (mode === 'reconcile') {
       const partitions = [['2007-01-01', '2018-12-31'], ['2019-01-01', '2022-12-31'], ['2023-01-01', '2025-12-31'], ['2026-01-01', now.slice(0, 10)]]
-      const partition = partitions[Math.floor(Date.parse(now) / 604800000) % partitions.length]
+      const partitionIndex = requestedReconcilePartition === '' ? Math.floor(Date.parse(now) / 604800000) % partitions.length : Number.parseInt(requestedReconcilePartition, 10)
+      if (!Number.isInteger(partitionIndex) || partitionIndex < 0 || partitionIndex >= partitions.length) throw new Error(`invalid reconcile partition: ${requestedReconcilePartition}`)
+      const partition = partitions[partitionIndex]
       topicRepos = await searchRange(Math.floor(Date.parse(`${partition[0]}T00:00:00Z`) / 1000), Math.floor(Date.parse(`${partition[1]}T23:59:59Z`) / 1000))
       discoveryMeta.lastReconciliationAt = now
       discoveryMeta.lastReconciliationPartition = partition.join('..')
+      discoveryMeta.lastReconciliationPartitionIndex = partitionIndex
     } else {
       const cursor = discoveryMeta.lastSuccessfulSearchAt || '2007-01-01T00:00:00Z'
       const from = Math.max(Date.parse('2007-01-01T00:00:00Z'), Date.parse(cursor) - 2 * 3600000)
@@ -379,7 +383,7 @@ export const discover = async () => {
   if (topicSucceeded) discoveryMeta.lastSuccessfulSearchAt = now
   discoveryMeta.schemaVersion = 1
   await writeJson('governance/state/meta/discovery.json', discoveryMeta)
-  return { discovered: discovered.size, checked: selected.length, candidates: Object.keys(candidateData.candidates).length, sourceFailures: sourceFailures.length }
+  return { discovered: discovered.size, checked: selected.length, candidates: Object.keys(candidateData.candidates).length, sourceFailures: sourceFailures.length, reconcilePartition: mode === 'reconcile' ? discoveryMeta.lastReconciliationPartitionIndex : null }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

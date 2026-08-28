@@ -87,6 +87,7 @@ function localeCopy(zh) {
 - **验证边界**：\`verified\` 表示结构和证据通过，不是安全审计或运行时兼容性保证；\`legacy-pending\` 只是显式的历史迁移状态。
 - **分类顺序**：人工复核 > 已接受的维护者分类 > LLM 分类 > Manifest/文本/关键词证据 > 历史迁移。人工结论不会被自动分类覆盖。
 - **定时分类**：LLM 分类 Action 每天 00:43 UTC（北京时间 08:43）处理一批插件，批次大小由 \`LLM_CLASSIFIER_LIMIT\` 配置；定时运行不会自动续跑下一批。
+- **全量回溯**：治理发现 Action 每周日从第一个历史分区开始，自动串行扫描四个 Topic 时间分区；每个分区独立通过治理 PR 后再进入下一个分区。
 - **PR 门禁**：Schema、身份唯一性、路径范围、不可变证据、治理策略和 Catalog 确定性必须全部通过。
 - **发布**：定时发现产生治理状态 PR；通过门禁后合并，Publisher 同步生成 Catalog、榜单和中英文 README。`,
     browseStore: '浏览插件商店',
@@ -129,6 +130,7 @@ function localeCopy(zh) {
 - **Verification boundary**: \`verified\` means the structural evidence passed; it is not a security audit or runtime compatibility guarantee. \`legacy-pending\` is an explicit migration state only.
 - **Classification precedence**: human review > accepted maintainer classification > LLM classification > manifest/text/keyword evidence > legacy migration. Automated classification cannot override a human decision.
 - **Scheduled classification**: the LLM classification Action processes one plugin batch every day at 00:43 UTC. \`LLM_CLASSIFIER_LIMIT\` controls the batch size, and scheduled runs do not automatically chain another batch.
+- **Full reconciliation**: every Sunday, the governance discovery Action starts at the first historical Topic partition and serially scans all four partitions; each partition must pass its governance PR before the next starts.
 - **PR gates**: schema, identity uniqueness, path scope, immutable evidence, governance policy, and deterministic catalog generation must all pass.
 - **Publication**: scheduled discovery creates a governance-state PR. After the gates pass and the PR is merged, the Publisher regenerates the catalogs, rankings, and bilingual READMEs.`,
     browseStore: 'Browse the Store',

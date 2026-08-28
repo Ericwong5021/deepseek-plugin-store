@@ -56,6 +56,7 @@ Projects discovered through the topic remain hidden candidates until admitted to
 - **Verification boundary**: `verified` means the structural evidence passed; it is not a security audit or runtime compatibility guarantee. `legacy-pending` is an explicit migration state only.
 - **Classification precedence**: human review > accepted maintainer classification > LLM classification > manifest/text/keyword evidence > legacy migration. Automated classification cannot override a human decision.
 - **Scheduled classification**: the LLM classification Action processes one plugin batch every day at 00:43 UTC. `LLM_CLASSIFIER_LIMIT` controls the batch size, and scheduled runs do not automatically chain another batch.
+- **Full reconciliation**: every Sunday, the governance discovery Action starts at the first historical Topic partition and serially scans all four partitions; each partition must pass its governance PR before the next starts.
 - **PR gates**: schema, identity uniqueness, path scope, immutable evidence, governance policy, and deterministic catalog generation must all pass.
 - **Publication**: scheduled discovery creates a governance-state PR. After the gates pass and the PR is merged, the Publisher regenerates the catalogs, rankings, and bilingual READMEs.
 
