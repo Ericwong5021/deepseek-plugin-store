@@ -86,6 +86,7 @@ function localeCopy(zh) {
 - **准入证据**：检查公开且未归档的仓库、可解析的根 \`package.json\`、有效 \`dsh.bundle\`、Manifest 引用文件、README 指引和默认分支检查，并保存固定 commit SHA。准入流程不执行外部仓库代码。
 - **验证边界**：\`verified\` 表示结构和证据通过，不是安全审计或运行时兼容性保证；\`legacy-pending\` 只是显式的历史迁移状态。
 - **分类顺序**：人工复核 > 已接受的维护者分类 > LLM 分类 > Manifest/文本/关键词证据 > 历史迁移。人工结论不会被自动分类覆盖。
+- **定时分类**：LLM 分类 Action 每天 00:43 UTC（北京时间 08:43）处理一批插件，批次大小由 \`LLM_CLASSIFIER_LIMIT\` 配置；定时运行不会自动续跑下一批。
 - **PR 门禁**：Schema、身份唯一性、路径范围、不可变证据、治理策略和 Catalog 确定性必须全部通过。
 - **发布**：定时发现产生治理状态 PR；通过门禁后合并，Publisher 同步生成 Catalog、榜单和中英文 README。`,
     browseStore: '浏览插件商店',
@@ -127,6 +128,7 @@ function localeCopy(zh) {
 - **Admission evidence**: the workflow checks a public and active repository, a parseable root \`package.json\`, a valid \`dsh.bundle\`, referenced manifest files, README guidance, and default-branch checks, then pins the reviewed commit SHA. External repository code is never executed during admission.
 - **Verification boundary**: \`verified\` means the structural evidence passed; it is not a security audit or runtime compatibility guarantee. \`legacy-pending\` is an explicit migration state only.
 - **Classification precedence**: human review > accepted maintainer classification > LLM classification > manifest/text/keyword evidence > legacy migration. Automated classification cannot override a human decision.
+- **Scheduled classification**: the LLM classification Action processes one plugin batch every day at 00:43 UTC. \`LLM_CLASSIFIER_LIMIT\` controls the batch size, and scheduled runs do not automatically chain another batch.
 - **PR gates**: schema, identity uniqueness, path scope, immutable evidence, governance policy, and deterministic catalog generation must all pass.
 - **Publication**: scheduled discovery creates a governance-state PR. After the gates pass and the PR is merged, the Publisher regenerates the catalogs, rankings, and bilingual READMEs.`,
     browseStore: 'Browse the Store',

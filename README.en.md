@@ -55,6 +55,7 @@ Projects discovered through the topic remain hidden candidates until admitted to
 - **Admission evidence**: the workflow checks a public and active repository, a parseable root `package.json`, a valid `dsh.bundle`, referenced manifest files, README guidance, and default-branch checks, then pins the reviewed commit SHA. External repository code is never executed during admission.
 - **Verification boundary**: `verified` means the structural evidence passed; it is not a security audit or runtime compatibility guarantee. `legacy-pending` is an explicit migration state only.
 - **Classification precedence**: human review > accepted maintainer classification > LLM classification > manifest/text/keyword evidence > legacy migration. Automated classification cannot override a human decision.
+- **Scheduled classification**: the LLM classification Action processes one plugin batch every day at 00:43 UTC. `LLM_CLASSIFIER_LIMIT` controls the batch size, and scheduled runs do not automatically chain another batch.
 - **PR gates**: schema, identity uniqueness, path scope, immutable evidence, governance policy, and deterministic catalog generation must all pass.
 - **Publication**: scheduled discovery creates a governance-state PR. After the gates pass and the PR is merged, the Publisher regenerates the catalogs, rankings, and bilingual READMEs.
 

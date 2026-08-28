@@ -2,7 +2,7 @@ name: Classify plugins with LLM
 
 on:
   schedule:
-    - cron: '43 * * * *'
+    - cron: '43 0 * * *'
   workflow_dispatch:
     inputs:
       plugin:
@@ -56,7 +56,7 @@ jobs:
           LLM_CLASSIFIER_API_KEY: ${{ secrets.LLM_CLASSIFIER_API_KEY }}
           LLM_CLASSIFIER_BASE_URL: ${{ vars.LLM_CLASSIFIER_BASE_URL || 'https://codex.talktodo.cn/v1' }}
           LLM_CLASSIFIER_MODEL: ${{ vars.LLM_CLASSIFIER_MODEL || 'gpt-5.6-luna' }}
-          LLM_CLASSIFIER_LIMIT: ${{ github.event_name == 'schedule' && '200' || inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
+          LLM_CLASSIFIER_LIMIT: ${{ inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
           LLM_CLASSIFIER_CONCURRENCY: ${{ vars.LLM_CLASSIFIER_CONCURRENCY || '10' }}
           LLM_CLASSIFIER_PAUSED_UNTIL: ${{ vars.LLM_CLASSIFIER_PAUSED_UNTIL || '' }}
           LLM_CLASSIFIER_PLUGIN: ${{ inputs.plugin || '' }}
@@ -95,8 +95,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ steps.batch.outputs.number }}
           HEAD_SHA: ${{ steps.batch.outputs.head }}
-          DRAIN: ${{ github.event_name == 'schedule' || inputs.drain || false }}
-          LIMIT: ${{ github.event_name == 'schedule' && '200' || inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
+          DRAIN: ${{ inputs.drain || false }}
+          LIMIT: ${{ inputs.limit || vars.LLM_CLASSIFIER_LIMIT || '20' }}
           REMAINING: ${{ steps.classify.outputs.remaining }}
           PAUSED: ${{ steps.classify.outputs.paused }}
         run: |

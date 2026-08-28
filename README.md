@@ -55,6 +55,7 @@ Topic 中发现但尚未进入 Registry 的项目保持隐藏候选状态，不�
 - **准入证据**：检查公开且未归档的仓库、可解析的根 `package.json`、有效 `dsh.bundle`、Manifest 引用文件、README 指引和默认分支检查，并保存固定 commit SHA。准入流程不执行外部仓库代码。
 - **验证边界**：`verified` 表示结构和证据通过，不是安全审计或运行时兼容性保证；`legacy-pending` 只是显式的历史迁移状态。
 - **分类顺序**：人工复核 > 已接受的维护者分类 > LLM 分类 > Manifest/文本/关键词证据 > 历史迁移。人工结论不会被自动分类覆盖。
+- **定时分类**：LLM 分类 Action 每天 00:43 UTC（北京时间 08:43）处理一批插件，批次大小由 `LLM_CLASSIFIER_LIMIT` 配置；定时运行不会自动续跑下一批。
 - **PR 门禁**：Schema、身份唯一性、路径范围、不可变证据、治理策略和 Catalog 确定性必须全部通过。
 - **发布**：定时发现产生治理状态 PR；通过门禁后合并，Publisher 同步生成 Catalog、榜单和中英文 README。
 
