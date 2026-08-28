@@ -1,16 +1,84 @@
 {
-  "status": "failed",
+  "status": "classified",
+  "group": "build-development",
+  "category": "project-analysis",
+  "tags": [
+    "project-analysis",
+    "cli",
+    "testing",
+    "tool",
+    "file",
+    "terminal",
+    "workflow"
+  ],
+  "confidence": "high",
+  "confidenceScore": 0.98,
+  "reason": "The README describes a CLI and library for static inspection, compatibility verification, evidence reporting, quarantine handling, and profile recovery for DeepSeek Harness plugins, with optional target-code execution and profile mutation capabilities.",
+  "summaries": {
+    "zh": "用于对 DeepSeek Harness 插件进行静态检查、兼容性验证、证据报告、隔离安装及配置文件恢复。",
+    "en": "A CLI and library for statically inspecting DeepSeek Harness plugins, verifying compatibility, producing evidence reports, quarantining packages, and recovering profiles."
+  },
+  "risk": {
+    "level": "R2",
+    "capabilities": [
+      "Static inspection of local directories, npm packages, and GitHub repository sources",
+      "Resolution of network sources and archive extraction with bounded checks",
+      "Optional execution of a target entry module through verify-import or quarantine --allow-execute",
+      "Quarantine installation, promotion, disabling, restoration, and profile snapshot management",
+      "Generation of JSON, SARIF, registry, digest, and dependency evidence"
+    ],
+    "reasons": [
+      {
+        "code": "network_and_archive_processing",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "optional_target_code_execution",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "plugin_profile_mutation",
+        "evidenceRef": "readme"
+      },
+      {
+        "code": "filesystem_and_process_operations",
+        "evidenceRef": "readme"
+      }
+    ]
+  },
+  "governance": {
+    "schemaVersion": 1,
+    "policyVersion": "2026-08-18",
+    "finalDecision": "needs_human",
+    "riskLevel": "R2",
+    "capabilities": [
+      "credential.read",
+      "network.access",
+      "Static inspection of local directories, npm packages, and GitHub repository sources",
+      "Resolution of network sources and archive extraction with bounded checks",
+      "Optional execution of a target entry module through verify-import or quarantine --allow-execute",
+      "Quarantine installation, promotion, disabling, restoration, and profile snapshot management",
+      "Generation of JSON, SARIF, registry, digest, and dependency evidence"
+    ],
+    "autoMerge": false,
+    "shadowMode": false,
+    "reasons": [
+      "HIGH_RISK_CAPABILITY"
+    ],
+    "trace": {
+      "rulesPassed": true,
+      "aiDecision": "approve",
+      "aiConfidence": 0.98,
+      "maintainerVerified": false
+    }
+  },
   "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
+  "classifiedAt": "2026-08-28T06:20:29.608Z",
   "repositoryCommitSha": "5c4fde2ff5b0f622b54ae4aba9d63fd2e46e8697",
+  "evidenceHash": "9337a9231b5bb5c435d904f0cadb0ed1f12bd193f24579844b5b06234de3bd30",
+  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
   "cacheKey": "01db4251c942441f421ad608939c6d5942310b8fcc9e7133af1f900743c9458a",
-  "failureClass": "invalid_response",
-  "attemptCount": 2,
-  "firstFailedAt": "2026-08-21T20:03:53.652Z",
-  "lastAttemptAt": "2026-08-21T20:12:02.723Z",
-  "nextRetryAt": "2026-08-22T20:12:02.723Z",
-  "retryable": true,
-  "error": "/chat/completions: 400 {\n  \"error\": {\n    \"message\": \"Invalid schema for response_format 'governance_classify_v2': In context=('properties', 'schemaVersion'), schema must have a 'type' key.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"text.format.schema\",\n    \"code\": \"invalid_json_schema\"\n  }\n}",
   "shadowMode": false
 }
