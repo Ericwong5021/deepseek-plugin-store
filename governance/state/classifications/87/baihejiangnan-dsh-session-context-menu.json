@@ -1,81 +1,16 @@
 {
-  "status": "classified",
-  "group": "interface-experience",
-  "category": "navigation-panels",
-  "tags": [
-    "ui",
-    "desktop",
-    "context",
-    "tool",
-    "file",
-    "api",
-    "integration"
-  ],
-  "confidence": "high",
-  "confidenceScore": 0.95,
-  "reason": "该插件主要用于为 DeepSeek Harness 的桌面承载端补充更完整的右键上下文菜单交互，以会话/工作区/对话界面为核心场景并通过应用服务执行复制、路径与链接打开等操作，因此可归类为界面导航与面板交互增强。",
-  "summaries": {
-    "zh": "为 DeepSeek Harness 的桌面封装端提供更完整的原生风格右键菜单，支持会话、工作区和对话区域的常见操作与扩展入口。",
-    "en": "Provides a richer native-style context menu for DeepSeek Harness desktop wrapper interfaces, covering sessions, workspaces, and conversation areas with common actions and extension hooks."
-  },
-  "risk": {
-    "level": "R1",
-    "capabilities": [
-      "Provides custom context menus across session, workspace, settings, conversation output, and input contexts",
-      "Performs copy/paste/edit actions (cut/copy/paste/undo/redo/select all) via browser/host capabilities",
-      "Opens local paths and URLs through host/workspace runtime services",
-      "Registers extension hooks and dispatches context-menu event payloads for other plugins"
-    ],
-    "reasons": [
-      {
-        "code": "README describes an enhanced right-click experience for DeepSeek Harness desktop-wrapped clients, covering session, workspace, settings, conversation, link, and input contexts.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "Built-in context actions include copying selected text, open path, copy directory/session ID, open links, and editing actions for input fields.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "Compatibility notes state the plugin calls POST /api/host.openPath for directory opening and uses workspaces.openPath for links, and handles clipboard fallback behavior when writable access is unavailable.",
-        "evidenceRef": "readme"
-      },
-      {
-        "code": "package.json declares runtime client injection under web platform and depends on DeepSeek Harness runtime/workspace packages, indicating integration with application services rather than standalone execution.",
-        "evidenceRef": "package.json"
-      }
-    ]
-  },
-  "governance": {
-    "schemaVersion": 1,
-    "policyVersion": "2026-08-18",
-    "finalDecision": "needs_human",
-    "riskLevel": "R1",
-    "capabilities": [
-      "network.access",
-      "Provides custom context menus across session, workspace, settings, conversation output, and input contexts",
-      "Performs copy/paste/edit actions (cut/copy/paste/undo/redo/select all) via browser/host capabilities",
-      "Opens local paths and URLs through host/workspace runtime services",
-      "Registers extension hooks and dispatches context-menu event payloads for other plugins"
-    ],
-    "autoMerge": false,
-    "shadowMode": false,
-    "reasons": [
-      "UNVERIFIED_MAINTAINER"
-    ],
-    "trace": {
-      "rulesPassed": true,
-      "aiDecision": "approve",
-      "aiConfidence": 0.95,
-      "maintainerVerified": false
-    }
-  },
-  "model": "gpt-5.3-codex-spark",
+  "status": "failed",
+  "model": "gpt-5.6-luna",
   "promptVersion": "classify-v2",
   "policyVersion": "2026-08-18",
-  "classifiedAt": "2026-08-18T17:58:57.844Z",
-  "repositoryCommitSha": "fc9ab4692fc9d1d9825b671c56abf21aeabca938",
-  "evidenceHash": "a76393849df31c555b34f2c084bf3d36911d30fd14e960c4b09175398f2f35e6",
-  "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-  "cacheKey": "6e36e22575504743ef1d170fb07b3320cc8fe07426b562c78ce31590773723d8",
+  "repositoryCommitSha": "782c890056531b8a68643fdd644837c598e73831",
+  "cacheKey": "30344248383d5d244322ac3b4029d71d7a873dd24d78780cd291505aac16fd8d",
+  "failureClass": "network_error",
+  "attemptCount": 1,
+  "firstFailedAt": "2026-08-29T07:22:41.441Z",
+  "lastAttemptAt": "2026-08-29T07:22:41.441Z",
+  "nextRetryAt": "2026-08-29T13:22:41.441Z",
+  "retryable": true,
+  "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
   "shadowMode": false
 }
