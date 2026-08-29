@@ -21,7 +21,7 @@
 
 This directory discovers candidates from the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic, Editor Picks, and submission issues. Discovery is not admission; public entries come from the Registry, and new admissions require immutable commit evidence plus `package.json:dsh.bundle`. Migrated records may remain `legacy-pending`, but they are not treated as verified plugins.
 
-> **1711 listed plugins** · **5194 hidden candidates** · **3456 structurally ready candidates** · Last governance data: 2026-08-29 02:19 UTC
+> **1711 listed plugins** · **5194 hidden candidates** · **3456 structurally ready candidates** · Last governance data: 2026-08-29 07:22 UTC
 
 Projects discovered through the topic remain hidden candidates until admitted to the Registry and do not receive a direct DSH installation entry.
 
