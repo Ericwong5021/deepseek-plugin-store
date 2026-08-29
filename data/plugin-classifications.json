@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-28T06:22:35.889Z",
+  "updatedAt": "2026-08-29T07:22:48.299Z",
   "classifications": {
     "01virex-dsh-foxy-jumpscare": {
       "status": "classified",
@@ -6591,83 +6591,19 @@
       "shadowMode": false
     },
     "2672243194-dsh-read-url": {
-      "status": "classified",
-      "group": "research-knowledge",
-      "category": "search-browsing",
-      "tags": [
-        "browser",
-        "search",
-        "research",
-        "document",
-        "data",
-        "tool",
-        "api"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A URL-reading and web-content extraction plugin that fetches user-supplied pages, feeds, and APIs, then returns cleaned text or Markdown with batch reading and bounded same-host crawling.",
-      "summaries": {
-        "zh": "读取网页、JSON API 和 RSS/Atom feed，提取干净正文并以紧凑文本或 Markdown 返回，支持批量读取与限定范围的网站链接遍历。",
-        "en": "Reads webpages, JSON APIs, and RSS/Atom feeds, extracting clean content as compact text or Markdown with batch reading and bounded same-host crawling."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Fetches content from user-supplied HTTP(S) URLs",
-          "Extracts and formats webpage main content",
-          "Reads JSON, RSS, and Atom feeds",
-          "Crawls same-host links within configured limits",
-          "Caches fetched results temporarily"
-        ],
-        "reasons": [
-          {
-            "code": "external_network_read",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "content_extraction",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "same_host_crawling",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Fetches content from user-supplied HTTP(S) URLs",
-          "Extracts and formats webpage main content",
-          "Reads JSON, RSS, and Atom feeds",
-          "Crawls same-host links within configured limits",
-          "Caches fetched results temporarily"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:57:08.405Z",
-      "repositoryCommitSha": "a3e40b2f9ebc5d68a2f46288feee839cb9223565",
-      "evidenceHash": "b205d275177cccaaf2992e1937dfdedc4d01ee7e6f0f3ef6bae1ce067b7f1e5e",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "506fd597116efd628e36db05d0111f9d13ee82eacc86e46a2c354a948de83dfc",
+      "repositoryCommitSha": "c6ae64ade13167565d19db093148a2e1b76c29c5",
+      "cacheKey": "9a874cd9377e67f3b18c9b3ba2f0f26de2bb96de0eb4dc11f05132748129fc0a",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:28.519Z",
+      "lastAttemptAt": "2026-08-29T07:22:28.519Z",
+      "nextRetryAt": "2026-08-29T13:22:28.519Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "2672243194-dsh-tally": {
@@ -9521,73 +9457,19 @@
       "shadowMode": false
     },
     "6mikao9-dsh-wsl-workspace": {
-      "status": "classified",
-      "group": "tools-data",
-      "category": "files-terminal",
-      "tags": [
-        "terminal",
-        "file",
-        "desktop",
-        "tool",
-        "ui"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "The README describes a GUI plugin for creating WSL workspaces where agent bash commands and file operations run against a local Linux distribution, making files and terminal integration its primary user-facing purpose.",
-      "summaries": {
-        "zh": "在 DeepSeek Harness 网页界面中添加 WSL 工作区，并在选定的本地 Linux 发行版中执行命令及读写文件。",
-        "en": "Adds WSL workspaces to the DeepSeek Harness web interface so commands and file operations can run in a selected local Linux distribution."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Adds WSL workspaces through the DeepSeek Harness web GUI",
-          "Executes bash commands inside a selected local WSL distribution",
-          "Reads, writes, and edits WSL files through the WSL share",
-          "Provides access to Windows files through /mnt paths"
-        ],
-        "reasons": [
-          {
-            "code": "local_command_execution",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "filesystem_access",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "Adds WSL workspaces through the DeepSeek Harness web GUI",
-          "Executes bash commands inside a selected local WSL distribution",
-          "Reads, writes, and edits WSL files through the WSL share",
-          "Provides access to Windows files through /mnt paths"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:57:36.531Z",
-      "repositoryCommitSha": "3861bd984c3877cfca71fb51f81e688e0ef7f238",
-      "evidenceHash": "a05b8e961cc8904b0d7fff63766118b3502329c298d3676878a1fd376d1ae831",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "26036d8edb1e946ea3c32db48223e4336a6a2eac6aadae19d2ee208fde688289",
+      "repositoryCommitSha": "1e6ffeb6cf942c5855ee8d4fbbf66b7e86b8d64e",
+      "cacheKey": "83ac649d37aa999d1734aa5ce8ce25ccaf3f25761242be5f42daac32df5df4e6",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:26.953Z",
+      "lastAttemptAt": "2026-08-29T07:22:26.953Z",
+      "nextRetryAt": "2026-08-29T13:22:26.953Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "6pofx-dsh-go": {
@@ -12379,70 +12261,19 @@
       "shadowMode": false
     },
     "a179-sanae-dsh-auto-collapse": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "themes-layout",
-      "tags": [
-        "layout",
-        "ui",
-        "browser",
-        "chat"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A frontend DeepSeek Harness plugin that presents conversation tool calls and thinking blocks in collapsible, animated summaries while preserving the underlying message content.",
-      "summaries": {
-        "zh": "在 DeepSeek Harness 网页聊天界面中自动折叠工具调用和思考内容，仅保留简洁摘要与模型最终正文。",
-        "en": "Automatically collapses tool calls and thinking content in the DeepSeek Harness web chat interface into concise summaries while keeping the model’s final response visible."
-      },
-      "risk": {
-        "level": "R0",
-        "capabilities": [
-          "modifies browser DOM presentation",
-          "collapses and expands tool-call and thinking blocks",
-          "adds display labels and transition animations"
-        ],
-        "reasons": [
-          {
-            "code": "presentation_only",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "no_external_service_or_data_access_described",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R1",
-        "capabilities": [
-          "modifies browser DOM presentation",
-          "collapses and expands tool-call and thinking blocks",
-          "adds display labels and transition animations"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "UNVERIFIED_MAINTAINER"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:58:13.683Z",
-      "repositoryCommitSha": "d1d09407f876f7706b3e3501b7b00f80641ebc82",
-      "evidenceHash": "7935cfcdee417513d3ff74b15d81b081e9395978bf38bd2ef214aea55534daf8",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "ca5cab7784fb1cea51289196ed8e09b182994f1bcaddaf415ac47ccbbd4f7834",
+      "repositoryCommitSha": "eb5d46e428fdc02688c936920259a44068d957b5",
+      "cacheKey": "429cd078262d54f6cd8c83fc114f54d90ea8cb3741e8a126542473699926f69d",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:26.074Z",
+      "lastAttemptAt": "2026-08-29T07:22:26.074Z",
+      "nextRetryAt": "2026-08-29T13:22:26.074Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "a179-sanae-dsh-code-check": {
@@ -14680,75 +14511,19 @@
       "shadowMode": false
     },
     "acidgr-dsh-web-lan-access": {
-      "status": "classified",
-      "group": "tools-data",
-      "category": "general-utilities",
-      "tags": [
-        "api",
-        "browser",
-        "integration",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.96,
-      "reason": "Provides LAN and remote access support for the DeepSeek Harness Web UI by binding the server broadly, widening API host trust, and injecting a UUID polyfill; human review is warranted because the README documents unauthenticated network exposure.",
-      "summaries": {
-        "zh": "为 DeepSeek Harness Web UI 提供局域网和远程访问支持，包括服务绑定调整、API 主机信任扩展及 UUID polyfill 注入。",
-        "en": "Enables LAN and remote access to the DeepSeek Harness Web UI through server binding adjustments, expanded API host trust, and UUID polyfill injection."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Binds the web server to 0.0.0.0 for LAN and remote access",
-          "Injects a UUID polyfill into the served Web UI index page",
-          "Expands API trusted-host handling for non-internal IPv4 interfaces"
-        ],
-        "reasons": [
-          {
-            "code": "network_exposure",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "unauthenticated_remote_access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "runtime_web_content_injection",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "network.access",
-          "Binds the web server to 0.0.0.0 for LAN and remote access",
-          "Injects a UUID polyfill into the served Web UI index page",
-          "Expands API trusted-host handling for non-internal IPv4 interfaces"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "needs_human",
-          "aiConfidence": 0.96,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:58:40.191Z",
-      "repositoryCommitSha": "9e686b5b8a0c9d6dccdfe193f37d18e304d0a6af",
-      "evidenceHash": "44cc9a07a32ab67655b8cdd5c7705eef37a5f41d0d47f7b4726232a5d67e3b0f",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "3c17a7873506c8e1cd157babd0a24bda26629af3d1915d91f292ced16ed7f279",
+      "repositoryCommitSha": "8eeb1d0cb79a6e199bde94f16f1e2f2b5a818f01",
+      "cacheKey": "10b20132351b1b9e0798c704e1a7550d760493060bca4414b9aae86f2eca876c",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:24.880Z",
+      "lastAttemptAt": "2026-08-29T07:22:24.880Z",
+      "nextRetryAt": "2026-08-29T13:22:24.880Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "acidgr-dsh-web-mobile-fix": {
@@ -16067,85 +15842,19 @@
       "shadowMode": false
     },
     "adoresever-graph-memory": {
-      "status": "classified",
-      "group": "agents-workflows",
-      "category": "memory-context",
-      "tags": [
-        "memory",
-        "context",
-        "knowledge",
-        "search",
-        "data",
-        "agent",
-        "api"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.99,
-      "reason": "Graph Memory is primarily a cross-session agent memory and context plugin that extracts structured knowledge, stores it locally, and retrieves relevant subgraphs for prompt assembly.",
-      "summaries": {
-        "zh": "Graph Memory 从对话中提取结构化知识并持久化保存，以便在后续会话中检索相关记忆并补充智能体上下文。",
-        "en": "Graph Memory extracts and stores structured knowledge from conversations so relevant memories can be retrieved across sessions and added to agent context."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Extracts structured TASK, SKILL, and EVENT knowledge from conversations",
-          "Persists conversation-derived graph data in a local SQLite store",
-          "Performs lexical and optional vector-based semantic retrieval across sessions",
-          "Injects recalled memory into agent prompt assembly",
-          "Provides explicit status, search, record, and statistics tools",
-          "Can use configured external embedding providers"
-        ],
-        "reasons": [
-          {
-            "code": "conversation_data_persistence",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "prompt_context_injection",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "optional_external_embedding_service",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Extracts structured TASK, SKILL, and EVENT knowledge from conversations",
-          "Persists conversation-derived graph data in a local SQLite store",
-          "Performs lexical and optional vector-based semantic retrieval across sessions",
-          "Injects recalled memory into agent prompt assembly",
-          "Provides explicit status, search, record, and statistics tools",
-          "Can use configured external embedding providers"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.99,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:58:52.585Z",
-      "repositoryCommitSha": "83ffb2771022a8d323feefc280ae4f198d8b85e5",
-      "evidenceHash": "f14a44dafc6c9e7d56ff21563358449d959f3212da83495aef1769626b940eba",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "c0044c07fe4c590cce4ad6302329ac2540da3f894418d4c44666f906a817e8df",
+      "repositoryCommitSha": "443e6ccb9d1d37169404977199398f4b4935c4fc",
+      "cacheKey": "7b3c15a121301e69990ce30a44a6177d8840eb99d687d90e7f17ecbc3ba14923",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:25.674Z",
+      "lastAttemptAt": "2026-08-29T07:22:25.674Z",
+      "nextRetryAt": "2026-08-29T13:22:25.674Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "aeanfx-dsh-plugin-dated-folders": {
@@ -17164,78 +16873,19 @@
       "shadowMode": false
     },
     "ahggg-dsh-side-chat": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "navigation-panels",
-      "tags": [
-        "chat",
-        "context",
-        "ui",
-        "mobile",
-        "agent"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.99,
-      "reason": "A DSH interface plugin that adds a side-chat panel for asking focused questions about selected message text while keeping the main conversation visible; it also supports annotated selections and uses a forked session that can perform real shared-workspace tool actions.",
-      "summaries": {
-        "zh": "在 DeepSeek Harness 中提供侧边聊天面板，可针对选中的消息文本进行独立追问、添加批注并将内容带回主对话。",
-        "en": "Adds a DeepSeek Harness side-chat panel for focused questions about selected message text, annotated passages, and independent follow-up sessions alongside the main conversation."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Select text from completed messages",
-          "Open a focused side conversation",
-          "Fork a DSH session from the selected message",
-          "Add annotated passages to the main composer",
-          "Choose a model and reasoning effort for Side Chat",
-          "Perform file changes, commands, and other tool actions in the shared workspace"
-        ],
-        "reasons": [
-          {
-            "code": "shared_workspace_tool_side_effects",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "child_session_persists_history_and_storage",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "network.access",
-          "Select text from completed messages",
-          "Open a focused side conversation",
-          "Fork a DSH session from the selected message",
-          "Add annotated passages to the main composer",
-          "Choose a model and reasoning effort for Side Chat",
-          "Perform file changes, commands, and other tool actions in the shared workspace"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.99,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:59:04.658Z",
-      "repositoryCommitSha": "553a9aeb5c4adfc8dcb109ff40774f0925528dea",
-      "evidenceHash": "6e916a15df915a838496ced3aaf16d2807dafd74c19fb1d7f5e13a6e2523de81",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "8694a3a5d20462d636ebc5a4c6c83dc67d8f1e360efb0062697721efadef9bd2",
+      "repositoryCommitSha": "e7cd447d97825a944b3d83e2a34488485dc1f088",
+      "cacheKey": "4916cf1e89787cf6799b01c3690b6a8ece18fbffae4f78513f1c7ce118ade5bd",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:25.630Z",
+      "lastAttemptAt": "2026-08-29T07:22:25.630Z",
+      "nextRetryAt": "2026-08-29T13:22:25.630Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "ahikl-dsh-desktop": {
@@ -18787,84 +18437,19 @@
       "shadowMode": false
     },
     "aitabby-dockyard-dsh": {
-      "status": "classified",
-      "group": "integrations-communication",
-      "category": "external-services",
-      "tags": [
-        "api",
-        "browser",
-        "cli",
-        "desktop",
-        "integration",
-        "workflow"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.97,
-      "reason": "A DeepSeek Harness plugin that integrates official OAuth and client sessions from multiple AI providers into a shared account pool, with provider-native requests, model metadata, quota status, and account selection policies.",
-      "summaries": {
-        "zh": "Dockyard DSH 将多个 AI 服务商的官方 OAuth 和客户端会话接入 DeepSeek Harness，提供统一的账号池、模型目录、额度状态及请求适配。",
-        "en": "Dockyard DSH connects official OAuth and client sessions from multiple AI providers to DeepSeek Harness with shared account management, model and quota metadata, and provider-native request adapters."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Opens official provider OAuth authorization flows",
-          "Scans existing local provider client or CLI sessions",
-          "Stores provider refresh tokens in OS credential storage",
-          "Manages multiple provider accounts with selection and failover policies",
-          "Routes requests through provider-native adapters",
-          "Reads live provider model, plan, and quota metadata"
-        ],
-        "reasons": [
-          {
-            "code": "credential_access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "external_network_requests",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "local_session_scanning",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_changes",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Opens official provider OAuth authorization flows",
-          "Scans existing local provider client or CLI sessions",
-          "Stores provider refresh tokens in OS credential storage",
-          "Manages multiple provider accounts with selection and failover policies",
-          "Routes requests through provider-native adapters",
-          "Reads live provider model, plan, and quota metadata"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "MANIFEST_REFERENCES_VALID"
-        ],
-        "trace": {
-          "rulesPassed": false,
-          "aiDecision": "approve",
-          "aiConfidence": 0.97,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:59:24.790Z",
-      "repositoryCommitSha": "8dca9e3087c65c6e9277b9b16a4d93640d774859",
-      "evidenceHash": "7ed5c7aac91870b52596b0827aac45b3c8c5fd69d055b7b87279b9a8548da878",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "f9b472aa2a470254a3e6c3cfd763cdd16014efa43778c4d2c860faf711c71850",
+      "repositoryCommitSha": "7af23286c2a4a1083af9a8ea7d25767d7d94d894",
+      "cacheKey": "5dbd3e625e69d5f207f56f53750b26fc857faebef1e5ae8bb09f821792b7bb86",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:26.734Z",
+      "lastAttemptAt": "2026-08-29T07:22:26.734Z",
+      "nextRetryAt": "2026-08-29T13:22:26.734Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "ajubest-dsh-plugin-optimization": {
@@ -23185,90 +22770,19 @@
       "shadowMode": false
     },
     "amlyczz-dsh-lark-link": {
-      "status": "classified",
-      "group": "integrations-communication",
-      "category": "external-services",
-      "tags": [
-        "agent",
-        "api",
-        "chat",
-        "collaboration",
-        "integration",
-        "automation",
-        "file",
-        "terminal"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A DeepSeek Harness plugin that bridges agent sessions, commands, media, and task execution with Feishu/Lark conversations through persistent messaging and session management.",
-      "summaries": {
-        "zh": "将 DeepSeek Harness 智能体接入飞书/Lark，支持消息交互、卡片命令、会话管理、媒体传输和长任务执行。",
-        "en": "Connects DeepSeek Harness agents to Feishu/Lark with message interaction, card-based commands, session management, media transfer, and long-running task execution."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Bidirectional Feishu/Lark messaging integration",
-          "Interactive agent sessions with mode, model, permission, workspace, and goal controls",
-          "Agent execution with bash, file, subagent, and workflow tools",
-          "Inbound image and file handling plus outbound local file sharing",
-          "Persistent message queues and session recovery",
-          "Diagnostic archive generation containing session logs and configuration data"
-        ],
-        "reasons": [
-          {
-            "code": "external_messaging",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "agent_tool_execution",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "file_and_media_transfer",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "sensitive_diagnostics",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Bidirectional Feishu/Lark messaging integration",
-          "Interactive agent sessions with mode, model, permission, workspace, and goal controls",
-          "Agent execution with bash, file, subagent, and workflow tools",
-          "Inbound image and file handling plus outbound local file sharing",
-          "Persistent message queues and session recovery",
-          "Diagnostic archive generation containing session logs and configuration data"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:00:01.158Z",
-      "repositoryCommitSha": "1a48d4865a92acdb87ec806f940241596c06835b",
-      "evidenceHash": "72e5ee865fe8ee20df6530f2da8a0e61e0d07146f7691ac1f078576e183fbe83",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "a9b4e142494ee0353d7c14d2a2e424d668aebe6cbae029ad4522e7767f6496f3",
+      "repositoryCommitSha": "ea3e6082dc890e8fee352977531f0958a07bb1a0",
+      "cacheKey": "efddb5e8b6be63e2406a7f283691b116ba92ca69665865a2333b72e31622e363",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:29.073Z",
+      "lastAttemptAt": "2026-08-29T07:22:29.073Z",
+      "nextRetryAt": "2026-08-29T13:22:29.073Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "amouren7-dsh-model-switch": {
@@ -27104,78 +26618,19 @@
       "shadowMode": false
     },
     "anysearch-team-anysearch-dsh": {
-      "status": "classified",
-      "group": "research-knowledge",
-      "category": "search-browsing",
-      "tags": [
-        "search",
-        "browser",
-        "api",
-        "research",
-        "agent",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "The README describes a DeepSeek Harness plugin whose primary purpose is providing real-time web search, URL fetching, vertical search, and batch search through AnySearch.",
-      "summaries": {
-        "zh": "为 DeepSeek Harness 提供实时网页搜索、公开网址内容提取、垂直搜索和批量搜索能力。",
-        "en": "Provides DeepSeek Harness with real-time web search, public URL content fetching, vertical search, and batch search capabilities."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "real-time web search",
-          "public URL content fetching and cleaning",
-          "vertical and parameterized search",
-          "concurrent batch search",
-          "optional API key credential use"
-        ],
-        "reasons": [
-          {
-            "code": "external-web-access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "credential-configuration",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "real-time web search",
-          "public URL content fetching and cleaning",
-          "vertical and parameterized search",
-          "concurrent batch search",
-          "optional API key credential use"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:00:34.210Z",
-      "repositoryCommitSha": "dce7a51c74b80f8fa51e53f510a572ab6dd60f28",
-      "evidenceHash": "94fcbf21996adceef8aaa688e1701aef4dc91c32e04d522a0354a7596c256a2a",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "15e5922cffb205dfbb7fe7e3f7945fe97409165cd3291f597b4f40f4654924a3",
+      "repositoryCommitSha": "3ccdef05e2b502509415b023e206a4c9f6afb038",
+      "cacheKey": "90f99e70e55f7e660a5bfbae646627eae76b81ba99fb616b5cda04abbbcc5a3a",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:27.924Z",
+      "lastAttemptAt": "2026-08-29T07:22:27.924Z",
+      "nextRetryAt": "2026-08-29T13:22:27.924Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "anyuer678-dsh-logtimeline": {
@@ -32466,171 +31921,35 @@
       "shadowMode": false
     },
     "awu12277-dsh-stock-watch": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "visualization",
-      "tags": [
-        "visualization",
-        "data",
-        "browser",
-        "api",
-        "layout",
-        "monitoring",
-        "chat",
-        "skill"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "The README clearly describes a browser stock-monitoring overlay with real-time market data, charts, watchlist groups, target-price markers, and analysis shortcuts; visualization is the primary user-facing purpose.",
-      "summaries": {
-        "zh": "在 DeepSeek Harness 网页界面中提供可折叠的 A 股自选股行情面板，支持实时数据、分时与 K 线图表、分组管理及目标价标记。",
-        "en": "Adds a collapsible A-share watchlist panel to the DeepSeek Harness web interface with real-time data, intraday and candlestick charts, grouping, and target-price markers."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Provides a draggable, collapsible browser overlay for monitoring selected A-share stocks",
-          "Fetches real-time quotes, minute data, and candlestick data from Tencent Finance endpoints",
-          "Reads stock configuration from ~/.stocking/settings.json and persists settings in browser localStorage",
-          "Copies bundled skills into the user skills directory unless disabled by configuration",
-          "Creates DSH conversations and sends predefined stock-analysis prompts"
-        ],
-        "reasons": [
-          {
-            "code": "external_network_requests",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "local_filesystem_read_write",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "creates_conversations_and_sends_prompts",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "network.access",
-          "Provides a draggable, collapsible browser overlay for monitoring selected A-share stocks",
-          "Fetches real-time quotes, minute data, and candlestick data from Tencent Finance endpoints",
-          "Reads stock configuration from ~/.stocking/settings.json and persists settings in browser localStorage",
-          "Copies bundled skills into the user skills directory unless disabled by configuration",
-          "Creates DSH conversations and sends predefined stock-analysis prompts"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:04:09.625Z",
-      "repositoryCommitSha": "0bd76f3f72b647249b2168fc50ae4955c6c86575",
-      "evidenceHash": "ee5c49dc640281e3e2f8130d94ff140f98bd116d42c658eb2e67cc4da6d12745",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "1893a96c8f5e7f48a024afeedfb1b93e1ab82e9f4c80c22b5596dd36b51d249e",
+      "repositoryCommitSha": "0a3c54b536529a9e4ea683793c86ff5c935a5711",
+      "cacheKey": "ea2574b222a9c59eaf8c4722d0647347ba9e1f390029a63d352b84f5f9ef7c21",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:30.142Z",
+      "lastAttemptAt": "2026-08-29T07:22:30.142Z",
+      "nextRetryAt": "2026-08-29T13:22:30.142Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "ax1202-ax-feishu-bridge": {
-      "status": "classified",
-      "group": "integrations-communication",
-      "category": "external-services",
-      "tags": [
-        "chat",
-        "integration",
-        "api",
-        "automation",
-        "tool",
-        "file",
-        "image",
-        "workflow"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.95,
-      "reason": "该插件主要用于把飞书/Lark 聊天与 Pi 或 DeepSeek Harness 连接成桥接通道，实现消息、附件、会话与命令在两侧的同步与交互，因此分类为“外部服务”。依据仓库描述与清单可见其核心在于聊天集成、会话路由、运行时命令控制及本地配置/状态文件管理，不属于代码生成或纯开发调试类插件。",
-      "summaries": {
-        "zh": "该插件用于将飞书/Lark 聊天与 Pi 或 DeepSeek Harness 打通，实现对话消息、附件和控制指令在聊天与本地智能体之间的同步与转换。",
-        "en": "This plugin connects Feishu/Lark chat with Pi or DeepSeek Harness so users can route messages, attachments, and control commands between chat and the local agent."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Bridges Feishu/Lark chat events with Pi/DSH agent sessions",
-          "Supports private and group chat routing with per-topic/session context",
-          "Accepts chat attachments and forwards interactive card content",
-          "Provides runtime controls via chat commands and environment/config settings",
-          "Runs local webhook/WS callback handling for card actions"
-        ],
-        "reasons": [
-          {
-            "code": "README states configuration uses Feishu/Lark App ID and Secret plus FEISHU_* / HARNESS_* environment variables for bridge setup.",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "Package metadata exports Pi and harness adapter entry points and declares a Pi extension and DSH bundle integration.",
-            "evidenceRef": "package.json"
-          },
-          {
-            "code": "README describes attachment handling for images and code/text files, as well as interactive card parsing before sending context to the agent.",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "README documents webhook/card callback host, path, and port settings, indicating external API interaction and local listener configuration.",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "README lists local config/state files (for credentials, session mapping, runtime overrides, logs) under agent directories.",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "Bridges Feishu/Lark chat events with Pi/DSH agent sessions",
-          "Supports private and group chat routing with per-topic/session context",
-          "Accepts chat attachments and forwards interactive card content",
-          "Provides runtime controls via chat commands and environment/config settings",
-          "Runs local webhook/WS callback handling for card actions"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.95,
-          "maintainerVerified": false
-        }
-      },
-      "model": "gpt-5.3-codex-spark",
+      "status": "failed",
+      "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-18T18:09:11.613Z",
-      "repositoryCommitSha": "479de00b82eda3a3458bff45bb395bd674df90d7",
-      "evidenceHash": "77ec22ed0a745e10f394bdd651e153234421a6b382f4756e4ab130d85c51e4b1",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "9846be3907a8f51af00e0475d11b7cec7c9dc90c7a5634779c0fd8173c125eb4",
+      "repositoryCommitSha": "af56acbb1d4cf40dcbfbbbf4ae0fb8e8b15702bc",
+      "cacheKey": "9bcdbe9a272e5aac9fa42fa2fe604bd01f7b09e28033c9574826bdf72ff3e675",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:46.098Z",
+      "lastAttemptAt": "2026-08-29T07:22:46.098Z",
+      "nextRetryAt": "2026-08-29T13:22:46.098Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "axiaohungry-dsh-llm-codebuddy": {
@@ -34474,84 +33793,19 @@
       "shadowMode": false
     },
     "baihejiangnan-dsh-session-context-menu": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "navigation-panels",
-      "tags": [
-        "ui",
-        "desktop",
-        "context",
-        "tool",
-        "file",
-        "api",
-        "integration"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.95,
-      "reason": "该插件主要用于为 DeepSeek Harness 的桌面承载端补充更完整的右键上下文菜单交互，以会话/工作区/对话界面为核心场景并通过应用服务执行复制、路径与链接打开等操作，因此可归类为界面导航与面板交互增强。",
-      "summaries": {
-        "zh": "为 DeepSeek Harness 的桌面封装端提供更完整的原生风格右键菜单，支持会话、工作区和对话区域的常见操作与扩展入口。",
-        "en": "Provides a richer native-style context menu for DeepSeek Harness desktop wrapper interfaces, covering sessions, workspaces, and conversation areas with common actions and extension hooks."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Provides custom context menus across session, workspace, settings, conversation output, and input contexts",
-          "Performs copy/paste/edit actions (cut/copy/paste/undo/redo/select all) via browser/host capabilities",
-          "Opens local paths and URLs through host/workspace runtime services",
-          "Registers extension hooks and dispatches context-menu event payloads for other plugins"
-        ],
-        "reasons": [
-          {
-            "code": "README describes an enhanced right-click experience for DeepSeek Harness desktop-wrapped clients, covering session, workspace, settings, conversation, link, and input contexts.",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "Built-in context actions include copying selected text, open path, copy directory/session ID, open links, and editing actions for input fields.",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "Compatibility notes state the plugin calls POST /api/host.openPath for directory opening and uses workspaces.openPath for links, and handles clipboard fallback behavior when writable access is unavailable.",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "package.json declares runtime client injection under web platform and depends on DeepSeek Harness runtime/workspace packages, indicating integration with application services rather than standalone execution.",
-            "evidenceRef": "package.json"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R1",
-        "capabilities": [
-          "network.access",
-          "Provides custom context menus across session, workspace, settings, conversation output, and input contexts",
-          "Performs copy/paste/edit actions (cut/copy/paste/undo/redo/select all) via browser/host capabilities",
-          "Opens local paths and URLs through host/workspace runtime services",
-          "Registers extension hooks and dispatches context-menu event payloads for other plugins"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "UNVERIFIED_MAINTAINER"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.95,
-          "maintainerVerified": false
-        }
-      },
-      "model": "gpt-5.3-codex-spark",
+      "status": "failed",
+      "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-18T17:58:57.844Z",
-      "repositoryCommitSha": "fc9ab4692fc9d1d9825b671c56abf21aeabca938",
-      "evidenceHash": "a76393849df31c555b34f2c084bf3d36911d30fd14e960c4b09175398f2f35e6",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "6e36e22575504743ef1d170fb07b3320cc8fe07426b562c78ce31590773723d8",
+      "repositoryCommitSha": "782c890056531b8a68643fdd644837c598e73831",
+      "cacheKey": "30344248383d5d244322ac3b4029d71d7a873dd24d78780cd291505aac16fd8d",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:41.441Z",
+      "lastAttemptAt": "2026-08-29T07:22:41.441Z",
+      "nextRetryAt": "2026-08-29T13:22:41.441Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "bainianlaoyao-bash-on-windows": {
@@ -39705,71 +38959,19 @@
       "shadowMode": false
     },
     "better-er-dsh-tool-autoexpand": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "themes-layout",
-      "tags": [
-        "browser",
-        "layout",
-        "ui",
-        "chat",
-        "automation"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A browser-side DSH plugin that automatically expands newly arriving top-level tool-call result cards and provides an in-sidebar enable/disable switch, without replacing native renderers or using host behavior.",
-      "summaries": {
-        "zh": "这是一个用于 DSH 浏览器界面的客户端插件，可自动展开新到达的顶层工具调用结果卡片，并通过侧栏开关控制该功能。",
-        "en": "A client-side DSH browser plugin that automatically expands newly arrived top-level tool-call result cards and provides a sidebar toggle to control the behavior."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Observes newly rendered tool-call cards in the browser interface",
-          "Automatically expands top-level collapsed tool-call result rows",
-          "Injects a sidebar toggle to enable or disable the behavior"
-        ],
-        "reasons": [
-          {
-            "code": "client_ui_dom_interaction",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "no_host_or_network_behavior_described",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R1",
-        "capabilities": [
-          "Observes newly rendered tool-call cards in the browser interface",
-          "Automatically expands top-level collapsed tool-call result rows",
-          "Injects a sidebar toggle to enable or disable the behavior"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "UNVERIFIED_MAINTAINER"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:04:56.145Z",
-      "repositoryCommitSha": "89b9a094201d5c97c0adc0d608543fc242af34d1",
-      "evidenceHash": "7fc04b852f0c98245d879a42adb2bc7940e8fc72d0449f77dc1a40a945f33910",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "62d511738148a172d1123d9dcb21a97771d761675393c01d0eeec363f68dd417",
+      "repositoryCommitSha": "c6cd51dbf79ef41f35b108dc6dc5c8411a3acbd9",
+      "cacheKey": "98d9369a626df1cc73c6c021f441fe3ebf81f188ff652b4e8f9d364f42928ae5",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:35.598Z",
+      "lastAttemptAt": "2026-08-29T07:22:35.598Z",
+      "nextRetryAt": "2026-08-29T13:22:35.598Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "beyondxinxin-deepseek-harness-box": {
@@ -40693,79 +39895,19 @@
       "shadowMode": false
     },
     "bill9109-dsh-drag-and-drop": {
-      "status": "classified",
-      "group": "tools-data",
-      "category": "files-terminal",
-      "tags": [
-        "file",
-        "desktop",
-        "browser",
-        "ui",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A DSH Web UI plugin that accepts dragged local files or folders, resolves their native absolute paths, and inserts those paths into the conversation input without uploading or modifying the files.",
-      "summaries": {
-        "zh": "在 DSH Web UI 中拖入本地文件或文件夹，解析其原始绝对路径并插入当前对话输入框。",
-        "en": "Drag local files or folders into the DSH Web UI to resolve and insert their original absolute paths into the current conversation input."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Handles file and folder drag-and-drop in the DSH Web UI",
-          "Resolves local absolute filesystem paths using workspace searches, OS indexes, and bounded directory searches",
-          "Reads file metadata and may read sampled or full content to distinguish duplicate candidates",
-          "Writes resolved paths into the current conversation input"
-        ],
-        "reasons": [
-          {
-            "code": "local_filesystem_access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "browser_ui_integration",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "local_path_resolution",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "computer.control",
-          "network.access",
-          "Handles file and folder drag-and-drop in the DSH Web UI",
-          "Resolves local absolute filesystem paths using workspace searches, OS indexes, and bounded directory searches",
-          "Reads file metadata and may read sampled or full content to distinguish duplicate candidates",
-          "Writes resolved paths into the current conversation input"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:04:59.569Z",
-      "repositoryCommitSha": "3b70ec46926a37d96d08d396f4948e4509126ecd",
-      "evidenceHash": "88da2f2e44161626e6acfb3119c6475564c56118027de231917fd6c07c093503",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "5cfaa928b0cd653f0d6e545ddfb526ee40632f2e7ed93068ef7cbca0334f39e9",
+      "repositoryCommitSha": "55ec0368c31339b6430bf6705af53738d4068a54",
+      "cacheKey": "0177929f02a7d943979ecfc1704f49953af7d32100997304f2c709f8a1a5eaa1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:37.239Z",
+      "lastAttemptAt": "2026-08-29T07:22:37.239Z",
+      "nextRetryAt": "2026-08-29T13:22:37.239Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "bill9109-dsh-web-ui-notify": {
@@ -45698,81 +44840,19 @@
       "shadowMode": false
     },
     "bruc3van-dsh-desktop-safe-market": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "navigation-panels",
-      "tags": [
-        "ui",
-        "layout",
-        "tool",
-        "integration",
-        "skill",
-        "desktop"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.97,
-      "reason": "A settings navigation panel that provides a curated plugin marketplace, lists skills and installed plugins, and supports review-oriented installation handoff plus local enable, disable, and uninstall actions.",
-      "summaries": {
-        "zh": "一个在设置中提供精选插件市场、技能列表和已安装插件管理功能的导航面板，并将安装审查交接给会话中的 Agent。",
-        "en": "A settings navigation panel for browsing curated plugins, viewing skills and installed plugins, and handing installation review to an agent session."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Reads a remote plugin catalog from configured GitHub or Gitee sources when enabled",
-          "Displays curated plugins, installed plugin status, and session-resolvable skills",
-          "Opens a new session and inserts an installation review prompt without sending it",
-          "Enables or disables installed plugins through local profile configuration",
-          "Uninstalls user plugins by invoking pnpm remove in the profile directory"
-        ],
-        "reasons": [
-          {
-            "code": "remote_catalog_access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "local_profile_modification",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "package_removal_process",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R1",
-        "capabilities": [
-          "network.access",
-          "Reads a remote plugin catalog from configured GitHub or Gitee sources when enabled",
-          "Displays curated plugins, installed plugin status, and session-resolvable skills",
-          "Opens a new session and inserts an installation review prompt without sending it",
-          "Enables or disables installed plugins through local profile configuration",
-          "Uninstalls user plugins by invoking pnpm remove in the profile directory"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "UNVERIFIED_MAINTAINER"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.97,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:05:35.979Z",
-      "repositoryCommitSha": "c7686d13883ae71f2ab8612c3b3f2cea20feeb66",
-      "evidenceHash": "7c63cf8a2c6c83cfa15173e0b35ae313cf69df743f510d91156f8adc1d0b550d",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "adc12acb984138ebca6b74afea5a203a031ea8d80536ac70414e92e2f9f9994e",
+      "repositoryCommitSha": "0fb69a151e844c993c2de1634a5b21ac6220c707",
+      "cacheKey": "bbe65515bcdc1177eb831492df7d8f67d69484417dc17db962fa8a7020252067",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:48.298Z",
+      "lastAttemptAt": "2026-08-29T07:22:48.298Z",
+      "nextRetryAt": "2026-08-29T13:22:48.298Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "brucelanlan-dsh-tier-router": {
@@ -46365,155 +45445,35 @@
       "shadowMode": false
     },
     "btspoony-dsh-advisor": {
-      "status": "classified",
-      "group": "agents-workflows",
-      "category": "orchestration",
-      "tags": [
-        "agent",
-        "chat",
-        "context",
-        "integration",
-        "workflow"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "An orchestration plugin that uses a separately configured reviewer model to inspect primary agent turns and inject severity-ranked advisory notes into web or terminal sessions.",
-      "summaries": {
-        "zh": "为对话会话接入独立的审查模型，观察主代理每轮内容并注入分级建议。",
-        "en": "Adds an independently configured reviewer model that observes each primary agent turn and injects severity-ranked advisory notes into the session."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Makes independent model calls using a configured provider and model",
-          "Reads primary conversation transcript deltas for review",
-          "Injects advisory messages and steer events into the active session",
-          "Provides web and terminal configuration and session controls"
-        ],
-        "reasons": [
-          {
-            "code": "transcript_to_external_model",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "session_message_injection",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "configured_provider_model_dependency",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Makes independent model calls using a configured provider and model",
-          "Reads primary conversation transcript deltas for review",
-          "Injects advisory messages and steer events into the active session",
-          "Provides web and terminal configuration and session controls"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:05:43.038Z",
-      "repositoryCommitSha": "82d04b625b05e7aff2b94586623924577b231e35",
-      "evidenceHash": "b477f0394f77fcf89d2d2fd9f6cf721dcd989bac14dc4c2c51f71bf16d018946",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "ad0303b7047d669a5e1a400b9c312f3b7628dff25911816554d4bfa8a36b00e5",
+      "repositoryCommitSha": "579d65c8c9a88a3a43f7b7056679f7ee3424c45c",
+      "cacheKey": "a8c859a36c7b0356eb35f29e5251585e0f6cf570fa4690dc2739a73bf5e838ed",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:42.139Z",
+      "lastAttemptAt": "2026-08-29T07:22:42.139Z",
+      "nextRetryAt": "2026-08-29T13:22:42.139Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "btspoony-dsh-llm-fallbacks": {
-      "status": "classified",
-      "group": "agents-workflows",
-      "category": "orchestration",
-      "tags": [
-        "agent",
-        "automation",
-        "workflow",
-        "api"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A dsh plugin for orchestrating LLM provider and model fallback chains across root agents and subagents, with role-based routing, time slots, cooldowns, and configuration diagnostics.",
-      "summaries": {
-        "zh": "为 dsh 的根智能体和子智能体提供基于角色、时间段及失败状态的 LLM 提供商与模型自动重试和备用切换。",
-        "en": "Provides dsh root agents and subagents with automatic LLM provider and model retries and fallback switching based on roles, time slots, and failure state."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Automatically retries failed LLM requests",
-          "Switches providers and models according to configured fallback chains",
-          "Routes root agents and subagents by role and time-slot configuration",
-          "Reads and writes fallback settings through web, TUI, or YAML configuration",
-          "Can modify legacy session logs through an explicit repair command"
-        ],
-        "reasons": [
-          {
-            "code": "model-routing",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "configuration-write",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "session-log-repair",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_changes",
-        "riskLevel": "R1",
-        "capabilities": [
-          "network.access",
-          "Automatically retries failed LLM requests",
-          "Switches providers and models according to configured fallback chains",
-          "Routes root agents and subagents by role and time-slot configuration",
-          "Reads and writes fallback settings through web, TUI, or YAML configuration",
-          "Can modify legacy session logs through an explicit repair command"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "MANIFEST_REFERENCES_VALID"
-        ],
-        "trace": {
-          "rulesPassed": false,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:05:53.056Z",
-      "repositoryCommitSha": "f0d4c91c6cfad9b9aba781bef2e77d7f04193686",
-      "evidenceHash": "7e37a59071c4977665690f848028ef545c38564bd9ef2bdf900b5a596ff8f804",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "eac0c371a09edac088fdb22ccfa7dbedcfcdce40ea4778ea81d54cb7bbcf2275",
+      "repositoryCommitSha": "95d94419afb0869a255a4ac0fa232fe3c09cd3f3",
+      "cacheKey": "f7136bfcb34ada196d512d09c6ba4fdbf367dd8ac39010b192233f0ebca5d289",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:42.021Z",
+      "lastAttemptAt": "2026-08-29T07:22:42.021Z",
+      "nextRetryAt": "2026-08-29T13:22:42.021Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "btspoony-mstar-harness": {
@@ -47131,85 +46091,19 @@
       "shadowMode": false
     },
     "buyi-wsgzg-dsh-sidechain": {
-      "status": "classified",
-      "group": "agents-workflows",
-      "category": "orchestration",
-      "tags": [
-        "agent",
-        "chat",
-        "context",
-        "workflow",
-        "ui",
-        "layout",
-        "image",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "The README clearly describes a DSH plugin for creating isolated one-shot or persistent forked subagent conversations, with inherited context, tool execution, persistent logs, and an integrated side panel; its primary user-facing purpose is agent orchestration.",
-      "summaries": {
-        "zh": "在不中断主会话的情况下创建一次性或可持续的隔离侧会话，并通过侧栏查看其对话、上下文和工具活动。",
-        "en": "Create isolated one-shot or persistent side sessions without interrupting the main conversation, and view their messages, context, and tool activity in a side panel."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Creates one-shot and persistent forked subagent sessions",
-          "Inherits completed parent-session turns as reference context",
-          "Displays subagent messages, reasoning, tool activity, and results in a side panel",
-          "Persists child-session history across DSH restarts",
-          "Can forward image attachments to side sessions",
-          "May invoke configured subagent tools, with an optional read-only tool allow-list"
-        ],
-        "reasons": [
-          {
-            "code": "subagent_orchestration",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "tool_invocation_in_child_sessions",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "persistent_session_logs",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R1",
-        "capabilities": [
-          "network.access",
-          "Creates one-shot and persistent forked subagent sessions",
-          "Inherits completed parent-session turns as reference context",
-          "Displays subagent messages, reasoning, tool activity, and results in a side panel",
-          "Persists child-session history across DSH restarts",
-          "Can forward image attachments to side sessions",
-          "May invoke configured subagent tools, with an optional read-only tool allow-list"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "UNVERIFIED_MAINTAINER"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:05:52.124Z",
-      "repositoryCommitSha": "b7fcacf9d45167c3b30dca294ef00440db2f364e",
-      "evidenceHash": "37cb4474eeeb362e89108f75116ff0e21764566a438a2598725e7f9c1db6772e",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "1e348dea176bf3b8f4f85e689fdc8df70f755aa5d9b4b478e21237efbcb512d0",
+      "repositoryCommitSha": "deca4cf874c38d322448b798a87aafb2ae0b3f30",
+      "cacheKey": "423f86601566ffccb005803361ee3facf1416628ef5511c9bf32dc6c037392c3",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:41.629Z",
+      "lastAttemptAt": "2026-08-29T07:22:41.629Z",
+      "nextRetryAt": "2026-08-29T13:22:41.629Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "bwhite55-dsh-wechat-pro": {
@@ -50000,76 +48894,19 @@
       "shadowMode": false
     },
     "cassius0924-dsh-usage-dashboard": {
-      "status": "classified",
-      "group": "interface-experience",
-      "category": "visualization",
-      "tags": [
-        "data",
-        "visualization",
-        "ui",
-        "monitoring",
-        "api"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A DSH web GUI plugin focused on visualizing DeepSeek balance, usage, estimated costs, cache savings, model and session spending, and related trends.",
-      "summaries": {
-        "zh": "在 DSH 网页界面中以仪表盘和悬浮窗展示 DeepSeek 余额、用量及费用估算。",
-        "en": "Adds a dashboard and floating widget to the DSH web interface for viewing DeepSeek balance, usage, and estimated costs."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Reads local DSH session logs for usage data",
-          "Calls the DeepSeek balance interface using the configured API key",
-          "Aggregates usage and estimates costs by time, model, session, and pricing period",
-          "Displays a dashboard and floating usage widget in the DSH web GUI",
-          "Persists dashboard preferences and cached data locally"
-        ],
-        "reasons": [
-          {
-            "code": "local-data-access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "external-api-access",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R1",
-        "capabilities": [
-          "network.access",
-          "Reads local DSH session logs for usage data",
-          "Calls the DeepSeek balance interface using the configured API key",
-          "Aggregates usage and estimates costs by time, model, session, and pricing period",
-          "Displays a dashboard and floating usage widget in the DSH web GUI",
-          "Persists dashboard preferences and cached data locally"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "UNVERIFIED_MAINTAINER"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:06:09.417Z",
-      "repositoryCommitSha": "d7bc42867a68be199f393782f6ee484d67c1b059",
-      "evidenceHash": "03daa946ae2156c2c1019800e1d86fb7f7f5abd468dcb1fcbd0bf24fb5170ff8",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "996fdbb7d764c965c4b34d14dce100a26da1dbd41112ec6503d9bb0a22cc9168",
+      "repositoryCommitSha": "c94632e465f60ae21dcfcddf9514b0751de1bed7",
+      "cacheKey": "5640c359db17294e4826474d7c70e65dd056dc7d68861c22e42e0d0f8bb94789",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:40.945Z",
+      "lastAttemptAt": "2026-08-29T07:22:40.945Z",
+      "nextRetryAt": "2026-08-29T13:22:40.945Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "casually-deepseek-harness-plugs-manage": {
@@ -52034,80 +50871,19 @@
       "shadowMode": false
     },
     "ch4acko3-dsh-harmony": {
-      "status": "classified",
-      "group": "build-development",
-      "category": "plugin-development",
-      "tags": [
-        "api",
-        "automation",
-        "cli",
-        "integration",
-        "tool",
-        "ui",
-        "workflow"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A runtime coordination library for DeepSeek Harness plugins that applies ordered source and component patches in memory, with inspection and CLI/TUI controls for managing patch and provider state.",
-      "summaries": {
-        "zh": "用于 DeepSeek Harness 插件运行时协作的库，可在内存中按顺序应用源代码和组件补丁，并通过命令行或终端界面管理补丁状态。",
-        "en": "A runtime coordination library for DeepSeek Harness plugins that applies ordered source and component patches in memory and manages patch state through CLI and terminal interfaces."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Runtime patching and replacement of DeepSeek Harness plugin code",
-          "In-memory transformation of compiled source and React components",
-          "Ordering, enabling, disabling, inspecting, and reloading plugin patches",
-          "CLI and terminal UI operations for managing plugin profiles"
-        ],
-        "reasons": [
-          {
-            "code": "runtime_code_modification",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "plugin_lifecycle_management",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "compiled_source_transformation",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "network.access",
-          "Runtime patching and replacement of DeepSeek Harness plugin code",
-          "In-memory transformation of compiled source and React components",
-          "Ordering, enabling, disabling, inspecting, and reloading plugin patches",
-          "CLI and terminal UI operations for managing plugin profiles"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:06:34.511Z",
-      "repositoryCommitSha": "bbb5ec886db40b01e5b4bda7062272cb9a78acf6",
-      "evidenceHash": "f7e5643475bc813e541c24bc1f1398f4d91014e7a11f401fede04074283a842d",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "7de1c8ece12590faf5f014ccbd0acd581e947a5ea61f504bb7faeb7c3901fd43",
+      "repositoryCommitSha": "70f17b169bb98194a6e5f647d58668c8205614ee",
+      "cacheKey": "8e48186e8bbc26b01335e33aa8c5972c892e004be975735f6630c6eee92acab2",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-29T07:22:43.830Z",
+      "lastAttemptAt": "2026-08-29T07:22:43.830Z",
+      "nextRetryAt": "2026-08-29T13:22:43.830Z",
+      "retryable": true,
+      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
       "shadowMode": false
     },
     "ch4acko3-dsh-ui-container": {
