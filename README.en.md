@@ -21,7 +21,7 @@
 
 This directory discovers candidates from the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic, Editor Picks, and submission issues. Discovery is not admission; public entries come from the Registry, and new admissions require immutable commit evidence plus `package.json:dsh.bundle`. Migrated records may remain `legacy-pending`, but they are not treated as verified plugins.
 
-> **1711 listed plugins** · **5194 hidden candidates** · **3452 structurally ready candidates** · Last governance data: 2026-08-30 09:12 UTC
+> **1711 listed plugins** · **5196 hidden candidates** · **3449 structurally ready candidates** · Last governance data: 2026-08-30 09:56 UTC
 
 Projects discovered through the topic remain hidden candidates until admitted to the Registry and do not receive a direct DSH installation entry.
 
@@ -122,10 +122,10 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 ### Editor Picks
 
 - [zhu1090093659/dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) ★5278 · `dsh-web-ui` — dsh-web is a DeepSeek Harness Web GUI plugin bundle that provides pluggable interface extensions including a task board, remote control, SSH panel, Git visualization, image understanding, and themes.
-- [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★3110 · `dsh-better-sidebar` — An extensible DSH sidebar and bottom-panel workbench with file viewing and editing, terminal, Git, browser, chat, and background task pages.
-- [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) ★2700 · `@deepseek-harness-tui/dsh-tui` — An interactive terminal interface for DeepSeek Harness with themes, live status visualization, context metrics, and session navigation.
-- [Small-tailqwq/dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) ★1828 — Provides whale-themed skins for the DeepSeek Harness web GUI along with a manager for discovering, switching, and customizing skins.
-- [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) ★586 · `@dsh-external/dsh-ads` — An entertainment theme that transforms the DSH web interface with fictional advertisements, popups, and plugin recommendation placements in a 2005 portal style.
+- [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) ★3111 · `dsh-better-sidebar` — An extensible DSH sidebar and bottom-panel workbench with file viewing and editing, terminal, Git, browser, chat, and background task pages.
+- [ccch1mneyyy/dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) ★2701 · `@deepseek-harness-tui/dsh-tui` — An interactive terminal interface for DeepSeek Harness with themes, live status visualization, context metrics, and session navigation.
+- [Small-tailqwq/dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) ★1829 — Provides whale-themed skins for the DeepSeek Harness web GUI along with a manager for discovering, switching, and customizing skins.
+- [Nagi-ovo/dsh-ads](https://github.com/Nagi-ovo/dsh-ads) ★588 · `@dsh-external/dsh-ads` — An entertainment theme that transforms the DSH web interface with fictional advertisements, popups, and plugin recommendation placements in a 2005 portal style.
 - [omdsh-dev/dsh-gomoku](https://github.com/omdsh-dev/dsh-gomoku) ★16 · `@yejiming/dsh-gomoku` — Adds an interactive 15×15 Gomoku board to DSH for human-versus-AI or AI-versus-AI matches, with editable player prompts and displayed reasoning.
 - [Small-tailqwq/dsh-deepcel](https://github.com/Small-tailqwq/dsh-deepcel) ★15 — A DeepSeek Harness Web GUI skin that reorganizes sessions, tools, settings, and navigation into an interactive spreadsheet-like workspace.
 - [SailingLoong/loongport-dsh](https://github.com/SailingLoong/loongport-dsh) ★2 · `loongport` — LoongPort configures verified or manually supplied OpenAI-compatible service endpoints and credentials for DeepSeek Harness.
@@ -955,7 +955,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [liustack/modlens](https://github.com/liustack/modlens) ★2770 · `@liustack/modlens` — ModLens sends user-pasted or supplied images to configured vision engines and returns structured OCR, layout, and semantic evidence for text-only coding agents.
 - [AdamPlatin123/awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) ★1139 — A catalog and radar for discovering, categorizing, and reviewing DeepSeek Harness plugins with runtime compatibility evidence.
 - [Anionex/agent-vision-toolkit](https://github.com/Anionex/agent-vision-toolkit) ★992 — Provides text-based agents with image Q&A, long-screenshot OCR, visual UI reconstruction, and screenshot-verified GUI automation tools and skills.
-- [PicGo/PicGo-Core](https://github.com/PicGo/PicGo-Core) ★976 · `picgo` — PicGo-Core is an image-uploading engine with CLI and API support for uploading images from file paths or the clipboard and managing uploader configurations.
+- [PicGo/PicGo-Core](https://github.com/PicGo/PicGo-Core) ★982 · `picgo` — PicGo-Core is an image-uploading engine with CLI and API support for uploading images from file paths or the clipboard and managing uploader configurations.
 - [dsh-market/dsh-market](https://github.com/dsh-market/dsh-market) ★815 · `dshmarket` — A DeepSeek Harness plugin marketplace for browsing and searching community plugins and themes and managing their installation, updates, configuration, backups, and diagnostics.
 - [xyTom/coding-tools-mcp](https://github.com/xyTom/coding-tools-mcp) ★811 — An MCP coding runtime that provides AI clients with workspace file access, repository search, patch application, command execution, interactive sessions, and Git inspection tools.
 - [0xsline/awesome-deepseek-harness](https://github.com/0xsline/awesome-deepseek-harness) ★684 — A curated directory for browsing DeepSeek Harness plugins, tools, and infrastructure with categorized references and installation guidance.
