@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-29T07:22:48.299Z",
+  "updatedAt": "2026-08-30T05:57:54.887Z",
   "classifications": {
     "01virex-dsh-foxy-jumpscare": {
       "status": "classified",
@@ -3326,158 +3326,35 @@
       "shadowMode": false
     },
     "1624318455-dsh-plugin-tavily": {
-      "status": "classified",
-      "group": "research-knowledge",
-      "category": "search-browsing",
-      "tags": [
-        "api",
-        "browser",
-        "search",
-        "integration",
-        "tool",
-        "document"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "README明确说明该插件将Tavily注册为DeepSeek Harness的网页搜索和可选页面提取提供商，并提供相关配置、凭据、连接测试及用量查询功能。",
-      "summaries": {
-        "zh": "通过Tavily为DeepSeek Harness提供可配置的网页搜索和可选的页面内容提取功能。",
-        "en": "Provides configurable Tavily-backed web search and optional page content extraction for DeepSeek Harness."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "通过Tavily API执行网页搜索",
-          "可选地从URL提取页面内容",
-          "通过Web界面配置搜索参数和API凭据",
-          "执行连接性与用量查询",
-          "对搜索结果进行有限缓存并处理速率限制重试"
-        ],
-        "reasons": [
-          {
-            "code": "external_network_requests",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "credential_handling",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "url_content_fetching",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "通过Tavily API执行网页搜索",
-          "可选地从URL提取页面内容",
-          "通过Web界面配置搜索参数和API凭据",
-          "执行连接性与用量查询",
-          "对搜索结果进行有限缓存并处理速率限制重试"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:53:50.739Z",
-      "repositoryCommitSha": "04e096d0b465e86c971bc276155f52fb2e501abc",
-      "evidenceHash": "8e04bb52f6d95a8d54d11a0fa979ad1ca03472759481f38831a99b8cc59bf2b5",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "d3b54b60fdf16c3c5ebf1c4180ad9f15a8a4ad2d9d391c4d9e0afd79f2ef5b79",
+      "repositoryCommitSha": "d5c52f87ecd7e688390f2a45444bd1b0a4d3a160",
+      "cacheKey": "efd2eb53a29523c407ac11da43c6077172ae64f2913255fd4b494b495021dcab",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:51:50.351Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.351Z",
+      "nextRetryAt": "2026-08-30T11:51:50.351Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "1624318455-dsh-plugin-tts": {
-      "status": "classified",
-      "group": "tools-data",
-      "category": "media-tools",
-      "tags": [
-        "api",
-        "automation",
-        "integration",
-        "tool",
-        "ui"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.99,
-      "reason": "A DeepSeek Harness text-to-speech plugin that reads assistant replies aloud using Edge TTS or an optional local RVC voice-conversion service, with playback controls, settings, streaming, and audio download support.",
-      "summaries": {
-        "zh": "为 DeepSeek Harness 提供语音朗读功能，支持 Edge TTS 和可选的本地 RVC 自定义音色，并提供自动朗读、播放控制与音频下载。",
-        "en": "Adds text-to-speech for DeepSeek Harness using Edge TTS or an optional local RVC voice service, with auto-read, playback controls, and audio downloads."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Synthesizes assistant text into speech through the Edge TTS service",
-          "Supports playback controls, automatic reading, selected-text reading, and audio downloads",
-          "Can invoke a locally running RVC service for custom voice conversion",
-          "Stores voice and playback preferences in browser localStorage and writes synthesized audio to the OS temporary directory"
-        ],
-        "reasons": [
-          {
-            "code": "external_tts_service",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "local_audio_processing_and_temp_files",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "browser_storage_and_audio_playback",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Synthesizes assistant text into speech through the Edge TTS service",
-          "Supports playback controls, automatic reading, selected-text reading, and audio downloads",
-          "Can invoke a locally running RVC service for custom voice conversion",
-          "Stores voice and playback preferences in browser localStorage and writes synthesized audio to the OS temporary directory"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.99,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:53:52.725Z",
-      "repositoryCommitSha": "136ed935bcaa741e623164dd7f9328f1bfce5481",
-      "evidenceHash": "4fd926115ac9106e16e8159090657979327e266f1309406e8f8755778a5d794c",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "400be927d9692b3381b5d47c1bf2d6a975eabb8b468b117a91f5278814596ac3",
+      "repositoryCommitSha": "ec0cf87ef52abb81ae91681a966aa3096365e631",
+      "cacheKey": "e69bd2c529862992924df8c6c9347b03b4d4e39d7401341a7b0807483d7ea7e7",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:51:50.358Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.358Z",
+      "nextRetryAt": "2026-08-30T11:51:50.358Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "16480000-dsh-plugin-memory": {
@@ -6598,12 +6475,12 @@
       "repositoryCommitSha": "c6ae64ade13167565d19db093148a2e1b76c29c5",
       "cacheKey": "9a874cd9377e67f3b18c9b3ba2f0f26de2bb96de0eb4dc11f05132748129fc0a",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:28.519Z",
-      "lastAttemptAt": "2026-08-29T07:22:28.519Z",
-      "nextRetryAt": "2026-08-29T13:22:28.519Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.355Z",
+      "nextRetryAt": "2026-08-30T11:51:50.355Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "2672243194-dsh-tally": {
@@ -9461,15 +9338,15 @@
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "repositoryCommitSha": "1e6ffeb6cf942c5855ee8d4fbbf66b7e86b8d64e",
-      "cacheKey": "83ac649d37aa999d1734aa5ce8ce25ccaf3f25761242be5f42daac32df5df4e6",
+      "repositoryCommitSha": "5856e5901c6b60e3965409c50c849b0bc0cc4443",
+      "cacheKey": "0139def9c9f80d208ea787d89eafc9645f6a10f65057a237f7d8e47db501daac",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:26.953Z",
-      "lastAttemptAt": "2026-08-29T07:22:26.953Z",
-      "nextRetryAt": "2026-08-29T13:22:26.953Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.365Z",
+      "nextRetryAt": "2026-08-30T11:51:50.365Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "6pofx-dsh-go": {
@@ -11885,79 +11762,19 @@
       "shadowMode": false
     },
     "988hj7tczd-oss-dsh-computer-use": {
-      "status": "classified",
-      "group": "agents-workflows",
-      "category": "automation",
-      "tags": [
-        "agent",
-        "automation",
-        "desktop",
-        "ui",
-        "tool",
-        "mcp"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "Provides AI-controlled desktop automation through screen observation, virtual pointer actions, keyboard input, scrolling, dragging, waiting, and application launch tools.",
-      "summaries": {
-        "zh": "为 DeepSeek Harness 提供屏幕观察、虚拟鼠标操作、键盘输入及桌面应用启动能力，以自动执行电脑操作。",
-        "en": "Adds desktop computer-use automation to DeepSeek Harness through screen observation, virtual pointer actions, keyboard input, and application launching."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Screen observation via accessibility trees and optional visual fallback",
-          "Virtual mouse clicking, double-clicking, right-clicking, dragging, scrolling, and text input",
-          "Keyboard shortcuts and key presses in the foreground application",
-          "Listing and launching desktop applications"
-        ],
-        "reasons": [
-          {
-            "code": "desktop_control",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "input_and_app_launch",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "potentially_dangerous_actions",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "computer.control",
-          "Screen observation via accessibility trees and optional visual fallback",
-          "Virtual mouse clicking, double-clicking, right-clicking, dragging, scrolling, and text input",
-          "Keyboard shortcuts and key presses in the foreground application",
-          "Listing and launching desktop applications"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:58:09.360Z",
-      "repositoryCommitSha": "b98538070dbc35e64524796328f5f284f63a960d",
-      "evidenceHash": "b0ec79b933c83f397a13db1d9381ecec34f2c4628df5dcbc622241b6048919e6",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "2f61acd4295ad18774ea05818be1ca85926297cad27285325c35b4ad5e77935e",
+      "repositoryCommitSha": "ad754a9193b742117ea63652752fef7b3f18b3df",
+      "cacheKey": "695d17303e9f8f1c222907e7134c058b64586e0ed7381c8fed09a5fbfb61c417",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:51:50.356Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.356Z",
+      "nextRetryAt": "2026-08-30T11:51:50.356Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "988hj7tczd-oss-dsh-im-qq": {
@@ -12265,15 +12082,15 @@
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "repositoryCommitSha": "eb5d46e428fdc02688c936920259a44068d957b5",
-      "cacheKey": "429cd078262d54f6cd8c83fc114f54d90ea8cb3741e8a126542473699926f69d",
+      "repositoryCommitSha": "61e1fc5aad02ed38f68326b4423682362f6a43e3",
+      "cacheKey": "58370ac8a185f72be9d297a655816cdc8519ad587c2864f9e6cd1f6a669628bc",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:26.074Z",
-      "lastAttemptAt": "2026-08-29T07:22:26.074Z",
-      "nextRetryAt": "2026-08-29T13:22:26.074Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.361Z",
+      "nextRetryAt": "2026-08-30T11:51:50.361Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "a179-sanae-dsh-code-check": {
@@ -12503,76 +12320,19 @@
       "shadowMode": false
     },
     "a3boy-dsh-web-tools": {
-      "status": "classified",
-      "group": "research-knowledge",
-      "category": "search-browsing",
-      "tags": [
-        "browser",
-        "search",
-        "api",
-        "integration",
-        "agent",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A web search and page-fetch plugin for DeepSeek Harness that connects to multiple configurable providers, supports fallback and API-key management, and exposes native web_search and web_fetch tools.",
-      "summaries": {
-        "zh": "为 DeepSeek Harness 提供连接多个搜索与网页抓取服务的 Web 搜索插件，支持提供商切换、自动回退和原生搜索工具。",
-        "en": "A DeepSeek Harness web search plugin that connects to multiple search and page-fetch providers with configurable ordering, fallback, and native search tools."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "Performs web searches through configured third-party or self-hosted providers",
-          "Fetches web page content through supported providers",
-          "Stores and uses user-configured provider API keys on the local DSH Host",
-          "Provides provider fallback, proxy configuration, quota display, and a settings interface"
-        ],
-        "reasons": [
-          {
-            "code": "external_network_requests",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "credential_handling",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Performs web searches through configured third-party or self-hosted providers",
-          "Fetches web page content through supported providers",
-          "Stores and uses user-configured provider API keys on the local DSH Host",
-          "Provides provider fallback, proxy configuration, quota display, and a settings interface"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:58:17.644Z",
-      "repositoryCommitSha": "f089093d98039edc94c30bb09388266ea09e58e1",
-      "evidenceHash": "287bd966dd2087b0b96f54d18d848d829d373e6c81793c2b2eb5564dc3dc68fb",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "61a173cac4f0318a985321a8f6bec410217a7dd847aa0a7c72d565a05faed13f",
+      "repositoryCommitSha": "976a6a1e0a4ce6efd977a51276cca6e1c1ed0bea",
+      "cacheKey": "191a85dcf450baf94602dc532a82744fdd19c555267dc3276e67913d23532bc1",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:51:50.359Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.359Z",
+      "nextRetryAt": "2026-08-30T11:51:50.359Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "a735624258-dsh-skill-picker": {
@@ -13321,86 +13081,19 @@
       "shadowMode": false
     },
     "aa728848-dsh-chatgpt-subscription": {
-      "status": "classified",
-      "group": "integrations-communication",
-      "category": "external-services",
-      "tags": [
-        "api",
-        "chat",
-        "integration",
-        "image",
-        "search",
-        "agent"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "Provides DSH with a ChatGPT subscription provider using OAuth, model and search access, quota display, image generation, and forwarding of supported tool calls.",
-      "summaries": {
-        "zh": "为 DSH 接入 ChatGPT 订阅模型，提供 OAuth 登录、模型与搜索访问、额度展示、图片生成及工具调用转发。",
-        "en": "Connects DSH to ChatGPT subscription models with OAuth login, model and search access, quota display, image generation, and supported tool-call forwarding."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "OAuth login and token refresh",
-          "Access to ChatGPT subscription models",
-          "Transmission of prompts, images, and tool schemas to ChatGPT endpoints",
-          "Image generation and attachment rendering",
-          "Support for executable tool calls exposed by DSH"
-        ],
-        "reasons": [
-          {
-            "code": "oauth_credentials",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "external_model_api_access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "tool_call_forwarding",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "image_generation",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "OAuth login and token refresh",
-          "Access to ChatGPT subscription models",
-          "Transmission of prompts, images, and tool schemas to ChatGPT endpoints",
-          "Image generation and attachment rendering",
-          "Support for executable tool calls exposed by DSH"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:58:28.074Z",
-      "repositoryCommitSha": "fb97489b7fe70bf8df78d064ffb4463eaa5a6afe",
-      "evidenceHash": "b14cdea6db6b840b8bc63bc7014a252d7aaee56bce4d69bc3afef34c45f31298",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "bcedd416f6e5acb7d44a4675ec9cf0f76dbf68946d7fa253c87683dac3124bbf",
+      "repositoryCommitSha": "f76cb97b3792d3f2f07c6f9fb1889cd30ad67f9e",
+      "cacheKey": "1f38f01b53022e35f323c35f3f9a15541ab955d66d8f85a7648c6dec616e2ed0",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:51:50.367Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.367Z",
+      "nextRetryAt": "2026-08-30T11:51:50.367Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "aaa-stm32xinpianpifawangge-dsh-workshop": {
@@ -14518,12 +14211,12 @@
       "repositoryCommitSha": "8eeb1d0cb79a6e199bde94f16f1e2f2b5a818f01",
       "cacheKey": "10b20132351b1b9e0798c704e1a7550d760493060bca4414b9aae86f2eca876c",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:24.880Z",
-      "lastAttemptAt": "2026-08-29T07:22:24.880Z",
-      "nextRetryAt": "2026-08-29T13:22:24.880Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.370Z",
+      "nextRetryAt": "2026-08-30T11:51:50.370Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "acidgr-dsh-web-mobile-fix": {
@@ -15849,12 +15542,12 @@
       "repositoryCommitSha": "443e6ccb9d1d37169404977199398f4b4935c4fc",
       "cacheKey": "7b3c15a121301e69990ce30a44a6177d8840eb99d687d90e7f17ecbc3ba14923",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:25.674Z",
-      "lastAttemptAt": "2026-08-29T07:22:25.674Z",
-      "nextRetryAt": "2026-08-29T13:22:25.674Z",
+      "lastAttemptAt": "2026-08-30T05:51:50.363Z",
+      "nextRetryAt": "2026-08-30T11:51:50.363Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "aeanfx-dsh-plugin-dated-folders": {
@@ -16717,82 +16410,6 @@
       "cacheKey": "68942a8383f0006769aa345a3ff498da751da7e3737d9a195eeed869752f5808",
       "shadowMode": false
     },
-    "agents365-ai-dsh-vision-plugin": {
-      "status": "classified",
-      "group": "tools-data",
-      "category": "media-tools",
-      "tags": [
-        "image",
-        "api",
-        "integration",
-        "chat",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "The README clearly describes a media-oriented plugin that reads images, uses OpenRouter vision models to generate descriptions, and integrates those descriptions into chat requests for text-only models.",
-      "summaries": {
-        "zh": "通过 OpenRouter 视觉模型为文本模型提供图片描述和图片理解能力的插件。",
-        "en": "A plugin that uses OpenRouter vision models to provide image descriptions and image understanding for text-only models."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Reads image files from local disk for description",
-          "Sends image data to OpenRouter vision models",
-          "Converts images to text descriptions for models without image input support",
-          "Writes a default provider configuration to the DSH settings file"
-        ],
-        "reasons": [
-          {
-            "code": "external_api_data_transfer",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "local_file_access",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "settings_file_modification",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Reads image files from local disk for description",
-          "Sends image data to OpenRouter vision models",
-          "Converts images to text descriptions for models without image input support",
-          "Writes a default provider configuration to the DSH settings file"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
-      "model": "gpt-5.6-luna",
-      "promptVersion": "classify-v2",
-      "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:59:03.428Z",
-      "repositoryCommitSha": "a4e6afc70f833330e42417a0e74df9f7374b8d17",
-      "evidenceHash": "627905a4fbb63b9b404ebb193da2d7f6963e41956377caed9d93d25b1694feeb",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "2c242790df4141d1bc7c7a8c8a66e222c6e1113b987a4aedb6152612c3fe5353",
-      "shadowMode": false
-    },
     "agsq11-dsh-model-probe": {
       "status": "classified",
       "group": "integrations-communication",
@@ -16880,12 +16497,12 @@
       "repositoryCommitSha": "e7cd447d97825a944b3d83e2a34488485dc1f088",
       "cacheKey": "4916cf1e89787cf6799b01c3690b6a8ece18fbffae4f78513f1c7ce118ade5bd",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:25.630Z",
-      "lastAttemptAt": "2026-08-29T07:22:25.630Z",
-      "nextRetryAt": "2026-08-29T13:22:25.630Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.871Z",
+      "nextRetryAt": "2026-08-30T11:57:54.871Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "ahikl-dsh-desktop": {
@@ -18123,87 +17740,19 @@
       "shadowMode": false
     },
     "airmetro-dsh-update-checker": {
-      "status": "classified",
-      "group": "agents-workflows",
-      "category": "automation",
-      "tags": [
-        "automation",
-        "api",
-        "integration",
-        "monitoring",
-        "notification",
-        "tool",
-        "ui"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.99,
-      "reason": "An automation plugin for checking, installing, backing up, rolling back, and restarting DeepSeek Harness and its installed third-party plugins, with web GUI update notifications.",
-      "summaries": {
-        "zh": "用于检查 DeepSeek Harness 及已安装第三方插件更新，并通过网页界面执行更新、备份、回滚和服务重启。",
-        "en": "Checks for DeepSeek Harness and installed third-party plugin updates and provides web-based update, backup, rollback, and service-restart controls."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Checks installed DeepSeek Harness and third-party plugin versions against npm and GitHub",
-          "Downloads and installs updates for the main program and plugins",
-          "Creates backups and performs rollbacks",
-          "Restarts the local service and verifies its health",
-          "Displays update status and prompts in the web GUI"
-        ],
-        "reasons": [
-          {
-            "code": "modifies_installed_software",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "writes_backups_and_lockfiles",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "controls_service_restart",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "accesses_external_package_sources",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "filesystem.write",
-          "network.access",
-          "Checks installed DeepSeek Harness and third-party plugin versions against npm and GitHub",
-          "Downloads and installs updates for the main program and plugins",
-          "Creates backups and performs rollbacks",
-          "Restarts the local service and verifies its health",
-          "Displays update status and prompts in the web GUI"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.99,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T18:59:14.862Z",
-      "repositoryCommitSha": "cb38f68323eaa3893248a5c6197627c013d3f020",
-      "evidenceHash": "97b0e4f9735d3f686e3ad614d1443a40462622f1a36a2925a041c72b47403451",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "f713fbeb0b14e4d11e28972e2dbeaa8c8ad5276cf2b160d76b432d5650a5bc12",
+      "repositoryCommitSha": "a0605b4cfb94665e6937187789e73894ea0e4d5e",
+      "cacheKey": "a0a50921383e413886a108b6591f3e26b6ed83da65ad0bd398685489a5a89803",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:57:54.872Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.872Z",
+      "nextRetryAt": "2026-08-30T11:57:54.872Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "airrcat-dsh-yuzuha-prompts-manager": {
@@ -18444,12 +17993,12 @@
       "repositoryCommitSha": "7af23286c2a4a1083af9a8ea7d25767d7d94d894",
       "cacheKey": "5dbd3e625e69d5f207f56f53750b26fc857faebef1e5ae8bb09f821792b7bb86",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:26.734Z",
-      "lastAttemptAt": "2026-08-29T07:22:26.734Z",
-      "nextRetryAt": "2026-08-29T13:22:26.734Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.873Z",
+      "nextRetryAt": "2026-08-30T11:57:54.873Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "ajubest-dsh-plugin-optimization": {
@@ -18929,85 +18478,19 @@
       "shadowMode": false
     },
     "akira399-dsh-novel-writer": {
-      "status": "classified",
-      "group": "agents-workflows",
-      "category": "planning-execution",
-      "tags": [
-        "automation",
-        "workflow",
-        "document",
-        "planning",
-        "tool",
-        "ui",
-        "chat",
-        "file"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.94,
-      "reason": "该插件的主要面向用户用途是“在 DSH 中提供网文创作工作流助手”，覆盖选题、设定、写作、润色、诊断、一致性校验到导出发布的全过程。README 中明确列出了九阶段门禁流程、世界书设定注入、本地导入、AI 一键写章与润色、审计与回滚、模板复制和市场调研等用户可见能力，并结合独立工作台 UI 与多项 `novel_*` 工具说明其核心是写作流程执行与内容生产支持。",
-      "summaries": {
-        "zh": "大肥鱼的小说工坊是用于 DSH 的网络小说创作插件，提供从选题、章节写作到润色、校验和导出的分阶段工作流。",
-        "en": "Dsh Novel Writer is a DSH plugin for web-novel authoring, providing a staged workflow from planning and drafting to polishing, validation, and export."
-      },
-      "risk": {
-        "level": "R1",
-        "capabilities": [
-          "本地书籍与章节文件读写（导入/导出、项目数据持久化）",
-          "基于会话的多步创作流程执行（九阶段门禁与版本提交/回滚）",
-          "AI 辅助文本写作与润色功能（按上下文生成与可选保存）",
-          "可选市场调研流程会触发联网检索建议与结果落盘"
-        ],
-        "reasons": [
-          {
-            "code": "插件主要围绕项目化网文创作，包含书籍创建、阶段推进、写章、润色、导出等文件化工作流。",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "声明支持导入 txt/md 本地书籍、导出 txt/markdown，并使用本地数据目录 `~/.dsh/dsh-novel-writer` 管理项目与审计日志。",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "市场调研能力明确写明通过 `web_search` 获取榜单热词与偏好信息，再形成 `reports/market.md`。",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "插件为 DSH 插件并使用 `@deepseek-ai/*` 平台依赖（web 客户端与 host 能力），表明运行在宿主环境内的工具化集成。",
-            "evidenceRef": "package.json"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R1",
-        "capabilities": [
-          "network.access",
-          "本地书籍与章节文件读写（导入/导出、项目数据持久化）",
-          "基于会话的多步创作流程执行（九阶段门禁与版本提交/回滚）",
-          "AI 辅助文本写作与润色功能（按上下文生成与可选保存）",
-          "可选市场调研流程会触发联网检索建议与结果落盘"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "UNVERIFIED_MAINTAINER"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.94,
-          "maintainerVerified": false
-        }
-      },
-      "model": "gpt-5.3-codex-spark",
+      "status": "failed",
+      "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-18T17:58:37.487Z",
-      "repositoryCommitSha": "7a427f6aca438c7c6751ec7a602e59e9ae56541f",
-      "evidenceHash": "e2096398ca29d16910c8a91264c736127a0b41684bc3692613928c22a51d71f9",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "d5ba04ea815658eda5f26ac8f701e6c77e7f5814bead09651ee717f547ac8516",
+      "repositoryCommitSha": "7389d74b866fdf264673b83bc98ef12d9814368c",
+      "cacheKey": "f6473588201ccee039aaa83840eefb56c0f76099a9c0e35d89c9a56e5ff5b6db",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:57:54.878Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.878Z",
+      "nextRetryAt": "2026-08-30T11:57:54.878Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "akira399-dsh-plugin-publisher": {
@@ -22777,12 +22260,12 @@
       "repositoryCommitSha": "ea3e6082dc890e8fee352977531f0958a07bb1a0",
       "cacheKey": "efddb5e8b6be63e2406a7f283691b116ba92ca69665865a2333b72e31622e363",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:29.073Z",
-      "lastAttemptAt": "2026-08-29T07:22:29.073Z",
-      "nextRetryAt": "2026-08-29T13:22:29.073Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.876Z",
+      "nextRetryAt": "2026-08-30T11:57:54.876Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "amouren7-dsh-model-switch": {
@@ -24313,83 +23796,19 @@
       "shadowMode": false
     },
     "angeloszou-dsh-multi-folder": {
-      "status": "classified",
-      "group": "tools-data",
-      "category": "files-terminal",
-      "tags": [
-        "file",
-        "terminal",
-        "ui",
-        "api",
-        "context",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A DeepSeek Harness plugin for managing secondary working directories and routing file, edit, and shell operations to those directories through the framework sandbox policy, with UI and API configuration.",
-      "summaries": {
-        "zh": "为 DeepSeek Harness 会话管理多个辅助工作目录，并让文件、编辑和终端操作按配置路由到相应目录。",
-        "en": "Manage multiple secondary working directories in DeepSeek Harness and route file, edit, and terminal operations to the configured directory."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "manage per-workspace secondary directories",
-          "intercept file and shell tool operations",
-          "re-root sandboxed operations to configured directories",
-          "inject directory context into session prompts",
-          "provide sessionless configuration APIs",
-          "display configuration controls in the session UI"
-        ],
-        "reasons": [
-          {
-            "code": "filesystem_write_execute",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "sandbox_policy_re_rooting",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "session_configuration_api",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "network.access",
-          "manage per-workspace secondary directories",
-          "intercept file and shell tool operations",
-          "re-root sandboxed operations to configured directories",
-          "inject directory context into session prompts",
-          "provide sessionless configuration APIs",
-          "display configuration controls in the session UI"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:00:14.832Z",
-      "repositoryCommitSha": "420416bb1e295d7c99dae301ca12cfb01049e37f",
-      "evidenceHash": "1539d2a542ffb8eb270d59870b57fc6890cfdbb8c0b8c02b928bae75a47cc867",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "e30a9887bd53d3248de3ff938d9534ffd479bc348120bf6a5c3abcb359fe437b",
+      "repositoryCommitSha": "dbbedef254a7e1ba6bfcc3a82a3541286a77d1dc",
+      "cacheKey": "fe4a724654ea5b7423fadc25a979c55748df40ac58fc34bdce200ccd6abb41ed",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:57:54.881Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.881Z",
+      "nextRetryAt": "2026-08-30T11:57:54.881Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "angeloszou-dsh-python-env": {
@@ -26625,12 +26044,12 @@
       "repositoryCommitSha": "3ccdef05e2b502509415b023e206a4c9f6afb038",
       "cacheKey": "90f99e70e55f7e660a5bfbae646627eae76b81ba99fb616b5cda04abbbcc5a3a",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:27.924Z",
-      "lastAttemptAt": "2026-08-29T07:22:27.924Z",
-      "nextRetryAt": "2026-08-29T13:22:27.924Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.883Z",
+      "nextRetryAt": "2026-08-30T11:57:54.883Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "anyuer678-dsh-logtimeline": {
@@ -27105,80 +26524,19 @@
       "shadowMode": false
     },
     "apageoflove-dsh-changeproof": {
-      "status": "classified",
-      "group": "build-development",
-      "category": "testing-debugging",
-      "tags": [
-        "testing",
-        "debugging",
-        "cli",
-        "project-analysis",
-        "agent",
-        "automation"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A testing and debugging plugin that maps code changes to relevant tests, checks changed-line coverage, executes configured test commands, and invalidates evidence when the code changes.",
-      "summaries": {
-        "zh": "在代码修改后关联相关测试、核对变更行覆盖率并记录可过期的验证结论。",
-        "en": "Maps code changes to relevant tests, checks changed-line coverage, and records verification results that become stale when the code changes."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "Reads workspace source files, test files, configuration, and coverage artifacts",
-          "Analyzes code changes and related tests",
-          "Executes user-configured test commands as subprocesses",
-          "Stores verification evidence and reports verification status, including stale results"
-        ],
-        "reasons": [
-          {
-            "code": "subprocess_execution",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "workspace_analysis",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "evidence_storage",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "Reads workspace source files, test files, configuration, and coverage artifacts",
-          "Analyzes code changes and related tests",
-          "Executes user-configured test commands as subprocesses",
-          "Stores verification evidence and reports verification status, including stale results"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:00:40.558Z",
-      "repositoryCommitSha": "c377901280feeec3b8c2673a55354fa7d65eb196",
-      "evidenceHash": "fc7d707aaa8a4b1adc4fa30e32db8f1f3cf3f9a20e48e68afef2facfcca03214",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "6ca6e849534ddacaf29712620face3a774299086e4a51e05107ef011959a5278",
+      "repositoryCommitSha": "fbfa74a2d15f8553c61ed6a9635ff1aafc44a00c",
+      "cacheKey": "b1903353bdd521216417f8b10c9fe48c43369f7bdbb22e47ef7a257a1859274e",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:57:54.884Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.884Z",
+      "nextRetryAt": "2026-08-30T11:57:54.884Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "apheli0os-deepseek-harness-orchestrate": {
@@ -30264,82 +29622,19 @@
       "shadowMode": false
     },
     "astra3294-dsh-doctor": {
-      "status": "classified",
-      "group": "build-development",
-      "category": "testing-debugging",
-      "tags": [
-        "debugging",
-        "testing",
-        "cli",
-        "file",
-        "terminal",
-        "tool"
-      ],
-      "confidence": "high",
-      "confidenceScore": 0.98,
-      "reason": "A diagnostics and recovery plugin for DeepSeek Harness that scans profiles, probes boot failures, and manages local checkpoints and corrective actions through a Web UI and CLI.",
-      "summaries": {
-        "zh": "用于诊断和恢复 DeepSeek Harness 的插件，可扫描配置与启动问题，并通过网页界面或命令行管理本地检查点和修复操作。",
-        "en": "A DeepSeek Harness diagnostics and recovery plugin that scans configuration and startup issues and manages local checkpoints and repair actions through a web interface or CLI."
-      },
-      "risk": {
-        "level": "R2",
-        "capabilities": [
-          "diagnoses Harness configuration, dependency, boot, plugin, session, storage, and model-route issues",
-          "probes Harness startup and captures boot failures",
-          "creates local recovery checkpoints and restores or rolls back profile configuration",
-          "can reset configuration, reconcile dependencies, disable selected plugins, quarantine corrupt session files, and re-enable disabled plugins after confirmation",
-          "provides Web UI recovery actions and a standalone CLI"
-        ],
-        "reasons": [
-          {
-            "code": "local_configuration_mutation",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "dependency_and_plugin_recovery",
-            "evidenceRef": "readme"
-          },
-          {
-            "code": "boot_probe_and_rollback",
-            "evidenceRef": "readme"
-          }
-        ]
-      },
-      "governance": {
-        "schemaVersion": 1,
-        "policyVersion": "2026-08-18",
-        "finalDecision": "needs_human",
-        "riskLevel": "R2",
-        "capabilities": [
-          "credential.read",
-          "network.access",
-          "diagnoses Harness configuration, dependency, boot, plugin, session, storage, and model-route issues",
-          "probes Harness startup and captures boot failures",
-          "creates local recovery checkpoints and restores or rolls back profile configuration",
-          "can reset configuration, reconcile dependencies, disable selected plugins, quarantine corrupt session files, and re-enable disabled plugins after confirmation",
-          "provides Web UI recovery actions and a standalone CLI"
-        ],
-        "autoMerge": false,
-        "shadowMode": false,
-        "reasons": [
-          "HIGH_RISK_CAPABILITY"
-        ],
-        "trace": {
-          "rulesPassed": true,
-          "aiDecision": "approve",
-          "aiConfidence": 0.98,
-          "maintainerVerified": false
-        }
-      },
+      "status": "failed",
       "model": "gpt-5.6-luna",
       "promptVersion": "classify-v2",
       "policyVersion": "2026-08-18",
-      "classifiedAt": "2026-08-21T19:01:07.016Z",
-      "repositoryCommitSha": "d9b94d77ce0aaef7013eda50cd2c8156f1b1388b",
-      "evidenceHash": "45d7eca06cc91b725436f55d26908944e3678c4fa00dc9e024d1741ca7449c9e",
-      "taxonomyHash": "16dfef55e23f4c3563567f01a75e9f88a6cc61c1cc06e8a415cb7a42a8cccfab",
-      "cacheKey": "f6167165428d8e8b4d6b255ded83aa9a5f3647ece43971f8fc2ff13e97984952",
+      "repositoryCommitSha": "9390d1ce511422833dd2aec97fbf8b11b477ba5b",
+      "cacheKey": "3b7e275876082878eb2be81366214fbd5f03dc895979c2a5dbe3175de9cb7f2b",
+      "failureClass": "network_error",
+      "attemptCount": 1,
+      "firstFailedAt": "2026-08-30T05:57:54.885Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.885Z",
+      "nextRetryAt": "2026-08-30T11:57:54.885Z",
+      "retryable": true,
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "astrandpallas-deepseek-harness": {
@@ -31928,12 +31223,12 @@
       "repositoryCommitSha": "0a3c54b536529a9e4ea683793c86ff5c935a5711",
       "cacheKey": "ea2574b222a9c59eaf8c4722d0647347ba9e1f390029a63d352b84f5f9ef7c21",
       "failureClass": "network_error",
-      "attemptCount": 1,
+      "attemptCount": 2,
       "firstFailedAt": "2026-08-29T07:22:30.142Z",
-      "lastAttemptAt": "2026-08-29T07:22:30.142Z",
-      "nextRetryAt": "2026-08-29T13:22:30.142Z",
+      "lastAttemptAt": "2026-08-30T05:57:54.887Z",
+      "nextRetryAt": "2026-08-30T11:57:54.887Z",
       "retryable": true,
-      "error": "/completions: 503 {\"error\":{\"message\":\"auth_unavailable: no auth available (providers=codex, model=gpt-5.6-luna)\",\"type\":\"server_error\",\"code\":\"internal_server_error\"}}",
+      "error": "The operation was aborted due to timeout",
       "shadowMode": false
     },
     "ax1202-ax-feishu-bridge": {
