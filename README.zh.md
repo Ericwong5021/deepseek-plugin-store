@@ -8,7 +8,7 @@
 
 [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
 [![Governance Publisher](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/governance-publish.yml/badge.svg)](https://github.com/Ericwong5021/deepseek-plugin-store/actions/workflows/governance-publish.yml)
-[![Catalog Plugins](https://img.shields.io/badge/catalog_plugins-1711-c9362b?style=flat-square)](#all-catalog-plugins)
+[![Catalog Plugins](https://img.shields.io/badge/catalog_plugins-1720-c9362b?style=flat-square)](#all-catalog-plugins)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-292522?style=flat-square)](LICENSE)
 
 [**浏览插件商店 →**](https://deepseekplugin.store) · [提交插件](https://github.com/Ericwong5021/deepseek-plugin-store/issues/new?template=plugin-submission.yml) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
@@ -21,7 +21,7 @@
 
 本目录从 [`dsh-plugin`](https://github.com/topics/dsh-plugin) Topic、编辑精选和提交 Issue 中发现候选。发现不等于收录；公开项目以 Registry 为准，新准入必须具备固定提交证据并声明 `package.json:dsh.bundle`。历史迁移记录可能保持 `legacy-pending`，但不会被当作已验证插件。
 
-> **1711 个已收录插件** · **5196 个隐藏候选** · **3449 个通过结构预检** · 上次治理数据：2026-09-01 05:37 UTC
+> **1720 个已收录插件** · **5195 个隐藏候选** · **3448 个通过结构预检** · 上次治理数据：2026-09-01 05:37 UTC
 
 Topic 中发现但尚未进入 Registry 的项目保持隐藏候选状态，不会获得 DSH 直接安装入口。
 
@@ -41,11 +41,11 @@ Topic 中发现但尚未进入 Registry 的项目保持隐藏候选状态，不�
 |:--:|:--|--:|
 | ✨ | [编辑精选](#editor-picks) | 8 |
 | 🎨 | [UI 增强](#ui-enhancements) | 359 |
-| 🔁 | [工作流与自动化](#workflow-automation) | 434 |
-| 🛠️ | [工具集](#tools) | 605 |
+| 🔁 | [工作流与自动化](#workflow-automation) | 439 |
+| 🛠️ | [工具集](#tools) | 608 |
 | 🔔 | [通知与监控](#notifications) | 81 |
 | 🧑‍💻 | [开发辅助](#dev-helpers) | 178 |
-| 🎓 | [学习与教育](#learning) | 39 |
+| 🎓 | [学习与教育](#learning) | 40 |
 | 🧩 | [其他](#misc) | 7 |
 
 <a id="plugin-governance"></a>
@@ -502,7 +502,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="workflow-automation"></a>
 <details>
-<summary><strong>🔁 工作流与自动化</strong> <sup>434 个插件</sup></summary>
+<summary><strong>🔁 工作流与自动化</strong> <sup>439 个插件</sup></summary>
 
 ### 工作流与自动化
 
@@ -877,7 +877,11 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [dmsobtl/dsh-cost-optimizer](https://github.com/dmsobtl/dsh-cost-optimizer) ★0 · `dsh-cost-optimizer` — Automatically selects among configured model tiers based on request complexity and tracks session and daily spending budgets.
 - [dmsobtl/dsh-llm-vision-router](https://github.com/dmsobtl/dsh-llm-vision-router) ★0 · `dsh-llm-vision-router` — Automatically routes agent requests containing image content to a configured multimodal model while leaving other requests on the default model.
 - [dmsobtl/dsh-skill-evolve](https://github.com/dmsobtl/dsh-skill-evolve) ★0 · `dsh-skill-evolve` — Extracts reusable tool-call workflows from agent session records, generates skill files, and lists learned skills.
+- [elliseang0000-lang/dsh-pentest-bugtrace](https://github.com/elliseang0000-lang/dsh-pentest-bugtrace) ★0 — A penetration-testing mode plugin for DeepSeek Harness (dsh). One command turns any dsh profile into a BugTraceAI pentest agent: authorization-first pentester persona, a bundled \`bugtrace-pentest\` runbook skill, and a native MCP stdio bridge exposing 7 tools (\`start\_scan\`, \`get\_scan\_status\`, \`query\_findings\`, \`stop\_scan\`, \`export\_report\`, \`explain\_vulnerability\`, \`suggest\_remediation\`) that drive the BugTraceAI autonomous DAST/SAST engine. Includes a headless one-shot runner so it works on a \`ds
 - [EvilIrving/dsh-context-proxy](https://github.com/EvilIrving/dsh-context-proxy) ★0 · `dsh-context-proxy` — Provides agent-facing tools to query, slice, and grep persisted session history with bounded results and citations.
+- [GooDAnDReaDY/dsh-context-lens](https://github.com/GooDAnDReaDY/dsh-context-lens) ★0 — AST-based context compression, test log filtering, and token budget guard for DeepSeek Harness: strips redundant syntax, prunes noisy log lines, and enforces a token ceiling so the context window never overflows.
+- [GooDAnDReaDY/dsh-live-canvas](https://github.com/GooDAnDReaDY/dsh-live-canvas) ★0 — An in-browser live preview sandbox for DeepSeek Harness. When the agent writes HTML, React 18 (JSX/TSX), Vue, SVG, Mermaid or Markdown, the \`live\_canvas\_preview\` tool compiles and renders it in an isolated iframe with SSE hot-reload, so the result is visible without leaving the session. It also provides a DOM click inspector, side-by-side visual diff with a split slider, a responsive device matrix for viewport testing, and one-click Vite ZIP export of the result.
+- [GooDAnDReaDY/dsh-time-machine](https://github.com/GooDAnDReaDY/dsh-time-machine) ★0 — Creates named workspace checkpoints before destructive operations and rolls back to any snapshot instantly, with safety guards that intercept risky agent actions.
 - [Gu-ZT/dsh-auxiliary](https://github.com/Gu-ZT/dsh-auxiliary) ★0 · `dsh-auxiliary` — Provides independently configured auxiliary model routes for DeepSeek Harness tasks including vision, context compaction, approval reviews, subagents, session titles, and image generation.
 - [H1a3x/dsh-prompt-inject](https://github.com/H1a3x/dsh-prompt-inject) ★0 · `dsh-prompt-inject` — A DeepSeek Harness web plugin for managing named system-prompt templates and injecting a selected template into conversations globally or by workspace.
 - [Haoran2099/dsh-focal](https://github.com/Haoran2099/dsh-focal) ★0 · `focal-dsh` — FOCAL is a local task-memory plugin that filters session activity into bounded task-isolated memories and optionally injects active-task context into later model requests.
@@ -927,6 +931,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [TT432/dsh-feedback](https://github.com/TT432/dsh-feedback) ★0 · `dsh-feedback` — A cross-context feedback plugin that persists process feedback in the workspace and supports viewing, editing, and deleting entries through model tools and a web panel.
 - [TT432/dsh-skillzip](https://github.com/TT432/dsh-skillzip) ★0 · `dsh-skillzip` — Provides tools to compress, incrementally update, inspect, and audit agent skill documents while retaining their rules, workflows, tool requirements, and output constraints.
 - [ttxl314/dsh-skill-lord-serf](https://github.com/ttxl314/dsh-skill-lord-serf) ★0 · `@ttxl314/dsh-skill-lord-serf` — Enables DSH to coordinate Lord and Serf agents through file-backed planning, task dispatch, bounded execution, reporting, and review workflows.
+- [vshulcz/deja-vu](https://github.com/vshulcz/deja-vu) ★0 — DSH's built-in \`session-query\` searches DSH's own sessions. dsh-deja answers the other question: what you did in the twenty other coding agents on this machine — Claude Code, Codex, Cursor, opencode and the rest. It indexes the session files those agents already write to disk, so the months before installation are searchable from the first second; recall, a per-session digest, per-file history and "what ran after this error last time" arrive as tools, plus optional automatic recall before each s
 - [wangxiang0605qvq/dsh-auto-compact](https://github.com/wangxiang0605qvq/dsh-auto-compact) ★0 · `@deepseek-ai/dsh-auto-compact` — Registers a compact\_now tool for DeepSeek Harness so the model can schedule session-context compaction after the current turn and record the result.
 - [WeilaiSun/dsh-hindsight-memory](https://github.com/WeilaiSun/dsh-hindsight-memory) ★0 · `dsh-hindsight-memory` — Provides DeepSeek Harness with cross-session semantic memory through a local Hindsight service, including memory retention, recall, reflection, and optional automatic context injection.
 - [wenliang9527/dsh-one-click-launcher](https://github.com/wenliang9527/dsh-one-click-launcher) ★0 — Provides a Windows one-click launcher for DeepSeek Harness and can add a DSH sidebar button that generates the required startup files.
@@ -945,7 +950,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="tools"></a>
 <details>
-<summary><strong>🛠️ 工具集</strong> <sup>605 个插件</sup></summary>
+<summary><strong>🛠️ 工具集</strong> <sup>608 个插件</sup></summary>
 
 ### 工具集
 
@@ -1468,6 +1473,8 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [fishxcode/dsh-plugin-deepseek-balance](https://github.com/fishxcode/dsh-plugin-deepseek-balance) ★0 · `dsh-plugin-deepseek-balance` — A Harness Web settings plugin for viewing DeepSeek API balance, balance trends, and optional daily cost and token usage charts.
 - [FrankZhangIronly/dsh-system-control](https://github.com/FrankZhangIronly/dsh-system-control) ★0 · `dsh-system-control` — Adds a DSH Web sidebar system menu for checking exit-channel status and requesting service restart or shutdown.
 - [git-hub-cloud/workled](https://github.com/git-hub-cloud/workled) ★0 · `workled` — workled skill
+- [GooDAnDReaDY/dsh-usage-guard](https://github.com/GooDAnDReaDY/dsh-usage-guard) ★0 — Keeps a malformed token-usage sample from taking a whole session history down with it: a missing or non-numeric counter is normalized to zero before the harness folds the history, so an affected session opens again instead of replaying as NaN.
+- [GooDAnDReaDY/dsh-voice](https://github.com/GooDAnDReaDY/dsh-voice) ★0 — Voice input for the DeepSeek Harness web UI: dictation chunked by pauses plus voice messages, each with its own speech-to-text provider fallback chain (Deepgram, Groq, HuggingFace, local whisper.cpp, or any OpenAI-compatible endpoint). Recording and transcription happen in the composer, so the text can be edited before it is sent.
 - [gushiaoke/dsh-qq-bot](https://github.com/gushiaoke/dsh-qq-bot) ★0 · `dsh-qq-bot` — Sends text and Markdown messages to QQ users or groups through the QQ Bot API and optionally drives agent sessions from inbound QQ messages.
 - [hccccc01333/dsh-analytics](https://github.com/hccccc01333/dsh-analytics) ★0 · `dsh-analytics` — Collects and analyzes DeepSeek Harness session usage locally, calculating token costs, cache metrics, budgets, and session details through APIs, an agent tool, and browser dashboards.
 - [hiyms/dsh-web-search-provider](https://github.com/hiyms/dsh-web-search-provider) ★0 · `dsh-web-search-provider` — Provides network search for Deepseek Harness sessions through compatible model providers, with webpage content retrieval on supported APIs.
@@ -1520,6 +1527,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [qomob/DSHwiki](https://github.com/qomob/DSHwiki) ★0 · `dsh` — A dsh plugin hub for searching, inspecting, verifying, and installing community DeepSeek Harness plugins after user confirmation.
 - [raccoonBK/dsh-byok](https://github.com/raccoonBK/dsh-byok) ★0 · `dsh-byok` — Connects DeepSeek Harness to OpenAI-compatible model providers with user-supplied API keys, text streaming, and per-provider HTTP or SOCKS5 proxy settings.
 - [radaren/dsh-auth](https://github.com/radaren/dsh-auth) ★0 · `dsh-auth` — Provides shared-token cookie authentication for the DeepSeek Harness Web UI, protecting SPA, HTTP API, and WebSocket access.
+- [Raphaelutumn/dsh-mood](https://github.com/Raphaelutumn/dsh-mood) ★0 — A tiny behavioral mood ring for your AI coding agent: a four-state session-header status light (GOOD/CONFUSED/FRUSTRATED/OVERWHELMED) for DeepSeek Harness
 - [Seafood-Y/CC2DSH](https://github.com/Seafood-Y/CC2DSH) ★0 — Converts Claude Code session history into DeepSeek Harness session files while preserving titles and workspace paths, with validation and workspace attachment support.
 - [sherconan/dsh-web-recon](https://github.com/sherconan/dsh-web-recon) ★0 · `dsh-web-recon` — Reconnaissance plugin that inspects a web application's accessibility tree and network APIs, then saves reusable playbooks for later endpoint replay.
 - [sindo-s/dsh-qq-bot](https://github.com/sindo-s/dsh-qq-bot) ★0 · `dsh-qq-bot` — Connects QQ group and private messages to independent DeepSeek Harness agent sessions through the official QQ Bot WebSocket gateway and REST API.
@@ -1836,7 +1844,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 
 <a id="learning"></a>
 <details>
-<summary><strong>🎓 学习与教育</strong> <sup>39 个插件</sup></summary>
+<summary><strong>🎓 学习与教育</strong> <sup>40 个插件</sup></summary>
 
 ### 学习与教育
 
@@ -1879,6 +1887,7 @@ dsh plugin --profile <name> add github:<owner>/<repo>
 - [userInner/dsh-academic-research](https://github.com/userInner/dsh-academic-research) ★0 · `@onpeople/dsh-academic-research` — Search and retrieve public academic sources through Crossref, OpenAlex, and selected HTTPS pages while supporting evidence-aware bilingual literature reviews, academic writing, and citation checks.
 - [whyihaveyou/dsh-plugin-tutorial](https://github.com/whyihaveyou/dsh-plugin-tutorial) ★0 — A bilingual developer guide to DeepSeek Harness plugin development covering plugin models, examples, debugging, distribution, and publishing.
 - [WindLX/paper_plane_x_dsh](https://github.com/WindLX/paper_plane_x_dsh) ★0 · `paper-plane-x-dsh` — Connects Paper Plane X research context and paper search to the DeepSeek Harness Web interface, enabling context management and insertion of selected paper IDs into prompts.
+- [xiehuan123/dsh-deepread](https://github.com/xiehuan123/dsh-deepread) ★0 — DeepRead performs evidence-traceable analysis of articles, books, PDFs, and document sets, producing summaries, claim-to-evidence mappings, confidence levels, knowledge maps, and review questions.
 
 </details>
 
