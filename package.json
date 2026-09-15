@@ -1,6 +1,6 @@
 {
   "name": "deepseek-plugin-store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DeepSeek 插件商店开源数据源 · Open source data source for the DeepSeek Plugin Store",
   "homepage": "https://deepseekplugin.store",
   "repository": {
@@ -35,14 +35,24 @@
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && tsdown",
     "pack:check": "npm pack --dry-run",
     "update": "node scripts/update.mjs",
+    "discover": "node scripts/discover.mjs",
+    "registry:import": "node scripts/import-legacy-catalog.mjs",
+    "registry:validate": "node scripts/validate-registry.mjs",
+    "catalog:generate": "node scripts/generate-catalog.mjs",
+    "catalog:check": "node scripts/generate-catalog.mjs --check",
     "analyze-quality": "node scripts/analyze-quality.mjs",
     "monitor": "node scripts/monitor-upstream.mjs",
     "validate": "node scripts/validate.mjs"
   },
-  "files": ["lib", "cordis.patch.yml", "README.md", "README.en.md", "README.zh.md"],
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "README.zh.md"
+  ],
   "dependencies": {
     "lightningcss": "^1.32.0",
     "react": "^18.2.0",
@@ -50,20 +60,16 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
-    "@deepseek-ai/dsh-client-runtime": "^0.1.0-rc.5",
-    "@deepseek-ai/dsh-client-ui-sidebar": "^0.1.0-rc.5",
-    "@deepseek-ai/dsh-client-ui-slots": "^0.1.0-rc.5"
+    "@deepseek-ai/dsh-client-runtime": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-client-ui-sidebar": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-client-ui-slots": "^0.1.0-rc.6"
   },
-  "devDependencies": {
-    "@deepseek-ai/cordis": "4.0.1",
-    "@deepseek-ai/dsh-client-runtime": "0.1.0-rc.6",
-    "@deepseek-ai/dsh-client-ui-sidebar": "0.1.0-rc.6",
-    "@deepseek-ai/dsh-client-ui-slots": "0.1.0-rc.6",
-    "@types/node": "^22.15.0",
-    "@types/react": "~18.3.1",
-    "@types/react-dom": "~18.3.0",
-    "tsdown": "^0.22.2",
-    "typescript": "^6.0.3"
-  },
-  "keywords": ["awesome", "awesome-list", "dsh", "dsh-plugin", "deepseek-harness", "deepseek"]
+  "keywords": [
+    "awesome",
+    "awesome-list",
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek"
+  ]
 }

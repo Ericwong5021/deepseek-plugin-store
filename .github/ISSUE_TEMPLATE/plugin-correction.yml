@@ -1,0 +1,53 @@
+name: Correct plugin metadata or category
+description: Request an evidence-backed correction for one existing registry record.
+title: "[Correction] "
+labels:
+  - plugin-correction
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Plugin repository
+      placeholder: https://github.com/owner/plugin-name
+    validations:
+      required: true
+  - type: dropdown
+    id: field
+    attributes:
+      label: Correction type
+      options:
+        - Primary category
+        - Tags
+        - Summary
+        - Install target
+        - Maintainer
+        - Admission evidence
+        - Lifecycle status
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current value
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed value
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Repository evidence
+      description: Link to README, manifest, exports, source paths, releases, or archive status that supports the correction.
+    validations:
+      required: true
+  - type: checkboxes
+    id: declaration
+    attributes:
+      label: Declaration
+      options:
+        - label: This request contains exactly one plugin and does not use stars or popularity as category evidence.
+          required: true

@@ -1,68 +1,23 @@
-import fs from 'node:fs/promises'
+#!/usr/bin/env node
+import { generateCatalog } from './generate-catalog.mjs'
+import { readJson } from './registry-lib.mjs'
+import { validateRegistry } from './validate-registry.mjs'
 
-const catalog = JSON.parse(await fs.readFile('data/catalog.json', 'utf8'))
-const pluginsMirror = JSON.parse(await fs.readFile('data/plugins.json', 'utf8'))
-const editorPicks = JSON.parse(await fs.readFile('data/editor-picks.json', 'utf8'))
-if (JSON.stringify(catalog) !== JSON.stringify(pluginsMirror)) throw new Error('data/plugins.json must mirror data/catalog.json')
-if (catalog.schemaVersion !== 1) throw new Error('schemaVersion must be 1')
-if (!catalog.updatedAt || !catalog.sourceCommit || !Array.isArray(catalog.plugins) || !Array.isArray(catalog.related)) throw new Error('catalog top-level fields are invalid')
-if (!Array.isArray(editorPicks)) throw new Error('editor picks must be an array')
-
-const unique = (label, values) => {
-  const seen = new Set()
-  for (const value of values) {
-    if (!value) throw new Error(`${label} contains an empty value`)
-    if (seen.has(value)) throw new Error(`duplicate ${label}: ${value}`)
-    seen.add(value)
-  }
+const registry = await validateRegistry()
+await generateCatalog({ check: true })
+const catalogV2 = await readJson('data/catalog-v2.json')
+const catalog = await readJson('data/catalog.json')
+const mirror = await readJson('data/plugins.json')
+if (JSON.stringify(catalog) !== JSON.stringify(mirror)) throw new Error('data/plugins.json must mirror data/catalog.json')
+if (catalogV2.schemaVersion !== 2 || catalog.schemaVersion !== 1) throw new Error('invalid public catalog schema versions')
+const v2Urls = catalogV2.plugins.map((plugin) => plugin.repository.url).sort()
+const v1Urls = catalog.plugins.map((plugin) => plugin.url).sort()
+if (JSON.stringify(v2Urls) !== JSON.stringify(v1Urls)) throw new Error('v1 and v2 public rosters differ')
+if (catalogV2.plugins.some((plugin) => plugin.visibility !== 'listed')) throw new Error('hidden plugin leaked into catalog v2')
+const ids = new Set(catalogV2.plugins.map((plugin) => plugin.id))
+for (const ranking of Object.values(catalogV2.collections.rankings)) {
+  if (ranking.items.some((id) => !ids.has(id))) throw new Error(`ranking contains unknown plugin: ${ranking.method}`)
 }
-
-const entries = [...catalog.plugins, ...catalog.related]
-unique('repository', entries.map((entry) => entry.url))
-unique('plugin name', entries.map((entry) => entry.fullName.toLowerCase()))
-unique('slug', entries.map((entry) => entry.slug))
-unique('install spec', catalog.plugins.map((plugin) => plugin.installSpec))
-
-for (const entry of editorPicks) {
-  if (!entry || !/^[\w.-]+\/[\w.-]+$/.test(entry.repository)) throw new Error(`invalid editor pick repository: ${entry?.repository}`)
-  if (entry.summary !== undefined && (typeof entry.summary !== 'string' || !entry.summary.trim())) throw new Error(`invalid editor pick summary: ${entry.repository}`)
-}
-unique('editor pick', editorPicks.map((entry) => entry.repository.toLowerCase()))
-
-for (const plugin of catalog.plugins) {
-  if (plugin.isPlugin !== true) throw new Error(`${plugin.fullName} is not selected as a plugin`)
-  if (!/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/.test(plugin.url)) throw new Error(`invalid repository URL: ${plugin.url}`)
-  if (!plugin.category?.id || !plugin.pushedAt || typeof plugin.summary !== 'string' || !plugin.author || !plugin.status) throw new Error(`incomplete plugin: ${plugin.fullName}`)
-  if (plugin.installSpec !== `github:${plugin.fullName}`) throw new Error(`invalid install spec: ${plugin.fullName}`)
-  if (plugin.source?.type === 'github-topic') {
-    if (plugin.source.topic !== 'dsh-plugin') throw new Error(`invalid topic source: ${plugin.fullName}`)
-  } else if (plugin.source?.type === 'editor-pick') {
-    if (plugin.source.file !== 'data/editor-picks.json' || plugin.category.id !== 'editor-picks' || plugin.featured !== true) throw new Error(`invalid editor pick source: ${plugin.fullName}`)
-  } else {
-    throw new Error(`invalid discovery source: ${plugin.fullName}`)
-  }
-  if (plugin.compatibility?.manifestFound !== true) throw new Error(`missing package.json:dsh.bundle: ${plugin.fullName}`)
-  if (plugin.compatibility.manifestPath !== 'package.json:dsh.bundle') throw new Error(`invalid manifest path: ${plugin.fullName}`)
-  if (plugin.quality) {
-    if (!Number.isInteger(plugin.quality.score) || plugin.quality.score < 0 || plugin.quality.score > 100) throw new Error(`invalid quality score: ${plugin.fullName}`)
-    if (!['A', 'B', 'C', 'D'].includes(plugin.quality.grade)) throw new Error(`invalid quality grade: ${plugin.fullName}`)
-    if (!plugin.quality.assessedAt || !plugin.quality.sourceLastPushAt || !plugin.quality.analyzer?.model) throw new Error(`incomplete quality assessment: ${plugin.fullName}`)
-  }
-}
-
-for (const project of catalog.related) {
-  if (project.isPlugin !== false) throw new Error(`${project.fullName} is not marked as an other project`)
-  if (!/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/.test(project.url)) throw new Error(`invalid repository URL: ${project.url}`)
-  if (project.category?.id !== 'other-projects' || !project.pushedAt || typeof project.summary !== 'string' || !project.author || !project.status) throw new Error(`incomplete other project: ${project.fullName}`)
-  if (project.installSpec !== undefined) throw new Error(`other project has an install spec: ${project.fullName}`)
-  if (project.compatibility?.manifestFound !== false || project.compatibility.manifestPath !== null) throw new Error(`other project has installable manifest evidence: ${project.fullName}`)
-  if (project.source?.type === 'github-topic') {
-    if (project.source.topic !== 'dsh-plugin') throw new Error(`invalid topic source: ${project.fullName}`)
-  } else if (project.source?.type === 'editor-pick') {
-    if (project.source.file !== 'data/editor-picks.json') throw new Error(`invalid editor pick source: ${project.fullName}`)
-  } else {
-    throw new Error(`invalid discovery source: ${project.fullName}`)
-  }
-}
-
-console.log(`validated ${catalog.plugins.length} catalog repositories and ${editorPicks.length} editor picks`)
+const code2Skill = catalog.plugins.find((plugin) => plugin.fullName.toLowerCase() === 'leechen298/code2skill')
+if (code2Skill?.category?.id !== 'dev-helpers') throw new Error('Issue #1 legacy projection is incorrect')
+console.log(`validated catalog v2 and v1 projections for ${registry.listed} listed plugins`)
